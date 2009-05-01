@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-perltrap - Perl�������դˤ���
+perltrap - Perlの不注意による罠
 
 =head1 DESCRIPTION
 
@@ -16,127 +16,127 @@ L<perldelta>.
 
 =end original
 
-�Ǥ��礭��櫤Ȥϡ�C<use warnings> ���뤤�� B<-w> �����å���
-�Ȥ��Τ�˺��Ƥ��ޤ��Ȥ������ȤǤ���
-L<perllexwarn> �� L<perlrun> �򻲾Ȥ��Ƥ���������
-�����ܤ��礭��櫤Ȥϡ����ʤ��Υץ���������Τ�
-C<use strict> �θ��Ǽ¹Ԥ��ʤ��Ȥ������ȤǤ���
-�����ܤ�櫤ϡ�Perl �Τ��ΥС������Ǥ��ѹ������ɤޤʤ��Ȥ������ȤǤ��� 
-L<perldelta> �򻲾Ȥ��Ƥ���������
+最も大きな罠とは、C<use warnings> あるいは B<-w> スイッチを
+使うのを忘れてしまうということです。
+L<perllexwarn> と L<perlrun> を参照してください。
+二番目に大きな罠とは、あなたのプログラム全体を
+C<use strict> の元で実行しないということです。
+三番目の罠は、Perl のこのバージョンでの変更点を読まないということです。 
+L<perldelta> を参照してください。
 
 =head2 Awk Traps
 
-(awk ���)
+(awk の罠)
 
-B<awk> �˴��줿���ϡ��ʲ��Τ褦�ʤ��Ȥ��ä����դ��Ƥ�������:
+B<awk> に慣れた方は、以下のようなことに特に注意してください:
 
 =over 4
 
 =item *
 
-English�⥸�塼���
+Englishモジュールを
 
     use English;
 
-�Τ褦�ˤ��ƥ����ɤ���С�B<awk> �Ǥ����Ǥ��ä��褦��
-(C<$/> �Τ褦��)�ü��ѿ���($RS �Τ褦��)̾���ǻ��Ȥ��뤳�Ȥ��Ǥ��ޤ���
-�ܤ����� L<perlvar> �򻲾Ȥ��Ƥ���������
+のようにしてロードすれば、B<awk> でそうであったように
+(C<$/> のような)特殊変数を($RS のような)名前で参照することができます。
+詳しくは L<perlvar> を参照してください。
 
 =item *
 
-Perl�Ǥϡ����٤Ƥ�ñ��ʸ(simple statement)�������˥��ߥ�����ɬ�פǤ�
-(�֥��å��κǸ���֤��줿�Ȥ�������ޤ�)��
-���Ԥ�ʸ�ζ��ڤ�ȤϤʤ�ޤ���
+Perlでは、すべての単純文(simple statement)の末尾にセミコロンが必要です
+(ブロックの最後に置かれたときを除きます)。
+改行は文の区切りとはなりません。
 
 =item *
 
-C<if> �� C<while> �Ǥϥ����꡼�֥졼����ɬ�פǤ���
+C<if> や C<while> ではカーリーブレースが必要です。
 
 =item *
 
-Perl�Ǥϡ��ѿ��ϡ�$��"����@�ɤ���%�ɤǻϤޤ�ޤ���
+Perlでは、変数は“$”"か“@”か“%”で始まります。
 
 =item *
 
-�����ź������ 0 ����Ϥޤ�ޤ���substr() �� index() �Ǥ�ʸ����ΰ��֤�
-Ʊ�ͤǤ���
+配列の添え字は 0 から始まります。substr() や index() での文字列の位置も
+同様です。
 
 =item *
 
-�����ź���������ͤǤ��뤫��ʸ����Ǥ��뤫����ʤ���Фʤ�ޤ���
+配列の添え字が数値であるか、文字列であるかを決めなければなりません。
 
 =item *
 
-�ϥå���(Ϣ������)���ͤϡ�ñ�˻��Ȥ�������Ǥ�¸�ߤ��뤳�Ȥ�
-�ʤ�ޤ���
+ハッシュ(連想配列)の値は、単に参照するだけでは存在することに
+なりません。
 
 =item *
 
-��Ӥ�ʸ����ˤ�äƹԤ��Τ������ͤˤ�äƹԤ��Τ���
-���ʤ���Фʤ�ޤ���
+比較を文字列によって行うのか、数値によって行うのかを
+決めなければなりません。
 
 =item *
 
-���Ϥ��ɤ߹�������Ǥ� split �ϹԤ��ޤ���
-����ؤ� split �ϼ�ʬ�ǹԤ��ޤ���
-�ޤ���split() �黻�Ҥΰ����� B<awk> �Τ�ΤȰۤʤäƤ��ޤ���
+入力を読み込むだけでは split は行われません。
+配列への split は自分で行います。
+また、split() 演算子の引数は B<awk> のものと異なっています。
 
 =item *
 
-�̾�����ȹԤ� $0 �ǤϤʤ� $_ �ˤ���ޤ���
-����Ū�ˡ����Ԥϼ�������ޤ���
-($0 �ˤϼ¹Ԥ��Ƥ���ץ�������̾��������ޤ�)��
-L<perlvar> �򻲾Ȥ��Ƥ���������
+通常、カレント行は $0 ではなく $_ にあります。
+一般的に、改行は取り除かれません
+($0 には実行しているプログラムの名前があります)。
+L<perlvar> を参照してください。
 
 =item *
 
-$<I<digit>> �ϥե�����ɤ򻲾Ȥ��ޤ��󡣤����
-ľ���˹Ԥä��ѥ�����ޥå��󥰤���ʬʸ����򻲾Ȥ��ޤ���
+$<I<digit>> はフィールドを参照しません。これは
+直前に行ったパターンマッチングの部分文字列を参照します。
 
 =item *
 
-print() ʸ�ϡ�C<$,> �� C<$\> ���ͤ����ꤷ�ʤ��¤�ե�����ɶ��ڤ�Ҥ�
-�쥳���ɶ��ڤ�Ҥ��ղä��ޤ���English �⥸�塼���ȤäƤ���С�
-$OFS �� $ORS ���Ф������ꤹ�뤳�ȤǤ� OK �Ǥ���
+print() 文は、C<$,> や C<$\> に値を設定しない限りフィールド区切り子や
+レコード区切り子を付加しません。English モジュールを使っていれば、
+$OFS や $ORS に対して設定することでも OK です。
 
 =item *
 
-�ե�������Ф��ƽ��Ϥ������ˤϡ����Υե�����򤢤餫���ᥪ���ץ󤷤�
-�����ʤ���Фʤ�ޤ���
+ファイルに対して出力する前には、そのファイルをあらかじめオープンして
+おかなければなりません。
 
 =item *
 
-�ϰϱ黻�Ҥϡ�..�ɤǤ��äơ�����ޤǤϤ���ޤ��󡣥���ޱ黻�Ҥ�
-C��Ʊ���褦�ʿ����񤤤򤷤ޤ���
+範囲演算子は“..”であって、カンマではありません。カンマ演算子は
+Cと同じような振る舞いをします。
 
 =item *
 
-�ޥå��黻�Ҥϡ�=~�ɤǤ��äơ���~�ɤǤϤ���ޤ���
-(��~�ɤ�C��Ʊ�ͤˡ�1���������黻�ҤǤ�)��
+マッチ演算子は“=~”であって、“~”ではありません
+(“~”はCと同様に、1の補数を取る演算子です)。
 
 =item *
 
-�٤���α黻�Ҥϡ�**�ɤǤ��äơ���^�ɤǤϤ���ޤ���
-��^�ɤ�C��Ʊ�͡�XOR�黻�ҤǤ�
-(B<awk> ������Ū�� C ����ߴ��Ǥ��뤳�Ȥˤ����դ����⤷��ޤ����)��
+べき乗の演算子は“**”であって、“^”ではありません。
+“^”はCと同様、XOR演算子です
+(B<awk> が基本的に C と非互換であることにお気付きかもしれませんね)。
 
 =item *
 
-Ϣ�ܱ黻�Ҥϡ�.�ɤǤ��äơ���ʸ����ǤϤ���ޤ���
-(��ʸ�����ȤäƤ��ޤ���
-C</pat/ /pat/> �������λ����ܤΥ���å��夬�����黻�ҤȲ�ᤵ��Ƥ��ޤ��Τ�
-���������ϤǤ��ʤ��ʤ�ޤ���
-Perl �λ�����ϴ�� "/", "?", ">" �Ȥ��ä��黻�Ҥ��Ф���
-¿��ʸ̮��¸�ȤʤäƤ��ޤ����ºݡ�"." ���Ȥ���ͤλϤޤ�Ȥʤ�
-��ǽ���⤢��ޤ�)
+連接演算子は“.”であって、空文字列ではありません
+(空文字列を使ってしまうと
+C</pat/ /pat/> が、その三番目のスラッシュが除算演算子と解釈されてしまうので
+正しく解析できなくなります。
+Perl の字句解析器は "/", "?", ">" といった演算子に対して
+多少文脈依存となっています。実際、"." 自身も数値の始まりとなる
+可能性もあります)
 
 =item *
 
-������� C<next>, C<exit>, C<continue> �ο����񤤤��ۤʤ�ޤ���
+キーワード C<next>, C<exit>, C<continue> の振る舞いが異なります。
 
 =item *
 
-�ʲ����ѿ���Ư�����ۤʤ�ޤ���
+以下の変数の働きが異なります。
 
       Awk	Perl
       ARGC	scalar @ARGV (compare with $#ARGV)
@@ -156,18 +156,18 @@ Perl �λ�����ϴ�� "/", "?", ">" �Ȥ��ä��黻�Ҥ��Ф���
 
 =item *
 
-$RS ������ɽ���򥻥åȤ��뤳�ȤϤǤ��ޤ��󡣤Ǥ���Τ�ʸ��������Ǥ���
+$RS に正規表現をセットすることはできません。できるのは文字列だけです。
 
 =item *
 
-̯���Ȼפä��Ȥ��ˤ� awk �ι�ʸ�� a2p ���̤��ơ�
-���Ϥ��줿��Τ򸫤Ƥߤޤ��礦��
+妙だと思ったときには awk の構文を a2p に通して、
+出力されたものを見てみましょう。
 
 =back
 
 =head2 C Traps
 
-(C ���)
+(C の罠)
 
 =begin original
 
@@ -175,45 +175,45 @@ Cerebral C programmers should take note of the following:
 
 =end original
 
-��Ū�� C �ץ�����ޤϰʲ��Τ��Ȥ����դ��٤��Ǥ�:
+知的な C プログラマは以下のことに注意すべきです:
 
 =over 4
 
 =item *
 
-C<if> �� C<while> �ˤϥ����꡼�֥졼����ɬ�פǤ���
+C<if> や C<while> にはカーリーブレースが必要です。
 
 =item *
 
-C<else if> �ǤϤʤ���C<elsif> ��Ȥ�ʤ���Фʤ�ޤ���
+C<else if> ではなく、C<elsif> を使わなければなりません。
 
 =item *
 
-C ��C<break> �� C<continue> �ϡ�Perl�ǤϤ��줾�� C<last> ��
-C<next> �Ȥʤ�ޤ���
-C �Ȥϰۤʤꡢ������ C<do { } while> ��ʸ�Ǥ� I<�Ȥ��ޤ���>��
+C のC<break> と C<continue> は、Perlではそれぞれ C<last> と
+C<next> となります。
+C とは異なり、これらは C<do { } while> 構文では I<使えません>。
 
 =item *
 
-switch ʸ�Ϥ���ޤ���(�������ξ�(on the fly)�Ǻ��夲�뤳�Ȥϴ�ñ�Ǥ�)��
+switch 文はありません(が、その場(on the fly)で作り上げることは簡単です)。
 
 =item *
 
-Perl �Ǥϡ��ѿ��ϡ�$�ɤ���@�ɤ���%�ɤǻϤޤ�ޤ���
+Perl では、変数は“$”か“@”か“%”で始まります。
 
 =item *
 
-�����ȤλϤޤ�ϡ���#�ɤǤ��ꡢ��/*�ɤǤϤ���ޤ���
+コメントの始まりは、“#”であり、“/*”ではありません。
 
 =item *
 
-�ʤˤ��Υ��ɥ쥹�����뤳�ȤϤǤ��ޤ���Perl �ˤϻ����褦�ʱ黻�ҤǤ���
-�Хå�����å��夬����ޤ���������ϻ��Ȥ��������ޤ���
+なにかのアドレスを得ることはできません。Perl には似たような演算子である
+バックスラッシュがありますが、これは参照を生成します。
 
 =item *
 
-C<ARGV> ����ʸ���Ǥʤ���Фʤ�ޤ���C<$ARGV[0]> �� C �Ǥ� C<argv[1]> ����������
-C<argv[0]> �ˤ������Τ� C<$0> �Ǥ���
+C<ARGV> は大文字でなければなりません。C<$ARGV[0]> が C での C<argv[1]> に相当し、
+C<argv[0]> にあたるものは C<$0> です。
 
 =item *
 
@@ -224,19 +224,19 @@ success, not 0. (system(), however, returns zero for success.)
 
 =end original
 
-link(), unlink(), rename() �ʤɤΥ����ƥॳ����ϡ���������
-0 �ǤϤʤ��� 0 ���ͤ��֤��ޤ���(â����system() ���������� 0 ���֤��ޤ���)
+link(), unlink(), rename() などのシステムコールは、成功時に
+0 ではなく非 0 の値を返します。(但し、system() は成功時に 0 を返します。)
 
 =item *
 
-�����ʥ�ϥ�ɥ�ϡ������ʥ��ֹ�ǤϤʤ������ʥ�̾�򰷤��ޤ���
-���ѤǤ��륷���ʥ�̾�ϡ�kill -l �Ȥ��ƳΤ���Ƥ���������
+シグナルハンドラは、シグナル番号ではなくシグナル名を扱います。
+使用できるシグナル名は、kill -l として確かめてください。
 
 =back
 
 =head2 Sed Traps
 
-(sed ���)
+(sed の罠)
 
 =begin original
 
@@ -244,28 +244,28 @@ Seasoned B<sed> programmers should take note of the following:
 
 =end original
 
-�������� B<sed> �ץ�����ޤϰʲ��Τ��Ȥ����դ��٤��Ǥ�:
+熟練した B<sed> プログラマは以下のことに注意すべきです:
 
 =over 4
 
 =item *
 
-�ִ��ˤ�����������Ȥˤϡ���\�ɤǤϤʤ���$�ɤ�Ȥ��ޤ���
+置換における後方参照には、“\”ではなく“$”を使います。
 
 =item *
 
-"(", ")", "|" �Ȥ��ä��ѥ�����ޥå��Υ᥿����饯���ϡ�����ľ����
-�Хå�����å�����֤�ɬ�פϤ���ޤ���
+"(", ")", "|" といったパターンマッチのメタキャラクタは、その直前に
+バックスラッシュを置く必要はありません。
 
 =item *
 
-�ϰϱ黻�Ҥ� C<...> �Ǥ��äơ�����ޤǤϤ���ޤ���
+範囲演算子は C<...> であって、カンマではありません。
 
 =back
 
 =head2 Shell Traps
 
-(shell ���)
+(shell の罠)
 
 =begin original
 
@@ -273,45 +273,45 @@ Sharp shell programmers should take note of the following:
 
 =end original
 
-�Ԥ�������ץ�����ޤϰʲ��Τ��Ȥ����դ��٤��Ǥ�:
+鋭いシェルプログラマは以下のことに注意すべきです:
 
 =over 4
 
 =item *
 
-�Хå��������ȱ黻�Ҥϡ����ޥ����˥��󥰥륯�����Ȥ����äƤ�
-�ѿ���Ÿ����Ԥʤ��ޤ���
+バッククォート演算子は、コマンド内にシングルクォートがあっても
+変数の展開を行ないます。
 
 =item *
 
-�Хå��������ȱ黻�Ҥ� B<csh> �Ȥϰ�äơ��֤��줿�ͤ��Ѵ����ޤ���
+バッククォート演算子は B<csh> とは違って、返された値を変換しません。
 
 =item *
 
-������ (�ä� B<csh>) �ϡ����ޥ�ɥ饤�󤴤Ȥ˲��ʳ�����ִ���Ԥʤ��ޤ���
-Perl �ϥ��֥륯�����ȡ��Хå��������ȡ�
-���󥰥�֥饱�åȡ������ѥ�����Ȥ��ä�����ι�¤�Ǥ����ִ���Ԥʤ��ޤ���
+シェル (特に B<csh>) は、コマンドラインごとに何段階もの置換を行ないます。
+Perl はダブルクォート、バッククォート、
+アングルブラケット、検索パターンといった特定の構造でだけ置換を行ないます。
 
 =item *
 
-������ϰ��٤˾������Ĳ���Ԥʤ��ޤ��� 
-Perl �ϼ¹����˥ץ���������Τ򥳥�ѥ��뤷�ޤ�
-(����ѥ�����˼¹Ԥ���� C<BEGIN> �֥��å������)��
+シェルは一度に少しずつ解釈を行ないます。 
+Perl は実行前にプログラム全体をコンパイルします
+(コンパイル時に実行される C<BEGIN> ブロックを除く)。
 
 =item *
 
-������ $1, $2 �ʤɤǤϤʤ���@ARGV ���������ޤ���
+引数は $1, $2 などではなく、@ARGV から得られます。
 
 =item *
 
-�Ķ��ѿ��ϡ���ưŪ�ˤ���Ω���������顼�ѿ��Ȥ������ѤǤ���褦��
-�ʤ�ޤ���
+環境変数は、自動的には独立したスカラー変数として利用できるように
+なりません。
 
 =back
 
 =head2 Perl Traps
 
-(Perl ���)
+(Perl の罠)
 
 =begin original
 
@@ -319,22 +319,22 @@ Practicing Perl Programmers should take note of the following:
 
 =end original
 
-����Ū�� Perl �ץ�����ޤϰʲ��Τ��Ȥ����դ��٤��Ǥ�:
+実践的な Perl プログラマは以下のことに注意すべきです:
 
 =over 4
 
 =item *
 
-¿���α黻�Ҥ��ꥹ�ȥ���ƥ����Ȥȥ����顼����ƥ����ȤȤ�
-�����񤤤��Ѥ�뤳�Ȥ�˺��ʤ��Ǥ���������
-�ܤ����� L<perldata> �򻲾Ȥ��Ƥ���������
+多くの演算子がリストコンテキストとスカラーコンテキストとで
+振る舞いが変わることを忘れないでください。
+詳しくは L<perldata> を参照してください。
 
 =item *
 
-���ñ�졢�ä����Ƥ���ʸ���Τ�ΤϤǤ���¤�Ȥ�ʤ��Ǥ���������
-�����ܤ����ǤϤ��Ρ����ñ��פ��ؿ��ʤΤ���
-ʸ����ʤΤ���Ƚ�ǤǤ��ޤ���ʸ����ˤϥ������Ȥ�
-�ؿ��ƤӽФ��ˤϳ�̤�Ĥ���С��¤����Ȥ�ʤ��Ǥ��礦��
+裸の単語、特に全てが小文字のものはできる限り使わないでください。
+見た目だけではその「裸の単語」が関数なのか、
+文字列なのかが判断できません。文字列にはクォートを、
+関数呼び出しには括弧をつければ、迷うこともないでしょう。
 
 =item *
 
@@ -348,62 +348,62 @@ operators, never unary ones.)  See L<perlop> and L<perlsub>.
 
 =end original
 
-�ȹ��ߴؿ��Τɤ줬(chop() �� chdir())�Τ褦��ñ��黻�Ҥǡ�
-�ɤ줬(print() �� unlink())�Τ褦��
-�ꥹ�ȱ黻�ҤǤ��뤫�ϸ��������ǤϤ狼��ޤ���
-(�ץ��ȥ����פ��ʤ���С��桼����������֥롼�����
-�ꥹ�ȱ黻�ҤȤ��� B<�Τ�> ����Ǥ���ñ��黻�ҤˤϤǤ��ޤ���)��
-L<perlop> �� L<perlsub> �򻲾Ȥ��Ƥ���������
+組込み関数のどれが(chop() や chdir())のような単項演算子で、
+どれが(print() や unlink())のような
+リスト演算子であるかは見ただけではわかりません
+(プロトタイプがなければ、ユーザー定義サブルーチンは
+リスト演算子として B<のみ> 定義でき、単項演算子にはできません)。
+L<perlop> と L<perlsub> を参照してください。
 
 =item *
 
-�����Ĥ��δؿ��� $_ �� @ARGV �ʤɤ�ǥե���Ȥˤ��Ƥ��ޤ�����
-Ʊ�����Ȥ���Ԥ���¾�δؿ����ǥե���ȤˤʤäƤ��ʤ����Ȥ�Ф���Τˡ�
-�ɤ������ԥ󥰤�ɬ�פǤ��礦��
+いくつかの関数が $_ や @ARGV などをデフォルトにしていますが、
+同じことを期待する他の関数がデフォルトになっていないことを覚えるのに、
+辛いタイピングが必要でしょう。
 
 
 =item *
 
-<FH> ��¤�ϥե�����ϥ�ɥ�ǤϤʤ������Υϥ�ɥ���Ф�����ɤ߹��ߤ�
-���(readline operation)�Ǥ���
-while �롼�פξ�Ｐ����ˤ��Υե������ɤ߹��ߤ��������ä����ˤ�
-�ɤ߹��ޤ줿�ǡ����� $_ ����������ޤ���
+<FH> 構造はファイルハンドルではなく、そのハンドルに対する行読み込みの
+操作(readline operation)です。
+while ループの条件式の中にこのファイル読み込みだけがあった場合には
+読み込まれたデータは $_ に代入されます。
 
     while (<FH>)      { }
     while (defined($_ = <FH>)) { }..
-    <FH>;  # �ǡ����ϼΤƤ���!
+    <FH>;  # データは捨てられる!
 
 =item *
 
-C<=~> ��ɬ�פʤȤ����� c<=> ��Ȥ�ʤ����Ȥ������Ȥ�˺��ʤ��Ǥ���������
-�������Ĥι�¤�Ϥ��ʤ�㤤�ޤ���
+C<=~> が必要なところで c<=> を使わない、ということを忘れないでください。
+これら二つの構造はかなり違います。
 
     $x =  /foo/;
     $x =~ /foo/;
 
 =item *
 
-C<do {}> ��¤�ϡ��롼�������Ԥ���褦�������Υ롼�פǤϤ���ޤ���
+C<do {}> 構造は、ループ制御を行えるような本当のループではありません。
 
 =item *
 
-���������ѿ��ϡ�my() �ǺѤ�Ȥ����ǤϤ���ǺѤޤ��뤳��
-(�Ȥ��ʤ����ˤĤ��Ƥϡ�L<perlform> �򻲾Ȥ��Ƥ�������)��
-local() ��Ȥ��Х������Х��ѿ����Ф������������ͤ�Ϳ���ޤ�����
-ưŪ�������פ���θ�������Ѥβ�ǽ���ϡ����ΤޤޤǤ���
+ローカル変数は、my() で済むところではこれで済ませること
+(使えない場所については、L<perlform> を参照してください)。
+local() を使えばグローバル変数に対するローカルな値を与えますが、
+動的スコープの不慮の副作用の可能性は、そのままです。
 
 =item *
 
-�⥸�塼��ˤ��� export ���줿�ѿ���ɽ경����ȡ����� export ���줿
-�ͤ��ѹ�����ޤ���
-��������̾�Ͽ������ͤ���̾(alias)�Ȥʤ�ޤ�����
-����̾�ϸ������ͤ���̾�ΤޤޤǤ���
+モジュールにある export された変数を局所化すると、その export された
+値は変更されません。
+ローカル名は新しい値の別名(alias)となりますが、
+外部名は元々の値の別名のままです。
 
 =back
 
 =head2 Perl4 to Perl5 Traps
 
-(Perl4 ���� Perl5 �ؤ��)
+(Perl4 から Perl5 への罠)
 
 =begin original
 
@@ -412,24 +412,24 @@ Perl4-to-Perl5 specific traps.
 
 =end original
 
-����Ū�� Perl4 �ץ�����ޤ�
-�ʲ��˵󤲤� Perl4 �� Perl5 �ΰ㤤����ͭ��櫤˵���Ĥ���
-�����ɤ��Ǥ��礦��
+実践的な Perl4 プログラマは
+以下に挙げる Perl4 と Perl5 の違いに特有な罠に気をつけた
+方が良いでしょう。
 
-�ʲ��Ͻ���Ʊ�Υꥹ�ȤǤ���
+以下は順不同のリストです。
 
 =over 4
 
 =item Discontinuance, Deprecation, and BugFix traps
 
-�������줿 perl4 �ΥХ��䡢�ʤ��ʤä� perl4 �λ��͡�
-perl5 �ǻ��ͤ��Ѥ�ä���Ρ�
+修正された perl4 のバグや、なくなった perl4 の仕様、
+perl5 で仕様の変わったもの。
 
-=item ��ʸ���Ϥ˴ؤ����
+=item 構文解析に関する罠
 
-��������ʸ���ϴ�ˤ�äư�������������Ρ�
+新しい構文解析器によって引き起こされるもの。
 
-=item ���ͤ˴ؤ����
+=item 数値に関する罠
 
 =begin original
 
@@ -437,40 +437,40 @@ Traps having to do with numerical or mathematical operators.
 
 =end original
 
-���ͤ任�ѱ黻�Ҥ˴ؤ���櫡�
+数値や算術演算子に関する罠。
 
 =item General data type traps
 
-perl��ɸ��Ū�ʥǡ����������񤵤��櫡�
+perlの標準的なデータ型に内包される罠。
 
 =item Context Traps - scalar, list contexts
 
-�ꥹ����Υ���ƥ����Ȥ䡢�����顼ʸ/����˴ؤ���櫡�
+リスト内のコンテキストや、スカラー文/宣言に関する罠。
 
-=item ͥ���̤��
+=item 優先順位の罠
 
-��ʸ���ϡ�ɾ���������ɤμ¹Ԥ�ͥ���˴ط�����櫡�
+構文解析、評価、コードの実行の優先順に関係した罠。
 
 =item General Regular Expression Traps using s///, etc.
 
-�ѥ�����ޥå��󥰤λ��ͤ˴ؤ���櫡�
+パターンマッチングの仕様に関する罠。
 
 =item Subroutine, Signal, Sorting Traps
 
-�����ʥ�ڤӥ����ʥ�ϥ�ɥ顢����Ū�ʥ��֥롼���󡢥����ȡ�
-�����ȤΤ���Υ��֥롼����˴�Ϣ����櫡�
+シグナル及びシグナルハンドラ、一般的なサブルーチン、ソート、
+ソートのためのサブルーチンに関連した罠。
 
 =item OS Traps
 
-OS��ͭ��櫡�
+OS特有の罠。
 
 =item DBM Traps
 
-C<dbmopen()> �λ��Ѥ䡢dbm �μ����˴�Ϣ����櫡�
+C<dbmopen()> の使用や、dbm の実装に関連した罠。
 
 =item Unclassified Traps
 
-����¾��櫡�
+その他の罠。
 
 =back
 
@@ -483,21 +483,21 @@ C<use warnings> pragma or the B<-w> switch.
 
 =end original
 
-�⤷�����ǵ󤲤��ꥹ�ȤˤϤʤ��褦���Ѵ���櫤�
-��򸫤Ĥ����顢����� <F<perlbug@perl.org>> �ޤ����äƤ���������
-�ޤ������ʤ��Ȥ⤳���Τ����Ĥ��� C<use warnings> �ץ饰�ޤ�
-B<-w> �����å�����ª�Ǥ��뤳�Ȥ����դ��Ƥ���������
+もしここで挙げたリストにはないような変換の罠の
+例を見つけたら、それを <F<perlbug@perl.org>> まで送ってください。
+また、少なくともこれらのいくつかは C<use warnings> プラグマか
+B<-w> スイッチで捕捉できることに注意してください。
 
 =head2 Discontinuance, Deprecation, and BugFix traps
 
-perl4 ���顢�ʤ��ʤä��꽤�����줿���Ȥ��顣
+perl4 から、なくなったり修正されたことがら。
 
 =over 4
 
 =item * Discontinuance
 
-��_�ɤǻϤޤ륷��ܥ�Ϥ�Ϥ� main �ѥå������˶���Ū�˷���դ����뤳�Ȥϡ�
-C<$_> ����(�� C<@-> �ʤ�)������ƤϤʤ��ʤ�ޤ�����
+“_”で始まるシンボルはもはや main パッケージに強制的に結び付けられることは、
+C<$_> 自身(と C<@-> など)を除いてはなくなりました。
 
     package test;
     $_legacy = 1;
@@ -505,30 +505,30 @@ C<$_> ����(�� C<@-> �ʤ�)������ƤϤʤ��ʤ�ޤ�����
     package main;
     print "\$_legacy is ",$_legacy,"\n";
 
-    # perl4 �ν���: $_legacy is 1
-    # perl5 �ν���: $_legacy is
+    # perl4 の出力: $_legacy is 1
+    # perl5 の出力: $_legacy is
 
 =item * Deprecation
 
-���֥륳����ϡ��ѿ�̾����ǥѥå��������ѥ졼�����ˤʤ�褦�ˤʤ�ޤ�����
-���Τ��ᡢ�ʲ�����Ǥ� perl4 �� perl5 �ȤǤϿ����񤤤��Ѥ��ޤ���
-����ϥѥå��������ºߤ��Ƥʤ�����Ǥ���
+ダブルコロンは、変数名の中でパッケージセパレーターになるようになりました。
+このため、以下の例では perl4 と perl5 とでは振る舞いが変わります。
+これはパッケージが実在してないためです。
 
     $a=1;$b=2;$c=3;$var=4;
     print "$a::$b::$c ";
     print "$var::abc::xyz\n";
 
-    # perl4 �ν���: 1::2::3 4::abc::xyz
-    # perl5 ����: 3
+    # perl4 の出力: 1::2::3 4::abc::xyz
+    # perl5 出力: 3
 
-C<::> �Ϻ��Ǥϡ�(���줬�Х��Ȥ���ʬ�ह�٤����ɤ����ϤȤ⤫��)
-�ѥå������ǥ�ߥ��Ȥ��Ƥߤʤ����褦�ˤʤäƤ��ޤ�
-(�����ǤϸŤ��ѥå������ǥ�ߥ��� ' ��ȤäƤ��ޤ�)��
+C<::> は今では、(これがバグとして分類すべきかどうかはともかく)
+パッケージデリミタとしてみなされるようになっています
+(ここでは古いパッケージデリミタの ' を使っています)。
     $x = 10 ;
     print "x=${'x}\n" ;
 
-    # perl4 �ν���: x=10
-    # perl5 �ν���: Can't find string terminator "'" anywhere before EOF
+    # perl4 の出力: x=10
+    # perl5 の出力: Can't find string terminator "'" anywhere before EOF
 
 =begin original
 
@@ -537,33 +537,33 @@ always explicitly include the package name:
 
 =end original
 
-��˥ѥå�����̾��ޤ�뤳�Ȥǡ�����������򤱤Ĥġ�perl4 �Ȥ�
-�ߴ�����ݻ����뤳�Ȥ��Ǥ��ޤ�:
+常にパッケージ名を含めることで、この問題を避けつつ、perl4 との
+互換性を維持することができます:
 
     $x = 10 ;
     print "x=${main'x}\n" ;
 
-C<$:> �β��ϤˤĤ��Ƥϡ�ͥ���̤�� �⻲�Ȥ��Ƥ���������
+C<$:> の解析については、優先順位の罠 も参照してください。
 
 =item * BugFix
 
-C<splice()> ���� 2���� 3 ������
-(�饯���ܤˤ����̤�)�ꥹ�ȥ���ƥ����ȤǤϤʤ�
-�����顼����ƥ����Ȥ�ɾ�������褦�ˤʤ�ޤ�����
+C<splice()> の第 2、第 3 引数は
+(ラクダ本にある通り)リストコンテキストではなく
+スカラーコンテキストで評価されるようになりました。
 
-    sub sub1{return(0,2) }          # ������ĤΥꥹ�Ȥ��֤�
-    sub sub2{ return(1,2,3)}        # ���ǻ��ĤΥꥹ�Ȥ��֤�
+    sub sub1{return(0,2) }          # 要素二つのリストを返す
+    sub sub2{ return(1,2,3)}        # 要素三つのリストを返す
     @a1 = ("a","b","c","d","e");
     @a2 = splice(@a1,&sub1,&sub2);
     print join(' ',@a2),"\n";
 
-    # perl4 �ν���: a b
-    # perl5 �ν���: c d e
+    # perl4 の出力: a b
+    # perl5 の出力: c d e
 
 =item * Discontinuance
 
-��Ŭ���ˤ�äƤʤ��ʤäƤ��ޤ��褦�ʥ֥��å������
-���ӹ���C<goto> �ϻȤ��ʤ��ʤ�ޤ����������á�
+最適化によってなくなってしまうようなブロックの中に
+飛び込むC<goto> は使えなくなりました。ちぇっ。
 
     goto marker1;
 
@@ -577,19 +577,19 @@ C<splice()> ���� 2���� 3 ������
 
 =item * Discontinuance
 
-������ѿ���̾���䡢�������ȹ�¤�ζ��ڤ�˻Ȥ����Ȥ�
-��ʸŪ�������ʤ�ΤǤϤʤ��ʤ�ޤ����������á������á�
+空白を変数の名前や、クォート構造の区切りに使うことは
+構文的に正当なものではなくなりました。ちぇっ、ちぇっ。
 
     $a = ("foo bar");
     $b = q baz ;
     print "a is $a, b is $b\n";
 
-    # perl4 �ν���: a is foo bar, b is baz
+    # perl4 の出力: a is foo bar, b is baz
     # perl5 errors: Bareword found where operator expected
 
 =item * Discontinuance
 
-�Ť� while/if BLOCK BLOCK �ι�ʸ�ϡ���Ϥ䥵�ݡ��Ȥ���Ƥ��ޤ���
+古い while/if BLOCK BLOCK の構文は、もはやサポートされていません。
 
     if { 1 } {
         print "True!";
@@ -598,27 +598,27 @@ C<splice()> ���� 2���� 3 ������
         print "False!";
     }
 
-    # perl4 �ν���: True!
+    # perl4 の出力: True!
     # perl5 errors: syntax error at test.pl line 1, near "if {"
 
 =item * BugFix
 
-C<**> �黻�Ҥ�ͥ���̤ϡ�ñ��Υޥ��ʥ�����⤯�ʤ�ޤ�����
-����ϰ�������ɥ�����ȤˤϤ������ä��ΤǤ������ºݤϰ�äƤ��ޤ�����
+C<**> 演算子の優先順位は、単項のマイナスよりも高くなりました。
+これは以前からドキュメントにはそうあったのですが、実際は違っていました。
 
     print -4**2,"\n";
 
-    # perl4 �ν���: 16
-    # perl5 �ν���: -16
+    # perl4 の出力: 16
+    # perl5 の出力: -16
 
 =item * Discontinuance
 
-����ǤϤʤ��ꥹ�Ȥ��Ф��뷫���֤���
-����Ȥ��� C<foreach{}> �ΰ�̣���Ѥ��ޤ�����
-�����Ϥ������ä��ꥹ�Ȥϥƥ�ݥ����������������Ƥ��ޤ�������
-���ߤϤ����ǤϤ���ޤ���(��Ψ�����ͳ�Ǥ�)��
-����ϡ����ߤǤ��ͤΥ��ԡ����Ф��Ʒ����֤��򤹤�ΤǤϤʤ�
-�ºݤ��ͤ��Ф��Ʒ����֤��򤹤�Ȥ������ȤǤ���
+配列ではないリストに対する繰り返しで
+あるときの C<foreach{}> の意味が変わりました。
+以前はそういったリストはテンポラリな配列に代入されていましたが、
+現在はそうではありません(効率上の理由です)。
+これは、現在では値のコピーに対して繰り返しをするのではなく
+実際の値に対して繰り返しをするということです。
 
     @list = ('ab','abc','bcd','def');
     foreach $var (grep(/ab/,@list)){
@@ -626,48 +626,48 @@ C<**> �黻�Ҥ�ͥ���̤ϡ�ñ��Υޥ��ʥ�����⤯�ʤ�ޤ�����
     }
     print (join(':',@list));
 
-    # perl4 �ν���: ab:abc:bcd:def
-    # perl5 �ν���: 1:1:bcd:def
+    # perl4 の出力: ab:abc:bcd:def
+    # perl5 の出力: 1:1:bcd:def
 
-perl4 ��Ʊ���褦�ˤ���ˤϡ���ʬ���ۤ˥ƥ�ݥ�������ؤ�
-���ԡ����Ƥ��餽��������Ф��Ʒ����֤���Ԥ��ޤ����㤨�С�
+perl4 と同じようにするには、自分で陽にテンポラリの配列へと
+コピーしてからその配列に対して繰り返しを行います。例えば、
 
     foreach $var (grep(/ab/,@list)){
 
-������ʬ��ʲ��Τ褦���ѹ����ޤ���
+この部分を以下のように変更します。
 
     foreach $var (@tmp = grep(/ab/,@list)){
 
-�������ʤ��ȡ�$var ���ѹ������Ȥ��� @list ���ͤ˱ƶ����Фޤ�
-(����ϥ롼���ѿ��� C<$_> ��ȤäƤ��ơ����ġ�
-C<$_> ��ɽ경���Ƥ��ʤ��褦�ʥ��֥롼�����
-�롼�פ���ǸƤ֤褦�ʤȤ����ɤ�������ޤ�)��
+そうしないと、$var を変更したときに @list の値に影響が出ます
+(これはループ変数に C<$_> を使っていて、かつ、
+C<$_> を局所化していないようなサブルーチンを
+ループの中で呼ぶようなときに良く起こります)。
 
 =item * Discontinuance
 
-�����ʤ��� C<split> �ο����񤤤ϡ�C<split /\s+/>
-($_ �����򤫤�ϤޤäƤ���Ȥ�����Ƭ�Υե�����ɤ����ˤʤ�)
- �ΤȤ���Ʊ���Ȥ�����Τ��顢C<split ' '>
-($_ �����򤫤�ϤޤäƤ���Ȥ�����Ƭ�Υե�����ɤ����ˤʤ�ʤ�)
-�ΤȤ���Ʊ����Τˤʤ�ޤ�����
+引数なしの C<split> の振る舞いは、C<split /\s+/>
+($_ が空白から始まっているときに先頭のフィールドが空になる)
+ のときと同じというものから、C<split ' '>
+($_ が空白から始まっているときに先頭のフィールドが空にならない)
+のときと同じものになりました。
 
     $_ = ' hi mom';
     print join(':', split);
 
-    # perl4 �ν���: :hi:mom
-    # perl5 �ν���: hi:mom
+    # perl4 の出力: :hi:mom
+    # perl5 の出力: hi:mom
 
 =item * BugFix
 
-perl4 �Ǥϡ�B<-e> �����å��˥����å����줿�ƥ����Ȥ�̵�뤵��ơ����
-���³����������ץ�����ब���Ф���Ƥ��ޤ���������ˡ�
-B<-e> �����å��θ�˰������Ϥ��ʤ���������դ��Ƥ��ޤ�����
-�����ο����񤤤�ξ���Ȥ⽤������ޤ�����
+perl4 では、B<-e> スイッチにアタッチされたテキストは無視されて、常に
+後に続く引数からプログラムが取り出されていました。さらに、
+B<-e> スイッチの後に引数を渡さない場合も受け付けていました。
+これらの振る舞いは両方とも修正されました。
 
     perl -e'print "attached to -e"' 'print "separate arg"'
 
-    # perl4 �ν���: separate arg
-    # perl5 �ν���: attached to -e
+    # perl4 の出力: separate arg
+    # perl5 の出力: attached to -e
 
     perl -e
 
@@ -676,21 +676,21 @@ B<-e> �����å��θ�˰������Ϥ��ʤ���������դ��Ƥ��ޤ�����
 
 =item * Discontinuance
 
-perl4 �Ǥ� C<push> ������ͤϥɥ�����Ȥ˽񤫤�Ƥ��ޤ���Ǥ�������
-�ºݤˤ��оݤȤʤ�ꥹ�Ȥ˺Ǹ��push�����ͤ��֤���Ƥ��ޤ�����
-Perl5 �Ǥϡ�C<push> ������ͤϥɥ�����Ȥ��������졢���Ĥ����
-perl4 �����ѹ�����ޤ���������� push ������Υꥹ�Ȥˤ������Ǥο���
-�֤��ޤ���
+perl4 では C<push> の戻り値はドキュメントに書かれていませんでしたが、
+実際には対象となるリストに最後にpushした値が返されていました。
+Perl5 では、C<push> の戻り値はドキュメントに明記され、かつそれは
+perl4 から変更されました。これは push した後のリストにある要素の数を
+返します。
 
     @x = ('existing');
     print push(@x, 'first new', 'second new');
 
-    # perl4 �ν���: second new
-    # perl5 �ν���: 3
+    # perl4 の出力: second new
+    # perl5 の出力: 3
 
 =item * Deprecation
 
-�����Υ��顼��å��������ۤʤäƤ��ޤ���
+一部のエラーメッセージが異なっています。
 
 =item * Discontinuance
 
@@ -702,19 +702,19 @@ being returned.   Perl 5 has more respect for your subroutine arguments.
 
 =end original
 
-Perl 4 �Ǥϡ��ꥹ�ȥ���ƥ����Ȥ� C<split()> �κǽ�ΰ�����
-�ǥ�ߥ��� C<??> ���ä���硢�֤�����̤� C<@_> �ˤ����ꤵ��ޤ�����
-Perl 5 �Ǥϥ��֥롼����ΰ����ˤ��¿���ηɰդ�ʧ���ޤ���
+Perl 4 では、リストコンテキストで C<split()> の最初の引数の
+デリミタが C<??> だった場合、返される結果が C<@_> にも設定されました。
+Perl 5 ではサブルーチンの引数により多くの敬意を払います。
 
 =item * Discontinuance
 
-���Ĥ��ΥХ��������Ĥˤ⽤������Ƥ��뤫�⤷��ޤ��� :-)
+幾つかのバグがうかつにも修正されているかもしれません :-)
 
 =back
 
 =head2 Parsing Traps
 
-(�ѡ������)
+(パースの罠)
 
 =begin original
 
@@ -722,45 +722,45 @@ Perl4-to-Perl5 traps from having to do with parsing.
 
 =end original
 
-�ѡ����˴ؤ��� Perl4 �� Perl5 �ΰ㤤��櫤Ǥ���
+パースに関する Perl4 と Perl5 の違いの罠です。
 
 =over 4
 
 =item * Parsing
 
-. �� = �δ֤ˤ��륹�ڡ��������ա�
+. と = の間にあるスペースに注意。
 
     $string . = "more string";
     print $string;
 
-    # perl4 �ν���: more string
-    # perl5 �ν���: syntax error at - line 1, near ". ="
+    # perl4 の出力: more string
+    # perl5 の出力: syntax error at - line 1, near ". ="
 
 =item * Parsing
 
-perl5 �ǤϹ�ʸ���Ϥ����ɤ���ޤ�����
+perl5 では構文解析が改良されました。
 
     sub foo {}
     &foo
     print("hello, world\n");
 
-    # perl4 �ν���: hello, world
-    # perl5 �ν���: syntax error
+    # perl4 の出力: hello, world
+    # perl5 の出力: syntax error
 
 =item * Parsing
 
-�Ȥ��줬�ؿ��˸�����Τʤ顢����ϴؿ����ɤΥ롼�롣
+“それが関数に見えるのなら、それは関数だ”のルール。
 
   print
     ($foo == 1) ? "is one\n" : "is zero\n";
 
-    # perl4 �ν���: is zero
-    # perl5 �ηٹ�: "Useless use of a constant in void context" if using -w
+    # perl4 の出力: is zero
+    # perl5 の警告: "Useless use of a constant in void context" if using -w
 
 =item * Parsing
 
-C<$#array> ��¤��ʸ����Ÿ����̾���μ���˥֥졼��������Ȥ��ˤ�
-�㤤������ޤ���
+C<$#array> 構造の文字列展開で名前の周りにブレースがあるときには
+違いがあります。
 
     @a = (1..3);
     print "${#a}";
@@ -778,7 +778,7 @@ C<$#array> ��¤��ʸ����Ÿ����̾���μ���˥֥졼��������Ȥ��ˤ�
 
 =head2 Numerical Traps
 
-(���ͤ��)
+(数値の罠)
 
 =begin original
 
@@ -787,8 +787,8 @@ operands, or output from same.
 
 =end original
 
-Ʊ����Τ��Ф�����ͱ黻�ҡ����ڥ��ɡ����Ϥ˴ؤ���
-Perl4 �� Perl5 �ΰ㤤��櫤Ǥ���
+同じものに対する数値演算子、オペランド、出力に関する
+Perl4 と Perl5 の違いの罠です。
 
 =over 5
 
@@ -800,45 +800,45 @@ Formatted output and significant digits
 
 =end original
 
-�񼰻��ꤵ�줿���Ϥȡ��ǲ��̤ο�����
+書式指定された出力と、最下位の数字。
 
     print 7.373504 - 0, "\n";
     printf "%20.18f\n", 7.373504 - 0;
 
-    # Perl4 �ν���:
+    # Perl4 の出力:
     7.375039999999996141
     7.37503999999999614
 
-    # Perl5 �ν���:
+    # Perl5 の出力:
     7.373504
     7.37503999999999614
 
 =item * Numerical
 
-�����˵��Ҥ���Ƥ������ܤϺ������ޤ�����
-�������ä���ΤǤϡ������ȥ��󥯥���ȱ黻�Ҥ�����դ������θ³���ۤ������Ȥ�
-���Τ��ʤ��Ȥ������Ȥ�Ҳ𤷤Ƥ��ޤ�����
-����ϥС������ 5.003_04 �ǽ�������ޤ��������礭���������갷�����Ȥ�
-�԰¤򴶤��Ƥ���ΤǤ����
+ここに記述されていた項目は削除されました。
+以前あったものでは、オートインクリメント演算子が符号付き整数の限界を越えたことを
+検知しないということを紹介していました。
+これはバージョン 5.003_04 で修正されましたが、大きな整数を取り扱うことに
+不安を感じているのであれば
 
    use Math::BigInt;
 
-��Ȥ����Ȥ��θ���Ƥ���������
+を使うことを考慮してください。
 
 =item * Numerical
 
-���ͤ�����������Ӥη�̤��������Ƥ⡢perl �ǤϤ�����Ӥη�̤�
-�� (0) �Ǥ��ä��Ȥ��ˤϤ��ޤ������ޤ���
-������Ӥϡ����� 0 �ǤϤʤ� null ���֤��ޤ���
+数値の等価性の比較の結果を代入しても、perl ではその比較の結果が
+偽 (0) であったときにはうまくいきません。
+論理比較は、現在 0 ではなく null を返します。
 
     $p = ($test == 1);
     print $p,"\n";
 
-    # perl4 �ν���: 0
-    # perl5 ����:
+    # perl4 の出力: 0
+    # perl5 出力:
 
-���ο��������ͤ��̤���� L<"General Regular Expression Traps using s///, etc.">
-�򻲾Ȥ��Ƥ���������
+この新しい仕様の別の例は L<"General Regular Expression Traps using s///, etc.">
+を参照してください。
 
 =item * Bitwise string ops
 
@@ -852,12 +852,12 @@ to the C<vec()> function. perl5 treats the string operands as bitstrings.
 
 =end original
 
-���ͤȤ��Ƥ�ʸ����Ȥ��Ƥ�����ǽ�ʥӥå����黻�� (C<& | ^ ~>) ��
-ʸ����Τߤ�����Ȥ���Ϳ����줿��硢
-perl4 �ϡ��ץ�����ब C<vec()> �ؿ��θƤӽФ���ޤ�Ǥ���Х��ڥ��ɤ�
-�ӥå�ʸ����Ȥ��ư����ޤ���
-perl5 ��ʸ���󥪥ڥ��ɤ�ӥå�ʸ����Ȥ��ư����ޤ�
-(����ʤ�ܺ٤ˤĤ��Ƥ� L<perlop/Bitwise String Operators> �򻲾Ȥ��Ƥ�������)��
+数値としても文字列としても操作可能なビット操作演算子 (C<& | ^ ~>) が
+文字列のみを引数として与えられた場合、
+perl4 は、プログラムが C<vec()> 関数の呼び出しを含んでいればオペランドを
+ビット文字列として扱います。
+perl5 は文字列オペランドをビット文字列として扱います
+(さらなる詳細については L<perlop/Bitwise String Operators> を参照してください)。
 
     $fred = "10";
     $barney = "12";
@@ -879,7 +879,7 @@ perl5 ��ʸ���󥪥ڥ��ɤ�ӥå�ʸ����Ȥ��ư����ޤ�
 
 =head2 General data type traps
 
-(����Ū�ʥǡ��������)
+(一般的なデータ型の罠)
 
 =begin original
 
@@ -888,12 +888,12 @@ within certain expressions and/or context.
 
 =end original
 
-�ۤȤ�ɤΥǡ������ȡ������������ɽ���䥳��ƥ����ȤǤ�
-�Ȥ����˴ؤ��� Perl4 �� Perl5 �ΰ㤤��櫤Ǥ���
+ほとんどのデータ型と、それらの特定の表現やコンテキストでの
+使い方に関する Perl4 と Perl5 の違いの罠です。
 
 =over 5
 
-=item * (����)
+=item * (配列)
 
 =begin original
 
@@ -901,19 +901,19 @@ Negative array subscripts now count from the end of the array.
 
 =end original
 
-�����ź��������Ǥ��ä��Ȥ������������ν�ü�����������褦��
-�ʤ�ޤ�����
+配列の添え字が負であったとき、それは配列の終端から数えられるように
+なりました。
 
     @a = (1, 2, 3, 4, 5);
     print "The third element of the array is $a[3] also expressed as $a[-2] \n";
 
-    # perl4 �ν���: The third element of the array is 4 also expressed as
-    # perl5 �ν���: The third element of the array is 4 also expressed as 4
+    # perl4 の出力: The third element of the array is 4 also expressed as
+    # perl5 の出力: The third element of the array is 4 also expressed as 4
 
-=item * (����)
+=item * (配列)
 
-C<$#array> ��(����ޤǤ���)�������ͤ����ꤷ���Ȥ��ˤϡ�;�פ�
-�������ǤϼΤƤ�졢����ˤ��줬�����᤻�ʤ��褦�ˤʤ�ޤ�����
+C<$#array> に(それまでよりも)小さな値を設定したときには、余計な
+配列要素は捨てられ、さらにそれが元に戻せないようになりました。
 
     @a = (a,b,c,d,e);
     print "Before: ",join('',@a);
@@ -922,19 +922,19 @@ C<$#array> ��(����ޤǤ���)�������ͤ����ꤷ���Ȥ��ˤϡ�;�פ�
     $#a =3;
     print ", Recovered: ",join('',@a),"\n";
 
-    # perl4 �ν���: Before: abcde, After: ab, Recovered: abcd
-    # perl5 �ν���: Before: abcde, After: ab, Recovered: ab
+    # perl4 の出力: Before: abcde, After: ab, Recovered: abcd
+    # perl5 の出力: Before: abcde, After: ab, Recovered: ab
 
-=item * (�ϥå���)
+=item * (ハッシュ)
 
-�ϥå���ϻȤ��������������ޤ���
+ハッシュは使われる前に定義されます。
 
     local($s,@a,%h);
     die "scalar \$s defined" if defined($s);
     die "array \@a defined" if defined(@a);
     die "hash \%h defined" if defined(%h);
 
-    # perl4 �ν���:
+    # perl4 の出力:
     # perl5 dies: hash %h defined
 
 =begin original
@@ -944,23 +944,23 @@ defined(%h).
 
 =end original
 
-Perl �� defined(@a) �� defined(%h) �˷ٹ��Ф��褦�ˤʤ�ޤ�����
+Perl は defined(@a) と defined(%h) に警告を出すようになりました。
 
-=item * (������)
+=item * (グロブ)
 
-�����ѿ������̤��ѿ��ؤΥ����֤������ϡ�
-�������줿�ѿ��������θ�Ƕɽ경����Ƥ���Ȥ��ˤ�
-���Ԥ��ޤ���
+ある変数から別の変数へのグロブの代入は、
+代入された変数が代入の後で局所化されているときには
+失敗します。
 
     @a = ("This is Perl 4");
     *b = *a;
     local(@a);
     print @b,"\n";
 
-    # perl4 �ν���: This is Perl 4
-    # perl5 �ν���:
+    # perl4 の出力: This is Perl 4
+    # perl5 の出力:
 
-=item * (������)
+=item * (グロブ)
 
 =begin original
 
@@ -973,12 +973,12 @@ has quite a few effects.
 
 =end original
 
-C<undef> �Υ����֤ؤ������� Perl5 �Ǥϲ��αƶ���ڤܤ��ޤ���
-Perl4 �ǤϷ���դ���줿�����顼�� undefine ���ޤ�
-(������ SEGV ��ޤᡢ�ʤ�餫�������Ѥ����뤫�⤷��ޤ���)��
-Perl 5 �Ϥޤ��������֤� C<undef> ����������ȷٹ𤵤�ޤ���
-(�������֤� C<undef> ����������Τϡ��������֤��Ф���
-C<undef> �ؿ���ƤӽФ��ΤȤϰ㤤�ޤ�)�������Ĥ��θ��̤�����ޤ���
+C<undef> のグロブへの代入は Perl5 では何の影響も及ぼしません。
+Perl4 では結び付けられたスカラーを undefine します
+(しかし SEGV を含め、なんらかの副作用があるかもしれません)。
+Perl 5 はまた型グロブに C<undef> を代入すると警告されます。
+(型グロブに C<undef> を代入するのは、型グロブに対して
+C<undef> 関数を呼び出すのとは違います)。いくつかの効果があります。
 
     $foo = "bar";
     *foo = undef;
@@ -989,22 +989,22 @@ C<undef> �ؿ���ƤӽФ��ΤȤϰ㤤�ޤ�)�������Ĥ��θ��̤�����ޤ���
     # perl5 prints: bar
     # perl5 warns: "Undefined value assigned to typeglob" if using -w
 
-=item * (�����顼ʸ����)
+=item * (スカラー文字列)
 
-(ʸ������Ф���)ñ������ȿž�ΰ�̣���Ѥ��ޤ�����
-�����ѹ�������ͤȡ��ޥ��å����󥯥���Ȥ�ξ���˱ƶ����ޤ���
+(文字列に対する)単項の符号反転の意味が変わりました。
+この変更は戻り値と、マジックインクリメントの両方に影響します。
 
     $x = "aaa";
     print ++$x," : ";
     print -$x," : ";
     print ++$x,"\n";
 
-    # perl4 �ν���: aab : -0 : 1
-    # perl5 �ν���: aab : -aab : aac
+    # perl4 の出力: aab : -0 : 1
+    # perl5 の出力: aab : -aab : aac
 
-=item * (���)
+=item * (定数)
 
-perl4 �Ǥ�������ѹ����Ƥ��ޤ��ޤ���
+perl4 では定数を変更してしまいます。
 
     $foo = "x";
     &mod($foo);
@@ -1028,21 +1028,21 @@ perl4 �Ǥ�������ѹ����Ƥ��ޤ��ޤ���
     # Modification of a read-only value attempted at foo.pl line 12.
     # before: a
 
-=item * (�����顼)
+=item * (スカラー)
 
-perl4 �� perl5 �Ȥ������㤦ư��:
+perl4 と perl5 とで全然違う動作:
 
     print "$x", defined $x
 
     # perl 4: 1
     # perl 5: <no output, $x is not called into existence>
 
-=item * (�ѿ��μ���)
+=item * (変数の自殺)
 
-perl5 �Ǥϡ��ѿ��μ���(variable sucide)�ο����񤤤Ϥ��
-������Ӥ�����ΤȤʤ�ޤ�����
-perl4 �Ǥϥ����顼�Τߤ������Ǥ���褦�ʿ����񤤤�
-perl5 �Ǥϥϥå���ȥ����顼�Ǽ����ޤ���
+perl5 では、変数の自殺(variable sucide)の振る舞いはより
+首尾一貫したものとなりました。
+perl4 ではスカラーのみがそうであるような振る舞いを、
+perl5 ではハッシュとスカラーで示します。
 
     $aGlobal{ "aKey" } = "global value";
     print "MAIN:", $aGlobal{"aKey"}, "\n";
@@ -1054,7 +1054,7 @@ perl5 �Ǥϥϥå���ȥ����顼�Ǽ����ޤ���
         local( %aNewLocal ); # perl 4 != 5.001l,m
         $aNewLocal{"aKey"} = "this should never appear";
         print "SUB: ", $theArgument{"aKey"}, "\n";
-        $aNewLocal{"aKey"} = "level $GlobalLevel";   # ���Ϥ��٤����
+        $aNewLocal{"aKey"} = "level $GlobalLevel";   # 出力すべきもの
         $GlobalLevel++;
         if( $GlobalLevel<4 ) {
             &test( *aNewLocal );
@@ -1079,11 +1079,11 @@ perl5 �Ǥϥϥå���ȥ����顼�Ǽ����ޤ���
 
 =head2 Context Traps - scalar, list contexts
 
-(����ƥ����Ȥ�� - �����顼����ƥ����Ȥȥꥹ�ȥ���ƥ�����)
+(コンテキストの罠 - スカラーコンテキストとリストコンテキスト)
 
 =over 5
 
-=item * (�ꥹ�ȥ���ƥ�����)
+=item * (リストコンテキスト)
 
 =begin original
 
@@ -1092,9 +1092,9 @@ context.  This means you can interpolate list values now.
 
 =end original
 
-format���Ф�������ꥹ�Ȥ����Ǥϡ��ꥹ�ȥ���ƥ����Ȥ�
-ɾ�������褦�ˤʤ�ޤ���������ϡ�����ꥹ�Ȥ��ͤ�
-Ÿ���Ǥ���褦�ˤʤä��Ȥ������ȤǤ���
+formatに対する引数リストの要素は、リストコンテキストで
+評価されるようになりました。これは、今やリストの値が
+展開できるようになったということです。
 
     @fmt = ("foo","bar","baz");
     format STDOUT=
@@ -1104,23 +1104,23 @@ format���Ф�������ꥹ�Ȥ����Ǥϡ��ꥹ�ȥ���ƥ����Ȥ�
     write;
 
     # perl4 errors:  Please use commas to separate fields in file
-    # perl5 �ν���: foo     bar      baz
+    # perl5 の出力: foo     bar      baz
 
-=item * (�����顼����ƥ�����)
+=item * (スカラーコンテキスト)
 
-C<caller()> �ؿ��ϸƤӽФ������ʤ��������顼����ƥ����ȤǸƤФ줿
-���ˤϵ����֤��褦�ˤʤ�ޤ���������ˤ��饤�֥��ե����뤬
-(��ʬ��)require ���줿�Τ���Ƚ�Ǥ��뤳�Ȥ��Ǥ��ޤ���
+C<caller()> 関数は呼び出し元がなく、スカラーコンテキストで呼ばれた
+場合には偽を返すようになりました。これによりライブラリファイルが
+(自分が)require されたのかを判断することができます。
 
     caller() ? (print "You rang?\n") : (print "Got a 0\n");
 
     # perl4 errors: There is no caller
-    # perl5 �ν���: Got a 0
+    # perl5 の出力: Got a 0
 
-=item * (�����顼����ƥ�����)
+=item * (スカラーコンテキスト)
 
-�����顼����ƥ����Ȥˤ��륫��ޱ黻�Ҥϡ����ΰ������Ф���
-�����顼����ƥ����Ȥ�Ϳ����褦�ˤʤ�ޤ�����
+スカラーコンテキストにあるカンマ演算子は、その引数に対して
+スカラーコンテキストを与えるようになりました。
 
     @y= ('a','b','c');
     $x = (1, 2, @y);
@@ -1139,9 +1139,9 @@ unlike Perl 4:
 
 =end original
 
-C<sprintf()> �Υץ��ȥ����פ� ($;@) �ʤΤǡ��ǽ�ΰ�����
-�����饳��ƥ����ȤǤ������äơ�������Ϥ��ȡ�
-Perl 4 �Ȥϰ�äƤ����餯���ʤ���˾�ޤʤ���̤ˤʤ�Ǥ��礦��
+C<sprintf()> のプロトタイプは ($;@) なので、最初の引数は
+スカラコンテキストです。従って、配列を渡すと、
+Perl 4 とは違っておそらくあなたの望まない結果になるでしょう。
 
     @z = ('%s%s', 'foo', 'bar');
     $x = sprintf(@z);
@@ -1156,19 +1156,19 @@ C<printf()> works the same as it did in Perl 4, though:
 
 =end original
 
-��������C<printf()> �Τۤ��� Perl 4 ��Ʊ���褦��ư���ޤ�:
+しかし、C<printf()> のほうは Perl 4 と同じように動きます:
 
     @z = ('%s%s', 'foo', 'bar');
     printf STDOUT (@z);
 
-    # perl4 �ν���: foobar
-    # perl5 �ν���: foobar
+    # perl4 の出力: foobar
+    # perl5 の出力: foobar
 
 =back
 
 =head2 Precedence Traps
 
-(ɾ��������)
+(評価順序の罠)
 
 =begin original
 
@@ -1176,7 +1176,7 @@ Perl4-to-Perl5 traps involving precedence order.
 
 =end original
 
-ɾ������˴ؤ��� Perl4 �� Perl5 �ΰ㤤��櫤Ǥ���
+評価順序に関する Perl4 と Perl5 の違いの罠です。
 
 =begin original
 
@@ -1186,9 +1186,9 @@ inconsistencies that made the behavior differ from what was documented.
 
 =end original
 
-Perl4 �ϤۤȤ�ɤα黻�Ҥ� Perl5 ��Ʊ��ͥ���̤���äƤ��ޤ���
-������ Perl4 �Ǥϡ��ɥ�����ȤȤϾ����ۤʤ�褦��
-������˷礱���Τ�����ޤ���
+Perl4 はほとんどの演算子で Perl5 と同じ優先順位を持っています。
+しかし Perl4 では、ドキュメントとは少々異なるような
+一貫性に欠けるものがあります。
 
 =over 5
 
@@ -1200,60 +1200,60 @@ LHS vs. RHS when both sides are getting an op.
 
 =end original
 
-���դȱ��դ�ξ���Ȥ�黻�Ҥ���褦�ˤʤ�ޤ�����
+左辺と右辺は両方とも演算子を取るようになりました。
 
     @arr = ( 'left', 'right' );
     $a{shift @arr} = shift @arr;
     print join( ' ', keys %a );
 
-    # perl4 �ν���: left
-    # perl5 �ν���: right
+    # perl4 の出力: left
+    # perl5 の出力: right
 
 =item * Precedence
 
-�ʲ�����ϡ�ͥ���̤δط��ǰ�̣���顼(semantic error)�Ȥʤ�褦�ˤʤ�ޤ�����
+以下の例は、優先順位の関係で意味エラー(semantic error)となるようになりました。
 
     @list = (1,2,3,4,5);
     %map = ("a",1,"b",2,"c",3,"d",4);
-    $n = shift @list + 2;   # �ꥹ�Ȥκǽ�����Ǥ�2��ä���
+    $n = shift @list + 2;   # リストの最初の要素に2を加える
     print "n is $n, ";
-    $m = keys %map + 2;     # �ϥå���ˤ��륢���ƥ�ο�+2
+    $m = keys %map + 2;     # ハッシュにあるアイテムの数+2
     print "m is $m\n";
 
-    # perl4 ����: n is 3, m is 6
+    # perl4 出力: n is 3, m is 6
     # perl5 errors and fails to compile
 
 =item * Precedence
 
-�����黻�Ҥ�ͥ���̤ϡ�������Ʊ���Ȥʤ�ޤ�����
-perl4 �ϴְ�äơ�����ͥ���̤���Ϣ�黻�Ҥ�Ʊ����Τ�
-�ʤäƤ��ޤ������Τ��ᡢ������ˤ���Τ�Ʊ���褦�˳�̤Ǥ�����ʤ����
-�ʤ�ʤ��ʤ�ޤ�����
+代入演算子の優先順位は、代入と同じとなりました。
+perl4 は間違って、この優先順位が関連演算子と同じものに
+なっています。このため、式の中にあるのと同じように括弧でくくらなければ
+ならなくなりました。
 
     /foo/ ? ($a += 2) : ($a -= 2);
 
-���Τ褦�ˤ��Ƥ��ޤ��ȡ�
+下のようにしてしまうと、
 
     /foo/ ? $a += 2 : $a -= 2
 
-�����
+これは
 
     (/foo/ ? $a += 2 : $a) -= 2;
 
-�Τ褦�˴ְ�äƲ��Ϥ���Ƥ��ޤ��ޤ���
-���ΰ����ǡ�
+のように間違って解析されてしまいます。
+その一方で、
 
     $a += /foo/ ? 1 : 2;
 
-����� C �ץ�����ޡ������Ԥ���Ǥ�����ư��ˤʤ�ޤ�����
+これは C プログラマーが期待するであろう動作になりました。
 
 =item * Precedence
 
     open FOO || die;
 
-����Ϥ�Ϥ��������ʤ��ʤ�ޤ����������Ǥϥե�����ϥ�ɥ��
-��̤ǳ��ɬ�פ�����ޤ�������ʤ���С�perl5 �Ϥ������ä�ʸ��
-���Υǥե���Ȥ�ͥ���̤Τޤ����äƤ����ޤ�(�ʲ����㻲��)��
+これはもはや正しくなくなりました。ここではファイルハンドルを
+括弧で括る必要があります。さもなければ、perl5 はこういった文を
+そのデフォルトの優先順位のまま放っておきます(以下の例参照)。
 
     open(FOO || die);
 
@@ -1262,27 +1262,27 @@ perl4 �ϴְ�äơ�����ͥ���̤���Ϣ�黻�Ҥ�Ʊ����Τ�
 
 =item * Precedence
 
-perl4 ���ü��ѿ� C<$:> ��ͥ���̤ˡ�perl5 �� C<$::> �� main �ѥå�������
-�ߤʤ��Τ�Ʊ��ͥ���̤�Ϳ���ޤ���
+perl4 は特殊変数 C<$:> の優先順位に、perl5 が C<$::> を main パッケージと
+みなすのと同じ優先順位を与えます。
 
     $a = "x"; print "$::a";
 
-    # perl 4 �ν���: -:a
-    # perl 5 �ν���: x
+    # perl 4 の出力: -:a
+    # perl 5 の出力: x
 
 =item * Precedence
 
-perl �ˤϡ��ե�����ƥ��ȱ黻�Ҥ������黻�Ҥ��Ȥ߹�碌���Ȥ���
-ͥ���̤ΥХ�������ޤ������������äơ�Perl4 ��ͥ���̥ơ��֥�Ǥ�
-C<-e $foo .= "q"> ��
-C<((-e $foo) .= "q")> �Ȳ�᤹�٤��ʤΤ˼ºݤˤ�
-C<((-e $foo) .= "q")> �Ȳ�ᤷ�Ƥ��ޤ�����
-Perl5 �Ǥϥɥ�����Ȥˤ����̤��ͥ���̤Ǥ���
+perl には、ファイルテスト演算子と代入演算子を組み合わせたときに
+優先順位のバグがありました。したがって、Perl4 の優先順位テーブルでは
+C<-e $foo .= "q"> は
+C<((-e $foo) .= "q")> と解釈すべきなのに実際には
+C<((-e $foo) .= "q")> と解釈していました。
+Perl5 ではドキュメントにある通りの優先順位です。
 
     -e $foo .= "q"
 
-    # perl4 �ν���: no output
-    # perl5 �ν���: Can't modify -e in concatenation
+    # perl4 の出力: no output
+    # perl5 の出力: Can't modify -e in concatenation
 
 =item * Precedence
 
@@ -1297,14 +1297,14 @@ Thus, for:
 
 =end original
 
-perl4 �Ǥϡ�key()��each()��values() �ϥ��󥰥�ϥå�����Ф���
-���̤˹⤤ɾ���������ä��黻�ҤǤ�����
-������ perl5 �Ǥϡ������α黻�Ҥ��̾��̾���դ�ñ��黻�ҤȤʤ�ޤ�����
-�ɥ�����Ȥˤ����̤ꡢ̾���դ�ñ��黻�Ҥϡ�C<+ - .> �Τ褦��
-���ر黻�Ҥ�Ϣ��黻�Ҥ����㤤ͥ���̤���äƤ��ޤ���
-��������perl4 �ǤϤ����α黻�Ҥ��� key() �ʤɤΤۤ��������黻�оݤ�
-����դ��Ƥ����ΤǤ���
-�������äơ��ʲ�����Τ褦�ˤʤ�ޤ�:
+perl4 では、key()、each()、values() はシングルハッシュに対する
+特別に高い評価順序を持った演算子でした。
+しかし perl5 では、これらの演算子は通常の名前付き単項演算子となりました。
+ドキュメントにある通り、名前付き単項演算子は、C<+ - .> のような
+数学演算子や連結演算子よりも低い優先順位を持っています。
+しかし、perl4 ではこれらの演算子よりも key() などのほうが強く演算対象と
+結び付いていたのです。
+したがって、以下の例のようになります:
 
     %foo = 1..10;
     print keys %foo - 1
@@ -1312,13 +1312,13 @@ perl4 �Ǥϡ�key()��each()��values() �ϥ��󥰥�ϥå�����Ф���
     # perl4 prints: 4
     # perl5 prints: Type of arg 1 to keys must be hash (not subtraction)
 
-���� perl4 �ο����񤤤������Ǥ��뤫�⤷��ޤ��󤬡�������˷礱�ޤ���
+この perl4 の振る舞いは便利であるかもしれませんが、一貫性に欠けます。
 
 =back
 
 =head2 General Regular Expression Traps using s///, etc.
 
-(s/// �ʤɤ�Ȥä��Ȥ��ΰ���Ū������ɽ�����)
+(s/// などを使ったときの一般的な正規表現の罠)
 
 =begin original
 
@@ -1326,30 +1326,30 @@ All types of RE traps.
 
 =end original
 
-����ɽ���˴ؤ������ƤΥ����פ�櫡�
+正規表現に関する全てのタイプの罠。
 
 =over 5
 
-=item * ����ɽ��
+=item * 正規表現
 
-C<s'$lhs'$rhs'> �Ϥ�Ϥ䤤������դˤ��äƤ�Ÿ������ʤ��ʤ�ޤ�����
-������ $lhs ��Ÿ������$rhs ��Ÿ�����ޤ���Ǥ�����
-(ʸ����ˤ����ƥ��� '$' �ˤϤ��ޤǤ�ޥå����ޤ���)��
+C<s'$lhs'$rhs'> はもはやいずれの辺にあっても展開されなくなりました。
+以前は $lhs は展開し、$rhs を展開しませんでした。
+(文字列にあるリテラルの '$' にはいまでもマッチしません)。
 
     $a=1;$b=2;
     $string = '1 2 $a $b';
     $string =~ s'$a'$b';
     print $string,"\n";
 
-    # perl4 �ν���: $b 2 $a $b
-    # perl5 �ν���: 1 2 $a $b
+    # perl4 の出力: $b 2 $a $b
+    # perl5 の出力: 1 2 $a $b
 
-=item * ����ɽ��
+=item * 正規表現
 
-C<m//g> �ϡ����ξ��֤�����ɽ���ǤϤʤ������оݤ�ʸ�����
-����դ���褦�ˤʤ�ޤ���
-(sub ���Ф���֥��å��Υ������פ��ĤäƤ���ΤǤ���С�
-����ʸ����ξ��֤ϼ����ޤ�)��
+C<m//g> は、その状態を正規表現ではなく検索対象の文字列に
+結び付けるようになりました
+(sub に対するブロックのスコープが残っているのであれば、
+検索文字列の状態は失われます)。
 
     $_ = "ababab";
     while(m/ab/g){
@@ -1358,14 +1358,14 @@ C<m//g> �ϡ����ξ��֤�����ɽ���ǤϤʤ������оݤ�ʸ�����
     sub doit{local($_) = shift; print "Got $_ "}
 
     # perl4 prints: Got blah Got blah Got blah Got blah
-    # perl5 �ν���: infinite loop blah...
+    # perl5 の出力: infinite loop blah...
 
-=item * ����ɽ��
+=item * 正規表現
 
-���ߤΤȤ�����C<m//o> �̻���Ҥ�̵̾���֥롼�������ˤ�������ɽ����
-�Ȥä���硢I<���٤Ƥ�> ���������㡼�Ϥ��Τ褦��̵̾���֥롼���󤫤顢
-�������ä��������������ǰ��ֺǽ�˻Ȥ�줿��Τ����
-����ѥ��뤵�줿���Τ褦������ɽ�����������ޤ���
+現在のところ、C<m//o> 量指定子を無名サブルーチンの中にある正規表現で
+使った場合、I<すべての> クロージャーはそのような無名サブルーチンから、
+そういったクロージャの中で一番最初に使われたものの中で
+コンパイルされたかのような正規表現を生成します。
 
     sub build_match {
         my($left,$right) = @_;
@@ -1382,50 +1382,50 @@ ok
 not ok
 not ok
 
-������ξ�硢build_match() �Ͼ��C<�ǽ�>�� build_match() ���ƤФ줿�Ȥ���
-$left �� $right �����Ƥ˥ޥå�����褦�ʥ��֥롼������֤��ޤ���
-�ƤӽФ��줿���λ����Ǥ��ͤǤϤ���ޤ���
+この例の場合、build_match() は常にC<最初>に build_match() が呼ばれたときの
+$left と $right の内容にマッチするようなサブルーチンを返します。
+呼び出されたその時点での値ではありません。
 
-=item * ����ɽ��
+=item * 正規表現
 
-�ޥå��󥰤���ǳ�̤��Ȥ��ʤ��ä���硢perl4 �Ǥ�
-C<$+> �ˤ� C<$&> ��Ʊ���褦�˥ޥå��������Τ����åȤ���ޤ�����
-Perl5 �ǤϤ����ǤϤ���ޤ���
+マッチングの中で括弧が使われなかった場合、perl4 では
+C<$+> には C<$&> と同じようにマッチした全体がセットされますが、
+Perl5 ではそうではありません。
 
     "abcdef" =~ /b.*e/;
     print "\$+ = $+\n";
 
-    # perl4 �ν���: bcde
-    # perl5 �ν���:
+    # perl4 の出力: bcde
+    # perl5 の出力:
 
-=item * ����ɽ��
+=item * 正規表現
 
-�ִ��ϡ����Ԥ����Ȥ��ˤ϶�ʸ������֤��褦�ˤʤ�ޤ�����
+置換は、失敗したときには空文字列を返すようになりました。
 
     $string = "test";
     $value = ($string =~ s/foo//);
     print $value, "\n";
 
-    # perl4 �ν���: 0
-    # perl5 �ν���:
+    # perl4 の出力: 0
+    # perl5 の出力:
 
-���ο��������ͤ˴ؤ��Ƥ� L<���ͤ˴ؤ����> �⻲�Ȥ��Ƥ���������
+この新しい仕様に関しては L<数値に関する罠> も参照してください。
 
-=item * ����ɽ��
+=item * 正規表現
 
-C<s`lhs`rhs`> (�Хå��������Ȥλ���)���̾���ִ��Ȥʤꡢ
-�Хå��������Ȥ�Ÿ���ϹԤ��ʤ��ʤ�ޤ�����
+C<s`lhs`rhs`> (バッククォートの使用)は通常の置換となり、
+バッククォートの展開は行われなくなりました。
 
     $string = "";
     $string =~ s`^`hostname`;
     print $string, "\n";
 
-    # perl4 �ν���: <the local hostname>
-    # perl5 �ν���: hostname
+    # perl4 の出力: <the local hostname>
+    # perl5 の出力: hostname
 
-=item * ����ɽ��
+=item * 正規表現
 
-����ɽ������ѿ��λ��Ѥ˴ؤ��빽ʸ���Ϥ���긷̩�ˤʤ�ޤ�����
+正規表現中の変数の使用に関する構文解析がより厳密になりました。
 
     s/^([^$grpc]*$grpc[$opt$plus$rep]?)//o;
 
@@ -1440,10 +1440,10 @@ C<[$opt]> is a character class in perl4 and an array subscript in perl5
 
 =end original
 
-Ʊ��������ץȤǤ�������դ��ä����Ȥϡ�
-�ִ����ʸ����μºݤ��ͤǤ���
-C<[$opt]> �� perl4 �Ǥϥ���饯�����饹�Ǥ��ꡢperl5 �Ǥ�
-�����ź�����Ȥʤ�ޤ���
+同じスクリプトでこの例に付け加えことは、
+置換後の文字列の実際の値です。
+C<[$opt]> は perl4 ではキャラクタクラスであり、perl5 では
+配列の添え字となります。
 
     $grpc = 'a';
     $opt  = 'r';
@@ -1451,33 +1451,33 @@ C<[$opt]> �� perl4 �Ǥϥ���饯�����饹�Ǥ��ꡢperl5 �Ǥ�
     s/^([^$grpc]*$grpc[$opt]?)/foo/;
     print ;
 
-    # perl4 �ν���: foo
-    # perl5 �ν���: foobar
+    # perl4 の出力: foo
+    # perl5 の出力: foobar
 
 =item * Regular Expression
 
-perl5 �Ǥϡ�C<m?x?> �� C<?x?> ��Ʊ�ͤ˰������ޥå����ޤ���
-perl4 �Ǥϡ�C</x/> �� C<m!x!> ��Ʊ���褦�˲��٤Ǥ�ޥå����ޤ���
+perl5 では、C<m?x?> は C<?x?> と同様に一回だけマッチします。
+perl4 では、C</x/> や C<m!x!> と同じように何度でもマッチします。
 
     $test = "once";
     sub match { $test =~ m?once?; }
     &match();
     if( &match() ) {
-        # m?x? �����ʾ�ޥå�
+        # m?x? が二回以上マッチ
         print "perl4\n";
     } else {
-        # m?x? ���������ޥå�
+        # m?x? が一回だけマッチ
         print "perl5\n";
     }
 
-    # perl4 �ν���: perl4
-    # perl5 �ν���: perl5
+    # perl4 の出力: perl4
+    # perl5 の出力: perl5
 
 =back
 
 =head2 Subroutine, Signal, Sorting Traps
 
-(���֥롼���󡢥����ʥ롢�����Ȥ��)
+(サブルーチン、シグナル、ソートの罠)
 
 =begin original
 
@@ -1487,18 +1487,18 @@ general subroutine traps.  Includes some OS-Specific traps.
 
 =end original
 
-Perl4 �� Perl5 �ΰ㤤��櫤�ʬ�व������Ū�ʤ�Τ�
-�����ʥ롢�����ȡ������Ƥ����˴�Ϣ����
-���֥롼����ǡ������Ĥ��� OS ��ͭ��櫤�ޤ᤿
-���֥롼�����櫤�Ʊ���ͤʤ�ΤǤ���
+Perl4 と Perl5 の違いの罠に分類される一般的なものは
+シグナル、ソート、そしてそれらに関連する
+サブルーチンで、いくつかの OS 固有の罠を含めた
+サブルーチンの罠と同じ様なものです。
 
 =over 5
 
 =item * (Signals)
 
-ʸ����Τ褦�˸��������ñ��ϡ�����̾�����Ȥ���������
-���֥롼�����̾���Ȥ����������Ƥ�����ˤϥ��֥롼����Ȥ���
-�ߤʤ���ޤ���
+文字列のように見える裸の単語は、その名前が使うよりも前に
+サブルーチンの名前として定義されている場合にはサブルーチンとして
+みなされます。
 
     sub SeeYa { warn"Hasta la vista, baby!" }
     $SIG{'TERM'} = SeeYa;
@@ -1507,12 +1507,12 @@ Perl4 �� Perl5 �ΰ㤤��櫤�ʬ�व������Ū�ʤ�Τ�
     # perl4 prints: SIGTERM is now main'SeeYa
     # perl5 prints: SIGTERM is now main::1 (and warns "Hasta la vista, baby!")
 
-B<-w> ��Ȥäơ������ȯ���Ǥ��ޤ���
+B<-w> を使って、これを発見できます。
 
 =item * (Sort Subroutine)
 
-reverse �Ϥ�Ϥ䥽���ȤΥ��֥롼�����̾���Ȥ��Ƥ�
-�Ȥ��ʤ��ʤ�ޤ�����
+reverse はもはやソートのサブルーチンの名前としては
+使えなくなりました。
 
     sub reverse{ print "yup "; $a <=> $b } 
     print sort reverse (2,1,3);
@@ -1523,19 +1523,19 @@ reverse �Ϥ�Ϥ䥽���ȤΥ��֥롼�����̾���Ȥ��Ƥ�
 
 =item * warn() won't let you specify a filehandle.
 
-��� STDERR �˽��Ϥ��Ƥ����ˤ⤫����餺��perl4 �Ǥ� warn() �ϥե�����ϥ�ɥ��
-�����ɬ�פȤ��Ƥ��ޤ�������perl5 �Ǥ�ɬ�פʤ��ʤ�ޤ�����
+常に STDERR に出力していたにもかかわらず、perl4 では warn() はファイルハンドルの
+指定を必要としていましたが、perl5 では必要なくなりました。
 
     warn STDERR "Foo!";
 
-    # perl4 �ν���: Foo!
-    # perl5 �ν���: String found where operator expected
+    # perl4 の出力: Foo!
+    # perl5 の出力: String found where operator expected
 
 =back
 
 =head2 OS Traps
 
-(OS ���)
+(OS の罠)
 
 =over 5
 
@@ -1550,14 +1550,14 @@ on the handler _not_ being reset will have to be reworked.
 
 =end original
 
-HPUX �ڤӰ����� SysV OS �Ǥϡ�perl4 �ΤȤ��ˤ�
-�����ʥ뤬ȯ�������٤ˤ��Υ����ʥ�ϥ�ɥ�ؿ������
-�����ʥ�ϥ�ɥ������ꤷ�ʤ���Фʤ�ޤ���Ǥ�����
-perl5 �Ǥϡ����κ�������������Ԥ��褦�ˤʤ�ޤ�����
-�ϥ�ɥ������ꤷ�ʤ��Ȥ������Ȥ˰�¸�����ץ�������
-��Ȥ��ʤ���ɬ�פ�����ޤ���
+HPUX 及び一部の SysV OS では、perl4 のときには
+シグナルが発生する度にそのシグナルハンドラ関数の中で
+シグナルハンドラを再設定しなければなりませんでした。
+perl5 では、この再設定を正しく行うようになりました。
+ハンドラを再設定しないということに依存したプログラムは
+作業しなおす必要があります。
 
-5.002 �ʹߤ� perl �Ǥϡ�SysV �ΤȤ��ˤ� sigaction() ��Ȥ��ޤ���
+5.002 以降の perl では、SysV のときには sigaction() を使います。
 
     sub gotit {
         print "Got @_... ";
@@ -1579,11 +1579,11 @@ perl5 �Ǥϡ����κ�������������Ԥ��褦�ˤʤ�ޤ�����
 
 =item * (SysV)
 
-SysV OS �Ǥϡ�
-���ڥ�ɥ⡼��(C<<< >> >>>)�ǥ����ץ󤷤��ե�������Ф���
-C<seek()> �� fopen() �ޥ˥奢��ڡ����ˤ���褦��������ư���褦��
-�ʤ�ޤ������㤨�С����ڥ�ɥ⡼�ɤǥե�����򥪡��ץ󤷤����ˤ�
-���˥ե�����ˤ��������񤭤��뤳�ȤϤǤ��ޤ���
+SysV OS では、
+アペンドモード(C<<< >> >>>)でオープンしたファイルに対する
+C<seek()> は fopen() マニュアルページにあるように正しく動作するように
+なりました。例えば、アペンドモードでファイルをオープンした場合には
+既にファイルにある情報を上書きすることはできません。
 
     open(TEST,">>seek.test");
     $start = tell TEST ;
@@ -1603,7 +1603,7 @@ C<seek()> �� fopen() �ޥ˥奢��ڡ����ˤ���褦��������ư���褦��
 
 =head2 Interpolation Traps
 
-(Ÿ�����)
+(展開の罠)
 
 =begin original
 
@@ -1612,14 +1612,14 @@ within certain expressions, statements, contexts, or whatever.
 
 =end original
 
-Perl4 �� Perl5 �ΰ㤤��櫤ˤϡ�����ʸ������ƥ����Ȥʤɤˤ�����
-Ÿ���˴ؤ����Τ�����ޤ���
+Perl4 と Perl5 の違いの罠には、式や文、コンテキストなどにおける
+展開に関するものがあります。
 
 =over 5
 
 =item * Interpolation
 
-���֥륯�����ȤǰϤޤ줿ʸ����ˤ��� @ �Ͼ�������Ÿ������ޤ���
+ダブルクォートで囲まれた文字列にある @ は常に配列に展開されます。
 
     print "To: someone@somewhere.com\n";
 
@@ -1628,23 +1628,23 @@ Perl4 �� Perl5 �ΰ㤤��櫤ˤϡ�����ʸ������ƥ����Ȥʤɤˤ�����
 
 =item * Interpolation
 
-���֥륯�����Ȥǳ��줿ʸ���󤬥��������פ���Ƥ��ʤ� $ �� @ ��
-��λ���뤳�Ȥ��ʤ��ʤ�ޤ�����
+ダブルクォートで括られた文字列がエスケープされていない $ や @ で
+終了することがなくなりました。
 
     $foo = "foo$";
     $bar = "bar@";
     print "foo is $foo, bar is $bar\n";
 
-    # perl4 �ν���: foo is foo$, bar is bar@
+    # perl4 の出力: foo is foo$, bar is bar@
     # perl5 errors: Final $ should be \$ or $name
 
-����:perl5 �ϡ�$bar �ν�ü�ˤ��� @ �ˤĤ��Ƥϡȥ��顼�ˤ��ޤ����
+注意:perl5 は、$bar の終端にある @ については“エラーにしません”
 
 =item * Interpolation
 
-Perl �ϥ��֥륯��������ˤ���֥졼������¦��Ǥ�դμ���
-ɾ������褦�ˤʤ�ޤ���(����Ū�ˤϡ�C<$> �� C<@> ��³����
-�����Υ֥졼���������Ȥ��Ǥ�)��
+Perl はダブルクォート中にあるブレースの内側の任意の式を
+評価するようになりました(一般的には、C<$> や C<@> に続いて
+開きのブレースがきたときです)。
 
     @www = "buz";
     $foo = "foo";
@@ -1652,11 +1652,11 @@ Perl �ϥ��֥륯��������ˤ���֥졼������¦��Ǥ�դμ���
     sub foo { return "bar" };
     print "|@{w.w.w}|${main'foo}|";
 
-    # perl4 �ν���: |@{w.w.w}|foo|
-    # perl5 �ν���: |buz|bar|
+    # perl4 の出力: |@{w.w.w}|foo|
+    # perl5 の出力: |buz|bar|
 
-C<use strict;> ��Ȥäơ�perl5 �ˤ����뤳�Τ褦��櫤��򤱤뤳�Ȥ�
-�Ǥ��뤳�Ȥ����դ��Ƥ���������
+C<use strict;> を使って、perl5 におけるこのような罠を避けることが
+できることに注意してください。
 
 =item * Interpolation
 
@@ -1667,24 +1667,24 @@ now tries to dereference $x.  C<$$> by itself still works fine, however.
 
 =end original
 
-"this is $$x" �ϥץ����� ID ��Ÿ������褦�ˤʤäƤ��ޤ�������
-���� $x �λ��ȳ���(dereference)���ߤޤ���
-����Ǥ� C<$$> ���ȤϺ��Ǥ⤭�����ư��ޤ���
+"this is $$x" はプロセス ID を展開するようになっていましたが、
+今は $x の参照外し(dereference)を試みます。
+それでも C<$$> 自身は今でもきちんと動作します。
 
     $s = "a reference";
     $x = *s;
     print "this is $$x\n";
 
-    # perl4 �ν���: this is XXXx   (XXX �ϥ����ȥץ�����ID)
+    # perl4 の出力: this is XXXx   (XXX はカレントプロセスID)
     # perl5 prints: this is a reference
 
 =item * Interpolation
 
-C<eval "EXPR"> ��Ȥä����ξ�(on the fly)�ǤΥϥå����������
-�ϥå����̾������ꤹ�� C<$> ���ץ��ƥ��Ȥ���Ƥ��뤫���⤷����
-ξ���Υ����꡼�֥졼�����ץ��ƥ��Ȥ���Ƥ��뤳�Ȥ��׵ᤷ�ޤ���
-ξ���Υ����꡼�֥졼�����ץ��ƥ��Ȥ���Ƥ�����ˤϡ�perl4 ��
-perl5 �η�̤�Ʊ���Ǥ���
+C<eval "EXPR"> を使ったその場(on the fly)でのハッシュの生成は
+ハッシュの名前を指定する C<$> がプロテクトされているか、もしくは
+両方のカーリーブレースがプロテクトされていることを要求します。
+両方のカーリーブレースがプロテクトされている場合には、perl4 と
+perl5 の結果は同じです。
 
 
     $hashname = "foobar";
@@ -1693,67 +1693,67 @@ perl5 �η�̤�Ʊ���Ǥ���
     eval "\$$hashname{'$key'} = q|$value|";
     (defined($foobar{'baz'})) ?  (print "Yup") : (print "Nope");
 
-    # perl4 �ν���: Yup
-    # perl5 �ν���: Nope
+    # perl4 の出力: Yup
+    # perl5 の出力: Nope
 
-�ʲ��Τ�Τ�:
+以下のものを:
 
     eval "\$$hashname{'$key'} = q|$value|";
 
-���Τ褦���ѹ������:
+次のように変更すると:
 
     eval "\$\$hashname{'$key'} = q|$value|";
 
-��̤Ϥ����ʤ�ޤ�:
+結果はこうなります:
 
-    # perl4 �ν���: Nope
-    # perl5 �ν���: Yup
+    # perl4 の出力: Nope
+    # perl5 の出力: Yup
 
-�ʲ��Τ褦���ѹ��������ˤ�
+以下のように変更した場合には
 
     eval "\$$hashname\{'$key'\} = q|$value|";
 
-��̤Ϥ����ʤ�ޤ���
+結果はこうなります。
 
-    # perl4 �ν���: Yup
-    # perl5 �ν���: Yup
-    # �����ξ���ΥС�������Ʊ����̤Ȥʤ�ޤ�
+    # perl4 の出力: Yup
+    # perl5 の出力: Yup
+    # これは両方のバージョンで同じ結果となります
 
 =item * Interpolation
 
-�����ΥС������ˤ��ä��Х��˰�¸���Ƥ���褦�� perl4 �ץ�����ࡣ
+以前のバージョンにあったバグに依存しているような perl4 プログラム。
 
     perl -e '$bar=q/not/; print "This is $foo{$bar} perl5"'
 
-    # perl4 �ν���: This is not perl5
-    # perl5 �ν���: This is perl5
+    # perl4 の出力: This is not perl5
+    # perl5 の出力: This is perl5
 
 =item * Interpolation
 
-����λ��ȤˤĤ��Ƥ����դ���ɬ�פ�����ޤ���
+配列の参照についても注意する必要があります。
 
     print "$foo{"
 
-    perl 4 �ν���: {
-    perl 5 �ν���: syntax error
+    perl 4 の出力: {
+    perl 5 の出力: syntax error
 
 =item * Interpolation
 
-Ʊ�ͤˡ��ʲ��Τ褦�ʤ��Ȥ����դ��Ƥ�������:
+同様に、以下のようなことも注意してください:
 
     $foo = "baz";
     print "\$$foo{bar}\n";
 
     # perl4 prints: $baz{bar}
-    # perl5 �ν���: $
+    # perl5 の出力: $
 
-perl5 ��¸�ߤ��ʤ� C<$foo{bar}> ��õ���˹Ԥ��ޤ�����perl4 ��
-$foo ���baz�ɤ�Ÿ��������������­���ޤ���
-C<eval> �Ǥ⤳�λ������դ��Ƥ���������
+perl5 は存在しない C<$foo{bar}> を探しに行きますが、perl4 は
+$foo を“baz”に展開しただけで満足します。
+C<eval> でもこの事に注意してください。
 
 =item * Interpolation
 
-C<eval> �� C<qq()> ���줿ʸ������Ϥ������
+C<eval> に C<qq()> された文字列を渡した場合
 
     eval qq(
         foreach \$y (keys %\$x\) {
@@ -1774,46 +1774,46 @@ General DBM traps.
 
 =end original
 
-DBM�˴ؤ������Ū��櫡�
+DBMに関する一般的な罠。
 
 =over 5
 
 =item * DBM
 
-perl4 ��(�⤷����¾�� dbm/ndbm �ġ����)�������� dbm �ǡ����١�����
-perl5 �θ���Ʊ��������ץȤǰ������Ȥ���ȼ��Ԥ��ޤ���
-perl5 �κ����ˤ����ơ���ĥ dbm �μ����� C<tie> ���ʤ��Ȥ���
-C<dbmopen()> ���ǥե���Ȥǻ��Ѥ���ؿ��Τ����
-(perl4 �ΤȤ���Ʊ��)Ʊ�� dbm/ndbm ���󥯤��Ƥ��ʤ���Фʤ�ޤ���
+perl4 で(もしくは他の dbm/ndbm ツールで)作成した dbm データベースを、
+perl5 の元で同じスクリプトで扱おうとすると失敗します。
+perl5 の作成において、拡張 dbm の実装を C<tie> しないときに
+C<dbmopen()> がデフォルトで使用する関数のために
+(perl4 のときと同じ)同じ dbm/ndbm をリンクしていなければなりません。
 
     dbmopen (%dbm, "file", undef);
     print "ok\n";
 
-    # perl4 �ν���: ok
-    # perl5 �ν���: ok (IFF linked with -ldbm or -lndbm)
+    # perl4 の出力: ok
+    # perl5 の出力: ok (IFF linked with -ldbm or -lndbm)
 
 
 =item * DBM
 
-key/value �Υ������˴ؤ������¤�Ķ�����Ȥ���ȯ�����륨�顼�ˤ�ꡢ
-perl5 �Ǥ�¨�¤˥ץ�����फ�� exit ���ޤ���
+key/value のサイズに関する制限を超えたときに発生するエラーにより、
+perl5 では即座にプログラムから exit します。
 
     dbmopen(DB, "testdb",0600) || die "couldn't open db! $!";
-    $DB{'trap'} = "x" x 1024;  # �ۤȤ�ɤ� dbm/ndbm�ˤ��礭��������
+    $DB{'trap'} = "x" x 1024;  # ほとんどの dbm/ndbmには大きすぎる値
     print "YUP\n";
 
-    # perl4 �ν���
+    # perl4 の出力
     dbm store returned -1, errno 28, key "trap" at - line 3.
     YUP
 
-    # perl5 �ν���
+    # perl5 の出力
     dbm store returned -1, errno 28, key "trap" at - line 3.
 
 =back
 
 =head2 Unclassified Traps
 
-(̤ʬ����)
+(未分類の罠)
 
 =begin original
 
@@ -1821,13 +1821,13 @@ Everything else.
 
 =end original
 
-����¾���ơ�
+その他全て。
 
 =over 5
 
-=item * C<require>/C<do> ������ͤ�Ȥä��Ȥ����
+=item * C<require>/C<do> の戻り値を使ったときの罠
 
-doit.pl �Ȥ����ե����뤬
+doit.pl というファイルが
 
     sub foo {
         $rc = do "./do.pl";
@@ -1835,24 +1835,24 @@ doit.pl �Ȥ����ե����뤬
     }
     print &foo, "\n";
 
-�Ǥ��äơ�do.pl ���ʲ��Τ褦�����Ƥ��ä��Ȥ���ȡ�
+であって、do.pl が以下のような内容だったとすると、
 
     return 3;
 
-doit.pl �μ¹Է�̤Ϥ����ʤ�ޤ���
+doit.pl の実行結果はこうなります。
 
-    # perl 4 �ν���: 3 (���֥롼���󤫤餹����ȴ���ޤ�)
-    # perl 5 �ν���: 8
+    # perl 4 の出力: 3 (サブルーチンからすぐに抜けます)
+    # perl 5 の出力: 8
 
-C<do> �� C<require> ���֤������Ƥ�Ʊ�������񤤤Ȥʤ�ޤ���
+C<do> を C<require> に置き換えても同じ振る舞いとなります。
 
-=item * ��ʸ����� LIMIT ����ꤷ�� C<split> ��Ȥä����
+=item * 空文字列に LIMIT を指定して C<split> を使った場合
 
     $string = '';
     @list = split(/foo/, $string, 2)
 
-Perl4 �϶�ʸ�������ä������ǤΥꥹ�Ȥ��֤��ޤ�����Perl5 ��
-���ꥹ�Ȥ��֤��ޤ���
+Perl4 は空文字列を持った一要素のリストを返しますが、Perl5 は
+空リストを返します。
 
 =back
 
@@ -1863,5 +1863,5 @@ they'll be fixed and removed.
 
 =end original
 
-���Ĥ�Τ褦�ˡ��Х��Ȥ��Ƹ�����������줿��Τ�����С�
-����Ͻ�������Ƽ��������Ǥ��礦��
+いつものように、バグとして公式に宣言されたものがあれば、
+それは修正されて取り除かれるでしょう。

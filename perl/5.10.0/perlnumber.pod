@@ -9,7 +9,7 @@ perlnumber - semantics of numbers and numeric operations in Perl
 
 =end original
 
-perlnumber - Perl �Ǥο��ͤȿ������ΰ�̣��
+perlnumber - Perl での数値と数値操作の意味論
 
 =head1 SYNOPSIS
 
@@ -25,13 +25,13 @@ perlnumber - Perl �Ǥο��ͤȿ������ΰ�̣��
 
 =end original
 
-    $n = 1234;		    # 10 �ʿ�
-    $n = 0b1110011;	    # 2 �ʿ�
-    $n = 01234;		    # 8 �ʿ�
-    $n = 0x1234;	    # 16 �ʿ�
-    $n = 12.34e-56;	    # �ؿ�ɽ��
-    $n = "-12.34e56";	    # ʸ���Ȥ��ƻ��ꤵ�줿����
-    $n = "1234";	    # ʸ���Ȥ��ƻ��ꤵ�줿����
+    $n = 1234;		    # 10 進数
+    $n = 0b1110011;	    # 2 進数
+    $n = 01234;		    # 8 進数
+    $n = 0x1234;	    # 16 進数
+    $n = 12.34e-56;	    # 指数表現
+    $n = "-12.34e56";	    # 文字として指定された数値
+    $n = "1234";	    # 文字として指定された数値
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ This document describes how Perl internally handles numeric values.
 
 =end original
 
-����ʸ��ϡ�Perl �������ǿ��ͤ�ɤΤ褦�˰������򵭽Ҥ��ޤ���
+この文書は、Perl が内部で数値をどのように扱うかを記述します。
 
 =begin original
 
@@ -53,15 +53,15 @@ p-adic arithmetic, and so on.  See L<overload> for details.
 
 =end original
 
-Perl �α黻�ҥ����С������ɵ�ǽ�Ϥ����Ǥϴ�����̵�뤵��ޤ���
-�黻�ҥ����С������ɤϡ�Ǥ�դ��礭����������Ǥ�դ����٤���ư����������
-��Ʊ���Ѥ� p �ʿ����ѤʤɤΡ��ü�ʡ׿��ͤα黻�ʤɤο��ͤ˴ؤ���桼���������
-�����񤤤����Ǥ��ޤ���
-�ܺ٤ˤĤ��Ƥ� L<overload> �򻲾Ȥ��Ƥ���������
+Perl の演算子オーバーロード機能はここでは完全に無視されます。
+演算子オーバーロードは、任意の大きさの整数、任意の精度の浮動小数点数、
+合同算術や p 進数算術などの「特殊な」数値の演算などの数値に関するユーザー定義の
+振る舞いを指定できます。
+詳細については L<overload> を参照してください。
 
 =head1 Storing numbers
 
-(���ͤ��ݴ�)
+(数値の保管)
 
 =begin original
 
@@ -73,11 +73,11 @@ to build perl".
 
 =end original
 
-Perl ������Ū�˿��ͤ� 3 �Ĥΰۤʤä���ˡ��ɽ���Ǥ��ޤ�: �ͥ��ƥ��֤�������
-�ͥ��ƥ��֤���ư����������10 ��ʸ����Ǥ���
-10 ��ʸ����� C<"12.34e-56"> �Τ褦�˻ؿ�����������⤢��ޤ���
-�����Ǥ� I<�ͥ��ƥ��֤�> �Ȥ����Τϡ���perl ��ӥ�ɤ���ݤ˻Ȥ�줿 C
-����ѥ��餬�б����Ƥ�������פ��̣���ޤ���
+Perl は内部的に数値を 3 つの異なった方法で表現できます: ネイティブな整数、
+ネイティブな浮動小数点数、10 進文字列です。
+10 進文字列は C<"12.34e-56"> のように指数部がある場合もあります。
+ここでの I<ネイティブな> というのは、「perl をビルドする際に使われた C
+コンパイラが対応している形式」を意味します。
 
 =begin original
 
@@ -93,14 +93,14 @@ for 0.9 is infinite:
 
 =end original
 
-�֥ͥ��ƥ��֤ΡפȤ����Ѹ�ϥͥ��ƥ��֤������˴ؤ����ä��Ȥ��ˤϤۤȤ��
-��̣�Ϥʤ����ͥ��ƥ��֤���ư���������˴ؤ��ݤ˰�̣������ޤ���
-�������Ф��ơ֥ͥ��ƥ��֤ʡפȤ����Ѹ줬�ż�����ͣ��Τ�Τϡ�
-�б����Ƥ��뿿�������̤κ����ͤȺǾ��ͤ� 2 �Τ٤���˶ᤤ�Ȥ������ȤǤ���
-���������֥ͥ��ƥ��֤ʡ���ư���������ϺǤ����Ū�����¤�����ޤ�:
-2 �ʿ�ʬ�����Ѵ������Ȥ�������Ū�ˡ�û����ɽ��������ͤΤߤ�ɽ���Ǥ��ޤ���
-�㤨�С�0.9 �ϥͥ��ƥ��֤���ư�������Ǥ�ɽ���Ǥ��ޤ���; �ʤ��ʤ� 0.9 ��
-2 �ʿ���ʬ����̵�¤Ȥʤ뤫��Ǥ�:
+「ネイティブの」という用語はネイティブな整数に関して話すときにはほとんど
+意味はなく、ネイティブな浮動小数点数に関わる際に意味があります。
+整数に対して「ネイティブな」という用語が暗示する唯一のものは、
+対応している真の整数量の最大値と最小値は 2 のべき乗に近いということです。
+しかし、「ネイティブな」浮動小数点数は最も基本的な制限を持ちます:
+2 進数分数に変換したときに相対的に「短い」表現を持つ値のみを表現できます。
+例えば、0.9 はネイティブな浮動小数点では表現できません; なぜなら 0.9 の
+2 進数の分数は無限となるからです:
 
   binary0.1110011001100...
 
@@ -118,15 +118,15 @@ loss of information.
 
 =end original
 
-C<1100> �������֤���ޤ���
-�������¤ˤ��廊�ơ�2 �ʿ��λؿ��⡢��ư���������Ȥ���ɽ��������
-���¤���ޤ���
-ŵ��Ū�ʥϡ��ɥ������Ǥϡ���ư���������� 53 ��ޤǤ� 2 �ʿ��ȡ�
--1024 ���� 1024 �ޤǤ� 2 �ʿ��ؿ����ݴɤǤ��ޤ���
-10 ��ɽ���Ǥϡ��ۤ� 16 ��� 10 �ʿ��� -304 ���� 304 ���ϰϤλؿ��Ȥʤ�ޤ���
-��������Ƥη����ϡ����Τ褦�ʥ������ƥ�����Ǥϡ�Perl ��
-12345678901234567 �Ȥ��ä��������η���ʤ�����ư���������Ȥ���
-�ݴɤ��뤳�ȤϤǤ��ʤ��Ȥ������ȤǤ���
+C<1100> が繰り返されます。
+この制限にくわえて、2 進数の指数も、浮動小数点数として表現されると
+制限されます。
+典型的なハードウェアでは、浮動小数点数は 53 桁までの 2 進数と、
+-1024 から 1024 までの 2 進数指数を保管できます。
+10 進表現では、ほぼ 16 桁の 10 進数と -304 から 304 の範囲の指数となります。
+これら全ての結論は、このようなアーキテクチャでは、Perl は
+12345678901234567 といった数を情報の欠落なしに浮動小数点数として
+保管することはできないということです。
 
 =begin original
 
@@ -141,15 +141,15 @@ See L<"Numeric operators and numeric conversions"> for details.)
 
 =end original
 
-Ʊ�ͤˡ�10 ��ʸ�����ͭ�� 10 �ʵ���ˡ����Ŀ��ͤΤ�ɽ���Ǥ��ޤ���
-ʸ����Ǥ��뤿�ᡢ���ä�Ǥ�դ�Ĺ������Ĥ��ᡢ�����ο��ͤΤ����
-�ؿ�����¿����ˤϼ��Ѿ�����¤Ϥ���ޤ���
-(���������������Ƥ���ΤϤ����ο��ͤ� I<�ݴ�> �˴ؤ����ΤǤ����
-�������Ȥ����򤷤Ƥ���������
-���Τ褦�ʡ��礭���׿��ͤ��ݴɤǤ���Ȥ������Ȥϡ������ο��ͤˤ��
-I<���> �����Ƥη��Ȥ��Ȥ������Ȥ��̣���ޤ���
-�ܺ٤ˤĤ��Ƥ� L<"Numeric operators and numeric conversions"> ��
-���Ȥ��Ƥ���������)
+同様に、10 進文字列は有限 10 進記数法を持つ数値のみ表現できます。
+文字列であるため、従って任意の長さを持つため、これらの数値のための
+指数部や実数部には実用上の制限はありません。
+(しかし、議論しているのはこれらの数値の I<保管> に関するものであると
+いうことを理解してください。
+このような「大きい」数値を保管できるということは、これらの数値による
+I<操作> が全ての桁を使うということを意味しません。
+詳細については L<"Numeric operators and numeric conversions"> を
+参照してください。)
 
 =begin original
 
@@ -162,12 +162,12 @@ it is possible to store many more integers in floating point format.
 
 =end original
 
-�ºݤΤȤ������ͥ��ƥ��֤������������ݴɤ��줿���ͤϡ�����դ��Υͥ��ƥ��֤�
-�����������ʤ��Υͥ��ƥ��֤ʷ����Τɤ��餫���ݴɤ���ޤ���
-���äơ��ͥ��ƥ��֤������Ȥ����ݴɤ���� Perl �ο��ͤθ³��ϡ�ŵ��Ū�ˤ�
--2**31..2**32-1 �ǡ�64 �ӥå������ξ���Ŭ�ڤ˽������줿��Τˤʤ�ޤ���
-�Ƥӡ������ Perl ���������ǤΤ������򰷤���Ȥ������Ȥ��̣���ޤ���:
-��ư�����������ˤ�äƤ�ä�¿�����������ݴɲ�ǽ�Ǥ���
+実際のところ、ネイティブな整数形式で保管された数値は、符号付きのネイティブな
+形式か、符号なしのネイティブな形式のどちらかで保管されます。
+従って、ネイティブな整数として保管される Perl の数値の限界は、典型的には
+-2**31..2**32-1 で、64 ビット整数の場合は適切に修正されたものになります。
+再び、これは Perl がこの幅でのみ整数を扱えるということを意味しません:
+浮動小数点形式によってもっと多くの整数を保管可能です。
 
 =begin original
 
@@ -176,12 +176,12 @@ a finite decimal expansion or a "short" binary expansion.
 
 =end original
 
-���󤹤�ȡ�Perl �ο��ͤϡ�ͭ�� 10 �ʿ���ˡ������û����2 �ʿ���ˡ�����
-���ͤΤߤ���Ǽ�Ǥ��ޤ���
+要約すると、Perl の数値は、有限 10 進数記法か、「短い」2 進数記法を持つ
+数値のみが格納できます。
 
 =head1 Numeric operators and numeric conversions
 
-(���ͱ黻�Ҥȿ����Ѵ�)
+(数値演算子と数値変換)
 
 =begin original
 
@@ -192,10 +192,10 @@ converted to the format understood by the operator.
 
 =end original
 
-���ҤΤ褦�ˡ�Perl �� 3 �Ĥη����Τɤ�Ǥ���ͤ��Ǽ�Ǥ��ޤ�����
-�ۤȤ�ɤα黻�Ҥ�ŵ��Ū�ˤϤ����η����ΰ�Ĥ����������򤷤ޤ���
-���ͤ����Τ褦�ʱ黻�Ҥΰ����Ȥ����Ϥ����Ȥ����黻�Ҥ�����Ǥ��������
-�Ѵ�����ޤ���
+前述のように、Perl は 3 つの形式のどれでも数値を格納できますが、
+ほとんどの演算子は典型的にはこれらの形式の一つだけしか理解しません。
+数値がそのような演算子の引数として渡されるとき、演算子が理解できる形式へ
+変換されます。
 
 =begin original
 
@@ -203,7 +203,7 @@ Six such conversions are possible:
 
 =end original
 
-6 ����Τ��Τ褦���Ѵ�����ǽ�Ǥ�:
+6 種類のこのような変換が可能です:
 
 =begin original
 
@@ -216,12 +216,12 @@ Six such conversions are possible:
 
 =end original
 
-  �ͥ��ƥ��֤�����         --> �ͥ��ƥ��֤���ư��������	(*)
-  �ͥ��ƥ��֤�����         --> 10 �ʿ�ʸ����
-  �ͥ��ƥ��֤���ư�������� --> �ͥ��ƥ��֤�����		(*)
-  �ͥ��ƥ��֤���ư�������� --> 10 �ʿ�ʸ����		(*)
-  10 �ʿ�ʸ����            --> �ͥ��ƥ��֤�����
-  10 �ʿ�ʸ����            --> �ͥ��ƥ��֤���ư��������	(*)
+  ネイティブな整数         --> ネイティブな浮動小数点数	(*)
+  ネイティブな整数         --> 10 進数文字列
+  ネイティブな浮動小数点数 --> ネイティブな整数		(*)
+  ネイティブな浮動小数点数 --> 10 進数文字列		(*)
+  10 進数文字列            --> ネイティブな整数
+  10 進数文字列            --> ネイティブな浮動小数点数	(*)
 
 =begin original
 
@@ -229,7 +229,7 @@ These conversions are governed by the following general rules:
 
 =end original
 
-�������Ѵ��ϡ��ʲ��ΰ���Ū�ʵ�§�˽����ޤ�:
+これらの変換は、以下の一般的な規則に従います:
 
 =over 4
 
@@ -242,7 +242,7 @@ representation is used.
 
 =end original
 
-�Ѵ����ο��ͤ��Ѵ���η�����ɽ���Ǥ���ʤ顢����ɽ�����Ȥ��ޤ���
+変換元の数値が変換先の形式で表現できるなら、その表現が使われます。
 
 =item *
 
@@ -253,9 +253,9 @@ a representation of the closest limit is used.  (I<Loss of information>)
 
 =end original
 
-�Ѵ����ο��ͤ��Ѵ���η�����ɽ���Ǥ���³���Ķ���Ƥ����硢�Ǥ�ᤤ
-�³��ͤ��Ѥ����ޤ���
-(I<����η���>)
+変換元の数値が変換先の形式で表現できる限界を超えている場合、最も近い
+限界値が用いられます。
+(I<情報の欠落>)
 
 =item *
 
@@ -266,9 +266,9 @@ a representation of one of these numbers is used.  (I<Loss of information>)
 
 =end original
 
-�Ѵ����ο��ͤ��Ѵ���η�����ɽ���Ǥ�����Ĥο��ͤδ֤ˤ����硢
-��Ĥο���ɽ���Τɤ��餫���Ȥ��ޤ���
-(I<����η���>)
+変換元の数値が変換先の形式で表現できる二つの数値の間にある場合、
+二つの数値表現のどちらかが使われます。
+(I<情報の欠落>)
 
 =item *
 
@@ -280,9 +280,9 @@ of the result is less than or equal to the magnitude of the source.
 
 =end original
 
-C<<�ͥ��ƥ��֤���ư�������� --> �ͥ��ƥ��֤�����>> �Ѵ��ǡ���̤������ͤ�
-�Ѵ����������Ͱʲ��Ȥʤ�ޤ���
-(I<��0 �ؤδݤ�ס�>)
+C<<ネイティブな浮動小数点数 --> ネイティブな整数>> 変換で、結果の絶対値は
+変換元の絶対値以下となります。
+(I<「0 への丸め」。>)
 
 =item *
 
@@ -296,12 +296,12 @@ C<"0.99999999999999999999"> has a chance of being rounded to 1.
 
 =end original
 
-�⤷ C<<10 �ʿ�ʸ���� --> �ͥ��ƥ��֤�����>> �Ѵ�������η���ʤ���
-�Ԥ��ʤ���硢��̤�
-C<<10 �ʿ�ʸ���� --> �ͥ��ƥ��֤���ư�������� --> �ͥ��ƥ��֤�����>> �Ȥ���
-�Ѵ��˽�򤷤ޤ���
-�äˡ��ݤ�� 0 �����˶����ФäƤ��ޤ�����
-C<"0.99999999999999999999"> �Τ褦�ʿ��� 1 �˴ݤ�����ǽ���Ϥ���ޤ���
+もし C<<10 進数文字列 --> ネイティブな整数>> 変換が情報の欠落なしに
+行えない場合、結果は
+C<<10 進数文字列 --> ネイティブな浮動小数点数 --> ネイティブな整数>> という
+変換に準拠します。
+特に、丸めは 0 方向に強く偏っていますが、
+C<"0.99999999999999999999"> のような数が 1 に丸められる可能性はあります。
 
 =back
 
@@ -313,14 +313,14 @@ used may lead to breakage of some of the above rules.
 
 =end original
 
-B<����>: �嵭�� C<(*)> �ޡ������դ��Ƥ����Ѵ��� C ����ѥ���ˤ�ä�
-�Ԥ��ޤ���
-�äˡ����Ѥ��Ƥ��륳��ѥ���ΥХ�/���ͤ��嵭�Υ롼��ΰ������ˤ뤳�Ȥ�
-�ʤ뤫�⤷��ޤ���
+B<制限>: 上記で C<(*)> マークが付いている変換は C コンパイラによって
+行われます。
+特に、使用しているコンパイラのバグ/仕様が上記のルールの一部を破ることに
+なるかもしれません。
 
 =head1 Flavors of Perl numeric operations
 
-(Perl �ο��ͱ黻�Ҥ��ÿ�)
+(Perl の数値演算子の特色)
 
 =begin original
 
@@ -332,10 +332,10 @@ change the number stored in the value.
 
 =end original
 
-���ͤΰ������� Perl �����ϡ������� 4 �Ĥΰۤʤ���ˡ�Τɤ줫�ˤ�ä�
-�����ޤ�: ����/��ư��������/ʸ������Τɤ줫�˶�������뤫��
-���ڥ��ɤη����˰�¸���ưۤʤ뿶���񤤤򤹤뤫�Ǥ���
-����η����ؤο��ͤζ����ϡ��ݴɤ���Ƥ����ͤ��ѹ����ޤ���
+数値の引数を取る Perl の操作は、引数を 4 つの異なる方法のどれかによって
+扱われます: 整数/浮動小数点数/文字列数のどれかに強制されるか、
+オペランドの形式に依存して異なる振る舞いをするかです。
+特定の形式への数値の強制は、保管されている値は変更しません。
 
 =begin original
 
@@ -346,15 +346,15 @@ C<sprintf "%u", ~0>.
 
 =end original
 
-�����Ȥ�������������ɬ�פȤ������Ƥα黻�Ҥϰ������Ʊ���ѤȤ��ư����ޤ�;
-�Ĥޤꡢ32 �ӥåȥ������ƥ�����Ǥ� C<mod 2**32> �Ǥ���
-���äơ�C<sprintf "%u", -1> �� C<sprintf "%u", ~0> ��Ʊ����̤Ȥʤ�ޤ���
+引数として整数形式を必要とする全ての演算子は引数を合同算術として扱います;
+つまり、32 ビットアーキテクチャでは C<mod 2**32> です。
+従って、C<sprintf "%u", -1> は C<sprintf "%u", ~0> と同じ結果となります。
 
 =over 4
 
 =item Arithmetic operators
 
-(���ѱ黻��)
+(算術演算子)
 
 =begin original
 
@@ -369,15 +369,15 @@ conversion does not throw away fractional parts on floating point numbers.
 
 =end original
 
-2 ��黻�� C<+> C<-> C<*> C</> C<%> C<==> C<!=> C<E<gt>> C<E<lt>>
-C<E<gt>=> C<E<lt>=> �ȡ�ñ��黻�� C<-> C<abs> C<--> �ϰ�����������
-�Ѵ����褦�Ȥ��ޤ���
-�⤷ξ�����Ѵ������٤򼺤����Ȥʤ���ǽ�ǡ��黻�����٤򼺤����Ȥʤ�
-�¹ԤǤ���ʤ顢�����η�̤��Ȥ��ޤ���
-����ʤ���С���������ư���������������Ѵ����졢��ư���������η�̤�
-�Ȥ��ޤ���
-(��Ҥ����褦��)�Ѵ��Υ���å���ϡ������Ѵ�����ư���������ξ�������
-�ΤƤʤ����Ȥ��̣���ޤ���
+2 項演算子 C<+> C<-> C<*> C</> C<%> C<==> C<!=> C<E<gt>> C<E<lt>>
+C<E<gt>=> C<E<lt>=> と、単項演算子 C<-> C<abs> C<--> は引数を整数に
+変換しようとします。
+もし両方の変換は精度を失うことなく可能で、演算が精度を失うことなく
+実行できるなら、整数の結果が使われます。
+さもなければ、引数は浮動小数点数形式に変換され、浮動小数点数の結果が
+使われます。
+(上述したような)変換のキャッシュは、整数変換が浮動小数点数の小数部を
+捨てないことを意味します。
 
 =item ++
 
@@ -389,13 +389,13 @@ in L<perlop> is used.
 
 =end original
 
-C<++> �Ͼ�ҤΤ���¾�α黻�Ҥ�Ʊ�ͤ˿����񤤤ޤ������⤷ʸ����
-C</^[a-zA-Z]*[0-9]*\z/> �˥ޥå��󥰤�������ʤ顢L<perlop> �˵��Ҥ��Ƥ���
-ʸ���󥤥󥯥���Ȥ��Ȥ��ޤ���
+C<++> は上述のその他の演算子と同様に振る舞いますが、もし文字列が
+C</^[a-zA-Z]*[0-9]*\z/> にマッチングする形式なら、L<perlop> に記述している
+文字列インクリメントが使われます。
 
 =item Arithmetic operators during C<use integer>
 
-(C<use integer> ��λ��ѱ黻��)
+(C<use integer> 中の算術演算子)
 
 =begin original
 
@@ -406,13 +406,13 @@ behavior with C<use integer;>
 
 =end original
 
-C<use integer;> ��ͭ���ʥ���������Ǥϡ���ҤΤۤȤ�����Ƥα黻�Ҥ�
-���������������˶������������η�̤��֤��ޤ���
-�㳰�� C<abs>, C<++>, C<--> �ǡ�C<use integer;> �Ǥ⿶���񤤤��Ѥ��ޤ���
+C<use integer;> が有効なスコープ中では、上述のほとんど全ての演算子は
+引数を整数形式に強制し、整数の結果を返します。
+例外は C<abs>, C<++>, C<--> で、C<use integer;> でも振る舞いは変わりません。
 
 =item Other mathematical operators
 
-(����¾�ο��ر黻��)
+(その他の数学演算子)
 
 =begin original
 
@@ -421,11 +421,11 @@ format.
 
 =end original
 
-C<**>, C<sin>, C<exp> �Ȥ��ä��黻�Ҥϰ�������ư���������˶������ޤ���
+C<**>, C<sin>, C<exp> といった演算子は引数を浮動小数点数に強制します。
 
 =item Bitwise operators
 
-(�ӥå�ñ�̱黻��)
+(ビット単位演算子)
 
 =begin original
 
@@ -433,11 +433,11 @@ Arguments are forced into the integer format if not strings.
 
 =end original
 
-�����ϡ�ʸ����Ǥʤ���������˶�������ޤ���
+引数は、文字列でなければ整数に強制されます。
 
 =item Bitwise operators during C<use integer>
 
-(C<use integer> ��Υӥå�ñ�̱黻��)
+(C<use integer> 中のビット単位演算子)
 
 =begin original
 
@@ -446,13 +446,13 @@ signed integers rather than the default unsigned.
 
 =end original
 
-�����������˶������ޤ���
-�ޤ������ե����ϡ��ǥե���Ȥ����ʤ������ǤϤʤ�������դ�������
-����Ū�˻Ȥ��ޤ���
+引数を整数に強制します。
+また、シフト操作は、デフォルトの符号なし整数ではなく、符号付き整数を
+内部的に使います。
 
 =item Operators which expect an integer
 
-(���������ꤷ�Ƥ���黻��)
+(整数を想定している演算子)
 
 =begin original
 
@@ -461,12 +461,12 @@ to the third and fourth arguments of C<sysread>, for example.
 
 =end original
 
-�����������˶������ޤ���
-������㤨�С�C<sysread> ���� 3 �������� 4 ������Ŭ�Ѥ���ޤ���
+引数を整数に強制します。
+これは例えば、C<sysread> の第 3 引数と第 4 引数に適用されます。
 
 =item Operators which expect a string
 
-(ʸ��������ꤷ�Ƥ���黻��)
+(文字列を想定している演算子)
 
 =begin original
 
@@ -475,8 +475,8 @@ applicable to C<printf "%s", $value>.
 
 =end original
 
-������ʸ����˶������ޤ���
-�㤨�С������ C<printf "%s", $value> ��Ŭ�Ѥ���ޤ���
+引数を文字列に強制します。
+例えば、これは C<printf "%s", $value> に適用されます。
 
 =back
 
@@ -489,10 +489,10 @@ repeated operations will not need to redo the conversion.
 
 =end original
 
-����������η����ؤζ������ݴɤ���Ƥ�����ͤ��ѹ����ޤ��󤬡�Perl ���Ѵ���
-��̤�Ф��Ƥ��ޤ���
-�äˡ��ǽ���Ѵ������֤��������ΤǤ��ä��Ȥ��Ƥ⡢Ʊ�����򷫤��֤��Ƥ�
-�Ѵ���Ƽ¹Ԥ���ɬ�פϤ���ޤ���
+引数の特定の形式への強制は保管されている数値は変更しませんが、Perl は変換の
+結果を覚えています。
+特に、最初の変換が時間がかかるものであったとしても、同じ操作を繰り返しても
+変換を再実行する必要はありません。
 
 =head1 AUTHOR
 

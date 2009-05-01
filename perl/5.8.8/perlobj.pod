@@ -10,7 +10,7 @@ perlobj - Perl objects
 
 =end original
 
-perlobj - Perl �Υ��֥�������
+perlobj - Perl のオブジェクト
 
 =head1 DESCRIPTION
 
@@ -23,12 +23,12 @@ in Perl can be found in L<perltoot> and L<perltooc>.
 
 =end original
 
-�ޤ��ǽ�ˡ����ʤ��� Perl �ˤ������ե���󥹤��ʤ�Ǥ��뤫�����򤷤Ƥ���
-ɬ�פ�����ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
-����ˡ����줫�����������ե���󥹤�ư�ʣ��������Ȼפ��褦�ʤ顢
-Perl �ˤ����륪�֥������Ȼظ��ץ�����ߥ󥰤Υ��塼�ȥꥢ�뤬
-L<perltoot> �� L<perltooc> �ˤ���ޤ���
+まず最初に、あなたが Perl におけるリファレンスがなんであるかを理解している
+必要があります。
+L<perlref> を参照してください。
+第二に、これから説明するリファレンスの動作が複雑すぎると思うようなら、
+Perl におけるオブジェクト指向プログラミングのチュートリアルが
+L<perltoot> と L<perltooc> にあります。
 
 =begin original
 
@@ -37,8 +37,8 @@ here are three very simple definitions that you should find reassuring.
 
 =end original
 
-�����ޤǤǤޤ��ɤ߿ʤ�뵤������Τʤ顢���ʤ���¿������������
-���Ĥ�����ñ������������ޤ���
+ここまででまだ読み進める気があるのなら、あなたを安心させるだろう
+三つの非常に単純な定義があります。
 
 =over 4
 
@@ -51,8 +51,8 @@ belongs to.
 
 =end original
 
-���֥������ȤȤϡ�ñ�˼�ʬ���ɤΥ��饹��°���Ƥ���Τ���
-�ΤäƤ���褦�ʥ�ե���󥹤Ǥ���
+オブジェクトとは、単に自分がどのクラスに属しているのかを
+知っているようなリファレンスです。
 
 =item 2.
 
@@ -63,8 +63,8 @@ with object references.
 
 =end original
 
-���饹�Ȥϡ�ñ�˥��֥������ȤΥ�ե���󥹤��갷���᥽�åɤ�
-�󶡤���ѥå������Ǥ���
+クラスとは、単にオブジェクトのリファレンスを取り扱うメソッドを
+提供するパッケージです。
 
 =item 3.
 
@@ -75,9 +75,9 @@ a package name, for class methods) as the first argument.
 
 =end original
 
-�᥽�åɤȤϡ�ñ�ˤ����������˥��֥������ȤΥ�ե����
-(�⤷���ϥ��饹�Υ᥽�åɤ��Ф���ѥå�����̾)����褦��
-���֥롼����Ǥ���
+メソッドとは、単にその第一引数にオブジェクトのリファレンス
+(もしくはクラスのメソッドに対するパッケージ名)を取るような
+サブルーチンです。
 
 =back
 
@@ -87,12 +87,12 @@ We'll cover these points now in more depth.
 
 =end original
 
-�����Υݥ���Ȥ򡢤�꿼�����겼���ƹԤ��ޤ���
+これらのポイントを、より深く掘り下げて行きます。
 
 =head2 An Object is Simply a Reference
 X<object> X<bless> X<constructor> X<new>
 
-(���֥������Ȥ�ñ�ʤ��ե����)
+(オブジェクトは単なるリファレンス)
 
 =begin original
 
@@ -104,10 +104,10 @@ constructor:
 
 =end original
 
-C++ �Ȥϰ�äơ�Perl �ϥ��󥹥ȥ饯�����Ф������̤ʹ�ʸ���Ѱդ��Ƥ��ޤ���
-���󥹥ȥ饯����ñ�ˡ����饹�� "bless" �����ʤˤ��Υ�ե���󥹤�
-�֤��褦�ʥ��֥롼����ǡ�����Ū�ˤϥ��֥롼�����������Ƥ��륯�饹�Ǥ���
-�ʲ���ŵ��Ū�ʥ��󥹥ȥ饯���򼨤��ޤ���
+C++ とは違って、Perl はコンストラクタに対して特別な構文を用意していません。
+コンストラクタは単に、クラスに "bless" したなにかのリファレンスを
+返すようなサブルーチンで、一般的にはサブルーチンが定義されているクラスです。
+以下に典型的なコンストラクタを示します。
 
     package Critter;
     sub new { bless {} }
@@ -119,8 +119,8 @@ a construct this way, too:
 
 =end original
 
-C<new> �Ȥ���������̤ʤ�ΤǤϤ���ޤ���
-���󥹥ȥ饯����ʲ��Τ褦�˵��Ҥ��뤳�Ȥ�Ǥ��ޤ�:
+C<new> という語は特別なものではありません。
+コンストラクタを以下のように記述することもできます:
 
     package Critter;
     sub spawn { bless {} }
@@ -136,13 +136,13 @@ they create.
 
 =end original
 
-�ºݤΤȤ���������� C++ �ץ�����ޡ��� C++ ��Ʊ���褦��
-Perl �� C<new> ��ư���ȹͤ�����Ȥ���ˤϤޤ뤳�Ȥ��ʤ��Ȥ�������
-���ޤ�����ΤǤϤ���ޤ���
-���ʤ��ˤϡ����ʤ�����褷�褦�Ȥ��Ƥ�������˴ؤ��륳��ƥ�����
-�Ǥ狼��䤹�����󥹥ȥ饯���ˤ��뤳�Ȥ򤪾��ᤷ�ޤ���
-���󤲤�ȡ�Perl �� Tk �������ƥ󥷥��Υ��󥹥ȥ饯���Ǥϡ�
-�������륦�������åȤ���̾�����äƤ��ޤ���
+実際のところ、これは C++ プログラマーが C++ と同じように
+Perl の C<new> が動くと考えて落とし穴にはまることがないという点で
+好ましいものではあります。
+あなたには、あなたが解決しようとしている問題に関するコンテキスト
+でわかりやすいコンストラクタにすることをお奨めします。
+例を挙げると、Perl の Tk エクステンションのコンストラクタでは、
+作成するウィジェットから名前を取っています。
 
 =begin original
 
@@ -158,13 +158,13 @@ have been returned directly, like this:
 
 =end original
 
-Perl �Υ��󥹥ȥ饯���˴ؤ��� C++ �Ȱ㤦���Ȥϡ�
-C++ �Ǥϼ�ʬ�ǥ���������Ƥ�ɬ�פ�����Ȥ������ȤǤ���
-C<{}> �϶���̵̾�ϥå���������Ƥޤ���
-bless() �ϰ����˥�ե���󥹤��ꡢ���Υ��֥������Ȥ˥��֥������Ȥ�
-Critter �Υ�ե���󥹤Ǥ��뤳�Ȥ򶵤�����ե���󥹤��֤��ޤ���
-���Ȥ���Ƥ��륪�֥������ȤϤ��켫�ȼ�ʬ�� bless ����Ƥ��뤳�Ȥ��ΤäƤ��ơ�
-��ե���󥹤ϰʲ�����Τ褦��ľ���֤����Ȥ��Ǥ��ޤ���
+Perl のコンストラクタに関して C++ と違うことは、
+C++ では自分でメモリを割り当てる必要があるということです。
+C<{}> は空の無名ハッシュを割り当てます。
+bless() は引数にリファレンスを取り、そのオブジェクトにオブジェクトが
+Critter のリファレンスであることを教え、リファレンスを返します。
+参照されているオブジェクトはそれ自身自分が bless されていることを知っていて、
+リファレンスは以下の例のように直接返すことができます。
 
     sub new {
 	my $self = {};
@@ -179,8 +179,8 @@ that wish to call methods in the class as part of the construction:
 
 =end original
 
-�ºݤΤȤ��������ۤΰ����Ȥ��ƥ��饹�Υ᥽�åɤ�ƤӽФ��褦�ʤ�ä�
-ʣ���ʥ��󥹥ȥ饯�����ɤ��������뤳�ȤǤ��礦��
+実際のところ、構築の一部としてクラスのメソッドを呼び出すようなもっと
+複雑なコンストラクタを良く見かけることでしょう。
 
     sub new {
 	my $self = {};
@@ -198,10 +198,10 @@ so that your constructors may be inherited:
 
 =end original
 
-�Ѿ��ˤĤ��ƿ��ۤ��Ƥ���(��������٤��ʤΤǤ�����
-L<perlmodlib/"Modules: Creation, Use, and Abuse">�򻲾Ȥ��Ƥ�������)��
-�Ѿ�����Ƥ��뤫�⤷��ʤ����󥹥ȥ饯���ǰ�����Ĥ�������� bless ��
-�Ȥ������ΤǤ����:
+継承について心配していて(そうあるべきなのですが。
+L<perlmodlib/"Modules: Creation, Use, and Abuse">を参照してください)、
+継承されているかもしれないコンストラクタで引数二つを取る形式の bless を
+使いたいのであれば:
 
     sub new {
 	my $class = shift;
@@ -222,14 +222,14 @@ whatever $class we blessed the object into:
 
 =end original
 
-���뤤�ϡ��桼������ C<< CLASS->new() >> �ǤϤʤ� C<< $obj->new() >>
-��Ȥ����Ȥ���Ԥ��Ƥ���ΤǤ���С��ʲ��Τ褦�ʷ�����Ȥ��ޤ���
-(���󥹥��󥹤��Ф��� new() ��ƤӽФ��Τˤ����ȤäƤ⡢��ưŪ�ʥ��ԡ���
-���ڹԤ��ʤ����Ȥ����դ��Ƥ���������
-�⤷���֥������Ȥ��Ф������������뤤�Ͽ������ԡ���˾��ʤ顢���줬
-�Ǥ���褦���ä˽������ʤ���Фʤ�ʤ��Ǥ��礦��)
-initialize() �Ȥ����᥽�åɤ� $class ��䤿�������֥������Ȥ�
-bless ���Ƥ��뤫�ɤ����˴ؤ餺�Ȥ��ޤ���
+あるいは、ユーザーが C<< CLASS->new() >> ではなく C<< $obj->new() >>
+を使うことを期待しているのであれば、以下のような形式を使います。
+(インスタンスに対して new() を呼び出すのにこれを使っても、自動的なコピーは
+一切行われないことに注意してください。
+もしオブジェクトに対して浅い、あるいは深いコピーを望むなら、それが
+できるように特に処理しなければならないでしょう。)
+initialize() というメソッドは $class を私たちがオブジェクトに
+bless しているかどうかに関らず使われます。
 
     sub new {
 	my $this = shift;
@@ -249,11 +249,11 @@ be accessed only through the class's methods.
 
 =end original
 
-���饹�ѥå���������Ǥϡ��᥽�åɤϥ�ե���󥹤����̤Υ�ե���󥹤Ȥ���
-�����Ǥ��礦��
-���饹�ѥå������γ�¦�Ǥϡ���ե���󥹤ϰ���Ū�˥��饹�᥽�åɤ�
-�̤��ƤΤߥ����������뤳�ȤΤǤ�����Ʃ������(opaque value)�Ǥ��뤫�Τ褦��
-�����ޤ���
+クラスパッケージの中では、メソッドはリファレンスを普通のリファレンスとして
+扱うでしょう。
+クラスパッケージの外側では、リファレンスは一般的にクラスメソッドを
+通してのみアクセスすることのできる不透明な値(opaque value)であるかのように
+扱われます。
 
 =begin original
 
@@ -267,15 +267,15 @@ having to do this, the parent class is probably misbehaving, though.
 
 =end original
 
-���󥹥ȥ饯���ϸ��߻��Ȥ���Ƥ��륪�֥������Ȥ��̤Υ��饹��
-°�����뤿��ˡ��� bless ���뤫�⤷��ޤ���
-����ϤۤȤ�ɳμ¤˥ȥ�֥�˴������ޤ�ޤ���
-�����������ο��������饹�ϡ�����ݽ����븶���Ȥʤ�ޤ���
-���֥������Ȥϰ��٤˰�ĤΥ��饹�ˤ���°���뤳�Ȥ��Ǥ��ʤ����Τ褦��
-������ bless ��˺�����ޤ�(¿���Υ��饹����᥽�åɤ�Ѿ����뤳�Ȥ�
-��ͳ�ˤǤ���Ȥ��Ƥ⡢�Ǥ�)��
-�⤷�ƥ֥쥹���ʤ���Фʤ�ʤ��Ȥ����Τʤ顢���οƥ��饹��������
-�����񤤤򤷤Ƥ��ޤ���
+コンストラクタは現在参照されているオブジェクトを別のクラスに
+属させるために、再 bless するかもしれません。
+これはほとんど確実にトラブルに巻き込まれます。
+しかし、その新しいクラスは、後で掃除する原因となります。
+オブジェクトは一度に一つのクラスにしか属することができないかのように
+以前の bless は忘れ去られます(多くのクラスからメソッドを継承することが
+自由にできるとしても、です)。
+もし再ブレスしなければならないというのなら、その親クラスは不正な
+振る舞いをしています。
 
 =begin original
 
@@ -286,12 +286,12 @@ the following example:
 
 =end original
 
-����: Perl �Υ��֥������Ȥ� bless ����Ƥ��ޤ���
-��ե���󥹤Ϥ����ǤϤ���ޤ���
-���֥������Ȥϼ�ʬ��°���Ƥ���ѥå��������ʤ�Ǥ��뤫�ΤäƤ��ޤ�����
-��ե���󥹤��Τ�ޤ���
-�ؿ� bless() �ϥ�ե���󥹤򥪥֥������ȤȤߤʤ�����˻Ȥ��ޤ���
-�ʲ�����򸫤Ƥ���������
+解説: Perl のオブジェクトは bless されています。
+リファレンスはそうではありません。
+オブジェクトは自分が属しているパッケージがなんであるか知っていますが、
+リファレンスは知りません。
+関数 bless() はリファレンスをオブジェクトとみなすために使われます。
+以下の例を見てください。
 
     $a = {};
     $b = $a;
@@ -305,14 +305,14 @@ operated on the object and not on the reference.
 
 =end original
 
-����� "$b as being a BLAH" ��ɽ������ޤ�;
-��������餫�ʤ褦�ˡ�bless() �ϥ�ե���󥹤��Ф��ƤǤϤʤ�
-���֥������Ȥ˺��Ѥ��ޤ���
+これは "$b as being a BLAH" と表示されます;
+これで明らかなように、bless() はリファレンスに対してではなく
+オブジェクトに作用します。
 
 =head2 A Class is Simply a Package
 X<class> X<package> X<@ISA> X<inheritance>
 
-(���饹��ñ�ʤ�ѥå�����)
+(クラスは単なるパッケージ)
 
 =begin original
 
@@ -322,8 +322,8 @@ definitions into the class.
 
 =end original
 
-C++ �ȤϰۤʤꡢPerl �ϥ��饹������Ф������̤ʹ�ʸ���Ѱդ��ƤϤ��ޤ���
-�ѥå������򡢥᥽�å�����򲡤������줿���饹�Ȥ��ƻȤ��ޤ���
+C++ とは異なり、Perl はクラス定義に対する特別な構文を用意してはいません。
+パッケージを、メソッド定義を押し込められたクラスとして使います。
 
 =begin original
 
@@ -337,14 +337,14 @@ through @ISA are known as base classes of the current class.
 
 =end original
 
-�ƥѥå������ˤϡ������ȤΥѥå������ǥ᥽�åɤ򸫤Ĥ����ʤ��ä��Ȥ���
-�᥽�åɤ�õ���˹Ԥ��̤Υѥå�������ؼ����� @ISA �ȸƤФ��
-�ü�����󤬤���ޤ���
-���줬��Perl ���Ѿ���������Ƥ��������Ǥ���
-���� @ISA �γ����Ǥϡ����饹�ѥå������Ǥ����̤Υѥå�������̾���Ǥ���
-���饹�ϡ�@ISA �ˤ�����֤ǥ᥽�åɤθ�����Ԥ��ޤ���
-@ISA ���̤��Ƥǥ����������뤳�ȤΤǤ��륯�饹�ϡ������ȥ��饹��
-�١������饹�Ȥ����Τ��Ƥ��ޤ���
+各パッケージには、カレントのパッケージでメソッドを見つけられなかったときに
+メソッドを探しに行く別のパッケージを指示する @ISA と呼ばれる
+特殊な配列があります。
+これが、Perl が継承を実装しているやり方です。
+配列 @ISA の各要素は、クラスパッケージである別のパッケージの名前です。
+クラスは、@ISA にある順番でメソッドの検索を行います。
+@ISA を通じてでアクセスすることのできるクラスは、カレントクラスの
+ベースクラスとして知られています。
 
 =begin original
 
@@ -356,11 +356,11 @@ X<UNIVERSAL> X<base class> X<class, base>
 
 =end original
 
-���ƤΥ��饹�ϰ��ۤΤ����ˤ��Υ١������饹�Ȥ��� C<UNIVERSAL> �Ȥ���
-���饹��Ѿ����Ƥ��ޤ���
-UNIVERSAL ���饹�Ǽ�ưŪ���󶡤�������Ū�˻Ȥ���᥽�åɤ�
-�����Ĥ�����ޤ���
-�ܤ����� L<"Default UNIVERSAL methods"> �򻲾Ȥ��Ƥ���������
+全てのクラスは暗黙のうちにそのベースクラスとして C<UNIVERSAL> という
+クラスを継承しています。
+UNIVERSAL クラスで自動的に提供される一般的に使われるメソッドが
+いくつかあります。
+詳しくは L<"Default UNIVERSAL methods"> を参照してください。
 X<UNIVERSAL> X<base class> X<class, base>
 
 =begin original
@@ -371,10 +371,10 @@ subroutines invalidates the cache and causes Perl to do the lookup again.
 
 =end original
 
-�١������饹��õ���Ƥ���᥽�åɤ����Ĥ���С���Ψ�Τ����
-���Υ᥽�åɤϥ����ȥ��饹�ǥ���å��󥰤���ޤ���
-@ISA ���ѹ��俷���ʥ��֥롼���������ϥ���å����̵��������Perl �˺��٤�
-������Ԥ碌�ޤ���
+ベースクラスで探しているメソッドが見つかれば、効率のために
+そのメソッドはカレントクラスでキャッシングされます。
+@ISA の変更や新たなサブルーチンの定義はキャッシュを無効化し、Perl に再度の
+走査を行わせます。
 
 =begin original
 
@@ -388,12 +388,12 @@ X<AUTOLOAD>
 
 =end original
 
-�����ȥ��饹��̾���Ĥ��Υ١������饹��UNIVERSAL ���饹�򸡺����ơ�
-�����Τ�����⤬�׵ᤵ�줿�᥽�åɤ���äƤ��ʤ���С�
-AUTOLOAD() �Ȥ���̾���Υ᥽�åɤ򸡺����ޤ���
-AUTOLOAD �����Ĥ���С����Υ᥽�åɤϸ����ä��᥽�åɤ������
-�ƤӽФ��졢�ѥå������������Х�� $AUTOLOAD ��᥽�åɤδ�������̾��
-�ʤ�褦�����ꤷ�ޤ���
+カレントクラス、名前つきのベースクラス、UNIVERSAL クラスを検索して、
+これらのいずれもが要求されたメソッドを持っていなければ、
+AUTOLOAD() という名前のメソッドを検索します。
+AUTOLOAD が見つかれば、このメソッドは見失ったメソッドの途中で
+呼び出され、パッケージグローバルの $AUTOLOAD をメソッドの完全修飾名に
+なるように設定します。
 X<AUTOLOAD>
 
 =begin original
@@ -402,7 +402,7 @@ If none of that works, Perl finally gives up and complains.
 
 =end original
 
-�����ޤ��������Ԥ����ʤ�С�Perl �ϲ���夲�ƥ��顼��å�������Ф��ޤ���
+ここまで全部失敗したならば、Perl は音を上げてエラーメッセージを出します。
 
 =begin original
 
@@ -411,7 +411,7 @@ X<AUTOLOAD>
 
 =end original
 
-AUTOLOAD �ηѾ���ߤ᤿�����ϡ�ñ�˰ʲ��Τ褦�ˤ����:
+AUTOLOAD の継承を止めたい場合は、単に以下のようにすると:
 X<AUTOLOAD>
 
 	sub AUTOLOAD;
@@ -422,7 +422,7 @@ and the call will die using the name of the sub being called.
 
 =end original
 
-�ƤӽФ���ͽ�����줿���֥롼�����̾����Ȥä� die ���ޤ���
+呼び出しは予備されたサブルーチンの名前を使って die します。
 
 =begin original
 
@@ -438,17 +438,17 @@ X<inheritance, method> X<inheritance, data>
 
 =end original
 
-Perl �Υ��饹�ϥ᥽�åɤηѾ��Τߤ�Ԥ��ޤ���
-�ǡ����ηѾ��ϥ��饹���Ȥˤޤ�����Ƥ��ޤ���
-���Τ��Ȥ� Perl ������ǤϤ���ޤ���
-�ʤ��ʤ顢����ʬ�Υ��饹��̵̾�ϥå����Ȥäơ����饹�Υ��֥������Ȥ�
-°�����ǥ벽���Ƥ��ޤ���
-����̵̾�ϥå���Ϥ��Υ��֥������Ȥ��Ф��Ʋ�������Ԥ��褦��
-�͡��ʥ��饹��˸�ͭ��̾�����֤򾮤�������ʬ��������̤����ޤ���
-����˴ؤ�������Ϥ��ʤ����Ȥä��ϥå���ΤҤȤ����餬
-���˻Ȥ�줿��ΤǤϤʤ��Ȥ������Ȥ˳ο������Ƥʤ����ȤǤ���
-����˴ؤ��븽��Ū���б����ϡ��ϥå���Υե������̾��
-�ѥå�����̾��Ȥ��Ȥ�����ΤǤ���
+Perl のクラスはメソッドの継承のみを行います。
+データの継承はクラス自身にまかされています。
+このことは Perl の問題ではありません。
+なぜなら、大部分のクラスは無名ハッシュを使って、クラスのオブジェクトの
+属性をモデル化しています。
+この無名ハッシュはそのオブジェクトに対して何事かを行うような
+様々なクラス毎に固有の名前空間を小さくきり分ける役割を果たします。
+これに関する問題はあなたが使ったハッシュのひとかけらが
+既に使われたものではないということに確信が持てないことです。
+これに関する現実的な対応策は、ハッシュのフィールド名に
+パッケージ名を使うというものです。
 X<inheritance, method> X<inheritance, data>
 
     sub bump {
@@ -459,7 +459,7 @@ X<inheritance, method> X<inheritance, data>
 =head2 A Method is Simply a Subroutine
 X<method>
 
-(�᥽�åɤ�ñ�ʤ륵�֥롼����)
+(メソッドは単なるサブルーチン)
 
 =begin original
 
@@ -472,13 +472,13 @@ methods and instance methods.
 
 =end original
 
-C++ �ȤϰۤʤꡢPerl �ϥ᥽�å�������Ф������̤ʹ�ʸ����äƤ��ޤ���
-(�������ʤ��顢��Ҥ���褦�˥᥽�åɤε�ư�Τ���ˤϤ���äȤ���
-��ʸ���󶡤��Ƥ��ޤ�)��
-�᥽�åɤϤ����������Ȥ��ơ����Υ᥽�åɤ�ư�������֥�������
-(��ե����)���⤷���ϥѥå�����(ʸ����)����Ԥ��Ƥ��ޤ���
-�᥽�åɤθƤӽФ����ˤϤˤ�����ढ�ꡢ
-���줾��䤿�������饹�᥽�åɡ����󥹥��󥹥᥽�åɤȸƤ֤�ΤǤ���
+C++ とは異なり、Perl はメソッド定義に対する特別な構文を持っていません
+(しかしながら、後述するようにメソッドの起動のためにはちょっとした
+構文を提供しています)。
+メソッドはその第一引数として、そのメソッドを起動したオブジェクト
+(リファレンス)、もしくはパッケージ(文字列)を期待しています。
+メソッドの呼び出し方にはには二種類あり、
+それぞれ私たちがクラスメソッド、インスタンスメソッドと呼ぶものです。
 
 =begin original
 
@@ -495,19 +495,19 @@ object by name:
 
 =end original
 
-���饹�᥽�åɤϡ������������Ȥ��ƥ��饹��̾������Ԥ��ޤ���
-���饹�᥽�åɤϥ��饹���Τ��Ф��뵡ǽ���󶡤����ΤǤ��äơ����饹��
-°����ġ��Υ��֥������Ȥ��Ф����ΤǤϤ���ޤ���
-���󥹥ȥ饯�������̤ϥ��饹�᥽�åɤǤ�����
-���ذƤˤĤ��Ƥ� L<perltoot> �� L<perltooc> �򻲾Ȥ��Ƥ���������
-¿���Υ��饹�᥽�åɤ�ñ��ˤ�����������̵�뤷�ޤ���
-����ϡ����˼�ʬ���֤���Ƥ���ѥå�������̾�����ΤäƤ��뤷��
-�ѥå��������ɤΤ褦�ʷ�ϩ�ǵ�ư���줿�Τ���
-���ˤ���ɬ�פ��ʤ�����Ǥ���
-(�̾�Υ��󥹥��󥹥᥽�åɤ�Ʊ���褦�˥��饹�᥽�åɤϷѾ��ڤ�
-���äƤ���Τǡ�����餬Ʊ��Ǥ���ɬ�פϤ���ޤ���)���饹�᥽�åɤ�
-�⤦��Ĥ�ŵ��Ū�ʻ������̾���ˤ�äƥ��֥������Ȥ�
-�������뤿��Τ�ΤǤ���
+クラスメソッドは、その第一引数としてクラスの名前を期待します。
+クラスメソッドはクラス全体に対する機能を提供するものであって、クラスに
+属する個々のオブジェクトに対するものではありません。
+コンストラクタは普通はクラスメソッドですが、
+代替案については L<perltoot> と L<perltooc> を参照してください。
+多くのクラスメソッドは単純にその第一引数を無視します。
+これは、既に自分が置かれているパッケージの名前を知っているし、
+パッケージがどのような経路で起動されたのかを
+気にする必要がないからです。
+(通常のインスタンスメソッドと同じようにクラスメソッドは継承木に
+従っているので、これらが同一である必要はありません)クラスメソッドの
+もう一つの典型的な使用例は名前によってオブジェクトを
+検査するためのものです。
 
     sub find {
 	my ($class, $name) = @_;
@@ -522,10 +522,10 @@ and then uses that as an ordinary reference.
 
 =end original
 
-���󥹥��󥹥᥽�åɤϡ������������Ȥ��ƥ��֥������ȤΥ�ե���󥹤�
-���Ԥ��ޤ���
-ŵ��Ū�ˤϡ��������� "self" �Ȥ� "this" �Ȥ��ä��ѿ��� shift ���졢
-�ʸ���̾�Υ�ե���󥹤Τ褦�˰����ޤ���
+インスタンスメソッドは、その第一引数としてオブジェクトのリファレンスを
+期待します。
+典型的には、第一引数は "self" とか "this" といった変数に shift され、
+以後は通常のリファレンスのように扱います。
 
     sub display {
 	my $self = shift;
@@ -538,7 +538,7 @@ and then uses that as an ordinary reference.
 =head2 Method Invocation
 X<invocation> X<method> X<arrow> X<< -> >>
 
-(�᥽�åɤε�ư)
+(メソッドの起動)
 
 =begin original
 
@@ -548,9 +548,9 @@ the arrow notation:
 
 =end original
 
-���Ū�����뤤�Ϥ���¾���͡�����ͳ�ˤ�äơ�Perl �ϥ᥽�åɸƤӽФ���
-�񤯤���Ρ���Ĥ���������ˡ���󶡤��Ƥ��ޤ���
-���ñ��Ǥ�����Ū����ˡ�������ˡ��Ȥ����ȤǤ�:
+歴史的、あるいはその他の様々な理由によって、Perl はメソッド呼び出しを
+書くための、二つの等価な方法を提供しています。
+より単純でより一般的な方法は矢印記法を使うことです:
 
     my $fred = Critter->find("Fred");
     $fred->display("Height", "Weight");
@@ -564,10 +564,10 @@ dereferencing.
 
 =end original
 
-��ե���󥹤��Ф��� C<< -> >> �黻�Ҥλ��ѤˤĤ��Ƥϴ���
-�Ƥ���Ǥ��뤳�ȤǤ��礦��
-�ºݤΤȤ�������Ҥ� C<$fred> �ϥ��֥������ȤؤΥ�ե���󥹤ʤΤǡ�
-�᥽�åɸƤӽФ���ñ�˥ǥ�ե���󥹤��̤η��ȹͤ��뤳�Ȥ��Ǥ��ޤ���
+リファレンスに対する C<< -> >> 演算子の使用については既に
+親しんでいることでしょう。
+実際のところ、上述の C<$fred> はオブジェクトへのリファレンスなので、
+メソッド呼び出しを、単にデリファレンスの別の形と考えることができます。
 
 =begin original
 
@@ -577,9 +577,9 @@ So the above code is mostly equivalent to:
 
 =end original
 
-����κ�¦�˲������뤫����ե���󥹤����饹̾�����Ϻǽ�ΰ����Ȥ���
-�᥽�åɥ��֥롼������Ϥ���ޤ���
-���äơ���ҤΥ����ɤϰʲ��Τ�ΤȤۤȤ�������Ǥ�:
+矢印の左側に何があるか、リファレンスかクラス名か、は最初の引数として
+メソッドサブルーチンに渡されます。
+従って、上述のコードは以下のものとほとんど等価です:
 
     my $fred = Critter::find("Critter", "Fred");
     Critter::display($fred, "Height", "Weight");
@@ -595,12 +595,12 @@ it in any base classes of that package, and so on.
 
 =end original
 
-���֥롼���󤬤ɤΥѥå������ˤ��뤫�� Perl �Ϥɤ���ä��Τ�ΤǤ��礦��?
-����κ�¦�򸫤ޤ�; ����ϥѥå�����̾�����֥������ȤؤΥ�ե����
-(�Ĥޤ�ѥå������� bless ���줿����) �Τɤ��餫�Ǥ���ɬ�פ�����ޤ���
-�ɤ���ξ��⡢���줬 Perl ��õ���Ϥ��ѥå������Ǥ���
-�⤷���Υѥå������˻��ꤵ�줿̾���Υ��֥롼���󤬤ʤ��ʤ顢Perl ��
-���Υѥå������δ��쥯�饹��õ���Ϥ�ޤ�; ����򷫤��֤��ޤ���
+サブルーチンがどのパッケージにあるかを Perl はどうやって知るのでしょうか?
+矢印の左側を見ます; これはパッケージ名かオブジェクトへのリファレンス
+(つまりパッケージに bless された何か) のどちらかである必要があります。
+どちらの場合も、それが Perl が探し始めるパッケージです。
+もしそのパッケージに指定された名前のサブルーチンがないなら、Perl は
+そのパッケージの基底クラスを探し始めます; それを繰り返します。
 
 =begin original
 
@@ -608,7 +608,7 @@ If you need to, you I<can> force Perl to start looking in some other package:
 
 =end original
 
-�⤷ɬ�פʤ顢Perl ��¾�Υѥå������򸫤�褦�˶������뤳�Ȥ� I<��ǽ�Ǥ�>��
+もし必要なら、Perl に他のパッケージを見るように強制することも I<可能です>。
 
     my $barney = MyCritter->Critter::find("Barney");
     $barney->Critter::display("Height", "Weight");
@@ -622,11 +622,11 @@ to start looking for the subroutines in C<Critter>.
 
 =end original
 
-������ C<MyCritter> �ϡ������餯��ʬ���Ȥ� find() �� display() ��
-������Ƥ���C<Critter> �Υ��֥��饹�Ǥ���
-�����Υ᥽�åɤ����򤷤Ƥ��뤫�ϻ��ꤷ�Ƥ��ޤ��󤬡�
-�����Υ��֥롼����� C<Critter> ����õ���褦�� Perl �˶������Ƥ���Τǡ�
-���������ˤʤ�ޤ���
+ここで C<MyCritter> は、おそらく自分自身の find() と display() を
+定義しているC<Critter> のサブクラスです。
+これらのメソッドが何をしているかは指定していませんが、
+これらのサブルーチンを C<Critter> から探すように Perl に強制しているので、
+それは問題になりません。
 
 =begin original
 
@@ -637,8 +637,8 @@ X<SUPER>
 
 =end original
 
-�嵭�����̤ʾ��Ȥ��ơ����ߤΥ��饹�� C<@ISA> �ꥹ�Ȥˤ���ѥå���������
-�᥽�åɤ�õ���Ϥ��褦�� Perl �˻ؼ����롢C<SUPER> �������饹�⤢��ޤ���
+上記の特別な場合として、現在のクラスの C<@ISA> リストにあるパッケージから
+メソッドを探し始めるように Perl に指示する、C<SUPER> 擬似クラスもあります。
 X<SUPER>
 
     package MyCritter;
@@ -660,11 +660,11 @@ X<SUPER>
 
 =end original
 
-C<SUPER> �ϡ����֥������ȤΥ����ѡ����饹�ǤϤʤ���I<�����ȥѥå�����> ��
-�����ѡ����饹�򻲾Ȥ���Ȥ������Ȥ����դ��뤳�ȤϽ��פǤ���
-�ޤ� C<SUPER> �������饹�ϸ��ߤΤȤ����᥽�å�̾�ؤν����ҤȤ��ƤΤ�
-�Ȥ������̤˻Ȥ��륯�饹̾�Τ���¾����ˡ�ϻȤ��ޤ���
-�Ĥޤ�:
+C<SUPER> は、オブジェクトのスーパークラスではなく、I<カレントパッケージ> の
+スーパークラスを参照するということに注意することは重要です。
+また C<SUPER> 擬似クラスは現在のところメソッド名への修飾子としてのみ
+使え、普通に使われるクラス名のその他の方法は使えません。
+つまり:
 X<SUPER>
 
     something->SUPER::method(...);	# OK
@@ -679,9 +679,9 @@ So the following statement is valid:
 
 =end original
 
-���饹̾�䥪�֥������ȥ�ե���󥹤�����ˡ�����κ�¦��
-�֤����ΤΤɤ��餫���֤�Ǥ�դμ���Ȥ��ޤ���
-���äơ��ʲ���ʸ��ͭ���Ǥ�:
+クラス名やオブジェクトリファレンスの代わりに、矢印の左側に
+置けるもののどちらかを返す任意の式も使えます。
+従って、以下の文は有効です:
 
     Critter->find("Fred")->display("Height", "Weight");
 
@@ -691,7 +691,7 @@ and so is the following:
 
 =end original
 
-�����ưʲ��Τ褦�ˤ��ޤ�:
+そして以下のようにします:
 
     my $fred = (reverse "rettirC")->find(reverse "derF");
 
@@ -703,13 +703,13 @@ reference can also be used.
 
 =end original
 
-����α�¦��ŵ��Ū�ˤϥ᥽�å�̾�Ǥ������᥽�å�̾�䥵�֥롼����
-��ե���󥹤����ä�ñ�㥹�����ѿ���Ȥ��ޤ���
+矢印の右側は典型的にはメソッド名ですが、メソッド名やサブルーチン
+リファレンスが入った単純スカラ変数も使えます。
 
 =head2 Indirect Object Syntax
 X<indirect object syntax> X<invocation, indirect> X<indirect>
 
-(���ܥ��֥������ȹ�ʸ)
+(間接オブジェクト構文)
 
 =begin original
 
@@ -719,10 +719,10 @@ objects were introduced, and is still used with filehandles like this:
 
 =end original
 
-�᥽�åɤ�ư����¾����ˡ�ϡ��ִ��ܥ��֥������ȡ׵�ˡ�ȸƤФ����ˡ��
-�Ȥ���ΤǤ���
-����ʸˡ�ϡ����֥������Ȥ�Ƴ��������ꤺ�äȰ����� Perl 4 ����
-���Ѳ�ǽ�ǡ��ʲ��Τ褦�ˡ��ե�����ϥ�ɥ�Ǻ��Ǥ�Ȥ��Ƥ��ޤ�:
+メソッドを起動する他の方法は、「間接オブジェクト」記法と呼ばれる方法を
+使うものです。
+この文法は、オブジェクトが導入されるよりずっと以前の Perl 4 から
+利用可能で、以下のように、ファイルハンドルで今でも使われています:
 
    print STDERR "help!!!\n";
 
@@ -732,8 +732,8 @@ The same syntax can be used to call either object or class methods.
 
 =end original
 
-�����Ʊ����ʸ�򡢥��饹�᥽�åɤ䥤�󥹥��󥹥᥽�åɤ�ƤӽФ��Ȥ���
-�Ȥ����Ȥ��Ǥ��ޤ���
+これと同じ構文を、クラスメソッドやインスタンスメソッドを呼び出すときに
+使うことができます。
 
    my $fred = find Critter "Fred";
    display $fred "Height", "Weight";
@@ -746,10 +746,10 @@ instead of an ordinary subroutine call.
 
 =end original
 
-���֥������Ȥ䥯�饹̾�ȥѥ�᡼���δ֤˥���ޤ��ʤ����Ȥ�
-���ܤ��Ƥ���������
-����ˤ�äơ��̾�Υ��֥롼����ƤӽФ��ǤϤʤ����ܥ᥽�åɸƤӽФ���
-���褦�Ȥ��Ƥ��뤳�Ȥ� Perl �������Ƥ��ޤ���
+オブジェクトやクラス名とパラメータの間にカンマがないことに
+注目してください。
+これによって、通常のサブルーチン呼び出しではなく間接メソッド呼び出しを
+しようとしていることを Perl に伝えています。
 
 =begin original
 
@@ -761,12 +761,12 @@ that are hard to detect.
 
 =end original
 
-���������������ʤ��ä���?
-���ξ�硢Perl �ϵ����Ƥ����Τ��¬���ʤ���Фʤ�ޤ���
-����˰������Ȥˡ����ο�¬�� B<����ѥ����> �˹Ԥ�ʤ���Фʤ�ޤ���
-Perl ���̾���������������ΤǤ����������Ǥʤ��ä���硢���ʤ��ϥ᥽�åɤȤ���
-�ؿ��ƤӽФ�������ѥ��뤵�줿��Τ�������ޤ���
-����ϸ��Ф����˺���ʥХ��Ȥʤ������ΤǤ���
+しかし、引数がなかったら?
+この場合、Perl は求められているものを推測しなければなりません。
+さらに悪いことに、この推測は B<コンパイル時> に行わなければなりません。
+Perl は通常正しい答を得るのですが、そうでなかった場合、あなたはメソッドとして
+関数呼び出しがコンパイルされたものを受け取ります。
+これは検出が非常に困難なバグとなり得るものです。
 
 =begin original
 
@@ -780,14 +780,14 @@ years of debugging it will take you to track down such subtle bugs.
 
 =end original
 
-���󤲤�ȡ�(C++ �ץ�����ޡ��������������ʤ�褦��)C<new> �Ȥ���
-�᥽�åɤδ���ɽ���ǤθƤӽФ��ϡ������ȤΥ������פǤ��Ǥ� C<new> �ؿ���
-���ä����ˤϴְ�ä����֥롼����ƤӽФ��˥���ѥ��뤵��Ƥ��ޤ��ޤ���
-��̤Ȥ��ơ�˾��Ǥ������饹�᥽�åɤǤϤʤ��������ȥѥå�������
-C<new> �����֥롼����Ȥ��ƸƤӽФ���뤳�Ȥˤʤ�ΤǤ���
-����ѥ���Ϥ�����������ñ��� C<require> ��Ф��Ƥ������Ȥˤ�ä�
-�򤱤褦�Ȼ�ߤޤ��������줬���Ԥ��Ƥ��ޤä����ˤϥǥХå�����Τ�
-�ȤƤ����ݤʷ�̤ȤʤäƤ��ޤ����Ȥˤʤ�Ǥ��礦��
+例を挙げると、(C++ プログラマーがそうしたくなるような)C<new> という
+メソッドの間接表記での呼び出しは、カレントのスコープですでに C<new> 関数が
+あった場合には間違ったサブルーチン呼び出しにコンパイルされてしまいます。
+結果として、望んでいたクラスメソッドではなく、カレントパッケージの
+C<new> がサブルーチンとして呼び出されることになるのです。
+コンパイラはこの問題を裸の単語の C<require> を覚えておくことによって
+避けようと試みますが、それが失敗してしまった場合にはデバッグするのが
+とても面倒な結果となってしまうことになるでしょう。
 
 =begin original
 
@@ -801,13 +801,13 @@ next two lines:
 
 =end original
 
-����ʸˡ�ˤ����꤬����ޤ�: ���ܥ��֥������Ȥ�̾�����������ѿ���
-�֥��å��˸��ꤵ��ޤ�; �ʤ��ʤ顢¾�θ���ˤ�����
-postfix dereference ��Ʊ�ͤˡ�¿���������ɤߤ򤹤�ɬ�פ����뤫��Ǥ�
-(������ C<print> �� C<printf> �Τ褦�ʴؿ��ˤ�����ե�����ϥ�ɥ륹���åȤ�
-Ʊ�ͤʴ�̯�ʥ롼��Ǥ�)��
-����ϼ��˵󤲤���Τ褦�ˡ����𤷤�ͥ���������
-Ƴ�����Ȥˤʤ�ޤ���
+この文法にも問題があります: 間接オブジェクトは名前、スカラ変数、
+ブロックに限定されます; なぜなら、他の言語における
+postfix dereference と同様に、多すぎる先読みをする必要があるからです
+(これらは C<print> や C<printf> のような関数におけるファイルハンドルスロットと
+同様な奇妙なルールです)。
+これは次に挙げる例のように、混乱した優先順位問題を
+導くことになります。
 
     move $obj->{FIELD};                 # probably wrong!
     move $ary[$i];                      # probably wrong!
@@ -818,7 +818,7 @@ Those actually parse as the very surprising:
 
 =end original
 
-�����Ϥʤ�Ȱʲ��Τ褦�˲�ᤵ���ΤǤ�:
+これらはなんと以下のように解釈されるのです:
 
     $obj->move->{FIELD};                # Well, lookee here
     $ary->move([$i]);                   # Didn't expect this one, eh?
@@ -829,7 +829,7 @@ Rather than what you might have expected:
 
 =end original
 
-���ʤ������Ԥ����ΤϤ����Ǥ��礦:
+あなたが期待したのはこうでしょう:
 
     $obj->{FIELD}->move();              # You should be so lucky.
     $ary[$i]->move;                     # Yeah, sure.
@@ -841,8 +841,8 @@ to use a block around the indirect object:
 
 =end original
 
-���ܥ��֥������ȹ�ʸ�������������񤤤����뤿��ˤϡ����ܥ��֥������Ȥμ����
-�֥��å���Ȥ�ɬ�פ����뤫�⤷��ޤ���:
+間接オブジェクト構文の正しい振る舞いを得るためには、間接オブジェクトの周りに
+ブロックを使う必要があるかもしれません:
 
     move {$obj->{FIELD}};
     move {$ary[$i]};
@@ -858,17 +858,17 @@ familiar with it.
 
 =end original
 
-���ξ��Ǥ⡢�⤷���ߤΥѥå������ˤ��ޤ��� C<move> �Ȥ���̾���δؿ���
-����ȡ�Ʊ������Ū���꤬����ޤ���
-B<C<< -> >> ��ˡ�Ϥ�����ʪ���ʤ����ޤ����Τɤ���αƶ�������ʤ��Τǡ�
-���������Ȥ����Ȥ򴫤�ޤ���>
-����������ɤϴ��ܥ��֥������ȵ�ˡ��Ȥä������ɤ��ɤ�ɬ�פ�
-���뤫�⤷��ʤ��Τǡ����ε�ˡ�˿Ƥ���Ǥ������Ȥ����פǤ���
+この場合でも、もし現在のパッケージにたまたま C<move> という名前の関数が
+あると、同じ潜在的問題があります。
+B<C<< -> >> 記法はこれらの物騒なあいまいさのどちらの影響も受けないので、
+これだけを使うことを勧めます。>
+しかし、結局は間接オブジェクト記法を使ったコードを読む必要が
+あるかもしれないので、この記法に親しんでおくことが重要です。
 
 =head2 Default UNIVERSAL methods
 X<UNIVERSAL>
 
-(�ǥե���Ȥ� UNIVERSAL �᥽�å�)
+(デフォルトの UNIVERSAL メソッド)
 
 =begin original
 
@@ -877,8 +877,8 @@ are inherited by all other classes:
 
 =end original
 
-C<UNIVERSAL> �ѥå������ˤϡ�¾�����ƤΥ��饹����ưŪ�˷Ѿ�����
-�ʲ��Τ褦�ʥ᥽�åɤ�����ޤ���
+C<UNIVERSAL> パッケージには、他の全てのクラスが自動的に継承する
+以下のようなメソッドがあります。
 
 =over 4
 
@@ -891,8 +891,8 @@ C<isa> returns I<true> if its object is blessed into a subclass of C<CLASS>
 
 =end original
 
-C<isa> �ϡ����֥������Ȥ� C<CLASS> �Υ��֥��饹�� bless ����Ƥ����
-I<true> ���֤��ޤ���
+C<isa> は、オブジェクトが C<CLASS> のサブクラスに bless されていれば
+I<true> を返します。
 
 =begin original
 
@@ -902,9 +902,9 @@ class, so don't do it.
 
 =end original
 
-C<UNIVERSAL::isa> ��2 ��������ĥ��֥롼����Ȥ��ƸƤӽФ����Ȥ�Ǥ��ޤ���
-������󡢤⤷ï�������饹����� C<isa> �򥪡��С��饤�ɤ��Ƥ����
-�ɤ��ʤ����Ȥˤʤ�Τǡ�����򤷤ƤϤ����ޤ���
+C<UNIVERSAL::isa> を、2 引数を持つサブルーチンとして呼び出すこともできます。
+もちろん、もし誰かがクラスの中で C<isa> をオーバーライドしていると
+良くないことになるので、これをしてはいけません。
 
 =begin original
 
@@ -914,8 +914,8 @@ X<invocant> X<blessed>
 
 =end original
 
-�⤷��ͭ���ʸƤӽФ����������äƤ��뤫�ɤ�������ꤹ��ɬ�פ�����ʤ顢
-L<Scalar::Util> �� C<blessed> ��ȤäƤ�������:
+もし、有効な呼び出し元を受け取っているかどうかを決定する必要があるなら、
+L<Scalar::Util> の C<blessed> を使ってください:
 X<invocant> X<blessed>
 
     if (blessed($ref) && $ref->isa( 'Some::Class')) {
@@ -929,8 +929,8 @@ blessed into, or C<undef>.
 
 =end original
 
-C<blessed> �ϡ������� bless ����Ƥ���ѥå�����̾�������뤤��C<undef> ��
-�֤��ޤ���
+C<blessed> は、引数が bless されているパッケージ名か、あるいはC<undef> を
+返します。
 
 =item can(METHOD)
 X<can>
@@ -943,9 +943,9 @@ I<undef> is returned.
 
 =end original
 
-C<can> �ϥ��֥������Ȥ� C<METHOD> �Ȥ����᥽�åɤ���äƤ��뤫�ɤ����򸡺�����
-���äƤ���Ф��Υ��֥롼������Ф����ե���󥹤��֤������äƤ��ʤ����
-I<undef> ���֤��ޤ���
+C<can> はオブジェクトが C<METHOD> というメソッドを持っているかどうかを検査し、
+持っていればそのサブルーチンに対するリファレンスを返し、持っていなければ
+I<undef> を返します。
 
 =begin original
 
@@ -955,9 +955,9 @@ The same caveats for calling C<UNIVERSAL::isa> directly apply here, too.
 
 =end original
 
-C<UNIVERSAL::can> ��2 ��������ĥ��֥롼����Ȥ��ƸƤӽФ����Ȥ�Ǥ��ޤ���
-�⤷ 1 �Ĥ�ΰ��������֥������Ȥ����饹̾�Ǥʤ��ä���硢��� I<undef> ��
-C<UNIVERSAL::isa> ��ľ�ܸƤӽФ�����Ʊ���������⤢��ޤ���
+C<UNIVERSAL::can> を、2 引数を持つサブルーチンとして呼び出すこともできます。
+もし 1 つめの引数がオブジェクトかクラス名でなかった場合、常に I<undef> を
+C<UNIVERSAL::isa> を直接呼び出す場合と同じ問題点もあります。
 
 =item VERSION( [NEED] )
 X<VERSION>
@@ -973,12 +973,12 @@ C<VERSION> form of C<use>.
 
 =end original
 
-C<VERSION> �ϥ��饹(�ѥå�����)�ΥС�������ֹ���֤��ޤ���
-���� NEED ��Ϳ�����Ƥ����硢�����ȥС������(���ꤵ�줿�ѥå�����
-�ѿ� $VERSION ���������ޤ�)�� NEED ���⾮�����ʤ����Ȥ򸡺����ޤ���
-�⤷��������� die ���ޤ���
-���Υ᥽�åɤ��̾說�饹�᥽�åɤȤ��ƸƤӽФ���ޤ���
-�ޤ������Υ᥽�åɤ� C<use> �� C<VERSION> �����ˤ�äƼ�ưŪ�˸ƤӽФ���ޤ���
+C<VERSION> はクラス(パッケージ)のバージョン番号を返します。
+引数 NEED が与えられている場合、カレントバージョン(指定されたパッケージ
+変数 $VERSION で定義されます)が NEED よりも小さくないことを検査します。
+もし小さければ die します。
+このメソッドは通常クラスメソッドとして呼び出されます。
+また、このメソッドは C<use> の C<VERSION> 形式によって自動的に呼び出されます。
 
     use A 1.2 qw(some imported subs);
     # implies:
@@ -994,10 +994,10 @@ strange effects if the Perl code dynamically changes @ISA in any package.
 
 =end original
 
-B<����:> C<can> �� Perl �����������ɤ�᥽�åɤθ����Τ���˻��Ѥ���
-C<isa>�Ϥ�����ɤ�������ˡ�ȡ�����å��󥰤�Ԥ��ޤ���
-����ˤ�ꡢ@ISA ��ѥå����������ưŪ���ѹ������ꤹ��ȡ���̯�ʱƶ���
-������������ǽ��������ޤ���
+B<注意:> C<can> は Perl の内部コードをメソッドの検索のために使用し、
+C<isa>はそれと良く似た手法と、キャッシングを行います。
+これにより、@ISA をパッケージの中で動的に変更したりすると、奇妙な影響を
+引き起こす可能性があります。
 
 =begin original
 
@@ -1007,16 +1007,16 @@ available to your program (and you should not do so).
 
 =end original
 
-Perl �ץ������� XS �ץ��������̤��ơ�UNIVERSAL ���饹��¾�Υ᥽�åɤ�
-�ɲä��뤳�Ȥ�Ǥ��ޤ���
-�ɲä����᥽�åɤ򼫺�Υץ������ǻȤ���褦�ˤ��뤿���
-C<use UNIVERSAL> ��Ԥ�ɬ�פϤ���ޤ���
-(�����Ƥ�������٤��ǤϤ���ޤ���)��
+Perl プログラムや XS プログラムを通じて、UNIVERSAL クラスに他のメソッドを
+追加することもできます。
+追加したメソッドを自作のプログラムで使えるようにするために
+C<use UNIVERSAL> を行う必要はありません
+(そしてそうするべきではありません)。
 
 =head2 Destructors
 X<destructor> X<DESTROY>
 
-(�ǥ��ȥ饯��)
+(デストラクタ)
 
 =begin original
 
@@ -1034,19 +1034,19 @@ C<%{$_[0]}> etc.) is not similarly constrained.
 
 =end original
 
-���륪�֥������Ȥ��Ф���Ǹ�Υ�ե���󥹤����Ǥ����Ȥ������Υ��֥������Ȥ�
-��ưŪ���˴�����ޤ�(����Ϥ��ʤ�����ե���󥹤�����ѿ��˳�Ǽ���Ƥ��ơ�
-�ץ�������λ����Ȥ��Ǥ⤽���Ǥ�)��
-�⤷���֥������Ȥ����������ľ��������򲣼�ꤷ�����ΤǤ���С����饹��
-��� DESTROY �᥽�åɤ�������뤳�Ȥ��Ǥ��ޤ���
-���Υ᥽�åɤ�Ŭ�ڤʻ����˼�ưŪ�˸ƤӽФ��졢���ʤ���ɬ�פȤ���
-���꡼�󥢥åפ�Ԥ����Ȥ��Ǥ��ޤ���
-�ǥ��ȥ饯�Ȥ���륪�֥������Ȥ��Ф���������(����ͣ��ΰ���)�Ȥ���
-��ե���󥹤��Ϥ��ޤ���
-���Υ�ե���󥹤��ɤ߹������Ѥ��ͤǤ��ꡢ�ǥ��ȥ饯�������
-C<$_[0]> �����뤳�Ȥˤ�ä��ѹ����뤳�ȤϤǤ��ޤ���
-���֥������Ȥ��켫��(C<${$_[0]}>, C<@{$_[0]}>, C<%{$_[0]}> �Τ褦��̾����
-�Ĥ�����Τ��Ф����ե����)��Ʊ�ͤ˶�������ޤ���
+あるオブジェクトに対する最後のリファレンスが消滅したとき、そのオブジェクトは
+自動的に破棄されます(これはあなたがリファレンスを大域変数に格納していて、
+プログラムを終了するときでもそうです)。
+もしオブジェクトが解放される直前に制御を横取りしたいのであれば、クラスの
+中で DESTROY メソッドを定義することができます。
+このメソッドは適切な時期に自動的に呼び出され、あなたが必要とする
+クリーンアップを行うことができます。
+デストラクトされるオブジェクトに対する第一引数(かつ唯一の引数)として
+リファレンスを渡します。
+このリファレンスは読み込み専用の値であり、デストラクタの中で
+C<$_[0]> を操作することによって変更することはできません。
+オブジェクトそれ自身(C<${$_[0]}>, C<@{$_[0]}>, C<%{$_[0]}> のような名前の
+ついたものに対するリファレンス)は同様に強制されません。
 
 =begin original
 
@@ -1057,10 +1057,10 @@ localise C<$?> if you use C<system> or backticks.
 
 =end original
 
-DESTROY �᥽�åɤ�ͽ¬��ǽ�ʲ���ƤӽФ���뤫�⤷��ʤ��Τǡ�
-�᥽�åɤ������������ƤΥ������Х��ѿ���������벽���뤳�Ȥ����פǤ���
-�äˡ�C<eval {}> ��Ȥ��ʤ� C<$@> ��C<system> ��ե������Ȥ�Ȥ��ʤ�
-C<$?> ��������벽���Ƥ���������
+DESTROY メソッドは予測不能な回数呼び出されるかもしれないので、
+メソッドが更新する全てのグローバル変数をローカル化することが重要です。
+特に、C<eval {}> を使うなら C<$@> を、C<system> や逆クォートを使うなら
+C<$?> をローカル化してください。
 
 =begin original
 
@@ -1073,12 +1073,12 @@ but is usually never needed.
 
 =end original
 
-�ǥ��ȥ饯������ȴ�������˥�ե���󥹤�� bless ����褦�˥���󥸤���ȡ�
-perl �ϥ����ȤΥǥ��ȥ饯��������ƤӽФ�����Ǻ� bless ���줿���֥������Ȥ�
-����� DESTROY �᥽�åɤ���ٸƤӽФ��ޤ���
-����ϥ��֥������ȤΰѾ����������Τ˻Ȥä��ꡢ���ʤ����ƤӽФ����Ȥ�
-���򤷤��١������饹�Υǥ��ȥ饯�������ݾڤ���Τ˻Ȥ����Ȥ��Ǥ��ޤ���
-�ۤ� DESTROY ��ƤӽФ����Ȥ��ǽ�Ǥ������̾�Ϥ�������ɬ�פϤ���ޤ���
+デストラクタから抜ける前にリファレンスを再 bless するようにアレンジすると、
+perl はカレントのデストラクターから呼び出した後で再 bless されたオブジェクトの
+ための DESTROY メソッドを再度呼び出します。
+これはオブジェクトの委譲を始末するのに使ったり、あなたが呼び出すことを
+選択したベースクラスのデストラクターを保証するのに使うことができます。
+陽に DESTROY を呼び出すことも可能ですが、通常はそうする必要はありません。
 
 =begin original
 
@@ -1089,14 +1089,14 @@ elsewhere.
 
 =end original
 
-�����Ȥ��˴�����륪�֥������Ȥ�°���륪�֥������Ȥ˴ؤ���
-���𤷤ʤ��褦�ˤ��Ƥ���������
-���Τ褦�ʥ��֥������Ȥϥ����ȥ��֥������Ȥ����������Ȥ��˼�ưŪ��
-�������˴����Ԥ�졢¾�Τʤˤ�Τ��Ф����ե���󥹤��ʤ��褦�ˤ��ޤ���
+カレントで破棄されるオブジェクトに属するオブジェクトに関して
+混乱しないようにしてください。
+そのようなオブジェクトはカレントオブジェクトが解放されるときに自動的に
+解放・破棄が行われ、他のなにものに対するリファレンスがないようにします。
 
 =head2 Summary
 
-(�ޤȤ�)
+(まとめ)
 
 =begin original
 
@@ -1106,15 +1106,15 @@ with it for the next six months or so.
 
 =end original
 
-����ǡ������Ǥʤ��٤����Ȥ����ƽ����ޤ�����
-�������ʤ���������Фƥ��֥������Ȼظ���ˡ���˴ؤ�����Ҥ�������ơ�
-������ϻ���������δ�Ǻ��ɬ�פ�����Ǥ��礦��
+これで、ここでなすべきことは全て終わりました。
+今、あなたは部屋を出てオブジェクト指向方法論に関する書籍を購入して、
+そして六ヶ月かそこらの間悩む必要があるでしょう。
 
 =head2 Two-Phased Garbage Collection
 X<garbage collection> X<GC> X<circular reference>
 X<reference, circular> X<DESTROY> X<destructor>
 
-(2 �ե��������١������쥯�����)
+(2 フェーズガベージコレクション)
 
 =begin original
 
@@ -1127,12 +1127,12 @@ probably won't matter.
 
 =end original
 
-�ۤȤ�ɤ���Ū�Τ���ˡ�Perl ��ñ�㤫�Ĺ�®�ʥ�ե���󥹥١�����
-���١������쥯����󥷥��ƥ����Ѥ��ޤ���
-���Τ��ᡢ���Ĥ����ʳ��ˤ�����;�פʥǥ�ե���󥹤������ꡢ���Ѥ��Ƥ��� Perl ��
-�ӥ�ɤ���Ȥ��� C<-O> �ե饰�򥳥�ѥ���˻ȤäƤ��ʤ���С���ǽ���������ޤ���
-Perl ��ӥ�ɤ���Ȥ��� C<cc -O> ��ȤäƤ���С����Υǥ�ե���󥹤�����Ȥ�
-�ʤ�ʤ��Ǥ��礦��
+ほとんどの目的のために、Perl は単純かつ高速なリファレンスベースの
+ガベージコレクションシステムを使用します。
+このため、幾つかの段階において余計なデリファレンスが起こり、使用している Perl を
+ビルドするときに C<-O> フラグをコンパイラに使っていなければ、性能が劣化します。
+Perl をビルドするときに C<cc -O> を使っていれば、このデリファレンスは問題とは
+ならないでしょう。
 
 =begin original
 
@@ -1142,10 +1142,10 @@ idea:
 
 =end original
 
-��꿼�������ϡ������Ǥʤ���ե���󥹥�����Ȥ���äƤ���
-���������Ǥ��ʤ����꡼(unreachable memory)���̾��
-��������ʤ��Ȥ������ȤǤ���
-�������äơ��ʲ��Τ褦�ˤ��뤳�Ȥϰ��������ǥ��Ǥ���
+より深刻な問題は、ゼロでないリファレンスカウントを持っている
+アクセスできないメモリー(unreachable memory)が通常は
+解放されないということです。
+したがって、以下のようにすることは悪いアイデアです。
 
     {
 	my $a;
@@ -1161,11 +1161,11 @@ node such as one might use in a sophisticated tree structure:
 
 =end original
 
-$a ��̵���ʤ�褦�˻פ���ΤǤ������Ǥ��ʤ��ΤǤ���
-�Ƶ�Ū�ǡ�����¤���ۤ����Ȥ�������꡼���򵤤ˤ��ʤ�����ˤϼ�ʬ���Ȥǡ�
-����Ū�ˡ����ʻ��Ȥ�����ʤ���Фʤ�ޤ���
-���Ȥ��С��ڹ�¤�򰷤��Ȥ��˻Ȥ��褦�ʼ��ʻ��ȹ�¤�ΤȤ��ưʲ��Τ褦�ʤ�Τ�
-�ͤ��Ƥߤޤ���
+$a が無くなるように思えるのですが、できないのです。
+再帰的データ構造を構築したとき、メモリリークを気にしないためには自分自身で、
+明示的に、自己参照を壊さなければなりません。
+たとえば、木構造を扱うときに使うような自己参照構造体として以下のようなものを
+考えてみます。
 
     sub new_node {
 	my $class = shift;
@@ -1183,9 +1183,9 @@ construed as a feature, and you shouldn't depend on it.)
 
 =end original
 
-���Τ褦�ʥΡ��ɤ���������Ȥ������ʤ����Ȥ���ʬ�Ǽ��ʻ��Ȥ�����ʤ�
-�¤�Ρ��ɤϤʤ��ʤ�ޤ���(����������С�����ϻ��ͤȤ���
-��ᤵ����ΤǤϤʤ�������˰�¸���٤��ǤϤʤ��Ȥ������ȤǤ�)��
+このようなノードを生成するとき、あなた自身が自分で自己参照を壊さない
+限りノードはなくなりません(言い換えれば、これは仕様として
+解釈されるものではなく、これに依存すべきではないということです)。
 
 =begin original
 
@@ -1193,7 +1193,7 @@ Almost.
 
 =end original
 
-�⤦��©��
+もう一息。
 
 =begin original
 
@@ -1206,15 +1206,15 @@ two-phased garbage collection:
 
 =end original
 
-���󥿥ץ꥿�Υ���åɤ��ǽ�Ū�˥���åȥ����󤹤�Ȥ�(�̾��
-�ץ�������λ����Ȥ�)�������Ȥ��ݤ���ޤ�����������
-mark-and-sweep �����Υ��١������쥯����󤬼¹Ԥ���ޤ���
-�����ơ�(����åȥ����󤵤��)����åɤˤ�äƳ�����Ƥ�줿���٤Ƥ�
-��Τ��˴�����ޤ���
-�����Perl���Ȥ߹��ߤ˻Ȥ���褦�ˤ����ꡢ�ޥ������åɤ��б��Ǥ�������
-���뤿��˽��פʤ��ȤǤ���
-���Ȥ��аʲ��Υץ������� Perl �� 2 �ե��������١������쥯������
-�ǥ�󥹥ȥ졼����󤷤ޤ���
+インタプリタのスレッドが最終的にシャットダウンするとき(通常は
+プログラムを終了するとき)、コストが掛かりますが、完全な
+mark-and-sweep 形式のガベージコレクションが実行されます。
+そして、(シャットダウンされる)スレッドによって割り当てられたすべての
+ものは破棄されます。
+これはPerlを組み込みに使えるようにしたり、マルチスレッドに対応できる言語と
+するために重要なことです。
+たとえば以下のプログラムは Perl の 2 フェーズガベージコレクションを
+デモンストレーションします。
 
     #!/usr/bin/perl
     package Subtle;
@@ -1251,7 +1251,7 @@ When run as F</foo/test>, the following output is produced:
 
 =end original
 
-F</foo/test> �Ȥ��Ƽ¹Ԥ����Ȥ����ʲ��Τ褦�ʽ��Ϥ򤷤ޤ���
+F</foo/test> として実行したとき、以下のような出力をします。
 
     starting program at /foo/test line 18.
     CREATING SCALAR(0x8e5b8) at /foo/test line 7.
@@ -1269,8 +1269,8 @@ garbage collector reaching the unreachable.
 
 =end original
 
-"global destruction" ���ɤ��ˤ��뤫�狼��ޤ���? ����ϡ�����å�
-���١������쥯�������������Ǥ��ʤ����֥������Ȥ���ã�����Ȥ������ȤǤ���
+"global destruction" がどこにあるかわかりますか? これは、スレッド
+ガベージコレクタがアクセスできないオブジェクトに到達したということです。
 
 =begin original
 
@@ -1285,17 +1285,17 @@ See L<perlhack/PERL_DESTRUCT_LEVEL> for more information.
 
 =end original
 
-���֥������ȤϾ���˴�����ޤ���
-���̤Υ�ե����(regulaer refs)���˴�����ʤ��ä����Ǥ⤽���Ǥ�����
-���̤Υ�ե���󥹤�ʬ�䤵�줿�ѥ����˴����줿���Ǥ�����
-�̾�Υ�ե����(ordinary refs)�����֥������ȥǥ��ȥ饯��������ʬ���Ȥ�
-�˴����Ƥ��ޤä���ե���󥹤�Ȥ��Τ��ɤ����Ȥ��������˴�����ޤ���
-plain �ʥ�ե���󥹤ϡ����Υǥ��ȥ饯�ȥ�٥뤬 0 �ʾ�Ǥ���Ȥ��ˤ�
-���١������쥯�����Τ߹Ԥʤ��ޤ���
-Perl ��ӥ�ɤ���Ȥ��� C<-DDEBUGGING> ��ͭ���ˤʤäƤ���С�
-PERL_DESTRUCT_LEVEL �Ȥ����Ķ��ѿ����Ф�������򤹤뤳�Ȥˤ�äơ�
-�������Х�ǥ��ȥ饯�����Υ�٥�򸡺����뤳�Ȥ��Ǥ��ޤ���
-����ʤ����ˤĤ��Ƥ� L<perlhack/PERL_DESTRUCT_LEVEL> �򻲾Ȥ��Ƥ���������
+オブジェクトは常に破棄されます。
+一般のリファレンス(regulaer refs)が破棄されなかった場合でもそうですし、
+一般のリファレンスが分割されたパスで破棄された場合でさえ、
+通常のリファレンス(ordinary refs)がオブジェクトデストラクターが自分自身を
+破棄してしまったリファレンスを使うのを防ごうとする前に破棄されます。
+plain なリファレンスは、そのデストラクトレベルが 0 以上であるときには
+ガベージコレクションのみ行なわれます。
+Perl をビルドするときに C<-DDEBUGGING> が有効になっていれば、
+PERL_DESTRUCT_LEVEL という環境変数に対する設定をすることによって、
+グローバルデストラクションのレベルを検査することができます。
+さらなる情報については L<perlhack/PERL_DESTRUCT_LEVEL> を参照してください。
 
 =begin original
 
@@ -1304,7 +1304,7 @@ at a future date.
 
 =end original
 
-��괰���ʥ��١������쥯��������ά�Ͼ�����������Ǥ��礦��
+より完璧なガベージコレクションの戦略は将来実装されるでしょう。
 
 =begin original
 
@@ -1315,10 +1315,10 @@ breaks the circularities in the self-referential structure.
 
 =end original
 
-��ˡ�Ȥ��ƺ����ʤ�Τϡ����ʺƵ�Ū�ʥǡ�����¤���Ф���ݥ��󥿤�
-�ݻ�����褦����Ƶ�Ū�ʥ���ƥʥ��饹��������뤳�ȤǤ���
-�������ä����֥������ȤΥ��饹�Ǥ� DESTORY �᥽�åɤ������
-���ʻ��ȹ�¤��ν۴Ĥ���Ȥ��Ǥ��ڤ�褦�ʤ�Τˤʤ�ޤ���
+方法として最善なものは、自己再帰的なデータ構造に対するポインタを
+保持するような非再帰的なコンテナクラスを作成することです。
+そういったオブジェクトのクラスでの DESTORY メソッドの定義は
+自己参照構造中の循環を手作業で断ち切るようなものになります。
 
 =head1 SEE ALSO
 
@@ -1332,11 +1332,11 @@ modules and classes.
 
 =end original
 
-Perl �ˤ����륪�֥������Ȼظ��ץ������˴ؤ�������ڤ���ǫ��
-���塼�ȥꥢ��� L<perltoot>, L<perlboot>, L<perltooc> �ˤ���ޤ���
-�ޤ�������¾�Υ��֥������Ȥ�櫤侮���ˤĤ��Ƥ� L<perlbot> ��
-�⥸�塼��ȥ��饹�κ����˴ؤ��륹�����륬���ɤˤĤ��Ƥ� L<perlmodlib> ��
-���Ȥ��Ƥ���������
+Perl におけるオブジェクト指向プログラムに関するより親切で丁寧な
+チュートリアルは L<perltoot>, L<perlboot>, L<perltooc> にあります。
+また、その他のオブジェクトの罠や小技については L<perlbot> を、
+モジュールとクラスの作成に関するスタイルガイドについては L<perlmodlib> を
+参照してください。
 
 =begin meta
 

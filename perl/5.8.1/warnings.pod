@@ -1,6 +1,6 @@
 =head1 NAME
 
-warnings - ÁªÂòÅª¤Ê·Ù¹ğ¤òÄ´À°¤¹¤ë Perl ¥×¥é¥°¥Ş
+warnings - é¸æŠçš„ãªè­¦å‘Šã‚’èª¿æ•´ã™ã‚‹ Perl ãƒ—ãƒ©ã‚°ãƒ
 
 =head1 SYNOPSIS
 
@@ -33,20 +33,20 @@ The C<warnings> pragma is a replacement for the command line flag C<-w>,
 but the pragma is limited to the enclosing block, while the flag is global.
 See L<perllexwarn> for more information.
 
-C<warnings> ¥×¥é¥°¥Ş¤Ï¡¢¥³¥Ş¥ó¥É¥é¥¤¥ó¥Õ¥é¥° C<-w> ¤ÎÃÖ¤­´¹¤¨¤Ç¤¹¡£
-¤·¤«¤·¡¢¤³¤Î¥Õ¥é¥°¤Ï¥°¥í¡¼¥Ğ¥ë¤Ê¤Î¤Ç¤¹¤¬¡¢¤³¤Î¥×¥é¥°¥Ş¤ÏÊÄ¤¸¤é¤ì¤¿
-¥Ö¥í¥Ã¥¯¤Ë¸ÂÄê¤µ¤ì¤Ş¤¹¡£
-¹¹¤Ê¤ë¾ğÊó¤Ï L<perllexwarn> ¤ò¸«¤Æ¤¯¤À¤µ¤¤¡£
+C<warnings> ãƒ—ãƒ©ã‚°ãƒã¯ã€ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ãƒ•ãƒ©ã‚° C<-w> ã®ç½®ãæ›ãˆã§ã™ã€‚
+ã—ã‹ã—ã€ã“ã®ãƒ•ãƒ©ã‚°ã¯ã‚°ãƒ­ãƒ¼ãƒãƒ«ãªã®ã§ã™ãŒã€ã“ã®ãƒ—ãƒ©ã‚°ãƒã¯é–‰ã˜ã‚‰ã‚ŒãŸ
+ãƒ–ãƒ­ãƒƒã‚¯ã«é™å®šã•ã‚Œã¾ã™ã€‚
+æ›´ãªã‚‹æƒ…å ±ã¯ L<perllexwarn> ã‚’è¦‹ã¦ãã ã•ã„ã€‚
 
 If no import list is supplied, all possible warnings are either enabled
 or disabled.
 
-¥¤¥ó¥İ¡¼¥È¥ê¥¹¥È¤òÍ¿¤¨¤Ê¤¤¾ì¹ç¤Ï¡¢²ÄÇ½¤Ê¸Â¤êÁ´¤Æ¤Î·Ù¹ğ¤òÍ­¸ú¤Ë¤·¤¿¤ê
-Ìµ¸ú¤Ë¤·¤¿¤ê¤·¤Ş¤¹¡£
+ã‚¤ãƒ³ãƒãƒ¼ãƒˆãƒªã‚¹ãƒˆã‚’ä¸ãˆãªã„å ´åˆã¯ã€å¯èƒ½ãªé™ã‚Šå…¨ã¦ã®è­¦å‘Šã‚’æœ‰åŠ¹ã«ã—ãŸã‚Š
+ç„¡åŠ¹ã«ã—ãŸã‚Šã—ã¾ã™ã€‚
 
 A number of functions are provided to assist module authors.
 
-¤¤¤¯¤Ä¤«¤Î´Ø¿ô¤Ï¡¢¥â¥¸¥å¡¼¥ëºîÀ®¼Ô¤Î¼ê½õ¤±¤ò¤·¤Ş¤¹¡£
+ã„ãã¤ã‹ã®é–¢æ•°ã¯ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆè€…ã®æ‰‹åŠ©ã‘ã‚’ã—ã¾ã™ã€‚
 
 =over 4
 
@@ -55,20 +55,20 @@ A number of functions are provided to assist module authors.
 Creates a new warnings category with the same name as the package where
 the call to the pragma is used.
 
-¥×¥é¥°¥Ş¤ò¸Æ¤Ó½Ğ¤·¤¿¥Ñ¥Ã¥±¡¼¥¸¤ÈÆ±¤¸Ì¾Á°¤Î¿·¤·¤¤
-·Ù¹ğ¥«¥Æ¥´¥ê¡¼¤òºîÀ®¤·¤Ş¤¹¡£
+ãƒ—ãƒ©ã‚°ãƒã‚’å‘¼ã³å‡ºã—ãŸãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã¨åŒã˜åå‰ã®æ–°ã—ã„
+è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä½œæˆã—ã¾ã™ã€‚
 
 =item warnings::enabled()
 
 Use the warnings category with the same name as the current package.
 
-¸½ºß¤Î¥Ñ¥Ã¥±¡¼¥¸¤ÈÆ±¤¸Ì¾Á°¤Î·Ù¹ğ¥«¥Æ¥´¥ê¡¼¤ò»È¤¤¤Ş¤¹¡£
+ç¾åœ¨ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã¨åŒã˜åå‰ã®è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä½¿ã„ã¾ã™ã€‚
 
 Return TRUE if that warnings category is enabled in the calling module.
 Otherwise returns FALSE.
 
-¸Æ¤Ğ¤ì¤¿¥â¥¸¥å¡¼¥ëÆâ¤Ç¤½¤Î·Ù¹ğ¥«¥Æ¥´¥ê¡¼¤¬Í­¸ú¤Ê¤é¤Ğ¿¿¡ÊTRUE¡Ë¤òÊÖ¤·¤Ş¤¹¡£
-¤½¤¦¤Ç¤Ê¤±¤ì¤Ğµ¶¡ÊFALSE¡Ë¤òÊÖ¤·¤Ş¤¹¡£
+å‘¼ã°ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å†…ã§ãã®è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ãŒæœ‰åŠ¹ãªã‚‰ã°çœŸï¼ˆTRUEï¼‰ã‚’è¿”ã—ã¾ã™ã€‚
+ãã†ã§ãªã‘ã‚Œã°å½ï¼ˆFALSEï¼‰ã‚’è¿”ã—ã¾ã™ã€‚
 
 =item warnings::enabled($category)
 
@@ -76,77 +76,77 @@ Return TRUE if the warnings category, C<$category>, is enabled in the
 calling module.
 Otherwise returns FALSE.
 
-¸Æ¤Ğ¤ì¤¿¥â¥¸¥å¡¼¥ëÆâ¤Ç·Ù¹ğ¥«¥Æ¥´¥ê¡¼¡ÊC<$category>¡Ë¤¬Í­¸ú¤Ê¤é¤Ğ¿¿
-¡ÊTRUE¡Ë¤òÊÖ¤·¤Ş¤¹¡£
-¤½¤¦¤Ç¤Ê¤±¤ì¤Ğµ¶¡ÊFALSE¡Ë¤òÊÖ¤·¤Ş¤¹¡£
+å‘¼ã°ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å†…ã§è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ï¼ˆC<$category>ï¼‰ãŒæœ‰åŠ¹ãªã‚‰ã°çœŸ
+ï¼ˆTRUEï¼‰ã‚’è¿”ã—ã¾ã™ã€‚
+ãã†ã§ãªã‘ã‚Œã°å½ï¼ˆFALSEï¼‰ã‚’è¿”ã—ã¾ã™ã€‚
 
 =item warnings::enabled($object)
 
 Use the name of the class for the object reference, C<$object>, as the
 warnings category.
 
-¥ª¥Ö¥¸¥§¥¯¥È¥ê¥Õ¥¡¥ì¥ó¥¹¡ÊC<$object>¡Ë¤Î¥¯¥é¥¹Ì¾¤ò·Ù¹ğ¥«¥Æ¥´¥ê¡¼
-¤È¤·¤Æ»È¤¤¤Ş¤¹¡£
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ï¼ˆC<$object>ï¼‰ã®ã‚¯ãƒ©ã‚¹åã‚’è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼
+ã¨ã—ã¦ä½¿ã„ã¾ã™ã€‚
 
 Return TRUE if that warnings category is enabled in the first scope
 where the object is used.
 Otherwise returns FALSE.
 
-¤½¤Î¥ª¥Ö¥¸¥§¥¯¥È¤¬»È¤ï¤ì¤¿ºÇ½é¤Î¥¹¥³¡¼¥×Æâ¤Ç¤½¤Î·Ù¹ğ¥«¥Æ¥´¥ê¡¼
-¤¬Í­¸ú¤Ê¤é¤Ğ¿¿¡ÊTRUE¡Ë¤òÊÖ¤·¤Ş¤¹¡£
-¤½¤¦¤Ç¤Ê¤±¤ì¤Ğµ¶¡ÊFALSE¡Ë¤òÊÖ¤·¤Ş¤¹¡£
+ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒä½¿ã‚ã‚ŒãŸæœ€åˆã®ã‚¹ã‚³ãƒ¼ãƒ—å†…ã§ãã®è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼
+ãŒæœ‰åŠ¹ãªã‚‰ã°çœŸï¼ˆTRUEï¼‰ã‚’è¿”ã—ã¾ã™ã€‚
+ãã†ã§ãªã‘ã‚Œã°å½ï¼ˆFALSEï¼‰ã‚’è¿”ã—ã¾ã™ã€‚
 
 =item warnings::warn($message)
 
 Print C<$message> to STDERR.
 
-STDERR ¤Ë C<$message> ¤ò½ĞÎÏ¤·¤Ş¤¹¡£
+STDERR ã« C<$message> ã‚’å‡ºåŠ›ã—ã¾ã™ã€‚
 
 Use the warnings category with the same name as the current package.
 
-¸½ºß¤Î¥Ñ¥Ã¥±¡¼¥¸¤ÈÆ±¤¸Ì¾Á°¤Î·Ù¹ğ¥«¥Æ¥´¥ê¡¼¤ò»È¤¤¤Ş¤¹¡£
+ç¾åœ¨ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã¨åŒã˜åå‰ã®è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä½¿ã„ã¾ã™ã€‚
 
 If that warnings category has been set to "FATAL" in the calling module
 then die. Otherwise return.
 
-¤â¤·¡¢¸Æ¤Ğ¤ì¤¿¥â¥¸¥å¡¼¥ëÆâ¤Ç¤½¤Î·Ù¹ğ¥«¥Æ¥´¥ê¡¼¤Ë"FATAL"¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤¿
-¤Ê¤é¤Ğ¡¢½ªÎ»¡Êdie¡Ë¤·¤Ş¤¹¡£
+ã‚‚ã—ã€å‘¼ã°ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å†…ã§ãã®è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ã«"FATAL"ãŒè¨­å®šã•ã‚Œã¦ã„ãŸ
+ãªã‚‰ã°ã€çµ‚äº†ï¼ˆdieï¼‰ã—ã¾ã™ã€‚
 
 =item warnings::warn($category, $message)
 
 Print C<$message> to STDERR.
 
-STDERR ¤Ë C<$message> ¤ò½ĞÎÏ¤·¤Ş¤¹¡£
+STDERR ã« C<$message> ã‚’å‡ºåŠ›ã—ã¾ã™ã€‚
 
 If the warnings category, C<$category>, has been set to "FATAL" in the
 calling module then die. Otherwise return.
 
-¤â¤·¡¢¸Æ¤Ğ¤ì¤¿¥â¥¸¥å¡¼¥ëÆâ¤Ç·Ù¹ğ¥«¥Æ¥´¥ê¡¼¡ÊC<$category>¡Ë¤Ë"FATAL"¤¬
-ÀßÄê¤µ¤ì¤Æ¤¤¤¿¤Ê¤é¤Ğ¡¢½ªÎ»¡Êdie¡Ë¤·¤Ş¤¹¡£
+ã‚‚ã—ã€å‘¼ã°ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å†…ã§è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼ï¼ˆC<$category>ï¼‰ã«"FATAL"ãŒ
+è¨­å®šã•ã‚Œã¦ã„ãŸãªã‚‰ã°ã€çµ‚äº†ï¼ˆdieï¼‰ã—ã¾ã™ã€‚
 
 =item warnings::warn($object, $message)
 
 Print C<$message> to STDERR.
 
-STDERR ¤Ë C<$message> ¤ò½ĞÎÏ¤·¤Ş¤¹¡£
+STDERR ã« C<$message> ã‚’å‡ºåŠ›ã—ã¾ã™ã€‚
 
 Use the name of the class for the object reference, C<$object>, as the
 warnings category.
 
-¥ª¥Ö¥¸¥§¥¯¥È¥ê¥Õ¥¡¥ì¥ó¥¹¡ÊC<$object>¡Ë¤Î¥¯¥é¥¹Ì¾¤ò·Ù¹ğ¥«¥Æ¥´¥ê¡¼
-¤È¤·¤Æ»È¤¤¤Ş¤¹¡£
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ï¼ˆC<$object>ï¼‰ã®ã‚¯ãƒ©ã‚¹åã‚’è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼
+ã¨ã—ã¦ä½¿ã„ã¾ã™ã€‚
 
 If that warnings category has been set to "FATAL" in the scope where C<$object>
 is first used then die. Otherwise return.
 
-¤â¤·¡¢C<$object> ¤¬ºÇ½é¤Ë»È¤ï¤ì¤¿¥¹¥³¡¼¥×Æâ¤Ç¤½¤Î·Ù¹ğ¥«¥Æ¥´¥ê¡¼
-¤Ë"FATAL"¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤¿¤Ê¤é¤Ğ¡¢½ªÎ»¡Êdie¡Ë¤·¤Ş¤¹¡£
+ã‚‚ã—ã€C<$object> ãŒæœ€åˆã«ä½¿ã‚ã‚ŒãŸã‚¹ã‚³ãƒ¼ãƒ—å†…ã§ãã®è­¦å‘Šã‚«ãƒ†ã‚´ãƒªãƒ¼
+ã«"FATAL"ãŒè¨­å®šã•ã‚Œã¦ã„ãŸãªã‚‰ã°ã€çµ‚äº†ï¼ˆdieï¼‰ã—ã¾ã™ã€‚
 
 =item warnings::warnif($message)
 
 Equivalent to:
 
-¼¡¤Î¤â¤Î¤ËÁêÅö¤·¤Ş¤¹¡£
+æ¬¡ã®ã‚‚ã®ã«ç›¸å½“ã—ã¾ã™ã€‚
 
     if (warnings::enabled())
       { warnings::warn($message) }
@@ -155,7 +155,7 @@ Equivalent to:
 
 Equivalent to:
 
-¼¡¤Î¤â¤Î¤ËÁêÅö¤·¤Ş¤¹¡£
+æ¬¡ã®ã‚‚ã®ã«ç›¸å½“ã—ã¾ã™ã€‚
 
     if (warnings::enabled($category))
       { warnings::warn($category, $message) }
@@ -164,7 +164,7 @@ Equivalent to:
 
 Equivalent to:
 
-¼¡¤Î¤â¤Î¤ËÁêÅö¤·¤Ş¤¹¡£
+æ¬¡ã®ã‚‚ã®ã«ç›¸å½“ã—ã¾ã™ã€‚
 
     if (warnings::enabled($object))
       { warnings::warn($object, $message) }
@@ -173,7 +173,7 @@ Equivalent to:
 
 See L<perlmodlib/Pragmatic Modules> and L<perllexwarn>.
 
-L<perlmodlib/Pragmatic Modules> ¤È L<perllexwarn> ¤ò¸«¤Æ¤¯¤À¤µ¤¤¡£
+L<perlmodlib/Pragmatic Modules> ã¨ L<perllexwarn> ã‚’è¦‹ã¦ãã ã•ã„ã€‚
 
 =cut
 

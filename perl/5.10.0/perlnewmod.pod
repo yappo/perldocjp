@@ -9,7 +9,7 @@ perlnewmod - preparing a new module for distribution
 
 =end original
 
-perlnewmod - �������⥸�塼������ۤ���ˤ�
+perlnewmod - 新しいモジュールを配布するには
 
 =head1 DESCRIPTION
 
@@ -21,8 +21,8 @@ via CPAN.
 
 =end original
 
-���Υɥ�����Ȥϡ�Perl �⥸�塼���񤭡����ۤ�������򤷤ơ�CPAN ��
-�̤��Ƽ�����ǽ�ˤ��뤿��Υ��ɥХ����Ǥ���
+このドキュメントは、Perl モジュールを書き、配布する準備をして、CPAN を
+通じて取得可能にするためのアドバイスです。
 
 =begin original
 
@@ -32,9 +32,9 @@ so you and I don't have to battle with the same problem again.
 
 =end original
 
-Perl ���ºݤˤ���ʤ˶��Ϥ���ͳ�� 1 �ĤȤ��ơ�Perl �ϥå�������������ʬ��
-ľ�̤�������ؤβ�����ͭ���褦�Ȥ��Ƥ��뤳�Ȥ��󤲤���Ǥ��礦��
-�����顢�ߤ�ʤ�Ʊ�������Ǻ��ɬ�פϤʤ��櫓�Ǥ���
+Perl が実際にこんなに強力な理由の 1 つとして、Perl ハッカーたちが、自分の
+直面した問題への解決策を共有しようとしていることが挙げられるでしょう。
+だから、みんなが同じ問題に悩む必要はないわけです。
 
 =begin original
 
@@ -46,13 +46,13 @@ L<perlmodlib> and L<perlmodinstall> before coming back here.
 
 =end original
 
-���줬�¸�����Ƥ���Τϡ�¿���ξ�礢�륽��塼��������ݲ����ơ�
-Perl �⥸�塼��ˤ��Ƥ���Ȥ������ȤǤ���
-�⤷���줬�ʤ�Τ��Ȥ��狼��ʤ���С����Υɥ�����ȤλĤ�Ϥ��ޤ�
-��ˤ�Ω���ʤ��Ǥ��礦�������ޤǤˤ�������������ʥ����ɤ�
-��ƨ���Ƥ��뤳�ȤǤ��礦��
-L<perlmod>, L<perlmodlib>, L<perlmodinstall> ��褯�ɤ�ǡ���������ä�
-��Ƥ���������
+これが実現されているのは、多くの場合あるソリューションを抽象化して、
+Perl モジュールにしているということです。
+もしこれがなんのことかわからなければ、このドキュメントの残りはあまり
+役には立たないでしょうし、今までにたくさんの便利なコードを
+見逃していることでしょう。
+L<perlmod>, L<perlmodlib>, L<perlmodinstall> をよく読んで、ここに戻って
+来てください。
 
 =begin original
 
@@ -63,14 +63,14 @@ others can benefit.
 
 =end original
 
-�⤷�����ʤ������٤����Ȥ˴ؤ���⥸�塼�뤬¸�ߤ�������ʬ�ǥ����ɤ�
-�񤫤ʤ��Ȥ����ʤ��Ȥʤä��Ȥ��ˤϡ����Υ���塼������⥸�塼���
-�ͤ����� CPAN �˥��åץ����ɤ��뤳�Ȥ�Ƥ���Ƥ���������
-��������С�¾�Τߤ�ʤ����פˤʤ�ޤ���
+もし、あなたがやるべきことに関するモジュールが存在せず、自分でコードを
+書かないといけないとなったときには、そのソリューションをモジュールに
+詰め込んで CPAN にアップロードすることを検討してください。
+そうすれば、他のみんなの利益になります。
 
 =head2 Warning
 
-(�ٹ�)
+(警告)
 
 =begin original
 
@@ -84,18 +84,18 @@ well to an XS module as a pure-Perl one.
 
 =end original
 
-�����Ǥϼ�˥ԥ奢 Perl �Υ⥸�塼��ˤĤ�����������XS �⥸�塼��ˤĤ��Ƥ�
-����ޤ���
-XS �⥸�塼��ϡ��̾�Ȥϼ㴳�ۤʤ���Ū�����Ѥ���뤿�ᡢ���ۤ���ݤˤ�
-�̤�����ˤĤ��ƹ�θ����ɬ�פ�����ޤ���
-�Ĥޤꡢ���դ�(glue)���оݤȤʤ�饤�֥��ο͵���¾�� OS �ؤ�
-�ݡ����ӥ�ƥ��ʤɤǤ���
-���������⥸�塼��ν�����ѥå������󥰡����ۤ������ϡ�XS �⥸�塼��ˤ�
-Ʊ�ͤ����ƤϤޤ�Ǥ��礦��
+ここでは主にピュア Perl のモジュールについて説明し、XS モジュールについては
+触れません。
+XS モジュールは、通常とは若干異なる目的で利用されるため、配布する際には
+別の問題について考慮する必要があります。
+つまり、糊付け(glue)の対象となるライブラリの人気、他の OS への
+ポータビリティなどです。
+しかし、モジュールの準備やパッケージング、配布の説明は、XS モジュールにも
+同様に当てはまるでしょう。
 
 =head2 What should I make into a module?
 
-(�ʤˤ�⥸�塼��ˤ����餤����)
+(なにをモジュールにしたらいい？)
 
 =begin original
 
@@ -107,11 +107,11 @@ something else is a likely candidate.
 
 =end original
 
-¾�οͤ������ˤʤ��Τʤ顢�ɤ�ʥ����ɤǤ�⥸�塼��ˤ���٤��Ǥ���
-�ߤ�ʤ��ȤäƤ���饤�֥���­��ʤ���Τ���äơ�������¾�οͤ���ʬ��
-�ץ�������ľ���Ȥ߹�����Τʤ�ʤ�Ǥ� OK �Ǥ���
-���ʤ��Υ����ɤΤ�����ñ�ȤǤȤ�����ơ�¾�Τ�Τ��Ȥ߹�����Τ�����С�
-����ϥ⥸�塼��θ���ˤʤꤨ��Ǥ��礦��
+他の人に便利になるものなら、どんなコードでもモジュールにするべきです。
+みんなが使っているライブラリに足りないものを補って、しかも他の人が自分の
+プログラムに直接組み込めるものならなんでも OK です。
+あなたのコードのうち、単独でとりだして、他のものに組み込めるものがあれば、
+それはモジュールの候補になりえるでしょう。
 
 =begin original
 
@@ -121,10 +121,10 @@ the tree and then piping each node to an Acme Transmogrifier Server.
 
 =end original
 
-���ȤäƤߤޤ��礦��
-��������Υե����ޥåȤ���ǡ������ɤߤ�����Perl  �Υϥå����ե���󥹤�
-�ϥå���ˤ��ơ��ĥ꡼��¤�ˤ��ơ��ĥ꡼�����Ƥ��줾��ΥΡ��ɤ�
-Acme Transmogrifier Server �˥ѥ��פ���Ȥ��ޤ���
+例をとってみましょう。
+ローカルのフォーマットからデータを読みだし、Perl  のハッシュリファレンスの
+ハッシュにして、ツリー構造にして、ツリーを操作してそれぞれのノードを
+Acme Transmogrifier Server にパイプするとします。
 
 =begin original
 
@@ -138,14 +138,14 @@ a module out for that server protocol.
 
 =end original
 
-���ơ�Acme Transmogrifier ���äƤ���ͤϤ���ޤꤤ�ʤ��Ȥ��ޤ��礦��
-�Ǥ����顢���Υץ��ȥ�����ä������ɤ򥹥���å�����
-�񤫤ʤ��ƤϤʤ�ʤ��Ǥ��礦 - ����ʻ��������⥸�塼��ˤ������Ϥ��Ǥ���
-�ɤΥ�٥�����뤫�Ϥ��ʤ�����Ǥ�: L<Net::SMTP> �Τ褦��
-�ץ��ȥ����٥�Υ⥸�塼�뤫�顢L<Mail::Send> �Τ褦�ʹ��٥��
-����⥸�塼��ޤǡ�
-���ꤹ��ΤϤ��ʤ��Ǥ����������Хץ��ȥ�����ò������⥸�塼���
-��ꤿ���Ǥ��礦��
+さて、Acme Transmogrifier をもっている人はあんまりいないとしましょう。
+ですから、そのプロトコルを話すコードをスクラッチから
+書かなくてはならないでしょう - そんな時、それをモジュールにしたいはずです。
+どのレベルで操作するかはあなた次第です: L<Net::SMTP> のような
+プロトコルレベルのモジュールから、L<Mail::Send> のような高レベルで
+操作するモジュールまで。
+決定するのはあなたですが、サーバプロトコルに特化したモジュールを
+作りたいでしょう。
 
 =begin original
 
@@ -157,12 +157,12 @@ that, you might want to modularise that code too.
 
 =end original
 
-���ʤ��Υ�������ǡ����ե����ޥåȤ˶�̣������ͤϤ��ʤ��Τǡ������
-̵�뤷�ޤ��礦��
-������������֥ǡ����Ϥɤ����ޤ��礦?
-Perl �ѿ�����ĥ꡼��¤���äơ������ȥ�С�������ΤϤ褯���뤳�Ȥǡ�
-�⤷�������ä��⥸�塼���ï��񤤤Ƥʤ��ΤǤ���С����Υ����ɤ�
-�ޤ��⥸�塼�벽�������ʤ�Ǥ��礦��
+あなたのローカルデータフォーマットに興味がある人はいないので、それは
+無視しましょう。
+ただ、その中間データはどうしましょう?
+Perl 変数からツリー構造を作って、それをトラバースするのはよくあることで、
+もしそういったモジュールを誰も書いてないのであれば、そのコードも
+またモジュール化したくなるでしょう。
 
 =begin original
 
@@ -171,12 +171,12 @@ Let's now see how it's done.
 
 =end original
 
-�������ɤ�ʤ�Τ�⥸�塼�벽����Ф����Τ����������狼�äƤ����Ǥ��礦��
-���줫�餽���ɤ���äƤ��Τ����Ƥߤޤ��礦��
+さあ、どんなものをモジュール化すればいいのか、だんだんわかってきたでしょう。
+これからそれをどうやってやるのか見てみましょう。
 
 =head2 Step-by-step: Preparing the ground
 
-(Step-by-step: �Ϥʤ餷)
+(Step-by-step: 地ならし)
 
 =begin original
 
@@ -185,13 +185,13 @@ want to do in advance.
 
 =end original
 
-�����ɤ�񤭤Ϥ�������ˡ���äƤ����������Ȥ������Ĥ�����ޤ���
+コードを書きはじめる前に、やっておきたいことがいくつかあります。
 
 =over 3
 
 =item Look around
 
-(���Ƥޤ��)
+(見てまわる)
 
 =begin original
 
@@ -204,12 +204,12 @@ examples.
 
 =end original
 
-��������Υ⥸�塼��򸫤ơ��ɤ�����˽񤫤�Ƥ��뤫�ߤƤߤޤ��礦��
-L<Text::Tabs> ��ɸ��饤�֥��ǡ����줤�˽񤫤�Ƥ��ƤȤƤ�
-����ץ�Ǥ��Τǡ����줫��Ϥ����ɤ��Ǥ��礦; ���줫��
-L<File::Copy|File::Copy> �Τ褦�ʤ⤦����ʣ���ʤ�Τ򸫤Ƥ���������
-���֥������Ȼظ��Υ����ɤ�񤳤��ȻפäƤ���ʤ顢
-C<WWW::Mechanize> �� C<Mail::*> �⥸�塼�뤬�褤��Ȥʤ�ޤ���
+たくさんのモジュールを見て、どんな風に書かれているかみてみましょう。
+L<Text::Tabs> は標準ライブラリで、きれいに書かれていてとても
+シンプルですので、これから始めると良いでしょう; それから
+L<File::Copy|File::Copy> のようなもう少し複雑なものを見てください。
+オブジェクト指向のコードを書こうと思っているなら、
+C<WWW::Mechanize> や C<Mail::*> モジュールがよい例となります。
 
 =begin original
 
@@ -218,12 +218,12 @@ written.
 
 =end original
 
-��������С��⥸�塼�뤬�ɤΤ褦�˥쥤�����Ȥ��졢�񤫤�Ƥ��뤫������
-�狼�äƤ���Ϥ��Ǥ���
+そうすれば、モジュールがどのようにレイアウトされ、書かれているか、大体
+わかってくるはずです。
 
 =item Check it's new
 
-(��������Τ��ɤ��������å�����)
+(新しいものかどうかチェックする)
 
 =begin original
 
@@ -234,14 +234,14 @@ reinventing the wheel!
 
 =end original
 
-CPAN �ˤϤ�������Υ⥸�塼�뤬����ޤ����顢���ʤ�����Ϳ���褦�Ȥ��Ƥ���
-�⥸�塼��Ȥ��ä���ʤ�Τ����äƤ⡢���ᤴ���Ƥ��ޤ������Τ�ޤ���
-L<http://search.cpan.org> ��褯���ơ�
-���ؤκ�ȯ���򤷤Ƥ��ʤ����ɤ�����ǧ���ޤ��礦!
+CPAN にはたくさんのモジュールがありますから、あなたが寄与しようとしている
+モジュールとそっくりなものがあっても、見過ごしてしまうかも知れません。
+L<http://search.cpan.org> をよく見て、
+車輪の再発明をしていないかどうか確認しましょう!
 
 =item Discuss the need
 
-(ɬ�������������)
+(必要性を議論する)
 
 =begin original
 
@@ -255,20 +255,20 @@ a response from them.
 
 =end original
 
-���ʤ��Ϥ���򵤤����äƤ���Ǥ��礦��
-¾�Τߤ�ʤ⡢�����ɬ�פȤ���ȻפäƤ���Ǥ��礦��
-�Ǥ⡢�ºݤˤϤ���ʤ˼��פϤʤ����⤷��ޤ���
-��ʬ�Υ⥸�塼�뤬�ɤ����ټ��פ�����Τ��԰¤��ä��顢
-C<comp.lang.perl.modules> ����Ƥ��Ƥߤޤ��礦��
-����Ǥ����ʤ顢C<modules@perl.org> �Υ⥸�塼��᡼��󥰥ꥹ�Ȥ�
-ʹ���Ƥߤޤ��礦��
-���Υ᡼��󥰥ꥹ�Ȥϥ��������ɤǡ��Ԥ����֤�Ĺ�����Ȥ�
-�����դ��Ƥ���������
-�쥹�ݥ󥹤��֤äƤ���ޤǤˤϡ����Ф餯�Ԥ�ɬ�פ����뤫�⤷��ޤ���
+あなたはそれを気に入っているでしょう。
+他のみんなも、それを必要とすると思っているでしょう。
+でも、実際にはそんなに需要はないかもしれません。
+自分のモジュールがどの程度需要があるのか不安だったら、
+C<comp.lang.perl.modules> に投稿してみましょう。
+それでもだめなら、C<modules@perl.org> のモジュールメーリングリストに
+聞いてみましょう。
+このメーリングリストはクローズドで、待ち時間が長いことに
+気を付けてください。
+レスポンスが返ってくるまでには、しばらく待つ必要があるかもしれません。
 
 =item Choose a name
 
-(̾�������)
+(名前を決める)
 
 =begin original
 
@@ -280,17 +280,17 @@ fit in with a category, and explain their purpose succinctly.
 
 =end original
 
-CPAN �˴ޤޤ�� Perl �⥸�塼��ˤϡ�̿̾���ؤ����ꡢ����˹�碌��
-ɬ�פ�����ޤ���
-���줬�ɤΤ褦����������Ƥ��뤫�ξܺ٤ϡ�L<perlmodlib> �򻲾Ȥ��Ƥ���������
-�ޤ���CPAN ��⥸�塼��ꥹ�Ȥ򸫤Ʋ�äơ��ɤ�ʤ�Τ�����ƤߤƤ���������
-���ʤ��Ȥ⡢��������ϳФ��Ƥ����Ƥ�������: �⥸�塼��̾����ʸ����
-�Ϥ�� (This::That �Τ褦��)�� ���ƥ����Ŭ�礷�Ƥ��롢�����ơ�
-��Ū��ʷ���������Ƥ��롣
+CPAN に含まれる Perl モジュールには、命名階層があり、それに合わせる
+必要があります。
+これがどのように整理されているかの詳細は、L<perlmodlib> を参照してください。
+また、CPAN やモジュールリストを見て回って、どんなものか触れてみてください。
+少なくとも、これだけは覚えておいてください: モジュール名は大文字で
+始める (This::That のように)、 カテゴリに適合している、そして、
+目的を簡潔に説明している。
 
 =item Check again
 
-(�⤦���٥����å�)
+(もう一度チェック)
 
 =begin original
 
@@ -299,8 +299,8 @@ similar to the one you're about to write.
 
 =end original
 
-�������Ƥ���֤ˡ��񤳤��Ȥ��Ƥ���⥸�塼��˻����⥸�塼���������
-���ᤴ���Ƥ��ʤ�������ǧ���Ƥ���������
+そうしている間に、書こうとしているモジュールに似たモジュールを本当に
+見過ごしていないか、確認してください。
 
 =begin original
 
@@ -309,20 +309,20 @@ wanted and not currently available, it's time to start coding.
 
 =end original
 
-�������դ��ơ����Υ⥸�塼���ɬ�פȤ���Ƥ��ơ��ޤ�¸�ߤ��ʤ���
-�ο������顢�����ɤ�񤭤Ϥ���ޤ��礦��
+整理が付いて、そのモジュールは必要とされていて、まだ存在しないと
+確信したら、コードを書きはじめましょう。
 
 =back
 
 =head2 Step-by-step: Making the module
 
-(Step-by-step: �⥸�塼�����)
+(Step-by-step: モジュールを作る)
 
 =over 3
 
 =item Start with F<module-starter> or F<h2xs>
 
-(F<module-starter> �� F<h2xs> ����Ϥ����)
+(F<module-starter> か F<h2xs> からはじめる)
 
 =begin original
 
@@ -334,11 +334,11 @@ the command line, thus:
 
 =end original
 
-F<module-starter> �桼�ƥ���ƥ��� L<Module::Starter|Module::Starter> CPAN
-�ѥå������ΰ����Ȥ������ۤ���Ƥ��ޤ���
-�Ƕ�Υ⥸�塼�볫ȯ�Ρ֥٥��ȥץ饯�ƥ����פ˴�Ť������������⥸�塼���
-���Ϥ��뤿���ɬ�פ����ƤΥե�����ο�����ޤ�ǥ��쥯�ȥ����ޤ�;
-����ϥ��ޥ�ɥ饤�󤫤鵯ư�����Τ�:
+F<module-starter> ユーティリティは L<Module::Starter|Module::Starter> CPAN
+パッケージの一部として配布されています。
+最近のモジュール開発の「ベストプラクティス」に基づいた、新しいモジュールを
+開始するために必要な全てのファイルの雛形を含むディレクトリを作ります;
+これはコマンドラインから起動されるので:
 
     module-starter --module=Foo::Bar \
        --author="Your Name" --email=yourname@cpan.org
@@ -352,9 +352,9 @@ distribution.
 
 =end original
 
-L<Module::Starter|Module::Starter> �ѥå������� CPAN ����
-���󥹥ȡ��뤷�����ʤ����ϡ�F<h2xs> �Ϥ��Ť��ġ���ǡ������
-XS �⥸�塼��γ�ȯ�Τ���Τ�Τǡ�Perl ��Ʊ������Ƥ��ޤ���
+L<Module::Starter|Module::Starter> パッケージを CPAN から
+インストールしたくない場合は、F<h2xs> はより古いツールで、本来は
+XS モジュールの開発のためのもので、Perl に同梱されています。
 
 =begin original
 
@@ -362,7 +362,7 @@ A typical invocation of L<h2xs|h2xs> for a pure Perl module is:
 
 =end original
 
-�ԥ奢 Perl �Τ���� L<h2xs|h2xs> ��ŵ��Ū�ʵ�ư��ˡ��:
+ピュア Perl のための L<h2xs|h2xs> の典型的な起動方法は:
 
     h2xs -AX --skip-exporter --use-new-tests -n Foo::Bar 
 
@@ -374,13 +374,13 @@ modern testing environment, and C<-n> specifies the name of the module.
 
 =end original
 
-C<-A> �� Autoloader ���ά����C<-X> �� XS ���ά����
-C<--skip-exporter> �� Exporter �����ɤ��ά����C<--use-new-tests> ��
-����Ū�ʥƥ��ȴĶ������ꤷ��C<-n> �ϥ⥸�塼���̾������ꤷ�ޤ���
+C<-A> は Autoloader を省略し、C<-X> は XS を省略し、
+C<--skip-exporter> は Exporter コードを省略し、C<--use-new-tests> は
+近代的なテスト環境を設定し、C<-n> はモジュールの名前を指定します。
 
 =item Use L<strict|strict> and L<warnings|warnings>
 
-(L<strict|strict> �� L<warnings|warnings> ��Ȥ�)
+(L<strict|strict> と L<warnings|warnings> を使う)
 
 =begin original
 
@@ -391,14 +391,14 @@ right?
 
 =end original
 
-�⥸�塼��Υ����ɤ� warning �� strict ���꡼��Ǥʤ��ƤϤʤ�ޤ���
-�ɤ�ʾ����Ǥ��Υ⥸�塼�뤬���Ѥ���뤫�狼��ޤ��󤫤顣
-����ˡ�warning �� strict ���꡼��Ǥʤ������ɤʤ�ơ�
-���ۤ������ʤ��Ǥ��礦?
+モジュールのコードは warning と strict クリーンでなくてはなりません。
+どんな状況でそのモジュールが利用されるかわかりませんから。
+それに、warning や strict クリーンでないコードなんて、
+配布したくないでしょう?
 
 =item Use L<Carp|Carp>
 
-(L<Carp|Carp> ��Ȥ�)
+(L<Carp|Carp> を使う)
 
 =begin original
 
@@ -408,10 +408,10 @@ the caller and not your module. For instance, if you say this:
 
 =end original
 
-L<Carp> �⥸�塼���Ȥ��ȡ����顼��å�������ƤӽФ�¦�λ�������
-���Ϥ��뤳�Ȥ�����ޤ���
-���Υ⥸�塼��ǤϤʤ����ƤӽФ�¦������Ǥ��뤳�Ȥ򼨤���ΤǤ���
-�㤨�С����Τ褦�ˤ����:
+L<Carp> モジュールを使うと、エラーメッセージを呼び出し側の視点から
+出力することが出来ます。
+そのモジュールではなく、呼び出し側の問題であることを示せるのです。
+例えば、このようにすると:
 
     warn "No hostname given";
 
@@ -421,7 +421,7 @@ the user will see something like this:
 
 =end original
 
-�桼���Ϥ��Τ褦�ʥ�å������򸫤뤳�Ȥˤʤ�ޤ�:
+ユーザはこのようなメッセージを見ることになります:
 
     No hostname given at /usr/local/lib/perl5/site_perl/5.6.0/Net/Acme.pm
     line 123.
@@ -433,9 +433,9 @@ to put the blame on the user, and say this:
 
 =end original
 
-����Ǥϡ����ʤ��Υ⥸�塼�뤬�����ְ�ä����Ȥ򤷤Ƥ���褦�˸����ޤ���
-����ˡ��桼������Ǥ��ʤ���Ĥ�����ΤǤ���
-���Τ褦�˽��Ϥ��ޤ�:
+これでは、あなたのモジュールが何か間違ったことをしているように見えます。
+代わりに、ユーザに責任をなすりつけられるのです。
+このように出力します:
 
     No hostname given at bad_code, line 10.
 
@@ -448,14 +448,14 @@ your module at fault.
 
 =end original
 
-��������ˤϡ�L<Carp> ��Ĥ��äơ�C<warn> �� C<carp> ���֤������ޤ���
-�⤷ C<die> ����ɬ�פ�����ʤ顢C<croak> ��Ȥ��ޤ��礦��
-�����������ˤ��ʤ��Υ⥸�塼�����Ǥ�ˤ������å��ξ��ϡ�
-C<warn> �� C<die> �Τޤޤˤ��Ƥ����ޤ��礦��
+こうするには、L<Carp> をつかって、C<warn> を C<carp> に置き換えます。
+もし C<die> する必要があるなら、C<croak> を使いましょう。
+ただ、本当にあなたのモジュールの責任によるチェックの場合は、
+C<warn> や C<die> のままにしておきましょう。
 
 =item Use L<Exporter|Exporter> - wisely!
 
-(L<Exporter|Exporter> ��Ȥ� - ����!)
+(L<Exporter|Exporter> を使う - 賢く!)
 
 =begin original
 
@@ -465,10 +465,10 @@ saying C<use Net::Acme qw(&frob)> would import the C<frob> subroutine.
 
 =end original
 
-L<Exporter|Exporter> �ϡ�����ܥ�䥵�֥롼�����⥸�塼�뤫��
-�ƤӽФ�¦��̾�����֤˥������ݡ��Ȥ���ɸ��Ū����ˡ���狼��Ǥ��礦��
-���Ȥ��С�C<use Net::Acme qw(&frob)> �Ƚ񤱤С�C<frob> ���֥롼�����
-����ݡ��Ȥ��ޤ���
+L<Exporter|Exporter> は、シンボルやサブルーチンをモジュールから
+呼び出し側の名前空間にエクスポートする標準的な方法がわかるでしょう。
+たとえば、C<use Net::Acme qw(&frob)> と書けば、C<frob> サブルーチンを
+インポートします。
 
 =begin original
 
@@ -481,19 +481,19 @@ export set - look at L<Exporter> for more details.
 
 =end original
 
-�ѥå������ѿ��� C<@EXPORT> �ˤ�äơ��ƤӽФ�¦��ñ���
-C<use Net::Acme> �Ƚ񤤤��Ȥ��ˡ��ɤΥ���ܥ뤬�������ݡ��Ȥ���뤫��
-��ޤ�ޤ���
-�ۤȤ�ɤξ��ϡ������ˤϲ��⤤��ʤ��Ǥ��礦��
-������C<@EXPORT_OK> ��Ĥ����ȡ��ɤ��ѿ��򥨥����ݡ��Ȥ��Ƥ�褤����
-����Ǥ��ޤ���
-��������Υ���ܥ�򥨥����ݡ��Ȥ��������ϡ�C<%EXPORT_TAGS> ��
-�Ȥäơ��������ݡ��ȤΥ��åȤ�������ޤ��礦��
-�ܤ����� L<Exporter> �򻲾Ȥ��Ƥ���������
+パッケージ変数の C<@EXPORT> によって、呼び出し側が単純に
+C<use Net::Acme> と書いたときに、どのシンボルがエクスポートされるかが
+決まります。
+ほとんどの場合は、ここには何もいれないでしょう。
+一方、C<@EXPORT_OK> をつかうと、どの変数をエクスポートしてもよいかを
+指定できます。
+たくさんのシンボルをエクスポートしたい場合は、C<%EXPORT_TAGS> を
+使って、エクスポートのセットを定義しましょう。
+詳しくは L<Exporter> を参照してください。
 
 =item Use L<plain old documentation|perlpod>
 
-(L<plain old documentation|perlpod> ��Ȥ�)
+(L<plain old documentation|perlpod> を使う)
 
 =begin original
 
@@ -508,19 +508,19 @@ and POD for end-user notes.
 
 =end original
 
-�Ż��ϥڡ��ѡ����������ޤǤϡ������ǤϤ���ޤ���
-�⥸�塼��Υɥ�����Ȥ�񤯤���λ��֤�ɬ�פǤ���
-C<module-starter> �� C<h2xs> �����Ѥ���С��ƥ�ץ졼�Ȥ��äƤ���ޤ��Τǡ�
-���������Ф褤�Ǥ�;
-�ե����ޥåȤ��褯�狼��ʤ���С��ޤ��� L<perlpod> �򸫤Ƥ���������
-�⥸�塼���ɤΤ褦�˻Ȥ����Τ����ޤ��ʳ��ס�������ʸˡ�������䡢
-���줾��Υ��֥롼�����᥽�åɤε�ǽ�������󶡤��Ƥ���������
-��ȯ�ԤΥΡ��ȤȤ��� Perl �Υ����Ȥ����Ѥ�������ɥ桼���ؤ�
-�Ρ��Ȥˤ� POD ��ȤäƤ���������
+仕事はペーパーワークがすむまでは、終わりではありません。
+モジュールのドキュメントを書くための時間が必要です。
+C<module-starter> か C<h2xs> を利用すれば、テンプレートを作ってくれますので、
+それを埋めればよいです;
+フォーマットがよくわからなければ、まずは L<perlpod> を見てください。
+モジュールをどのように使うかのおおまかな概要、そして文法の説明や、
+それぞれのサブルーチンやメソッドの機能説明を提供してください。
+開発者のノートとして Perl のコメントを利用し、エンドユーザへの
+ノートには POD を使ってください。
 
 =item Write tests
 
-(�ƥ��Ȥ��)
+(テストを書く)
 
 =begin original
 
@@ -535,19 +535,19 @@ places to start when writing a test suite.
 
 =end original
 
-���ҥ�˥åȥƥ��ȥ����ɤ��äơ����ʤ��Υ⥸�塼�뤬���������
-�ץ�åȥե������� Perl �ǡ��տޤ����̤�ˤ��ޤ�ư�����Ȥ��ǧ���ޤ��礦��
-CPAN �˥⥸�塼��򥢥åץ����ɤ���ȡ���������Υƥ��������⥸�塼���
-�ӥ�ɤ��ơ��ƥ��Ȥη�̤򤢤ʤ������äƤ����Ǥ��礦��
-�����Ǥ�ޤ���C<module-starter> �� C<h2xs> ��Ȥ��С���ǳ�ĥ��ǽ�ʡ�
-�ƥ��ȥե졼�������󶡤���ޤ���
-ñ�˥���ѥ��뤬�̤뤫�����Ǥʤ������������ȥƥ��Ȥ��ޤ��礦��
-L<Test::Simple|Test::Simple> �� L<Test::More|Test::More> �ϡ��ƥ���
-�������Ȥ�񤯤Ȥ��γ������Ȥ��Ƥ褤��ΤǤ���
+ぜひユニットテストコードを作って、あなたのモジュールが、いろんな
+プラットフォーム上の Perl で、意図した通りにうまく動くことを確認しましょう。
+CPAN にモジュールをアップロードすると、たくさんのテスターがモジュールを
+ビルドして、テストの結果をあなたに送ってくれるでしょう。
+ここでもまた、C<module-starter> と C<h2xs> を使えば、後で拡張可能な、
+テストフレームワークが提供されます。
+単にコンパイルが通るかだけでなく、いろいろとテストしましょう。
+L<Test::Simple|Test::Simple> と L<Test::More|Test::More> は、テスト
+スイートを書くときの開始点としてよいものです。
 
 =item Write the README
 
-(README ���)
+(README を書く)
 
 =begin original
 
@@ -559,24 +559,24 @@ does in detail, and the user-visible changes since the last release.
 
 =end original
 
-CPAN �˥��åץ����ɤ���Ȥ��ϡ�README �ե����뤬��ư����Ф���ơ�
-���ʤ��� CPAN �ǥ��쥯�ȥ���֤���ޤ���
-�ޤ����⥸�塼��ꥹ�Ȥ˺ܤä����ˤϡ�F<by-module> �� F<by-category> ��
-�ᥤ��ǥ��쥯�ȥ�ˤ����֤���ޤ���
-���Υե�����ˡ����Υ⥸�塼��Τ��뤳�Ȥξܺ٤䡢������Υ�꡼�������
-�ѹ�����񤤤Ƥ������ɤ��Ǥ��礦��
+CPAN にアップロードするときは、README ファイルが自動で抽出されて、
+あなたの CPAN ディレクトリに置かれます。
+また、モジュールリストに載った場合には、F<by-module> や F<by-category> の
+メインディレクトリにも配置されます。
+このファイルに、そのモジュールのすることの詳細や、一つ前のリリースからの
+変更点を書いておくと良いでしょう。
 
 =back
 
 =head2 Step-by-step: Distributing your module
 
-(Step-by-step: �⥸�塼������ۤ���)
+(Step-by-step: モジュールを配布する)
 
 =over 3
 
 =item Get a CPAN user ID
 
-(CPAN �桼�� ID ���������)
+(CPAN ユーザ ID を取得する)
 
 =begin original
 
@@ -586,9 +586,9 @@ your request to be approved by the PAUSE administrators.
 
 =end original
 
-CPAN �ǥ⥸�塼������ۤ���ˤϡ�CPAN ID ��ɬ�פǤ���
-C<http://pause.perl.org/> ��ˬ��ơ�"Request PAUSE Account" �����򤷡�
-�ꥯ�����Ȥ� PAUSE �����Ԥ˾�ǧ�����Τ��Ԥ��ޤ��礦��
+CPAN でモジュールを配布するには、CPAN ID が必要です。
+C<http://pause.perl.org/> に訪れて、"Request PAUSE Account" を選択し、
+リクエストが PAUSE 管理者に承認されるのを待ちましょう。
 
 =item C<perl Makefile.PL; make test; make dist>
 
@@ -600,10 +600,10 @@ install modules, and this produces a Makefile with a C<dist> target.
 
 =end original
 
-�����Ǥ⡢C<module-starter> �� C<h2xs> �Ϥ��٤Ƥ�äƤ���ޤ���
-�⥸�塼��򥤥󥹥ȡ��뤹��Ȥ��ˤ褯���롢ɸ��Ū�� C<Makefile.PL> ��
-�Ǥ��Ƥ��ޤ���
-���줬�������� Makefile �� C<dist> �������åȤ�����ޤ���
+ここでも、C<module-starter> や C<h2xs> はすべてやってくれます。
+モジュールをインストールするときによく見る、標準的な C<Makefile.PL> が
+できています。
+これが生成する Makefile に C<dist> ターゲットがあります。
 
 =begin original
 
@@ -613,13 +613,13 @@ hopefully produce you a nice tarball of your module, ready for upload.
 
 =end original
 
-�⥸�塼�뤬�ƥ��Ȥ˥ѥ��������Ȥ��ǧ������(���ĤǤ��ǧ���뤳�Ȥ�
-�褤���ȤǤ�)��C<make dist> ��¹Ԥ���С�Makefile �ϥ��åץ����ɽ�����
-���ä� tarball �ե�������������Ƥ���ޤ���
+モジュールがテストにパスしたことを確認したら(いつでも確認することは
+よいことです)、C<make dist> を実行すれば、Makefile はアップロード準備の
+整った tarball ファイルを生成してくれます。
 
 =item Upload the tarball
 
-(tarball �򥢥åץ����ɤ���)
+(tarball をアップロードする)
 
 =begin original
 
@@ -629,13 +629,13 @@ you can upload your module to CPAN.
 
 =end original
 
-CPAN ID ������Ǥ����Ȥ����Ϥ� email �ˡ�PAUSE (the Perl Authors
-Upload SErver) �ؤΥ���������ˡ���ܤäƤ��ޤ���
-��˥塼�������򤷤ơ��⥸�塼���CPAN�˥��åץ����ɤǤ��ޤ���
+CPAN ID を取得できたときに届く email に、PAUSE (the Perl Authors
+Upload SErver) へのログイン方法が載っています。
+メニューから選択して、モジュールをCPANにアップロードできます。
 
 =item Announce to the modules list
 
-(�⥸�塼��ꥹ�Ȥ˥��ʥ��󥹤���)
+(モジュールリストにアナウンスする)
 
 =begin original
 
@@ -646,15 +646,15 @@ by-module and by-category listings on CPAN.
 
 =end original
 
-���åץ����ɤ����顢���ʤ��Υǥ��쥯�ȥ�ˤ�������ǤϿ��ܤ�����ޤ���
-¾�Τ� CPAN �⥸�塼���Ʊ���褦�˺ܤ�������С�PAUSE ��
-"Register Namespace" �˹Ԥ�ɬ�פ�����ޤ���
-��Ͽ�����ȡ����ʤ��Υ⥸�塼��� CPAN �Υ⥸�塼���̤���ӥ��ƥ����̤�
-�ꥹ�Ȥ�ɽ������ޤ���
+アップロードしたら、あなたのディレクトリにあるだけでは人目を引きません。
+他のの CPAN モジュールと同じように載せたければ、PAUSE の
+"Register Namespace" に行く必要があります。
+登録されると、あなたのモジュールは CPAN のモジュール別およびカテゴリ別の
+リストに表示されます。
 
 =item Announce to clpa
 
-(clpa �˥��ʥ��󥹤���)
+(clpa にアナウンスする)
 
 =begin original
 
@@ -663,13 +663,13 @@ an announcement to the moderated C<comp.lang.perl.announce> newsgroup.
 
 =end original
 
-��꡼���������Ȥ�������˥��ʥ��󥹤������Ȥ�����˾������ʤ顢
-��ǥ졼�Ȥ���Ƥ��롢C<comp.lang.perl.announce> �˥塼�����롼�פ�
-���ʥ��󥹤���Ƥ��Ƥߤޤ��礦��
+リリースしたことを世界中にアナウンスしたいという野望があるなら、
+モデレートされている、C<comp.lang.perl.announce> ニュースグループに
+アナウンスを投稿してみましょう。
 
 =item Fix bugs!
 
-(�Х���ʤ���!)
+(バグをなおす!)
 
 =begin original
 
@@ -679,9 +679,9 @@ maintaining a software project...
 
 =end original
 
-�桼�������ޤäƤ���ȡ��Х���ݡ��Ȥ���������ޤ���
-�����褱��С��ѥå������äƤ����Ǥ��礦��
-���եȥ������ץ��������ȤΥ��ƥʥ󥹤Ȥ�����Ӥ��ԤäƤ��ޤ� ...
+ユーザが集まってくると、バグレポートが送られて来ます。
+運がよければ、パッチを送ってくれるでしょう。
+ソフトウェアプロジェクトのメンテナンスという喜びが待っています ...
 
 =back
 
@@ -706,6 +706,6 @@ module at http://mathforum.org/~ken/perl_modules.html
 L<perlmod>, L<perlmodlib>, L<perlmodinstall>, L<h2xs>, L<strict>,
 L<Carp>, L<Exporter>, L<perlpod>, L<Test::Simple>, L<Test::More>
 L<ExtUtils::MakeMaker>, L<Module::Build>, L<Module::Starter>
-http://www.cpan.org/ , http://mathforum.org/~ken/perl_modules.html �ˤ��롢
-Ken Williams �ˤ�뼫��Υ⥸�塼���ӥ�ɤ��뤿��Υ��塼�ȥꥢ�롣
+http://www.cpan.org/ , http://mathforum.org/~ken/perl_modules.html にある、
+Ken Williams による自作のモジュールをビルドするためのチュートリアル。
 

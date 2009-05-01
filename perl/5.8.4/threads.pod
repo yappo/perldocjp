@@ -1,11 +1,11 @@
 
 =encoding euc-jp
 
-=head1 ̾��
+=head1 名前
 
-threads - ���󥿥ץ꥿����åɤλ��Ѥ��ǽ�ˤ���Perl��ĥ
+threads - インタプリタスレッドの使用を可能にするPerl拡張
 
-=head1 ����
+=head1 概要
 
     use threads;
 
@@ -31,7 +31,7 @@ threads - ���󥿥ץ꥿����åɤλ��Ѥ��ǽ�ˤ���Perl��ĥ
 
     threads->list();
 
-=head1 ����
+=head1 説明
 
 =begin original
 
@@ -42,11 +42,11 @@ any data or state between threads by default.
 
 =end original
 
-Perl 5.6 �ϥ��󥿥ץ꥿����åɤȸƤФ���Τ�Ƴ��������
-���󥿥ץ꥿����åɤϡ�����å���˿�����Perl���󥿥ץ꥿��
-�������뤳�Ȥˤ�äơ��ޤ����ǥե���ȤǤϤ����ʤ�ǡ�������֤�
-����åɴ֤Ƕ�ͭ���ʤ����Ȥˤ�äơ�"5005����å�"
-(Perl 5.005 �ˤ����륹��åɥ�ǥ�)�Ȥ϶��̤���롣
+Perl 5.6 はインタプリタスレッドと呼ばれるものを導入した。
+インタプリタスレッドは、スレッド毎に新たにPerlインタプリタを
+生成することによって、また、デフォルトではいかなるデータや状態も
+スレッド間で共有しないことによって、"5005スレッド"
+(Perl 5.005 におけるスレッドモデル)とは区別される。
 
 =begin original
 
@@ -55,8 +55,8 @@ perl and for emulating fork() on windows.
 
 =end original
 
-perl 5.8������Ǥϡ������perl��embed����͡��ˤȤäƤΤߡ�
-������windows��fork()�򥨥ߥ�졼�Ȥ��뤿��ˤΤ����Ѳ�ǽ�Ǥ��ä���
+perl 5.8より前では、これはperlをembedする人々にとってのみ、
+そしてwindowsでfork()をエミュレートするためにのみ利用可能であった。
 
 =begin original
 
@@ -67,10 +67,10 @@ must use threads::shared.
 
 =end original
 
-threads API�ϡ������ø��ʷ��ǸŤ�Thread.pm API�˴�Ť��Ƥ��롣
-�ѿ��ϥ���åɴ֤Ƕ�ͭ���줺�����Ƥ��ѿ��ϥǥե���Ȥ�
-����åɥ�������ʤ�ΤǤ��뤳�Ȥ����դ��Ƥ������Ȥ����˽��פ���
-��ͭ�ѿ������Ѥ���ˤϡ�threads::shared��Ȥ�ʤ���Фʤ�ʤ���
+threads APIは、いい加減な形で古いThread.pm APIに基づいている。
+変数はスレッド間で共有されず、全ての変数はデフォルトで
+スレッドローカルなものであることに注意しておくことが非常に重要だ。
+共有変数を利用するには、threads::sharedを使わなければならない。
 
 =begin original
 
@@ -84,13 +84,13 @@ it the other way around.
 
 =end original
 
-�ޤ���������ץ���ǤϤǤ�������ᤤ������C<use threads>����
-����åɤ����Ѳ�ǽ�ˤ��Ƥ����٤�������
-C<eval "">, C<do>, C<require>, C<use>�������Ǥ�
-����å����Ǥ��ʤ����Ȥ����դ��뤳�ȡ�
-�ä�threads::shared��Ȥä��ѿ���ͭ���褦�Ȥ���ʤ�С�
-C<use threads::shared>������C<use threads>���ʤ���Фʤ�ʤ���
-�դˤ��Ƥ��ޤ���C<threads>�Ϸٹ��ȯ���롣
+また、スクリプト内ではできるだけ早いうちにC<use threads>して
+スレッドを利用可能にしておくべきだし、
+C<eval "">, C<do>, C<require>, C<use>の内部では
+スレッド操作ができないことに注意すること。
+特にthreads::sharedを使って変数を共有しようとするならば、
+C<use threads::shared>の前にC<use threads>しなければならない。
+逆にしてしまうとC<threads>は警告を発する。
 
 =over
 
@@ -104,9 +104,9 @@ object. The new() method is an alias for create().
 
 =end original
 
-����ϥ���ȥ꡼�ݥ���ȤȤʤ�ؿ���ȼ�äƿ���������åɤ���������
-�ꥹ�Ȥ�ѥ�᡼���Ȥ���Ϳ���롣�б����륹��åɥ��֥������Ȥ��֤���
-new()��create()����̾����
+これはエントリーポイントとなる関数を伴って新しいスレッドを生成し、
+リストをパラメータとして与える。対応するスレッドオブジェクトを返す。
+new()はcreate()の別名だ。
 
 =item $thread->join
 
@@ -118,9 +118,9 @@ function. If the thread has been detached, an error will be thrown.
 
 =end original
 
-�б����륹��åɤ�join����Τ��Ԥġ����Υ���åɤ���λ��������join()��
-����ȥ꡼�ݥ���ȴؿ�������ͤ��֤����⤷���Υ���åɤ�detach����Ƥ����ʤ顢
-���顼���ꤲ���롣
+対応するスレッドがjoinするのを待つ。そのスレッドが終了した時、join()は
+エントリーポイント関数の戻り値を返す。もしそのスレッドがdetachされていたなら、
+エラーが投げられる。
 
 =begin original
 
@@ -131,10 +131,10 @@ that if you intend to return a scalar, you must use C<my $thread = ...>.
 
 =end original
 
-����å��������Υ���ƥ����ȡʥ����顼�ʤ����ϥꥹ�ȡˤϡ�join()��
-����ƥ����ȤǤ⤢�롣���ΰ�̣����Ȥ����ϡ����ʤ�������åɤ��������
-�֤������Ȼפ��ʤ顢C<my ($thread) = threads->new(...)>�Ȥ��ʤ���Фʤ餺��
-�����顼���֤����ߤ�����C<my $thread = ...>�Ȥ��ʤ���Фʤ�ʤ��Ȥ������Ȥ���
+スレッド生成時のコンテキスト（スカラーないしはリスト）は、join()の
+コンテキストでもある。この意味するところは、あなたがスレッドから配列を
+返したいと思うなら、C<my ($thread) = threads->new(...)>としなければならず、
+スカラーを返して欲しくばC<my $thread = ...>としなければならないということだ。
 
 =begin original
 
@@ -145,10 +145,10 @@ case of the main thread, reaches the end of the main program file.)
 
 =end original
 
-�����줫�Υ���åɤ�join��detach���줺�˥ץ�����ब��λ����ȡ��ٹ�
-�Ф�ʥ���åɤΰ�Ĥ�����Ū��exit()��ƤӽФ��������뤤�ϥᥤ�󥹥�åɤ�
-���ʤ�ᥤ��Υץ������ե�����ν�ü��ã�������Τ����줫�ˤ�ä�
-�ץ������Ͻ�λ����ˡ�
+いずれかのスレッドがjoinかdetachされずにプログラムが終了すると、警告が
+出る（スレッドの一つが明示的にexit()を呼び出すか、あるいはメインスレッドの
+場合ならメインのプログラムファイルの終端に達した時のいずれかによって
+プログラムは終了する）。
 
 
 =item $thread->detach
@@ -160,7 +160,7 @@ to be discarded.
 
 =end original
 
-���Υ���åɤ�join�Բ�ǽ�ˤ�����̤�����ͤ��˴����롣
+そのスレッドをjoin不可能にし、結果の戻り値を破棄する。
 
 =item threads->self
 
@@ -170,7 +170,7 @@ This will return the thread object for the current thread.
 
 =end original
 
-���ߤΥ���åɤΥ���åɥ��֥������Ȥ��֤���
+現在のスレッドのスレッドオブジェクトを返す。
 
 =item $thread->tid
 
@@ -184,10 +184,10 @@ new thread that's created.
 
 =end original
 
-����åɤ�id���֤�������å�ID�������Ǥ��ꡢ�ץ������λϤޤ�Ȥʤ�
-�ᥤ�󥹥�åɤ��ͤ�0�Ǥ��롣���ߤ�Perl�ϡ��������줿�ǽ�Υ���åɤ�
-tid��1��Ϳ��������������åɤ���������뤿�Ӥ�tid���ͤ�1���䤷�Ƥ������Ȥ�
-��äơ��ץ���������������������ƤΥ���åɤ˰�դ�tid���꿶�롣
+スレッドのidを返す。スレッドIDは整数であり、プログラムの始まりとなる
+メインスレッドの値は0である。現在のPerlは、生成された最初のスレッドの
+tidに1を与え、新しいスレッドが生成されるたびにtidの値を1増やしていくことに
+よって、プログラム中に生成される全てのスレッドに一意なtidを割り振る。
 
 =begin original
 
@@ -196,8 +196,8 @@ current thread id if you don't have your thread object handy.
 
 =end original
 
-���ա����ʤ�������åɥ��֥������Ȥ����ѤǤ��ʤ���硢���饹�᥽�å�
-C<< threads->tid() >>�ϡ����ߤΥ���å�id���ˤ����ƻ�Ǥ��롣
+注意　あなたがスレッドオブジェクトを利用できない場合、クラスメソッド
+C<< threads->tid() >>は、現在のスレッドidを手にする近道である。
 
 =item threads->object( tid )
 
@@ -209,9 +209,9 @@ or no tid is specified or the specified tid is undef.
 
 =end original
 
-���ꤵ�줿tid�˴�Ϣ���륹��åɤΥ��֥������Ȥ��֤����⤷����tid�ȴ�Ϣ����
-����åɤ��ʤ���硢���뤤��tid�����ꤵ��Ƥ��ʤ������ꤵ�줿tid��undef��
-��硢�᥽�åɤ�undef���֤���
+指定されたtidに関連するスレッドのオブジェクトを返す。もしそのtidと関連する
+スレッドがない場合、あるいはtidが指定されていない、指定されたtidがundefの
+場合、メソッドはundefを返す。
 
 =item threads->yield();
 
@@ -223,8 +223,8 @@ thread implementation.
 
 =end original
 
-���Υ���åɤ�¾�Υ���åɤ�CPU���֤���äƤ⤤���Ȥ������Ȥ�OS�˼������롣
-�ºݤ˵����뤳�Ȥϡ���ˤʤäƤ��륹��åɼ������礭����¸���Ƥ��롣
+このスレッドが他のスレッドにCPU時間を譲ってもいいということをOSに示唆する。
+実際に起こることは、基になっているスレッド実装に大きく依存している。
 
 =begin original
 
@@ -233,8 +233,8 @@ code.
 
 =end original
 
-��������Ǥϡ�C<use threads qw(yield)>���Ƥ��顢��������C<yield>��
-�ȤäƤ�褤��
+コード内では、C<use threads qw(yield)>してから、たんに裸のC<yield>を
+使ってもよい。
 
 =item threads->list();
 
@@ -244,7 +244,7 @@ This will return a list of all non joined, non detached threads.
 
 =end original
 
-join�����detach����Ƥ��ʤ����ƤΥ���åɤΥꥹ�Ȥ��֤���
+joinおよびdetachされていない全てのスレッドのリストを返す。
 
 =item async BLOCK;
 
@@ -257,16 +257,16 @@ returns a thread object.
 
 =end original
 
-C<async>�Ϥ���ľ���³���֥��å���¹Ԥ��륹��åɤ��������롣
-���Υ֥��å���̵̾���֥롼����Ȥ��ư�����Τǡ��Ĥ����̤θ��
-���ߥ������Ĥ��ʤ���Фʤ�ʤ���C<< threads->new >>Ʊ�͡�C<async>��
-����åɥ��֥������Ȥ��֤���
+C<async>はその直後に続くブロックを実行するスレッドを生成する。
+このブロックは無名サブルーチンとして扱われるので、閉じ大括弧の後に
+セミコロンをつけなければならない。C<< threads->new >>同様、C<async>は
+スレッドオブジェクトを返す。
 
 =back
 
 =head1 WARNINGS
 
-(�ٹ�)
+(警告)
 
 =over 4
 
@@ -281,9 +281,9 @@ exit from the main thread.
 
 =end original
 
-���륹��åɡʥᥤ�󥹥�åɤǤ���ɬ�פϤʤ��ˤ����ޤ�¾�Υ���åɤ�
-�¹����exit�������̾�Ϥ�����������줿����åɤ�����ͤ�
-join�Ǥ�äƲ���������줫��ᥤ�󥹥�åɤ���exit����Τ��褤��ˡ����
+あるスレッド（メインスレッドである必要はない）が、まだ他のスレッドが
+実行中にexitした。通常、はじめに生成されたスレッドの戻り値を
+joinでもって回収し、それからメインスレッドからexitするのがよい方法だ。
 
 =back
 
@@ -297,8 +297,8 @@ and optimized, in newer versions of perl.
 
 =end original
 
-���ߤΥ���åɼ����ϡ���꿷����Perl�ΥС������ˤ����ơ�
-������ư��륹��åɥ����ƥ�Ȥ��ƹ��ۤ��졢��Ŭ������Ƥ�����
+現在のスレッド実装は、より新しいPerlのバージョンにおいて、
+正しく動作するスレッドシステムとして構築され、最適化されてきた。
 
 =begin original
 
@@ -309,19 +309,19 @@ that needs to be cloned.
 
 =end original
 
-���ߤΤȤ���������åɤ������ˤ����륪���С��إåɤϤ���礭����
-�ޤ����ͤ��֤�����Υ����Ȥ��礭���ʤ꤫�ͤʤ����������󤵤��
-ɬ�פΤ���ǡ��������ʤΤ����Ŭ������;�Ϥ������������
+現在のところ、スレッドの生成にかかるオーバーヘッドはやや大きく、
+また、値を返すためのコストも大きくなりかねない。クローンされる
+必要のあるデータが何なのかを最適化する余地があるだろう。
 
 =head1 BUGS
 
-(�Х�)
+(バグ)
 
 =over
 
 =item Parent-Child threads.
 
-(��-�ҥ���å�)
+(親-子スレッド)
 
 =begin original
 
@@ -330,8 +330,8 @@ threads while there are still existing child "threads".
 
 =end original
 
-�ץ�åȥե�����ˤ�äƤϡ��ҥ���åɤ��ޤ�¸�ߤ��Ƥ���֤�
-�ƥ���åɤ��˲����뤳�Ȥ��Ǥ��ʤ����Ȥ����롣
+プラットフォームによっては、子スレッドがまだ存在している間は
+親スレッドを破壊することができないことがある。
 
 =begin original
 
@@ -339,11 +339,11 @@ This will possibly be fixed in later versions of perl.
 
 =end original
 
-���֤󺣸��perl�ΥС������Ǥϥե��å���������������
+たぶん今後のperlのバージョンではフィックスされるだろう。
 
 =item tid is I32
 
-(tid��I32)
+(tidはI32)
 
 =begin original
 
@@ -352,12 +352,12 @@ This might be fixed in a later version of perl.
 
 =end original
 
-����å�id��32bit�����Ǥ��롣�����С��ե��������ǽ�������롣
-�����perl�ΥС������Ǥϥե��å���������������
+スレッドidは32bit整数である。オーバーフローする可能性がある。
+今後のperlのバージョンではフィックスされるだろう。
 
 =item Returning objects
 
-(���֥������Ȥ��֤���)
+(オブジェクトが返る場合)
 
 =begin original
 
@@ -367,13 +367,13 @@ would be to detect the original stash if it existed.
 
 =end original
 
-���֥������Ȥ��֤��Ȥ������Υ��֥������Ȥ�bless����Ƥ���stash��
-Ʊ�ͤ��֤�������ϥ�������̤˻��Ѥ��뤫�⤷��ʤ�������Ū�ʾ��֤ϡ�
-¸�ߤ��Ƥ���ʤ饪�ꥸ�ʥ��stash�򸫤Ĥ��Ф����ȤʤΤ�����
+オブジェクトを返すとき、そのオブジェクトがblessされているstashも
+同様に返す。これはメモリを大量に使用するかもしれない。理想的な状態は、
+存在しているならオリジナルのstashを見つけ出すことなのだが。
 
 =item Creating threads inside BEGIN blocks
 
-(BEGIN �֥��å������ǤΥ���åɤκ���)
+(BEGIN ブロック内部でのスレッドの作成)
 
 =begin original
 
@@ -384,14 +384,14 @@ implemented in very much the same way as threads.)
 
 =end original
 
-BEGIN�֥��å���ǡʤĤޤ����Ū�˥���ѥ���ե��������ʳ��ǡ�
-����åɤ��������뤳�ȤϤǤ��ʤ���Windows��BEGIN�֥��å����fork()
-�����Ѥ��褦�Ȥ����ߤ�Ʊ�ͤ˸����ߤΤʤ���ƤǤ��롣�ʤ��ʤ�
-����åɤ�����Ʊ����ˡ�Ǽ�������Ƥ���������ˡ�
+BEGINブロック内で（つまり一般的にコンパイルフェーズの段階で）
+スレッドを生成することはできない（WindowsのBEGINブロック内でfork()
+を利用しようとする試みも同様に見込みのない提案である。なぜなら
+スレッドと全く同じ方法で実装されてきたからだ）。
 
 =item PERL_OLD_SIGNALS are not threadsafe, will not be.
 
-(PERL_OLD_SIGNALS�ϥ���åɥ����դǤϤʤ������ʤ뤳�Ȥ�ʤ���)
+(PERL_OLD_SIGNALSはスレッドセーフではないし、なることもない。)
 
 =begin original
 
@@ -401,16 +401,16 @@ signal handling is not threadsafe.
 
 =end original
 
-�⤷���ʤ���PERL_OLD_SIGNALS���ץ�����ͭ���ˤ���
-(���Υ���ܥ��ccflag������Ū���ɲä��ʤ���Фʤ�ʤ���C<perl -V>�򸫤�)
-Perl��ӥ�ɤ��Ƥ���ʤ顢
-�����ʥ�ΰ����ϥ���åɥ����դǤϤʤ���
+もしあなたがPERL_OLD_SIGNALSオプションを有効にして
+(このシンボルをccflagに明示的に追加しなければならない。C<perl -V>を見よ)
+Perlをビルドしているなら、
+シグナルの扱いはスレッドセーフではない。
 
 =back
 
 =head1 AUTHOR and COPYRIGHT
 
-(���Ԥ�������)
+(著者および著作権)
 
 Arthur Bergman E<lt>sky at nanisky.comE<gt>
 
@@ -439,7 +439,7 @@ L<perlcall>, L<perlembed>, L<perlguts>
 
 =begin meta
 
-Translate: �ޤ��ޤ� <makamaka@donzoko.net>
+Translate: まかまか <makamaka@donzoko.net>
 Update: Kentaro Shirakata <argrath@ub32.org>
 
 =end meta

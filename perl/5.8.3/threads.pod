@@ -1,8 +1,8 @@
-=head1 Ì¾Á°
+=head1 åå‰
 
-threads - ¥¤¥ó¥¿¥×¥ê¥¿¥¹¥ì¥Ã¥É¤Î»ÈÍÑ¤ò²ÄÇ½¤Ë¤¹¤ëPerl³ÈÄ¥
+threads - ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä½¿ç”¨ã‚’å¯èƒ½ã«ã™ã‚‹Perlæ‹¡å¼µ
 
-=head1 ³µÍ×
+=head1 æ¦‚è¦
 
     use threads;
 
@@ -28,33 +28,33 @@ threads - ¥¤¥ó¥¿¥×¥ê¥¿¥¹¥ì¥Ã¥É¤Î»ÈÍÑ¤ò²ÄÇ½¤Ë¤¹¤ëPerl³ÈÄ¥
 
     threads->list();
 
-=head1 ÀâÌÀ
+=head1 èª¬æ˜
 
 Perl 5.6 introduced something called interpreter threads.  Interpreter
 threads are different from "5005threads" (the thread model of Perl
 5.005) by creating a new perl interpreter per thread and not sharing
 any data or state between threads by default.
 
-Perl 5.6 ¤Ï¥¤¥ó¥¿¡¼¥×¥ê¥Ã¥¿¡¦¥¹¥ì¥Ã¥É¤È¸Æ¤Ğ¤ì¤ë¤â¤Î¤òÆ³Æş¤·¤¿¡£
-¥¤¥ó¥¿¡¼¥×¥ê¥Ã¥¿¡¦¥¹¥ì¥Ã¥É¤Ï¡¢¥¹¥ì¥Ã¥ÉËè¤Ë¿·¤¿¤ËPerl¥¤¥ó¥¿¥×¥ê¥¿¤òÀ¸À®¤¹¤ë
-¤³¤È¤Ë¤è¤Ã¤Æ¡¢¤Ş¤¿¡¢¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï¤¤¤«¤Ê¤ë¥Ç¡¼¥¿¤ä¾õÂÖ¤â¥¹¥ì¥Ã¥É´Ö¤Ç¶¦Í­¤·¤Ê¤¤
-¤³¤È¤Ë¤è¤Ã¤Æ¡¢5005¥¹¥ì¥Ã¥É¡ÊPerl 5.005 ¤Ë¤ª¤±¤ë¥¹¥ì¥Ã¥É¥â¥Ç¥ë¡Ë¤È¤Ï¶èÊÌ¤µ¤ì¤ë¡£
+Perl 5.6 ã¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªãƒƒã‚¿ãƒ»ã‚¹ãƒ¬ãƒƒãƒ‰ã¨å‘¼ã°ã‚Œã‚‹ã‚‚ã®ã‚’å°å…¥ã—ãŸã€‚
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªãƒƒã‚¿ãƒ»ã‚¹ãƒ¬ãƒƒãƒ‰ã¯ã€ã‚¹ãƒ¬ãƒƒãƒ‰æ¯ã«æ–°ãŸã«Perlã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã‚’ç”Ÿæˆã™ã‚‹
+ã“ã¨ã«ã‚ˆã£ã¦ã€ã¾ãŸã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã„ã‹ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã‚„çŠ¶æ…‹ã‚‚ã‚¹ãƒ¬ãƒƒãƒ‰é–“ã§å…±æœ‰ã—ãªã„
+ã“ã¨ã«ã‚ˆã£ã¦ã€5005ã‚¹ãƒ¬ãƒƒãƒ‰ï¼ˆPerl 5.005 ã«ãŠã‘ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ¢ãƒ‡ãƒ«ï¼‰ã¨ã¯åŒºåˆ¥ã•ã‚Œã‚‹ã€‚
 
 Prior to perl 5.8 this has only been available to people embedding
 perl and for emulating fork() on windows.
 
-perl 5.8¤è¤êÁ°¤Ç¤Ï¡¢¤³¤ì¤Ïperl¤òembed¤¹¤ë¿Í¡¹¤Ë¤È¤Ã¤Æ¤Î¤ß¡¢
-¤½¤·¤Æwindows¤Çfork()¤ò¥¨¥ß¥å¥ì¡¼¥È¤¹¤ë¤¿¤á¤Ë¤Î¤ßÍøÍÑ²ÄÇ½¤Ç¤¢¤Ã¤¿¡£
+perl 5.8ã‚ˆã‚Šå‰ã§ã¯ã€ã“ã‚Œã¯perlã‚’embedã™ã‚‹äººã€…ã«ã¨ã£ã¦ã®ã¿ã€
+ãã—ã¦windowsã§fork()ã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã™ã‚‹ãŸã‚ã«ã®ã¿åˆ©ç”¨å¯èƒ½ã§ã‚ã£ãŸã€‚
 
 The threads API is loosely based on the old Thread.pm API. It is very
 important to note that variables are not shared between threads, all
 variables are per default thread local.  To use shared variables one
 must use threads::shared.
 
-threads API¤Ï¡¢¤¤¤¤²Ã¸º¤Ê·Á¤Ç¸Å¤¤Thread.pm API¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡£
-ÊÑ¿ô¤Ï¥¹¥ì¥Ã¥É´Ö¤Ç¶¦Í­¤µ¤ì¤º¡¢Á´¤Æ¤ÎÊÑ¿ô¤Ï¥Ç¥Õ¥©¥ë¥È¤Ç
-¥¹¥ì¥Ã¥É¥í¡¼¥«¥ë¤Ê¤â¤Î¤Ç¤¢¤ë¤³¤È¤ËÃí°Õ¤·¤Æ¤ª¤¯¤³¤È¤¬Èó¾ï¤Ë½ÅÍ×¤À¡£
-¶¦Í­ÊÑ¿ô¤òÍøÍÑ¤¹¤ë¤Ë¤Ï¡¢threads::shared¤ò»È¤ï¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¡£
+threads APIã¯ã€ã„ã„åŠ æ¸›ãªå½¢ã§å¤ã„Thread.pm APIã«åŸºã¥ã„ã¦ã„ã‚‹ã€‚
+å¤‰æ•°ã¯ã‚¹ãƒ¬ãƒƒãƒ‰é–“ã§å…±æœ‰ã•ã‚Œãšã€å…¨ã¦ã®å¤‰æ•°ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§
+ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«ãªã‚‚ã®ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„ã—ã¦ãŠãã“ã¨ãŒéå¸¸ã«é‡è¦ã ã€‚
+å…±æœ‰å¤‰æ•°ã‚’åˆ©ç”¨ã™ã‚‹ã«ã¯ã€threads::sharedã‚’ä½¿ã‚ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚
 
 It is also important to note that you must enable threads by doing
 C<use threads> as early as possible in the script itself and that it
@@ -64,13 +64,13 @@ variables with threads::shared, you must C<use threads> before you
 C<use threads::shared> and C<threads> will emit a warning if you do
 it the other way around.
 
-¤Ş¤¿¡¢¥¹¥¯¥ê¥×¥ÈÆâ¤Ç¤Ï¤Ç¤­¤ë¤À¤±Áá¤¤¤¦¤Á¤ËC<use threads>¤·¤Æ
-¥¹¥ì¥Ã¥É¤òÍøÍÑ²ÄÇ½¤Ë¤·¤Æ¤ª¤¯¤Ù¤­¤À¤·¡¢
-C<eval "">, C<do>,C<require>, or C<use>¤ÎÆâÉô¤Ç¤Ï
-¥¹¥ì¥Ã¥ÉÁàºî¤¬¤Ç¤­¤Ê¤¤¤³¤È¤ËÃí°Õ¤¹¤ë¤³¤È¡£
-ÆÃ¤Ëthreads::shared¤ò»È¤Ã¤ÆÊÑ¿ô¤ò¶¦Í­¤·¤è¤¦¤È¤¹¤ë¤Ê¤é¤Ğ¡¢
-C<use threads::shared>¤ÎÁ°¤ËC<use threads>¤·¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¡£
-µÕ¤Ë¤·¤Æ¤·¤Ş¤¦¤ÈC<threads>¤Ï·Ù¹ğ¤òÈ¯¤¹¤ë¡£
+ã¾ãŸã€ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã¯ã§ãã‚‹ã ã‘æ—©ã„ã†ã¡ã«C<use threads>ã—ã¦
+ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’åˆ©ç”¨å¯èƒ½ã«ã—ã¦ãŠãã¹ãã ã—ã€
+C<eval "">, C<do>,C<require>, or C<use>ã®å†…éƒ¨ã§ã¯
+ã‚¹ãƒ¬ãƒƒãƒ‰æ“ä½œãŒã§ããªã„ã“ã¨ã«æ³¨æ„ã™ã‚‹ã“ã¨ã€‚
+ç‰¹ã«threads::sharedã‚’ä½¿ã£ã¦å¤‰æ•°ã‚’å…±æœ‰ã—ã‚ˆã†ã¨ã™ã‚‹ãªã‚‰ã°ã€
+C<use threads::shared>ã®å‰ã«C<use threads>ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚
+é€†ã«ã—ã¦ã—ã¾ã†ã¨C<threads>ã¯è­¦å‘Šã‚’ç™ºã™ã‚‹ã€‚
 
 =over
 
@@ -80,9 +80,9 @@ This will create a new thread with the entry point function and give
 it LIST as parameters.  It will return the corresponding threads
 object. The new() method is an alias for create().
 
-¤³¤ì¤Ï¥¨¥ó¥È¥ê¡¼¥İ¥¤¥ó¥È¤È¤Ê¤ë´Ø¿ô¤òÈ¼¤Ã¤Æ¿·¤·¤¤¥¹¥ì¥Ã¥É¤òÀ¸À®¤·¡¢
-¥ê¥¹¥È¤ò¥Ñ¥é¥á¡¼¥¿¤È¤·¤ÆÍ¿¤¨¤ë¡£ÂĞ±ş¤¹¤ë¥¹¥ì¥Ã¥É¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤¹¡£
-new()¤Ïcreate()¤ÎÊÌÌ¾¤À¡£
+ã“ã‚Œã¯ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆã¨ãªã‚‹é–¢æ•°ã‚’ä¼´ã£ã¦æ–°ã—ã„ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç”Ÿæˆã—ã€
+ãƒªã‚¹ãƒˆã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦ä¸ãˆã‚‹ã€‚å¯¾å¿œã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚
+new()ã¯create()ã®åˆ¥åã ã€‚
 
 =item $thread->join
 
@@ -90,29 +90,29 @@ This will wait for the corresponding thread to join. When the thread
 finishes, join() will return the return values of the entry point
 function. If the thread has been detached, an error will be thrown.
 
-ÂĞ±ş¤¹¤ë¥¹¥ì¥Ã¥É¤¬join¤¹¤ë¤Î¤òÂÔ¤Ä¡£¤½¤Î¥¹¥ì¥Ã¥É¤¬½ªÎ»¤·¤¿»ş¡¢join()¤Ï
-¥¨¥ó¥È¥ê¡¼¥İ¥¤¥ó¥È´Ø¿ô¤ÎÌá¤êÃÍ¤òÊÖ¤¹¡£¤â¤·¤½¤Î¥¹¥ì¥Ã¥É¤¬detach¤µ¤ì¤Æ¤¤¤¿
-¤Ê¤é¡¢¥¨¥é¡¼¤¬Åê¤²¤é¤ì¤ë¡£
+å¯¾å¿œã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒjoinã™ã‚‹ã®ã‚’å¾…ã¤ã€‚ãã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒçµ‚äº†ã—ãŸæ™‚ã€join()ã¯
+ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆé–¢æ•°ã®æˆ»ã‚Šå€¤ã‚’è¿”ã™ã€‚ã‚‚ã—ãã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒdetachã•ã‚Œã¦ã„ãŸ
+ãªã‚‰ã€ã‚¨ãƒ©ãƒ¼ãŒæŠ•ã’ã‚‰ã‚Œã‚‹ã€‚
 
 The context (scalar or list) of the thread creation is also the
 context for join().  This means that if you intend to return an array
 from a thread, you must use C<my ($thread) = threads->new(...)>, and
 that if you intend to return a scalar, you must use C<my $thread = ...>.
 
-¥¹¥ì¥Ã¥ÉÀ¸À®»ş¤Î¥³¥ó¥Æ¥­¥¹¥È¡Ê¥¹¥«¥é¡¼¤Ê¤¤¤·¤Ï¥ê¥¹¥È¡Ë¤Ï¡¢join()¤Î
-¥³¥ó¥Æ¥­¥¹¥È¤Ç¤â¤¢¤ë¡£¤³¤Î°ÕÌ£¤¹¤ë¤È¤³¤í¤Ï¡¢¤¢¤Ê¤¿¤¬¥¹¥ì¥Ã¥É¤«¤éÇÛÎó¤ò
-ÊÖ¤·¤¿¤¤¤È»×¤¦¤Ê¤é¡¢C<my ($thread) = threads->new(...)>¤È¤·¤Ê¤±¤ì¤Ğ¤Ê¤é¤º¡¢
-¥¹¥«¥é¡¼¤òÊÖ¤·¤ÆÍß¤·¤¯¤ĞC<my $thread = ...>¤È¤·¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¤È¤¤¤¦¤³¤È¤À¡£
+ã‚¹ãƒ¬ãƒƒãƒ‰ç”Ÿæˆæ™‚ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆï¼ˆã‚¹ã‚«ãƒ©ãƒ¼ãªã„ã—ã¯ãƒªã‚¹ãƒˆï¼‰ã¯ã€join()ã®
+ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã‚‚ã‚ã‚‹ã€‚ã“ã®æ„å‘³ã™ã‚‹ã¨ã“ã‚ã¯ã€ã‚ãªãŸãŒã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰é…åˆ—ã‚’
+è¿”ã—ãŸã„ã¨æ€ã†ãªã‚‰ã€C<my ($thread) = threads->new(...)>ã¨ã—ãªã‘ã‚Œã°ãªã‚‰ãšã€
+ã‚¹ã‚«ãƒ©ãƒ¼ã‚’è¿”ã—ã¦æ¬²ã—ãã°C<my $thread = ...>ã¨ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã¨ã„ã†ã“ã¨ã ã€‚
 
 If the program exits without all other threads having been either
 joined or detached, then a warning will be issued. (A program exits
 either because one of its threads explicitly calls exit(), or in the
 case of the main thread, reaches the end of the main program file.)
 
-¤¤¤º¤ì¤«¤Î¥¹¥ì¥Ã¥É¤¬join¤«detach¤µ¤ì¤º¤Ë¥×¥í¥°¥é¥à¤¬½ªÎ»¤¹¤ë¤È¡¢·Ù¹ğ¤¬
-½Ğ¤ë¡Ê¥¹¥ì¥Ã¥É¤Î°ì¤Ä¤¬ÌÀ¼¨Åª¤Ëexit()¤ò¸Æ¤Ó½Ğ¤¹¤«¡¢¤¢¤ë¤¤¤Ï¥á¥¤¥ó¥¹¥ì¥Ã¥É¤Î
-¾ì¹ç¤Ê¤é¥á¥¤¥ó¤Î¥×¥í¥°¥é¥à¥Õ¥¡¥¤¥ë¤Î½ªÃ¼¤ËÃ£¤·¤¿»ş¤Î¤¤¤º¤ì¤«¤Ë¤è¤Ã¤Æ
-¥×¥í¥°¥é¥à¤Ï½ªÎ»¤¹¤ë¡Ë¡£
+ã„ãšã‚Œã‹ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒjoinã‹detachã•ã‚Œãšã«ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒçµ‚äº†ã™ã‚‹ã¨ã€è­¦å‘ŠãŒ
+å‡ºã‚‹ï¼ˆã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸€ã¤ãŒæ˜ç¤ºçš„ã«exit()ã‚’å‘¼ã³å‡ºã™ã‹ã€ã‚ã‚‹ã„ã¯ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®
+å ´åˆãªã‚‰ãƒ¡ã‚¤ãƒ³ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ‚ç«¯ã«é”ã—ãŸæ™‚ã®ã„ãšã‚Œã‹ã«ã‚ˆã£ã¦
+ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯çµ‚äº†ã™ã‚‹ï¼‰ã€‚
 
 
 =item $thread->detach
@@ -120,13 +120,13 @@ case of the main thread, reaches the end of the main program file.)
 Will make the thread unjoinable, and cause any eventual return value
 to be discarded.
 
-¤½¤Î¥¹¥ì¥Ã¥É¤òjoinÉÔ²ÄÇ½¤Ë¤·¡¢·ë²Ì¤ÎÌá¤êÃÍ¤òÇË´ş¤¹¤ë¡£
+ãã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’joinä¸å¯èƒ½ã«ã—ã€çµæœã®æˆ»ã‚Šå€¤ã‚’ç ´æ£„ã™ã‚‹ã€‚
 
 =item threads->self
 
 This will return the thread object for the current thread.
 
-¸½ºß¤Î¥¹¥ì¥Ã¥É¤Î¥¹¥ì¥Ã¥É¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤¹¡£
+ç¾åœ¨ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚
 
 =item $thread->tid
 
@@ -136,16 +136,16 @@ tid to every thread ever created in your program, assigning the first
 thread to be created a tid of 1, and increasing the tid by 1 for each
 new thread that's created.
 
-¥¹¥ì¥Ã¥É¤Îid¤òÊÖ¤¹¡£¥¹¥ì¥Ã¥ÉID¤ÏÀ°¿ô¤Ç¤¢¤ê¡¢¥×¥í¥°¥é¥à¤Î»Ï¤Ş¤ê¤È¤Ê¤ë
-¥á¥¤¥ó¥¹¥ì¥Ã¥É¤ÎÃÍ¤Ï0¤Ç¤¢¤ë¡£¸½ºß¤ÎPerl¤Ï¡¢À¸À®¤µ¤ì¤¿ºÇ½é¤Î¥¹¥ì¥Ã¥É¤Î
-tid¤Ë1¤òÍ¿¤¨¡¢¿·¤·¤¤¥¹¥ì¥Ã¥É¤¬À¸À®¤µ¤ì¤ë¤¿¤Ó¤Ëtid¤ÎÃÍ¤ò1Áı¤ä¤·¤Æ¤¤¤¯¤³¤È
-¤Ë¤è¤Ã¤Æ¡¢¥×¥í¥°¥é¥àÃæ¤ËÀ¸À®¤µ¤ì¤ëÁ´¤Æ¤Î¥¹¥ì¥Ã¥É¤Ë°ì°Õ¤Êtid¤ò³ä¤ê¿¶¤ë¡£
+ã‚¹ãƒ¬ãƒƒãƒ‰ã®idã‚’è¿”ã™ã€‚ã‚¹ãƒ¬ãƒƒãƒ‰IDã¯æ•´æ•°ã§ã‚ã‚Šã€ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å§‹ã¾ã‚Šã¨ãªã‚‹
+ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å€¤ã¯0ã§ã‚ã‚‹ã€‚ç¾åœ¨ã®Perlã¯ã€ç”Ÿæˆã•ã‚ŒãŸæœ€åˆã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®
+tidã«1ã‚’ä¸ãˆã€æ–°ã—ã„ã‚¹ãƒ¬ãƒƒãƒ‰ãŒç”Ÿæˆã•ã‚Œã‚‹ãŸã³ã«tidã®å€¤ã‚’1å¢—ã‚„ã—ã¦ã„ãã“ã¨
+ã«ã‚ˆã£ã¦ã€ãƒ—ãƒ­ã‚°ãƒ©ãƒ ä¸­ã«ç”Ÿæˆã•ã‚Œã‚‹å…¨ã¦ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã«ä¸€æ„ãªtidã‚’å‰²ã‚ŠæŒ¯ã‚‹ã€‚
 
 NB the class method C<< threads->tid() >> is a quick way to get the
 current thread id if you don't have your thread object handy.
 
-Ãí°Õ¡¡¤¢¤Ê¤¿¤¬¥¹¥ì¥Ã¥É¥ª¥Ö¥¸¥§¥¯¥È¤òÍøÍÑ¤Ç¤­¤Ê¤¤¾ì¹ç¡¢¥¯¥é¥¹¥á¥½¥Ã¥É
-C<< threads->tid() >>¤Ï¡¢¸½ºß¤Î¥¹¥ì¥Ã¥Éid¤ò¼ê¤Ë¤¹¤ë¶áÆ»¤Ç¤¢¤ë¡£
+æ³¨æ„ã€€ã‚ãªãŸãŒã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’åˆ©ç”¨ã§ããªã„å ´åˆã€ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰
+C<< threads->tid() >>ã¯ã€ç¾åœ¨ã®ã‚¹ãƒ¬ãƒƒãƒ‰idã‚’æ‰‹ã«ã™ã‚‹è¿‘é“ã§ã‚ã‚‹ã€‚
 
 =item threads->object( tid )
 
@@ -153,9 +153,9 @@ This will return the thread object for the thread associated with the
 specified tid.  Returns undef if there is no thread associated with the tid
 or no tid is specified or the specified tid is undef.
 
-»ØÄê¤µ¤ì¤¿tid¤Ë´ØÏ¢¤¹¤ë¥¹¥ì¥Ã¥É¤Î¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤¹¡£¤â¤·¤½¤Îtid¤È´ØÏ¢¤¹¤ë
-¥¹¥ì¥Ã¥É¤¬¤Ê¤¤¾ì¹ç¡¢¤¢¤ë¤¤¤Ïtid¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Ê¤¤¡¢»ØÄê¤µ¤ì¤¿tid¤¬undef¤Î
-¾ì¹ç¡¢¥á¥½¥Ã¥É¤Ïundef¤òÊÖ¤¹¡£
+æŒ‡å®šã•ã‚ŒãŸtidã«é–¢é€£ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚ã‚‚ã—ãã®tidã¨é–¢é€£ã™ã‚‹
+ã‚¹ãƒ¬ãƒƒãƒ‰ãŒãªã„å ´åˆã€ã‚ã‚‹ã„ã¯tidãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„ã€æŒ‡å®šã•ã‚ŒãŸtidãŒundefã®
+å ´åˆã€ãƒ¡ã‚½ãƒƒãƒ‰ã¯undefã‚’è¿”ã™ã€‚
 
 =item threads->yield();
 
@@ -163,20 +163,20 @@ This is a suggestion to the OS to let this thread yield CPU time to other
 threads.  What actually happens is highly dependent upon the underlying
 thread implementation.
 
-¤³¤Î¥¹¥ì¥Ã¥É¤¬Â¾¤Î¥¹¥ì¥Ã¥É¤ËCPU»ş´Ö¤ò¾ù¤Ã¤Æ¤â¤¤¤¤¤È¤¤¤¦¤³¤È¤òOS¤Ë¼¨º¶¤¹¤ë¡£
-¼Âºİ¤Ëµ¯¤³¤ë¤³¤È¤Ï¡¢´ğ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¥¹¥ì¥Ã¥É¼ÂÁõ¤ËÂç¤­¤¯°ÍÂ¸¤·¤Æ¤¤¤ë¡£
+ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒä»–ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã«CPUæ™‚é–“ã‚’è­²ã£ã¦ã‚‚ã„ã„ã¨ã„ã†ã“ã¨ã‚’OSã«ç¤ºå”†ã™ã‚‹ã€‚
+å®Ÿéš›ã«èµ·ã“ã‚‹ã“ã¨ã¯ã€åŸºã«ãªã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰å®Ÿè£…ã«å¤§ããä¾å­˜ã—ã¦ã„ã‚‹ã€‚
 
 You may do C<use threads qw(yield)> then use just a bare C<yield> in your
 code.
 
-¥³¡¼¥ÉÆâ¤Ç¤Ï¡¢C<use threads qw(yield)>¤·¤Æ¤«¤é¡¢¤¿¤ó¤ËÍç¤ÎC<yield>¤ò
-»È¤Ã¤Æ¤â¤è¤¤¡£
+ã‚³ãƒ¼ãƒ‰å†…ã§ã¯ã€C<use threads qw(yield)>ã—ã¦ã‹ã‚‰ã€ãŸã‚“ã«è£¸ã®C<yield>ã‚’
+ä½¿ã£ã¦ã‚‚ã‚ˆã„ã€‚
 
 =item threads->list();
 
 This will return a list of all non joined, non detached threads.
 
-join¤ª¤è¤Ódetach¤µ¤ì¤Æ¤¤¤Ê¤¤Á´¤Æ¤Î¥¹¥ì¥Ã¥É¤Î¥ê¥¹¥È¤òÊÖ¤¹¡£
+joinãŠã‚ˆã³detachã•ã‚Œã¦ã„ãªã„å…¨ã¦ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒªã‚¹ãƒˆã‚’è¿”ã™ã€‚
 
 =item async BLOCK;
 
@@ -185,14 +185,14 @@ it.  This block is treated as an anonymous sub, and so must have a
 semi-colon after the closing brace. Like C<< threads->new >>, C<async>
 returns a thread object.
 
-C<async>¤Ï¤½¤ÎÄ¾¸å¤ËÂ³¤¯¥Ö¥í¥Ã¥¯¤ò¼Â¹Ô¤¹¤ë¥¹¥ì¥Ã¥É¤òÀ¸À®¤¹¤ë¡£
-¤³¤Î¥Ö¥í¥Ã¥¯¤ÏÌµÌ¾¥µ¥Ö¥ë¡¼¥Á¥ó¤È¤·¤Æ°·¤ï¤ì¤ë¤Î¤Ç¡¢ÊÄ¤¸¥Ö¥ì¡¼¥¹¤Î¸å¤Ë
-¥»¥ß¥³¥í¥ó¤ò¤Ä¤±¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¡£C<< threads->new >>Æ±ÍÍ¡¢C<async>¤Ï
-¥¹¥ì¥Ã¥É¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤¹¡£
+C<async>ã¯ãã®ç›´å¾Œã«ç¶šããƒ–ãƒ­ãƒƒã‚¯ã‚’å®Ÿè¡Œã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚
+ã“ã®ãƒ–ãƒ­ãƒƒã‚¯ã¯ç„¡åã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã¨ã—ã¦æ‰±ã‚ã‚Œã‚‹ã®ã§ã€é–‰ã˜ãƒ–ãƒ¬ãƒ¼ã‚¹ã®å¾Œã«
+ã‚»ãƒŸã‚³ãƒ­ãƒ³ã‚’ã¤ã‘ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚C<< threads->new >>åŒæ§˜ã€C<async>ã¯
+ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚
 
 =back
 
-=head1 ·Ù¹ğ
+=head1 è­¦å‘Š
 
 =over 4
 
@@ -203,9 +203,9 @@ still other threads running.  Usually it's a good idea to first collect
 the return values of the created threads by joining them, and only then
 exit from the main thread.
 
-¤¢¤ë¥¹¥ì¥Ã¥É¡Ê¥á¥¤¥ó¥¹¥ì¥Ã¥É¤Ç¤¢¤ëÉ¬Í×¤Ï¤Ê¤¤¡Ë¤¬¡¢¤Ş¤ÀÂ¾¤Î¥¹¥ì¥Ã¥É¤¬
-¼Â¹ÔÃæ¤Ëexit¤·¤¿¡£ÄÌ¾ï¡¢¤Ï¤¸¤á¤ËÀ¸À®¤µ¤ì¤¿¥¹¥ì¥Ã¥É¤ÎÌá¤êÃÍ¤ò
-join¤Ç¤â¤Ã¤Æ²ó¼ı¤·¡¢¤½¤ì¤«¤é¥á¥¤¥ó¥¹¥ì¥Ã¥É¤«¤éexit¤¹¤ë¤Î¤¬¤è¤¤ÊıË¡¤À¡£
+ã‚ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ï¼ˆãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã§ã‚ã‚‹å¿…è¦ã¯ãªã„ï¼‰ãŒã€ã¾ã ä»–ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒ
+å®Ÿè¡Œä¸­ã«exitã—ãŸã€‚é€šå¸¸ã€ã¯ã˜ã‚ã«ç”Ÿæˆã•ã‚ŒãŸã‚¹ãƒ¬ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã‚’
+joinã§ã‚‚ã£ã¦å›åã—ã€ãã‚Œã‹ã‚‰ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰exitã™ã‚‹ã®ãŒã‚ˆã„æ–¹æ³•ã ã€‚
 
 =back
 
@@ -215,51 +215,51 @@ The current implementation of threads has been an attempt to get
 a correct threading system working that could be built on, 
 and optimized, in newer versions of perl.
 
-¸½ºß¤Î¥¹¥ì¥Ã¥É¼ÂÁõ¤Ï¡¢¤è¤ê¿·¤·¤¤Perl¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ë¤ª¤¤¤Æ¡¢
-Àµ¤·¤¯Æ°ºî¤¹¤ë¥¹¥ì¥Ã¥É¥·¥¹¥Æ¥à¤È¤·¤Æ¹½ÃÛ¤µ¤ì¡¢ºÇÅ¬²½¤µ¤ì¤Æ¤­¤¿¡£
+ç¾åœ¨ã®ã‚¹ãƒ¬ãƒƒãƒ‰å®Ÿè£…ã¯ã€ã‚ˆã‚Šæ–°ã—ã„Perlã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ãŠã„ã¦ã€
+æ­£ã—ãå‹•ä½œã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚·ã‚¹ãƒ†ãƒ ã¨ã—ã¦æ§‹ç¯‰ã•ã‚Œã€æœ€é©åŒ–ã•ã‚Œã¦ããŸã€‚
 
 Currently the overhead of creating a thread is rather large,
 also the cost of returning values can be large. These are areas
 were there most likely will be work done to optimize what data
 that needs to be cloned.
 
-¸½ºß¤Î¤È¤³¤í¡¢¥¹¥ì¥Ã¥É¤ÎÀ¸À®¤Ë¤«¤«¤ë¥ª¡¼¥Ğ¡¼¥Ø¥Ã¥É¤Ï¤ä¤äÂç¤­¤¯¡¢
-¤Ş¤¿¡¢ÃÍ¤òÊÖ¤¹¤¿¤á¤Î¥³¥¹¥È¤âÂç¤­¤¯¤Ê¤ê¤«¤Í¤Ê¤¤¡£¥¯¥í¡¼¥ó¤µ¤ì¤ë
-É¬Í×¤Î¤¢¤ë¥Ç¡¼¥¿¤¬²¿¤Ê¤Î¤«¤òºÇÅ¬²½¤¹¤ëÍ¾ÃÏ¤¬¤¢¤ë¤À¤í¤¦¡£
+ç¾åœ¨ã®ã¨ã“ã‚ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã®ç”Ÿæˆã«ã‹ã‹ã‚‹ã‚ªãƒ¼ãƒãƒ¼ãƒ˜ãƒƒãƒ‰ã¯ã‚„ã‚„å¤§ããã€
+ã¾ãŸã€å€¤ã‚’è¿”ã™ãŸã‚ã®ã‚³ã‚¹ãƒˆã‚‚å¤§ãããªã‚Šã‹ã­ãªã„ã€‚ã‚¯ãƒ­ãƒ¼ãƒ³ã•ã‚Œã‚‹
+å¿…è¦ã®ã‚ã‚‹ãƒ‡ãƒ¼ã‚¿ãŒä½•ãªã®ã‹ã‚’æœ€é©åŒ–ã™ã‚‹ä½™åœ°ãŒã‚ã‚‹ã ã‚ã†ã€‚
 
-=head1 ¥Ğ¥°
+=head1 ãƒã‚°
 
 =over
 
-=item ¿Æ-»Ò¥¹¥ì¥Ã¥É
+=item è¦ª-å­ã‚¹ãƒ¬ãƒƒãƒ‰
 
 On some platforms it might not be possible to destroy "parent"
 threads while there are still existing child "threads".
 
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ë¤è¤Ã¤Æ¤Ï¡¢»Ò¥¹¥ì¥Ã¥É¤¬¤Ş¤ÀÂ¸ºß¤·¤Æ¤¤¤ë´Ö¤Ï
-¿Æ¥¹¥ì¥Ã¥É¤òÇË²õ¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ê¤¤¤³¤È¤¬¤¢¤ë¡£
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«ã‚ˆã£ã¦ã¯ã€å­ã‚¹ãƒ¬ãƒƒãƒ‰ãŒã¾ã å­˜åœ¨ã—ã¦ã„ã‚‹é–“ã¯
+è¦ªã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç ´å£Šã™ã‚‹ã“ã¨ãŒã§ããªã„ã“ã¨ãŒã‚ã‚‹ã€‚
 
 This will possibly be fixed in later versions of perl.
 
-¤¿¤Ö¤óº£¸å¤Îperl¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ç¤Ï¥Õ¥£¥Ã¥¯¥¹¤µ¤ì¤ë¤À¤í¤¦¡£
+ãŸã¶ã‚“ä»Šå¾Œã®perlã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã•ã‚Œã‚‹ã ã‚ã†ã€‚
 
-=item tid¤ÏI32
+=item tidã¯I32
 
 The thread id is a 32 bit integer, it can potentially overflow.
 This might be fixed in a later version of perl.
 
-¥¹¥ì¥Ã¥Éid¤Ï32bitÀ°¿ô¤Ç¤¢¤ë¡£¥ª¡¼¥Ğ¡¼¥Õ¥í¡¼¤¹¤ë²ÄÇ½À­¤¬¤¢¤ë¡£
-º£¸å¤Îperl¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ç¤Ï¥Õ¥£¥Ã¥¯¥¹¤µ¤ì¤ë¤À¤í¤¦¡£
+ã‚¹ãƒ¬ãƒƒãƒ‰idã¯32bitæ•´æ•°ã§ã‚ã‚‹ã€‚ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã™ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã€‚
+ä»Šå¾Œã®perlã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã•ã‚Œã‚‹ã ã‚ã†ã€‚
 
-=item ¥ª¥Ö¥¸¥§¥¯¥È¤ÎÌá¤ê
+=item ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æˆ»ã‚Š
 
 When you return an object the entire stash that the object is blessed
 as well.  This will lead to a large memory usage.  The ideal situation
 would be to detect the original stash if it existed.
 
-¥ª¥Ö¥¸¥§¥¯¥È¤òÊÖ¤¹¤È¤­¡¢¤½¤Î¥ª¥Ö¥¸¥§¥¯¥È¤¬bless¤µ¤ì¤Æ¤¤¤ëstash¤â
-Æ±ÍÍ¤ËÊÖ¤¹¡£¤³¤ì¤Ï¥á¥â¥ê¤òÂçÎÌ¤Ë»ÈÍÑ¤¹¤ë¤«¤â¤·¤ì¤Ê¤¤¡£ÍıÁÛÅª¤Ê¾õÂÖ¤Ï¡¢
-Â¸ºß¤·¤Æ¤¤¤ë¤Ê¤é¥ª¥ê¥¸¥Ê¥ë¤Îstash¤ò¸«¤Ä¤±½Ğ¤¹¤³¤È¤Ê¤Î¤À¤¬¡£
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã¨ãã€ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒblessã•ã‚Œã¦ã„ã‚‹stashã‚‚
+åŒæ§˜ã«è¿”ã™ã€‚ã“ã‚Œã¯ãƒ¡ãƒ¢ãƒªã‚’å¤§é‡ã«ä½¿ç”¨ã™ã‚‹ã‹ã‚‚ã—ã‚Œãªã„ã€‚ç†æƒ³çš„ãªçŠ¶æ…‹ã¯ã€
+å­˜åœ¨ã—ã¦ã„ã‚‹ãªã‚‰ã‚ªãƒªã‚¸ãƒŠãƒ«ã®stashã‚’è¦‹ã¤ã‘å‡ºã™ã“ã¨ãªã®ã ãŒã€‚
 
 =item Creating threads inside BEGIN blocks
 
@@ -268,32 +268,32 @@ in general) does not work.  (In Windows, trying to use fork() inside
 BEGIN blocks is an equally losing proposition, since it has been
 implemented in very much the same way as threads.)
 
-BEGIN¥Ö¥í¥Ã¥¯Æâ¤Ç¡Ê¤Ä¤Ş¤ê°ìÈÌÅª¤Ë¥³¥ó¥Ñ¥¤¥ë¥Õ¥§¡¼¥º¤ÎÃÊ³¬¤Ç¡Ë
-¥¹¥ì¥Ã¥É¤òÀ¸À®¤¹¤ë¤³¤È¤Ï¤Ç¤­¤Ê¤¤¡ÊWindows¤ÎBEGIN¥Ö¥í¥Ã¥¯Æâ¤Çfork()
-¤òÍøÍÑ¤·¤è¤¦¤È¤¹¤ë»î¤ß¤âÆ±ÍÍ¤Ë¸«¹ş¤ß¤Î¤Ê¤¤Äó°Æ¤Ç¤¢¤ë¡£¤Ê¤¼¤Ê¤é
-¥¹¥ì¥Ã¥É¤ÈÁ´¤¯Æ±¤¸ÊıË¡¤Ç¼ÂÁõ¤µ¤ì¤Æ¤­¤¿¤«¤é¤À¡Ë¡£
+BEGINãƒ–ãƒ­ãƒƒã‚¯å†…ã§ï¼ˆã¤ã¾ã‚Šä¸€èˆ¬çš„ã«ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ãƒ•ã‚§ãƒ¼ã‚ºã®æ®µéšã§ï¼‰
+ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã“ã¨ã¯ã§ããªã„ï¼ˆWindowsã®BEGINãƒ–ãƒ­ãƒƒã‚¯å†…ã§fork()
+ã‚’åˆ©ç”¨ã—ã‚ˆã†ã¨ã™ã‚‹è©¦ã¿ã‚‚åŒæ§˜ã«è¦‹è¾¼ã¿ã®ãªã„ææ¡ˆã§ã‚ã‚‹ã€‚ãªãœãªã‚‰
+ã‚¹ãƒ¬ãƒƒãƒ‰ã¨å…¨ãåŒã˜æ–¹æ³•ã§å®Ÿè£…ã•ã‚Œã¦ããŸã‹ã‚‰ã ï¼‰ã€‚
 
-=item PERL_OLD_SIGNALS¤Ï¥¹¥ì¥Ã¥É¥»¡¼¥Õ¤Ç¤Ï¤Ê¤¤¡£¤³¤ì¤«¤é¤â¡£
+=item PERL_OLD_SIGNALSã¯ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ã§ã¯ãªã„ã€‚ã“ã‚Œã‹ã‚‰ã‚‚ã€‚
 
 If your Perl has been built with PERL_OLD_SIGNALS (one has
 to explicitly add that symbol to ccflags, see C<perl -V>),
 signal handling is not threadsafe.
 
-¤â¤·¤¢¤Ê¤¿¤¬PERL_OLD_SIGNALS¥ª¥×¥·¥ç¥ó¤òÍ­¸ú¤Ë¤·¤ÆPerl¤òbuilt¤·¤Æ¤ë¤Ê¤é¡Ê
-¤³¤Î¥·¥ó¥Ü¥ë¤òccflag¤ËÌÀ¼¨Åª¤ËÄÉ²Ã¤·¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¡£C<perl -V>¤ò¸«¤è¡Ë¡¢
-¥·¥°¥Ê¥ë¥Ï¥ó¥É¥ê¥ó¥°¤Ï¥¹¥ì¥Ã¥É¥»¡¼¥Õ¤Ç¤Ï¤Ê¤¤¡£
+ã‚‚ã—ã‚ãªãŸãŒPERL_OLD_SIGNALSã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æœ‰åŠ¹ã«ã—ã¦Perlã‚’builtã—ã¦ã‚‹ãªã‚‰ï¼ˆ
+ã“ã®ã‚·ãƒ³ãƒœãƒ«ã‚’ccflagã«æ˜ç¤ºçš„ã«è¿½åŠ ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚C<perl -V>ã‚’è¦‹ã‚ˆï¼‰ã€
+ã‚·ã‚°ãƒŠãƒ«ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã¯ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ã§ã¯ãªã„ã€‚
 
-=item Windows¥¹¥ì¥Ã¥É¤Îdetach
+=item Windowsã‚¹ãƒ¬ãƒƒãƒ‰ã®detach
 
 These aren't yet supported (as of perl 5.8.3), as they may lead to
 memory access violation problems.
 
-Ì¤¤À¤Ë¡Êperl 5.8.3¡Ë¥µ¥İ¡¼¥È¤µ¤ì¤Æ¤¤¤Ê¤¤¡£¥á¥â¥ê¥¢¥¯¥»¥¹°ãÈ¿¤ÎÌäÂê¤ò
-À¸¤¸¤µ¤»¤Æ¤·¤Ş¤¦¤«¤é¤À¡£
+æœªã ã«ï¼ˆperl 5.8.3ï¼‰ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ã€‚ãƒ¡ãƒ¢ãƒªã‚¢ã‚¯ã‚»ã‚¹é•åã®å•é¡Œã‚’
+ç”Ÿã˜ã•ã›ã¦ã—ã¾ã†ã‹ã‚‰ã ã€‚
 
 =back
 
-=head1 Ãø¼Ô¤ª¤è¤ÓÃøºî¸¢
+=head1 è‘—è€…ãŠã‚ˆã³è‘—ä½œæ¨©
 
 Arthur Bergman E<lt>sky at nanisky.comE<gt>
 
@@ -314,7 +314,7 @@ Helping with debugging.
 
 please join perl-ithreads@perl.org for more information
 
-=head1 »²¹Í
+=head1 å‚è€ƒ
 
 L<threads::shared>, L<perlthrtut>, 
 L<http://www.perl.com/pub/a/2002/06/11/threads.html>,

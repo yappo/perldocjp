@@ -6,17 +6,17 @@ perlfaq2 - Obtaining and Learning about Perl ($Revision: 1.32 $, $Date: 1999/10/
 
 =end original
 
-perlfaq2 - Perl������ȳؽ� ($Revision: 1.32 $, $Date: 1999/10/14 18:46:09 $)
+perlfaq2 - Perlの入手と学習 ($Revision: 1.32 $, $Date: 1999/10/14 18:46:09 $)
 
 =head1 DESCRIPTION
 
-FAQ�Τ��Υ��������Ǥϡ�Perl�Υ�������Perl�˴ؤ���ɥ������
-��������������˴ؤ������䡢���ݡ��Ȥȥȥ졼�˥󥰡���Ϣ
-����������˴ؤ������˲������Ƥ��ޤ���
+FAQのこのセクションでは、PerlのソースやPerlに関するドキュメント
+が手に入れられる場所に関する質問や、サポートとトレーニング、関連
+した出来事に関する質問に回答しています。
 
 =head2 What machines support Perl?  Where do I get it?
 
-(Perl �Ϥɤ�ʥޥ����ư���ޤ���? �ɤ�������Ǥ��ޤ���?)
+(Perl はどんなマシンで動きますか? どこで入手できますか?)
 
 =begin original
 
@@ -27,12 +27,12 @@ is in a standard Internet format (a gzipped archive in POSIX tar format).
 
 =end original
 
-Perl��ɸ���꡼��(perl ��ȯ�����ब�ݼ餷�Ƥ�����)��
-�����������ɷ����ǤΤ����ۤ���Ƥ��ޤ���
-�����
+Perlの標準リリース(perl 開発チームが保守しているもの)は
+ソースコード形式でのみ配布されています。
+これは
 http://www.cpan.org/src/latest.tar.gz
-�˥��󥿡��ͥåȤ�ɸ��Ū�ʥե����ޥå�(gzip ���줿 POSIX tar �Υ���������)��
-����ޤ���
+にインターネットで標準的なフォーマット(gzip された POSIX tar のアーカイブ)が
+あります。
 
 =begin original
 
@@ -43,9 +43,9 @@ QNX, BeOS, OS X, MPE/iX and the Amiga.
 
 =end original
 
-���Υ������ϤۤȤ�ɤ� UNIX �����ƥ�(perl ������δĶ�)��
-���ݡ��Ȥ��Ƥ��ޤ�����VMS, OS/2, Window, QNX, BeOS, MPE/iX, Amiga �Ȥ��ä�
-����¾�Υ����ƥ�⥵�ݡ��Ȥ��Ƥ��ޤ���
+このソースはほとんどの UNIX システム(perl の本来の環境)を
+サポートしていますし、VMS, OS/2, Window, QNX, BeOS, MPE/iX, Amiga といった
+その他のシステムもサポートしています。
 
 =begin original
 
@@ -61,28 +61,28 @@ might be based upon a less current source release of perl).
 
 =end original
 
-Apple�ʤɤδ��Ĥ�������Ū�����ƥ��ѤΥХ��ʥ����ۥѥå�������
+Appleなどの幾つかの独占的システム用のバイナリ配布パッケージは
 http://www.cpan.org/ports/
-�Ȥ����ǥ��쥯�ȥ�Ǹ��Ĥ����ޤ���������ɸ�����ۥѥå������ˤ�
-�ޤޤ�Ƥ��ʤ��Τǡ��͡����̤Ǵ���Ū�� Perl �ΰܿ��ȤϰۤʤäƤ��ޤ���
-���ʤ��ϥ�꡼���Ρ��Ȥ��ɤ�ǡ�(ɸ��Τ�Τ�)�ʤˤ���äƤ���Τ���
-�Τ����ɬ�פ�����Ǥ��礦��
-�������ä��㤤�ϡ��ݥ��ƥ��֤ʤ��(ɸ���꡼���� perl �Ǥ�
-���ݡ��Ȥ���Ƥ��ʤ��褦�ʡ��ץ�åȥե�������ͭ�ε�ǽ���Ф���
-��ĥ��ǽ�ʤ�)�⤢��Хͥ��ƥ��֤ʤ��(�ǿ���ɸ�� perl �ˤ��ޤ�
-��Ť��Ƥ��ʤ���Τʤ�)�⤢��Ǥ��礦��
+というディレクトリで見つけられます。これらは標準配布パッケージには
+含まれていないので、様々な面で基本的な Perl の移植とは異なっています。
+あなたはリリースノートを読んで、(標準のものと)なにが違っているのかを
+確かめる必要があるでしょう。
+そういった違いは、ポジティブなもの(標準リリースの perl では
+サポートされていないような、プラットフォーム特有の機能に対する
+拡張機能など)もあればネガティブなもの(最新の標準 perl にあまり
+基づいていないものなど)もあるでしょう。
 
 =head2 How can I get a binary version of Perl?
 
-(�Х��ʥ������ Perl �Ϥɤ����������Ǥ��ޤ���?)
+(バイナリ形式の Perl はどうすれば入手できますか?)
 
-���ʤ��λȤäƤ��륷���ƥ�Υ٥�����������ƥ�˥���ѥ��顼��ޤ�Ƥ��ʤ�����
-��ͳ��C����ѥ��顼���Ȥ��ʤ���硢�Ǥ��ɤ���ˡ�ϥͥåȤ���
-gcc �ΥХ��ʥ�����ꤷ�ơ������Ĥ��ä�perl�򥳥�ѥ��뤹��Ȥ������ȤǤ���
-CPAN �ˤϡ�UNIX �ǤϤʤ����ե꡼�ʥ���ѥ��顼�����ꤹ�뤳�Ȥ�����������
-����ʥ����ƥ��ѤΥХ��ʥꤷ������ޤ���
+あなたの使っているシステムのベンダーがシステムにコンパイラーを含めていない等の
+理由でCコンパイラーが使えない場合、最も良い方法はネットから
+gcc のバイナリを入手して、それをつかってperlをコンパイルするということです。
+CPAN には、UNIX ではない、フリーなコンパイラーを入手することが恐ろしい程
+困難なシステム用のバイナリしかありません。
 
-���Ĥ���URL�������ˤʤ�Ǥ��礦:
+幾つかのURLが助けになるでしょう:
 
     http://www.cpan.org/ports/
     http://language.perl.com/info/software.html
@@ -98,18 +98,18 @@ and similarly for Windows 3.1 at http://www.cs.ruu.nl/%7Epiet/perlwin3.html .
 
 =end original
 
-Win16 �� Perl ��õ���Ƥ���Τʤ顢Laszlo Molnar �ˤ�� djgpp �Ǥ�
-ʬ����䤹�����󥹥ȡ�����ˡ�ȶ���
-http://www.cpan.org/ports/#msdos �ˤ���ޤ���
-Ilya Zakharevich �ˤ�� OS/2 �Ǥ�
-MS-DOS �����δ�ñ�ʥ��󥹥ȡ��륬���ɤ�
-http://www.cs.ruu.nl/%7Epiet/perl5dos.html �ˡ�
-Windows 3.1 �ѤΤ�Τ� http://www.cs.ruu.nl/%7Epiet/perlwin3.html
-�ˤ���ޤ���
+Win16 用 Perl を探しているのなら、Laszlo Molnar による djgpp 版が
+分かりやすいインストール方法と共に
+http://www.cpan.org/ports/#msdos にあります。
+Ilya Zakharevich による OS/2 版の
+MS-DOS 向けの簡単なインストールガイドが
+http://www.cs.ruu.nl/%7Epiet/perl5dos.html に、
+Windows 3.1 用のものが http://www.cs.ruu.nl/%7Epiet/perlwin3.html
+にあります。
 
 =head2 I don't have a C compiler on my system.  How can I compile perl?
 
-(��ϼ�ʬ�λȤäƤ��륷���ƥ��Ѥ�C����ѥ��顼����äƤ��ޤ��󡣤ɤ������ perl �򥳥�ѥ���Ǥ���Ǥ��礦?)
+(私は自分の使っているシステム用のCコンパイラーを持っていません。どうすれば perl をコンパイルできるでしょう?)
 
 =begin original
 
@@ -118,22 +118,22 @@ should be sacrificed to the Sun gods.  But that doesn't help you.
 
 =end original
 
-��� C ����ѥ��顼����äƤ��ʤ����Τˡ�������Ǥ�����Υ٥������
-Sun �ο����Ф����ӤȤʤ�٤�������������������ߤ����ȤϤʤ���
+汝は C コンパイラーを持っていないが故に、汝は破滅し、汝のベンダーは
+Sun の神に対する贄となるべし。しかし、それは汝を救うことはない。
 
-���ʤ�������ɬ�פΤ��뤳�Ȥϡ��ޤ��Ϥ�ˤ��ʤ��λȤäƤ��륷���ƥ������
-gcc �ΥХ��ʥ�����ꤹ�뤳�ȤǤ���
-��������������ˤĤ��Ƥϡ����ʤ��λȤäƤ��륪�ڥ졼�ƥ��󥰥����ƥ������
-Usenet FAQ �򤢤��äƤ���������
+あなたがする必要のあることは、まず始めにあなたの使っているシステム向けの
+gcc のバイナリを入手することです。
+それを手に入れる場所については、あなたの使っているオペレーティングシステム向けの
+Usenet FAQ をあたってください。
 
 =head2 I copied the Perl binary from one machine to another, but scripts don't work.
 
-(Perl �ΥХ��ʥ�򤢤�ޥ��󤫤��̤Υޥ���˥��ԡ������Τ����ɥ�����ץȤ�ư���ޤ���Ǥ���)
+(Perl のバイナリをあるマシンから別のマシンにコピーしたのだけどスクリプトが動きませんでした)
 
-�����¿ʬ���饤�֥��򥳥ԡ�����Τ�˺�줿�����饤�֥��ѥ���
-��äƤ���ΤǤ��礦���ºݤ˻��Ѥ���ޥ���ξ�����ۥѥå��������Τ���
-�ӥ�ɤ򤷤ơ����θ�� C<make install> �ȥ����פ���褦�ˤ��٤��Ǥ���
-¾�Τ�����ǤϤۤȤ�ɼ��Ԥ��Ƥ��ޤ��Ǥ��礦��
+それは多分、ライブラリをコピーするのを忘れたか、ライブラリパスが
+違っているのでしょう。実際に使用するマシンの上で配布パッケージ全体から
+ビルドをして、その後に C<make install> とタイプするようにすべきです。
+他のやり方ではほとんど失敗してしまうでしょう。
 
 =begin original
 
@@ -142,53 +142,53 @@ the hard-coded @INC that perl looks through for libraries:
 
 =end original
 
-��������꤬�ɤ��ʤΤ���Τ����ñ�����ˡ�ΰ�Ĥϡ�perl ��
-�饤�֥��򸡺������꤬�ϡ��ɥ����ɤ���Ƥ��� @INC ����Ϥ��뤳�ȤǤ���
+正しい場所がどこなのかを確かめる単純な方法の一つは、perl が
+ライブラリを検索する場所がハードコードされている @INC を出力することです。
 
 	% perl -e 'print join("\n",@INC)'
 
-�⤷���Υ��ޥ�ɤν��Ϥˤ��ʤ��Υ����ƥ�Ϥʤ��ѥ����ޤޤ�Ƥ����顢
-Ŭ�ڤʥ饤�֥��򤽤����ä����˰ܤ���������ܥ�å���󥯡�
-�����ꥢ�������硼�ȥ��åȤȤ��ä���Τ��������ɬ�פ�����Ǥ��礦��
-@INC �Ϥޤ�
+もしこのコマンドの出力にあなたのシステムはないパスが含まれていたら、
+適切なライブラリをそういった場所に移すか、シンボリックリンク、
+エイリアス、ショートカットといったものを作成する必要があるでしょう。
+@INC はまた
 
     % perl -V
 
-�Ǥ���Ϥ��Ԥ��ޤ���
+でも出力が行われます。
 
 L<perlfaq8/"How do I keep my own module/library directory?">
-������å����Ƥ������ۤ����ɤ����⤷��ޤ���
+もチェックしておいたほうが良いかもしれません。
 
 =head2 I grabbed the sources and tried to compile but gdbm/dynamic loading/malloc/linking/... failed.  How do I make it work?
 
-(���������äƤ��ƥ���ѥ��뤷�褦�Ȥ����Τ����ɡ�gdbm/dynamic loading/malloc/linking/... failed.  �ȤʤäƤ��ޤä���ư���褦�ˤ���ˤϤɤ�����Ф�����?)
+(ソースを取ってきてコンパイルしようとしたのだけど、gdbm/dynamic loading/malloc/linking/... failed.  となってしまった。動くようにするにはどうすればいいの?)
 
-�����������ۥѥå����������äƤ���F<INSTALL> �Ȥ����ե�������ɤ�Ǥ���������
-�����ˤϰ����Υ����ƥ�䥢�����ƥ����㡼�ˤ����� Configure ������ץȤ�
-ư��ʤ��Ȥ�������ΤۤȤ�ɤξ����н褹����ˡ����������Ƥ��ޤ���
+ソースの配布パッケージに入っていたF<INSTALL> というファイルを読んでください。
+そこには一部のシステムやアーキテクチャーにおいて Configure スクリプトが
+動作しないという問題のほとんどの場合に対処する方法が説明されています。
 
 =head2 What modules and extensions are available for Perl?  What is CPAN?  What does CPAN/src/... mean?
 
-(Perl�˻Ȥ���⥸�塼��Ȥ��������ƥ󥷥��äƤʤ�Ǥ���?CPAN�äƤʤ�? CPAN/src/...�äƤɤ�������̣�ʤ�Ǥ���?)
+(Perlに使えるモジュールとかエクステンションってなんですか?CPANってなに? CPAN/src/...ってどういう意味なんですか?)
 
-CPAN �� Comprehensive Perl Archive Network (���� Perl���������֥ͥåȥ��)��
-ά�ǡ������������ˤ���ۤ� 200 �Υޥ����� 700MB �Υ��������֤μ̤��Ǥ���
-CPAN�ˤϥ����������ɡ��ͥ��ƥ��֤Ǥʤ��ܿ����ɥ�����ȡ�������ץȡ�
-¿���Υ����ɥѡ��ƥ����ˤ��⥸�塼��䥨�����ƥ󥷥�󤬼�����Ƥ��ơ�
-���ѥǡ����١������� web ���������󥰤����椹�륭���ܡ���/�����꡼��
-���󥿡��ե������� CGI ������ץȤǥǥ����󤵤�Ƥ��ޤ���
-CPAN �Υᥤ�󥦥��֥����Ȥ�
+CPAN は Comprehensive Perl Archive Network (総合 Perlアーカイブネットワーク)の
+略で、これは世界中にあるほぼ 200 のマシン上の 700MB のアーカイブの写しです。
+CPANにはソースコード、ネイティブでない移植、ドキュメント、スクリプト、
+多くのサードパーティーによるモジュールやエクステンションが収められていて、
+商用データベースから web ウォーキングを制御するキーボード/スクリーン
+インターフェースと CGI スクリプトでデザインされています。
+CPAN のメインウェブサイトは
 http://www.cpan.org/
-�ˤ���ޤ����ޤ� CPAN Multipler
+にあります。また CPAN Multipler
 http://www.perl.com/CPAN/CPAN.html
-��Ȥ��� DNS ��ͳ�Ǥ��ʤ��ζ᤯�ˤʤ�ߥ顼�����Ȥ����֤��Ȥ��Ǥ��ޤ���
-�Ȥ��ޤ������줬�ɤ�ư���Ƥ��뤫��
+を使うと DNS 経由であなたの近くになるミラーサイトを選ぶことができます。
+使えます。これがどう動いているかは
 >http://www.perl.com/CPAN
-�򸫤Ƥ�������(�Ǹ�Υ���å���Ϥ���ޤ���)��
-�ޤ���
+を見てください(最後のスラッシュはありません)。
+また、
 http://mirror.cpan.org/
-�� the http://www.cpan.org/MIRRORED.BY
-�ߥ顼�ǥ��쥯�ȥ�ؤΤ褤���󥿡��ե��������󶡤��Ƥ��ޤ���
+は the http://www.cpan.org/MIRRORED.BY
+ミラーディレクトリへのよいインターフェースを提供しています。
 
 =begin original
 
@@ -198,15 +198,15 @@ including how to become a mirror.
 
 =end original
 
-CPAN �ˤĤ��ƤΤ褯�������䡢�ߥ顼�ˤʤ���ˡ�ˤĤ��Ƥϡ�
-CPAN FAQ http://www.cpan.org/misc/cpan-faq.html �򻲾Ȥ��Ƥ���������
+CPAN についてのよくある質問や、ミラーになる方法については、
+CPAN FAQ http://www.cpan.org/misc/cpan-faq.html を参照してください。
 
-CPAN/path/... �� CPAN �����Ⱦ������Ǥ���ե�������Ф���̾���Ť��ε�§�Ǥ���
-CPAN �� CPAN �Υߥ顼��󥰤��Ƥ�����ǥ��쥯�ȥ�򼨤���
-�ѥ��λĤ����ʬ�Ϥ��Υǥ��쥯�ȥ꤫��ե�����ؤ����Хѥ��򼨤��ޤ���
-���Ȥ��С�ftp://ftp.funet.fi/pub/languages/perl/CPAN �����ʤ��λȤäƤ���
-CPAN �����Ȥ��Ȥ���ȡ�CPAN/misc/japh �Ȥ����ե������
-ftp://ftp.funet.fi/pub/languages/perl/CPAN/misc/japh �������������ɤǤ��ޤ���
+CPAN/path/... は CPAN サイト上で入手できるファイルに対する名前づけの規則です。
+CPAN は CPAN のミラーリングしている基準ディレクトリを示し、
+パスの残りの部分はそのディレクトリからファイルへの相対パスを示します。
+たとえば、ftp://ftp.funet.fi/pub/languages/perl/CPAN があなたの使っている
+CPAN サイトだとすると、CPAN/misc/japh というファイルは
+ftp://ftp.funet.fi/pub/languages/perl/CPAN/misc/japh からダウンロードできます。
 
 =begin original
 
@@ -224,18 +224,18 @@ miscellaneous modules.
 
 =end original
 
-���������֤ˤ� 2000 �ᤤ�⥸�塼�뤬���ˤ���Ȥ������Ȥ�ͤ���С�
-���ʤ����ͤ���褦�ʤ�Τ˶ᤤ��Τ�����ȱ�����ǽ��������ޤ���
-CPAN/modules/by-category/ �β��Υ��ƥ��꡼�ϸ��ߤΤȤ�����
-Perl �����⥸�塼�롢��ȯ���ݡ��ȡ����ڥ졼�ƥ��󥰥����ƥ।�󥿡��ե�������
-�ͥåȥ�����ǥХ������ץ��������̿����ǡ������桼�ƥ���ƥ���
-�ǡ����١������󥿡��ե��������桼�������󥿡��ե�������
-¾�θ�����Ф��륤�󥿡��ե��������ե�����̾���ե����륷���ƥࡢ
-�ե�����Υ��å�����ݲ�(internationalization)�ȥ�������(locale)��
-���ɥ磻�ɥ����֤Υ��ݡ��ȡ������С���ǡ����Υ桼�ƥ���ƥ���
-���������֤Ȱ��̡����᡼�����᡼���˥塼��������ե����桼�ƥ���ƥ���
-�ե�����ϥ�ɥ��I/O��Microsoft Windows �⥸�塼�롢
-����¾�Ȥ��ä���Τ��ޤޤ�ޤ���
+アーカイブには 2000 近いモジュールが既にあるということを考えれば、
+あなたが考えるようなものに近いものがあると云う可能性があります。
+CPAN/modules/by-category/ の下のカテゴリーは現在のところ、
+Perl コアモジュール、開発サポート、オペレーティングシステムインターフェース、
+ネットワーク、デバイス、プロセス間通信、データ型ユーティリティ、
+データベースインターフェース、ユーザーインターフェース、
+他の言語に対するインターフェース、ファイル名、ファイルシステム、
+ファイルのロック、国際化(internationalization)とロカール(locale)、
+ワールドワイドウェブのサポート、サーバーやデーモンのユーティリティ、
+アーカイブと圧縮、イメージ操作、メールやニューズ、制御フローユーティリティ、
+ファイルハンドルとI/O、Microsoft Windows モジュール、
+その他といったものが含まれます。
 
 =begin original
 
@@ -244,37 +244,37 @@ http://search.cpan.org/ for a more complete list of modules by category.
 
 =end original
 
-���ƥ����̤Υ⥸�塼��Τ�괰���ʥꥹ�ȤˤĤ��Ƥ�
-http://www.cpan.org/modules/00modlist.long.html ��
-http://search.cpan.org/ �򻲾Ȥ��Ƥ���������
+カテゴリ別のモジュールのより完全なリストについては
+http://www.cpan.org/modules/00modlist.long.html か
+http://search.cpan.org/ を参照してください。
 
 =head2 Is there an ISO or ANSI certified version of Perl?
 
-(ISO �� ANSI ��ǧ�ڤ��줿 Perl �Ϥ����?)
+(ISO や ANSI で認証された Perl はあるの?)
 
-�������ǤϤ���ޤ���Larry �� Perl �����˼�ʬ��ǧ�ڤ����������ȹͤ��Ƥ��ޤ���
+現時点ではありません。Larry は Perl より先に自分が認証されるだろうと考えています。
 
 =head2 Where can I get information on Perl?
 
-(Perl�˴ؤ������Ϥɤ��Ǽ��������ޤ���?)
+(Perlに関する情報はどこで手に入れられますか?)
 
-Perl�˴ؤ��봰���ʥɥ�����Ȥ�Perl�����ۥѥå������˴ޤޤ�Ƥ��ޤ���
-���ʤ��� Perl ���������˥��󥹥ȡ��뤷���Τʤ顢�ɥ�����Ȥ�Ʊ�ͤ�
-���󥹥ȡ��뤵��Ƥ���Ǥ��礦��
-���ʤ��λȤäƤ��륷���ƥब UNIX �˻�����ΤǤ���ʤ顢
-C<man perl> �ȥ����פ��ƤߤƤ���������
-$MANPATH ��������ˡ��ޤᡢ�����¾�ν��פʥޥ˥奢��ڡ�����
-Ƴ����ΤȤʤ�Ǥ��礦��
-���ʤ��λȤäƤ��� UNIX �Ǥʤ��ΤǤ���С��ɥ�����Ȥ˥�����������Τˤ�
-��ä���ˡ�ˤʤ�ޤ���
-���Ȥ��С�HTML�ե����ޥåȤΥɥ�����Ȥ������Ȥ��뤫�⤷��ޤ���
-���٤Ƥ�Ŭ�ڤ� Perl �Υ��󥹥ȡ���Ǥϴ����˥���������ǽ��
-�ɥ�����Ȥ�¸�ߤ��ޤ���
+Perlに関する完全なドキュメントはPerlの配布パッケージに含まれています。
+あなたが Perl をローカルにインストールしたのなら、ドキュメントも同様に
+インストールされているでしょう。
+あなたの使っているシステムが UNIX に似たものであるなら、
+C<man perl> とタイプしてみてください。
+$MANPATH の設定方法を含め、これは他の重要なマニュアルページへ
+導くものとなるでしょう。
+あなたの使っている UNIX でないのであれば、ドキュメントにアクセスするのには
+違った方法になります。
+たとえば、HTMLフォーマットのドキュメントだけが使えるかもしれません。
+すべての適切な Perl のインストールでは完全にアクセス可能な
+ドキュメントが存在します。
 
-���ʤ��λȤäƤ��륷���ƥ��Ŭ���� man ���ޥ�ɤ��ʤ���С�C<perldoc perl> 
-���ƤߤƤ������������줬���ܤʤ饤�󥹥ȡ���Ϥ��ޤ��ԤäƤ��ޤ���
-�⤷���ޤ��Ԥ��ʤ��ä��Τʤ顢/usr/local/lib/perl5/pod �ˤ���ɥ�����Ȥ�
-õ���ƤߤƤ���������
+あなたの使っているシステムに適当な man コマンドがなければ、C<perldoc perl> 
+を試してみてください。これが駄目ならインストールはうまく行っていません。
+もしうまく行かなかったのなら、/usr/local/lib/perl5/pod にあるドキュメントを
+探してみてください。
 
 =begin original
 
@@ -284,13 +284,13 @@ in html format.
 
 =end original
 
-���ޤǤ���ˡ���������Ԥ��Ƥ��ޤä��ʤ顢HTML �ե����ޥåȤ�
-�����ʥɥ�����Ȥ�������Ƥ���
-http://perldoc.cpan.org/ �ޤ���
-http://www.perldoc.com/ �򻲾Ȥ��ƤߤƤ���������
+今までの方法が全部失敗してしまったなら、HTML フォーマットの
+完全なドキュメントが収められている
+http://perldoc.cpan.org/ または
+http://www.perldoc.com/ を参照してみてください。
 
-Perl �ˤĤ��ƽ񤫤줿¿�����ɽ񤬤���ޤ����ܤ����ϸ�Υ���������
-�ߤƤ���������
+Perl について書かれた多くの良書があります。詳しくは後のセクションを
+みてください。
 
 =begin original
 
@@ -305,17 +305,17 @@ assistance:
 
 =end original
 
-���塼�ȥꥢ��� Perl �Υ�꡼���˴ޤޤ�Ƥ��ơ����֥������Ȥ�
-���塼�ȥꥢ��� L<perltoot>��
-�鿴�Ը����Υ��֥������ȤؤΥ��ץ������� L<perlboot>��
-�ե�����Υ����ץ�˴ؤ����Τ� L<perlopentut>��
-��ե���󥹤δ����� L<perlreftut>��
-����ɽ���˴ؤ��Ƥ� L<perlretut>��
-����åɤ˴ؤ��Ƥ� L<perlthrtut>��
-�ǥХå��˴ؤ��Ƥ� L<perldebtut>��
-C �� Perl �ȤΥ�󥯤� L<perlxstut>�ˤ���ޤ���
-������ɤळ�Ȥˤ�ä������Τ�¿���Ǥ��礦��
-�ʲ���URL������ˤʤ뤫�⤷��ޤ���:
+チュートリアルは Perl のリリースに含まれていて、オブジェクトの
+チュートリアルは L<perltoot>、
+初心者向けのオブジェクトへのアプローチは L<perlboot>、
+ファイルのオープンに関するものは L<perlopentut>、
+リファレンスの管理は L<perlreftut>、
+正規表現に関しては L<perlretut>、
+スレッドに関しては L<perlthrtut>、
+デバッグに関しては L<perldebtut>、
+C と Perl とのリンクは L<perlxstut>にあります。
+これを読むことによって得るものは多いでしょう。
+以下のURLも助けになるかもしれません:
 
     http://perldoc.cpan.org/
     http://www.perldoc.com/
@@ -324,34 +324,34 @@ C �� Perl �ȤΥ�󥯤� L<perlxstut>�ˤ���ޤ���
 
 =head2 What are the Perl newsgroups on Usenet?  Where do I post questions?
 
-(Usenet �ˤ��� Perl �Υ˥塼�����롼�פϤʤ�?����Ϥɤ�����Ƥ����?)
+(Usenet にある Perl のニューズグループはなに?質問はどこに投稿するの?)
 
-���ߡ��˥塼�����롼��comp.lang.perl�ϰʲ��˵󤲤����롼�פ�ʬ�䤵��Ƥ��ޤ���
+現在、ニューズグループcomp.lang.perlは以下に挙げたグループに分割されています。
 
     comp.lang.perl.announce             Moderated announcement group
     comp.lang.perl.misc                 Very busy group about Perl in general
     comp.lang.perl.moderated            Moderated discussion group
-    comp.lang.perl.modules              Perl�⥸�塼��λ��Ѥȳ�ȯ
-    comp.lang.perl.tk                   Perl����Tk(�� X)��Ȥ�
+    comp.lang.perl.modules              Perlモジュールの使用と開発
+    comp.lang.perl.tk                   PerlからTk(と X)を使う
 
-    comp.infosystems.www.authoring.cgi  Web�Τ����CGI������ץȤ��
+    comp.infosystems.www.authoring.cgi  WebのためにCGIスクリプトを書く
 
-��ή��Perl��ȯ������(perl5-poters)�ˤ�äƻȤ��Ƥ���
-�᡼��󥰥ꥹ�Ȥˤ������� USENET �����ȥ�������
+一流のPerl開発チーム(perl5-poters)によって使われている
+メーリングリストにたいする USENET ゲイトウェイが
 news://news.perl.com/perl.porters-gw/ 
-�ˤ���ޤ���
+にあります。
 
 =head2 Where should I post source code?
 
-(�����������ɤϤɤ�����Ƥ��٤��ʤΤǤ���?)
+(ソースコードはどこに投稿すべきなのですか?)
 
-�Ǥ�Ŭ�ڤʥ��롼�פ���Ƥ��٤��Ǥ�����comp.lang.perl.misc ��
-�������ݥ��Ȥ���ΤϤ��ʤ��μ�ͳ�Ǥ���
-�⤷���ʤ��� alt.sources �ˤ⥯�����ݥ��Ȥ������Τʤ餽������Ƶ�§�˽��äơ�
-alt.sources �� B<�ޤޤʤ�>
-Followup-To �إå��������ꤷ�Ƥ���������
-�ܤ�����(��Ƥ˴ؤ���)
-FAQ (http://www.faqs.org/faqs/alt-sources-intro/) �򻲾Ȥ��Ƥ���������
+最も適切なグループに投稿すべきですが、comp.lang.perl.misc へ
+クロスポストするのはあなたの自由です。
+もしあなたが alt.sources にもクロスポストしたいのならそこの投稿規則に従って、
+alt.sources を B<含まない>
+Followup-To ヘッダーを設定してください。
+詳しくは(投稿に関する)
+FAQ (http://www.faqs.org/faqs/alt-sources-intro/) を参照してください。
 
 =begin original
 
@@ -362,22 +362,22 @@ productive than just posting a request.
 
 =end original
 
-�⤷���ʤ���ñ�˥��եȥ�������õ���Ƥ�������ʤ�С��ޤ��ǽ�� Google
+もしあなたが単にソフトウェアを探しているだけならば、まず最初に Google
 (http://www.google.com), Deja (http://www.deja.com),
-CPAN Search (http://search.cpan.org) �򤢤��äƤߤޤ��礦��
-���줬��õ��ʪ����Ƥ򤹤����®��������Ū�ʤ�����Ǥ���
+CPAN Search (http://search.cpan.org) をあたってみましょう。
+それが、探し物の投稿をするよりも速くて生産的なやり方です。
 
 =head2 Perl Books
 
-Perl �� CGI �ץ�����ߥ󥰤˴ؤ����ܤϲ������������ǽ�Ǥ���
-���Τ����δ��Ĥ����ɤ�(good)�������Ϥޤ��ޤ�(OK)�Ȥ��ä��Ȥ����Ǥ���¿����
-�����Ф��ۤɤβ��ͤ�����ޤ���
-Tom Christiansen �Ϥ������ä��ܤΥꥹ��
+Perl や CGI プログラミングに関する本は何冊かが入手可能です。
+そのうちの幾つかは良く(good)、一部はまあまあ(OK)といったところですが多くは
+お金を出すほどの価値がありません。
+Tom Christiansen はこういった本のリスト
 http://www.perl.com/perl/critiques/index.html
-��(¿���Υ�ӥ塼���դ���)�ݼ餷�Ƥ��ޤ���
+を(多くのレビューを付けて)保守しています。
 
-Perl ����¤�ԤȤ��λ��̤ˤ�äƽ񤫤줿 Perl �˴ؤ����ܤη����Ǥ�
-�������Τ�����ޤ�������(2000 ǯ 7 ��)�Ǥ��軰�ǤˤʤäƤ��ޤ���
+Perl の創造者とその使徒によって書かれた Perl に関する本の決定版と
+言えるものがあります。現在(2000 年 7 月)では第三版になっています。
 
 =begin original
 
@@ -389,16 +389,16 @@ Perl ����¤�ԤȤ��λ��̤ˤ�äƽ񤫤줿 Perl �˴ؤ����ܤη����Ǥ�
 
 =end original
 
-    Programming Perl (�饯����):
+    Programming Perl (ラクダ本):
 	by Larry Wall, Tom Christiansen, and Jon Orwant
-        0-596-00027-8  (�Ѹ���)
-        4873110963     (���ܸ�����촬)
-        4873110971     (���ܸ�������)
+        0-596-00027-8  (英語版)
+        4873110963     (日本語版第一巻)
+        4873110971     (日本語版第二巻)
 	http://www.oreilly.com/catalog/pperl3/
     (English, translations to several languages are also available)
 
-�����������㡢�����ʥ��塼�ȥꥢ�롢�����ʥץ�������
-���������Ͽ����companion volume������:
+現実世界の例、小さなチュートリアル、完全なプログラムを
+たくさん収録したcompanion volumeがある:
 
     The Perl Cookbook (the "Ram Book"):
 	by Tom Christiansen and Nathan Torkington,
@@ -406,21 +406,21 @@ Perl ����¤�ԤȤ��λ��̤ˤ�äƽ񤫤줿 Perl �˴ؤ����ܤη����Ǥ�
 	ISBN 1-56592-243-3 [1st Edition August 1998]
 	http://perl.oreilly.com/cookbook/
 
-�⤷���ʤ������Ǥ˷и����Ѥ�������ƥ�ץ�����ޡ��Ǥ���ʤ顢
-�饯���ܤǽ�ʬ���⤷��ޤ��󡣤⤷�����Ǥʤ��Τʤ�ʲ����ܤ��ɤ��Ǥ��礦:
+もしあなたがすでに経験を積んだシステムプログラマーであるなら、
+ラクダ本で十分かもしれません。もしそうでないのなら以下の本が良いでしょう:
 
-    Learning Perl (�����):
-	����: Randal Schwartz and Tom Christiansen 
+    Learning Perl (ラマ本):
+	著者: Randal Schwartz and Tom Christiansen 
 	by Randal Schwartz and Tom Christiansen
 		    with Foreword by Larry Wall
 	ISBN 1-56592-284-0 [2nd Edition July 1997]
 	http://www.oreilly.com/catalog/lperl2/
 
-�嵭��URL�ˤ��볨�Ȥϰ�äơ��ȥ���ܡɤ������Ǥ�ɽ���
-�ºݤˤ��Ĥ����С��Ǥ��ꡢPerl�Υ�꡼��5.004�˹�碌��
-���åץǡ��Ȥ���Ƥ��ޤ�����
-�������줿��Τ����Ĥ����ꡢ
-I<Learning Perl on Win32 Systems> (������)�⤢��ޤ���
+上記のURLにある絵とは違って、“ラマ本”の第二版の表紙は
+実際には青いカバーであり、Perlのリリース5.004に合わせて
+アップデートされていました。
+翻訳されたものが幾つかあり、
+I<Learning Perl on Win32 Systems> (ヤモリ本)もあります。
 
 =begin original
 
@@ -432,12 +432,12 @@ written by Nigel Chapman.
 
 =end original
 
-���ʤ������ݤ��ץ�����ޡ��ǤϤʤ��ơ�
-�ޤ���Ǥ��뤫�Ҥ�äȤ����饳��ԥ塼�����βʳؼ�
-���ä���ʤ󤫤��ơ�����ܤȤ������ܤǽ񤳤��Ȥ�������
-��ɬ�פȤ��Ƥ��ʤ���С�Nigel Chapman �ˤ��
+あなたが腰掛けプログラマーではなくて、
+まじめであるかひょっとしたらコンピューターの科学者
+だったりなんかして、ラマ本とかヤモリ本で書こうとしたこと
+を必要としていなければ、Nigel Chapman による
 I<Perl: The Programmer's Companion>
-������å����ƤߤƤ���������
+をチェックしてみてください。
 
 =begin original
 
@@ -448,11 +448,11 @@ Network Programming with Perl by Lincoln Stein.
 
 =end original
 
-Addison-Wesley ( http://www.awlonline.com/ ) �� Manning
-( http://www.manning.com/ ) ��ޤ�
-Damian Conway �ˤ�� Object Oriented Programming with Perl ��
-Lincoln Stein �ˤ�� Network Programming with Perl �Ȥ��ä�
-�����餷�� Perl �ܤ���Ǥ��Ƥ��ޤ���
+Addison-Wesley ( http://www.awlonline.com/ ) と Manning
+( http://www.manning.com/ ) もまた
+Damian Conway による Object Oriented Programming with Perl や
+Lincoln Stein による Network Programming with Perl といった
+素晴らしい Perl 本を出版しています。
 
 =begin original
 
@@ -461,18 +461,18 @@ http://www.bookpool.com/ where a 30% discount or more is not unusual.
 
 =end original
 
-�����餷�����ѽ�ΰ���결�Ǥ���
-Bookpool http://www.bookpool.com/ �Ǥ� 30% �ʾ���Ͱ�����
-����������ޤ���
+素晴らしい技術書の安売り屋である
+Bookpool http://www.bookpool.com/ では 30% 以上の値引きも
+珍しくありません。
 
-�ʲ��˵󤲤��ꥹ�Ȥϡ�FAQ �κ�Ԥ��Ŀ�Ū���������Ȼפ��ܤΥꥹ�ȤǤ���
-���ʤ��θ����ϰ�ä���Τ��⤷��ޤ���(���������ǤϤʤ��Ȼ䤿���ϴ�äƤ��ޤ�)��
+以下に挙げたリストは、FAQ の作者が個人的に便利だと思う本のリストです。
+あなたの見方は違ったものかもしれません(が、そうではないと私たちは願っています)。
 
-Perl�˴�Ϣ���Ƥ��Ƥ�������ܤϰʲ����̤�Ǥ���
+Perlに関連していてお薦めの本は以下の通りです。
 
 =over
 
-=item ��ե����
+=item リファレンス
 
     Programming Perl
 	by Larry Wall, Tom Christiansen, and Jon Orwant
@@ -489,7 +489,7 @@ Perl�˴�Ϣ���Ƥ��Ƥ�������ܤϰʲ����̤�Ǥ���
 	ISBN 1-56592-286-7 [1st edition December 1998]
 	http://www.oreilly.com/catalog/perlnut/
 
-=item ���塼�ȥꥢ��
+=item チュートリアル
 
     Elements of Programming with Perl
 	by Andrew L. Johnson
@@ -583,38 +583,38 @@ http://use.perl.org/ .
 
 =end original
 
-I<Perl Jounal>�ˤϡ����塼�ȥꥢ�롢�ǥ⡢�����������ǥ���
-���ʥ��󥹡��ʤɤʤɤ������󤢤�ޤ�����
-I<TPJ>�ˤ�
-web ��ȯ���ǡ����١�����Win32 �� Perl������ե��å��ץ�����ߥ󥰡�
-����ɽ�����ͥåȥ�������� Perl ����ƥ���(Obfuscated Perl Contest)
-�˴ؤ��륳��ब����ޤ�����
-�ᤷ�����Ȥˡ���Ϥ����Ū�ˤ�ȯ�Ԥ���Ƥ��ޤ��󤬡�
-���������褹��˰㤤����ޤ���
-���λ��ˤϤ��֤� http://use.perl.org/ �ǥ��ʥ��󥹤����Ǥ��礦��
+I<Perl Jounal>には、チュートリアル、デモ、ケーススタディ、
+アナウンス、などなどたくさんありました。
+I<TPJ>には
+web 開発、データベース、Win32 版 Perl、グラフィックプログラミング、
+正規表現、ネットワーク、難解な Perl コンテスト(Obfuscated Perl Contest)
+に関するコラムがありました。
+悲しいことに、もはや定期的には発行されていませんが、
+しかし復活するに違いありません。
+その時にはたぶん http://use.perl.org/ でアナウンスされるでしょう。
 
-����¾��Perl�˴ؤ�����ʼ��ε��������ˤ˷Ǻܤ��Ƥ���
-I<Web Techniques> (http://www.webtechniques.com/)�ȡ�
+この他、Perlに関する高品質の記事を頻繁に掲載している
+I<Web Techniques> (http://www.webtechniques.com/)と、
 I<Performance Computing> (http://www.performance-computing.com/) 
-�Ȥ��ä�����ȡ�
-������ Usenix �Υ��С����Ф���
-newsletter/magazine �Ǥ��� I<login:>( http://www.usenix.org/)
-�ʤɤ�����ޤ�
-Randal Schwartz �� Web �ƥ��˥å��Ȥ���������
+といった雑誌と、
+そして Usenix のメンバーに対する
+newsletter/magazine である I<login:>( http://www.usenix.org/)
+などがあります
+Randal Schwartz の Web テクニックというコラムは
 http://www.stonehenge.com/merlyn/WebTechniques/ 
-������Ǥ��ޤ���
+で入手できます。
 
 =head2 Perl on the Net: FTP and WWW Access
 
-(�ͥåȾ��Perl: FTP��WWW��������)
+(ネット上のPerl: FTPとWWWアクセス)
 
-���ꤹ��Τ˺Ǥ��ü���ᤤ�Τϡ�
-/CPAN/MIRRORED.BY �� http://mirror.cpan.org/
-�Υꥹ�Ȥ��饵���Ȥ�����ǡ��ߥ顼�����Ȥδ����ʥꥹ�Ȥ���Τ�
-�Ȥ��Ȥ������ȤǤ������Υꥹ�Ȥ��顢���ʤ������äȤ�ᤤ��Τ�
-���Ĥ�����Ǥ��礦��
-���Υꥹ�Ȥ� CPAN �Υߥ顼�����Ȥδ����ʥꥹ��B<�ǤϤʤ�>���Ȥ�˺��ʤ��Ǥ�������
-(�����ʥꥹ�Ȥ� 2001 ǯ 1 ��� 165 �����Ȥ���ޤ�)��
+入手するのに最も手っ取り早いのは、
+/CPAN/MIRRORED.BY か http://mirror.cpan.org/
+のリストからサイトを選んで、ミラーサイトの完全なリストを作るのに
+使うということです。このリストから、あなたからもっとも近いものを
+見つけられるでしょう。
+このリストは CPAN のミラーサイトの完全なリストB<ではない>ことを忘れないでください
+(完全なリストは 2001 年 1 月現在 165 サイトあります)。
  
   http://www.cpan.org/
   http://www.perl.com/CPAN/
@@ -634,65 +634,65 @@ for your domain; e.g. Australia would use au.cpan.org.
 
 =end original
 
-�ޤ���xx.cpan.org ��Ȥ����Ȥ����ޤ��������� "xx" �Ϥ��ʤ��Υɥᥤ���
-2 ʸ���ι񥳡��ɤǤ����Ĥޤꡢ�������ȥ�ꥢ�Ǥ� au.cpan.org �Ȥʤ�ޤ���
+また、xx.cpan.org を使うことも出来ます。ここで "xx" はあなたのドメインの
+2 文字の国コードです。つまり、オーストラリアでは au.cpan.org となります。
 
 =head2 What mailing lists are there for Perl?
 
-(Perl�Τ���Υᥤ��󥰥ꥹ�Ȥä�?)
+(Perlのためのメイリングリストって?)
 
-��ʥ⥸�塼��(Tk, CGI, libwww-perl)�Ϥ��줾��Υᥤ��󥰥ꥹ�Ȥ�
-����ޤ������줾��Υ⥸�塼�����°���Ƥ��뿽�����߾����
-Ĵ�٤ƤߤƤ���������
+主なモジュール(Tk, CGI, libwww-perl)はそれぞれのメイリングリストが
+あります。それぞれのモジュールに付属している申し込み情報を
+調べてみてください。
 
 	http://lists.cpan.org/	
 
 =head2 Archives of comp.lang.perl.misc
 
-Deja �Ȥ� Alta Vista ��⤦��ޤ�����? �����������ɤ����������֤Ǥ���
-�˥塼�����롼�פȤ��ơ�*perl*�ɤ�õ���Ƥߤޤ��礦��
+Deja とか Alta Vista をもう試しましたか? これらは非常に良いアーカイブです。
+ニューズグループとして“*perl*”を探してみましょう。
 
     http://www.deja.com/dnquery.xp?QRY=&DBS=2&ST=PS&defaultOp=AND&LNG=ALL&format=terse&showsort=date&maxhits=25&subjects=&groups=*perl*&authors=&fromdate=&todate=
 
-����Ǥ�Ĵ���������ʤ뤫�⤷��ޤ���
+それでも調整したくなるかもしれません。
 
-���ʤ��Ϥ����餯��ñ�ʤ�ե�����Υꥹ�ƥ��󥰤��⡢
-�������줿���ʤ��Ȥ�ȯ����(author)�����ա����֥������ȡ�����åɡ�
-������ɤ򥭡��Ȥ���fast-access ����ǥ�����Ȥä�ȯ���μ����ߤ�
-�Ǥ���褦���䤤��碌�ε������ߤ����ʤ�Ǥ��礦��
-���� FAQ ���Ի��Ԥ��Τ�����β����ϡ�MH �� pick ���ޥ�ɤ�Ȥ����ȤǤ�����
-����� 18000 �ˤ�Τܤ�ȯ���������򤹤�Τ������٤��Ǥ���
+あなたはおそらく、単なるファイルのリスティングよりも、
+洗練された少なくとも発言者(author)、日付、サブジェクト、スレッド、
+キーワードをキーとするfast-access インデクスを使った発言の取り込みが
+できるような問い合わせの機構が欲しくなるでしょう。
+この FAQ の編纂者の知る最善の解決策は、MH の pick コマンドを使うことですが、
+これは 18000 にものぼる発言から選択するのは非常に遅いです。
 
-�⤷�礱�Ƥ��륻�������򡢻��äƤ�����ɤ��ˤ��뤫���ΤäƤ����顢
+もし欠けているセクションを、持っていたりどこにあるかを知っていたら、
 perlfaq-suggestions@perl.com
-�ޤǤ��Τ餻����������
+までお知らせください。
 
 =head2 Where can I buy a commercial version of Perl?
 
-(�ɤ��Ǿ�����Perl���㤦���Ȥ��Ǥ��ޤ�����)
+(どこで商用版Perlを買うことができますか？)
 
-�ºݤΤȤ�����Perl�ϴ��˾��ѥ��եȥ�����B<�Ǥ�>��
-Perl �ˤϤ��ʤ����ޥ͡����㡼�ο�����館���ꡢ���տ��������Ǥ���褦��
-�饤���󥹤�����ޤ�����Perl ���ɤ�������줿�ѥå������ǥ�꡼�����졢
-���ۤ���Ƥ��ޤ���
-�����ˤ������礭�ʥ桼�������ߥ�˥ƥ��ȡ�����ʸ��������ޤ���
-comp.lang.perl.* �˥塼�����롼�פȡ����Ĥ��Υᥤ��󥰥ꥹ�ȤϤ��ʤ��ε����
-�Ф��Ƥۤܥꥢ�륿����ǡ�̵���ǲ������Ƥ���ޤ���
-Perl ������Ū�� Larry �ȡ������ͤΥ��եȥ������ǥ����ʡ��䥽�եȥ�������ȯ�ԡ�
-����Ȥ�������Υץ�����ޡ��ˤ�äƥ��ݡ��Ȥ���Ƥ��ޤ�����
-���٤Ƥκ�Ȥ�̵���ǡ����٤ƤοͤΤ���ˤʤ���ޤ�����
+実際のところ、Perlは既に商用ソフトウェアB<です>。
+Perl にはあなたがマネージャーの心を捕らえたり、注意深く説明できるような
+ライセンスがありますし、Perl は良く定義されたパッケージでリリースされ、
+配布されています。
+そこには非常に大きなユーザーコミュニティと、広い文化があります。
+comp.lang.perl.* ニューズグループと、幾つかのメイリングリストはあなたの疑問に
+対してほぼリアルタイムで、無料で回答してくれます。
+Perl は伝統的に Larry と、十数人のソフトウェアデザイナーやソフトウェア開発者、
+それとたくさんのプログラマーによってサポートされてきました。
+すべての作業は無料で、すべての人のためになされました。
 
-���������������ä������ϥ��եȥ����������������Ҥ򡢤��Υ��եȥ�������
-�����Զ�礬���ä��Ȥ����ʤ��뤳�Ȥ��Ǥ��뤳�Ȥ��׵᤹��褦�ʥޥ͡����㡼��
-��­�������ΤǤϤʤ��Ǥ��礦��
-���뤤�ϡ����(�ޥ͡����㡼)�ϡ����˽��פʼ�ä�����(hand-holding)�������
-��̳��ɬ�פȤ��Ƥ���Τ��⤷��ޤ���
-�������ä���Τ����롢�����󥯥�åפ��줿 CD �����ä�perl�����Ĥ��ΤȤ�������
-����Ǥ��ޤ��������줬�����ˤʤ뤫�⤷��ޤ���
-�㤨�С�¿���� Perl �ܤ� Perl �����ۥ��åȤ�Ʊ�����Ƥ��ޤ���
-������O'Reily �� Perl �꥽�������å�
-(Unix �Ǥ� Windows �Ǥ�����ޤ�)���������Ƥ���褦�ˡ�
-�ե꡼�� UNIX �����ۤ��Ƥ���ǥ����ȥ�ӥ塼������ Perl ��Ʊ�����Ƥ��ޤ���
+しかし、こういった答えはソフトウェアを購入した会社を、そのソフトウェアに
+何か不具合があったときに訴えることができることを要求するようなマネージャーを
+満足させるものではないでしょう。
+あるいは、彼ら(マネージャー)は、非常に重要な取っかかり(hand-holding)や契約上の
+義務を必要としているのかもしれません。
+そういったものがある、シュリンクラップされた CD に入ったperlが幾つかのところから
+入手できますが、これが助けになるかもしれません。
+例えば、多くの Perl 本が Perl の配布キットを同梱しています。
+そう、O'Reily の Perl リソースキット
+(Unix 版と Windows 版があります)がそうしているように。
+フリーな UNIX を配布しているディストリビューターは Perl を同梱しています。
 
 =begin original
 
@@ -701,8 +701,8 @@ through the Perl Clinic.  The following is a commercial from them:
 
 =end original
 
-���뤤�ϡ����ѤΥ��󥷥ǥ�ȥ١����Υ��ݡ��Ȥ� Perl Clinic ����
-�����뤳�Ȥ����ޤ����ʲ�����餫��������Ǥ���
+あるいは、商用のインシデントベースのサポートを Perl Clinic から
+受けることも出来ます。以下は彼らからの宣伝です。
 
 "The Perl Clinic is a commercial Perl support service operated by
 ActiveState Tool Corp. and The Ingram Group.  The operators have many
@@ -719,7 +719,7 @@ Contact The Perl Clinic at
 
 =end original
 
-Perl Clinic �ؤ�Ϣ����ϰʲ����̤�Ǥ���
+Perl Clinic への連絡先は以下の通りです。
 
     www.PerlClinic.com
 
@@ -731,27 +731,27 @@ Perl Clinic �ؤ�Ϣ����ϰʲ����̤�Ǥ���
     Tel:    00 44 1483 862814
     Fax:    00 44 1483 862801
 
-���塼�ȥꥢ�롢�ȥ졼�˥󥰡����ݡ��Ȥξ�����
-www.perl.com �ˤ��빹������⻲�Ȥ��Ƥ���������
+チュートリアル、トレーニング、サポートの状況は
+www.perl.com にある更新情報も参照してください。
 
 =head2 Where do I send bug reports?
 
-(�Х���ݡ��ȤϤɤ��������?)
+(バグレポートはどこへ送るの?)
 
-perl ���󥿡��ץ꥿���� Perl �Ȱ��˽в٤���Ƥ���⥸�塼��ˤĤ��Ƥ�
-�Х������ʤ�С�Perl �����ۥѥå������ˤ��� I<perlbug> �Ȥ����ץ�������
-�Ȥ�����perlbug@perl.org �� email ���������äƤ���������
+perl インタープリターや Perl と一緒に出荷されているモジュールについての
+バグの報告ならば、Perl の配布パッケージにある I<perlbug> というプログラムを
+使うか、perlbug@perl.org に email で報告を送ってください。
 
-ɸ��ǤϤʤ��ܿ�(``What platforms is Perl available for?''�β�����
-���Ȥ��Ƥ�������)���Х��ʥ����ۡ�ɸ��ǤϤʤ��⥸�塼��(Tk��CGI �ʤ�)
-�Ȥ��ä���Τ˴ؤ���Х��Ǥ���С����Υѥå������ʤɤ���°���Ƥ���
-�ɥ�����Ȥ�褯�ɤ�ǡ�Ŭ�ڤʾ�����𤷤Ƥ���������
+標準ではない移植(``What platforms is Perl available for?''の回答を
+参照してください)、バイナリ配布、標準ではないモジュール(Tk、CGI など)
+といったものに関するバグであれば、そのパッケージなどに付属していた
+ドキュメントをよく読んで、適切な場所に報告してください。
 
-�ܤ��������(perl5.004 �ʹߤ�)perlbug(1) �ޥ˥奢��ڡ������ɤ�Ǥ���������
+詳しい情報は(perl5.004 以降の)perlbug(1) マニュアルページを読んでください。
 
 =head2 What is perl.com? Perl Mongers? pm.org? perl.org?
 
-(perl.com, Perl Mongers, pm.org, perl.org �äƤʤ�Ǥ���?)
+(perl.com, Perl Mongers, pm.org, perl.org ってなんですか?)
 
 =begin original
 
@@ -761,10 +761,10 @@ O'Reilly and Associates. Other starting points include
 
 =end original
 
-http://www.perl.com/ �ˤ���Perl�Υۡ���ڡ����ϸ��ߡ�
-O'Reilly and Associates�ˤ�äƱ������Ƥ���
-Songline�����ƥ��T3�饤�󥵡��ӥ����֤���Ƥ��ޤ���
-����¾�ν�ȯ���Ȥ��Ƥϰʲ��Τ�Τ�����ޤ�:
+http://www.perl.com/ にあるPerlのホームページは現在、
+O'Reilly and Associatesによって援助されている
+SonglineシステムのT3ラインサービスに置かれています。
+その他の出発点としては以下のものがあります:
 
     http://language.perl.com/
     http://conference.perl.com/
@@ -778,9 +778,9 @@ site for the Perl language.
 
 =end original
 
-Perl Mongers �� Perl ����ΰ���Ū�ʻٱ�򤹤뤿��� web ������
-http://www.perl.org/ ��������Ƥ��롢
-Perl ����λٱ����ΤǤ���
+Perl Mongers は Perl 言語の一般的な支援をするための web サイト
+http://www.perl.org/ を管理している、
+Perl 言語の支援団体です。
 
 =begin original
 
@@ -791,11 +791,11 @@ joining, starting, or requesting services for a Perl user group.
 
 =end original
 
-qPerl Mongers �� Perl �桼�������롼�פ˴ط����륵���ӥ��Τ����
-pm.org �Ȥ����ɥᥤ���ȤäƤ��ޤ���
-����ˤϥ᡼��󥰥ꥹ�Ȥ� web �����Ȥ��ޤޤ�ޤ���
-Perl �桼�������롼�פؤλ��á���Ω�����뤤�ϥ����ӥ��׵�ˤĤ��Ƥ�
-Perl �桼�������롼�� web ������ http://www.pm.org/ �򻲾Ȥ��Ʋ�������
+qPerl Mongers は Perl ユーザーグループに関係するサービスのために
+pm.org というドメインを使っています。
+これにはメーリングリストや web サイトが含まれます。
+Perl ユーザーグループへの参加、設立、あるいはサービス要求については
+Perl ユーザーグループ web サイト http://www.pm.org/ を参照して下さい。
 
 =begin original
 
@@ -807,12 +807,12 @@ and there are many other sub-domains for special topics, such as
 
 =end original
 
-Perl Mongers �Ϥޤ� Perl ���ߥ�˥ƥ��Τ���ΰ���Ū�ʥ��ݡ��ȥ����ӥ���
-�󶡤��뤿��� perl.org �ɥᥤ���������Ƥ��ޤ���
-����ˤϥ᡼��󥰥ꥹ�ȡ�web �����ȡ�����¾�Υ����ӥ��Υۥ��ƥ��󥰤�
-�ޤޤ�ޤ���
-http://www.perl.org �� Perl ����ΰ���Ū�ʻٱ��Ԥ� web �����Ȥǡ�
-�ʲ��Τ褦�����̤ʥȥԥå��ѤΥ��֥ɥᥤ�󤬤���ޤ�:
+Perl Mongers はまた Perl コミュニティのための一般的なサポートサービスを
+提供するための perl.org ドメインも管理しています。
+これにはメーリングリスト、web サイト、その他のサービスのホスティングが
+含まれます。
+http://www.perl.org は Perl 言語の一般的な支援を行う web サイトで、
+以下のような特別なトピック用のサブドメインがあります:
 
     http://bugs.perl.org/
     http://history.perl.org/
@@ -838,7 +838,7 @@ be courteous but is not required.
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp>
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp>
 Update: Kentaro Shirakata <argrath@ub32.org>
 License: GPL or Artistic
 

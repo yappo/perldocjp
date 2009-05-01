@@ -9,33 +9,33 @@ perl581delta - what is new for perl v5.8.1
 
 =end original
 
-perl581delta - perl v5.8.1 ¤Ç¤ÎÊÑ¹¹ÅÀ
+perl581delta - perl v5.8.1 ã§ã®å¤‰æ›´ç‚¹
 
 =head1 DESCRIPTION
 
 This document describes differences between the 5.8.0 release and
 the 5.8.1 release.
 
-¤³¤Î¥É¥­¥å¥á¥ó¥È¤Ç¤Ï 5.8.0 ¥ê¥ê¡¼¥¹¤È 5.8.1 ¥ê¥ê¡¼¥¹¤ÎÊÑ¹¹ÅÀ¤ò
-µ­½Ò¤·¤Æ¤¤¤Ş¤¹.
+ã“ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã§ã¯ 5.8.0 ãƒªãƒªãƒ¼ã‚¹ã¨ 5.8.1 ãƒªãƒªãƒ¼ã‚¹ã®å¤‰æ›´ç‚¹ã‚’
+è¨˜è¿°ã—ã¦ã„ã¾ã™.
 
 If you are upgrading from an earlier release such as 5.6.1, first read
 the L<perl58delta>, which describes differences between 5.6.0 and
 5.8.0.
 
-¤â¤·¤½¤ì¤è¤ê¤âÁ°¤Î¥ê¥ê¡¼¥¹, Îã¤¨¤Ğ 5.6.1 Åù¤«¤é¥¢¥Ã¥×¥Ç¡¼¥È¤¹¤ë¤Î¤Ê¤é, 
-5.6.0 ¤È 5.8.0 ¤È¤Î°ã¤¤¤¬½ñ¤«¤ì¤Æ¤¤¤ë L<perl58delta> ¤òÆÉ¤ó¤Ç¤ª¤¤¤¿Êı¤¬
-¤è¤¤¤Ç¤·¤ç¤¦.
+ã‚‚ã—ãã‚Œã‚ˆã‚Šã‚‚å‰ã®ãƒªãƒªãƒ¼ã‚¹, ä¾‹ãˆã° 5.6.1 ç­‰ã‹ã‚‰ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã™ã‚‹ã®ãªã‚‰, 
+5.6.0 ã¨ 5.8.0 ã¨ã®é•ã„ãŒæ›¸ã‹ã‚Œã¦ã„ã‚‹ L<perl58delta> ã‚’èª­ã‚“ã§ãŠã„ãŸæ–¹ãŒ
+ã‚ˆã„ã§ã—ã‚‡ã†.
 
 In case you are wondering about 5.6.1, it was bug-fix-wise rather
 identical to the development release 5.7.1.  Confused?  This timeline
 hopefully helps a bit: it lists the new major releases, their maintenance
 releases, and the development releases.
 
-5.6.1 ¤Ï¶Ã¤¯¤â¤Î¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó. ¤³¤ì¤Ï³«È¯¥ê¥ê¡¼¥¹¤Î 5.7.1 ¤È¤Ï°Û¤Ê¤ê
-¥Ğ¥°½¤ÀµÈÇ¤Ç¤¹. º®Íğ¤·¤Ş¤¹¤«¡© »ş´Ö¤Î¥°¥é¥Õ¤ÇÀâÌÀ¤¹¤ë¤È¤ï¤«¤ê¤ä¤¹¤¤
-¤«¤â¤·¤ì¤Ş¤»¤ó: ¤³¤³¤Ë¤¢¤²¤ë¤Î¤Ï¿·¤·¤¤¥á¥¸¥ã¡¼¥ê¥ê¡¼¥¹µÚ¤Ó
-¥á¥ó¥Æ¥Ê¥ó¥¹¥ê¥ê¡¼¥¹, ³«È¯¥ê¥ê¡¼¥¹¤Ç¤¹.
+5.6.1 ã¯é©šãã‚‚ã®ã§ã¯ã‚ã‚Šã¾ã›ã‚“. ã“ã‚Œã¯é–‹ç™ºãƒªãƒªãƒ¼ã‚¹ã® 5.7.1 ã¨ã¯ç•°ãªã‚Š
+ãƒã‚°ä¿®æ­£ç‰ˆã§ã™. æ··ä¹±ã—ã¾ã™ã‹ï¼Ÿ æ™‚é–“ã®ã‚°ãƒ©ãƒ•ã§èª¬æ˜ã™ã‚‹ã¨ã‚ã‹ã‚Šã‚„ã™ã„
+ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“: ã“ã“ã«ã‚ã’ã‚‹ã®ã¯æ–°ã—ã„ãƒ¡ã‚¸ãƒ£ãƒ¼ãƒªãƒªãƒ¼ã‚¹åŠã³
+ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ãƒªãƒªãƒ¼ã‚¹, é–‹ç™ºãƒªãƒªãƒ¼ã‚¹ã§ã™.
 
           New     Maintenance  Development
 
@@ -50,11 +50,11 @@ releases, and the development releases.
 
 =head1 Incompatible Changes
 
-Èó¸ß´¹¤È¤Ê¤ëÊÑ¹¹ÅÀ
+éäº’æ›ã¨ãªã‚‹å¤‰æ›´ç‚¹
 
 =head2 Hash Randomisation
 
-¥Ï¥Ã¥·¥å¤Î¥é¥ó¥À¥à²½
+ãƒãƒƒã‚·ãƒ¥ã®ãƒ©ãƒ³ãƒ€ãƒ åŒ–
 
 Mainly due to security reasons, the "random ordering" of hashes
 has been made even more random.  Previously while the order of hash
@@ -62,24 +62,24 @@ elements from keys(), values(), and each() was essentially random,
 it was still repeatable.  Now, however, the order varies between
 different runs of Perl.
 
-¼ç¤Ë¥»¥­¥å¥ê¥Æ¥£¾å¤ÎÍıÍ³¤«¤é, ¥Ï¥Ã¥·¥å¤Î"¥é¥ó¥À¥à½ç½ø"¤¬¤è¤ê¥é¥ó¥À¥à¤Ë
-¤Ê¤ê¤Ş¤·¤¿. ¤³¤ì¤Ş¤Ç¤Ï keys(), values(), each() ¤«¤éÆÀ¤é¤ì¤ë¥Ï¥Ã¥·¥åÍ×ÁÇ¤Î
-½ç½ø¤Ï¥é¥ó¥À¥à¤Ç¤Ï¤¢¤ê¤Ş¤·¤¿¤¬, ·«¤êÊÖ¤·¤Æ¤â°ÂÄê¤Ç¤·¤¿. ¤·¤«¤·º£¸å¤Ï
-¤³¤Î½ç½ø¤Ï Perl ¤Î¼Â¹ÔËè¤ËÊÑ²½¤·¤Ş¤¹.
+ä¸»ã«ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ä¸Šã®ç†ç”±ã‹ã‚‰, ãƒãƒƒã‚·ãƒ¥ã®"ãƒ©ãƒ³ãƒ€ãƒ é †åº"ãŒã‚ˆã‚Šãƒ©ãƒ³ãƒ€ãƒ ã«
+ãªã‚Šã¾ã—ãŸ. ã“ã‚Œã¾ã§ã¯ keys(), values(), each() ã‹ã‚‰å¾—ã‚‰ã‚Œã‚‹ãƒãƒƒã‚·ãƒ¥è¦ç´ ã®
+é †åºã¯ãƒ©ãƒ³ãƒ€ãƒ ã§ã¯ã‚ã‚Šã¾ã—ãŸãŒ, ç¹°ã‚Šè¿”ã—ã¦ã‚‚å®‰å®šã§ã—ãŸ. ã—ã‹ã—ä»Šå¾Œã¯
+ã“ã®é †åºã¯ Perl ã®å®Ÿè¡Œæ¯ã«å¤‰åŒ–ã—ã¾ã™.
 
 B<Perl has never guaranteed any ordering of the hash keys>, and the
 ordering has already changed several times during the lifetime of
 Perl 5.  Also, the ordering of hash keys has always been, and
 continues to be, affected by the insertion order.
 
-B<Perl ¤Ï¥Ï¥Ã¥·¥å¥­¡¼¤Î½ç½ø¤Ë¤Ä¤¤¤ÆÊİ¾Ú¤·¤Ş¤»¤ó>.
-¤½¤·¤Æ¤½¤Î½ç½ø¤Ï Perl 5 ¤Ë¤ª¤¤¤Æ¤â¿ô²óÊÑ²½¤·¤Æ¤¤¤Ş¤¹. 
-¤Ş¤¿, ¥Ï¥Ã¥·¥å¥­¡¼¤Î½ç½ø¤âÁŞÆş¤Î½çÈÖ¤Ë¤è¤Ã¤Æ¾ï¤ËÊÑ²½¤·¤Æ¤¤¤Ş¤¹¤·, 
-ÊÑ²½¤·¤Æ¤¤¤¯¤Ç¤·¤ç¤¦.
+B<Perl ã¯ãƒãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã®é †åºã«ã¤ã„ã¦ä¿è¨¼ã—ã¾ã›ã‚“>.
+ãã—ã¦ãã®é †åºã¯ Perl 5 ã«ãŠã„ã¦ã‚‚æ•°å›å¤‰åŒ–ã—ã¦ã„ã¾ã™. 
+ã¾ãŸ, ãƒãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã®é †åºã‚‚æŒ¿å…¥ã®é †ç•ªã«ã‚ˆã£ã¦å¸¸ã«å¤‰åŒ–ã—ã¦ã„ã¾ã™ã—, 
+å¤‰åŒ–ã—ã¦ã„ãã§ã—ã‚‡ã†.
 
 The added randomness may affect applications.
 
-¿·¤·¤¤¥é¥ó¥À¥àÀ­¤Ï¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ë±Æ¶Á¤òÍ¿¤¨¤ë¤Ç¤·¤ç¤¦.
+æ–°ã—ã„ãƒ©ãƒ³ãƒ€ãƒ æ€§ã¯ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«å½±éŸ¿ã‚’ä¸ãˆã‚‹ã§ã—ã‚‡ã†.
 
 One possible scenario is when output of an application has included
 hash data.  For example, if you have used the Data::Dumper module to
@@ -92,14 +92,14 @@ important, use tied hashes: for example the Tie::IxHash module
 which by default preserves the order in which the hash elements
 were added.
 
-¹Í¤¨¤é¤ì¤ë¥·¥Ê¥ê¥ª¤È¤·¤Æ¤Ï¥Ï¥Ã¥·¥å¥Ç¡¼¥¿¤ò´Ş¤à¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤«¤é¤Î½ĞÎÏ
-¤Ç¤¹. ¤¿¤È¤¨¤Ğ¥Ç¡¼¥¿¤ò Data::Dumper ¤òÍÑ¤¤¤Æ°Û¤Ê¤ë¥Õ¥¡¥¤¥ë¤Ë½ĞÎÏ¤·, 
-¤½¤Î¥Õ¥¡¥¤¥ë¤òÈæ³Ó¤·¤Æ¥Ç¡¼¥¿¤ÎÊÑ²½¤òÄ´¤Ù¤Æ¤¤¤¿¤Î¤Ê¤é, ¥À¥ó¥×¤µ¤ì¤¿¥Ï¥Ã¥·¥å¤Î
-½ç½ø¤ÏÍÍ¡¹¤Ç¤¢¤ë¤¿¤áÆ±°ì¤ÈÈ½ÃÇ¤µ¤ì¤ë¤³¤È¤Ï¤Ê¤¤¤Ç¤·¤ç¤¦. 
-°ìÈÌÅª¤Ê²óÈòºö¤È¤·¤Æ¤Ï¥­¡¼(¤â¤·¤¯¤ÏÃÍ¤Ç)¥½¡¼¥È¤¹¤ë¤³¤È¤Ç¤¹. 
-Data::Dumper ¤Ë¤ª¤¤¤Æ¤Ï C<Sortkeys> ¥ª¥×¥·¥ç¥ó¤ò»È¤¨¤ë¤Ç¤·¤ç¤¦. 
-ÆÃÄê¤Î½ç½ø¤¬ËÜÅö¤Ë½ÅÍ×¤Ç¤¢¤ë¤Ê¤é¥¿¥¤¤µ¤ì¤¿¥Ï¥Ã¥·¥å¤ò»È¤¦¤Ù¤­¤Ç¤·¤ç¤¦. 
-Îã¤¨¤Ğ Tie::IxHash ¥â¥¸¥å¡¼¥ë¤Ï¥Ï¥Ã¥·¥åÍ×ÁÇ¤¬ÄÉ²Ã¤µ¤ì¤¿½çÈÖ¤òÊİÂ¸¤·¤Ş¤¹.
+è€ƒãˆã‚‰ã‚Œã‚‹ã‚·ãƒŠãƒªã‚ªã¨ã—ã¦ã¯ãƒãƒƒã‚·ãƒ¥ãƒ‡ãƒ¼ã‚¿ã‚’å«ã‚€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰ã®å‡ºåŠ›
+ã§ã™. ãŸã¨ãˆã°ãƒ‡ãƒ¼ã‚¿ã‚’ Data::Dumper ã‚’ç”¨ã„ã¦ç•°ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã—, 
+ãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¯”è¼ƒã—ã¦ãƒ‡ãƒ¼ã‚¿ã®å¤‰åŒ–ã‚’èª¿ã¹ã¦ã„ãŸã®ãªã‚‰, ãƒ€ãƒ³ãƒ—ã•ã‚ŒãŸãƒãƒƒã‚·ãƒ¥ã®
+é †åºã¯æ§˜ã€…ã§ã‚ã‚‹ãŸã‚åŒä¸€ã¨åˆ¤æ–­ã•ã‚Œã‚‹ã“ã¨ã¯ãªã„ã§ã—ã‚‡ã†. 
+ä¸€èˆ¬çš„ãªå›é¿ç­–ã¨ã—ã¦ã¯ã‚­ãƒ¼(ã‚‚ã—ãã¯å€¤ã§)ã‚½ãƒ¼ãƒˆã™ã‚‹ã“ã¨ã§ã™. 
+Data::Dumper ã«ãŠã„ã¦ã¯ C<Sortkeys> ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ä½¿ãˆã‚‹ã§ã—ã‚‡ã†. 
+ç‰¹å®šã®é †åºãŒæœ¬å½“ã«é‡è¦ã§ã‚ã‚‹ãªã‚‰ã‚¿ã‚¤ã•ã‚ŒãŸãƒãƒƒã‚·ãƒ¥ã‚’ä½¿ã†ã¹ãã§ã—ã‚‡ã†. 
+ä¾‹ãˆã° Tie::IxHash ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ãƒãƒƒã‚·ãƒ¥è¦ç´ ãŒè¿½åŠ ã•ã‚ŒãŸé †ç•ªã‚’ä¿å­˜ã—ã¾ã™.
 
 More subtle problem is reliance on the order of "global destruction".
 That is what happens at the end of execution: Perl destroys all data
@@ -114,60 +114,60 @@ the ordinary references and the symbol tables that are no longer in use.
 You can't call a class method or an ordinary function on a class that
 has been collected that way.
 
-¤è¤êÈùÌ¯¤ÊÌäÂê¤Ï "¥°¥í¡¼¥Ğ¥ë¥Ç¥¹¥È¥é¥¯¥·¥ç¥ó" ¤Ë¤ª¤±¤ë¿®ÍêÀ­¤Ç¤¹. 
-¤½¤ì¤Ï Perl ¤Î¼Â¹Ô¤Î½ªÎ»»ş¤Ëµ¯¤³¤ê¤Ş¤¹. 
-Perl ¤Ï¥æ¡¼¥¶¤Î¥Ç¡¼¥¿¤ò´Ş¤á¤ÆÁ´¤Æ¤Î¥Ç¡¼¥¿¤òÇË´ş¤·¤Ş¤¹. 
-¤â¤·¥Ç¥¹¥È¥é¥¯¥¿(DESTROY ´Ø¿ô)¤¬ÆÃÄê¤Î½ç½ø¤Ç¥°¥í¡¼¥Ğ¥ë¥Ç¥¹¥È¥é¥¯¥·¥ç¥ó¤¬
-¹Ô¤ï¤ì¤ë¤³¤È¤ò¹Í¤¨¤Æ¤¤¤¿¤Î¤Ê¤é¤³¤ì¤ÏÆ¬¤ÎÄË¤¤ÌäÂê¤Ç¤·¤ç¤¦. 
-Îã¤¨¤Ğ¤¢¤ë¥ª¥Ö¥¸¥§¥¯¥È¤Î¥Ç¥¹¥È¥é¥¯¥¿¤Ë¤ª¤¤¤ÆÂ¾¤Î¥¯¥é¥¹¤Î¥ª¥Ö¥¸¥§¥¯¥È¤¬
-¤Ş¤ÀÍ­¸ú¤Ç¤¢¤ë¤Î¤«¤Ï¤½¤ì¤Ø¤Î»²¾È¤ò¤â¤Ã¤Æ¤¤¤Ê¤¤¤Î¤Ç¤¢¤ì¤Ğ¿äÂ¬¤Ç¤­¤Ş¤»¤ó. 
-¤â¤·´Ä¶­ÊÑ¿ô PERL_DESTRUST_LEVEL ¤¬Èó¥¼¥íÃÍ¤ËÀßÄê¤µ¤ì¤Æ¤¤¤ë¤«, 
-À¸À®¤µ¤ì¤¿¥¹¥ì¥Ã¥É¤ò½ªÎ»¤·¤Æ¤¤¤ë¤Î¤Ê¤éÄÌ¾ï¤Î¥ê¥Õ¥¡¥ì¥ó¥¹¤ä¥·¥ó¥Ü¥ë¥Æ¡¼¥Ö¥ë¤â
-´û¤ËÇË´ş¤µ¤ì¤Æ¤¤¤ë¤Ç¤·¤ç¤¦. ¥¯¥é¥¹¥á¥½¥Ã¥É¤ä¥¯¥é¥¹¤ÎÄÌ¾ï¤Î´Ø¿ô¤ò
-¸Æ¤Ö¤³¤È¤â¤Ç¤­¤Ş¤»¤ó.
+ã‚ˆã‚Šå¾®å¦™ãªå•é¡Œã¯ "ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³" ã«ãŠã‘ã‚‹ä¿¡é ¼æ€§ã§ã™. 
+ãã‚Œã¯ Perl ã®å®Ÿè¡Œã®çµ‚äº†æ™‚ã«èµ·ã“ã‚Šã¾ã™. 
+Perl ã¯ãƒ¦ãƒ¼ã‚¶ã®ãƒ‡ãƒ¼ã‚¿ã‚’å«ã‚ã¦å…¨ã¦ã®ãƒ‡ãƒ¼ã‚¿ã‚’ç ´æ£„ã—ã¾ã™. 
+ã‚‚ã—ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿(DESTROY é–¢æ•°)ãŒç‰¹å®šã®é †åºã§ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³ãŒ
+è¡Œã‚ã‚Œã‚‹ã“ã¨ã‚’è€ƒãˆã¦ã„ãŸã®ãªã‚‰ã“ã‚Œã¯é ­ã®ç—›ã„å•é¡Œã§ã—ã‚‡ã†. 
+ä¾‹ãˆã°ã‚ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«ãŠã„ã¦ä»–ã®ã‚¯ãƒ©ã‚¹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒ
+ã¾ã æœ‰åŠ¹ã§ã‚ã‚‹ã®ã‹ã¯ãã‚Œã¸ã®å‚ç…§ã‚’ã‚‚ã£ã¦ã„ãªã„ã®ã§ã‚ã‚Œã°æ¨æ¸¬ã§ãã¾ã›ã‚“. 
+ã‚‚ã—ç’°å¢ƒå¤‰æ•° PERL_DESTRUST_LEVEL ãŒéã‚¼ãƒ­å€¤ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹, 
+ç”Ÿæˆã•ã‚ŒãŸã‚¹ãƒ¬ãƒƒãƒ‰ã‚’çµ‚äº†ã—ã¦ã„ã‚‹ã®ãªã‚‰é€šå¸¸ã®ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‚„ã‚·ãƒ³ãƒœãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã‚‚
+æ—¢ã«ç ´æ£„ã•ã‚Œã¦ã„ã‚‹ã§ã—ã‚‡ã†. ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã‚„ã‚¯ãƒ©ã‚¹ã®é€šå¸¸ã®é–¢æ•°ã‚’
+å‘¼ã¶ã“ã¨ã‚‚ã§ãã¾ã›ã‚“.
 
 The hash randomisation is certain to reveal hidden assumptions about
 some particular ordering of hash elements, and outright bugs: it
 revealed a few bugs in the Perl core and core modules.
 
-¥Ï¥Ã¥·¥å¤Î¥é¥ó¥À¥àÀ­¤Ï¥Ï¥Ã¥·¥åÍ×ÁÇ¤¬ÆÃÄê¤Î½ç½ø¤Ç¤¢¤ë¤È¤¤¤¦
-±£¤ì¤Æ¤¤¤¿²¾Äê¤ä, Î¨Ä¾¤Ë¸À¤Ã¤Æ¤·¤Ş¤¨¤Ğ¥Ğ¥°¤òË½¤¯¤Î¤Ï³Î¤«¤Ç¤·¤ç¤¦. 
-Perl ¥³¥¢¤ä¥³¥¢¥â¥¸¥å¡¼¥ë¤Ë¤â¾¯¿ô¤Ç¤Ï¤¢¤ê¤Ş¤¹¤¬¸«¤Ä¤«¤ê¤Ş¤·¤¿.
+ãƒãƒƒã‚·ãƒ¥ã®ãƒ©ãƒ³ãƒ€ãƒ æ€§ã¯ãƒãƒƒã‚·ãƒ¥è¦ç´ ãŒç‰¹å®šã®é †åºã§ã‚ã‚‹ã¨ã„ã†
+éš ã‚Œã¦ã„ãŸä»®å®šã‚„, ç‡ç›´ã«è¨€ã£ã¦ã—ã¾ãˆã°ãƒã‚°ã‚’æš´ãã®ã¯ç¢ºã‹ã§ã—ã‚‡ã†. 
+Perl ã‚³ã‚¢ã‚„ã‚³ã‚¢ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«ã‚‚å°‘æ•°ã§ã¯ã‚ã‚Šã¾ã™ãŒè¦‹ã¤ã‹ã‚Šã¾ã—ãŸ.
 
 To disable the hash randomisation in runtime, set the environment
 variable PERL_HASH_SEED to 0 (zero) before running Perl (for more
 information see L<perlrun/PERL_HASH_SEED>), or to disable the feature
 completely in compile time, compile with C<-DNO_HASH_SEED> (see F<INSTALL>).
 
-¼Â¹Ô»ş¤Ë¥Ï¥Ã¥·¥å¤Î¥é¥ó¥À¥à²½¤òÌµ¸ú²½¤¹¤ë¤Î¤Ê¤é Perl ¤Î¼Â¹ÔÁ°¤Ë 
-´Ä¶­ÊÑ¿ô PERL_HASH_SEED ¤Ë 0 ¤òÀßÄê¤¹¤ë(¾ÜºÙ¤Ï 
-L<perlrun/PERL_HASH_SEED> »²¾È)¤«, ¤â¤·¤¯¤Ï¥³¥ó¥Ñ¥¤¥ë»ş¤Ë 
-¤³¤Îµ¡Ç½¤ò´°Á´¤ËÌµ¸ú²½¤¹¤ë¤¿¤á¤Ë. C<-DNO_HASH_SEED> (F<INSTALL> »²¾È) 
-¤òÀßÄê¤·¤Æ¥³¥ó¥Ñ¥¤¥ë¤¹¤ë¤«¤Ç¤¹.
+å®Ÿè¡Œæ™‚ã«ãƒãƒƒã‚·ãƒ¥ã®ãƒ©ãƒ³ãƒ€ãƒ åŒ–ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ã®ãªã‚‰ Perl ã®å®Ÿè¡Œå‰ã« 
+ç’°å¢ƒå¤‰æ•° PERL_HASH_SEED ã« 0 ã‚’è¨­å®šã™ã‚‹(è©³ç´°ã¯ 
+L<perlrun/PERL_HASH_SEED> å‚ç…§)ã‹, ã‚‚ã—ãã¯ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã« 
+ã“ã®æ©Ÿèƒ½ã‚’å®Œå…¨ã«ç„¡åŠ¹åŒ–ã™ã‚‹ãŸã‚ã«. C<-DNO_HASH_SEED> (F<INSTALL> å‚ç…§) 
+ã‚’è¨­å®šã—ã¦ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã‹ã§ã™.
 
 See L<perlsec/"Algorithmic Complexity Attacks"> for the original
 rationale behind this change.
 
-¤³¤ÎÊÑ¹¹¤ÎÇØ·Ê¤È¤Ê¤Ã¤¿º¬µò¤Î¸¶Ê¸¤Ï 
-L<perlsec/"Algorithmic Complexity Attacks"> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+ã“ã®å¤‰æ›´ã®èƒŒæ™¯ã¨ãªã£ãŸæ ¹æ‹ ã®åŸæ–‡ã¯ 
+L<perlsec/"Algorithmic Complexity Attacks"> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 =head2 UTF-8 On Filehandles No Longer Activated By Locale
 
-¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤Î utf-8 ¥Õ¥é¥°¤Ï locale ÀßÄê¤«¤éÄ¾ÀÜ±Æ¶Á¤ò¼õ¤±¤Ê¤¯¤Ê¤ê¤Ş¤·¤¿
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã® utf-8 ãƒ•ãƒ©ã‚°ã¯ locale è¨­å®šã‹ã‚‰ç›´æ¥å½±éŸ¿ã‚’å—ã‘ãªããªã‚Šã¾ã—ãŸ
 
 In Perl 5.8.0 all filehandles, including the standard filehandles,
 were implicitly set to be in Unicode UTF-8 if the locale settings
 indicated the use of UTF-8.  This feature caused too many problems,
 so the feature was turned off and redesigned: see L</"Core Enhancements">.
 
-Perl 5.8.0 ¤Ç¤Ï, É¸½à¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤ò´Ş¤á¤¿Á´¤Æ¤Î¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤Ï, 
-utf-8 ¤ò»È¤¦¥í¥±¡¼¥ë¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¤È¤­¤Ë¤Ï Unicode UTF-8 ¥Õ¥é¥°¤ò°ÅÌÛ¤Î¤¦¤Á¤Ë
-ÀßÄê¤·¤Æ¤¤¤Ş¤·¤¿. ¤³¤Îµ¡Ç½¤ÏÂ¿¤¯¤ÎÌäÂê¤ò°ú¤­µ¯¤³¤·¤¿¤¿¤áÇÑ»ß¤µ¤ì, ¤Ş¤¿
-ºÆÀß·×¤µ¤ì¤Ş¤·¤¿: L<< /"Core Enhancements" >> ¤ò
-»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+Perl 5.8.0 ã§ã¯, æ¨™æº–ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã¯, 
+utf-8 ã‚’ä½¿ã†ãƒ­ã‚±ãƒ¼ãƒ«ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã¨ãã«ã¯ Unicode UTF-8 ãƒ•ãƒ©ã‚°ã‚’æš—é»™ã®ã†ã¡ã«
+è¨­å®šã—ã¦ã„ã¾ã—ãŸ. ã“ã®æ©Ÿèƒ½ã¯å¤šãã®å•é¡Œã‚’å¼•ãèµ·ã“ã—ãŸãŸã‚å»ƒæ­¢ã•ã‚Œ, ã¾ãŸ
+å†è¨­è¨ˆã•ã‚Œã¾ã—ãŸ: L<< /"Core Enhancements" >> ã‚’
+å‚ç…§ã—ã¦ãã ã•ã„.
 
 =head2 Single-number v-strings are no longer v-strings before "=E<gt>"
 
-"=E<gt>" ¤ÎÁ°¤Ë¤ª¤¤¤Æ£±¤Ä¤Î¿ô»úÉôÊ¬¤«¤é¤Ê¤ë v-string ¤ÏÊ¸»úÎó¤È¤·¤Æ°·¤ï¤ì¤Ş¤¹
+"=E<gt>" ã®å‰ã«ãŠã„ã¦ï¼‘ã¤ã®æ•°å­—éƒ¨åˆ†ã‹ã‚‰ãªã‚‹ v-string ã¯æ–‡å­—åˆ—ã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™
 
 The version strings or v-strings (see L<perldata/"Version Strings">)
 feature introduced in Perl 5.6.0 has been a source of some confusion--
@@ -176,39 +176,39 @@ knew better.  Especially troublesome has been the feature that before
 a "=>" a version string (a "v" followed by digits) has been interpreted
 as a v-string instead of a string literal.  In other words:
 
-Perl 5.6.0 ¤«¤é»È¤¨¤ë¥Ğ¡¼¥¸¥ç¥óÊ¸»úÎó(v-string)µ¡Ç½ 
-(L<perldata/"Version Strings"> »²¾È)¤Ï´öÊ¬
-º®Íğ¤ò¾·¤­¤Ş¤·¤¿. ¼ç¤Ë¤½¤ì¤ò»È¤¦¤³¤È¤ò°Õ¿Ş¤·¤Æ¤¤¤Ê¤«¤Ã¤¿¤Î¤Ë¤â¤«¤«¤ï¤é¤º
-Perl ¤¬ v-string ¤Ç¤¢¤ë¤ÈÇ§¼±¤·¤Æ¤·¤Ş¤¦¥³¥È¤¬Í×°ø¤Ç¤¹. 
-ÆÃ¤ËÌñ²ğ¤Ê¤Î¤Ï "=>" ¤ÎÁ°¤Ë¤ª¤¤¤Æ¥Ğ¡¼¥¸¥ç¥óÊ¸»úÎó ("v" ¤È¤½¤ì¤ËÂ³¤¯
-¿ô»ú¤«¤é¤Ê¤ê¤Ş¤¹) ¤¬Ê¸»úÎó¥ê¥Æ¥é¥ë¤Ç¤Ï¤Ê¤¯ v-string ¤È¤·¤Æ
-½èÍı¤µ¤ì¤Æ¤·¤Ş¤¦¤È¤¤¤¦¤â¤Î¤Ç¤¹. Îã¤ò¤¢¤²¤ë¤È,
+Perl 5.6.0 ã‹ã‚‰ä½¿ãˆã‚‹ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—(v-string)æ©Ÿèƒ½ 
+(L<perldata/"Version Strings"> å‚ç…§)ã¯å¹¾åˆ†
+æ··ä¹±ã‚’æ‹›ãã¾ã—ãŸ. ä¸»ã«ãã‚Œã‚’ä½¿ã†ã“ã¨ã‚’æ„å›³ã—ã¦ã„ãªã‹ã£ãŸã®ã«ã‚‚ã‹ã‹ã‚ã‚‰ãš
+Perl ãŒ v-string ã§ã‚ã‚‹ã¨èªè­˜ã—ã¦ã—ã¾ã†ã‚³ãƒˆãŒè¦å› ã§ã™. 
+ç‰¹ã«å„ä»‹ãªã®ã¯ "=>" ã®å‰ã«ãŠã„ã¦ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ— ("v" ã¨ãã‚Œã«ç¶šã
+æ•°å­—ã‹ã‚‰ãªã‚Šã¾ã™) ãŒæ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«ã§ã¯ãªã v-string ã¨ã—ã¦
+å‡¦ç†ã•ã‚Œã¦ã—ã¾ã†ã¨ã„ã†ã‚‚ã®ã§ã™. ä¾‹ã‚’ã‚ã’ã‚‹ã¨,
 
 	%h = ( v65 => 42 );
 
 has meant since Perl 5.6.0
 
-¤È¤¤¤¦¥³¡¼¥É¤Ï, Perl 5.6.0 °Ê¹ß¤Ç¤Ï
+ã¨ã„ã†ã‚³ãƒ¼ãƒ‰ã¯, Perl 5.6.0 ä»¥é™ã§ã¯
 
 	%h = ( 'A' => 42 );
 
 (at least in platforms of ASCII progeny)  Perl 5.8.1 restores the
 more natural interpretation
 
-(¾¯¤Ê¤¯¤È¤â ASCII ·Ï¤Î¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ë¤ª¤¤¤Æ¤Ï) ¤³¤ÎÍÍ¤ËÇ§¼±¤µ¤ì¤Æ
-¤·¤Ş¤¤¤Ş¤¹. Perl 5.8.1 ¤Ç¤Ï¤³¤ì¤ò¤è¤ê¼«Á³¤Ë, ¼¡¤Î·Á¤ËÇ§¼±¤·¤Ş¤¹.
+(å°‘ãªãã¨ã‚‚ ASCII ç³»ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«ãŠã„ã¦ã¯) ã“ã®æ§˜ã«èªè­˜ã•ã‚Œã¦
+ã—ã¾ã„ã¾ã™. Perl 5.8.1 ã§ã¯ã“ã‚Œã‚’ã‚ˆã‚Šè‡ªç„¶ã«, æ¬¡ã®å½¢ã«èªè­˜ã—ã¾ã™.
 
 	%h = ( 'v65' => 42 );
 
 The multi-number v-strings like v65.66 and 65.66.67 still continue to
 be v-strings in Perl 5.8.
 
-Ê£¿ô¤Î¿ô»ú¤ò»ı¤Ä v-string, ¤¿¤È¤¨¤Ğ v65.66 ¤ä 65.66.67 ¤Ï
-Perl 5.8 ¤Ç¤â v-string ¤È¤·¤Æ½èÍı¤µ¤ìÂ³¤±¤ë¤Ç¤·¤ç¤¦.
+è¤‡æ•°ã®æ•°å­—ã‚’æŒã¤ v-string, ãŸã¨ãˆã° v65.66 ã‚„ 65.66.67 ã¯
+Perl 5.8 ã§ã‚‚ v-string ã¨ã—ã¦å‡¦ç†ã•ã‚Œç¶šã‘ã‚‹ã§ã—ã‚‡ã†.
 
 =head2 (Win32) The -C Switch Has Been Repurposed
 
-(Win32) -C ¥¹¥¤¥Ã¥Á¤¬ºÆÍøÍÑ¤µ¤ì¤Ş¤·¤¿
+(Win32) -C ã‚¹ã‚¤ãƒƒãƒãŒå†åˆ©ç”¨ã•ã‚Œã¾ã—ãŸ
 
 The -C switch has changed in an incompatible way.  The old semantics
 of this switch only made sense in Win32 and only in the "use utf8"
@@ -218,24 +218,24 @@ by anyone, it has been repurposed.  The behavior that this switch
 enabled in 5.6.x releases may be supported in a transparent,
 data-dependent fashion in a future release.
 
--C ¥¹¥¤¥Ã¥Á¤¬¸ß´¹À­¤Î¤Ê¤¤·Á¤ÇÊÑ¹¹¤µ¤ì¤Ş¤·¤¿. 
-¤³¤Î¥¹¥¤¥Ã¥Á¤Ï°ÊÁ°¤Ï Win32 ¤Ë¤ª¤¤¤Æ¤«¤Ä 5.6.x ¥ê¥ê¡¼¥¹¤Ç¤Î 
-"use utf8" ¤Ë¤ª¤¤¤Æ°ÕÌ£¤ò»ı¤Á¤Ş¤·¤¿¤¬, 5.8.0 ¤Ë¤ª¤±¤ë¥æ¥Ë¥³¡¼¥É¼ÂÁõ¤Î
-²İÄø¤Ç°ÕÌ£¤ò¤Ê¤µ¤Ê¤¯¤Ê¤ê¤Ş¤·¤¿. ¤³¤Î¥¹¥¤¥Ã¥Á¤ò»È¤¦¿Í¤Ï¤¤¤Ê¤¯¤Ê¤Ã¤¿¤¿¤á¤Ë
-¤³¤ì¤ÏºÆÍøÍÑ¤µ¤ì¤Ş¤·¤¿. 5.6.x ¥ê¥ê¡¼¥¹¤Ç¤³¤Î¥¹¥¤¥Ã¥Á¤òÍ­¸ú¤Ë¤·¤¿»ş¤Î
-¿¶¤ëÉñ¤¤¤ÏÆ©²áÅª¤Ë, ¥Ç¡¼¥¿¤Ë°ÍÂ¸¤·¤¿·Á¤Çº£¸å¤Î¥ê¥ê¡¼¥¹¤Ç¤â¥µ¥İ¡¼¥È¤µ¤ì¤ë
-¤Ç¤·¤ç¤¦.
+-C ã‚¹ã‚¤ãƒƒãƒãŒäº’æ›æ€§ã®ãªã„å½¢ã§å¤‰æ›´ã•ã‚Œã¾ã—ãŸ. 
+ã“ã®ã‚¹ã‚¤ãƒƒãƒã¯ä»¥å‰ã¯ Win32 ã«ãŠã„ã¦ã‹ã¤ 5.6.x ãƒªãƒªãƒ¼ã‚¹ã§ã® 
+"use utf8" ã«ãŠã„ã¦æ„å‘³ã‚’æŒã¡ã¾ã—ãŸãŒ, 5.8.0 ã«ãŠã‘ã‚‹ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰å®Ÿè£…ã®
+èª²ç¨‹ã§æ„å‘³ã‚’ãªã•ãªããªã‚Šã¾ã—ãŸ. ã“ã®ã‚¹ã‚¤ãƒƒãƒã‚’ä½¿ã†äººã¯ã„ãªããªã£ãŸãŸã‚ã«
+ã“ã‚Œã¯å†åˆ©ç”¨ã•ã‚Œã¾ã—ãŸ. 5.6.x ãƒªãƒªãƒ¼ã‚¹ã§ã“ã®ã‚¹ã‚¤ãƒƒãƒã‚’æœ‰åŠ¹ã«ã—ãŸæ™‚ã®
+æŒ¯ã‚‹èˆã„ã¯é€éçš„ã«, ãƒ‡ãƒ¼ã‚¿ã«ä¾å­˜ã—ãŸå½¢ã§ä»Šå¾Œã®ãƒªãƒªãƒ¼ã‚¹ã§ã‚‚ã‚µãƒãƒ¼ãƒˆã•ã‚Œã‚‹
+ã§ã—ã‚‡ã†.
 
 For the new life of this switch, see L<"UTF-8 no longer default under
 UTF-8 locales">, and L<perlrun/-C>.
 
-¤³¤Î¥¹¥¤¥Ã¥Á¤Î¿·¤·¤¤¸ú²Ì¤Ë¤Ä¤¤¤Æ¤Ï L<< "UTF-8 no longer default under
-UTF-8 locales" >> µÚ¤Ó L<perlrun/-C> ¤ò
-»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+ã“ã®ã‚¹ã‚¤ãƒƒãƒã®æ–°ã—ã„åŠ¹æœã«ã¤ã„ã¦ã¯ L<< "UTF-8 no longer default under
+UTF-8 locales" >> åŠã³ L<perlrun/-C> ã‚’
+å‚ç…§ã—ã¦ãã ã•ã„.
 
 =head2 (Win32) The /d Switch Of cmd.exe
 
-(Win32) cmd.exe ¤Î /d ¥¹¥¤¥Ã¥Á
+(Win32) cmd.exe ã® /d ã‚¹ã‚¤ãƒƒãƒ
 
 Perl 5.8.1 uses the /d switch when running the cmd.exe shell
 internally for system(), backticks, and when opening pipes to external
@@ -244,20 +244,20 @@ from the registry, which is generally considered undesirable when
 running external programs.  If you wish to retain compatibility with
 the older behavior, set PERL5SHELL in your environment to C<cmd /x/c>.
 
-Perl 5.8.1 ¤Ç¤Ï system(), ¥Ğ¥Ã¥¯¥¯¥ª¡¼¥È, µÚ¤Ó, ³°Éô¥×¥í¥°¥é¥à¤Ø¤Î¥Ñ¥¤¥×
-Åù¤ÇÆâÉô¤Ç»ÈÍÑ¤¹¤ë cmd.exe ¥·¥§¥ë¤Î¼Â¹Ô»ş¤Ë /d ¥¹¥¤¥Ã¥Á¤ò»È¤¤¤Ş¤¹. 
-¤½¤ÎÂ¾¤Î¥¹¥¤¥Ã¥Á¤Ï, ³°Éô¥×¥í¥°¥é¥à¤ò¼Â¹Ô¤¹¤ë¤È¤­¤ËÄÌ¾ïË¾¤Ş¤ì¤Æ¤¤¤Ê¤¤¤È
-¹Í¤¨¤é¤ì¤ë¥ì¥¸¥¹¥È¥ê¤«¤é¤Î AutoRun ¥³¥Ş¥ó¥É¤Î¼Â¹Ô¤òÌµ¸ú²½¤·¤Ş¤¹.
-¤â¤·°ÊÁ°¤Î¿¶¤ëÉñ¤¤¤ò°İ»ı¤·¤¿¤¤¤Î¤Ê¤é PERL5SHELL ´Ä¶­ÊÑ¿ô¤Ë C<cmd /x/c> ¤È
-ÀßÄê¤·¤Æ²¼¤µ¤¤.
+Perl 5.8.1 ã§ã¯ system(), ãƒãƒƒã‚¯ã‚¯ã‚ªãƒ¼ãƒˆ, åŠã³, å¤–éƒ¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¸ã®ãƒ‘ã‚¤ãƒ—
+ç­‰ã§å†…éƒ¨ã§ä½¿ç”¨ã™ã‚‹ cmd.exe ã‚·ã‚§ãƒ«ã®å®Ÿè¡Œæ™‚ã« /d ã‚¹ã‚¤ãƒƒãƒã‚’ä½¿ã„ã¾ã™. 
+ãã®ä»–ã®ã‚¹ã‚¤ãƒƒãƒã¯, å¤–éƒ¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’å®Ÿè¡Œã™ã‚‹ã¨ãã«é€šå¸¸æœ›ã¾ã‚Œã¦ã„ãªã„ã¨
+è€ƒãˆã‚‰ã‚Œã‚‹ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‹ã‚‰ã® AutoRun ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè¡Œã‚’ç„¡åŠ¹åŒ–ã—ã¾ã™.
+ã‚‚ã—ä»¥å‰ã®æŒ¯ã‚‹èˆã„ã‚’ç¶­æŒã—ãŸã„ã®ãªã‚‰ PERL5SHELL ç’°å¢ƒå¤‰æ•°ã« C<cmd /x/c> ã¨
+è¨­å®šã—ã¦ä¸‹ã•ã„.
 
 =head1 Core Enhancements
 
-¥³¥¢µ¡Ç½¤Î¶¯²½
+ã‚³ã‚¢æ©Ÿèƒ½ã®å¼·åŒ–
 
 =head2 UTF-8 no longer default under UTF-8 locales
 
-UTF-8 ¥í¥±¡¼¥ë¤Ç¤â UTF-8 ¤Ï½é´ü¾õÂÖ¤ÇÍ­¸ú¤Ë¤Ê¤ë¤³¤È¤Ï¤¢¤ê¤Ş¤»¤ó
+UTF-8 ãƒ­ã‚±ãƒ¼ãƒ«ã§ã‚‚ UTF-8 ã¯åˆæœŸçŠ¶æ…‹ã§æœ‰åŠ¹ã«ãªã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“
 
 In Perl 5.8.0 many Unicode features were introduced.   One of them
 was found to be of more nuisance than benefit: the automagic
@@ -265,10 +265,10 @@ was found to be of more nuisance than benefit: the automagic
 standard filehandles, if the user's locale settings indicated
 use of UTF-8.
 
-Perl 5.8.0 ¤«¤éÂ¿¤¯¤Î Unicode µ¡Ç½¤¬Å¸³«¤µ¤ì¤Ş¤·¤¿. ¤½¤ÎÃæ¤Ë¤ÏÊØÍø¤È¤¤¤¦
-¤è¤êÌñ²ğ¤Ê¤â¤Î¤â¸«¤é¤ì¤Ş¤·¤¿. ¥æ¡¼¥¶¤Î¥í¥±¡¼¥ë¤Ë UTF-8 ¤Î»ÈÍÑ¤¬
-µ­¤µ¤ì¤Æ¤¤¤¿¤È¤­¤Î, ¼«Æ°Åª¤Ë(¤½¤·¤Æ¿åÌÌ²¼¤Ç)¹Ô¤ï¤ì¤ë¥Õ¥¡¥¤¥ë
-¥Ï¥ó¥É¥ë¤Î "UTF-8-µ¿ÏÇ" ¤Ç¤¹. É¸½à¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤â¤½¤ÎÂĞ¾İ¤Ç¤¹.
+Perl 5.8.0 ã‹ã‚‰å¤šãã® Unicode æ©Ÿèƒ½ãŒå±•é–‹ã•ã‚Œã¾ã—ãŸ. ãã®ä¸­ã«ã¯ä¾¿åˆ©ã¨ã„ã†
+ã‚ˆã‚Šå„ä»‹ãªã‚‚ã®ã‚‚è¦‹ã‚‰ã‚Œã¾ã—ãŸ. ãƒ¦ãƒ¼ã‚¶ã®ãƒ­ã‚±ãƒ¼ãƒ«ã« UTF-8 ã®ä½¿ç”¨ãŒ
+è¨˜ã•ã‚Œã¦ã„ãŸã¨ãã®, è‡ªå‹•çš„ã«(ãã—ã¦æ°´é¢ä¸‹ã§)è¡Œã‚ã‚Œã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+ãƒãƒ³ãƒ‰ãƒ«ã® "UTF-8-ç–‘æƒ‘" ã§ã™. æ¨™æº–ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚‚ãã®å¯¾è±¡ã§ã™.
 
 For example, if you had C<en_US.UTF-8> as your locale, your STDIN and
 STDOUT were automatically "UTF-8", in other words an implicit
@@ -282,17 +282,17 @@ The pain was intensified by the Unicode implementation of Perl 5.8.0
 (still) having nasty bugs, especially related to the use of s/// and
 tr///.  (Bugs that have been fixed in 5.8.1)
 
-Îã¤¨¤Ğ, ¤â¤·¥í¥±¡¼¥ë¤Ë C<en_US.UTF-8> ¤ò»ØÄê¤·¤Æ¤¤¤¿¤Î¤Ê¤é, STDIN µÚ¤Ó 
-STDOUT ¤Ï°ÅÌÛ¤Î¤¦¤Á¤Ë binmode(..., ":utf8") ¤ò¹Ô¤Ã¤¿¤«¤Î¤è¤¦¤Ë¼«Æ°Åª¤Ë
-"UTF-8" ¤Ë¤Ê¤ê¤Ş¤¹. ¤³¤ì¤Ï½ĞÎÏ»ş¤Ë, chr(0xff) ¤ò½ñ¤­½Ğ¤·¤¿¤Î¤ËºÇ½ªÅª¤Ë¤Ï 
-0xc3 0xbf ¤È¤¤¤¦£²¥Ğ¥¤¥È¤¬½ĞÎÏ¤µ¤ì¤ë¤³¤È¤Ë¤Ê¤ê¤Ş¤¹. 
-Perl 5.8.0 ¤Î¤³¤Îµ¡Ç½¤Ëµ¤ÉÕ¤¤¤Æ¤¤¤Ê¤±¤ì¤Ğ²¿¤¬µ¯¤³¤Ã¤¿¤Î¤«Íı²ò¤¹¤ë¤Î¤Ï
-Æñ¤·¤¤¤Ç¤·¤ç¤¦. ¤³¤ÎÌäÂê¤Ï¤«¤Ê¤êÂçÂ¿¿ô¤Î¿Í¡¹¤¬µ¤ÉÕ¤­¤Ş¤»¤ó¤Ç¤·¤¿. 
-Îã¤¨¤Ğ RedHat ¥ê¥ê¡¼¥¹ 8 µÚ¤Ó 9 ¤Î B<¥Ç¥Õ¥©¥ë¥È¤Î> ¥í¥±¡¼¥ëÀßÄê¤Ï UTF-8 
-¤Ç¤·¤¿. ¤³¤Î¤¿¤á¤½¤Î¥æ¡¼¥¶¤ÏË¾¤Ş¤Ê¤¯¤Æ¤â UTF-8 ¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤ò
-°·¤¦¤³¤È¤Ë¤Ê¤ê¤Ş¤·¤¿. ¤³¤ÎÄË¤ß¤Ï Perl 5.8.0 ¤Î¥Ğ¥°¤Î¤¢¤ë Unicode ¼ÂÁõ, 
-ÆÃ¤Ë s/// µÚ¤Ó tr/// ¤Ë´ØÏ¢¤¹¤ëÊÕ¤ê(¤³¤Î¥Ğ¥°¤Ï 5.8.1 ¤Ç¤Ï½¤Àµ¤µ¤ì¤Æ
-¤¤¤Ş¤¹)¤Ç·ã²½¤·¤Ş¤·¤¿.
+ä¾‹ãˆã°, ã‚‚ã—ãƒ­ã‚±ãƒ¼ãƒ«ã« C<en_US.UTF-8> ã‚’æŒ‡å®šã—ã¦ã„ãŸã®ãªã‚‰, STDIN åŠã³ 
+STDOUT ã¯æš—é»™ã®ã†ã¡ã« binmode(..., ":utf8") ã‚’è¡Œã£ãŸã‹ã®ã‚ˆã†ã«è‡ªå‹•çš„ã«
+"UTF-8" ã«ãªã‚Šã¾ã™. ã“ã‚Œã¯å‡ºåŠ›æ™‚ã«, chr(0xff) ã‚’æ›¸ãå‡ºã—ãŸã®ã«æœ€çµ‚çš„ã«ã¯ 
+0xc3 0xbf ã¨ã„ã†ï¼’ãƒã‚¤ãƒˆãŒå‡ºåŠ›ã•ã‚Œã‚‹ã“ã¨ã«ãªã‚Šã¾ã™. 
+Perl 5.8.0 ã®ã“ã®æ©Ÿèƒ½ã«æ°—ä»˜ã„ã¦ã„ãªã‘ã‚Œã°ä½•ãŒèµ·ã“ã£ãŸã®ã‹ç†è§£ã™ã‚‹ã®ã¯
+é›£ã—ã„ã§ã—ã‚‡ã†. ã“ã®å•é¡Œã¯ã‹ãªã‚Šå¤§å¤šæ•°ã®äººã€…ãŒæ°—ä»˜ãã¾ã›ã‚“ã§ã—ãŸ. 
+ä¾‹ãˆã° RedHat ãƒªãƒªãƒ¼ã‚¹ 8 åŠã³ 9 ã® B<ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®> ãƒ­ã‚±ãƒ¼ãƒ«è¨­å®šã¯ UTF-8 
+ã§ã—ãŸ. ã“ã®ãŸã‚ãã®ãƒ¦ãƒ¼ã‚¶ã¯æœ›ã¾ãªãã¦ã‚‚ UTF-8 ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’
+æ‰±ã†ã“ã¨ã«ãªã‚Šã¾ã—ãŸ. ã“ã®ç—›ã¿ã¯ Perl 5.8.0 ã®ãƒã‚°ã®ã‚ã‚‹ Unicode å®Ÿè£…, 
+ç‰¹ã« s/// åŠã³ tr/// ã«é–¢é€£ã™ã‚‹è¾ºã‚Š(ã“ã®ãƒã‚°ã¯ 5.8.1 ã§ã¯ä¿®æ­£ã•ã‚Œã¦
+ã„ã¾ã™)ã§æ¿€åŒ–ã—ã¾ã—ãŸ.
 
 Therefore a decision was made to backtrack the feature and change it
 from implicit silent default to explicit conscious option.  The new
@@ -302,17 +302,17 @@ interact at interfaces like I/O and for example the command line
 arguments.  See L<perlrun/-C> and L<perlrun/PERL_UNICODE> for more
 information.
 
-¤³¤Î·ë²Ì, ¤³¤Îµ¡Ç½¤ÏÅ±²ó¤µ¤ì, ÀÅ¤«¤Ë°ÅÌÛ¤Î¤¦¤Á¤Ë¤ª¤³¤Ê¤¦¤Î¤Ç¤Ï¤Ê¤¯
-°Õ¼±¤·¤ÆÌÀ¼¨Åª¤Ë¤ª¤³¤Ê¤¦ÍÍ¤Ë½¤Àµ¤µ¤ì¤Ş¤·¤¿. 
-¿·¤·¤¤ Perl ¤Î¥³¥Ş¥ó¥É¥é¥¤¥ó¥ª¥×¥·¥ç¥ó C<-C> µÚ¤Ó¤³¤ì¤ËÂĞ±ş¤¹¤ë´Ä¶­ÊÑ¿ô
-PERL_UNICODE ¤Ë¤è¤Ã¤Æ I/O ¤ÎÍÍ¤Ë Perl ¤Ç Unicode ¤ò¤É¤Î¤è¤¦¤Ë°·¤¦¤«¤Î
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤È¤·¤Æ»È¤¦¤³¤È¤¬¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-¾ÜºÙ¤Ë¤Ä¤¤¤Æ¤Ï L<perlrun/-C> ¤È L<perlrun/PERL_UNICODE> ¤ò»²¾È¤·¤Æ
-¤¯¤À¤µ¤¤.
+ã“ã®çµæœ, ã“ã®æ©Ÿèƒ½ã¯æ’¤å›ã•ã‚Œ, é™ã‹ã«æš—é»™ã®ã†ã¡ã«ãŠã“ãªã†ã®ã§ã¯ãªã
+æ„è­˜ã—ã¦æ˜ç¤ºçš„ã«ãŠã“ãªã†æ§˜ã«ä¿®æ­£ã•ã‚Œã¾ã—ãŸ. 
+æ–°ã—ã„ Perl ã®ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³ C<-C> åŠã³ã“ã‚Œã«å¯¾å¿œã™ã‚‹ç’°å¢ƒå¤‰æ•°
+PERL_UNICODE ã«ã‚ˆã£ã¦ I/O ã®æ§˜ã« Perl ã§ Unicode ã‚’ã©ã®ã‚ˆã†ã«æ‰±ã†ã‹ã®
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã—ã¦ä½¿ã†ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. 
+è©³ç´°ã«ã¤ã„ã¦ã¯ L<perlrun/-C> ã¨ L<perlrun/PERL_UNICODE> ã‚’å‚ç…§ã—ã¦
+ãã ã•ã„.
 
 =head2 Unsafe signals again available
 
-°ÂÁ´¤Ç¤Ï¤Ê¤¤¥·¥°¥Ê¥ë¤òºÆ¤ÓÍøÍÑ¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿
+å®‰å…¨ã§ã¯ãªã„ã‚·ã‚°ãƒŠãƒ«ã‚’å†ã³åˆ©ç”¨ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ
 
 In Perl 5.8.0 the so-called "safe signals" were introduced.  This
 means that Perl no longer handles signals immediately but instead
@@ -320,11 +320,11 @@ means that Perl no longer handles signals immediately but instead
 handling easily could corrupt the internal state of Perl, resulting
 in mysterious crashes.
 
-Perl 5.8.0 ¤Ë¤ª¤¤¤Æ "°ÂÁ´¤Ê¥·¥°¥Ê¥ë" ¤È¸Æ¤Ğ¤ì¤ëµ¡Ç½¤¬¼ÂÁõ¤µ¤ì¤Ş¤·¤¿. 
-¤³¤ì¤Ï¥·¥°¥Ê¥ë¤ò¤¹¤°¤Ë½èÍı¤¹¤ë¤Î¤Ç¤Ï¤Ê¤¯, °ÂÁ´À­¤ò¸ş¾å¤µ¤»¤ë¤¿¤á¤Ë 
-"opcode ¤Î´Ö¤Ç" ½èÍı¤¹¤ë¤è¤¦¤Ë¤·¤¿¤â¤Î¤Ç¤¹. 
-¤½¤ì¤Ş¤Ç¤Î¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é¤Î¤½¤Î¾ì¤Ç¤Î½èÍı¤Ï Perl ¤ÎÆâÉô¾õÂÖ¤òÇË²õ¤·, 
-¿¼¹ï¤Ê¥¯¥é¥Ã¥·¥å¤ò°ú¤­µ¯¤³¤¹¤³¤È¤¬¤¢¤ê¤Ş¤·¤¿.
+Perl 5.8.0 ã«ãŠã„ã¦ "å®‰å…¨ãªã‚·ã‚°ãƒŠãƒ«" ã¨å‘¼ã°ã‚Œã‚‹æ©Ÿèƒ½ãŒå®Ÿè£…ã•ã‚Œã¾ã—ãŸ. 
+ã“ã‚Œã¯ã‚·ã‚°ãƒŠãƒ«ã‚’ã™ãã«å‡¦ç†ã™ã‚‹ã®ã§ã¯ãªã, å®‰å…¨æ€§ã‚’å‘ä¸Šã•ã›ã‚‹ãŸã‚ã« 
+"opcode ã®é–“ã§" å‡¦ç†ã™ã‚‹ã‚ˆã†ã«ã—ãŸã‚‚ã®ã§ã™. 
+ãã‚Œã¾ã§ã®ã‚·ã‚°ãƒŠãƒ«ãƒãƒ³ãƒ‰ãƒ©ã®ãã®å ´ã§ã®å‡¦ç†ã¯ Perl ã®å†…éƒ¨çŠ¶æ…‹ã‚’ç ´å£Šã—, 
+æ·±åˆ»ãªã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã‚’å¼•ãèµ·ã“ã™ã“ã¨ãŒã‚ã‚Šã¾ã—ãŸ.
 
 However, the new safer model has its problems too.  Because now an
 opcode, a basic unit of Perl execution, is never interrupted but
@@ -333,11 +333,11 @@ long time now really do take a long time.  For example, certain
 network operations have their own blocking and timeout mechanisms, and
 being able to interrupt them immediately would be nice.
 
-¤·¤«¤·¿·¤·¤¤°ÂÁ´¤Ê¥â¥Ç¥ë¤Ë¤â¤½¤ì¸Î¤ÎÌäÂê¤¬¤¢¤ê¤Ş¤·¤¿. 
-Perl ÆâÉôÌ¿Îá¤Î´ğËÜÃ±°Ì¤Ç¤¢¤ë opcode ¤¬¤½¤Î´°Î»¤Ş¤Ç³ä¤ê¹ş¤Ş¤ì¤Ê¤¯¤Ê¤Ã¤¿¤¿¤á¤Ë
-»ş´Ö¤Î¤«¤«¤ë¤¤¤¯¤Ä¤«¤Î½èÍı¤ÏËÜÅö¤ËÄ¹»ş´Ö¤Ë¤ï¤¿¤Ã¤Æ¼Â¹Ô¤·Â³¤±¤Æ¤·¤Ş¤¤¤Ş¤¹. 
-Îã¤¨¤Ğ¤¤¤¯¤Ä¤«¤Î¥Í¥Ã¥È¥ï¡¼¥¯Áàºî¤Ï¤½¤ì¼«¿È¤Ç¥Ö¥í¥Ã¥­¥ó¥°¤ä¥¿¥¤¥à¥¢¥¦¥È¤Î
-¥á¥«¥Ë¥º¥à¤ò»ı¤Ã¤Æ¤¤¤Ş¤¹¤·, ¾õ¶·¤¬¤½¤í¤¨¤Ğ¤¹¤°¤Ë³ä¤ê¹ş¤à¤³¤È¤¬¤Ç¤­¤Ş¤¹.
+ã—ã‹ã—æ–°ã—ã„å®‰å…¨ãªãƒ¢ãƒ‡ãƒ«ã«ã‚‚ãã‚Œæ•…ã®å•é¡ŒãŒã‚ã‚Šã¾ã—ãŸ. 
+Perl å†…éƒ¨å‘½ä»¤ã®åŸºæœ¬å˜ä½ã§ã‚ã‚‹ opcode ãŒãã®å®Œäº†ã¾ã§å‰²ã‚Šè¾¼ã¾ã‚Œãªããªã£ãŸãŸã‚ã«
+æ™‚é–“ã®ã‹ã‹ã‚‹ã„ãã¤ã‹ã®å‡¦ç†ã¯æœ¬å½“ã«é•·æ™‚é–“ã«ã‚ãŸã£ã¦å®Ÿè¡Œã—ç¶šã‘ã¦ã—ã¾ã„ã¾ã™. 
+ä¾‹ãˆã°ã„ãã¤ã‹ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯æ“ä½œã¯ãã‚Œè‡ªèº«ã§ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°ã‚„ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®
+ãƒ¡ã‚«ãƒ‹ã‚ºãƒ ã‚’æŒã£ã¦ã„ã¾ã™ã—, çŠ¶æ³ãŒãã‚ãˆã°ã™ãã«å‰²ã‚Šè¾¼ã‚€ã“ã¨ãŒã§ãã¾ã™.
 
 Therefore perl 5.8.1 introduces a "backdoor" to restore the pre-5.8.0
 (pre-5.7.3, really) signal behaviour.  Just set the environment variable
@@ -345,12 +345,12 @@ PERL_SIGNALS to C<unsafe>, and the old immediate (and unsafe)
 signal handling behaviour returns.  See L<perlrun/PERL_SIGNALS>
 and L<perlipc/"Deferred Signals (Safe Signals)">.
 
-¤³¤ì¤é¤Î¤³¤È¤«¤é 5.8.0 ¤è¤êÁ° (Àµ³Î¤Ë¤Ï 5.7.3 ¤è¤êÁ°) ¤Ç¤ÎÊıË¡¤Ç
-¥·¥°¥Ê¥ë¤ò½èÍı¤¹¤ë¤¿¤á¤Î "¥Ğ¥Ã¥¯¥É¥¢" ¤òÀß¤±¤Ş¤·¤¿. 
-´Ä¶­ÊÑ¿ô PERL_SIGNALS ¤Ë C<unsafe> ¤òÀßÄê¤¹¤ë¤³¤È¤Ç¤¤¤Ş¤Ş¤Ç¤Î
-¤¹¤°¤Ë³ä¤ê¹ş¤à(¤·¤«¤·°ÂÁ´¤Ç¤Ï¤Ê¤¤)¥·¥°¥Ê¥ë½èÍı¤ËÌá¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹. 
-L<perlrun/PERL_SIGNALS> µÚ¤Ó 
-L<perlipc/"Deferred Signals (Safe Signals)"> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+ã“ã‚Œã‚‰ã®ã“ã¨ã‹ã‚‰ 5.8.0 ã‚ˆã‚Šå‰ (æ­£ç¢ºã«ã¯ 5.7.3 ã‚ˆã‚Šå‰) ã§ã®æ–¹æ³•ã§
+ã‚·ã‚°ãƒŠãƒ«ã‚’å‡¦ç†ã™ã‚‹ãŸã‚ã® "ãƒãƒƒã‚¯ãƒ‰ã‚¢" ã‚’è¨­ã‘ã¾ã—ãŸ. 
+ç’°å¢ƒå¤‰æ•° PERL_SIGNALS ã« C<unsafe> ã‚’è¨­å®šã™ã‚‹ã“ã¨ã§ã„ã¾ã¾ã§ã®
+ã™ãã«å‰²ã‚Šè¾¼ã‚€(ã—ã‹ã—å®‰å…¨ã§ã¯ãªã„)ã‚·ã‚°ãƒŠãƒ«å‡¦ç†ã«æˆ»ã‚‹ã“ã¨ãŒã§ãã¾ã™. 
+L<perlrun/PERL_SIGNALS> åŠã³ 
+L<perlipc/"Deferred Signals (Safe Signals)"> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 =begin original
 
@@ -359,13 +359,13 @@ POSIX::SigAction.  See L<POSIX/POSIX::SigAction>.
 
 =end original
 
-Á´¤¯´Ø·¸¤Ê¤¤¥Ë¥å¡¼¥¹¤È¤·¤Æ¤Ï, POSIX::SigAction ¤ò»È¤Ã¤Æ°ÂÁ´¤Ê¥·¥°¥Ê¥ë¤ò
-»È¤¦¤³¤È¤¬¤Ç¤­¤Ş¤¹. 
-L<POSIX/POSIX::SigAction> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+å…¨ãé–¢ä¿‚ãªã„ãƒ‹ãƒ¥ãƒ¼ã‚¹ã¨ã—ã¦ã¯, POSIX::SigAction ã‚’ä½¿ã£ã¦å®‰å…¨ãªã‚·ã‚°ãƒŠãƒ«ã‚’
+ä½¿ã†ã“ã¨ãŒã§ãã¾ã™. 
+L<POSIX/POSIX::SigAction> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 =head2 Tied Arrays with Negative Array Indices
 
-ÇÛÎó¤Î¥¿¥¤¤ÈÉé¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹
+é…åˆ—ã®ã‚¿ã‚¤ã¨è² ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
 
 Formerly, the indices passed to C<FETCH>, C<STORE>, C<EXISTS>, and
 C<DELETE> methods in tied array class were always non-negative.  If
@@ -376,20 +376,20 @@ contains a package variable named C<$NEGATIVE_INDICES> which is set to
 a true value, negative values will be passed to C<FETCH>, C<STORE>,
 C<EXISTS>, and C<DELETE> unchanged.
 
-¤³¤ì¤Ş¤Ç¥¿¥¤¤ò½èÍı¤¹¤ëÇÛÎó¥¯¥é¥¹¤Î C<FETCH> µÚ¤Ó, C<STORE>, C<EXISTS>, 
-C<DELETE> ¥á¥½¥Ã¥É¤ËÅÏ¤µ¤ì¤ë¥¤¥ó¥Ç¥Ã¥¯¥¹¤Ï¾ï¤ËÈóÉé¤Ç¤·¤¿. 
-Éé¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹¤¬ÍÑ¤¤¤é¤ì¤¿¤È¤­¤Ë¤Ï Perl ¤¬ FETCHSIZE ¤ò°ÅÌÛ¤Î¤¦¤Á¤Ë
-¸Æ¤Ó½Ğ¤·¤Æ¤½¤Î·ë²Ì¤ò¤³¤ì¤é¤Î¥á¥½¥Ã¥É¤ËÅÏ¤¹Á°¤Ë¥¤¥ó¥Ç¥Ã¥¯¥¹ÃÍ¤Ë²Ã»»¤·¤Æ
-¤¤¤Ş¤·¤¿. ¤³¤Î¿¶¤ëÉñ¤¤¤Ïº£¸å¤ÏÁªÂò¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-¥¿¥¤¤ò½èÍı¤¹¤ëÇÛÎó¥¯¥é¥¹¤Ë C<$NEGATIVE_INDICES> ¤È¤¤¤¦¥Ñ¥Ã¥±¡¼¥¸ÊÑ¿ô¤¬¤¢¤ê
-¤½¤ÎÃÍ¤¬¿¿¤Ç¤¢¤Ã¤¿¤È¤­¤Ë¤Ï, Éé¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹ÃÍ¤ÏÊÑ¹¹¤µ¤ì¤ë¤³¤È¤Ê¤¯
-C<FETCH>, C<STORE>, C<EXISTS>, C<DELETE> ¤ËÅÏ¤µ¤ì¤Ş¤¹.
+ã“ã‚Œã¾ã§ã‚¿ã‚¤ã‚’å‡¦ç†ã™ã‚‹é…åˆ—ã‚¯ãƒ©ã‚¹ã® C<FETCH> åŠã³, C<STORE>, C<EXISTS>, 
+C<DELETE> ãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã•ã‚Œã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯å¸¸ã«éè² ã§ã—ãŸ. 
+è² ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒç”¨ã„ã‚‰ã‚ŒãŸã¨ãã«ã¯ Perl ãŒ FETCHSIZE ã‚’æš—é»™ã®ã†ã¡ã«
+å‘¼ã³å‡ºã—ã¦ãã®çµæœã‚’ã“ã‚Œã‚‰ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã™å‰ã«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã«åŠ ç®—ã—ã¦
+ã„ã¾ã—ãŸ. ã“ã®æŒ¯ã‚‹èˆã„ã¯ä»Šå¾Œã¯é¸æŠã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. 
+ã‚¿ã‚¤ã‚’å‡¦ç†ã™ã‚‹é…åˆ—ã‚¯ãƒ©ã‚¹ã« C<$NEGATIVE_INDICES> ã¨ã„ã†ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸å¤‰æ•°ãŒã‚ã‚Š
+ãã®å€¤ãŒçœŸã§ã‚ã£ãŸã¨ãã«ã¯, è² ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã¯å¤‰æ›´ã•ã‚Œã‚‹ã“ã¨ãªã
+C<FETCH>, C<STORE>, C<EXISTS>, C<DELETE> ã«æ¸¡ã•ã‚Œã¾ã™.
 
 =head2 local ${$x}
 
 The syntaxes
 
-°Ê²¼¤Î¹½Ê¸
+ä»¥ä¸‹ã®æ§‹æ–‡
 
 	local ${$x}
 	local @{$x}
@@ -397,36 +397,36 @@ The syntaxes
 
 now do localise variables, given that the $x is a valid variable name.
 
-¤Ë¤è¤Ã¤ÆÊÑ¿ô¤Î¥í¡¼¥«¥é¥¤¥º¤ò¹Ô¤¨¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-$x ¤Ë¤ÏÍ­¸ú¤ÊÊÑ¿ô¤ÎÌ¾Á°¤òÍ¿¤¨¤Æ¤¯¤À¤µ¤¤.
+ã«ã‚ˆã£ã¦å¤‰æ•°ã®ãƒ­ãƒ¼ã‚«ãƒ©ã‚¤ã‚ºã‚’è¡Œãˆã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. 
+$x ã«ã¯æœ‰åŠ¹ãªå¤‰æ•°ã®åå‰ã‚’ä¸ãˆã¦ãã ã•ã„.
 
 =head2 Unicode Character Database 4.0.0
 
-¥æ¥Ë¥³¡¼¥ÉÊ¸»ú¥Ç¡¼¥¿¥Ù¡¼¥¹ 4.0.0
+ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ 4.0.0
 
 The copy of the Unicode Character Database included in Perl 5.8 has
 been updated to 4.0.0 from 3.2.0.  This means for example that the
 Unicode character properties are as in Unicode 4.0.0.
 
-Perl 5.8 ¤Ë´Ş¤Ş¤ì¤ë Unicode Ê¸»ú¥Ç¡¼¥¿¥Ù¡¼¥¹¤Î¥³¥Ô¡¼¤Ï 3.2.0 ¤«¤é
-4.0.0 ¤Ë¹¹¿·¤µ¤ì¤Ş¤·¤¿. ¤³¤ì¤ÏÎã¤¨¤Ğ Unicode Ê¸»ú¥×¥í¥Ñ¥Æ¥£¤¬
-Unicode 4.0.0 ¤Î¤â¤Î¤Ë¤Ê¤Ã¤¿¤³¤È¤ò°ÕÌ£¤·¤Ş¤¹.
+Perl 5.8 ã«å«ã¾ã‚Œã‚‹ Unicode æ–‡å­—ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®ã‚³ãƒ”ãƒ¼ã¯ 3.2.0 ã‹ã‚‰
+4.0.0 ã«æ›´æ–°ã•ã‚Œã¾ã—ãŸ. ã“ã‚Œã¯ä¾‹ãˆã° Unicode æ–‡å­—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒ
+Unicode 4.0.0 ã®ã‚‚ã®ã«ãªã£ãŸã“ã¨ã‚’æ„å‘³ã—ã¾ã™.
 
 =head2 Deprecation Warnings
 
-ÇÑ»ßµ¡Ç½¤ËÂĞ¤¹¤ë·Ù¹ğ
+å»ƒæ­¢æ©Ÿèƒ½ã«å¯¾ã™ã‚‹è­¦å‘Š
 
 There is one new feature deprecation.  Perl 5.8.0 forgot to add
 some deprecation warnings, these warnings have now been added.
 Finally, a reminder of an impending feature removal.
 
-¿·¤·¤¤ÇÑ»ß¤¬£±¤Ä¤¢¤ê¤Ş¤¹. 
-Perl 5.8.0 ¤Ç¤Ï¤¤¤¯¤Ä¤«ÇÑ»ß¤Î·Ù¹ğ¤ò¼ºÇ°¤·¤Æ¤¤¤¿¤Î¤Ç¤³¤³¤ÇÄÉ²Ã¤·¤Æ¤ª¤­¤Ş¤¹. 
-¸å¤Ï¾­Íèºï½ü¤µ¤ì¤ë¼ÂÁõ¤Ë¤Ä¤¤¤Æ¤ÎºÆ·Ç¤Ç¤¹.
+æ–°ã—ã„å»ƒæ­¢ãŒï¼‘ã¤ã‚ã‚Šã¾ã™. 
+Perl 5.8.0 ã§ã¯ã„ãã¤ã‹å»ƒæ­¢ã®è­¦å‘Šã‚’å¤±å¿µã—ã¦ã„ãŸã®ã§ã“ã“ã§è¿½åŠ ã—ã¦ãŠãã¾ã™. 
+å¾Œã¯å°†æ¥å‰Šé™¤ã•ã‚Œã‚‹å®Ÿè£…ã«ã¤ã„ã¦ã®å†æ²ã§ã™.
 
 =head3 (Reminder) Pseudo-hashes are deprecated (really)
 
-(ºÆ·Ç) ²¾ÁÛ¥Ï¥Ã¥·¥å¤ÏËÜÅö¤ËÇÑ»ß¤µ¤ì¤Ş¤¹
+(å†æ²) ä»®æƒ³ãƒãƒƒã‚·ãƒ¥ã¯æœ¬å½“ã«å»ƒæ­¢ã•ã‚Œã¾ã™
 
 Pseudo-hashes were deprecated in Perl 5.8.0 and will be removed in
 Perl 5.10.0, see L<perl58delta> for details.  Each attempt to access
@@ -434,23 +434,23 @@ pseudo-hashes will trigger the warning C<Pseudo-hashes are deprecated>.
 If you really want to continue using pseudo-hashes but not to see the
 deprecation warnings, use:
 
-²¾ÁÛ¥Ï¥Ã¥·¥å¤Ï Perl 5.8.0 ¤Ë¤ª¤¤¤ÆÇÑ»ß¤µ¤ì, Perl 5.10.0 ¤Ë¤ª¤¤¤Æ
-ºï½ü¤µ¤ì¤ë¤Ç¤·¤ç¤¦. ¾ÜºÙ¤Ï L<perl58delta> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤. 
-²¾ÁÛ¥Ï¥Ã¥·¥å¤Ø¤Î¥¢¥¯¥»¥¹¤Ï·Ù¹ğ C<Pseudo-hashse are deprecated> ¤òÈ¯¤·¤Ş¤¹. 
-¤â¤·²¾ÁÛ¥Ï¥Ã¥·¥å¤ò·Ù¹ğ¤Ê¤·¤ËËÜÅö¤Ë»È¤¤Â³¤±¤¿¤¤¤Î¤Ê¤é¼¡¤Î¥×¥é¥°¥Ş¤ò
-»È¤Ã¤Æ¤¯¤À¤µ¤¤:
+ä»®æƒ³ãƒãƒƒã‚·ãƒ¥ã¯ Perl 5.8.0 ã«ãŠã„ã¦å»ƒæ­¢ã•ã‚Œ, Perl 5.10.0 ã«ãŠã„ã¦
+å‰Šé™¤ã•ã‚Œã‚‹ã§ã—ã‚‡ã†. è©³ç´°ã¯ L<perl58delta> ã‚’å‚ç…§ã—ã¦ãã ã•ã„. 
+ä»®æƒ³ãƒãƒƒã‚·ãƒ¥ã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã¯è­¦å‘Š C<Pseudo-hashse are deprecated> ã‚’ç™ºã—ã¾ã™. 
+ã‚‚ã—ä»®æƒ³ãƒãƒƒã‚·ãƒ¥ã‚’è­¦å‘Šãªã—ã«æœ¬å½“ã«ä½¿ã„ç¶šã‘ãŸã„ã®ãªã‚‰æ¬¡ã®ãƒ—ãƒ©ã‚°ãƒã‚’
+ä½¿ã£ã¦ãã ã•ã„:
 
     no warnings 'deprecated';
 
 Or you can continue to use the L<fields> pragma, but please don't
 expect the data structures to be pseudohashes any more.
 
-¤â¤·¤¯¤Ï L<fields> ¥×¥é¥°¥Ş¤ò»È¤¦¤³¤È¤¬¤Ç¤­¤Ş¤¹¤¬, 
-¥Ï¥Ã¥·¥å²¾ÁÛ²½¤Ë¤ª¤±¤ë¥Ç¡¼¥¿¹½Â¤¤Ë¤Ä¤¤¤Æ¤Ï¼ê¤ò¿¨¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤.
+ã‚‚ã—ãã¯ L<fields> ãƒ—ãƒ©ã‚°ãƒã‚’ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ãŒ, 
+ãƒãƒƒã‚·ãƒ¥ä»®æƒ³åŒ–ã«ãŠã‘ã‚‹ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã«ã¤ã„ã¦ã¯æ‰‹ã‚’è§¦ã‚Œãªã„ã§ãã ã•ã„.
 
 =head3 (Reminder) 5.005-style threads are deprecated (really)
 
-(ºÆ·Ç) 5.005 ·Á¼°¤Î¥¹¥ì¥Ã¥É¤ÏËÜÅö¤ËÇÑ»ß¤µ¤ì¤Ş¤¹
+(å†æ²) 5.005 å½¢å¼ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã¯æœ¬å½“ã«å»ƒæ­¢ã•ã‚Œã¾ã™
 
 5.005-style threads (activated by C<use Thread;>) were deprecated in
 Perl 5.8.0 and will be removed after Perl 5.8, see L<perl58delta> for
@@ -458,18 +458,18 @@ details.  Each 5.005-style thread creation will trigger the warning
 C<5.005 threads are deprecated>.  If you really want to continue
 using the 5.005 threads but not to see the deprecation warnings, use:
 
-5.005 ·Á¼°¤Î¥¹¥ì¥Ã¥É (C<use Thread;> ¤Ë¤è¤Ã¤Æ»È¤ï¤ì¤ë¤â¤Î) ¤Ï
-Perl 5.8.0 ¤Ë¤ª¤¤¤ÆÇÑ»ß¤µ¤ì, Perl 5.8 ¤è¤ê¸å¤Ë¤Ïºï½ü¤µ¤ì¤ë¤Ç¤·¤ç¤¦. 
-¾ÜºÙ¤Ï L<perl58delta> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤. 
-5.005 ·Á¼°¤Î¥¹¥ì¥Ã¥É¤ÎÀ¸À®¤Ï·Ù¹ğ C<5.005 threads are deprecated> ¤òÈ¯¤·¤Ş¤¹. 
-¤â¤· 5.005 ¥¹¥ì¥Ã¥É¤ò·Ù¹ğ¤Ê¤·¤ËËÜÅö¤Ë»È¤¤Â³¤±¤¿¤¤¤Î¤Ê¤é¼¡¤Î¥×¥é¥°¥Ş¤ò
-»È¤Ã¤Æ¤¯¤À¤µ¤¤:
+5.005 å½¢å¼ã®ã‚¹ãƒ¬ãƒƒãƒ‰ (C<use Thread;> ã«ã‚ˆã£ã¦ä½¿ã‚ã‚Œã‚‹ã‚‚ã®) ã¯
+Perl 5.8.0 ã«ãŠã„ã¦å»ƒæ­¢ã•ã‚Œ, Perl 5.8 ã‚ˆã‚Šå¾Œã«ã¯å‰Šé™¤ã•ã‚Œã‚‹ã§ã—ã‚‡ã†. 
+è©³ç´°ã¯ L<perl58delta> ã‚’å‚ç…§ã—ã¦ãã ã•ã„. 
+5.005 å½¢å¼ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®ç”Ÿæˆã¯è­¦å‘Š C<5.005 threads are deprecated> ã‚’ç™ºã—ã¾ã™. 
+ã‚‚ã— 5.005 ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’è­¦å‘Šãªã—ã«æœ¬å½“ã«ä½¿ã„ç¶šã‘ãŸã„ã®ãªã‚‰æ¬¡ã®ãƒ—ãƒ©ã‚°ãƒã‚’
+ä½¿ã£ã¦ãã ã•ã„:
 
     no warnings 'deprecated';
 
 =head3 (Reminder) The $* variable is deprecated (really)
 
-(ºÆ·Ç) $* ÊÑ¿ô¤ÏËÜÅö¤ËÇÑ»ß¤µ¤ì¤Ş¤¹
+(å†æ²) $* å¤‰æ•°ã¯æœ¬å½“ã«å»ƒæ­¢ã•ã‚Œã¾ã™
 
 The C<$*> variable controlling multi-line matching has been deprecated
 and will be removed after 5.8.  The variable has been deprecated for a
@@ -479,67 +479,67 @@ been supplanted by the C</s> and C</m> modifiers on pattern matching.
 If you really want to continue using the C<$*>-variable but not to see
 the deprecation warnings, use:
 
-Ê£¿ô¹Ô¤Î¥Ş¥Ã¥Á¤òÀ©¸æ¤¹¤ë C<$*> ÊÑ¿ô¤Ï
-Perl 5.8.0 ¤Ë¤ª¤¤¤ÆÇÑ»ß¤µ¤ì, Perl 5.8 ¤è¤ê¸å¤Ë¤Ïºï½ü¤µ¤ì¤ë¤Ç¤·¤ç¤¦. 
-¤³¤ÎÊÑ¿ô¤ÏÄ¹¤¤¤³¤ÈÁ°¤ËÇÑ»ß¤µ¤ì, C<Use of $* is deprecated> ¤È¤¤¤¦·Ù¹ğ¤ò
-È¯¤·¤Æ¤­¤Ş¤·¤¿¤¬¤Ä¤¤¤Ëºï½ü¤µ¤ì¤Ş¤¹. ¤³¤Îµ¡Ç½¤Ï¥Ñ¥¿¡¼¥ó¥Ş¥Ã¥Á»ş¤Î 
-C</s> µÚ¤Ó C</m> ½¤¾ş»Ò¤Ë°ú¤­·Ñ¤¬¤ì¤Æ¤¤¤Ş¤¹. 
-5.005 ·Á¼°¤Î¥¹¥ì¥Ã¥É¤ÎÀ¸À®¤Ï·Ù¹ğ C<5.005 threads are deprecated> ¤òÈ¯¤·¤Ş¤¹. 
-¤â¤· C<$*>ÊÑ¿ô ¤ò·Ù¹ğ¤Ê¤·¤ËËÜÅö¤Ë»È¤¤Â³¤±¤¿¤¤¤Î¤Ê¤é¼¡¤Î¥×¥é¥°¥Ş¤ò
-»È¤Ã¤Æ¤¯¤À¤µ¤¤:
+è¤‡æ•°è¡Œã®ãƒãƒƒãƒã‚’åˆ¶å¾¡ã™ã‚‹ C<$*> å¤‰æ•°ã¯
+Perl 5.8.0 ã«ãŠã„ã¦å»ƒæ­¢ã•ã‚Œ, Perl 5.8 ã‚ˆã‚Šå¾Œã«ã¯å‰Šé™¤ã•ã‚Œã‚‹ã§ã—ã‚‡ã†. 
+ã“ã®å¤‰æ•°ã¯é•·ã„ã“ã¨å‰ã«å»ƒæ­¢ã•ã‚Œ, C<Use of $* is deprecated> ã¨ã„ã†è­¦å‘Šã‚’
+ç™ºã—ã¦ãã¾ã—ãŸãŒã¤ã„ã«å‰Šé™¤ã•ã‚Œã¾ã™. ã“ã®æ©Ÿèƒ½ã¯ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒæ™‚ã® 
+C</s> åŠã³ C</m> ä¿®é£¾å­ã«å¼•ãç¶™ãŒã‚Œã¦ã„ã¾ã™. 
+5.005 å½¢å¼ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®ç”Ÿæˆã¯è­¦å‘Š C<5.005 threads are deprecated> ã‚’ç™ºã—ã¾ã™. 
+ã‚‚ã— C<$*>å¤‰æ•° ã‚’è­¦å‘Šãªã—ã«æœ¬å½“ã«ä½¿ã„ç¶šã‘ãŸã„ã®ãªã‚‰æ¬¡ã®ãƒ—ãƒ©ã‚°ãƒã‚’
+ä½¿ã£ã¦ãã ã•ã„:
 
     no warnings 'deprecated';
 
 =head2 Miscellaneous Enhancements
 
-¤½¤ÎÂ¾¤Îµ¡Ç½
+ãã®ä»–ã®æ©Ÿèƒ½
 
 C<map> in void context is no longer expensive. C<map> is now context
 aware, and will not construct a list if called in void context.
 
-void ¥³¥ó¥Æ¥­¥¹¥È¤Ç¤Î C<map> ¤Ï¹â²Á¤Ç¤Ï¤Ê¤¯¤Ê¤ê¤Ş¤·¤¿. 
-C<map> ¤Ï¸½ºß¤Ç¤Ï¤½¤Î¥³¥ó¥Æ¥­¥¹¥È¤òÍı²ò¤·, void ¥³¥ó¥Æ¥­¥¹¥È¤Ç
-¸Æ¤Ğ¤ì¤¿¤È¤­¤Ë¤Ï¥ê¥¹¥È¤ò¹½ÃÛ¤·¤Ş¤»¤ó.
+void ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã® C<map> ã¯é«˜ä¾¡ã§ã¯ãªããªã‚Šã¾ã—ãŸ. 
+C<map> ã¯ç¾åœ¨ã§ã¯ãã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç†è§£ã—, void ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§
+å‘¼ã°ã‚ŒãŸã¨ãã«ã¯ãƒªã‚¹ãƒˆã‚’æ§‹ç¯‰ã—ã¾ã›ã‚“.
 
 If a socket gets closed by the server while printing to it, the client
 now gets a SIGPIPE.  While this new feature was not planned, it fell
 naturally out of PerlIO changes, and is to be considered an accidental
 feature.
 
-¥½¥±¥Ã¥È¤Ë½ĞÎÏÃæ¤Ë¥µ¡¼¥Ğ¤«¤éÊÄ¤¸¤é¤ì¤¿¤È¤­¤Ë, ¥¯¥é¥¤¥¢¥ó¥È¤Ë SIGPIPE 
-¤ò¼õ¿®¤¹¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. ¤³¤Îµ¡Ç½¤ÏÍ½Äê¤µ¤ì¤Æ¤¤¤Ş¤»¤ó¤Ç¤·¤¿¤¬ 
-PerlIO ¤ÎÊÑ¹¹¤Ç¤Ï¤Ê¤¯¤Æ¼«Á³¤ÊÆ°ºî¤«¤é¤Ç¤¹. ¤Ş¤¿ÉÔÎ¸¤Î¼«ÂÎ¤ò¹ÍÎ¸¤¹¤ë
-°Ù¤Ç¤¹.
+ã‚½ã‚±ãƒƒãƒˆã«å‡ºåŠ›ä¸­ã«ã‚µãƒ¼ãƒã‹ã‚‰é–‰ã˜ã‚‰ã‚ŒãŸã¨ãã«, ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã« SIGPIPE 
+ã‚’å—ä¿¡ã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. ã“ã®æ©Ÿèƒ½ã¯äºˆå®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã§ã—ãŸãŒ 
+PerlIO ã®å¤‰æ›´ã§ã¯ãªãã¦è‡ªç„¶ãªå‹•ä½œã‹ã‚‰ã§ã™. ã¾ãŸä¸æ…®ã®è‡ªä½“ã‚’è€ƒæ…®ã™ã‚‹
+ç‚ºã§ã™.
 
 PerlIO::get_layers(FH) returns the names of the PerlIO layers
 active on a filehandle.
 
-PerlIO::get_layers(FH) ¤Ï¤½¤Î¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤Ç¥¢¥¯¥Æ¥£¥Ö¤Ê PerlIO ¥ì¥¤¥ä
-¤ÎÌ¾Á°¤òÊÖ¤·¤Ş¤¹.
+PerlIO::get_layers(FH) ã¯ãã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã§ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãª PerlIO ãƒ¬ã‚¤ãƒ¤
+ã®åå‰ã‚’è¿”ã—ã¾ã™.
 
 PerlIO::via layers can now have an optional UTF8 method to
 indicate whether the layer wants to "auto-:utf8" the stream.
 
-PerlIO::via ¥ì¥¤¥ä¤Ï¤½¤Î¥ì¥¤¥ä¤¬ "auto-:utf8" ¤ò¥¹¥È¥ê¡¼¥à¤Ë
-ÂĞ¤·¤ÆÉ¬Í×¤È¤¹¤ë¤«¤ò¼¨¤¹ UTF8 ¥á¥½¥Ã¥É¤òÇ¤°Õ¤Ç»ı¤Ä¤³¤È¤¬½ĞÍè¤Ş¤¹.
+PerlIO::via ãƒ¬ã‚¤ãƒ¤ã¯ãã®ãƒ¬ã‚¤ãƒ¤ãŒ "auto-:utf8" ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«
+å¯¾ã—ã¦å¿…è¦ã¨ã™ã‚‹ã‹ã‚’ç¤ºã™ UTF8 ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä»»æ„ã§æŒã¤ã“ã¨ãŒå‡ºæ¥ã¾ã™.
 
 utf8::is_utf8() has been added as a quick way to test whether
 a scalar is encoded internally in UTF-8 (Unicode).
 
-utf8::is_utf8() ¤¬¥¹¥«¥é¡¼¤¬ÆâÉô¤Ç UTF-8 (Unicode) ¤Ç¤¢¤ë¤«¤òÁÇÁá¤¯
-Ä´¤Ù¤ë¤¿¤á¤Ë²Ã¤¨¤é¤ì¤Ş¤·¤¿.
+utf8::is_utf8() ãŒã‚¹ã‚«ãƒ©ãƒ¼ãŒå†…éƒ¨ã§ UTF-8 (Unicode) ã§ã‚ã‚‹ã‹ã‚’ç´ æ—©ã
+èª¿ã¹ã‚‹ãŸã‚ã«åŠ ãˆã‚‰ã‚Œã¾ã—ãŸ.
 
 =head1 Modules and Pragmata
 
-¥â¥¸¥å¡¼¥ë¤È¥×¥é¥°¥Ş
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ãƒ—ãƒ©ã‚°ãƒ
 
 =head2 Updated Modules And Pragmata
 
-¹¹¿·¤µ¤ì¤¿¥â¥¸¥å¡¼¥ë¤È¥×¥é¥°¥Ş
+æ›´æ–°ã•ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ãƒ—ãƒ©ã‚°ãƒ
 
 The following modules and pragmata have been updated since Perl 5.8.0:
 
-°Ê²¼¤Î¥â¥¸¥å¡¼¥ë¤È¥×¥é¥°¥Ş¤¬ Perl 5.8.0 ¤«¤é¹¹¿·¤µ¤ì¤Æ¤¤¤Ş¤¹.
+ä»¥ä¸‹ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ãƒ—ãƒ©ã‚°ãƒãŒ Perl 5.8.0 ã‹ã‚‰æ›´æ–°ã•ã‚Œã¦ã„ã¾ã™.
 
 =over 4
 
@@ -550,8 +550,8 @@ The following modules and pragmata have been updated since Perl 5.8.0:
 In much better shape than it used to be.  Still far from perfect, but
 maybe worth a try.
 
-¤è¤ê»È¤¤¤ä¤¹¤¤·Á¤Ë¤Ê¤ê¤Ş¤·¤¿. ¤Ş¤À´°Á´¤Ë¤Ï±ó¤¤¤Ç¤¹¤¬, ¥È¥é¥¤¤·¤Æ¤ß¤ë
-²ÁÃÍ¤Ï¤¢¤ë¤Ç¤·¤ç¤¦.
+ã‚ˆã‚Šä½¿ã„ã‚„ã™ã„å½¢ã«ãªã‚Šã¾ã—ãŸ. ã¾ã å®Œå…¨ã«ã¯é ã„ã§ã™ãŒ, ãƒˆãƒ©ã‚¤ã—ã¦ã¿ã‚‹
+ä¾¡å€¤ã¯ã‚ã‚‹ã§ã—ã‚‡ã†.
 
 =item B::Concise
 
@@ -562,20 +562,20 @@ maybe worth a try.
 An optional feature, C<:hireswallclock>, now allows for high
 resolution wall clock times (uses Time::HiRes).
 
-Ç¤°Õ¤Îµ¡Ç½, C<:hireswallclock>, ¹âÊ¬²òÇ½¥¦¥©¡¼¥ë¥¯¥í¥Ã¥¯¥¿¥¤¥à
-(Time::HiRes ¤Î»ÈÍÑ)¤òµö²Ä¤·¤Ş¤¹.
+ä»»æ„ã®æ©Ÿèƒ½, C<:hireswallclock>, é«˜åˆ†è§£èƒ½ã‚¦ã‚©ãƒ¼ãƒ«ã‚¯ãƒ­ãƒƒã‚¯ã‚¿ã‚¤ãƒ 
+(Time::HiRes ã®ä½¿ç”¨)ã‚’è¨±å¯ã—ã¾ã™.
 
 =item ByteLoader
 
 See B::Bytecode.
 
-B::Bytecode »²¾È.
+B::Bytecode å‚ç…§.
 
 =item bytes
 
 Now has bytes::substr.
 
-bytes::substr ¤ò»ı¤Ä¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+bytes::substr ã‚’æŒã¤ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 =item CGI
 
@@ -583,23 +583,23 @@ bytes::substr ¤ò»ı¤Ä¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
 
 One can now have custom character name aliases.
 
-ÆÈ¼«¤ÎÊ¸»úÌ¾¤ÎÊÌÌ¾¤ò»ı¤Ä¤³¤È¤¬¤Ç¤­¤Ş¤¹.
+ç‹¬è‡ªã®æ–‡å­—åã®åˆ¥åã‚’æŒã¤ã“ã¨ãŒã§ãã¾ã™.
 
 =item CPAN
 
 There is now a simple command line frontend to the CPAN.pm
 module called F<cpan>.
 
-CPAN.pm ¥â¥¸¥å¡¼¥ë¤Ø¤Î´ÊÃ±¤Ê¥³¥Ş¥ó¥É¥é¥¤¥ó¥Õ¥í¥ó¥È¥¨¥ó¥É F<cpan> 
-¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿.
+CPAN.pm ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¸ã®ç°¡å˜ãªã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ãƒ•ãƒ­ãƒ³ãƒˆã‚¨ãƒ³ãƒ‰ F<cpan> 
+ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ.
 
 =item Data::Dumper
 
 A new option, Pair, allows choosing the separator between hash keys
 and values.
 
-¿·¥ª¥×¥·¥ç¥ó, Pair, ¥Ï¥Ã¥·¥å¤Î¥­¡¼¤ÈÃÍ¤Î¥»¥Ñ¥ì¡¼¥¿¤ò
-ÁªÂò¤Ç¤­¤Ş¤¹.
+æ–°ã‚ªãƒ—ã‚·ãƒ§ãƒ³, Pair, ãƒãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼ã¨å€¤ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’
+é¸æŠã§ãã¾ã™.
 
 =item DB_File
 
@@ -612,16 +612,16 @@ and values.
 Significant updates on the encoding pragma functionality
 (tr/// and the DATA filehandle, formats).
 
-encoding ¥×¥é¥°¥Şµ¡Ç½(tr/// µÚ¤Ó DATA ¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë, format)
-¤Ë¤ª¤±¤ë½ÅÍ×¤Ê¹¹¿·.
+encoding ãƒ—ãƒ©ã‚°ãƒæ©Ÿèƒ½(tr/// åŠã³ DATA ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«, format)
+ã«ãŠã‘ã‚‹é‡è¦ãªæ›´æ–°.
 
 If a filehandle has been marked as to have an encoding, unmappable
 characters are detected already during input, not later (when the
 corrupted data is being used).
 
-¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤¬¤¢¤ë¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°¤È´ØÏ¢¤Å¤±¤é¤ì¤Æ¤¤¤ë¤Î¤Ê¤é
-¥Ş¥Ã¥Ô¥ó¥°¤Ç¤­¤Ê¤¤Ê¸»ú¤ÏÆşÎÏ¸å(²õ¤ì¤¿¥Ç¡¼¥¿¤ò»È¤Ã¤¿»ş)¤Ç¤Ï¤Ê¤¯ÆşÎÏ»ş¤Ë
-¸¡½Ğ¤µ¤ì¤Ş¤¹.
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ãŒã‚ã‚‹ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã¨é–¢é€£ã¥ã‘ã‚‰ã‚Œã¦ã„ã‚‹ã®ãªã‚‰
+ãƒãƒƒãƒ”ãƒ³ã‚°ã§ããªã„æ–‡å­—ã¯å…¥åŠ›å¾Œ(å£Šã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ã£ãŸæ™‚)ã§ã¯ãªãå…¥åŠ›æ™‚ã«
+æ¤œå‡ºã•ã‚Œã¾ã™.
 
 The ISO 8859-6 conversion table has been corrected (the 0x30..0x39
 erroneously mapped to U+0660..U+0669, instead of U+0030..U+0039).  The
@@ -629,10 +629,10 @@ GSM 03.38 conversion did not handle escape sequences correctly.  The
 UTF-7 encoding has been added (making Encode feature-complete with
 Unicode::String).
 
-ISO 8859-6 ÊÑ´¹¥Æ¡¼¥Ö¥ë¤Î½¤Àµ(0x30..0x39 ¤ò 
-U+0030..U+0039 ¤Ç¤Ï¤Ê¤¯ U+0660..U+0669 ¤Ë´Ö°ã¤Ã¤Æ¥Ş¥Ã¥Ô¥ó¥°¤·¤Æ¤¤¤¿).
-GSM 03.38 ÊÑ´¹¤¬¥¨¥¹¥±¡¼¥×¥·¡¼¥±¥ó¥¹¤òÀµ¤·¤¯°·¤Ã¤Æ¤¤¤Ê¤«¤Ã¤¿. 
-UTF7 ¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°¤ÎÄÉ²Ã(Unicode::String¤Èµ¡Ç½¤Î¸ß´¹).
+ISO 8859-6 å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä¿®æ­£(0x30..0x39 ã‚’ 
+U+0030..U+0039 ã§ã¯ãªã U+0660..U+0669 ã«é–“é•ã£ã¦ãƒãƒƒãƒ”ãƒ³ã‚°ã—ã¦ã„ãŸ).
+GSM 03.38 å¤‰æ›ãŒã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚’æ­£ã—ãæ‰±ã£ã¦ã„ãªã‹ã£ãŸ. 
+UTF7 ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®è¿½åŠ (Unicode::Stringã¨æ©Ÿèƒ½ã®äº’æ›).
 
 =item fields
 
@@ -644,27 +644,27 @@ A lot of bugs have been fixed since v1.60, the version included in Perl
 v5.8.0. Especially noteworthy are the bug in Calc that caused div and mod to
 fail for some large values, and the fixes to the handling of bad inputs.
 
-Perl v5.8.0 ¤ËÅºÉÕ¤µ¤ì¤Æ¤¤¤¿ v1.60 °ÊÍèÂ¿¤¯¤Î¥Ğ¥°¤¬½¤Àµ¤µ¤ì¤Ş¤·¤¿. 
-ÆÃ¤ËÃíÌÜ¤¹¤ë¤Ù¤­ÅÀ¤È¤·¤Æ¤¤¤¯¤Ä¤«¤ÎÂç¤­¤ÊÃÍ¤Ç½ü»»¤ä¾êÍ¾¤Î·×»»¤Ë
-¼ºÇÔ¤¹¤ë¥Ğ¥°¤äÎÉ¤¯¤Ê¤¤ÆşÎÏ¤Î½èÍı¤Î½¤Àµ¤¬¤¢¤ê¤Ş¤¹.
+Perl v5.8.0 ã«æ·»ä»˜ã•ã‚Œã¦ã„ãŸ v1.60 ä»¥æ¥å¤šãã®ãƒã‚°ãŒä¿®æ­£ã•ã‚Œã¾ã—ãŸ. 
+ç‰¹ã«æ³¨ç›®ã™ã‚‹ã¹ãç‚¹ã¨ã—ã¦ã„ãã¤ã‹ã®å¤§ããªå€¤ã§é™¤ç®—ã‚„å‰°ä½™ã®è¨ˆç®—ã«
+å¤±æ•—ã™ã‚‹ãƒã‚°ã‚„è‰¯ããªã„å…¥åŠ›ã®å‡¦ç†ã®ä¿®æ­£ãŒã‚ã‚Šã¾ã™.
 
 Some new features were added, e.g. the broot() method, you can now pass
 parameters to config() to change some settings at runtime, and it is now
 possible to trap the creation of NaN and infinity.
 
-¤¤¤¯¤Ä¤«¤Î¿·¤·¤¤µ¡Ç½, Îã¤¨¤Ğ broot() ¥á¥½¥Ã¥É¤Ê¤É, 
-config() ¤Ë¥Ñ¥é¥á¡¼¥¿¤òÅÏ¤¹¤³¤È¤Ë¤è¤ë¼Â¹Ô»ş¤ÎÀßÄêÊÑ¹¹, NaN µÚ¤ÓÌµ¸ÂÂç¤Î
-À¸À®¤Î¥È¥é¥Ã¥×¤Ê¤É¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿.
+ã„ãã¤ã‹ã®æ–°ã—ã„æ©Ÿèƒ½, ä¾‹ãˆã° broot() ãƒ¡ã‚½ãƒƒãƒ‰ãªã©, 
+config() ã«ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’æ¸¡ã™ã“ã¨ã«ã‚ˆã‚‹å®Ÿè¡Œæ™‚ã®è¨­å®šå¤‰æ›´, NaN åŠã³ç„¡é™å¤§ã®
+ç”Ÿæˆã®ãƒˆãƒ©ãƒƒãƒ—ãªã©ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ.
 
 As usual, some optimizations took place and made the math overall a tad
 faster. In some cases, quite a lot faster, actually. Especially alternative
 libraries like Math::BigInt::GMP benefit from this. In addition, a lot of the
 quite clunky routines like fsqrt() and flog() are now much much faster.
 
-ÄÌ¾ï¤¤¤¯¤Ä¤«¤ÎºÇÅ¬²½¤¬¹Ô¤ï¤ì, math Á´ÂÎ¤ò¤¤¤¯¤é¤«Â®¤á¤Ş¤¹. 
-¤¤¤¯¤Ä¤«¤Î¾õÂÖ¤Ç¤Ï¼Âºİ¤È¤Æ¤âÂ®¤¯¤Ê¤ê¤Ş¤¹. ¤È¤¯¤Ë Math::BigInt::GMP ¤ÎÍÍ¤Ê
-ÂåÂØ¥é¥¤¥Ö¥é¥ê¤Ï¤³¤Î²¸·Ã¤ò¼õ¤±¤Ş¤¹. ²Ã¤¨¤Æ fsqrt() ¤ä flog() ¤ÎÍÍ¤Ê
-¤È¤Æ¤â¾éÄ¹¤Ê½èÍı¤Ï¤È¤Ã¤Æ¤â¤¹¤´¤¯Â®¤¯¤Ê¤ê¤Ş¤¹.
+é€šå¸¸ã„ãã¤ã‹ã®æœ€é©åŒ–ãŒè¡Œã‚ã‚Œ, math å…¨ä½“ã‚’ã„ãã‚‰ã‹é€Ÿã‚ã¾ã™. 
+ã„ãã¤ã‹ã®çŠ¶æ…‹ã§ã¯å®Ÿéš›ã¨ã¦ã‚‚é€Ÿããªã‚Šã¾ã™. ã¨ãã« Math::BigInt::GMP ã®æ§˜ãª
+ä»£æ›¿ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¯ã“ã®æ©æµã‚’å—ã‘ã¾ã™. åŠ ãˆã¦ fsqrt() ã‚„ flog() ã®æ§˜ãª
+ã¨ã¦ã‚‚å†—é•·ãªå‡¦ç†ã¯ã¨ã£ã¦ã‚‚ã™ã”ãé€Ÿããªã‚Šã¾ã™.
 
 =item MIME::Base64
 
@@ -672,7 +672,7 @@ quite clunky routines like fsqrt() and flog() are now much much faster.
 
 Diamond inheritance now works.
 
-¥À¥¤¥ä¥â¥ó¥É¾õ·Ñ¾µ¤ò°·¤¨¤Ş¤¹
+ãƒ€ã‚¤ãƒ¤ãƒ¢ãƒ³ãƒ‰çŠ¶ç¶™æ‰¿ã‚’æ‰±ãˆã¾ã™
 
 =item Net::Ping
 
@@ -681,8 +681,8 @@ Diamond inheritance now works.
 Reading from non-string scalars (like the special variables, see
 L<perlvar>) now works.
 
-Ê¸»úÎó¤Ç¤Ï¤Ê¤¤¥¹¥«¥é¡¼¤«¤é¤ÎÆÉ¤ß¹ş¤ß (ÆÃ¼ì¤ÊÊÑ¿ô¤Ê¤É, 
-L<perlvar> »²¾È) ¤¬µ¡Ç½¤¹¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+æ–‡å­—åˆ—ã§ã¯ãªã„ã‚¹ã‚«ãƒ©ãƒ¼ã‹ã‚‰ã®èª­ã¿è¾¼ã¿ (ç‰¹æ®Šãªå¤‰æ•°ãªã©, 
+L<perlvar> å‚ç…§) ãŒæ©Ÿèƒ½ã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 =item podlators
 
@@ -695,21 +695,21 @@ L<perlvar> »²¾È) ¤¬µ¡Ç½¤¹¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
 Complete rewrite.  As a side-effect, no longer refuses to startup when
 run by root.
 
-´°Á´¤Ë½ñ¤­Ä¾¤µ¤ì¤Ş¤·¤¿. ¤½¤ÎÉû»ºÊª¤È¤·¤Æ root ¤Ç¤Îµ¯Æ°¤¬µñÈİ¤µ¤ì¤Ê¤¯
-¤Ê¤ê¤Ş¤·¤¿.
+å®Œå…¨ã«æ›¸ãç›´ã•ã‚Œã¾ã—ãŸ. ãã®å‰¯ç”£ç‰©ã¨ã—ã¦ root ã§ã®èµ·å‹•ãŒæ‹’å¦ã•ã‚Œãªã
+ãªã‚Šã¾ã—ãŸ.
 
 =item Scalar::Util
 
 New utilities: refaddr, isvstring, looks_like_number, set_prototype.
 
-¿·¤·¤¤¥æ¡¼¥Æ¥£¥ê¥Æ¥£: refaddr, isvstring, looks_like_number,
+æ–°ã—ã„ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£: refaddr, isvstring, looks_like_number,
 set_prototype.
 
 =item Storable
 
 Can now store code references (via B::Deparse, so not foolproof).
 
-¥³¡¼¥É¥ê¥Õ¥¡¥ì¥ó¥¹¤Î³ÊÇ¼ (B::Deparse ·ĞÍ³, foolproof ¤Ç¤Ê¤¯).
+ã‚³ãƒ¼ãƒ‰ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã®æ ¼ç´ (B::Deparse çµŒç”±, foolproof ã§ãªã).
 
 =item strict
 
@@ -717,9 +717,9 @@ Earlier versions of the strict pragma did not check the parameters
 implicitly passed to its "import" (use) and "unimport" (no) routine.
 This caused the false idiom such as:
 
-strict ¥×¥é¥°¥Ş¤Î¤³¤ì¤Ş¤Ç¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ç¤Ï "import" (use) µÚ¤Ó 
-"unimport" (no) ¥ë¡¼¥Æ¥£¥ó¤Ë°ÅÌÛ¤ËÅÏ¤µ¤ì¤¿¥Ñ¥é¥á¡¼¥¿¤òÄ´¤Ù¤Æ¤¤¤Ş¤»¤ó
-¤Ç¤·¤¿. ¤³¤ì¤Ï¼¡¤Î¤è¤¦¤Ê´Ö°ã¤Ã¤¿»ÈÍÑÊıË¡¤ò¾·¤­¤Ş¤·¤¿:
+strict ãƒ—ãƒ©ã‚°ãƒã®ã“ã‚Œã¾ã§ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯ "import" (use) åŠã³ 
+"unimport" (no) ãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã«æš—é»™ã«æ¸¡ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’èª¿ã¹ã¦ã„ã¾ã›ã‚“
+ã§ã—ãŸ. ã“ã‚Œã¯æ¬¡ã®ã‚ˆã†ãªé–“é•ã£ãŸä½¿ç”¨æ–¹æ³•ã‚’æ‹›ãã¾ã—ãŸ:
 
         use strict qw(@ISA);
         @ISA = qw(Foo);
@@ -729,31 +729,31 @@ refs, vars and subs were being enforced (and that @ISA was somehow
 "declared").  But the strict refs, vars, and subs are B<not> enforced
 when using this false idiom.
 
-¤³¤ì¤Ï¤·¤«¤·¤Ê¤¬¤é (¤ª¤½¤é¤¯) refs, vars, ¤½¤·¤Æ subs ¤Ï¶¯À©¤µ¤ì¤Æ¤¤¤ë
-(¤½¤·¤Æ @ISA ¤Ï¤É¤¦¤Ë¤«¤·¤Æ "Àë¸À¤µ¤ì¤Æ¤¤¤ë"¤È¤¤¤¦)´Ö°ã¤Ã¤¿Îã³°¤ò
-È¯À¸¤µ¤»¤¿¤Ç¤·¤ç¤¦. ¤·¤«¤·¤³¤Î´Ö°ã¤Ã¤¿»ÈÍÑÊıË¡¤Ç¤Ï refs, vars, subs ¤Î
-¶¯À©¤ÏB<¤µ¤ì¤Ş¤»¤ó>.
+ã“ã‚Œã¯ã—ã‹ã—ãªãŒã‚‰ (ãŠãã‚‰ã) refs, vars, ãã—ã¦ subs ã¯å¼·åˆ¶ã•ã‚Œã¦ã„ã‚‹
+(ãã—ã¦ @ISA ã¯ã©ã†ã«ã‹ã—ã¦ "å®£è¨€ã•ã‚Œã¦ã„ã‚‹"ã¨ã„ã†)é–“é•ã£ãŸä¾‹å¤–ã‚’
+ç™ºç”Ÿã•ã›ãŸã§ã—ã‚‡ã†. ã—ã‹ã—ã“ã®é–“é•ã£ãŸä½¿ç”¨æ–¹æ³•ã§ã¯ refs, vars, subs ã®
+å¼·åˆ¶ã¯B<ã•ã‚Œã¾ã›ã‚“>.
 
 Starting from Perl 5.8.1, the above B<will> cause an error to be
 raised.  This may cause programs which used to execute seemingly
 correctly without warnings and errors to fail when run under 5.8.1.
 This happens because
 
-Perl 5.8.1 ¤«¤é¤ÏÁ°½Ò¤ÎÎã¤Ï¥¨¥é¡¼¤òÈ¯À¸¤µ¤»¤ë¤³¤È¤ËB<¤Ê¤ê¤Ş¤¹>. 
-¤³¤ì¤Ï¤¦¤ï¤Ù¤Ï·Ù¹ğ¤â¥¨¥é¡¼¤â¤Ê¤¯¼Â¹Ô¤µ¤ì¤Æ¤¤¤¿¥×¥í¥°¥é¥à¤¬
-5.8.1 ¤Ç¤Ï¥¨¥é¡¼¤È¤¹¤ë¤Ç¤·¤ç¤¦. ¤³¤ì¤Ï¼¡¤Î¤è¤¦¤ÊÊ¸¤Ç
+Perl 5.8.1 ã‹ã‚‰ã¯å‰è¿°ã®ä¾‹ã¯ã‚¨ãƒ©ãƒ¼ã‚’ç™ºç”Ÿã•ã›ã‚‹ã“ã¨ã«B<ãªã‚Šã¾ã™>. 
+ã“ã‚Œã¯ã†ã‚ã¹ã¯è­¦å‘Šã‚‚ã‚¨ãƒ©ãƒ¼ã‚‚ãªãå®Ÿè¡Œã•ã‚Œã¦ã„ãŸãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒ
+5.8.1 ã§ã¯ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ã§ã—ã‚‡ã†. ã“ã‚Œã¯æ¬¡ã®ã‚ˆã†ãªæ–‡ã§
 
         use strict qw(@ISA);
 
 will now fail with the error:
 
-°Ê²¼¤Î¥¨¥é¡¼¤òÈ¯À¸¤µ¤»¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤¹:
+ä»¥ä¸‹ã®ã‚¨ãƒ©ãƒ¼ã‚’ç™ºç”Ÿã•ã›ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™:
 
         Unknown 'strict' tag(s) '@ISA'
 
 The remedy to this problem is to replace this code with the correct idiom:
 
-¤³¤ì¤ò¼£ÎÅ¤¹¤ë¤Ë¤Ï°Ê²¼¤Î¤è¤¦¤ÊÀµ¤·¤¤»ÈÍÑÊıË¡¤ËÄ¾¤¹¤³¤È¤Ç¤¹.
+ã“ã‚Œã‚’æ²»ç™‚ã™ã‚‹ã«ã¯ä»¥ä¸‹ã®ã‚ˆã†ãªæ­£ã—ã„ä½¿ç”¨æ–¹æ³•ã«ç›´ã™ã“ã¨ã§ã™.
 
         use strict;
         use vars qw(@ISA);
@@ -765,7 +765,7 @@ The remedy to this problem is to replace this code with the correct idiom:
 
 Now much more picky about extra or missing output from test scripts.
 
-¥Æ¥¹¥È¥¹¥¯¥ê¥×¥È¤ÎÍ¾·×¤ÊµÚ¤ÓÂ­¤ê¤Ê¤¤½ĞÎÏ¤ò¤è¤ê¥Ô¥Ã¥¯¥¢¥Ã¥×.
+ãƒ†ã‚¹ãƒˆã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ä½™è¨ˆãªåŠã³è¶³ã‚Šãªã„å‡ºåŠ›ã‚’ã‚ˆã‚Šãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ—.
 
 =item Test::More
 
@@ -778,8 +778,8 @@ Now much more picky about extra or missing output from test scripts.
 Use of nanosleep(), if available, allows mixing subsecond sleeps with
 alarms.
 
-²ÄÇ½¤Ç¤¢¤ì¤Ğ nanosleep() ¤Î»ÈÍÑ. alarm ·²¤Î subsecond 
-sleeps ¤Î¥ß¥Ã¥¯¥¹.
+å¯èƒ½ã§ã‚ã‚Œã° nanosleep() ã®ä½¿ç”¨. alarm ç¾¤ã® subsecond 
+sleeps ã®ãƒŸãƒƒã‚¯ã‚¹.
 
 =item threads
 
@@ -787,15 +787,15 @@ Several fixes, for example for join() problems and memory
 leaks.  In some platforms (like Linux) that use glibc the minimum memory
 footprint of one ithread has been reduced by several hundred kilobytes.
 
-¤¤¤¯¤Ä¤«¤Î½¤Àµ, Îã¤¨¤Ğ join() ÌäÂê¤ä¥á¥â¥ê¥ê¡¼¥¯. 
-glibc ¤ò»È¤¦¤¤¤¯¤Ä¤«¤Î¥×¥é¥Ã¥È¥Õ¥©¡¼¥à(Linux¤â´Ş¤Ş¤ì¤Ş¤¹)¤Ë¤ª¤±¤ë
-£±¤Ä¤Î ithread ¤Ë»È¤ï¤ì¤ëºÇ¾®¥á¥â¥êÎÌ¤ò¿ôÉ´¥­¥í¥Ğ¥¤¥ÈÃ±°Ì¤Ç¸º¾¯.
+ã„ãã¤ã‹ã®ä¿®æ­£, ä¾‹ãˆã° join() å•é¡Œã‚„ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯. 
+glibc ã‚’ä½¿ã†ã„ãã¤ã‹ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ (Linuxã‚‚å«ã¾ã‚Œã¾ã™)ã«ãŠã‘ã‚‹
+ï¼‘ã¤ã® ithread ã«ä½¿ã‚ã‚Œã‚‹æœ€å°ãƒ¡ãƒ¢ãƒªé‡ã‚’æ•°ç™¾ã‚­ãƒ­ãƒã‚¤ãƒˆå˜ä½ã§æ¸›å°‘.
 
 =item threads::shared
 
 Many memory leaks have been fixed.
 
-¤¤¤¯¤Ä¤«¤Î¥á¥â¥ê¥ê¡¼¥¯¤ò½¤Àµ.
+ã„ãã¤ã‹ã®ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ã‚’ä¿®æ­£.
 
 =item Unicode::Collate
 
@@ -807,98 +807,98 @@ Many memory leaks have been fixed.
 
 Now returns extra information.
 
-¤è¤êÂ¿¤¯¤Î¾ğÊó¤òÊÖ¤¹¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+ã‚ˆã‚Šå¤šãã®æƒ…å ±ã‚’è¿”ã™ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 =back
 
 =head1 Utility Changes
 
-¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤ÎÊÑ¹¹ÅÀ
+ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã®å¤‰æ›´ç‚¹
 
 The C<h2xs> utility now produces a more modern layout:
 F<Foo-Bar/lib/Foo/Bar.pm> instead of F<Foo/Bar/Bar.pm>.
 Also, the boilerplate test is now called F<t/Foo-Bar.t>
 instead of F<t/1.t>.
 
-C<h2xs> ¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤Ï F<Foo/Bar/Bar.pm> ¤Ç¤Ï¤Ê¤¯
-º£É÷¤Î¥ì¥¤¥¢¥¦¥È F<Foo-Bar/lib/Foo/Bar.pm> ¤òÀ¸À®¤·¤Ş¤¹. 
-¥Ü¥¤¥é¡¼¥×¥ì¡¼¥È¥Æ¥¹¥È¡Ê¡©¡Ë¤Ï F<t/1.t> ¤Ç¤Ï¤Ê¤¯
-F<t/Foo-Bar.t> ¤Ç¸Æ¤Ó½Ğ¤¹¤è¤¦¤Ë¤Ê¤ê¤Ş¤¹.
+C<h2xs> ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã¯ F<Foo/Bar/Bar.pm> ã§ã¯ãªã
+ä»Šé¢¨ã®ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ F<Foo-Bar/lib/Foo/Bar.pm> ã‚’ç”Ÿæˆã—ã¾ã™. 
+ãƒœã‚¤ãƒ©ãƒ¼ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ†ã‚¹ãƒˆï¼ˆï¼Ÿï¼‰ã¯ F<t/1.t> ã§ã¯ãªã
+F<t/Foo-Bar.t> ã§å‘¼ã³å‡ºã™ã‚ˆã†ã«ãªã‚Šã¾ã™.
 
 The Perl debugger (F<lib/perl5db.pl>) has now been extensively
 documented and bugs found while documenting have been fixed.
 
-Perl ¥Ç¥Ğ¥Ã¥¬ (F<lib/perl5db.pl>) ¤Î¹­ÈÏ°Ï¤Ê¥É¥­¥å¥á¥ó¥È²½µÚ¤Ó
-¥É¥­¥å¥á¥ó¥Èµ­½ÒÃæ¤Ë¸«¤Ä¤«¤Ã¤¿¥Ğ¥°¤Î½¤Àµ.
+Perl ãƒ‡ãƒãƒƒã‚¬ (F<lib/perl5db.pl>) ã®åºƒç¯„å›²ãªãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆåŒ–åŠã³
+ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆè¨˜è¿°ä¸­ã«è¦‹ã¤ã‹ã£ãŸãƒã‚°ã®ä¿®æ­£.
 
 C<perldoc> has been rewritten from scratch to be more robust and
 featureful.
 
-C<perldoc> ¤Ï¤è¤ê¶¯·ò¤Ëµ¡Ç½Åª¤Ë¤¹¤ë¤¿¤á¤Ë¿·¤·¤¯ºî¤êÄ¾¤µ¤ì¤Ş¤·¤¿.
+C<perldoc> ã¯ã‚ˆã‚Šå¼·å¥ã«æ©Ÿèƒ½çš„ã«ã™ã‚‹ãŸã‚ã«æ–°ã—ãä½œã‚Šç›´ã•ã‚Œã¾ã—ãŸ.
 
 C<perlcc -B> works now at least somewhat better, while C<perlcc -c>
 is rather more broken.  (The Perl compiler suite as a whole continues
 to be experimental.)
 
-C<perlcc -c> ¤Ï²õ¤ìµ¤Ì£¤Ç¤¹¤¬ C<perlcc -B> ¤Ï¤¤¤¯¤é¤«¤Ş¤·¤Ëµ¡Ç½
-¤·¤Ş¤¹. (Perl ¥³¥ó¥Ñ¥¤¥é·²¤Ï¤½¤ÎÁ´ÂÎ¤¬°ÍÁ³ experimental ¤Ç¤¹.)
+C<perlcc -c> ã¯å£Šã‚Œæ°—å‘³ã§ã™ãŒ C<perlcc -B> ã¯ã„ãã‚‰ã‹ã¾ã—ã«æ©Ÿèƒ½
+ã—ã¾ã™. (Perl ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ç¾¤ã¯ãã®å…¨ä½“ãŒä¾ç„¶ experimental ã§ã™.)
 
 =head1 New Documentation
 
-¿·¤·¤¤¥É¥­¥å¥á¥ó¥È
+æ–°ã—ã„ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
 
 perl573delta has been added to list the differences between the
 (now quite obsolete) development releases 5.7.2 and 5.7.3.
 
-perl573delta ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿. 
-(¤¤¤Ş¤Ç¤Ï¤È¤Æ¤âÇÑ¤ì¤Æ¤¤¤ë) ³«È¯¥ê¥ê¡¼¥¹ 5.7.2 ¤È 5.7.3 ¤ÎÁê°ãÅÀ¤Ç¤¹.
+perl573delta ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ. 
+(ã„ã¾ã§ã¯ã¨ã¦ã‚‚å»ƒã‚Œã¦ã„ã‚‹) é–‹ç™ºãƒªãƒªãƒ¼ã‚¹ 5.7.2 ã¨ 5.7.3 ã®ç›¸é•ç‚¹ã§ã™.
 
 perl58delta has been added: it is the perldelta of 5.8.0, detailing
 the differences between 5.6.0 and 5.8.0.
 
-perl58delta ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿: 
-perl 5.8.0 ¤Ç¤Î perldelta ¤Ç¤¹. 
-5.6.0 ¤È 5.8.0 ¤Î¾ÜºÙ¤ÊÁê°ãÅÀ¤Ç¤¹.
+perl58delta ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ: 
+perl 5.8.0 ã§ã® perldelta ã§ã™. 
+5.6.0 ã¨ 5.8.0 ã®è©³ç´°ãªç›¸é•ç‚¹ã§ã™.
 
 perlartistic has been added: it is the Artistic License in pod format,
 making it easier for modules to refer to it.
 
-perlartistic ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿:
-pod format ¤Ë¤Ê¤Ã¤Æ¤¤¤ë Artistic License ¤Ç¤¹. 
-¤è¤ê´ÊÃ±¤Ë»²¾È¤ò¹Ô¤¨¤Ş¤¹.
+perlartistic ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ:
+pod format ã«ãªã£ã¦ã„ã‚‹ Artistic License ã§ã™. 
+ã‚ˆã‚Šç°¡å˜ã«å‚ç…§ã‚’è¡Œãˆã¾ã™.
 
 perlcheat has been added: it is a Perl cheat sheet.
 
-perlcheat ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿: Perl ¤Î cheat sheet ¤Ç¤¹.
-(¤´¤Ş¤«¤·¥·¡¼¥È¡©¡©ÆâÍÆ¤Ï¥Ï¥ó¥Ç¥£¥ê¥Õ¥¡¥ì¥ó¥¹¤ß¤¿¤¤¤Ç¤¹.)
+perlcheat ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ: Perl ã® cheat sheet ã§ã™.
+(ã”ã¾ã‹ã—ã‚·ãƒ¼ãƒˆï¼Ÿï¼Ÿå†…å®¹ã¯ãƒãƒ³ãƒ‡ã‚£ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã¿ãŸã„ã§ã™.)
 
 perlgpl has been added: it is the GNU General Public License in pod
 format, making it easier for modules to refer to it.
 
-perlgpl ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿:
-pod format ¤Ë¤Ê¤Ã¤Æ¤¤¤ë GNU General Public License ¤Ç¤¹. 
-¤è¤ê´ÊÃ±¤Ë»²¾È¤ò¹Ô¤¨¤Ş¤¹.
+perlgpl ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ:
+pod format ã«ãªã£ã¦ã„ã‚‹ GNU General Public License ã§ã™. 
+ã‚ˆã‚Šç°¡å˜ã«å‚ç…§ã‚’è¡Œãˆã¾ã™.
 
 perlmacosx has been added to tell about the installation and use
 of Perl in Mac OS X.
 
-perlmacosx ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿. 
-Mac OS X ¤Ç¤Î Perl ¤Î¥¤¥ó¥¹¥È¡¼¥ëÊıË¡¤È»ÈÍÑÊıË¡¤Ç¤¹.
+perlmacosx ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ. 
+Mac OS X ã§ã® Perl ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•ã¨ä½¿ç”¨æ–¹æ³•ã§ã™.
 
 perlos400 has been added to tell about the installation and use
 of Perl in OS/400 PASE.
 
-perlos400 ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿. 
-OS/400 PASE ¤Ç¤Î Perl ¤Î¥¤¥ó¥¹¥È¡¼¥ëÊıË¡¤È»ÈÍÑÊıË¡¤Ç¤¹.
+perlos400 ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ. 
+OS/400 PASE ã§ã® Perl ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•ã¨ä½¿ç”¨æ–¹æ³•ã§ã™.
 
 perlreref has been added: it is a regular expressions quick reference.
 
-perlreref ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿: 
-Àµµ¬É½¸½¤Î¥¯¥¤¥Ã¥¯¥ê¥Õ¥¡¥ì¥ó¥¹¤Ç¤¹.
+perlreref ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ: 
+æ­£è¦è¡¨ç¾ã®ã‚¯ã‚¤ãƒƒã‚¯ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã§ã™.
 
 =head1 Installation and Configuration Improvements
 
-¥¤¥ó¥¹¥È¡¼¥ë¤ÈÀßÄê¤Î²şÁ±
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã¨è¨­å®šã®æ”¹å–„
 
 The UNIX standard Perl location, F</usr/bin/perl>, is no longer
 overwritten by default if it exists.  This change was very prudent
@@ -906,75 +906,75 @@ because so many UNIX vendors already provide a F</usr/bin/perl>,
 but simultaneously many system utilities may depend on that
 exact version of Perl, so better not to overwrite it.
 
-UNIX ¤Ë¤ª¤±¤ëÉ¸½àÅª¤Ê Perl ¤Î°ÌÃÖ, F</usr/bin/perl> ¤Ï, 
-´û¤Ë¤½¤ì¤¬Â¸ºß¤¹¤ë¤Î¤Ê¤é¾å½ñ¤­¤·¤Ê¤¤¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-¤³¤ÎÊÑ²½¤Ï¿È¤ò¤ï¤­¤Ş¤¨¤¿¤â¤Î¤Ç¤¹. ¤ª¤ª¤¯¤Î UNIX ¥Ù¥ó¥À¡¼¤Ï
-½é¤á¤«¤é F</usr/bin/perl> ¤òÄó¶¡¤·¤Æ¤¤¤Æ, Æ±»ş¤ËÂ¿¤¯¤Î
-¥·¥¹¥Æ¥à¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤¬ Perl ¤Î¼Âºİ¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ë°ÍÂ¸¤·¤Æ¤¤¤ë¤Ç¤·¤ç¤¦. 
-¤³¤Î¤¿¤á¾å½ñ¤­¤·¤Ê¤¤Êı¤¬Ë¾¤Ş¤·¤¤¤ÈÈ½ÃÇ¤µ¤ì¤Ş¤·¤¿.
+UNIX ã«ãŠã‘ã‚‹æ¨™æº–çš„ãª Perl ã®ä½ç½®, F</usr/bin/perl> ã¯, 
+æ—¢ã«ãã‚ŒãŒå­˜åœ¨ã™ã‚‹ã®ãªã‚‰ä¸Šæ›¸ãã—ãªã„ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. 
+ã“ã®å¤‰åŒ–ã¯èº«ã‚’ã‚ãã¾ãˆãŸã‚‚ã®ã§ã™. ãŠãŠãã® UNIX ãƒ™ãƒ³ãƒ€ãƒ¼ã¯
+åˆã‚ã‹ã‚‰ F</usr/bin/perl> ã‚’æä¾›ã—ã¦ã„ã¦, åŒæ™‚ã«å¤šãã®
+ã‚·ã‚¹ãƒ†ãƒ ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãŒ Perl ã®å®Ÿéš›ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ä¾å­˜ã—ã¦ã„ã‚‹ã§ã—ã‚‡ã†. 
+ã“ã®ãŸã‚ä¸Šæ›¸ãã—ãªã„æ–¹ãŒæœ›ã¾ã—ã„ã¨åˆ¤æ–­ã•ã‚Œã¾ã—ãŸ.
 
 One can now specify installation directories for site and vendor man
 and HTML pages, and site and vendor scripts.  See F<INSTALL>.
 
-site µÚ¤Ó¥Ù¥ó¥À¡¼¤Î, ¥Ş¥Ë¥å¥¢¥ëµÚ¤ÓHTML ¥Ú¡¼¥¸, ¥¹¥¯¥ê¥×¥È¤Î
-¥¤¥ó¥¹¥È¡¼¥ë¥Ç¥£¥ì¥¯¥È¥ê¤ò»ØÄê¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-F<INSTALL> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+site åŠã³ãƒ™ãƒ³ãƒ€ãƒ¼ã®, ãƒãƒ‹ãƒ¥ã‚¢ãƒ«åŠã³HTML ãƒšãƒ¼ã‚¸, ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. 
+F<INSTALL> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 One can now specify a destination directory for Perl installation
 by specifying the DESTDIR variable for C<make install>.  (This feature
 is slightly different from the previous C<Configure -Dinstallprefix=...>.)
 See F<INSTALL>.
 
-C<make install> »ş¤Ë DESTDIR ÊÑ¿ô¤Ë Perl ¤Î¥¤¥ó¥¹¥È¡¼¥ëÀè¤Ë¤·¤¿¤¤
-¥Ç¥£¥ì¥¯¥È¥ê¤ò»ØÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. (¤³¤Îµ¡Ç½¤Ï
-¤³¤ì¤Ş¤Ç¤Î C<Configure -Dinstallprefix=...> ¤È¤Ï¾¯¤·°ã¤¤¤Ş¤¹.) 
-F<INSTALL> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+C<make install> æ™‚ã« DESTDIR å¤‰æ•°ã« Perl ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«å…ˆã«ã—ãŸã„
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. (ã“ã®æ©Ÿèƒ½ã¯
+ã“ã‚Œã¾ã§ã® C<Configure -Dinstallprefix=...> ã¨ã¯å°‘ã—é•ã„ã¾ã™.) 
+F<INSTALL> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 gcc versions 3.x introduced a new warning that caused a lot of noise
 during Perl compilation: C<gcc -Ialreadyknowndirectory (warning:
 changing search order)>.  This warning has now been avoided by
 Configure weeding out such directories before the compilation.
 
-gcc ¥Ğ¡¼¥¸¥ç¥ó 3.x ¤Ï Perl ¤Î¥³¥ó¥Ñ¥¤¥ë»ş¤ËÂ¿¤¯¤Î¥Î¥¤¥º¤È¤Ê¤ë¿·¤·¤¤·Ù¹ğ¤ò
-È¯¤¹¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿: C<gcc -I´ûÃÎ¤Î¥Ç¥£¥ì¥¯¥È¥ê (·Ù¹ğ:
-¸¡º÷½ç½ø¤ËÊÑ¹¹¤¬¤¢¤ê¤Ş¤·¤¿)>. ¤³¤Î·Ù¹ğ¤Ï Configure ¤¬¥³¥ó¥Ñ¥¤¥ëÁ°¤Ë
-¤½¤ÎÍÍ¤Ê¥Ç¥£¥ì¥¯¥È¥ê¤ò¼è¤ê½ü¤¯¤³¤È¤Ç²óÈò¤·¤Æ¤¤¤Ş¤¹.
+gcc ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 3.x ã¯ Perl ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«å¤šãã®ãƒã‚¤ã‚ºã¨ãªã‚‹æ–°ã—ã„è­¦å‘Šã‚’
+ç™ºã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ: C<gcc -Iæ—¢çŸ¥ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª (è­¦å‘Š:
+æ¤œç´¢é †åºã«å¤‰æ›´ãŒã‚ã‚Šã¾ã—ãŸ)>. ã“ã®è­¦å‘Šã¯ Configure ãŒã‚³ãƒ³ãƒ‘ã‚¤ãƒ«å‰ã«
+ãã®æ§˜ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–ã‚Šé™¤ãã“ã¨ã§å›é¿ã—ã¦ã„ã¾ã™.
 
 One can now build subsets of Perl core modules by using the
 Configure flags C<-Dnoextensions=...> and C<-Donlyextensions=...>,
 see F<INSTALL>.
 
-Configure ¥Õ¥é¥° C<-Dnoextensions=...> µÚ¤Ó C<-Donlyextensions=...> ¤ò
-»È¤¦¤³¤È¤Ç Perl ¥³¥¢¥â¥¸¥å¡¼¥ë¤Î¥µ¥Ö¥»¥Ã¥È¤ò¥Ó¥ë¥É¤¹¤ë¤³¤È¤¬
-¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. F<INSTALL> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+Configure ãƒ•ãƒ©ã‚° C<-Dnoextensions=...> åŠã³ C<-Donlyextensions=...> ã‚’
+ä½¿ã†ã“ã¨ã§ Perl ã‚³ã‚¢ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚µãƒ–ã‚»ãƒƒãƒˆã‚’ãƒ“ãƒ«ãƒ‰ã™ã‚‹ã“ã¨ãŒ
+ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. F<INSTALL> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 =head2 Platform-specific enhancements
 
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¸ÇÍ­¤Îµ¡Ç½
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ å›ºæœ‰ã®æ©Ÿèƒ½
 
 In Cygwin Perl can now be built with threads (C<Configure -Duseithreads>).
 This works with both Cygwin 1.3.22 and Cygwin 1.5.3.
 
-Cygwin ¤Ë¤ª¤¤¤Æ threads ¤Ç Perl ¤ò¥Ó¥ë¥É¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿
+Cygwin ã«ãŠã„ã¦ threads ã§ Perl ã‚’ãƒ“ãƒ«ãƒ‰ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ
 (C<Configure -Duseithreads>). 
-Cygwin 1.3.22 µÚ¤Ó Cygwin 1.5.3 Î¾Êı¤ÇÆ°ºî¤·¤Ş¤¹.
+Cygwin 1.3.22 åŠã³ Cygwin 1.5.3 ä¸¡æ–¹ã§å‹•ä½œã—ã¾ã™.
 
 In newer FreeBSD releases Perl 5.8.0 compilation failed because of
 trying to use F<malloc.h>, which in FreeBSD is just a dummy file, and
 a fatal error to even try to use.  Now F<malloc.h> is not used.
 
-¿·¤·¤¤ FreeBSD ¤Ë¤ª¤¤¤Æ, F<malloc.h> ¤ò»È¤¦¤¿¤á¤Ë Perl 5.8.0 ¤Î
-¥³¥ó¥Ñ¥¤¥ë¤Ë¼ºÇÔ¤·¤Æ¤¤¤Ş¤·¤¿. FreeBSD ¤Ë¤ª¤¤¤Æ¤³¤ì¤Ï¥À¥ß¡¼¤Ç¤¢¤ê, 
-»È¤ª¤¦¤È¤¹¤ë¤ÈÃ×Ì¿Åª¤Ê¥¨¥é¡¼¤È¤Ê¤ê¤Ş¤¹. ¸½ºß¤Ï F<malloc.h> ¤ò
-»ÈÍÑ¤·¤Ê¤¤¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+æ–°ã—ã„ FreeBSD ã«ãŠã„ã¦, F<malloc.h> ã‚’ä½¿ã†ãŸã‚ã« Perl 5.8.0 ã®
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—ã—ã¦ã„ã¾ã—ãŸ. FreeBSD ã«ãŠã„ã¦ã“ã‚Œã¯ãƒ€ãƒŸãƒ¼ã§ã‚ã‚Š, 
+ä½¿ãŠã†ã¨ã™ã‚‹ã¨è‡´å‘½çš„ãªã‚¨ãƒ©ãƒ¼ã¨ãªã‚Šã¾ã™. ç¾åœ¨ã¯ F<malloc.h> ã‚’
+ä½¿ç”¨ã—ãªã„ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 Perl is now known to build also in Hitachi HI-UXMPP.
 
-ÆüÎ© HI_UXMPP ¤Ç¥Ó¥ë¥É¤Ç¤­¤Ş¤¹.
+æ—¥ç«‹ HI_UXMPP ã§ãƒ“ãƒ«ãƒ‰ã§ãã¾ã™.
 
 Perl is now known to build again in LynxOS.
 
-LynxOS ¤ÇºÆ¤Ó¥Ó¥ë¥É¤Ç¤­¤Ş¤¹.
+LynxOS ã§å†ã³ãƒ“ãƒ«ãƒ‰ã§ãã¾ã™.
 
 Mac OS X now installs with Perl version number embedded in
 installation directory names for easier upgrading of user-compiled
@@ -983,14 +983,14 @@ In other words, the default installation no longer breaks the
 Apple-provided Perl.  On the other hand, with C<Configure -Dprefix=/usr>
 you can now really replace the Apple-supplied Perl (B<please be careful>).
 
-Mac OS X ¤Ï¥¤¥ó¥¹¥È¡¼¥ë¥Ç¥£¥ì¥¯¥È¥êÌ¾¤Ë¥Ğ¡¼¥¸¥ç¥óÈÖ¹æ¤ò
-Ëä¤á¹ş¤ó¤Ç¥¤¥ó¥¹¥È¡¼¥ë¤·¤Ş¤¹.
-¤³¤ì¤Ï¥æ¡¼¥¶¤¬¥³¥ó¥Ñ¥¤¥ë¤·¤¿ Perl ¤Î¥¢¥Ã¥×¥°¥ì¡¼¥É¤ò´ÊÃ±¤Ë¤¹¤ë¤¿¤á, ¤½¤·¤Æ
-°ìÈÌÅª¤Ê¥¤¥ó¥¹¥È¡¼¥ë¥Ç¥£¥ì¥¯¥È¥ê¤ò¤è¤êÉ¸½à¤Ë¤¹¤ë¤¿¤á¤Ç¤¹. 
-¸À¤¤´¹¤¨¤ë¤È, ¥Ç¥Õ¥©¥ë¥È¤Î¤Ş¤Ş¥¤¥ó¥¹¥È¡¼¥ë¤Ç¤â Apple ¤¬Äó¶¡¤·¤Æ¤¤¤ë Perl ¤ò
-ÇË²õ¤·¤Æ¤·¤Ş¤¦¤³¤È¤Ï¤¢¤ê¤Ş¤»¤ó. 
-¤½¤Î°ìÊı¤Ç, C<Configure -Dprefix=/usr> ¤Î»ØÄê¤ò¤¹¤ë¤³¤È¤Ç
-Apple Äó¶¡¤Î Perl ¤òËÜÅö¤ËÃÖ¤­´¹¤¨¤ë¤³¤È¤â¤Ç¤­¤Ş¤¹(B<½½Ê¬Ãí°Õ¤·¤Æ¤¯¤À¤µ¤¤>).
+Mac OS X ã¯ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã«ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã‚’
+åŸ‹ã‚è¾¼ã‚“ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™.
+ã“ã‚Œã¯ãƒ¦ãƒ¼ã‚¶ãŒã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ãŸ Perl ã®ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ã‚’ç°¡å˜ã«ã™ã‚‹ãŸã‚, ãã—ã¦
+ä¸€èˆ¬çš„ãªã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚ˆã‚Šæ¨™æº–ã«ã™ã‚‹ãŸã‚ã§ã™. 
+è¨€ã„æ›ãˆã‚‹ã¨, ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã¾ã¾ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã§ã‚‚ Apple ãŒæä¾›ã—ã¦ã„ã‚‹ Perl ã‚’
+ç ´å£Šã—ã¦ã—ã¾ã†ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“. 
+ãã®ä¸€æ–¹ã§, C<Configure -Dprefix=/usr> ã®æŒ‡å®šã‚’ã™ã‚‹ã“ã¨ã§
+Apple æä¾›ã® Perl ã‚’æœ¬å½“ã«ç½®ãæ›ãˆã‚‹ã“ã¨ã‚‚ã§ãã¾ã™(B<ååˆ†æ³¨æ„ã—ã¦ãã ã•ã„>).
   
 
 Mac OS X now builds Perl statically by default.  This change was done
@@ -998,53 +998,53 @@ mainly for faster startup times.  The Apple-provided Perl is still
 dynamically linked and shared, and you can enable the sharedness for
 your own Perl builds by C<Configure -Duseshrplib>.
 
-Mac OS X ¤Ç¤Ï¥Ç¥Õ¥©¥ë¥È¤Ç¥¹¥¿¥Æ¥£¥Ã¥¯¤Ë¥ê¥ó¥¯¤µ¤ì¤¿ Perl ¤¬
-¥Ó¥ë¥É¤µ¤ì¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. ¤³¤ÎÊÑ¹¹¤Ï¼ç¤Ëµ¯Æ°¤Î¹âÂ®²½¤Î°Ù¤Ç¤¹. 
-Apple ¤¬Äó¶¡¤·¤Æ¤¤¤ë Perl ¤Ï¤Ş¤À¶¦Í­, ¥À¥¤¥Ê¥ß¥Ã¥¯¥ê¥ó¥¯¤µ¤ì¤ë
-¤â¤Î¤Ç¤¹. ¼«Ê¬¤Ç Perl ¤ò¥Ó¥ë¥É¤¹¤ë¤È¤­¤Ë¤Ï 
-C<Configure -Duseshrplib> ¤ò»ØÄê¤¹¤ë¤³¤È¤Ç¶¦Í­¤òÌµ¸ú¤Ë¤Ç¤­¤Ş¤¹.
+Mac OS X ã§ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã‚¹ã‚¿ãƒ†ã‚£ãƒƒã‚¯ã«ãƒªãƒ³ã‚¯ã•ã‚ŒãŸ Perl ãŒ
+ãƒ“ãƒ«ãƒ‰ã•ã‚Œã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. ã“ã®å¤‰æ›´ã¯ä¸»ã«èµ·å‹•ã®é«˜é€ŸåŒ–ã®ç‚ºã§ã™. 
+Apple ãŒæä¾›ã—ã¦ã„ã‚‹ Perl ã¯ã¾ã å…±æœ‰, ãƒ€ã‚¤ãƒŠãƒŸãƒƒã‚¯ãƒªãƒ³ã‚¯ã•ã‚Œã‚‹
+ã‚‚ã®ã§ã™. è‡ªåˆ†ã§ Perl ã‚’ãƒ“ãƒ«ãƒ‰ã™ã‚‹ã¨ãã«ã¯ 
+C<Configure -Duseshrplib> ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã§å…±æœ‰ã‚’ç„¡åŠ¹ã«ã§ãã¾ã™.
 
 Perl has been ported to IBM's OS/400 PASE environment.  The best way
 to build a Perl for PASE is to use an AIX host as a cross-compilation
 environment.  See README.os400.
 
-IBM ¤Î OS/400 PASE ´Ä¶­¤Ç Perl ¤ò»È¤¨¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-PASE ÍÑ¤Î Perl ¤ò¹½ÃÛ¤¹¤ëºÇÎÉ¤ÎÊıË¡¤Ï, ¥¯¥í¥¹¥³¥ó¥Ñ¥¤¥ë´Ä¶­¤È¤·¤Æ AIX ¤ò
-»È¤¦¤³¤È¤Ç¤¹. README.os400 ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+IBM ã® OS/400 PASE ç’°å¢ƒã§ Perl ã‚’ä½¿ãˆã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. 
+PASE ç”¨ã® Perl ã‚’æ§‹ç¯‰ã™ã‚‹æœ€è‰¯ã®æ–¹æ³•ã¯, ã‚¯ãƒ­ã‚¹ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ç’°å¢ƒã¨ã—ã¦ AIX ã‚’
+ä½¿ã†ã“ã¨ã§ã™. README.os400 ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 Yet another cross-compilation option has been added: now Perl builds
 on OpenZaurus, an Linux distribution based on Mandrake + Embedix for
 the Sharp Zaurus PDA.  See the Cross/README file.
 
-ÊÌ¤Î¥¯¥í¥¹¥³¥ó¥Ñ¥¤¥ë¥ª¥×¥·¥ç¥ó¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿: OpenZaurus, Sharp 
-Zaurus PDA ÍÑ¤Î Mandrake + Embedix ¤Ê Linux ¥Ç¥£¥¹¥È¥ê¥Ó¥å¡¼¥·¥ç¥ó¸ş¤±¤Î
-¤Î Perl ¤òºîÀ®¤Ç¤­¤Ş¤¹.
-Cross ¥µ¥Ö¥Ç¥£¥ì¥¯¥È¥ê¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+åˆ¥ã®ã‚¯ãƒ­ã‚¹ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ: OpenZaurus, Sharp 
+Zaurus PDA ç”¨ã® Mandrake + Embedix ãª Linux ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³å‘ã‘ã®
+ã® Perl ã‚’ä½œæˆã§ãã¾ã™.
+Cross ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 Tru64 when using gcc 3 drops the optimisation for F<toke.c> to C<-O2>
 because of gigantic memory use with the default C<-O3>.
 
-Tru64 ¤Ç gcc 3 ¤ò»ÈÍÑ¤·¤Æ¤ë¤È¤­¤Ë F<toke.c> ¤ÎºÇÅ¬²½¤ò C<-O2> ¤Ë
-Íî¤È¤·¤Ş¤·¤¿. ¤³¤ì¤Ï¥Ç¥Õ¥©¥ë¥È¤Î C<-O3> ¤Ç¤ÏµğÂç¤Ê¥á¥â¥ê¾ÃÈñ¤ò
-°ú¤­µ¯¤³¤¹¤¿¤á¤Ç¤¹.
+Tru64 ã§ gcc 3 ã‚’ä½¿ç”¨ã—ã¦ã‚‹ã¨ãã« F<toke.c> ã®æœ€é©åŒ–ã‚’ C<-O2> ã«
+è½ã¨ã—ã¾ã—ãŸ. ã“ã‚Œã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã® C<-O3> ã§ã¯å·¨å¤§ãªãƒ¡ãƒ¢ãƒªæ¶ˆè²»ã‚’
+å¼•ãèµ·ã“ã™ãŸã‚ã§ã™.
 
 Tru64 can now build Perl with the newer Berkeley DBs.
 
-Tru64 ¤Ë¤ª¤¤¤Æ¿·¤·¤¤ Berkeley DB ¤Ç Perl ¤ò¥Ó¥ë¥É¤Ç¤­¤Ş¤¹.
+Tru64 ã«ãŠã„ã¦æ–°ã—ã„ Berkeley DB ã§ Perl ã‚’ãƒ“ãƒ«ãƒ‰ã§ãã¾ã™.
 
 Building Perl on WinCE has been much enhanced, see F<README.ce>
 and F<README.perlce>.
 
-WinCE ¾å¤Ç¤Î Perl ¤Î¥Ó¥ë¥É¤¬¹â¤Ş¤ê¤Ş¤·¤¿. 
-F<README.ce> µÚ¤Ó F<README.perlce> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+WinCE ä¸Šã§ã® Perl ã®ãƒ“ãƒ«ãƒ‰ãŒé«˜ã¾ã‚Šã¾ã—ãŸ. 
+F<README.ce> åŠã³ F<README.perlce> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 =head1 Selected Bug Fixes
 
-¥Ğ¥°½¤Àµ¤ÎÈ´¿è
+ãƒã‚°ä¿®æ­£ã®æŠœç²‹
 
 =head2 Closures, eval and lexicals
 
-¥¯¥í¡¼¥¸¥ã, eval, ¥ì¥­¥·¥«¥ë
+ã‚¯ãƒ­ãƒ¼ã‚¸ãƒ£, eval, ãƒ¬ã‚­ã‚·ã‚«ãƒ«
 
 There have been many fixes in the area of anonymous subs, lexicals and
 closures.  Although this means that Perl is now more "correct", it is
@@ -1052,15 +1052,15 @@ possible that some existing code will break that happens to rely on
 the faulty behaviour.  In practice this is unlikely unless your code
 contains a very complex nesting of anonymous subs, evals and lexicals.
 
-ÌµÌ¾´Ø¿ô, ¥ì¥­¥·¥«¥ë, ¥¯¥í¡¼¥¸¥ã¤ËÂĞ¤·¤ÆÂ¿¤¯¤Î½¤Àµ¤¬»Ü¤µ¤ì¤Æ¤¤¤Ş¤¹. 
-Perl ¤Ï¤è¤ê "ÀºåÌ" ¤Ë¤Ê¤Ã¤¿¤È¤¤¤¨¤Ş¤¹¤¬·çÅÀ¤Î¤¢¤Ã¤¿¿¶¤ëÉñ¤¤¤ò¿®Íê¤·¤Æ¤¤¤¿
-´ûÂ¸¤Î¥³¡¼¥É¤¬Æ°¤«¤Ê¤¯¤Ê¤ë²ÄÇ½À­¤â¤¢¤ê¤Ş¤¹. 
-¤È¤Ï¤¤¤¨¼Âºİ¤Ë¤Ï¤³¤ì¤Ï¤È¤Æ¤âÊ£»¨¤Ë¥Í¥¹¥È¤·¤Æ¤¤¤ëÌµÌ¾´Ø¿ô, eval, ¥ì¥­¥·¥«¥ë
-¤¬¤Ê¤±¤ì¤Ğ¤¢¤ê¤½¤¦¤â¤Ê¤¤¤³¤È¤Ç¤¹.
+ç„¡åé–¢æ•°, ãƒ¬ã‚­ã‚·ã‚«ãƒ«, ã‚¯ãƒ­ãƒ¼ã‚¸ãƒ£ã«å¯¾ã—ã¦å¤šãã®ä¿®æ­£ãŒæ–½ã•ã‚Œã¦ã„ã¾ã™. 
+Perl ã¯ã‚ˆã‚Š "ç²¾ç·»" ã«ãªã£ãŸã¨ã„ãˆã¾ã™ãŒæ¬ ç‚¹ã®ã‚ã£ãŸæŒ¯ã‚‹èˆã„ã‚’ä¿¡é ¼ã—ã¦ã„ãŸ
+æ—¢å­˜ã®ã‚³ãƒ¼ãƒ‰ãŒå‹•ã‹ãªããªã‚‹å¯èƒ½æ€§ã‚‚ã‚ã‚Šã¾ã™. 
+ã¨ã¯ã„ãˆå®Ÿéš›ã«ã¯ã“ã‚Œã¯ã¨ã¦ã‚‚è¤‡é›‘ã«ãƒã‚¹ãƒˆã—ã¦ã„ã‚‹ç„¡åé–¢æ•°, eval, ãƒ¬ã‚­ã‚·ã‚«ãƒ«
+ãŒãªã‘ã‚Œã°ã‚ã‚Šãã†ã‚‚ãªã„ã“ã¨ã§ã™.
 
 =head2 Generic fixes
 
-°ìÈÌÅª¤Ê½¤Àµ
+ä¸€èˆ¬çš„ãªä¿®æ­£
 
 If an input filehandle is marked C<:utf8> and Perl sees illegal UTF-8
 coming in when doing C<< <FH> >>, if warnings are enabled a warning is
@@ -1068,56 +1068,56 @@ immediately given - instead of being silent about it and Perl being
 unhappy about the broken data later.  (The C<:encoding(utf8)> layer
 also works the same way.)
 
-¤â¤·ÆşÎÏ¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤¬ C<:utf8> ¤ÈÀßÄê¤µ¤ì¤Æ¤¤¤Æ C<< <FH> >> 
-¤«¤é¤ÎÆşÎÏÃæ¤Ë UTF-8 ¤ò¸«¤Ä¤±¤ë¤È, ·Ù¹ğ¤¬Í­¸ú¤Ë¤Ê¤Ã¤Æ¤¤¤ì¤Ğ - 
-¤½¤ì¤ò¸«Á÷¤Ã¤Æ¸å¤ÇÉÔ¹¬¤Ë¤â²õ¤ì¤¿¥Ç¡¼¥¿¤ò¼õ¤±¼è¤ë¤³¤È¤Ë¤Ê¤Ã¤Æ
-¤·¤Ş¤¦¤«¤ï¤ê¤Ë - ¤¹¤°¤Ë·Ù¹ğ¤òÈ¯¤·¤Ş¤¹. (C<:encoding(utf8)> ¥ì¥¤¥ä¤ò
-¤³¤ÎÌÜÅª¤Ë»È¤¦¤³¤È¤â½ĞÍè¤Ş¤¹.)
+ã‚‚ã—å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ãŒ C<:utf8> ã¨è¨­å®šã•ã‚Œã¦ã„ã¦ C<< <FH> >> 
+ã‹ã‚‰ã®å…¥åŠ›ä¸­ã« UTF-8 ã‚’è¦‹ã¤ã‘ã‚‹ã¨, è­¦å‘ŠãŒæœ‰åŠ¹ã«ãªã£ã¦ã„ã‚Œã° - 
+ãã‚Œã‚’è¦‹é€ã£ã¦å¾Œã§ä¸å¹¸ã«ã‚‚å£Šã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚’å—ã‘å–ã‚‹ã“ã¨ã«ãªã£ã¦
+ã—ã¾ã†ã‹ã‚ã‚Šã« - ã™ãã«è­¦å‘Šã‚’ç™ºã—ã¾ã™. (C<:encoding(utf8)> ãƒ¬ã‚¤ãƒ¤ã‚’
+ã“ã®ç›®çš„ã«ä½¿ã†ã“ã¨ã‚‚å‡ºæ¥ã¾ã™.)
 
 binmode(SOCKET, ":utf8") only worked on the input side, not on the
 output side of the socket.  Now it works both ways.
 
-binmode(SOCKET, ":utf8") ¤Ï¥½¥±¥Ã¥È¤ÎÆşÎÏÂ¦¤Î¤ß¤Ç½ĞÎÏÂ¦¤Ë¤Ï
-µ¡Ç½¤·¤Æ¤¤¤Ş¤»¤ó¤Ç¤·¤¿. ¤³¤ì¤ÏÎ¾Êı¸ş¤Çµ¡Ç½¤¹¤ë¤è¤¦¤Ë½¤Àµ¤µ¤ì¤Ş¤·¤¿.
+binmode(SOCKET, ":utf8") ã¯ã‚½ã‚±ãƒƒãƒˆã®å…¥åŠ›å´ã®ã¿ã§å‡ºåŠ›å´ã«ã¯
+æ©Ÿèƒ½ã—ã¦ã„ã¾ã›ã‚“ã§ã—ãŸ. ã“ã‚Œã¯ä¸¡æ–¹å‘ã§æ©Ÿèƒ½ã™ã‚‹ã‚ˆã†ã«ä¿®æ­£ã•ã‚Œã¾ã—ãŸ.
 
 For threaded Perls certain system database functions like getpwent()
 and getgrent() now grow their result buffer dynamically, instead of
 failing.  This means that at sites with lots of users and groups the
 functions no longer fail by returning only partial results.
 
-¥¹¥ì¥Ã¥É Perl ¤Ë¤ª¤¤¤Æ getpwent() ¤ä getgrent() ¤ÎÍÍ¤Ê¤¤¤¯¤Ä¤«¤Î
-¥·¥¹¥Æ¥à¥Ç¡¼¥¿¥Ù¡¼¥¹´Ø¿ô ¤Ï¼ºÇÔ¤ÎÂå¤ï¤ê¤Ë¤½¤Î·ë²Ì³ÊÇ¼¥Ğ¥Ã¥Õ¥¡¤òÆ°Åª¤Ë
-³ÈÂç¤·¤Ş¤¹. ¤³¤ì¤ÏÂ¿¤¯¤Î¥æ¡¼¥¶¤ä¥°¥ë¡¼¥×¤òÊú¤¨¤ë¥µ¥¤¥È¤Ç¤³¤ì¤é¤Î´Ø¿ô¤¬
-°ìÉô¤Î·ë²Ì¤À¤±¤òÊÖ¤·¤Æ¼ºÇÔ¤¹¤ë¤³¤È¤ò²óÈò¤·¤Ş¤¹.
+ã‚¹ãƒ¬ãƒƒãƒ‰ Perl ã«ãŠã„ã¦ getpwent() ã‚„ getgrent() ã®æ§˜ãªã„ãã¤ã‹ã®
+ã‚·ã‚¹ãƒ†ãƒ ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹é–¢æ•° ã¯å¤±æ•—ã®ä»£ã‚ã‚Šã«ãã®çµæœæ ¼ç´ãƒãƒƒãƒ•ã‚¡ã‚’å‹•çš„ã«
+æ‹¡å¤§ã—ã¾ã™. ã“ã‚Œã¯å¤šãã®ãƒ¦ãƒ¼ã‚¶ã‚„ã‚°ãƒ«ãƒ¼ãƒ—ã‚’æŠ±ãˆã‚‹ã‚µã‚¤ãƒˆã§ã“ã‚Œã‚‰ã®é–¢æ•°ãŒ
+ä¸€éƒ¨ã®çµæœã ã‘ã‚’è¿”ã—ã¦å¤±æ•—ã™ã‚‹ã“ã¨ã‚’å›é¿ã—ã¾ã™.
 
 Perl 5.8.0 had accidentally broken the capability for users
 to define their own uppercase<->lowercase Unicode mappings
 (as advertised by the Camel).  This feature has been fixed and
 is also documented better.
 
-Perl 5.8.0 ¤Ï¥æ¡¼¥¶¤¬ÆÈ¼«¤ÎÂçÊ¸»ú<->¾®Ê¸»ú Unicode ¥Ş¥Ã¥Ô¥ó¥°(Camel ¤¬
-¹­¹ğ¤·¤Æ¤¤¤ë¤è¤¦¤Ë)¤òÄêµÁ¤¹¤ë¸ß´¹À­¤ò¶öÈ¯Åª¤ËÇË²õ¤·¤Æ¤¤¤Ş¤·¤¿. 
-¤³¤Îµ¡Ç½¤Ï½¤Àµ¤µ¤ì, ¥É¥­¥å¥á¥ó¥È²½¤â¤µ¤ì¤Ş¤·¤¿.
+Perl 5.8.0 ã¯ãƒ¦ãƒ¼ã‚¶ãŒç‹¬è‡ªã®å¤§æ–‡å­—<->å°æ–‡å­— Unicode ãƒãƒƒãƒ”ãƒ³ã‚°(Camel ãŒ
+åºƒå‘Šã—ã¦ã„ã‚‹ã‚ˆã†ã«)ã‚’å®šç¾©ã™ã‚‹äº’æ›æ€§ã‚’å¶ç™ºçš„ã«ç ´å£Šã—ã¦ã„ã¾ã—ãŸ. 
+ã“ã®æ©Ÿèƒ½ã¯ä¿®æ­£ã•ã‚Œ, ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆåŒ–ã‚‚ã•ã‚Œã¾ã—ãŸ.
 
 In 5.8.0 this
 
-5.8.0 ¤Ë¤ª¤¤¤Æ¼¡¤Î¥³¡¼¥É
+5.8.0 ã«ãŠã„ã¦æ¬¡ã®ã‚³ãƒ¼ãƒ‰
 
 	$some_unicode .= <FH>;
 
 didn't work correctly but instead corrupted the data.  This has now
 been fixed.
 
-¤ÏÀµ¤·¤¯µ¡Ç½¤»¤º¥Ç¡¼¥¿¤òÇË²õ¤·¤Æ¤·¤Ş¤¤¤Ş¤·¤¿. 
-¤³¤ì¤Ï¸½ºß¤Ç¤Ï½¤Àµ¤µ¤ì¤Æ¤¤¤Ş¤¹.
+ã¯æ­£ã—ãæ©Ÿèƒ½ã›ãšãƒ‡ãƒ¼ã‚¿ã‚’ç ´å£Šã—ã¦ã—ã¾ã„ã¾ã—ãŸ. 
+ã“ã‚Œã¯ç¾åœ¨ã§ã¯ä¿®æ­£ã•ã‚Œã¦ã„ã¾ã™.
 
 Tied methods like FETCH etc. may now safely access tied values, i.e.
 resulting in a recursive call to FETCH etc.  Remember to break the
 recursion, though.
 
-FETCH Åù¤ÎÍÍ¤Ê¥¿¥¤¤µ¤ì¤¿¥á¥½¥Ã¥É¤Ç¤è¤ê°ÂÁ´¤Ë¥¿¥¤¤µ¤ì¤¿ÃÍ¤Ë
-¥¢¥¯¥»¥¹¤Ç¤­¤ë¤Ç¤·¤ç¤¦, ¤¹¤Ê¤ï¤Á FETCH Åù¤¬°ÂÁ´¤ËºÆµ¢¤Ç¤­¤Ş¤¹. 
-¤È¤Ï¤¤¤Ã¤Æ¤âºÆµ¢¤ò¼ıÂ«¤µ¤»¤ë¤Î¤Ï¤ªËº¤ì¤Ê¤­ÍÍ.
+FETCH ç­‰ã®æ§˜ãªã‚¿ã‚¤ã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ˆã‚Šå®‰å…¨ã«ã‚¿ã‚¤ã•ã‚ŒãŸå€¤ã«
+ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã§ã—ã‚‡ã†, ã™ãªã‚ã¡ FETCH ç­‰ãŒå®‰å…¨ã«å†å¸°ã§ãã¾ã™. 
+ã¨ã¯ã„ã£ã¦ã‚‚å†å¸°ã‚’åæŸã•ã›ã‚‹ã®ã¯ãŠå¿˜ã‚Œãªãæ§˜.
 
 At startup Perl blocks the SIGFPE signal away since there isn't much
 Perl can do about it.  Previously this blocking was in effect also for
@@ -1125,10 +1125,10 @@ programs executed from within Perl.  Now Perl restores the original
 SIGFPE handling routine, whatever it was, before running external
 programs.
 
-µ¯Æ°»ş¤Ë Perl ¤Ï ¤½¤ì¤ò½èÍı¤Ç¤­¤ë¤Ş¤Ç SIGFPE ¥·¥°¥Ê¥ë¤ò¥Ö¥í¥Ã¥¯¤·¤Ş¤¹. 
-¤³¤ì¤Ş¤Ç¤³¤Î¥Ö¥í¥Ã¥¯¤Ï¼Âºİ¤Î¤È¤³¤í Perl ¤ÎÃæ¤«¤é¼Â¹Ô¤µ¤ì¤ë¥×¥í¥°¥é¥à¤Î¤¿¤á
-¤Ç¤·¤¿. ¸½ºß¤Ç¤Ï³°Éô¥×¥í¥°¥é¥à¤ò¼Â¹Ô¤¹¤ëÁ°¤Ë Perl ¤Ï
-¤â¤È¤Î SIGFPE ¥Ï¥ó¥É¥é¤òÉü¸µ¤·¤Ş¤¹.
+èµ·å‹•æ™‚ã« Perl ã¯ ãã‚Œã‚’å‡¦ç†ã§ãã‚‹ã¾ã§ SIGFPE ã‚·ã‚°ãƒŠãƒ«ã‚’ãƒ–ãƒ­ãƒƒã‚¯ã—ã¾ã™. 
+ã“ã‚Œã¾ã§ã“ã®ãƒ–ãƒ­ãƒƒã‚¯ã¯å®Ÿéš›ã®ã¨ã“ã‚ Perl ã®ä¸­ã‹ã‚‰å®Ÿè¡Œã•ã‚Œã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãŸã‚
+ã§ã—ãŸ. ç¾åœ¨ã§ã¯å¤–éƒ¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’å®Ÿè¡Œã™ã‚‹å‰ã« Perl ã¯
+ã‚‚ã¨ã® SIGFPE ãƒãƒ³ãƒ‰ãƒ©ã‚’å¾©å…ƒã—ã¾ã™.
 
 Linenumbers in Perl scripts may now be greater than 65536, or 2**16.
 (Perl scripts have always been able to be larger than that, it's just
@@ -1138,18 +1138,18 @@ your code a bit, such Perl scripts do exist, for example as results
 from generated code.  Now linenumbers can go all the way to
 4294967296, or 2**32.
 
-Perl ¥¹¥¯¥ê¥×¥È¤Ë¤ª¤¤¤Æ¹ÔÈÖ¹æ¤Ï 65535 ¼ã¤·¤¯¤Ï 2**16 ¤è¤êÂç¤­¤¯
-¤Ê¤ì¤ë¤Ç¤·¤ç¤¦. (Perl ¥¹¥¯¥ê¥×¥È¤Ï ¤¤¤Ä¤Ç¤â¤³¤ì¤è¤êÂç¤­¤ÊÃÍ¤ò
-¤È¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹. ¤³¤ì¤ÏÃ±¤Ë¥¨¥é¡¼¤ä·Ù¹ğ»ş¤Î¹ÔÈÖ¹æ¤Î»ı¤Ã¤Æ¤¤¤ë
-"¥é¥Ã¥×¤µ¤ì¤¿Æ°ºî"¤Ç¤¹.)
-¤½¤ì¤Û¤ÉÂç¤­¤Ê¥¹¥¯¥ê¥×¥È¤Ï¥³¡¼¥É¤ò¤Á¤ç¤Ã¤È¹Í¤¨Ä¾¤·¤¿Êı¤¬¤¤¤¤¥³¥È¤ò
-¼¨¤·¤Æ¤¤¤ë°ìÊı¤Ç, ¤½¤ÎÍÍ¤Ê¥³¡¼¥É¤Ï¥¹¥¯¥ê¥×¥È¤ËÀ¸À®¤µ¤ì¤¿¥³¡¼¥É¤Ê¤É
-¤È¤·¤ÆÂ¸ºß¤·¤Ş¤¹. 
-¸½ºß¤Ç¤Ï 4294967296 ¼ã¤·¤¯¤Ï 2**32 ¤Ş¤ÇÅşÃ£¤Ç¤­¤Ş¤¹.
+Perl ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«ãŠã„ã¦è¡Œç•ªå·ã¯ 65535 è‹¥ã—ãã¯ 2**16 ã‚ˆã‚Šå¤§ãã
+ãªã‚Œã‚‹ã§ã—ã‚‡ã†. (Perl ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ ã„ã¤ã§ã‚‚ã“ã‚Œã‚ˆã‚Šå¤§ããªå€¤ã‚’
+ã¨ã‚‹ã“ã¨ãŒã§ãã¾ã™. ã“ã‚Œã¯å˜ã«ã‚¨ãƒ©ãƒ¼ã‚„è­¦å‘Šæ™‚ã®è¡Œç•ªå·ã®æŒã£ã¦ã„ã‚‹
+"ãƒ©ãƒƒãƒ—ã•ã‚ŒãŸå‹•ä½œ"ã§ã™.)
+ãã‚Œã»ã©å¤§ããªã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã‚³ãƒ¼ãƒ‰ã‚’ã¡ã‚‡ã£ã¨è€ƒãˆç›´ã—ãŸæ–¹ãŒã„ã„ã‚³ãƒˆã‚’
+ç¤ºã—ã¦ã„ã‚‹ä¸€æ–¹ã§, ãã®æ§˜ãªã‚³ãƒ¼ãƒ‰ã¯ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ãªã©
+ã¨ã—ã¦å­˜åœ¨ã—ã¾ã™. 
+ç¾åœ¨ã§ã¯ 4294967296 è‹¥ã—ãã¯ 2**32 ã¾ã§åˆ°é”ã§ãã¾ã™.
 
 =head2 Platform-specific fixes
 
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¸ÇÍ­¤Î½¤Àµ
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ å›ºæœ‰ã®ä¿®æ­£
 
 Linux
 
@@ -1160,7 +1160,7 @@ Linux
 Setting $0 works again (with certain limitations that
 Perl cannot do much about: see L<perlvar/$0>)
 
-$0 ¤¬ºÆ¤ÓÀßÄê¤µ¤ì¤Ş¤¹ (Perl ¤¬¹Ô¤¨¤Ê¤¤À©¸Â¤Ï¤¢¤ê¤Ş¤¹: L<perlvar/$0> »²¾È).
+$0 ãŒå†ã³è¨­å®šã•ã‚Œã¾ã™ (Perl ãŒè¡Œãˆãªã„åˆ¶é™ã¯ã‚ã‚Šã¾ã™: L<perlvar/$0> å‚ç…§).
 
 =back
 
@@ -1172,7 +1172,7 @@ HP-UX
 
 Setting $0 now works.
 
-$0 ¤ÎÀßÄê¤¬µ¡Ç½¤¹¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+$0 ã®è¨­å®šãŒæ©Ÿèƒ½ã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 =back
 
@@ -1185,8 +1185,8 @@ VMS
 Configuration now tests for the presence of C<poll()>, and IO::Poll
 now uses the vendor-supplied function if detected.
 
-Configuration »ş¤Ë C<poll()> ¤¬Äó¶¡¤µ¤ì¤Æ¤¤¤ë¤«¤òÄ´¤Ù, 
-³ÎÇ§¤Ç¤­¤ì¤Ğ IO::Poll ¤ÏÄó¶¡¤µ¤ì¤Æ¤¤¤ë´Ø¿ô¤ò»ÈÍÑ¤·¤Ş¤¹.
+Configuration æ™‚ã« C<poll()> ãŒæä¾›ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’èª¿ã¹, 
+ç¢ºèªã§ãã‚Œã° IO::Poll ã¯æä¾›ã•ã‚Œã¦ã„ã‚‹é–¢æ•°ã‚’ä½¿ç”¨ã—ã¾ã™.
 
 =item *
 
@@ -1196,11 +1196,11 @@ subsystem attribute set in the process's rightslist.  Either of these
 circumstances triggered tainting code that contained a pointer bug. 
 The faulty pointer arithmetic has been fixed.
 
-ÆÃ¸¢¥â¡¼¥É¤Ç Perl ¥¤¥á¡¼¥¸¤ò¥¤¥ó¥¹¥È¡¼¥ë¤·¤¿¤È¤­, ¤â¤·¤¯¤Ï
-¥×¥í¥»¥¹¤Î¸¢¸Â¥ê¥¹¥È¤ËÀßÄê¤µ¤ì¤Æ¤¤¤ë¥µ¥Ö¥·¥¹¥Æ¥à¤ÎÂ°À­¤ò»ı¤Ã¤¿¼±ÊÌ»Ò¤¬
-Â¸ºß¤·¤¿¤È¤­¤Ë, Perl µ¯Æ°»ş¤Ëµ©¤Ë¥¢¥¯¥»¥¹°ãÈ¿¤¬È¯À¸¤·¤Ş¤¹. 
-¤³¤ì¤é¤Î¾õ¶·¤Ï¥İ¥¤¥ó¥¿¤Î¥Ğ¥°¤ò´Ş¤ó¤À taint ¥³¡¼¥É¤òµ¯Æ°¤·¤Ş¤·¤¿. 
-¤³¤Î¸í¤Ã¤¿¥İ¥¤¥ó¥¿±é»»¤Ï½¤Àµ¤µ¤ì¤Æ¤¤¤Ş¤¹.
+ç‰¹æ¨©ãƒ¢ãƒ¼ãƒ‰ã§ Perl ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãŸã¨ã, ã‚‚ã—ãã¯
+ãƒ—ãƒ­ã‚»ã‚¹ã®æ¨©é™ãƒªã‚¹ãƒˆã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚·ã‚¹ãƒ†ãƒ ã®å±æ€§ã‚’æŒã£ãŸè­˜åˆ¥å­ãŒ
+å­˜åœ¨ã—ãŸã¨ãã«, Perl èµ·å‹•æ™‚ã«ç¨€ã«ã‚¢ã‚¯ã‚»ã‚¹é•åãŒç™ºç”Ÿã—ã¾ã™. 
+ã“ã‚Œã‚‰ã®çŠ¶æ³ã¯ãƒã‚¤ãƒ³ã‚¿ã®ãƒã‚°ã‚’å«ã‚“ã  taint ã‚³ãƒ¼ãƒ‰ã‚’èµ·å‹•ã—ã¾ã—ãŸ. 
+ã“ã®èª¤ã£ãŸãƒã‚¤ãƒ³ã‚¿æ¼”ç®—ã¯ä¿®æ­£ã•ã‚Œã¦ã„ã¾ã™.
 
 =item *
 
@@ -1216,24 +1216,24 @@ VMS-specific ability to access individual elements of a search list
 logical name via the $ENV{'foo;N'} syntax (where N is the search list
 index) is unimpaired.
 
-%ENV ¥Ï¥Ã¥·¥å¤Ç¤Î(¥­¡¼¤Ç¤Ï¤Ê¤¯)ÃÍ¤ËÂĞ¤¹¤ëÄ¹¤µ¤ÎÀ©¸Â¤Ï, 255 ¥Ğ¥¤¥È¤«¤é
-32640 ¥Ğ¥¤¥È¤Ë´Ë¤á¤é¤ì¤Ş¤·¤¿. (¤¿¤À¤· PERL_ENV_TABLES ÀßÄê¤¬
-%ENV ¤ÎÏÀÍıÌ¾¤ËÂĞ¤¹¤ë¥Ç¥Õ¥©¥ë¥È¤Î»ÈÍÑ¤ò¾å½ñ¤­¤·¤Æ¤¤¤ë»ş¤ò½ü¤­¤Ş¤¹.) 
-Perl ¤Î³°¤«¤é¤³¤ì¤é¤ÎÄ¹¤¤ÃÍ¤Ë¥¢¥¯¥»¥¹¤¹¤ëÉ¬Í×¤¬¤¢¤ë¤Î¤Ê¤é, 
-¤³¤Îµ¡Ç½¤¬¥µ¡¼¥Á¥ê¥¹¥È¤ò»È¤Ã¤Æ¼ÂÁõ¤µ¤ì¤Æ¤¤¤ë¤³¤È¤òÃÎ¤Ã¤Æ¤ª¤«¤Ê¤±¤ì¤Ğ
-¤Ê¤ê¤Ş¤»¤ó. ÃÍ¤Ï 255 ¥Ğ¥¤¥È¤º¤Ä (ºÇÂç128¸Ä) ¤Î·çÊÒ¤È¤·¤Æ³ÊÇ¼¤µ¤ì¤Ş¤¹. 
-Perl ¤«¤é %ENV ¤ò»È¤¦¤È¤­¤Ë¤Ï, ³ÆÍ×ÁÇ¤¬£±¤Ä¤ÎÃÍ¤Ë·ë¹ç¤µ¤ì¤Ş¤¹. 
-$ENV{'foo;N'} ¹½Ê¸ (N ¤Ï¥µ¡¼¥Á¥ê¥¹¥È¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹) ¤ò»È¤Ã¤¿
-¥µ¡¼¥Á¥ê¥¹¥È¤ÎÏÀÍıÌ¾¤Î¸Ä¡¹¤ÎÍ×ÁÇ¤Ë¥¢¥¯¥»¥¹¤¹¤ë¤¿¤á¤Î VMS Í³Íè¤ÎÀ©¸Â¤Ï
-¤æ¤ë¤á¤é¤ì¤Æ¤Ï¤¤¤Ş¤»¤ó.
+%ENV ãƒãƒƒã‚·ãƒ¥ã§ã®(ã‚­ãƒ¼ã§ã¯ãªã)å€¤ã«å¯¾ã™ã‚‹é•·ã•ã®åˆ¶é™ã¯, 255 ãƒã‚¤ãƒˆã‹ã‚‰
+32640 ãƒã‚¤ãƒˆã«ç·©ã‚ã‚‰ã‚Œã¾ã—ãŸ. (ãŸã ã— PERL_ENV_TABLES è¨­å®šãŒ
+%ENV ã®è«–ç†åã«å¯¾ã™ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ä½¿ç”¨ã‚’ä¸Šæ›¸ãã—ã¦ã„ã‚‹æ™‚ã‚’é™¤ãã¾ã™.) 
+Perl ã®å¤–ã‹ã‚‰ã“ã‚Œã‚‰ã®é•·ã„å€¤ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã®ãªã‚‰, 
+ã“ã®æ©Ÿèƒ½ãŒã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã‚’ä½¿ã£ã¦å®Ÿè£…ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’çŸ¥ã£ã¦ãŠã‹ãªã‘ã‚Œã°
+ãªã‚Šã¾ã›ã‚“. å€¤ã¯ 255 ãƒã‚¤ãƒˆãšã¤ (æœ€å¤§128å€‹) ã®æ¬ ç‰‡ã¨ã—ã¦æ ¼ç´ã•ã‚Œã¾ã™. 
+Perl ã‹ã‚‰ %ENV ã‚’ä½¿ã†ã¨ãã«ã¯, å„è¦ç´ ãŒï¼‘ã¤ã®å€¤ã«çµåˆã•ã‚Œã¾ã™. 
+$ENV{'foo;N'} æ§‹æ–‡ (N ã¯ã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹) ã‚’ä½¿ã£ãŸ
+ã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã®è«–ç†åã®å€‹ã€…ã®è¦ç´ ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã® VMS ç”±æ¥ã®åˆ¶é™ã¯
+ã‚†ã‚‹ã‚ã‚‰ã‚Œã¦ã¯ã„ã¾ã›ã‚“.
 
 =item *
 
 The piping implementation now uses local rather than global DCL
 symbols for inter-process communication.
 
-¥Ñ¥¤¥×¤Î¼ÂÁõ¤Ï¥×¥í¥»¥¹´ÖÄÌ¿®¤Ë¤ª¤¤¤Æ¥°¥í¡¼¥Ğ¥ë¤Ê DCL ¤Ç¤Ï¤Ê¤¯
-¥í¡¼¥«¥ë¤Ê¤â¤Î¤ò»È¤¦¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+ãƒ‘ã‚¤ãƒ—ã®å®Ÿè£…ã¯ãƒ—ãƒ­ã‚»ã‚¹é–“é€šä¿¡ã«ãŠã„ã¦ã‚°ãƒ­ãƒ¼ãƒãƒ«ãª DCL ã§ã¯ãªã
+ãƒ­ãƒ¼ã‚«ãƒ«ãªã‚‚ã®ã‚’ä½¿ã†ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 =item *
 
@@ -1242,10 +1242,10 @@ directory whose name collided with a logical name.  This problem has
 been corrected by adding directory syntax to relative path names, thus
 preventing logical name translation.
 
-ÏÀÍıÌ¾¤È¾×ÆÍ¤¹¤ëÌ¾Á°¤ò»ı¤ÄÁêÂĞ°ÌÃÖ¤Î¥Ç¥£¥ì¥¯¥È¥ê¤Ë¥Ê¥Ó¥²¡¼¥È¤¹¤ë¤È¤­¤Ë
-File::Find ¤Ïº®Íğ¤¹¤ë¤³¤È¤¬¤¢¤ê¤Ş¤·¤¿. ¤³¤ÎÌäÂê¤Ï¥Ç¥£¥ì¥¯¥È¥ê¹½Ê¸¤Ë
-ÁêÂĞ¥Ñ¥¹Ì¾¤òÄÉ²Ã¤¹¤ë¤³¤È¤Ç½¤Àµ¤µ¤ì¤Ş¤·¤¿. ¤³¤ì¤Ë¤è¤êÏÀÍıÌ¾ÊÑ´¹¤ò
-Í½ËÉ¤·¤Ş¤¹.
+è«–ç†åã¨è¡çªã™ã‚‹åå‰ã‚’æŒã¤ç›¸å¯¾ä½ç½®ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒŠãƒ“ã‚²ãƒ¼ãƒˆã™ã‚‹ã¨ãã«
+File::Find ã¯æ··ä¹±ã™ã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã—ãŸ. ã“ã®å•é¡Œã¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæ§‹æ–‡ã«
+ç›¸å¯¾ãƒ‘ã‚¹åã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã§ä¿®æ­£ã•ã‚Œã¾ã—ãŸ. ã“ã‚Œã«ã‚ˆã‚Šè«–ç†åå¤‰æ›ã‚’
+äºˆé˜²ã—ã¾ã™.
 
 =back
 
@@ -1257,14 +1257,14 @@ Win32
 
 A memory leak in the fork() emulation has been fixed.
 
-fork() ¥¨¥ß¥å¥ì¡¼¥·¥ç¥ó»ş¤Î¥á¥â¥ê¡¼¥ê¡¼¥¯¤¬½¤Àµ¤µ¤ì¤Ş¤·¤¿.
+fork() ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æ™‚ã®ãƒ¡ãƒ¢ãƒªãƒ¼ãƒªãƒ¼ã‚¯ãŒä¿®æ­£ã•ã‚Œã¾ã—ãŸ.
 
 =item *
 
 The return value of the ioctl() built-in function was accidentally
 broken in 5.8.0.  This has been corrected.
 
-5.8.0 ¤ÇÇËÂ»¤·¤Æ¤¤¤¿ ioctl() ÁÈ¤ß¹ş¤ß´Ø¿ô¤ÎÉüµ¢ÃÍ¤¬½¤Àµ¤µ¤ì¤Ş¤·¤¿.
+5.8.0 ã§ç ´æã—ã¦ã„ãŸ ioctl() çµ„ã¿è¾¼ã¿é–¢æ•°ã®å¾©å¸°å€¤ãŒä¿®æ­£ã•ã‚Œã¾ã—ãŸ.
 
 =item *
 
@@ -1274,230 +1274,230 @@ This often resulted in blocking operations terminating prematurely or
 returning incorrect results, when Perl was executing under environments
 that could generate Windows messages.  This has been corrected.
 
-perl ¤¬¥Ö¥í¥Ã¥­¥ó¥°½èÍıÃæ¤Ë¼Â¹Ô¤·¤Æ¤¤¤¿ÆâÉô¥á¥Ã¥»¡¼¥¸¥ë¡¼¥×¤¬
-Perl ¤Î³°¤Ø¤Î¥á¥Ã¥»¡¼¥¸¤È»ş¡¹¾×ÆÍ¤·¤Ş¤·¤¿. 
-¤³¤ì¤Ï¤·¤Ğ¤·¤Ğ Perl ¤¬ Windows ¥á¥Ã¥»¡¼¥¸¤òÀ¸À®¤¹¤ë´Ä¶­²¼¤Ç¼Â¹Ô¤·¤Æ¤¤¤ë¤È¤­¤Ë
-¥Ö¥í¥Ã¥­¥ó¥°Æ°ºî¤ËÁá¤¹¤®¤ë½ªÎ»¤äÀµ¤·¤¯¤Ê¤¤·ë²Ì¤òÊÖ¤¹¤³¤È¤Ë¤Ê¤ê¤Ş¤·¤¿. 
-¤³¤ì¤Ï½¤Àµ¤µ¤ì¤Æ¤¤¤Ş¤¹.
+perl ãŒãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°å‡¦ç†ä¸­ã«å®Ÿè¡Œã—ã¦ã„ãŸå†…éƒ¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—ãŒ
+Perl ã®å¤–ã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨æ™‚ã€…è¡çªã—ã¾ã—ãŸ. 
+ã“ã‚Œã¯ã—ã°ã—ã° Perl ãŒ Windows ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ç’°å¢ƒä¸‹ã§å®Ÿè¡Œã—ã¦ã„ã‚‹ã¨ãã«
+ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°å‹•ä½œã«æ—©ã™ãã‚‹çµ‚äº†ã‚„æ­£ã—ããªã„çµæœã‚’è¿”ã™ã“ã¨ã«ãªã‚Šã¾ã—ãŸ. 
+ã“ã‚Œã¯ä¿®æ­£ã•ã‚Œã¦ã„ã¾ã™.
 
 =item *
 
 Pipes and sockets are now automatically in binary mode.
 
-pipe ¤È socket ¤¬¼«Æ°Åª¤Ë¥Ğ¥¤¥Ê¥ê¥â¡¼¥É¤Ë¤Ê¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+pipe ã¨ socket ãŒè‡ªå‹•çš„ã«ãƒã‚¤ãƒŠãƒªãƒ¢ãƒ¼ãƒ‰ã«ãªã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 =item *
 
 The four-argument form of select() did not preserve $! (errno) properly
 when there were errors in the underlying call.  This is now fixed.
 
-£´°ú¿ô¤Î select() ¤¬¸Æ¤Ó½Ğ¤·Ãæ¤Ë¥¨¥é¡¼¤¬È¯À¸¤·¤¿¤È¤­¤Ë $! (errono) ¤ò
-Å¬ÀÚ¤Ë°İ»ı¤·¤Æ¤¤¤Ê¤«¤Ã¤¿¤â¤Î¤¬½¤Àµ¤µ¤ì¤Ş¤·¤¿.
+ï¼”å¼•æ•°ã® select() ãŒå‘¼ã³å‡ºã—ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã¨ãã« $! (errono) ã‚’
+é©åˆ‡ã«ç¶­æŒã—ã¦ã„ãªã‹ã£ãŸã‚‚ã®ãŒä¿®æ­£ã•ã‚Œã¾ã—ãŸ.
 
 =item *
 
 The "CR CR LF" problem of has been fixed, binmode(FH, ":crlf")
 is now effectively a no-op.
 
-4 °ú¿ô¤Î select() ¤¬¸Æ¤Ó½Ğ¤·Ãæ¤Ë¥¨¥é¡¼¤È¤Ê¤Ã¤¿¤È¤­¤Ë $! (errno) ¤ò
-Å¬ÀÚ¤ËÊİÂ¸¤·¤Æ¤¤¤Ê¤«¤Ã¤¿¤Î¤¬½¤Àµ¤µ¤ì¤Ş¤·¤¿.
+4 å¼•æ•°ã® select() ãŒå‘¼ã³å‡ºã—ä¸­ã«ã‚¨ãƒ©ãƒ¼ã¨ãªã£ãŸã¨ãã« $! (errno) ã‚’
+é©åˆ‡ã«ä¿å­˜ã—ã¦ã„ãªã‹ã£ãŸã®ãŒä¿®æ­£ã•ã‚Œã¾ã—ãŸ.
 
 =back
 
 =head1 New or Changed Diagnostics
 
-ÄÉ²Ã¤µ¤ì¤¿µÚ¤ÓÊÑ¹¹¤µ¤ì¤¿¿ÇÃÇ¥á¥Ã¥»¡¼¥¸
+è¿½åŠ ã•ã‚ŒãŸåŠã³å¤‰æ›´ã•ã‚ŒãŸè¨ºæ–­ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 
 All the warnings related to pack() and unpack() were made more
 informative and consistent.
 
-pack() µÚ¤Ó unpack() ¤Ë´ØÏ¢¤¹¤ëÁ´¤Æ¤Î·Ù¹ğ¤Ï¤è¤êÍ­±×¤Ê¤â¤Î¤Ë, Ì·½â¤Î¤Ê¤¤¤â¤Î¤Ë
-½¤Àµ¤µ¤ì¤Ş¤·¤¿.
+pack() åŠã³ unpack() ã«é–¢é€£ã™ã‚‹å…¨ã¦ã®è­¦å‘Šã¯ã‚ˆã‚Šæœ‰ç›Šãªã‚‚ã®ã«, çŸ›ç›¾ã®ãªã„ã‚‚ã®ã«
+ä¿®æ­£ã•ã‚Œã¾ã—ãŸ.
 
 =head2 Changed "A thread exited while %d threads were running"
 
-ÊÑ¹¹ "%d ¸Ä¤Î¥¹¥ì¥Ã¥É¤¬¼Â¹ÔÃæ¤Ç¤¢¤ë¤Î¤Ë¤¢¤ë¥¹¥ì¥Ã¥É¤Ç exit ¤¬¼Â¹Ô¤µ¤ì¤Ş¤·¤¿"
+å¤‰æ›´ "%d å€‹ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒå®Ÿè¡Œä¸­ã§ã‚ã‚‹ã®ã«ã‚ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã§ exit ãŒå®Ÿè¡Œã•ã‚Œã¾ã—ãŸ"
 
 The old version
 
-°ÊÁ°¤Î¥á¥Ã¥»¡¼¥¸
+ä»¥å‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 
     A thread exited while %d other threads were still running
 
-    %d ¸Ä¤ÎÂ¾¤Î¥¹¥ì¥Ã¥É¤¬¤Ş¤À¼Â¹ÔÃæ¤Ç¤¢¤ë¤Î¤Ë¤¢¤ë¥¹¥ì¥Ã¥É¤Ç exit ¤¬
-    ¼Â¹Ô¤µ¤ì¤Ş¤·¤¿
+    %d å€‹ã®ä»–ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒã¾ã å®Ÿè¡Œä¸­ã§ã‚ã‚‹ã®ã«ã‚ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã§ exit ãŒ
+    å®Ÿè¡Œã•ã‚Œã¾ã—ãŸ
 
 was misleading because the "other" included also the thread giving
 the warning.
 
-¤Ï "Â¾¤Î" ¤È¤¢¤ë¤Î¤Ë·Ù¹ğ¤È¤Ê¤Ã¤¿¥¹¥ì¥Ã¥É¼«¿È¤â´Ş¤Ş¤ì¤Æ¤¤¤¿¤¿¤á¤Ë
-¸í²ò¤òÀ¸¤¸¤Æ¤¤¤Ş¤·¤¿.
+ã¯ "ä»–ã®" ã¨ã‚ã‚‹ã®ã«è­¦å‘Šã¨ãªã£ãŸã‚¹ãƒ¬ãƒƒãƒ‰è‡ªèº«ã‚‚å«ã¾ã‚Œã¦ã„ãŸãŸã‚ã«
+èª¤è§£ã‚’ç”Ÿã˜ã¦ã„ã¾ã—ãŸ.
 
 =head2 Removed "Attempt to clear a restricted hash"
 
-ºï½ü "¸ÇÄê¤µ¤ì¤Æ¤¤¤ë¥Ï¥Ã¥·¥å¤ò¥¯¥ê¥¢¤·¤è¤¦¤È¤·¤Æ¤¤¤Ş¤¹"
+å‰Šé™¤ "å›ºå®šã•ã‚Œã¦ã„ã‚‹ãƒãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã—ã‚ˆã†ã¨ã—ã¦ã„ã¾ã™"
 
 It is not illegal to clear a restricted hash, so the warning
 was removed.
 
-¸ÇÄê¤µ¤ì¤Æ¤¤¤ë¥Ï¥Ã¥·¥å¤Î¥¯¥ê¥¢¤ÏÉÔÀµ¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó. 
-¤½¤Î¤¿¤á¤³¤Î·Ù¹ğ¤Ïºï½ü¤µ¤ì¤Ş¤·¤¿.
+å›ºå®šã•ã‚Œã¦ã„ã‚‹ãƒãƒƒã‚·ãƒ¥ã®ã‚¯ãƒªã‚¢ã¯ä¸æ­£ã§ã¯ã‚ã‚Šã¾ã›ã‚“. 
+ãã®ãŸã‚ã“ã®è­¦å‘Šã¯å‰Šé™¤ã•ã‚Œã¾ã—ãŸ.
 
 =head2 New "Illegal declaration of anonymous subroutine"
 
-ÄÉ²Ã "ÌµÌ¾´Ø¿ô¤¬ÉÔÀµ¤ËÀë¸À¤µ¤ì¤Ş¤·¤¿"
+è¿½åŠ  "ç„¡åé–¢æ•°ãŒä¸æ­£ã«å®£è¨€ã•ã‚Œã¾ã—ãŸ"
 
 You must specify the block of code for C<sub>.
 
-C<sub> ¤Ë¤Ï¥³¡¼¥É¥Ö¥í¥Ã¥¯¤ò»ØÄê¤·¤Ê¤±¤ì¤Ğ¤Ê¤ê¤Ş¤»¤ó.
+C<sub> ã«ã¯ã‚³ãƒ¼ãƒ‰ãƒ–ãƒ­ãƒƒã‚¯ã‚’æŒ‡å®šã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“.
 
 =head2 Changed "Invalid range "%s" in transliteration operator"
 
-ÊÑ¹¹ "Ê¸»úÃÖ´¹(tr)Áàºî¤Ë¤ª¤¤¤ÆÌµ¸ú¤ÊÈÏ°Ï "%s" ¤¬»ØÄê¤µ¤ì¤Ş¤·¤¿"
+å¤‰æ›´ "æ–‡å­—ç½®æ›(tr)æ“ä½œã«ãŠã„ã¦ç„¡åŠ¹ãªç¯„å›² "%s" ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸ"
 
 The old version
 
-°ÊÁ°¤Î¥á¥Ã¥»¡¼¥¸
+ä»¥å‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 
     Invalid [] range "%s" in transliteration operator
 
-    Ê¸»úÃÖ´¹(tr)Áàºî¤Ë¤ª¤¤¤ÆÌµ¸ú¤Ê [] ÈÏ°Ï "%s" ¤¬»ØÄê¤µ¤ì¤Ş¤·¤¿
+    æ–‡å­—ç½®æ›(tr)æ“ä½œã«ãŠã„ã¦ç„¡åŠ¹ãª [] ç¯„å›² "%s" ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸ
 
 was simply wrong because there are no "[] ranges" in tr///.
 
-tr/// ¤Ë¤Ï "[] ÈÏ°Ï" ¤¬¤Ê¤¤¤È¤¤¤¦ÅÀ¤ÇÃ±½ã¤Ë´Ö°ã¤Ã¤Æ¤¤¤Ş¤·¤¿.
+tr/// ã«ã¯ "[] ç¯„å›²" ãŒãªã„ã¨ã„ã†ç‚¹ã§å˜ç´”ã«é–“é•ã£ã¦ã„ã¾ã—ãŸ.
 
 =head2 New "Missing control char name in \c"
 
-ÄÉ²Ã "\c ¤ÎÀ©¸æÊ¸»úÌ¾¤¬¤¢¤ê¤Ş¤»¤ó"
+è¿½åŠ  "\c ã®åˆ¶å¾¡æ–‡å­—åãŒã‚ã‚Šã¾ã›ã‚“"
 
 Self-explanatory.
 
-¤½¤ì¼«¿È¤¬ÀâÌÀ¤·¤Æ¤¤¤Ş¤¹.
+ãã‚Œè‡ªèº«ãŒèª¬æ˜ã—ã¦ã„ã¾ã™.
 
 =head2 New "Newline in left-justified string for %s"
 
-ÄÉ²Ã "º¸µÍ¤ÎÊ¸»úÎó %s ¤Ë²ş¹Ô¤¬¤¢¤ê¤Ş¤¹"
+è¿½åŠ  "å·¦è©°ã®æ–‡å­—åˆ— %s ã«æ”¹è¡ŒãŒã‚ã‚Šã¾ã™"
 
 The padding spaces would appear after the newline, which is
 probably not what you had in mind.
 
-ÄÉ²Ã¤Î¶õÇò¤¬²ş¹Ô¤Î¸å¤Ë¤¢¤é¤ï¤ì¤Ş¤·¤¿. 
-¤³¤ì¤Ï¤ª¤½¤é¤¯Í½´ü¤·¤¿¤â¤Î¤Ç¤Ï¤Ê¤¤¤Ç¤·¤ç¤¦.
+è¿½åŠ ã®ç©ºç™½ãŒæ”¹è¡Œã®å¾Œã«ã‚ã‚‰ã‚ã‚Œã¾ã—ãŸ. 
+ã“ã‚Œã¯ãŠãã‚‰ãäºˆæœŸã—ãŸã‚‚ã®ã§ã¯ãªã„ã§ã—ã‚‡ã†.
 
 =head2 New "Possible precedence problem on bitwise %c operator"
 
-ÄÉ²Ã "¥Ó¥Ã¥È±é»» %c ¤ÎÍ¥Àè½ç°Ì¤¬°Õ¿Ş¤·¤Ê¤¤²ÄÇ½À­¤¬¤¢¤ê¤Ş¤¹"
+è¿½åŠ  "ãƒ“ãƒƒãƒˆæ¼”ç®— %c ã®å„ªå…ˆé †ä½ãŒæ„å›³ã—ãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™"
 
 If you think this
 
-¼¡¤Î¾ò·ï
+æ¬¡ã®æ¡ä»¶
 
     $x & $y == 0
 
 tests whether the bitwise AND of $x and $y is zero,
 you will like this warning.
 
-¤¬ $x ¤È $y  ¤Î¥Ó¥Ã¥ÈÏÀÍıÀÑ¤¬ 0 ¤Ç¤¢¤ë¤È¥Æ¥¹¥È¤·¤¿¤¤¤Î¤Ê¤é
-¤³¤Î·Ù¹ğ¤Ï¹¥¤Ş¤·¤¤¤â¤Î¤Ç¤·¤ç¤¦.
+ãŒ $x ã¨ $y  ã®ãƒ“ãƒƒãƒˆè«–ç†ç©ãŒ 0 ã§ã‚ã‚‹ã¨ãƒ†ã‚¹ãƒˆã—ãŸã„ã®ãªã‚‰
+ã“ã®è­¦å‘Šã¯å¥½ã¾ã—ã„ã‚‚ã®ã§ã—ã‚‡ã†.
 
 =head2 New "Pseudo-hashes are deprecated"
 
-ÄÉ²Ã "²¾ÁÛ¥Ï¥Ã¥·¥å¤ÏÇÑ»ß¤µ¤ì¤Ş¤¹"
+è¿½åŠ  "ä»®æƒ³ãƒãƒƒã‚·ãƒ¥ã¯å»ƒæ­¢ã•ã‚Œã¾ã™"
 
 This warning should have been already in 5.8.0, since they are.
 
-¤³¤Î·Ù¹ğ¤Ï 5.8.0 ¤«¤é¤¢¤ê¤Ş¤¹.
+ã“ã®è­¦å‘Šã¯ 5.8.0 ã‹ã‚‰ã‚ã‚Šã¾ã™.
 
 =head2 New "read() on %s filehandle %s"
 
-ÄÉ²Ã "%s ¾õÂÖ¤Î¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë %s ¤«¤é read() ¤ò¹Ô¤¤¤Ş¤·¤¿"
+è¿½åŠ  "%s çŠ¶æ…‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ« %s ã‹ã‚‰ read() ã‚’è¡Œã„ã¾ã—ãŸ"
 
 You cannot read() (or sysread()) from a closed or unopened filehandle.
 
-ÊÄ¤¸¤é¤ì¤¿¤â¤·¤¯¤Ï³«¤¤¤Æ¤¤¤Ê¤¤¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤«¤é read() (¤â¤·¤¯¤Ï sysread())
-¤Ï¹Ô¤¨¤Ş¤»¤ó.
+é–‰ã˜ã‚‰ã‚ŒãŸã‚‚ã—ãã¯é–‹ã„ã¦ã„ãªã„ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‹ã‚‰ read() (ã‚‚ã—ãã¯ sysread())
+ã¯è¡Œãˆã¾ã›ã‚“.
 
 =head2 New "5.005 threads are deprecated"
 
-ÄÉ²Ã "5.005 ¥¹¥ì¥Ã¥É¤ÏÇÑ»ß¤µ¤ì¤Ş¤¹"
+è¿½åŠ  "5.005 ã‚¹ãƒ¬ãƒƒãƒ‰ã¯å»ƒæ­¢ã•ã‚Œã¾ã™"
 
 This warning should have been already in 5.8.0, since they are.
 
-¤³¤Î·Ù¹ğ¤Ï 5.8.0 ¤«¤é¤¢¤ê¤Ş¤¹.
+ã“ã®è­¦å‘Šã¯ 5.8.0 ã‹ã‚‰ã‚ã‚Šã¾ã™.
 
 =head2 New "Tied variable freed while still in use"
 
-ÄÉ²Ã "»ÈÍÑÃæ¤Î¥¿¥¤ÊÑ¿ô¤¬²òÊü(free)¤µ¤ì¤Ş¤·¤¿"
+è¿½åŠ  "ä½¿ç”¨ä¸­ã®ã‚¿ã‚¤å¤‰æ•°ãŒè§£æ”¾(free)ã•ã‚Œã¾ã—ãŸ"
 
 Something pulled the plug on a live tied variable, Perl plays
 safe by bailing out.
 
-À¸Â¸Ãæ¤ËÀò¤òÈ´¤«¤ì¤¿²¿¤«¤¬ÊÑ¿ô¤ò²òÊü¤·¤Ş¤¹, Perl ¤Ï°ÂÁ´¤Î¤¿¤á¤ËÊİ¼á¤·¤Ş¤¹.
+ç”Ÿå­˜ä¸­ã«æ “ã‚’æŠœã‹ã‚ŒãŸä½•ã‹ãŒå¤‰æ•°ã‚’è§£æ”¾ã—ã¾ã™, Perl ã¯å®‰å…¨ã®ãŸã‚ã«ä¿é‡ˆã—ã¾ã™.
 
 =head2 New "To%s: illegal mapping '%s'"
 
-ÄÉ²Ã "To%s: ÉÔÀµ¤Ê¥Ş¥Ã¥Ô¥ó¥° '%s'"
+è¿½åŠ  "To%s: ä¸æ­£ãªãƒãƒƒãƒ”ãƒ³ã‚° '%s'"
 
 An illegal user-defined Unicode casemapping was specified.
 
-ÉÔÀµ¤Ê¥æ¡¼¥¶ÄêµÁ¤Î Unicode case ¥Ş¥Ã¥Ô¥ó¥°¤¬»ØÄê¤µ¤ì¤Ş¤·¤¿.
+ä¸æ­£ãªãƒ¦ãƒ¼ã‚¶å®šç¾©ã® Unicode case ãƒãƒƒãƒ”ãƒ³ã‚°ãŒæŒ‡å®šã•ã‚Œã¾ã—ãŸ.
 
 =head2 New "Use of freed value in iteration"
 
-ÄÉ²Ã "¥¤¥Æ¥ì¡¼¥·¥ç¥óÃæ¤Ë²òÊü¤µ¤ì¤¿ÃÍ¤ò»ÈÍÑ¤·¤Ş¤·¤¿"
+è¿½åŠ  "ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ä¸­ã«è§£æ”¾ã•ã‚ŒãŸå€¤ã‚’ä½¿ç”¨ã—ã¾ã—ãŸ"
 
 Something modified the values being iterated over.  This is not good.
 
-²¿¤«¤¬¥¤¥Æ¥ì¡¼¥È¤·¤Æ¤¤¤ëÃÍ¤òÊÑ¹¹¤·¤Ş¤·¤¿. 
-¤³¤ì¤Ï¤è¤¤¤³¤È¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó.
+ä½•ã‹ãŒã‚¤ãƒ†ãƒ¬ãƒ¼ãƒˆã—ã¦ã„ã‚‹å€¤ã‚’å¤‰æ›´ã—ã¾ã—ãŸ. 
+ã“ã‚Œã¯ã‚ˆã„ã“ã¨ã§ã¯ã‚ã‚Šã¾ã›ã‚“.
 
 =head1 Changed Internals
 
-ÆâÉôÆ°ºî¤ÎÊÑ¹¹ÅÀ
+å†…éƒ¨å‹•ä½œã®å¤‰æ›´ç‚¹
 
 These news matter to you only if you either write XS code or like to
 know about or hack Perl internals (using Devel::Peek or any of the
 C<B::> modules counts), or like to run Perl with the C<-D> option.
 
-¤³¤ì¤é¤Î¥Ë¥å¡¼¥¹¤Ï XS ¥³¡¼¥É¤ò½ñ¤¤¤Æ¤¤¤ë¤« Perl ÆâÉô¤òÃÎ¤ê¤¿¤«¤¤¤â¤·¤¯¤Ï
-¥Ï¥Ã¥¯¤·¤Æ¤¤¤ë(Devel::Peek ¤ä C<B::> ¤ò»È¤Ã¤Æ¤¤¤ë), 
-¤â¤·¤¯¤Ï C<-D> ¥ª¥×¥·¥ç¥ó¤Ç Perl ¤ò¼Â¹Ô¤¹¤ë¿Í¤Ë¤Î¤ß½ÅÍ×¤Ç¤¹.
+ã“ã‚Œã‚‰ã®ãƒ‹ãƒ¥ãƒ¼ã‚¹ã¯ XS ã‚³ãƒ¼ãƒ‰ã‚’æ›¸ã„ã¦ã„ã‚‹ã‹ Perl å†…éƒ¨ã‚’çŸ¥ã‚ŠãŸã‹ã„ã‚‚ã—ãã¯
+ãƒãƒƒã‚¯ã—ã¦ã„ã‚‹(Devel::Peek ã‚„ C<B::> ã‚’ä½¿ã£ã¦ã„ã‚‹), 
+ã‚‚ã—ãã¯ C<-D> ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ Perl ã‚’å®Ÿè¡Œã™ã‚‹äººã«ã®ã¿é‡è¦ã§ã™.
 
 The embedding examples of L<perlembed> have been reviewed to be
 uptodate and consistent: for example, the correct use of
 PERL_SYS_INIT3() and PERL_SYS_TERM().
 
-L<perlembed> ¤Ë¤¢¤ëËä¤á¹ş¤ß¤ÎÎã¤ÏºÇ¿·¤ËÂĞ±ş¤¹¤ë¤¿¤á, ¤½¤·¤ÆÌ·½â¤ò¤Ê¤¯¤¹¤¿¤á¤Ë
-½ñ¤¯²ş¤á¤é¤ì¤Ş¤·¤¿: Îã¤¨¤Ğ PERL_SYS_INIT3() ¤ä PERL_SYS_TERM() ¤ÎÀµ¤·¤¤
-»ÈÍÑÊıË¡Åù¤Ç¤¹.
+L<perlembed> ã«ã‚ã‚‹åŸ‹ã‚è¾¼ã¿ã®ä¾‹ã¯æœ€æ–°ã«å¯¾å¿œã™ã‚‹ãŸã‚, ãã—ã¦çŸ›ç›¾ã‚’ãªãã™ãŸã‚ã«
+æ›¸ãæ”¹ã‚ã‚‰ã‚Œã¾ã—ãŸ: ä¾‹ãˆã° PERL_SYS_INIT3() ã‚„ PERL_SYS_TERM() ã®æ­£ã—ã„
+ä½¿ç”¨æ–¹æ³•ç­‰ã§ã™.
 
 Extensive reworking of the pad code (the code responsible
 for lexical variables) has been conducted by Dave Mitchell.
 
-Dave Mitchell ¤Ë¤è¤Ã¤Æ pad ¥³¡¼¥É(¥ì¥­¥·¥«¥ëÊÑ¿ô¤ËÂĞ¤·¤Æ
-ÀÕÇ¤¤òÉé¤Ã¤Æ¤¤¤ë¥³¡¼¥É)¤Î¹­ÈÏ°Ï¤ÎºÆ³èÆ°¤¬¤Ê¤µ¤ì¤Ş¤·¤¿.
+Dave Mitchell ã«ã‚ˆã£ã¦ pad ã‚³ãƒ¼ãƒ‰(ãƒ¬ã‚­ã‚·ã‚«ãƒ«å¤‰æ•°ã«å¯¾ã—ã¦
+è²¬ä»»ã‚’è² ã£ã¦ã„ã‚‹ã‚³ãƒ¼ãƒ‰)ã®åºƒç¯„å›²ã®å†æ´»å‹•ãŒãªã•ã‚Œã¾ã—ãŸ.
 
 Extensive work on the v-strings by John Peacock.
 Extensive work on the v-strings by John Peacock.
 
-John Peacock ¤Ë¤è¤ë v-string ¤Î¹­ÈÏ°Ï¤ÎÆ°ºî.
+John Peacock ã«ã‚ˆã‚‹ v-string ã®åºƒç¯„å›²ã®å‹•ä½œ.
 
 UTF-8 length and position cache: to speed up the handling of Unicode
 (UTF-8) scalars, a cache was introduced.  Potential problems exist if
 an extension bypasses the official APIs and directly modifies the PV
 of an SV: the UTF-8 cache does not get cleared as it should.
 
-UTF-8 ¤ÎÄ¹¤µ¤È°ÌÃÖ¤Î¥­¥ã¥Ã¥·¥å: Unicode (UTF-8) ¥¹¥«¥é¡¼¤ÎÂ®ÅÙ¸ş¾å¤Î¤¿¤á¤Ë
-¥­¥ã¥Ã¥·¥å¤¬¼ÂÁõ¤µ¤ì¤Ş¤·¤¿. ¸ø¼°¤Î API ¤ò·ĞÍ³¤·¤Ê¤¤¤ÇÄ¾ÀÜ SV ¤Î PV ¤ò
-½ñ¤­´¹¤¨¤ë¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó¤Ç¤ÏÀøºßÅª¤ËÌäÂê¤È¤Ê¤ë¤Ç¤·¤ç¤¦: 
-¤³¤Î¤È¤­¥¯¥ê¥¢¤µ¤ì¤ë¤Ù¤­ UTF-8 ¥­¥ã¥Ã¥·¥å¤¬¥¯¥ê¥¢¤µ¤ì¤Ê¤¤¤¿¤á¤Ç¤¹.
+UTF-8 ã®é•·ã•ã¨ä½ç½®ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥: Unicode (UTF-8) ã‚¹ã‚«ãƒ©ãƒ¼ã®é€Ÿåº¦å‘ä¸Šã®ãŸã‚ã«
+ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒå®Ÿè£…ã•ã‚Œã¾ã—ãŸ. å…¬å¼ã® API ã‚’çµŒç”±ã—ãªã„ã§ç›´æ¥ SV ã® PV ã‚’
+æ›¸ãæ›ãˆã‚‹ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ã§ã¯æ½œåœ¨çš„ã«å•é¡Œã¨ãªã‚‹ã§ã—ã‚‡ã†: 
+ã“ã®ã¨ãã‚¯ãƒªã‚¢ã•ã‚Œã‚‹ã¹ã UTF-8 ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒã‚¯ãƒªã‚¢ã•ã‚Œãªã„ãŸã‚ã§ã™.
 
 APIs obsoleted in Perl 5.8.0, like sv_2pv, sv_catpvn, sv_catsv,
 sv_setsv, are again available.
 
-Perl 5.8.0 ¤ÇÇÑ»ß¤µ¤ì¤¿ sv_2pv, sv_catpvn, sv_catsv, sv_setsv ¤¬
-ºÆ¤Ó»È¤¨¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿.
+Perl 5.8.0 ã§å»ƒæ­¢ã•ã‚ŒãŸ sv_2pv, sv_catpvn, sv_catsv, sv_setsv ãŒ
+å†ã³ä½¿ãˆã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ.
 
 Certain Perl core C APIs like cxinc and regatom are no longer
 available at all to code outside the Perl core of the Perl core
@@ -1506,11 +1506,11 @@ available with the shorter names, and if you application depends on
 them, you should (be ashamed and) contact perl5-porters to discuss
 what are the proper APIs.
 
-cxinc ¤ä regatom ¤È¤¤¤Ã¤¿ÆÃÄê¤Î Perl ¥³¥¢¤Î C API ¤¬Í­¸ú¤Ç¤Ê¤¯¤Ê¤ê¤Ş¤·¤¿. 
-¤³¤ì¤Ï¸Î°Õ¤Ë¹Ô¤ï¤ì¤Ş¤·¤¿. º£¸åÃ»¤¤Ì¾Á°¤ÇÍ­¸ú¤Ë¤Ê¤ë¤Ù¤­¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó. 
-¤Ş¤¿¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ç¤³¤ì¤é¤Ë°ÍÂ¸¤·¤Æ¤¤¤ë¤Î¤Ê¤é(¤½¤Î¤³¤È¤òÃÑ¤¸¤ë¤Ù¤­¤Ç¤¢¤ê, 
-¤½¤·¤Æ) perl5-porters ¤Ë¤ª¤¤¤Æ¤Ç¤Ê¤¼¤½¤ì¤¬Å¬ÀÚ¤Ç¤¢¤ë¤Î¤«ÀâÌÀ¤·¤Æ
-µÄÏÀ¤·¤Æ¤¯¤À¤µ¤¤.
+cxinc ã‚„ regatom ã¨ã„ã£ãŸç‰¹å®šã® Perl ã‚³ã‚¢ã® C API ãŒæœ‰åŠ¹ã§ãªããªã‚Šã¾ã—ãŸ. 
+ã“ã‚Œã¯æ•…æ„ã«è¡Œã‚ã‚Œã¾ã—ãŸ. ä»Šå¾ŒçŸ­ã„åå‰ã§æœ‰åŠ¹ã«ãªã‚‹ã¹ãã§ã¯ã‚ã‚Šã¾ã›ã‚“. 
+ã¾ãŸã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§ã“ã‚Œã‚‰ã«ä¾å­˜ã—ã¦ã„ã‚‹ã®ãªã‚‰(ãã®ã“ã¨ã‚’æ¥ã˜ã‚‹ã¹ãã§ã‚ã‚Š, 
+ãã—ã¦) perl5-porters ã«ãŠã„ã¦ã§ãªãœãã‚ŒãŒé©åˆ‡ã§ã‚ã‚‹ã®ã‹èª¬æ˜ã—ã¦
+è­°è«–ã—ã¦ãã ã•ã„.
 
 Certain Perl core C APIs like C<Perl_list> are no longer available
 without their C<Perl_> prefix.  If your XS module stops working
@@ -1522,18 +1522,18 @@ from the core was an accident.  For cleaner embedding you can also
 force this for all APIs by defining at compile time the cpp define
 PERL_NO_SHORT_NAMES.
 
-C<Perl_list> ¤È¤¤¤Ã¤¿¤¤¤¯¤Ä¤«¤Î API ¤¬ Perl_ ¥×¥ì¥Õ¥£¥Ã¥¯¥¹¤Ê¤·¤Ç¤Ï
-Í­¸ú¤Ç¤Ê¤¯¤Ê¤ê¤Ş¤·¤¿. ¤â¤·¤¤¤¯¤Ä¤«¤Î´Ø¿ô¤¬¸«¤Ä¤«¤é¤Ê¤¯¤Æ XS ¥â¥¸¥å¡¼¥ë¤¬
-¤È¤Ş¤Ã¤¿¤é, ¤¤¤¯¤Ä¤«¤Î¥±¡¼¥¹¤Ç¤Ï´Ø¿ô¤Ë C<Perl_> ¥×¥ì¥Õ¥£¥Ã¥¯¥¹¤ò¤Ä¤±¤Æ
-´Ø¿ô¸Æ¤Ó½Ğ¤·¤ÎºÇ½é¤Î°ú¿ô¤Ë¥¹¥ì¥Ã¥É¥³¥ó¥Æ¥­¥¹¥È C<aTHX_> ¤¬²Ã¤ï¤ë¤³¤È¤Ç
-´ÊÃ±¤Ë¤Ê¤ª¤ë¤Ç¤·¤ç¤¦. ¤³¤ì¤Ï¾ï¤Ë¤½¤¦¤µ¤ì¤ë¤Ù¤­¤Ç¤·¤¿: 
-Perl_ ¤ÎÌµ¤¤·Á¼°¤¬¥³¥¢¤«¤é¶öÁ³Ï³¤ì¤¿¤Î¤Ç¤·¤ç¤¦. 
-¤è¤ê¤­¤ì¤¤¤ËËä¤á¹ş¤à¤¿¤á¤Ë¤â, ¥³¥ó¥Ñ¥¤¥ë»ş¤Ë cpp ¤Ç PERL_NO_SHORT_NAMES ¤ò
-ÄêµÁ¤·¤ÆÁ´¤Æ¤Î API ¤Ë¤³¤ì¤ò¶¯À©¤¹¤ë¤Ù¤­¤Ç¤·¤ç¤¦.
+C<Perl_list> ã¨ã„ã£ãŸã„ãã¤ã‹ã® API ãŒ Perl_ ãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ãªã—ã§ã¯
+æœ‰åŠ¹ã§ãªããªã‚Šã¾ã—ãŸ. ã‚‚ã—ã„ãã¤ã‹ã®é–¢æ•°ãŒè¦‹ã¤ã‹ã‚‰ãªãã¦ XS ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒ
+ã¨ã¾ã£ãŸã‚‰, ã„ãã¤ã‹ã®ã‚±ãƒ¼ã‚¹ã§ã¯é–¢æ•°ã« C<Perl_> ãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã‚’ã¤ã‘ã¦
+é–¢æ•°å‘¼ã³å‡ºã—ã®æœ€åˆã®å¼•æ•°ã«ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ C<aTHX_> ãŒåŠ ã‚ã‚‹ã“ã¨ã§
+ç°¡å˜ã«ãªãŠã‚‹ã§ã—ã‚‡ã†. ã“ã‚Œã¯å¸¸ã«ãã†ã•ã‚Œã‚‹ã¹ãã§ã—ãŸ: 
+Perl_ ã®ç„¡ã„å½¢å¼ãŒã‚³ã‚¢ã‹ã‚‰å¶ç„¶æ¼ã‚ŒãŸã®ã§ã—ã‚‡ã†. 
+ã‚ˆã‚Šãã‚Œã„ã«åŸ‹ã‚è¾¼ã‚€ãŸã‚ã«ã‚‚, ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã« cpp ã§ PERL_NO_SHORT_NAMES ã‚’
+å®šç¾©ã—ã¦å…¨ã¦ã® API ã«ã“ã‚Œã‚’å¼·åˆ¶ã™ã‚‹ã¹ãã§ã—ã‚‡ã†.
 
 Perl_save_bool() has been added.
 
-Perl_save_bool() ¤¬ÄÉ²Ã¤µ¤ì¤Ş¤·¤¿.
+Perl_save_bool() ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸ.
 
 Regexp objects (those created with C<qr>) now have S-magic rather than
 R-magic.  This fixed regexps of the form /...(??{...;$x})/ to no
@@ -1542,64 +1542,64 @@ the caching optimization and making (??{...}) constructs obscenely
 slow (and consequently useless).  See also L<perlguts/"Magic Variables">.
 Regexp::Copy was affected by this change.
 
-(C<qr> ¤ÇÀ¸À®¤µ¤ì¤ë) Àµµ¬É½¸½¥ª¥Ö¥¸¥§¥¯¥È¤Ï R-magic ¤Ç¤Ï¤Ê¤¯ S-magic ¤ò
-»ı¤Ä¤è¤¦¤Ë¤Ê¤ê¤Ş¤·¤¿. ¤³¤ì¤Ï /...(??{...;$x})/ ·Á¼°¤Ë¤ª¤¤¤Æ $x ¤Ë
-»Ü¤µ¤ì¤¿½¤Àµ¤òÌµ»ë¤·¤Æ¤·¤Ş¤ï¤Ê¤¤¤è¤¦¤Ë½¤Àµ¤·¤Ş¤¹. S-magic ¤ÏºÇÅ¬²½¤ä
-¥Ş¡¼¥­¥ó¥° (??{...})¤«¹½ÃÛ¤·¤¿±ø¤ì¤Î¤¢¤ëÄãÂ®ÅÙ¤Ê(½¾¤Ã¤Æ»È¤ï¤ì¤Ê¤¤)
-¥­¥ã¥Ã¥·¥å¤ò²ò½ü¤·¤Ş¤¹. L<perlguts/"Magic Variables"> ¤â»²¾È¤·¤Æ¤¯¤À¤µ¤¤. 
-Regexp::Copy ¤¬¤³¤Î±Æ¶Á¤ò¼õ¤±¤Ş¤¹.
+(C<qr> ã§ç”Ÿæˆã•ã‚Œã‚‹) æ­£è¦è¡¨ç¾ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ R-magic ã§ã¯ãªã S-magic ã‚’
+æŒã¤ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸ. ã“ã‚Œã¯ /...(??{...;$x})/ å½¢å¼ã«ãŠã„ã¦ $x ã«
+æ–½ã•ã‚ŒãŸä¿®æ­£ã‚’ç„¡è¦–ã—ã¦ã—ã¾ã‚ãªã„ã‚ˆã†ã«ä¿®æ­£ã—ã¾ã™. S-magic ã¯æœ€é©åŒ–ã‚„
+ãƒãƒ¼ã‚­ãƒ³ã‚° (??{...})ã‹æ§‹ç¯‰ã—ãŸæ±šã‚Œã®ã‚ã‚‹ä½é€Ÿåº¦ãª(å¾“ã£ã¦ä½¿ã‚ã‚Œãªã„)
+ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’è§£é™¤ã—ã¾ã™. L<perlguts/"Magic Variables"> ã‚‚å‚ç…§ã—ã¦ãã ã•ã„. 
+Regexp::Copy ãŒã“ã®å½±éŸ¿ã‚’å—ã‘ã¾ã™.
 
 The Perl internal debugging macros DEBUG() and DEB() have been renamed
 to PERL_DEBUG() and PERL_DEB() to avoid namespace conflicts.
 
-Perl ¤ÎÆâÉô¤Ç¥Ğ¥Ã¥¯ÍÑ¥Ş¥¯¥í DEBUG() µÚ¤Ó DEB() ¤¬Ì¾Á°¤Î¾×ÆÍ¤ò
-Èò¤±¤ë¤¿¤á¤Ë PERL_DEBUG() µÚ¤Ó PERL_DEB() ¤ËÊÑ¹¹¤µ¤ì¤Ş¤·¤¿.
+Perl ã®å†…éƒ¨ã§ãƒãƒƒã‚¯ç”¨ãƒã‚¯ãƒ­ DEBUG() åŠã³ DEB() ãŒåå‰ã®è¡çªã‚’
+é¿ã‘ã‚‹ãŸã‚ã« PERL_DEBUG() åŠã³ PERL_DEB() ã«å¤‰æ›´ã•ã‚Œã¾ã—ãŸ.
 
 C<-DL> removed (the leaktest had been broken and unsupported for years,
 use alternative debugging mallocs or tools like valgrind and Purify).
 
-C<-DL> ¤¬ºï½ü¤µ¤ì¤Ş¤·¤¿. (¥ê¡¼¥¯¥Æ¥¹¥È¤ÏÇËÂ»¤·¤Æ¤¤¤ÆÄ¹¤¤¤³¤È
-¥µ¥İ¡¼¥È¤µ¤ì¤Æ¤¤¤Ş¤»¤ó. Âå¤ï¤ê¤Ë¥Ç¥Ğ¥Ã¥° malloc ¤ò»È¤¦¤« valgrind ¤ä Purify 
-¤È¤¤¤Ã¤¿¥Ä¡¼¥ë¤ò»È¤Ã¤Æ¤¯¤À¤µ¤¤.)
+C<-DL> ãŒå‰Šé™¤ã•ã‚Œã¾ã—ãŸ. (ãƒªãƒ¼ã‚¯ãƒ†ã‚¹ãƒˆã¯ç ´æã—ã¦ã„ã¦é•·ã„ã“ã¨
+ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ã¾ã›ã‚“. ä»£ã‚ã‚Šã«ãƒ‡ãƒãƒƒã‚° malloc ã‚’ä½¿ã†ã‹ valgrind ã‚„ Purify 
+ã¨ã„ã£ãŸãƒ„ãƒ¼ãƒ«ã‚’ä½¿ã£ã¦ãã ã•ã„.)
 
 Verbose modifier C<v> added for C<-DXv> and C<-Dsv>, see L<perlrun>.
 
-¾éÄ¹½¤¾ş»Ò C<v> ¤¬ C<-DXv> µÚ¤Ó C<-Dsv> ¤ËÄÉ²Ã¤µ¤ì¤Ş¤·¤¿. 
-L<perlrun> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤.
+å†—é•·ä¿®é£¾å­ C<v> ãŒ C<-DXv> åŠã³ C<-Dsv> ã«è¿½åŠ ã•ã‚Œã¾ã—ãŸ. 
+L<perlrun> ã‚’å‚ç…§ã—ã¦ãã ã•ã„.
 
 =head1 New Tests
 
-¿·¤·¤¤¥Æ¥¹¥È
+æ–°ã—ã„ãƒ†ã‚¹ãƒˆ
 
 In Perl 5.8.0 there were about 69000 separate tests in about 700 test files,
 in Perl 5.8.1 there are about 77000 separate tests in about 780 test files.
 The exact numbers depend on the Perl configuration and on the operating
 system platform.
 
-Perl 5.8.0 ¤Ç¤ÏÌó 700 ¤Î¥Æ¥¹¥È¥Õ¥¡¥¤¥ë¤Ë ¤ª¤è¤½ 69,000 ¤Î¥Æ¥¹¥È¤¬¤¢¤ê¤Ş¤·¤¿. 
-Perl 5.8.1 ¤Ç¤ÏÌó 750 ¤Î¥Æ¥¹¥È¥Õ¥¡¥¤¥ë¤Ë ¤ª¤è¤½ 75,000 ¤Î¥Æ¥¹¥È¤¬¤¢¤ê¤Ş¤¹. 
-Àµ³Î¤Ê¿ô¤Ï Perl ¤ÎÀßÄê¤äOS¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ë°ÍÂ¸¤·¤ÆÊÑ²½¤·¤Ş¤¹.
+Perl 5.8.0 ã§ã¯ç´„ 700 ã®ãƒ†ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã« ãŠã‚ˆã 69,000 ã®ãƒ†ã‚¹ãƒˆãŒã‚ã‚Šã¾ã—ãŸ. 
+Perl 5.8.1 ã§ã¯ç´„ 750 ã®ãƒ†ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã« ãŠã‚ˆã 75,000 ã®ãƒ†ã‚¹ãƒˆãŒã‚ã‚Šã¾ã™. 
+æ­£ç¢ºãªæ•°ã¯ Perl ã®è¨­å®šã‚„OSãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«ä¾å­˜ã—ã¦å¤‰åŒ–ã—ã¾ã™.
 
 =head1 Known Problems
 
-´ûÃÎ¤ÎÌäÂêÅÀ
+æ—¢çŸ¥ã®å•é¡Œç‚¹
 
 The hash randomisation mentioned in L</Incompatible Changes> is definitely
 problematic: it will wake dormant bugs and shake out bad assumptions.
 
-L<< /Incompatible Changes>> ¤Ëµ­½Ò¤µ¤ì¤Æ¤¤¤ë
-¥Ï¥Ã¥·¥å¤Î¥é¥ó¥À¥àÀ­¤ÏÌÀ¤é¤«¤ËÌ¤·èÄê»ö¹à¤Ç¤¹: ¤³¤ì¤ÏµÙÌ²¤·¤Æ¤¤¤ë¥Ğ¥°¤ò
-ÌÜ³Ğ¤á¤µ¤», ´Ö°ã¤Ã¤Æ¤¤¤¿²¾Äê¤òÍÉ¤êÆ°¤«¤¹¤Ç¤·¤ç¤¦.
+L<< /Incompatible Changes>> ã«è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹
+ãƒãƒƒã‚·ãƒ¥ã®ãƒ©ãƒ³ãƒ€ãƒ æ€§ã¯æ˜ã‚‰ã‹ã«æœªæ±ºå®šäº‹é …ã§ã™: ã“ã‚Œã¯ä¼‘çœ ã—ã¦ã„ã‚‹ãƒã‚°ã‚’
+ç›®è¦šã‚ã•ã›, é–“é•ã£ã¦ã„ãŸä»®å®šã‚’æºã‚Šå‹•ã‹ã™ã§ã—ã‚‡ã†.
 
 If you want to use mod_perl 2.x with Perl 5.8.1, you will need
 mod_perl-1.99_10 or higher.  Earlier versions of mod_perl 2.x
 do not work with the randomised hashes.  (mod_perl 1.x works fine.)
 You will also need Apache::Test 1.04 or higher.
 
-mod_perl 2.x ¤ò Perl 5.8.1 ¤Ç»È¤ª¤¦¤È¤·¤Æ¤¤¤ë¤Î¤Ê¤é, mod_perl-1.99_10 
-°Ê¹ß¤ò»È¤¦É¬Í×¤¬¤¢¤ë¤Ç¤·¤ç¤¦. mod_perl 2.x ¤Î¤½¤ì°ÊÁ°¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ç¤Ï
-¥é¥ó¥À¥à¤Ê¥Ï¥Ã¥·¥å¤Ç¤Ïµ¡Ç½¤·¤Ş¤»¤ó. (mod_perl 1.x ¤Ç¤ÏÂç¾æÉ×¤Ç¤¹.) 
-Apache::Test 1.04 °Ê¹ß¤âÉ¬Í×¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦.
+mod_perl 2.x ã‚’ Perl 5.8.1 ã§ä½¿ãŠã†ã¨ã—ã¦ã„ã‚‹ã®ãªã‚‰, mod_perl-1.99_10 
+ä»¥é™ã‚’ä½¿ã†å¿…è¦ãŒã‚ã‚‹ã§ã—ã‚‡ã†. mod_perl 2.x ã®ãã‚Œä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯
+ãƒ©ãƒ³ãƒ€ãƒ ãªãƒãƒƒã‚·ãƒ¥ã§ã¯æ©Ÿèƒ½ã—ã¾ã›ã‚“. (mod_perl 1.x ã§ã¯å¤§ä¸ˆå¤«ã§ã™.) 
+Apache::Test 1.04 ä»¥é™ã‚‚å¿…è¦ã«ãªã‚‹ã§ã—ã‚‡ã†.
 
 Many of the rarer platforms that worked 100% or pretty close to it
 with perl 5.8.0 have been left a little bit untended since their
@@ -1610,51 +1610,51 @@ common Perl platforms (Unix and Unix-like, Microsoft platforms, and
 VMS) have large enough testing and expert population that they are
 doing well.
 
-µ©¤Ê¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î Perl 5.8.0 ¤¬ 100% ¤â¤·¤¯¤Ï¤Û¤Ü 100% ¶á¤¯Æ°ºî¤¹¤ë
-²Õ½ê¤ÎÂ¿¤¯¤Ç, ¤½¤Î¥á¥ó¥Æ¥Ê¤¬Â¿Ë»¤Ç¤¢¤Ã¤¿¤¿¤á¤Ë´öÊ¬À¤ÏÃ¤¬±ó¤¯¤Ê¤Ã¤Æ¤¤¤Ş¤·¤¿. 
-¤½¤ÎÍÍ¤Ê¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ç¤ÏÂ¾¤Î¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤è¤ê¼ºÇÔ¤¬Â¿¤¯¤Ê¤ë¤Ç¤·¤ç¤¦. 
-Max OS Classic, IBM z/OS (µÚ¤ÓÂ¾¤ÎEBCDIC ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à), NetWare ¤Ê¤É¤¬
-Åö¤¿¤ê¤Ş¤¹. Â¿¤¯¤Î¶¦ÄÌ¤Î Perl ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à (Unix µÚ¤Ó Unix¥é¥¤¥¯¤Ê
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à, Microsoft ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à, VMS) ¤ÏÎÉ¤¯¹Ô¤¦½½Ê¬¤ÎÂ¿¤¯¤Î
-¥Æ¥¹¥È¤È¥¨¥­¥¹¥Ñ¡¼¥È¿Í¸ı¤¬¤¢¤ê¤Ş¤¹.
+ç¨€ãªãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã® Perl 5.8.0 ãŒ 100% ã‚‚ã—ãã¯ã»ã¼ 100% è¿‘ãå‹•ä½œã™ã‚‹
+ç®‡æ‰€ã®å¤šãã§, ãã®ãƒ¡ãƒ³ãƒ†ãƒŠãŒå¤šå¿™ã§ã‚ã£ãŸãŸã‚ã«å¹¾åˆ†ä¸–è©±ãŒé ããªã£ã¦ã„ã¾ã—ãŸ. 
+ãã®æ§˜ãªãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã¯ä»–ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚ˆã‚Šå¤±æ•—ãŒå¤šããªã‚‹ã§ã—ã‚‡ã†. 
+Max OS Classic, IBM z/OS (åŠã³ä»–ã®EBCDIC ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ), NetWare ãªã©ãŒ
+å½“ãŸã‚Šã¾ã™. å¤šãã®å…±é€šã® Perl ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ  (Unix åŠã³ Unixãƒ©ã‚¤ã‚¯ãª
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ , Microsoft ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ , VMS) ã¯è‰¯ãè¡Œã†ååˆ†ã®å¤šãã®
+ãƒ†ã‚¹ãƒˆã¨ã‚¨ã‚­ã‚¹ãƒ‘ãƒ¼ãƒˆäººå£ãŒã‚ã‚Šã¾ã™.
 
 =head2 Tied hashes in scalar context
 
-¥¹¥«¥é¡¼¥³¥ó¥Æ¥­¥¹¥È¤Ç¤Î¥¿¥¤¤µ¤ì¤¿¥Ï¥Ã¥·¥å¤ÎÉ¾²Á
+ã‚¹ã‚«ãƒ©ãƒ¼ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã®ã‚¿ã‚¤ã•ã‚ŒãŸãƒãƒƒã‚·ãƒ¥ã®è©•ä¾¡
 
 Tied hashes do not currently return anything useful in scalar context,
 for example when used as boolean tests:
 
-¤³¤ì¤Ş¤Ç¥¿¥¤¤µ¤ì¤¿¥Ï¥Ã¥·¥å¤Ï¥¹¥«¥é¡¼¥³¥ó¥Æ¥­¥¹¥È¤Ç¤ÏÍ­ÍÑ¤ÊÃÍ¤ò
-ÊÖ¤·¤Æ¤¤¤Ş¤»¤ó¤Ç¤·¤¿. Îã¤¨¤Ğ¿¿µ¶¥Æ¥¹¥È¤ò¼¡¤Î¤è¤¦¤Ë¤·¤Æ¤â:
+ã“ã‚Œã¾ã§ã‚¿ã‚¤ã•ã‚ŒãŸãƒãƒƒã‚·ãƒ¥ã¯ã‚¹ã‚«ãƒ©ãƒ¼ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã¯æœ‰ç”¨ãªå€¤ã‚’
+è¿”ã—ã¦ã„ã¾ã›ã‚“ã§ã—ãŸ. ä¾‹ãˆã°çœŸå½ãƒ†ã‚¹ãƒˆã‚’æ¬¡ã®ã‚ˆã†ã«ã—ã¦ã‚‚:
 
 	if (%tied_hash) { ... }
 
 The current nonsensical behaviour is always to return false,
 regardless of whether the hash is empty or has elements.
 
-¤³¤ì¤Ş¤Ç¤Î¤Ğ¤«¤²¤¿¿¶¤ëÉñ¤¤¤Ç¤Ï¥Ï¥Ã¥·¥å¤¬¶õ¤«Í×ÁÇ¤ò»ı¤Ã¤Æ¤¤¤ë¤«¤Ë
-¤«¤«¤ï¤é¤º¾ï¤Ëµ¶¤È¤Ê¤Ã¤Æ¤¤¤Ş¤·¤¿.
+ã“ã‚Œã¾ã§ã®ã°ã‹ã’ãŸæŒ¯ã‚‹èˆã„ã§ã¯ãƒãƒƒã‚·ãƒ¥ãŒç©ºã‹è¦ç´ ã‚’æŒã£ã¦ã„ã‚‹ã‹ã«
+ã‹ã‹ã‚ã‚‰ãšå¸¸ã«å½ã¨ãªã£ã¦ã„ã¾ã—ãŸ.
 
 The root cause is that there is no interface for the implementors of
 tied hashes to implement the behaviour of a hash in scalar context.
 
-¤³¤Îº¬ËÜÅª¤Ê¸¶°ø¤Ï¥Ï¥Ã¥·¥å¤Î¥¹¥«¥é¡¼¥³¥ó¥Æ¥­¥¹¥È¤Ç¤Î¿¶¤ëÉñ¤¤¤ò
-¼ÂÁõ¤¹¤ë¤¿¤á¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤¬Ìµ¤«¤Ã¤¿¤³¤È¤Ç¤·¤¿.
+ã“ã®æ ¹æœ¬çš„ãªåŸå› ã¯ãƒãƒƒã‚·ãƒ¥ã®ã‚¹ã‚«ãƒ©ãƒ¼ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã®æŒ¯ã‚‹èˆã„ã‚’
+å®Ÿè£…ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãŒç„¡ã‹ã£ãŸã“ã¨ã§ã—ãŸ.
 
 =head2 Net::Ping 450_service and 510_ping_udp failures
 
-Net::Ping 450_service µÚ¤Ó 510_ping_udp ¤Î¼ºÇÔ
+Net::Ping 450_service åŠã³ 510_ping_udp ã®å¤±æ•—
 
 The subtests 9 and 18 of lib/Net/Ping/t/450_service.t, and the
 subtest 2 of lib/Net/Ping/t/510_ping_udp.t might fail if you have
 an unusual networking setup.  For example in the latter case the
 test is trying to send a UDP ping to the IP address 127.0.0.1.
 
-lib/Net/Ping/t/450_service.t ¤Î¥µ¥Ö¥Æ¥¹¥È 9, 18, 
-lib/Net/Ping/t/510_ping_udp.t ¤Î¥µ¥Ö¥Æ¥¹¥È 2 ¤Ï¤¢¤Ş¤ê¤Ê¤¤¥Í¥Ã¥È¥ï¡¼¥¯
-ÀßÄê¤ò¹Ô¤Ã¤Æ¤¤¤ë¤È¼ºÇÔ¤·¤Ş¤¹. Îã¤¨¤Ğ¸å¼Ô¤Ï UDP ping ¤ò IP ¥¢¥É¥ì¥¹ 
-127.0.0.1 ¤ËÁ÷¤í¤¦¤È¤·¤Ş¤¹.
+lib/Net/Ping/t/450_service.t ã®ã‚µãƒ–ãƒ†ã‚¹ãƒˆ 9, 18, 
+lib/Net/Ping/t/510_ping_udp.t ã®ã‚µãƒ–ãƒ†ã‚¹ãƒˆ 2 ã¯ã‚ã¾ã‚Šãªã„ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯
+è¨­å®šã‚’è¡Œã£ã¦ã„ã‚‹ã¨å¤±æ•—ã—ã¾ã™. ä¾‹ãˆã°å¾Œè€…ã¯ UDP ping ã‚’ IP ã‚¢ãƒ‰ãƒ¬ã‚¹ 
+127.0.0.1 ã«é€ã‚ã†ã¨ã—ã¾ã™.
 
 =head2 B::C
 
@@ -1663,30 +1663,30 @@ C<perlcc -c>) is even more broken than it used to be because of
 the extensive lexical variable changes.  (The good news is that
 B::Bytecode and ByteLoader are better than they used to be.)
 
-C¸À¸ì¤òÀ¸À®¤¹¤ë¥³¥ó¥Ñ¥¤¥é¤Î¥Ğ¥Ã¥¯¥¨¥ó¥É¤Ç¤¢¤ë B::C (¥Õ¥í¥ó¥È¥¨¥ó¥É
-¤Ï C<perlcc -c> ¤Ë¤Ê¤ê¤Ş¤¹)¤¬¤¤¤¯¤é¤«¤³¤ï¤ì¤®¤ß¤Ç¤¹. ¹­ÈÏ°Ï¤Î
-¥ì¥­¥·¥«¥ëÊÑ¿ô¤ÎÊÑ¹¹¤Ë¤è¤ë¤â¤Î¤Ç¤¹. (Ï¯Êó¤â¤¢¤ê¤Ş¤¹. B::Bytecode 
-µÚ¤Ó ByteLoader ¤Ï²şÁ±¤µ¤ì¤Æ¤¤¤Ş¤¹. )
+Cè¨€èªã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã®ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰ã§ã‚ã‚‹ B::C (ãƒ•ãƒ­ãƒ³ãƒˆã‚¨ãƒ³ãƒ‰
+ã¯ C<perlcc -c> ã«ãªã‚Šã¾ã™)ãŒã„ãã‚‰ã‹ã“ã‚ã‚Œãã¿ã§ã™. åºƒç¯„å›²ã®
+ãƒ¬ã‚­ã‚·ã‚«ãƒ«å¤‰æ•°ã®å¤‰æ›´ã«ã‚ˆã‚‹ã‚‚ã®ã§ã™. (æœ—å ±ã‚‚ã‚ã‚Šã¾ã™. B::Bytecode 
+åŠã³ ByteLoader ã¯æ”¹å–„ã•ã‚Œã¦ã„ã¾ã™. )
 
 =head1 Platform Specific Problems
 
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¸ÇÍ­¤ÎÌäÂêÅÀ
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ å›ºæœ‰ã®å•é¡Œç‚¹
 
 =head2 EBCDIC Platforms
 
-EBCDIC ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à
+EBCDIC ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ 
 
 IBM z/OS and other EBCDIC platforms continue to be problematic
 regarding Unicode support.  Many Unicode tests are skipped when
 they really should be fixed.
 
-IBM z/OS µÚ¤ÓÂ¾¤Î EBCDIC ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ï Unicode ¥µ¥İ¡¼¥È¤Ë´Ø¤·¤Æ
-ÉÔÌÀ³Î¤Ê¤Ş¤Ş¤Ç¤¹. Â¿¤¯¤Î¥æ¥Ë¥³¡¼¥É¥Æ¥¹¥È¤Ï½¤Àµ¤¹¤Ù¤­²Õ½ê¤ò¥¹¥­¥Ã¥×
-¤·¤Ş¤¹.
+IBM z/OS åŠã³ä»–ã® EBCDIC ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã¯ Unicode ã‚µãƒãƒ¼ãƒˆã«é–¢ã—ã¦
+ä¸æ˜ç¢ºãªã¾ã¾ã§ã™. å¤šãã®ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ãƒ†ã‚¹ãƒˆã¯ä¿®æ­£ã™ã¹ãç®‡æ‰€ã‚’ã‚¹ã‚­ãƒƒãƒ—
+ã—ã¾ã™.
 
 =head2 Cygwin 1.5 problems
 
-Cygwin 1.5 ¤Ë¤ª¤±¤ëÌäÂê
+Cygwin 1.5 ã«ãŠã‘ã‚‹å•é¡Œ
 
 In Cygwin 1.5 the F<io/tell> and F<op/sysio> tests have failures for
 some yet unknown reason.  In 1.5.5 the threads tests stress_cv,
@@ -1694,30 +1694,30 @@ stress_re, and stress_string are failing unless the environment
 variable PERLIO is set to "perlio" (which makes also the io/tell
 failure go away).
 
-Cygwin 1.5 ¤Ë¤ª¤¤¤Æ F<io/tell> µÚ¤Ó F<op/sysio> ¥Æ¥¹¥È¤¬¤¤¤¯¤Ä¤«¤Î
-Ì¤ÃÎ¤Î¸¶°ø¤Ç¼ºÇÔ¤·¤Ş¤¹. 1.5.5 ¤Ç¤Ï¥¹¥ì¥Ã¥É¥Æ¥¹¥È stress_cv, 
-stress_re, stress_string ¤¬´Ä¶­ÊÑ¿ô PERLIO ¤Ë "perlio" ¤òÀßÄê
-¤·¤Æ¤¤¤ë»ş°Ê³°¤Ï¼ºÇÔ¤·¤Ş¤¹(¤³¤Î»ş io/tell ¤â¼ºÇÔ¤·¤Ş¤¹).
-¤¬
+Cygwin 1.5 ã«ãŠã„ã¦ F<io/tell> åŠã³ F<op/sysio> ãƒ†ã‚¹ãƒˆãŒã„ãã¤ã‹ã®
+æœªçŸ¥ã®åŸå› ã§å¤±æ•—ã—ã¾ã™. 1.5.5 ã§ã¯ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ†ã‚¹ãƒˆ stress_cv, 
+stress_re, stress_string ãŒç’°å¢ƒå¤‰æ•° PERLIO ã« "perlio" ã‚’è¨­å®š
+ã—ã¦ã„ã‚‹æ™‚ä»¥å¤–ã¯å¤±æ•—ã—ã¾ã™(ã“ã®æ™‚ io/tell ã‚‚å¤±æ•—ã—ã¾ã™).
+ãŒ
 
 Perl 5.8.1 does build and work well with Cygwin 1.3: with (uname -a)
 C<CYGWIN_NT-5.0 ... 1.3.22(0.78/3/2) 2003-03-18 09:20 i686 ...>
 a 100% "make test"  was achieved with C<Configure -des -Duseithreads>.
 
-Perl 5.8.1 ¤Ï Cygwin 1.3: (uname -a) 
+Perl 5.8.1 ã¯ Cygwin 1.3: (uname -a) 
 C<CYGWIN_NT-5.0 ... 1.3.22(0.78/3/2) 2003-03-18 09:20 i686 ...>
-¤Ç¤Ï¥Ó¥ë¥É¤Ç¤­, ¤Á¤ã¤ó¤ÈÆ°ºî¤·¤Ş¤¹. "make test" ¤Ï C<Configure -des 
--Duseithreads> ¤Ç 100% À®¸ù¤·¤Ş¤¹.
+ã§ã¯ãƒ“ãƒ«ãƒ‰ã§ã, ã¡ã‚ƒã‚“ã¨å‹•ä½œã—ã¾ã™. "make test" ã¯ C<Configure -des 
+-Duseithreads> ã§ 100% æˆåŠŸã—ã¾ã™.
 
 =head2 HP-UX: HP cc warnings about sendfile and sendpath
 
-HP-UX: HP cc ¤Ï sendfile µÚ¤Ó sendpath  ¤Ë¤Ä¤¤¤Æ·Ù¹ğ¤òÈ¯¤·¤Ş¤¹
+HP-UX: HP cc ã¯ sendfile åŠã³ sendpath  ã«ã¤ã„ã¦è­¦å‘Šã‚’ç™ºã—ã¾ã™
 
 With certain HP C compiler releases (e.g. B.11.11.02) you will
 get many warnings like this (lines wrapped for easier reading):
 
-¤¤¤¯¤Ä¤«¤Î HP C ¥³¥ó¥Ñ¥¤¥é¥ê¥ê¡¼¥¹ (Îã¤¨¤Ğ B.11.11.02) ¤Ç¤Ï
-¼¡¤Î¤è¤¦¤Ê·Ù¹ğ¤ò¤À¤·¤Ş¤¹(¸«¤ä¤¹¤¤¤è¤¦¤Ë²ş¹Ô¤·¤Æ¤¤¤Ş¤¹):
+ã„ãã¤ã‹ã® HP C ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒªãƒªãƒ¼ã‚¹ (ä¾‹ãˆã° B.11.11.02) ã§ã¯
+æ¬¡ã®ã‚ˆã†ãªè­¦å‘Šã‚’ã ã—ã¾ã™(è¦‹ã‚„ã™ã„ã‚ˆã†ã«æ”¹è¡Œã—ã¦ã„ã¾ã™):
 
   cc: "/usr/include/sys/socket.h", line 504: warning 562:
     Redeclaration of "sendfile" with a different storage class specifier:
@@ -1727,56 +1727,56 @@ get many warnings like this (lines wrapped for easier reading):
       "sendpath" will have internal linkage.
 
   cc: "/usr/include/sys/socket.h", line 504: warning 562:
-     °Û¤Ê¤ë¥¹¥È¥ì¡¼¥¸¥¯¥é¥¹»Ø¼¨»Ò¤Ë¤è¤ë "sendfile" ¤ÎºÆÀë¸À:
-      "sendfile" ¤ÏÆâÉô¥ê¥ó¥±¡¼¥¸¤Ë¤Ê¤ê¤Ş¤¹.
+     ç•°ãªã‚‹ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹æŒ‡ç¤ºå­ã«ã‚ˆã‚‹ "sendfile" ã®å†å®£è¨€:
+      "sendfile" ã¯å†…éƒ¨ãƒªãƒ³ã‚±ãƒ¼ã‚¸ã«ãªã‚Šã¾ã™.
   cc: "/usr/include/sys/socket.h", line 505: warning 562:
-     °Û¤Ê¤ë¥¹¥È¥ì¡¼¥¸¥¯¥é¥¹»Ø¼¨»Ò¤Ë¤è¤ë "sendpath" ¤ÎºÆÀë¸À:
-      "sendpath" ¤ÏÆâÉô¥ê¥ó¥±¡¼¥¸¤Ë¤Ê¤ê¤Ş¤¹.
+     ç•°ãªã‚‹ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹æŒ‡ç¤ºå­ã«ã‚ˆã‚‹ "sendpath" ã®å†å®£è¨€:
+      "sendpath" ã¯å†…éƒ¨ãƒªãƒ³ã‚±ãƒ¼ã‚¸ã«ãªã‚Šã¾ã™.
 
 The warnings show up both during the build of Perl and during certain
 lib/ExtUtils tests that invoke the C compiler.  The warning, however,
 is not serious and can be ignored.
 
-¤³¤Î·Ù¹ğ¤Ï Perl ¤Î¥Ó¥ë¥ÉÃæ¤ä C ¥³¥ó¥Ñ¥¤¥é¤ò¸Æ¤Ó½Ğ¤¹ lib/ExtUtils ¤Î
-¥Æ¥¹¥È¤ÇÈ¯À¸¤·¤Ş¤¹. ¤·¤«¤·¤³¤ì¤Ï½ÅÂç¤Ê¤â¤Î¤Ç¤Ï¤Ê¤¯Ìµ»ë¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹.
+ã“ã®è­¦å‘Šã¯ Perl ã®ãƒ“ãƒ«ãƒ‰ä¸­ã‚„ C ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã‚’å‘¼ã³å‡ºã™ lib/ExtUtils ã®
+ãƒ†ã‚¹ãƒˆã§ç™ºç”Ÿã—ã¾ã™. ã—ã‹ã—ã“ã‚Œã¯é‡å¤§ãªã‚‚ã®ã§ã¯ãªãç„¡è¦–ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™.
 
 =head2 IRIX: t/uni/tr_7jis.t falsely failing
 
-IRIX: t/uni/tr_7jis.t ¸í¤Ã¤¿¼ºÇÔ
+IRIX: t/uni/tr_7jis.t èª¤ã£ãŸå¤±æ•—
 
 The test t/uni/tr_7jis.t is known to report failure under 'make test'
 or the test harness with certain releases of IRIX (at least IRIX 6.5
 and MIPSpro Compilers Version 7.3.1.1m), but if run manually the test
 fully passes.
 
-¤¤¤¯¤Ä¤«¤Î IRIX ¥ê¥ê¡¼¥¹ (¾¯¤Ê¤¯¤È¤â IRIX 6.5 µÚ¤Ó MIPSpro Compiler 
-Version 7.3.1.1m) ¤Ç¤Î 'make test' ¤â¤·¤¯¤Ï test harness ¤Ë¤ª¤¤¤Æ 
-t/uni/tr_7jis.t ¤¬¼ºÇÔ¤ÈÊó¹ğ¤¹¤ë¤³¤È¤¬ÃÎ¤é¤ì¤Æ¤¤¤Ş¤¹. 
-¤·¤«¤·¤³¤ì¤Ï¼êÆ°¤Ç¥Æ¥¹¥È¤·¤¿¤È¤­¤Ë¤Ï´°Á´¤Ë¥Ñ¥¹¤Ç¤­¤Ş¤¹.
+ã„ãã¤ã‹ã® IRIX ãƒªãƒªãƒ¼ã‚¹ (å°‘ãªãã¨ã‚‚ IRIX 6.5 åŠã³ MIPSpro Compiler 
+Version 7.3.1.1m) ã§ã® 'make test' ã‚‚ã—ãã¯ test harness ã«ãŠã„ã¦ 
+t/uni/tr_7jis.t ãŒå¤±æ•—ã¨å ±å‘Šã™ã‚‹ã“ã¨ãŒçŸ¥ã‚‰ã‚Œã¦ã„ã¾ã™. 
+ã—ã‹ã—ã“ã‚Œã¯æ‰‹å‹•ã§ãƒ†ã‚¹ãƒˆã—ãŸã¨ãã«ã¯å®Œå…¨ã«ãƒ‘ã‚¹ã§ãã¾ã™.
 
 =head2 Mac OS X: no usemymalloc
 
-Mac OS X: usemymalloc ¤¬¤¢¤ê¤Ş¤»¤ó
+Mac OS X: usemymalloc ãŒã‚ã‚Šã¾ã›ã‚“
 
 The Perl malloc (C<-Dusemymalloc>) does not work at all in Mac OS X.
 This is not that serious, though, since the native malloc works just
 fine.
 
-¤¹¤Ù¤Æ¤Î Mac OS X ¤Ë¤ª¤¤¤Æ Perl malloc (C<-Dusemymalloc>) ¤Ï
-µ¡Ç½¤·¤Ş¤»¤ó. ¤³¤ì¤Ï¥Í¥¤¥Æ¥£¥Ö¤Î malloc ¤¬¤­¤Á¤ó¤ÈÆ°ºî¤·¤Æ¤ë¤Î¤Ç
-Âç¤­¤ÊÌäÂê¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó.
+ã™ã¹ã¦ã® Mac OS X ã«ãŠã„ã¦ Perl malloc (C<-Dusemymalloc>) ã¯
+æ©Ÿèƒ½ã—ã¾ã›ã‚“. ã“ã‚Œã¯ãƒã‚¤ãƒ†ã‚£ãƒ–ã® malloc ãŒãã¡ã‚“ã¨å‹•ä½œã—ã¦ã‚‹ã®ã§
+å¤§ããªå•é¡Œã§ã¯ã‚ã‚Šã¾ã›ã‚“.
 
 =head2 Tru64: No threaded builds with GNU cc (gcc)
 
-Tru64: GNU cc (gcc) ¤Ç¥¹¥ì¥Ã¥É¤ò¥Ó¥ë¥É¤Ç¤­¤Ş¤»¤ó
+Tru64: GNU cc (gcc) ã§ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ“ãƒ«ãƒ‰ã§ãã¾ã›ã‚“
 
 In the latest Tru64 releases (e.g. v5.1B or later) gcc cannot be used
 to compile a threaded Perl (-Duseithreads) because the system
 C<< <pthread.h> >> file doesn't know about gcc.
 
-ºÇ¶á¤Î Tru64 ¥ê¥ê¡¼¥¹ (Îã¤¨¤Ğ v5.1B) ¤Ë¤ª¤¤¤Æ gcc (3.3) ¤ò¥¹¥ì¥Ã¥É Perl 
-¤ò¥Ó¥ë¥É¤¹¤ë¤¿¤á¤Ë»È¤¨¤Ş¤»¤ó(-Duseithreads). 
-¥·¥¹¥Æ¥à¤Î C<< <pthread.h> >> ¥Õ¥¡¥¤¥ë¤ò gcc ¤¬¸«¤Ä¤±¤é¤ì¤Ê¤¤¤¿¤á¤Ç¤¹.
+æœ€è¿‘ã® Tru64 ãƒªãƒªãƒ¼ã‚¹ (ä¾‹ãˆã° v5.1B) ã«ãŠã„ã¦ gcc (3.3) ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰ Perl 
+ã‚’ãƒ“ãƒ«ãƒ‰ã™ã‚‹ãŸã‚ã«ä½¿ãˆã¾ã›ã‚“(-Duseithreads). 
+ã‚·ã‚¹ãƒ†ãƒ ã® C<< <pthread.h> >> ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ gcc ãŒè¦‹ã¤ã‘ã‚‰ã‚Œãªã„ãŸã‚ã§ã™.
 
 =head2 Win32: sysopen, sysread, syswrite
 
@@ -1791,29 +1791,29 @@ compatible behavior may be re-introduced in a future release.  Until
 then, the use of sysopen(), sysread() and syswrite() is not supported
 for "text" mode operations.
 
-Perl 5.8.0 ¥ê¥ê¡¼¥¹¸½ºß¤Ç sysopen()/sysread()/syswrite() "¥Æ¥­¥¹¥È" ¥â¡¼¥É
-¤Ë¤ª¤¤¤Æ 5.6.1 ¤ä¤½¤ì°ÊÁ°¤Ç»È¤ï¤ì¤Æ¤¤¤¿¤è¤¦¤Ê¿¶¤ëÉñ¤¤¤ò¤È¤ê¤Ş¤»¤ó. 
-¤³¤ì¤é¤Î¥Ó¥ë¥È¥¤¥ó´Ø¿ô¤Ï (sysopen() ¤Ë O_TEXT ¥Õ¥é¥°¤ò»ØÄê¤·¤¿¤ê, binmode() 
-¤ò¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤Ë»È¤Ã¤¿¤È¤·¤Æ¤â) "¥Ğ¥¤¥Ê¥ê" ¥â¡¼¥É¤È¤·¤Æ½èÍı¤µ¤ì¤Ş¤¹. 
-¤³¤Î¤³¤È¤Ï¥Ç¥£¥¹¥¯¾å¤Î¥Õ¥¡¥¤¥ë¤Ë¤Î¤ß´Ø·¸¤¹¤ë¤³¤È¤Ç, Windows ÈÇ¤Ë¤ª¤¤¤Æ¤Ï
-¥½¥±¥Ã¥È¤ä¥Ñ¥¤¥×¤Ï¾ï¤Ë "¥Ğ¥¤¥Ê¥ê" ¥â¡¼¥É¤È¤Ê¤ê¤Ş¤¹. 
-¤³¤Î¿¶¤ëÉñ¤¤¤Ï¸½ºß¤Ï¥Ğ¥°¤È¤·¤Æ¹Í¤¨¤é¤ì, º£¸å¸ß´¹¤Î¤¢¤ë¿¶¤ëÉñ¤¤¤¬Äó¶¡¤µ¤ì¤ë
-¤Ç¤·¤ç¤¦. ¤½¤ì¤Ş¤Ç¤Ï sysopen()/sysread()/syswrite() ¤Î»ÈÍÑ»ş¤Ë¤ª¤±¤ë
-"¥Æ¥­¥¹¥È" ¥â¡¼¥ÉÁàºî¤Ï¥µ¥İ¡¼¥È¤µ¤ì¤Ş¤»¤ó.
+Perl 5.8.0 ãƒªãƒªãƒ¼ã‚¹ç¾åœ¨ã§ sysopen()/sysread()/syswrite() "ãƒ†ã‚­ã‚¹ãƒˆ" ãƒ¢ãƒ¼ãƒ‰
+ã«ãŠã„ã¦ 5.6.1 ã‚„ãã‚Œä»¥å‰ã§ä½¿ã‚ã‚Œã¦ã„ãŸã‚ˆã†ãªæŒ¯ã‚‹èˆã„ã‚’ã¨ã‚Šã¾ã›ã‚“. 
+ã“ã‚Œã‚‰ã®ãƒ“ãƒ«ãƒˆã‚¤ãƒ³é–¢æ•°ã¯ (sysopen() ã« O_TEXT ãƒ•ãƒ©ã‚°ã‚’æŒ‡å®šã—ãŸã‚Š, binmode() 
+ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã«ä½¿ã£ãŸã¨ã—ã¦ã‚‚) "ãƒã‚¤ãƒŠãƒª" ãƒ¢ãƒ¼ãƒ‰ã¨ã—ã¦å‡¦ç†ã•ã‚Œã¾ã™. 
+ã“ã®ã“ã¨ã¯ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã®ãƒ•ã‚¡ã‚¤ãƒ«ã«ã®ã¿é–¢ä¿‚ã™ã‚‹ã“ã¨ã§, Windows ç‰ˆã«ãŠã„ã¦ã¯
+ã‚½ã‚±ãƒƒãƒˆã‚„ãƒ‘ã‚¤ãƒ—ã¯å¸¸ã« "ãƒã‚¤ãƒŠãƒª" ãƒ¢ãƒ¼ãƒ‰ã¨ãªã‚Šã¾ã™. 
+ã“ã®æŒ¯ã‚‹èˆã„ã¯ç¾åœ¨ã¯ãƒã‚°ã¨ã—ã¦è€ƒãˆã‚‰ã‚Œ, ä»Šå¾Œäº’æ›ã®ã‚ã‚‹æŒ¯ã‚‹èˆã„ãŒæä¾›ã•ã‚Œã‚‹
+ã§ã—ã‚‡ã†. ãã‚Œã¾ã§ã¯ sysopen()/sysread()/syswrite() ã®ä½¿ç”¨æ™‚ã«ãŠã‘ã‚‹
+"ãƒ†ã‚­ã‚¹ãƒˆ" ãƒ¢ãƒ¼ãƒ‰æ“ä½œã¯ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¾ã›ã‚“.
 
 =head1 Future Directions
 
-º£¸å¤ÎÅ¸³«
+ä»Šå¾Œã®å±•é–‹
 
 The following things B<might> happen in future.  The first publicly
 available releases having these characteristics will be the developer
 releases Perl 5.9.x, culminating in the Perl 5.10.0 release.  These
 are our best guesses at the moment: we reserve the right to rethink.
 
-°Ê²¼¤Î¤³¤È¤¬º£¸å¤ª¤³¤ëB<¤Ç¤·¤ç¤¦>. 
-¤³¤ì¤é¤ÎÆÃÄ§¤ò»ı¤ÄºÇ½é¤Î¸øÅª¤Ê¥ê¥ê¡¼¥¹¤Ï³«È¯¼Ô¥ê¥ê¡¼¥¹ Perl 5.9.x ¤Ë¤Ê¤ê, 
-Perl 5.10.0 ¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦. ¤³¤ì¤é¤ÏÅö»ş¤ÎºÇÎÉ¤È¤Ê¤ë¿äÂ¬¤Ç¤¹: 
-»ä¤¿¤Á¤Ï¹Í¤¨Ä¾¤¹¸¢Íø¤ò»ı¤Ã¤Æ¤¤¤Ş¤¹.
+ä»¥ä¸‹ã®ã“ã¨ãŒä»Šå¾ŒãŠã“ã‚‹B<ã§ã—ã‚‡ã†>. 
+ã“ã‚Œã‚‰ã®ç‰¹å¾´ã‚’æŒã¤æœ€åˆã®å…¬çš„ãªãƒªãƒªãƒ¼ã‚¹ã¯é–‹ç™ºè€…ãƒªãƒªãƒ¼ã‚¹ Perl 5.9.x ã«ãªã‚Š, 
+Perl 5.10.0 ã«ãªã‚‹ã§ã—ã‚‡ã†. ã“ã‚Œã‚‰ã¯å½“æ™‚ã®æœ€è‰¯ã¨ãªã‚‹æ¨æ¸¬ã§ã™: 
+ç§ãŸã¡ã¯è€ƒãˆç›´ã™æ¨©åˆ©ã‚’æŒã£ã¦ã„ã¾ã™.
 
 =over 4
 
@@ -1824,10 +1824,10 @@ library is still used if Perl thinks it can use certain tricks to
 make stdio go B<really> fast.  For future releases our goal is to
 make PerlIO go even faster.
 
-PerlIO ¤Ï¥Ç¥Õ¥©¥ë¥È¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦. ¸½ºß (Perl 5.8.x) ¤Ç¤â
-stdio ¤òB<ËÜÅö¤Ë>¹âÂ®²½¤¹¤ëµ»½Ñ¤ò»È¤Ã¤Æ¤¤¤ë¤Î¤Ê¤é 
-stdio ¥é¥¤¥Ö¥é¥ê¤òº£¤Ç¤â»È¤¦¥³¥È¤¬¤Ç¤­¤Ş¤¹. º£¸å¤Î¥ê¥ê¡¼¥¹¤Ç¤ÎÌÜÉ¸¤Ï
-PerlIO ¤òÆ±¤¸¤¯¤é¤¤¹âÂ®¤Ë¤¹¤ë¤³¤È¤Ç¤¹.
+PerlIO ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã«ãªã‚‹ã§ã—ã‚‡ã†. ç¾åœ¨ (Perl 5.8.x) ã§ã‚‚
+stdio ã‚’B<æœ¬å½“ã«>é«˜é€ŸåŒ–ã™ã‚‹æŠ€è¡“ã‚’ä½¿ã£ã¦ã„ã‚‹ã®ãªã‚‰ 
+stdio ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä»Šã§ã‚‚ä½¿ã†ã‚³ãƒˆãŒã§ãã¾ã™. ä»Šå¾Œã®ãƒªãƒªãƒ¼ã‚¹ã§ã®ç›®æ¨™ã¯
+PerlIO ã‚’åŒã˜ãã‚‰ã„é«˜é€Ÿã«ã™ã‚‹ã“ã¨ã§ã™.
 
 =item *
 
@@ -1835,36 +1835,36 @@ A new feature called I<assertions> will be available.  This means that
 one can have code called assertions sprinkled in the code: usually
 they are optimised away, but they can be enabled with the C<-A> option.
 
-I<assertions> ¤È¤¤¤¦¿·¤·¤¤µ¡Ç½¤¬¤Ç¤­¤ë¤Ç¤·¤ç¤¦. ¤³¤ì¤Ï
-¥³¡¼¥É¤Ë»¶¤é¤µ¤ì¤¿¥¢¥µ¡¼¥·¥ç¥ó¤È¸Æ¤Ğ¤ì¤ë¥³¡¼¥É¤ò»ı¤Ä¤³¤È¤¬¤Ç¤­¤ë¤è¤¦¤Ë
-¤Ê¤ê¤Ş¤¹: ÄÌ¾ï¤³¤ì¤é¤ÏºÇÅ¬²½¤Ç½üµî¤µ¤ì¤Ş¤¹¤¬, C<-A> ¥ª¥×¥·¥ç¥ó¤Ë¤è¤ê
-¼Â¹Ô¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹.
+I<assertions> ã¨ã„ã†æ–°ã—ã„æ©Ÿèƒ½ãŒã§ãã‚‹ã§ã—ã‚‡ã†. ã“ã‚Œã¯
+ã‚³ãƒ¼ãƒ‰ã«æ•£ã‚‰ã•ã‚ŒãŸã‚¢ã‚µãƒ¼ã‚·ãƒ§ãƒ³ã¨å‘¼ã°ã‚Œã‚‹ã‚³ãƒ¼ãƒ‰ã‚’æŒã¤ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«
+ãªã‚Šã¾ã™: é€šå¸¸ã“ã‚Œã‚‰ã¯æœ€é©åŒ–ã§é™¤å»ã•ã‚Œã¾ã™ãŒ, C<-A> ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ã‚ˆã‚Š
+å®Ÿè¡Œã™ã‚‹ã“ã¨ãŒã§ãã¾ã™.
 
 =item *
 
 A new operator C<//> (defined-or) will be available.  This means that
 one will be able to say
 
-¿·¤·¤¤±é»»»Ò C<//> (defined-or) ¤¬ÄÉ²Ã¤µ¤ì¤ë¤Ç¤·¤ç¤¦. 
-Æ³Æş¤µ¤ì¤ë¼°
+æ–°ã—ã„æ¼”ç®—å­ C<//> (defined-or) ãŒè¿½åŠ ã•ã‚Œã‚‹ã§ã—ã‚‡ã†. 
+å°å…¥ã•ã‚Œã‚‹å¼
  
     $a // $b
 
 instead of
 
-¤Ï¼¡¤Î¼°¤ÎÂå¤ï¤ê¤Ë¤Ê¤ê,
+ã¯æ¬¡ã®å¼ã®ä»£ã‚ã‚Šã«ãªã‚Š,
 
    defined $a ? $a : $b
 
 and
 
-¤½¤·¤Æ°Ê²¼¤Î¼°
+ãã—ã¦ä»¥ä¸‹ã®å¼
 
    $c //= $d;
 
 instead of
 
-¤Ï, °Ê²¼¤Î°ÕÌ£¤ò»ı¤Á¤Ş¤¹.
+ã¯, ä»¥ä¸‹ã®æ„å‘³ã‚’æŒã¡ã¾ã™.
 
    $c = $d unless defined $c;
 
@@ -1872,40 +1872,40 @@ The operator will have the same precedence and associativity as C<||>.
 A source code patch against the Perl 5.8.1 sources will be available
 in CPAN as F<authors/id/H/HM/HMBRAND/dor-5.8.1.diff>.
 
-¤³¤Î±é»»»Ò¤Ï C<||> ¤ÈÆ±¤¸Í¥ÀèÅÙµÚ¤Ó·ë¹çÀ­¤ò»ı¤Ã¤Æ¤¤¤Ş¤¹. 
-Perl 5.8.1 ¥½¡¼¥¹¤ËÂĞ¤¹¤ë¥Ñ¥Ã¥Á¤Ï CPAN ¤Î 
-F<authors/id/H/HM/HMBRAND/dor-5.8.1.diff> ¤Ë¤¢¤ê¤Ş¤¹.
+ã“ã®æ¼”ç®—å­ã¯ C<||> ã¨åŒã˜å„ªå…ˆåº¦åŠã³çµåˆæ€§ã‚’æŒã£ã¦ã„ã¾ã™. 
+Perl 5.8.1 ã‚½ãƒ¼ã‚¹ã«å¯¾ã™ã‚‹ãƒ‘ãƒƒãƒã¯ CPAN ã® 
+F<authors/id/H/HM/HMBRAND/dor-5.8.1.diff> ã«ã‚ã‚Šã¾ã™.
 
 =item *
 
 C<unpack()> will default to unpacking the C<$_>.
 
-C<unpack()> ¤¬¥Ç¥Õ¥©¥ë¥È¤Ç C<$_> ¤ò unpack ¤¹¤ë¤è¤¦¤Ë¤Ê¤ê¤Ş¤¹.
+C<unpack()> ãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ C<$_> ã‚’ unpack ã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™.
 
 =item *
 
 Various Copy-On-Write techniques will be investigated in hopes
 of speeding up Perl.
 
-Â®ÅÙ¸ş¾å¤Î°Ù¤ËÍÍ¡¹¤Ê½ñ¤­¹ş¤ß»ş¥³¥Ô¡¼¤¬Ä´ºº¤µ¤ì¤Æ¤¤¤Ş¤¹.
+é€Ÿåº¦å‘ä¸Šã®ç‚ºã«æ§˜ã€…ãªæ›¸ãè¾¼ã¿æ™‚ã‚³ãƒ”ãƒ¼ãŒèª¿æŸ»ã•ã‚Œã¦ã„ã¾ã™.
 
 =item *
 
 CPANPLUS, Inline, and Module::Build will become core modules.
 
-CPANPLUS µÚ¤Ó, Inline, Module::Build ¤¬¥³¥¢¥â¥¸¥å¡¼¥ë¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦.
+CPANPLUS åŠã³, Inline, Module::Build ãŒã‚³ã‚¢ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«ãªã‚‹ã§ã—ã‚‡ã†.
 
 =item *
 
 The ability to write true lexically scoped pragmas will be introduced.
 
-ËÜÅö¤Ë¥ì¥­¥·¥«¥ë¥¹¥³¡¼¥×¤Ê¥×¥é¥°¥Ş¤Îµ­½Ò¤¬Æ³Æş¤µ¤ì¤ë¤Ç¤·¤ç¤¦.
+æœ¬å½“ã«ãƒ¬ã‚­ã‚·ã‚«ãƒ«ã‚¹ã‚³ãƒ¼ãƒ—ãªãƒ—ãƒ©ã‚°ãƒã®è¨˜è¿°ãŒå°å…¥ã•ã‚Œã‚‹ã§ã—ã‚‡ã†.
 
 =item *
 
 Work will continue on the bytecompiler and byteloader.
 
-¥Ğ¥¤¥È¥³¥ó¥Ñ¥¤¥éµÚ¤Ó¥Ğ¥¤¥È¥í¡¼¥À¤Î³«È¯¤Ï·ÑÂ³¤¹¤ë¤Ç¤·¤ç¤¦.
+ãƒã‚¤ãƒˆã‚³ãƒ³ãƒ‘ã‚¤ãƒ©åŠã³ãƒã‚¤ãƒˆãƒ­ãƒ¼ãƒ€ã®é–‹ç™ºã¯ç¶™ç¶šã™ã‚‹ã§ã—ã‚‡ã†.
 
 =item *
 
@@ -1918,51 +1918,51 @@ that currently 5.8.0 is equal to "\5\8\0") will go away.  B<There may be no
 deprecation warning for v-strings>, though: it is quite hard to detect when
 v-strings are being used safely, and when they are not.
 
-¸½ºß¤Î¥Ğ¡¼¥¸¥ç¥óÊ¸»úÎó¤ÏÇÑ»ß¤¬Í½Äê¤µ¤ì¤Æ¤¤¤Ş¤¹. 
-C<use>, C<require>, ¤½¤·¤Æ C<$VERSION> ¤Ë»È¤¦¤È¤­¤Ë¤Ï v ¤Î¤Ä¤«¤Ê¤¤
-·Á¼° (1.2.3) ¤¬ "¥Ğ¡¼¥¸¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È" ¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦. $^V ¤â¤Ş¤¿ 
-"¥Ğ¡¼¥¸¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È" ¤Ë¤Ê¤ê, printf("%vd",...) ¹½Â¤¤ÏÉ¬Í×¤Ê¤¯¤Ê¤ë
-¤Ç¤·¤ç¤¦. v ÉÕ¤­¤Î¥Ğ¡¼¥¸¥ç¥ó (v1.2.3) ¤ÏÇÑ»ß¤µ¤ì¤Ş¤¹. Ê¸»úÎó¤È
-¥Ğ¡¼¥¸¥ç¥óÊ¸»úÎó¤¬Æ±¤¸°ÕÌ£¤ò»ı¤Ã¤Æ¤¤¤¿¾õÂÖ (Îã¤¨¤Ğ¸½ºß¤Ï 5.8.0 ¤Ï
-"\5\8\0" ¤ÈÅù²Á¤Ç¤¹) ¤Ï¤Ê¤¯¤Ê¤ë¤Ç¤·¤ç¤¦. B<¥Ğ¡¼¥¸¥ç¥óÊ¸»úÎó¤Î
-ÇÑ»ß¤Î·Ù¹ğ¤Ï¤Ê¤¤¤Ç¤·¤ç¤¦>. ¥Ğ¡¼¥¸¥ç¥óÊ¸»úÎó¤¬°ÂÁ´¤Ë»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë¤Î¤«
-°ÂÁ´¤Ç¤Ï¤Ê¤¤¤Î¤«¤òÇ§¼±¤¹¤ë¤Î¤Ï¤È¤Æ¤âÆñ¤·¤¤¤³¤È¤Ç¤¹.
+ç¾åœ¨ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ã¯å»ƒæ­¢ãŒäºˆå®šã•ã‚Œã¦ã„ã¾ã™. 
+C<use>, C<require>, ãã—ã¦ C<$VERSION> ã«ä½¿ã†ã¨ãã«ã¯ v ã®ã¤ã‹ãªã„
+å½¢å¼ (1.2.3) ãŒ "ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ" ã«ãªã‚‹ã§ã—ã‚‡ã†. $^V ã‚‚ã¾ãŸ 
+"ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ" ã«ãªã‚Š, printf("%vd",...) æ§‹é€ ã¯å¿…è¦ãªããªã‚‹
+ã§ã—ã‚‡ã†. v ä»˜ãã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ (v1.2.3) ã¯å»ƒæ­¢ã•ã‚Œã¾ã™. æ–‡å­—åˆ—ã¨
+ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ãŒåŒã˜æ„å‘³ã‚’æŒã£ã¦ã„ãŸçŠ¶æ…‹ (ä¾‹ãˆã°ç¾åœ¨ã¯ 5.8.0 ã¯
+"\5\8\0" ã¨ç­‰ä¾¡ã§ã™) ã¯ãªããªã‚‹ã§ã—ã‚‡ã†. B<ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ã®
+å»ƒæ­¢ã®è­¦å‘Šã¯ãªã„ã§ã—ã‚‡ã†>. ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ãŒå®‰å…¨ã«ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã®ã‹
+å®‰å…¨ã§ã¯ãªã„ã®ã‹ã‚’èªè­˜ã™ã‚‹ã®ã¯ã¨ã¦ã‚‚é›£ã—ã„ã“ã¨ã§ã™.
 
 =item *
 
 5.005 Threads Will Be Removed
 
-5.005 ¥¹¥ì¥Ã¥É¤Ïºï½ü¤µ¤ì¤Ş¤¹.
+5.005 ã‚¹ãƒ¬ãƒƒãƒ‰ã¯å‰Šé™¤ã•ã‚Œã¾ã™.
 
 =item *
 
 The C<$*> Variable Will Be Removed
 (it was deprecated a long time ago)
 
-C<$*> ÊÑ¿ô¤Ïºï½ü¤µ¤ì¤Ş¤¹.
-(¤³¤ì¤Ï¤À¤¤¤ÖÁ°¤«¤éÇÑ»ß¤ò¸À¤ï¤ì¤Æ¤¤¤Ş¤¹)
+C<$*> å¤‰æ•°ã¯å‰Šé™¤ã•ã‚Œã¾ã™.
+(ã“ã‚Œã¯ã ã„ã¶å‰ã‹ã‚‰å»ƒæ­¢ã‚’è¨€ã‚ã‚Œã¦ã„ã¾ã™)
 
 =item *
 
 Pseudohashes Will Be Removed
 
-²¾ÁÛ¥Ï¥Ã¥·¥å¤Ïºï½ü¤µ¤ì¤Ş¤¹.
+ä»®æƒ³ãƒãƒƒã‚·ãƒ¥ã¯å‰Šé™¤ã•ã‚Œã¾ã™.
 
 =back
 
 =head1 Reporting Bugs
 
-¥Ğ¥°¥ì¥İ¡¼¥È
+ãƒã‚°ãƒ¬ãƒãƒ¼ãƒˆ
 
 If you find what you think is a bug, you might check the articles
 recently posted to the comp.lang.perl.misc newsgroup and the perl
 bug database at http://bugs.perl.org/ .  There may also be
 information at http://www.perl.com/ , the Perl Home Page.
 
-¤â¤·¥Ğ¥°¤È»×¤ï¤ì¤ë¤â¤Î¤¬¸«¤Ä¤«¤Ã¤¿¤é, comp.lang.perl.misc ¥Ë¥å¡¼¥¹
-¥°¥ë¡¼¥×¤ËºÇ¶áÅê¹Æ¤µ¤ì¤¿µ­»ö¤ä http://bugs.perl.org/ ¤Ë¤¢¤ë perl 
-¥Ğ¥°¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò³ÎÇ§¤·¤Æ¤¯¤À¤µ¤¤. 
-Perl ¥Û¡¼¥à¥Ú¡¼¥¸, http://www.perl.com/ ¾ğÊó¤Ï¤Ë¤â¤¢¤ê¤Ş¤¹.
+ã‚‚ã—ãƒã‚°ã¨æ€ã‚ã‚Œã‚‹ã‚‚ã®ãŒè¦‹ã¤ã‹ã£ãŸã‚‰, comp.lang.perl.misc ãƒ‹ãƒ¥ãƒ¼ã‚¹
+ã‚°ãƒ«ãƒ¼ãƒ—ã«æœ€è¿‘æŠ•ç¨¿ã•ã‚ŒãŸè¨˜äº‹ã‚„ http://bugs.perl.org/ ã«ã‚ã‚‹ perl 
+ãƒã‚°ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’ç¢ºèªã—ã¦ãã ã•ã„. 
+Perl ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸, http://www.perl.com/ æƒ…å ±ã¯ã«ã‚‚ã‚ã‚Šã¾ã™.
 
 If you believe you have an unreported bug, please run the B<perlbug>
 program included with your release.  Be sure to trim your bug down
@@ -1971,30 +1971,30 @@ output of C<perl -V>, will be sent off to perlbug@perl.org to be
 analysed by the Perl porting team.  You can browse and search
 the Perl 5 bugs at http://bugs.perl.org/
 
-¤â¤·¤Ş¤ÀÊó¹ğ¤µ¤ì¤Æ¤¤¤Ê¤¤¥Ğ¥°¤À¤È³Î¿®¤·¤¿¤é, ¤½¤Î¥ê¥ê¡¼¥¹¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë
-B<perlbug> ¥×¥í¥°¥é¥à¤ò¤ò¼Â¹Ô¤·¤Æ¤¯¤À¤µ¤¤. ¥Ğ¥°¤ÎºÆ¸½¥¹¥¯¥ê¥×¥È¤ò½½Ê¬¾®¤µ¤¯, 
-¤·¤«¤·Í­¸ú¤Ê¥³¡¼¥É¤ËÀÚ¤ê¤Ä¤á¤ë¤³¤È¤ò°Õ¼±¤·¤Æ¤¯¤À¤µ¤¤. 
-¥Ğ¥°¥ì¥İ¡¼¥È¤Ï C<perl -V> ¤Î½ĞÎÏ¤È°ì½ï¤Ë perlbug@perl.org ¤ËÁ÷¤é¤ì 
-Perl porting ¥Á¡¼¥à¤Ë¤è¤Ã¤Æ²òÀÏ¤µ¤ì¤ë¤Ş¤¹. Perl 5 ¤Î¥Ğ¥°¤Ë¤Ä¤¤¤Æ¤Ï 
-http://bugs.perl.org/ ¤Ç±ÜÍ÷µÚ¤Ó¸¡º÷¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹.
+ã‚‚ã—ã¾ã å ±å‘Šã•ã‚Œã¦ã„ãªã„ãƒã‚°ã ã¨ç¢ºä¿¡ã—ãŸã‚‰, ãã®ãƒªãƒªãƒ¼ã‚¹ã«å«ã¾ã‚Œã¦ã„ã‚‹
+B<perlbug> ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ã‚’å®Ÿè¡Œã—ã¦ãã ã•ã„. ãƒã‚°ã®å†ç¾ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ååˆ†å°ã•ã, 
+ã—ã‹ã—æœ‰åŠ¹ãªã‚³ãƒ¼ãƒ‰ã«åˆ‡ã‚Šã¤ã‚ã‚‹ã“ã¨ã‚’æ„è­˜ã—ã¦ãã ã•ã„. 
+ãƒã‚°ãƒ¬ãƒãƒ¼ãƒˆã¯ C<perl -V> ã®å‡ºåŠ›ã¨ä¸€ç·’ã« perlbug@perl.org ã«é€ã‚‰ã‚Œ 
+Perl porting ãƒãƒ¼ãƒ ã«ã‚ˆã£ã¦è§£æã•ã‚Œã‚‹ã¾ã™. Perl 5 ã®ãƒã‚°ã«ã¤ã„ã¦ã¯ 
+http://bugs.perl.org/ ã§é–²è¦§åŠã³æ¤œç´¢ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™.
 
 =head1 SEE ALSO
 
 The F<Changes> file for exhaustive details on what changed.
 
-F<Changes> ¥Õ¥¡¥¤¥ë¤ËÊÑ¹¹ÅÀ¤Î´°Á´¤Ê¾ÜºÙ¤¬¤¢¤ê¤Ş¤¹.
+F<Changes> ãƒ•ã‚¡ã‚¤ãƒ«ã«å¤‰æ›´ç‚¹ã®å®Œå…¨ãªè©³ç´°ãŒã‚ã‚Šã¾ã™.
 
 The F<INSTALL> file for how to build Perl.
 
-F<INSTALL> ¥Õ¥¡¥¤¥ë¤Ë Perl ¤Î¥Ó¥ë¥ÉÊıË¡¤¬¤¢¤ê¤Ş¤¹.
+F<INSTALL> ãƒ•ã‚¡ã‚¤ãƒ«ã« Perl ã®ãƒ“ãƒ«ãƒ‰æ–¹æ³•ãŒã‚ã‚Šã¾ã™.
 
 The F<README> file for general stuff.
 
-F<README> ¥Õ¥¡¥¤¥ë¤Ë°ìÈÌÅª¤Ê¤³¤È¤¬¤¢¤ê¤Ş¤¹.
+F<README> ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¸€èˆ¬çš„ãªã“ã¨ãŒã‚ã‚Šã¾ã™.
 
 The F<Artistic> and F<Copying> files for copyright information.
 
-F<Artistic> µÚ¤Ó F<Copying> ¥Õ¥¡¥¤¥ë¤ËÃøºî¸¢¾ğÊó¤¬¤¢¤ê¤Ş¤¹.
+F<Artistic> åŠã³ F<Copying> ãƒ•ã‚¡ã‚¤ãƒ«ã«è‘—ä½œæ¨©æƒ…å ±ãŒã‚ã‚Šã¾ã™.
 
 =begin meta
 

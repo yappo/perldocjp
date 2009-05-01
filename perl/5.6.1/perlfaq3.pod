@@ -6,34 +6,34 @@ perlfaq3 - Programming Tools ($Revision: 1.38 $, $Date: 1999/05/23 16:08:30 $)
 
 =end original
 
-perlfaq3 - �ץ�����ߥ󥰥ġ��� ($Revision: 1.38 $, $Date: 1999/05/23 16:08:30 $)
+perlfaq3 - プログラミングツール ($Revision: 1.38 $, $Date: 1999/05/23 16:08:30 $)
 
 =head1 DESCRIPTION
 
-FAQ�Τ��Υ��������Ǥϡ��ץ�����ޡ��ġ����ץ�����ߥ󥰥��ݡ��Ȥ�
-�ؤ������˲������Ƥ��ޤ���
+FAQのこのセクションでは、プログラマーツールやプログラミングサポートに
+関する質問に回答しています。
 
 =head2 How do I do (anything)?
 
-(�����򤹤�ˤϤɤ�����Ф�����?)
+(○○をするにはどうすればいいの?)
 
-CPAN(L<perlfaq2>�򻲾Ȥ��Ʋ�����)�Ϥ⤦���ޤ�����? 
-���ʤ���������褷�Ƥ����褦��
-�⥸�塼���ï�������Ǥ˺�äƤ���Τ򸫤Ĥ����뤫�⤷��ޤ���
-Ŭ�ڤʥޥ˥奢��ڡ����ϸ��ޤ�����?
-��ñ�ʥ���ǥå�����󤲤Ƥ����ޤ�:
+CPAN(L<perlfaq2>を参照して下さい)はもう見ましたか? 
+あなたの問題を解決してくれるような
+モジュールを誰かがすでに作っているのを見つけられるかもしれません。
+適切なマニュアルページは見ましたか?
+簡単なインデックスを挙げておきます:
 
-	����		perldata, perlvar, perlsyn, perlop, perlsub
-	�¹�		perlrun, perldebug
-	�ؿ�		perlfunc
-	���֥�������	perlref, perlmod, perlobj, perltie
-	�ǡ�����¤	perlref, perllol, perldsc
-	�⥸�塼��	perlmod, perlmodlib, perlsub
-	����ɽ��	perlre, perlfunc, perlop, perllocale
-	perl5�ؤΰܹ�	perltrap, perl
-	C�ȤΥ��	perlxstut, perlxs, perlcall, perlguts, perlembed
-	����¾  	http://www.perl.com/CPAN/doc/FMTEYEWTK/index.html
-			(man-page �ǤϤ���ޤ���ͭ�ѤǤ�)
+	基礎		perldata, perlvar, perlsyn, perlop, perlsub
+	実行		perlrun, perldebug
+	関数		perlfunc
+	オブジェクト	perlref, perlmod, perlobj, perltie
+	データ構造	perlref, perllol, perldsc
+	モジュール	perlmod, perlmodlib, perlsub
+	正規表現	perlre, perlfunc, perlop, perllocale
+	perl5への移行	perltrap, perl
+	Cとのリンク	perlxstut, perlxs, perlcall, perlguts, perlembed
+	その他  	http://www.perl.com/CPAN/doc/FMTEYEWTK/index.html
+			(man-page ではありませんが有用です)
 
 =begin original
 
@@ -41,63 +41,63 @@ A crude table of contents for the Perl man page set is found in L<perltoc>.
 
 =end original
 
-̵�ù��� Perl �Υޥ˥奢��ڡ������åȤ��ܼ��ΰ�����L<perltoc>�ˤ���ޤ���
+無加工の Perl のマニュアルページセットの目次の一覧がL<perltoc>にあります。
 
 =head2 How can I use Perl interactively?
 
-(�ɤ����������Ū��Perl��Ȥ��ޤ���?)
+(どうすれば対話的にPerlを使えますか?)
 
-ŵ��Ū�ʤ�����ϡ�perldebug(1)�ޥ˥奢��ڡ����ˤ���褦�� Perl
-�ǥХå���ʲ�����Τ褦�ˡȶ��Ρɥץ��������Ф��ƻȤ����ȤǤ�:
+典型的なやり方は、perldebug(1)マニュアルページにあるような Perl
+デバッガを以下の例のように“空の”プログラムに対して使うことです:
 
     perl -de 42
 
-����ǡ������� Perl �����ɤ򥿥��פ��������¨�¤ˤ��줬ɾ������ޤ���
-Ʊ�ͤˡ�����ܥ�ơ��֥�θ����䥹���å��ΥХå��ȥ졼�������뤳�ȡ�
-�ѿ����ͤγ�ǧ���֥졼���ݥ���Ȥ����ꡢ�����ƥ���ܥ�å��ǥХå���
-�Ԥ���ŵ��Ū������ǽ�Ǥ���
+これで、正しい Perl コードをタイプするだけで即座にそれが評価されます。
+同様に、シンボルテーブルの検査やスタックのバックトレースを得ること、
+変数の値の確認、ブレークポイントの設定、そしてシンボリックデバッガで
+行える典型的な操作が可能です。
 
 =head2 Is there a Perl shell?
 
-(Perl������Ϥ���ޤ���?)
+(Perlシェルはありますか?)
 
-����Ū�ˤϤʤ����Ǥ���(Perl �Ȱ������ۤ���Ƥ���)Shell.pm �⥸�塼��ϡ�
-Perl �� Perl ����ΰ����ǤϤʤ����ޥ�ɤ򥷥��륳�ޥ�ɤΤ褦��
-��Ƥߤ�褦�ˤ����ޤ������������ۤȰ��ˤ��� perlsh ��ñ��ǡ�
-���⤷���ߤ˽񤱤��Τ��⤷��ޤ��󤬡����ʤ����׵�ˤϽ�ʬ���⤷��ޤ���
+一般的にはなし、です。(Perl と一緒に配布されている)Shell.pm モジュールは、
+Perl が Perl 言語の一部ではないコマンドをシェルコマンドのように
+試してみるようにさせます。ソース配布と一緒にある perlsh は単純で、
+おもしろみに書けるものかもしれませんが、あなたの要求には十分かもしれません。
 
 =head2 How do I debug my Perl programs?
 
-(���Perl�ץ�������ɤ���äƥǥХå������?)
+(私のPerlプログラムをどうやってデバッグするの?)
 
-C<use warning> �� C<-w>�ϻȤ��ޤ�����? �����ϲ������Ȥ�����ٹ𤷤Ƥ���ޤ���
+C<use warning> や C<-w>は使いましたか? これらは怪しいところを警告してくれます。
 
-C<use strict>���ޤ�����? ����ϥ���ܥ�å���ե���󥹤�
-�Ȥ��ʤ��褦�ˤ������ʤ��� bareword ��Ȥäƥ��֥롼����ƤӽФ�������
-�����Ԥ��褦�ˤ��ޤ���
-�����(���줬���ֽ��פʤ��ȤǤ���)C<my>, C<our>, C<use vars>��Ȥä�
-�������褦�˶������ޤ���
+C<use strict>を試しましたか? これはシンボリックリファレンスを
+使えないようにし、あなたが bareword を使ってサブルーチン呼び出しの前に
+宣言を行うようにします。
+さらに(これが一番重要なことですが)C<my>, C<our>, C<use vars>を使って
+宣言するように強制します。
 
-�ƥ����ƥॳ���������ͤ�����å����ޤ�����? ���ڥ졼�ƥ��󥰥����ƥ�
-(������ Perl)�Ϥ��θƤӽФ���������������
-�����Ƥ��줬�ʤ��ʤΤ��򤢤ʤ����֤��Ƥ��ޤ���
+各システムコールの戻り値をチェックしましたか? オペレーティングシステム
+(そして Perl)はその呼び出しが成功したかを、
+そしてそれがなぜなのかをあなたに返しています。
 
   open(FH, "> /etc/cantwrite")
     or die "Couldn't write to /etc/cantwrite: $!\n";
 
-L<perltrap>���ɤߤޤ�����? �����ˤϸŻ��� Perl �ץ�����ޡ���
-������ Perl �ץ�����ޡ����Ф��� gocha ���������󤢤�ޤ�
-�����I<awk>��I<C>�Τ褦���̤θ��줫��ܤäƤ����ͤΤ����
-���������⤢��ޤ���
+L<perltrap>を読みましたか? そこには古参の Perl プログラマーと
+新参の Perl プログラマーに対する gocha がたくさんあります
+さらにI<awk>、I<C>のような別の言語から移ってきた人のための
+セクションもあります。
 
-L<perldebug>����������Ƥ���Perl�ǥХå����ޤ�����?
-����ˤ�ꤢ�ʤ��Υץ������򥹥ƥå���˼¹Ԥ��뤳�Ȥ��Ǥ���
-���ʤ��λפ��褦��Ư���ʤ��ä��Τ��ʤ��ʤΤ���
-Ĵ�٤뤳�Ȥ��Ǥ��ޤ���
+L<perldebug>で説明されているPerlデバッガを試しましたか?
+それによりあなたのプログラムをステップ毎に実行することができ、
+あなたの思うように働かなかったのがなぜなのかを
+調べることができます。
 
 =head2 How do I profile my Perl programs?
 
-(�錄����Perl�ץ������Υץ��ե�����Ϥɤ���äƤȤ�ΤǤ��礦?)
+(わたしのPerlプログラムのプロファイルはどうやってとるのでしょう?)
 
 =begin original
 
@@ -109,12 +109,12 @@ code spends its time.
 
 =end original
 
-ɸ�����ե��åȤˤ���(CPAN �ˤ�ʬΥ�����֤��Ƥ���ޤ�)
-Devel::DProf �⥸�塼������ꤷ�ơ�ɸ�����ۥ��åȤˤ���
-Benchmark.pm ��ȤäƤߤ�٤��Ǥ��礦��
-�٥���ޡ����ϡ����ʤ��Υץ��������������ʬ�ν��׻��֤���Τ��Ф��ơ�
-Devel::DProf �Ϥ��ʤ��Υץ������Τɤ����ɤΤ��餤���֤�
-���񤷤Ƥ���Τ��ξܺ٤���𤷤ޤ���
+標準配付キットにある(CPAN にも分離して置いてあります)
+Devel::DProf モジュールを入手して、標準配布キットにある
+Benchmark.pm も使ってみるべきでしょう。
+ベンチマークは、あなたのプログラムの特定の部分の所要時間を取るのに対して、
+Devel::DProf はあなたのプログラムのどこがどのくらい時間を
+消費しているのかの詳細を報告します。
 
 =begin original
 
@@ -122,7 +122,7 @@ Here's a sample use of Benchmark:
 
 =end original
 
-�ʲ��� Benchmark �λȤ�������Ǥ�:
+以下は Benchmark の使い方の例です:
 
   use Benchmark;
 
@@ -140,9 +140,9 @@ Here's a sample use of Benchmark:
 			   return @a },
            });
 
-����ϰʲ��Τ褦�ʽ��Ϥ�Ԥ��ޤ�
-(����ޥ������㡣�ϡ��ɥ����������ڥ졼�ƥ��󥰥����ƥࡢ���λ����Ǥ�
-�ޥ���λ��Ѿ����ˤ�äƷ�̤��Ѥ��ޤ�):
+これは以下のような出力を行います
+(あるマシン上の例。ハードウェア、オペレーティングシステム、その時点での
+マシンの使用状況によって結果は変わります):
 
   Benchmark: timing 10000 iterations of for, map...
          for:  4 secs ( 3.97 usr  0.01 sys =  3.98 cpu)
@@ -156,29 +156,29 @@ of contrasting algorithms.
 
 =end original
 
-�ɤ��٥���ޡ�����񤯤Τ��������Ѥ��Ȥ������Ȥ����դ��Ƥ���������
-�٥���ޡ����Ϥ��ʤ���Ϳ�����ǡ����Τߤ�ƥ��Ȥ���ʣ���ʥ��르�ꥺ�ब
-�Ȥ�줿�Ȥ���ʣ�����ȤϰۤʤäƤ����ΤʤΤǤ���
+良いベンチマークを書くのは非常に大変だということに注意してください。
+ベンチマークはあなたが与えたデータのみをテストし、複雑なアルゴリズムが
+使われたときの複雑さとは異なっているものなのです。
 
 =head2 How do I cross-reference my Perl programs?
 
-(���Perl�ץ������Υ�������ե���󥹤�Ȥ�ˤ�?)
+(私のPerlプログラムのクロスリファレンスをとるには?)
 
-����꡼����Perl����ѥ��顼(5.005�������̾�����ۤǤϤ���ޤ���)�ȤȤ��
-��������Ƥ���B::Xref�⥸�塼���Perll�ץ��������Ф���
-��������ե���󥹤�������������Τ˻Ȥ��ޤ���
+αリリースのPerlコンパイラー(5.005以前の通常の配布ではありません)とともに
+公開されているB::XrefモジュールはPerllプログラムに対する
+クロスリファレンスの報告を生成するのに使えます。
 
     perl -MO=Xref[,OPTIONS] scriptname.plx
 
 =head2 Is there a pretty-printer (formatter) for Perl?
 
-(Perl�ѤΥץ�ƥ��ץ�󥿡�(�ե����ޥå���)�Ϥɤ��ˤ����?)
+(Perl用のプリティプリンター(フォーマッター)はどこにあるの?)
 
-C ���Ф���indent(1)�����褦�ʥ�ե����ޥåȤ� Perl ���Ф��ƹԤ��褦��
-�ץ������Ϥ���ޤ��󡣥�����ʡ��ȥѡ����Ȥδ֤�ʣ����
-�ե����ɥХå�(���Υե����ɥХå��� vgrind �� emacs �ץ�������
-���𤵤����ΤǤ�)�Ϥ����ۤȤ�� Perl �ѡ�����
-���褦�ʤ�Τˤ��Ƥ��ޤ���
+C に対してindent(1)がやるようなリフォーマットを Perl に対して行うような
+プログラムはありません。スキャナーとパーザとの間の複雑な
+フィードバック(このフィードバックは vgrind や emacs プログラムを
+混乱させるものです)はこれをほとんど Perl パーザを
+作るようなものにしています。
 
 =begin original
 
@@ -192,17 +192,17 @@ by the following settings in vi and its clones:
 
 =end original
 
-������󡢤��ʤ��� L<perlstyle>�˽��äƤ���ΤǤ���С�
-��ե����ޥåȤ���ɬ�פϤʤ��Ǥ��礦����ʬ�Υץ������ν񼰤�
-���줷�Ƥ��������ϥХ��к��ˤʤ�ޤ���
-���ʤ��λȤäƤ��륨�ǥ������ϥ������Υե����ޥåƥ��󥰤�
-�����Ƥ���뤫�⤷��ޤ���
-emacs �� perl �⡼�ɤ��꿷���� cperl �⡼�ɤϡ�
-�����ɤΤۤȤ��(���������ǤϤ���ޤ���)���Ф��ƶä��ۤɤ�������μ������
-�󶡤��Ƥ����Ǥ��礦���������Ƥ���������Ϥʥץ�������ǽ��
-���ǥ������Ǥ��������餫�ʼ�������󶡤��Ƥ���뤫�⤷��ޤ���
+もちろん、あなたが L<perlstyle>に従っているのであれば、
+リフォーマットする必要はないでしょう。自分のプログラムの書式を
+統一しておく習慣はバグ対策になります。
+あなたの使っているエディターはソースのフォーマッティングを
+助けてくれるかもしれません。
+emacs の perl モードやより新しい cperl モードは、
+コードのほとんど(が、全部ではありません)に対して驚くほどたくさんの手助けを
+提供してくれるでしょうし、そしてそれよりも非力なプログラム可能な
+エディターでさえも明らかな手助けを提供してくれるかもしれません。
 
-Tom��vi(�Ȥ��Υ�������)�ǰʲ��Τ褦�������ȤäƤ��ޤ�:
+Tomはvi(とそのクローン)で以下のような設定を使っています:
 
     set ai sw=4
     map ^O {^M}^[O^T
@@ -218,19 +218,19 @@ http://www.perl.com/CPAN-local/authors/id/TOMC/scripts/toms.exrc.gz
 
 =end original
 
-����򤢤ʤ���F<.exrc>�Ȥ����ե�����(�����åȤϥ���ȥ����륭��饯������
-�֤������ޤ�)�˽񤭹���� OK �Ǥ��������⡼�ɤǤ�^T�ϥ���ǥ�Ȥ�Ԥ���
-^D�ϥ��󥤥�ǥ�Ȥ�^O��blockdent�򤷤ޤ���
-�Ǹ�Τ�Τ�Ȥä����Ȥ��ʤ��Τʤ顢���ʤ��Ϥ���ޤ���»�򤷤Ƥ��ޤ���
-�������դ��Ρ���괰�������
+これをあなたのF<.exrc>というファイル(キャレットはコントロールキャラクターで
+置き換えます)に書き込めば OK です。挿入モードでは^Tはインデントを行い、
+^Dはアンインデントを、^Oはblockdentをします。
+最後のものを使ったことがないのなら、あなたはこれまで大損をしています。
+コメント付きの、より完全な例は
 http://www.perl.com/CPAN-local/authors/id/TOMC/scripts/toms.exrc.gz
-�ˤ���ޤ���
+にあります。
 
-I<vgrind>�ץ�������Ȥäƥ졼�����ץ�󥿡��ˤ��줤�ʥ����ɤ�
-���Ϥ�����ΤǤ���С�
+I<vgrind>プログラムを使ってレーザープリンターにきれいなコードを
+出力させるのであれば、
 http://www.perl.com/CPAN/doc/misc/tips/working.vgrind.entry
-�򥹥��֤Ȥ��ƻȤ����Ȥ��Ǥ��ޤ��������η�̤ϡ���ʬŪ�ˤϡ�
-�������줿�����ɤǤϤʤ����⤷��ޤ���
+をスタブとして使うことができますが、その結果は、部分的には、
+洗練されたコードではないかもしれません。
 
 =begin original
 
@@ -239,12 +239,12 @@ related to generating nicely printed output of documents.
 
 =end original
 
-http://www.infres.enst.fr/%7Edemaille/a2ps/ �ˤ��� a2ps ��
-����ʽ��Ϥȥɥ�����Ȥ���Ȥ������Ȥ˴ؤ���¿���Τ��Ȥ�Ԥ��ޤ���
+http://www.infres.enst.fr/%7Edemaille/a2ps/ にある a2ps は
+奇麗な出力とドキュメントを作るということに関して多くのことを行います。
 
 =head2 Is there a ctags for Perl?
 
-(Perl�Ѥ�etags/ctags�Ϥ���ޤ���?)
+(Perl用のetags/ctagsはありますか?)
 
 =begin original
 
@@ -254,14 +254,14 @@ the trick.  And if not, it's easy to hack into what you want.
 
 =end original
 
-ñ��ʤ�Τ�
+単純なものが
 http://www.perl.com/CPAN/authors/id/TOMC/scripts/ptags.gz
-�ˤ���ޤ����ʤ��ä��Ȥ��Ƥ⡢��ʬ�ι��ߤ˥ϥå����뤳�Ȥ�
-��ñ�ʤ��ȤǤ���
+にあります。なかったとしても、自分の好みにハックすることは
+簡単なことです。
 
 =head2 Is there an IDE or Windows Perl Editor?
 
-(Perl�����糫ȯ�Ķ��Ȥ�Windows Perl Editor�Ϥ���ޤ���?)
+(Perlの統合開発環境とかWindows Perl Editorはありますか?)
 
 =begin original
 
@@ -269,7 +269,7 @@ Perl programs are just plain text, so any editor will do.
 
 =end original
 
-Perl �ץ�������ñ�ʤ�ƥ����ȤʤΤǡ��ɤ�ʥ��ǥ����Ǥ�����Ǥ��ޤ���
+Perl プログラムは単なるテキストなので、どんなエディタでも作成できます。
 
 =begin original
 
@@ -279,11 +279,11 @@ thing and do it well.  It's like a carpenter's toolbox.
 
 =end original
 
-���ʤ��� Unix ��ȤäƤ���ʤ顢���ʤ��Ϥ��Ǥ����糫ȯ�Ķ���
-��ˤ��Ƥ��ޤ�--����� Unix ���ȤǤ���
-Unix ��ů�ؤϡ���ĤΤ��Ȥ򤦤ޤ����ʤ��뾮���ʥġ����ʣ��
-�Ȥ߹�碌�뤳�ȤǤ���
-������繩��ƻ��Ȣ�˻��Ƥ��ޤ���
+あなたが Unix を使っているなら、あなたはすでに統合開発環境を
+手にしています--それは Unix 自身です。
+Unix の哲学は、一つのことをうまくこなせる小さなツールを複数
+組み合わせることです。
+これは大工の道具箱に似ています。
 
 =begin original
 
@@ -291,7 +291,7 @@ If you want a Windows IDE, check the following:
 
 =end original
 
-Windows �����糫ȯ�Ķ����ۤ����ʤ顢�ʲ�������å����Ƥ���������
+Windows の統合開発環境がほしいなら、以下をチェックしてください。
 
 =over 4
 
@@ -311,11 +311,11 @@ in beta (http://www.ActiveState.com/Products/VisualPerl/index.html)).
 
 =end original
 
-ActiveState �Υ������ץ�åȥե����ࡦ¿���� IDE �ϡ�
-����ɽ���ǥХå�����⡼�ȥǥХå���ޤ� Perl ���ݡ��Ȥ�����ޤ�
-(http://www.ActiveState.com/Products/Komodo/index.html)��
-(Visual Perl, Visual Studio.NET �ץ饰�����(2001ǯ��Ƭ)����
-�١����ǤǤ�(http://www.ActiveState.com/Products/VisualPerl/index.html))��
+ActiveState のクロスプラットフォーム・多言語 IDE は、
+正規表現デバッガ、リモートデバッグを含む Perl サポートがあります
+(http://www.ActiveState.com/Products/Komodo/index.html)。
+(Visual Perl, Visual Studio.NET プラグインは(2001年初頭)現在
+ベータ版です(http://www.ActiveState.com/Products/VisualPerl/index.html))。
 
 =item The Object System
 
@@ -326,8 +326,8 @@ applications development IDE.
 
 =end original
 
-(http://www.castlelink.co.uk/object_system/) �� Perl web ���ץꥱ�������
-��ȯ IDE �Ǥ���
+(http://www.castlelink.co.uk/object_system/) は Perl web アプリケーション
+開発 IDE です。
 
 =item PerlBuilder
 
@@ -338,8 +338,8 @@ environment for Windows that supports Perl development.
 
 =end original
 
-(http://www.solutionsoft.com/perl.htm) �� Windows �����糫ȯ�Ķ��ǡ�
-Perl �γ�ȯ�ˤ��б����Ƥ��ޤ���
+(http://www.solutionsoft.com/perl.htm) は Windows 用統合開発環境で、
+Perl の開発にも対応しています。
 
 =item Perl code magic
 
@@ -353,7 +353,7 @@ http://helpconsulting.net/visiperl/, from Help Consulting.
 
 =end original
 
-http://helpconsulting.net/visiperl/, Help Consulting ���Ǥ���
+http://helpconsulting.net/visiperl/, Help Consulting 製です。
 
 =back
 
@@ -366,11 +366,11 @@ best available Perl editing mode in any editor.
 
 =end original
 
-���ǥ����Ȥ���: ���ʤ��� Unix ��ȤäƤ���ʤ顢�����餯 vi �� vi ��������
-���Ǥˤ���Ϥ��ǡ�emacs �⤢�뤫�⤷��ޤ���
-����ǡ����ʤ��ϲ������������ɤ���ɬ�פϤʤ����⤷��ޤ���
-������С������� emacs �ǻȤ��� cperl-mode (M-x cperl-mode) ��
-�����餯���ǥ����Ǥ� Perl �Խ��⡼�ɤ���Ǻǹ�Τ�ΤǤ��礦��
+エディタ使いへ: あなたが Unix を使っているなら、おそらく vi か vi クローンが
+すでにあるはずで、emacs もあるかもしれません。
+それで、あなたは何もダウンロードする必要はないかもしれません。
+あらゆるバージョンの emacs で使える cperl-mode (M-x cperl-mode) は
+おそらくエディタでの Perl 編集モードの中で最高のものでしょう。
 
 =begin original
 
@@ -378,7 +378,7 @@ For Windows editors: you can download an Emacs
 
 =end original
 
-Windows �Υ��ǥ����Ȥ���: Emacs ������������ɲ�ǽ�Ǥ���
+Windows のエディタ使いへ: Emacs がダウンロード可能です。
 
 =over 4
 
@@ -402,7 +402,7 @@ or a vi clone such as
 
 =end original
 
-���뤤�ϰʲ��Τ褦�� vi ��������⤢��ޤ���
+あるいは以下のような vi クローンもあります。
 
 =over 4
 
@@ -429,7 +429,7 @@ http://www.thomer.com/thomer/vi/vi.html.
 
 =end original
 
-����Ū�ʡ�Windows �䤽��¾�� vi �����ԤΤ����:
+一般的な、Windows やその他の vi 愛好者のために:
 http://www.thomer.com/thomer/vi/vi.html.
 
 =begin original
@@ -444,14 +444,14 @@ though: at least also vim and vile offer an embedded Perl.
 
 =end original
 
-nvi (http://www.bostic.com/vi/, CPAN �� src/misc/ �ˤ⤢��ޤ�)��
-vi ��������ΰ�Ĥǡ���ǰ�ʤ��� Windows �Ǥ�ư��ޤ��󤬡�
-UNIX �ץ�åȥե������ȤäƤ���ʤ��Ƥߤ�٤��Ǥ���
-������ͳ�Ȥ��Ƥϡ���̩�ˤ� vi ��������ǤϤʤ���ΤΡ�
-�ºݤ� vi�����뤤�� vi �λ�¹�Ǥ��뤫��Ǥ���
-�������ͳ�Ȥ��Ƥϡ�Perl ����¢���Ƥ��ơ�Perl �򥹥���ץȸ���Ȥ���
-�Ȥ��뤫��Ǥ�����������nvi �Ϥ����ε�ǽ����ͣ��Τ�ΤǤϤ���ޤ���
-���ʤ��Ȥ� vim �� vile ����¢ Perl ���󶡤��Ƥ��ޤ���
+nvi (http://www.bostic.com/vi/, CPAN の src/misc/ にもあります)は
+vi クローンの一つで、残念ながら Windows では動作しませんが、
+UNIX プラットフォームを使っているなら試してみるべきです。
+第一の理由としては、厳密には vi クローンではないものの、
+実際は vi、あるいは vi の子孫であるからです。
+第二の理由としては、Perl を内蔵していて、Perl をスクリプト言語として
+使えるからです。しかし、nvi はこれらの機能をもつ唯一のものではありません。
+少なくとも vim と vile も内蔵 Perl を提供しています。
 
 =begin original
 
@@ -459,7 +459,7 @@ The following are Win32 multilanguage editor/IDESs that support Perl:
 
 =end original
 
-�ʲ��� Perl �򥵥ݡ��Ȥ��Ƥ��� Win32 ¿���쥨�ǥ���/IDE �Ǥ���
+以下は Perl をサポートしている Win32 多言語エディタ/IDE です。
 
 =over 4
 
@@ -488,12 +488,12 @@ GUI creation.
 
 =end original
 
-CPAN �� Tk �⥸�塼��ȶ������ۤ���Ƥ��롢Perl �ǽ񤫤줿
-toyedit Text���������åȥ١����Υ��ǥ���������ޤ���
-ptkdb(http://world.std.com/~aep/ptkdb/) �� ��ȯ�Ķ��Ȥ��ƿ���
-Perl/tk �١����ΥǥХå��Ǥ���
-Perl Composer(http://perlcomposer.sourceforge.net/vperl.html)��
-Perl/Tk GUI ��Ȥä� IDE �Ǥ���
+CPAN で Tk モジュールと共に配布されている、Perl で書かれた
+toyedit Textウィジェットベースのエディタがあります。
+ptkdb(http://world.std.com/~aep/ptkdb/) は 開発環境として振舞う
+Perl/tk ベースのデバッガです。
+Perl Composer(http://perlcomposer.sourceforge.net/vperl.html)は
+Perl/Tk GUI を使った IDE です。
 
 =begin original
 
@@ -502,9 +502,9 @@ powerful shell environment for Win32.  Your options include
 
 =end original
 
-���ǥ���/���糫ȯ�Ķ��˲ä��ơ�Win32 �Ķ��ǤΤ�궯�Ϥ�
-������Ķ��˶�̣�����뤫�⤷��ޤ���
-�����Ȥ��Ƥϰʲ��Τ�Τ�����ޤ�:
+エディタ/統合開発環境に加えて、Win32 環境でのより強力な
+シェル環境に興味があるかもしれません。
+選択肢としては以下のものがあります:
 
 =over 4
 
@@ -554,8 +554,8 @@ are text editors for Mac OS that have a Perl sensitivity mode
 
 =end original
 
-����� Mac OS ��ư���ƥ����ȥ��ǥ����ǡ�
-Perl �ѤΥ⡼�ɤ�����ޤ�(http://web.barebones.com/)��
+これは Mac OS で動作するテキストエディタで、
+Perl 用のモードがあります(http://web.barebones.com/)。
 
 =item Alpha
 
@@ -567,9 +567,9 @@ including Perl and HTML (http://alpha.olm.net/).
 
 =end original
 
-����ϥ��ǥ����ǡ�Tcl �ǽ񤫤�Ƥ��ꡢ��ĥ��ǽ�Ǥ���
-����Ǥ⤤���Ĥ���ͭ̾�ʥޡ������å׸���ȥץ�����ߥ󥰸���
-(Perl �� HTML��ޤߤޤ�)�ؤ��б�����¢���Ƥ��ޤ�(http://alpha.olm.net/)��
+これはエディタで、Tcl で書かれており、拡張可能です。
+それでもいくつかの有名なマークアップ言語とプログラミング言語
+(Perl と HTMLを含みます)への対応を内蔵しています(http://alpha.olm.net/)。
 
 =back
 
@@ -580,12 +580,12 @@ OS X and BeOS respectively (http://www.hekkelman.com/).
 
 =end original
 
-Pepper �� Pe �Ϥ��줾�� Mac OS X �� BeOS �ѤΥץ�����ߥ󥰸������
-�ƥ����ȥ��ǥ����Ǥ�(http://www.hekkelman.com/)��
+Pepper と Pe はそれぞれ Mac OS X と BeOS 用のプログラミング言語向け
+テキストエディタです(http://www.hekkelman.com/)。
 
 =head2 Where can I get Perl macros for vi?
 
-(vi�Ѥ�Perl�ޥ����Ϥɤ��Ǽ��������ޤ���?)
+(vi用のPerlマクロはどこで手に入れられますか?)
 
 =begin original
 
@@ -597,73 +597,73 @@ with an embedded Perl interpreter--see http://www.perl.com/CPAN/src/misc.
 
 =end original
 
-vi���ߥ�졼������ɸ��٥���ޡ����ե�����Ǥ��� Tom Christiansen ��
-vi ����ե����졼�����ե�����δ����ʤ�Τ� 
+viエミュレーターの標準ベンチマークファイルである Tom Christiansen の
+vi コンフィグレーションファイルの完全なものは 
 http://www.perl.com/CPAN/authors/Tom_Christiansen/scripts/toms.exrc.gz
-�򸫤Ƥ��������������Berkeley�γ��ˤ���vi�Υ����ȥС������Ǥ���
-nvi �ǺǤ�褯�¹Ԥ���ޤ���nvi ���Ȥ߹��ߤ�Perl���󥿥ץ꥿��
-�Ĥ��ƥӥ�ɤ��뤳�Ȥ�Ǥ��ޤ���
+を見てください。これはBerkeleyの外にあるviのカレントバージョンである
+nvi で最もよく実行されます。nvi は組み込みのPerlインタプリタを
+つけてビルドすることもできます。
 http://www.perl.com/CPAN/src/misc
-�򻲾Ȥ��Ƥ���������
+を参照してください。
 
 =head2 Where can I get perl-mode for emacs?
 
-(emacs��perl�⡼�ɤϤɤ�������Ǥ��ޤ���?)
+(emacsのperlモードはどこで入手できますか?)
 
-Emacs �ΥС������ 19 �ѥå���٥� 22 ���顢perl-mode.el ���Ȥ߹��ߤ� Perl
-�ǥХå��򥵥ݡ��Ȥ��Ƥ��ޤ���
-������ɸ��� Emacs19 ���ۥ��åȤȰ��ˤ���Ϥ��Ǥ���
+Emacs のバージョン 19 パッチレベル 22 から、perl-mode.el と組み込みの Perl
+デバッガをサポートしています。
+これらは標準の Emacs19 配布セットと一緒にあるはずです。
 
-Perl�Υ������ǥ��쥯�ȥ�ˤϡ���emacs�ɤȤ����ǥ��쥯�ȥ꤬���äơ�
-�����ˤϥ�����ɤ򥫥顼ɽ�������ꡢ����ƥ����ȥ��󥷥ƥ��֤�
-�إ�פʤɤΤ������ʤ��Ȥ��󶡤���cperl-mode������ޤ���
+Perlのソースディレクトリには、“emacs”というディレクトリがあって、
+そこにはキーワードをカラー表示したり、コンテキストセンシティブな
+ヘルプなどのご機嫌なことを提供するcperl-modeがあります。
 
-emacs��perl-mode��C<��main'foo��>(���󥰥륯������)��������򰷤���Τǡ�
-����ǥ�Ȥ�ϥ��饤�Ȥ򤪤��������Ƥ��ޤ����Ȥ����դ��Ƥ���������
-������ˤ�����C<��main::foo��>��Ȥ��٤��Ǥ��礦��
+emacsのperl-modeはC<“main'foo”>(シングルクォート)スタイルを扱うもので、
+インデントやハイライトをおかしくしてしまうことに注意してください。
+いずれにしろ、C<“main::foo”>を使うべきでしょう。
 
 =head2 How can I use curses with Perl?
 
-(Perl�Ȱ���curses��Ȥ��ˤ�?)
+(Perlと一緒にcursesを使うには?)
 
-CPAN�ˤ���Curses�⥸�塼��ϡ�curses�饤�֥����Ф���ưŪ��
-�����ɲ�ǽ�ʥ��֥������ȥ⥸�塼�륤�󥿡��ե��������󶡤��ޤ���
-����äȤ����ǥ⤬
+CPANにあるCursesモジュールは、cursesライブラリに対する動的に
+ロード可能なオブジェクトモジュールインターフェースを提供します。
+ちょっとしたデモが
 http://www.perl.com/CPAN/authors/Tom_Christiansen/scripts/rep;
-�ˤ���ޤ������Υץ������ϥ��ޥ�ɤ򷫤��֤���ɬ�פ˱�����
-���̤򹹿�����B<top>��Ʊ����B<rep ps axu>�������󥰤��ޤ���
+にあります。このプログラムはコマンドを繰り返し、必要に応じて
+画面を更新し、B<top>と同じくB<rep ps axu>をレンダリングします。
 
 =head2 How can I use X or Tk with Perl?
 
-(�ɤ������Perl��X��Tk��Ȥ��ޤ���?)
+(どうすればPerlとXやTkを使えますか?)
 
-Tk�ϴ�����Perl�١����ǡ�Tk��Ȥ������Tcl�λ��Ѥ���������ʤ��褦�ʡ�
-Tk�ġ��륭�åȤ��Ф��륪�֥������Ȼظ����󥿡��ե������Ǥ���
-Sx��Athena ���������åȥ��åȤ��Ф��륤�󥿡��ե������Ǥ���
-������ξ���Ȥ�CPAN��������Ǥ��ޤ���
+Tkは完全にPerlベースで、Tkを使うためにTclの使用が強制されないような、
+Tkツールキットに対するオブジェクト指向インターフェースです。
+SxはAthena ウィジェットセットに対するインターフェースです。
+これらの両方ともCPANから入手できます。
 http://www.perl.com/CPAN/modules/by-category/08_User_Interfaces/
-�򻲾Ȥ��Ƥ���������
+を参照してください。
 
-Perl/Tk�˴ؤ��뵮�Ťʾ���Ȥ��ơ�
-Perl/Tk�˴ؤ���FAQ��
-http://w4.lns.cornell.edu/%7Epvhp/ptk/ptkTOC.html �ˤ���ޤ���
-�ޤ���
+Perl/Tkに関する貴重な情報として、
+Perl/Tkに関するFAQが
+http://w4.lns.cornell.edu/%7Epvhp/ptk/ptkTOC.html にあります。
+また、
 http://www.perl.com/CPAN-local/authors/Stephen_O_Lidie/ 
-�ˤ�Perl/Tk�Υ�ե���󥹤���
+にはPerl/Tkのリファレンスが、
 http://www-users.cs.umn.edu/%7Eamundson/perl/perltk/toc.html
-�ˤϥޥ˥奢��ڡ���������ޤ���
+にはマニュアルページがあります。
 
 =head2 How can I generate simple menus without using CGI or Tk?
 
-(�ɤ����� CGI��Tk��Ȥ鷺��ñ��ʥ�˥塼�������Ǥ��ޤ���?)
+(どうやれば CGIやTkを使わずに単純なメニューを生成できますか?)
 
-curses�١�����
+cursesベースの
 http://www.perl.com/CPAN/authors/id/SKUNZ/perlmenu.v4.0.tar.gz
-���Υ⥸�塼�뤬�����ˤʤ뤫�⤷��ޤ���
+このモジュールが助けになるかもしれません。
 
 =head2 What is undump?
 
-(undump�äƤʤ�Ǥ���?)
+(undumpってなんですか?)
 
 =begin original
 
@@ -671,22 +671,22 @@ See the next question on ``How can I make my Perl program run faster?''
 
 =end original
 
-���μ���򻲾Ȥ��Ƥ���������
+次の質問を参照してください。
 
 =head2 How can I make my Perl program run faster?
 
-(�ɤ�����л��Perl�ץ��������ä�®���Ǥ��ޤ���?)
+(どうすれば私のPerlプログラムをもっと速くできますか?)
 
-���κ�������ˡ�Ȥϡ����褤���르�ꥺ���Ȥ��Ȥ������ȤǤ���
-�饯���ܤ���Ȭ�ϤˤϤ��ʤ���������褻�뤫�⤷��ʤ����Ĥ��θ�ΨŪ��
-tips ������ޤ���
-Jon Bentley�������Programming Pearls��(�ߥ����ڥ�ǤϤ���ޤ���!)
-(ˮ���ּ�̤Υץ�����ߥ󥰡�)�ˤ��Ŭ���˴ؤ��뤤���Ĥ��� Tips ������ޤ���
-�٥���ޡ����ȥץ��ե�����ˤ�äơ�
-���ʤ��Υץ������Τɤ��˼������ƺ�Ŭ������Τ��������Τ���
-�Ϥä��ꤵ�������ޤ��ޤȹ�®����Ԥ��ΤǤϤʤ�����ɤ����르�ꥺ���
-õ����ݤ���ˤʤ�ޤ��������ơ��ɤ����褦��ʤ��ʤä��Ȥ��ˤ�
-���Ŀ������ϡ��ɥ��������㤦���Ȥ������Ȥ��Τ��ݤ���Ȥ�ʤ�ޤ���
+その最善の方法とは、よりよいアルゴリズムを使うということです。
+ラクダ本の第八章にはあなたが感心をよせるかもしれない幾つかの効率的な
+tips があります。
+Jon Bentleyの著作“Programming Pearls”(ミススペルではありません!)
+(邦訳「珠玉のプログラミング」)にも最適化に関するいくつかの Tips があります。
+ベンチマークとプロファイルによって、
+あなたのプログラムのどこに手を入れて最適化するのが正しいのかを
+はっきりさせ、ちまちまと高速化を行うのではなくより良いアルゴリズムを
+探す手掛かりになります。そして、どうしようもなくなったときには
+いつ新しいハードウェアを買うかということを知る手掛かりともなります。
 
 =begin original
 
@@ -700,79 +700,79 @@ PDL module from CPAN).
 
 =end original
 
-�̤Υ��ץ������ˤϡ������Ȥ� Perl �����ɤ�
-�����ȥ����ǥ��󥰤���Ȥ�����Τ�����ޤ���
-���Τ����ɸ�����ۥ��åȤˤ��� AutoSplit�⥸�塼���
-AutoLoader �⥸�塼��򻲾Ȥ��Ƥ���������
-���뤤�ϡ��ܥȥ�ͥå��ȤʤäƤ���Ȥ��������ꤷ��
-������ʬ�� C �ǽ񤯤��Ȥ�ͤ��뤫�⤷��ޤ���
-���礦�� C �ǽ񤫤줿�ץ������Υܥȥ�ͥå��򥢥���֥�ǽ񤯤Τ�Ʊ�����ȤǤ���
-C �ǽ�ľ���Ȥ�����̣�Ǥϡ�
-����ƥ����륻����������ä��⥸�塼���
-C �ǽ�ľ���Ȥ����Τ�Ʊ�ͤǤ�(�㤨�С�CPAN�ˤ���
-PDL�⥸�塼�뤬�����Ǥ�)��
+別のアプローチには、時々使う Perl コードを
+オートローディングするというものがあります。
+このために標準配布キットにある AutoSplitモジュールと
+AutoLoader モジュールを参照してください。
+あるいは、ボトルネックとなっているところを特定し、
+その部分を C で書くことを考えるかもしれません。
+ちょうど C で書かれたプログラムのボトルネックをアセンブラで書くのと同じことです。
+C で書き直すという意味では、
+クリティカルセクションを持ったモジュールを
+C で書き直すというのも同様です(例えば、CPANにある
+PDLモジュールがそうです)。
 
-���Ĥ��Υ������Ǥϡ��Х��ȥ����ɤ�����������(����ϥ���ѥ�����֤�
-���󤷤ޤ�)C�إ���ѥ��뤹��褦�ʥХå�����ɥ���ѥ��顼��Ȥ�
-���ͤ����뤫�⤷��ޤ��󡣤���ˤ�äƥ���ѥ�����֤����󤷤���
-�¹Ի��֤�������(�Ȥ��äƤ⤽��ۤ�¿���Ϥʤ�)�ʤ�Ǥ��礦��
-Perl �ץ������Υ���ѥ���˴ؤ������򻲾Ȥ��Ƥ���������
+幾つかのケースでは、バイトコードを生成したり(これはコンパイル時間を
+節約します)Cへコンパイルするようなバックエンドコンパイラーを使う
+価値があるかもしれません。これによってコンパイル時間を節約したり
+実行時間が小さく(といってもそれほど多くはない)なるでしょう。
+Perl プログラムのコンパイルに関する質問を参照してください。
 
-�⤷���ʤ�������perl�μ¹ԥե�����ȶ�ͭ�饤�֥��C<libc.so>��
-��󥯤��Ƥ���ΤǤ���С������ƥ��å���libc.a�ȥ�󥯤���perl��
-�ƥӥ�ɤ��뤳�Ȥˤ�äơ�10�ѡ�����Ȥ���25�ѡ��������ǽ��
-���夵���뤳�Ȥ��ۤȤ�ɤξ���ǽ�Ǥ���
-�����perl�μ¹ԥե�������礭�ʤ�Τˤ��Ƥ��ޤ��ޤ�����
-���ʤ���Perl�ץ������(�ȥץ�����ޡ�)�ϥ����ƥ��å���󥯤��줿���Ȥ�
-���դ���Ǥ��礦��
-���ܤ�������ϡ����������ۤˤ���F<INSTALL>�Ȥ����ե�����򻲾Ȥ��Ƥ���������
+もしあなたが今、perlの実行ファイルと共有ライブラリC<libc.so>を
+リンクしているのであれば、スタティックにlibc.aとリンクしてperlを
+再ビルドすることによって、10パーセントから25パーセント性能を
+向上させることがほとんどの場合可能です。
+これはperlの実行ファイルを大きなものにしてしまいますが、
+あなたのPerlプログラム(とプログラマー)はスタティックリンクされたことを
+感謝するでしょう。
+より詳しい情報は、ソース配布にあるF<INSTALL>というファイルを参照してください。
 
-����Τʤ���ݡ��Ȥ�(�����ϽŻ�Υ��ץꥱ��������)sfio ��ȤäƤ���
-Perl���󥿥ץ꥿�Ϥ����ȤäƤ��ʤ���Τ���
-����ǽ�Ǥ���ȼ�ĥ���Ƥ��ޤ���
-������ˤϡ����������ۤˤ���F<INSTALL>�Ȥ����ե�����Ρ�
-�ä� ��Selecting File I/O mechanisms�� �Ȥ������������򻲾Ȥ��Ƥ���������
+根拠のないレポートが(入出力重視のアプリケーションで)sfio を使っている
+Perlインタプリタはそれを使っていないものよりも
+高性能であると主張しています。
+これを試すには、ソース配布にあるF<INSTALL>というファイルの、
+特に “Selecting File I/O mechanisms” というセクションを参照してください。
 
-undump �ץ������ϡ�����ѥ���Ѥߤη����ǥǥ������˳�Ǽ���뤳�Ȥ�
-Perl�ץ��������®������Τ˸Ť��ϻȤ��Ƥ��ޤ�����
-����Ϥۤ�ΰ����Υ������ƥ����㡼�ǤΤ�Ư����ΤǤ��äơ�
-������ͤ��������ǤϤʤ������ġ��褤�����ǤϤ���ޤ���
+undump プログラムは、コンパイル済みの形式でディスクに格納することで
+Perlプログラムを高速化するのに古くは使われていました。
+これはほんの一部のアーキテクチャーでのみ働くものであって、
+最早価値ある選択肢ではなく、かつ、よい解決策ではありません。
 
 =head2 How can I make my Perl program take less memory?
 
-(�ɤ�����л��Perl�ץ������Υ�������̤򾯤ʤ��Ǥ��ޤ���?)
+(どうすれば私のPerlプログラムのメモリ消費量を少なくできますか?)
 
-���֤ȶ��֤Ȥ�ŷ��˳ݤ����Ȥ���Perl�ϤۤȤ�ɾ�˥��꡼�˴ؤ���
-������������ޤ���Perl�ˤ����륹���顼��C��ʸ���������꡼����񤷡�
-�����Ʊ�ͤǤ����ϥå���Ϲ��˥����Ȥ��ޤ���
-�ޤ��Ԥ����ȤϻĤäƤϤ����ΤΡ��Ƕ�Υ�꡼���ǤϤ���������н褷�Ƥ��ޤ���
-���Ȥ���5.004�ˤ���褦�ˡ���ʣ�����ϥå��奭�������ƤΥϥå���Ƕ�ͭ����ޤ���
-���Τ��ᡢ(���Υϥå��奭���γ�Ǽ�Τ����)�Ƴ���դ���ɬ�פϤ���ޤ���
+時間と空間とを天秤に掛けたとき、Perlはほとんど常にメモリーに関する
+問題を放棄します。PerlにおけるスカラーはCの文字列よりもメモリーを消費し、
+配列も同様です。ハッシュは更にメモリを使います。
+まだ行うことは残ってはいるものの、最近のリリースではこの問題に対処しています。
+たとえば5.004にあるように、重複したハッシュキーは全てのハッシュで共有されます。
+このため、(そのハッシュキーの格納のための)再割り付けの必要はありません。
 
-substr()��vec()��Ȥä�����򥷥ߥ�졼�Ȥ��뤳�Ȥ������˸�Ψ��
-�夲���뤳�Ȥ�����Ǥ��礦��
-���Ȥ�����ĤΥ֡����ͤ���ä�����ϡ�
-���ʤ��Ȥ������Х��Ȥζ��֤�ɬ�פȤ��ޤ���
-�������������125�Х��ȤΥӥåȥ٥��������֤������뤳�Ȥ��Ǥ��ޤ�--
-����Ƿ�Ū�˥��������Ǥ��ޤ���
-ɸ���Tie::SubstrHash�⥸�塼���ǡ�����¤�δ��Ĥ��η����Ф��������
-���Ƥ����Ǥ��礦�����ʤ����ǡ�����¤�Υ��ڥ���ꥹ��
-(�㤨�й���ʤ�)�⥸�塼��ȤȤ�˻Ż��򤷤褦�Ȥ��Ƥ���Τʤ顢
-C�Ǽ������줿�⥸�塼���Perl�Ǽ������줿�����ʥ⥸�塼�����
-���ʤ����ꤷ���Ȥ�ʤ��Ǥ��礦��
+substr()やvec()を使って配列をシミュレートすることで大幅に効率を
+上げられることがあるでしょう。
+たとえば千個のブール値を持った配列は、
+少なくとも二万バイトの空間を必要とします。
+しかし、これを125バイトのビットベクターに置き換えることができます--
+これで劇的にメモリを節約できます。
+標準のTie::SubstrHashモジュールもデータ構造の幾つかの型に対する助けを
+してくれるでしょう。あなたがデータ構造のスペシャリスト
+(例えば行列など)モジュールとともに仕事をしようとしているのなら、
+Cで実装されたモジュールはPerlで実装された等価なモジュールよりも
+少ないメモリしか使わないでしょう。
 
-��Ƥߤ�٤��⤦��Ĥλ����ϡ����ʤ��λȤäƤ���Perl�������ƥ��
-malloc��ȤäƤ���Τ�Perl�Ȥ߹��ߤ�malloc��ȤäƤ���Τ����Τ뤳�ȤǤ���
-�������ȤäƤ���ˤ������̤Τ�Τ�Ȥ��褦�ˤ��ƤߤƤ���ˤ�뺹��Τ���ޤ���
-malloc�˴ؤ������ϥ��������ۤˤ���F<INSTALL>�Ȥ����ե�����ˤ���ޤ���
-C<perl -V:usemymalloc>�ȥ����פ����perl���ȤäƤ���
-malloc���ɤ���Ǥ��뤫���Τ뤳�Ȥ��Ǥ��ޤ���
+試してみるべきもう一つの事柄は、あなたの使っているPerlがシステムの
+mallocを使っているのかPerl組み込みのmallocを使っているのかを知ることです。
+いずれを使っているにしろ、別のものを使うようにしてみてそれによる差を確かめます。
+mallocに関する情報はソース配布にあるF<INSTALL>というファイルにあります。
+C<perl -V:usemymalloc>とタイプすればperlが使っている
+mallocがどちらであるかを知ることができます。
 
 =head2 Is it unsafe to return a pointer to local data?
 
-(��������ʥǡ����ؤΥݥ��󥿡����֤����Ȥϴ����Ǥ���?)
+(ローカルなデータへのポインターを返すことは危険ですか?)
 
-��������Perl�Υ����٥å����쥯����󥷥��ƥ�Ϥ���򵤤�Ĥ��ư����ޤ���
+いいえ。Perlのガーベッジコレクションシステムはそれを気をつけて扱います。
 
     sub makeone {
 	my @a = ( 1 .. 10 );
@@ -789,72 +789,72 @@ malloc���ɤ���Ǥ��뤫���Τ뤳�Ȥ��Ǥ��ޤ���
 
 =head2 How can I free an array or hash so my program shrinks?
 
-(�ɤ�����С������ϥå����������ƻ�Υץ������򾮤����Ǥ��ޤ���?)
+(どうすれば、配列やハッシュを解放して私のプログラムを小さくできますか?)
 
-����ϤǤ��ޤ��󡣤ۤȤ�ɤΥ����ƥ�Ǥϡ��ץ������Τ����
-����դ������꡼�ϡ��褷�ƥ����ƥ���֤���뤳�ȤϤ���ޤ���
-����ϡ�Ĺ����ư��Ƥ���ץ�����ब������ʬ���Ȥ�
-�Ƶ�ư������ͳ�Ǥ⤢��ޤ���
-�����Υ��ڥ졼�ƥ��󥰥����ƥ�(�ä�FreeBSD)�Ǥϡ�
-����Ȥ��Ƥ��ʤ����꡼�β���ޤȤ�Ƥ���餷���ΤǤ�����
-�����(�������Ǥ�)Perl�ˤϱƶ���ڤܤ��ޤ���
-Mac��OS���ֵѤ������꡼�β�������ѤǤ���
-(�٤��Ȥ�������Ϥ����Τ�)
-����ĤΥץ�åȥե�����Τ褦�Ǥ���
+それはできません。ほとんどのシステムでは、プログラムのために
+割り付けたメモリーは、決してシステムに返されることはありません。
+これは、長期間動作しているプログラムが時々自分自身を
+再起動する理由でもあります。
+一部のオペレーティングシステム(特にFreeBSD)では、
+最早使われていないメモリーの塊をまとめているらしいのですが、
+それは(現時点では)Perlには影響を及ぼしません。
+MacはOSに返却したメモリーの回収が信用できる
+(遅いという問題はあるものの)
+只一つのプラットフォームのようです。
 
-�䤿����Intel��Linux(Redhat 5.1)�ˤ����ơ�C<undef $scalar>��
-�����ƥ�˥��꡼���ֵѤ���Ȥ�����������Ƥ��ޤ���������
-Solaris2.6�Ϥ��Τ褦��ư��Ϥ��ʤ��褦�Ǥ���
-����Ū�ˤϼ�ʬ�ǻ�Ƥߤ�Ȥ������Ȥˤʤ�Ǥ��礦��
+私たちはIntel用Linux(Redhat 5.1)において、C<undef $scalar>が
+システムにメモリーを返却するという報告を受けています。一方で
+Solaris2.6はそのような動作はしないようです。
+一般的には自分で試してみるということになるでしょう。
 
-�������ʤ��顢�ѿ����Ф��Ƹ�����my()�λ��Ѥ򤹤뤳�Ȥǡ�
-�������ѿ����������פ���Ϥ��줿�Ȥ���Perl������餬�ȤäƤ����ΰ��
-�������ƥץ�������¾����ʬ�ǻȤ���褦�ˤ�������ˤʤ�ޤ���
-������󥰥����Х��ѿ��Ϸ褷�ƥ������פ��鳰��뤳�ȤϤʤ������Τ��ᡢ
-undef()��delete��Ȥä�Ʊ�ͤΤ��Ȥ��Ǥ���ˤ⤫����餺��������
-���֤�ưŪ�˼���᤹�褦�ʤ��ȤϤǤ��ޤ���
-����Ū�ˤϡ��������դ��Ȳ����Ϥ��ʤ��������뤳�ȤǤϤʤ���
-�ǡ���������Գ���դ�(preallocation)�����ޤ����äƤ����Ȥ��Ƥ�
-Perl���ɤ���äƤ��뤫���ۤ��٤���ΤǤ���
+しかしながら、変数に対して賢明なmy()の使用をすることで、
+それらの変数がスコープからはずれたときにPerlがそれらが使っていた領域を
+解放してプログラムの他の部分で使えるようにする助けになります。
+もちろんグローバル変数は決してスコープから外れることはなく、そのため、
+undef()やdeleteを使って同様のことができるにもかかわらず、それらの
+空間を自動的に取り戻すようなことはできません。
+一般的には、メモリ割り付けと解放はあなたが扱えることではなく、
+データ型の先行割り付け(preallocation)がうまくいっていたとしても
+Perlがどうやっているかを心配すべきものです。
 
 =head2 How can I make my CGI script more efficient?
 
-(�ɤ����л��CGI������ץȤ��äȸ�Ψ�褯�Ǥ��ޤ���?)
+(どうやれば私のCGIスクリプトをもっと効率よくできますか?)
 
-���̤�Perl�ץ�������®�������꾮���������ꤹ�뤿��δ��Ȥ��̤ˡ�
-CGI�ץ������ˤϹ����̤δ�ब����ޤ���
-CGI�ץ������ϰ��ä˿���¹Ԥ�����ǽ��������ޤ���
-�¹Ԥ�������˥�����ץȤκƥ���ѥ���ȥ����ƥ���꡼��
-��ᥬ�Х��Ȱʾ���Ĥ��뤳�Ȥ�ɬ�פȤʤ�ޤ���������������Ȥʤ����ޤ���
-C�إ���ѥ��뤹�뤳�Ȥ�B<�����ˤϤʤ�ޤ���>��
-�ʤ��ʤ顢�ץ������Υ������ȥ��å׻��Υ����С��إåɤ��ܥȥ�ͥå�������Ǥ���
+普通のPerlプログラムを速くしたり小さくしたりするための基準とは別に、
+CGIプログラムには更に別の基準があります。
+CGIプログラムは一秒に数回実行される可能性があります。
+実行する度毎にスクリプトの再コンパイルとシステムメモリーを
+一メガバイト以上割りつけることが必要となります。これは問題点となり得ます。
+CへコンパイルすることはB<助けにはなりません>。
+なぜなら、プロセスのスタートアップ時のオーバーヘッドがボトルネックだからです。
 
-���Υ����С��إåɤ��򤱤뤿��Υݥԥ�顼�ʼ��ʤ���Ĥ���ޤ���
-�����ΰ�Ĥ�Apache HTTP�����С�(http://www.apache.org/���������ǽ)��
-mod_perl��mod_fastcgi�Τ����줫�Υץ饰����⥸�塼���
-�����ޤ��Ƽ¹Ԥ�����Ȥ�����ΤǤ���
+このオーバーヘッドを避けるためのポピュラーな手段が二つあります。
+解決策の一つはApache HTTPサーバー(http://www.apache.org/から入手可能)に
+mod_perlかmod_fastcgiのいずれかのプラグインモジュールを
+取り込ませて実行させるというものです。
 
-mod_perl��Apache::Registry �⥸�塼��(mod_perl�Ȱ������ۤ����
-���ޤ�)���Ȥ߹�碌�뤳�Ȥǡ�httpd���Ȥ߹��ߤ�Perl
-���󥿥ץ꥿�ȶ��˼¹Ԥ�����褦�ˤʤ�ޤ���
-����ǡ����ʤ��Υ�����ץȤϻ����˥���ѥ��뤵�졢
-�����forkȴ����Ʊ�����ɥ쥹���֤Ǽ¹Ԥ����褦�ˤʤ�ޤ���
-Apatche �������ƥ󥷥��Ϥޤ���
-Perl�����������С�API�򥢥��������뤳�Ȥ���Ĥ���Τǡ�
-Perl�ǵ��Ҥ��줿�⥸�塼���C�ǽ񤫤줿�⥸�塼�뤬�Ǥ��뤳�ȤϤʤ�Ǥ�
-�Ǥ���褦�ˤʤ�ޤ���
-mod_perl�˴ؤ���ܺ٤� http://perl.apache.org/ �򻲾Ȥ��Ƥ���������
+mod_perlとApache::Registry モジュール(mod_perlと一緒に配布されて
+います)と組み合わせることで、httpdは組み込みのPerl
+インタプリタと共に実行させるようになります。
+これで、あなたのスクリプトは事前にコンパイルされ、
+それをfork抜きで同じアドレス空間で実行されるようになります。
+Apatche エクステンションはまた、
+Perlに内部サーバーAPIをアクセスすることを許可するので、
+Perlで記述されたモジュールはCで書かれたモジュールができることはなんでも
+できるようになります。
+mod_perlに関する詳細は http://perl.apache.org/ を参照してください。
 
-FCGI�⥸�塼��(CPAN�ˤ���ޤ�)��
-mod_fastcgi�⥸�塼��(http://www.fastcgi.com������Ǥ��ޤ�)
-�Ϥ��ʤ���Perl�ץ������Τ��줾����³Ū CGI �ǡ����ץ������ˤ��ޤ���
+FCGIモジュール(CPANにあります)と
+mod_fastcgiモジュール(http://www.fastcgi.comで入手できます)
+はあなたのPerlプログラムのそれぞれを永続的 CGI デーモンプロセスにします。
 
-�����β�����ξ���Ȥ⤢�ʤ��λȤ������ƥ�Ǹ��̤��ʤ���ǽ�������ꡢ
-�ޤ������ʤ����񤤤�CGI�ץ������˰�¸������ˡ�ʤΤǡ�
-���դ��Ƹ������Ƥ���������
+これらの解決策は両方ともあなたの使うシステムで効果がない可能性があり、
+また、あなたが書いたCGIプログラムに依存する方法なので、
+注意して検査してください。
 
 http://www.perl.com/CPAN/modules/by-category/15_World_Wide_Web_HTML_HTTP_CGI/ 
-�򻲾Ȥ��Ƥ���������
+を参照してください。
 
 =begin original
 
@@ -869,21 +869,21 @@ web site.
 
 =end original
 
-�ե꡼���եȤǤϤʤ������Ѥ����ʤ�``The Velocity Engine for Perl''
-������ޤ�(http://www.binevolve.com/ �ޤ��� http://www.binevolve.com/velocigen/)��
-���줬��˾�ߤΤ�Τ��⤷��ޤ���
-����Ϥޤ������ʤ���Perl�ץ���������ǽ������夲��
-persistent Perl�⡼�ɤǼ¹Ԥ���Ƥ���
-�̾��CGI Perl��25�ܤ��ᤵ�ˤ��뤳�Ȥ⤢��ޤ�����
-���Ǥˤ���CGI�ץ������ⲿ���ѹ������˻��ܤ�������ᤤ��Τ�
-���ޤ�����ǽ�����ƻȤ���ɾ���Ǥ����web�����Ȥ������ǽ�Ǥ���
+フリーソフトではない、商用の製品の``The Velocity Engine for Perl''
+があります(http://www.binevolve.com/ または http://www.binevolve.com/velocigen/)。
+これがお望みのものかもしれません。
+これはまた、あなたのPerlプログラムの性能を引き上げ、
+persistent Perlモードで実行されている
+通常のCGI Perlの25倍の早さにすることもありますし、
+すでにあるCGIプログラムも何も変更せずに四倍から五倍早いものに
+します。機能が全て使える評価版が先のwebサイトで入手可能です。
 
 =head2 How can I hide the source for my Perl program?
 
-(�ɤ����л��Perl�ץ������Υ������򱣤���Ǥ��礦��?)
+(どうやれば私のPerlプログラムのソースを隠せるでしょうか?)
 
-������ޤ��礦 :-) �ޤ�����á��͡��ʡȥ������ƥ��ɥ�٥����ä�
-���Ĥ��β���������ޤ�(�ۤȤ�ɤ���­�Ԥ���ΤǤϤʤ��Ǥ��礦)��
+削除しましょう :-) まじめな話、様々な“セキュリティ”レベルを持った
+幾つかの解決策があります(ほとんどは満足行くものではないでしょう)。
 
 =begin original
 
@@ -896,63 +896,63 @@ friendly 0755 level.
 
 =end original
 
-�������ʤ��顢�ޤ��ǽ�ˡ����ʤ����ɤ߼�긢��(read permission)��
-��Ȥ����ȤϤǤ��ޤ���
-�ʤ��ʤ顢������ץȤΥ����������ɤϥ���ѥ���ȥ��󥿡��ץ�åȤΤ����
-�ɤ߼���ǽ�Ǥʤ���Фʤ�ʤ�
-����Ǥ�(�����CGI������ץȤΥ����������ɤ�web��ǡ�
-�ɤ߼���ǽ�Ǥ��뤳�ȤȤϰ㤤�ޤ�--
-�ե����륷���ƥ���Ф��ƥ��������Ǥ���ͤ������ɤ߼���ǽ�Ǥ�)��
-�Ǥ����顢���¤�����򾯤ʤ��Ȥ� socially friendly �� 0755 ��
-��٥�ˤ��Ƥ���ɬ�פ�����ޤ���
+しかしながら、まず最初に、あなたは読み取り権限(read permission)を
+落とすことはできません。
+なぜなら、スクリプトのソースコードはコンパイルとインタープリットのために
+読み取り可能でなければならない
+からです(これはCGIスクリプトのソースコードがweb上で、
+読み取り可能であることとは違います--
+ファイルシステムに対してアクセスできる人だけが読み取り可能です)。
+ですから、権限の設定を少なくとも socially friendly な 0755 の
+レベルにしておく必要があります。
 
-��ˤϤ���򥻥����ƥ��������Ǥ���ȹͤ��Ƥ���ͤ⤤�ޤ���
-���ʤ��Υץ�����ब�����Ǥʤ����Ȥ�Ԥä���硢
-�����ơ��͡������Τ褦�ʰ����Ǥʤ����Ȥ�˽Ϫ������ˡ���Τ�ʤ����Ȥ�
-��äƤ���Τʤ顢�����ǤϤʤ��ΤǤ���
-ï�����������Ǥʤ����Ȥ򸫤Ĥ��������Ȥȥ������򸫤뤳�Ȥʤ��ˤ����
-˽Ϫ���뤳�ȤϤ��Ф��в�ǽ�Ȥʤ�ΤǤ���
-�������ƥ��Х���ľ���ΤǤϤʤ��Ƥ��ΥХ��򱣤��Ȥ��ä���
-�Τ��Ƥ��ʤ����Ȥ���륻�����ƥ�(security through obscurity)��
-�����ʥ������ƥ��ν��Ǥ���
+中にはこれをセキュリティ上の問題であると考えている人もいます。
+あなたのプログラムが安全でないことを行った場合、
+そして、人々がそのような安全でないことを暴露する方法を知らないことに
+頼っているのなら、安全ではないのです。
+誰かが、安全でないことを見つけだすこととソースを見ることなしにそれを
+暴露することはしばしば可能となるのです。
+セキュリティバグを直すのではなくてそのバグを隠すといった、
+知られていないことに頼るセキュリティ(security through obscurity)は
+小さなセキュリティの傷です。
 
-�������ե��륿��(CPAN�������ǽ��Filter::*)��Ȥä��Ź沽�����Ȥ�Ǥ��ޤ���
-�����������պߤ�ץ�����ޡ��Ϥ����ʣ�沽�Ǥ��뤫�⤷��ޤ���
-���ʤ��ϥХ��ȥ����ɥ���ѥ��顼�ȥ��󥿥ץ꥿��
-(������������褦��)�Ȥ����Ȥ��뤫�⤷��ޤ��󤬡�
-õ�ꤿ����οͤϤ����ե���ѥ���Ǥ��뤫�⤷��ޤ���
-(������������褦��)�ͥ��ƥ��֥����ɥ���ѥ��顼�����Ȥ�Ǥ��ޤ�����
-����å����Ϥ����ե�����֥�Ǥ��뤫�⤷��ޤ���
-�����μ��ʤϡ����ʤ��Υץ�������������褦�Ȥ����ã���͡��ʺ����
-�⤿�餷�ޤ�����
-ï�⤽������Ū���ɤ����ɤˤ��뤳�ȤϤǤ��ʤ��ΤǤ�(Perl�Τߤ�
-�¤餺�����������ǿ��Ȥʤ�ޤ�)��
+ソースフィルター(CPANで入手可能なFilter::*)を使った暗号化を試すこともできます。
+しかし、悪意在るプログラマーはそれを複号化できるかもしれません。
+あなたはバイトコードコンパイラーとインタプリタを
+(上で説明したように)使うことを試せるかもしれませんが、
+探りたがりの人はそれを逆コンパイルできるかもしれません。
+(上で説明したような)ネイティブコードコンパイラーを試すこともできますが、
+クラッカーはそれを逆アセンブルできるかもしれません。
+これらの手段は、あなたのプログラムを手に入れようとする人達に様々な困難を
+もたらしますが、
+誰もそれを決定的に防ぐ障壁にすることはできないのです(Perlのみに
+限らず、あらゆる言語で真となります)。
 
-���ʤ�����ï�������ʤ��Υץ������򸵤ˤʤˤ����פ�
-����ΤǤϤʤ����Ȥ������Ȥ�ͤ��Ƥ���Τʤ顢
-�ץ������κǸ�ιԤ������դ��饤���󥹤Ȥ���С�
-���ʤ���ˡŪ�ʰ����� (legal security)��⤿�餹�Ǥ��礦��
-���ʤ��Υ��եȥ�������饤���󥹤���
-��This is unpublished proprietary software of XYZ Corp.
+あなたが、誰かがあなたのプログラムを元になにか利益を
+得るのではないかということを考えているのなら、
+プログラムの最後の行を制限付きライセンスとすれば、
+あなたに法的な安全性 (legal security)をもたらすでしょう。
+あなたのソフトウェアをライセンスし、
+“This is unpublished proprietary software of XYZ Corp.
 Your access to it does not give you permission to use it blah blah
-blah.��
-(�ܥ��եȥ������ϡ�XYZ�����ݥ쥤�����ˤ��������줿�������
-����Ū���եȥ������Ǥ������ʤ�������˥����������뤳�Ȥϵ�����Ƥ��ޤ���
-����)�Τ褦��ʸ�Ϥ�̣�դ����ޤ����������䤿�����۸�ΤǤϤ���ޤ��󤫤顢
-���ʤ����μ¤˼�ʬ�Υ饤���󥹤�ͭ���ʤ�Τˤʤ�褦�ˤ������Τʤ顢
-�۸�Τ˲�äƤ����٤��Ǥ��礦��
+blah.”
+(本ソフトウェアは、XYZコーポレイションにより作成された非公開の
+独占的ソフトウェアです。あなたがこれにアクセスすることは許されていません、
+云々)のような文章で味付けします。もちろん私たちは弁護士ではありませんから、
+あなたが確実に自分のライセンスが有効なものになるようにしたいのなら、
+弁護士に会っておくべきでしょう。
 
 =head2 How can I compile my Perl program into byte code or C?
 
-(�ɤ����л��Perl�ץ�������Х��ȥ����ɤ�C�إ���ѥ���Ǥ��ޤ���?)
+(どうやれば私のPerlプログラムをバイトコードやCへコンパイルできますか?)
 
-Malcolm Beattie��¿��ǽ�Хå�����ɥ���ѥ��顼(multifunction
-backend compiler)��������ޤ�����
-�����CPAN�����ꤹ�뤳�Ȥ��Ǥ������ξ���Ȥ��Ԥ��ޤ���
-���Υ���ѥ��顼��perl5.005�Υ�꡼����
-�ޤޤ�Ƥ��ޤ������ޤ��ޤ��¸��ʳ��Τ�Τǡ�
-���ʤ����ץ�����ޡ��Ǥ���ʤ�Ȥä�ͷ�֤��Ȥ�Ǥ��ޤ�����
-�ץ�����ޡ��Ǥʤ��͡���˾��Ǥ����ΤǤϤ���ޤ���
+Malcolm Beattieは多機能バックエンドコンパイラー(multifunction
+backend compiler)を作成しました。
+これはCPANで入手することができ質問の両方ともを行えます。
+このコンパイラーはperl5.005のリリースに
+含まれていますが、まだまだ実験段階のもので、
+あなたがプログラマーであるなら使って遊ぶこともできますが、
+プログラマーでない人々が望んでいるものではありません。
 
 =begin original
 
@@ -967,31 +967,31 @@ faster), but this takes some tweaking of your code.
 
 =end original
 
-C�����ɤؤ�ñ�ʤ��Ѵ��Ϥ��ʤ��Υץ����������᤯�¹Ԥ���褦��
-�����ΤǤϤ���ޤ��󡣤ʤ��ʤ餽��ϡ�������(native type)��
-���󥿥ե������ο�¿���������Ѳ�ǽ�Ǥ���Ȥ��������ʾ��������
-�̾��Perl�Υ�󥿥��ॷ���ƥ�Ϥޤ�(�ץ����������)¸�ߤ��Ƥ��ơ�
-����ˤ�äƤ��ʤ��Υץ������Ϥ����礭���˱�����ʬ����
-��ư�˻��֤������뤫��ʤΤǤ���
-�ۤȤ�ɤΥץ������ϥ���ѥ�������������󤷤��Ǥ�����
-�¹Ի��֤Ϥ���������10����30%���٤Ǥ��礦��
-�ۤ�ΰ����Υץ��������ܤ˸�����褦�ʲ�����������Ǥ��礦
-(���ܤ��᤯�ʤ뤳�Ȥ⤢��ޤ�)��
-���ʤ��Υץ������򾯡��Ҥͤ���󤹤��Ȥˤʤ�ޤ���
+Cコードへの単なる変換はあなたのプログラムをより早く実行するように
+するものではありません。なぜならそれは、内部型(native type)の
+インタフェースの数多くがが使用可能であるという幸運な場合を除き、
+通常のPerlのランタイムシステムはまだ(プログラムの中に)存在していて、
+それによってあなたのプログラムはその大きさに応じた分だけ
+起動に時間がかかるからなのです。
+ほとんどのプログラムはコンパイル時間程の節約しかできず、
+実行時間はせいぜいが10から30%程度でしょう。
+ほんの一部のプログラムは目に見えるような改善が得られるでしょう
+(何倍も早くなることもあります)が
+あなたのプログラムを少々ひねくり回すことになります。
 
-����ѥ��顼�Υ����ȥС�����󤬡����ꥸ�ʥ��Perl�μ¹ԥե������
-Ʊ�����餤���礭���Υ���ѥ���Ѥߥ�����ץȤ��������뤳�Ȥ�
-�ΤäƤӤä��ꤹ�뤫�⤷��ޤ���
-����ϡ����ߤΤ�ΤǤ����ƤΥץ�����ब���Τ�eval()ʸ�ǰϤޤ�Ƥ��뤫�Τ褦��
-�����Ƥ��뤫��Ǥ���
-����ϡ���ͭ�饤�֥�� I<libperl.so>��������Ƥ����Ȥ��褦�ˤ��뤳�Ȥ�
-��Ū�˾��������뤳�Ȥ��Ǥ��ޤ���
-�ܤ����ϡ�Perl�Υ��������ۥ��åȤˤ��� F<INSTALL>�Ȥ���podfile��
-���Ȥ��Ƥ���������
-���ʤ��λȤäƤ��� perl �Х��ʥ�򤳤Υ饤�֥��ȥ�󥯤���С�
-perl�Х��ʥ�����­��ʤ����餤���������ޤ���
-���Ȥ��С��������ԤΥ����ƥ�Ǥϡ�/usr/bin/perl �Ϥ��ä���11k�Х��Ȥ�
-�礭���Ǥ����ʤ��ΤǤ�!
+コンパイラーのカレントバージョンが、オリジナルのPerlの実行ファイルと
+同じくらいの大きさのコンパイル済みスクリプトを生成することを
+知ってびっくりするかもしれません。
+これは、現在のものでは全てのプログラムが全体がeval()文で囲まれているかのように
+扱われているからです。
+これは、共有ライブラリ I<libperl.so>を作成してそれを使うようにすることで
+劇的に小さくすることができます。
+詳しくは、Perlのソース配布キットにある F<INSTALL>というpodfileを
+参照してください。
+あなたの使っている perl バイナリをこのライブラリとリンクすれば、
+perlバイナリを取るに足らないくらい小さくします。
+たとえば、ある著者のシステムでは、/usr/bin/perl はたったの11kバイトの
+大きさでしかないのです!
 
 =begin original
 
@@ -1007,22 +1007,22 @@ Perl install anyway.
 
 =end original
 
-����Ū�ˤ��äơ�����ѥ��顼��Perl�ץ������򾮤����⤷�ޤ��󤷡�
-�᤯�⤷�ʤ���С��ܿ������������Ȥ⤻���������ˤ⤷�ޤ���
-�ºݡ���������갭���ʤ뤳�Ȥ⤢��ޤ���
-�¹ԥե�������礭���ʤꡢ���ʤ��λȤ�VM�����ƥ�����Τ�����ɤ���Τ�
-�����֤��פ��褦�ˤʤ�ޤ������Х��ʥꥳ���ɤϲ���䤹����
-�������ˤ�����ΤǤ���
-�����ơ�����ѥ���ϥ��եȥ���������ˡ���ѼԤΥ���å��󥰤⡢�����륹�⡢
-̩����ɤ����ȤϤǤ��ޤ���
-����ѥ��顼��������ͭ�������ϡ�ñ�˥ѥå������󥰤Ȥ������Ȥǡ�
-����夬�ä��¹ԥե�������礭��(�ޤ���I<libperl.so>��ͭ�饤�֥���
-�Ȥä������̤Ǥ���)�򸫤Ƥ��ޤ��С�Perl���Τ򥤥󥹥ȡ��뤷�Ƥ��ޤ�����
-�פ����⤷��ޤ���
+一般的にいって、コンパイラーはPerlプログラムを小さくもしませんし、
+早くもしなければ、移植性を増すこともせず、安全にもしません。
+実際、状況がより悪くなることもあります。
+実行ファイルは大きくなり、あなたの使うVMシステムは全体をロードするのに
+より時間を要すようになりますし、バイナリコードは壊れやすくて
+修整しにくいものです。
+そして、コンパイルはソフトウェアの不法使用者のクラッキングも、ウィルスも、
+密売も防ぐことはできません。
+コンパイラーの本当の有利な点は、単にパッケージングということで、
+出来上がった実行ファイルの大きさ(まあ、I<libperl.so>共有ライブラリを
+使った場合は別ですが)を見てしまえば、Perl全体をインストールしてしまおうと
+思うかもしれません。
 
 =head2 How can I compile Perl into Java?
 
-(�ɤ�����Perl��Java�˥���ѥ���Ǥ��ޤ���?)
+(どうやればPerlをJavaにコンパイルできますか?)
 
 =begin original
 
@@ -1032,8 +1032,8 @@ http://www.oreilly.com/catalog/prkunix/ .
 
 =end original
 
-���饤�꡼�� Perl �꥽�������åȤ�Ȥä� Java �� Perl �����礹�뤳�Ȥ����ޤ���
-http://www.oreilly.com/catalog/prkunix/ �򻲾Ȥ��Ƥ���������
+オライリーの Perl リソースキットを使って Java と Perl を統合することも出来ます。
+http://www.oreilly.com/catalog/prkunix/ を参照してください。
 
 =begin original
 
@@ -1043,23 +1043,23 @@ in the Perl source tree.
 
 =end original
 
-Perl 5.6 �� Java Perl Lingo(JPL) �ȶ�Ĵ�Ǥ��ޤ���
-JPL �Ϥޤ���ȯ��Ǥ�����Perl �����ɤ� Java ����ƤӽФ��ޤ���
-Perl �������ĥ꡼�� jpl/README �򻲾Ȥ��Ƥ���������
+Perl 5.6 は Java Perl Lingo(JPL) と協調できます。
+JPL はまだ開発中ですが、Perl コードを Java から呼び出せます。
+Perl ソースツリーの jpl/README を参照してください。
 
 =head2 How can I get '#!perl' to work on [MS-DOS,NT,...]?
 
-(MS-DOS, NT, etc �� '#!perl'��ư���褦�ˤ���ˤ�?)
+(MS-DOS, NT, etc で '#!perl'が動作するようにするには?)
 
-OS/2�Ǥ�
+OS/2では
 
     extproc perl -S -your_switches
 
-C<(*.cmd>�ե��������Ƭ�򤳤Τ褦�ˤ�������Ǥ�(C<-S>�ϡ�
-cmd.exe��`extproc'�˴ؤ���Х��Τ���Ǥ�)��DOS�ξ��ϡ�Ŭ�ڤʥ�
-�å��ե�������ä�C<ALTERNATIVE_SHEBANG> ��Ԥ��٤��Ǥ��礦(��
-�٤ϡ����������ۥ��åȤˤ���F<INSTALL>�Ȥ����ե�����򻲾Ȥ��Ƥ���
-����)��
+C<(*.cmd>ファイルの先頭をこのようにするだけです(C<-S>は、
+cmd.exeの`extproc'に関するバグのためです)。DOSの場合は、適切なバ
+ッチファイルを作ってC<ALTERNATIVE_SHEBANG> を行うべきでしょう(詳
+細は、ソース配布キットにあるF<INSTALL>というファイルを参照してくだ
+さい)。
 
 =begin original
 
@@ -1074,15 +1074,15 @@ run the program C<install-linux.pl> merely by typing C<install-linux>.
 
 =end original
 
-Windows 95��Windows NT�� ActiveState�ΰܿ�����Perl
-��Ȥ��Τʤ顢�����C<.pl>�Ȥ�����ĥ�Ҥ�perl���󥿥ץ꥿�˴�Ϣ
-�Ť���褦�˥쥸���ȥ���ѹ����ޤ�������¾�ΰܿ��ˤʤ�perl
-��Ȥ��������뤤�Ϥ��ʤ����Ȥ� Windows�˰ܿ����줿gcc(cygwin��mingw)��
-�Ȥä�ɸ�ॽ��������Perl��ӥ�ɤ���Ȥ�����
-�Ǥ���м�ʬ���Ȥǥ쥸���ȥ���ѹ�����ɬ�פ�����Ǥ��礦��
-C<.pl>�ȥ��󥿥ץ꥿���Ϣ�Ť��뤳�Ȥˤ�äơ�NT��ȤäƤ���
-�ͤ�C<install-linux.pl> �� C<install-linux>�Τ褦�˵�ư���뤳�Ȥ�
-��ǽ�Ǥ���NT�Ǥ�C<SET PATHEXT=%PATHEXT%;.PL>�Τ褦�ˤ��ޤ���
+Windows 95やWindows NTで ActiveStateの移植したPerl
+を使うのなら、これはC<.pl>という拡張子をperlインタプリタに関連
+づけるようにレジストリを変更します。その他の移植になるperl
+を使うか、あるいはあなた自身が Windowsに移植されたgcc(cygwinやmingw)を
+使って標準ソースからPerlをビルドするというの
+であれば自分自身でレジストリを変更する必要があるでしょう。
+C<.pl>とインタプリタを関連づけることによって、NTを使っている
+人はC<install-linux.pl> を C<install-linux>のように起動することが
+可能です。NTではC<SET PATHEXT=%PATHEXT%;.PL>のようにします。
 
 =begin original
 
@@ -1091,63 +1091,63 @@ Type, so that double-clicking them will invoke the Perl application.
 
 =end original
 
-Macintosh Perl�Υץ�������Ŭ�ڤ�Creator��Type�Ȥ���äƤ����
-���礦���顢���֥륯��å����������Perl���ץꥱ����
-��󤬵�ư����Ǥ��礦��
+Macintosh Perlのプログラムは適切なCreatorとTypeとを持っているで
+しょうから、ダブルクリックするだけでPerlアプリケーシ
+ョンが起動するでしょう。
 
-B<����!>:���ʤ������򤹤�ˤ��Ƥ⡢�ɤ��������򴶤��ʤ��Ǥ���������
-�����ơ����ʤ��Υץ�����बweb�����ФΤ����ư���褦�ˤ���
-�뤿���perl���󥿥ץ꥿��cgi-bin�ǥ��쥯�ȥ���������褦
-�ʤ��ȤϤ��ʤ��Ǥ��������������B<����>�礭�ʥ������ƥ����
-�ꥹ���Ȥʤ�ޤ���������ư����뤿�����ˡ��ͤ��뤿��λ��֤�
-��äƤ���������
+B<重要!>:あなたが何をするにしても、どうか不満を感じないでください。
+そして、あなたのプログラムがwebサーバのために動作するようにさせ
+るためにperlインタプリタをcgi-binディレクトリに放り込むよう
+なことはしないでください。これはB<非常に>大きなセキュリティ上の
+リスクとなります。正しく動作させるための方法を考えるための時間を
+取ってください。
 
 =head2 Can I write useful perl programs on the command line?
 
-(���ޥ�ɥ饤����������perl�ץ�������񤱤ޤ���?)
+(コマンドライン上で便利なperlプログラムを書けますか?)
 
-�Ǥ��ޤ����ܤ�����L<perlrun>���ɤ�Ǥ������������Ĥ��Υ���ץ��
-�ʲ��˵󤲤Ƥ����ޤ�(�����Ǥ�ɸ���UNIX ��������ѵ�§�˽��äƤ����
-���ꤷ�ޤ�)��
+できます。詳しくはL<perlrun>を読んでください。幾つかのサンプルを
+以下に挙げておきます(ここでは標準のUNIX シェル引用規則に従っていると
+仮定します)。
 
-    # �ǽ�ȺǸ�Υե�����ɤ�û�����
+    # 最初と最後のフィールドを加算する
     perl -lane 'print $F[0] + $F[-1]' *
 
-    # �ƥ����ȥե�����򸫤Ĥ�����
+    # テキストファイルを見つけだす
     perl -le 'for(@ARGV) {print if -f && -T _}' *
 
-    # C�ץ�����फ��(����ʬ��)�����Ȥ������
+    # Cプログラムから(大部分の)コメントを取り除く
     perl -0777 -pe 's{/\*.*?\*/}{}gs' foo.c
 
-    # �ե�����ν������դ����������ˤ��ơ�reaper daemon���Ǥ��餫��
+    # ファイルの修整日付を今日より一月先にして、reaper daemonを打ち負かす
     perl -e '$X=24*60*60; utime(time(),time() + 30 * $X,@ARGV)' *
 
-    # �ǽ��̤����uid�򸫤Ĥ�����
+    # 最初の未使用uidを見つけだす
     perl -le '$i++ while getpwuid($i); print $i'
 
-    # Ŭ�ڤ�manpath��ɽ������
+    # 適切なmanpathを表示する
     echo $PATH | perl -nl -072 -e '
 	s![^/+]*$!man!&&-d&&!$s{$_}++&&push@m,$_;END{print"@m"}'
 
-�������Ǹ�Τ� Obfuscated Perl ����ƥ��Ȥ˥���ȥ꡼����Ƥޤ����� :-)
+そう、最後のは Obfuscated Perl コンテストにエントリーされてましたね :-)
 
 =head2 Why don't Perl one-liners work on my DOS/Mac/VMS system?
 
-(�ʤ���� DOS/Mac/VMS�����ƥ�Ǥϰ����Ϻ(one-liners)��ư���ʤ��ΤǤ��礦��?)
+(なぜ私の DOS/Mac/VMSシステムでは一行野郎(one-liners)は動かないのでしょうか?)
 
-��������ϡ��������ä������ƥ�Υ��ޥ�ɥ��󥿥ץ꥿����
-�����Ϻ�����줿�Ķ��Ǥ���UNIX�Υ�����ΰ��ѵ�§�Ȥϰۤʤ뤳�Ȥ������ȤǤ���
-�����Υ����ƥ�Ǥϡ����󥰥륯�����Ȥ���֥륯�����Ȥ�
-�ѹ�����ɬ�פ����뤫�⤷��ޤ���(�����UNIX��Plan9�Ȥ��ä������ƥ�Ǥ�
-B<���ƤϤ����ޤ���>)��
-Ʊ�ͤˡ�%��%%���ѹ�����ɬ�פ⤢�뤫�⤷��ޤ���
+この問題は、そういったシステムのコマンドインタプリタが、
+一行野郎が作られた環境であるUNIXのシェルの引用規則とは異なるこということです。
+一部のシステムでは、シングルクォートをダブルクォートに
+変更する必要があるかもしれません(これはUNIXやPlan9といったシステムでは
+B<してはいけません>)。
+同様に、%を%%に変更する必要もあるかもしれません。
 
-���󤲤ޤ��礦:
+例を挙げましょう:
 
     # Unix
     perl -e 'print "Hello world\n"'
 
-    # DOS�ʤ�
+    # DOSなど
     perl -e "print \"Hello world\n\""
 
     # Mac
@@ -1157,22 +1157,22 @@ B<���ƤϤ����ޤ���>)��
     # VMS
     perl -e "print ""Hello world\n"""
 
-����ϡ������������˿���Ǥ����Τ��ʤ��Ȥ������ȤǤ�:
-���ޥ�ɥ��󥿡��ץ꥿�˰�¸���ޤ���
-UNIX�Ǥϡ��ǽ����ĤϤۤȤ�ɤξ��ư���Ǥ��礦��
-DOS�Ǥϡ��ɤ��Ư���ʤ����⤷��ޤ���
-4DOS�򥳥ޥ�ɥ�����Ȥ��Ƥ���Τʤ顢�ʲ��Τ褦�ˤ���Τ��褤�Ȼפ��ޤ�:
+問題は、これらの例の中に信頼できるものがないということです:
+コマンドインタープリタに依存します。
+UNIXでは、最初の二つはほとんどの場合動作するでしょう。
+DOSでは、どれも働かないかもしれません。
+4DOSをコマンドシェルとしているのなら、以下のようにするのがよいと思います:
 
   perl -e "print <Ctrl-x>"Hello world\n<Ctrl-x>""
 
-Mac�Ǥϡ����ʤ����ȤäƤ���Ķ��˰�¸���ޤ���
-MacPerl�������MPW�ϡ����業��饯�����Τ褦��Mac����ASCII����饯������
-��ͳ�˻Ȥ���Ȥ�����������ơ�
-UNIX������Τ褦�˿�����ΰ��ѵ�§�򥵥ݡ��Ȥ��ޤ���
+Macでは、あなたが使っている環境に依存します。
+MacPerlシェルやMPWは、制御キャラクターのようなMacの非ASCIIキャラクターが
+自由に使えるという点を除いて、
+UNIXシェルのように数種類の引用規則をサポートします。
 
-���֥륯������(")�����󥰥륯������(')���Хå���������(`)��
-�����qq(), q(), qx()�򤽤줾��Ȥ��ޤ�������ˤ�ä�
-�����Ϻ��񤯤��Ȥ���ñ�ˤʤ뤫�⤷��ޤ���
+ダブルクォート(")、シングルクォート(')、バッククォート(`)の
+代わりにqq(), q(), qx()をそれぞれ使います。これによって
+一行野郎を書くことが簡単になるかもしれません。
 
 =begin original
 
@@ -1181,22 +1181,22 @@ simple.  Sucks to be away from Unix, huh? :-)
 
 =end original
 
-���η����Ƥ˴ؤ������Ū�ʲ����Ϥ���ޤ��󡣤����㤴����ǡ�
-���ǡ�ñ��Ǥ���Unix ����Υ�줿���ʤ��ʤä��Ǥ��礦? :-)
+この件全てに関する一般的な解決策はありません。ごちゃごちゃで、
+純粋で、単純です。Unix から離れたくなくなったでしょう? :-)
 
-[���β����ΰ�����Kenneth Albanowski����󤻤��ޤ���]
+[この回答の一部はKenneth Albanowskiから寄せられました]
 
 =head2 Where can I learn about CGI or Web programming in Perl?
 
-(�錄����Perl�ˤ��CGI��Web�ץ�����ߥ󥰤ˤĤ��Ƴؤ٤����?)
+(わたしがPerlによるCGIやWebプログラミングについて学べる場所は?)
 
-�⥸�塼��ʤ顢CPAN����CGI�⥸�塼���LWP�⥸�塼������ꤷ�ޤ��礦��
-���ʽ�ʤ顢�ܤˤ���web stuff���ä˷���Ū����Ĥ򻲾Ȥ��ޤ��礦��
-��Why do I get 500 Errors�� (�ʤ�� 500 Errors �ˤʤ��)
-��Why doesn't it run from the browser right when it runs fine on the command line��
-(�ʤ����ޥ�ɥ饤�󤫤���Ȥ�����ư���Τˡ��֥饦�����������
-����ʤ�Ǥ��礦��)�Τ褦��web�˴�Ϣ��������䵿��ϰʲ��Υ�������
-���Ȥ��Ƥ���������
+モジュールなら、CPANからCGIモジュールやLWPモジュールを入手しましょう。
+教科書なら、本にあるweb stuffの特に決定的な二つを参照しましょう。
+“Why do I get 500 Errors” (なんで 500 Errors になるの)
+“Why doesn't it run from the browser right when it runs fine on the command line”
+(なぜコマンドラインからだとちゃんと動くのに、ブラウザーからだと
+だめなんでしょうか)のようにwebに関連する問題や疑問は以下のソースを
+参照してください。
 
     WWW Security FAQ
         http://www.w3.org/Security/Faq/
@@ -1222,7 +1222,7 @@ simple.  Sucks to be away from Unix, huh? :-)
 
 =head2 Where can I learn about object-oriented Perl programming?
 
-(���֥������Ȼظ���Perl�ץ�����ߥ󥰤Ϥɤ��ǳؤ٤ޤ���?)
+(オブジェクト指向のPerlプログラミングはどこで学べますか?)
 
 =begin original
 
@@ -1233,43 +1233,43 @@ postscript) from http://www.perl.com/CPAN/doc/FMTEYEWTK/ .
 
 =end original
 
-�Ϥ��ˤϤ褤���� L<perltoot>�Ǥ�����ե���󥹤Ȥ���L<perlobj>,
-L<perlboot>, <perlbot>���Ȥ��ޤ���
-perltoot �ϥ�꡼��5.004�ޤǤ�ź�դ���Ƥ��ޤ���Ǥ�����
-���Υ��ԡ���
+始めるにはよい場所は L<perltoot>です。リファレンスとしてL<perlobj>,
+L<perlboot>, <perlbot>が使えます。
+perltoot はリリース5.004までは添付されていませんでした。
+そのコピーを
 http://www.perl.com/CPAN/doc/FMTEYEWTK/ 
-�������ꤹ�뤳�Ȥ���ǽ�Ǥ���
+から入手することが可能です。
 
 =head2 Where can I learn about linking C with Perl? [h2xs, xsubpp]
 
-(C �� Perl �Υ�󥯤ˤĤ��ƤϤɤ��ǳؤ٤ޤ���? [h2xs, xsubpp])
+(C と Perl のリンクについてはどこで学べますか? [h2xs, xsubpp])
 
-�⤷Perl����C��ƤӽФ������Τʤ顢L<perlxstut>����Ϥ��L<perlxs>, 
-L<xsubpp>, L<perlguts>�ؤȿʤߤޤ���C����Perl��ƤӽФ������Τʤ顢
-L<perlembed>, L<perlcall>, L<perlguts>���ɤߤޤ��礦��
-���Ǥˤ��륨�����ƥ󥷥��κ�Ԥ��ɤΤ褦�ˤ���򵭽Ҥ���
-�ɤΤ褦������������褷���Τ��򸫤뤳�Ȥ�¿���Τ��Ȥ�
-�ؤ٤�Τ��Ȥ������Ȥ�˺��ʤ��Ǥ���������
+もしPerlからCを呼び出したいのなら、L<perlxstut>から始めてL<perlxs>, 
+L<xsubpp>, L<perlguts>へと進みます。CからPerlを呼び出したいのなら、
+L<perlembed>, L<perlcall>, L<perlguts>を読みましょう。
+すでにあるエクステンションの作者がどのようにそれを記述し、
+どのように彼らの問題を解決したのかを見ることで多くのことが
+学べるのだということを忘れないでください。
 
 =head2 I've read perlembed, perlguts, etc., but I can't embed perl in
 my C program; what am I doing wrong?
 
-(perlembed��perlguts�ʤ󤫤��ɤ���Τ����ɡ�
-���C�ץ�������perl���Ȥ߹���ޤ���
-���������ΤǤ��礦��?)
+(perlembedやperlgutsなんかを読んだのだけど、
+私のCプログラムにperlを組み込めません。
+何が悪いのでしょうか?)
 
-CPAN����ExtUtils::Embed���åȤ����������ɤ��ơ�`make test'��
-�¹Ԥ��Ƥ���������
-�⤷���Υƥ��Ȥ˹�ʤ����Τʤ顢pod���٤ⲿ�٤⤯���֤������֤�
-�ɤ�Ǥ���������
-�ƥ��Ȥ˼��Ԥ����ʤ顢L<perlbug>���ɤ�ǡ�C<perl -V>�ν��Ϥ�
-C<make test TEST_VERBOSE=1>�ν��Ϥ�ź�դ��ƥХ���ݡ��Ȥ����äƤ���������
+CPANからExtUtils::Embedキットをダウンロードして、`make test'を
+実行してください。
+もしこのテストに合格したのなら、podを何度も何度もくり返しくり返し
+読んでください。
+テストに失敗したなら、L<perlbug>を読んで、C<perl -V>の出力と
+C<make test TEST_VERBOSE=1>の出力を添付してバグレポートを送ってください。
 
 =head2 When I tried to run my script, I got this message. What does it
 mean?
 
-(��Υ�����ץȤ�¹Ԥ����Ȥ�������ʥ�å�������������ޤ�����
-����äƲ����̣���Ƥ���ΤǤ��礦��?)
+(私のスクリプトを実行したとき、こんなメッセージを受け取りました。
+これって何を意味しているのでしょうか?)
 
 =begin original
 
@@ -1279,15 +1279,15 @@ text can be found in L<perldiag>. You can also use the splain program
 
 =end original
 
-perl �Τ��٤ƤΥ��顼��å��������ٹ��å������������ƥ������դ��Υꥹ�Ȥ�
-L<perldiag> �ˤ���ޤ���
-���顼��å��������������뤿��ˡ�
-splain �ץ�������Ȥ����Ȥ�Ǥ��ޤ�(����� Perl �Ȱ������ۤ���Ƥ��ޤ�)��
+perl のすべてのエラーメッセージ、警告メッセージの説明テキスト付きのリストが
+L<perldiag> にあります。
+エラーメッセージを説明するために、
+splain プログラムを使うこともできます(これは Perl と一緒に配布されています)。
 
     perl program 2>diag.out
     splain [-v] [-p] diag.out
 
-���뤤�ϡ���å�����������Ū�ˤ���褦�˥ץ��������ѹ����ޤ���
+あるいは、メッセージを説明的にするようにプログラムを変更します。
 
     use diagnostics;
 
@@ -1297,18 +1297,18 @@ or
 
 =end original
 
-���뤤�Ϥ���
+あるいはこう
 
     use diagnostics -verbose;
 
 =head2 What's MakeMaker?
 
-(MakeMaker�äƤʤ�Ǥ���?)
+(MakeMakerってなんですか?)
 
-���Υ⥸�塼��(ɸ��Perl���ۥ��åȤΰ����Ǥ�)��Makefile.PL����
-�������ƥ󥷥��⥸�塼���Ѥ�Makefile��������뤿���
-�ǥ����󤵤줿��ΤǤ���
-�ܤ����� L<ExtUtils::MakeMaker> �򻲾Ȥ��Ƥ���������
+このモジュール(標準Perl配布キットの一部です)はMakefile.PLから
+エクステンションモジュール用のMakefileを作成するために
+デザインされたものです。
+詳しくは L<ExtUtils::MakeMaker> を参照してください。
 
 =head1 AUTHOR AND COPYRIGHT
 
@@ -1328,7 +1328,7 @@ be courteous but is not required.
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp>
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp>
 Update: Kentaro Shirakata <argrath@ub32.org>
 License: GPL or Artistic
 

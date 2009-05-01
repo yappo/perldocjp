@@ -9,7 +9,7 @@ perlboot - Beginner's Object-Oriented Tutorial
 
 =end original
 
-perlboot - Perl ���֥������Ȼظ�Ƴ����
+perlboot - Perl オブジェクト指向導入編
 
 =head1 DESCRIPTION
 
@@ -23,11 +23,11 @@ tutorial way.
 
 =end original
 
-¾�θ���ǥ��֥������Ȥ˿Ƥ���Ǥ����ΤǤʤ���С�
-¾�� Perl ���֥������ȤΥɥ�����ȤΤ����Ĥ��ϵ��Ϥ򤯤�������Ǥ��礦��
-���֥������Ȥ�Ȥ�����δ���Ū�ʥ�ե���� L<perlobj>��
-Perl �Υ��֥������ȥ����ƥ�������Υ��塼�ȥꥢ��Ū�ʾҲ� L<perltoot> 
-���Τ褦�ˡ�
+他の言語でオブジェクトに親しんでいたのでなければ、
+他の Perl オブジェクトのドキュメントのいくつかは気力をくじかせるでしょう。
+オブジェクトを使うための基本的なリファレンス L<perlobj>、
+Perl のオブジェクトシステムの特性のチュートリアル的な紹介 L<perltoot> 
+等のように。
 
 =begin original
 
@@ -38,15 +38,15 @@ familiar with those first if you haven't already.
 
 =end original
 
-�����ǡ��̤Υ��ץ�������Ȥäơ�
-���֥������Ȥηи����ʤ����Ȥ�����ˤ��ޤ��礦��
-�⤷�����֥롼����(L<perlsub>)�䡢��ե����(L<perlref>��)��
-�ѥå�����(L<perlmod>) ���ΤäƤ���Τʤ餽�줬���Ω���ޤ��Τǡ�
-�⤷�ޤ��狼��ʤ���Фޤ������������ΤäƤ����٤��Ǥ��礦��
+そこで、別のアプローチをとって、
+オブジェクトの経験がないことを前提にしましょう。
+もし、サブルーチン(L<perlsub>)や、リファレンス(L<perlref>等)、
+パッケージ(L<perlmod>) を知っているのならそれが役に立ちますので、
+もしまだわからなければまずそちらを先に知っておくべきでしょう。
 
 =head2 If we could talk to the animals...
 
-(�⤷ưʪ�Ȳ��äǤ������)
+(もし動物と会話できたら…)
 
 =begin original
 
@@ -54,7 +54,7 @@ Let's let the animals talk for a moment:
 
 =end original
 
-ưʪ���󤿤��ˤ���äȤ���٤äƤ�餤�ޤ��礦��
+動物さんたちにちょっとしゃべってもらいましょう。
 
     sub Cow::speak {
       print "a Cow goes moooo!\n";
@@ -76,7 +76,7 @@ This results in:
 
 =end original
 
-����ϼ��η�̤����ޤ�:
+これは次の結果を得ます:
 
     a Cow goes moooo!
     a Horse goes neigh!
@@ -90,10 +90,10 @@ an entire pasture:
 
 =end original
 
-�ܿ��������ȤϤ���ޤ���
-�̡��Υѥå�������ʬ����Ƥ��ƴ����ʥѥå�����̾��Ȥä�
-�ƤӽФ��Ƥ��ޤ�����ñ�ʤ륵�֥롼����Ǥ���
-�Ǥϡ��Ҿ���äƤߤޤ��礦��
+目新しいコトはありません。
+別々のパッケージに分かれていて完全なパッケージ名を使って
+呼び出していますが、単なるサブルーチンです。
+では、牧場を作ってみましょう。
 
     # Cow::speak, Horse::speak, Sheep::speak as before
     @pasture = qw(Cow Cow Horse Sheep Sheep);
@@ -107,7 +107,7 @@ This results in:
 
 =end original
 
-����ϼ��η�̤����ޤ�:
+これは次の結果を得ます:
 
     a Cow goes moooo!
     a Cow goes moooo!
@@ -125,13 +125,13 @@ want to invoke within that package.
 
 =end original
 
-���
-�����ˤ��륷��ܥ�å�coderef�Υǥ�ե���󥹤Ϥ��ʤ��ƻ��Ǥ���
-C<no strict subs> �⡼�ɤ�ͤ��Ƥߤ�ȡ��礭�ʥץ������ˤ����������ޤ���
-�ʤ������ͤʤ�Τ�ɬ�פȤ����ΤǤ��礦��
-����ϥѥå�����̾�򡢤��Υѥå������θƤӽФ����Ȥ��Ƥ���
-���֥롼�����̾������ʬΥ�Ǥ��ʤ�����Ǥ���
-("Cow::speek" �Ȥ����᥽�å�̾��ɬ�פ����顣)
+うわ。
+ここにあるシンボリックcoderefのデリファレンスはかなり粗雑です。
+C<no strict subs> モードも考えてみると、大きなプログラムには全然向きません。
+なぜその様なものが必要とされるのでしょう？
+それはパッケージ名を、そのパッケージの呼び出そうとしている
+サブルーチンの名前から分離できないからです。
+("Cow::speek" というメソッド名が必要だから。)
 
 =begin original
 
@@ -139,11 +139,11 @@ Or is it?
 
 =end original
 
-�ǤϤɤ����ޤ��礦?
+ではどうしましょう?
 
 =head2 Introducing the method invocation arrow
 
-(�᥽�åɸƤӽФ������)
+(メソッド呼び出しの矢印)
 
 =begin original
 
@@ -155,12 +155,12 @@ use it like so:
 
 =end original
 
-���ޤΤȤ�����C<< Class->method >> �� C<Class> �ѥå������� C<method> 
-���֥롼�����ƤӽФ��Ȥ������äƤ����ޤ��礦��
-(������ "Class" �� "���ƥ���" �ΰ�̣�Ǥ���
-"�ص�" �ǤϤ���ޤ���)
-�����˸�̩�ǤϤ���ޤ��󤬡��������Ŀʤ�Ƥ����ޤ��礦��
-����ϼ��Τ褦�˻Ȥ��ޤ�:
+いまのところ、C<< Class->method >> は C<Class> パッケージの C<method> 
+サブルーチンを呼び出すとだけ言っておきましょう。
+(ここで "Class" は "カテゴリ" の意味です。
+"学級" ではありません。)
+完全に厳密ではありませんが、少しずつ進めていきましょう。
+これは次のように使います:
 
     # Cow::speak, Horse::speak, Sheep::speak as before
     Cow->speak;
@@ -173,7 +173,7 @@ And once again, this results in:
 
 =end original
 
-�����Ƥ���ϼ��η�̤����ޤ�:
+そしてこれは次の結果を得ます:
 
     a Cow goes moooo!
     a Horse goes neigh!
@@ -186,10 +186,10 @@ variables.  But yet, the parts are separable now.  Watch:
 
 =end original
 
-�̤ˤ��⤷�����⤢��ޤ���͡�
-Ʊ��ʸ�����Ǥ�������������ѿ��⤢��ޤ���
-�Ǥ⡢���٤ϥѥå�����̾��ʬΥ�Ǥ���ΤǤ���
-���򸫤Ƥ�������:
+別におもしろくもありませんね。
+同じ文字数ですし全て定数で変数もありません。
+でも、今度はパッケージ名を分離できるのです。
+次を見てください:
 
     $a = "Cow";
     $a->speak; # invokes Cow->speak
@@ -202,13 +202,13 @@ something that works even when C<use strict refs> is enabled.
 
 =end original
 
-�ؿ�̾����ѥå�����̾��ʬ�����Τǡ�
-�ѥå�����̾���ѿ���Ȥ����Ȥ��Ǥ���ΤǤ�!
-�����ƺ��٤� C<use strict refs> ��ͭ���Ǥ��äƤ�����ȵ�ǽ����ΤǤ���
+関数名からパッケージ名を分けれるので、
+パッケージ名に変数を使うことができるのです!
+そして今度は C<use strict refs> が有効であってもちゃんと機能するのです。
 
 =head2 Invoking a barnyard
 
-(΢���θƤӽФ�)
+(裏庭の呼び出し)
 
 =begin original
 
@@ -217,7 +217,7 @@ example:
 
 =end original
 
-����������ƤӽФ���Ȥäơ�΢���������äƤߤޤ��礦:
+新しい矢印呼び出しを使って、裏庭の例に戻ってみましょう:
 
     sub Cow::speak {
       print "a Cow goes moooo!\n";
@@ -241,8 +241,8 @@ without the use of symbolic coderefs.
 
 =end original
 
-�ߤ�ʤ����Ȥ���٤äƤ���ޤ�!
-�ޤ����٤ϥ���ܥ�å� coderef ��ȤäƤ��ʤ��ư����Ǥ���
+みんなちゃんとしゃべってくれます!
+また今度はシンボリック coderef を使っていなくて安全です。
 
 =begin original
 
@@ -254,10 +254,10 @@ to C<says> instead of C<goes>.
 
 =end original
 
-�Ǥ⡢�����ɤ�褯���Ƥߤ�ȡ��� C<speak> �ؿ��Ϥ褯������¤����äƤ��ޤ���
-C<print> �黻�Ҥȡ�2 ��������Ʊ��Υƥ����Ȥ�ޤ�Ǥ�������Ǥ���
-���̲ս��ʬ�򤹤�ΤϤ褤���ȤǤ�;
-�㤨�С�������Ƥ� C<goes> �� C<says> ���Ѥ��뤳�Ȥ�Ǥ���褦�ˤʤ�ޤ���
+でも、コードをよく見てみると、各 C<speak> 関数はよく似た構造を持っています。
+C<print> 演算子と、2 語を除くと同一のテキストを含んでいるだけです。
+共通箇所を分解するのはよいことです;
+例えば、後で全ての C<goes> を C<says> に変えることもできるようになります。
 
 =begin original
 
@@ -267,13 +267,13 @@ actually doing for us.
 
 =end original
 
-�ޤ������������뤳�Ȥʤ������Ԥ���ˡ��ºݤ���ޤ�����
-�᥽�åɸƤӽФ������������ԤäƤ���Ƥ���Τ��ˤĤ���
-�����Ǿ����ΤäƤ����ʤ���Фʤ�ޤ���
+また、大騒ぎすることなくそれを行う方法も実際ありますが、
+メソッド呼び出しの矢印が何を行ってくれているのかについて
+ここで少し知っておかなければなりません。
 
 =head2 The extra parameter of method invocation
 
-(�᥽�åɸƤӽФ����ɲåѥ�᡼��)
+(メソッド呼び出しの追加パラメータ)
 
 =begin original
 
@@ -281,7 +281,7 @@ The invocation of:
 
 =end original
 
-�᥽�åɸƤӽФ�:
+メソッド呼び出し:
 
     Class->method(@args)
 
@@ -291,7 +291,7 @@ attempts to invoke subroutine C<Class::method> as:
 
 =end original
 
-�ϡ�C<Class::Method> �ؿ��򼡤Τ褦�˸ƤӽФ����Ȥ��ޤ�:
+は、C<Class::Method> 関数を次のように呼び出そうとします:
 
     Class::method("Class", @args);
 
@@ -304,12 +304,12 @@ we can rewrite the C<Sheep> speaking subroutine as:
 
 =end original
 
-(�⤷�ؿ��򸫤Ĥ��뤳�Ȥ��Ǥ��ʤ��ä��Ȥ��ˤϡ��ַѾ��פ���������ޤ���
-����˴ؤ��ƤϤ��Ȥ��������ޤ���) 
-����Ϻǽ�Υѥ�᡼���Ȥ��ƥ��饹̾�����뤳�Ȥ��̣���ޤ�
-(�⤷�������ʤ���Ф��줬����1 �ĤΥѥ�᡼���ˤʤ�ޤ�)�� 
-���Τ��Ȥ��� C<Sheep> �Τ�����٤�ؿ��򼡤Τ褦�˽񤭲���뤳�Ȥ�
-�Ǥ��ޤ�:
+(もし関数を見つけることができなかったときには、「継承」が走査されます。
+これに関してはあとで説明します。) 
+これは最初のパラメータとしてクラス名を得ることを意味します
+(もし引数がなければそれがただ1 つのパラメータになります)。 
+このことから C<Sheep> のおしゃべり関数を次のように書き改めることが
+できます:
 
     sub Sheep::speak {
       my $class = shift;
@@ -322,7 +322,7 @@ And the other two animals come out similarly:
 
 =end original
 
-�ޤ�¾��ưʪ������Ʊ�ͤˤʤ�ޤ�:
+また他の動物たちも同様になります:
 
     sub Cow::speak {
       my $class = shift;
@@ -342,14 +342,14 @@ the same class.
 
 =end original
 
-���줾��ˤ����� C<$class> �ˤϤ��δؿ���������ͤ����ޤ���
-�������⤦���ٹͤ�ľ���Ƥߤ�ȡ����ʤ�褯������¤�ˤʤäƤ��ޤ���
-�����ʬΥ���뤳�ȤϤǤ��ʤ��Ǥ��礦��?
-�����Ʊ�����饹���̤Υ᥽�åɤ�Ƥ֤��Ȥǲ�ǽ�Ǥ���
+それぞれにおいて C<$class> にはその関数の特定の値を得ます。
+しかしもう一度考え直してみると、かなりよく似た構造になっています。
+さらに分離することはできないでしょうか?
+それは同じクラスの別のメソッドを呼ぶことで可能です。
 
 =head2 Calling a second method to simplify things
 
-(��ñ�� 2 ���ܤΥ᥽�åɤ�ƤӽФ�)
+(簡単に 2 つ目のメソッドを呼び出す)
 
 =begin original
 
@@ -358,8 +358,8 @@ This method provides the constant text for the sound itself.
 
 =end original
 
-C<speak> ��������᥽�å� C<sound> ��ƤӽФ��Ƥߤޤ��礦��
-���Υ᥽�åɤϤ����Ĥ����Ȥ��Ƹ���ʸ������󶡤��ޤ���
+C<speak> から補助メソッド C<sound> を呼び出してみましょう。
+このメソッドはその鳴き声として固定文字列を提供します。
 
     { package Cow;
       sub sound { "moooo" }
@@ -377,10 +377,10 @@ returns C<moooo>.  But how different would this be for the C<Horse>?
 
 =end original
 
-���ơ�C<< Cow->speak >> ��ƤӽФ��� C<speak> �Ǥ� C<$class> �Ȥ���
-C<Cow> �����ޤ�����
-�����Ĥ��ä� C<moooo> ���֤� C<< Cow->sound >> �᥽�åɤ����򤷤ޤ���
-�Ǥ� C<Horse> �λ��Ϥɤ����Ѥ��Ǥ��礦��
+さて、C<< Cow->speak >> を呼び出すと C<speak> では C<$class> として
+C<Cow> を得ました。
+これをつかって C<moooo> を返す C<< Cow->sound >> メソッドを選択します。
+では C<Horse> の時はどこが変わるでしょう。
 
     { package Horse;
       sub sound { "neigh" }
@@ -398,13 +398,13 @@ Horse?  Yes, with inheritance!
 
 =end original
 
-�ѥå�����̾���Ĥ����λ���������Ѥ��ޤ�����
-�Ȥ����� Cow �� Horse �� C<speak> �������ͭ������ˡ�Ϥʤ��Ǥ��礦��?
-���줬�Ѿ��Ǥ�!
+パッケージ名と鳴き声の指定だけが変わりました。
+ところで Cow と Horse で C<speak> の定義を共有する方法はないでしょうか?
+それが継承です!
 
 =head2 Inheriting the windpipes
 
-(���ɤ�Ѿ�����)
+(気管を継承する)
 
 =begin original
 
@@ -413,8 +413,8 @@ definition for C<speak>:
 
 =end original
 
-���̤δؿ��Υѥå������Ȥ��� C<Animal> ����ޤ�;
-������ C<speak> ��������ޤ�
+共通の関数のパッケージとして C<Animal> を作ります;
+ここで C<speak> を定義します
 
     { package Animal;
       sub speak {
@@ -430,8 +430,8 @@ with the animal-specific sound:
 
 =end original
 
-���˳�ưʪ�������Ф��ơ����줾����Ĥ���������Ȱ��ˡ�
-C<Animal> ����ַѾ��פ��ޤ�:
+次に各動物たちに対して、それぞれの鳴き声の定義と一緒に、
+C<Animal> から「継承」します:
 
     { package Cow;
       @ISA = qw(Animal);
@@ -444,8 +444,8 @@ Note the added C<@ISA> array.  We'll get to that in a minute.
 
 =end original
 
-�����ǡ�C<@ISA> ���󤬲ä����Ƥ��뤳�Ȥ����դ��Ƥ���������
-��������ˤĤ����������ޤ���
+ここで、C<@ISA> 配列が加えられていることに注意してください。
+少々これについて説明します。
 
 =begin original
 
@@ -453,7 +453,7 @@ But what happens when we invoke C<< Cow->speak >> now?
 
 =end original
 
-�Ȥ����ǡ������� C<< Cow->speak >> ��ƤӽФ��Ȥʤˤ�������ΤǤ��礦?
+ところで、ここで C<< Cow->speak >> を呼び出すとなにが起こるのでしょう?
 
 =begin original
 
@@ -464,12 +464,12 @@ and contains the single name C<Animal>.
 
 =end original
 
-�ޤ���Perl �������ꥹ�Ȥ��ۤ��ޤ���
-�����ñ��� C<Cow> �����Ǥ���
-���줫�� Perl �� C<Cow::speak> ��õ���ޤ���
-����������Ϥ���ޤ���
-���Τ��� Perl �ϷѾ����� C<@Cow::ISA> ��Ĵ�٤ޤ���
-�����¸�ߤ���̾���� 1 �� C<Animal> ���Ǽ���Ƥ��ޤ���
+まず、Perl が引数リストを構築します。
+今回は単純に C<Cow> だけです。
+それから Perl は C<Cow::speak> を探します。
+しかしそれはありません。
+そのため Perl は継承配列 C<@Cow::ISA> を調べます。
+それは存在し、名前を 1 つ C<Animal> を格納しています。
 
 =begin original
 
@@ -479,9 +479,9 @@ with the already frozen argument list.
 
 =end original
 
-Perl �ϼ��� C<Animal> �� C<speak> �� C<Animal::speak> ���ͤ�Ĵ�٤ޤ���
-���٤ϸ��Ĥ���ޤ�����
-������ Perl �Ϥ��δؿ��򤵤ä���äƤ����������ꥹ�ȤǸƤӽФ��ޤ���
+Perl は次に C<Animal> の C<speak> を C<Animal::speak> の様に調べます。
+今度は見つかりました。
+そこで Perl はこの関数をさっき作っておいた引数リストで呼び出します。
 
 =begin original
 
@@ -492,16 +492,16 @@ gets it on the first try without looking at C<@ISA>.  Success!
 
 =end original
 
-C<Animal::speak> �ؿ��ˤ����Ƥϡ�C<$class> �� C<Cow> �ˤʤ�ޤ�
-(���줬 1 �Ĥ�ΰ����Ǥ�)��
-���Τ��� C<< $class->sound >> �θƤӽФ��ˤ����� C<< Cow->sound >> ��
-���ޤ���
-�ǽ�� C<@ISA> ��õ�����Ȥʤ�Ĵ�٤ޤ���
-�����Ƥ�����������ޤ���
+C<Animal::speak> 関数においては、C<$class> は C<Cow> になります
+(これが 1 つめの引数です)。
+そのため C<< $class->sound >> の呼び出しにおいて C<< Cow->sound >> を
+得ます。
+最初は C<@ISA> を探すことなく調べます。
+そしてこれは成功します。
 
 =head2 A few notes about @ISA
 
-(@ISA �˴ؤ����ɵ�)
+(@ISA に関して追記)
 
 =begin original
 
@@ -512,11 +512,11 @@ to have more than one parent class searched for the missing methods.
 
 =end original
 
-������ˡ�� C<@ISA> �ѿ� ( "������"�ǤϤʤ�"����-��") �ϡ�
-C<Cow> �� C<Animal> �Ρְ��Ǥ���(is-a)�פ�������Ƥ��ޤ���
-���줬ñ�ʤ� 1 �Ĥ��ͤǤϤʤ�����Ǥ��뤳�Ȥ����դ��Ƥ���������
-���ǤϤ���ޤ������᥽�åɤ����Ĥ���ʤ��ä��Ȥ���õ���ƥ��饹��
-1 �İʾ��Ĥ��Ȥ⤢�뤿��Ǥ���
+この魔法の C<@ISA> 変数 ( "アイサ"ではなく"イズ-ア") は、
+C<Cow> が C<Animal> の「一種である(is-a)」と宣言しています。
+これが単なる 1 つの値ではなく配列であることに注意してください。
+稀ではありますが、メソッドが見つからなかったときに探す親クラスを
+1 つ以上もつこともあるためです。
 
 =begin original
 
@@ -528,12 +528,12 @@ multiple headaches), so we get a nice tree of inheritance.
 
 =end original
 
-�⤷ C<Animal> �� C<@ISA> ���äƤ����餽���Ʊ�ͤ�Ĵ�٤��ޤ���
-�ǥե���ȤǤϡ������� C<@ISA> �����Ƶ�Ū�ˡ�����ͥ�衢�����鱦��
-�Ԥ��ޤ�(���ذƤˤĤ��Ƥ� L<mro> �򻲾Ȥ��Ƥ�������)��
-ŵ��Ū�ˡ��� C<@ISA> ���������ĤΤ����Ǥ���äƤ��ޤ���
-���Τ����ɹ��ʷѾ��ĥ꡼�����ޤ���
-(ʣ�������Ǥ���äƤ����ʣ���ηѾ���ʣ�����������äƤ��ޤ���)
+もし C<Animal> も C<@ISA> をもっていたらそれも同様に調べられます。
+デフォルトでは、検索は C<@ISA> の中を再帰的に、深さ優先、左から右に
+行われます(代替案については L<mro> を参照してください)。
+典型的に、各 C<@ISA> がただ１つのみ要素を持っています。
+そのため良好な継承ツリーを得ます。
+(複数の要素を持っていれば複数の継承、複数の難問を持っています。)
 
 =begin original
 
@@ -545,11 +545,11 @@ so there's a couple of straightforward ways to handle that.
 
 =end original
 
-C<use strict> ��ͭ���ˤ����Ȥ���C<@ISA> ������Ū�ʥѥå�����̾��
-���äƤ��ʤ����ᡢ�����ƥ쥭�������ѿ� ("my") �Ǥ�ʤ�����ٹ������ޤ���
-�����ѿ��ϥ쥭�������ѿ��ˤϤǤ��ޤ���
-(�Ѿ��ᥫ�˥��बõ���Ǥ���褦�ˡ��ѥå�������°���Ƥ��ʤ���Фʤ�ޤ���)
-������н褹����ˡ�� 2 �Ĥ���ޤ���
+C<use strict> を有効にしたとき、C<@ISA> は明示的なパッケージ名を
+持っていないため、そしてレキシカル変数 ("my") でもないため警告を受けます。
+この変数はレキシカル変数にはできません。
+(継承メカニズムが探索できるように、パッケージに属していなければなりません。)
+これに対処する方法は 2 つあります。
 
 =begin original
 
@@ -557,7 +557,7 @@ The easiest is to just spell the package name out:
 
 =end original
 
-���ִ�ñ����ˡ�ϥѥå�����̾��Ĥ��ƻȤ����ȤǤ�:
+一番簡単な方法はパッケージ名をつけて使うことです:
 
     @Cow::ISA = qw(Animal);
 
@@ -567,7 +567,7 @@ Or allow it as an implicitly named package variable:
 
 =end original
 
-�⤷���ϰ��ۤ�̾�դ���줿�ѥå������ѿ�����Ĥ��뤳�ȤǤ�:
+もしくは暗黙に名付けられたパッケージ変数を許可することです:
 
     package Cow;
     use vars qw(@ISA);
@@ -580,7 +580,7 @@ module, you change:
 
 =end original
 
-�⤷���֥������Ȼظ��⥸�塼����̤��Ƴ������饯�饹�˻�������Τʤ�:
+もしオブジェクト指向モジュールを通して外部からクラスに持ち込むのなら:
 
     package Cow;
     use Animal;
@@ -593,7 +593,7 @@ into just:
 
 =end original
 
-����򼡤Τ褦���ѹ����ޤ�:
+これを次のように変更します:
 
     package Cow;
     use base qw(Animal);
@@ -604,11 +604,11 @@ And that's pretty darn compact.
 
 =end original
 
-�����֤󥳥�ѥ��Ȥˤʤ�ޤ���
+ずいぶんコンパクトになります。
 
 =head2 Overriding the methods
 
-(�᥽�åɤΥ����С��饤��)
+(メソッドのオーバーライド)
 
 =begin original
 
@@ -616,8 +616,8 @@ Let's add a mouse, which can barely be heard:
 
 =end original
 
-�ͤ��ߤ��ɲä��Ƥߤޤ��礦��
-�������������Ǥ��礦��
+ねずみを追加してみましょう。
+その声は微かでしょう。
 
     # Animal package from before
     { package Mouse;
@@ -638,7 +638,7 @@ which results in:
 
 =end original
 
-����ϼ��Τ褦�ˤʤ�ޤ���
+これは次のようになります。
 
     a Mouse goes squeak!
     [but you can barely hear it!]
@@ -653,11 +653,11 @@ completely defined with C<Mouse>.
 
 =end original
 
-�����Ǥ� C<Mouse> �� C<< Animal->speak >> ��Ƥ֤ΤǤϤʤ�
-��ʬ�ѤΤ�����٤�롼�ƥ��� C<< Mouse->speak >> ����äƤ��ޤ���
-����ϡ��֥����С��饤�ɡפȸƤФ�Ƥ��ޤ���
-���¡�C<Mouse> �� C<Animal> �ΰ��Ǥ���Ȥ���ɬ�פϤޤä�������ޤ���
-������٤�(C<speak>)��ɬ�פʥ᥽�åɤ����� C<Mouse> ���������Ƥ��ޤ���
+ここでは C<Mouse> は C<< Animal->speak >> を呼ぶのではなく
+自分用のおしゃべりルーティン C<< Mouse->speak >> を持っています。
+これは、「オーバーライド」と呼ばれています。
+事実、C<Mouse> が C<Animal> の一種であるという必要はまったくありません。
+おしゃべり(C<speak>)に必要なメソッドは全て C<Mouse> に定義されています。
 
 =begin original
 
@@ -668,12 +668,12 @@ C<Animal> does, but add in the extra comment?  Sure!
 
 =end original
 
-����������Ǥ⤤���餫�Υ����ɤ� C<< Animal->speak >> ����̤��Ƥ��ޤ���
-����Ϥޤ����ƥʥ󥹤�Ǻ�ߤ�Ƹ������Ƥ��ޤ���
-����Ǻ�ߤ���򤹤뤳�ȤϤǤ��ʤ��Ǥ��礦��?
-C<Animal> ���ԤäƤ��뤳�Ȥ� C<Mouse> �Ǥ⡢���������Ȥ��ɲä���
-�Ԥ���ˡ�Ϥʤ��Ǥ��礦����
-������󤢤�ޤ�!
+しかしそれでもいくらかのコードを C<< Animal->speak >> から写しています。
+これはまたメンテナンスの悩みを再現させています。
+この悩みを回避することはできないでしょうか?
+C<Animal> が行っていることを C<Mouse> でも、少々コメントを追加して
+行う方法はないでしょうか？
+もちろんあります!
 
 =begin original
 
@@ -681,7 +681,7 @@ First, we can invoke the C<Animal::speak> method directly:
 
 =end original
 
-�ޤ� C<Animal::speak> �᥽�åɤ�ľ�ܸƤӽФ��Ƥߤޤ��礦:
+まず C<Animal::speak> メソッドを直接呼び出してみましょう:
 
     # Animal package from before
     { package Mouse;
@@ -706,14 +706,14 @@ to this package.
 
 =end original
 
-�᥽�å�������᤿����ˡ�C<Animal::speak> �� 1 �Ĥ�ΰ����Ȥ��� 
-C<$class> �ѥ�᡼��(�����餯�� C<"Mouse"> �Ȥ����� )��ޤ�ʤ����
-�����ʤ����Ȥ����դ��Ƥ���������
-�ʤ����Ƥ��ޤä��ΤǤ��礦?
-�������⤷������ C<< Animal->speak >> �ȸƤӽФ��кǽ�Υѥ�᡼����
-C<"Mouse"> �ǤϤʤ� C<"Animal"> �ˤʤäƤ��ޤ��ޤ���
-������ C<sound> ���ƤӽФ��줿�Ȥ������������Υ��饹����äƤ��뤳�Ȥ�
-�Ǥ��ʤ��ʤäƤ��ޤ��ΤǤ���
+メソッド矢印をやめたために、C<Animal::speak> の 1 つめの引数として 
+C<$class> パラメータ(おそらくは C<"Mouse"> という値 )を含めなければ
+いけないことに注意してください。
+なぜやめてしまったのでしょう?
+ええ、もしここで C<< Animal->speak >> と呼び出せば最初のパラメータは
+C<"Mouse"> ではなく C<"Animal"> になってしまいます。
+そして C<sound> が呼び出されたときに正しくこのクラスに戻ってくることが
+できなくなってしまうのです。
 
 =begin original
 
@@ -725,11 +725,11 @@ subroutine.
 
 =end original
 
-������ C<Animal::speak> ��ľ�ܸƤӽФ��ΤϤ��ޤ����Ǥ���
-�⤷ C<Animal::speak> ��¸�ߤ�����C<@Animal::ISA> ��
-���ꤵ��륯�饹����Ѿ����Ƥ�����ɤ��ʤ�ΤǤ��礦?
-�᥽�å�����򤹤Ǥ˻ȤäƤ��ʤ���������������֥롼�����õ�����Ƥ�
-����󥹤Ϥ�����ˡ�����ʤ��ʤäƤ��ޤäƤ���ΤǤ���
+しかし C<Animal::speak> を直接呼び出すのはいまいちです。
+もし C<Animal::speak> が存在せず、C<@Animal::ISA> に
+指定されるクラスから継承していたらどうなるのでしょう?
+メソッド矢印をすでに使っていないために正しくサブルーチンを探し当てる
+チャンスはこの方法しかなくなってしまっているのです。
 
 =begin original
 
@@ -740,14 +740,14 @@ C<speak>.  So, this is probably not the right way to go.
 
 =end original
 
-C<Animal> ���饹̾���ؿ�����˽񤭹��ޤ�Ƥ��뤳�Ȥˤ����դ��Ƥ���������
-�⤷���줫�������ɤ�������C<speal> �Τˤ��� C<Animal> �˵��դ��ʤ��ޤ�
-C<Mouse> �� C<@ISA> ��񤭴����Ƥ��ޤä���ޤ������Ȥˤʤ�ޤ���
-��ɡ������Ŭ�ڤ���ˡ�ǤϤʤ��ΤǤ���
+C<Animal> クラス名が関数の中に書き込まれていることにも注意してください。
+もしだれかがコードを修正し、C<speal> のにある C<Animal> に気付かないまま
+C<Mouse> の C<@ISA> を書き換えてしまったらまずいことになります。
+結局、これは適切な方法ではないのです。
 
 =head2 Starting the search from a different place
 
-(�ۤʤ��꤫��õ����Ϥ��)
+(異なる場所から探索を始める)
 
 =begin original
 
@@ -756,8 +756,8 @@ in the inheritance chain:
 
 =end original
 
-���˾�ޤ�����ˡ�� Perl �˷Ѿ��ĥ꡼�Τ���̤���õ�����뤳�Ȥ�
-Perl �������뤳�ȤǤ�:
+より望ましい解法は Perl に継承ツリーのより高位から探索することを
+Perl に伝えることです:
 
     # same Animal as before
     { package Mouse;
@@ -779,14 +779,14 @@ eventually work its way back to C<Mouse::sound> for the details.
 
 =end original
 
-����Ϥ�����ư��ޤ���
-���ι�ʸ��Ȥ����Ȥǡ�C<speak> ��õ���� C<Animal> ���鳫�Ϥ��뤳�Ȥ�
-�Ǥ��ޤ���
-������ C<Animal> ��ľ�ܸ��Ĥ���ʤ��Ƥ� C<Animal> �����ƤηѾ�Ϣ����Ȥ�
-���Ȥ��Ǥ��ޤ���
-����ˡ�1 �Ĥ�Υѥ�᡼���� C<$class> �ˤʤ뤿�ᡢ
-���Ĥ��ä� C<speak> �᥽�åɤǤ� 1 �Ĥ�Υ���ȥ�� C<Mouse> �����ơ�
-�Ĥ��� C<Mouse::sound> ����ä�ư����ͤˤʤ�ޤ���
+これはちゃんと動作します。
+この構文を使うことで、C<speak> の探索を C<Animal> から開始することが
+できます。
+そして C<Animal> に直接見つからなくても C<Animal> の全ての継承連鎖を使う
+ことができます。
+さらに、1 つめのパラメータは C<$class> になるため、
+見つかった C<speak> メソッドでは 1 つめのエントリに C<Mouse> を得て、
+ついに C<Mouse::sound> に戻って動作する様になります。
 
 =begin original
 
@@ -797,15 +797,15 @@ had actually defined C<speak>.  So, is there an even better way?
 
 =end original
 
-����������Ϥޤ����ɤβ�ǤϤ���ޤ���
-C<@ISA> ��Ʊ���κǽ��õ���ѥå�������ݻ����ʤ���Фʤ�ޤ���
-����˰������Ȥ� C<Mouse> �� C<@ISA> ��ʣ���Υ���ȥ����äƤ�����
-�ºݤ� C<speak> ��������Ƥ���Τ��ɤ�ʤΤ��狼��ޤ���
-��ä��ɤ���ˡ�Ϥʤ��Ǥ��礦��?
+しかしこれはまだ最良の解ではありません。
+C<@ISA> と同等の最初の探索パッケージを維持しなければなりません。
+さらに悪いことに C<Mouse> が C<@ISA> に複数のエントリを持っていたら
+実際に C<speak> を定義しているのがどれなのかわかりません。
+もっと良い方法はないでしょうか?
 
 =head2 The SUPER way of doing things
 
-(SUPER ����)
+(SUPER 解答)
 
 =begin original
 
@@ -815,9 +815,9 @@ listed in C<@ISA>) automatically:
 
 =end original
 
-�ƤӽФ����� C<Animal> ���饹�� C<SUPER> ���饹���Ѥ��뤳�Ȥ�
-������ưŪ�����Ƥδ��쥯�饹��(C<@ISA> �˵��Ҥ���Ƥ��륯�饹��)
-���Ф��ƹԤ����Ȥ��Ǥ��ޤ���
+呼び出し時の C<Animal> クラスを C<SUPER> クラスに変えることで
+検索を自動的に全ての基底クラス群(C<@ISA> に記述されているクラス群)
+に対して行うことができます。
 
     # same Animal as before
     { package Mouse;
@@ -837,13 +837,13 @@ the C<@ISA> of C<$class>.
 
 =end original
 
-�ĤޤꡢC<SUPER::speak> �ϸ��ߤΥѥå������� C<@ISA> ���� C<speak> ��õ����
-�ǽ�˸��Ĥ��ä���Τ�ƤӽФ��ޤ���
-����� C<$class> �� C<@ISA> �� I<���ʤ�> �������դ��Ƥ���������
+つまり、C<SUPER::speak> は現在のパッケージの C<@ISA> から C<speak> を探し、
+最初に見つかったものを呼び出します。
+これは C<$class> の C<@ISA> は I<見ない> 点に注意してください。
 
 =head2 Where we're at so far...
 
-(��������)
+(現在地点)
 
 =begin original
 
@@ -851,7 +851,7 @@ So far, we've seen the method arrow syntax:
 
 =end original
 
-����ޤǤ˸��Ƥ�����Τϡ��᥽�å������ʸ:
+これまでに見てきたものは、メソッド矢印構文:
 
   Class->method(@args);
 
@@ -861,7 +861,7 @@ or the equivalent:
 
 =end original
 
-����������ʸ:
+その等価な文:
 
   $a = "Class";
   $a->method(@args);
@@ -872,7 +872,7 @@ which constructs an argument list of:
 
 =end original
 
-���ۤ��������ꥹ��:
+構築される引数リスト:
 
   ("Class", @args)
 
@@ -882,7 +882,7 @@ and attempts to invoke
 
 =end original
 
-�ƤӽФ�����
+呼び出され方
 
   Class::method("Class", @Args);
 
@@ -894,8 +894,8 @@ and that subroutine is invoked instead.
 
 =end original
 
-��������C<Class:method> �����Ĥ���ʤ���� C<@Class::ISA> ��(�Ƶ�Ū��)
-�º� C<method> ��ޤ�Ǥ���ѥå�������õ������˻Ȥ��ޤ���
+しかし、C<Class:method> が見つからなければ C<@Class::ISA> が(再帰的に)
+実際 C<method> を含んでいるパッケージを探すために使われます。
 
 =begin original
 
@@ -908,17 +908,17 @@ haven't even begun to cover.
 
 =end original
 
-���δ�ñ�ʹ�ʸ��Ȥ����Ȥǥ��饹�᥽�åɡ�(ʣ����)�Ѿ��������С��饤�ɡ�
-�����Ƴ�ĥ��Ԥ���褦�ˤʤ�ޤ�����
-����ޤǤ˸��Ƥ�����ξ�Ƕ��̽�������Ф����͡��ʼ����˺����Ѥ���
-�ɹ�����ˡ���󶡤��뤳�Ȥ��Ǥ��ޤ���
-����ϥ��֥������Ȥ��󶡤����Τγ˿��Ǥ���
-�ȤϤ������֥������ȤϤ���ʳ��ˤ�ޤ��������Ƥ��ޤ���
-���󥹥��󥹥ǡ������󶡤��ޤ���
+この簡単な構文を使うことでクラスメソッド、(複数の)継承、オーバーライド、
+そして拡張を行えるようになりました。
+これまでに見てきたもの丈で共通処理を抽出し、様々な実装に再利用する
+良好な方法を提供することができます。
+これはオブジェクトが提供するものの核心です。
+とはいえオブジェクトはこれ以外にもまだ説明していませんが
+インスタンスデータも提供します。
 
 =head2 A horse is a horse, of course of course -- or is it?
 
-(�Ϥ��ϡ�������� -- �Ǥ�����)
+(馬は馬、もちろん -- ですか？)
 
 =begin original
 
@@ -927,7 +927,7 @@ and the C<Horse> class:
 
 =end original
 
-C<Animal> ���饹�� C<Horse> ���饹��񤤤Ƥߤޤ��礦��
+C<Animal> クラスと C<Horse> クラスを書いてみましょう。
 
   { package Animal;
     sub speak {
@@ -948,9 +948,9 @@ sound, and the output of:
 
 =end original
 
-C<< Horse->speak >> ��ƤӽФ����Ȥ� C<Animal::speak> ���Ϥꡢ
-�������� C<Horse::sound> ���Ĥ�����������ޤ���
-��̤ϼ��Τ褦�ˤʤ�ޤ�:
+C<< Horse->speak >> を呼び出すことで C<Animal::speak> に渡り、
+そこから C<Horse::sound> に鳴き声を作りに戻ります。
+結果は次のようになります:
 
   a Horse goes neigh!
 
@@ -965,12 +965,12 @@ name separate from the other horses.
 
 =end original
 
-���������Τ��٤Ƥ� Horse ���֥������Ȥϴ�����Ʊ��Ǥ���
-���֥롼������ɲä��Ƥ⡢���Ƥ��Ϥ���ưŪ�ˤ����ͭ���ޤ���
-Ʊ���Ϥ��뤬��Ū�ʤ餹�Ф餷�����ȤǤ�����
-�ġ����Ϥ��̤��������ˤϤɤ�������ɤ��ΤǤ��礦��?
-�㤨�кǽ���Ϥ�̾�����դ��������ˤϤɤ�������ɤ��ΤǤ��礦��
-������󡢤��줾����Ϥ�̾����ʬΥ���ưݻ�������ˡ������ޤ���
+しかしこのすべての Horse オブジェクトは完全に同一です。
+サブルーチンを追加しても、全ての馬が自動的にそれを共有します。
+同じ馬を作るが目的ならすばらしいことですが、
+個々の馬を識別したい時にはどうすれば良いのでしょうか?
+例えば最初の馬に名前を付けたい時にはどうすれば良いのでしょう。
+もちろん、それぞれの馬の名前を分離して維持する方法があります。
 
 =begin original
 
@@ -981,11 +981,11 @@ that can hold a horse's name: a scalar reference.
 
 =end original
 
-�֥��󥹥��󥹡פȸƤФ�뿷�������̤�Ȥ����ȤǤ����Ԥ����Ȥ��Ǥ��ޤ���
-�֥��󥹥��󥹡� �ϰ���Ū�˥��饹����������ޤ���
-Perl �Ǥ�Ǥ�դΥ�ե���󥹤ʤ饤�󥹥��󥹤ˤʤ뤳�Ȥ��Ǥ��ޤ���
-�����Ǥޤ�ñ��ʥ�ե���󥹤Ȥ��ơ��Ϥ�̾�����ݻ����륹�����ե����
-��ȤäƤߤޤ��礦��
+「インスタンス」と呼ばれる新しい区別を使うことでそれを行うことができます。
+「インスタンス」 は一般的にクラスに生成されます。
+Perl では任意のリファレンスならインスタンスになることができます。
+そこでまず単純なリファレンスとして、馬の名前を保持するスカラリファレンス
+を使ってみましょう。
 
   my $name = "Mr. Ed";
   my $talking = \$name;
@@ -998,10 +998,10 @@ is with a special operator called C<bless>:
 
 =end original
 
-����� C<$talking> �ϥ��󥹥��󥹻ظ��Υǡ���(̾��)�Υ�ե���󥹤�
-�ʤ�ޤ�����
-�����ºݤΥ��󥹥��󥹤ˤ���Ǹ�Υ��ƥåפ� C<bless> �ȸƤФ��
-���̤����Ǥ���
+これで C<$talking> はインスタンス指向のデータ(名前)のリファレンスに
+なりました。
+これを実際のインスタンスにする最後のステップは C<bless> と呼ばれる
+特別な操作です。
 
   bless $talking, Horse;
 
@@ -1015,16 +1015,16 @@ with traditional dereferencing operators.
 
 =end original
 
-����ϥѥå�����̾ C<Horse> �˴ؤ�������
-��ե���󥹤˻ؤ���Ƥ����Τ˳�Ǽ��������Ԥ��ޤ���
-����ˤ�ꡢC<$talking> �� C<Horse> �Υ��󥹥��󥹤ˤʤä��Ȥ����ޤ���
-����ǡ��ġ����Ϥ��̤Ǥ��ޤ���
-��ե���󥹤Ϥ���ʳ����Ѳ��Ϥ���ޤ��󤷡�
-����Ū�ʥǥ�ե��������Ȥ����Ȥ�Ǥ��ޤ���
+これはパッケージ名 C<Horse> に関する情報を
+リファレンスに指されているものに格納する操作を行います。
+これにより、C<$talking> が C<Horse> のインスタンスになったといいます。
+これで、個々の馬を識別できます。
+リファレンスはそれ以外に変化はありませんし、
+伝統的なデリファレンス操作を使うこともできます。
 
 =head2 Invoking an instance method
 
-(���󥹥��󥹥᥽�åɤθƤӽФ�)
+(インスタンスメソッドの呼び出し)
 
 =begin original
 
@@ -1033,9 +1033,9 @@ packages (classes).  So, let's get the sound that C<$talking> makes:
 
 =end original
 
-�᥽�å�����ϥѥå�����(���饹)̾�λ���Ʊ���褦�ˡ�
-���󥹥��󥹤��Ф��Ƥ�Ȥ����Ȥ��Ǥ��ޤ���
-�Ǥϡ�C<$talking> �κ��Ф�������Ф��Ƥߤޤ��礦:
+メソッド矢印はパッケージ(クラス)名の時と同じように、
+インスタンスに対しても使うことができます。
+では、C<$talking> の作り出す音を取り出してみましょう:
 
   my $noise = $talking->sound;
 
@@ -1049,12 +1049,12 @@ just like with classes.)
 
 =end original
 
-C<sound> ��ƤӽФ�����ˡ�Perl �ϻϤ�� C<$talking> ��
-bless ���줿��ե����(�Ĥޤꥤ�󥹥���)�Ǥ��뤳�Ȥ��ǧ���ޤ���
-���줫������ꥹ�Ȥ������ޤ���
-����� C<($talking)> �����Ǥ���
-(��ۤɡ����饹�λ���Ʊ�ͤ˥��󥹥����ѿ���³���ư������֤��Τ�
-�������ޤ���)
+C<sound> を呼び出すために、Perl は始めに C<$talking> が
+bless されたリファレンス(つまりインスタンス)であることを確認します。
+それから引数リストを構成します、
+今回は C<($talking)> だけです。
+(後ほど、クラスの時と同様にインスタンス変数に続けて引数を置くのも
+説明します。)
 
 =begin original
 
@@ -1065,11 +1065,11 @@ to invoke the method.  In this case, C<Horse::sound> is found directly
 
 =end original
 
-���ơ����������⤷�����Ȥ����Ǥ�: 
-Perl �ϥ��󥹥��󥹤� bless ����Ƥ��륯�饹������� C<Horse> ����Ф���
-�᥽�åɸƤӽФ���Ԥ�����δؿ��ξ������ꤹ�뤿��ˤ����Ȥ��ޤ���
-����ϡ�C<Horse::sound> ��ľ�ܤ�(�Ѿ���Ȥ����Ȥʤ���)
-�ߤĤ��ꡢ�ǽ�Ū�˼��δؿ��ƤӽФ��Ȥʤ�ޤ�:
+さて、ここがおもしろいところです: 
+Perl はインスタンスが bless されているクラス、今回は C<Horse> を取り出し、
+メソッド呼び出しを行うための関数の場所を特定するためにそれを使います。
+今回は、C<Horse::sound> が直接に(継承を使うことなしに)
+みつかり、最終的に次の関数呼び出しとなります:
 
   Horse::sound($talking)
 
@@ -1081,10 +1081,10 @@ that'll end up as the C<$noise> variable above.
 
 =end original
 
-���κǽ�Υѥ�᡼���ϡ���ۤɤΤ褦�ʥ��饹̾�ǤϤʤ�
-���󥹥��󥹤ΤޤޤǤ����������դ��Ƥ���������
-���η�� C<neigh> �������ͤȤ��Ƽ�����ꡢ
-���줬 C<$noise> �ѿ�����������ޤ���
+この最初のパラメータは、先ほどのようなクラス名ではなく
+インスタンスのままである点に注意してください。
+この結果 C<neigh> を復帰値として受け取り、
+これが C<$noise> 変数に代入されます。
 
 =begin original
 
@@ -1096,17 +1096,17 @@ is an instance (a blessed reference) or a class name (a string).
 
 =end original
 
-�⤷ Horse::sound �����Ĥ���ʤ��ä��Ȥ��ˤϡ�
-���饹�᥽�åɤλ���Ʊ���褦�ˡ������ѡ����饹��
-��ǥ᥽�åɤ����Ĥ��뤫�ɤ��� C<@Horse::ISA> 
-�ꥹ�Ȥ򤿤ɤ�ޤ���
-���饹�᥽�åɤȥ��󥹥��󥹥᥽�åɤȤΰ㤤��
-���κǽ�ΰ��������󥹥���(bless ���줿��ե����)
-�ʤΤ����饹̾(ʸ����)�ʤΤ��Ȥ����������Ǥ���
+もし Horse::sound が見つからなかったときには、
+クラスメソッドの時と同じように、スーパークラスの
+中でメソッドが見つかるかどうか C<@Horse::ISA> 
+リストをたどります。
+クラスメソッドとインスタンスメソッドとの違いは
+その最初の引数がインスタンス(bless されたリファレンス)
+なのかクラス名(文字列)なのかという点だけです。
 
 =head2 Accessing the instance data
 
-(���󥹥��󥹤Υǡ����ؤΥ�������)
+(インスタンスのデータへのアクセス)
 
 =begin original
 
@@ -1116,9 +1116,9 @@ the name:
 
 =end original
 
-�ǽ�ΰ����Ȥ��ƥ��󥹥��󥹤����뤳�Ȥ��Ǥ���Τǡ�
-���󥹥��󥹸�ͭ�Υǡ����˥����������뤳�Ȥ��Ǥ��ޤ���
-����ϡ�̾���˥�������������ˡ���ɲä��Ƥߤޤ��礦:
+最初の引数としてインスタンスを得ることができるので、
+インスタンス固有のデータにアクセスすることができます。
+今回は、名前にアクセスする方法を追加してみましょう:
 
   { package Horse;
     @ISA = qw(Animal);
@@ -1135,7 +1135,7 @@ Now we call for the name:
 
 =end original
 
-����Ǥ���̾����Ƥ֤��Ȥ��Ǥ��ޤ�:
+これでその名前を呼ぶことができます:
 
   print $talking->name, " says ", $talking->sound, "\n";
 
@@ -1150,21 +1150,21 @@ and we're done with that.  The result is:
 
 =end original
 
-C<Horse::name> ����¦�Ǥϡ�C<@_> ����ˤ� C<shift> �� C<$self> ��
-��������� C<$talking> �Τߤ��ޤޤ�Ƥ��ޤ���
-(���󥹥��󥹥᥽�åɤˤ����ơ����κǽ�Υѥ�᡼���� C<$self> �Ȥ���̾����
-�ѿ��� shift ������������ΤϤ���«�ʤΤǡ������Ǥ�
-���ޤ���ͳ���ɤ����ʤ��Ǥ���������)
-���줫�顢C<$self> �ϥ������ե���󥹤Ȥ���
-�ǥ�ե���󥹤��졢C<Mr. Ed> �����Ф��졢
-����Ǥ����ޤ��Ǥ���
-��̤ϼ��Τ褦�ˤʤ�ޤ�:
+C<Horse::name> の内側では、C<@_> 配列には C<shift> で C<$self> に
+代入される C<$talking> のみが含まれています。
+(インスタンスメソッドにおいて、その最初のパラメータを C<$self> という名前の
+変数に shift して代入するのはお約束なので、ここでは
+あまり理由を追い求めないでください。)
+それから、C<$self> はスカラリファレンスとして
+デリファレンスされ、C<Mr. Ed> が取り出され、
+それでおしまいです。
+結果は次のようになります:
 
   Mr. Ed says neigh.
 
 =head2 How to build a horse
 
-(�Ϥκ����)
+(馬の作り方)
 
 =begin original
 
@@ -1177,12 +1177,12 @@ build a new horse:
 
 =end original
 
-������󡢤��٤Ƥ��Ϥ��Ǻ�äƤ��Ƥϻ������Ԥ��뤳�Ȥ⤢��Ǥ��礦��
-�ޤ��ϤΡ���¡�פ������鸫���Ƥ��ޤ��Τϥ��֥������Ȼظ�
-�ץ�����ߥ󥰤���«���� 1 ���ˤäƤ��ޤ���
-�⤷���ʤ����ð�Ǥ���Ф����褤�Ǥ��礦����
-��ʬ���Ϥ�������������Ǥ���Ф����ǤϤ���ޤ���
-�ʤΤ� Horse ���饹�˿������Ϥ��äƤ�餤�ޤ��礦:
+もちろん、すべての馬を手で作っていては時々失敗することもあるでしょう。
+また馬の「内臓」が外から見えてしまうのはオブジェクト指向
+プログラミングの約束事を 1 つ破っています。
+もしあなたが獣医であればそれもよいでしょうが、
+自分の馬を持ちたいだけであればそうではありません。
+なので Horse クラスに新しい馬を作ってもらいましょう:
 
   { package Horse;
     @ISA = qw(Animal);
@@ -1204,7 +1204,7 @@ Now with the new C<named> method, we can build a horse:
 
 =end original
 
-���ο�������ä� C<named> �᥽�åɤ��Ϥ��뤳�Ȥ��Ǥ��ޤ�:
+この新しく作った C<named> メソッドで馬を作ることができます:
 
   my $talking = Horse->named("Mr. Ed");
 
@@ -1217,13 +1217,13 @@ so that's fine as a return value.  And that's how to build a horse.
 
 =end original
 
-�����ǻ䤿���ϥ��饹�᥽�åɤ���äƤ��뤳�Ȥ����դ��Ƥ�������;
-�ޤ� C<Horse::named> ��2�Ĥΰ����� C<Horse> �����
-C<Mr. Ed> �ˤʤ�ޤ���
-C<bless> �黻�Ҥ� C<$name> �� bless ��������Ǥʤ���
-C<$name> �ؤΥ�ե���󥹤��֤��ޤ�������ˤ�ä�
-�����Ŭ�ڤ������ͤȤʤ�ޤ���
-���줬�Ϥκ�����Ǥ���
+ここで私たちはクラスメソッドに戻っていることに注意してください;
+また C<Horse::named> の2つの引数は C<Horse> および
+C<Mr. Ed> になります。
+C<bless> 演算子は C<$name> を bless するだけでなく、
+C<$name> へのリファレンスを返します、それによって
+これは適切な復帰値となります。
+これが馬の作り方です。
 
 =begin original
 
@@ -1240,21 +1240,21 @@ right?)
 
 =end original
 
-�����Ǥϥ��󥹥ȥ饯���� C<named> �Ȥ����Τǡ����Υ��󥹥ȥ饯���ΰ�����
-����� C<Horse> ��̾���Ȥ������Ȥ򼨤��Ƥ��ޤ���
-(�ȷϤ���������Ͽ����Ȥ��ä�)��ä���ˡ�ǥ��֥������Ȥ�
-��̿��᤭������̤Υ��󥹥ȥ饯���ˤ�
-�ޤ���ä�̾����Ĥ��뤳�Ȥ��Ǥ��ޤ���
-����������ä����¤βݤ����Ƥ������줫�� Perl �ؤ��褿�ۤȤ�ɤο͡���
-C<new> �Ȥ��� 1 �ĤΥ��󥹥ȥ饯���ˡ��͡��ʰ����ν�����ˡ��
-�ä��ƻȤ��ޤ���
-�ɤ������ˡ�Ǥ⡢���֥������Ȥ���Ф����ʤ�������Τ�����򤢤ʤ���
-�ɥ�����Ȳ����Ƥ���¤�����ꤢ��ޤ���
-(�����Ƥ����Ԥä�I<���Ƥ���>�������Ǥ����?)
+ここではコンストラクタを C<named> としたので、このコンストラクタの引数が
+特定の C<Horse> の名前ということを示しています。
+(家系や誕生日を記録するといった)違った方法でオブジェクトに
+「命を吹き込む」別のコンストラクタには
+また違った名前をつけることができます。
+しかし、もっと制限の課せられていた言語から Perl へと来たほとんどの人々は
+C<new> という 1 つのコンストラクタに、様々な引数の処理方法を
+加えて使います。
+どちらの方法でも、オブジェクトを作り出すあなたの特定のやり方をあなたが
+ドキュメント化している限りは問題ありません。
+(そしてそれを行ってI<きている>、そうですよね?)
 
 =head2 Inheriting the constructor
 
-(���󥹥ȥ饯���ηѾ�)
+(コンストラクタの継承)
 
 =begin original
 
@@ -1264,10 +1264,10 @@ C<Animal>, so let's put it there:
 
 =end original
 
-�Ǥ⤳�Υ᥽�åɤ� C<Horse> ��ͭ�Τ��ȤäƤ���ޤ���?
-������ No �Ǥ���
-���äơ�C<Animal> ����Ѿ����Ʋ������ۤ���Τ�
-Ʊ���쥷�Ԥ�Ȥ����Ȥ��Ǥ��ޤ�����äƤߤޤ��礦:
+でもこのメソッドに C<Horse> 特有のことってありますか?
+答えは No です。
+従って、C<Animal> から継承して何かを構築するのと
+同じレシピを使うことができます、やってみましょう:
 
   { package Animal;
     sub speak {
@@ -1295,8 +1295,8 @@ Ahh, but what happens if we invoke C<speak> on an instance?
 
 =end original
 
-�������Ǥ⥤�󥹥��󥹤��Ф��� C<speak> ��ƤӽФ�����
-�ɤ��ʤ�ΤǤ��礦?
+あぁ、でもインスタンスに対して C<speak> を呼び出したら
+どうなるのでしょう?
 
   my $talking = Horse->named("Mr. Ed");
   $talking->speak;
@@ -1307,7 +1307,7 @@ We get a debugging value:
 
 =end original
 
-����ϥǥХå�����ˤʤäƤ��ޤ��ޤ�:
+これはデバッグ情報になってしまいます:
 
   a Horse=SCALAR(0xaca42ac) goes neigh!
 
@@ -1320,16 +1320,16 @@ shows up as we saw it just now.
 
 =end original
 
-�ʤ������ʤäƤ��ޤ��ΤǤ��礦? 
-����ϡ����� C<Animal::speak> �롼����Ϥ��κǽ�ΰ����ˤ�
-���󥹥��󥹤ǤϤʤ����饹̾�����ȻפäƤ��뤫��Ǥ���
-���󥹥��󥹤��Ϥ����ȥ֥쥹���줿�������ե���󥹤�
-ʸ����Ȥ��ƻȤ����ȤˤʤäƤ��ޤ������줬��ۤɤߤ���Τ�
-�ʤäƤ��ޤ��ΤǤ���
+なぜこうなってしまうのでしょう? 
+それは、この C<Animal::speak> ルーチンはその最初の引数には
+インスタンスではなくクラス名が来ると思っているからです。
+インスタンスが渡されるとブレスされたスカラリファレンスを
+文字列として使うことになってしまい、それが先ほどみたものに
+なってしまうのです。
 
 =head2 Making a method work with either classes or instances
 
-(�᥽�åɤ򥯥饹�Ǥ⥤�󥹥��󥹤Ǥ�ư��Ǥ���褦�ˤ���)
+(メソッドをクラスでもインスタンスでも動作できるようにする)
 
 =begin original
 
@@ -1341,13 +1341,13 @@ classname).  Let's modify the C<name> method first to notice the change:
 
 =end original
 
-��ɬ�פʤ��Ȥϡ����饹���Ф��ƸƤФ줿�Τ�
-����Ȥ⥤�󥹥��󥹤��Ф��ƸƤФ줿�Τ�����̤�����ˡ�Ǥ���
-����Ψľ����ˡ�� C<ref> �黻�Ҥ�Ȥ����ȤǤ���
-����� bless ���줿��ե���󥹤��Ф��ƻȤ���ʸ����(���饹̾)���֤���
-(���饹̾�Τ褦��)ʸ������Ф��ƻȤ��ȶ�ʸ������֤��ޤ���
-�ǤϤޤ��Ѥ�ä����Ȥ��狼��褦�� C<name> �᥽�åɤ�
-�ѹ����Ƥߤޤ��礦��
+今必要なことは、クラスに対して呼ばれたのか
+それともインスタンスに対して呼ばれたのかを区別する方法です。
+一番率直な方法は C<ref> 演算子を使うことです。
+これは bless されたリファレンスに対して使うと文字列(クラス名)を返し、
+(クラス名のような)文字列に対して使うと空文字列を返します。
+ではまず変わったことがわかるように C<name> メソッドを
+変更してみましょう。
 
   sub name {
     my $either = shift;
@@ -1365,11 +1365,11 @@ holder to C<$either> to show that this is intended:
 
 =end original
 
-������ C<?:> �黻�ҤϤǥ�ե���󥹤��뤫�������줿ʸ���󤫤�
-��ñ�����򤹤뤿��˻ȤäƤ��ޤ���
-���Ƥ���Ǥ��Υ᥽�åɤ򥤥󥹥��󥹤Ǥ⥯�饹�Ǥ�Ȥ���褦�ˤǤ��ޤ�����
-�ǽ�Υѥ�᡼�����ݻ������ѿ���̾����Ȥ��տޤ˹�碌��
-C<$either> ���ѹ����Ƥ��ޤ�:
+ここで C<?:> 演算子はでリファレンスするか派生された文字列かを
+簡単に選択するために使っています。
+さてこれでこのメソッドをインスタンスでもクラスでも使えるようにできました。
+最初のパラメータを保持する変数の名前を使う意図に合わせて
+C<$either> に変更しています:
 
   my $talking = Horse->named("Mr. Ed");
   print Horse->name, "\n"; # prints "an unnamed Horse\n"
@@ -1381,7 +1381,7 @@ and now we'll fix C<speak> to use this:
 
 =end original
 
-������ C<speak> �⤳���Ȥ��褦��ľ���Ƥߤޤ��礦:
+そして C<speak> もこれを使うように直してみましょう:
 
   sub speak {
     my $either = shift;
@@ -1395,12 +1395,12 @@ we're done!
 
 =end original
 
-������ C<sound> �ϴ��˥��饹�Ǥ⥤�󥹥��󥹤Ǥ�ư���
-�褦�ˤʤäƤ���Τǡ�����Ǵ�λ�Ǥ�!
+そして C<sound> は既にクラスでもインスタンスでも動作する
+ようになっているので、これで完了です!
 
 =head2 Adding parameters to a method
 
-(�᥽�åɤ˥ѥ�᡼�����ɲä���)
+(メソッドにパラメータを追加する)
 
 =begin original
 
@@ -1408,7 +1408,7 @@ Let's train our animals to eat:
 
 =end original
 
-���ϻ䤿����ưʪ�˿��٤뤳�Ȥ򤷤Ĥ��Ƥߤޤ��礦:
+次は私たちの動物に食べることをしつけてみましょう:
 
   { package Animal;
     sub named {
@@ -1447,7 +1447,7 @@ And now try it out:
 
 =end original
 
-�����ƻ�Ƥߤޤ�:
+そして試してみます:
 
   my $talking = Horse->named("Mr. Ed");
   $talking->eat("hay");
@@ -1459,7 +1459,7 @@ which prints:
 
 =end original
 
-����ϼ��Τ褦�˽��Ϥ��ޤ�:
+これは次のように出力します:
 
   Mr. Ed eats hay.
   an unnamed Sheep eats grass.
@@ -1471,15 +1471,15 @@ and then the list of parameters.  So that first invocation is like:
 
 =end original
 
-�ѥ�᡼������ä����󥹥��󥹥᥽�åɤϡ����Υ��󥹥��󥹤�
-�ѥ�᡼���Υꥹ�ȤȤȤ�˸ƤӽФ���ޤ���
-���Τ���ǽ�θƤӽФ��ϼ��Τ褦�ˤʤ�ޤ�:
+パラメータを持ったインスタンスメソッドは、そのインスタンスと
+パラメータのリストとともに呼び出されます。
+そのため最初の呼び出しは次のようになります:
 
   Animal::eat($talking, "hay");
 
 =head2 More interesting instances
 
-(��ä����򤤥��󥹥���)
+(もっと面白いインスタンス)
 
 =begin original
 
@@ -1492,13 +1492,13 @@ corresponding values are, well, the values.
 
 =end original
 
-���󥹥��󥹤ˤ�äȥǡ������ۤ����ʤä���ɤ�����Ф褤�Ǥ��礦?
-�����Ƥ������򤤥��󥹥��󥹤Ϥ��줾�줬��ե���󥹤�
-�ۤ��Υ��֥������Ȥ��ä��ꤹ��¿�������Ǥǹ�������Ƥ��ޤ���
-�������Ǽ������ִ�ñ����ˡ�ϥϥå����Ȥ����ȤǤ���
-�ϥå���Υ����ϥ��֥������Ȥ�����(�֥��󥹥����ѿ��׼㤷����
-�֥����ѿ��פȸƤФ�ޤ�)��̾���Ȥ����󶡤��졢
-������б������ͤϡ��ޤ��������ͤǤ���
+インスタンスにもっとデータがほしくなったらどうすればよいでしょう?
+たいていの面白いインスタンスはそれぞれがリファレンスや
+ほかのオブジェクトだったりする多くの要素で構成されています。
+これらを格納する一番簡単な方法はハッシュを使うことです。
+ハッシュのキーはオブジェクトの部品(「インスタンス変数」若しくは
+「メンバ変数」と呼ばれます)の名前として提供され、
+それに対応する値は、まぁ、その値です。
 
 =begin original
 
@@ -1509,12 +1509,12 @@ looks at the reference is changed accordingly.
 
 =end original
 
-�Ǥ��Ϥ�ϥå���ˤ���ˤϤɤ�������褤�Ǥ��礦?
-���֥������Ȥϥ֥쥹���줿Ǥ�դΥ�ե���󥹤Ǥ���Ȥ������Ȥ�
-�פ��Ф��Ƥ���������
-��ե���󥹤򻲾Ȥ��Ƥ���ս��Ŭ�ڤ˽�������С�bless ���줿
-�������ե���󥹤�Ʊ���褦�˴�ñ�ˡ������ bless ���줿
-�ϥå����ե���󥹤Ǻ�뤳�Ȥ��Ǥ��ޤ���
+でも馬をハッシュにするにはどうしたらよいでしょう?
+オブジェクトはブレスされた任意のリファレンスであるということを
+思い出してください。
+リファレンスを参照している箇所を適切に修正すれば、bless された
+スカラリファレンスと同じように簡単に、それを bless された
+ハッシュリファレンスで作ることができます。
 
 =begin original
 
@@ -1522,7 +1522,7 @@ Let's make a sheep that has a name and a color:
 
 =end original
 
-�Ǥ��Ӥ�̾���ȿ�����Ĥ褦�ˤ��Ƥߤޤ��礦:
+では羊を名前と色を持つようにしてみましょう:
 
   my $bad = bless { Name => "Evil", Color => "black" }, Sheep;
 
@@ -1535,11 +1535,11 @@ to worry, because that's pretty easy to fix up:
 
 =end original
 
-����� C<< $bad->{Name} >> �� C<Evil> �ˤʤꡢ
-C<< $bad->{Color} >> �� C<black> �ˤʤ�ޤ���
-�Ǥ� C<< $bad->name >> �Ǥ���̾���˥��������Ǥ���褦�ˤ�����
-�Ǥ���������ϥ������ե���󥹤�����ˤ��Ƥ���Τ���̵���ˤ���Ƥ��ޤ���
-�Ǥ⿴�ۤ��ʤ��Ǥ�������������ϤȤäƤ��ñ��ľ��ޤ�:
+これで C<< $bad->{Name} >> は C<Evil> になり、
+C<< $bad->{Color} >> は C<black> になります。
+でも C<< $bad->name >> でその名前にアクセスできるようにしたい
+ですが、それはスカラリファレンスを前提にしているので台無しにされています。
+でも心配しないでください、これはとっても簡単に直ります:
 
   ## in Animal
   sub name {
@@ -1556,8 +1556,8 @@ as well:
 
 =end original
 
-�����Ƥ������ C<named> �ϥ�������Ӥ��äƤ���Τ�
-�����Ʊ���褦�ˤʤ����ޤ��礦��
+そしてもちろん C<named> はスカラの羊を作っているので
+これも同じようになおしましょう。
 
   ## in Animal
   sub named {
@@ -1575,10 +1575,10 @@ For a sheep, we might define it as white:
 
 =end original
 
-���� C<default_color> �äƲ��Ǥ��礦?
-C<named> ��̾�������ǸƤФ�Ƥ⿧�����ꤹ��ɬ�פ�����ޤ���
-�����ǥ��饹��˽���ͤȤʤ뿧����Ƥ�褦�ˤ��Ƥ��ޤ���
-�Ӥˤ����������Ƥ����ޤ��礦:
+この C<default_color> って何でしょう?
+C<named> が名前だけで呼ばれても色を設定する必要があります、
+そこでクラス毎に初期値となる色を持てるようにしています。
+羊には白を定義しておきましょう:
 
   ## in Sheep
   sub default_color { "white" }
@@ -1591,9 +1591,9 @@ directly in C<Animal>:
 
 =end original
 
-�������ɲä������줾��Υ��饹�ǿ����������ɬ�פ��ʤ��褦�ˡ�
-�֥ǥե���ȤΥǥե���ȡפ��󶡤���
-�ְ����ͥåȡץ᥽�åɤ� C<Animal> ��ľ��������Ƥ����ޤ�:
+そして追加したそれぞれのクラスで色を定義する必要がないように、
+「デフォルトのデフォルト」を提供する
+「安全ネット」メソッドを C<Animal> で直接定義しておきます:
 
   ## in Animal
   sub default_color { "brown" }
@@ -1606,13 +1606,13 @@ remain the same, so C<speak> still works as before.
 
 =end original
 
-�����ơ�C<name> �� C<named> ���������֥������ȤΡֹ�¤�פ�
-���Ȥ��Ƥ����Τǡ��Ĥ�Υ᥽�åɤϤ��Τޤޤ�
-���Ƥ������Ȥ��Ǥ��ޤ���C<speak> �����ΤޤޤǤ��Τޤ�ư��ޤ���
+そして、C<name> と C<named> だけがオブジェクトの「構造」を
+参照していたので、残りのメソッドはそのままに
+しておくことができます、C<speak> は前のままでそのまま動作します。
 
 =head2 A horse of a different color
 
-(��ä�������)
+(違った色の馬)
 
 =begin original
 
@@ -1621,8 +1621,8 @@ method or two to get and set the color.
 
 =end original
 
-�Ǥ�䤿�����Ϥ������������㿧�Ǥ�˰���Ƥ��ޤ��ޤ���
-�ʤΤǿ������/���ꤹ�뤿��Υ᥽�åɤ� 1 �Ĥ� 2 �ĺ�äƤߤޤ��礦��
+でも私たちの馬の全部が全部茶色では飽きてしまいます。
+なので色を取得/設定するためのメソッドを 1 つか 2 つ作ってみましょう。
 
   ## in Animal
   sub color {
@@ -1641,11 +1641,11 @@ that color for Mr. Ed:
 
 =end original
 
-�����˥����������뤿����̤���ˡ�˴ؤ�����­: 
-C<$_[0]> �� C<shift> ������� in-place ��
-�Ȥ����Ȥ��Ǥ��ޤ���
-(��������ˤ˸ƤӽФ����ս�ǻ��֤����󤹤뤳�Ȥ��Ǥ��ޤ���)
-���Ƥ���� Mr. Ed �ο����Ѥ��뤳�Ȥ��Ǥ��ޤ�:
+引数にアクセスするための別の方法に関する補足: 
+C<$_[0]> は C<shift> の代わりに in-place に
+使うことができます。
+(これは頻繁に呼び出される箇所で時間を節約することができます。)
+さてこれで Mr. Ed の色を変えることができます:
 
   my $talking = Horse->named("Mr. Ed");
   $talking->set_color("black-and-white");
@@ -1657,13 +1657,13 @@ which results in:
 
 =end original
 
-����ϼ��η�̤ˤʤ�ޤ�:
+これは次の結果になります:
 
   Mr. Ed is colored black-and-white
 
 =head2 Summary
 
-(�ޤȤ�)
+(まとめ)
 
 =begin original
 
@@ -1678,17 +1678,17 @@ Hopefully, this gets you started, though.
 
 =end original
 
-���ơ�����ޤǤ˥��饹�᥽�åɡ����󥹥ȥ饯����
-���󥹥��󥹥᥽�åɡ����󥹥��󥹥ǡ�����������
-�������å���⸫�Ƥ��ޤ�����
-������������ Perl ���󶡤��Ƥ����ΤΤޤ��Ϥޤ�ˤ����ޤ���
-�ޤ����å���(getter)�Ǥ��ꥻ�å���(setter)�Ǥ⤢��
-�������å���ǥ��ȥ饯�������ܥ��֥�������ɽ����
-���󥹥��󥹥ǡ������ɲä��륵�֥��饹�����饹��Υǡ�����
-�����С������ɡ�"isa" ����� "can" �ˤ��ƥ��ȡ�
-C<UNIVERSAL> ���饹�������ˤĤ��ƤϤޤ��ä��Ϥ�Ƥ⤤�ޤ���
-������¾�� Perl �ɥ�����Ȥǥ��С�����Ƥ��ޤ���
-��勞�С����줬���ʤ��ΰ���Ȥʤ�ޤ��褦�ˡ�
+さて、これまでにクラスメソッド、コンストラクタ、
+インスタンスメソッド、インスタンスデータ、そして
+アクセッサをも見てきました。
+しかしこれらは Perl の提供しているもののまだ始まりにすぎません。
+まだゲッター(getter)でありセッター(setter)でもある
+アクセッサやデストラクタ、間接オブジェクト表記、
+インスタンスデータを追加するサブクラス、クラス毎のデータ、
+オーバーロード、"isa" および "can" によるテスト、
+C<UNIVERSAL> クラス、等々についてはまだ話し始めてもいません。
+これらは他の Perl ドキュメントでカバーされています。
+願わくば、これがあなたの一歩となりますように。
 
 =head1 SEE ALSO
 
@@ -1702,13 +1702,13 @@ Damian Conway's excellent I<Object Oriented Perl>.
 
 =end original
 
-��äȾܤ�������ϡ�
-L<perlobj> (�����Ǵ��ä򸫤���Perl ���֥������Ȥ˴ؤ��뤹�٤Ƥζ��Ǥʾܺ�)��
-L<perltoot> (���֥������Ȥ��ΤäƤ���ͤΤ���Υ��塼�ȥꥢ��)��
-L<perltooc> (���饹�ǡ����μ�갷��)��
-L<perlbot> (��äȥȥ�å����ʤ��ȤȤ�)��
-������ Damian Conway ��ͥ���� I<Object Oriented Perl> ���ν��Ҥ�
-���Ȥ��Ƥ���������
+もっと詳しい情報は、
+L<perlobj> (ここで基礎を見た、Perl オブジェクトに関するすべての強固な詳細)、
+L<perltoot> (オブジェクトを知っている人のためのチュートリアル)、
+L<perltooc> (クラスデータの取り扱い)、
+L<perlbot> (もっとトリッキーなこととか)、
+そして Damian Conway の優秀な I<Object Oriented Perl> 等の書籍を
+参照してください。
 
 =begin original
 
@@ -1718,9 +1718,9 @@ Class::MethodMaker and Tie::SecureHash
 
 =end original
 
-���⤷��������ָ����⥸�塼��Ȥ��ơ�
-Class::Accessor��Class::Class��Class::Contract,
-Class::Data::Inheritable��Class::MethodMaker ������ Tie::SecureHash��
+おもしろさを垣間見れるモジュールとして、
+Class::Accessor、Class::Class、Class::Contract,
+Class::Data::Inheritable、Class::MethodMaker そして Tie::SecureHash。
 
 =head1 COPYRIGHT
 
@@ -1740,7 +1740,7 @@ appearing in I<Linux Magazine> and used with permission.
 
 =begin meta
 
-Created: ���� ɹ�� (YAMASHINA Hio) <hio@hio.jp>
+Created: 山科 氷魚 (YAMASHINA Hio) <hio@hio.jp>
 Updated: Kentaro Shirakata <argrath@ub32.org>
 
 =end meta

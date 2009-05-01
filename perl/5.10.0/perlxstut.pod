@@ -9,7 +9,7 @@ perlXStut - Tutorial for writing XSUBs
 
 =end original
 
-perlXStut - XSUB ��񤯤���Υ��塼�ȥꥢ��
+perlXStut - XSUB を書くためのチュートリアル
 
 =head1 DESCRIPTION
 
@@ -21,10 +21,10 @@ L<perlapi> and L<perlxs>.
 
 =end original
 
-���Υ��塼�ȥꥢ����ɼԤ�Perl�Υ������ƥ󥷥�����Τ�ɬ�פ�
-���ƥåפ򶵤����ΤǤ���
-�ɼԤ� L<perlguts>, L<perlapi>, L<perlxs> �˥��������Ǥ���Ȥ������Ȥ�
-���ꤷ�Ƥ��ޤ���
+このチュートリアルは読者にPerlのエクステンションを作るのに必要な
+ステップを教えるものです。
+読者が L<perlguts>, L<perlapi>, L<perlxs> にアクセスできるということを
+仮定しています。
 
 =begin original
 
@@ -35,10 +35,10 @@ the reader into building extensions.
 
 =end original
 
-���Υ��塼�ȥꥢ�������ñ����㤫��Ϥ�ơ���������˿ʤऴ�Ȥ�
-�����ʵ�ǽ���ղä������ʣ���ʤ�ΤؤȤʤ�ޤ���
-���Ĥ��Υ��󥻥ץȤϡ��ɼԤ��������ƥ󥷥����������Τ�������
-��ñ�ˤʤ�褦�ˡ����塼�ȥꥢ��θ�Τۤ��ޤǴ����ˤ���������ޤ���
+このチュートリアルは非常に単純な例から始めて、新しい例に進むごとに
+新たな機能を付加えたより複雑なものへとなります。
+幾つかのコンセプトは、読者がエクステンションを作成するのが徐々に
+簡単になるように、チュートリアルの後のほうまで完全には説明されません。
 
 =begin original
 
@@ -48,14 +48,14 @@ them.  If you find something that was missed, please let me know.
 
 =end original
 
-���Υ��塼�ȥꥢ��� Unix �δ�������񤫤�Ƥ��ޤ���
-(Win32 �Τ褦��)�ۤ��Υץ�åȥե�����Ǥϰۤʤ뤳�Ȥˤʤ���ΤäƤ���
-���Ǥϡ�����򵭤��Ƥ��ޤ���
-��������Ȥ���ȯ�������顢���Ҷ����Ƥ���������
+このチュートリアルは Unix の観点から書かれています。
+(Win32 のように)ほかのプラットフォームでは異なることになると知っている
+場所では、それを記しています。
+何か見落としを発見したら、ぜひ教えてください。
 
 =head1 SPECIAL NOTES
 
-(���̤�����)
+(特別な注意)
 
 =head2 make
 
@@ -68,15 +68,15 @@ configured to use.  Running B<perl -V:make> should tell you what it is.
 
 =end original
 
-���Υ��塼�ȥꥢ��Ǥϡ�Perl �����Ѥ���褦�����ꤵ��Ƥ���
-make �ץ�����ब C<make> �Ȥ���̾���Ǥ�������ꤷ�Ƥ��ޤ���
-�ʲ������ "make" ��¹Ԥ�������ˡ�Perl ���Ȥ��褦�����ꤵ�줿¾��
-make �ץ����������Ѥ���ɬ�פ����뤫�⤷��ޤ���
-B<perl -V:make> �Ȥ���ȡ����줬�������狼��ޤ���
+このチュートリアルでは、Perl が使用するように設定されている
+make プログラムが C<make> という名前であると想定しています。
+以下の例で "make" を実行する代わりに、Perl が使うように設定された他の
+make プログラムを代用する必要があるかもしれません。
+B<perl -V:make> とすると、それが何かがわかります。
 
 =head2 Version caveat
 
-(�С������˴ؤ���ٹ�)
+(バージョンに関する警告)
 
 =begin original
 
@@ -88,12 +88,12 @@ of your extension may have more ancient versions.
 
 =end original
 
-���̸����� Perl �������ƥ󥷥���񤯤Ȥ������ʤ��Υޥ����
-���Ѳ�ǽ�ʥС������Ȱۤʤ�С������� Perl �ǥ������ƥ󥷥��
-�Ȥ��뤳�Ȥ����ꤹ��٤��Ǥ���
-����ʸ����ɤ�Ǥ���Ȥ������Ȥϡ����ʤ��Υޥ���� Perl �ΥС�������
-�����餯 5.005 �ʹߤǤ��礦�����������ƥ󥷥��Υ桼�����Ϥ�äȸŤ�
-�С�����󤫤⤷��ޤ���
+一般向けに Perl エクステンションを書くとき、あなたのマシンで
+利用可能なバージョンと異なるバージョンの Perl でエクステンションが
+使われることを想定するべきです。
+この文書を読んでいるということは、あなたのマシンの Perl のバージョンは
+おそらく 5.005 以降でしょうが、エクステンションのユーザーはもっと古い
+バージョンかもしれません。
 
 =begin original
 
@@ -103,9 +103,9 @@ see the section on "Troubleshooting these Examples" for more information.
 
 =end original
 
-�ɤΤ褦����ߴ��������ꤵ��뤫�����򤹤뤿��ˡ��ޤ����������Ȥ��ơ�
-�ޥ�������äƤ��� Perl �ΥС�����󤬤��Υɥ�����Ȥ��Ť���硢
-����ʤ����� "Troubleshooting these Examples" �ξϤ򻲾Ȥ��Ƥ���������
+どのような非互換性が想定されるかを理解するために、また珍しい場合として、
+マシンに入っている Perl のバージョンがこのドキュメントより古い場合、
+さらなる情報は "Troubleshooting these Examples" の章を参照してください。
 
 =begin original
 
@@ -117,11 +117,11 @@ module or other tools.
 
 =end original
 
-�⤷�������ƥ󥷥�󤬡�Perl �θŤ���꡼���Ǥ����ѤǤ��ʤ��褦�� Perl ��
-��ǽ��ȤäƤ���ʤ顢�桼����������ΰ�̣�Τ���ٹ�����򤷤ޤ���
-�����餯���ξ���� F<README> �ե�������ɲä���٤��Ǥ��礦�����Ƕ��
-�������ƥ󥷥��Υ��󥹥ȡ���ϡ�F<CPAN.pm> �⥸�塼��䤽��¾��
-�ġ���ˤ�äƼ�ưŪ�˹Ԥ��뤫�⤷��ޤ���
+もしエクステンションが、Perl の古いリリースでは利用できないような Perl の
+機能を使っているなら、ユーザーは早期の意味のある警告で理解します。
+おそらくこの情報を F<README> ファイルに追加するべきでしょうが、最近の
+エクステンションのインストールは、F<CPAN.pm> モジュールやその他の
+ツールによって自動的に行われるかもしれません。
 
 =begin original
 
@@ -131,9 +131,9 @@ in F<Makefile.PL> for this purpose:
 
 =end original
 
-MakeMaker �١����Υ��󥹥ȡ���Ǥϡ�F<Makefile.PL> �����ץ�åȥե������
-�С����������å��κǤ��ᤤ������󶡤��ޤ���
-������Ū�Τ���ˡ��ʲ��Τ褦�ʤ�Τ� F<Makefile.PL> �˽񤱤ޤ�:
+MakeMaker ベースのインストールでは、F<Makefile.PL> が、プラットフォームの
+バージョンチェックの最も早い機会を提供します。
+この目的のために、以下のようなものを F<Makefile.PL> に書けます:
 
     eval { require 5.007 }
         or die <<EOD;
@@ -145,7 +145,7 @@ MakeMaker �١����Υ��󥹥ȡ���Ǥϡ�F<Makefile.PL> �����ץ�åȥե������
 
 =head2 Dynamic Loading versus Static Loading
 
-(ưŪ�ɤ߹�������Ū�ɤ߹���)
+(動的読み込み対静的読み込み)
 
 =begin original
 
@@ -157,13 +157,13 @@ Perl 4.
 
 =end original
 
-����Ū�ˤϡ������ƥब�饤�֥���ưŪ�˥����ɤ��뵡ǽ����äƤ��ʤ����
-XSUB ��������뤳�ȤϤǤ��ʤ��ȹͤ����Ƥ��ޤ���
-���������������ޤ���
-���ʤ��� XSUB ���뤳�Ȥ� I<�Ǥ��ޤ�>��
-�����������ʤ��Ϥ��� XSUB �Υ��֥롼����ȡ�Perl �Ȥ��󥯤��ƿ�����
-�¹ԥե��������ʤ���Фʤ�ޤ���
-���ξ����� perl4 ��Ʊ���Ǥ���
+一般的には、システムがライブラリを動的にロードする機能を持っていなければ
+XSUB を作成することはできないと考えられています。
+これは正しくありません。
+あなたは XSUB を作ることが I<できます>。
+ただし、あなたはその XSUB のサブルーチンと、Perl とをリンクして新たな
+実行ファイルを作らなければなりません。
+この状況は perl4 と同じです。
 
 =begin original
 
@@ -174,11 +174,11 @@ executable with that static library linked in.
 
 =end original
 
-���Υ��塼�ȥꥢ��Ϥޤ��������ä������ƥ��ȤäƤ��Ƥ�����פǤ���
-XSUB �κ�����ǽ�ϡ������ƥ������å����Ʋ�ǽ�Ǥ����ưŪ�����ɲ�ǽ
-�饤�֥�����������Ǥ��ʤ���Х����ƥ��å��饤�֥���������Ƥ���
-���Υ����ƥ��å��饤�֥����󥯤��ƥ����ƥ��å���󥯤��줿
-�¹ԥե������������ޤ�(�Ǹ����ʬ�ϥ��ץ����)��
+このチュートリアルはまだそういったシステムを使っていても大丈夫です。
+XSUB の作成機能は、システムをチェックして可能であれば動的ロード可能
+ライブラリを作成し、できなければスタティックライブラリを作成してから
+そのスタティックライブラリをリンクしてスタティックリンクされた
+実行ファイルを作成します(最後の部分はオプション)。
 
 =begin original
 
@@ -189,10 +189,10 @@ where the command "C<make>" with no arguments is executed, run the command
 
 =end original
 
-���줫������Ȥäơ�ưŪ�����ɲ�ǽ�饤�֥�꤬�Ȥ��륷���ƥ��
-���äƤ⥹���ƥ��å���󥯤��줿�¹ԥե����������������Ȥ�����硢
-"C<make>"�Ȥ��������ʤ��Υ��ޥ�ɤ�¹Ԥ�������ˡ�
-"C<make perl>" �Ȥ������ޥ�ɤ�¹Ԥ��Ƥ���������
+これからの例を使って、動的ロード可能ライブラリが使えるシステムで
+あってもスタティックリンクされた実行ファイルを作成したいという場合、
+"C<make>"という引数なしのコマンドを実行する代わりに、
+"C<make perl>" というコマンドを実行してください。
 
 =begin original
 
@@ -203,14 +203,14 @@ saying "C<make test>" is sufficient.
 
 =end original
 
-�⤷�����ƥ��å���󥯤��줿�¹ԥե������������뤳�Ȥ�������Τʤ顢
-"C<make test>" ������� "C<make test_static>" ��ȤäƤ���������
-ưŪ�����ɲ�ǽ�饤�֥�꤬�����Ǥ��ʤ������ƥ�ξ��ˤ�ñ��
-"C<make test>" �Ȥ�������� OK �Ǥ���
+もしスタティックリンクされた実行ファイルを作成することを選んだのなら、
+"C<make test>" の代わりに "C<make test_static>" を使ってください。
+動的ロード可能ライブラリが作成できないシステムの場合には単に
+"C<make test>" とするだけで OK です。
 
 =head1 TUTORIAL
 
-(���塼�ȥꥢ��)
+(チュートリアル)
 
 =begin original
 
@@ -218,11 +218,11 @@ Now let's go on with the show!
 
 =end original
 
-�Ǥϡ����Ƥ����ޤ��礦!
+では、見ていきましょう!
 
 =head2 EXAMPLE 1
 
-(�� 1)
+(例 1)
 
 =begin original
 
@@ -231,9 +231,9 @@ extension, it will print out a well-known message and return.
 
 =end original
 
-�ǽ�Υ������ƥ󥷥�������ñ��Ǥ���
-�������ƥ󥷥�����ǥ롼�����ƤӽФ��Ȥ��ˡ��ɤ��Τ�줿��å�������
-���Ϥ��ƥ꥿���󤷤ޤ���
+最初のエクステンションは非常に単純です。
+エクステンションの中でルーチンを呼び出すときに、良く知られたメッセージを
+出力してリターンします。
 
 =begin original
 
@@ -244,11 +244,11 @@ MANIFEST, Makefile.PL, Mytest.pm, Mytest.xs, Mytest.t, and Changes.
 
 =end original
 
-"C<h2xs -A -n Mytest>" ��¹Ԥ��ޤ���
-����� Mytest �Ȥ���̾���Υǥ��쥯�ȥ��������ޤ����������Ȥ�
-��ȥǥ��쥯�ȥ�� ext/ �Ȥ����ǥ��쥯�ȥ꤬����Ф��β��˺������ޤ���
-MANIFEST, Makefile.PL, Mytest.pm, Mytest.xs, Mytest.t, Changes ��ޤ᤿
-���Ĥ��Υե����뤬�ǥ��쥯�ȥ� Mytest �β��˺�������ޤ���
+"C<h2xs -A -n Mytest>" を実行します。
+これは Mytest という名前のディレクトリを作成しますが、カレントの
+作業ディレクトリに ext/ というディレクトリがあればその下に作成します。
+MANIFEST, Makefile.PL, Mytest.pm, Mytest.xs, Mytest.t, Changes を含めた
+幾つかのファイルがディレクトリ Mytest の下に作成されます。
 
 =begin original
 
@@ -257,8 +257,8 @@ Mytest directory.
 
 =end original
 
-MANIFEST �Ȥ����ե�����ˤ� Mytest �ǥ��쥯�ȥ���������줿�ե�����
-���٤ƤΥե�����̾������ޤ���
+MANIFEST というファイルには Mytest ディレクトリに生成されたファイル
+すべてのファイル名があります。
 
 =begin original
 
@@ -266,7 +266,7 @@ The file Makefile.PL should look something like this:
 
 =end original
 
-Makefile.PL �Ȥ����ե�����ϰʲ��Τ褦�ʷ����Ǥ���٤��Ǥ���
+Makefile.PL というファイルは以下のような形式であるべきです。
 
     use ExtUtils::MakeMaker;
     # See lib/ExtUtils/MakeMaker.pm for details of how to influence
@@ -285,7 +285,7 @@ The file Mytest.pm should start with something like this:
 
 =end original
 
-Mytest.pm �ϰʲ��Τ褦�����ƤǻϤޤ�ޤ���
+Mytest.pm は以下のような内容で始まります。
 
     package Mytest;
 
@@ -324,8 +324,8 @@ the extension.
 
 =end original
 
-.pm �ե�����λĤ�ϥ������ƥ󥷥��Τ���Υɥ�����Ȥ���󶡤��뤿���
-����ץ륳���ɤ���ʤ�ޤ���
+.pm ファイルの残りはエクステンションのためのドキュメントをを提供するための
+サンプルコードからなります。
 
 =begin original
 
@@ -333,7 +333,7 @@ Finally, the Mytest.xs file should look something like this:
 
 =end original
 
-�Ǹ�ˡ�Mytest.xs �����Ƥϰʲ��Τ褦�ˤʤ�ޤ���
+最後に、Mytest.xs の内容は以下のようになります。
 
     #include "EXTERN.h"
     #include "perl.h"
@@ -349,7 +349,7 @@ Let's edit the .xs file by adding this to the end of the file:
 
 =end original
 
-.xs �ե�����ν����˰ʲ��ιԤ��ɲä��ޤ���
+.xs ファイルの終わりに以下の行を追加します。
 
     void
     hello()
@@ -364,9 +364,9 @@ one level and the lines following one more level.
 
 =end original
 
-"CODE:" �ǻϤޤ�Ԥ�����ǥ�Ȥ���Ƥ��ʤ��Τ����ꤢ��ޤ���
-���������ɤߤ䤹���δ������顢CODE: �� 1 ��٥륤��ǥ�Ȥ��ơ�
-����³���Ԥ򤵤�� 1 ��٥륤��ǥ�Ȥ��뤳�Ȥ򴫤�ޤ���
+"CODE:" で始まる行がインデントされていないのは問題ありません。
+しかし、読みやすさの観点から、CODE: を 1 レベルインデントして、
+引き続く行をさらに 1 レベルインデントすることを勧めます。
 
 =begin original
 
@@ -375,9 +375,9 @@ which make needs.  Its output looks something like:
 
 =end original
 
-�����ǡ�"C<perl Makefile.PL>" ��¹Ԥ��ޤ���
-����� make ��ɬ�פȤ��������� Makefile ����������ޤ���
-���ν��Ϥϰʲ��Τ褦�ˤʤ�ޤ�:
+ここで、"C<perl Makefile.PL>" を実行します。
+これで make が必要とする本当の Makefile が生成されます。
+この出力は以下のようになります:
 
     % perl Makefile.PL
     Checking if your kit is complete...
@@ -393,8 +393,8 @@ been deleted):
 
 =end original
 
-������make��¹Ԥ���С��ʲ��Τ褦�ʽ��Ϥ���������ޤ�
-(������Ĺ���Ԥ����������ݤĤ����û������������;ʬ�ʹԤϺ�����Ƥ��ޤ�):
+ここでmakeを実行すれば、以下のような出力が生成されます
+(一部の長い行は明快さを保つために短くし、一部の余分な行は削除しています):
 
     % make
     cp lib/Mytest.pm blib/lib/Mytest.pm
@@ -420,8 +420,8 @@ explained in the section "The PROTOTYPES: Keyword" in L<perlxs>.
 
 =end original
 
-"prototyping behavior" �˴ؤ���Ԥϰ�����̵��Ǥ��ޤ� - ����� L<perlxs> ��
-"The PROTOTYPES: Keyword" �ξϤ���������Ƥ��ޤ���
+"prototyping behavior" に関する行は安全に無視できます - これは L<perlxs> の
+"The PROTOTYPES: Keyword" の章で説明されています。
 
 =begin original
 
@@ -435,14 +435,14 @@ found in the Visual C compiler's lib directory (e.g. C:/DevStudio/VC/lib).
 
 =end original
 
-Win32 �����ƥ�ξ��ǡ�C �饤�֥����δؿ��˴ؤ����󥫤Υ��顼��
-�ӥ�ɽ��������Ԥ����硢Perl �� PerlCRT ��Ȥ��褦�����ꤵ��Ƥ��뤫��
-Ĵ�٤Ƹ��Ƥ������� (���ξ�硢B<perl -V:libc> ��¹Ԥ���Ф狼��Ϥ��Ǥ�)��
-�⤷ Perl �� PerlCRT ��Ȥ��褦�����ꤵ��Ƥ���ʤ顢PerlCRT.lib ��
-msvcrt.lib ��Ʊ�����֤˥��ԡ����ơ�����ѥ��餬����򸫤Ĥ�����褦��
-����ɬ�פ�����ޤ���
-msvcrt.lib ������ Visual C ����ѥ���� lib �ǥ��쥯�ȥ� (�㤨��
-C:/DevStudio/VC/lib) �ˤ���ޤ���
+Win32 システムの場合で、C ライブラリ中の関数に関するリンカのエラーで
+ビルド処理が失敗する場合、Perl が PerlCRT を使うように設定されているかを
+調べて見てください (この場合、B<perl -V:libc> を実行すればわかるはずです)。
+もし Perl が PerlCRT を使うように設定されているなら、PerlCRT.lib を
+msvcrt.lib と同じ位置にコピーして、コンパイラがこれを見つけられるように
+する必要があります。
+msvcrt.lib は普通 Visual C コンパイラの lib ディレクトリ (例えば
+C:/DevStudio/VC/lib) にあります。
 
 =begin original
 
@@ -452,9 +452,9 @@ that looks like this:
 
 =end original
 
-Perl �ˤϥƥ��ȥ�����ץȤ��ñ�˽񤯤�����ȼ������̤���ˡ������ޤ�����
-������Τ�������ˡ���ʬ�ǥƥ��ȥ�����ץȤ���ޤ���
-hello �Ȥ���̾���Ρ��ʲ��Τ褦�����ƤΥե��������ޤ���
+Perl にはテストスクリプトを簡単に書くための独自の特別な方法がありますが、
+この例のためだけに、自分でテストスクリプトを作ります。
+hello という名前の、以下のような内容のファイルを作ります。
 
     #! /opt/perl5/bin/perl
 
@@ -471,8 +471,8 @@ and we should see the following output:
 
 =end original
 
-�����ǥ�����ץȤ�¹Բ�ǽ�ˤ���(C<chmod +x hello>)����¹Ԥ���С�
-�ʲ��Τ褦�ʽ��Ϥˤʤ�Ϥ��Ǥ���
+ここでスクリプトを実行可能にして(C<chmod +x hello>)から実行すれば、
+以下のような出力になるはずです。
 
     % ./hello
     Hello, world!
@@ -480,7 +480,7 @@ and we should see the following output:
 
 =head2 EXAMPLE 2
 
-(�� 2)
+(例 2)
 
 =begin original
 
@@ -490,8 +490,8 @@ is odd.
 
 =end original
 
-���٤ϡ����Ͱ��������ϤȤ��ư�ļ�ꡢ���ο��ͤ������ʤ� 1 �򡢴���ʤ�
-0 ���֤��褦�ʥ��֥롼������ɲä��ޤ��礦��
+今度は、数値引数を入力として一つ取り、その数値が偶数なら 1 を、奇数なら
+0 を返すようなサブルーチンを追加しましょう。
 
 =begin original
 
@@ -499,7 +499,7 @@ Add the following to the end of Mytest.xs:
 
 =end original
 
-Mytest.xs �κǸ�˰ʲ��ιԤ��ɲä��ޤ���
+Mytest.xs の最後に以下の行を追加します。
 
     int
     is_even(input)
@@ -518,10 +518,10 @@ may be placed between the "C<int>" and "C<input>".
 
 =end original
 
-"C<int input>" �ιԤλϤ�ˤ�������ɬ�ܤǤϤ���ޤ��󤬡����줬�����
-�ɤߤ䤹���������ޤ���
-Ʊ�ͤˡ������Υ��ߥ�������ά��ǽ�Ǥ���
-Ǥ�դζ���� "C<int>"  �� "C<input>" �δ֤��֤����Ȥ��Ǥ��ޤ���
+"C<int input>" の行の始めにある空白は必須ではありませんが、これがあると
+読みやすさが増します。
+同様に、行末のセミコロンも省略可能です。
+任意の空白を "C<int>"  と "C<input>" の間に置くことができます。
 
 =begin original
 
@@ -529,7 +529,7 @@ Now re-run make to rebuild our new shared library.
 
 =end original
 
-make ����ټ¹Ԥ��ơ������ʶ�ͭ�饤�֥�����ޤ���
+make を再度実行して、新たな共有ライブラリを作ります。
 
 =begin original
 
@@ -538,8 +538,8 @@ Makefile.PL file, and running make.
 
 =end original
 
-���Υ��ƥåפ�Ʊ���褦�ˡ�Makefile.PL ���� Makefile ���ä�
-make ��¹Ԥ��ޤ���
+前のステップと同じように、Makefile.PL から Makefile を作って
+make を実行します。
 
 =begin original
 
@@ -551,15 +551,15 @@ when the test is correct, "not ok" when it is not.
 
 =end original
 
-���������������ƥ󥷥��ư��뤫���ǧ���뤿��ˡ�Mytest.t ��
-�褦�ʥե����뤬ɬ�פȤʤ�ޤ���
-���Υե������ Perl ���Ȥ����äƤ��빽¤������å�����Τ�Ʊ�ͤΤ�Τ�
-���路�ƺ��ޤ���
-�ƥ��ȥ�����ץȤ���Ǥϡ��������ƥ󥷥���ư����ǧ���뤿�������
-�ƥ��Ȥ��֤���������ư��򤷤��� "ok" ���������ʤ���� "not ok" ��
-���Ϥ���褦�ˤ��ޤ���
-BEGIN �֥��å��ˤ���ʸ�� print "1..4" ���Ѥ����ե�����������˰ʲ��ιԤ�
-�ɲä��ޤ���
+作成したエクステンションが動作するかを確認するために、Mytest.t の
+ようなファイルが必要となります。
+このファイルは Perl 自身が持っている構造をチェックするのと同様のものを
+模倣して作ります。
+テストスクリプトの中では、エクステンションの動作を確認するたくさんの
+テストを置き、正しい動作をしたら "ok" を正しくなければ "not ok" を
+出力するようにします。
+BEGIN ブロックにある文を print "1..4" に変え、ファイルの末尾に以下の行を
+追加します。
 
     use Test::More tests => 4;
     BEGIN { use_ok('Mytest') };
@@ -580,8 +580,8 @@ should see output that looks something like this:
 
 =end original
 
-"C<make test>" �Ȥ������ޥ�ɤǥƥ��ȥ�����ץȤ�ƤӽФ��ޤ���
-�ʲ��Τ褦�ʽ��Ϥ��Ф�Ϥ��Ǥ���
+"C<make test>" というコマンドでテストスクリプトを呼び出します。
+以下のような出力が出るはずです。
 
     %make test
     PERL_DL_NONLAZY=1 /usr/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
@@ -592,7 +592,7 @@ should see output that looks something like this:
 
 =head2 What has gone on?
 
-(���򤷤���?)
+(何をしたの?)
 
 =begin original
 
@@ -602,9 +602,9 @@ templates to connect to C routines.
 
 =end original
 
-�ץ������ h2xs �ϥ������ƥ󥷥�����������ȯ���Ȥʤ�ޤ���
-�����Ǥϡ��إå��ե�������ɤ߹���� C �Υ롼������Ф���
-�����Υƥ�ץ졼�Ȥ���������Τ� h2xs ��ɤΤ褦�˻Ȥ����򼨤��ޤ���
+プログラム h2xs はエクステンションを作成する出発点となります。
+後の例では、ヘッダファイルを読み込んで C のルーチンに対する
+接点のテンプレートを生成するのに h2xs をどのように使うかを示します。
 
 =begin original
 
@@ -614,10 +614,10 @@ the extension.  We'll take a closer look at it later.
 
 =end original
 
-h2xs �ϥ������ƥ󥷥��Υǥ��쥯�ȥ�˿�¿���Υե������������ޤ���
-Makefile.PL �Ȥ����ե�����ϥ������ƥ󥷥���������뤿���
-������ Makefile ���������� perl ������ץȤǤ���
-�ܺ٤ϸ�Ҥ��ޤ���
+h2xs はエクステンションのディレクトリに数多くのファイルを作成します。
+Makefile.PL というファイルはエクステンションを作成するための
+本当の Makefile を生成する perl スクリプトです。
+詳細は後述します。
 
 =begin original
 
@@ -627,10 +627,10 @@ that tell Perl how to load your extension.
 
 =end original
 
-.pm �� .xs �Ȥ��ä��ե�����ϥ������ƥ󥷥������Τ�ޤߤޤ���
-.xs �ե�����ˤϥ������ƥ󥷥����뤿��� C �Υ롼���󤬤���ޤ���
-.pm �ե�����ˤ� Perl ���ɤΤ褦�ˤ��ʤ��κ�ä��������ƥ󥷥���
-�����ɤ��뤫��ؼ�����롼���󤬤���ޤ���
+.pm と .xs といったファイルはエクステンションの本体を含みます。
+.xs ファイルにはエクステンションを作るための C のルーチンがあります。
+.pm ファイルには Perl がどのようにあなたの作ったエクステンションを
+ロードするかを指示するルーチンがあります。
 
 =begin original
 
@@ -641,11 +641,11 @@ tested it, we can install it into its final location.
 
 =end original
 
-Makefile ����������C<make> ��¹Ԥ��뤳�Ȥǥ����Ȥκ�ȥǥ��쥯�ȥ��
-���� blib ( "build library" ���̣���ޤ�)�ȸƤФ��ǥ��쥯�ȥ꤬
-����ޤ���
-���Υǥ��쥯�ȥ�ˤϡ��䤿�����������붦ͭ�饤�֥�꤬�֤���ޤ���
-���٤����ƥ��Ȥ���С��ǽ�Ū�ʾ��˥��󥹥ȡ��뤹�뤳�Ȥ��Ǥ��ޤ���
+Makefile を生成し、C<make> を実行することでカレントの作業ディレクトリの
+下に blib ( "build library" を意味します)と呼ばれるディレクトリが
+作られます。
+このディレクトリには、私たちが作成する共有ライブラリが置かれます。
+一度それをテストすれば、最終的な場所にインストールすることができます。
 
 =begin original
 
@@ -661,18 +661,18 @@ already-existing version.
 
 =end original
 
-"C<make test>" ��ͳ�ǥƥ��ȥ�����ץȤ�¹Ԥ��뤳�Ȥˤ�äơ����˽��פ�
-���Ĥ��Τ��Ȥ�Ԥ��ޤ���
-����� perl �� C<-I> �������դ��Ƶ�ư��������ˤ�ꥨ�����ƥ󥷥���
-�����Ǥ����͡��ʥե�����򸫤Ĥ��뤳�Ȥ��Ǥ���褦�ˤ��ޤ���
-�������ƥ󥷥���ƥ��Ȥ���Τ� "make test" ��Ȥ��Τ� I<����>
-���פǤ���
-�⤷���ƥ��ȥ�����ץȤ򤽤Τޤ޼¹Ԥ��Ƥ��ޤä��顢��̿Ū�ʥ��顼��
-ȯ������Ǥ��礦��
-�ƥ��ȥ�����ץȤ�¹Ԥ���Τ� "C<make test>" ��Ȥ��⤦��Ĥν����
-��ͳ�ϡ����ˤ��륨�����ƥ󥷥��򥢥åץ��졼�ɤ�����Τ�
-�ƥ��Ȥ��褦�Ȥ����Ȥ��ˡ�"C<make test>" ��ȤäƤ���С�����
-�����ΤǤϤʤ�����������Τ�ƥ��Ȥ��뤳�Ȥ��ݾڤ���뤿��Ǥ���
+"C<make test>" 経由でテストスクリプトを実行することによって、非常に重要な
+幾つかのことを行います。
+これは perl に C<-I> 引数を付けて起動し、これによりエクステンションの
+一部である様々なファイルを見つけることができるようにします。
+エクステンションをテストするのに "make test" を使うのは I<非常に>
+重要です。
+もし、テストスクリプトをそのまま実行してしまったら、致命的なエラーが
+発生するでしょう。
+テストスクリプトを実行するのに "C<make test>" を使うもう一つの重大な
+理由は、既にあるエクステンションをアップグレードしたものを
+テストしようとしたときに、"C<make test>" を使っていれば、既に
+あるものではなく、新しいものをテストすることが保証されるためです。
 
 =begin original
 
@@ -683,11 +683,11 @@ C<@INC> array.
 
 =end original
 
-Perl �� C<use extension;> �Ȥ����Ԥ򸫤Ĥ����Ȥ���C<use> ����
-�������ƥ󥷥���Ʊ��̾���� .pm �Ȥ�����ĥ����ĥե�����򸡺����ޤ���
-�⤷�������ä��ե����뤬���Ĥ���ʤ���С�Perl ����̿Ū���顼�ˤ��
-��λ���ޤ���
-�ǥե���Ȥθ����ѥ��� C<@INC> �Ȥ���������֤���ޤ���
+Perl が C<use extension;> という行を見つけたとき、C<use> する
+エクステンションと同じ名前で .pm という拡張を持つファイルを検索します。
+もしそういったファイルが見つからなければ、Perl は致命的エラーにより
+終了します。
+デフォルトの検索パスは C<@INC> という配列に置かれます。
 
 =begin original
 
@@ -699,12 +699,12 @@ library.
 
 =end original
 
-Mytest.pm �� perl �� Exporter �������ƥ󥷥�� �� Dynamic Loader
-�������ƥ󥷥��ɬ�פǤ��뤤�����Ȥ򶵤��ޤ���
-���θ����� C<@ISA>, C<@EXPORT> �ȥ����顼 C<$VERSION> ���ͤ����ꤷ���Ǹ��
-�⥸�塼���֡��ȥ��ȥ�åפ���褦�� perl �˻ؼ����ޤ���
-perl �Ϥ��Υ����ʥߥå����������롼�����(�����)�ƤӽФ�����ͭ�饤�֥���
-�����ɤ��ޤ���
+Mytest.pm は perl に Exporter エクステンション と Dynamic Loader
+エクステンションが必要であるいうことを教えます。
+この後配列 C<@ISA>, C<@EXPORT> とスカラー C<$VERSION> に値を設定し、最後に
+モジュールをブートストラップするように perl に指示します。
+perl はそのダイナミックローダールーチンを(あれば)呼び出し、共有ライブラリを
+ロードします。
 
 =begin original
 
@@ -716,11 +716,11 @@ much later), and so usually doesn't need to be modified.
 
 =end original
 
-C<@ISA> �� C<@EXPORT> ����Ĥ���������˽��פǤ���
-���� C<@ISA> �ˤϡ��᥽�å�(�⤷���ϥ��֥롼����)�������ȥѥå�������
-�ʤ��ä��Ȥ���õ���˹Ԥ�¾�Υѥå������Υꥹ�Ȥ�����ޤ���
-��������̥��֥������Ȼظ��������ƥ󥷥��(����ˤĤ��ƤϤ��äȸ������
-�������ޤ�)�ǤΤ߽��פʤΤǡ����̤Ͻ�������ɬ�פϤ���ޤ���
+C<@ISA> と C<@EXPORT> の二つの配列は非常に重要です。
+配列 C<@ISA> には、メソッド(もしくはサブルーチン)がカレントパッケージに
+なかったときに探しに行く他のパッケージのリストがあります。
+これは普通オブジェクト指向エクステンション(これについてはずっと後の方で
+議論します)でのみ重要なので、普通は修正する必要はありません。
 
 =begin original
 
@@ -732,13 +732,13 @@ export method or variable names I<by default> without a good reason.
 
 =end original
 
-���� C<@EXPORT> �� Perl ���Ф��ơ��ƤӽФ��줿�Ȥ��˥ѥå�������̾�����֤�
-�֤��٤��������ƥ󥷥����ѿ��ȥ��֥롼�����ؼ����ޤ���
-�桼���������ˤ��ʤ����ѿ�̾�䥵�֥롼����̾��ȤäƤ��뤫�ɤ�����
-�狼��ʤ��Τǡ����򥨥����ݡ��Ȥ��뤫�򿵽Ť����򤹤뤳�Ȥ϶ˤ��
-���פǤ���
-������������٤���ͳ���ʤ��¤�ϡ��᥽�å�̾���ѿ�̾��
-I<�ǥե���ȤǤ�> �������ݡ��� I<���ʤ�> �褦�ˤ��Ƥ���������
+配列 C<@EXPORT> は Perl に対して、呼び出されたときにパッケージの名前空間に
+置くべきエクステンションの変数とサブルーチンを指示します。
+ユーザーが既にあなたの変数名やサブルーチン名を使っているかどうかは
+わからないので、何をエクスポートするかを慎重に選択することは極めて
+重要です。
+何かそうするべき理由がない限りは、メソッド名や変数名を
+I<デフォルトでは> エクスポート I<しない> ようにしてください。
 
 =begin original
 
@@ -750,12 +750,12 @@ namespace unless the user specifically requests that this be done.
 
 =end original
 
-����Ū�ʵ�§�Ȥ��ơ��⥸�塼�뤬���֥������Ȼظ����褦�Ȥ������ˤ�
-���⥨�����ݡ��Ȥ��ޤ���
-�⥸�塼�뤬ñ�ʤ�ؿ����ѿ��ν��ޤ�Ǥ���С��̤����� @EXPORT_OK ��
-�̤��Ƥ����򥨥����ݡ��ȤǤ��ޤ���
-��������ϡ��桼�������������Ƥۤ�������Ū�˻��ꤷ�ʤ��¤ꡢ
-��ưŪ�ˤϥ��֥롼����̾���ѿ�̾��̾�����֤��֤��ޤ���
+一般的な規則として、モジュールがオブジェクト指向しようとした場合には
+何もエクスポートしません。
+モジュールが単なる関数と変数の集まりであれば、別の配列 @EXPORT_OK を
+通じてそれらをエクスポートできます。
+この配列は、ユーザーがそうしてほしと明示的に指定しない限り、
+自動的にはサブルーチン名と変数名を名前空間に置きません。
 
 =begin original
 
@@ -763,7 +763,7 @@ See L<perlmod> for more information.
 
 =end original
 
-�ܺ٤� L<perlmod> �򻲾Ȥ��Ƥ���������
+詳細は L<perlmod> を参照してください。
 
 =begin original
 
@@ -773,14 +773,14 @@ the .pm or .xs files, you should increment the value of this variable.
 
 =end original
 
-�ѿ� C<$VERSION> �� .pm �ե�����ȶ�ͭ�饤�֥�꤬���줾��
-��Ʊ�����Ƥ���פ��Ȥ��ݾڤ��ޤ���
-.pm �ե������ .xs �ե�������ѹ������Ȥ��������ѿ����ͤ�
-���ä�����٤��Ǥ���
+変数 C<$VERSION> は .pm ファイルと共有ライブラリがそれぞれ
+「同期している」ことを保証します。
+.pm ファイルや .xs ファイルを変更したとき、この変数の値を
+増加させるべきです。
 
 =head2 Writing good test scripts
 
-(�ɤ��ƥ��ȥ�����ץȤ��)
+(良いテストスクリプトを書く)
 
 =begin original
 
@@ -791,10 +791,10 @@ When you find and fix a bug, make sure you add a test case for it.
 
 =end original
 
-�ɤ��ƥ��ȥ�����ץȤ�񤯤��Ȥν������ϡ������鶯Ĵ���Ƥ�­��ޤ���
-Perl ���Ȥ��ȤäƤ��� "ok/not ok" �η�������¤˼�ꡢ�ƥ��ȥ�������
-�ɤ��ʤä������ñ�ˡ�ۣ��ʤ��Ȥʤ��狼��褦�ˤ��ޤ���
-�Х���ȯ�����ƽ��������顢�ƥ��ȥ������ˤ�����ɲä��ޤ��礦��
+良いテストスクリプトを書くことの重要性は、いくら強調しても足りません。
+Perl 自身が使っている "ok/not ok" の形式を忠実に守り、テストケースで
+どうなったかを簡単に、曖昧なことなくわかるようにします。
+バグを発見して修正したら、テストケースにそれを追加しましょう。
 
 =begin original
 
@@ -805,15 +805,15 @@ When you run "C<make test>", all of these test files will be executed.
 
 =end original
 
-"C<make test>" ��¹Ԥ��뤳�Ȥˤ�ꡢ������������ץ� Mytest.t ��¹Ԥ���
-Ŭ�ڤʥС������Υ������ƥ󥷥���Ȥ����Ȥ��ݾڤ���ޤ���
-��������Υƥ��ȥ�����������Τʤ顢
-"t" �Ȥ���̾���Υǥ��쥯�ȥ�ˡ�".t" �γ�ĥ�Ҥǥƥ��ȥե��������¸���ޤ���
-"C<make test>" ��¹Ԥ���ȡ������Υƥ��ȥե��������Ƥ��¹Ԥ���ޤ���
+"C<make test>" を実行することにより、正しいスクリプト Mytest.t を実行して
+適切なバージョンのエクステンションを使うことが保証されます。
+たくさんのテストケースがあるのなら、
+"t" という名前のディレクトリに、".t" の拡張子でテストファイルを保存します。
+"C<make test>" を実行すると、これらのテストファイル全てが実行されます。
 
 =head2 EXAMPLE 3
 
-(�� 3)
+(例 3)
 
 =begin original
 
@@ -822,8 +822,8 @@ value, and set the I<argument> to the rounded value.
 
 =end original
 
-�����ܤ���ϡ����ϤȤ��ư������ĤȤäƤ����ͤ�ݤ�Ƥ��餽�η�̤�
-�����˥��åȤ���Ȥ�����ΤǤ���
+三番目の例は、入力として引数を一つとってその値を丸めてからその結果を
+引数にセットするというものです。
 
 =begin original
 
@@ -831,7 +831,7 @@ Add the following to the end of Mytest.xs:
 
 =end original
 
-�ʲ��ιԤ� Mytest.xs ���������ɲä��Ƥ�������:
+以下の行を Mytest.xs の末尾に追加してください:
 
 	void
 	round(arg)
@@ -853,8 +853,8 @@ Edit the Makefile.PL file so that the corresponding line looks like this:
 
 =end original
 
-Makefile.pl �Ȥ����ե�������Խ������б�����Ԥ�ʲ��˼����褦��
-���Ƥ���������
+Makefile.pl というファイルを編集し、対応する行を以下に示すように
+してください。
 
 	'LIBS'      => ['-lm'],   # e.g., '-lm'
 
@@ -865,8 +865,8 @@ Generate the Makefile and run make.  Change the test number in Mytest.t to
 
 =end original
 
-Makefile ���������Ƥ��� make ��¹Ԥ��ޤ���
-Mytest.t �Υƥ����ֹ�� "9" ���ѹ���������˰ʲ��Υƥ��Ȥ��ɲä��ޤ���
+Makefile を生成してから make を実行します。
+Mytest.t のテスト番号を "9" に変更し、さらに以下のテストを追加します。
 
 	$i = -1.5; &Mytest::round($i); is( $i, -2.0 );
 	$i = -1.1; &Mytest::round($i); is( $i, -1.0 );
@@ -880,8 +880,8 @@ Running "C<make test>" should now print out that all nine tests are okay.
 
 =end original
 
-"C<make test>" ��¹Ԥ��ޤ���
-�����ǡ���ĤΥƥ��Ȥ��٤Ƥ� ok �Ƚ��Ϥ����Ϥ��Ǥ���
+"C<make test>" を実行します。
+ここで、九つのテストすべてで ok と出力されるはずです。
 
 =begin original
 
@@ -891,11 +891,11 @@ literal.  To see what happens, temporarily add the following line to Mytest.t:
 
 =end original
 
-�����ο������ƥ��ȥ������Ǥϡ��ݤ�뤿����Ϥ���������
-�������ѿ��Ǥ��뤳�Ȥ����ܤ��Ƥ���������
-������ƥ���ݤ᤿��ɤ��ʤ�����������Ȥ����������ä����⤷��ޤ���
-���������뤫��Τ���뤿��ˡ��ʲ��ιԤ� Mytest.t �˰��Ū��
-�ɲä��Ƥ���������
+これらの新しいテストケースでは、丸めるために渡される引数が
+スカラ変数であることに注目してください。
+定数やリテラルを丸めたらどうなるだろうか、という疑問を持ったかもしれません。
+何が起きるかを確かめるために、以下の行を Mytest.t に一時的に
+追加してください。
 
 	&Mytest::round(3);
 
@@ -906,13 +906,13 @@ let you change the value of constants!
 
 =end original
 
-"C<make test>" ��¹Ԥ���ȡ�Perl ����̿Ū���顼�򵯤�����
-��λ���Ƥ��ޤ��ޤ���
-Perl �ϡ�����ͤ��ѹ������ʤ��ΤǤ�!
+"C<make test>" を実行すると、Perl は致命的エラーを起こして
+終了してしまいます。
+Perl は、定数値を変更させないのです!
 
 =head2 What's new here?
 
-(������������?)
+(何が新しいの?)
 
 =over 4
 
@@ -927,11 +927,11 @@ can call every routine in a library.
 
 =end original
 
-Makefile.pl ���Ф����ѹ��򤷤ޤ�����
-���ξ�硢�������ƥ󥷥��ζ�ͭ�饤�֥��ȥ�󥯤��٤��ɲäΥ饤�֥��
-(����ξ��Ͽ��إ饤�֥�� libm)����ꤷ�ޤ���
-��ǡ��饤�֥��ˤ��뤹�٤ƤΥ롼�����ƤӽФ����ȤΤǤ��� XSUB ��
-�����ˤĤ����������ޤ���
+Makefile.pl に対する変更をしました。
+この場合、エクステンションの共有ライブラリとリンクすべき追加のライブラリ
+(今回の場合は数学ライブラリ libm)を指定します。
+後で、ライブラリにあるすべてのルーチンを呼び出すことのできる XSUB の
+書き方について説明します。
 
 =item *
 
@@ -944,15 +944,15 @@ of round is of type "void".
 
 =end original
 
-�ؿ����ͤ��ؿ�������ͤȤ����֤����ΤǤϤʤ����ؿ����Ϥ��줿
-�ѿ����ͤ��ѹ����뤳�Ȥ��֤���ޤ���
-round ���֤��ͤη��� "void" �Ǥ���ȿ�¬�������⤷��ޤ���
+関数の値が関数の戻り値として返されるのではなく、関数に渡された
+変数の値を変更することで返されます。
+round の返り値の型は "void" であると推測したかもしれません。
 
 =back
 
 =head2 Input and Output Parameters
 
-(���ϥѥ�᡼���Ƚ��ϥѥ�᡼��)
+(入力パラメータと出力パラメータ)
 
 =begin original
 
@@ -963,9 +963,9 @@ semicolon.
 
 =end original
 
-�ؿ�������ͤ�̾�������������ιԤ� XSUB ���Ϥ��ѥ�᡼�������Ǥ��ޤ���
-�ƥѥ�᡼���Ԥ�(��ά��ǽ��)����ǻϤޤꡢ(��ά��ǽ��)��ü����
-���ߥ����󤬤���ޤ���
+関数の戻り値と名前を宣言した後の行に XSUB に渡すパラメータを指定できます。
+各パラメータ行は(省略可能な)空白で始まり、(省略可能な)終端する
+セミコロンがあります。
 
 =begin original
 
@@ -977,15 +977,15 @@ which we passed in, so we listed it (and not RETVAL) in the OUTPUT: section.
 
 =end original
 
-���ϥѥ�᡼���ϴؿ��κǸ塢OUTPUT: �ؼ��Ҥ�ľ����֤��ޤ���
-RETVAL ��Ȥ����Ȥǡ�Perl �� XSUB �ؿ�������ͤ��֤������Ȥ����ջ֤�
-�����ޤ���
-�� 3 �Ǥϡ����֤��͡פ�䤿�����Ϥ��������ѿ�������Ƥۤ����Τǡ�
-(RETVAL �Ǥʤ�) �����ѿ��� OUTPUT: �����������¤٤��ΤǤ���
+出力パラメータは関数の最後、OUTPUT: 指示子の直後に置きます。
+RETVAL を使うことで、Perl に XSUB 関数の戻り値を返したいという意志を
+伝えます。
+例 3 では、「返り値」を私たちが渡した元の変数に入れてほしいので、
+(RETVAL でなく) その変数を OUTPUT: セクションに並べたのです。
 
 =head2 The XSUBPP Program
 
-(XSUBPP �ץ������)
+(XSUBPP プログラム)
 
 =begin original
 
@@ -995,13 +995,13 @@ heavy use of the C functions within Perl.
 
 =end original
 
-B<xsubpp> �ץ������� .xs �ե�����ˤ��� XS �����ɤ��ꡢ����� C ��
-���������η�̤� .c �Ȥ�����ĥ�ҤΥե�����˽��Ϥ��ޤ���
-�Ѵ����줿 C �����ɤ� Perl ����ˤ��� C �δؿ���Ȥ��褦�˺���ޤ���
+B<xsubpp> プログラムは .xs ファイルにある XS コードを取り、それを C に
+翻訳しその結果を .c という拡張子のファイルに出力します。
+変換された C コードは Perl の中にある C の関数を使うように作られます。
 
 =head2 The TYPEMAP file
 
-(TYPEMAP �ե�����)
+(TYPEMAP ファイル)
 
 =begin original
 
@@ -1012,11 +1012,11 @@ three parts.
 
 =end original
 
-B<xsubpp> �ץ������� Perl �Υǡ�����(�����顼�����󡢤ʤ�)����
-C �Υǡ�����(int, char, �ʤ�)���Ѵ����뵬§��Ȥ��ޤ���
-�����Υ롼��� typemap �ե����� ($PERLLIB/ExtUtils/typemap)��
-��Ǽ����ޤ���
-���Υե�����ϻ��Ĥ���ʬ��ʬ�����ޤ���
+B<xsubpp> プログラムは Perl のデータ型(スカラー、配列、など)から
+C のデータ型(int, char, など)に変換する規則を使います。
+これらのルールは typemap ファイル ($PERLLIB/ExtUtils/typemap)に
+格納されます。
+このファイルは三つの部分に分けられます。
 
 =begin original
 
@@ -1027,12 +1027,12 @@ C code which B<xsubpp> uses to handle output parameters.
 
 =end original
 
-�ǽ�Υ����������͡��� C �Υǡ��������͡��� Perl �η��ˤ����餫�б�����
-̾���˥ޥåԥ󥰤����ΤǤ���
-�����ܤΥ������������ϥѥ�᡼���򰷤������ B<xsubpp> �����Ѥ���
-C �����ɤ���ʤ�ޤ���
-�����ܤΥ��������Ͻ��ϥѥ�᡼�����Ф��� B<xsubpp> �����Ѥ���
-C �����ɤ���ʤ�ޤ���
+最初のセクションは様々な C のデータ型を、様々な Perl の型にいくらか対応する
+名前にマッピングするものです。
+二番目のセクションは入力パラメータを扱うために B<xsubpp> が使用する
+C コードからなります。
+三番目のセクションは出力パラメータに対して B<xsubpp> が使用する
+C コードからなります。
 
 =begin original
 
@@ -1041,9 +1041,9 @@ The file name is Mytest.c:
 
 =end original
 
-�������䤿���Υ������ƥ󥷥��Τ���˺��줿 .c �ե�����ΰ�����
-���Ƥߤޤ��礦��
-�ե�����̾�� Mytest.c �Ǥ�:
+さあ、私たちのエクステンションのために作られた .c ファイルの一部を
+見てみましょう。
+ファイル名は Mytest.c です:
 
 	XS(XS_Mytest_round)
 	{
@@ -1080,20 +1080,20 @@ section on the argument stack.
 
 =end original
 
-"XXXXX" �Ȥ��������Ȥ��դ���줿��ĤιԤ����դ��Ƥ���������
-typemap �ե�����κǽ�Υ���������Τ����С�doublesT_DOUBLE �Ȥ�������
-���뤳�Ȥ��狼��Ǥ��礦��
-INPUT ���������Ǥ� T_DOUBLE �Ǥ�������ϡ�SvNv �Ȥ����롼�����
-�ƤӽФ����Ȥˤ�ä��ѿ���������Ƥ�졢���θ�� double ��
-���㥹�Ȥ���Ƥ�������Ǥ����ѿ�����������ޤ���
-Ʊ�ͤˡ�OUTPUT ���������Ǥϰ��ٰ������ǽ�Ū���ͤ���ƤС������
-�ƤӽФ��줿�ؿ����֤�����˴ؿ� sv_setnv ���Ϥ���ޤ���
-�������Ĥδؿ��� L<perlguts> ����������Ƥ��ޤ���
-���������å��ˤ��륻�������� "ST(0)" �ΰ�̣�ϸ���������ޤ���
+"XXXXX" というコメントが付けられた二つの行に注意してください。
+typemap ファイルの最初のセクションを確かめれば、doublesT_DOUBLE という型で
+あることがわかるでしょう。
+INPUT セクションでは T_DOUBLE である引数は、SvNv というルーチンを
+呼び出すことによって変数が割り当てられ、その後で double に
+キャストされてから引数である変数に代入されます。
+同様に、OUTPUT セクションでは一度引数が最終的な値を持てば、それは
+呼び出された関数に返すために関数 sv_setnv に渡されます。
+これら二つの関数は L<perlguts> で説明されています。
+引数スタックにあるセクションの "ST(0)" の意味は後で説明します。
 
 =head2 Warning about Output Arguments
 
-(���ϰ����˴ؤ���ٹ�)
+(出力引数に関する警告)
 
 =begin original
 
@@ -1106,17 +1106,17 @@ tolerated.
 
 =end original
 
-����Ū�ˤ��äơ��� 3 �ˤ���褦�����ϰ�����񤭴�����褦��
-�������ƥ󥷥����뤳�ȤϤ褯����ޤ���
-����ˡ������餯��ʣ�����ͤ�������֤��ơ��ƤӽФ����ˤ���򰷤碌��褦��
-����٤��Ǥ�(����ϸ����ǹԤ��ޤ�)��
-�������ʤ��顢���Ǥˤ������ϥѥ�᡼����񤭴�����褦�� C �Υ롼�����
-�ƤӽФ��ˤ���ɤ�Ŭ�����뤿��ˡ����ο����񤤤�������Ƥ���ΤǤ���
-������Ǥϡ������ɤ��Ԥ������������ޤ���
+一般的にいって、例 3 にあるように入力引数を書き換えるような
+エクステンションを作ることはよくありません。
+代わりに、おそらくは複数の値を配列で返して、呼び出し元にそれを扱わせるように
+するべきです(これは後の例で行います)。
+しかしながら、すでにある入力パラメータを書き換えるような C のルーチンの
+呼び出しにより良く適応するために、この振る舞いが許されているのです。
+次の例では、これをどう行うかを説明します。
 
 =head2 EXAMPLE 4
 
-(�� 4)
+(例 4)
 
 =begin original
 
@@ -1126,10 +1126,10 @@ our own, then let h2xs write our .pm and .xs files for us.
 
 =end original
 
-������ǡ����Ǥˤ��� C �饤�֥��Ȥ��Ȥꤹ��褦�� XSUB �ε��Ҥ�
-�Ϥ�ޤ���
-�����Ϥ�뤿��ˡ��ȼ��ξ����ʥ饤�֥�����ޤ���
-���줫�� .pm �� .xs �Τ���� h2xs �򵭽Ҥ��ޤ���
+この例で、すでにある C ライブラリとやりとりするような XSUB の記述を
+始めます。
+これを始めるために、独自の小さなライブラリを作ります。
+それから .pm と .xs のための h2xs を記述します。
 
 =begin original
 
@@ -1139,10 +1139,10 @@ and cd into that directory.
 
 =end original
 
-�ǥ��쥯�ȥ� Mytest ��Ʊ����٥�ˡ�Mytest2 �ǥ��쥯�ȥ�򿷤���
-���ޤ���
-Mytest2 �ǥ��쥯�ȥ�ǡ�mylib �Ȥ����̤Υǥ��쥯�ȥ���������������
-cd ���ޤ���
+ディレクトリ Mytest と同じレベルに、Mytest2 ディレクトリを新たに
+作ります。
+Mytest2 ディレクトリで、mylib という別のディレクトリを作成し、そこに
+cd します。
 
 =begin original
 
@@ -1153,11 +1153,11 @@ level will automatically run this Makefile.PL file and the resulting Makefile.
 
 =end original
 
-�����ǡ��ƥ����ѤΥ饤�֥����������뤿��δ��Ĥ��Υե��������ޤ���
-�������ä��ե�����ˤϡ�C �������ե�����ȥإå����ե����뤬�ޤޤ�ޤ���
-�ޤ������Υǥ��쥯�ȥ�� Makefile.PL ����ޤ���
-���θ�ǡ�Mytest2 �Υ�٥�� make ��¹Ԥ��뤳�Ȥˤ�꼫ưŪ��
-Makefile.PL ���¹Ԥ��졢���η�� Makefile ����������ޤ���
+ここで、テスト用のライブラリを生成するための幾つかのファイルを作ります。
+こういったファイルには、C ソースファイルとヘッダーファイルが含まれます。
+また、このディレクトリで Makefile.PL も作ります。
+その後で、Mytest2 のレベルで make を実行することにより自動的に
+Makefile.PL が実行され、その結果 Makefile が作成されます。
 
 =begin original
 
@@ -1165,8 +1165,8 @@ In the mylib directory, create a file mylib.h that looks like this:
 
 =end original
 
-�ǥ��쥯�ȥ� mylib �ǡ��ʲ��Τ褦�����Ƥ� mylib.h �Ȥ����ե������
-�������ޤ���
+ディレクトリ mylib で、以下のような内容の mylib.h というファイルを
+作成します。
 
 	#define TESTVAL	4
 
@@ -1228,10 +1228,10 @@ on Win32 systems.
 
 =end original
 
-"$(AR)" �� "$(RANLIB)" �ǻϤޤ�ԤǤ϶���ǤϤʤ����֤�ȤäƤ��뤳�Ȥ�
-��ǧ���Ƥ���������
-�ޤ���Win32 �����ƥ�Ǥϡ�$(AR) �� "cr" ���������פǤ��뤳�Ȥ�
-��𤵤�Ƥ��ޤ���
+"$(AR)" と "$(RANLIB)" で始まる行では空白ではなくタブを使っていることを
+確認してください。
+また、Win32 システムでは、$(AR) の "cr" 引数は不要であることが
+報告されています。
 
 =begin original
 
@@ -1240,8 +1240,8 @@ above Mytest2 and run the following command:
 
 =end original
 
-�����ǥȥåץ�٥�� Mytest2 �Ȥ����ե������������ޤ���
-Mytest2 �ǥ��쥯�ȥ� ���ѹ����ơ��ʲ��Υ��ޥ�ɤ�¹Ԥ��ޤ���
+ここでトップレベルの Mytest2 というファイルを作成します。
+Mytest2 ディレクトリ に変更して、以下のコマンドを実行します。
 
 	% h2xs -O -n Mytest2 ./Mytest2/mylib/mylib.h
 
@@ -1252,9 +1252,9 @@ Our files are stored in Mytest2/mylib, and will be untouched.
 
 =end original
 
-����ˤ�ꡢMytest2 ���񤭤���Ȥ����ٹ𤬽Фޤ��������ˤ��뤳�Ȥ�
-����ޤ���
-�䤿���Υե������ Mytest2/mylib �ˤ���ޤ����������ޤ���
+これにより、Mytest2 を上書きするという警告が出ますが、気にすることは
+ありません。
+私たちのファイルは Mytest2/mylib にありますが、さわりません。
 
 =begin original
 
@@ -1265,12 +1265,12 @@ the WriteMakefile call so that it looks like this:
 
 =end original
 
-h2xs �����������̾�� Makefile.PL �� mylib �ǥ��쥯�ȥ�˴ؤ��Ƥʤˤ�
-�Τ�ޤ���
-�䤿���Ϥ������ä����֥ǥ��쥯�ȥ꤬���ꡢ�����˥饤�֥�����������
-�������Ȥ򶵤��ʤ���Фʤ�ޤ���
-���� MYEXTLIB �� WriteMakefile �ƤӽФ����ɲä��ơ����Τ褦�ʴ�����
-���ޤ��礦:
+h2xs が生成した通常の Makefile.PL は mylib ディレクトリに関してなにも
+知りません。
+私たちはそういったサブディレクトリがあり、そこにライブラリを作成すると
+いうことを教えなければなりません。
+引数 MYEXTLIB を WriteMakefile 呼び出しに追加して、次のような感じに
+しましょう:
 
 	WriteMakefile(
 	    'NAME'      => 'Mytest2',
@@ -1289,9 +1289,9 @@ with "cd"!
 
 =end original
 
-���줫�顢�����˥��֥롼������դ��ä��ޤ�(����ϴ���¸�ߤ��륵�֥롼�����
-��񤭤��ޤ�)��
-"cd" �ǻϤޤ�ԤΥ���ǥ�Ȥ˥���ʸ����Ȥ����Ȥ�˺��ʤ��Ǥ�������!
+それから、末尾にサブルーチンを付け加えます(これは既に存在するサブルーチンを
+上書きします)。
+"cd" で始まる行のインデントにタブ文字を使うことを忘れないでください!
 
 	sub MY::postamble {
 	'
@@ -1308,9 +1308,9 @@ the following three lines:
 
 =end original
 
-�ޤ����ե����� MANIFEST ��䤿���Υ������ƥ󥷥������Ƥ�ȿ�Ǥ���褦��
-�������ޤ��礦��
-"mylib" �Ȥ���ñ��ιԤ�ʲ��λ��Ԥ��֤������ޤ���
+また、ファイル MANIFEST を私たちのエクステンションの内容を反映するように
+修正しましょう。
+"mylib" という単一の行を以下の三行で置き換えます。
 
 	mylib/Makefile.PL
 	mylib/mylib.c
@@ -1324,9 +1324,9 @@ the variable C<@EXPORT> to C<@EXPORT_OK>.  Finally, in the
 
 =end original
 
-�䤿����̾�����֤����ǡ���������Ƥ��ʤ����֤��ݤĤ���� .pm �ե������
-�Խ����ơ�C<@EXPORT> �����ꤷ�Ƥ���Ԥ� C<@EXPORT_OK> ���ѹ����ޤ���
-�Ǹ�� .xs �ե�����ǡ�#include �ιԤ��Խ����ޤ���
+私たちの名前空間を奇麗で、汚染されていない状態に保つために .pm ファイルを
+編集して、C<@EXPORT> を設定している行を C<@EXPORT_OK> に変更します。
+最後に .xs ファイルで、#include の行を編集します。
 
 	#include "mylib/mylib.h"
 
@@ -1336,7 +1336,7 @@ And also add the following function definition to the end of the .xs file:
 
 =end original
 
-����ˡ��ʲ��δؿ������ .xs �ե�������������ɲä��ޤ���
+さらに、以下の関数定義を .xs ファイルの末尾に追加します。
 
 	double
 	foo(a,b,c)
@@ -1354,10 +1354,10 @@ the Mytest2 directory and place the following in it:
 
 =end original
 
-�����ǡ��ǥե���Ȥ� Perl �Ϻ��ΤȤ��� const char * �Ȥ������򥵥ݡ��Ȥ���
-���ʤ��Τǡ�typemap �ե�������������ɬ�פ�����ޤ���
-Mytest2 �ǥ��쥯�ȥ�� typemap �ȸƤФ��ե������������������ʲ���
-���Ƥˤ��ޤ�:
+ここで、デフォルトの Perl は今のところ const char * という型をサポートして
+いないので、typemap ファイルを作成する必要があります。
+Mytest2 ディレクトリに typemap と呼ばれるファイルを作成し、それを以下の
+内容にします:
 
 	const char *	T_PV
 
@@ -1369,10 +1369,10 @@ the mylib directory and run make in there as well.
 
 =end original
 
-���˥ȥåץ�٥�� Makefile.PL �� perl ��¹Ԥ��ޤ���
-mylib �ǥ��쥯�ȥ�ˤ��� Makefile ������Ȥ������Ȥ����դ��Ƥ���������
-make ��¹Ԥ�������ˤ�� mylib �ǥ��쥯�ȥ�� cd ���������� make ��
-�¹Ԥ����Τ��ǧ���ޤ���
+次にトップレベルの Makefile.PL で perl を実行します。
+mylib ディレクトリにある Makefile も作られるということに注意してください。
+make を実行し、それにより mylib ディレクトリに cd し、そこで make が
+実行されるのを確認します。
 
 =begin original
 
@@ -1381,8 +1381,8 @@ and add the following lines to the end of the script:
 
 =end original
 
-Mytest2.t ������ץȤ��Խ����ơ��ƥ��Ȥο��� "4" ���ѹ����ơ�
-������ץȤ������˰ʲ��ιԤ��ɲä��ޤ���
+Mytest2.t スクリプトを編集して、テストの数を "4" に変更して、
+スクリプトの末尾に以下の行を追加します。
 
 	is( &Mytest2::foo(1, 2, "Hello, world!"), 7 );
 	is( &Mytest2::foo(1, 2, "0.0"), 7 );
@@ -1396,9 +1396,9 @@ result is below a certain amount (called epsilon) which is 0.01 in this case)
 
 =end original
 
-(��ư������������Ӥ�Ԥ��Ȥ����������Ȥ������Ȥ�����å����ʤ����Ȥ�
-���ɤʤΤǤ����������ͽ�ۤ�����ͤȼºݤη�̤κ���������
-(�ŤȸƤФ�ޤ�)�����ξ��Ǥ� 0.01 ���⤫��Ĵ�٤Ƥ��ޤ�)
+(浮動小数点数の比較を行うとき、等しいということをチェックしないことが
+最良なのですが、代わりに予想される値と実際の結果の差がある値
+(εと呼ばれます)、この場合では 0.01 以内かを調べています)
 
 =begin original
 
@@ -1407,13 +1407,13 @@ for the Mytest2::mylib extension, but you can ignore them.
 
 =end original
 
-"C<make test>" ��¹Ԥ���С����٤Ƥ����ޤ������Ϥ��Ǥ���
-Mytest2::mylib �������ƥ󥷥��˥ƥ��Ȥ��ʤ��Ȥ����ٹ𤬽Фޤ�����
-̵�뤷�ƹ����ޤ���
+"C<make test>" を実行すれば、すべてがうまくいくはずです。
+Mytest2::mylib エクステンションにテストがないという警告が出ますが、
+無視して構いません。
 
 =head2 What has happened here?
 
-(�����ǲ��������Ƥ����?)
+(ここで何が起きているの?)
 
 =begin original
 
@@ -1422,10 +1422,10 @@ has caused some extra goodies to appear in both the .pm and .xs files.
 
 =end original
 
-�����Ȥϰ�äơ�����ϼºݤΥ��󥯥롼�ɥե�������Ф��� h2xs ��
-�¹Ԥ��ޤ�����
-����� .pm �ե������ .xs �ե������ξ�����Ф��ƴ��Ĥ����ɲä�����Τ�
-�⤿�餷�ޤ���
+先の例とは違って、今回は実際のインクルードファイルに対して h2xs を
+実行しました。
+これは .pm ファイルと .xs ファイルの両方に対して幾つかの追加されるものを
+もたらします。
 
 =over 4
 
@@ -1439,10 +1439,10 @@ could move the extension directory if we wanted to.
 
 =end original
 
-.xs �ե�����ˤϡ����ߤΤȤ������Хѥ��� mylib.h �إå����ե������
-���ꤹ�� #include �ؼ��Ҥ�����ޤ���
-��������Хѥ����ѹ����뤳�Ȥǡ��⤷˾��ʤ饨�����ƥ󥷥���
-�ǥ��쥯�ȥ���ư�Ǥ���褦�ˤ��ޤ���
+.xs ファイルには、現在のところ絶対パスで mylib.h ヘッダーファイルを
+指定する #include 指示子があります。
+これを相対パスに変更することで、もし望むならエクステンションの
+ディレクトリを移動できるようにします。
 
 =item *
 
@@ -1456,11 +1456,11 @@ C<constant> routine.
 
 =end original
 
-.xs �ե�������ɲä��줿 C �Υ����ɤ�����ޤ���
-C<constant> �롼�������Ū�ϡ��إå����ե������ #define ����Ƥ����ͤ�
-Perl ������ץ�(���ξ��ϡ�C<&Mytest2::TESTVAL> �θƤӽФ��ˤ��ޤ�)��
-��äƥ��������Ǥ���褦�ˤ��뤳�ȤǤ���
-Ʊ�ͤ� C<constant> �롼�����ƤӽФ������ XS �����ɤ�����ޤ���
+.xs ファイルに追加された C のコードがあります。
+C<constant> ルーチンの目的は、ヘッダーファイルで #define されている値を
+Perl スクリプト(この場合は、C<&Mytest2::TESTVAL> の呼び出しによります)に
+よってアクセスできるようにすることです。
+同様に C<constant> ルーチンを呼び出すための XS コードがあります。
 
 =item *
 
@@ -1475,15 +1475,15 @@ or all of the items from the C<@EXPORT> array into the C<@EXPORT_OK> array.
 
 =end original
 
-.pm �ե�����ϸ��������� C<@EXPORT> �ˤ��� C<TESTVAL> ��̾����
-�������ݡ��Ȥ��ޤ���
-�����̾���������ǽ��������ޤ���
-�褤�и�§�� #define �� C �Υ롼����ǤΤ߻Ȥ��ƥ桼���������
-�Ȥ��ʤ��ΤǤ���С���������� C<@EXPORT> ������������ۤ���
-�ɤ��Ȥ�����ΤǤ���
-�⤦��Ĥϡ��ѿ��δ�������̾��Ȥ����Ȥ�Ȥ��Τ����ˤʤ�ʤ��ΤǤ���С�
-���� C<@EXPORT> �ˤ������ǤΤۤȤ�ɤ��٤Ƥ����� C<@EXPORT_OK> ��
-�ܤ����Ȥ��Ǥ��ޤ���
+.pm ファイルは元々は配列 C<@EXPORT> にある C<TESTVAL> の名前を
+エクスポートします。
+これは名前を壊す可能性があります。
+よい経験則は #define が C のルーチンでのみ使われてユーザーからは
+使われないのであれば、それを配列 C<@EXPORT> から取り除いたほうが
+良いというものです。
+もう一つは、変数の完全修飾名を使うことを使うのが気にならないのであれば、
+配列 C<@EXPORT> にある要素のほとんどすべてを配列 C<@EXPORT_OK> に
+移すことができます。
 
 =item *
 
@@ -1494,9 +1494,9 @@ been processed by h2xs.  There is no good solution to this right now.
 
 =end original
 
-���󥯥롼�ɥե������ #include �ؼ��Ҥ���ΤǤ���С�������
-h2xs �ˤ�äƽ�������ޤ���
-�������ǤϤ������������������Τ��ɤ������Ϥ���ޤ���
+インクルードファイルに #include 指示子あるのであれば、それらは
+h2xs によって処理されません。
+現時点ではこれを正しく処理するのに良い解決策はありません。
 
 =item *
 
@@ -1514,22 +1514,22 @@ commands to build it.
 
 =end original
 
-�䤿���Ϥ��Ǥ˥��֥ǥ��쥯�ȥ� mylib �Ǻ��������饤�֥��ˤĤ��Ƥ�
-�ؼ��� Perl �ˤ��Ƥ��ޤ���
-�������׵ᤵ��Ƥ���Τϡ��ѿ� C<MYEXTLIB> �� WriteMakefile �θƤӽФ���
-�ɲä���postamble ���֥롼�������Ū�Υǥ��쥯�ȥ�� cd ���� make ��
-�¹Ԥ���褦�ˤ��뤳�Ȥ����Ǥ���
-�饤�֥��Τ���� Makefile.PL ��¿��ʣ���ˤϤʤ�ޤ�����
-����ۤɤǤ⤢��ޤ���
-���Υ����ɤ�ñ��˺������٤��饤�֥�꤬��Ū�饤�֥��(ưŪ�����ɲ�ǽ
-�饤�֥���ȿ�ФΤ��)�Ǥ��뤳�Ȥ���ꤷ���饤�֥���������뤿���
-���ޥ�ɤ��󶡤��ޤ���
+私たちはすでにサブディレクトリ mylib で作成したライブラリについての
+指示を Perl にしています。
+ここで要求されているのは、変数 C<MYEXTLIB> を WriteMakefile の呼び出しに
+追加し、postamble サブルーチンを目的のディレクトリへ cd して make を
+実行するようにすることだけです。
+ライブラリのための Makefile.PL は多少複雑にはなりますが、
+それほどでもありません。
+このコードは単純に作成すべきライブラリが静的ライブラリ(動的ロード可能
+ライブラリと反対のもの)であることを指定し、ライブラリを作成するための
+コマンドを提供します。
 
 =back
 
 =head2 Anatomy of .xs file
 
-(.xs �ե�����β�˶)
+(.xs ファイルの解剖)
 
 =begin original
 
@@ -1538,8 +1538,8 @@ the meaning of these elements, pay attention to the line which reads
 
 =end original
 
-L<"EXAMPLE 4"> �� .xs �ե�����ˤϤ����Ĥ����������Ǥ�ޤ�Ǥ��ޤ���
-���������Ǥΰ�̣�����򤹤뤿��ˡ��ʲ��ιԤ����ܤ��Ƥ�������
+L<"EXAMPLE 4"> の .xs ファイルにはいくつか新しい要素を含んでいます。
+これらの要素の意味を理解するために、以下の行に注目してください
 
 	MODULE = Mytest2		PACKAGE = Mytest2
 
@@ -1552,11 +1552,11 @@ skipped over (see L<perlpod>) it goes into the generated output C file as is.
 
 =end original
 
-���ι԰��������Ƥϥ��󥯥롼�ɤ���إå�����������ʴؿ����������
-�ץ졼��� C �����ɤǤ���
-������ʬ�Ǥϡ��Ȥ߹��ߤ� POD ʸ���ɤ����Ф����(L<perlpod> ��
-���Ȥ��Ƥ�������)���Ȥ�����Ƥϲ����Ѵ��ϹԤ�줺�����Τޤ޽��� C �ե����뤬
-���Ϥ���ޤ���
+この行以前の全てはインクルードするヘッダおよび便利な関数を定義した
+プレーンな C コードです。
+この部分では、組み込みの POD 文書が読み飛ばされる(L<perlpod> を
+参照してください)ことを除いては何の変換は行われず、そのまま出力 C ファイルが
+出力されます。
 
 =begin original
 
@@ -1567,9 +1567,9 @@ makes these functions visible from Perl interpreter.
 
 =end original
 
-���ι԰ʹߤ����Ƥ� XSUB �ؿ��ε��ҤǤ���
-�����ε��Ҥϡ��ؿ��� Perl �ƤӽФ���§��ȤäƼ��������ؿ��� Perl
-���󥿥ץ꥿���鸫����褦�ˡ�B<xsubpp> �� C �����ɤ��Ѵ����ޤ���
+この行以降の全ては XSUB 関数の記述です。
+これらの記述は、関数を Perl 呼び出し規則を使って実装し、関数が Perl
+インタプリタから見えるように、B<xsubpp> が C コードに変換します。
 
 =begin original
 
@@ -1580,10 +1580,10 @@ this static C function is defined.
 
 =end original
 
-C<constant> �ؿ��ˤ����̤����դ�ʧ�äƤ���������
-����̾�����������줿 .xs �ե������ 2 �󸽤�ޤ�:
-1 ���ܤϺǽ����ʬ�� static C �ؿ��Ȥ��ơ�2 ���ܤ� 2 ���ܤ���ʬ�ˡ�
-���� static C �ؿ��ؤ� XSUB ���󥿡��ե�������������줿�Ȥ��Ǥ���
+C<constant> 関数には特別な注意を払ってください。
+この名前は生成された .xs ファイルに 2 回現れます:
+1 回目は最初の部分に static C 関数として、2 回目は 2 番目の部分に、
+この static C 関数への XSUB インターフェースが定義されたときです。
 
 =begin original
 
@@ -1597,18 +1597,18 @@ somewhat of an exception rather than the rule.
 
 =end original
 
-����� .xs �ե�����ǤϤ��ʤ�ŵ��Ū�Ǥ�: ���� .xs �ե�����ϴ��ˤ���
-C �ؿ��ؤΥ��󥿡��ե��������󶡤��ޤ���
-���줫�餳�� C �ؿ��Ϥɤ���(�����饤�֥�꤫��.xs �ե�����κǽ����ʬ)��
-������졢���δؿ��ؤ� Perl ���󥿡��ե�����(�Ĥޤ��Perl �θҡ�)��
-.xs �ե������ 2 ���ܤ���ʬ�˵��Ҥ���ޤ���
-L<"EXAMPLE 1">, L<"EXAMPLE 2">,  L<"EXAMPLE 3"> �ξ�����
-�Ĥޤ����Ƥ�ư���Perl �θҡפ���¦�ǹԤ���Ȥ��ϡ�
-��§�ǤϤʤ����餫���㳰������ޤ���
+これは .xs ファイルではかなり典型的です: 普通 .xs ファイルは既にある
+C 関数へのインターフェースを提供します。
+それからこの C 関数はどこか(外部ライブラリか、.xs ファイルの最初の部分)で
+定義され、この関数への Perl インターフェース(つまり「Perl の糊」)が
+.xs ファイルの 2 番目の部分に記述されます。
+L<"EXAMPLE 1">, L<"EXAMPLE 2">,  L<"EXAMPLE 3"> の状況、
+つまり全ての動作が「Perl の糊」の内側で行われるときは、
+規則ではなく何らかの例外があります。
 
 =head2 Getting the fat out of XSUBs
 
-(���ä���ʬ�� XSUB �γ��˽Ф�)
+(太った部分を XSUB の外に出す)
 
 =begin original
 
@@ -1617,8 +1617,8 @@ description of an XSUB:
 
 =end original
 
-L<"EXAMPLE 4"> �ǡ�.xs �ե������ 2 ���ܤ���ʬ�ˤϡ��ʲ��� XSUB ��
-���Ҥ�ޤ�Ǥ��ޤ�:
+L<"EXAMPLE 4"> で、.xs ファイルの 2 番目の部分には、以下の XSUB の
+記述を含んでいます:
 
 	double
 	foo(a,b,c)
@@ -1637,11 +1637,11 @@ on here, one can add a CODE section to this XSUB:
 
 =end original
 
-L<"EXAMPLE 1">, L<"EXAMPLE 2">, L<"EXAMPLE 3"> ����Ӥ��ơ����ε��Ҥ�
-Perl �ؿ� foo() �θƤӽФ��˲��������Ƥ���Τ��μºݤ� I<������> ��
-�ޤ�Ǥ��ޤ���
-�����ǲ��������Ƥ���Τ������򤹤뤿��ˡ����� XSUB �� CODE ����������
-�ɲäǤ��ޤ�:
+L<"EXAMPLE 1">, L<"EXAMPLE 2">, L<"EXAMPLE 3"> と比較して、この記述は
+Perl 関数 foo() の呼び出しに何が起きているのかの実際の I<コード> は
+含んでいません。
+ここで何が起きているのかを理解するために、この XSUB に CODE セクションを
+追加できます:
 
 	double
 	foo(a,b,c)
@@ -1666,15 +1666,15 @@ shortcut the XSUB to become:
 
 =end original
 
-������������� 2 �Ĥ� XSUB �ϤۤȤ��Ʊ�� C �����ɤ��������ޤ�:
-B<xsubpp> ����ѥ���ϡ�XSUB �ε��Ҥκǽ�� 2 �Ԥ���
-C<CODE:> ���������򸫤Ĥ��Ф����Ȥ��Ǥ��뤰�餤�����Ǥ���
-C<OUTPUT:> ���������ˤĤ��ƤϤɤ��Ǥ��礦?
-�ºݡ����������Ʊ���Ǥ�!
-I<C<CODE:> ���������� C<PPCODE:> ��������󤬻��ꤵ��ʤ��¤�>��
-C<OUTPUT:> ����������Ʊ�ͤ˺���Ǥ���Ʊ�ͤ� OUTPUT ����������
-��ư�������ޤ���
-���äơ�XSUB ��ʲ��Τ褦�˾�ά�Ǥ��ޤ�:
+しかし、これら 2 つの XSUB はほとんど同じ C コードを生成します:
+B<xsubpp> コンパイラは、XSUB の記述の最初の 2 行から
+C<CODE:> セクションを見つけ出すことができるぐらい賢いです。
+C<OUTPUT:> セクションについてはどうでしょう?
+実際、これは全く同じです!
+I<C<CODE:> セクションや C<PPCODE:> セクションが指定されない限り>、
+C<OUTPUT:> セクションも同様に削除でき、同様に OUTPUT セクションを
+自動生成します。
+従って、XSUB を以下のように省略できます:
 
 	double
 	foo(a,b,c)
@@ -1688,7 +1688,7 @@ Can we do the same with an XSUB
 
 =end original
 
-Ʊ�����Ȥ� L<"EXAMPLE 2"> �� XSUB:
+同じことを L<"EXAMPLE 2"> の XSUB:
 
 	int
 	is_even(input)
@@ -1706,12 +1706,12 @@ for this definition is in the first part of .xs file.  In fact a C function
 
 =end original
 
-�ǽ����Ǥ��礦��?
-����򤹤뤿��ˤϡ�C �ؿ� C<int is_even(int input)> ���������
-ɬ�פ�����ޤ���
-L<Anatomy of .xs file> �Ǹ����褦�ˡ����������Ŭ�ڤʾ��� .xs �ե������
-�ǽ����ʬ�Ǥ���
-�ºݡ�C �ؿ�
+で出来るでしょうか?
+これをするためには、C 関数 C<int is_even(int input)> を定義する
+必要があります。
+L<Anatomy of .xs file> で見たように、この定義に適切な場所は .xs ファイルの
+最初の部分です。
+実際、C 関数
 
 	int
 	is_even(int arg)
@@ -1726,8 +1726,8 @@ do too:
 
 =end original
 
-�Ȥ����ΤϤ����餯�����ǤϤ�ꤹ���Ǥ���
-C<#define> ��Ʊ�����餤ñ��ʤ��Ȥ�Ǥ��ޤ�:
+というのはおそらくここではやりすぎです。
+C<#define> と同じぐらい単純なこともできます:
 
 	#define is_even(arg)	((arg) % 2 == 0)
 
@@ -1738,8 +1738,8 @@ as simple as
 
 =end original
 
-.xs �ե�����κǽ����ʬ�ˤ�������줿�塢
-��Perl �θҡפ���ʬ�ϰʲ��Τ褦��ñ��Ǥ�
+.xs ファイルの最初の部分にこれを入れた後、
+「Perl の糊」の部分は以下のように単純です
 
 	int
 	is_even(input)
@@ -1757,17 +1757,17 @@ Python glue as well.)
 
 =end original
 
-�ºݤ�ư�����ʬ����Ҥ���ʬ��ʬΥ���뵻�Ѥ����餫�ʥȥ졼�ɥ��դǤ�:
-�⤷ Perl ���󥿡��ե������򤷤褦�Ȥ���ȡ������ɤ� 2 �ս���ѹ�����
-ɬ�פ�����ޤ���
-�������������¿�����𻨤ʤ�Τ���������ºݤ�ư�����ʬ�� Perl �ƤӽФ�
-��§���ð���������Ω�����ޤ���
-(�ºݤΤȤ�������Ҥε��Ҥˤ� Perl ��ͭ�Τ�ΤϤʤ����ۤʤ�С�������
-B<xsubpp> �Ϥ���� TCL �θҤ� Python �θҤˤ��Ѵ��Ǥ��뤫�⤷��ޤ���)
+実際の動作の部分から糊の部分を分離する技術は明らかなトレードオフです:
+もし Perl インターフェースをしようとすると、コードの 2 箇所を変更する
+必要があります。
+しかし、これは多くの乱雑なものを取り除き、実際の動作の部分を Perl 呼び出し
+規則の特異性から独立させます。
+(実際のところ、上述の記述には Perl 固有のものはなく、異なるバージョンの
+B<xsubpp> はこれを TCL の糊や Python の糊にも変換できるかもしれません。)
 
 =head2 More about XSUB arguments
 
-(����� XSUB �����ˤĤ���)
+(さらに XSUB 引数について)
 
 =begin original
 
@@ -1778,10 +1778,10 @@ B<xsubpp> compiler.
 
 =end original
 
-�� 4 ���䴰���뤿��ˡ��䤿���������ǺǤ⥯�꡼��Ȥ����櫓�ǤϤʤ��Ǥ�����
-���¤Υ饤�֥��Υ��ߥ�졼�Ȥ򤹤뤿��δ�ñ����ˡ������ޤ���
-�䤿���� B<xsubpp> ����ѥ�����Ϥ������ˤĤ��Ƥε�����
-³���ʤ���Фʤ�ޤ���
+例 4 を補完するために、私たちは世界で最もクリーンというわけではないであろう
+現実のライブラリのシミュレートをするための簡単な方法があります。
+私たちは B<xsubpp> コンパイラに渡す引数についての議論を
+続けなければなりません。
 
 =begin original
 
@@ -1794,12 +1794,12 @@ the calling convention for the argument in the call to the library function.
 
 =end original
 
-.xs �ե�����ǥ롼����ؤΰ�������ꤷ���Ȥ������ʤ��Ϥ��줾���
-�������ꥹ�ȥ��åפ��줿���Ĥξ���֥��å����Ϥ��Ƥ���Ǥ��礦��
-�ǽ�Υ֥��å��ϡ�����������Ū�ʽ��(�����ܡ������ܡ���)�Ǥ���
-�����ܤΥ֥��å��ϰ����η��ǡ������η��������ʤ�ޤ���
-�����ܤΥ֥��å��ϡ��������饤�֥��ؿ���ƤӽФ��Ȥ��˻Ȥ��������
-�ƤӽФ�����Ǥ���
+.xs ファイルでルーチンへの引数を指定したとき、あなたはそれぞれの
+引数がリストアップされた三つの情報ブロックを渡しているでしょう。
+最初のブロックは、引数の相対的な順序(一番目、二番目、…)です。
+二番目のブロックは引数の型で、引数の型宣言からなります。
+三番目のブロックは、引数がライブラリ関数を呼び出すときに使われる引数の
+呼び出し規約です。
 
 =begin original
 
@@ -1810,10 +1810,10 @@ a pointer to the data.  Thus two C functions with declarations
 
 =end original
 
-Perl �ϴؿ��˰����򻲾��Ϥ����ޤ�����C �ϰ��������Ϥ����ޤ�; �ְ����פ�
-��ĤΥǡ����������� C �ؿ����������ˤϡ����� C �ؿ��μºݤΰ�����
-���Υǡ����ؤΥݥ��󥿤ˤʤ�ޤ���
-���äơ�2 �Ĥ� C �ؿ����:
+Perl は関数に引数を参照渡ししますが、C は引数を値渡しします; 「引数」の
+一つのデータを修正する C 関数を実装するには、この C 関数の実際の引数は
+そのデータへのポインタになります。
+従って、2 つの C 関数宣言:
 
 	int string_length(char *s);
 	int upper_case_char(char *cp);
@@ -1828,11 +1828,11 @@ a completely different manner.
 
 =end original
 
-�ϴ����˰ۤʤä���̣������ޤ�:
-���Ԥ� s �Ǽ����줿 char ������򸡺����ޤ�; ��Ԥ�ľ���� C<cp> ��
-�ǥ�ե���󥹤��ơ�C<*cp> ���������ޤ�(�֤��ͤ������򼨤���ΤȤ���
-�Ȥ��ޤ�)��
-Perl ����Ϥ����δؿ��������ۤʤä���ˡ�ǻȤ��ޤ���
+は完全に異なった意味を持ちます:
+前者は s で示された char の配列を検査します; 後者は直ちに C<cp> を
+デリファレンスして、C<*cp> だけを操作します(返り値は成功を示すものとして
+使われます)。
+Perl からはこれらの関数は全く異なった方法で使います。
 
 =begin original
 
@@ -1842,10 +1842,10 @@ function by its address.  The above two function may be XSUB-ified as
 
 =end original
 
-C<&> �ˤ����������� C<*> ���֤������뤳�Ȥǡ����ξ���� B<xsubpp> ��
-�������ޤ���
-C<&> �ϡ����������ɥ쥹�ǥ饤�֥��ؿ����Ϥ���뤳�Ȥ��̣���ޤ���
-�嵭�� 2 �Ĥδؿ��ϰʲ��Τ褦�� XSUB ���Ǥ��ޤ�
+C<&> による引数の前に C<*> を置き換えることで、この情報を B<xsubpp> に
+伝えられます。
+C<&> は、引数がアドレスでライブラリ関数に渡されることを意味します。
+上記の 2 つの関数は以下のように XSUB 化できます
 
 	int
 	string_length(s)
@@ -1861,7 +1861,7 @@ For example, consider:
 
 =end original
 
-��Ȥ��ơ����Τ�Τ�ͤ��ޤ�:
+例として、次のものを考えます:
 
 	int
 	foo(a,b)
@@ -1878,12 +1878,12 @@ actual call to the function foo that B<xsubpp> generates would look like this:
 
 =end original
 
-�ǽ�� Perl �ΰ����Ϥ��δؿ��Ǥ� char �Ȥ��ư���졢�ѿ� a ���������졢
-�����Ƥ��Υ��ɥ쥹�ϴؿ� foo ���Ϥ���ޤ���
-�����ܤ� Perl �ΰ�����ʸ����ؤΥݥ��󥿡��Ȥ��ư���졢�ѿ� b ��
-��������ޤ���
-b �� I<��> ��ؿ� foo ���Ϥ���ޤ���
-B<xsubpp> ����������ؿ� foo �ؤμºݤθƤӽФ��ϼ��Τ褦�ˤʤ�ޤ���
+最初の Perl の引数はこの関数では char として扱われ、変数 a に代入され、
+そしてそのアドレスは関数 foo に渡されます。
+二番目の Perl の引数は文字列へのポインターとして扱われ、変数 b へ
+代入されます。
+b の I<値> も関数 foo へ渡されます。
+B<xsubpp> が生成する関数 foo への実際の呼び出しは次のようになります。
 
 	foo(&a, b);
 
@@ -1893,7 +1893,7 @@ B<xsubpp> will parse the following function argument lists identically:
 
 =end original
 
-B<xsubpp> �ϰʲ��δؿ������ꥹ�Ȥ�Ʊ����ΤȲ��Ϥ��ޤ�:
+B<xsubpp> は以下の関数引数リストを同じものと解析します:
 
 	char	&a
 	char&a
@@ -1910,11 +1910,11 @@ column".
 
 =end original
 
-�������ʤ���狼��䤹�����뤿��ˡ� "&" ���ѿ�̾��³�����ѿ��η������
-Υ���Ƥ������Ȥȡ� "*" ��̾�˶�Ť��뤬�ѿ�̾�����Υ��(���Ҥ��� foo ��
-�ƤӽФ��Τ褦��)�Ȥ������Ȥ򤪴��ᤷ�ޤ���
-�����Ԥ����Ȥǡ��ºݤ� C �δؿ����Ϥ���뤬�ʤ�ʤΤ����ñ��
-����Ǥ��ޤ� -- ����� "last column" �ˤ����ΤǤ��礦��
+しかしながらわかりやすくするために、 "&" に変数名を続けて変数の型からは
+離しておくことと、 "*" を型名に近づけるが変数名からは離す(前述した foo の
+呼び出しのように)ということをお勧めします。
+これを行うことで、実際に C の関数に渡されるがなんなのかを簡単に
+理解できます -- これは "last column" にあるものでしょう。
 
 =begin original
 
@@ -1923,13 +1923,13 @@ it wants, when possible.  It will save you a lot of trouble in the long run.
 
 =end original
 
-��ǽ�ʤ�С��ؿ���(��ʬ��˾��)�ѿ��η����Ϥ����Ȥ�ĩ�路�ƶ�ϫ�����ۤ���
-�ɤ��Ǥ��礦��
-Ĺ���ܤǸ���Ф���ˤ�ä�¿���Υȥ�֥���򤱤뤳�Ȥˤʤ�ޤ���
+可能ならば、関数に(自分が望む)変数の型を渡すことに挑戦して苦労したほうが
+良いでしょう。
+長い目で見ればそれによって多くのトラブルを避けることになります。
 
 =head2 The Argument Stack
 
-(���������å�)
+(引数スタック)
 
 =begin original
 
@@ -1942,11 +1942,11 @@ argument, and so on.
 
 =end original
 
-�� 1 �ʳ��� ���Υ��塼�ȥꥢ��Ǻ������� C �����ɤ򸫤��Τʤ�С�
-���������ST(n) (n ���̾�� 0)���Ф��뻲�Ȥ˵����Ĥ������ȤǤ��礦��
-"ST" �ϼºݤˤϰ��������å���� n ���ܤΰ�����ؤ������ޥ����Ǥ���
-���ä� ST(0) �ϥ����å���κǽ�ΰ����ʤΤǡ�XSUB ���Ϥ����ǽ��
-�����Ǥ��ꡢST(1) �������ܤΰ����Ȥʤ�ޤ���
+例 1 以外の このチュートリアルで作成した C コードを見たのならば、
+たくさんのST(n) (n は通常は 0)に対する参照に気がついたことでしょう。
+"ST" は実際には引数スタック上の n 番目の引数を指し示すマクロです。
+従って ST(0) はスタック上の最初の引数なので、XSUB に渡される最初の
+引数であり、ST(1) は二番目の引数となります。
 
 =begin original
 
@@ -1957,11 +1957,11 @@ do not list them in the same order as the function expects them.
 
 =end original
 
-.xs �ե�������� XSUB ���Ф��������ꥹ�ȥ��åפ����Ȥ�������ϰ���
-�����å����б���������� B<xsubpp> �˻��ꤹ��Ȥ������ȤǤ�(�㤨�С�
-�ꥹ�Ȥκǽ�ˤ�����������������ܤʤ���������Ȥ�������)��
-�ؿ������Ԥ���Τ�Ʊ�����֤ǥꥹ�ȥ��åפ��ʤ���С��פ������ʤ�
-�ҳ��򾷤����Ȥˤʤ�ޤ���
+.xs ファイル中で XSUB に対する引数をリストアップしたとき、それは引数
+スタックの対応する引数を B<xsubpp> に指定するということです(例えば、
+リストの最初にあれば第一引数、二番目なら第二引数ということ)。
+関数が期待するのと同じ順番でリストアップしなければ、思いがけない
+災害を招くことになります。
 
 =begin original
 
@@ -1973,11 +1973,11 @@ The code for the round() XSUB routine contains lines that look like this:
 
 =end original
 
-���������å��μºݤ��ͤ��Ϥ��줿�ͤؤΥݥ��󥿤Ǥ���
-������ OUTPUT ���ͤȤ��Ƶ󤲤��Ƥ����硢�����å�����б�������
-(�㤨�С��ǽ�ΰ����ʤ� ST(0)) ���ѹ�����ޤ���
-�� 3 ���������줿 C �����ɤ򸫤뤳�ȤǤ���򸡾ڤǤ��ޤ���
-round() XSUB �롼����Υ����ɤϰʲ��Τ褦�˸�����Ԥ�ޤ�Ǥ��ޤ�:
+引数スタックの実際の値は渡された値へのポインタです。
+引数が OUTPUT の値として挙げられている場合、スタック上の対応する値
+(例えば、最初の引数なら ST(0)) が変更されます。
+例 3 で生成された C コードを見ることでこれを検証できます。
+round() XSUB ルーチンのコードは以下のように見える行を含んでいます:
 
 	double  arg = (double)SvNV(ST(0));
 	/* Round the contents of the variable arg */
@@ -1990,8 +1990,8 @@ stored back into ST(0) at the end of the routine.
 
 =end original
 
-�����ѿ��ϡ��ޤ� ST(0) ���ͤ��������Τ˥��åȤ��졢���θ�롼�����
-�Ǹ�� ST(0) �˽��ᤵ��ޤ���
+引数変数は、まず ST(0) の値から取られるものにセットされ、その後ルーチンの
+最後に ST(0) に書き戻されます。
 
 =begin original
 
@@ -2001,10 +2001,10 @@ different way.  See L<perlxs> for details.
 
 =end original
 
-XSUB ��ñ�ʤ륹����ǤϤʤ����ꥹ�Ȥ��֤����Ȥ�Ǥ��ޤ���
-����ϥ����å��� ST(0), ST(1) �ʤɤ���̯�˰㤦��ˡ�����뤳�Ȥˤ�ä�
-�Ԥ�ɬ�פ�����ޤ���
-�ܤ����� L<perlxs> �򻲾Ȥ��Ƥ���������
+XSUB は単なるスカラではなく、リストを返すこともできます。
+これはスタック値 ST(0), ST(1) などを微妙に違う方法で操作することによって
+行う必要があります。
+詳しくは L<perlxs> を参照してください。
 
 =begin original
 
@@ -2017,15 +2017,15 @@ a complete separation of "Perl glue" and "workhorse" parts of an XSUB.
 
 =end original
 
-XSUB �Ϥޤ���Perl �ؿ��������� C �ؿ������ؤμ�ư�Ѵ�����򤹤뤳�Ȥ�
-�Ǥ��ޤ���
-�ܤ����� L<perlxs> �򻲾Ȥ��Ƥ���������
-��ư�Ѵ����Ԥ�����Ǥ� C<ST(i)> �򸡺����뤳�ȤǤμ�ư�Ѵ��򹥤�
-�͡��⤤�ơ�����ˤ�� XSUB �ƤӽФ��Υ����å�����꤭�줤�ˤʤ��
-��ĥ���Ƥ��ޤ���
-XSUB �ˤ������Perl �θҡפȡּ�Ư����פδ�����ʬΥ�˴ؤ�������褦��
-�ȥ졼�ɥ��դ˴ؤ��ơ�L<"Getting the fat out of XSUBs"> ��
-��Ӥ��Ƥ���������
+XSUB はまた、Perl 関数引数から C 関数引数への自動変換を回避することも
+できます。
+詳しくは L<perlxs> を参照してください。
+自動変換が行われる場合でも C<ST(i)> を検査することでの手動変換を好む
+人々もいて、これにより XSUB 呼び出しのロジックがよりきれいになると
+主張しています。
+XSUB における「Perl の糊」と「実働部隊」の完全な分離に関する似たような
+トレードオフに関して、L<"Getting the fat out of XSUBs"> と
+比較してください。
 
 =begin original
 
@@ -2037,16 +2037,16 @@ benefit of protecting the XSUB writer from future changes to the Perl API.
 
 =end original
 
-����ȤϤ����δ���ˡ�ˤĤ��Ƽ�ĥ���������Perl �������˴ؤ���鿴�Ԥ�
-Perl �����˸�ͭ�Τ�Τ��ǽ�ʸ¤꾮����������ˡ�򹥤ߤޤ�; ����ϤĤޤ�
-L<"Getting the fat out of XSUBs"> �Τ褦�ʡ���ư�Ѵ��ȼ�ư�ƤӽФ�
-�����Ǥ���
-���μ�ˡ�ˤϡ�XSUB ��Ԥ� Perl API �ξ�����ѹ�������Ȥ����ɲä�������
-����ޤ���
+専門家はこれらの慣用法について主張する一方、Perl の内部に関する初心者は
+Perl 内部に固有のものを可能な限り小さくする方法を好みます; これはつまり
+L<"Getting the fat out of XSUBs"> のような、自動変換と自動呼び出し
+生成です。
+この手法には、XSUB 作者を Perl API の将来の変更から守るという追加の利点も
+あります。
 
 =head2 Extending your Extension
 
-(�������ƥ󥷥����ĥ����)
+(エクステンションを拡張する)
 
 =begin original
 
@@ -2060,19 +2060,19 @@ way to store and load your extra subroutines.
 
 =end original
 
-Perl�Ȥ��ʤ��Υ������ƥ󥷥��Ȥδ֤Υ��󥿡��ե����������ñ�ˡ�
-������򤷤䤹������Τ�����뤿��˥᥽�åɤ䥵�֥롼�����
-��ꤿ���Ȼפ��������뤫�⤷��ޤ���
-�������ä��롼����� .pm �ե�������֤��Τ��ɤ��Ǥ���
-���줬�������ƥ󥷥�󼫿Ȥ������ɤ��줿�Ȥ������ɤ����ˤ�����
-���֥롼����������֤���Ƥ���. pm �ե�����˰�¸����ƤӽФ��ΤȤ��Τ�
-�����ɤ���ˤ�������ưŪ�˥����ɤ��Ԥ��ޤ���
-�ɲäΥ��֥롼������ݴɤ����ɤ߹���⤦��Ĥ���ˡ�Ȥ��Ƥ�
-L<AutoLoader> �򻲹ͤˤ��뤳�Ȥ�Ǥ��ޤ���
+Perlとあなたのエクステンションとの間のインターフェースをより簡単に、
+より理解しやすくするのを助けるためにメソッドやサブルーチンを
+作りたいと思う事があるかもしれません。
+こういったルーチンは .pm ファイルに置くのが良いです。
+これがエクステンション自身がロードされたときロードされるにしろ、
+サブルーチン定義が置かれている. pm ファイルに依存する呼び出しのときのみ
+ロードするにしろ、自動的にロードが行われます。
+追加のサブルーチンを保管して読み込むもう一つの方法としては
+L<AutoLoader> を参考にすることもできます。
 
 =head2 Documenting your Extension
 
-(�������ƥ󥷥���ʸ�񲽤���)
+(エクステンションを文書化する)
 
 =begin original
 
@@ -2084,13 +2084,13 @@ manpage directory when the extension is installed.
 
 =end original
 
-���ʤ��Υ������ƥ󥷥��˴ؤ���ɥ�����Ȥ��ʤ��Ȥ������ȤˤĤ��ơ�
-���ʤ��ϲ��θ�������Ǥ��ޤ���
-�ɥ�����Ȥ� .pm �ե������°���ޤ���
-���Υե������ pod2man ��������ޤ졢�����ޤ줿�ɥ�����Ȥ�
-man �ڡ����ե����ޥåȤ��Ѵ����졢���줫�� blib �ǥ��쥯�ȥ���֤���ޤ���
-���Υɥ�����Ȥϡ��������ƥ󥷥�󤬥��󥹥ȡ��뤵���Ȥ��� Perl ��
-man �ڡ����ǥ��쥯�ȥ�ˤ⥳�ԡ�����ޤ���
+あなたのエクステンションに関するドキュメントがないということについて、
+あなたは何の言い訳もできません。
+ドキュメントは .pm ファイルに属します。
+このファイルは pod2man に送り込まれ、埋め込まれたドキュメントが
+man ページフォーマットに変換され、それから blib ディレクトリに置かれます。
+このドキュメントは、エクステンションがインストールされるときに Perl の
+man ページディレクトリにもコピーされます。
 
 =begin original
 
@@ -2100,10 +2100,10 @@ as the comment inside the .pm file explains.
 
 =end original
 
-���ʤ��� .pm �ե�����ˤ���ɥ�����Ȥ� Perl �����ɤ�ޤ����餹���Ȥ�
-���뤫�⤷��ޤ���
-���¡����ʤ����᥽�åɤ� autoload ���褦�Ȥ���ʤ�С�.pm �ե���������
-���륳���Ȥ���������Ƥ���褦�ˤ����Ԥ�ͤФʤ�ޤ���
+あなたは .pm ファイルにあるドキュメントと Perl コードをまき散らすことが
+あるかもしれません。
+事実、あなたがメソッドを autoload しようとするならば、.pm ファイルの中に
+あるコメントで説明されているようにこれを行わねばなりません。
 
 =begin original
 
@@ -2111,11 +2111,11 @@ See L<perlpod> for more information about the pod format.
 
 =end original
 
-pod �ե����ޥåȤˤĤ��ƤΤ��ܤ�������� L<perlpod> �򻲾Ȥ��Ƥ���������
+pod フォーマットについてのより詳しい情報は L<perlpod> を参照してください。
 
 =head2 Installing your Extension
 
-(�������ƥ󥷥��򥤥󥹥ȡ��뤹��)
+(エクステンションをインストールする)
 
 =begin original
 
@@ -2126,12 +2126,12 @@ or ask your system administrator to run the make for you.
 
 =end original
 
-���ʤ��κ�ä��������ƥ󥷥�󤬴����������Ĥ��٤ƤΥƥ��Ȥ˹�ʤ���С�
-�����¤�ñ��ʤ�꤫���ǥ��󥹥ȡ��뤷�ޤ���
-����ñ�� "make install" �ȼ¹Ԥ�������Ǥ���
-Perl �����󥹥ȡ��뤵�줿�ǥ��쥯�ȥ���Ф���񤭹��߸��¤����äƤ���
-ɬ�פ�����ޤ��������뤤�ϡ����ʤ��Υ����ƥ�����Ԥˤ��ʤ��� make ��
-�¹Ԥ���褦���ꤤ����ɬ�פ�����Ǥ��礦��
+あなたの作ったエクステンションが完成し、かつすべてのテストに合格すれば、
+それを実に単純なやりかたでインストールします。
+ただ単に "make install" と実行するだけです。
+Perl がインストールされたディレクトリに対する書き込み権限が持っている
+必要がありますが、あるいは、あなたのシステム管理者にあなたの make を
+実行するようお願いする必要があるでしょう。
 
 =begin original
 
@@ -2144,18 +2144,18 @@ the destination directory and distribute them to your destination systems.
 
 =end original
 
-�̤���ˡ�Ȥ��ơ�"make install" �θ���� (���뤤�Ϥ������� make ��ȤäƤ���
-���� "make" �� "install" �δ֤�)"PREFIX=/destination/directory" ��
-�񤯤��Ȥǡ��������ƥ󥷥��Υե�������֤����Τʥǥ��쥯�ȥ��
-����Ǥ��ޤ���
-����ϡ��ǽ�Ū��ʣ���Υ����ƥ�����ۤ���륨�����ƥ󥷥���ӥ�ɤ��Ƥ���
-���ˤȤƤ�ͭ�ѤǤ���
-���θ�ñ�˽�����Υǥ��쥯�ȥ�Υե�����򥢡������֤��ơ���Ū�Υ����ƥ��
-���ۤ��ޤ���
+別の方法として、"make install" の後ろに (あるいはおかしな make を使っている
+場合は "make" と "install" の間に)"PREFIX=/destination/directory" と
+書くことで、エクステンションのファイルを置く正確なディレクトリを
+指定できます。
+これは、最終的に複数のシステムに配布されるエクステンションをビルドしている
+場合にとても有用です。
+その後単に出力先のディレクトリのファイルをアーカイブして、目的のシステムに
+配布します。
 
 =head2 EXAMPLE 5
 
-(�� 5)
+(例 5)
 
 =begin original
 
@@ -2165,9 +2165,9 @@ create an extension that returns an array.
 
 =end original
 
-������Ǥϡ����������å��ˤ���ʤ��Ȥ򤷤ޤ���
-������Ǥ����ơ�ñ����ͤ��֤���Τ����Ǥ���
-�����Ǥϡ�������֤��������ƥ󥷥�����ޤ���
+この例では、引数スタックにさらなる作業をします。
+前の例では全て、単一の値を返すものだけです。
+ここでは、配列を返すエクステンションを作ります。
 
 =begin original
 
@@ -2180,14 +2180,14 @@ change the XSUB, be sure to fix the test cases to match the changes.
 
 =end original
 
-���Υ������ƥ󥷥��ϤȤƤ� Unix �ظ��Ǥ�(struct statfs ��
-statfs �����ƥॳ����)��
-�⤷ Unix �����ƥ�ʳ��Ǽ¹Ԥ���ʤ顢statfs ��ʣ�����ͤ��֤��̤δؿ���
-�֤������뤫���ƤӽФ������֤��ͤ�ϡ��ɥ����ǥ��󥰤���(�����������
-���顼�ξ���ƥ��Ȥ���Τ������񤷤��ʤ�ޤ�)�������뤤��ñ��
-�������¹Ԥ��ʤ��Ȥ������Ȥ�Ǥ��ޤ���
-�⤷ XSUB ���ѹ������ʤ顢�ƥ��ȥ��������ѹ��ˤ��碌�Ƴμ¤�
-�������Ƥ���������
+このエクステンションはとても Unix 指向です(struct statfs と
+statfs システムコール)。
+もし Unix システム以外で実行するなら、statfs を複数の値を返す別の関数に
+置き換えるか、呼び出し元に返す値をハードコーディングする(しかしこれは
+エラーの場合をテストするのが少し難しくなります)か、あるいは単に
+この例を実行しないということもできます。
+もし XSUB を変更したなら、テストケースも変更にあわせて確実に
+修正してください。
 
 =begin original
 
@@ -2196,7 +2196,7 @@ Mytest.xs:
 
 =end original
 
-Mytest �ǥ��쥯�ȥ����äơ�Mytest.xs �������˰ʲ��Υ����ɤ��ɲä��ޤ�:
+Mytest ディレクトリに戻って、Mytest.xs の末尾に以下のコードを追加します:
 
 	void
 	statfs(path)
@@ -2226,8 +2226,8 @@ after the include of "XSUB.h":
 
 =end original
 
-�ޤ���.xs �ե��������Ƭ��"XSUB.h" �򥤥󥯥롼�ɤ���ľ��ˡ��ʲ��Υ����ɤ�
-�ɲä���ɬ�פ�����ޤ�:
+また、.xs ファイルの先頭、"XSUB.h" をインクルードした直後に、以下のコードを
+追加する必要があります:
 
 	#include <sys/vfs.h>
 
@@ -2238,8 +2238,8 @@ tests to "11":
 
 =end original
 
-�ޤ����ʲ��Υ����ɤ� Mytest.t ���ɲä��������"9" �Υƥ��Ȥ� "11" ��
-���䤷�ޤ�:
+また、以下のコードを Mytest.t に追加する一方、"9" のテストを "11" に
+増やします:
 
 	@a = &Mytest::statfs("/blech");
 	ok( scalar(@a) == 1 && $a[0] == 2 );
@@ -2248,7 +2248,7 @@ tests to "11":
 
 =head2 New Things in this Example
 
-(������Ǥο���������)
+(この例での新しいこと)
 
 =begin original
 
@@ -2256,8 +2256,8 @@ This example added quite a few new concepts.  We'll take them one at a time.
 
 =end original
 
-������Ϥ����Ĥ���������������ǰ���ɲä��ޤ���
-���˰�Ĥ��Ĥ��ޤ���
+この例はいくつかの全く新しい概念を追加します。
+一回に一つずつやります。
 
 =over 4
 
@@ -2274,11 +2274,11 @@ put these declarations on top.)
 
 =end original
 
-INIT: �ؼ��Ҥϡ����������å����ǥ����ɤ��줿ľ����֤���륳���ɤ�ޤߤޤ���
-C �Ǥϴؿ����Ǥ�λԤǤ��ѿ����������Ƥ��ʤ��Τǡ�
-��������� XSUB �ˤ�ä�ɬ�פʥ��������ѿ���������뤿��κ�������ˡ�Ǥ���
-(���ذƤȤ��Ƥϡ�C<PPCODE:> ������������Τ��椫�ä��ǰϤäơ�������
-�������Ƭ���֤����Ȥ�Ǥ��ޤ���)
+INIT: 指示子は、引数スタックがデコードされた直後に置かれるコードを含みます。
+C では関数内の任の市での変数宣言を許していないので、
+これは普通 XSUB によって必要なローカル変数を宣言するための最善の方法です。
+(代替案としては、C<PPCODE:> セクション全体を中かっこで囲って、それらの
+宣言を先頭に置くこともできます。)
 
 =item *
 
@@ -2293,12 +2293,12 @@ returned.
 
 =end original
 
-���Υ롼����Ϥޤ���statfs �θƤӽФ������������Ԥ��˰�¸���ơ��ۤʤä�
-�����ͤ��֤��ޤ���
-���顼�ξ��ϡ����顼�ֹ椬ñ������Ǥ�����Ȥ����֤���ޤ���
-�ƤӽФ��������������ϡ�9 ���Ǥ������֤���ޤ���
-���δؿ��ˤϰ����� 1 �Ĥ����Ϥ����Τǡ��֤� 9 �Ĥ��ͤ��ݻ����뤿���
-�����å��˶�������ɬ�פ�����ޤ���
+このルーチンはまた、statfs の呼び出しが成功か失敗かに依存して、異なった
+数の値を返します。
+エラーの場合は、エラー番号が単一の要素の配列として返されます。
+呼び出しが成功した場合は、9 要素の配列が返されます。
+この関数には引数が 1 つだけ渡されるので、返す 9 つの値を保持するために
+スタックに空きを作る必要があります。
 
 =begin original
 
@@ -2308,9 +2308,9 @@ put on the argument stack by ourselves.
 
 =end original
 
-�����CODE: �ؼ��ҤǤϤʤ� PPCODE: �ؼ��Ҥ�Ȥ����ȤǹԤ��ޤ���
-����ϡ����������å����֤�����֤��ͤδ�����ʬ���ȤǹԤ����Ȥ�
-B<xsubpp> ���Τ餻�ޤ���
+これを、CODE: 指示子ではなく PPCODE: 指示子を使うことで行います。
+これは、引数スタックに置かれる返り値の管理を自分自身で行うことを
+B<xsubpp> に知らせます。
 
 =item *
 
@@ -2325,12 +2325,12 @@ can be used to return multiple values.)
 
 =end original
 
-�ƤӽФ������֤��ͤ��֤�����ξ�꤬�����å���ˤۤ�������
-"XPUSH" �ǻϤޤ��Ϣ�Υޥ�����Ȥ��ޤ���
-����ˤϡ������å�������������ʤ�������double��ʸ����Perl �������
-�֤������ 5 ���ब����ޤ���
-������Ǥϡ������å���� Perl ������򤪤��ޤ���
-(�ºݤΤȤ����������ʣ�����ͤ��֤��Ȥ��˻Ȥ���ͣ��Υޥ����Ǥ���)
+呼び出し元に返す値を置くための場所がスタック上にほしい時、
+"XPUSH" で始まる一連のマクロを使います。
+これには、スタック上に整数、符号なし整数、double、文字列、Perl スカラを
+置くための 5 種類があります。
+この例では、スタック上に Perl スカラをおきます。
+(実際のところ、これは複数の値を返すときに使える唯一のマクロです。)
 
 =begin original
 
@@ -2340,9 +2340,9 @@ want them seen by the calling program.
 
 =end original
 
-XPUSH* �ޥ����ϡ��֤��ͥ����å��������С���󤹤뤳�Ȥ��ɤ�����ˡ���ưŪ��
-�֤��ͥ����å����ĥ���ޤ���
-�ƤӽФ��ץ�����फ�鸫���Ƥۤ������֤˥����å����ͤ�ץå��夷�ޤ���
+XPUSH* マクロは、返り値スタックがオーバーランすることを防ぐために、自動的に
+返り値スタックを拡張します。
+呼び出しプログラムから見えてほしい順番にスタックに値をプッシュします。
 
 =item *
 
@@ -2356,12 +2356,12 @@ routine returned, but would not be accessible.  This is a memory leak.
 
 =end original
 
-XSUB ���֤��ͥ����å��˥ץå��夵�줿�ͤϼºݤˤϴ�ȯ���� SV �Ǥ���
-����ϴ�ȯ���ʤΤǡ���ö�ƤӽФ��ץ������ˤ�ä��ͤ����ԡ������С�
-�֤��ͤ��ݻ����Ƥ��� SV �ϳ����Ǥ��ޤ���
-�⤷����餬��ȯ���Ǥʤ��ʤ顢XSUB �롼���󤫤��֤ä����¸�ߤ�³���ޤ�����
-���������Ǥ��ʤ��ʤ�ޤ���
-����ϥ���꡼���Ǥ���
+XSUB の返り値スタックにプッシュされた値は実際には揮発性の SV です。
+これは揮発性なので、一旦呼び出しプログラムによって値がコピーされれば、
+返り値を保持している SV は開放できます。
+もしこれらが揮発性でないなら、XSUB ルーチンから返った後も存在し続けますが、
+アクセスできなくなります。
+これはメモリリークです。
 
 =item *
 
@@ -2373,9 +2373,9 @@ pre-extend the stack before pushing the return values:
 
 =end original
 
-�⤷�����ɥ������ǤϤʤ���ǽ�˶�̣������Τʤ顢�������ˤ�
-C<XPUSHs> �ǤϤʤ� C<PUSHs> ��Ȥäơ��֤��ͤ�ץå��夹������ͽ�᥹���å���
-��ĥ���Ƥ����ޤ�:
+もしコードサイズではなく性能に興味があるのなら、成功時には
+C<XPUSHs> ではなく C<PUSHs> を使って、返り値をプッシュする前に予めスタックを
+拡張しておきます:
 
 	EXTEND(SP, 7);
 
@@ -2387,9 +2387,9 @@ anything but memory consumption).
 
 =end original
 
-�ȥ졼�ɥ��դϡ�ͽ���֤��ͤο���׻����Ƥ���ɬ�פ����뤳�ȤǤ�
-(�����������å���;ʬ�˳�ĥ���Ƥ⡢ŵ��Ū�ˤϥ������ʳ��ˤϤʤ�������
-����ޤ���)��
+トレードオフは、予め返り値の数を計算しておく必要があることです
+(しかしスタックを余分に拡張しても、典型的にはメモリ消費以外にはなんの問題も
+ありません)。
 
 =begin original
 
@@ -2399,15 +2399,15 @@ the stack is I<always> large enough to take one return value.
 
 =end original
 
-Ʊ�ͤˡ����Ի��ˤϥ����å��� I<��ĥ������> C<PUSHs> ��Ȥ��ޤ�:
-Perl �ؿ��Υ�ե���󥹤ϥ����å��� XSUB ���Ϥ����Τǡ�
-�����å��� I<���> ��Ĥ��֤��ͤ��֤��ˤϽ�ʬ���礭��������ޤ���
+同様に、失敗時にはスタックを I<拡張せずに> C<PUSHs> を使えます:
+Perl 関数のリファレンスはスタックで XSUB に渡されるので、
+スタックは I<常に> 一つの返り値を返すには十分な大きさがあります。
 
 =back
 
 =head2 EXAMPLE 6
 
-(�� 6)
+(例 6)
 
 =begin original
 
@@ -2417,9 +2417,9 @@ demonstrate manipulation of complex Perl data types from an XSUB.
 
 =end original
 
-������Ǥϡ����ϥѥ�᡼���Ȥ�������ؤΥ�ե���󥹤�����դ����ϥå����
-����ؤΥ�ե���󥹤��֤��ޤ���
-�����Ǥϡ�ʣ���� Perl �ǡ������� XSUB ����������ˡ�򼨤��ޤ���
+この例では、入力パラメータとして配列へのリファレンスを受け付け、ハッシュの
+配列へのリファレンスを返します。
+ここでは、複雑な Perl データ型を XSUB から操作する方法を示します。
 
 =begin original
 
@@ -2431,11 +2431,11 @@ filesystems.
 
 =end original
 
-���Υ������ƥ󥷥��Ϥ���Լ����Ǥ���
-����ϰ�������Υ����ɤ���äˤ��Ƥ��ޤ���
-����� statfs �ؿ���ʣ���ƤӽФ������ϤȤ��ƥե�����̾������ؤ�
-��ե���󥹤�����դ��ơ����줾��Υե����륷���ƥ�Υǡ�����ޤ�
-�ϥå��������ؤΥ�ե���󥹤��֤��ޤ���
+このエクステンションはやや不自然です。
+これは以前の例のコードを基礎にしています。
+これは statfs 関数を複数呼び出し、入力としてファイル名の配列への
+リファレンスを受け付けて、それぞれのファイルシステムのデータを含む
+ハッシュの配列へのリファレンスを返します。
 
 =begin original
 
@@ -2444,7 +2444,7 @@ Mytest.xs:
 
 =end original
 
-Mytest �ǥ��쥯�ȥ����äơ�Mytest.xs �������˰ʲ��Υ����ɤ��ɲä��ޤ�:
+Mytest ディレクトリに戻って、Mytest.xs の末尾に以下のコードを追加します:
 
     SV *
     multi_statfs(paths)
@@ -2497,8 +2497,8 @@ tests to "13":
 
 =end original
 
-�ޤ����ʲ��Υ����ɤ� Mytest.t ���ɲä��������"11" �Υƥ��Ȥ�
-"13" �����䤷�ޤ�:
+また、以下のコードを Mytest.t に追加する一方、"11" のテストを
+"13" に増やします:
 
 	$results = Mytest::multi_statfs([ '/', '/blech' ]);
 	ok( ref $results->[0]) );
@@ -2506,7 +2506,7 @@ tests to "13":
 
 =head2 New Things in this Example
 
-(������Ǥο���������)
+(この例での新しいこと)
 
 =begin original
 
@@ -2514,7 +2514,7 @@ There are a number of new concepts introduced here, described below:
 
 =end original
 
-�����Ǥϸ�Ҥ��뤤���Ĥ��ο�������ǰ������ޤ�:
+ここでは後述するいくつかの新しい概念があります:
 
 =over 4
 
@@ -2530,11 +2530,11 @@ and C<OUTPUT:> directives.
 
 =end original
 
-���δؿ��� typemap ��Ȥ��ޤ���
-����ˡ���Ĥ� SV* (������) ������������졢��Ĥ� SV* �ͤ��֤��褦��
-������ơ������Υ�����򥳡�����ǰ��������ޤ���
-��Ĥ��ͤ������֤��Τǡ� C<PPCODE:> �ؼ��Ҥ����פǤ� - ����ˡ�
-C<CODE:> �� C<OUTPUT:> �λؼ��Ҥ�Ȥ��ޤ���
+この関数は typemap を使いません。
+代わりに、一つの SV* (スカラ) 引数を受け入れ、一つの SV* 値を返すように
+定義して、これらのスカラをコード内で引き受けます。
+一つの値だけを返すので、 C<PPCODE:> 指示子は不要です - 代わりに、
+C<CODE:> と C<OUTPUT:> の指示子を使います。
 
 =item *
 
@@ -2552,16 +2552,16 @@ these conditions are not met.
 
 =end original
 
-��ե���󥹤򰷤��Ȥ�����������դ��ư������Ȥ����פǤ���
-C<INIT:> �֥��å��Ϥޤ���C<SvROK> �������֤����Ȥ������å����ޤ�;
-�����ѥ��������ʥ�ե���󥹤Ǥ��뤳�Ȥ򼨤��Ƥ��ޤ���
-���줫�顢C<SvRV> �ǥѥ���ǥ�ե���󥹤��ơ�C<SvTYPE> �Ǥ��η���
-Ĵ�٤뤳�Ȥǡ��ѥ��ǥ�ե���󥹤���Ƥ��륪�֥������Ȥ�����Ǥ��뤳�Ȥ�
-���ڤ��ޤ���
-�ɲäΥƥ��ȤȤ��ơ�(���󤬶��ξ��� -1 ���֤�)C<av_len> �ؿ���Ȥäơ�
-�ѥ��ǥ�ե���󥹤��줿���󤬶��Ǥʤ����Ȥ�����å����ޤ���
-XSRETURN_UNDEF �ޥ����ϡ������ 3 �Ĥξ��Τɤ줫����Ω���ʤ��Ȥ���
-XSUB �����Ǥ���̤����ͤ��֤�����˻Ȥ��ޤ���
+リファレンスを扱うとき、これを注意して扱うことが重要です。
+C<INIT:> ブロックはまず、C<SvROK> が真を返すことろチェックします;
+これをパスが正当なリファレンスであることを示しています。
+それから、C<SvRV> でパスをデリファレンスして、C<SvTYPE> でその型を
+調べることで、パスでリファレンスされているオブジェクトが配列であることを
+検証します。
+追加のテストとして、(配列が空の場合に -1 を返す)C<av_len> 関数を使って、
+パスでリファレンスされた配列が空でないことをチェックします。
+XSRETURN_UNDEF マクロは、これら 3 つの条件のどれかが成立しないときに
+XSUB を中断して未定義値を返すために使われます。
 
 =item *
 
@@ -2576,12 +2576,12 @@ end of the array, automatically extending the array as necessary.
 
 =end original
 
-���� XSUB �Ǥ����Ĥ�����������ޤ��� 
-���������Ū�� AV* �ݥ��󥿤�ɽ������Ƥ��뤳�Ȥ����դ��Ƥ���������
-�������Τ���δؿ��ȥޥ����� Perl �δؿ��Ȼ��Ƥ��ޤ�: C<av_len> �ϡ�
-$#array ��Ʊ�͡�AV* �κ����ź�������֤��ޤ�; C<av_fetch> ��ź������
-��äơ����󤫤� 1 �ĤΥ������ͤ���Ф��ޤ�; C<av_push> �ϥ������ͤ�
-����κǸ�˥������ͤ�ץå��夷���⤷ɬ�פʤ鼫ưŪ��������ĥ���ޤ���
+この XSUB でいくつかの配列を操作します。 
+配列は内部的に AV* ポインタで表現されていることに注意してください。
+配列操作のための関数とマクロは Perl の関数と似ています: C<av_len> は、
+$#array と同様、AV* の最大の添え字を返します; C<av_fetch> は添え字を
+取って、配列から 1 つのスカラ値を取り出します; C<av_push> はスカラ値を
+配列の最後にスカラ値をプッシュし、もし必要なら自動的に配列を拡張します。
 
 =begin original
 
@@ -2594,12 +2594,12 @@ information in the statfs structure.
 
 =end original
 
-�äˡ��������󤫤���٤� 1 �Ĥ����ѥ�̾���ɤ߹��ߡ���̤���������
-Ʊ��������ݴɤ��ޤ���
-�⤷ statfs �����Ԥ���ȡ��֤�������˥ץå��夵������Ǥϼ��Ի���
-errno �Ǥ���
-��������statfs ����������ȡ��֤�������˥ץå��夵����ͤ� statfs ��¤�Τ�
-�����ޤ�ϥå���ؤΥ�ե���󥹤Ǥ���
+特に、入力配列から一度に 1 つだけパス名を読み込み、結果を出力配列に
+同じ順序で保管します。
+もし statfs が失敗すると、返り値配列にプッシュされる要素は失敗時の
+errno です。
+しかし、statfs が成功すると、返り値配列にプッシュされる値は statfs 構造体の
+情報を含むハッシュへのリファレンスです。
 
 =begin original
 
@@ -2609,9 +2609,9 @@ how many elements we will return:
 
 =end original
 
-�֤��ͥ����å��˴ؤ��ơ������Ĥ����Ǥ��֤���뤫��ʬ���äƤ���Τǡ�
-�ǡ�����ץå��夹�������֤��������ͽ���ĥ���Ƥ������Ȥ���ǽ�Ǥ�
-(�����ƾ�����ǽ���褯�ʤ�ޤ�):
+返り値スタックに関して、いくつの要素が返されるかは分かっているので、
+データをプッシュする前に返り値配列を予め拡張しておくことが可能です
+(そして少し性能がよくなります):
 
 	av_extend(results, numpaths);
 
@@ -2627,12 +2627,12 @@ for details.
 
 =end original
 
-���δؿ��Ǥϡ�C<hv_store> ��Ȥäƥ������Ф��ƿ�������������ݴɤ���Ȥ�����
-1 �ĤΥϥå������Τߤ�Ԥ��ޤ���
-�ϥå���� HV* �ݥ��󥿤�ɽ������ޤ���
-�����Ʊ�͡�XSUB ����ϥå��������ؿ��ϡ�Perl �������Ѳ�ǽ�ʵ�ǽ��
-���̤��Ǥ���
-�ܤ����� L<perlguts> �� L<perlapi> �򻲾Ȥ��Ƥ���������
+この関数では、C<hv_store> を使ってキーに対して新しいスカラを保管するという、
+1 つのハッシュ操作のみを行います。
+ハッシュは HV* ポインタで表現されます。
+配列と同様、XSUB からハッシュを操作する関数は、Perl から利用可能な機能と
+鏡写しです。
+詳しくは L<perlguts> と L<perlapi> を参照してください。
 
 =item *
 
@@ -2647,13 +2647,13 @@ scalar (check with C<SvTYPE>).
 
 =end original
 
-��ե���󥹤���ˤϡ� C<newRV> �ؿ���Ȥ��ޤ���
-���ξ��(����Ӥ���¾¿���ξ��)��AV* �� HV* �� SV* ����
-���㥹�ȤǤ��뤳�Ȥ����դ��Ƥ���������
-����ˤ�ꡢƱ���ؿ������󡢥ϥå��塢������Υ�ե���󥹤����뤳�Ȥ�
-�Ǥ��ޤ���
-ȿ�Фˡ� C<SvRV> �ؿ��Ͼ�� SV* ���֤��Τǡ��⤷���줬(C<SvTYPE> ��
-�����å�����)������ʳ��ξ�硢Ŭ�ڤʷ��˥��㥹�Ȥ���ɬ�פ�����ޤ���
+リファレンスを作るには、 C<newRV> 関数を使います。
+この場合(およびその他多くの場合)、AV* か HV* を SV* 型に
+キャストできることに注意してください。
+これにより、同じ関数で配列、ハッシュ、スカラのリファレンスを得ることが
+できます。
+反対に、 C<SvRV> 関数は常に SV* を返すので、もしこれが(C<SvTYPE> を
+チェックして)スカラ以外の場合、適切な型にキャストする必要があります。
 
 =item *
 
@@ -2664,14 +2664,14 @@ Mytest.xs and Mytest.c are minimal.
 
 =end original
 
-���λ����ǡ�xsubpp �ϤۤȤ�ɲ��⤷�Ƥ��ޤ��� - Mytest.xs �� Mytest.c �Ȥ�
-���ϺǾ��¤Ǥ���
+この時点で、xsubpp はほとんど何もしていません - Mytest.xs と Mytest.c との
+差は最小限です。
 
 =back
 
 =head2 EXAMPLE 7 (Coming Soon)
 
-(�� 7 (��������))
+(例 7 (近日公開))
 
 =begin original
 
@@ -2679,11 +2679,11 @@ XPUSH args AND set RETVAL AND assign return value to array
 
 =end original
 
-������ XPUSH �� RETVAL �Υ��åȤ��֤��ͤ�����ؤ�����
+引数の XPUSH と RETVAL のセットと返り値の配列への代入
 
 =head2 EXAMPLE 8 (Coming Soon)
 
-(�� 8 (��������))
+(例 8 (近日公開))
 
 =begin original
 
@@ -2691,11 +2691,11 @@ Setting $!
 
 =end original
 
-$! �򥻥åȤ���
+$! をセットする
 
 =head2 EXAMPLE 9 Passing open files to XSes
 
-(�� 9 �����ץ󤷤��ե������ XS ���Ϥ�)
+(例 9 オープンしたファイルを XS に渡す)
 
 =begin original
 
@@ -2704,8 +2704,8 @@ typeglobs and stuff. Well, it isn't.
 
 =end original
 
-�������֤ʤɤǡ�XS �˥ե�������Ϥ��Τ��񤷤��ȹͤ��뤫�⤷��ޤ���
-���äȡ������ǤϤ���ޤ���
+型グロブなどで、XS にファイルを渡すのは難しいと考えるかもしれません。
+えっと、そうではありません。
 
 =begin original
 
@@ -2714,9 +2714,9 @@ standard C library function C<fputs()>. This is all we need:
 
 =end original
 
-ɸ�� C �饤�֥��ؿ� C<fputs()> �Υ�åѡ���ɬ�ס��Ȥ����Ի׵Ĥ�
-��ͳ������Ȥ��ޤ��礦��
-ɬ�פʤ�Τϰʲ��Τ�Τ����Ǥ�:
+標準 C ライブラリ関数 C<fputs()> のラッパーが必要、という不思議な
+理由があるとしましょう。
+必要なものは以下のものだけです:
 
 	#define PERLIO_NOT_STDIO 0
 	#include "EXTERN.h"
@@ -2736,7 +2736,7 @@ The real work is done in the standard typemap.
 
 =end original
 
-�ºݤκ�Ȥ�ɸ��� typemap �ǹԤ��ޤ���
+実際の作業は標準の typemap で行われます。
 
 =begin original
 
@@ -2745,8 +2745,8 @@ calls the stdio function C<fputs()>, which knows nothing about them.
 
 =end original
 
-B<������>��perlio �ؤǹԤ��������餷����ǽ���Ƥ���������Ȥˤʤ�ޤ���
-����� stdio �ؿ� C<fputs()> ��ƤӽФ��Τǡ������ˤĤ��Ƥϲ��⤷�ޤ���
+B<しかし>、perlio 層で行われる素晴らしい機能全てを手放すことになります。
+これは stdio 関数 C<fputs()> を呼び出すので、それらについては何もしません。
 
 =begin original
 
@@ -2759,13 +2759,13 @@ type in your XS file.
 
 =end original
 
-ɸ�� typemap �� 3 ����� PerlIO * ���󶡤��ޤ�:
+標準 typemap は 3 種類の PerlIO * を提供します:
 C<InputStream> (T_IN), C<InOutStream> (T_INOUT),
-C<OutputStream> (T_OUT) �Ǥ���
-���� C<PerlIO *> �� T_INOUT �Ȥ��ư����ޤ���
-��������Ǥ��줬����ˤʤ���(�ʤ������ʤ����뤫�ϰʲ���
-���Ȥ��Ƥ�������)�������̾���ΰ�Ĥ� #define �� typedef ���ơ�
-����� XS �ե�����ǰ������̤η��Ȥ��ƻȤäƤ���������
+C<OutputStream> (T_OUT) です。
+生の C<PerlIO *> は T_INOUT として扱われます。
+コード中でこれが問題になる場合(なぜそうなり得るかは以下を
+参照してください)、特定の名前の一つを #define や typedef して、
+それを XS ファイルで引数や結果の型として使ってください。
 
 =begin original
 
@@ -2775,10 +2775,10 @@ is not backwards compatible unless you provide your own typemap.
 
 =end original
 
-perl 5.7 ������ɸ�� typemap �ˤ� PerlIO * �ϴޤޤ�Ƥ��ޤ��󤬡�
-3 ����Υ��ȥ꡼��μ��ब����ޤ���
-PerlIO * ��ľ�ܻȤ��ȡ��ȼ��� typemap ���󶡤��ʤ��¤ꡢ
-�����ߴ��ǤϤ���ޤ���
+perl 5.7 以前の標準 typemap には PerlIO * は含まれていませんが、
+3 種類のストリームの種類があります。
+PerlIO * を直接使うと、独自の typemap を提供しない限り、
+後方互換ではありません。
 
 =begin original
 
@@ -2788,9 +2788,9 @@ a difference on a socket. Like in our example...
 
 =end original
 
-perl I<����> ��륹�ȥ꡼��ˤĤ��ơ���ʰ㤤�� C<OutputStream> ��
-���� PerlIO * ������Ȥ������ȤǤ� - ����ϥ����åȤξ��˰㤤�Ȥʤ�ޤ���
-�䤿�������Ʊ�ͤˡ�
+perl I<から> 来るストリームについて、主な違いは C<OutputStream> が
+出力 PerlIO * を得るということです - これはソケットの場合に違いとなります。
+私たちの例と同様に…
 
 =begin original
 
@@ -2803,14 +2803,14 @@ C<OutputStream> if open as "r" it should be an C<InputStream>.
 
 =end original
 
-perl I<��> �Ϥ���륹�ȥ꡼��ˤĤ��ơ��������ե�����ϥ�ɥ�
-(�Ĥޤꡢ�����������֤ؤΥ�ե����)���������졢�󶡤��줿 PerlIO * ��
-����դ����ޤ���
-�⤷ PerlIO * ���ɤ߹���/�񤭹��߾��֤��������ʤ���硢�ե�����ϥ�ɥ뤬
-�Ȥ�줿�Ȥ��˥��顼��ٹ������뤳�Ȥˤʤ�ޤ���
-���äơ��⤷ PerlIO * �� "w" �Ȥ��ƥ����ץ󤷤��ʤ�ºݤˤ� 
-C<OutputStream> �Ǥ���٤��Ǥ�����"r" �Ȥ��ƥ����ץ󤷤��ʤ�
-C<InputStream> �Ǥ���٤��Ǥ���
+perl I<に> 渡されるストリームについて、新しいファイルハンドル
+(つまり、新しいグロブへのリファレンス)が作成され、提供された PerlIO * と
+結び付けられます。
+もし PerlIO * の読み込み/書き込み状態が正しくない場合、ファイルハンドルが
+使われたときにエラーや警告を受けることになります。
+従って、もし PerlIO * を "w" としてオープンしたなら実際には 
+C<OutputStream> であるべきですし、"r" としてオープンしたなら
+C<InputStream> であるべきです。
 
 =begin original
 
@@ -2819,8 +2819,8 @@ perlio C<PerlIO_puts()> function as an example.
 
 =end original
 
-�����ǡ�XS �� perlio �ؤ�Ȥ������Ȥ��ޤ��礦��
-��Τ褦�ˡ�perlio �� C<PerlIO_puts()> �ؿ���Ȥ��ޤ���
+ここで、XS で perlio 層を使いたいとしましょう。
+例のように、perlio の C<PerlIO_puts()> 関数を使います。
 
 =begin original
 
@@ -2829,7 +2829,7 @@ have
 
 =end original
 
-XS �ե������ C ����ʬ (�ǽ�� MODULE �Ԥξ�) �˰ʲ��Τ褦�ˤ��ޤ�
+XS ファイルの C の部分 (最初の MODULE 行の上) に以下のようにします
 
 	#define OutputStream	PerlIO *
     or
@@ -2842,7 +2842,7 @@ And this is the XS code:
 
 =end original
 
-������ XS �����ɤϤ���Ǥ�:
+そして XS コードはこれです:
 
 	int
 	perlioputs(s, stream)
@@ -2860,8 +2860,8 @@ reversed compared to C<fputs()>, and we want to keep the arguments the same.
 
 =end original
 
-C<PerlIO_puts()> �� C<fputs()> ����Ӥ���ͽ�󤵤줿��������äƤ��ơ�
-������Ʊ���ޤޤˤ������Τǡ�C<CODE> ����������Ȥ�ɬ�פ�����ޤ���
+C<PerlIO_puts()> は C<fputs()> と比較する予約された引数を持っていて、
+引数は同じままにしたいので、C<CODE> セクションを使う必要があります。
 
 =begin original
 
@@ -2871,8 +2871,8 @@ C<FILE *>:
 
 =end original
 
-���������õ�����뤿��ˡ�PerlIO * �� stdio �� C<fputs()> ��Ȥ������Ǥ���
-����ϡ�perlio �����ƥ�� stdio �� C<FILE *> ���䤤��碌��ɬ�פ�����ޤ�:
+これを完全に探索するために、PerlIO * に stdio の C<fputs()> を使いたいです。
+これは、perlio システムに stdio の C<FILE *> を問い合わせる必要があります:
 
 	int
 	perliofputs(s, stream)
@@ -2901,15 +2901,15 @@ generated by C<PerlIO_exportFILE()>.
 
 =end original
 
-����: C<PerlIO_findFILE()> �� stdio �ؤ��ؤ򸡺����ޤ���
-�⤷���줬���Ĥ���ʤ���С������� stdio C<FILE> ���������뤿���
-C<PerlIO_exportFILE()> ��ƤӽФ��ޤ���
-I<������> C<FILE> ��ɬ�פʾ��ˤΤ� C<PerlIO_exportFILE()> ��
-�ƤӽФ��褦�ˤ��Ƥ���������
-����ϸƤӽФ���˿�������Τ��������ƿ����� stdio �ؤ˥ץå��夷�ޤ���
-���äơ�Ʊ���ե�������Ф��Ʒ����֤��ƤӽФ��ʤ��Ǥ���������
-C<PerlIO()>_findFILE �ϡ����� C<PerlIO_exportFILE()> ���������줿 stdio �ؤ�
-���Ф��ޤ���
+注意: C<PerlIO_findFILE()> は stdio 層の層を検索します。
+もしそれが見つからなければ、新しい stdio C<FILE> を生成するために
+C<PerlIO_exportFILE()> を呼び出します。
+I<新しい> C<FILE> が必要な場合にのみ C<PerlIO_exportFILE()> を
+呼び出すようにしてください。
+これは呼び出し毎に新しいものを生成して新しい stdio 層にプッシュします。
+従って、同じファイルに対して繰り返し呼び出さないでください。
+C<PerlIO()>_findFILE は、一度 C<PerlIO_exportFILE()> で生成された stdio 層を
+取り出します。
 
 =begin original
 
@@ -2918,13 +2918,13 @@ C<PerlIO_exportFILE()> is equivalent to C<PerlIO_findFILE()>.
 
 =end original
 
-����� perlio �����ƥ�ˤΤ�Ŭ�Ѥ���ޤ���
-5.7 �����ΥС������Ǥϡ�C<PerlIO_exportFILE()> �� C<PerlIO_findFILE()> ��
-�����Ǥ���
+これは perlio システムにのみ適用されます。
+5.7 以前のバージョンでは、C<PerlIO_exportFILE()> は C<PerlIO_findFILE()> と
+等価です。
 
 =head2 Troubleshooting these Examples
 
-(��������Υȥ�֥륷�塼�ƥ���)
+(これらの例のトラブルシューティング)
 
 =begin original
 
@@ -2933,8 +2933,8 @@ these example extensions, you might see if any of these help you.
 
 =end original
 
-����ʸ��κǽ�˿��줿�褦�ˡ��⤷��������Υ������ƥ󥷥������꤬
-���ä���硢�ʲ������ͤˤʤ뤫�⤷��ޤ���
+この文書の最初に触れたように、もしこれらの例のエクステンションで問題が
+あった場合、以下が参考になるかもしれません。
 
 =over 4
 
@@ -2948,9 +2948,9 @@ read:
 
 =end original
 
-�åС����������ΥС������ 5.002 �Ǥϡ�L<EXAMPLE 1> �ˤ���ƥ���
-������ץȤ�������ư��ޤ���
-"use lib" �Ȥ����Ԥ�ʲ����ͤ��ѹ�����ɬ�פ�����ޤ���
+γバージョン以前のバージョン 5.002 では、L<EXAMPLE 1> にあるテスト
+スクリプトは正しく動作しません。
+"use lib" という行を以下の様に変更する必要があります。
 
 	use lib './blib';
 
@@ -2965,11 +2965,11 @@ to run the test script.  You will need to add the following line before the
 
 =end original
 
-�С������ 5.002b1h �����ΥС������ 5.002 �Ǥϡ�test.pl �Ȥ����ե����뤬
-h2xs �ˤ�äƼ�ư��������ޤ���
-����ϥƥ��ȥ�����ץȤ�¹Ԥ��뤿��ˡ�"make test" �Ȥ��뤳�Ȥ�
-�Ǥ��ʤ��Ȥ������ȤǤ���
-"use extension" �Ȥ���ʸ�����˰ʲ��ιԤ��ɲä���ɬ�פ�����ޤ�:
+バージョン 5.002b1h 以前のバージョン 5.002 では、test.pl というファイルが
+h2xs によって自動生成されません。
+これはテストスクリプトを実行するために、"make test" とすることが
+できないということです。
+"use extension" という文の前に以下の行を追加する必要があります:
 
 	use lib './blib';
 
@@ -2982,8 +2982,8 @@ to use the following line:
 
 =end original
 
-�С������ 5.000 ����� 5.001 �Ǥϡ���Ǽ������ԤǤϤʤ����ʲ��˼������Ԥ�
-�Ȥ�ɬ�פ�����Ǥ��礦��
+バージョン 5.000 および 5.001 では、上で示した行ではなく、以下に示した行を
+使う必要があるでしょう。
 
 	BEGIN { unshift(@INC, "./blib") }
 
@@ -2996,10 +2996,10 @@ Some systems may have installed Perl version 5 as "perl5".
 
 =end original
 
-���Υɥ�����ȤǤϡ�"perl" �Ȥ���̾���μ¹ԥե����뤬 Perl �ΥС������
-5 �Ǥ��뤳�Ȥ��ꤷ�Ƥ��ޤ���
-Perl �ΥС������ 5 �� "perl5" �Ȥ��ƥ��󥹥ȡ��뤵��Ƥ��륷���ƥ��
-���뤫�⤷��ޤ���
+このドキュメントでは、"perl" という名前の実行ファイルが Perl のバージョン
+5 であることを仮定しています。
+Perl のバージョン 5 は "perl5" としてインストールされているシステムも
+あるかもしれません。
 
 =back
 
@@ -3012,8 +3012,8 @@ and L<perlpod>.
 
 =end original
 
-���ܤ�������ϡ�L<perlguts>, L<perlapi>, L<perlxs>, L<perlmod>,
-L<perlpod> �򻲾Ȥ��Ƥ���������
+より詳しい情報は、L<perlguts>, L<perlapi>, L<perlxs>, L<perlmod>,
+L<perlpod> を参照してください。
 
 =head1 Author
 
@@ -3032,8 +3032,8 @@ and Tim Bunce.
 
 =end original
 
-Dean Roehrich, Ilya Zakharevich, Andreas Koenig, Tim Bunce �ˤ���ӥ塼��
-���Ϥ�����ޤ�����
+Dean Roehrich, Ilya Zakharevich, Andreas Koenig, Tim Bunce によるレビューと
+助力を受けました。
 
 =begin original
 
@@ -3042,8 +3042,8 @@ by Nick Ing-Simmons.
 
 =end original
 
-PerlIO ���Ǻ�� Lupe Christoph �ˤ�ä��󶡤��졢Nick Ing-Simmons �ˤ�ä�
-���β����줿��ΤǤ���
+PerlIO の素材は Lupe Christoph によって提供され、Nick Ing-Simmons によって
+明確化されたものです。
 
 =begin original
 
@@ -3051,7 +3051,7 @@ Changes for h2xs as of Perl 5.8.x by Renee Baecker
 
 =end original
 
-Perl 5.8.x �Ǥ� h2xs �˴ؤ��Ƥ� Renee Baecker ���ѹ����ޤ�����
+Perl 5.8.x での h2xs に関しては Renee Baecker が変更しました。
 
 =head2 Last Changed
 

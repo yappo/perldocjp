@@ -9,7 +9,7 @@ perlfork - Perl's fork() emulation
 
 =end original
 
-perlfork - Perl �� fork ���ߥ�졼�����
+perlfork - Perl の fork エミュレーション
 
 =head1 SYNOPSIS
 
@@ -22,10 +22,10 @@ perlfork - Perl �� fork ���ߥ�졼�����
 
 =end original
 
-    ����: 5.8.0 �Υ�꡼���ȶ��ˡ�fork() ���ߥ�졼�����Ϥ��ʤ����Ϥ�
-    �Ƥ��ޤ����������ʤ��顢�ޤ������Ĥ��ΥХ���ºݤ� fork() �Ȥκ���
-    ���Τ��Ƥ��ޤ�����Ҥ� "�Х�" �ڤ� "�ٹ������" �ξϤ⻲�Ȥ��Ƥ�
-    ��������
+    注意: 5.8.0 のリリースと共に、fork() エミュレーションはかなり成熟し
+    ています。しかしながら、またいくつかのバグや実際の fork() との差違
+    が知られています。後述の "バグ" 及び "警告と制限" の章も参照してく
+    ださい。
 
 =begin original
 
@@ -35,10 +35,10 @@ call is available, Perl's fork() simply calls it.
 
 =end original
 
-Perl ��Ʊ̾�� Unix �����ƥॳ������б����륭����� fork() ��
-�󶡤��Ƥ��ޤ���
-fork() �����ƥॳ���뤬¸�ߤ�������� Unix ���ץ�åȥե�����Ǥ�
-Perl �� fork() ��ñ��ˤ����Ƥ֤����Ǥ���
+Perl は同名の Unix システムコールに対応するキーワード fork() を
+提供しています。
+fork() システムコールが存在する大抵の Unix 風プラットフォームでは
+Perl の fork() は単純にそれを呼ぶだけです。
 
 =begin original
 
@@ -52,14 +52,14 @@ operating system is concerned.
 
 =end original
 
-Windows �Ȥ��ä� fork() �����ƥॳ�������äƤ��ʤ������Ĥ���
-�ץ�åȥե�����Ǥϡ����󥿥ץ꥿��٥�� fork() �Υ��ߥ�졼������
-���ۤ��ޤ���
-���ߥ�졼������ Perl �ץ������Υ�٥�˱�����
-��ʪ�� fork() �ȤǤ���¤�ߴ����Ȥ��褦���߷פ���Ƥ��ޤ���,
-������ˡ��������������Ƥβ���Ū�ʻҡ֥ץ������פ�
-���ڥ졼�ƥ��󥰥����ƥब��Ϳ����¤�Ǥ�Ʊ���¥ץ������Ȥ���
-¸�ߤ��뤿��ˤ����餫�ν��פʰ㤤��¸�ߤ��ޤ���
+Windows といった fork() システムコールを持っていないいくつかの
+プラットフォームでは、インタプリタレベルで fork() のエミュレーションを
+構築します。
+エミュレーションは Perl プログラムのレベルに於いて
+本物の fork() とできる限り互換がとれるように設計されていますが,
+この方法で生成される全ての仮想的な子「プロセス」は
+オペレーティングシステムが関与する限りでは同じ実プロセスとして
+存在するためにいくらかの重要な違いが存在します。
 
 =begin original
 
@@ -70,11 +70,11 @@ has been configured to use it.
 
 =end original
 
-���Υɥ�����ȤǤ� fork() ���ߥ�졼������ǽ�Ϥȸ³��γ��פ�
-�󶡤��ޤ���
-�����ǽҤ٤��Ƥ��뤳�Ȥ���ʪ�� fork() ��¸�ߤ���
-Perl �������Ȥ��褦�����ꤵ��Ƥ���ץ�åȥե�����ˤ�
-���ƤϤޤ�ޤ���
+このドキュメントでは fork() エミュレーションの能力と限界の概要を
+提供します。
+ここで述べられていることは本物の fork() が存在して
+Perl がそれを使うように設定されているプラットフォームには
+当てはまりません。
 
 =head1 DESCRIPTION
 
@@ -89,14 +89,14 @@ thread that implements this child "process" as the pseudo-process.
 
 =end original
 
-fork() ���ߥ�졼������ Perl ���󥿥ץ꥿�Υ�٥�Ǽ��������
-���ޤ���
-����ΰ�̣����Ȥ����Ϥ������äѤ˸����� fork() �μ¹Ԥϼºݤˤ�
-�¹Ԥ��Ƥ��륤�󥿥ץ꥿�Ȥ��ξ��֤����Ƥ�ʣ������
-ʣ�����줿���󥿥ץ꥿���̤Υ���åɤǡ��Ƥ� fork() ���ƤӽФ��줿
-�����夫��¹Ԥ�Ϥ�뤳�ȤǤ���
-����Ū�ʥץ������Ȥ��Ƥ��λҡ֥ץ������פ�������Ƥ��륹��åɤ�
-���ܤ��ޤ���
+fork() エミュレーションは Perl インタプリタのレベルで実装されて
+います。
+これの意味するところはおおざっぱに言うと fork() の実行は実際には
+実行しているインタプリタとその状態の全てを複製し、
+複製されたインタプリタを別のスレッドで、親で fork() が呼び出された
+すぐ後から実行を始めることです。
+仮想的なプロセスとしてこの子「プロセス」を実装しているスレッドに
+着目します。
 
 =begin original
 
@@ -108,16 +108,16 @@ it is the child pseudo-process.
 
 =end original
 
-fork() ��ƤӽФ��� Perl �ץ������ˤȤäơ��������Ƥ�Ʃ��Ū�Ǥ���褦��
-�߷פ���Ƥ��ޤ���
-�ƥץ������� fork() ���餽�θ��
-�ץ��������ؿ��ǻȤ����ȤΤǤ��벾�ۥץ����� ID ��ȼ�ä���ꡢ
-�ҥץ������ǤϻҲ��ۥץ������Ǥ��뤳�Ȥ򼨤��� C<0> ��ȼ�ä�
-���ޤ���
+fork() を呼び出した Perl プログラムにとって、この全ては透過的であるように
+設計されています。
+親プロセスは fork() からその後の
+プロセス操作関数で使うことのできる仮想プロセス ID を伴って戻り、
+子プロセスでは子仮想プロセスであることを示す値 C<0> を伴って
+戻ります。
 
 =head2 Behavior of other Perl features in forked pseudo-processes
 
-(fork ���줿�����ץ���������ǤΤ���¾�� Perl �ε�ǽ�ο�����)
+(fork された擬似プロセスの中でのその他の Perl の機能の振る舞い)
 
 =begin original
 
@@ -125,13 +125,13 @@ Most Perl features behave in a natural way within pseudo-processes.
 
 =end original
 
-����� Perl �ε�ǽ�ϲ��ۥץ������Ǥ⼫���˿����񤤤ޤ���
+大抵の Perl の機能は仮想プロセスでも自然に振る舞います。
 
 =over 8
 
 =item $$ or $PROCESS_ID
 
-($$ �ڤ� $PROCESS_ID)
+($$ 及び $PROCESS_ID)
 
 =begin original
 
@@ -142,11 +142,11 @@ pseudo-processes are launched after others have been wait()-ed on.
 
 =end original
 
-�����ü��ѿ���Ŭ�ڤ˲��ۥץ����� ID �����ꤵ��ޤ���
-���������Υ��å����˱����Ʋ��ۥץ��������̤��뤿���
-�Ȥ����Ȥ��Ǥ��ޤ���
-�����ͤ� wait() ���줿��˵�ư���줿
-���ۥץ������ǤϺ����Ѥ���뤳�Ȥ����դ��Ʋ�������
+この特殊変数は適切に仮想プロセス ID に設定されます。
+これは特定のセッションに於いて仮想プロセスを識別するために
+使うことができます。
+この値は wait() された後に起動された
+仮想プロセスでは再利用されることに注意して下さい。
 
 =item %ENV
 
@@ -159,13 +159,13 @@ it.
 
 =end original
 
-�Ʋ��ۥץ������Ϥ��줾��β��۴Ķ�����äƤ��ޤ���
-%ENV ���ѹ��ϲ��۴Ķ��˺��Ѥ������β��ۥץ������ȡ��������鵯ư����
-���ƤΥץ�����(�ڤӲ��ۥץ�����)�ǤΤ߸��뤳�Ȥ��Ǥ��ޤ���
+各仮想プロセスはそれぞれの仮想環境を持っています。
+%ENV の変更は仮想環境に作用し、その仮想プロセスと、そこから起動した
+全てのプロセス(及び仮想プロセス)でのみ見ることができます。
 
 =item chdir() and all other builtins that accept filenames
 
-(chdir() �ڤӥե�����̾��������¾�����Ƥ��Ȥ߹��ߴؿ�)
+(chdir() 及びファイル名を受け取る他の全ての組み込み関数)
 
 =begin original
 
@@ -177,18 +177,18 @@ map the virtual working directory to the real working directory appropriately.
 
 =end original
 
-�Ʋ��ۥץ������Ϥ��줾��˲���Ū�ʥ����ȥǥ��쥯�ȥ�μ���(idea)��
-���äƤ��ޤ���
-chdir() ��Ȥä������ȥǥ��쥯�ȥ���ѹ��Ϥ���
-���ۥץ������ȡ��������鵯ư�������ƤΥץ�����(�ڤӲ��ۥץ�����)�ǤΤ�
-���뤳�Ȥ��Ǥ��ޤ���
-���ۥץ�������������ƤΥե�����ڤӥǥ��쥯�ȥꥢ��������
-���ۺ�ȥǥ��쥯�ȥ꤫��º�ȥǥ��쥯�ȥ�ؤ�Ŭ�ڤ�
-�������Ѵ�����ޤ���
+各仮想プロセスはそれぞれに仮想的なカレントディレクトリの主題(idea)を
+持っています。
+chdir() を使ったカレントディレクトリの変更はその
+仮想プロセスと、そこから起動した全てのプロセス(及び仮想プロセス)でのみ
+見ることができます。
+仮想プロセスからの全てのファイル及びディレクトリアクセスは
+仮想作業ディレクトリから実作業ディレクトリへと適切に
+正しく変換されます。
 
 =item wait() and waitpid()
 
-(wait() �ڤ� waitpid())
+(wait() 及び waitpid())
 
 =begin original
 
@@ -198,10 +198,10 @@ and return its status.
 
 =end original
 
-wait() �ڤ� waitpid() �� fork() �����֤���벾�ۥץ����� ID ��
-�Ϥ����Ȥ��Ǥ��ޤ���
-�����θƤӽФ��ϲ��ۥץ������ν�λ��Ŭ�ڤ��Ԥ���
-���ξ��֤��֤��ޤ���
+wait() 及び waitpid() に fork() から返される仮想プロセス ID を
+渡すことができます。
+これらの呼び出しは仮想プロセスの終了を適切に待ち、
+その状態を返します。
 
 =item kill()
 
@@ -216,14 +216,14 @@ implements the pseudo-process does not get a chance to clean up its resources.
 
 =end original
 
-kill() �� fork() �����֤��줿 ID ���Ϥ����Ȥǲ��ۥץ�������
-��ߤ��뤳�Ȥ��Ǥ��ޤ���
-������������Ỵ�ʾ������ʳ��ǤϻȤ��٤��ǤϤ���ޤ���
-�ʤ��ʤ饪�ڥ졼�ƥ��󥰥����ƥ�ϼ¹Ԥ��Ƥ��륹��åɤ���λ����
-���Ǥϥץ������꥽�����δ��������ݾڤ��ʤ����⤷��ʤ�����Ǥ���
-���ۥץ��������Ф��� kill() ��Ȥ����������꡼��������������ޤ�;
-����ϲ��ۥץ�������������Ƥ��륹��åɤˤϤ��Υ꥽�������������
-�����ߥ󥰤�Ȥ�ʤ�����Ǥ���
+kill() は fork() から返された ID を渡すことで仮想プロセスを
+停止することができます。
+しかしこれは悲惨な状況下以外では使うべきではありません、
+なぜならオペレーティングシステムは実行しているスレッドが終了した
+時ではプロセスリソースの完全性を保証しないかもしれないからです。
+仮想プロセスに対して kill() を使うと大抵メモリリークを引き起こします;
+これは仮想プロセスを実装しているスレッドにはそのリソースを解放する
+タイミングをとれないためです。
 
 =item exec()
 
@@ -240,14 +240,14 @@ waiting for after the exec().
 
 =end original
 
-���ۥץ������Ǥ� exec() �ƤӽФ��ϼºݤˤ��׵ᤵ�줿�¹Է�����
-�̤Υץ��������֤ǸƤӽФ������Υץ������ν�λ���ơ�������
-Ʊ�����ơ������ǽ�λ����褦���Ե����ޤ���
-����ϼ¹Ԥ��Ƥ���¹Է��������äƤ���ץ����� ID ���������Ω��
-Perl �� fork() ���֤��줿�ץ����� ID �ϰۤʤ뤳�Ȥ��̣���ޤ���
-Ʊ���褦�ˡ�fork() �ˤ�ä��֤��줿 ID ���Ϥ��ץ��������ؿ���
-exec() �θ���ԤäƤ���¥ץ������ǤϤʤ���exec() ��ƤӽФ���
-���ۥץ��������Ф��ƺ��Ѥ��ޤ���
+仮想プロセスでの exec() 呼び出しは実際には要求された実行形式を
+別のプロセス空間で呼び出し、そのプロセスの終了ステータスと
+同じステータスで終了するように待機します。
+これは実行している実行形式が持っているプロセス ID がそれに先立つ
+Perl の fork() で返されたプロセス ID は異なることを意味します。
+同じように、fork() によって返された ID を渡すプロセス操作関数は
+exec() の後で待っている実プロセスではなく、exec() を呼び出した
+仮想プロセスに対して作用します。
 
 =begin original
 
@@ -256,8 +256,8 @@ END blocks will still be called after the external process returns.
 
 =end original
 
-exec() �������ץ���������¦�ǸƤӽФ����ȡ�DESTROY �᥽�åɤ�
-END �֥��å��ϳ����ץ��������֤äƤ�����˸ƤӽФ����ޤޤǤ���
+exec() が擬似プロセスの内側で呼び出されると、DESTROY メソッドと
+END ブロックは外部プロセスが返ってきた後に呼び出されるままです。
 
 =item exit()
 
@@ -270,16 +270,16 @@ have exited.  See below for some limitations with open filehandles.
 
 =end original
 
-exit() �Ϥ��ĤǤ⡢��ư��λҲ��ۥץ�������ưŪ�� wait() ���Ƥ��顢
-�¹Ԥ��Ƥ��벾�ۥץ�������λ�����ޤ���
-����Ϥ��Υץ����������Ƥ�
-�¹���β��ۥץ���������λ����ޤǤ��Ф餯�δֽ�λ���ʤ����Ȥ�
-��̣���ޤ���
-�����ץ󤷤��ե�����ϥ�ɥ�˴ؤ������¤ˤĤ��Ƥϰʲ��򻲾Ȥ��Ƥ���������
+exit() はいつでも、起動中の子仮想プロセスを自動的に wait() してから、
+実行している仮想プロセスを終了させます。
+これはそのプロセスは全ての
+実行中の仮想プロセスが終了するまでしばらくの間終了しないことを
+意味します。
+オープンしたファイルハンドルに関する制限については以下を参照してください。
 
 =item Open handles to files, directories and network sockets
 
-(�ե����롢�ǥ��쥯�ȥꡢ�ڤӥͥåȥ�������åȤ��Ф��볫���Ƥ���ϥ�ɥ�)
+(ファイル、ディレクトリ、及びネットワークソケットに対する開いているハンドル)
 
 =begin original
 
@@ -289,15 +289,15 @@ some limitations.
 
 =end original
 
-���Ƥγ����Ƥ���ϥ�ɥ�ϻҥץ������� dup() �����Τǡ�
-�ɤ����Υץ������ǥϥ�ɥ���Ĥ��Ƥ�¾�ˤϱƶ����ޤ���
-�����Ĥ������¤ˤĤ��Ƥ�³���򸫤Ʋ�������
+全ての開いているハンドルは子プロセスで dup() されるので、
+どこかのプロセスでハンドルを閉じても他には影響しません。
+いくつかの制限については続きを見て下さい。
 
 =back
 
 =head2 Resource limits
 
-(�꥽����������)
+(リソースの制限)
 
 =begin original
 
@@ -311,17 +311,17 @@ etc.
 
 =end original
 
-���ڥ졼���󥰥����ƥफ�鸫��ȡ�fork() ���ߥ�졼����󤫤��������줿
-���ۥץ�������ñ�ʤ�Ʊ���ץ�������Υ���åɤǤ���
-����ϥ��ڥ졼���󥰥����ƥ�ˤ�äƲʤ���줿���ƤΥץ�������٥�����¤�
-���Ƥβ��ۥץ������ǰ��˳�����Ƥ��ޤ���
-����ˤϳ����Ƥ���ե����롢
-�ǥ��쥯�ȥꡢ�����åȤο������¡��ǥ����������̤����¡�
-���ꥵ���������¡�CPU �����̤����������ޤޤ�ޤ���
+オペレーシングシステムから見ると、fork() エミュレーションから生成された
+仮想プロセスは単なる同じプロセス内のスレッドです。
+これはオペレーシングシステムによって科せられた全てのプロセスレベルの制限は
+全ての仮想プロセスで一緒に割り当てられます。
+これには開いているファイル、
+ディレクトリ、ソケットの数の制限、ディスク使用量の制限、
+メモリサイズの制限、CPU 使用量の制限等が含まれます。
 
 =head2 Killing the parent process
 
-(�ƥץ������� kill)
+(親プロセスの kill)
 
 =begin original
 
@@ -331,13 +331,13 @@ and the whole process exits.
 
 =end original
 
-�ƥץ������� kill (Perl �� kill() �Ȥ߹��ߴؿ��㤷���ϳ�����Ʊ����
-ʪ��)�����ȡ����Ƥβ��ۥץ�������Ʊ�ͤ� kill ���졢�ץ��������Τ�
-��λ���ޤ���
+親プロセスが kill (Perl の kill() 組み込み関数若しくは外部の同等の
+物で)されると、全ての仮想プロセスも同様に kill され、プロセス全体が
+終了します。
 
 =head2 Lifetime of the parent process and pseudo-processes
 
-(�ƥץ������Ȳ��ۥץ���������¸����)
+(親プロセスと仮想プロセスの生存期間)
 
 =begin original
 
@@ -349,11 +349,11 @@ after their pseudo-children have exited.
 
 =end original
 
-�̾�Υ��٥�Ȥοʤ����Ǥ���С��ƥץ������Ȥ������鵯ư���줿
-���줾��β��ۥץ������Ͻ�λ�������˳Ƽ��β��ۻҥץ��������ԤĤǤ��礦��
-����Ͽƥץ������Ȥ������鵯ư���줿���줾��Τ��줬�ޤ�
-���ۿƥץ������Ǥ��벾�ۻҥץ������Ϥ����β��ۻҥץ���������λ����
-��ǤΤ߽�λ����Ǥ��礦��
+通常のイベントの進み方であれば、親プロセスとそこから起動された
+それぞれの仮想プロセスは終了する前に各自の仮想子プロセスを待つでしょう。
+これは親プロセスとそこから起動されたそれぞれのそれがまた
+仮想親プロセスである仮想子プロセスはそれらの仮想子プロセスが終了した
+後でのみ終了するでしょう。
 
 =begin original
 
@@ -363,19 +363,19 @@ will be provided in future.
 
 =end original
 
-���ۥץ����������οƥץ��������� detach ���Ƽ¹Ԥ��Ƥ���
-(�Ĥޤ�Ƥ�ɬ�פ��ʤ��Τʤ� wait() ����ɬ�פ��ʤ�)�ȥޡ���������ˡ��
-�����󶡤����Ǥ��礦��
+仮想プロセスがその親プロセスから detach して実行している
+(つまり親は必要がないのなら wait() する必要がない)とマークする方法は
+今後提供されるでしょう。
 
 =head2 CAVEATS AND LIMITATIONS
 
-(�ٹ�ڤ�����)
+(警告及び制限)
 
 =over 8
 
 =item BEGIN blocks
 
-(BEGIN �֥��å�)
+(BEGIN ブロック)
 
 =begin original
 
@@ -386,11 +386,11 @@ BEGIN block.  For example, consider the following code:
 
 =end original
 
-fork() ���ߥ�졼������ BEGIN �֥��å��ǸƤФ줿���ˤϴ����ˤ�
-������ư��ޤ���
-fork ���줿ʣ���� BEGIN �֥��å������Ƥ�¹Ԥ��ޤ�����BEGIN �֥��å��θ��
-���������ȥ꡼��Υѡ������³���ޤ���
-�㤨�С����Υ����ɤ�ͤ��Ƥߤޤ�:
+fork() エミュレーションは BEGIN ブロックで呼ばれた時には完全には
+正しく動作しません。
+fork された複製は BEGIN ブロックの内容を実行しますが、BEGIN ブロックの後の
+ソースストリームのパースを継続しません。
+例えば、次のコードを考えてみます:
 
     BEGIN {
         fork and exit;		# fork child and exit the parent
@@ -404,7 +404,7 @@ This will print:
 
 =end original
 
-����ϼ��Τ褦�˽��Ϥ��ޤ�:
+これは次のように出力します:
 
     inner
 
@@ -414,7 +414,7 @@ rather than the expected:
 
 =end original
 
-����ϼ��Τ褦�Ǥ���Ϥ��Ǥ�:
+本来は次のようであるはずです:
 
     inner
     outer
@@ -427,12 +427,12 @@ middle of a parse.
 
 =end original
 
-�������¤ϥѡ�������� Perl �ѡ����ˤ�äƻȤ��륹���å���
-ʣ���ȺƳ��ˤ�������õ��Ѥ�ʣ�����˵������Ƥ��ޤ���
+この制限はパース途中の Perl パーサによって使われるスタックの
+複製と再開における基礎技術の複雑さに起因しています。
 
 =item Open filehandles
 
-(�����Ƥ���ե�����ϥ�ɥ�)
+(開いているファイルハンドル)
 
 =begin original
 
@@ -445,13 +445,13 @@ separately in the child.
 
 =end original
 
-fork() ���������ǳ����Ƥ������ƤΥե�����ϥ�ɥ�� dup() ����ޤ���
-�Ĥޤꡢ�ե�����ϿƤȻҤȤ���Ω�����Ĥ��뤳�Ȥ��Ǥ��ޤ�; ������
-dup() ���줿�ϥ�ɥ�Ϥޤ�Ʊ���������ݥ��󥿤�ͭ���Ƥ��뤳�Ȥ�
-���դ��Ʋ�������
-�Ƥǥ��������֤��ѹ�����Ȥ���ϻҤˤ��ȵڤ������εդ�Ʊ�ͤǤ���
-����ϻҶ���ʬΥ�����������ݥ��󥿤�ɬ�פʥե�����򳫤����Ȥ�
-̵���ˤǤ��ޤ���
+fork() した時点で開いている全てのファイルハンドルは dup() されます。
+つまり、ファイルは親と子とで独立して閉じることができます; しかし
+dup() されたハンドルはまだ同じシークポインタを共有していることに
+注意して下さい。
+親でシーク位置を変更するとそれは子にも波及し、その逆も同様です。
+これは子供と分離したシークポインタが必要なファイルを開くことで
+無効にできます。
 
 =begin original
 
@@ -464,16 +464,16 @@ on this.
 
 =end original
 
-�����Ĥ��� OS (�ä� Solaris �� Unixware) �Ǥϡ��ҥץ��������� C<exit()> ��
-�ƤӽФ����ȡ��ƤΥ����ץ󤷤Ƥ���ե�����ϥ�ɥ�ϥե�å��夵���
-�Ĥ�����Τǡ���̤Ȥ��ƥե�����ϥ�ɥ뤬����ޤ���
-�����Υ����ƥ�Ǥϡ������ C<_exit()> ��Ƥ֤٤��Ǥ���
-C<_exit()> �� C<POSIX> �⥸�塼����̤��� Perl �����Ѳ�ǽ�Ǥ���
-����˴ؤ��뤵��ʤ����ˤĤ��Ƥϥ����ƥ�� man �ڡ����򻲹ͤˤ��Ƥ���������
+いくつかの OS (特に Solaris や Unixware) では、子プロセスから C<exit()> が
+呼び出されると、親のオープンしているファイルハンドルはフラッシュされて
+閉じられるので、結果としてファイルハンドルが壊れます。
+これらのシステムでは、代わりに C<_exit()> を呼ぶべきです。
+C<_exit()> は C<POSIX> モジュールを通して Perl で利用可能です。
+これに関するさらなる情報についてはシステムの man ページを参考にしてください。
 
 =item Forking pipe open() not yet implemented
 
-(pipe open() �� fork �Ϥޤ���������Ƥ��ޤ���)
+(pipe open() の fork はまだ実装されていません)
 
 =begin original
 
@@ -484,9 +484,9 @@ write to a forked child:
 
 =end original
 
-C<open(FOO��"|-")> �ڤ� C<open(BAR��"-|")> �����Ҥϼ�������Ƥ��ޤ���
-�������¤�����Ū�˥ѥ��פ��뿷���������ɤǴ�ñ�˼������ޤ���
-�ʲ������ fork ���줿�Ҥ˽񤭽Ф���ˡ�򼨤��ޤ�:
+C<open(FOO、"|-")> 及び C<open(BAR、"-|")> 構成子は実装されていません。
+この制限は明示的にパイプを作る新しいコードで簡単に取り除けます。
+以下の例で fork された子に書き出す方法を示します:
 
     # simulate open(FOO, "|-")
     sub pipe_to_fork ($) {
@@ -521,7 +521,7 @@ And this one reads from the child:
 
 =end original
 
-�����Ƥ�����ϻҤ����ɤ���Ǥ�:
+そしてこちらは子から読む時です:
 
     # simulate open(FOO, "-|")
     sub pipe_from_fork ($) {
@@ -556,11 +556,11 @@ Forking pipe open() constructs will be supported in future.
 
 =end original
 
-pipe open() �� fork �Ϻ�����������Ǥ��礦��
+pipe open() の fork は今後実装されるでしょう。
 
 =item Global state maintained by XSUBs 
 
-(XSUB ���ݻ����Ƥ��륰�����Х����)
+(XSUB の保持しているグローバル状態)
 
 =begin original
 
@@ -574,18 +574,18 @@ near future.
 
 =end original
 
-���켫�Ȥǥ������Х���֤��ݻ����Ƥ��볰���ؿ�(XSUBs; external
-subroutines)��������ư��ʤ��Ǥ��礦��
-���Τ褦�� XSUB �ϡ��ۤʤ벾�ۥץ��������饰�����Х�ǡ������Ф���Ʊ����
-������������Τ��ɤ�����Υ��å����ݻ����뤬���������Ƥξ��֤�
-fork() ���˼�����ʣ������� Perl ����ܥ�ơ��֥����֤�������
-ɬ�פ�����Ǥ��礦��
-��ĥ���Ф���ʣ�����륿���ߥ󥰤��󶡤��륳����Хå������϶ᤤ����
-�󶡤����Ǥ��礦��
+それ自身でグローバル状態を保持している外部関数(XSUBs; external
+subroutines)は正しく動作しないでしょう。
+そのような XSUB は、異なる仮想プロセスからグローバルデータに対して同時に
+アクセスするのを防ぐためのロックも保持するが、その全ての状態を
+fork() 時に自然と複製される Perl シンボルテーブル上に置くかする
+必要があるでしょう。
+拡張に対して複製するタイミングを提供するコールバック機構は近い将来
+提供されるでしょう。
 
 =item Interpreter embedded in larger application
 
-(�礭�ʥ��ץꥱ�������������ޤ�Ƥ��륤�󥿥ץ꥿)
+(大きなアプリケーションに埋め込まれているインタプリタ)
 
 =begin original
 
@@ -598,19 +598,19 @@ state carried on the application's own call stack is out of reach.
 
 =end original
 
-fork() ���ߥ�졼������ Perl ���󥿥ץ꥿��������Ǥ���
-Perl �����ɤ�ɾ��(eval)���� Perl API �򾯤������ƤӽФ��褦��
-���ץꥱ�������������Ǽ¹Ԥ���Ƥ�����ˤϡ�ͽ�������褦��
-�������ʤ����⤷��ޤ���
-����ϡ����ߥ�졼������ Perl ���󥿥ץ꥿���Ȥλ��äƤ���ǡ�����¤����
-�Τ餺����Ǽ���Ƥ��륢�ץꥱ��������
-���֤˴ؤ��Ƥϲ����Τ�ʤ�����������ޤ���
-�㤨�С����ץꥱ�������μ�ʬ�Υ����륹���å��Ƿ�³���Ƥ�����֤�
-����Ϥ��ʤ��Ȥ����ˤ���ޤ���
+fork() エミュレーションは Perl インタプリタを埋め込んでいて
+Perl コードを評価(eval)する Perl API を少しだけ呼び出すような
+アプリケーションの内部で実行されている時には、予期したように
+振る舞わないかもしれません。
+これは、エミュレーションは Perl インタプリタ自身の持っているデータ構造しか
+知らず、格納しているアプリケーションの
+状態に関しては何も知らないために生じます。
+例えば、アプリケーションの自分のコールスタックで継続している状態は
+手の届かないところにあります。
 
 =item Thread-safety of extensions
 
-(�������ƥ󥷥��Υ���åɰ�����)
+(エクステンションのスレッド安全性)
 
 =begin original
 
@@ -622,12 +622,12 @@ are expected to be fixed for thread-safety.
 
 =end original
 
-fork() ���ߥ�졼�����ϥ����ɤ�ʣ���Υ���åɤǼ¹Ԥ��뤿��ˡ�
-����åɥ����դǤʤ��饤�֥���ƤӽФ��������ƥ󥷥��� fork() ��
-�ƤӽФ���������ư��ʤ����⤷��ޤ���
-Perl �Υ���åɥ��ݡ��ȤϽ����˥ͥ��ƥ��֤� fork() ����äƤ���
-�ץ�åȥե�����ˤ⹭��Ƴ������Ƥ��Ƥ���Τǡ����Τ褦�ʥ������ƥ󥷥���
-����åɥ����դ˽�������褦�˴��Ԥ���Ƥ��ޤ���
+fork() エミュレーションはコードを複数のスレッドで実行するために、
+スレッドセーフでないライブラリを呼び出すエクステンションは fork() を
+呼び出すと正しく動作しないかもしれません。
+Perl のスレッドサポートは徐々にネイティブな fork() を持っている
+プラットフォームにも広く導入されてきているので、そのようなエクステンションは
+スレッドセーフに修正するように期待されています。
 
 =back
 
@@ -647,12 +647,12 @@ representation for pseudo-process IDs will be implemented in future.
 
 =end original
 
-���ۥץ����� ID ����������ͤȤ��뤳�Ȥ����� C<-1> ���˲����ޤ�;
-�ʤ��ʤ� wait() �� waitpid() �Ȥ��ä��ؿ��Ϥ����ͤ�
-�ü��ʪ�Ȥ��ư�������Ǥ���
-���ߤμ����ˤ����Ƥϡ������ƥ�ϥ桼������åɤ��Ф��ƥ���å� ID C<1> ��
-������Ƥ뤳�ȤϤʤ��Ȱ��ۤ˲��ꤷ�Ƥ��ޤ���
-���褤���ۥץ����� ID ��ɽ���Ϻ�����������Ǥ��礦��
+仮想プロセス ID を負の整数値とすることは整数 C<-1> を破壊します;
+なぜなら wait() や waitpid() といった関数はその値を
+特殊な物として扱うためです。
+現在の実装においては、システムはユーザスレッドに対してスレッド ID C<1> を
+割り当てることはないと暗黙に仮定しています。
+よりよい仮想プロセス ID の表現は今後実装されるでしょう。
 
 =item *
 
@@ -667,12 +667,12 @@ handles.
 
 =end original
 
-����Υ������ǡ�pipe()��socket()�������� accept() �黻�Ҥˤ�ä�
-�������줿 OS ��٥�Υϥ�ɥ�ϲ��ۥץ������Ǥ������
-ʣ������ʤ����Ȥ�����褦�Ǥ���
-���������ξ����ǤΤ�ȯ�����ޤ��������줬ȯ��������Ǥϡ�
-�ѥ��ץϥ�ɥ���ɤ߽񤭴֤ǤΥǥåɥ��å��䥽���åȥϥ�ɥ���Ф���
-���������Ǥ��ʤ��Ȥ��ä����Ȥ�������褦�Ǥ���
+特定のケースで、pipe()、socket()、そして accept() 演算子によって
+生成された OS レベルのハンドルは仮想プロセスできちんと
+複製されないことがあるようです。
+これは特定の状況でのみ発生しますが、これが発生する場所では、
+パイプハンドルの読み書き間でのデッドロックやソケットハンドルに対する
+送受信ができないといったことが起こるようです。
 
 =item *
 
@@ -682,7 +682,7 @@ This document may be incomplete in some respects.
 
 =end original
 
-���Υɥ�����Ȥϲ����꤫�Դ������⤷��ޤ���
+このドキュメントは何カ所か不完全かもしれません。
 
 =back
 
@@ -695,8 +695,8 @@ by ActiveState, with funding from Microsoft Corporation.
 
 =end original
 
-���󥤥󥿥ץ꥿�� fork() ���ߥ�졼�����Υ��ݡ��Ȥ�
-Microsoft Corporation �λ������ ActiveState �ˤ�äƼ�������ޤ�����
+並列インタプリタと fork() エミュレーションのサポートは
+Microsoft Corporation の資金援助で ActiveState によって実装されました。
 
 =begin original
 
@@ -705,8 +705,8 @@ E<lt>gsar@activestate.comE<gt>.
 
 =end original
 
-���Υɥ�����Ȥ� Gurusamy Sarathy E<lt>gsar@activestate.comE<gt>
-�ˤ�äƽ񤫤졢���ƥʥ󥹤���Ƥ��ޤ���
+このドキュメントは Gurusamy Sarathy E<lt>gsar@activestate.comE<gt>
+によって書かれ、メンテナンスされています。
 
 =head1 SEE ALSO
 
@@ -714,7 +714,7 @@ L<perlfunc/"fork">, L<perlipc>
 
 =begin meta
 
-Created: ���� ɹ�� (YAMASHINA Hio) <hio@hio.jp>
+Created: 山科 氷魚 (YAMASHINA Hio) <hio@hio.jp>
 Updated: Kentaro Shirakata <argrath@ub32.org> (5.10.0)
 
 =end meta

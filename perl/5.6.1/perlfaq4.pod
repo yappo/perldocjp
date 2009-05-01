@@ -6,97 +6,97 @@ perlfaq4 - Data Manipulation ($Revision: 1.49 $, $Date: 1999/05/23 20:37:49 $)
 
 =end original
 
-perlfaq4 - �ǡ������ ($Revision: 1.49 $, $Date: 1999/05/23 20:37:49 $)
+perlfaq4 - データ操作 ($Revision: 1.49 $, $Date: 1999/05/23 20:37:49 $)
 
 =head1 DESCRIPTION
 
-FAQ�Τ��Υ��������Ǥϡ����͡����ա�ʸ�������󡢥ϥå��夽��¾��
-�ǡ����μ�갷���˴ؤ������˲������Ƥ��ޤ���
+FAQのこのセクションでは、数値、日付、文字列、配列、ハッシュその他の
+データの取り扱いに関する質問に回答しています。
 
 =head1 Data: Numbers
 
 =head2 Why am I getting long decimals (eg, 19.9499999999999) instead of the numbers I should be getting (eg, 19.95)?
 
-(�ʤ� 19.95 �Τ褦�ʿ����ǤϤʤ���19.9499999999999 �Τ褦��Ĺ��
-�������ФƤ�����Ǥ��礦��?)
+(なぜ 19.95 のような数字ではなく、19.9499999999999 のような長い
+数字が出てきたんでしょうか?)
 
-���ؼԤιͤ���̵�¤μ¿��ϡ�
-����ԥ塼������ͭ�¸ĤΥӥåȤ�Ȥä�̵�¸Ĥο��ͤ�
-����뤿��ˡ�����ԥ塼������Ǥ϶���ͤȤ��Ƥ���ɽ���Ǥ��ޤ���
+数学者の考える無限の実数は、
+コンピューターは有限個のビットを使って無限個の数値を
+収めるために、コンピューター上では近似値としてしか表現できません。
 
-����Ū�ˤϡ����ʤ��λȤäƤ��륳��ԥ塼��������ư������������ʿ���
-�Ȥä�ɽ�����Ƥ��ޤ�����ư���������ϥե����뤫���ɤ߹��ޤ줿�ꡢ
-�ץ��������˥�ƥ��Ȥ��Ƹ���ơ�(19.95 �Τ褦��)������ư������ɽ�����顢
-����Ū�����ɽ�����Ѵ�����ޤ���
+内部的には、あなたの使っているコンピューターは浮動小数点数を二進数を
+使って表現しています。浮動小数点数はファイルから読み込まれたり、
+プログラム中にリテラルとして現れて、(19.95 のような)十進浮動小数点表記から、
+内部的な二進表現に変換されます。
 
-��������19.95 ����ʤ���ư���������Ǥ�Ŭ�ڤ�ɽ�����뤳�Ȥ��Ǥ��ޤ���
-����ϡ�������ư����������1/3�����Τ�ɽ�����Ȥ��Ǥ��ʤ��Τ�Ʊ�����ȤǤ���
+しかし、19.95 は二進の浮動小数点数では適切に表現することができません。
+これは、十進浮動小数点数で1/3を正確に表すことができないのと同じことです。
 
-��ư�������������Ϥ����Ȥ�����ʤ���ư���������Ͻ��ʤؤȺ����Ѵ�����ޤ���
-���ν��ʿ��ϡ�printf() �ǻ��ꤷ���ե����ޥåȤ���print ��Ȥä����ˤ�
-�����Ȥν��ϥե����ޥå�(L<perlvar/"$#">�򻲾�)�ǽ��Ϥ��Ԥ��ޤ���
-Perl5 �Ǥ� C<$#> �� Perl4 �Ȥϰ�ä��ǥե�����ͤ���äƤ��ޤ���
-��ʬ�� C<$#> ���ѹ����뤳�ȤϤ��ʤ��褦�ˤ��Ƥ���������
+浮動小数点数が出力されるとき、二進の浮動小数点数は十進へと再度変換されます。
+この十進数は、printf() で指定したフォーマットか、print を使った場合には
+カレントの出力フォーマット(L<perlvar/"$#">を参照)で出力が行われます。
+Perl5 での C<$#> は Perl4 とは違ったデフォルト値を持っています。
+自分で C<$#> を変更することはしないようにしてください。
 
-����� Perl �Τߤ˸¤餺����ʿ��ǽ��ʤ���ư����������ɽ���褦��
-B<���٤Ƥ�>����ԥ塼��������ˤ��ƤϤޤ�ޤ���
-Perl��Ǥ�����٤ν��ʿ���Math::BgiFloat�⥸�塼��ˤ�ä�
-�󶡤��Ƥ��ޤ�(ɸ��Perl���ۥ��åȤΰ����Ǥ�)����
-����Ū�����ϤȤƤ��٤��Ǥ���
+これは Perl のみに限らず、二進数で十進の浮動小数点数を表すような
+B<すべての>コンピューター言語にあてはまります。
+Perlは任意精度の十進数をMath::BgiFloatモジュールによって
+提供しています(標準Perl配布キットの一部です)が、
+数学的な操作はとても遅いです。
 
-;�פʿ�����������ˤϡ�C<printf("%.2f", 19.95)>�Τ褦���׵᤹��
-���٤�������ν񼰻����Ȥ��ޤ���
-L<perlop/"Floating-point Arithmetic">�򻲾Ȥ��Ƥ���������
+余計な数字を取り除くには、C<printf("%.2f", 19.95)>のように要求する
+精度を取るだけの書式指定を使います。
+L<perlop/"Floating-point Arithmetic">を参照してください。
 
 =head2 Why isn't my octal data interpreted correctly?
 
-(�ʤ����Ȭ�ʥǡ�������������ᤵ��ʤ��ΤǤ��礦��?)
+(なぜ私の八進データは正しく解釈されないのでしょうか?)
 
-Perl�ϡ��ץ���������˥�ƥ��Ȥ��Ƹ��줿�Ȥ��ˤ���Ȭ�ʿ��佽ϻ�ʿ���
-���򤷤ޤ���
-�����Τ�Τ�����ʳ��ξ�꤫��Ȥ��������ɤ߹��ޤ줿��硢
-�Ѵ��ϼ¹Ԥ���ޤ���
-�ͤ��Ѵ���ɬ�פȤ���Τʤ顢�ۤ�oct()��hex()��Ȥ�ʤ���Фʤ�ޤ���
-oct()��Ȭ�ʿ�("0350"��"377"�Τ褦����Ƭ��"0"���ʤ���ΤǤ�)��
-��ϻ�ʿ�("0x350")��ξ�����᤹��Τ��Ф��ơ�
-hex()����ϻ�ʿ�("0x255", "3A", "ff", "deadbeef"�Τ褦�ˡ�
-��Ƭ��"0x"���Ĥ�����Ĥ��ʤ��ä��ꤷ�ޤ�)�Τߤ��Ѵ����ޤ���
+Perlは、プログラムの中にリテラルとして現れたときにだけ八進数や十六進数を
+理解します。
+それらのものがそれ以外の場所からとか代入で読み込まれた場合、
+変換は実行されません。
+値の変換を必要とするのなら、陽にoct()やhex()を使わなければなりません。
+oct()は八進数("0350"や"377"のように先頭の"0"がないものでも)と
+十六進数("0x350")の両方を解釈するのに対して、
+hex()が十六進数("0x255", "3A", "ff", "deadbeef"のように、
+先頭に"0x"がついたりつかなかったりします)のみを変換します。
 
-��������ϡ��ѡ��ߥå�����Ȭ�ʿ��ǻ��ꤹ��褦��chmod(),
-mkdir(), umask(), sysopen() ��Ȥ����Ȥ����Ȥ��ˤ褯ȯ�����ޤ���
+この問題は、パーミッションを八進数で指定するようなchmod(),
+mkdir(), umask(), sysopen() を使おうとしたときによく発生します。
 
-    chmod(644,  $file);	# �ְ㤤 -- perl -w �Ϥ������ª���ޤ�
-    chmod(0644, $file);	# ������
+    chmod(644,  $file);	# 間違い -- perl -w はこれを捕捉します
+    chmod(0644, $file);	# 正しい
 
 =head2 Does Perl have a round() function?  What about ceil() and floor()? Trig functions?
 
-(Perl�ˤϴݤ�ؿ�������ޤ���? ceil()��floor()�Ȥϲ��Ǥ���? ���Ѵؿ���?)
+(Perlには丸め関数がありますか? ceil()とfloor()とは何ですか? 三角関数は?)
 
-int() �� 0 �ظ����äƴݤ��Ԥ����Ȥ�פ��Ф��Ƥ���������
-����η���Ǵݤ��Ԥ��ˤϡ�sprintf() �� printf() ��Ȥ����Ȥ�
-�̾�Ϥ�äȤ��ñ�ʤ�����Ǥ���
+int() は 0 へ向かって丸めを行うことを思い出してください。
+特定の桁数で丸めを行うには、sprintf() や printf() を使うことが
+通常はもっとも簡単なやり方です。
 
-    printf("%.3f", 3.1415926535);	# 3.142�����
+    printf("%.3f", 3.1415926535);	# 3.142を出力
 
-(ɸ�� Perl ���ۥ��åȤΰ����Ǥ���)POSIX �⥸�塼��� ceil()��floor()��
-�����Ƥ���¾�ο���Ū�ʴؿ��仰�Ѵؿ���¿����������Ƥ��ޤ���
+(標準 Perl 配布キットの一部である)POSIX モジュールは ceil()、floor()、
+そしてその他の数学的な関数や三角関数の多くを実装しています。
 
     use POSIX;
     $ceil   = ceil(3.5);			# 4
     $floor  = floor(3.5);			# 3
 
-perl �� 5.000 ���� 5.003 �Ǥϡ����Ѵؿ��� Math::Complex �⥸�塼������
-�¹Ԥ���Ƥ��ޤ�����
-5.004 �Ǥϡ�Math::Trig �⥸�塼��(ɸ�� Perl ���ۥ��åȤΰ����Ǥ�)��
-���Ѵؿ���������Ƥ��ޤ���
-����Ū�ˤϤ���� Math::Complex ��ȤäƤ��ơ������δؿ��ϼ¿��ͤ�ʣ�ǿ��ΰ��
-�Ѳ������뤳�Ȥ��Ǥ��ޤ���
-2 �� inverse sine �����ΰ���Ǥ���
+perl の 5.000 から 5.003 では、三角関数は Math::Complex モジュールの中で
+実行されていました。
+5.004 では、Math::Trig モジュール(標準 Perl 配布キットの一部です)が
+三角関数を実装しています。
+内部的にはこれは Math::Complex を使っていて、一部の関数は実数値を複素数領域へ
+変化させることができます。
+2 の inverse sine がその一例です。
 
-��ͻ�˴ط����륢�ץꥱ�������ˤ����Ƥϡ��ݤ�Ϥ�����Ȥ���������
-ɬ�פȤ��뤫�⤷��ޤ��󡣤����ơ��ݤ����ˡ��Ŭ�ڤ˻Ȥ���٤���ΤǤ���
-���ξ�硢Perl ���ȤäƤ��륷���ƥ�ˤ��ݤ���Ѥ��٤��ǤϤʤ���
-��ʬ���ȤǴݤ�ؿ����������褦�ˤ��٤��Ǥ��礦��
+金融に関係するアプリケーションにおいては、丸めはきちんとした実装を
+必要とするかもしれません。そして、丸めの方法は適切に使われるべきものです。
+この場合、Perl が使っているシステムによる丸めを信用すべきではなく、
+自分自身で丸め関数を実装するようにすべきでしょう。
 
 To see why, notice how you'll still have an issue on half-way-point
 alternation:
@@ -106,14 +106,14 @@ alternation:
     0.0 0.1 0.1 0.2 0.2 0.2 0.3 0.3 0.4 0.4 0.5 0.5 0.6 0.7 0.7 
     0.8 0.8 0.9 0.9 1.0 1.0
 
-Perl ���դ�ʤ��Ǥ��������������C�Ǥ�Ʊ�����ȤʤΤǤ���
-IEEE �ǤϤ��Τ褦�ˤ��뤳�Ȥ�Ҥ٤Ƥ��ޤ���
-Perl �Ǥο��ͤ������ͤ� 2**31(32 �ӥåȥޥ���ξ��)�ʲ��ξ��������ͤǤ����
-����Ū��������Ʊ���褦�˿����񤤤ޤ�������ʳ��ο��ͤϲ��ä�����ޤ���
+Perl を責めないでください。これはCでも同じことなのです。
+IEEE ではこのようにすることを述べています。
+Perl での数値は絶対値で 2**31(32 ビットマシンの場合)以下の場合の整数値であれば
+数学的な整数と同じように振る舞います。それ以外の数値は恩恵を受けません。
 
 =head2 How do I convert bits into ints?
 
-(�ӥå��󤫤��������Ѵ�����ˤ�?)
+(ビット列から整数に変換するには?)
 
 =begin original
 
@@ -123,9 +123,9 @@ L<perlfunc/"pack"> and L<perlfunc/"unpack">):
 
 =end original
 
-C<10110110> �Τ褦�� 1 �� 0 ���¤Ӥ򡢤�����б�������ʤ��ͤ���ä�
-�����顼���Ѵ�����ˤϡ�pack()�ؿ��� unpack() �ؿ���Ȥ��ޤ�
-(������L<perlfunc/"pack"> �� L<perlfunc/"unpack"> �ˤ���ޤ�)��
+C<10110110> のような 1 と 0 の並びを、それに対応する二進の値を持った
+スカラーに変換するには、pack()関数と unpack() 関数を使います
+(説明はL<perlfunc/"pack"> と L<perlfunc/"unpack"> にあります)。
 
 
     $decimal = unpack('c', pack('B8', '10110110'));
@@ -137,8 +137,8 @@ This is then unpacked as a character, which returns its ordinal value.
 
 =end original
 
-�����ʸ���� C<10110110> �� 8 �ӥåȤΥХ��ʥ깽¤�˥ѥå����ޤ���
-����ʸ���Ȥ��ƥ���ѥå����졢�������֤��ޤ���
+これは文字列 C<10110110> を 8 ビットのバイナリ構造にパックします。
+次に文字としてアンパックされ、序数を返します。
 
 =begin original
 
@@ -146,17 +146,17 @@ This does the same thing:
 
 =end original
 
-�ʲ���Ʊ�����Ȥ򤷤ޤ���
+以下は同じことをします。
 
     $decimal = ord(pack('B8', '10110110'));
 
-�̤Τ��������Ǥ�:
+別のやり方の例です:
 
     $binary_string = unpack('B*', "\x29");
 
 =head2 Why doesn't & work the way I want it to?
 
-(�ʤ�&�ϻ�λפä��̤��ư��ʤ��ΤǤ��礦��?)
+(なぜ&は私の思った通りに動作しないのでしょうか?)
 
 =begin original
 
@@ -168,28 +168,28 @@ C<00110011>).  The operators work with the binary form of a number
 
 =end original
 
-�Х��ʥ껻�ѱ黻�Ҥο����񤤤Ϥ��줬���ͤ��Ф��ƻȤ��Ƥ���Τ�
-ʸ������Ф��ƻȤ��Ƥ��뤫�Ȥ������Ȥ˰�¸���Ƥ��ޤ���
-���α黻�Ҥ�ʸ�����ӥåȤ��¤ӤȤ��ư����ޤ�(C<"3">�Ȥ���ʸ�����
-C<00110011>�Ȥ����ӥåȥѥ�����Ȥʤ�ޤ�)��
-���α黻�ҤϥХ��ʥ�������Ф���Ư���ޤ�
-(C<3>�Ȥ������ͤ�C<00000011>�Ȥ����ӥåȥѥ�����Ȥ��ư����ޤ�)��
+バイナリ算術演算子の振る舞いはそれが数値に対して使われているのか
+文字列に対して使われているかということに依存しています。
+その演算子は文字列をビットの並びとして扱います(C<"3">という文字列は
+C<00110011>というビットパターンとなります)。
+この演算子はバイナリ形式に対して働きます
+(C<3>という数値はC<00000011>というビットパターンとして扱われます)。
 
-�Ǥ����顢C<11 & 3> �Ͽ��ͤ��Ф���"and"�Ȥ���Ư���ޤ�(���η�̤�
-C<1>�Ǥ�)��C<"11" & "3">��ʸ������Ф���"and"�Ȥ���Ư���ޤ�
-(��̤�C<"1">�Ǥ�)��
+ですから、C<11 & 3> は数値に対する"and"として働きます(その結果は
+C<1>です)。C<"11" & "3">は文字列に対する"and"として働きます
+(結果はC<"1">です)。
 
-���꤬���������C<&>��C<|>��Ȥä��Ȥ��ˡ��ץ�����ޡ���
-���ڥ��ɤ����ͤȹͤ��Ƥ���Τ˼ºݤ�ʸ����Ǥ���褦�ʤȤ���
-������ޤ������󤲤ޤ��礦:
+ありがちな問題はC<&>とC<|>を使ったときに、プログラマーは
+オペランドが数値と考えているのに実際は文字列であるようなときに
+起こります。例を挙げましょう:
 
     if ("\020\020" & "\101\101") {
 	# ...
     }
 
-���ξ��η�̤���ĤΥʥ�Х��Ȥ�ޤ�ʸ����Ȥʤ�ޤ�
-(C<"\020\020">�η�̤Ǥ�)���������Perl�ˤ�����false���ͤǤ�
-����ޤ��󡣰ʲ��Τ褦�ˤ���ɬ�פ�����ޤ�:
+この場合の結果は二つのナルバイトを含む文字列となります
+(C<"\020\020">の結果です)が、これはPerlにおけるfalseの値では
+ありません。以下のようにする必要があります:
 
     if ( ("\020\020" & "\101\101") !~ /[^\000]/) {
 	# ...
@@ -198,16 +198,16 @@ C<1>�Ǥ�)��C<"11" & "3">��ʸ������Ф���"and"�Ȥ���Ư���ޤ�
 
 =head2 How do I multiply matrices?
 
-(������ѤϤɤΤ褦�ˤ��ΤǤ���?)
+(行列の積はどのようにやるのですか?)
 
-Math::Matrix �⥸�塼�뤫��Math::MatrixReal �⥸�塼��(CPAN ������Ǥ��ޤ�)��
-PDL �������ƥ󥷥��(����� CPAN ������Ǥ��ޤ�)��Ȥ��ޤ���
+Math::Matrix モジュールか、Math::MatrixReal モジュール(CPAN で入手できます)か
+PDL エクステンション(これも CPAN で入手できます)を使います。
 
 =head2 How do I perform an operation on a series of integers?
 
-(�����ͤ��¤Ӥ��Ф��Ƥ�������¹Ԥ���ˤ�?)
+(整数値の並びに対してある操作を実行するには?)
 
-����γ����Ǥ��Ф��ƴؿ���ƤӽФ��ơ���̤򽸤��ˤϤ������ޤ�:
+配列の各要素に対して関数を呼び出して、結果を集めるにはこうします:
 
     @results = map { my_func($_) } @array;
 
@@ -217,25 +217,25 @@ For example:
 
 =end original
 
-���󤲤ޤ��礦:
+例を挙げましょう:
 
     @triple = map { 3 * $_ } @single;
 
-����γ����Ǥ��Ф��ƴؿ���ƤӽФ�����ɤ⡢��̤�̵�뤹��Ȥ���
-���ˤϤ������ޤ�:
+配列の各要素に対して関数を呼び出すけれども、結果を無視するという
+場合にはこうします:
 
     foreach $iterator (@array) {
         some_func($iterator);
     }
 
-����(������)�ϰϤˤ����������Ф��ƴؿ���ƤӽФ��ˤϡ�������B<�Ǥ��ޤ�>:
+ある(小さな)範囲にある整数に対して関数を呼び出すには、こうもB<できます>:
 
     @results = map { some_func($_) } (5 .. 25);
 
-��������C<..>�黻�Ҥ������ϰϤˤ��뤹�٤Ƥ��������������������Ȥ������Ȥ�
-���դ��٤��Ǥ��礦��
-����ˤ�ä��礭���ϰϤ�Ȥä��������̤Υ������񤹤뤳�Ȥˤʤ�ޤ���
-���ˤ������ޤ�:
+ただし、C<..>演算子がその範囲にあるすべての整数の配列を生成するということに
+注意すべきでしょう。
+これによって大きな範囲を使った場合に大量のメモリを消費することになります。
+代りにこうします:
 
     @results = ();
     for ($i=5; $i < 500_005; $i++) {
@@ -249,9 +249,9 @@ loop will iterate over the range, without creating the entire range.
 
 =end original
 
-���ξ����� Perl5.005 �ǽ�������ޤ�����
-C<for> �롼�פ� C<..> ��Ȥ����Ȥǡ�
-�ϰ����Τ��������뤳�Ȥʤ�������ϰϤη����֤���Ԥ��ޤ���
+この状況は Perl5.005 で修正されました。
+C<for> ループで C<..> を使うことで、
+範囲全体を生成することなく特定の範囲の繰り返しを行えます。
 
     for my $i (5 .. 500_005) {
         push(@results, some_func($i));
@@ -263,24 +263,24 @@ will not create a list of 500,000 integers.
 
 =end original
 
-���Τ褦�ˤ��Ƥ� 500,000 �Ĥ������Υꥹ�Ȥ��������줿��Ϥ��ޤ���
+このようにしても 500,000 個の整数のリストが生成されたりはしません。
 
 =head2 How can I output Roman numerals?
 
-(�ɤ�����Х����޿�������ϤǤ��ޤ���?)
+(どうすればローマ数字を出力できますか?)
 
-http://www.perl.com/CPAN/modules/by-module/Roman �⥸�塼���
-���ꤷ�ޤ��礦��
+http://www.perl.com/CPAN/modules/by-module/Roman モジュールを
+入手しましょう。
 
 =head2 Why aren't my random numbers random?
 
-(�ʤ��������ϥ�����Ǥʤ���?)
+(なぜ私の乱数はランダムでないの?)
 
-5.004 ������ΥС������� Perl ��ȤäƤ���ʤ顢C<srand> ��
-�ץ������γ��ϻ����ǰ��ٸƤӽФ��Ƥ�äơ����������μ��
-���åȤ��Ƥ��ʤ���Фʤ�ޤ���5.004 �ʹߤΤ�ΤǤϳ��ϻ�����
-��ưŪ��C<srand>��ƤӽФ��ޤ������ٰʾ�C<srand>��ƤӽФ��Ƥ�
-�����ޤ�������μ�����Ȥ��Ƥ��ޤ��ޤ���
+5.004 より前のバージョンの Perl を使っているなら、C<srand> を
+プログラムの開始時点で一度呼び出してやって、乱数生成器の種を
+セットしてやらなければなりません。5.004 以降のものでは開始時点で
+自動的にC<srand>を呼び出します。二度以上C<srand>を呼び出しては
+いけません。乱数の質を落としてしまいます。
 
 =begin original
 
@@ -293,13 +293,13 @@ course, living in a state of sin.''
 
 =end original
 
-����ԥ塼������ͽ¬�Ǥ���ʪ���˴ؤ��Ƥ����Ω���ޤ������������
-���Ȥ��Ф��ƤϤ����ǤϤ���ޤ���(���ʤ��Υץ�����༫�ȤΥХ��ˤ�ä�
-������������뤳�ȤǤ���:-)
-Tom Phoenix�Ϥ�������ˤĤ���
-http://www.perl.com/CPAN/doc/FMTEYEWTK/random �ǲ��⤷�Ƥ��ޤ���
-����󡦥ե��󡦥Υ��ޥ�۩�����ȷ������Τ�����ˤ�ä�
-����������Ȼ�ߤ����ƤοͤϺ�ˤޤߤ�������Ƥ����
+コンピューターは予測できる物事に関しては役に立ちますが、ランダムな
+ことに対してはそうではありません(あなたのプログラム自身のバグによって
+引き起こされることですが:-)
+Tom Phoenixはこの問題について
+http://www.perl.com/CPAN/doc/FMTEYEWTK/random で解説しています。
+ジョン・フォン・ノイマン曰く、“決定性のやり方によって
+乱数を作ろうと試みる全ての人は罪にまみれて生きている”
 
 =begin original
 
@@ -311,37 +311,37 @@ pseudorandom generator than comes with your operating system, look at
 
 =end original
 
-CPAN �ˤ��� Math::TrulyRandom �⥸�塼���
-�����å����Ƥߤ���ɤ��Ǥ��礦��
-����Ϥ��ʤ��λȤäƤ��륷���ƥ�Υ����ޡ����������������Τ�
-�ȤäƤ����Դ������̤⤢��ޤ�������ʬ�ʤ�ΤǤ���
-���ʤ��λȤ����ڥ졼�ƥ��󥰥����ƥ�ǤĤ������Τ���
-��ä��ɼ��ʵ��������ɬ�פȤ��Ƥ���Τʤ顢
-http://www.nr.com �ˤ��� ``Numerical Recipes in C'' �򸫤�Ȥ褤�Ǥ��礦��
+CPAN にある Math::TrulyRandom モジュールも
+チェックしてみると良いでしょう。
+これはあなたの使っているシステムのタイマーを乱数を生成するのに
+使っていて不完全な面もありますが、十分なものです。
+あなたの使うオペレーティングシステムでつかえるものよりも
+もっと良質な擬似乱数を必要としているのなら、
+http://www.nr.com にある ``Numerical Recipes in C'' を見るとよいでしょう。
 
 =head1 Data: Dates
 
-(�ǡ���:����)
+(データ:日付)
 
 =head2 How do I find the week-of-the-year/day-of-the-year?
 
-(����ǯ���貿���Ǥ���Ȥ������ܤǤ��뤫���Τ�ˤ�?)
+(その年の第何週であるとか何日目であるかを知るには?)
 
-����ǯ�Ǥ�������localtime()���֤��������ˤ���ޤ�
-(L<perlfunc/"localtime">�򻲾�):
+その年での日数はlocaltime()が返す配列の中にあります
+(L<perlfunc/"localtime">を参照):
 
     $day_of_year = (localtime(time()))[7];
 
-���뤤�Ϥ�ä��ɤߤ䤹������(5.004�ʹߤξ��):
+あるいはもっと読みやすくして(5.004以降の場合):
 
     use Time::localtime;
     $day_of_year = localtime(time())->yday;
 
-����ǯ���貿���Ǥ��뤫�ϡ������7�ǳ��е����ޤ�:
+その年の第何週であるかは、これを7で割れば求められます:
 
     $week_of_year = int($day_of_year / 7);
 
-������󡢤����ǤϿ�����0����Ϥޤ�ޤ���
+もちろん、ここでは数字は0から始まります。
 
 =begin original
 
@@ -355,16 +355,16 @@ WW1 to be the frist week with a Thursday in it.
 
 =end original
 
-CPAN �ˤ��� Date::Calc �⥸�塼��������������ʤɤ����շ׻��˴ؤ���ؿ���
-¿���󶡤��Ƥ��ޤ���
-����콵�פ����ƤΥӥ��ͥ���Ʊ���ǤϤʤ����Ȥ����դ��Ƥ���������
-�㤨�Х���ꥫ�Υӥ��ͥ��Ǥϡ����Ф���
-���ˤ�ޤ�ǽ�ν�����콵�Ȥ��ƹͤ��ޤ�����
-ISO 8601�Ǥϰ�äƤ��ơ���������ޤཱུ����콵�Ȥߤʤ��ޤ���
+CPAN にある Date::Calc モジュールは日数、週数などの日付計算に関する関数を
+多く提供しています。
+「第一週」が全てのビジネスで同じではないことに注意してください。
+例えばアメリカのビジネスでは、しばしば
+月曜を含む最初の週を第一週として考えますが、
+ISO 8601では違っていて、木曜日を含む週を第一週とみなします。
 
 =head2 How do I find the current century or millennium?
 
-(���ߤ���������ǯ�����Τ�ˤϤɤ�����Ф����Ǥ���?)
+(現在の世紀や千年紀を知るにはどうすればいいですか?)
 
 =begin original
 
@@ -372,7 +372,7 @@ Use the following simple functions:
 
 =end original
 
-�ʲ���ñ��ʴؿ���ȤäƤ�������:
+以下の単純な関数を使ってください:
 
     sub get_century    { 
 	return int((((localtime(shift || time))[5] + 1999))/100);
@@ -391,16 +391,16 @@ be used to reliably determine the current century or millennium.
 
 =end original
 
-�����ƥ�ˤ�äƤϡ�POSIX �⥸�塼��� strftime() �ؿ���
-��ɸ�����ˡ�� C<%C> �ե����ޥå�("century"���ȼ�ĥ����뤳�Ȥ�����ޤ�)��
-�Ȥ��褦�˳�ĥ����Ƥ��뤫�⤷��ޤ���
-����������ǤϤ���ޤ��󡣤ʤ��ʤ餳�Τ褦�ʥ����ƥ�ΤۤȤ�ɤǤϡ�
-����� 4 ���ǯ�ξ�� 2 ��򼨤��Ƥ�������ʤΤǡ�
-���ߤ���������ǯ������ꤹ�뿮��Ǥ�����ˡ�ǤϤ���ޤ���
+システムによっては、POSIX モジュールの strftime() 関数が
+非標準の方法で C<%C> フォーマット("century"だと主張されることがあります)を
+使うように拡張されているかもしれません。
+これは世紀ではありません。なぜならこのようなシステムのほとんどでは、
+これは 4 桁の年の上位 2 桁を示しているだけなので、
+現在の世紀や千年紀を決定する信頼できる方法ではありません。
 
 =head2 How can I compare two date strings?
 
-(�ɤ�������Ĥ�����ʸ�������ӤǤ��ޤ���?)
+(どうやれば二つの日付文字列を比較できますか?)
 
 =begin original
 
@@ -416,32 +416,32 @@ routine to handle arbitrary date formats.
 
 =end original
 
-�⤷�����ƥ೫�ϻ�������ηв��ÿ������դ��Ǽ���Ƥ���ΤǤ���С�
-��������⤦����������Ƥ��е����ޤ���
-�⤷���ʤ�����¤����ä�����(ǯ����������֡�ʬ���ä���̤���)�ΤǤ���С�
-���������ӥ�ƥ���ñ��������Ψ�������顢ñ�� timelocal �� timegm
-(ɸ�����ۥѥå������� Time::Local �⥸�塼��ˤ���ޤ�) ��Ȥä�
-��¤����ä����դ򵪸�������ÿ����Ѵ����Ƥ���������
-�����������դη������狼��ʤ����ϡ�
-���Ϥǥѡ����롼����������
-CPAN�ˤ���Date::Manip��Date::Calc�Τɤ��餫��Ȥ��ޤ��礦��
+もしシステム開始時点からの経過秒数で日付を格納しているのであれば、
+片方からもう一方を引いてやれば求められます。
+もしあなたが構造を持った日付(年、日、月、時間、分、秒を区別する)のであれば、
+アクセシビリティ、単純性、効率の点から、単に timelocal か timegm
+(標準配布パッケージの Time::Local モジュールにあります) を使って
+構造を持った日付を紀元からの秒数に変換してください。
+しかし、日付の形式がわからない場合は、
+自力でパーズルーチンを書く前に
+CPANにあるDate::ManipかDate::Calcのどちらかを使いましょう。
 
 =head2 How can I take a string and turn it into epoch seconds?
 
-(�ɤ����С�ʸ����������äơ�����򤢤��������ηв��ÿ����Ѵ��Ǥ��ޤ���?)
+(どうやれば、文字列を受け取って、それをある時点からの経過秒数に変換できますか?)
 
-�⤷���줬���Ʊ���񼰤Ǥ��뽽ʬ��ɸ��Ū��ʸ����Ǥ���С�
-�����ʬ�䤷�ơ�������ʬ��ʬ��ɸ���Time::Local�⥸�塼���C<timelocal>��
-�Ϥ��ޤ���
-����ʤ���С�CPAN�ˤ���Date::Calc�⥸�塼���
-Date::Manip�⥸�塼��򸫤�٤��Ǥ��礦��
+もしそれが常に同じ書式である十分に標準的な文字列であれば、
+それを分割して、その部分部分を標準のTime::LocalモジュールのC<timelocal>に
+渡せます。
+さもなければ、CPANにあるDate::Calcモジュールと
+Date::Manipモジュールを見るべきでしょう。
 
 =head2 How can I find the Julian Day?
 
-(�ɤ����Х�ꥦ���� (�ޤ��ϥ�ꥦ��������Julian Day) ������ޤ���?)
+(どうやればユリウス日 (またはユリウス積日、Julian Day) を求められますか?)
 
-Time::JulianDay (CPAN �����Ѳ�ǽ�� Time �⥸�塼��ΰ����Ǥ�)��
-�ȤäƤ���������
+Time::JulianDay (CPAN で利用可能な Time モジュールの一部です)を
+使ってください。
 
 =begin original
 
@@ -453,12 +453,12 @@ either Date::Manip or Date::Calc, without converting to Julian Day first.
 
 =end original
 
-��������˿�����Ƭ�����������ˡ����ʤ������Ƥ����Τ�������
-I<��ꥦ��> ���ʤΤ��򤷤ä����ǧ���Ƥ���������
-�ºݤΤȤ��������դη׻��������褦��Ϣ³�������դ�������ˡ��
-��̣����������ǤϤʤ��Ǥ���?
-�⤷���դη׻��˶�̣������ʤ顢Date::Manip �ޤ��� Date::Calc ��Ȥ���
-��ꥦ�������Ѵ����뤳�Ȥʤ��Ԥ��ޤ���
+この問題に深く没頭しすぎる前に、あなたが求めているものが本当に
+I<ユリウス> 日なのかをしっかり確認してください。
+実際のところは日付の計算が出来るように連続した日付を得る方法に
+興味があるだけではないですか?
+もし日付の計算に興味があるなら、Date::Manip または Date::Calc を使えば
+ユリウス日に変換することなく行えます。
 
 =begin original
 
@@ -474,27 +474,27 @@ and Date::Calc modules.  (Thanks to David Cassell for most of this text.)
 
 =end original
 
-��������򤳤� FAQ �ǰ����ˤϺ����礭�����ޤ�����
-�����Ѹ��(���Τ�)���ߤǤϥ��쥴�ꥪ��˼�ä������Ƥ��롢
-���ޤ�Ȥ��Ƥ��ʤ���ꥦ����򡢤��뤦ǯ(���뤤�Ϥ���¾�����ݻ�)���򤱤�
-����˻Ȥ��뤳�Ȥ⤢��ޤ����ޤ���
-�����Ѹ��(�����ΤǤ���)�ʲ��ΰ�̣�ˤ��Ѥ����ޤ�: [1] ���쥴�ꥪ��Ǥ�����;
-[2] ����λ������顢���뤤�ϡֵ�����(Unix �Ǥ� 1970 ǯ��MSDOS/Windows �������Ǥ�
-1980 ǯ)������������������ߤ����Τ��ǽ�ΰ�̣�Ǥʤ��Τʤ顢
-Date::Manip �� Date::Calc �Υ⥸�塼���Ĵ�٤ƤߤƤ���������
-(����ʸ�ϤΤۤȤ�ɤ��Ф��� David Cassell �˴��դ��ޤ���)
+この話題をこの FAQ で扱うには混乱が大きすぎますが、
+この用語を(正確に)現在ではグレゴリオ暦に取って代わられている、
+あまり使われていないユリウス暦を、うるう年(あるいはその他の面倒事)を避ける
+ために使われることもあります。また、
+この用語は(不正確ですが)以下の意味にも用いられます: [1] グレゴリオ暦での日数;
+[2] 特定の時点から、あるいは「起源」(Unix では 1970 年、MSDOS/Windows の世界では
+1980 年)からの日数。本当に欲しいのが最初の意味でないのなら、
+Date::Manip と Date::Calc のモジュールを調べてみてください。
+(この文章のほとんどに対して David Cassell に感謝します。)
 
 =head2 How do I find yesterday's date?
 
-(���������դ�����ˤ�?)
+(昨日の日付を得るには?)
 
-C<time()>�ؿ��Ϥ����������ηв���֤��ä��֤��ޤ���
-24 ����ʬ����Τ����ˤ�
+C<time()>関数はある時点からの経過時間を秒で返します。
+24 時間分を取りのぞくには
 
     $yesterday = time() - ( 24 * 60 * 60 );
 
-�Τ褦�ˤ��ޤ��������ơ������C<localtime()>���Ϥ��Ƥ���ǯ��
-��������֡�ʬ���ä����뤳�Ȥ���ǽ�Ǥ���
+のようにします。そして、これをC<localtime()>に渡してやれば年、
+月、日、時間、分、秒を得ることが可能です。
 
 =begin original
 
@@ -505,11 +505,11 @@ A solution to this issue is offered by Russ Allbery.
 
 =end original
 
-���Υ����ɤ� 1 �� 24 ���֤Ǥ���Ȥ���������֤��Ƥ��뤳�Ȥ�
-��ʬ���դ��Ƥ���������
-�ۤȤ�ɤοͤˤȤäơ������Ǥʤ�����ǯ�� 2 ������ޤ�:
-�ƻ��֤ˤʤ����Ȳƻ��֤Ǥʤ��ʤ����Ǥ���
-��������β�ˡ�� Russ Allbery �ˤ�ä��󶡤���ޤ���:
+このコードは 1 日 24 時間であるという仮定を置いていることに
+十分注意してください。
+ほとんどの人にとって、そうでない日が年に 2 日あります:
+夏時間になる日と夏時間でなくなる日です。
+この問題の解法は Russ Allbery によって提供されました:
 
     sub yesterday {
 	my $now  = defined $_[0] ? $_[0] : time;
@@ -553,11 +553,11 @@ A solution to this issue is offered by Russ Allbery.
 
 =head2 Does Perl have a Year 2000 problem?  Is Perl Y2K compliant?
 
-(Perl�ˤ�2000ǯ���꤬����ΤǤ���? Perl �� 2000 ǯ�б��Ǥ���?)
+(Perlには2000年問題があるのですか? Perl は 2000 年対応ですか?)
 
-û����: ��������Perl �ˤ� 2000 ǯ����Ϥ���ޤ���
-�����������ʤ��θۤäƤ���ץ�����ޡ��������Ǥʤ��褦��
-�ȤäƤ���ʤ� 2000 ǯ����Ϥ���ޤ���
+短い答: いいえ。Perl には 2000 年問題はありません。
+ただし、あなたの雇っているプログラマーがそうでないように
+使っているなら 2000 年問題はあります。
 
 =begin original
 
@@ -568,26 +568,26 @@ you can.  Is that the pencil's fault?  Of course it isn't.
 
 =end original
 
-Ĺ����: ���μ����ʪ�����������äƤ��ޤ���
-Perl �Ϥ��ʤ��α�ɮ��Ʊ�����餤�� Y2K �б��Ǥ���
-����ʾ�Ǥ⤽��ʲ��Ǥ⤢��ޤ���
-���ʤ��α�ɮ��Ȥä� Y2K �б��Ǥʤ�����񤱤ޤ���?�������񤱤ޤ���
-����ϱ�ɮ�Τ����Ǥ���?�������㤤�ޤ���
+長い答: この質問は物事の理解を誤っています。
+Perl はあなたの鉛筆と同じぐらいに Y2K 対応です。
+それ以上でもそれ以下でもありません。
+あなたの鉛筆を使って Y2K 対応でないメモを書けますか?もちろん書けます。
+それは鉛筆のせいですか?もちろん違います。
 
-Perl ���Ȥ߹��ߤ����ա�����ؿ�(gmtime��localtime)��
-2000 ǯ��ۤ���ǯ����̤��뤿���ɬ�פʾ�����󶡤��Ƥ��ޤ�
-(32 �ӥåȥޥ����ȥ�֥뤬ľ�⤹��Τ�2038ǯ�Ǥ�)��
-�����δؿ����ꥹ�ȥ���ƥ����ȤǻȤ�줿�Ȥ����֤�ǯ����
-�ºݤ�ǯ���� 1900 ��������ͤǤ���1910 ǯ���� 1999 ǯ��
-���Τ�����Ǥ�B<���ޤ���>���ο��ͤȤʤ�ޤ���
-2000 ǯ������򤱤�ˤϡ�ǯ�����ǰ���ʤ��褦�ˤ��ޤ���
+Perl に組み込みの日付・時刻関数(gmtimeとlocaltime)は
+2000 年を越えた年も区別するために必要な情報を提供しています
+(32 ビットマシンをトラブルが直撃するのは2038年です)。
+これらの関数がリストコンテキストで使われたときに返す年数は
+実際の年から 1900 を引いた値です。1910 年から 1999 年は
+このやり方ではB<たまたま>二桁の数値となります。
+2000 年問題を避けるには、年を二桁で扱わないようにします。
 
-gmtime()��localtime()�ϡ������顼����ƥ����ȤǸƤӽФ��줿���ˤ�
-������ǯ��ޤ�Ǥ��륿���ॹ�����ʸ������֤��ޤ���
-���Ȥ��С�
-C<$timestamp = gmtime(1005613200)>��
-$timestamp �� "Tue Nov 13 01:00:00 2001"
-�򥻥åȤ��ޤ��������ˤ� 2000 ǯ����Ϥ���ޤ���
+gmtime()やlocaltime()は、スカラーコンテキストで呼び出された場合には
+完全な年を含んでいるタイムスタンプ文字列を返します。
+たとえば、
+C<$timestamp = gmtime(1005613200)>は
+$timestamp に "Tue Nov 13 01:00:00 2001"
+をセットします。ここには 2000 年問題はありません。
 
 =begin original
 
@@ -599,42 +599,42 @@ a longer exposition.
 
 =end original
 
-���Τ��Ȥϡ�Perl �� 2000 ǯ����򵯤����褦�ʥץ���������Τ�
-�Ȥ��ʤ��Ȥ������ȤǤϤ���ޤ��󡣤��ʤ��λȤ���ɮ��
-�����Ǥ���褦�ˡ��Ĥޤꡢ����ˤޤĤ��ߥ��ǤϤʤ����Ȥ��ͤ�
-�ְ㤤�Ǥ���Ȥ������ȤǤ���
-NRA ��ɷ㤹�뤫�⤷��ޤ��󤬡�
-``Perl �� 2000 ǯ������Ǥ��ˤ�ʤ����ͤ��Ǥ��ˤ�Τ�''
-�Ȥ������ȤǤ���
-�ܤ���������http://language.perl.com/news/y2k.html�򻲾Ȥ��Ƥ���������
+このことは、Perl で 2000 年問題を起こすようなプログラムを作るのに
+使えないということではありません。あなたの使う鉛筆も
+そうであるように。つまり、言語にまつわるミスではなく、使う人の
+間違いであるということです。
+NRA を刺激するかもしれませんが、
+``Perl は 2000 年問題を打ち破らない。人が打ち破るのだ''
+ということです。
+詳しい説明はhttp://language.perl.com/news/y2k.htmlを参照してください。
 
 =head1 Data: Strings
 
 =head2 How do I validate input?
 
-(���Ϥ򸡺�����ˤ�?)
+(入力を検査するには?)
 
-����������Ф�������ϡ��̾�����Ū�ʥ����å���ȼ�ä�����ɽ���Ǥ��礦��
-�ܤ����Ϥ����ꤷ������(���͡��Żҥ᡼�륢�ɥ쥹���ʤɤʤ�)��
-�����äƤ���������
+この問題に対する回答は、通常は補助的なロジックを伴った正規表現でしょう。
+詳しくはより限定した質問(数値、電子メールアドレス、などなど)を
+あたってください。
 
 =head2 How do I unescape a string?
 
-(ʸ����Υ��󥨥������� (unescape)�򤹤�ˤ�?)
+(文字列のアンエスケープ (unescape)をするには?)
 
-����Ϥ��ʤ��Τ����ȥ��������סɤ��ʤ�Ǥ��뤫�ˤ��ޤ���URL ��
-���������פ�L<perlfaq9>�ǰ��äƤ��ޤ����Хå�����å���ˤ��
-�����륨�������פϰʲ��Τ褦�ˤ��Ƽ������ޤ�:
+それはあなたのいう“エスケープ”がなんであるかによります。URL の
+エスケープはL<perlfaq9>で扱っています。バックスラッシュによる
+シェルエスケープは以下のようにして取り除きます:
 
     s/\\(.)/$1/g;
 
-����� \n ���Ȥ� \t�����뤤�Ϥ���¾���ü�ʥ��������פ�Ÿ�����ޤ���
+これは \n だとか \t、あるいはその他の特殊なエスケープを展開しません。
 
 =head2 How do I remove consecutive pairs of characters?
 
-(����饯����Ϣ³�����Ȥ�������ˤ�?)
+(キャラクタの連続した組を取り除くには?)
 
-C<"abbcccd"> �� C<"abccd">���Ѵ�����ˤ�:
+C<"abbcccd"> を C<"abccd">に変換するには:
 
     s/(.)\1/$1/g;	# add /s to include newlines
 
@@ -644,42 +644,42 @@ Here's a solution that turns "abbcccd" to "abcd":
 
 =end original
 
-�ʲ��� "abbcccd" �� "abcd" ���Ѵ�������ˡ�Ǥ�:
+以下は "abbcccd" を "abcd" に変換する方法です:
 
     y///cs;	# y == tr, but shorter :-)
 
 =head2 How do I expand function calls in a string?
 
-(ʸ������ˤ���ؿ��ƤӽФ���Ÿ������ˤ�?)
+(文字列中にある関数呼び出しを展開するには?)
 
-����� L<perlref>����������Ƥ��ޤ�������Ū�ˤϡ�����ϥ������ƥ��󥰤�
-�ɤߤ䤹������������ळ�ȤǤ�������ǽ�ǤϤ���ޤ���
-ʸ�����(�ꥹ�ȥ���ƥ����Ȥ�)���֥롼����ƤӽФ���Ÿ������ˤ�:
+これは L<perlref>で説明されています。一般的には、これはクォーティングと
+読みやすさの問題に絡むことですが、可能ではあります。
+文字列へ(リストコンテキストで)サブルーチン呼び出しを展開するには:
 
     print "My sub returned @{[mysub(1,2,3)]} that time.\n";
 
-�����顼����ƥ����Ȥ������褤�Τʤ顢Ʊ�ͤʤ��ޤ�������äѤ������Ǥ���
+スカラーコンテキストの方がよいのなら、同様なごまかしがやっぱり便利です。
 
     print "That yields ${\($n + 5)} widgets\n";
 
-Perl 5.004�ˤ�C<{...}>����μ��˥ꥹ�ȥ���ƥ����Ȥ�Ϳ���Ƥ��ޤ��Ȥ���
-�Х�������ޤ����������5.005�ǤϽ�������Ƥ����ޤ���
+Perl 5.004にはC<{...}>の中の式にリストコンテキストを与えてしまうという
+バグがありますが、これは5.005では修整されていいます。
 
-FAQ�Τ��Υ��������ˤ���
-��How can I expand variables in text strings?��
-�⻲�Ȥ��Ƥ���������
+FAQのこのセクションにある
+“How can I expand variables in text strings?”
+も参照してください。
 
 =head2 How do I find matching/nesting anything?
 
-(�������ޥå����Ƥ���/�ͥ��Ȥ��Ƥ���Ȥ������Ȥ򸡽Ф���ˤ�?)
+(何かがマッチしている/ネストしているということを検出するには?)
 
-����ϰ�Ĥ�����ɽ���ǲ��Ǥ��ʤ��ۤɤ�ʣ��������ʤΤǤ���
-ñ��Υ���饯������Ĥ˰Ϥޤ줿�����򸫤Ĥ������ˤϡ� 
-C</x([^x]*)x/>�Ȥ��ä��ѥ������Ȥ���$1�˸����η�̤�������Ǥ��礦��
-ʣ������饯�����˰Ϥޤ줿��Τξ��ϡ�
-C</alpha(.*?)omega/>�Τ褦�ʥѥ�����ɬ�פȤʤ�Ǥ��礦��
-���������ͥ��Ȥ����ѥ�����򰷤��褦�ʤ�ΤϤ���ޤ��󤷡��Ǥ��ޤ���
-������н褹��ˤϥѡ������ɬ�פ�����ޤ���
+これは一つの正規表現で解決できないほどの複雑な問題なのです。
+単一のキャラクター二つに囲まれた何かを見つけだすには、 
+C</x([^x]*)x/>といったパターンを使えば$1に検査の結果が得られるでしょう。
+複数キャラクターに囲まれたものの場合は、
+C</alpha(.*?)omega/>のようなパターンが必要となるでしょう。
+しかし、ネストしたパターンを扱うようなものはありませんし、できません。
+これに対処するにはパーザを書く必要があります。
 
 =begin original
 
@@ -690,10 +690,10 @@ and the byacc program.
 
 =end original
 
-�⤷�ޤ���˥ѡ����������ȹͤ��Ƥ���Τʤ顢
-������������Ƥ����褦�ʥ⥸�塼��䤽��¾�Υץ�����ब����ޤ���
-CPAN�ˤ�Parse::RecDescent Parse::Yapp, and Text::Balanced
-������ޤ�����byacc�ץ������⤢��ޤ���
+もしまじめにパーザを作ろうと考えているのなら、
+それを手助けしてくれるようなモジュールやその他のプログラムがあります。
+CPANにはParse::RecDescent Parse::Yapp, and Text::Balanced
+がありますし、byaccプログラムもあります。
 
 =begin original
 
@@ -702,11 +702,11 @@ pull out the smallest nesting parts one at a time:
 
 =end original
 
-ñ����˲�Ū��inside-out���ץ������⤢��ޤ���
-����ϰʲ��Τ褦�ˤ��ư��٤˺Ǿ��Υͥ�����ʬ����Ф����Ȥ�����ΤǤ���
+単純で破壊的なinside-outアプローチもあります。
+これは以下のようにして一度に最小のネスト部分を取り出そうというものです。
 
     while (s/BEGIN((?:(?!BEGIN)(?!END).)*)END//gs) {
-	# $1���Ф�������Ԥ�
+	# $1に対する操作を行う
     } 
 
 =begin original
@@ -718,12 +718,12 @@ really does work:
 
 =end original
 
-���ʣ���ǹ�̯�ʤ������Perl������ɽ�����󥸥��Ȥ��Ȥ�����Τ�����ޤ���
-�����Dean Inada�ˤ���Τ�Obfuscated Perl ����ƥ��Ȥ�
-����ȥꤵ���褦����ʪ�Ǥ�����������Ư���ޤ�:
+より複雑で巧妙なやり方にPerlの正規表現エンジンを使うというものがあります。
+これはDean InadaによるものでObfuscated Perl コンテストに
+エントリされるような代物ですが、正しく働きます:
 
-    # $_ �ˤϲ����оݤ�ʸ���󤬤���ޤ�
-    # BEGIN��END�ϥͥ��Ȥ����ƥ����Ȥγ��ϤȽ�λ�Ȥ�Ԥ��ޤ��� 
+    # $_ には解析対象の文字列があります
+    # BEGINとENDはネストしたテキストの開始と終了とを行います。 
 
     @( = ('(','');
     @) = (')','');
@@ -733,59 +733,59 @@ really does work:
 
 =head2 How do I reverse a string?
 
-(ʸ�����Ҥä����֤��ˤ�?)
+(文字列をひっくり返すには?)
 
-L<perlfunc/reverse>����������Ƥ���褦�ˡ������顼����ƥ����Ȥ�
-reverse()��Ȥ��ޤ���
+L<perlfunc/reverse>で説明されているように、スカラーコンテキストで
+reverse()を使います。
 
     $reversed = reverse $string;
 
 =head2 How do I expand tabs in a string?
 
-(ʸ������ˤ��륿�֤�Ÿ������ˤ�?)
+(文字列中にあるタブを展開するには?)
 
-�ʲ��Τ褦�ˤ��ƤǤ��ޤ�:
+以下のようにしてできます:
 
     1 while $string =~ s/\t+/' ' x (length($&) * 8 - length($`) % 8)/e;
 
-���뤤�ϡ�����ñ��Text::Tabs�⥸�塼��(ɸ��Perl���ۥ��åȤΰ����Ǥ�)��
-�ȤäƤ�Ǥ��ޤ���
+あるいは、ただ単にText::Tabsモジュール(標準Perl配布キットの一部です)を
+使ってもできます。
 
     use Text::Tabs;
     @expanded_lines = expand(@lines_with_tabs);
 
 =head2 How do I reformat a paragraph?
 
-(�ѥ饰��դ���������ˤ�?)
+(パラグラフを整形するには?)
 
-Text::Wrap(ɸ��Perl���ۥ��åȤΰ����Ǥ�)��Ȥ��ޤ���
+Text::Wrap(標準Perl配布キットの一部です)を使います。
 
     use Text::Wrap;
     print wrap("\t", '  ', @paragraphs);
 
-Text::Wrap��Ϳ����ѥ饰��դˤ������ߤβ��Ԥ����äƤϤ����ޤ���
-Text::Wrap�ϹԤ򥸥㥹�ƥ��ե������ޤ���(���󤻤��ޤ�)��
+Text::Wrapに与えるパラグラフには埋め込みの改行があってはいけません。
+Text::Wrapは行をジャスティファイしません(左寄せします)。
 
 =head2 How can I access/change the first N letters of a string?
 
-(ʸ����κǽ��Nʸ���˥������������ꡢ������ѹ�����ˤ�?)
+(文字列の最初のN文字にアクセスしたり、それを変更するには?)
 
-��������Τ����������ޤ������ԡ����ꤿ���Τʤ顢substr()��Ȥ��ޤ�:
+たくさんのやり方があります。コピーを取りたいのなら、substr()を使います:
 
     $first_byte = substr($a, 0, 1);
 
-ʸ����ΰ������ѹ��������Ȥ����ΤǤ���С�lvalue�Ȥ���substr()��Ȥ��Τ���
-�褯�Ȥ��Ƥ���Ǥ�ñ�����ˡ�Ǥ���
+文字列の一部を変更したいというのであれば、lvalueとしてsubstr()を使うのが、
+よく使われている最も単純な方法です。
 
     substr($a, 0, 3) = "Tom";
 
-�������������ä����ϡ��ѥ�����ޥå��󥰤�Ȥä����������ޤ����Ǥ��礦��
+しかしこういった操作は、パターンマッチングを使った処理が好ましいでしょう。
 
     $a =~ s/^.../Tom/;
 
 =head2 How do I change the Nth occurrence of something?
 
-(������ N ���ܤΤ�Τ��ѹ�����ˤ�?)
+(何かの N 番目のものを変更するには?)
 
 =begin original
 
@@ -796,17 +796,17 @@ all assume that $_ contains the string to be altered.
 
 =end original
 
-��ʬ�� N ���ܤε�Ͽ����ɬ�פ�����ޤ���
-�㤨�С�(�羮ʸ���ΰ㤤��̵�뤷��) 5 ���ܤ˸��줿
-C<"whoever"> �� C<"whomever">�� C<"whosoever"> ��
-C<"whomsoever"> ���ѹ��������ȹͤ��Ƥ���Ȥ��ޤ��礦��
-�ʲ������� $_ ���ѹ�������ʸ�������äƤ����ΤȤ��ޤ���
+自分で N 番目の記録を取る必要があります。
+例えば、(大小文字の違いを無視して) 5 番目に現れた
+C<"whoever"> か C<"whomever">を C<"whosoever"> か
+C<"whomsoever"> に変更したいと考えているとしましょう。
+以下は全て $_ に変更したい文字列が入っているものとします。
 
     $count = 0;
     s{((whom?)ever)}{
-	++$count == 5   	# �����ܤ�?
-	    ? "${2}soever"	# �����ʤ��
-	    : $1		# �����ᤷ�Ƥʤˤ⤷�ʤ�
+	++$count == 5   	# 五番目か?
+	    ? "${2}soever"	# そうなら交換
+	    : $1		# 元に戻してなにもしない
     }ige;
 
 =begin original
@@ -816,8 +816,8 @@ loop, keeping count of matches.
 
 =end original
 
-��äȰ���Ū�ʥ������Ǥϡ�C<while>�롼�פ����
-C</g>�����Ҥ�Ȥäƥޥå��ο�������뤳�Ȥ�Ǥ��ޤ���
+もっと一般的なケースでは、C<while>ループの中で
+C</g>修飾子を使ってマッチの数を数えることもできます。
 
     $WANT = 3;
     $count = 0;
@@ -828,30 +828,30 @@ C</g>�����Ҥ�Ȥäƥޥå��ο�������뤳�Ȥ�Ǥ��ޤ���
         }
     }
 
-����� C<"The third fish is a red one.">�Τ褦�˽��Ϥ��ޤ���
-�ʲ��Τ褦�˥ѥ�����η����֤��������ꤹ�������⤢��ޤ�:
+これは C<"The third fish is a red one.">のように出力します。
+以下のようにパターンの繰り返し回数を指定するやり方もあります:
 
     /(?:\w+\s+fish\s+){2}(\w+)\s+fish/i;
 
 
 =head2 How can I count the number of occurrences of a substring within a string?
 
-(����ʸ��������¸�ߤ�����ʬʸ���󤬲��Ĥ���Τ���
-������ΤϤɤ����ФǤ��ޤ���?)
+(ある文字列の中に存在する部分文字列が何個あるのかを
+数えるのはどうやればできますか?)
 
-�͡��ʸ�Ψ����ä������������ʤ����������ޤ���
-ʸ�������¸�ߤ��Ƥ��뤢��ñ�쥭��饯����(X)�ο�����������ΤǤ���С�
-C<tr///> �ؿ���ȤäƼ��Τ褦�ˤǤ��ޤ�:
+様々な効率を持った、いろいろなやり方があります。
+文字列中に存在しているある単一キャラクター(X)の数を数えたいのであれば、
+C<tr///> 関数を使って次のようにできます:
 
     $string = "ThisXlineXhasXsomeXx'sXinXit";
     $count = ($string =~ tr/X//);
     print "There are $count X characters in the string";
 
-�����ñ�쥭��饯�������оݤˤ���ΤǤ���Ф��礦�ɤ�����ΤǤ�����
-�礭��ʸ������Ρ�ʣ������饯�������鹽���������ʬʸ����ο���
-�����褦�Ȥ��Ƥ⡢C<tr///>�Ϥ��ޤ�ư��ޤ���
-�����ǲ�ǽ�ʤΤϡ��������Х�ʥѥ�����ޥå���while()�ǰϤ�Ǥ��ޤ��Ȥ���
-��ΤǤ������Ȥ��С���ο��������Τʤ餳�����ޤ�:
+これは単一キャラクターを対象にするのであればちょうどいいものですが、
+大きな文字列中の、複数キャラクターから構成される部分文字列の数を
+数えようとしても、C<tr///>はうまく動作しません。
+ここで可能なのは、グローバルなパターンマッチをwhile()で囲んでしまうという
+ものです。たとえば、負の数を数えるのならこうします:
 
     $string = "-9 55 48 -2 23 -76 4 14 -44";
     while ($string =~ /-\d+/g) { $count++ }
@@ -859,9 +859,9 @@ C<tr///> �ؿ���ȤäƼ��Τ褦�ˤǤ��ޤ�:
 
 =head2 How do I capitalize all the words on one line?
 
-(��Ԥˤ��뤹�٤Ƥ�ñ��򥭥�ԥ��饤������ˤ�?)
+(一行にあるすべての単語をキャピタライズするには?)
 
-��ñ��κǽ��ʸ������ʸ���ˤ���ˤϤ������ޤ�:
+各単語の最初の文字を大文字にするにはこうします:
 
         $line =~ s/\b(\w)/\U$1/g;
 
@@ -873,31 +873,31 @@ more thorough solution (Suggested by brian d.  foy):
 
 =end original
 
-����ˤϡ�"C<don't do it>"�� "C<Don'T Do It>"�ˤ��Ƥ��ޤ��褦��
-̯�ʸ��̤�����ޤ������ʤ����������ΤϤ���Ǥ����Τ��⤷��ޤ���
-�����Ǥʤ��Ȥ��ˤϡ��ʲ��Τ褦�ˤ���ɬ�פ�����ޤ�(Brian Foy����Ƥˤ��ޤ�):
+これには、"C<don't do it>"を "C<Don'T Do It>"にしてしまうような
+妙な効果があります。あなたがしたいのはこれでいいのかもしれません。
+そうでないときには、以下のようにする必要があります(Brian Foyの提案によります):
 
     $string =~ s/ (
-                 (^\w)    #�Ԥ���Ƭ�Ǥ���
-                   |      # �⤷����
-                 (\s\w)   #������Ԥ��Ƥ���
+                 (^\w)    #行の先頭である
+                   |      # もしくは
+                 (\s\w)   #空白が先行している
                    )
                 /\U$1/xg;
     $string =~ /([\w']+)/\u\L$1/g;
 
-�����Τ���ʸ���ˤ���ˤϤ������ޤ�:
+行全体を大文字にするにはこうします:
 
         $line = uc($line);
 
-���Ƥθ��ʸ���ˤ������줾��θ�κǽ��ʸ������ʸ���ˤ���ˤ�
-�������ޤ�:
+全ての語を小文字にし、それぞれの語の最初の文字を大文字にするには
+こうやります:
 
         $line =~ s/(\w+)/\u\L$1/g;
 
-�ץ����������C<use locale>���֤����Ȥˤ�äơ�
-�����Υ���饯���������������ռ�����褦�ˤǤ��ޤ�
-(�ޤ����������٤��Ǥ�)��
-��������˴ؤ���ܺ٤�L<perllocale>�򻲾Ȥ��Ƥ���������
+プログラムの中にC<use locale>を置くことによって、
+これらのキャラクターがロカールを意識するようにできます
+(また、そうすべきです)。
+ロカールに関する詳細はL<perllocale>を参照してください。
 
 =begin original
 
@@ -908,17 +908,17 @@ Stop Worrying and Love the Bomb>, for example.
 
 =end original
 
-����ϡ�title case�ɤȤ��ư����뤳�Ȥ�����ޤ�����
-��������Τʤ�ΤǤϤ���ޤ����㤨�бǲ�Υ����ȥ�Ǥ���
+これは“title case”として扱われることがありますが、
+それは正確なものではありません。例えば映画のタイトルである
 I<Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb>
-(ˮ�����Τΰ۾�ʰ��� �ޤ��ϻ��ǡ���ˤ��ƿ��ۤ���Τ�ߤ�ƿ����򰦤���褦�ˤʤä�����)
-��ͤ��Ƥߤޤ��礦��
+(邦題「博士の異常な愛情 または私は如何にして心配するのを止めて水爆を愛するようになったか」)
+を考えてみましょう。
 
 =head2 How can I split a [character] delimited string except when inside
 [character]? (Comma-separated files)
 
-(�ɤ����С�(�Ȥ���ʸ��)����¦�ˤ�����������(�Ȥ���ʸ��)��
-��ü����Ƥ���ʸ�����ʬ�䤹�뤳�Ȥ��Ǥ���Ǥ��礦��?)
+(どうやれば、(とある文字)の内側にある時を除き、(とある文字)で
+終端されている文字列を分割することができるでしょうか?)
 
 =begin original
 
@@ -930,32 +930,32 @@ quotes.  For example, take a data line like this:
 
 =end original
 
-����ޤ�ʬ�䤵�줿ʸ������̡��Υե�����ɤ��֤��褦�����
-�ͤ��Ƥߤޤ��礦(�䤿���Ϥ����ǡ�����ޤ�ʬ�䤵�줿(commna-sparated)�Ǥ��ꡢ
-����ޤǽ�ü���줿(comma-delimited)�ǤϤʤ��Ȥ��Ƥ��ޤ�)��
-������C<split(/,/)>��Ȥ����ȤϤǤ��ޤ���
-�ʤ��ʤ顢�������Ȥ���¦�ˤ��륫��ޤ�ʬ�䤹�٤��ǤϤʤ�����Ǥ���
-�㤨�аʲ��Τ褦�ʥǡ�����ͤ��Ƥߤޤ��礦��
+カンマで分割された文字列を別々のフィールドに置くような例を
+考えてみましょう(私たちはここで、カンマで分割された(commna-sparated)であり、
+カンマで終端された(comma-delimited)ではないとしています)。
+ここでC<split(/,/)>を使うことはできません。
+なぜなら、クォートの内側にあるカンマで分割すべきではないからです。
+例えば以下のようなデータを考えてみましょう。
 
     SAR001,"","Cimetrix, Inc","Bob Smith","CAM",N,8,1,0,7,"Error, Core Dumped"
 
-�������Ȥ�����Τ���ˤ���ϼ¤�ʣ��������Ǥ���
-���꤬�������Ȥˡ��䤿���ˤ�����ɽ���˴ؤ��륪�������ܤ����ԤǤ⤢�ꡢ
-���������䤿���Τ���˰��äƤ����Jeffrey Friedl�����ޤ���
-�����ƤϤ����Ǥ�(ʸ����$text�ˤ���Ȳ��ꤷ�Ƥ��ޤ�):
+クォートの制約のためにこれは実に複雑な問題です。
+ありがたいことに、私たちには正規表現に関するオススメ本の著者でもあり、
+この問題を私たちのために扱ってくれるJeffrey Friedlがいます。
+彼の提案はこうです(文字列が$textにあると仮定しています):
 
      @new = ();
      push(@new, $+) while $text =~ m{
-         "([^\"\\]*(?:\\.[^\"\\]*)*)",?  # ���롼�פϤ����餯�������Ȥ���¦�ˤ���
+         "([^\"\\]*(?:\\.[^\"\\]*)*)",?  # グループはおそらくクォートの内側にある
        | ([^,]+),?
        | ,
      }gx;
      push(@new, undef) if substr($text,-1,1) eq ',';
 
-�������ơ������ޡ����ǽ�ü���줿�ե�����ɤ����
-�������ơ������ޡ�����ɽ���������Τʤ�С�
-�����Хå�����å����(C<"like \"this\"">�Τ褦��)���������פ��Ƥ���������
-���󥨥������פϤ��Υ��������κǽ�Τۤ��ˤ���ޤ���
+クォーテーションマークで終端されたフィールドの中で
+クォーテーションマークを表現したいのならば、
+それをバックスラッシュで(C<"like \"this\"">のように)エスケープしてください。
+アンエスケープはこのセクションの最初のほうにあります。
 
 =begin original
 
@@ -964,7 +964,7 @@ distribution) lets you say:
 
 =end original
 
-���뤤�ϡ�Text::PaserWords�⥸�塼��(ɸ��Perl���ۤΰ����Ǥ�)��ȤäƤ������ޤ�:
+あるいは、Text::PaserWordsモジュール(標準Perl配布の一部です)を使ってこうします:
 
     use Text::ParseWords;
     @new = quotewords(",", 0, $text);
@@ -975,23 +975,23 @@ There's also a Text::CSV (Comma-Separated Values) module on CPAN.
 
 =end original
 
-CPAN�ˤ�Text::CSV (Comma-Separated Values) �⥸�塼��⤢��ޤ���
+CPANにはText::CSV (Comma-Separated Values) モジュールもあります。
 
 =head2 How do I strip blank space from the beginning/end of a string?
 
-(ʸ�������Ƭ�������ˤ��������������ˤ�?)
+(文字列の先頭や末尾にある空白を剥ぎ取るには?)
 
-�Ǥ�ñ��ʤ������¿ʬ�������ä���ΤǤ��礦:
+最も単純なやり方は多分こういったものでしょう:
 
     $string =~ s/^\s*(.*?)\s*$/$1/;
 
-�������ɬ�פ��٤����˲�Ū�ǡ�����ʸ����������ޤ줿���Ԥˤ��н�Ǥ��ޤ���
-�ʲ��Τ褦����ĤΥ��ƥåפ�ʬ������������᤯�Ǥ��ޤ�:
+これは不必要に遅く、破壊的で、かつ文字列に埋め込まれた改行には対処できません。
+以下のように二つのステップに分けた方がより早くできます:
 
     $string =~ s/^\s+//;
     $string =~ s/\s+$//;
 
-���뤤�ϰʲ��Τ褦�ˤ�äȥ��å��褯�񤭤ޤ�:
+あるいは以下のようにもっとカッコよく書きます:
 
     for ($string) {
 	s/^\s+//;
@@ -1007,11 +1007,11 @@ values of a hash if you use a slice:
 
 =end original
 
-���Υ��ǥ������C<foreach>�롼�פǤΥ����ꥢ���󥰤�ư������Ѥ�����ΤǤ���
-�������ϡ�ʣ����ʸ������Ф��ư��٤˹Ԥ����Ȥ��Ǥ��ޤ�����
-�����ϥå�����ͤ��Ф��Ƥ����Ȥ����Ȥ��Ǥ��ޤ���
+このイディオムはC<foreach>ループでのエイリアシングの動作を利用したものです。
+この操作は、複数の文字列に対して一度に行うことができますし、
+配列やハッシュの値に対してさえ使うことができます。
 
-    # �����顼�����󡢥ϥå�������Ƥ����Ǥζ����Ĵ�����ޤ�
+    # スカラー、配列、ハッシュの全ての要素の空白を調整します
     foreach ($scalar, @array, @hash{keys %hash}) {
         s/^\s+//;
         s/\s+$//;
@@ -1019,7 +1019,7 @@ values of a hash if you use a slice:
 
 =head2 How do I pad a string with blanks or pad a number with zeroes?
 
-(ʸ����˶����ѥåǥ��󥰤����ꡢ���ͤ˥�����ѥåǥ��󥰤����ꤹ��ˤ�?)
+(文字列に空白をパッディングしたり、数値にゼロをパッディングしたりするには?)
 
 =begin original
 
@@ -1028,7 +1028,7 @@ Bart Lateur.)
 
 =end original
 
-(���β�����Uri Guttman �� Bart Lateur ������㡹����ˤ��ޤ�)
+(この回答はUri Guttman と Bart Lateur からの茶々入れによります)
 
 =begin original
 
@@ -1041,13 +1041,13 @@ place of C<$pad_len> if you know the pad length in advance.
 
 =end original
 
-�ʲ��˵󤲤���ǡ�C<$pad_len>�ϥѥåǥ��󥰤�����ʸ�����Ĺ���Ǥ���
-C<$text>��C<$num>��ʸ����˥ѥåǥ��󥰤��оݤȤʤ����Ƥ��ݻ����Ƥ��ơ�
-C<$pad_char>���ѥåǥ��󥰤˻Ȥ���������饯�������ݻ����Ƥ��ޤ���
-��äƤ��뤳�Ȥ��狼�äƤ���Τʤ顢C<$pad_char>�Ȥ����ѿ�������˰�
-ʸ���Υ���饯����ʸ�����Ȥ����Ȥ�Ǥ��ޤ���
-������Ʊ�ͤˡ��ѥåǥ��󥰤�����Ĺ����ͽ��ʬ���äƤ���ʤ顢
-C<$pad_len> �������ͤ���ꤹ�뤳�Ȥ����ޤ���
+以下に挙げる例で、C<$pad_len>はパッディングしたい文字列の長さです。
+C<$text>やC<$num>は文字列にパッディングの対象となる内容を保持していて、
+C<$pad_char>がパッディングに使いたいキャラクターを保持しています。
+やっていることがわかっているのなら、C<$pad_char>という変数の代わりに一
+文字のキャラクター文字列を使うこともできます。
+そして同様に、パッディングしたい長さが予め分かっているなら、
+C<$pad_len> に整数値を指定することも出来ます。
 
 =begin original
 
@@ -1059,11 +1059,11 @@ C<$pad_len>.
 
 =end original
 
-�Ǥ�ñ��ʤ������C<sprintf>�ؿ���Ȥ��Ȥ�����ΤǤ���
-���δؿ���ʸ����κ��䱦�˥ѥåǥ��󥰤�Ԥä��ꡢ0�򺸤��֤����ꤹ��
-���Ȥ��Ǥ��ޤ���
-C<pack>�ؿ���ʸ����α�¦�˶���ǥѥåǥ��󥰤��뤳�Ȥȡ�
-��̤κ���Ĺ�� C<$pad_len> ���ڤ�ͤ�뤳�Ȥ������Ǥ��ޤ���
+最も単純なやり方はC<sprintf>関数を使うというものです。
+この関数は文字列の左や右にパッディングを行ったり、0を左に置いたりする
+ことができます。
+C<pack>関数は文字列の右側に空白でパッディングすることと、
+結果の最大長を C<$pad_len> に切り詰めることだけができます。
 
     # Left padding a string with blanks (no truncation):
     $padded = sprintf("%${pad_len}s", $text);
@@ -1086,29 +1086,29 @@ not truncate C<$text>.
 
 =end original
 
-����䥼���ʳ��Υ���饯�����ǥѥåǥ��󥰤�Ԥ������ΤǤ���С�
-�ʲ��˵󤲤�������Ȥ����Ȥ��Ǥ��ޤ�������������
-�ѥåǥ���ʸ����� C<x> �����Ҥ��������� C<$text> �ȷ�礷�ޤ���
-�����Υ᥽�åɤ� C<$text> ���ڤ�ͤ�ޤ���
+空白やゼロ以外のキャラクターでパッディングを行いたいのであれば、
+以下に挙げるやり方を使うことができます。これらは全て
+パッディング文字列を C<x> 修飾子で生成して C<$text> と結合します。
+これらのメソッドは C<$text> を切り詰めません。
 
-Ǥ�դΥ���饯�����ˤ�뺸�ͤ�ȱ��ͤ��Ԥ���������ʸ�������ޤ�:
+任意のキャラクターによる左詰めと右詰めを行い、新しい文字列を作ります:
 
     $padded = $pad_char x ( $pad_len - length( $text ) ) . $text;
     $padded = $text . $pad_char x ( $pad_len - length( $text ) );
 
-Ǥ�դΥ���饯�����ˤ�뺸�ͤ�ȱ��ͤ��Ԥ���C<$text>��ľ���ѹ����ޤ�:
+任意のキャラクターによる左詰めと右詰めを行い、C<$text>を直接変更します:
 
     substr( $text, 0, 0 ) = $pad_char x ( $pad_len - length( $text ) );
     $text .= $pad_char x ( $pad_len - length( $text ) );
 
 =head2 How do I extract selected columns from a string?
 
-(ʸ���󤫤����򤵤줿��������Ф��ˤ�?)
+(文字列から選択されたカラムを取り出すには?)
 
-�⤷���ʤ������ǤϤʤ������Ȥ������Ȥǹͤ��Ƥ���Τʤ顢
-�ʲ��Τ褦�ʤ�������Ǥ��ޤ�:
+もしあなたが幅ではなくカラムということで考えているのなら、
+以下のようなやり方ができます:
 
-   #Linux��ps�ν��Ϥ򥫥���ʬ�䤹��Τ�ɬ�פȤʤ�unpack�Υե����ޥåȤ����
+   #Linuxのpsの出力をカラムで分割するのに必要となるunpackのフォーマットを決める
    my $fmt = cut2fmt(8, 14, 20, 26, 30, 34, 41, 47, 59, 63, 67, 72);
 
    sub cut2fmt { 
@@ -1125,7 +1125,7 @@ not truncate C<$text>.
 
 =head2 How do I find the soundex value of a string?
 
-(ʸ����� soundex�ͤ򸫤Ĥ���ˤ�?)
+(文字列の soundex値を見つけるには?)
 
 =begin original
 
@@ -1140,32 +1140,32 @@ to consider the String::Approx module available at CPAN.
 
 =end original
 
-Perl �Ȱ������ۤ���Ƥ��� Text::Soundex �⥸�塼���Ȥ��ޤ���
-�������ˡ�`soundex' ���ºݤˤ��ʤ����ͤ��Ƥ����Τ��ɤ�����ǧ������
-���⤷��ޤ���
-Knuth �� soundex ���르�ꥺ���ñ���û�����̤��ޤ��Τǡ�
-���ʤ����̡��˰��äƤۤ����ȹͤ�����Ĥ�ñ�����̤���ɬ�פϤ���ޤ���
-�㤨�С�`Knuth' �� `Kant' ��ξ���Ȥ� soundex ������ K530 �˳�����Ƥ��ޤ���
-Text::Soundex �����ʤ���õ���Ƥ����ΤǤʤ��ä���硢
-CPAN �����ѤǤ��� String::Approx �⥸�塼���Ȥ����ȹͤ��뤫�⤷��ޤ���
+Perl と一緒に配布されている Text::Soundex モジュールを使います。
+その前に、`soundex' が実際にあなたが考えているものかどうか確認したい
+かもしれません。
+Knuth の soundex アルゴリズムは単語を短く圧縮しますので、
+あなたが別々に扱ってほしいと考える二つの単語を区別する必要はありません。
+例えば、`Knuth' と `Kant' は両方とも soundex コード K530 に割り当てられます。
+Text::Soundex があなたの探しているものでなかった場合、
+CPAN で利用できる String::Approx モジュールを使おうと考えるかもしれません。
 
 =head2 How can I expand variables in text strings?
 
-(�ƥ�����ʸ�������ˤ����ѿ���Ÿ������ΤϤɤ����ФǤ��ޤ���?)
+(テキスト文字列の中にある変数を展開するのはどうやればできますか?)
 
-�ʲ��Τ褦��ʸ���󤬤���Ȥ��ޤ��礦:
+以下のような文字列があるとしましょう:
 
     $text = 'this has a $foo in it and a $bar';
 
-�ѿ���ξ���Ȥ⤬����ѿ��Ǥ���С��ʲ��Τ褦�ˤ��ƤǤ��ޤ�:
+変数の両方ともが大域変数であれば、以下のようにしてできます:
 
-    $text =~ s/\$(\w+)/${$1}/g; # /e �����פǤ�
+    $text =~ s/\$(\w+)/${$1}/g; # /e は不要です
 
-�⤷�ѿ����쥭�������ѿ��Ǥ���С����뤤�Ϥ��β�ǽ��������Τʤ�
-�ʲ��Τ褦�ˤ���ɬ�פ����뤤�ޤ�:
+もし変数がレキシカル変数であれば、あるいはその可能性があるのなら
+以下のようにする必要があるいます:
 
     $text =~ s/(\$\w+)/$1/eeg;
-    die if $@;			# /e�ǤϤʤ�/ee��ɬ��
+    die if $@;			# /eではなく/eeが必要
 
 =begin original
 
@@ -1174,8 +1174,8 @@ variables as entries in some special hash.  For example:
 
 =end original
 
-����Ū�ˤϡ��оݤȤʤ��ѿ������̤ʥϥå���Υ���ȥ��
-���Ƥ��ޤ��Τ��ɤ����⤷��ޤ������󤲤ޤ��礦:
+一般的には、対象となる変数を特別なハッシュのエントリに
+してしまうのが良いかもしれません。例を挙げましょう:
 
     %user_defs = ( 
 	foo  => 23,
@@ -1183,13 +1183,13 @@ variables as entries in some special hash.  For example:
     );
     $text =~ s/\$(\w+)/$user_defs{$1}/g;
 
-FAQ�Τ��Υ��������ˤ���
-��How do I expand function calls in a string?��
-�⻲�Ȥ��Ƥ���������
+FAQのこのセクションにある
+“How do I expand function calls in a string?”
+も参照してください。
 
 =head2 What's wrong with always quoting "$vars"?
 
-(��˥������ƥ��� "$vars" ���뤳�Ȥβ���������?)
+(常にクォーティング "$vars" することの何が悪いの?)
 
 =begin original
 
@@ -1201,60 +1201,60 @@ have a string, why do you need more?
 
 =end original
 
-�������ä����֥륯�����Ȥ�������Ū��ʸ����(stringification)����Τ�����ǡ�
-���Ȥ������˾��Ǥ��ʤ��Ƥ���ͤ��ե���󥹤�����Ū��
-ʸ������Ѵ�����Ƥ��ޤ��ΤǤ������Τ褦�˹ͤ��ޤ��礦:
-���֥륯�����ȤϿ�����ʸ�������������Τ˻Ȥ��롣
-�⤷���ʤ������Ǥ�ʸ�������äƤ���ΤǤ���С��Ȥ�ɬ�פ�
-����Ǥ��礦��?
+そういったダブルクォートが、強制的に文字列化(stringification)するのが問題で、
+たとえそれを望んでいなくても数値やリファレンスが強制的に
+文字列に変換されてしまうのです。このように考えましょう:
+ダブルクォートは新しい文字列を生成するのに使われる。
+もしあなたがすでに文字列を持っているのであれば、使う必要が
+あるでしょうか?
 
-�ʲ�����Τ褦���Ѥʽ����򤹤��:
+以下の例のような変な書き方をすると:
 
-    print "$var";   	# ����
-    $new = "$old";   	# ����
-    somefunc("$var");	# ����
+    print "$var";   	# だめ
+    $new = "$old";   	# だめ
+    somefunc("$var");	# だめ
 
-���ʤ��ϥȥ�֥�˴������ޤ�뤳�Ȥˤʤ�Ǥ��礦��������(99.8%��)��
-���ñ�㡢���Ĥ��ľ��Ū�˽񤯤٤��ʤΤǤ���
+あなたはトラブルに巻き込まれることになるでしょう。これらは(99.8%は)、
+より単純、かつより直接的に書くべきなのです。
 
     print $var;
     $new = $old;
     somefunc($var);
 
-����ʤ���С��ץ��������٤��ʤ뤳�ȤΤۤ��ˤ⡢�����顼���ºݤˤ�ʸ����Ǥ�
-���ͤǤ�ʤ���ե���󥹤Ǥ���褦�ʤȤ��ˤ��ʤ��Υץ�����ब
-���������ʤ뤳�Ȥˤʤ�ޤ���
+さもなければ、プログラムを遅くなることのほかにも、スカラーが実際には文字列でも
+数値でもなくリファレンスであるようなときにあなたのプログラムが
+おかしくなることになります。
 
     func(\@array);
     sub func {
 	my $aref = shift;
-	my $oref = "$aref";  # �ְ㤤
+	my $oref = "$aref";  # 間違い
     }
 
-�ޥ����� C<++> �����ȥ��󥯥���ȱ黻�Ҥ�syscall()�ؿ��Τ褦�ʡ�
-ʸ����ȿ��ͤδ֤ΰ㤤��ºݤ˵��ˤ���褦��Perl�δ��Ĥ������ˤ����ơ�
-��̯�������ľ�̤��뤫�⤷��ޤ���
+マジカル C<++> オートインクリメント演算子やsyscall()関数のような、
+文字列と数値の間の違いを実際に気にするようなPerlの幾つかの操作において、
+微妙な問題に直面するかもしれません。
 
-ʸ����(stringfication)�����������ޤ���
+文字列化(stringfication)も配列を壊します。
 
     @lines = `command`;
-    print "@lines";		# �ְ㤤 - ;�פʶ��򤬤Ĥ�
-    print @lines;		# ������
+    print "@lines";		# 間違い - 余計な空白がつく
+    print @lines;		# 正しい
 
 
 =head2 Why don't my <<HERE documents work?
 
-(�ʤ����<<HERE�ɥ�����Ȥ����ޤ�ư���ʤ��ΤǤ��礦?)
+(なぜ私の<<HEREドキュメントがうまく動かないのでしょう?)
 
-�ʲ��λ��Ĥ������ǧ���Ƥ���������
+以下の三つの点を確認してください。
 
 =over 4
 
-=item 1. <<�ѡ��Ȥθ���˶��򤬤��äƤϤ����ޤ���
+=item 1. <<パートの後ろに空白があってはいけません。
 
-=item 2. ��ü�˥��ߥ������֤���Ƥ��뤫�⤷��ޤ���
+=item 2. 終端にセミコロンが置かれているかもしれません。
 
-=item 3. ����������Ǥ�դΥ��ڡ������֤����ȤϤǤ��ޤ���
+=item 3. タグの前に任意のスペースを置くことはできません。
 
 =back
 
@@ -1265,8 +1265,8 @@ can do this:
 
 =end original
 
-�ҥ��ɥ�����ȤΥƥ����Ȥǥ���ǥ�Ȥ�Ȥ������ΤǤ���С�
-�ʲ��Τ褦�ˤ��ƤǤ��ޤ�:
+ヒアドキュメントのテキストでインデントを使いたいのであれば、
+以下のようにしてできます:
 
     # all in one
     ($VAR = <<HERE_TARGET) =~ s/^\s+//gm;
@@ -1274,8 +1274,8 @@ can do this:
         goes here
     HERE_TARGET
 
-���������ξ��� HERE_TARGET ����Ƭ���֤��ʤ���Фʤ�ޤ���
-�⤷����⥤��ǥ�Ȥ������Τʤ顢����ǥ�Ȥ򥯥����Ȥ���ɬ�פ�����Ǥ��礦��
+しかしこの場合も HERE_TARGET は先頭に置かなければなりません。
+もしこれもインデントしたいのなら、インデントをクォートする必要があるでしょう。
 
     ($quote = <<'    FINIS') =~ s/^\s+//gm;
             ...we will have peace, when you and all your works have
@@ -1296,12 +1296,12 @@ subsequent line.
 
 =end original
 
-�ʲ��ϥ���ǥ�Ȥ��줿�ҥ��ɥ�����ȤΤ��������fixer-upper�ؿ��Ǥ���
-���δؿ��ϰ����˥ҥ��ɥ�����Ȥ��Ϥ���뤳�Ȥ���Ԥ��Ƥ��ޤ���
-����϶��̤���ʬʸ����ǻϤޤ�ƹԤˤĤ��ơ�
-������ʬʸ������������Ȥ������Ȥ�Ԥ��ޤ���
-���뤤�ϡ��ǽ�ιԤ���Ƭ�ˤ��������ꡢ
-³���Ԥ��Ф��Ƥ�Ʊ���ͤ˺����Ԥ��ޤ���
+以下はインデントされたヒアドキュメントのための汎用fixer-upper関数です。
+この関数は引数にヒアドキュメントを渡されることを期待しています。
+これは共通の部分文字列で始まる各行について、
+その部分文字列を剥ぎ取るということを行います。
+あるいは、最初の行の先頭にある空白を取り、
+続く行に対しても同じ様に削除を行います。
 
     sub fix {
         local $_ = shift;
@@ -1315,7 +1315,7 @@ subsequent line.
         return $_;
     }
 
-���δؿ�����Ƭ�ˤ������̤ʡ�ưŪ�˷�����ʸ������Ф��Ƥ�Ȥ��ޤ�:
+この関数は先頭にある特別な、動的に決められる文字列に対しても使えます:
 
     $remember_the_main = fix<<'    MAIN_INTERPRETER_LOOP';
 	@@@ int
@@ -1328,8 +1328,8 @@ subsequent line.
 	@@@ }
     MAIN_INTERPRETER_LOOP
 
-�ޤ�����Ƭ�ˤ�������θĿ��ζ����������ơ�����ǥ�Ȥ�
-�������Ĥ��褦�ʤ��Ȥ�Ǥ��ޤ�:
+また、先頭にある特定の個数の空白を取り除いて、インデントを
+正しく残すようなこともできます:
 
     $poem = fix<<EVER_ON_AND_ON;
        Now far ahead the Road has gone,
@@ -1346,7 +1346,7 @@ subsequent line.
 
 +=head2 What is the difference between a list and an array?
 
-(�ꥹ�Ȥ�����κ��ȤϤʤ�Ǥ���?)
+(リストと配列の差とはなんですか?)
 
 =begin original
 
@@ -1362,20 +1362,20 @@ on arrays.
 
 =end original
 
-�����Ĺ�����Ѥ��뤳�Ȥ��Ǥ��ޤ����ꥹ�ȤϤǤ��ޤ���
-����������Ф��� push �� pop ���Ǥ��ޤ�����
-�ꥹ�Ȥ��Ф��Ƥ��ͤΥ��åȤ����Ǥ��ޤ���
-�����ˤ������ѿ��Ǥ���Τ��Ф��ƥꥹ�Ȥ��ͤǤ����
-���̤��ƹͤ��Ƥ����ã�⤤�ޤ���
-�ꥹ�Ȥ������ä����֤����ꤹ�륵�֥롼����ϥꥹ�ȥ���ƥ����Ȥ�
-���ʤ���Ƴ�����ꥹ�Ȥ���������������ꡢforeach()�ǥꥹ�Ȥ�é�ä���Ǥ��ޤ���
-C<@>�ѿ�������Ǥ��ꡢ̵̾���������Ǥ��������顼����ƥ����Ȥ������
-�������ǿ��Τ褦�˿����񤤤ޤ���
-���֥롼����Ϥ��ΰ�����C<@_>�Ȥ���������̤��ƥ�����������
-push/pop/shift ��������Ф��ƤΤ�Ư���ޤ���
+配列は長さを変えることができます。リストはできません。
+ある配列に対して push や pop ができますが、
+リストに対しては値のセットしかできません。
+一部には配列が変数であるのに対してリストは値であると
+区別して考えている人達もいます。
+リストを受け取ったり返したりするサブルーチンはリストコンテキストに
+あなたを導き、リストで配列を初期化したり、foreach()でリストを辿ったりできます。
+C<@>変数は配列であり、無名配列も配列です。スカラーコンテキストの配列は
+その要素数のように振る舞います。
+サブルーチンはその引数をC<@_>という配列を通してアクセスし、
+push/pop/shift は配列に対してのみ働きます。
 
-�����顼����ƥ����Ȥǥꥹ�ȤȤ��ƿ����񤦤�ΤϤʤ��Ȥ������Ȥ�
-���դ��Ƥ������������Ȥ���
+スカラーコンテキストでリストとして振る舞うものはないということに
+注意してください。たとえば
 
     $scalar = (2, 5, 7, 9);
 
@@ -1387,30 +1387,30 @@ last value to be returned: 9.
 
 =end original
 
-�Ȥ�����Τϡ������顼����ƥ����Ȥǥ���ޱ黻�Ҥ�Ȥä���ΤǤ��ꡢ
-�����顼����ޱ黻�Ҥ�Ȥ��ޤ�������ϥꥹ�ȤǤ�ʤ�Ǥ⤢��ޤ���!
-���η�̤ϺǸ���ͤǤ���9�Ȥʤ�ޤ���
+というものは、スカラーコンテキストでカンマ演算子を使ったものであり、
+スカラーカンマ演算子を使います。これはリストでもなんでもありません!
+この結果は最後の値である9となります。
 
 =head2 What is the difference between $array[1] and @array[1]?
 
-($array[1]��@array[1]�Ȥδ֤ΰ㤤�Ϥʤ�Ǥ���?)
+($array[1]と@array[1]との間の違いはなんですか?)
 
-���Ԥϥ����顼�ͤǤ��ꡢ��Ԥϰ�ĤΥ����顼�ͤ���ä��ꥹ�Ȥ�������
-����Υ��饤���Ǥ��������顼�ͤ�ɬ�פȤ���ʤ��(�ۤȤ��
-�ξ�礬�����Ǥ��礦)$��Ȥ��٤��ǡ�@�ϰ�ĤΥ����顼�ͤ���ä�
-�ꥹ�Ȥ�ɬ�פȤ���Ȥ�(�ºݤΤȤ��������ξ��������˴��Ǥ��礦)
-�˻Ȥ��٤���ΤǤ���
+前者はスカラー値であり、後者は一つのスカラー値を持ったリストを構成する
+配列のスライスです。スカラー値を必要とするならば(ほとんど
+の場合がこうでしょう)$を使うべきで、@は一つのスカラー値を持った
+リストを必要とするとき(実際のところ、この状況は非常に希でしょう)
+に使うべきものです。
 
-�����Ϥ���Ȥ��ˤϰ㤤������ޤ��󤬡��㤤���Ǥ���⤢��ޤ���
-�㤨��:
+これらはあるときには違いがありませんが、違いがでる場合もあります。
+例えば:
 
     $good[0] = `some program that outputs several lines`;
 
-��
+と
 
     @bad[0]  = `same program that outputs several lines`;
 
-����Ӥ����Ȥ��������Ǥ���
+を比較したときがそうです。
 
 =begin original
 
@@ -1419,14 +1419,14 @@ matters.
 
 =end original
 
-C<use warnings> �ץ饰�ޤ� B<-w> �ե饰�Ϥ��Τ��Ȥ˴ؤ���ٹ��Ԥ��ޤ���
+C<use warnings> プラグマと B<-w> フラグはこのことに関する警告を行います。
 
 =head2 How can I remove duplicate elements from a list or array?
 
-(�����ꥹ�Ȥˤ����ʣ�������Ǥ�������ΤϤɤ����ФǤ��ޤ���?)
+(配列やリストにある重複した要素を削除するのはどうやればできますか?)
 
-���Ĥ�����ˡ����ǽ�Ǥ������ʤ�����ޤä�����Ǽ��Ф������Τ��ɤ�����
-����˳�Ǽ����Ƥ��������ɤ��Ǥ���Τ��ˤ��ޤ���
+幾つかの方法が可能です。あなたが決まった順序で取り出したいのかどうか、
+配列に格納されている順序がどうであるのかによります。
 
 =over 4
 
@@ -1439,8 +1439,8 @@ If @in is sorted, and you want @out to be sorted:
 
 =end original
 
-@in�������Ȥ���Ƥ��ơ�@out�������Ȥ���Ƥ���褦�ˤ������Τʤ�:
-(���������ͤ�����true�Ǥ���Ȳ��ꤷ�Ƥ��ޤ�)
+@inがソートされていて、@outがソートされているようにしたいのなら:
+(配列の中の値が全てtrueであると仮定しています)
 
     $prev = "not equal to $in[0]";
     @out = grep($_ ne $prev && ($prev = $_, 1), @in);
@@ -1454,10 +1454,10 @@ even if the $_ is 0, "", or undef.
 
 =end original
 
-����ϤȤƤ�褯��;�פʥ����Ȥ��ޤ��󡣽�ʣ�Τߤ�������Τ�
-uniq(1)�ο����񤤤򥷥ߥ�졼�Ȥ��ޤ���
-", 1" ����ʬ�����㤨 $_ �� 0, "", undef �Ǥ⼰�� true �Ǥ���
-(sort ���оݤȤ���)���Ȥ��ݾڤ��ޤ���
+これはとてもよく、余計なメモリも使いません。重複のみを取り除くのに
+uniq(1)の振る舞いをシミュレートします。
+", 1" の部分が、例え $_ が 0, "", undef でも式が true である
+(sort が対象とする)ことを保証します。
 
 =item b)
 
@@ -1467,7 +1467,7 @@ If you don't know whether @in is sorted:
 
 =end original
 
-@in�������Ȥ���Ƥ��뤫�ɤ����狼��ʤ����:
+@inがソートされているかどうかわからなければ:
 
     undef %saw;
     @out = grep(!$saw{$_}++, @in);
@@ -1480,7 +1480,7 @@ Like (b), but @in contains only small integers:
 
 =end original
 
-(b)�˻��Ƥ��뤬��@in����������������Τ߹����������:
+(b)に似ているが、@inが小さな整数からのみ構成される場合:
 
     @out = grep(!$saw[$_]++, @in);
 
@@ -1492,11 +1492,11 @@ A way to do (b) without any loops or greps:
 
 =end original
 
-�롼�פ�grep��Ȥ鷺��(b)��Ʊ�����Ȥ򤹤�ˤ�:
+ループやgrepを使わずに(b)と同じことをするには:
 
     undef %saw;
     @saw{@in} = ();
-    @out = sort keys %saw;  # ɬ�פʤ����sort�������
+    @out = sort keys %saw;  # 必要なければsortを取り除く
 
 =item e)
 
@@ -1506,7 +1506,7 @@ Like (d), but @in contains only small positive integers:
 
 =end original
 
-(d)��Ʊ�ͤ�����@in�����������������Τߤǹ�������Ƥ�����:
+(d)と同様だが、@inが小さな正の整数のみで構成されている場合:
 
     undef @ary;
     @ary[@in] = @in;
@@ -1520,59 +1520,59 @@ But perhaps you should have been using a hash all along, eh?
 
 =end original
 
-�����������餯�ϡ����ʤ��ϥϥå����Ȥä������ɤ��ä��Ǥ��礦?
+しかしおそらくは、あなたはハッシュを使った方が良かったでしょう?
 
 =head2 How can I tell whether an list or array contains a certain element?
 
-(�ꥹ�Ȥ���������Ƥˤ�����������Ǥ����뤫�ɤ�����Τ����ˤ�?)
+(リストや配列の内容にある特定の要素があるかどうかを確かめるには?)
 
-�ϥå���Ϥ��μ�����Ф���®���Ƹ�Ψ���ɤ������Τ����
-�ǥ����󤵤�Ƥ��ޤ�������Ϥ����ǤϤ���ޤ���
+ハッシュはこの質問に対する速くて効率の良い解答のために
+デザインされています。配列はそうではありません。
 
-���Ĥ��Τ����������ޤ����������䤤��碌��¿���Υ����ƥ���Ф���
-�Ԥ������Ȥ����ͤ�Ǥ�դ�ʸ����Ǥ�����ˤϺǤ�®��������ϸ���
-����εդΤ�Τ��äƸ���������ͤ򥭡��Ȥ���褦��Ϣ�������
-�ݻ�����Ȥ�����ΤǤ���
+幾つかのやり方がありますが、この問い合わせを多くのアイテムに対して
+行いたいとか、値が任意の文字列である場合には最も速いやり方は元の
+配列の逆のものを作って元の配列の値をキーとするような連想配列を
+保持するというものです。
 
     @blues = qw/azure cerulean teal turquoise lapis-lazuli/;
     undef %is_blue;
     for (@blues) { $is_blue{$_} = 1 }
 
-��������С�$is_blue{$some_color}���ɤ��Ǥ��뤫�ǥ����å����뤳�Ȥ��Ǥ��ޤ���
-�ǽ�ξ��� bules�˥ϥå���Τ��٤Ƥ��ݻ�������ΤϤ褤�ͤ��Ǥ��礦��
+こうすれば、$is_blue{$some_color}がどうであるかでチェックすることができます。
+最初の場所で bulesにハッシュのすべてを保持させるのはよい考えでしょう。
 
-�ͤΤ��٤Ƥ������������Ǥ���С�ñ���ź�����դ������Ȥ����Ȥ��Ǥ��ޤ���
-���μ������Ϥ�꾯�ʤ���ꤷ���Ȥ��ޤ���
+値のすべてが小さな整数であれば、単純な添え字付き配列を使うことができます。
+この種の配列はより少ない場所しか使いません。
 
     @primes = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31);
     undef @is_tiny_prime;
     for (@primes) { $is_tiny_prime[$_] = 1 }
     # or simply  @istiny_prime[@primes] = (1) x @primes;
 
-����� $is_tiny_prime[$some_number]�����Ƥ��ɤ��Ǥ��뤫��
-�����å����뤳�Ȥ��Ǥ��ޤ���
+これで $is_tiny_prime[$some_number]の内容がどうであるかで
+チェックすることができます。
 
-�䤤��碌���ͤ�ʸ����ǤϤʤ������Ǥ���Τʤ�С��ӥåȥ��ȥ�󥰤�
-�Ȥ����Ȥˤ�ä������˶��֤����󤹤뤳�Ȥ��Ǥ��ޤ���
+問い合わせる値が文字列ではなく整数であるのならば、ビットストリングを
+使うことによって大幅に空間を節約することができます。
 
     @articles = ( 1..10, 150..2000, 2017 );
     undef $read;
     for (@articles) { vec($read,$_,1) = 1 }
 
-����� C<vec($read,$n,1)>�������ɤ�����C<$n>�θ������Ǥ��ޤ���
+これで C<vec($read,$n,1)>が真かどうかでC<$n>の検査ができます。
 
     ($is_there) = grep $_ eq $whatever, @array;
 
-���Ȥ�
+だとか
 
     ($is_there) = grep /$whatever/, @array;
 
-�Τ褦�ʤ�����Ϥ��ʤ��Ǥ���������
+のようなやり方はしないでください。
 
-�����Τ�������٤�(�ǽ���оݤ����Ĥ��ä��Ȥ��Ƥ⤹�٤Ƥ����Ǥ�
-�������Ƥ����ޤ��ޤ�)�����Ψ(Ʊ����ͳ�Ǥ�)�ǡ��Х��β�ǽ����
-�ޤ�Ǥ��ޤ�($whathever������ɽ������饯���������ä��ꤷ����?)��
-�⤷���٤��������ƥ��Ȥ��ʤ��ʤ顢�ʲ��Τ�Τ�Ȥ��ޤ��礦:
+これらのやり方は遅く(最初に対象が見つかったとしてもすべての要素を
+検査していしまいます)、非効率(同じ理由です)で、バグの可能性を
+含んでいます($whatheverに正規表現キャラクターがあったりしたら?)。
+もし一度だけしかテストしないなら、以下のものを使いましょう:
 
     $is_there = 0;
     foreach $elt (@array) {
@@ -1585,11 +1585,11 @@ But perhaps you should have been using a hash all along, eh?
 
 =head2 How do I compute the difference of two arrays?  How do I compute the intersection of two arrays?
 
-(��Ĥ�����κ�(difference)�����ˤ�?
-��Ĥ�����ζ�������(inter section)�����ˤ�?)
+(二つの配列の差(difference)を求めるには?
+二つの配列の共通要素(inter section)を求めるには?)
 
-�ϥå����Ȥ��ޤ����ʲ��Υץ�������Ҥϼ����ξ����Ԥ��ޤ���
-Ϳ����줿��������ǤˤϽ�ʣ���ʤ��Ȳ��ꤷ�Ƥ��ޤ���
+ハッシュを使います。以下のプログラム片は質問の両方を行います。
+与えられた配列の要素には重複がないと仮定しています。
 
     @union = @intersection = @difference = ();
     %count = ();
@@ -1606,17 +1606,17 @@ either A or in B but not in both.  Think of it as an xor operation.
 
 =end original
 
-����� I<�о�Ū��ʬ>���ĤޤꡢA �� B �Τɤ��餫�ˤ��äơ�
-ξ���ˤ��뤳�ȤϤʤ����Ƥ����ǤǤ��롢�Ȥ������Ȥ����դ��Ƥ���������
-����� xor ���Τ褦�ʤ�Τȹͤ��Ƥ���������
+これは I<対称的差分>、つまり、A か B のどちらかにあって、
+両方にあることはない全ての要素である、ということに注意してください。
+これは xor 操作のようなものと考えてください。
 
 =head2 How do I test whether two arrays or hashes are equal?
 
-(��Ĥ��������ĤΥϥå��夬���������ɤ����򸡺�����ˤ�?)
+(二つの配列や二つのハッシュが等しいかどうかを検査するには?)
 
-�ʲ��˵󤲤���ϰ��٥��������Ф���ͭ���Ǥ��������ʸ����Ȥ��Ƥ�
-��Ӥ�Ȥ���defined��̤����ζ�ʸ�������̤��ޤ���ɬ�פ˱�����
-�������Ƥ���������
+以下に挙げる例は一レベルの配列に対して有効です。これは文字列としての
+比較を使い、definedと未定義の空文字列を区別しません。必要に応じて
+修正してください。
 
     $are_equal = compare_arrays(\@frogs, \@toads);
 
@@ -1630,8 +1630,8 @@ either A or in B but not in both.  Think of it as an xor operation.
 	return 1;
     }
 
-¿�ť�٥빽¤���б����뤿��ˡ����ʤ��ϰʲ��Τ褦�ʼ��ʤ�Ȥ�������
-�ͤ��뤫�⤷��ޤ��󡣤����Ǥ�CPAN�⥸�塼���FreezeThaw��ȤäƤ��ޤ�:
+多重レベル構造に対応するために、あなたは以下のような手段を使いたいと
+考えるかもしれません。ここではCPANモジュールのFreezeThawを使っています:
 
     use FreezeThaw qw(cmpStr);
     @a = @b = ( "this", "that", [ "more", "stuff" ] );
@@ -1648,8 +1648,8 @@ we'll demonstrate two different answers:
 
 =end original
 
-���Υ��ץ������ϥϥå������Ӥˤ�Ȥ��ޤ���
-�ʲ��������β����򤪸������ޤ��礦:
+このアプローチはハッシュの比較にも使えます。
+以下に二種類の回答をお見せしましょう:
 
     use FreezeThaw qw(cmpStr cmpStrHard);
 
@@ -1663,14 +1663,14 @@ we'll demonstrate two different answers:
     printf "a and b contain %s hashes\n",
 	cmpStrHard(\%a, \%b) == 0 ? "the same" : "different";
 
-�ǽ�Τ�Τ���ĤΥϥå��夬Ʊ�����ƤǤ������𤷤ޤ����������ܤ�
-��Τϰ㤦����𤷤ޤ���
+最初のものは二つのハッシュが同じ内容であると報告しますが、二番目の
+ものは違うと報告します。
 
 =head2 How do I find the first array element for which a condition is true?
 
-(�����郎���Ȥʤ�ǽ���������Ǥ򸫤Ĥ������ˤ�?)
+(ある条件が真となる最初の配列要素を見つけだすには?)
 
-ź���������դ��Ƥ���Τʤ�ʲ��Τ褦�ˤ��ƤǤ��ޤ�:
+添え字に注意しているのなら以下のようにしてできます:
 
     for ($i= 0; $i < @array; $i++) {
         if ($array[$i] eq "Waldo") {
@@ -1679,32 +1679,32 @@ we'll demonstrate two different answers:
         }
     }
 
-�����C<$found_index>�ˤ��ʤ��ε����Τ����äƤ��ޤ���
+これでC<$found_index>にあなたの求めるものが入っています。
 
 =head2 How do I handle linked lists?
 
-(����դ��ꥹ�Ȥ򰷤��ˤ�?)
+(リンク付きリストを扱うには?)
 
-����Ū�ˤϡ�Perl �Ǥϥ���դ��ꥹ�Ȥ򰷤�ɬ�פϤ���ޤ���
-�ʤ��ʤ顢�̾�������Ȥä� push �� pop��shift �� unsift ��Ȥä�ξü��
-���Ǥ����ꡢsplice��Ȥä�Ǥ�դξ��ˤ���Ǥ�ոĤ����Ǥ�ä�����
-��������ꤹ�뤳�Ȥ��Ǥ��뤫��Ǥ���
-pop �� shift ��ξ���Ȥ⤬��Perl ��ưŪ������Ф���O(1)�����Ǥ���
-shift �� pop ���ʤ��ä���硢push �ϰ���Ū�ˤ� log(N) ����Υ��������ǺƳ�����Ƥ�
-ɬ�פˤʤ�ޤ���
-������ unshift �ϸƤФ����˥ݥ��󥿡��Υ��ԡ���ɬ�פˤʤ�Ǥ��礦��
+一般的には、Perl ではリンク付きリストを扱う必要はありません。
+なぜなら、通常の配列を使って push や pop、shift や unsift を使って両端で
+操作できたり、spliceを使って任意の場所にある任意個の要素を加えたり
+削除したりすることができるからです。
+pop と shift は両方ともが、Perl の動的配列に対するO(1)の操作です。
+shift や pop がなかった場合、push は一般的には log(N) 回毎のオーダーで再割り当てが
+必要になります。
+そして unshift は呼ばれる毎にポインターのコピーが必要になるでしょう。
 
-�⤷�������ˡ������˥���դ��ꥹ�Ȥ�Ȥ������Τʤ顢L<perldsc> ��
-L<perltoot>����������Ƥ���褦�ʥǡ�����¤��Ȥ����Ȥ��Ǥ���
-���르�ꥺ��ζ��ʽ�ˤ���褦�ʤ��Ȥ��Ǥ��ޤ���
-�㤨�аʲ��Τ褦�ʥꥹ�ȥΡ��ɤ��ͤ��Ƥߤޤ��礦:
+もし、本当に、本当にリンク付きリストを使いたいのなら、L<perldsc> や
+L<perltoot>で説明されているようなデータ構造を使うことができ、
+アルゴリズムの教科書にあるようなことができます。
+例えば以下のようなリストノードをを考えてみましょう:
 
     $node = {
         VALUE => 42,
         LINK  => undef,
     };
 
-�ꥹ�Ȥ��Ϥ��⤯�ˤϰʲ��Τ褦�ˤ��ޤ�:
+リストを渡り歩くには以下のようにします:
 
     print "List: ";
     for ($node = $head;  $node; $node = $node->{LINK}) {
@@ -1718,7 +1718,7 @@ You could add to the list this way:
 
 =end original
 
-�ʲ��Τ�����ǥꥹ�Ȥ��ɲäǤ��ޤ�:
+以下のやり方でリストに追加できます:
 
     my ($head, $tail);
     $tail = append($head, 1);       # grow a new head
@@ -1738,24 +1738,24 @@ You could add to the list this way:
         return $node;
     }
 
-�����������֤��ޤ�����Perl���Ȥ߹��߷��ϻ��¾���
-��ʬ�ʤ�ΤʤΤǤ���
+しかし繰り返しますが、Perlの組み込み型は事実上常に
+充分なものなのです。
 
 =head2 How do I handle circular lists?
 
-(�۴ĥꥹ��(circular list)�򰷤��ˤ�?)
+(循環リスト(circular list)を扱うには?)
 
-�۴ĥꥹ�Ȥϥ���դ��ꥹ�Ȥ�Ȥä�����Ū�ʤ�����ǰ������Ȥ��Ǥ��ޤ���
-���뤤�ϰʲ��Τ褦�������ȤäƹԤ����Ȥ�Ǥ��ޤ�:
+循環リストはリンク付きリストを使って伝統的なやり方で扱うことができます。
+あるいは以下のように配列を使って行うこともできます:
 
-    unshift(@array, pop(@array));  # �Ǹ����Ƭ��
-    push(@array, shift(@array));   # ����ȿ��
+    unshift(@array, pop(@array));  # 最後を先頭に
+    push(@array, shift(@array));   # その反対
 
 =head2 How do I shuffle an array randomly?
 
-(����������ˤ���������ˤ�?)
+(配列をランダムにかき混ぜるには?)
 
-�������ޤ�:
+こうします:
 
     # fisher_yates_shuffle( \@array ) : 
     # generate a random permutation of @array in place
@@ -1768,14 +1768,14 @@ You could add to the list this way:
         }
     }
 
-    fisher_yates_shuffle( \@array );    # @array ���Τ�Τ������ؤ���
+    fisher_yates_shuffle( \@array );    # @array そのものを入れ替える
 
-splice��Ȥä�����åե륢�르�ꥺ��򸫤����Ȥ����뤫�⤷��ޤ���
-�����Ȥ����Ǥ������˼��Ф����̤����Ǥȸ򴹤��ޤ�:
+spliceを使ったシャッフルアルゴリズムを見たことがあるかもしれません。
+カレントの要素をランダムに取り出した別の要素と交換します:
 
     srand;
     @new = ();
-    @old = 1 .. 10;  # ñ�ʤ�ǥ�
+    @old = 1 .. 10;  # 単なるデモ
     while (@old) {
 	push(@new, splice(@old, rand @old, 1));
     }
@@ -1789,26 +1789,26 @@ this until you have rather largish arrays.
 
 =end original
 
-�����splice��O(N)�Ǥ��ꡢ����ˤ����N��Ƥ�Ǥ���ΤǤ�����
-�ɤ�����ޤ��󡣤Ĥޤꤳ���O(N**2)�Υ��르�ꥺ��Ǥ���
-������礭������˻Ȥ�ʤ���Ф��ʤ��Ϥ��θ�Ψ�ΰ����˵����Ĥ��ʤ��Ǥ��礦��
+これはspliceがO(N)であり、さらにそれをN回呼んでいるのですから
+良くありません。つまりこれはO(N**2)のアルゴリズムです。
+これは大きな配列に使わなければあなたはその効率の悪さに気がつかないでしょう。
 
 =head2 How do I process/modify each element of an array?
 
-(����γ����Ǥ��Ф�������䡢�ѹ���Ԥ��ˤ�?)
+(配列の各要素に対する処理や、変更を行うには?)
 
-C<for>/C<foreach>��Ȥ��ޤ�:
+C<for>/C<foreach>を使います:
 
     for (@lines) {
-	s/foo/bar/;	# ñ����Ѵ�
-	y/XZ/ZX/;	# ʸ���������ؤ�
+	s/foo/bar/;	# 単語を変換
+	y/XZ/ZX/;	# 文字の入れ替え
     }
 
-�̤���ˡ�Ǥ���������Ѥ���ޤ�:
+別の方法です。球の体積を求めます:
 
     for (@volumes = @radii) {   # @volumes has changed parts
 	$_ **= 3;
-	$_ *= (4/3) * 3.14159;  # �����������߹��ߤ��Ԥ���Ǥ��礦
+	$_ *= (4/3) * 3.14159;  # これは定数畳み込みが行われるでしょう
     }
 
 =begin original
@@ -1818,8 +1818,8 @@ you may not use the C<values> function, oddly enough.  You need a slice:
 
 =end original
 
-Ʊ�����Ȥ�ϥå�����ͤ��Ф��ƹԤ������ΤǤ���С�
-C<values>��Ȥ����ȤϤǤ��ޤ��󡣥��饤����Ȥ�ɬ�פ�����ޤ�:
+同じことをハッシュの値に対して行いたいのであれば、
+C<values>を使うことはできません。スライスを使う必要があります:
 
     for $orbit ( @orbits{keys %orbits} ) {
 	($orbit **= 3) *= (4/3) * 3.14159; 
@@ -1827,30 +1827,30 @@ C<values>��Ȥ����ȤϤǤ��ޤ��󡣥��饤����Ȥ�ɬ�פ�����ޤ�:
 
 =head2 How do I select a random element from an array?
 
-(�������󤫤����������Ǥ����򤹤�ˤ�?)
+(ある配列からランダムに要素を選択するには?)
 
-rand()�ؿ���Ȥ��ޤ�(L<perlfunc/rand>�򻲾�):
+rand()関数を使います(L<perlfunc/rand>を参照):
 
-    # �ץ���������Ƭ��:
-    srand;			# 5.004�ʹߤǤ�����
+    # プログラムの先頭で:
+    srand;			# 5.004以降では不要
 
-    # ���θ��
+    # その後で
     $index   = rand @array;
     $element = $array[$index];
 
-B<�ץ��������˰��٤���srand��Ƥ�>�褦�ˤ��Ƥ���������
-�⤷���ٰʾ�ƤӽФ����Ȥ������(������rand��ľ����
-�ƤӽФ��ʤ�)���ۤȤ�ɤξ��ְ�ä����Ȥ�Ԥ����Ȥˤʤ�Ǥ��礦��
+B<プログラム毎に一度だけsrandを呼ぶ>ようにしてください。
+もし二度以上呼び出すことがあると(先の例のrandの直前で
+呼び出すなど)、ほとんどの場合間違ったことを行うことになるでしょう。
 
 =head2 How do I permute N elements of a list?
 
-(N���Ǥ���ĥꥹ�Ȥν���(permute)�����ˤ�?)
+(N要素を持つリストの順列(permute)を求めるには?)
 
-�ʲ��ξ����ʥץ����������Ϥ��줿�Ԥˤ����ñ��ν���򤹤٤��������ޤ���
-�ؿ� permute() �ǻȤ��Ƥ��륢�르�ꥺ���Ǥ�դΥꥹ�Ȥ�ư���Ϥ��Ǥ�:
+以下の小さなプログラムは入力された行にある各単語の順列をすべて生成します。
+関数 permute() で使われているアルゴリズムは任意のリストで動作するはずです:
 
     #!/usr/bin/perl -n
-    # tsc-permute: ���Ϥˤ����������ؤ���
+    # tsc-permute: 入力にある語を入れ替える
     permute([split], []);
     sub permute {
         my @items = @{ $_[0] };
@@ -1870,23 +1870,23 @@ B<�ץ��������˰��٤���srand��Ƥ�>�褦�ˤ��Ƥ���������
 
 =head2 How do I sort an array by (anything)?
 
-((�ʤˤ�)������򥽡��Ȥ���ˤ�?)
+((なにか)で配列をソートするには?)
 
-sort() (L<perlfunc/sort>������������ޤ�)�Τ������Ӵؿ�����ޤ�:
+sort() (L<perlfunc/sort>に説明があります)のための比較関数を作ります:
 
     @list = sort { $a <=> $b } @list;
 
-�ǥե���ȤΥ����ȴؿ���ʸ������ӤǤ���cmp�ǡ�C<(1, 2, 10)>�� 
-C<(1, 10, 2)>���¤��Ѥ��ޤ��������Ǥϡ�������ӱ黻�ҤǤ��� 
-C<< <=> >> ��ȤäƤ��ޤ���
+デフォルトのソート関数は文字列比較であるcmpで、C<(1, 2, 10)>を 
+C<(1, 10, 2)>に並び変えます．上の例では、数値比較演算子である 
+C<< <=> >> を使っています．
 
-�����Ȥ����Τΰ�������Ф�ɬ�פ�����褦��ʣ���ʴؿ���Ȥ��Τʤ顢
-�����ȴؿ�����¦�Ǥ����ȤäƤϤ����ޤ���
-�ǽ�ˤ��δؿ��ǻȤ���ʬ����Ф��ޤ���
-�ʤ��ʤ顢sort BLOCK��Ʊ�����Ǥ��Ф��Ʋ��٤ⲿ�٤�ƤӽФ����
-��ǽ�������뤫��Ǥ���
-�ʲ�����ϡ��ƥ����ƥ�κǽ���ֹ�θ�ˤ���ǽ��ñ�����Ф���
-���θ�Ǥ�����ñ����羮ʸ����̵�뤷�ƥ����Ȥ��ޤ���
+ソートするものの一部を取り出す必要があるような複雑な関数を使うのなら、
+ソート関数の内側でそれを使ってはいけません。
+最初にその関数で使う部分を取り出します．
+なぜなら、sort BLOCKは同じ要素に対して何度も何度も呼び出される
+可能性があるからです。
+以下の例は、各アイテムの最初の番号の後にある最初の単語を取り出し、
+その後でそれらの単語を大小文字を無視してソートします．
 
     @idx = ();
     for (@data) {
@@ -1895,52 +1895,52 @@ C<< <=> >> ��ȤäƤ��ޤ���
     }
     @sorted = @data[ sort { $idx[$a] cmp $idx[$b] } 0 .. $#idx ];
 
-����ϥ�������Ѵ��ȸƤФ��ȥ�å���Ȥäưʲ��Τ褦��
-�񤯤��Ȥ�Ǥ��ޤ�:
+これはシュワルツ変換と呼ばれるトリックを使って以下のように
+書くこともできます:
 
     @sorted = map  { $_->[0] }
 	      sort { $a->[1] cmp $b->[1] }
 	      map  { [ $_, uc( (/\d+\s*(\S+)/)[0]) ] } @data;
 
-���Ĥ��Υե�����ɤ�Ȥäƥ����Ȥ���ɬ�פ�����Τʤ顢
-�ʲ��Τ�����������Ǥ��礦��
+幾つかのフィールドを使ってソートする必要があるのなら、
+以下のやり方が便利でしょう。
 
     @sorted = sort { field1($a) <=> field1($b) ||
                      field2($a) cmp field2($b) ||
                      field3($a) cmp field3($b)
                    }     @data;
 
-����������ˤ��ä������� precalculation���Ȥ߹�碌�뤳�Ȥ�
-�Ǥ��ޤ���
+これは先の例にあったキーの precalculationと組み合わせることも
+できます。
 
-���Τ�����˴ؤ�����ܤ��������
+このやり方に関するより詳しい情報は
 http://www.perl.com/CPAN/doc/FMTEYEWTK/sort.html 
-�򻲾Ȥ��Ƥ���������
+を参照してください。
 
-��ǤǤƤ���ϥå���Υ����Ȥ˴ؤ������⻲�Ȥ��Ƥ���������
+後ででてくるハッシュのソートに関する質問も参照してください。
 
 =head2 How do I manipulate arrays of bits?
 
-(�ӥå�����򰷤��ˤ�?)
+(ビット配列を扱うには?)
 
-pack() �� unpack()����vec()�ȥӥåȱ黻��Ȥ��ޤ���
+pack() と unpack()か、vec()とビット演算を使います。
 
-�ʲ�����ϡ�$ints[N]�����åȤ���Ƥ���� $vec��bit N�򥻥åȤ��ޤ���
+以下の例は、$ints[N]がセットされていれば $vecのbit Nをセットします。
 
     $vec = '';
     foreach(@ints) { vec($vec,$_,1) = 1 }
 
-�����Ƽ��˵󤲤���ϡ�$vec��Ϳ������٥������ΥӥåȤ����� @ints ��
-���Ф���ΤǤ�:
+そして次に挙げる例は、$vecで与えられるベクターのビットを配列 @ints に
+取り出すものです:
 
     sub bitvec_to_list {
 	my $vec = shift;
 	my @ints;
-	# �ʥ�Х��Ȥ��̤򸡺����Ƥ�������Υ��르�ꥺ������򤷤ޤ�
+	# ナルバイトの量を検査してから最善のアルゴリズムを選択します
 	if ($vec =~ tr/\0// / length $vec > 0.95) {
 	    use integer;
 	    my $i;
-	    # ������ˡ�ϤۤȤ�ɤ��ʥ�Х��ȤΤȤ��˹�®�Ǥ�
+	    # この方法はほとんどがナルバイトのときに高速です
 	    while($vec =~ /[^\0]/g ) {
 		$i = -9 + 8 * pos $vec;
 		push @ints, $i if vec($vec, ++$i, 1);
@@ -1953,7 +1953,7 @@ pack() �� unpack()����vec()�ȥӥåȱ黻��Ȥ��ޤ���
 		push @ints, $i if vec($vec, ++$i, 1);
 	    }
 	} else {
-	    # ������ˡ�ϰ���Ū�˹�®�ʤ�ΤǤ�
+	    # この方法は一般的に高速なものです
 	    use integer;
 	    my $bits = unpack "b*", $vec;
 	    push @ints, 0 if $bits =~ s/^(\d)// && $1;
@@ -1962,10 +1962,10 @@ pack() �� unpack()����vec()�ȥӥåȱ黻��Ȥ��ޤ���
 	return \@ints;
     }
 
-������ˡ�ϥӥåȥ٥��������¤Ǥ���Ȥ��ˤ���˹�®�ˤʤ�ޤ�
-(Tim Bunce �� Winfried Koenig�ˤ���ΤǤ�)��
+この方法はビットベクターが疎であるときにさらに高速になります
+(Tim Bunce と Winfried Koenigによるものです)。
 
-vec()��Ȥä��ǥ�Ǥ�:
+vec()を使ったデモです:
 
     # vec demo
     $vector = "\xff\x0f\xef\xfe";
@@ -2011,32 +2011,32 @@ vec()��Ȥä��ǥ�Ǥ�:
 
 =head2 Why does defined() return true on empty arrays and hashes?
 
-(�ʤ����������ϥå����defined()��Ȥä��Ȥ��˿����֤äƤ���ΤǤ��礦?)
+(なぜ空の配列やハッシュにdefined()を使ったときに真が返ってくるのでしょう?)
 
-��ñ�ˤ����С������顼��ؿ����Ф��ƤΤ�defined��Ȥ��٤��ǡ�
-������(aggregates, �����ϥå���)���Ф��ƻȤ��٤��ǤϤʤ��ΤǤ���
-�ܤ�����5.004�ʹߤ�L<perlfunc/defined>�򻲾Ȥ��Ƥ���������
+簡単にいえば、スカラーや関数に対してのみdefinedを使うべきで、
+集成体(aggregates, 配列やハッシュ)に対して使うべきではないのです。
+詳しくは5.004以降のL<perlfunc/defined>を参照してください。
 
 =head1 Data: Hashes (Associative Arrays)
 
 =head2 How do I process an entire hash?
 
-(�ϥå������Τ��������ˤ�?)
+(ハッシュ全体を処理するには?)
 
-�ϥå��夬�����Ȥ���Ƥ��뤫�ɤ����򵤤ˤ��ʤ��ΤǤ���С�
-each()�ؿ�(L<perlfunc/each>����)��Ȥ��ޤ�:
+ハッシュがソートされているかどうかを気にしないのであれば、
+each()関数(L<perlfunc/each>参照)を使います:
 
     while ( ($key,$value) = each %hash) {
 	print "$key = $value\n";
     }
 
-�����Ȥ���Ƥ��뤳�Ȥ�˾��Τʤ顢���μ���ˤ��ä��褦�˥����򥽡��Ȥ���
-��̤��Ф���foreach()��Ȥ�ɬ�פ�����Ǥ��礦��
+ソートされていることを望むのなら、前の質問にあったようにキーをソートした
+結果に対してforeach()を使う必要があるでしょう。
 
 =head2 What happens if I add or remove keys from a hash while iterating over it?
 
-(�ϥå�����Ф���ȿ�����(iterrating)��ԤäƤ���Ȥ��˥������ɲä�
-����򤹤�Ȳ��������ޤ���?)
+(ハッシュに対して反復操作(iterrating)を行っているときにキーの追加や
+削除をすると何が起きますか?)
 
 =begin original
 
@@ -2044,7 +2044,7 @@ Don't do that. :-)
 
 =end original
 
-����ʤ��Ȥ򤷤ƤϤ����ޤ���:-)
+そんなことをしてはいけません。:-)
 
 =begin original
 
@@ -2058,12 +2058,12 @@ entry will be inserted before or after the current iterator position.
 
 =end original
 
-[lwall] Perl 4 �Ǥϡ�ȿ��ư����ˤϥϥå�������ϰ��ڶػߤǤ�����
-Perl 5 �ǤϺ���ϲ�ǽ�Ǥ������ɲäϤ�Ϥ��ԲĤǤ���
-����ˤ�äƥϥå���ơ��֥뤬�ܲ����ơ�����ȥ��Ⱦʬ���������ơ��֥��
-���ԡ�����뤫�⤷��ʤ�����Ǥ��������ȿ��ư����ɤ����˺��𤵤��ޤ���
-�ơ��֥뤬�ܲ����ʤ��ä��Ȥ��Ƥ⡢����������ȥ꤬���ߤ�ȿ��ư����֤�
-��������Τ����������Τ����Τ���ˡ�Ϥ���ޤ���
+[lwall] Perl 4 では、反復動作中にはハッシュの操作は一切禁止でした。
+Perl 5 では削除は可能ですが、追加はやはり不可です。
+これによってハッシュテーブルが倍化して、エントリの半分が新しいテーブルに
+コピーされるかもしれないからです。これは反復動作コードを完全に混乱させます。
+テーブルが倍化しなかったとしても、新しいエントリが現在の反復動作位置の
+前に入るのか後ろに入るのかを知る方法はありません。
 
 =begin original
 
@@ -2073,19 +2073,19 @@ of keys.
 
 =end original
 
-�ѹ������äƤ�����ȿ��ư��ν�λ���ȿ�Ǥ����뤫��
-�Ť�������������ƽ������ơ������Υꥹ�Ȥ��Ф���ȿ��ư���¹Ԥ��Ƥ���������
+変更点を取っておいて反復動作の終了後に反映させるか、
+古いキーを一度全て所得して、キーのリストに対して反復動作を実行してください。
 
 =head2 How do I look up a hash element by value?
 
-(�ϥå�������Ǥ򤽤��ͤǸ�������ˤ�?)
+(ハッシュの要素をその値で検索するには?)
 
-��С����ϥå����������ޤ�:
+リバースハッシュを作成します:
 
     %by_value = reverse %by_key;
     $key = $by_value{$value};
 
-������ä˸�Ψ���褤��ΤǤϤ���ޤ��󡣶��֤��Ψ�褯�Ȥ��ˤϤ������ޤ�:
+これは特に効率がよいものではありません。空間を効率よく使うにはこうします:
 
     while (($key, $value) = each %by_key) {
 	$by_value{$value} = $key;
@@ -2099,11 +2099,11 @@ worry you, you can always reverse the hash into a hash of arrays instead:
 
 =end original
 
-�ϥå����Ʊ���ͤ�������ˤϡ����Υ᥽�åɤϺǽ�˸��Ĥ��ä���
-�������򸫤Ĥ������ޤ������ʤ��Ϥ���򵤤ˤ��뤫���Τ�ޤ��󤷡�
-���ˤ��ʤ����⤷��ޤ���
-�⤷���ˤ���Τʤ顢���ĤǤ�ϥå�������������Υϥå����
-�Ȥ����Ȥ��Ǥ��ޤ�:
+ハッシュに同じ値がある場合には、このメソッドは最初に見つかったキ
+ーだけを見つけだします。あなたはこれを気にするかも知れませんし、
+気にしないかもしれません。
+もし気にするのなら、いつでもハッシュの代わりに配列のハッシュを
+使うことができます:
 
      while (($key, $value) = each %by_key) {
 	 push @{$key_list_by_value{$value}}, $key;
@@ -2111,10 +2111,10 @@ worry you, you can always reverse the hash into a hash of arrays instead:
 
 =head2 How can I know how many entries are in a hash?
 
-(�ϥå���ˤɤ줯�餤�����Ǥ�����Τ��Ϥɤ�����Ф狼��ޤ���?)
+(ハッシュにどれくらいの要素があるのかはどうすればわかりますか?)
 
-�ɤΤ��餤�Υ���������Τ��Ȥ������ʤ顢keys()�ؿ��򥹥��顼����ƥ����Ȥ�
-�Ȥ��ޤ�:
+どのくらいのキーがあるのかという事なら、keys()関数をスカラーコンテキストで
+使います:
 
     $num_keys = scalar keys %hash;
 
@@ -2126,27 +2126,27 @@ hash, one key-value pair at a time.
 
 =end original
 
-keys() �ؿ���ȿ��ư����������ޤ���
-̵������ƥ����ȤϷ���դ���줿�ϥå�����Ф��ơ��ϥå������Τ�
-����-�ͤ��Ȥ��Ĥ���ȿ��ư��򤹤����®�Ǥ���
+keys() 関数も反復動作を初期化します。
+無効コンテキストは結び付けられたハッシュに対して、ハッシュ全体を
+キー-値の組を一つずつ反復動作をするより高速です。
 
 =head2 How do I sort a hash (optionally by value instead of key)?
 
-�ϥå����(�����ǤϤʤ��ͤ�)�����Ȥ���ˤ�?
+ハッシュを(キーではなく値で)ソートするには?
 
-����Ū�ˤϡ��ϥå���ϥ������ͤΥڥ�������ν��֤Ǽ��Ф����Ȥ�
-˸����褦����ˡ�ǳ�Ǽ����Ƥ��ޤ������Τ��ᡢ�������ͤΥꥹ�Ȥ�
-�����Ȥ���ɬ�פ�����ޤ���
+内部的には、ハッシュはキーと値のペアを特定の順番で取り出すことを
+妨げるような方法で格納されています。このため、キーか値のリストを
+ソートする必要があります．
 
-    @keys = sort keys %hash;	# �����ˤ�륽����
+    @keys = sort keys %hash;	# キーによるソート
     @keys = sort {
 		    $hash{$a} cmp $hash{$b}
-	    } keys %hash; 	# �ͤˤ�륽����
+	    } keys %hash; 	# 値によるソート
 
-�ʲ�����ϡ��ͤ���ͤι߽�ǥ����Ȥ�����ĤΥ�����Ʊ�ͤǤ����
-����򥭡���Ĺ���ǥ����Ȥ������줬���Ԥ����ʤ饭����ľ��Ū��ASCII
-��Ӥ�Ԥ���ΤǤ�(���������ʤ��λȤ��������������ǽ��������ޤ���
-L<perllocale>�򻲾Ȥ��Ƥ�������)��
+以下の例は、値を数値の降順でソートし、二つのキーが同値であれば
+それをキーの長さでソートし、それが失敗したならキーの直接的なASCII
+比較を行うものです(そう、あなたの使うロカールで代る可能性があります。
+L<perllocale>を参照してください)。
 
     @keys = sort {
 		$hash{$b} <=> $hash{$a}
@@ -2158,7 +2158,7 @@ L<perllocale>�򻲾Ȥ��Ƥ�������)��
 
 =head2 How can I always keep my hash sorted?
 
-(��Υϥå�����˥����Ȥ��줿���֤ˤ��Ƥ����ˤ�?)
+(私のハッシュを常にソートされた状態にしておくには?)
 
 =begin original
 
@@ -2168,26 +2168,26 @@ The Tie::IxHash module from CPAN might also be instructive.
 
 =end original
 
-L<DB_File/"In Memory Databases">�ˤ���褦�ˡ�DB_File�⥸�塼���
-tie()��Ȥä���$DB_BTREE �ϥå���«����Ȥ����Ȥ��Ǥ��ޤ���
-CPAN �� Tie::IxHash �⥸�塼���ͭ�פ��⤷��ޤ���
+L<DB_File/"In Memory Databases">にあるように、DB_Fileモジュールと
+tie()を使った、$DB_BTREE ハッシュ束縛を使うことができます。
+CPAN の Tie::IxHash モジュールも有益かもしれません。
 
 =head2 What's the difference between "delete" and "undef" with hashes?
 
-(�ϥå�����Ф��� "delete" �� "undef"�Ȥδ֤ΰ㤤�Ϥʤ�Ǥ���?)
+(ハッシュに対する "delete" と "undef"との間の違いはなんですか?)
 
-�ϥå���ϥ����顼�Υڥ��Ǥ�: �ǽ�Υ����顼�������ǡ������ܤΥ����顼���ͤǤ���
-������ʸ���󡢿��͡���ե���󥹤Τ�����μ���Υ����顼�Ǥ��äƤ�
-����Ū��ʸ����ˤ���ޤ�����������C<$key>�Ȥ������������ˤ���С�
-C<exists($key)>�Ͽ����֤��ޤ���
-Ϳ����줿�������Ф����ͤ�C<undef>�Ȥ��뤳�Ȥ��Ǥ��ޤ���
-����� C<$array{$key}> �� C<undef>�ˤ��ơ�C<$exists{$key}>������
-�֤��Ȥ������֤Ǥ�����
-��� (C<$key>, C<undef>)���ϥå����¸�ߤ��Ƥ���Ȥ������Ȥ򼨤��Ƥ��ޤ���
+ハッシュはスカラーのペアです: 最初のスカラーがキーで、二番目のスカラーが値です。
+キーは文字列、数値、リファレンスのいずれの種類のスカラーであっても
+強制的に文字列にされます。配列の中にC<$key>というキーが既にあれば、
+C<exists($key)>は真を返します。
+与えられたキーに対する値はC<undef>とすることができます。
+これは C<$array{$key}> を C<undef>にして、C<$exists{$key}>が真を
+返すという状態です。こ
+れは (C<$key>, C<undef>)がハッシュに存在しているということを示しています。
 
-�ޤ������ˤʤ�Ǥ��礦���ʲ���C<%ary>�Υơ��֥�Ǥ�:
+図が助けになるでしょう。以下はC<%ary>のテーブルです:
 
-	  ����  ��
+	  キー  値
 	+------+------+
 	|  a   |  3   |
 	|  x   |  7   |
@@ -2195,22 +2195,22 @@ C<exists($key)>�Ͽ����֤��ޤ���
 	|  e   |  2   |
 	+------+------+
 
-�����Ƥ���餬�ݻ����Ƥ�����֤Ϥ����Ǥ�
+そしてこれらが保持している状態はこうです
 
 	$ary{'a'}                       is true
 	$ary{'d'}                       is false
 	defined $ary{'d'}               is true
 	defined $ary{'a'}               is true
-	exists $ary{'a'}                is true (Perl5 �Τ�)
+	exists $ary{'a'}                is true (Perl5 のみ)
 	grep ($_ eq 'a', keys %ary)     is true
 
-������
+ここで
 	undef $ary{'a'}
 
-�Ȥ���ȡ��ơ��֥�Ϥ����ʤ�ޤ�:
+とすると、テーブルはこうなります:
 
 
-	  ����  ��
+	  キー  値
 	+------+------+
 	|  a   | undef|
 	|  x   |  7   |
@@ -2218,33 +2218,33 @@ C<exists($key)>�Ͽ����֤��ޤ���
 	|  e   |  2   |
 	+------+------+
 
-�����Ƥ��ξ��֤ϰʲ��Τ褦�ˤʤ�ޤ�����ʸ���ˤʤäƤ���Τ�
-�Ѥä����Ǥ���
+そしてその状態は以下のようになります。大文字になっているのが
+変った場所です。
 
 	$ary{'a'}                       is FALSE
 	$ary{'d'}                       is false
 	defined $ary{'d'}               is true
 	defined $ary{'a'}               is FALSE
-	exists $ary{'a'}                is true (Perl5 �Τ�)
+	exists $ary{'a'}                is true (Perl5 のみ)
 	grep ($_ eq 'a', keys %ary)     is true
 
-�Ǹ����Ĥ����ܤ��Ƥ�������:���ʤ���undef�ͤ��ݻ����Ƥ��ޤ�����
-������define����Ƥ���ΤǤ�!
+最後の二つに注目してください:あなたはundef値を保持していますが、
+キーはdefineされているのです!
 
-���ơ�����ɤϰʲ������ͤ��Ƥߤޤ��礦:
+さて、こんどは以下の例を考えてみましょう:
 
 	delete $ary{'a'}
 
-�ơ��֥�Ϥ����ʤ�ޤ�:
+テーブルはこうなります:
 
-	  ����  ��
+	  キー  値
 	+------+------+
 	|  x   |  7   |
 	|  d   |  0   |
 	|  e   |  2   |
 	+------+------+
 
-�����Ƥ��ξ��֤Ϥ����Ǥ�����ʸ������ʬ���Ѥä��Ȥ����Ǥ���
+そしてその状態はこうです。大文字の部分が変ったところです。
 
 	$ary{'a'}                       is false
 	$ary{'d'}                       is false
@@ -2259,12 +2259,12 @@ See, the whole entry is gone!
 
 =end original
 
-�ۤ顢����ȥ꤬�ݤ��Ȥʤ��ʤäƤ��ޤ��ޤ���!
+ほら、エントリが丸ごとなくなっていまいました!
 
 =head2 Why don't my tied hashes make the defined/exists distinction?
 
-(�ʤ��錄����tie���줿�ϥå����
-defined��exists����̤��ʤ��ΤǤ��礦��?)
+(なぜわたしのtieされたハッシュは
+definedとexistsを区別しないのでしょうか?)
 
 =begin original
 
@@ -2277,18 +2277,18 @@ they end up doing is not what they do with ordinary hashes.
 
 =end original
 
-EXISTS()�᥽�å� �� DEFINED()�᥽�åɤȤ��㤦��ΤȤ���
-��������Ƥ��ʤ��Τ��⤷��ޤ���
-���Ȥ��С�DBM*�ե������tie���줿�ϥå���ˤ�undef�Ȥ����ͤ����Ϥ���ޤ���
-����ϤĤޤꡢ��ˤ��ä�true/false�Υơ��֥뤬�������ä��ϥå����
-�Ȥä����ϰ�ä���Τˤʤ�������Ȥ������ȤǤ���
-����Ϥޤ�DBM* file�ˤȤäƤ�exists��defined �Ȥ�Ʊ�����ȤǤ��ꡢ
-�������ä���Τ��Ф��ƹԤäƤ��뤳�Ȥ�
-�̾�Υϥå�����Ф��ƹԤäƤ��뤳�ȤȤϰ㤦�Τ��Ȥ������ȤʤΤǤ���
+EXISTS()メソッド と DEFINED()メソッドとが違うものとして
+実装されていないのかもしれません。
+たとえば、DBM*ファイルにtieされたハッシュにはundefという考え方はありません。
+これはつまり、上にあったtrue/falseのテーブルがそういったハッシュを
+使った場合は違ったものになるだろうということです。
+これはまたDBM* fileにとってはexistsとdefined とは同じことであり、
+そういったものに対して行っていることは
+通常のハッシュに対して行っていることとは違うのだということなのです。
 
 =head2 How do I reset an each() operation part-way through?
 
-(each() ��������ǥꥻ�åȤ��Ƥ��ޤ��ˤ�?)
+(each() 操作の途中でリセットしてしまうには?)
 
 =begin original
 
@@ -2299,19 +2299,19 @@ re-enter it, the hash iterator has been reset.
 
 =end original
 
-�����顼����ƥ����Ȥ�C<keys %hash>��Ȥ��ȡ��ϥå���ˤ��륭���ο����֤���
-B<������>���Υϥå���˷���դ���줿���ƥ졼����
-(iterator)��ꥻ�åȤ��ޤ���
-�롼�פ������C<last>��Ȥä�æ�Ф��Ƥ��ơ���Ǥ��Υ롼�פ˺���
-����褦�ʤȤ��ˤϡ��ϥå��奤�ƥ졼������ꥻ�åȤ��Ƥ��������
-�����Ԥ�ɬ�פ�����Ǥ��礦��
+スカラーコンテキストでC<keys %hash>を使うと、ハッシュにあるキーの数を返し、
+B<そして>そのハッシュに結び付けられたイテレーター
+(iterator)をリセットします。
+ループの途中でC<last>を使って脱出していて、後でそのループに再度
+入るようなときには、ハッシュイテレーターをリセットしておくために
+これを行う必要があるでしょう。
 
 =head2 How can I get the unique keys from two hashes?
 
-(�ɤ��������ĤΥϥå��夫���ˡ����ʥ�����������ޤ���?)
+(どうすれば二つのハッシュからユニークなキーを取りだせますか?)
 
-�ޤ��ǽ�˥ϥå��夫�饭����������ơ������ꥹ�Ȥ˳�Ǽ���ޤ���
-�����ơ�������������ֽ�ʣ�κ��������β���Ԥ��ޤ�����:
+まず最初にハッシュからキーを取りだして、それをリストに格納します。
+そして、先に説明した「重複の削除」問題の解決を行います。例:
 
     %seen = ();
     for $element (keys(%foo), keys(%bar)) {
@@ -2319,11 +2319,11 @@ B<������>���Υϥå���˷���դ���줿���ƥ졼����
     }
     @uniq = keys %seen;
 
-���뤤�Ϥ�äȴʷ��:
+あるいはもっと簡潔に:
 
     @uniq = keys %{{%foo,%bar}};
 
-�⤷�����˥�����֤����󤷤����Τʤ�:
+もし本当にメモリ空間を節約したいのなら:
 
     %seen = ();
     while (defined ($key = each %foo)) {
@@ -2336,16 +2336,16 @@ B<������>���Υϥå���˷���դ���줿���ƥ졼����
 
 =head2 How can I store a multidimensional array in a DBM file?
 
-(�ɤ�����DBM�ե������¿����������Ǽ�Ǥ��ޤ���?)
+(どうやればDBMファイルに多次元配列を格納できますか?)
 
-��ʬ���Ȥǹ�¤��ʸ���󲽤��뤫��MLDBM�⥸�塼��(Data::Dumper��Ȥ��ޤ�)��
-CPAN�����äƤ��ơ�DB_File��GDBM_File�Τ����줫�Υȥåץ쥤�䡼�ˤ��ޤ���
+自分自身で構造を文字列化するか、MLDBMモジュール(Data::Dumperを使います)を
+CPANから取ってきて、DB_FileかGDBM_Fileのいずれかのトップレイヤーにします。
 
 =head2 How can I make my hash remember the order I put elements into it?
 
-(�ɤ�����С��錄���Υϥå��夬��Ǽ�������֤�Ф��Ƥ����褦�ˤǤ��ޤ���?)
+(どうすれば、わたしのハッシュが格納した順番を覚えておくようにできますか?)
 
-CPAN�ˤ���Tie::IxHash��Ȥ��ޤ���
+CPANにあるTie::IxHashを使います。
 
     use Tie::IxHash;
     tie(%myhash, Tie::IxHash);
@@ -2357,31 +2357,31 @@ CPAN�ˤ���Tie::IxHash��Ȥ��ޤ���
 
 =head2 Why does passing a subroutine an undefined element in a hash create it?
 
-(�ʤ�����ϥå����̤������Ǥ򥵥֥롼������Ϥ��Ȥ�����������ΤǤ��礦��?)
+(なぜあるハッシュの未定義要素をサブルーチンに渡すとそれを作成するのでしょうか?)
 
 If you say something like:
 
     somefunc($hash{"nonesuch key here"});
 
-���Τ褦�ˤ�����硢�������ǤϿ��������ߤ�����ޤ�("autovivifies")��
-����ϤĤޤꡢ���ʤ��������˲������Ǽ���뤿��(�ºݤ˳�Ǽ���뤳�Ȥ��ʤ��Ƥ�)��
-���Ф����ΤǤ���
-����ϴؿ����Ϥ��줿�����顼���ե���󥹤Ǽ�����뤫��Ǥ���
-somefunc()��C<$_[0]>���ѹ�����Τʤ顢
-�ƤӽФ����ˤ����ȿ�Ǥ����뤿��˽񤭹��ߤ��Ǥ���褦��
-�ʤäƤ��ʤ���Фʤ�ޤ���
+このようにした場合、この要素は新たに生みだされます("autovivifies")。
+これはつまり、あなたがそこに何かを格納するため(実際に格納することがなくても)に
+作り出されるのです。
+これは関数が渡されたスカラーをリファレンスで受け取るからです。
+somefunc()がC<$_[0]>を変更するのなら、
+呼び出し元にそれを反映させるために書き込みができるように
+なっていなければなりません。
 
-�����Perl5.004�ǽ�������ޤ�����
+これはPerl5.004で修正されました。
 
-�̾�ϡ�¸�ߤ��Ƥ��ʤ��������Ф��륢�������ϡ����Υ�������������
-�褦�ʤ��Ȥ�B<����ޤ���>�������awk�ο����񤤤Ȥϰۤʤ�ޤ���
+通常は、存在していないキーに対するアクセスは、そのキーを生成する
+ようなことはB<ありません>。これはawkの振る舞いとは異なります．
 
 =head2 How can I make the Perl equivalent of a C structure/C++ class/hash or array of hashes or arrays?
 
-(�ɤ������C�ι�¤��/C++�Υ��饹 �Υϥå��塢����Υϥå��塢����
-�������ʤ�Τ�Perl�Ǻ����Ǥ��ޤ���?)
+(どうすればCの構造体/C++のクラス のハッシュ、配列のハッシュ、配列
+と等価なものをPerlで作成できますか?)
 
-�̾�ϥϥå���Υ�ե���󥹤�Ȥ��ޤ���¿ʬ�ʲ��Τ褦�ˤʤ�Ǥ��礦:
+通常はハッシュのリファレンスを使います。多分以下のようになるでしょう:
 
     $record = {
         NAME   => "Jason",
@@ -2392,25 +2392,25 @@ somefunc()��C<$_[0]>���ѹ�����Τʤ顢
         PALS   => [ "Norbert", "Rhys", "Phineas"],
     };
 
-��ե���󥹤�L<perlref>��L<perlreftut>������������ޤ���
-ʣ���ʥǡ�����¤���㤬L<perldesc>��L<perllol>�ˤ���ޤ���
-��¤�Τȥ��֥������Ȼظ����饹���㤬L<perltoot>�ˤ���ޤ���
+リファレンスはL<perlref>とL<perlreftut>に説明があります。
+複雑なデータ構造の例がL<perldesc>とL<perllol>にあります。
+構造体とオブジェクト指向クラスの例がL<perltoot>にあります。
 
 =head2 How can I use a reference as a hash key?
 
-(�ɤ�����Хϥå���Υ����Ȥ��ƥ�ե���󥹤�Ȥ��ޤ���?)
+(どうすればハッシュのキーとしてリファレンスを使えますか?)
 
-�����ľ�ܤ˹Ԥ����ȤϤǤ��ޤ��󤬡�Perl�Ȱ������ۤ���Ƥ���ɸ���
-Tie::Rehash�⥸�塼���Ȥ����Ȥ��Ǥ��ޤ���
+これは直接に行うことはできませんが、Perlと一緒に配布されている標準の
+Tie::Rehashモジュールを使うことができます。
 
 =head1 Data: Misc
 
 =head2 How do I handle binary data correctly?
 
-(�Х��ʥ�ǡ����������������ˤ�?)
+(バイナリデータを正しく扱うには?)
 
-Perl�ϥХ��ʥꥯ�꡼��Ǥ����Ǥ����顢����Ϥɤ��ˤ�ʤ��Ϥ��Ǥ���
-���Ȥ��С��������������ư��ޤ�(�ե����뤬���Ĥ��뤳�Ȥ��ꤷ�Ƥ��ޤ�):
+Perlはバイナリクリーンです。ですから、問題はどこにもないはずです。
+たとえば、次の例は正しく動作します(ファイルが見つかることを仮定しています):
 
     if (`cat /vmunix` =~ /gzip/) {
 	print "Your kernel is GNU-zip enabled!\n";
@@ -2426,24 +2426,24 @@ the backward into backward compatibility.
 
 =end original
 
-�������ʤ��餢�ޤꥨ�쥬��ȤǤʤ������ƥ�Ǥϡ��ȥƥ����ȡɥե�����ȡȥХ��ʥ��
-�ե�����Ȥδ֤�˰��˰������褦�ʥ�����򤹤�ɬ�פ�����Ǥ��礦��
-L<perlfunc/"binmode">��L<perlopentut>�򻲾Ȥ��Ƥ���������
-�����θŽ����ͤ����Υ����ƥ�ΤۤȤ�ɤϥޥ��������եȤμ���������Ƥ��ޤ���
-���Ȥθߴ����򤺤äȤҤ����äƤ��뤫��Ǥ���
+しかしながらあまりエレガントでないシステムでは、“テキスト”ファイルと“バイナリ”
+ファイルとの間の飽き飽きするようなゲームをする必要があるでしょう。
+L<perlfunc/"binmode">とL<perlopentut>を参照してください。
+これらの古臭い考え方のシステムのほとんどはマイクロソフトの呪いを受けています。
+過去との互換性をずっとひきずっているからです。
 
-�⤷8�ӥå�ASCII�ǡ����ˤĤ��ƹͤ��Ƥ���ΤǤ���С�L<perllocale>��
-���Ȥ��Ƥ���������
+もし8ビットASCIIデータについて考えているのであれば、L<perllocale>を
+参照してください。
 
-�������ޥ���Х��ȥ���饯�����򰷤������ȹͤ��Ƥ���ʤ顢���Ĥ���
-�(gotchas)������ޤ�������ɽ���Υ��������򻲾Ȥ��Ƥ���������
+ただしマルチバイトキャラクターを扱いたいと考えているなら、幾つかの
+罠(gotchas)があります。正規表現のセクションを参照してください。
 
 =head2 How do I determine whether a scalar is a number/whole/integer/float?
 
-(���륹���顼������/whole/����/��ư���������Τ�����Ǥ��뤳�Ȥ���ꤹ��ˤ�?)
+(あるスカラーが数値/whole/整数/浮動小数点数のいずれであることを決定するには?)
 
-��NaN�ɤȤ���Infinity�ɤΤ褦��IEEEɽ���ˤĤ��Ƥϵ��ˤ��ʤ��Ȳ��ꤹ��ȡ�
-����ɽ����ȤäƹԤ����Ȥ��Ǥ��ޤ���
+“NaN”とか“Infinity”のようなIEEE表記については気にしないと仮定すると、
+正規表現を使って行うことができます。
 
    if (/\D/)            { print "has nondigits\n" }
    if (/^\d+$/)         { print "is a whole number\n" }
@@ -2454,14 +2454,14 @@ L<perlfunc/"binmode">��L<perlopentut>�򻲾Ȥ��Ƥ���������
    if (/^([+-]?)(?=\d|\.\d)\d*(\.\d*)?([Ee]([+-]?\d+))?$/)
 			{ print "a C float" }
 
-POSIX�����ƥ��ȤäƤ���Τʤ顢Perl��C<POSIX::strtod>
-�ؿ��򥵥ݡ��Ȥ��Ƥ��ޤ���
-���Υ��ޥ�ƥ��å��ϰ����ˤ�����Τǡ���ä������˥����������뤿���
-C<getnum>�ؿ���ʲ����㼨���ޤ���
-���δؿ���ʸ���������˼�ꡢ����ʸ������Ǹ��Ĥ��ä���������б�����
-���ͤ��֤������Ϥ�C�ξ�����ɽ���ˤ���ʤ���ΤǤ����C<undef>���֤��ޤ���
-C<is_numeric>�ؿ��ϡȤ���Ͽ��ͤ�?�ɤȤ������Ȥ��Τꤿ������
-C<getnum>�Υե���ȥ���ɤȤʤ�ޤ���
+POSIXシステムを使っているのなら、PerlはC<POSIX::strtod>
+関数をサポートしています。
+そのセマンティックは扱いにくいもので、もっと便利にアクセスするための
+C<getnum>関数を以下に例示します。
+この関数は文字列を引数に取り、その文字列中で見つかった数字列に対応する
+数値を返し、入力がCの小数点表記にあわないものであればC<undef>を返します。
+C<is_numeric>関数は“これは数値か?”ということを知りたい場合に
+C<getnum>のフロントエンドとなります。
 
     sub getnum {
         use POSIX qw(strtod);
@@ -2488,19 +2488,19 @@ respectively.
 
 =end original
 
-���뤤�ϡ� CPAN �ˤ���String::Scanf �⥸�塼��������å����ƤߤƤ���������
-POSIX�⥸�塼��(ɸ��Perl���ۥ��åȤΰ����Ǥ�)��ʸ���󤫤���������ư����������
-Ĺ�����ؤ��Ѵ���Ŭ�ڤ˹Ԥ�C<strtod> �� C<strtol> ���󶡤��Ƥ��ޤ���
+あるいは、 CPAN にあるString::Scanf モジュールををチェックしてみてください。
+POSIXモジュール(標準Perl配布キットの一部です)は文字列から倍精度浮動小数点数や
+長整数への変換を適切に行うC<strtod> と C<strtol> を提供しています。
 
 =head2 How do I keep persistent data across program calls?
 
-(�ץ������θƤӽФ��δ֤ˡ��ǡ�����¤���³Ū���ݻ�����ˤ�?)
+(プログラムの呼び出しの間に、データ構造を永続的に保持するには?)
 
-����������Υ��ץꥱ�������Ǥϡ�DBM�⥸�塼��ΰ�Ĥ�Ȥ����Ȥ��Ǥ��ޤ���
-L<AnyDBM_File>�򻲾Ȥ��Ƥ���������������Ū�ˤϡ�
-CPAN�ˤ���FreezeThaw, Storable,  Class::Eroot �Ȥ��ä��⥸�塼���
-�����äƤߤ�٤��Ǥ��礦���ʲ���Storable��
-C<store>��C<retrieve>��Ȥä����󤲤ޤ�:
+一部の特定のアプリケーションでは、DBMモジュールの一つを使うことができます。
+L<AnyDBM_File>を参照してください。より一般的には、
+CPANにあるFreezeThaw, Storable,  Class::Eroot といったモジュールを
+あたってみるべきでしょう。以下にStorableの
+C<store>とC<retrieve>を使った例を挙げます:
 
     use Storable; 
     store(\%hash, "filename");
@@ -2511,26 +2511,26 @@ C<store>��C<retrieve>��Ȥä����󤲤ޤ�:
 
 =head2 How do I print out or copy a recursive data structure?
 
-(�Ƶ�Ū�ʥǡ�����¤����Ϥ����ꥳ�ԡ�����ˤ�?)
+(再帰的なデータ構造を出力したりコピーするには?)
 
-CPAN�ˤ��� Data::Dumper�⥸�塼��(5.005�ʹߤǤ�Perl�Υ�꡼����
-�ޤޤ�Ƥ��ޤ�)�ϥǡ�����¤����Ϥ���Τ˸����Ƥ��ޤ���
-CPAN�ˤ���Storable�⥸�塼��Ϥ��ΰ�����Ƶ�Ū�˥��ԡ�����
-C<dclone>�Ȥ����ؿ����󶡤��Ƥ��ޤ���
+CPANにある Data::Dumperモジュール(5.005以降ではPerlのリリースに
+含まれています)はデータ構造を出力するのに向いています。
+CPANにあるStorableモジュールはその引数を再帰的にコピーする
+C<dclone>という関数を提供しています。
 
     use Storable qw(dclone); 
     $r2 = dclone($r1);
 
-������$r1�ˤϤ��ʤ���˾��ǡ�����¤�Υ�ե���󥹤��֤����Ȥ��Ǥ��ޤ���
-����Ͽ������ԡ�(deeply copied)����ޤ���C<dclone>�ϥ�ե���󥹤���
-��ե���󥹤��֤��Τǡ����ԡ���������Τ�����Υϥå���Ǥ��ä��ꤷ��
-���ˤ�;�פ�punctuation��ɬ�פȤʤ�Ǥ��礦��
+ここで$r1にはあなたの望むデータ構造のリファレンスを置くことができます。
+これは深くコピー(deeply copied)されます。C<dclone>はリファレンスを取り
+リファレンスを返すので、コピーしたいものが配列のハッシュであったりした
+場合には余計なpunctuationが必要となるでしょう。
 
     %newhash = %{ dclone(\%oldhash) };
 
 =head2 How do I define methods for every class/object?
 
-(���٤ƤΥ��饹/���֥������ȤΤ���Υ᥽�åɤ��������ˤ�?)
+(すべてのクラス/オブジェクトのためのメソッドを定義するには?)
 
 =begin original
 
@@ -2538,22 +2538,22 @@ Use the UNIVERSAL class (see L<UNIVERSAL>).
 
 =end original
 
-UNIVERSAL ���饹 (L<UNIVERSAL>)�򻲾�)��Ȥ��ޤ���
+UNIVERSAL クラス (L<UNIVERSAL>)を参照)を使います。
 
 =head2 How do I verify a credit card checksum?
 
-(���쥸�åȥ����ɤΥ����å�����򸡺�����ˤ�?)
+(クレジットカードのチェックサムを検査するには?)
 
-CPAN���� Business::CreditCard �⥸�塼������ꤷ�Ƥ���������
+CPANから Business::CreditCard モジュールを入手してください。
 
 =head2 How do I pack arrays of doubles or floats for XS code?
 
-(XS�ץ������Τ���������ټ¿���ñ���ټ¿��������ѥå�����ˤ�?)
+(XSプログラムのために倍精度実数や単精度実数の配列をパックするには?)
 
-CPAN�ˤ���PGPLOT�⥸�塼��ˤ���kgbpack.c�Ȥ�����Τ�����򤷤ޤ���
-�����ټ¿���ñ���ټ¿������̤˰����ΤǤ���С�CPAN�ˤ���
-PDL�⥸�塼���Ȥ����Ȥ�ͤ��Ƥߤ�Ȥ褤�Ǥ��礦�������
-number-crunching���ñ�ˤ��Ƥ���ޤ���
+CPANにあるPGPLOTモジュールにあるkgbpack.cというものがそれをします。
+倍精度実数や単精度実数を大量に扱うのであれば、CPANにある
+PDLモジュールを使うことを考えてみるとよいでしょう。これは
+number-crunchingを簡単にしてくれます。
 
 =head1 AUTHOR AND COPYRIGHT
 

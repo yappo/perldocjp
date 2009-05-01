@@ -9,7 +9,7 @@ perlglossary - Perl Glossary
 
 =end original
 
-perlglossary - Perl ÍÑ¸ì½¸
+perlglossary - Perl ç”¨èªé›†
 
 =head1 DESCRIPTION
 
@@ -34,7 +34,7 @@ L<http://catb.org/~esr/jargon/>, and Wikipedia L<http://www.wikipedia.org/>.
 
 =item accessor methods
 
-(¥¢¥¯¥»¥µ¥á¥½¥Ã¥É(accessor methods))
+(ã‚¢ã‚¯ã‚»ã‚µãƒ¡ã‚½ãƒƒãƒ‰(accessor methods))
 
 =begin original
 
@@ -66,7 +66,7 @@ also L</argument> and L</formal arguments>.
 
 =item address operator
 
-(¥¢¥É¥ì¥¹±é»»»Ò(address operator))
+(ã‚¢ãƒ‰ãƒ¬ã‚¹æ¼”ç®—å­(address operator))
 
 =begin original
 
@@ -87,7 +87,7 @@ reference>, which is much safer than a memory address.
 
 =item algorithm
 
-(¥¢¥ë¥´¥ê¥º¥à(algorithm))
+(ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ (algorithm))
 
 =begin original
 
@@ -154,7 +154,7 @@ with either C<||> or C<or>.
 
 =item anonymous
 
-(ÌµÌ¾(anonymous))
+(ç„¡å(anonymous))
 
 =begin original
 
@@ -175,7 +175,7 @@ pity.
 
 =item architecture
 
-(¥¢¡¼¥­¥Æ¥¯¥Á¥ã(architecture))
+(ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£(architecture))
 
 =begin original
 
@@ -200,7 +200,7 @@ system>.
 
 =item argument
 
-(°ú¿ô(argument))
+(å¼•æ•°(argument))
 
 =begin original
 
@@ -234,7 +234,7 @@ the L</scalar> containing the name of the current input file.
 
 =item arithmetical operator
 
-(»»½Ñ±é»»»Ò(arithmetical operator))
+(ç®—è¡“æ¼”ç®—å­(arithmetical operator))
 
 =begin original
 
@@ -249,7 +249,7 @@ you were supposed to learn in grade school.
 
 =item array
 
-(ÇÛÎó(array))
+(é…åˆ—(array))
 
 =begin original
 
@@ -266,7 +266,7 @@ that specifies the value's L</offset> in the sequence.
 
 =item array context
 
-(ÇÛÎó¥³¥ó¥Æ¥­¥¹¥È(array context))
+(é…åˆ—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(array context))
 
 =begin original
 
@@ -300,7 +300,7 @@ codes best described as half ASCII.  See also L</Unicode>.
 
 =item assertion
 
-(¥¢¥µ¡¼¥È(assertion))
+(ã‚¢ã‚µãƒ¼ãƒˆ(assertion))
 
 =begin original
 
@@ -317,7 +317,7 @@ Often used specifically to mean a L</zero width> assertion.
 
 =item assignment
 
-(ÂåÆş(assignment))
+(ä»£å…¥(assignment))
 
 =begin original
 
@@ -332,7 +332,7 @@ of a L</variable>.
 
 =item assignment operator
 
-(ÂåÆş±é»»»Ò(assignment operator))
+(ä»£å…¥æ¼”ç®—å­(assignment operator))
 
 =begin original
 
@@ -351,7 +351,7 @@ example, C<$a += 2> adds C<2> to C<$a>.
 
 =item associative array
 
-(Ï¢ÁÛÇÛÎó(associative array))
+(é€£æƒ³é…åˆ—(associative array))
 
 =begin original
 
@@ -364,7 +364,7 @@ See L</hash>.  Please.
 
 =item associativity
 
-(·ë¹çÀ­(associativity))
+(çµåˆæ€§(associativity))
 
 =begin original
 
@@ -385,7 +385,7 @@ See L<perlop> for a list of operators and their associativity.
 
 =item asynchronous
 
-(ÈóÆ±´ü(asynchronous))
+(éåŒæœŸ(asynchronous))
 
 =begin original
 
@@ -438,7 +438,7 @@ can't be interrupted, not one forbidden in a nuclear-free zone.
 
 =item attribute
 
-(Â°À­(attribute))
+(å±æ€§(attribute))
 
 =begin original
 
@@ -476,7 +476,7 @@ regular operators.  See L<perlop>.
 
 =item autoincrement
 
-(¼«Æ°¥¤¥ó¥¯¥ê¥á¥ó¥È(autoincrement))
+(è‡ªå‹•ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ(autoincrement))
 
 =begin original
 
@@ -508,7 +508,7 @@ undefined subroutine.
 
 =item autosplit
 
-(¼«Æ° split(autosplit))
+(è‡ªå‹• split(autosplit))
 
 =begin original
 
@@ -527,7 +527,7 @@ switch, but a lot to do with autoloading.)
 
 =item autovivification
 
-(¼«Æ°Í­¸ú²½(autovivification))
+(è‡ªå‹•æœ‰åŠ¹åŒ–(autovivification))
 
 =begin original
 
@@ -592,7 +592,7 @@ some of its high-level ideas.
 
 =item backreference
 
-(¸åÊı»²¾È(backreference))
+(å¾Œæ–¹å‚ç…§(backreference))
 
 =begin original
 
@@ -617,7 +617,7 @@ the current dynamic scope.
 
 =item backtracking
 
-(¥Ğ¥Ã¥¯¥È¥é¥Ã¥­¥ó¥°(backtracking))
+(ãƒãƒƒã‚¯ãƒˆãƒ©ãƒƒã‚­ãƒ³ã‚°(backtracking))
 
 =begin original
 
@@ -640,7 +640,7 @@ its earlier attempts don't pan out.  See L<perlre/Backtracking>.
 
 =item backward compatibility
 
-(¸åÊı¸ß´¹À­(backward compatibility))
+(å¾Œæ–¹äº’æ›æ€§(backward compatibility))
 
 =begin original
 
@@ -655,7 +655,7 @@ of the features or bugs it was relying on.
 
 =item bareword
 
-(Íç¤ÎÃ±¸ì(bareword))
+(è£¸ã®å˜èª(bareword))
 
 =begin original
 
@@ -672,7 +672,7 @@ bareword is treated as if quotes were around it.
 
 =item base class
 
-(´ğÄì¥¯¥é¥¹(base class))
+(åŸºåº•ã‚¯ãƒ©ã‚¹(base class))
 
 =begin original
 
@@ -689,7 +689,7 @@ called a "superclass" by people who respect their ancestors.
 
 =item big-endian
 
-(¥Ó¥Ã¥°¥¨¥ó¥Ç¥£¥¢¥ó(big-endian))
+(ãƒ“ãƒƒã‚°ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³(big-endian))
 
 =begin original
 
@@ -708,7 +708,7 @@ superior to little-endian machines.  See also L</little-endian>.
 
 =item binary
 
-(2 ¿Ê¿ô(binary))
+(2 é€²æ•°(binary))
 
 =begin original
 
@@ -729,7 +729,7 @@ already suspect, loses even more of its meaning.
 
 =item binary operator
 
-(2 ¹à±é»»»Ò(binary operator))
+(2 é …æ¼”ç®—å­(binary operator))
 
 =begin original
 
@@ -753,7 +753,7 @@ To assign a specific L</network address> to a L</socket>.
 
 =item bit
 
-(¥Ó¥Ã¥È(bit))
+(ãƒ“ãƒƒãƒˆ(bit))
 
 =begin original
 
@@ -774,7 +774,7 @@ That's why a 25-cent piece today is still "two bits".)
 
 =item bit shift
 
-(¥Ó¥Ã¥È¥·¥Õ¥È(bit shift))
+(ãƒ“ãƒƒãƒˆã‚·ãƒ•ãƒˆ(bit shift))
 
 =begin original
 
@@ -789,7 +789,7 @@ effect of multiplying or dividing by a power of 2.
 
 =item bit string
 
-(¥Ó¥Ã¥ÈÊ¸»úÎó(bit string))
+(ãƒ“ãƒƒãƒˆæ–‡å­—åˆ—(bit string))
 
 =begin original
 
@@ -865,7 +865,7 @@ delimited by braces.
 
 =item block buffering
 
-(¥Ö¥í¥Ã¥¯¥Ğ¥Ã¥Õ¥¡¥ê¥ó¥°(block buffering))
+(ãƒ–ãƒ­ãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°(block buffering))
 
 =begin original
 
@@ -882,7 +882,7 @@ L</buffer> and L</command buffering>.
 
 =item Boolean
 
-(¿¿µ¶ÃÍ(Boolean))
+(çœŸå½å€¤(Boolean))
 
 =begin original
 
@@ -895,7 +895,7 @@ A value that is either L</true> or L</false>.
 
 =item Boolean context
 
-(¿¿µ¶ÃÍ¥³¥ó¥Æ¥­¥¹¥È(Boolean context))
+(çœŸå½å€¤ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(Boolean context))
 
 =begin original
 
@@ -914,7 +914,7 @@ L</context>.
 
 =item breakpoint
 
-(¥Ö¥ì¡¼¥¯¥İ¥¤¥ó¥È(breakpoint))
+(ãƒ–ãƒ¬ãƒ¼ã‚¯ãƒã‚¤ãƒ³ãƒˆ(breakpoint))
 
 =begin original
 
@@ -931,7 +931,7 @@ is wrong yet.
 
 =item broadcast
 
-(¥Ö¥í¡¼¥É¥­¥ã¥¹¥È(broadcast))
+(ãƒ–ãƒ­ãƒ¼ãƒ‰ã‚­ãƒ£ã‚¹ãƒˆ(broadcast))
 
 =begin original
 
@@ -963,7 +963,7 @@ useful.  (Or, at least, more fun.)  The full chemical name is
 
 =item bucket
 
-(¥Ğ¥±¥Ä(bucket))
+(ãƒã‚±ãƒ„(bucket))
 
 =begin original
 
@@ -982,7 +982,7 @@ unless you're into internals, or policy.)
 
 =item buffer
 
-(¥Ğ¥Ã¥Õ¥¡(buffer))
+(ãƒãƒƒãƒ•ã‚¡(buffer))
 
 =begin original
 
@@ -1009,7 +1009,7 @@ of a holding area.  This can be rather inefficient.
 
 =item built-in
 
-(ÁÈ¤ß¹ş¤ß(built-in))
+(çµ„ã¿è¾¼ã¿(built-in))
 
 =begin original
 
@@ -1039,7 +1039,7 @@ group of command-line switches grouped into one L</switch cluster>.)
 
 =item byte
 
-(¥Ğ¥¤¥È(byte))
+(ãƒã‚¤ãƒˆ(byte))
 
 =begin original
 
@@ -1052,7 +1052,7 @@ A piece of data worth eight L<bits|/bit> in most places.
 
 =item bytecode
 
-(¥Ğ¥¤¥È¥³¡¼¥É(bytecode))
+(ãƒã‚¤ãƒˆã‚³ãƒ¼ãƒ‰(bytecode))
 
 =begin original
 
@@ -1102,7 +1102,7 @@ ideas from it.
 
 =item C preprocessor
 
-(C ¥×¥ê¥×¥í¥»¥Ã¥µ(C preprocessor))
+(C ãƒ—ãƒªãƒ—ãƒ­ã‚»ãƒƒã‚µ(C preprocessor))
 
 =begin original
 
@@ -1121,7 +1121,7 @@ definitions.  Also known as I<cpp>(1).
 
 =item call by reference
 
-(»²¾ÈÅÏ¤·(call by reference))
+(å‚ç…§æ¸¡ã—(call by reference))
 
 =begin original
 
@@ -1142,7 +1142,7 @@ also L</call by value>.
 
 =item call by value
 
-(ÃÍÅÏ¤·(call by value))
+(å€¤æ¸¡ã—(call by value))
 
 =begin original
 
@@ -1161,7 +1161,7 @@ See also L</call by reference>.
 
 =item callback
 
-(¥³¡¼¥ë¥Ğ¥Ã¥¯(callback))
+(ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯(callback))
 
 =begin original
 
@@ -1189,7 +1189,7 @@ Reduced to a standard form to facilitate comparison.
 
 =item capturing
 
-(ÊáÂª(capturing))
+(æ•æ‰(capturing))
 
 =begin original
 
@@ -1206,7 +1206,7 @@ expression> to store the matched L</substring> as a L</backreference>.
 
 =item character
 
-(Ê¸»ú(character))
+(æ–‡å­—(character))
 
 =begin original
 
@@ -1231,7 +1231,7 @@ for the most part.
 
 =item character class
 
-(Ê¸»ú¥¯¥é¥¹(character class))
+(æ–‡å­—ã‚¯ãƒ©ã‚¹(character class))
 
 =begin original
 
@@ -1248,7 +1248,7 @@ Loosely, any predefined set of characters so used.
 
 =item character property
 
-(Ê¸»úÆÃÀ­(character property))
+(æ–‡å­—ç‰¹æ€§(character property))
 
 =begin original
 
@@ -1276,7 +1276,7 @@ operator, or parentheses, or a hug.
 
 =item class
 
-(¥¯¥é¥¹(class))
+(ã‚¯ãƒ©ã‚¹(class))
 
 =begin original
 
@@ -1295,7 +1295,7 @@ the class (its L<objects|/object>).  See also L</inheritance>.
 
 =item class method
 
-(¥¯¥é¥¹¥á¥½¥Ã¥É(class method))
+(ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰(class method))
 
 =begin original
 
@@ -1310,7 +1310,7 @@ L</object> reference.  A method associated with the class as a whole.
 
 =item client
 
-(¥¯¥é¥¤¥¢¥ó¥È(client))
+(ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ(client))
 
 =begin original
 
@@ -1338,7 +1338,7 @@ modifier>.
 
 =item closure
 
-(¥¯¥í¡¼¥¸¥ã(closure))
+(ã‚¯ãƒ­ãƒ¼ã‚¸ãƒ£(closure))
 
 =begin original
 
@@ -1387,7 +1387,7 @@ it to a reference to a subroutine.  See also L</CV>.
 
 =item code generator
 
-(¥³¡¼¥É¥¸¥§¥Í¥ì¡¼¥¿(code generator))
+(ã‚³ãƒ¼ãƒ‰ã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿(code generator))
 
 =begin original
 
@@ -1434,7 +1434,7 @@ glossary to put "collating sequence".
 
 =item command
 
-(¥³¥Ş¥ó¥É(command))
+(ã‚³ãƒãƒ³ãƒ‰(command))
 
 =begin original
 
@@ -1478,7 +1478,7 @@ L</block buffering>.
 
 =item command name
 
-(¥³¥Ş¥ó¥ÉÌ¾(command name))
+(ã‚³ãƒãƒ³ãƒ‰å(command name))
 
 =begin original
 
@@ -1497,7 +1497,7 @@ C<$0>.
 
 =item command-line arguments
 
-(¥³¥Ş¥ó¥É¥é¥¤¥ó°ú¿ô(command-line arguments))
+(ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°(command-line arguments))
 
 =begin original
 
@@ -1514,7 +1514,7 @@ a Perl program through C<@ARGV>.
 
 =item comment
 
-(¥³¥á¥ó¥È(comment))
+(ã‚³ãƒ¡ãƒ³ãƒˆ(comment))
 
 =begin original
 
@@ -1531,7 +1531,7 @@ the line.
 
 =item compilation unit
 
-(¥³¥ó¥Ñ¥¤¥ëÃ±°Ì(compilation unit))
+(ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«å˜ä½(compilation unit))
 
 =begin original
 
@@ -1546,7 +1546,7 @@ that is currently being compiled.
 
 =item compile phase
 
-(¥³¥ó¥Ñ¥¤¥ë¥Õ¥§¡¼¥º(compile phase))
+(ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ãƒ•ã‚§ãƒ¼ã‚º(compile phase))
 
 =begin original
 
@@ -1569,7 +1569,7 @@ declaration is also run during compile phase.
 
 =item compile time
 
-(¥³¥ó¥Ñ¥¤¥ë»ş(compile time))
+(ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚(compile time))
 
 =begin original
 
@@ -1586,7 +1586,7 @@ do what it thinks your code says to do, which is L</run time>.
 
 =item compiler
 
-(¥³¥ó¥Ñ¥¤¥é(compiler))
+(ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©(compiler))
 
 =begin original
 
@@ -1634,7 +1634,7 @@ References>.
 
 =item concatenation
 
-(Ï¢·ë(concatenation))
+(é€£çµ(concatenation))
 
 =begin original
 
@@ -1688,7 +1688,7 @@ transitive verb, to create an L</object> using a L</constructor>.
 
 =item constructor
 
-(¥³¥ó¥¹¥È¥é¥¯¥¿(constructor))
+(ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿(constructor))
 
 =begin original
 
@@ -1705,7 +1705,7 @@ Sometimes we use the term loosely to mean a L</composer>.
 
 =item context
 
-(¥³¥ó¥Æ¥­¥¹¥È(context))
+(ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(context))
 
 =begin original
 
@@ -1732,7 +1732,7 @@ Third Edition, Chapter 2, "Bits and Pieces" if you care).
 
 =item continuation
 
-(·ÑÂ³(continuation))
+(ç¶™ç¶š(continuation))
 
 =begin original
 
@@ -1755,7 +1755,7 @@ Perl do not need any form of continuation mark, because L</whitespace>
 
 =item core dump
 
-(¥³¥¢¥À¥ó¥×(core dump))
+(ã‚³ã‚¢ãƒ€ãƒ³ãƒ—(core dump))
 
 =begin original
 
@@ -1783,7 +1783,7 @@ The Comprehensive Perl Archive Network.  (See L<perlfaq2/What modules and extens
 
 =item cracker
 
-(¥¯¥é¥Ã¥«¡¼(cracker))
+(ã‚¯ãƒ©ãƒƒã‚«ãƒ¼(cracker))
 
 =begin original
 
@@ -1798,7 +1798,7 @@ true L</hacker> or only a L</script kiddie>.
 
 =item current package
 
-(¥«¥ì¥ó¥È¥Ñ¥Ã¥±¡¼¥¸(current package))
+(ã‚«ãƒ¬ãƒ³ãƒˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸(current package))
 
 =begin original
 
@@ -1862,7 +1862,7 @@ type is a subclass of L</SV>.
 
 =item dangling statement
 
-(Û£Ëæ¤ÊÊ¸(dangling statement))
+(æ›–æ˜§ãªæ–‡(dangling statement))
 
 =begin original
 
@@ -1877,7 +1877,7 @@ or C<while> conditional.  C allows them.  Perl doesn't.
 
 =item data structure
 
-(¥Ç¡¼¥¿¹½Â¤(data structure))
+(ãƒ‡ãƒ¼ã‚¿æ§‹é€ (data structure))
 
 =begin original
 
@@ -1894,7 +1894,7 @@ a triangular-shaped tree.
 
 =item data type
 
-(¥Ç¡¼¥¿·¿(data type))
+(ãƒ‡ãƒ¼ã‚¿å‹(data type))
 
 =begin original
 
@@ -1929,7 +1929,7 @@ L</method>.
 
 =item datagram
 
-(¥Ç¡¼¥¿¥°¥é¥à(datagram))
+(ãƒ‡ãƒ¼ã‚¿ã‚°ãƒ©ãƒ (datagram))
 
 =begin original
 
@@ -1971,7 +1971,7 @@ and L<DB_File>.
 
 =item declaration
 
-(Àë¸À(declaration))
+(å®£è¨€(declaration))
 
 =begin original
 
@@ -1996,7 +1996,7 @@ definitions if a body is supplied.
 
 =item decrement
 
-(¥Ç¥¯¥ê¥á¥ó¥È(decrement))
+(ãƒ‡ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ(decrement))
 
 =begin original
 
@@ -2011,7 +2011,7 @@ to remove 1 from its value) or "decrement C<$x> by 3".
 
 =item default
 
-(¥Ç¥Õ¥©¥ë¥È(default))
+(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ(default))
 
 =begin original
 
@@ -2024,7 +2024,7 @@ A L</value> chosen for you if you don't supply a value of your own.
 
 =item defined
 
-(ÄêµÁºÑ¤ß(defined))
+(å®šç¾©æ¸ˆã¿(defined))
 
 =begin original
 
@@ -2047,7 +2047,7 @@ L</false> and L<perlfunc/defined>.
 
 =item delimiter
 
-(¥Ç¥ê¥ß¥¿(delimiter))
+(ãƒ‡ãƒªãƒŸã‚¿(delimiter))
 
 =begin original
 
@@ -2066,7 +2066,7 @@ enclose" (like these parentheses are doing).
 
 =item deprecated modules and features
 
-(Èó¿ä¾©¤Î¥â¥¸¥å¡¼¥ë¤Èµ¡Ç½(deprecated modules and features))
+(éæ¨å¥¨ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨æ©Ÿèƒ½(deprecated modules and features))
 
 =begin original
 
@@ -2093,7 +2093,7 @@ other PODs. Coding practices that misuse features, such as C<my $foo if
 
 =item dereference
 
-(¥Ç¥ê¥Õ¥¡¥ì¥ó¥¹(dereference))
+(ãƒ‡ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹(dereference))
 
 =begin original
 
@@ -2110,7 +2110,7 @@ you're taking away one level of L</indirection>.
 
 =item derived class
 
-(ÇÉÀ¸¥¯¥é¥¹(derived class))
+(æ´¾ç”Ÿã‚¯ãƒ©ã‚¹(derived class))
 
 =begin original
 
@@ -2131,7 +2131,7 @@ which is kind of classy.
 
 =item descriptor
 
-(µ­½Ò»Ò(descriptor))
+(è¨˜è¿°å­(descriptor))
 
 =begin original
 
@@ -2157,7 +2157,7 @@ C<DESTROY> method, if it has one).
 
 =item destructor
 
-(¥Ç¥¹¥È¥é¥¯¥¿(destructor))
+(ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿(destructor))
 
 =begin original
 
@@ -2178,7 +2178,7 @@ associated cleanup.
 
 =item device
 
-(¥Ç¥Ğ¥¤¥¹(device))
+(ãƒ‡ãƒã‚¤ã‚¹(device))
 
 =begin original
 
@@ -2197,7 +2197,7 @@ Under Unix, these fake files tend to live in the I</dev> directory.
 
 =item directive
 
-(»Ø¼¨»Ò(directive))
+(æŒ‡ç¤ºå­(directive))
 
 =begin original
 
@@ -2210,7 +2210,7 @@ A L</pod> directive.  See L<perlpod>.
 
 =item directory
 
-(¥Ç¥£¥ì¥¯¥È¥ê(directory))
+(ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª(directory))
 
 =begin original
 
@@ -2227,7 +2227,7 @@ systems|/operating system> call these "folders", "drawers", or
 
 =item directory handle
 
-(¥Ç¥£¥ì¥¯¥È¥ê¥Ï¥ó¥É¥ë(directory handle))
+(ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒãƒ³ãƒ‰ãƒ«(directory handle))
 
 =begin original
 
@@ -2244,7 +2244,7 @@ function.
 
 =item dispatch
 
-(È¯¹Ô(dispatch))
+(ç™ºè¡Œ(dispatch))
 
 =begin original
 
@@ -2343,7 +2343,7 @@ stay properly behind the scenes) is called a L</dweomer> instead.
 
 =item dynamic scoping
 
-(Æ°Åª¥¹¥³¡¼¥×(dynamic scoping))
+(å‹•çš„ã‚¹ã‚³ãƒ¼ãƒ—(dynamic scoping))
 
 =begin original
 
@@ -2387,7 +2387,7 @@ Derived from many sources.  Some would say I<too> many.
 
 =item element
 
-(Í×ÁÇ(element))
+(è¦ç´ (element))
 
 =begin original
 
@@ -2402,7 +2402,7 @@ one of the items that make up the array.
 
 =item embedding
 
-(ÁÈ¤ß¹ş¤ß(embedding))
+(çµ„ã¿è¾¼ã¿(embedding))
 
 =begin original
 
@@ -2419,7 +2419,7 @@ interpreter in my editor!"
 
 =item empty subclass test
 
-(¶õ¤Î¥µ¥Ö¥¯¥é¥¹¥Æ¥¹¥È(empty subclass test))
+(ç©ºã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ãƒ†ã‚¹ãƒˆ(empty subclass test))
 
 =begin original
 
@@ -2447,7 +2447,7 @@ passing", as in the exotic pawn-capturing maneuver in chess.]
 
 =item encapsulation
 
-(¥«¥×¥»¥ë²½(encapsulation))
+(ã‚«ãƒ—ã‚»ãƒ«åŒ–(encapsulation))
 
 =begin original
 
@@ -2464,7 +2464,7 @@ access to an L</object>'s state be through L<methods|/method> alone.
 
 =item endian
 
-(¥¨¥ó¥Ç¥£¥¢¥ó(endian))
+(ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³(endian))
 
 =begin original
 
@@ -2477,7 +2477,7 @@ See L</little-endian> and L</big-endian>.
 
 =item environment
 
-(´Ä¶­(environment))
+(ç’°å¢ƒ(environment))
 
 =begin original
 
@@ -2492,7 +2492,7 @@ your L</process> inherits from its parent.  Accessed via C<%ENV>.
 
 =item environment variable
 
-(´Ä¶­ÊÑ¿ô(environment variable))
+(ç’°å¢ƒå¤‰æ•°(environment variable))
 
 =begin original
 
@@ -2541,7 +2541,7 @@ module).
 
 =item error
 
-(¥¨¥é¡¼(error))
+(ã‚¨ãƒ©ãƒ¼(error))
 
 =begin original
 
@@ -2554,7 +2554,7 @@ See L</exception> or L</fatal error>.
 
 =item escape sequence
 
-(¥¨¥¹¥±¡¼¥×¥·¡¼¥±¥ó¥¹(escape sequence))
+(ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹(escape sequence))
 
 =begin original
 
@@ -2567,7 +2567,7 @@ See L</metasymbol>.
 
 =item exception
 
-(Îã³°(exception))
+(ä¾‹å¤–(exception))
 
 =begin original
 
@@ -2580,7 +2580,7 @@ A fancy term for an error.  See L</fatal error>.
 
 =item exception handling
 
-(Îã³°½èÍı(exception handling))
+(ä¾‹å¤–å‡¦ç†(exception handling))
 
 =begin original
 
@@ -2610,7 +2610,7 @@ held (apart from the old memory image).
 
 =item executable file
 
-(¼Â¹Ô¥Õ¥¡¥¤¥ë(executable file))
+(å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«(executable file))
 
 =begin original
 
@@ -2627,7 +2627,7 @@ that it's okay to run this file as a program.  Usually shortened to
 
 =item execute
 
-(¼Â¹Ô(execute))
+(å®Ÿè¡Œ(execute))
 
 =begin original
 
@@ -2644,7 +2644,7 @@ run a L</signal handler>.)
 
 =item execute bit
 
-(¼Â¹Ôµö²Ä¥Ó¥Ã¥È(execute bit))
+(å®Ÿè¡Œè¨±å¯ãƒ“ãƒƒãƒˆ(execute bit))
 
 =begin original
 
@@ -2663,7 +2663,7 @@ collectively, or not at all.
 
 =item exit status
 
-(½ªÎ»¥³¡¼¥É(exit status))
+(çµ‚äº†ã‚³ãƒ¼ãƒ‰(exit status))
 
 =begin original
 
@@ -2676,7 +2676,7 @@ See L</status>.
 
 =item export
 
-(¥¨¥¯¥¹¥İ¡¼¥È(export))
+(ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ(export))
 
 =begin original
 
@@ -2689,7 +2689,7 @@ To make symbols from a L</module> available for L</import> by other modules.
 
 =item expression
 
-(¼°(expression))
+(å¼(expression))
 
 =begin original
 
@@ -2708,7 +2708,7 @@ calls, not necessarily in that order.
 
 =item extension
 
-(¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó(extension))
+(ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³(extension))
 
 =begin original
 
@@ -2731,7 +2731,7 @@ such as multithreading.
 
 =item false
 
-(µ¶(false))
+(å½(false))
 
 =begin original
 
@@ -2763,7 +2763,7 @@ standard with Perl).
 
 =item fatal error
 
-(Ã×Ì¿Åª¥¨¥é¡¼(fatal error))
+(è‡´å‘½çš„ã‚¨ãƒ©ãƒ¼(fatal error))
 
 =begin original
 
@@ -2792,7 +2792,7 @@ L<die|perlfunc/die> becomes a fatal error.
 
 =item field
 
-(¥Õ¥£¡¼¥ë¥É(field))
+(ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰(field))
 
 =begin original
 
@@ -2828,7 +2828,7 @@ L</named pipe>.
 
 =item file
 
-(¥Õ¥¡¥¤¥ë(file))
+(ãƒ•ã‚¡ã‚¤ãƒ«(file))
 
 =begin original
 
@@ -2849,7 +2849,7 @@ and devices.
 
 =item file descriptor
 
-(¥Õ¥¡¥¤¥ëµ­½Ò»Ò(file descriptor))
+(ãƒ•ã‚¡ã‚¤ãƒ«è¨˜è¿°å­(file descriptor))
 
 =begin original
 
@@ -2868,7 +2868,7 @@ a L</filehandle>.
 
 =item file test operator
 
-(¥Õ¥¡¥¤¥ë¥Æ¥¹¥È±é»»»Ò(file test operator))
+(ãƒ•ã‚¡ã‚¤ãƒ«ãƒ†ã‚¹ãƒˆæ¼”ç®—å­(file test operator))
 
 =begin original
 
@@ -2885,7 +2885,7 @@ you're the owner of the file.
 
 =item fileglob
 
-(¥Õ¥¡¥¤¥ë¥°¥í¥Ö(fileglob))
+(ãƒ•ã‚¡ã‚¤ãƒ«ã‚°ãƒ­ãƒ–(fileglob))
 
 =begin original
 
@@ -2900,7 +2900,7 @@ L<glob|perlfunc/glob> function.
 
 =item filehandle
 
-(¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë(filehandle))
+(ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«(filehandle))
 
 =begin original
 
@@ -2923,7 +2923,7 @@ each file.
 
 =item filename
 
-(¥Õ¥¡¥¤¥ëÌ¾(filename))
+(ãƒ•ã‚¡ã‚¤ãƒ«å(filename))
 
 =begin original
 
@@ -2944,7 +2944,7 @@ file in your program, until you close it.
 
 =item filesystem
 
-(¥Õ¥¡¥¤¥ë¥·¥¹¥Æ¥à(filesystem))
+(ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ (filesystem))
 
 =begin original
 
@@ -2965,7 +2965,7 @@ at least under Unix.
 
 =item filter
 
-(¥Õ¥£¥ë¥¿(filter))
+(ãƒ•ã‚£ãƒ«ã‚¿(filter))
 
 =begin original
 
@@ -2980,7 +2980,7 @@ a stream of output.
 
 =item flag
 
-(¥Õ¥é¥°(flag))
+(ãƒ•ãƒ©ã‚°(flag))
 
 =begin original
 
@@ -3003,7 +3003,7 @@ L<sysopen|perlfunc/sysopen>).
 
 =item floating point
 
-(ÉâÆ°¾®¿ôÅÀ(floating point))
+(æµ®å‹•å°æ•°ç‚¹(floating point))
 
 =begin original
 
@@ -3092,7 +3092,7 @@ L<my|perlfunc/my> list.  See also L</actual arguments>.
 
 =item format
 
-(¥Õ¥©¡¼¥Ş¥Ã¥È(format))
+(ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ(format))
 
 =begin original
 
@@ -3107,7 +3107,7 @@ somewhere so that whatever you're printing comes out nice and pretty.
 
 =item freely available
 
-(¼«Í³¤ËÍøÍÑ²ÄÇ½(freely available))
+(è‡ªç”±ã«åˆ©ç”¨å¯èƒ½(freely available))
 
 =begin original
 
@@ -3122,7 +3122,7 @@ may still belong to someone else (like Larry).
 
 =item freely redistributable
 
-(¼«Í³¤ËºÆÇÛÉÛ²ÄÇ½(freely redistributable))
+(è‡ªç”±ã«å†é…å¸ƒå¯èƒ½(freely redistributable))
 
 =begin original
 
@@ -3139,7 +3139,7 @@ a copy to all your friends.
 
 =item freeware
 
-(¥Õ¥ê¡¼¥¦¥§¥¢(freeware))
+(ãƒ•ãƒªãƒ¼ã‚¦ã‚§ã‚¢(freeware))
 
 =begin original
 
@@ -3162,7 +3162,7 @@ Public License), but this is difficult to justify etymologically.
 
 =item function
 
-(´Ø¿ô(function))
+(é–¢æ•°(function))
 
 =begin original
 
@@ -3196,7 +3196,7 @@ variables.
 
 =item garbage collection
 
-(¥¬¥Ù¡¼¥¸¥³¥ì¥¯¥·¥ç¥ó(garbage collection))
+(ã‚¬ãƒ™ãƒ¼ã‚¸ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³(garbage collection))
 
 =begin original
 
@@ -3242,7 +3242,7 @@ uses to identify you and members of your L</group>.
 
 =item glob
 
-(¥°¥í¥Ö(glob))
+(ã‚°ãƒ­ãƒ–(glob))
 
 =begin original
 
@@ -3261,7 +3261,7 @@ matching.  See also L</fileglob> and L</typeglob>.
 
 =item global
 
-(¥°¥í¡¼¥Ğ¥ë(global))
+(ã‚°ãƒ­ãƒ¼ãƒãƒ«(global))
 
 =begin original
 
@@ -3314,7 +3314,7 @@ weren't intended to be hooked together.
 
 =item granularity
 
-(Î³ÅÙ(granularity))
+(ç²’åº¦(granularity))
 
 =begin original
 
@@ -3327,7 +3327,7 @@ The size of the pieces you're dealing with, mentally speaking.
 
 =item greedy
 
-(ìÅÍß(greedy))
+(è²ªæ¬²(greedy))
 
 =begin original
 
@@ -3363,7 +3363,7 @@ for lines matching a L</regular expression> in one or more files.
 
 =item group
 
-(¥°¥ë¡¼¥×(group))
+(ã‚°ãƒ«ãƒ¼ãƒ—(group))
 
 =begin original
 
@@ -3513,7 +3513,7 @@ I<.h> files with a I<.ph> extension.  See L<perlfunc/require>.
 
 =item here document
 
-(¥Ò¥¢¥É¥­¥å¥á¥ó¥È(here document))
+(ãƒ’ã‚¢ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ(here document))
 
 =begin original
 
@@ -3613,7 +3613,7 @@ representation of a hash.  The L</HV> type is a subclass of L</SV>.
 
 =item identifier
 
-(¼±ÊÌ»Ò(identifier))
+(è­˜åˆ¥å­(identifier))
 
 =begin original
 
@@ -3651,7 +3651,7 @@ great virtue of a programmer.  See also L</laziness> and L</hubris>.
 
 =item implementation
 
-(¼ÂÁõ(implementation))
+(å®Ÿè£…(implementation))
 
 =begin original
 
@@ -3715,7 +3715,7 @@ of one string in another.
 
 =item indirect filehandle
 
-(´ÖÀÜ¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë(indirect filehandle))
+(é–“æ¥ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«(indirect filehandle))
 
 =begin original
 
@@ -3732,7 +3732,7 @@ typeglob L</reference>, or a low-level L</IO> object.
 
 =item indirect object
 
-(´ÖÀÜ¥ª¥Ö¥¸¥§¥¯¥È(indirect object))
+(é–“æ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(indirect object))
 
 =begin original
 
@@ -3811,7 +3811,7 @@ as multiplication in C<24 * 7>.
 
 =item inheritance
 
-(·Ñ¾µ(inheritance))
+(ç¶™æ‰¿(inheritance))
 
 =begin original
 
@@ -3832,7 +3832,7 @@ inheritance>.
 
 =item instance
 
-(¥¤¥ó¥¹¥¿¥ó¥¹(instance))
+(ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹(instance))
 
 =begin original
 
@@ -3845,7 +3845,7 @@ Short for "an instance of a class", meaning an L</object> of that L</class>.
 
 =item instance variable
 
-(¥¤¥ó¥¹¥¿¥ó¥¹ÊÑ¿ô(instance variable))
+(ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°(instance variable))
 
 =begin original
 
@@ -3860,7 +3860,7 @@ object rather than with the class as a whole.
 
 =item integer
 
-(À°¿ô(integer))
+(æ•´æ•°(integer))
 
 =begin original
 
@@ -3875,7 +3875,7 @@ A number with no fractional (decimal) part.  A counting number, like
 
 =item interface
 
-(¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹(interface))
+(ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹(interface))
 
 =begin original
 
@@ -3892,7 +3892,7 @@ likes.
 
 =item interpolation
 
-(Å¸³«(interpolation))
+(å±•é–‹(interpolation))
 
 =begin original
 
@@ -3915,7 +3915,7 @@ L</LIST>.
 
 =item interpreter
 
-(¥¤¥ó¥¿¥×¥ê¥¿(interpreter))
+(ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿(interpreter))
 
 =begin original
 
@@ -4039,7 +4039,7 @@ L</inheritance>.
 
 =item iteration
 
-(È¿Éü(iteration))
+(åå¾©(iteration))
 
 =begin original
 
@@ -4052,7 +4052,7 @@ Doing something repeatedly.
 
 =item iterator
 
-(È¿Éü»Ò(iterator))
+(åå¾©å­(iterator))
 
 =begin original
 
@@ -4115,7 +4115,7 @@ Contest seen in Usenix signatures.
 
 =item key
 
-(¥­¡¼(key))
+(ã‚­ãƒ¼(key))
 
 =begin original
 
@@ -4130,7 +4130,7 @@ associated with that key.
 
 =item keyword
 
-(¥­¡¼¥ï¡¼¥É(keyword))
+(ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰(keyword))
 
 =begin original
 
@@ -4149,7 +4149,7 @@ See L</reserved words>.
 
 =item label
 
-(¥é¥Ù¥ë(label))
+(ãƒ©ãƒ™ãƒ«(label))
 
 =begin original
 
@@ -4185,7 +4185,7 @@ L</hubris>.
 
 =item left shift
 
-(º¸¥·¥Õ¥È(left shift))
+(å·¦ã‚·ãƒ•ãƒˆ(left shift))
 
 =begin original
 
@@ -4250,7 +4250,7 @@ Fancy term for L</tokenizing>.
 
 =item lexical scoping
 
-(¥ì¥­¥·¥«¥ë¥¹¥³¡¼¥×(lexical scoping))
+(ãƒ¬ã‚­ã‚·ã‚«ãƒ«ã‚¹ã‚³ãƒ¼ãƒ—(lexical scoping))
 
 =begin original
 
@@ -4275,7 +4275,7 @@ which they are declared.  --Syn. L</static scoping>.
 
 =item lexical variable
 
-(¥ì¥­¥·¥«¥ëÊÑ¿ô(lexical variable))
+(ãƒ¬ã‚­ã‚·ã‚«ãƒ«å¤‰æ•°(lexical variable))
 
 =begin original
 
@@ -4324,7 +4324,7 @@ L</stack>.
 
 =item line
 
-(¹Ô(line))
+(è¡Œ(line))
 
 =begin original
 
@@ -4343,7 +4343,7 @@ different ideas.
 
 =item line buffering
 
-(¹Ô¥Ğ¥Ã¥Õ¥¡¥ê¥ó¥°(line buffering))
+(è¡Œãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°(line buffering))
 
 =begin original
 
@@ -4362,7 +4362,7 @@ terminal.
 
 =item line number
 
-(¹ÔÈÖ¹æ(line number))
+(è¡Œç•ªå·(line number))
 
 =begin original
 
@@ -4425,7 +4425,7 @@ interpolated into the list value.
 
 =item list
 
-(¥ê¥¹¥È(list))
+(ãƒªã‚¹ãƒˆ(list))
 
 =begin original
 
@@ -4438,7 +4438,7 @@ An ordered set of scalar values.
 
 =item list context
 
-(¥ê¥¹¥È¥³¥ó¥Æ¥­¥¹¥È(list context))
+(ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(list context))
 
 =begin original
 
@@ -4459,7 +4459,7 @@ L</context>.
 
 =item list operator
 
-(¥ê¥¹¥È±é»»»Ò(list operator))
+(ãƒªã‚¹ãƒˆæ¼”ç®—å­(list operator))
 
 =begin original
 
@@ -4495,7 +4495,7 @@ construct that provides a L</list context>.
 
 =item literal
 
-(¥ê¥Æ¥é¥ë(literal))
+(ãƒªãƒ†ãƒ©ãƒ«(literal))
 
 =begin original
 
@@ -4512,7 +4512,7 @@ values as a L</variable> does.
 
 =item little-endian
 
-(¥ê¥È¥ë¥¨¥ó¥Ç¥£¥¢¥ó(little-endian))
+(ãƒªãƒˆãƒ«ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³(little-endian))
 
 =begin original
 
@@ -4546,7 +4546,7 @@ L<local|perlfunc/local> operator.
 
 =item logical operator
 
-(ÏÀÍı±é»»»Ò(logical operator))
+(è«–ç†æ¼”ç®—å­(logical operator))
 
 =begin original
 
@@ -4585,7 +4585,7 @@ match location.
 
 =item loop
 
-(¥ë¡¼¥×(loop))
+(ãƒ«ãƒ¼ãƒ—(loop))
 
 =begin original
 
@@ -4598,7 +4598,7 @@ A construct that performs something repeatedly, like a roller coaster.
 
 =item loop control statement
 
-(¥ë¡¼¥×À©¸æÊ¸(loop control statement))
+(ãƒ«ãƒ¼ãƒ—åˆ¶å¾¡æ–‡(loop control statement))
 
 =begin original
 
@@ -4630,7 +4630,7 @@ control.
 
 =item lvaluable
 
-(º¸ÊÕÃÍ²½²ÄÇ½(lvaluable))
+(å·¦è¾ºå€¤åŒ–å¯èƒ½(lvaluable))
 
 =begin original
 
@@ -4643,7 +4643,7 @@ Able to serve as an L</lvalue>.
 
 =item lvalue
 
-(º¸ÊÕÃÍ(lvalue))
+(å·¦è¾ºå€¤(lvalue))
 
 =begin original
 
@@ -4666,7 +4666,7 @@ expression is one to which a value may be assigned, as in C<pos($x) =
 
 =item lvalue modifier
 
-(º¸ÊÕÃÍ½¤¾ş»Ò(lvalue modifier))
+(å·¦è¾ºå€¤ä¿®é£¾å­(lvalue modifier))
 
 =begin original
 
@@ -4691,7 +4691,7 @@ L<local|perlfunc/local>.
 
 =item magic
 
-(¥Ş¥¸¥Ã¥¯(magic))
+(ãƒã‚¸ãƒƒã‚¯(magic))
 
 =begin original
 
@@ -4768,7 +4768,7 @@ you.
 
 =item manpage
 
-(man ¥Ú¡¼¥¸(manpage))
+(man ãƒšãƒ¼ã‚¸(manpage))
 
 =begin original
 
@@ -4927,7 +4927,7 @@ the L</permission bits> and the type of the L</file>.
 
 =item modifier
 
-(½¤¾ş»Ò(modifier))
+(ä¿®é£¾å­(modifier))
 
 =begin original
 
@@ -5036,7 +5036,7 @@ classes|/base class>.
 
 =item named pipe
 
-(Ì¾Á°ÉÕ¤­¥Ñ¥¤¥×(named pipe))
+(åå‰ä»˜ããƒ‘ã‚¤ãƒ—(named pipe))
 
 =begin original
 
@@ -5051,7 +5051,7 @@ be accessed by two unrelated L<processes|/process>.
 
 =item namespace
 
-(Ì¾Á°¶õ´Ö(namespace))
+(åå‰ç©ºé–“(namespace))
 
 =begin original
 
@@ -5079,7 +5079,7 @@ telephone number.  Typically an IP address.  See also L</port>.
 
 =item newline
 
-(²ş¹Ô(newline))
+(æ”¹è¡Œ(newline))
 
 =begin original
 
@@ -5115,7 +5115,7 @@ if it were local.
 
 =item null character
 
-(¥Ì¥ëÊ¸»ú(null character))
+(ãƒŒãƒ«æ–‡å­—(null character))
 
 =begin original
 
@@ -5130,7 +5130,7 @@ strings, but Perl allows strings to contain a null.
 
 =item null list
 
-(¶õ¥ê¥¹¥È(null list))
+(ç©ºãƒªã‚¹ãƒˆ(null list))
 
 =begin original
 
@@ -5143,7 +5143,7 @@ A L</list value> with zero elements, represented in Perl by C<()>.
 
 =item null string
 
-(¶õÊ¸»úÎó(null string))
+(ç©ºæ–‡å­—åˆ—(null string))
 
 =begin original
 
@@ -5160,7 +5160,7 @@ and is L</true>.
 
 =item numeric context
 
-(¿ôÃÍ¥³¥ó¥Æ¥­¥¹¥È(numeric context))
+(æ•°å€¤ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(numeric context))
 
 =begin original
 
@@ -5192,7 +5192,7 @@ of the type a L</scalar> can hold, not to be confused with an L</IV>.
 
 =item nybble
 
-(¥Ë¥Ö¥ë(nybble))
+(ãƒ‹ãƒ–ãƒ«(nybble))
 
 =begin original
 
@@ -5232,7 +5232,7 @@ objects are more accommodating than others.
 
 =item octal
 
-(8 ¿Ê¿ô(octal))
+(8 é€²æ•°(octal))
 
 =begin original
 
@@ -5266,7 +5266,7 @@ get to the first item.
 
 =item one-liner
 
-(°ì¹ÔÌîÏº(one-liner))
+(ä¸€è¡Œé‡éƒ(one-liner))
 
 =begin original
 
@@ -5294,7 +5294,7 @@ detailed definition, see L<http://www.opensource.org/osd.html>.
 
 =item operand
 
-(¥ª¥Ú¥é¥ó¥É(operand))
+(ã‚ªãƒšãƒ©ãƒ³ãƒ‰(operand))
 
 =begin original
 
@@ -5342,7 +5342,7 @@ L</architecture> and L</platform>.
 
 =item operator
 
-(±é»»»Ò(operator))
+(æ¼”ç®—å­(operator))
 
 =begin original
 
@@ -5675,7 +5675,7 @@ L<pipes|/pipe>, where each passes its output stream to the next.
 
 =item platform
 
-(¥×¥é¥Ã¥È¥Õ¥©¡¼¥à(platform))
+(ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ (platform))
 
 =begin original
 
@@ -5711,7 +5711,7 @@ L<perlpod>.
 
 =item pointer
 
-(¥İ¥¤¥ó¥¿(pointer))
+(ãƒã‚¤ãƒ³ã‚¿(pointer))
 
 =begin original
 
@@ -5768,7 +5768,7 @@ than originally intended, or the verb denoting this conversion.
 
 =item portable
 
-(°Ü¿¢À­¤Î¤¢¤ë(portable))
+(ç§»æ¤æ€§ã®ã‚ã‚‹(portable))
 
 =begin original
 
@@ -5841,7 +5841,7 @@ implementing Perl's stack machine.
 
 =item pragma
 
-(¥×¥é¥°¥Ş(pragma))
+(ãƒ—ãƒ©ã‚°ãƒ(pragma))
 
 =begin original
 
@@ -5873,7 +5873,7 @@ you always do multiplication before addition.
 
 =item prefix
 
-(ÀÜÆ¬¼­(prefix))
+(æ¥é ­è¾(prefix))
 
 =begin original
 
@@ -6019,7 +6019,7 @@ C<qr//>, C<m//>, C<s///>, C<y///>, and C<tr///>.
 
 =item pseudohash
 
-(µ¼»÷¥Ï¥Ã¥·¥å(pseudohash))
+(æ“¬ä¼¼ãƒãƒƒã‚·ãƒ¥(pseudohash))
 
 =begin original
 
@@ -6109,7 +6109,7 @@ A "pointer value", which is Perl Internals Talk for a C<char*>.
 
 =item qualified
 
-(½¤¾ş¤µ¤ì¤¿(qualified))
+(ä¿®é£¾ã•ã‚ŒãŸ(qualified))
 
 =begin original
 
@@ -6126,7 +6126,7 @@ the top-level directory.
 
 =item quantifier
 
-(ÎÌ»ØÄê»Ò(quantifier))
+(é‡æŒ‡å®šå­(quantifier))
 
 =begin original
 
@@ -6217,7 +6217,7 @@ like an infinite loop with more spectacular failure modes.
 
 =item reference
 
-(¥ê¥Õ¥¡¥ì¥ó¥¹(reference))
+(ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹(reference))
 
 =begin original
 
@@ -6289,7 +6289,7 @@ L<perlre>.
 
 =item regular expression modifier
 
-(Àµµ¬É½¸½½¤¾ş»Ò(regular expression modifier))
+(æ­£è¦è¡¨ç¾ä¿®é£¾å­(regular expression modifier))
 
 =begin original
 
@@ -6355,7 +6355,7 @@ name L<labels|/label> or L<filehandles|/filehandle>.  Also called
 
 =item return value
 
-(ÊÖ¤êÃÍ(return value))
+(è¿”ã‚Šå€¤(return value))
 
 =begin original
 
@@ -6441,7 +6441,7 @@ modifier.
 
 =item run time
 
-(¼Â¹Ô»ş(run time))
+(å®Ÿè¡Œæ™‚(run time))
 
 =begin original
 
@@ -6513,7 +6513,7 @@ L</assignment>.  See also L</lvalue>.
 
 =item scalar
 
-(¥¹¥«¥é(scalar))
+(ã‚¹ã‚«ãƒ©(scalar))
 
 =begin original
 
@@ -6526,7 +6526,7 @@ A simple, singular value; a number, L</string>, or L</reference>.
 
 =item scalar context
 
-(¥¹¥«¥é¥³¥ó¥Æ¥­¥¹¥È(scalar context))
+(ã‚¹ã‚«ãƒ©ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(scalar context))
 
 =begin original
 
@@ -6566,7 +6566,7 @@ program, as opposed to a L</variable>.
 
 =item scalar value
 
-(¥¹¥«¥éÃÍ(scalar value))
+(ã‚¹ã‚«ãƒ©å€¤(scalar value))
 
 =begin original
 
@@ -6579,7 +6579,7 @@ A value that happens to be a L</scalar> as opposed to a L</list>.
 
 =item scalar variable
 
-(¥¹¥«¥éÊÑ¿ô(scalar variable))
+(ã‚¹ã‚«ãƒ©å¤‰æ•°(scalar variable))
 
 =begin original
 
@@ -6592,7 +6592,7 @@ A L</variable> prefixed with C<$> that holds a single value.
 
 =item scope
 
-(¥¹¥³¡¼¥×(scope))
+(ã‚¹ã‚³ãƒ¼ãƒ—(scope))
 
 =begin original
 
@@ -6677,7 +6677,7 @@ A venerable Stream EDitor from which Perl derives some of its ideas.
 
 =item semaphore
 
-(¥»¥Ş¥Õ¥©(semaphore))
+(ã‚»ãƒãƒ•ã‚©(semaphore))
 
 =begin original
 
@@ -6711,7 +6711,7 @@ separated the two alternatives.
 
 =item serialization
 
-(Ä¾Îó²½(serialization))
+(ç›´åˆ—åŒ–(serialization))
 
 =begin original
 
@@ -6845,7 +6845,7 @@ interactive (although Perl programs can be interactive).
 
 =item side effects
 
-(ÉûºîÍÑ(side effects))
+(å‰¯ä½œç”¨(side effects))
 
 =begin original
 
@@ -6885,7 +6885,7 @@ L</operating system>, probably when you're least expecting it.
 
 =item signal handler
 
-(¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é(signal handler))
+(ã‚·ã‚°ãƒŠãƒ«ãƒãƒ³ãƒ‰ãƒ©(signal handler))
 
 =begin original
 
@@ -6929,7 +6929,7 @@ like.
 
 =item slice
 
-(¥¹¥é¥¤¥¹(slice))
+(ã‚¹ãƒ©ã‚¤ã‚¹(slice))
 
 =begin original
 
@@ -7317,7 +7317,7 @@ and L</numeric context>.
 
 =item stringification
 
-(Ê¸»úÎó²½(stringification))
+(æ–‡å­—åˆ—åŒ–(stringification))
 
 =begin original
 
@@ -7376,7 +7376,7 @@ A component of a L</regular expression> pattern.
 
 =item subroutine
 
-(¥µ¥Ö¥ë¡¼¥Á¥ó(subroutine))
+(ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³(subroutine))
 
 =begin original
 
@@ -7399,7 +7399,7 @@ L</value>, it is also called a L</function>.
 
 =item subscript
 
-(Åº»ú(subscript))
+(æ·»å­—(subscript))
 
 =begin original
 
@@ -7927,7 +7927,7 @@ to build special tools.  Perl is sort of a machine shop.
 
 =item transliterate
 
-(Ê¸»úÊÑ´¹(transliterate))
+(æ–‡å­—å¤‰æ›(transliterate))
 
 =begin original
 
@@ -8138,7 +8138,7 @@ function.
 
 =item unary operator
 
-(Ã±¹à±é»»»Ò(unary operator))
+(å˜é …æ¼”ç®—å­(unary operator))
 
 =begin original
 
@@ -8235,7 +8235,7 @@ value.
 
 =item variable
 
-(ÊÑ¿ô(variable))
+(å¤‰æ•°(variable))
 
 =begin original
 
@@ -8250,7 +8250,7 @@ L</value>, as your program sees fit.
 
 =item variable interpolation
 
-(ÊÑ¿ôÅ¸³«(variable interpolation))
+(å¤‰æ•°å±•é–‹(variable interpolation))
 
 =begin original
 
@@ -8306,7 +8306,7 @@ variable-length UTF-8 character encoding transparently.
 
 =item void context
 
-(Ìµ¸ú¥³¥ó¥Æ¥­¥¹¥È(void context))
+(ç„¡åŠ¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ(void context))
 
 =begin original
 
@@ -8376,7 +8376,7 @@ the Perl debugger.
 
 =item whitespace
 
-(¶õÇò(whitespace))
+(ç©ºç™½(whitespace))
 
 =begin original
 
@@ -8433,7 +8433,7 @@ your parent L</process> was when you were born.
 
 =item wrapper
 
-(¥é¥Ã¥Ñ(wrapper))
+(ãƒ©ãƒƒãƒ‘(wrapper))
 
 =begin original
 
@@ -8532,7 +8532,7 @@ source distribution.
 
 =item zero width
 
-(¥¼¥íÉı(zero width))
+(ã‚¼ãƒ­å¹…(zero width))
 
 =begin original
 
@@ -8547,7 +8547,7 @@ L<characters|/character>.
 
 =item zombie
 
-(¥¾¥ó¥Ó(zombie))
+(ã‚¾ãƒ³ãƒ“(zombie))
 
 =begin original
 

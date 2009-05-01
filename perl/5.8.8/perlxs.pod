@@ -9,13 +9,13 @@ perlxs - XS language reference manual
 
 =end original
 
-perlxs - XS �����ե���󥹥ޥ˥奢��
+perlxs - XS 言語リファレンスマニュアル
 
 =head1 DESCRIPTION
 
 =head2 Introduction
 
-(����)
+(序論)
 
 =begin original
 
@@ -29,13 +29,13 @@ extension interface.
 
 =end original
 
-XS �� Perl ��(Perl �Ȱ��˻Ȥ�����)C �Υ�����(�ޤ��� C �饤�֥��)�Ȥ�
-�֤γ�ĥ���󥿡��ե���������Τ˻Ȥ��륤�󥿡��ե���������
-�ե�����ե����ޥåȤǤ���
-XS ���󥿡��ե������ϥ饤�֥���ưŪ�ޤ�����Ū�˥�󥯤���ơ�
-Perl �ȥ�󥯤��뤳�ȤΤǤ��뿷�����饤�֥����������ޤ���
-XS ���󥿡��ե��������ҤϤ� XS ����ǽ񤫤�Ƥ��ꡢ
-Perl ��ĥ���󥿡��ե������Υ�������ݡ��ͥ�ȤǤ���
+XS は Perl と(Perl と一緒に使いたい)C のコード(または C ライブラリ)との
+間の拡張インターフェースを作るのに使われるインターフェース記述
+ファイルフォーマットです。
+XS インターフェースはライブラリと動的または静的にリンクされて、
+Perl とリンクすることのできる新しいライブラリを生成します。
+XS インターフェース記述はは XS 言語で書かれており、
+Perl 拡張インターフェースのコアコンポーネントです。
 
 =begin original
 
@@ -46,10 +46,10 @@ calling conventions.
 
 =end original
 
-B<XSUB> �� XS ���󥿡��ե������δ���ñ�̤�������ޤ���
-B<xsubpp> ����ѥ���ˤ�륳��ѥ���塢
-���줾��� XSUB �� Perl �ƤӽФ���§�� C �ƤӽФ���§�δ֤θҤ��󶡤���
-C �ؿ�����Ȥʤ�ޤ���
+B<XSUB> は XS インターフェースの基本単位を形成します。
+B<xsubpp> コンパイラによるコンパイル後、
+それぞれの XSUB は Perl 呼び出し規則と C 呼び出し規則の間の糊を提供する
+C 関数定義となります。
 
 =begin original
 
@@ -63,13 +63,13 @@ Perl stack, or by modifying the arguments supplied from the Perl side.
 
 =end original
 
-�ҤΥ����ɤ� Perl �����å������������Ф���Perl ���ͤ� C �ؿ���
-���ꤷ�Ƥ���������Ѵ�����C �ؿ���ƤӽФ���C �ؿ����֤��ͤ� Perl ��
-�֤��ޤ���
-�����Ǥ��֤��ͤϡ�����Ū�� C ���֤��ͤ������ϥѥ�᡼�������ܤ򤹤�
-C �ؿ������Ǥ���
-�������֤��ͤϡ�Perl �����å����֤���뤫��Perl ¦���鶡�뤵�줿
-�������ѹ����뤳�Ȥˤ�ä� Perl ���֤���ޤ���
+糊のコードは Perl スタックから引数を取り出し、Perl の値を C 関数が
+想定している形式に変換し、C 関数を呼び出し、C 関数の返り値を Perl に
+返します。
+ここでの返り値は、伝統的な C の返り値か、出力パラメータの役目をする
+C 関数引数です。
+これらの返り値は、Perl スタックに置かれるか、Perl 側から供給された
+引数を変更することによって Perl に返されます。
 
 =begin original
 
@@ -83,12 +83,12 @@ interface, etc.
 
 =end original
 
-�嵭�ϼºݤ˵����뤳�Ȥ򤤤��餫ñ�㲽������ΤǤ���
-Perl �� C ���������ʸƤӽФ���§��ǧ��Ƥ���Τǡ�
-�ºݤˤ� XSUB �ϡ����ڤΤ�������Ϥ�����å����롢�⤷ C �ؿ������
-�֤��ͤ����Ԥ򼨤��Ƥ������㳰���ꤲ��(���뤤�� undef/���ꥹ�Ȥ��֤�)��
-�����ο��ȷ��ˤ�äưۤʤä� C �ؿ���ƤӽФ������֥������Ȼظ�
-���󥿡��ե��������󶡤��롢�Ȥ��ä����ڤ���¿���Τ��Ȥ��Ǥ��ޤ���
+上記は実際に起きることをいくらか単純化したものです。
+Perl は C よりもより柔軟な呼び出し規則を認めているので、
+実際には XSUB は、検証のために入力をチェックする、もし C 関数からの
+返り値が失敗を示していたら例外を投げる(あるいは undef/空リストを返す)、
+引数の数と型によって異なった C 関数を呼び出す、オブジェクト指向
+インターフェースを提供する、といった、遥かに多くのことができます。
 
 =begin original
 
@@ -102,13 +102,13 @@ the glue, and let the XS compiler B<xsubpp> handle the rest.
 
 =end original
 
-������󡢤��Τ褦�ʸҤΥ����ɤ�ľ�� C �ǽ񤯤��Ȥ�Ǥ��ޤ���
-������������ϤĤޤ�ʤ��Ż��Ǥ�; �ä�ʣ���� C �ؿ����Ф���Ҥ��
-ɬ�פ����ä��ꡢPerl �����å���ʬ��䤽�α����˿Ƥ����ʤ����Ϥ����Ǥ���
-XS �Ϥ��������ޤ�:
-�Ҥ� C �����ɤ�Ĺ���Ƚ�����ˡ��Ҥˤ��Ƥۤ������Ȥ˴ؤ��롢
-��äȴʷ��û�� I<����> ��񤤤ơ�XS ����ѥ��� B<xsubpp> ��
-�Ĥ�򰷤碌�뤳�Ȥ��Ǥ��ޤ���
+もちろん、このような糊のコードを直接 C で書くこともできます。
+しかし、これはつまらない仕事です; 特に複数の C 関数に対する糊を書く
+必要があったり、Perl スタックの分野やその奥義に親しくない場合はそうです。
+XS はこれを助けます:
+糊の C コードを長々と書く代わりに、糊にしてほしいことに関する、
+もっと簡潔で短い I<記述> を書いて、XS コンパイラ B<xsubpp> に
+残りを扱わせることができます。
 
 =begin original
 
@@ -125,15 +125,15 @@ the header file.
 
 =end original
 
-XS ����ϡ��ɤΤ褦�� C �롼���󤬻Ȥ��Τ��ȡ��ɤΤ褦���б����� Perl
-�롼���󤬻Ȥ��Τ��ȤΥޥåԥ󥰤򵭽ҤǤ��ޤ���
-����Ϥޤ���ľ�� C �����ɤ��Ѵ����졢����¸�ߤ��� C �ؿ��ȴط��ʤ�
-Perl �롼����κ������ǽ�ˤ��ޤ���
-C ���󥿡��ե������� Perl ���󥿡��ե�������Ʊ�����Ƥ����硢
-XSUB ����ϤۤȤ�� (K&R ������) C �ؿ��������Ʊ���Ǥ���
-���Τ褦�ʻ��𤫤顢C �إå����Τ��顢�إå��ե�����˵��Ҥ���Ƥ���
-�ؿ�/�ޥ����ؤθҤ��󶡤��� XS �ե�������Ѵ����롢C<h2xs> �ȸƤФ��
-�⤦��ĤΥġ��뤬����ޤ���
+XS 言語は、どのように C ルーチンが使うのかと、どのように対応する Perl
+ルーチンが使うのかとのマッピングを記述できます。
+これはまた、直接 C コードに変換され、既に存在する C 関数と関係ない
+Perl ルーチンの作成も可能にします。
+C インターフェースが Perl インターフェースと同期している場合、
+XSUB 宣言はほとんど (K&R 形式の) C 関数の宣言と同じです。
+このような事情から、C ヘッダ全体から、ヘッダファイルに記述されている
+関数/マクロへの糊を提供する XS ファイルへ変換する、C<h2xs> と呼ばれる
+もう一つのツールがあります。
 
 =begin original
 
@@ -148,15 +148,15 @@ for the library being linked.
 
 =end original
 
-XS ����ѥ���� B<xsubpp> �ȸƤФ�ޤ���
-���Υ���ѥ���� XSUB �� Perl ���ͤ򰷤�����ι�¤�䡢
-Perl �� XSUB ��ƤӽФ������ɬ�פʤ�Τ�������ޤ���
-���Υ���ѥ���� B<typemaps> ��Ȥä� C �δؿ��ΰ����ȤȽ����ͤ�
-Perl���ͤȤɤΤ褦�˥ޥåԥ󥰤��뤫����ꤷ�ޤ���
-�ǥե���Ȥ� typemap (Perl ��Ʊ�����Ƥ�����)��¿����ɸ��Ū�� C �η���
-�����ޤ���
-��󥯤����饤�֥��Τ�����ü�ʹ�¤�Τ䷿�򰷤���褦���뤿���
-���Ū�� typemap ��ɬ�פˤʤ뤫�⤷��ޤ���
+XS コンパイラは B<xsubpp> と呼ばれます。
+このコンパイラは XSUB が Perl の値を扱うための構造や、
+Perl が XSUB を呼び出すために必要なものを作成します。
+このコンパイラは B<typemaps> を使って C の関数の引数とと出力値を
+Perlの値とどのようにマッピングするかを決定します。
+デフォルトの typemap (Perl に同梱しているもの)は多くの標準的な C の型を
+扱います。
+リンクされるライブラリのための特殊な構造体や型を扱えるようするための
+補助的な typemap も必要になるかもしれません。
 
 =begin original
 
@@ -169,13 +169,13 @@ allows the XS file to contain embedded documentation.
 
 =end original
 
-XS �����Υե�����ϡ��ǽ�� C<MODULE =Z<>> �ؼ��Ҥ������ޤ� C ����
-��������󤫤鳫�Ϥ��ޤ���
-����¾�� XS �ؼ��Ҥ� XSUB ����Ϥ��ιԤ�³���ޤ���
-�ե�����Τ�����ʬ�ǻȤ���ָ���פ����� XS ����Ȥ��ƻ��Ȥ���ޤ���
-B<xsubpp> �� C �� XS �θ��쥻�������� POD (L<perlpod> ��
-���Ȥ��Ƥ�������)��ǧ�����ƸƤ����Ф��Τǡ�XS �ե�������Ȥ߹���
-�ɥ�����Ȥ�ޤ�뤳�Ȥ��Ǥ��ޤ���
+XS 形式のファイルは、最初の C<MODULE =Z<>> 指示子が現れるまで C 言語
+セクションから開始します。
+その他の XS 指示子と XSUB 定義はこの行に続きます。
+ファイルのこの部分で使われる「言語」は普通 XS 言語として参照されます。
+B<xsubpp> は C と XS の言語セクションで POD (L<perlpod> を
+参照してください)を認識して呼び飛ばすので、XS ファイルに組み込み
+ドキュメントを含めることができます。
 
 =begin original
 
@@ -183,8 +183,8 @@ See L<perlxstut> for a tutorial on the whole extension creation process.
 
 =end original
 
-�������ƥ󥷥��κ������ˤĤ��ƤΥ��塼�ȥꥢ��� L<perlxstut> ��
-���Ȥ��Ƥ���������
+エクステンションの作成手順についてのチュートリアルは L<perlxstut> を
+参照してください。
 
 =begin original
 
@@ -194,9 +194,9 @@ glue code.  See http://www.swig.org/ for more information.
 
 =end original
 
-����: �������ƥ󥷥��ˤ�äƤϡ��������ƥ󥷥��θҥ����ɤκ����ˤ�
-Dave Beazley �� SWIG �����ƥब�Ϥ뤫�������ʵ������󶡤���Ǥ��礦��
-����ʤ����ˤĤ��Ƥ� http://www.swig.org/ �򻲾Ȥ��Ƥ���������
+注意: エクステンションによっては、エクステンションの糊コードの作成には
+Dave Beazley の SWIG システムがはるかに便利な機構を提供するでしょう。
+さらなる情報については http://www.swig.org/ を参照してください。
 
 =head2 On The Road
 
@@ -210,12 +210,12 @@ is an output parameter.  The function also returns a status value.
 
 =end original
 
-���θ�ǽФƤ������¿���ϡ�Perl �� ONC+ RPC bind �饤�֥��ؿ��Ȥδ֤�
-���󥿡��ե����������Ū���������ޤ���
-rpcb_gettime() �Ȥ����ؿ�����XS �����¿���ε�ǽ���������뤿��˻Ȥ��ޤ���
-���δؿ�����Ĥΰ�������ޤ�;
-�ǽ�Τ�Τ����ϥѥ�᡼���ǡ������ܤΤ�ΤϽ��ϥѥ�᡼���Ǥ���
-�ؿ��ϥ��ơ������ͤ��֤��ޤ���
+この後で出てくる例の多くは、Perl と ONC+ RPC bind ライブラリ関数との間の
+インターフェースを具体的に生成します。
+rpcb_gettime() という関数が、XS 言語の多くの機能を説明するために使われます。
+この関数は二つの引数を取ります;
+最初のものは入力パラメータで、二番目のものは出力パラメータです。
+関数はステータス値も返します。
 
 	bool_t rpcb_gettime(const char *host, time_t *timep);
 
@@ -226,7 +226,7 @@ statements.
 
 =end original
 
-���δؿ��� C �Ǥϡ����Τ褦�˸ƤФ�ޤ���
+この関数は C では、次のように呼ばれます。
 
      #include <rpc/rpc.h>
      bool_t status;
@@ -241,9 +241,9 @@ The $status and $timep variables will contain the output of the function.
 
 =end original
 
-XSUB �����δؿ��� perl �Ȥδ֤�ľ��Ū���Ѵ��򤹤�褦�˺���Ƥ���С�
-���� XSUB �� Perl ����ʲ��Τ褦�ˤ��ƻȤ��ޤ���
-$status �� $timep �Ȥ����ѿ��ϴؿ��ν��Ϥ��ݻ����ޤ���
+XSUB がこの関数と perl との間の直接的な変換をするように作られていれば、
+この XSUB は Perl から以下のようにして使われます。
+$status と $timep という変数は関数の出力を保持します。
 
      use RPC;
      $status = rpcb_gettime( "localhost", $timep );
@@ -262,14 +262,14 @@ expanded later in this document.
 
 =end original
 
-�ʲ��˼��� XS �ե������ XS ���֥롼���󡢤⤷���� rpcb_gettime() �ؿ���
-�Ф��Ʋ�ǽ�ʥ��󥿡��ե������ΰ�Ĥ��㼨���� XSUB ����Ǥ���
-���� XSUB �� C �� Perl �Ȥδ֤�ľ��Ū���Ѵ���ɽ�路���ޤ���Perl �����
-���󥿡��ե��������ݸ�ޤ���
-���� XSUB �� Perl ���顢��������Τ褦�ˤ��ƸƤӽФ���ޤ���
-�ǽ�λ��Ĥ� #include ʸ��C<EXTERN.h>, C<perl.h>, C<XSUB.h> �Ͼ��
-XS �ե��������Ƭ���֤���뤳�Ȥ����դ��Ƥ���������
-���Υ��ץ������ʤɤϤ��Υɥ�����Ȥθ�Τۤ����������ޤ���
+以下に示す XS ファイルは XS サブルーチン、もしくは rpcb_gettime() 関数に
+対して可能なインターフェースの一つを例示する XSUB の例です。
+この XSUB は C と Perl との間の直接的な変換を表わし、また、Perl からも
+インターフェースを保護します。
+この XSUB は Perl から、先程の例のようにして呼び出されます。
+最初の三つの #include 文、C<EXTERN.h>, C<perl.h>, C<XSUB.h> は常に
+XS ファイルの先頭に置かれることに注意してください。
+このアプローチなどはこのドキュメントの後のほうで説明します。
 
      #include "EXTERN.h"
      #include "perl.h"
@@ -299,14 +299,14 @@ more detail later in this document.
 
 =end original
 
-Perl ���Ф������ƤΥ������ƥ󥷥��ϡ����Τ褦�� XSUB ��ޤ�ơ�
-Perl �˥������ƥ󥷥��򲡤�����֡��ȥ��ȥ�åפȤ���Ư��
-Perl �⥸�塼�����Ĥ٤��Ǥ���
-���Υ⥸�塼��ϥ������ƥ󥷥��δؿ����ѿ��Ȥ򥨥����ݡ��Ȥ���
-Perl �ץ������� Perl �˥�󥯤���륨�����ƥ󥷥��� XSUB ��ư���ޤ���
-�ʲ��Υ⥸�塼��Ϥ��Υɥ�����ȤΤۤȤ�ɤ���ǻȤ����Τǡ�
-(��˵󤲤���Τ褦��) Perl ���� C<use> ���ޥ�ɤ�Ȥ��٤���ΤǤ���
-Perl �Υ⥸�塼��Ϥ��Υɥ�����Ȥθ�Τۤ��Ǥ��ܤ�����������ޤ���
+Perl に対する全てのエクステンションは、このような XSUB も含めて、
+Perl にエクステンションを押し込むブートストラップとして働く
+Perl モジュールを持つべきです。
+このモジュールはエクステンションの関数と変数とをエクスポートし、
+Perl プログラムや Perl にリンクされるエクステンションの XSUB を起動します。
+以下のモジュールはこのドキュメントのほとんどの例で使われるもので、
+(先に挙げた例のように) Perl から C<use> コマンドを使うべきものです。
+Perl のモジュールはこのドキュメントの後のほうでより詳しく説明されます。
 
      package RPC;
 
@@ -331,19 +331,19 @@ function.
 
 =end original
 
-���Υɥ�����Ȥ��̤��ơ�rpcb_gettime() XSUB ���Ф����͡���
-���󥿡��ե���������Ƥ����ޤ���
-XSUB �ϥѥ�᡼�����ä����֤Ǽ�����ä��ꡢ�ۤʤ�Ŀ��Υѥ�᡼����
-�Ȥä��ꤷ�ޤ���
-���줾��ξ��ˤ����� XSUB �� Perl �ȼºݤ� C �� rpcb_gettime �ؿ��δ֤�
-��ݺ���(abstraction)�Ǥ��ꡢ���ġ�XSUB �Ͼ�˼ºݤ� rpcb_gettime() ��
-�������ѥ�᡼���ǸƤФ�뤳�Ȥ��ݾڤ��ʤ���Фʤ�ޤ���
-������ݺ��Ѥϥץ�����ޤ� C ���Ф����� Perl Ū�ʥ��󥿡��ե�������
-�������뤳�Ȥ�����ޤ���
+このドキュメントを通して、rpcb_gettime() XSUB に対する様々な
+インターフェースが検討されます。
+XSUB はパラメータを違った順番で受け取ったり、異なる個数のパラメータを
+とったりします。
+それぞれの場合において XSUB は Perl と実際の C の rpcb_gettime 関数の間の
+抽象作用(abstraction)であり、かつ、XSUB は常に実際の rpcb_gettime() が
+正しいパラメータで呼ばれることを保証しなければなりません。
+この抽象作用はプログラマが C に対するより Perl 的なインターフェースを
+作成することを許します。
 
 =head2 The Anatomy of an XSUB
 
-(XSUB �ι�¤)
+(XSUB の構造)
 
 =begin original
 
@@ -353,8 +353,8 @@ and a description of types or formats of the arguments.
 
 =end original
 
-��äȤ�ñ��� XSUB �� 3 �Ĥ���ʬ����ʤ�ޤ�: �֤��ͤε��ҡ�XSUB
-�롼�����̾���Ȥ��ΰ�����̾���������η�������ε��ҤǤ���
+もっとも単純な XSUB は 3 つの部分からなります: 返り値の記述、XSUB
+ルーチンの名前とその引数の名前、引数の型や形式の記述です。
 
 =begin original
 
@@ -364,9 +364,9 @@ argument and returns a single value.
 
 =end original
 
-�ʲ��˼��� XSUB �ϡ�Perl �ץ��������Ф��� sin() �ȸƤФ�� C ��
-�饤�֥��ؿ��˥����������뤳�Ȥ�����ޤ���
-���� XSUB �ϰ������ļ�ꡢ��Ĥ��ͤ��֤� C �δؿ������路�ޤ���
+以下に示す XSUB は、Perl プログラムに対して sin() と呼ばれる C の
+ライブラリ関数にアクセスすることを許します。
+この XSUB は引数を一つ取り、一つの値を返す C の関数を模倣します。
 
      double
      sin(x)
@@ -379,8 +379,8 @@ argument names, rewriting this as
 
 =end original
 
-���ץ����Ȥ��ơ����ε��ҤȰ�����̾���Υꥹ�Ȥ���Ǥ��ޤ�;
-�����ʲ��Τ褦�˽񤭴����ޤ�:
+オプションとして、型の記述と引数の名前のリストを結合できます;
+これを以下のように書き換えます:
 
      double
      sin(double x)
@@ -392,8 +392,8 @@ semicolon is allowed after the argument list, as in
 
 =end original
 
-����ˤ�ä� XSUB �� ANSI C ����Ȼ����Ƹ����ޤ���
-�ʲ��Τ褦�ˡ������θ�˥��ץ����Υ��ߥ�������դ����ޤ�:
+これによって XSUB を ANSI C 宣言と似せて見せます。
+以下のように、引数の後にオプションのセミコロンも付けられます:
 
      double
      sin(double x);
@@ -405,8 +405,8 @@ with similar declarations
 
 =end original
 
-C �ݥ��󥿷��ΰ����ϰۤʤä���̣��������ޤ�: Ʊ���褦�������
-C �ؿ�:
+C ポインタ型の引数は異なった意味論を持ちます: 同じような定義の
+C 関数:
 
      bool string_looks_as_a_number(char *s);
      bool make_char_uppercase(char *c);
@@ -418,8 +418,8 @@ could be described B<xsubpp> like this:
 
 =end original
 
-�ϴ����˸ߴ����Τʤ������Ǥ���
-�����δؿ��ؤΰ����ϰʲ��Τ褦�� B<xsubpp> �����Ҥ��ޤ�:
+は完全に互換性のない方式です。
+これらの関数への引数は以下のように B<xsubpp> が記述します:
 
      char *  s
      char    &c
@@ -431,8 +431,8 @@ different semantics, see L<"The & Unary Operator">.
 
 =end original
 
-������ XS �����ξ���Ȥ� C �� C<char*> �����б����ޤ������ۤʤ�
-��̣��������ޤ�;  L<"The & Unary Operator"> �򻲾Ȥ��Ƥ���������
+これらの XS 宣言の両方とも C の C<char*> 型に対応しますが、異なる
+意味論を持ちます;  L<"The & Unary Operator"> を参照してください。
 
 =begin original
 
@@ -443,10 +443,10 @@ for more info about handling qualifiers and unary operators in C types.
 
 =end original
 
-���ܻ��ȱ黻�� C<*> �Ϸ��ΰ����Ȥߤʤ��٤��ǡ����ɥ쥹�黻�� C<&> ��
-�ѿ��ΰ����Ǥ���Ȥߤʤ��������Ǥ���
-C �η��ˤ�����ñ��黻�Ҥ佤����(qualifiers)�ΰ����˴ؤ���ܺ٤�
-L<"The Typemap"> �򻲾Ȥ��Ƥ���������
+間接参照演算子 C<*> は型の一部とみなすべきで、アドレス演算子 C<&> は
+変数の一部であるとみなすと便利です。
+C の型における単項演算子や修飾子(qualifiers)の扱いに関する詳細は
+L<"The Typemap"> を参照してください。
 
 =begin original
 
@@ -455,8 +455,8 @@ separate lines and should be flush left-adjusted.
 
 =end original
 
-�ؿ�̾�ȡ������֤��ͤη����̡��ιԤ�ʬ���Ƥ����ʤ���Фʤ�ޤ���;
-�ޤ���·���ˤ���٤��Ǥ���
+関数名と、その返り値の型は別々の行に分けておかなければなりません;
+また左揃えにするべきです。
 
 =begin original
 
@@ -464,7 +464,7 @@ separate lines and should be flush left-adjusted.
 
 =end original
 
-  �ְ㤤                           ������
+  間違い                           正しい
 
   double sin(x)                    double
     double x                       sin(x)
@@ -478,10 +478,10 @@ examples in this document will indent the body for better readability.
 
 =end original
 
-�Ĥ�δؿ����Ҥϥ���ǥ�Ȥ��դ����ꡢ���󤻤��뤳�Ȥ��Ǥ��ޤ���
-�ʲ�����Ǥϴؿ������Τ򺸴󤻤��Ƥ��ޤ���
-�ܥɥ�����Ȥˤ���ۤȤ�ɤ���Ǥ��ɤߤ䤹���褦�����Τ˥���ǥ�Ȥ�
-�դ��Ƥ��ޤ���
+残りの関数記述はインデントを付けたり、左寄せすることができます。
+以下の例では関数の本体を左寄せしています。
+本ドキュメントにあるほとんどの例では読みやすいように本体にインデントを
+付けています。
 
   CORRECT
 
@@ -501,14 +501,14 @@ an INPUT: section unless explicitly marked with another keyword.
 
 =end original
 
-��ä�ʣ���� XSUB ��¿���Τ���¾�Υ���������ޤ�Ǥ��뤫�⤷��ޤ���
-XSUB �Τ��줾��Υ��������ϡ�INIT: �� CLEANUP: �Τ褦�ʡ��б�����
-������ɤǻϤޤ�ޤ���
-��������XSUB �κǽ�� 2 �ԤϤ��Ĥ�Ʊ���ǡ�������ʤ�ޤ�:
-�֤��ͤμ���ε��Ҥȡ��ؿ�����Ӥ��ΰ�����̾���Ǥ���
-�����˰���³����ΤϤʤ�Ǥ⡢����Ū�ˤ���¾�Υ�����ɤ��ʤ��¤��
-INPUT: ���������ȹͤ����ޤ���
-(L<The INPUT: Keyword> �򻲾Ȥ��Ƥ���������)
+もっと複雑な XSUB は多くのその他のセクションを含んでいるかもしれません。
+XSUB のそれぞれのセクションは、INIT: や CLEANUP: のような、対応する
+キーワードで始まります。
+しかし、XSUB の最初の 2 行はいつも同じデータからなります:
+返り値の種類の記述と、関数およびその引数の名前です。
+これらに引き続くものはなんでも、明示的にその他のキーワードがない限りは
+INPUT: セクションと考えられます。
+(L<The INPUT: Keyword> を参照してください。)
 
 =begin original
 
@@ -516,11 +516,11 @@ An XSUB section continues until another section-start keyword is found.
 
 =end original
 
-XSUB ����������¾�Υ�������󳫻ϥ�����ɤ������ޤ�³���ޤ���
+XSUB セクションは他のセクション開始キーワードが現れるまで続きます。
 
 =head2 The Argument Stack
 
-(���������å�)
+(引数スタック)
 
 =begin original
 
@@ -534,12 +534,12 @@ function will be referred to as position 0 for that function.
 
 =end original
 
-Perl �ΰ��������å��� XSUB �˥ѥ�᡼���Ȥ����Ϥ�����ͤ� XSUB �����֤ä�
-�����ͤ��Ǽ����Τ˻Ȥ��ޤ���
-���٤Ƥ�(�� XSUB �ؿ���ޤ�)Perl �ؿ��ϡ������ͤ򤳤Υ����å�������Ʊ����
-�ݻ����Ƥ��ơ����줾�줳�Υ����å���ΰ��֤��ϰϤˤ�ä����¤���ޤ���
-���Υɥ�����ȤǤϡ������ƥ��֤ʴؿ��˽�°���륹���å��κǽ�ΰ��֤�
-���δؿ�����ϰ��� 0�Ȥ��ƻ��Ȥ���ޤ���
+Perl の引数スタックは XSUB にパラメータとして渡される値や XSUB から返って
+きた値を格納するのに使われます。
+すべての(非 XSUB 関数を含む)Perl 関数は、その値をこのスタックに全て同時に
+保持していて、それぞれこのスタック上の位置の範囲によって制限されます。
+このドキュメントでは、アクティブな関数に所属するスタックの最初の位置は
+その関数からは位置 0として参照されます。
 
 =begin original
 
@@ -553,18 +553,18 @@ typemaps.  In more complex cases the programmer must supply the code.
 
 =end original
 
-XSUB �Ϥ��Υ����å��ˤ���������Ф��� B<ST(x)> �Ȥ����ޥ�����Ȥäơ�
-I<x> �������Ƥ��� XSUB �Υ����å���ˤ�����֤λ��Ȥ�Ԥ��ޤ���
-�ؿ����Ф������ 0 �� ST(0) �Ȥʤ�ޤ���
-XSUB ���Ф���ѥ�᡼���� XSUB �����֤�����ͤϾ�� ST(0) ����Ϥޤ�ޤ���
-¿����ñ��ʾ��ˤ����Ƥϡ�B<xsubpp>����ѥ���� typemap �ˤ���
-�����ߥ�������(embedding code fragments)������������å��򰷤�
-�����ɤ��������ޤ���
-��ä�ʣ���ʾ��ˤϡ��ץ�����ޤ������ɤ��󶡤��ʤ���Фʤ�ޤ���
+XSUB はそのスタックにある引数に対して B<ST(x)> というマクロを使って、
+I<x> が示している XSUB のスタック上にある位置の参照を行います。
+関数に対する位置 0 は ST(0) となります。
+XSUB に対するパラメータと XSUB から返される値は常に ST(0) から始まります。
+多くの単純な場合においては、B<xsubpp>コンパイラは typemap にある
+埋め込みコード片(embedding code fragments)から引数スタックを扱う
+コードを生成します。
+もっと複雑な場合には、プログラマがコードを提供しなければなりません。
 
 =head2 The RETVAL Variable
 
-(RETVAL �ѿ�)
+(RETVAL 変数)
 
 =begin original
 
@@ -579,14 +579,14 @@ of the XSUB.
 
 =end original
 
-RETVAL �Ȥ����ѿ��ϼ�ưŪ�������������̤� C �ѿ��Ǥ���
-RETVAL �� C �Ǥη��� C �Υ饤�֥��ؿ����֤����˰��פ��ޤ���
-B<xsubpp> ����ѥ���ϳ� XSUB ���� C<void> �֤��ͤ��Ф��Ƥ����ѿ���
-������ޤ���
-�ǥե���ȤǤ��������줿 C �ؿ��� RETVAL �� C �饤�֥��ؿ����ƤФ줿�Ȥ���
-�֤��ͤη����ݻ�����Τ˻Ȥ��ޤ���
-ñ��ʾ��ˤϡ�RETVAL ���ͤ� Perl ���� XSUB ���֤��ͤȤ���
-������뤳�ȤΤǤ�����������å��� ST(0) ���֤���ޤ���
+RETVAL という変数は自動的に宣言される特別な C 変数です。
+RETVAL の C での型は C のライブラリ関数が返す型に一致します。
+B<xsubpp> コンパイラは各 XSUB の非 C<void> 返り値に対してこの変数を
+宣言します。
+デフォルトでは生成された C 関数は RETVAL を C ライブラリ関数が呼ばれたときの
+返り値の型を保持するのに使われます。
+単純な場合には、RETVAL の値は Perl から XSUB の返り値として
+受け取ることのできる引数スタックの ST(0) に置かれます。
 
 =begin original
 
@@ -597,10 +597,10 @@ section may use direct stack manipulation to place output values on the stack.
 
 =end original
 
-XSUB ���֤��ͤ����� C<void> �Ǥ��ä����ˤϡ�����ѥ����
-���δؿ����Ф����ѿ� RETVAL ��������ޤ���
-PPCODE: �����������Ȥ���硢RETVAL �ѿ�����������ɬ�פ��ʤ��Τǡ�
-���Υ��������ϥ����å��˽����ͤ��֤�����˥����å���ľ�����ޤ���
+XSUB の返り値の方が C<void> であった場合には、コンパイラは
+その関数に対して変数 RETVAL を宣言しません。
+PPCODE: セクションをを使う場合、RETVAL 変数の操作を操作する必要がないので、
+このセクションはスタックに出力値を置くためにスタックを直接操作します。
 
 =begin original
 
@@ -610,9 +610,9 @@ directive is used which sets ST(0) explicitly.
 
 =end original
 
-PPCODE: �ؼ��Ҥ�Ȥ�ʤ��ΤǤ���С�C<void> ���֤��ͤ�
-CODE: �ؼ��Ҥ� ST(0) ���ۤ˥��åȤ���Τ˻Ȥ��Ƥ����Ȥ��Ƥ⡢
-�ͤ��֤��ʤ����֥롼������Ф��ƤΤ߻Ȥ��٤��Ǥ���
+PPCODE: 指示子を使わないのであれば、C<void> な返り値は
+CODE: 指示子が ST(0) へ陽にセットするのに使われていたとしても、
+値を返さないサブルーチンに対してのみ使うべきです。
 
 =begin original
 
@@ -627,21 +627,21 @@ mercy of this heuristics unless you use C<SV *> as return value.)
 
 =end original
 
-���Υɥ�����Ȥΰ����Τ�ΤǤϡ��������ä������֤��ͤȤ��� C<void> ��
-�Ȥ����Ȥ򴫤�Ƥ��ޤ�����
-����� XSUB �� I<������> C<void> �Ǥ���Ȥ��˥������ơ�������ȿ�򵯤���
-��ǽ�������뤳�Ȥ���ǧ����ޤ�����
-���Τ�����Ϻ��ǤϻȤ�ʤ����Ȥ��侩����Ƥ��ơ�����ΥС�������
-���ݡ��Ȥ���ʤ��ʤ�Ǥ��礦��
-�������ä���硢�֤��� C<SV *> ��Ȥ��ޤ�(���� C<xsubpp> ��
-"truely-void" �ʴؿ���"old-practice-declared-as-void" �ʴؿ��Ȥ����Τ�
-���褦�Ȥ���и�§Ū�ʥ����ɤ����äƤ��ޤ���
-���Τ��ᤢ�ʤ��Υץ������Ϥ��ʤ����֤��ͤȤ��� C<SV *> ��Ȥ�ʤ��¤ꡢ
-���ηи�§�ο����񤤤˺�������ޤ���)
+このドキュメントの以前のものでは、そういった場合に返り値として C<void> を
+使うことを勧めていました。
+これは XSUB が I<本当に> C<void> であるときにセグメンテーション違反を起こす
+可能性があることが確認されました。
+このやり方は今では使わないことが推奨されていて、将来のバージョンで
+サポートされなくなるでしょう。
+こういった場合、返り値 C<SV *> を使います(現在 C<xsubpp> は
+"truely-void" な関数と"old-practice-declared-as-void" な関数とを明確に
+しようとする経験則的なコードが入っています。
+このためあなたのプログラムはあなたが返り値として C<SV *> を使わない限り、
+この経験則の振る舞いに左右されます。)
 
 =head2 Returning SVs, AVs and HVs through RETVAL
 
-(RETVAL �� SV, AV, HV ���֤�)
+(RETVAL で SV, AV, HV を返す)
 
 =begin original
 
@@ -656,14 +656,14 @@ or less equivalent:
 
 =end original
 
-C<SV *> ���֤������ RETVAL ��Ȥ��Ȥ������ڤ��Ƥ����٤���ˡ������΢��
-�Ԥ��ޤ���
-�㤨�С�ST(x) �ޥ�����Ȥäư��������å�������Ȥ������̤�
-���ȥ�����Ȥ����̤����դ�ʧ��ɬ�פ�����ޤ���
-(���ȥ�����Ȥ˴ؤ��Ƥϡ�L<perlguts> �򻲾Ȥ��Ƥ���������)
-���������ñ�ˤ��뤿��ˡ�C<SV *> ���֤����Ȥ��Ƥ���Ȥ���
-typemap �ե�����ϼ�ưŪ�� C<RETVAL> ���ȯ���ˤ��ޤ���
-���äơ��ʲ��� 2 �Ĥ� XSUB �Ϥ������������Ǥ�:
+C<SV *> を返すために RETVAL を使うとき、言及しておくべき魔法が舞台裏で
+行われます。
+例えば、ST(x) マクロを使って引数スタックを操作するとき、普通は
+参照カウントに特別な注意を払う必要があります。
+(参照カウントに関しては、L<perlguts> を参照してください。)
+人生をより簡単にするために、C<SV *> を返そうとしているときは
+typemap ファイルは自動的に C<RETVAL> を揮発性にします。
+従って、以下の 2 つの XSUB はだいたい等価です:
 
   void
   alpha()
@@ -688,10 +688,10 @@ able to write:
 
 =end original
 
-��������̲��������������ΤǤ��ʤ�ͭ�ѤǤ���
-����� C<SV *> �ǤϤ��ޤ�ư����������ǰ�ʤ����֤��ͤȤ���
-C<AV *> �� C<HV *> ��Ȥ��Ȥ��ˤϴ�ñ�ǤϤ���ޤ���
-�ʲ��Τ褦�˽񤱤� I<�٤�> �Ǥ�:
+これは普通可読性を改善するのでかなり有用です。
+これは C<SV *> ではうまく動作する一方、残念ながら返り値として
+C<AV *> や C<HV *> を使うときには簡単ではありません。
+以下のように書ける I<べき> です:
 
   AV *
   array()
@@ -710,11 +710,11 @@ whenever it is being called. The same problem exists for C<HV *>.
 
 =end original
 
-������ typemap �ե�����ˤ��뽤������Ƥ��ʤ��Х��Τ����(�����
-��������ȴ�¸��¿���� CPAN�⥸�塼�뤬ư���ʤ��ʤ�ޤ�)��
-C<AV *> �λ��ȥ�����Ȥ�Ŭ�ڤ˥ǥ�����Ȥ���ޤ���
-���äơ���Ҥ� XSUB �ϡ��ƤӽФ���뤴�Ȥ˥���꡼�����ޤ���
-Ʊ������� C<HV *> �ˤ⤢��ޤ���
+しかし typemap ファイルにある修正されていないバグのために(これを
+修正すると既存の多くの CPANモジュールが動かなくなります)、
+C<AV *> の参照カウントは適切にデクリメントされません。
+従って、上述の XSUB は、呼び出されるごとにメモリリークします。
+同じ問題は C<HV *> にもあります。
 
 =begin original
 
@@ -723,8 +723,8 @@ their reference count is decremented by making the AV or HV mortal:
 
 =end original
 
-C<AV *> �� C<HV *> ���֤��Ȥ���AV �� HV ���ȯ���ˤ��뤳�Ȥˤ�äơ�
-�μ¤˻��ȥ�����Ȥ򸺤餷�Ƥ�������:
+C<AV *> や C<HV *> を返すとき、AV や HV を揮発性にすることによって、
+確実に参照カウントを減らしてください:
 
   AV *
   array()
@@ -741,11 +741,11 @@ And also remember that you don't have to do this for an C<SV *>.
 
 =end original
 
-�����ơ�C<SV *> �Τ���ˤϤ���򤹤�ɬ�פϤʤ����Ȥ�Ф��Ƥ����Ƥ���������
+そして、C<SV *> のためにはこれをする必要はないことも覚えておいてください。
 
 =head2 The MODULE Keyword
 
-(MODULE �������)
+(MODULE キーワード)
 
 =begin original
 
@@ -760,16 +760,16 @@ constant within the same XS file, though this is not required.
 
 =end original
 
-������� MODULE �� XS �����ɤλϤޤ�ȡ��������ؿ��Υѥå�������
-���ꤹ��Τ˻Ȥ��ޤ���
-������� MODULE �������ˤ���ƥ����Ȥ�C�ץ������Ȥ��ư���졢
-POD �������ޤ���������ʳ��ϲ����ѹ���ä���줺�˽��Ϥ���ޤ���
-���٤Ƥ� XS �⥸�塼��ϡ�XSUB �� Perl �˥եå�����Τ˻Ȥ���
-�֡��ȥ��ȥ�å״ؿ�������ޤ���
-���Υ֡��ȥ��ȥ�å״ؿ��Υѥå�����̾�ϡ�XS �Υ������ե�����ˤ���
-�Ǹ�� MODULE ʸ���ͤ˰��פ��ޤ���
-MODULE ���ͤ�Ʊ�� XS �ե��������Ǥ��ѹ�����ʤ��褦�ˤ��٤��Ǥ�
-(����ɬ�ܤǤϤ���ޤ���)��
+キーワード MODULE は XS コードの始まりと、定義する関数のパッケージを
+指定するのに使われます。
+キーワード MODULE よりも前にあるテキストはCプログラムとして扱われ、
+POD が除去されますが、それ以外は何の変更も加えられずに出力されます。
+すべての XS モジュールは、XSUB を Perl にフックするのに使われる
+ブートストラップ関数を持ちます。
+このブートストラップ関数のパッケージ名は、XS のソースファイルにある
+最後の MODULE 文の値に一致します。
+MODULE の値は同じ XS ファイルの中では変更されないようにすべきです
+(が、必須ではありません)。
 
 =begin original
 
@@ -778,14 +778,14 @@ all functions in a package named RPC.
 
 =end original
 
-�ʲ������ XS �����ɤ򳫻Ϥ������٤Ƥδؿ��� RPC �Ȥ���̾���Υѥå�������
-�֤��ޤ���
+以下の例は XS コードを開始し、すべての関数を RPC という名前のパッケージに
+置きます。
 
      MODULE = RPC
 
 =head2 The PACKAGE Keyword
 
-(PACKAGE �������)
+(PACKAGE キーワード)
 
 =begin original
 
@@ -795,10 +795,10 @@ keyword and must follow immediately after it when used.
 
 =end original
 
-XS �������ե�����δؿ���ѥå�������ʬ�䤷�ʤ���Фʤ�ʤ��Ȥ���
-������� PACKAGE ��Ȥ��٤��Ǥ���
-���Υ�����ɤ� MODULE ������ɤȶ��˻Ȥ�졢���ġ����Τ������
-�ʤ���Фʤ�ޤ���
+XS ソースファイルの関数をパッケージに分割しなければならないとき、
+キーワード PACKAGE を使うべきです。
+このキーワードは MODULE キーワードと共に使われ、かつ、そのすぐ後に
+なければなりません。
 
      MODULE = RPC  PACKAGE = RPC
 
@@ -820,8 +820,8 @@ principle than package names.
 
 =end original
 
-Ʊ���ѥå�����̾��ʣ����Ȥ���Τǡ�Ϣ³���Ƥ��ʤ������ɤ��ǽ�Ǥ���
-����ϡ��ѥå�����̾����궯�������§����äƤ������ͭ�ѤǤ���
+同じパッケージ名を複数回使えるので、連続していないコードも可能です。
+これは、パッケージ名よりより強い順序原則を持っている場合に有用です。
 
 =begin original
 
@@ -831,13 +831,13 @@ XSUBs appear in the desired package.
 
 =end original
 
-���Υ�����ɤϾ�ά��ǽ�Ǥ��äơ��ޤ��������Υ������ˤ����Ƥ�
-��ʣ�������Ȥʤ�ˤ⤫����餺����˻Ȥ��٤���ΤǤ���
-���Υ�����ɤ� XSUB ���׵ᤷ���ѥå������ˤ��뤳�Ȥ��ݾڤ��ޤ���
+このキーワードは省略可能であって、また、一部のケースにおいては
+重複する情報となるにもかかわらず、常に使うべきものです。
+このキーワードは XSUB が要求したパッケージにあることを保証します。
 
 =head2 The PREFIX Keyword
 
-(PREFIX �������)
+(PREFIX キーワード)
 
 =begin original
 
@@ -848,10 +848,10 @@ see this function as C<gettime()>.
 
 =end original
 
-������� PREFIX �� Perl �δؿ�̾������������٤��ץ�ե�������
-���ꤹ���ΤǤ���
-C �ؿ��� C<rpcb_gettime()> �ǡ����� PREFIX ���ͤ� C<rpcb_> �Ǥ��ä��Ȥ���ȡ�
-Perl �Ϥ��δؿ��� C<gettime()> �Ȥ��Ƹ��ޤ���
+キーワード PREFIX は Perl の関数名から取り除かれるべきプリフィクスを
+指定するものです。
+C 関数が C<rpcb_gettime()> で、その PREFIX の値が C<rpcb_> であったとすると、
+Perl はこの関数を C<gettime()> として見ます。
 
 =begin original
 
@@ -861,8 +861,8 @@ keyword.
 
 =end original
 
-���Υ�����ɤϥ������ PACKAGE ��Ȥä���ˤ���٤��Ǥ���
-PACKAGE ���Ȥ��ʤ���С�PREFIX �ϥ������ MODULE �θ�ˤ���٤��Ǥ���
+このキーワードはキーワード PACKAGE を使った後にあるべきです。
+PACKAGE が使われなければ、PREFIX はキーワード MODULE の後にあるべきです。
 
      MODULE = RPC  PREFIX = rpc_
 
@@ -870,7 +870,7 @@ PACKAGE ���Ȥ��ʤ���С�PREFIX �ϥ������ MODULE �θ�ˤ���٤��Ǥ���
 
 =head2 The OUTPUT: Keyword
 
-(OUTPUT: �������)
+(OUTPUT: キーワード)
 
 =begin original
 
@@ -885,13 +885,13 @@ variables.
 
 =end original
 
-������� OUTPUT: �ϡ����Ĥ��δؿ��ѥ�᡼���� XSUB ����λ����Ȥ���
-���������٤�(Perl �Τ���˿������ͤ򸫤���褦�ˤ���)��ΤǤ��뤳�Ȥ䡢
-���Ĥ����ͤ��ƤӽФ����� Perl �ؿ����ᤵ���٤���ΤǤ��뤳�Ȥ򼨤��ޤ���
-���Ҥ� sin() �Τ褦�� CODE: �� PPCODE: ���������Τʤ�ñ��ʴؿ��ˤϡ��ѿ� 
-RETVAL�ϼ�ưŪ�˽����ͤ˳�����Ƥ��ޤ���
-��ä�ʣ���ʴؿ��Ǥϡ�B<xsubpp> ����ѥ���Ϥɤ��ѿ��� �����ѿ��Ǥ��뤫��
-���뤿��ν�����ɬ�פǤ���
+キーワード OUTPUT: は、幾つかの関数パラメータが XSUB が終了するときに
+更新されるべき(Perl のために新しい値を見えるようにする)ものであることや、
+幾つかの値が呼び出し元の Perl 関数に戻されるべきものであることを示します。
+前述の sin() のような CODE: や PPCODE: セクションのない単純な関数には、変数 
+RETVALは自動的に出力値に割り当てられます。
+もっと複雑な関数では、B<xsubpp> コンパイラはどの変数が 出力変数であるかを
+決めるための助けが必要です。
 
 =begin original
 
@@ -903,11 +903,11 @@ variable.
 
 =end original
 
-���Υ�����ɤϡ��̾� ������� CODE: �����ˤ��뤿��˻Ȥ��ޤ���
-�ѿ� RETVAL�ϡ�������� CODE: ���Ȥ��Ƥ�����ˤϽ����ѿ��Ȥ��Ƥ�
-ǧ������ޤ���
-������� OUTPUT �Ϥ������ä����˥���ѥ���� RETVAL ��������
-�����ѿ��Ǥ��뤳�Ȥ򶵤��뤿��˻Ȥ��ޤ���
+このキーワードは、通常 キーワード CODE: を完全にするために使われます。
+変数 RETVALは、キーワード CODE: が使われている場合には出力変数としては
+認識されません。
+キーワード OUTPUT はこういった場合にコンパイラに RETVAL が本当に
+出力変数であることを教えるために使われます。
 
 =begin original
 
@@ -918,10 +918,10 @@ be seen by Perl.
 
 =end original
 
-������� OUTPUT: �Ϥޤ����ؿ��Υѥ�᡼���������ѿ��Ǥ���Ȥ������Ȥ�
-�����Τˤ�Ȥ��ޤ���
-����ϴؿ�����ǥѥ�᡼�����ѹ����줿�ꡢ�ץ�����ޤ������������Ȥ�
-Perl �˶��������Ȥ��ä��Ȥ���ɬ�פˤʤ�ޤ���
+キーワード OUTPUT: はまた、関数のパラメータが出力変数であるということを
+示すのにも使えます。
+これは関数の中でパラメータが変更されたり、プログラマが更新したことを
+Perl に教えたいといったときに必要になります。
 
      bool_t
      rpcb_gettime(host,timep)
@@ -938,8 +938,8 @@ typemap.
 
 =end original
 
-������� OUTPUT: �Ϥޤ������ϥѥ�᡼����(typemap �ǤϤʤ�)
-����˥ޥå����륳�����Ҥ˥ޥåԥ󥰤���Τˤ�Ȥ��ޤ���
+キーワード OUTPUT: はまた、出力パラメータを(typemap ではなく)
+それにマッチするコード片にマッピングするのにも使えます。
 
      bool_t
      rpcb_gettime(host,timep)
@@ -963,21 +963,21 @@ about 'set' magic.
 
 =end original
 
-B<xsubpp> �ϡ�XSUB �� OUTPUT ����������桢RETVAL ��������ƤΥѥ�᡼����
-�Ф��Ƽ�ưŪ�� C<SvSETMAGIC()> ����Ϥ��ޤ���
-��������̤�˾�ޤ��������񤤤Ǥ�; �ʤ��ʤ���ϥѥ�᡼����Ŭ�ڤ�
-'set' �ޥ��å���ư�������ݤ򸫤뤫��Ǥ�(�ϥå������������Ǥ�
-¸�ߤ��ʤ��ä��Ȥ����������ʤ���Фʤ�ʤ��Τ�ɬ�פǤ�)��
-�⤷���餫����ͳ�Ǥ��ο����񤤤�˾�ޤ����ʤ��ʤ顢
-OUTPUT ���������λĤ�Υѥ�᡼���Ǥ����̵���ˤ��뤿��ˡ�
-OUTPUT ���������ˤ� C<SETMAGIC: DISABLE> �Ȥ����Ԥ�ޤ�뤳�Ȥ�����ޤ���
-Ʊ�ͤˡ�C<SETMAGIC: ENABLE> �� OUTPUT ���������λĤ�Τ����
-��ͭ�������뤿��˻Ȥ��ޤ���
-'set' �ޥ��å��˴ؤ��뤵��ʤ�ܺ٤ˤĤ��Ƥ� L<perlguts> �򻲾Ȥ��Ƥ���������
+B<xsubpp> は、XSUB の OUTPUT セクション中、RETVAL を除く全てのパラメータに
+対して自動的に C<SvSETMAGIC()> を出力します。
+これは普通は望ましい振る舞いです; なぜなら出力パラメータに適切に
+'set' マジックを起動する面倒を見るからです(ハッシュや配列の要素が
+存在しなかったとき、作成しなければならないので必要です)。
+もし何らかの理由でこの振る舞いが望ましくないなら、
+OUTPUT セクションの残りのパラメータでこれを無効にするために、
+OUTPUT セクションには C<SETMAGIC: DISABLE> という行を含めることが出来ます。
+同様に、C<SETMAGIC: ENABLE> は OUTPUT セクションの残りのために
+再有効化するために使えます。
+'set' マジックに関するさらなる詳細については L<perlguts> を参照してください。
 
 =head2 The NO_OUTPUT Keyword
 
-(NO_OUTPUT �������)
+(NO_OUTPUT キーワード)
 
 =begin original
 
@@ -988,10 +988,10 @@ be returned from the generated Perl subroutine.
 
 =end original
 
-NO_OUTPUT ������ɤ� XSUB �κǽ�Υȡ�����Ȥ����֤����Ȥ�����ޤ���
-���Υ�����ɤϡ����󥿡��ե��������󶡤��� C ���֥롼���� C<void> �Ǥʤ�
-�֤��ͤ�����ޤ��������� C ���֥롼���󤫤���֤��ͤ��������줿 Perl
-���֥롼���󤫤��֤����٤��ǤϤʤ����Ȥ򼨤��ޤ���
+NO_OUTPUT キーワードは XSUB の最初のトークンとして置くことが出来ます。
+このキーワードは、インターフェースを提供する C サブルーチンが C<void> でない
+返り値を持ちますが、この C サブルーチンからの返り値は生成された Perl
+サブルーチンから返されるべきではないことを示します。
 
 =begin original
 
@@ -1001,9 +1001,9 @@ of this variable is not going to be used in the auto-generated code.
 
 =end original
 
-���Υ�����ɤ�¸�ߤ���� L<The RETVAL Variable> �Ϻ������졢
-���֥롼����ؤ��������줿�ƤӽФ�����Ǥ����ѿ�����������ޤ�����
-�����ѿ����ͤϼ�ư�������줿�����ɤ���ǤϻȤ��ޤ���
+このキーワードが存在すると L<The RETVAL Variable> は作成され、
+サブルーチンへの生成された呼び出しの中でこの変数に代入されますが、
+この変数の値は自動生成されたコードの中では使われません。
 
 =begin original
 
@@ -1014,11 +1014,11 @@ indicator.  For example,
 
 =end original
 
-���Υ�����ɤϡ�C<RETVAL> ���桼�������ɲä��������ɤˤ�ä�
-���������������ˤΤ߰�̣������ޤ���
-����ϡ��ؿ����󥿡��ե��������� Perl ���ˤ����硢
-�ä� C ���֤��ͤ�ñ�˥��顼�򼨤������Τ�Τξ����ä�ͭ�ѤǤ���
-�㤨�С�
+このキーワードは、C<RETVAL> がユーザーが追加したコードによって
+アクセスされる場合にのみ意味があります。
+これは、関数インターフェースをより Perl 風にする場合、
+特に C の返り値が単にエラーを示すだけのものの場合に特に有用です。
+例えば、
 
   NO_OUTPUT int
   delete_file(char *name)
@@ -1033,12 +1033,12 @@ with a meaningful error message on error.
 
 =end original
 
-�������������줿 XS �ؿ����������ˤϲ����֤��������顼���ˤϰ�̣�Τ���
-���顼��å������ȶ��� die() ���ޤ���
+ここで生成された XS 関数は成功時には何も返さず、エラー時には意味のある
+エラーメッセージと共に die() します。
 
 =head2 The CODE: Keyword
 
-(CODE: �������)
+(CODE: キーワード)
 
 =begin original
 
@@ -1049,10 +1049,10 @@ in the OUTPUT: section.
 
 =end original
 
-���Υ�����ɤϡ�C �δؿ����Ф����ü������ɬ�פȤ���褦�ʡ�
-���ʣ����XSUB �ǻȤ��ޤ���
-�ѿ� RETVAL �Ϥޤ��������Ƥ��ޤ�������������� OUTPUT: ��Ȥä��ۤ�
-���ꤷ�ʤ��¤���ͤ��᤹���ȤϤ���ޤ���
+このキーワードは、C の関数に対して特殊な操作を必要とするような、
+より複雑なXSUB で使われます。
+変数 RETVAL はまだ宣言されていますが、セクション OUTPUT: を使って陽に
+指定しない限りは値を戻すことはありません。
 
 =begin original
 
@@ -1061,9 +1061,9 @@ its parameters.  The Perl usage is given first.
 
 =end original
 
-�ʲ��˼��� XSUB �ϥѥ�᡼�����Ф����ü������ɬ�פȤ��� C �ؿ���
-����Τ�ΤǤ���
-Perl �ǤλȤ�����ǽ�˼����ޤ���
+以下に示す XSUB はパラメータに対する特殊な操作を必要とする C 関数の
+ためのものです。
+Perl での使い方を最初に示します。
 
      $status = rpcb_gettime( "localhost", $timep );
 
@@ -1073,7 +1073,7 @@ The XSUB follows.
 
 =end original
 
-XSUB �Ϥ����Ǥ���
+XSUB はこうです。
 
      bool_t
      rpcb_gettime(host,timep)
@@ -1087,7 +1087,7 @@ XSUB �Ϥ����Ǥ���
 
 =head2 The INIT: Keyword
 
-(INIT: �������)
+(INIT: キーワード)
 
 =begin original
 
@@ -1097,10 +1097,10 @@ above, this keyword does not affect the way the compiler handles RETVAL.
 
 =end original
 
-������� INIT: �ϡ�����ѥ��餬C�δؿ��θƤӽФ���������������
-XSUB �ؽ�����롼������������뤳�Ȥ�����ޤ���
-������� CODE: �Ȱ�äơ����Υ�����ɤϥ���ѥ���� RETVAL �ΰ�����
-���αƶ���ڤܤ��ޤ���
+キーワード INIT: は、コンパイラがCの関数の呼び出しを生成する前に
+XSUB へ初期化ルーチンを挿入することを許します。
+キーワード CODE: と違って、このキーワードはコンパイラの RETVAL の扱いに
+何の影響も及ぼしません。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -1118,8 +1118,8 @@ making a call to the C function:
 
 =end original
 
-INIT: ���������Τ⤦��Ĥ�����ˡ�ϡ�C �ؿ���ƤӽФ������������
-�����å����뤳�ȤǤ�:
+INIT: セクションのもう一つの利用法は、C 関数を呼び出す前の前提条件を
+チェックすることです:
 
     long long
     lldiv(a,b)
@@ -1133,7 +1133,7 @@ INIT: ���������Τ⤦��Ĥ�����ˡ�ϡ�C �ؿ���ƤӽФ������������
 
 =head2 The NO_INIT Keyword
 
-(NO_INIT �������)
+(NO_INIT キーワード)
 
 =begin original
 
@@ -1148,12 +1148,12 @@ before the function terminates.
 
 =end original
 
-������� NO_INIT �ϴؿ��Υѥ�᡼���������ͤȤ��ƤΤ߻Ȥ��뤳�Ȥ�
-�����Τ˻Ȥ��ޤ���
-B<xsubpp> ����ѥ�����̾���٤Ƥδؿ��ѥ�᡼�����ͤ���������å�����
-�ɤ߼�äơ��ؿ���������� C ���ѿ��ˤ������������褦�ʥ����ɤ��������ޤ���
-NO_INIT �ϡ�����ѥ���˰����Υѥ�᡼�������ϤȤ��ƤǤϤʤ����ϤȤ���
-�Ȥ��뤳�Ȥȡ�����餬�ؿ���λ������������뤳�Ȥ򼨤��ޤ���
+キーワード NO_INIT は関数のパラメータが出力値としてのみ使われることを
+示すのに使われます。
+B<xsubpp> コンパイラは通常、すべての関数パラメータの値を引数スタックから
+読み取って、関数の入り口で C の変数にそれを代入するようなコードを生成します。
+NO_INIT は、コンパイラに一部のパラメータが入力としてではなく出力として
+使われることと、それらが関数を終了する前に操作されることを示します。
 
 =begin original
 
@@ -1163,9 +1163,9 @@ not care about its initial contents.
 
 =end original
 
-�ʲ��˼�����Ǥϡ��ؿ� rpcb_gettime() ���Ѽ�򼨤��ޤ���
-���δؿ����ѿ� timep ������ѿ��Ȥ��ƤΤ߻ȤäƤ��ꡢ���ν���ͤ�
-��θ���ޤ���
+以下に示す例では、関数 rpcb_gettime() の変種を示します。
+この関数は変数 timep を出力変数としてのみ使っており、その初期値は
+考慮しません。
 
      bool_t
      rpcb_gettime(host,timep)
@@ -1176,7 +1176,7 @@ not care about its initial contents.
 
 =head2 Initializing Function Parameters
 
-(�ؿ��ѥ�᡼���ν����)
+(関数パラメータの初期化)
 
 =begin original
 
@@ -1193,16 +1193,16 @@ is quietly ignored.
 
 =end original
 
-C �ؿ��Υѥ�᡼�����̾���������å�(Perl ���� XSUB ���Ϥ��줿
-�ѥ�᡼�������֤����äƤ��ޤ�)�ˤ����ͤˤ�äƽ��������ޤ���
-typemap �� Perl ���ͤ��� C �Υѥ�᡼�����Ѵ�����Τ˻Ȥ��륳�����Ҥ���
-��������Ƥ��ޤ���
-�������ץ�����ޤϡ�typemap �򥪡��С��饤�ɤ��뤳�Ȥ��̤�
-(�⤷�����ɲä�)����������ɤ��󶡤��뤳�Ȥ��Ǥ��ޤ���
-����������ɤ� INPUT: ���������ιԤǺǽ��
-C<=>, C<;>, C<+> ����Ϥޤ�ޤ���
-ͣ����㳰�Ϥ��� C<;> ���Ԥ�ü���Ƥ�����ǡ����� C<;> ��
-���ۤ�̵�뤵��ޤ���
+C 関数のパラメータは通常、引数スタック(Perl から XSUB に渡された
+パラメータが順番に入っています)にある値によって初期化されます。
+typemap は Perl の値から C のパラメータへ変換するのに使われるコード片から
+構成されています。
+しかしプログラマは、typemap をオーバーライドすることや別の
+(もしくは追加の)初期化コードを提供することができます。
+初期化コードは INPUT: セクションの行で最初の
+C<=>, C<;>, C<+> から始まります。
+唯一の例外はこの C<;> が行を終端している場合で、この C<;> は
+暗黙に無視されます。
 
 =begin original
 
@@ -1215,13 +1215,13 @@ and $type can be used as in typemaps.
 
 =end original
 
-�ʲ��˼��������ɤϡ��ؿ��ΰ������Ф������������ɤ�ɤΤ褦���󶡤��뤫��
-�㼨�����ΤǤ���
-����������ɤϤ��줬���Ϥ�������˥��֥륯�����Ȥ���ǥ���ѥ���ˤ�ä�
-ɾ�������Τǡ����Ȥ��Х��֥륯�����ȤΤ褦�ʥ�ƥ��Ȥ���
-ɾ�������褦�ʤ�� [mainly C<$>, C<@>, or C<\\>]�Ǥ���С�
-�Хå�����å����Ȥä��ݸ�ʤ���Фʤ�ޤ���
-�ѿ� $var, $arg, $type �� typemap �Ȥ��ƻȤ��ޤ���
+以下に示すコードは、関数の引数に対する初期化コードをどのように提供するかを
+例示するものです。
+初期化コードはそれが出力される前にダブルクォートの中でコンパイラによって
+評価されるので、たとえばダブルクォートのようなリテラルとして
+評価されるようなもの [mainly C<$>, C<@>, or C<\\>]であれば、
+バックスラッシュを使って保護しなければなりません。
+変数 $var, $arg, $type は typemap として使われます。
 
      bool_t
      rpcb_gettime(host,timep)
@@ -1239,11 +1239,11 @@ covered in the next section.
 
 =end original
 
-����ϥѥ�᡼�����Ф���ǥե�����ͤ����ꤹ�뤿��˻Ȥ��٤��Ǥ�
-����ޤ���
-�̾盧��ϡ����Ѥ����������¾�Υ饤�֥��ؿ��ˤ�äƥѥ�᡼����
-�������ʤ���Фʤ�ʤ��褦�ʤȤ��˻Ȥ���Ǥ��礦��
-�ǥե���ȥѥ�᡼���ϼ��Υ����������������ޤ���
+これはパラメータに対するデフォルト値を設定するために使うべきでは
+ありません。
+通常これは、使用するよりも前に他のライブラリ関数によってパラメータを
+処理しなければならないようなときに使われるでしょう。
+デフォルトパラメータは次のセクションで説明します。
 
 =begin original
 
@@ -1261,14 +1261,14 @@ initialization.
 
 =end original
 
-������� C<=> �ǻϤޤäƤ���ȡ������ѿ��������˽��Ϥ��졢
-typemap �ˤ�ä��󶡤��줿��������֤������ޤ���
-������� C<;> �� C<+> �ǻϤޤäƤ���ȡ���������Ƥ������ѿ���
-������줿��˼¹Ԥ���ޤ���
-C<;> �ξ�硢typemap �ˤ�ä��̾��󶡤���������ϼ¹Ԥ���ޤ���
-C<+> �ξ�硢�ѿ�������� typemap ����ν�����˴ޤޤ�ޤ���
-�������Х��ѿ� C<%v> �ϡ�������������ξ����¾�ν������ɬ�פˤʤ�Ȥ���
-���������������Τ�������Ѳ�ǽ�Ǥ���
+初期化が C<=> で始まっていると、入力変数の宣言中に出力され、
+typemap によって提供された初期化を置き換えます。
+初期化が C<;> か C<+> で始まっていると、これは全ての入力変数が
+宣言された後に実行されます。
+C<;> の場合、typemap によって通常提供される初期化は実行されません。
+C<+> の場合、変数の宣言は typemap からの初期化に含まれます。
+グローバル変数 C<%v> は、ある初期化からの情報は他の初期化に必要になるという
+本当に珍しい場合のために利用可能です。
 
 =begin original
 
@@ -1276,7 +1276,7 @@ Here's a truly obscure example:
 
 =end original
 
-����������������Ƥ���Ǥ�:
+これは本当に不明瞭な例です:
 
      bool_t
      rpcb_gettime(host,timep)
@@ -1297,17 +1297,17 @@ C<ST(1)>.
 
 =end original
 
-��Ҥ���ǻȤ��Ƥ��� C<\$v{timep}=@{[$v{timep}=$arg]}> �Ȥ�����ʸ��
-2 �Ĥ���Ū������ޤ�: 1 ���ܤˡ����ιԤ� B<xsubpp> �ˤ�äƽ��������ȡ�
-Perl ���˥ڥå� C<$v{timep}=$arg> ��ɾ������ޤ���
-2 ���ܤˡ�ɾ�����줿���˥ڥåȤΥƥ����Ȥ��������줿 C �ե�����
-(C �����Ȥ���¦) �ؽ��Ϥ���ޤ�!
-C<char *host> �ιԤν�����ˡ�$arg �� C<ST(0)> ��ɾ�����졢C<$v{timep}> ��
-C<ST(1)> ��ɾ������ޤ���
+上述の例で使われている C<\$v{timep}=@{[$v{timep}=$arg]}> という構文は
+2 つの目的があります: 1 つ目に、この行が B<xsubpp> によって処理されると、
+Perl スニペット C<$v{timep}=$arg> が評価されます。
+2 つ目に、評価されたスニペットのテキストは生成された C ファイル
+(C コメントの内側) へ出力されます!
+C<char *host> の行の処理中に、$arg は C<ST(0)> に評価され、C<$v{timep}> は
+C<ST(1)> に評価されます。
 
 =head2 Default Parameter Values
 
-(�ǥե���ȥѥ�᡼����)
+(デフォルトパラメータ値)
 
 =begin original
 
@@ -1318,10 +1318,10 @@ always be used on the right-most parameters only.
 
 =end original
 
-XSUB �����Υǥե�����ͤϥѥ�᡼���ꥹ���������ʸ���֤����Ȥˤ�ä�
-�ؿ��ѥ�᡼�������Ǥ��ޤ���
-�ǥե�����ͤˤϿ�����ʸ���󡢤ޤ������̤�ʸ���� C<NO_INIT> ��Ȥ��ޤ���
-�ǥե�����ͤϾ�ˡ��Ǥⱦ�ˤ���ѥ�᡼�����Ф��ƤΤ߻Ȥ��٤��Ǥ���
+XSUB 引数のデフォルト値はパラメータリスト中に代入文を置くことによって
+関数パラメータを指定できます。
+デフォルト値には数字か文字列、または特別な文字列 C<NO_INIT> を使えます。
+デフォルト値は常に、最も右にあるパラメータに対してのみ使うべきです。
 
 =begin original
 
@@ -1333,10 +1333,10 @@ from Perl with either of the following statements:
 
 =end original
 
-rpcb_gettime() ���Ф��� XSUB ���ǥե���Ȥ� host ���ͤ���Ĥ��Ȥ�
-�Ǥ���褦�ˡ�XSUB ���Ф���ѥ�᡼���ν�����Ѥ��ޤ���
-���� XSUB �ϼºݤ� rpcb_gettime() �ؿ�������������ΰ����ǸƤӽФ��ޤ���
-���� XSUB �ϰʲ��Τɤ��餫��ʸ�� Perl ����ƤӽФ��ޤ�:
+rpcb_gettime() に対する XSUB がデフォルトの host の値を持つことが
+できるように、XSUB に対するパラメータの順序を変えます。
+この XSUB は実際の rpcb_gettime() 関数を正しい順序の引数で呼び出します。
+この XSUB は以下のどちらかの文で Perl から呼び出せます:
 
      $status = rpcb_gettime( $timep, $host );
 
@@ -1350,9 +1350,9 @@ the parameters in the correct order for that function.
 
 =end original
 
-XSUB �ϰʲ��Τ褦�ʥ����ɤˤʤ�Ǥ��礦��
-CODE: �֥��å��� �ºݤ� rpcb_gettime() �ؿ������������֤Υѥ�᡼����
-�ƤӽФ�����˻Ȥ��ޤ���
+XSUB は以下のようなコードになるでしょう。
+CODE: ブロックは 実際の rpcb_gettime() 関数を正しい順番のパラメータで
+呼び出すために使われます。
 
      bool_t
      rpcb_gettime(timep,host="localhost")
@@ -1366,7 +1366,7 @@ CODE: �֥��å��� �ºݤ� rpcb_gettime() �ؿ������������֤Υѥ�᡼����
 
 =head2 The PREINIT: Keyword
 
-(PREINIT: �������)
+(PREINIT: キーワード)
 
 =begin original
 
@@ -1376,8 +1376,8 @@ are emitted.
 
 =end original
 
-������� PREINIT: �� INPUT: ���������ȯ�Ԥ���ѥ�᡼�������
-ľ���ޤ���ľ����ɲä��ѿ�������Ǥ���褦�ˤ��ޤ���
+キーワード PREINIT: は INPUT: セクションが発行するパラメータ定義の
+直前または直後に追加の変数を宣言できるようにします。
 
 =begin original
 
@@ -1390,14 +1390,14 @@ these variables in an INIT: section will not help.
 
 =end original
 
-�⤷�ѿ��� CODE: �������������������Ƥ���ȡ������ѿ�������
-�ѥ�᡼���Ȥ���ȯ�Ԥ��� typemap �Υ����ɤ˽������Ȥˤʤ�ޤ���
-����� C �����ɤ�����ä���η�̤Ȥʤ뤳�Ȥ����ꡢC �ι�ʸ���顼��
-�ʤ�ޤ���
-Ʊ�ͤΥ��顼�ϡ�����Ū�� C<;>-���� C<+>-���Υѥ�᡼���ν�������Ȥ�줿
-���ˤⵯ����ޤ�
-(L<"Initializing Function Parameters"> �򻲾Ȥ��Ƥ�������)��
-�������ѿ��� INIT: ����������������뤳�ȤϽ����ˤϤʤ�ޤ���
+もし変数が CODE: セクション内で宣言されていると、その変数は入力
+パラメータとして発行した typemap のコードに従うことになります。
+これは C コードが終わった後の結果となることがあり、C の構文エラーと
+なります。
+同様のエラーは、明示的に C<;>-型や C<+>-型のパラメータの初期化が使われた
+場合にも起こります
+(L<"Initializing Function Parameters"> を参照してください)。
+これらの変数を INIT: セクションで宣言することは助けにはなりません。
 
 =begin original
 
@@ -1408,9 +1408,9 @@ within an XSUB.
 
 =end original
 
-���Τ褦�ʾ�硢�ɲä��ѿ���¾���ѿ�����ȶ���������뤳�Ȥ�
-�������뤿��ˡ������ PREINIT: �����������֤��ޤ���
-������� PREINIT: �� XSUB �����ʣ����Ȥ����Ȥ��Ǥ��ޤ���
+このような場合、追加の変数を他の変数宣言と共に宣言することを
+強制するために、宣言を PREINIT: セクションに置きます。
+キーワード PREINIT: は XSUB の中で複数回使うことができます。
 
 =begin original
 
@@ -1419,8 +1419,8 @@ typemaps then the first example is safer.
 
 =end original
 
-�ʲ�����ϡ������Ǥ��뤱��ɤ�ʣ���� typemap ��Ȥä����ˤϺǽ���㤬
-�������Ǥ��롢�Ȥ�����Ǥ���
+以下の例は、等価であるけれども複雑な typemap を使った場合には最初の例が
+より安全である、という例です。
 
      bool_t
      rpcb_gettime(timep)
@@ -1440,9 +1440,9 @@ same C code as the PREINIT: keyword.  Another correct, but error-prone example:
 
 =end original
 
-��������ξ��Τ���ˡ�INIT: ������ɤ� PREINIT: ������ɤ�Ʊ��
-C �����ɤ��������ޤ���
-�⤦��ĤΡ������������顼�ˤʤ�䤹����Ǥ�:
+この特定の場合のために、INIT: キーワードは PREINIT: キーワードと同じ
+C コードを生成します。
+もう一つの、正しいがエラーになりやすい例です:
 
      bool_t
      rpcb_gettime(timep)
@@ -1460,8 +1460,8 @@ Another way to declare C<host> is to use a C block in the CODE: section:
 
 =end original
 
-C<host> ���������⤦��Ĥ���ˡ�� CODE: ���������� C �֥��å���
-�Ȥ����ȤǤ�:
+C<host> を宣言するもう一つの方法は CODE: セクションで C ブロックを
+使うことです:
 
      bool_t
      rpcb_gettime(timep)
@@ -1483,8 +1483,8 @@ some global state:
 
 =end original
 
-typemap ����ȥ꤬��������������ɲä�������֤�ǽ�Ϥϡ�typemap �Ѵ���
-�������Х�ʾ��֤�������ˤϤȤƤ������Ǥ�:
+typemap エントリが処理される前に追加の宣言を置く能力は、typemap 変換が
+グローバルな状態を操作する場合にはとても便利です:
 
     MyObject
     mutate(o)
@@ -1504,10 +1504,10 @@ C<global_state> (to avoid memory leaks, for example).
 
 =end original
 
-�����ǡ�RETVAL �ν������������Х��ѿ� C<global_state> ���ѹ�����Ȥ���
-MyObject ���� INPUT: ���������� C<MyObject> ���Ѵ�����Ȥ��ޤ���
-�������Ѵ����Ԥ�줿�塢(�㤨�С�����꡼�����򤱤뤿���)
-C<global_state> �θŤ��ͤ��ᤷ�ޤ���
+ここで、RETVAL の処理がグローバル変数 C<global_state> を変更するときに
+MyObject から INPUT: セクションで C<MyObject> に変換するとします。
+これらの変換が行われた後、(例えば、メモリリークを避けるために)
+C<global_state> の古い値を戻します。
 
 =begin original
 
@@ -1517,10 +1517,10 @@ a subroutine.  Thus the above code for mutate() can be rewritten as
 
 =end original
 
-�����ˤϤ⤦��Ĥ��������ȴʷ餵�Υȥ졼�ɥ��դ�����ޤ�:
-INPUT ���������ϥ��֥롼����ΰ����ꥹ�Ȥ˸���ʤ� C �ѿ��������
-�����Ƥ��ޤ���
-���ä� mutate() �Τ���ξ�ҤΥ����ɤϰʲ��Τ褦�˽�ľ���ޤ�
+ここにはもう一つの明快さと簡潔さのトレードオフがあります:
+INPUT セクションはサブルーチンの引数リストに現れない C 変数の宣言も
+許しています。
+従って mutate() のための上述のコードは以下のように書き直せます
 
     MyObject
     mutate(o)
@@ -1535,7 +1535,7 @@ and the code for rpcb_gettime() can be rewritten as
 
 =end original
 
-������ rpcb_gettime() �Τ���Υ����ɤϼ��Τ褦�˽�ľ�����Ȥ��Ǥ��ޤ�:
+そして rpcb_gettime() のためのコードは次のように書き直すことができます:
 
      bool_t
      rpcb_gettime(timep)
@@ -1549,7 +1549,7 @@ and the code for rpcb_gettime() can be rewritten as
 
 =head2 The SCOPE: Keyword
 
-(SCOPE: �������)
+(SCOPE: キーワード)
 
 =begin original
 
@@ -1558,9 +1558,9 @@ enabled, the XSUB will invoke ENTER and LEAVE automatically.
 
 =end original
 
-������� SCOPE: ������� XSUB ���Ф��ƥ������ԥ󥰤�
-ͭ���ˤ��뤿��˻Ȥ��ޤ���
-ͭ���ˤʤä���硢XSUB �� ENTER �� LEAVE ��ưŪ�˵�ư���ޤ���
+キーワード SCOPE: は特定の XSUB に対してスコーピングを
+有効にするために使います。
+有効になった場合、XSUB は ENTER と LEAVE を自動的に起動します。
 
 =begin original
 
@@ -1570,9 +1570,9 @@ be automatically enabled for that XSUB.
 
 =end original
 
-ʣ���ʷ��ޥåԥ󥰤򥵥ݡ��Ȥ��뤿��ˡ�typemap �Υ���ȥ꡼��
-C</*scope*/> �Τ褦�ʥ����Ȥ�ޤ� XUSB�ˤ�äƻȤ��Ƥ���С�
-�������ԥ󥰤Ϥ��Τ褦�� XSUB �Ǥϼ�ưŪ�˵��Ĥ���ޤ���
+複雑な型マッピングをサポートするために、typemap のエントリーが
+C</*scope*/> のようなコメントを含む XUSBによって使われていれば、
+スコーピングはそのような XSUB では自動的に許可されます。
 
 =begin original
 
@@ -1580,7 +1580,7 @@ To enable scoping:
 
 =end original
 
-�������ԥ󥰤���Ĥ���ˤ�:
+スコーピングを許可するには:
 
     SCOPE: ENABLE
 
@@ -1590,13 +1590,13 @@ To disable scoping:
 
 =end original
 
-�������ԥ󥰤�ػߤ���ˤ�:
+スコーピングを禁止するには:
 
     SCOPE: DISABLE
 
 =head2 The INPUT: Keyword
 
-(INPUT: �������)
+(INPUT: キーワード)
 
 =begin original
 
@@ -1608,12 +1608,12 @@ keyword is used with the PREINIT: keyword.
 
 =end original
 
-XSUB �Υѥ�᡼���ϡ��̾� XSUB �����ä�ľ���ɾ������ޤ���
-������� INPUT: �ˤ�äơ����ꤷ���ѥ�᡼���������٤��
-ɾ������褦�ˤǤ��ޤ���
-������� INPUT: �ϰ�Ĥ� XSUB �����ʣ����Ȥ����Ȥ䡢��İʾ��
-�����ѿ��ꥹ�Ȥ˻Ȥ����Ȥ��Ǥ��ޤ���
-���Υ�����ɤ� ������� PREINIT: �Ȱ��˻Ȥ��ޤ���
+XSUB のパラメータは、通常 XSUB に入った直後に評価されます。
+キーワード INPUT: によって、指定したパラメータが少々遅れて
+評価するようにできます。
+キーワード INPUT: は一つの XSUB の中で複数回使うことや、一つ以上の
+入力変数リストに使うことができます。
+このキーワードは キーワード PREINIT: と一緒に使われます。
 
 =begin original
 
@@ -1622,8 +1622,8 @@ evaluated late, after a PREINIT.
 
 =end original
 
-�ʲ�����Ǥϡ����ϥѥ�᡼�� C<timep> ��ɾ�����٤餻�ơ�PREINIT �θ��
-�Ԥ��ޤ���
+以下の例では、入力パラメータ C<timep> の評価を遅らせて、PREINIT の後で
+行います。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -1645,7 +1645,7 @@ The next example shows each input parameter evaluated late.
 
 =end original
 
-������ϳ����ϥѥ�᡼����ɾ�����٤餻�ޤ���
+次の例は各入力パラメータの評価を遅らせます。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -1672,8 +1672,8 @@ in the parameter list of a subroutine, this may be shortened to:
 
 =end original
 
-INPUT ���������ϥ��֥롼����ΰ����ꥹ�Ȥ˸���ʤ� C �ѿ��������
-�����Ƥ���Τǡ�����ϰʲ��Τ褦��û������ޤ�:
+INPUT セクションはサブルーチンの引数リストに現れない C 変数の宣言も
+許しているので、これは以下のように短く出来ます:
 
     bool_t
     rpcb_gettime(host,timep)
@@ -1697,14 +1697,14 @@ assignment C<h = host> in a CODE: or INIT: section.)
 
 =end original
 
-(C<char *> �Τ���������Ѵ��ϡ�ñ��ʡפ�ΤǤ���Ȥ����μ���ȤäƤ���Τǡ�
-C<host> ������Ԥǽ�������졢C<h = host> ���������᤹���뤳�ȤϤ���ޤ���
-����ʤ���� C<h = host> �������� CODE: �� INIT: �Υ���������
-�Ԥ�ɬ�פ�����ޤ���)
+(C<char *> のための入力変換は「単純な」ものであるという知識を使っているので、
+C<host> は宣言行で初期化され、C<h = host> の代入は早すぎることはありません。
+さもなければ C<h = host> の代入は CODE: か INIT: のセクションで
+行う必要があります。)
 
 =head2 The IN/OUTLIST/IN_OUTLIST/OUT/IN_OUT Keywords
 
-(IN/OUTLIST/IN_OUTLIST/OUT/IN_OUT �������)
+(IN/OUTLIST/IN_OUTLIST/OUT/IN_OUT キーワード)
 
 =begin original
 
@@ -1715,10 +1715,10 @@ interface should differ from the C interface.
 
 =end original
 
-XSUB �ΰ����ꥹ�Ȥ���ǡ�����̾������
-C<IN>/C<OUTLIST>/C<IN_OUTLIST>/C<OUT>/C<IN_OUT> ������ɤ����֤Ǥ��ޤ���
-C<IN> ������ɤ��ǥե���Ȥǡ�¾�Υ�����ɤ� Perl ���󥿡��ե�������
-C ���󥿡��ե������ȤɤΤ褦�˰ۤʤ뤫�򼨤��ޤ���
+XSUB の引数リストの中で、引数名の前に
+C<IN>/C<OUTLIST>/C<IN_OUTLIST>/C<OUT>/C<IN_OUT> キーワードを前置できます。
+C<IN> キーワードがデフォルトで、他のキーワードは Perl インターフェースが
+C インターフェースとどのように異なるかを示します。
 
 =begin original
 
@@ -1730,11 +1730,11 @@ through this pointer to provide additional return values.
 
 =end original
 
-C<OUTLIST>/C<IN_OUTLIST>/C<OUT>/C<IN_OUT> �����֤��줿������
-C ���֥롼���󤫤� I<�ݥ��󥿷�ͳ��> �Ȥ���Ȥߤʤ���ޤ���
-C<OUTLIST>/C<OUT> ������ɤϡ�C ���֥롼�����
-���ΰ����Ǽ�����Ƥ������򸡺����ʤ������ɲä��֤��ͤ�
-���Υݥ��󥿤��̤��ƽ񤭹���Ȥ������Ȥ򼨤��Ƥ��ޤ���
+C<OUTLIST>/C<IN_OUTLIST>/C<OUT>/C<IN_OUT> が前置された引数は
+C サブルーチンから I<ポインタ経由で> 使われるとみなされます。
+C<OUTLIST>/C<OUT> キーワードは、C サブルーチンは
+この引数で示されているメモリを検査しないが、追加の返り値を
+このポインタを通して書き込むということを示しています。
 
 =begin original
 
@@ -1743,8 +1743,8 @@ signature of the generated Perl function.
 
 =end original
 
-C<OUTLIST> ������ɤ����֤��줿�����ϡ��������줿 Perl �ؿ��λ���ˡ
-�����ͥ���˸���ޤ���
+C<OUTLIST> キーワードが前置された引数は、生成された Perl 関数の使用法
+シグネチャに現れません。
 
 =begin original
 
@@ -1757,11 +1757,11 @@ pointers.
 
 =end original
 
-C<IN_OUTLIST>/C<IN_OUT>/C<OUT> �����֤��줿������ Perl �ؿ��ΰ����Ȥ���
-I<����ޤ�>��
-C<OUT>-�������㳰�Ȥ��ơ������ΰ������б����� C �����Ѵ����졢���줫��
-�����Υǡ����ؤΥݥ��󥿤� C �ؿ��ؤΰ����Ȥ���Ϳ�����ޤ���
-����� C �ؿ��������Υݥ��󥿤��̤��ƽ񤭹��ळ�Ȥ����ꤷ�Ƥ��ޤ���
+C<IN_OUTLIST>/C<IN_OUT>/C<OUT> が前置された引数は Perl 関数の引数として
+I<現れます>。
+C<OUT>-引数の例外として、これらの引数は対応する C 型に変換され、それから
+それらのデータへのポインタが C 関数への引数として与えられます。
+これは C 関数がこれらのポインタを通して書き込むことを想定しています。
 
 =begin original
 
@@ -1774,13 +1774,13 @@ modified to have the values written by the C function.
 
 =end original
 
-�������줿 Perl �ؿ����֤��ͥꥹ�Ȥϡ��ؿ������ C ���֤���
-(XSUB ���֤��ͷ��� C<void> �Ǥ��뤫��
-L<The NO_OUTPUT Keyword> ���Ȥ錄�������)�ˡ�
-���Ƥ� C<OUTLIST> ����� C<IN_OUTLIST> ������(�и����)
-³������ΤȤʤ�ޤ���
-XSUB ������֤���ˡ�C<IN_OUT>/C<OUT> Perl ������ C �ؿ��ˤ�äƽ񤫤줿
-�ͤ��ѹ�����ޤ���
+生成された Perl 関数の返り値リストは、関数からの C の返り値
+(XSUB の返り値型が C<void> であるか、
+L<The NO_OUTPUT Keyword> が使わた場合を除く)に、
+全ての C<OUTLIST> および C<IN_OUTLIST> 引数を(出現順に)
+続けたものとなります。
+XSUB からの返り時に、C<IN_OUT>/C<OUT> Perl 引数は C 関数によって書かれた
+値に変更されます。
 
 =begin original
 
@@ -1788,7 +1788,7 @@ For example, an XSUB
 
 =end original
 
-�㤨�С��ʲ��� XSUB ��:
+例えば、以下の XSUB は:
 
   void
   day_month(OUTLIST day, IN unix_time, OUTLIST month)
@@ -1802,7 +1802,7 @@ should be used from Perl as
 
 =end original
 
-Perl ���鼡�Τ褦�ˤ��ƻȤ��ޤ�:
+Perl から次のようにして使われます:
 
   my ($day, $month) = day_month(time);
 
@@ -1812,7 +1812,7 @@ The C signature of the corresponding function should be
 
 =end original
 
-�б�����ؿ��� C �����ͥ���ϼ��Τ褦�ˤʤ�ޤ�:
+対応する関数の C シグネチャは次のようになります:
 
   void day_month(int *day, int unix_time, int *month);
 
@@ -1823,8 +1823,8 @@ mixed with ANSI-style declarations, as in
 
 =end original
 
-C<IN>/C<OUTLIST>/C<IN_OUTLIST>/C<IN_OUT>/C<OUT> �Υ�����ɤϡ����Τ褦��
-ANSI ��������Ⱥ����뤳�Ȥ��Ǥ��ޤ�:
+C<IN>/C<OUTLIST>/C<IN_OUTLIST>/C<IN_OUT>/C<OUT> のキーワードは、次のように
+ANSI 型の宣言と混ぜることができます:
 
   void
   day_month(OUTLIST int day, int unix_time, OUTLIST int month)
@@ -1835,7 +1835,7 @@ ANSI ��������Ⱥ����뤳�Ȥ��Ǥ��ޤ�:
 
 =end original
 
-(�����Ǥϥ��ץ����� C<IN> ������ɤϾ�ά����Ƥ��ޤ�)��
+(ここではオプションの C<IN> キーワードは省略されています)。
 
 =begin original
 
@@ -1848,11 +1848,11 @@ list.
 
 =end original
 
-C<IN_OUT> �����ϡ�L<The & Unary Operator> ��Ƴ�������
-C<OUTPUT:> ��������� (L<The OUTPUT: Keyword> �򻲾Ȥ��Ƥ�������) ��
-�֤��줿������Ʊ���Ǥ���
-C<IN_OUTLIST> �����ϤȤƤ���Ƥ��ơ�ͣ��ΰ㤤�ϡ�C �ؿ����ݥ��󥿤�
-�̤��ƽ񤤤��ͤ� Perl �������ѹ����������ϥꥹ�Ȥ��֤����Ȥ������ȤǤ���
+C<IN_OUT> 引数は、L<The & Unary Operator> で導入されて
+C<OUTPUT:> セクション (L<The OUTPUT: Keyword> を参照してください) に
+置かれた引数と同じです。
+C<IN_OUTLIST> 引数はとても似ていて、唯一の違いは、C 関数がポインタを
+通して書いた値は Perl 引数を変更せず、出力リストに置かれるということです。
 
 =begin original
 
@@ -1864,10 +1864,10 @@ interfaced with as
 
 =end original
 
-C<OUTLIST>/C<OUT> �����ϡ�Perl �����ν���ͤ��ɤ߹��ޤ�ʤ�
-(������ C �ؿ����Ϥ���ʤ� - ����˲��餫�Τ��ߤ��Ϥ���ޤ�)�Ȥ���
-���ˤ����Ƥ�����C<IN_OUTLIST>/C<IN_OUT> �����Ȱۤʤ�ޤ���
-�㤨�С���Ҥ�Ʊ�� C �ؿ��ϰʲ��Τ褦�ʥ��󥿡��ե�������:
+C<OUTLIST>/C<OUT> 引数は、Perl 引数の初期値が読み込まれない
+(そして C 関数に渡されない - 代わりに何らかのごみが渡されます)という
+点においてだけ、C<IN_OUTLIST>/C<IN_OUT> 引数と異なります。
+例えば、上述の同じ C 関数は以下のようなインターフェースか:
 
   void day_month(OUT int day, int unix_time, OUT int month);
 
@@ -1877,7 +1877,7 @@ or
 
 =end original
 
-�ޤ���:
+または:
 
   void
   day_month(day, unix_time, month)
@@ -1894,14 +1894,14 @@ However, the generated Perl function is called in very C-ish style:
 
 =end original
 
-���������������줿 Perl �ؿ��ϤȤƤ� C �äݤ����ǸƤӽФ���ޤ�:
+しかし、生成された Perl 関数はとても C っぽい形で呼び出されます:
 
   my ($day, $month);
   day_month($day, time, $month);
 
 =head2 The C<length(NAME)> Keyword
 
-(C<length(NAME)> �������)
+(C<length(NAME)> キーワード)
 
 =begin original
 
@@ -1912,12 +1912,12 @@ the generated Perl function is called.  E.g.,
 
 =end original
 
-C �ؿ��ؤ����ϰ����� 1 �Ĥ�ʸ������� C<NAME> ��Ĺ���ξ�硢
-XSUB ����ˤ�����Ĺ��������̾���� C<length(NAME)> ���֤������뤳�Ȥ�
-�Ǥ��ޤ���
-���ΰ����ϡ��������줿 Perl �ؿ����ƤӽФ����Ȥ��ˤ�
-��ά����ʤ���Фʤ�ޤ���
-�㤨��:
+C 関数への入力引数の 1 つが文字列引数 C<NAME> の長さの場合、
+XSUB 宣言において長さ引数の名前を C<length(NAME)> で置き換えることが
+できます。
+この引数は、生成された Perl 関数が呼び出されるときには
+省略されなければなりません。
+例えば:
 
   void
   dump_chars(char *s, short l)
@@ -1939,7 +1939,7 @@ should be called as C<dump_chars($string)>.
 
 =end original
 
-�� C<dump_chars($string)> �Ȥ��ƸƤӽФ���ޤ���
+は C<dump_chars($string)> として呼び出されます。
 
 =begin original
 
@@ -1947,11 +1947,11 @@ This directive is supported with ANSI-type function declarations only.
 
 =end original
 
-���λؼ��Ҥ� ANSI ���δؿ�����ˤΤ��б����Ƥ��ޤ���
+この指示子は ANSI 風の関数定義にのみ対応しています。
 
 =head2 Variable-length Parameter Lists
 
-(����Ĺ�����ꥹ��)
+(可変長引数リスト)
 
 =begin original
 
@@ -1964,13 +1964,13 @@ create an XSUB which accepts a list of parameters of unknown length.
 
 =end original
 
-XSUB �ϡ������ꥹ�Ȥ� C<(...)> �Ȥ�����ά��ˡ�ǻ��ꤹ�뤳�Ȥˤ�äơ�
-����Ĺ�ΰ����ꥹ�Ȥ��뤳�Ȥ��Ǥ��ޤ���
-���ξ�ά��ˡ�λ��ͤ� ANSI C �ˤ����ΤȻ��Ƥ��ޤ���
-�ץ�����ޤ� XSUB ���Ϥ��줿�����ο���B<xsubpp> ����ѥ��餬���٤Ƥ�
-XSUB ���󶡤��� C<items> �Ȥ����ѿ�������å����뤳�Ȥˤ�äƷ���Ǥ��ޤ���
-���ε�����Ȥ����Ȥˤ�äơ�Ĺ��������ΰ����ꥹ�Ȥ�
-�����դ��� XSUB ������Ǥ��ޤ���
+XSUB は、引数リストで C<(...)> という省略記法で指定することによって、
+可変長の引数リストを取ることができます。
+この省略記法の仕様は ANSI C にあるものと似ています。
+プログラマは XSUB に渡された引数の数を、B<xsubpp> コンパイラがすべての
+XSUB に提供する C<items> という変数をチェックすることによって決定できます。
+この機構を使うことによって、長さが不定の引数リストを
+受け付ける XSUB を作成できます。
 
 =begin original
 
@@ -1981,9 +1981,9 @@ be able to call this XSUB with either of the following statements.
 
 =end original
 
-rpcb_gettime() XSUB ���Ф��� I<host> �����Ͼ�ά�Ǥ���Τǡ�XSUB ��
-�������Ѳ�����Ŀ����뤳�Ȥ򼨤�����˾�ά��ˡ���Ȥ��ޤ���
-Perl �Ϥ��� XSUB ��ʲ��˼���ʸ�Τ����줫�ǸƤӽФ����Ȥ��Ǥ��ޤ���
+rpcb_gettime() XSUB に対する I<host> 引数は省略できるので、XSUB が
+引数の変化する個数を取ることを示すために省略記法が使えます。
+Perl はこの XSUB を以下に示す文のいずれかで呼び出すことができます。
 
      $status = rpcb_gettime( $timep, $host );
 
@@ -1995,7 +1995,7 @@ The XS code, with ellipsis, follows.
 
 =end original
 
-��ά��ˡ��Ȥä� XS �����ɤϼ��Τ褦�ˤʤ�ޤ���
+省略記法を使った XS コードは次のようになります。
 
      bool_t
      rpcb_gettime(timep, ...)
@@ -2013,7 +2013,7 @@ The XS code, with ellipsis, follows.
 
 =head2 The C_ARGS: Keyword
 
-(C_ARGS: �������)
+(C_ARGS: キーワード)
 
 =begin original
 
@@ -2024,11 +2024,11 @@ put as the argument to the called C function without any change.
 
 =end original
 
-C_ARGS: ������ɤϡ�Perl ����θƤӽФ����ǤϤʤ� C ����θƤӽФ�����
-���� XSUB ��CODE: �� PPCODE: ����������񤯤��Ȥʤ��������뤳�Ȥ�
-��ǽ�ˤ��ޤ���
-C_ARGS: ��������Ƥϡ��ƤӽФ���� C �ؿ��ΰ����Ȥ��ơ������ѹ���ʤ�
-�Ȥ��ޤ���
+C_ARGS: キーワードは、Perl からの呼び出し手順ではなく C からの呼び出し手順を
+持つ XSUB を、CODE: や PPCODE: セクションを書くことなく作成することを
+可能にします。
+C_ARGS: 段落の内容は、呼び出される C 関数の引数として、何の変更もなく
+使われます。
 
 =begin original
 
@@ -2036,7 +2036,7 @@ For example, suppose that a C function is declared as
 
 =end original
 
-�㤨�С��ʲ��Τ褦���������� C �ؿ������ꤷ�ޤ�:
+例えば、以下のように宣言される C 関数を想定します:
 
     symbolic nth_derivative(int n, symbolic function, int flags);
 
@@ -2048,9 +2048,9 @@ is called as
 
 =end original
 
-�����ƥǥե���ȤΥե饰�� C �Υ������Х��ѿ� C<default_flags> ��
-�ݴɤ���Ƥ���Ȥ��ޤ���
-�ʲ��Τ褦�ˤ��ƸƤӽФ���륤�󥿡��ե��������ꤿ���Ȥ��ޤ�:
+そしてデフォルトのフラグは C のグローバル変数 C<default_flags> に
+保管されているとします。
+以下のようにして呼び出されるインターフェースを作りたいとします:
 
     $second_deriv = $function->nth_derivative(2);
 
@@ -2060,7 +2060,7 @@ To do this, declare the XSUB as
 
 =end original
 
-����򤹤뤿��ˤϡ�XSUB ��ʲ��Τ褦��������ޤ�:
+これをするためには、XSUB を以下のように宣言します:
 
     symbolic
     nth_derivative(function, n)
@@ -2071,7 +2071,7 @@ To do this, declare the XSUB as
 
 =head2 The PPCODE: Keyword
 
-(PPCODE: �������)
+(PPCODE: キーワード)
 
 =begin original
 
@@ -2085,13 +2085,13 @@ together within the same XSUB.
 
 =end original
 
-������� PPCODE: �� ������� CODE: �����ؤǤ��ꡢB<xsubpp> ����ѥ����
-�ץ�����ޤ� XSUB ���֤��ͤΤ���ΰ��������å������椹�륳���ɤ�
-�󶡤��Ƥ���Ȥ������Ȥ�ؼ�����Τ˻Ȥ��ޤ���
-���� XSUB �ǡ���Ĥ��ͤǤϤʤ��ͤΥꥹ�Ȥ��֤������Ȥ����Ȥ���ɬ�פˤʤ�ޤ���
-���ξ�� PPCODE: ��Ȥ�ʤ���Фʤ餺���ޤ����ͤΥꥹ�Ȥ��ۤ˥����å���
-�ץå��夷�ʤ���Фʤ�ޤ���
-PPCODE: �� CODE: ��Ʊ��� XSUB ��Ʊ���˻Ȥ��٤��ǤϤ���ޤ���
+キーワード PPCODE: は キーワード CODE: の代替であり、B<xsubpp> コンパイラに
+プログラマが XSUB の返り値のための引数スタックを制御するコードを
+提供しているということを指示するのに使われます。
+ある XSUB で、一つの値ではなく値のリストを返したいというときに必要になります。
+この場合 PPCODE: を使わなければならず、また、値のリストを陽にスタックへ
+プッシュしなければなりません。
+PPCODE: と CODE: は同一の XSUB で同時に使うべきではありません。
 
 =begin original
 
@@ -2107,14 +2107,14 @@ the XSUB returns back to Perl.
 
 =end original
 
-PPCODE: �� CODE: ���������μºݤΰ㤤�ϡ�
-(I<���ߤ�> Perl �Υ����å��ݥ��󥿤Ǥ���) C<SP> �ޥ����ν�����ȡ�
-XSUB �����֤�Ȥ��Υ����å��Υǡ����ΰ����Ǥ���
-CODE: ���������Ǥ� SP �� XSUB �����ä��Ȥ����ͤ���¸���ޤ�:
-SP ��(�Ǹ�ΰ�����³��)�ؿ��ݥ��󥿤�ؤ��ޤ���
-PPCODE: ���������Ǥϡ�SP �ϰ����ꥹ�Ȥ���Ƭ�����Τǡ�
-XSUB �� Perl �����Ȥ��ˡ�Perl �����ꤷ�Ƥ������ C<PUSH*()> �ޥ����� 
-�����ͤ��֤����Ȥ�����ޤ���
+PPCODE: と CODE: セクションの実際の違いは、
+(I<現在の> Perl のスタックポインタである) C<SP> マクロの初期化と、
+XSUB から返るときのスタックのデータの扱いです。
+CODE: セクションでは SP は XSUB に入ったときの値を保存します:
+SP は(最後の引数に続く)関数ポインタを指します。
+PPCODE: セクションでは、SP は引数リストの先頭に戻るので、
+XSUB が Perl に戻るときに、Perl が想定している場所に C<PUSH*()> マクロが 
+出力値を置くことが出来ます。
 
 =begin original
 
@@ -2127,12 +2127,12 @@ C<SP> was updated by C<[X]PUSH*()> macros.
 
 =end original
 
-CODE: ������������������������륳���ɤϡ�Perl ����������֤��ͤο���
-(C �ؿ����֤��ͤ� C<void> ���ɤ����������
-L<"The RETVAL Variable"> �ǵ��Ҥ����и�§�˰�¸����)0 �� 1 �Ǥ��뤳�Ȥ�
-�ݾڤ��ޤ���
-PPCODE: ������������������������륳���ɤϡ��֤��ͤο���
-C<SP> �� C<[X]PUSH*()> �ޥ����ǹ������줿����˴�Ť��ޤ���
+CODE: セクションの末尾に生成されるコードは、Perl が受け取る返り値の数が
+(C 関数の返り値が C<void> かどうか、および
+L<"The RETVAL Variable"> で記述した経験則に依存して)0 か 1 であることを
+保証します。
+PPCODE: セクションの末尾に生成されるコードは、返り値の数と
+C<SP> が C<[X]PUSH*()> マクロで更新された回数に基づきます。
 
 =begin original
 
@@ -2141,8 +2141,8 @@ well in CODE: sections and PPCODE: sections.
 
 =end original
 
-�ޥ��� C<ST(i)>, C<XST_m*()>, C<XSRETURN*()> �� CODE: ���������Ǥ�
-PPCODE: ���������Ǥ�Ʊ���褦�ˤ��ޤ�ư��뤳�Ȥ����դ��Ƥ���������
+マクロ C<ST(i)>, C<XST_m*()>, C<XSRETURN*()> は CODE: セクションでも
+PPCODE: セクションでも同じようにうまく動作することに注意してください。
 
 =begin original
 
@@ -2152,8 +2152,8 @@ Perl as a single list.
 
 =end original
 
-���� XSUB �� C �� rpcb_gettime() �ؿ���ƤӽФ�����Ĥν����� timep ��
-status ��ñ��Υꥹ�ȤȤ��� Perl ���֤��ޤ���
+次の XSUB は C の rpcb_gettime() 関数を呼び出し、二つの出力値 timep と
+status を、単一のリストとして Perl に返します。
 
      void
      rpcb_gettime(host)
@@ -2175,9 +2175,9 @@ the return values properly placed on the argument stack.
 
 =end original
 
-�ץ�����ޤϡ�rbcb_gettime ��ºݤ˸ƤӽФ������ɤȡ��֤��ͤ���������å���
-Ŭ�ڤʾ��˥ץå��夹�륳���ɤ��󶡤��ʤ���Фʤ�ʤ����Ȥ�
-���դ��Ƥ���������
+プログラマは、rbcb_gettime を実際に呼び出すコードと、返り値を引数スタックの
+適切な場所にプッシュするコードを提供しなければならないことに
+注意してください。
 
 =begin original
 
@@ -2188,10 +2188,10 @@ directive.
 
 =end original
 
-���δؿ����Ф����֤��ͤη� C<void> �ϡ�B<xsubpp> ����ѥ�����ѿ�
-RETVAL ��ɬ�פʤ��Ȥ����Ȥ��ʤ��Τ�(RETVAL ��)�������٤��ǤϤʤ����Ȥ�
-�ؼ����ޤ���
-�ۤȤ�ɤξ�硢�֤��ͤη� C<void> �� PPCODE: �ؼ��Ҥȶ��˻Ȥ��٤��Ǥ���
+この関数に対する返り値の型 C<void> は、B<xsubpp> コンパイラに変数
+RETVAL が必要ないとか、使われないので(RETVAL を)生成すべきではないことを
+指示します。
+ほとんどの場合、返り値の型 C<void> は PPCODE: 指示子と共に使うべきです。
 
 =begin original
 
@@ -2204,11 +2204,11 @@ macro.
 
 =end original
 
-���������å�����Ĥ��ͤ��֤�����ξ�����Τ� EXTEND()�Ȥ���
-�ޥ������Ȥ��Ƥ��ޤ���
-PPCODE: �ؼ��Ҥ� B<xsubpp>����ѥ���� C<SP> �ȸƤФ��
-�����å��ݥ��󥿤��������������Υݥ��󥿤� EXTEND() �ޥ����˻Ȥ��ޤ���
-�ͤΥ����å����Ф���ץå���ϡ�PUSHs() �Ȥ����ޥ�����Ȥ��ޤ���
+引数スタックに二つの値を置くための場所を作るのに EXTEND()という
+マクロが使われています。
+PPCODE: 指示子は B<xsubpp>コンパイラに C<SP> と呼ばれる
+スタックポインタを生成させ、このポインタは EXTEND() マクロに使われます。
+値のスタックに対するプッシュは、PUSHs() というマクロを使います。
 
 =begin original
 
@@ -2217,7 +2217,7 @@ the following statement.
 
 =end original
 
-�ؿ� rpcb_gettime() �ϡ�Perl ���鼡�Τ褦��ʸ�ǻȤ����Ȥ��Ǥ��ޤ���
+関数 rpcb_gettime() は、Perl から次のような文で使うことができます。
 
      ($status, $timep) = rpcb_gettime("localhost");
 
@@ -2228,13 +2228,13 @@ When handling output parameters with a PPCODE section, be sure to handle
 
 =end original
 
-PPCODE ���������ν��ϥѥ�᡼���򰷤��Ȥ���'set' �ޥ��å��ץ��ѥƥ���
-�����褦�ˤ��Ƥ���������
-'set' �ޥ��å��˴ؤ���ܺ٤ˤĤ��Ƥ� L<perlguts> �򻲾Ȥ��Ƥ���������
+PPCODE セクションの出力パラメータを扱うとき、'set' マジックプロパティを
+扱うようにしてください。
+'set' マジックに関する詳細については L<perlguts> を参照してください。
 
 =head2 Returning Undef And Empty Lists
 
-(undef �ȶ��ꥹ�Ȥ��֤�)
+(undef と空リストを返す)
 
 =begin original
 
@@ -2248,14 +2248,14 @@ of $timep will either be undef or it will be a valid time.
 
 =end original
 
-�Ȥ��Ȥ��ƥץ�����ޤˤϡ��ؿ������Ԥ����Ȥ���(�֤��ͤȤ�)�̤�
-���ơ�������ɽ�魯�ͤ��֤����ϡ�ñ��� C<undef> ����ꥹ�Ȥ�
-�֤������Ȥ����Ȥ�������Ǥ��礦��
-rpcb_gettime() �ؿ��Ϥޤ��ˤ������ä��������󼨤��Ƥ��ޤ���
-�ؿ������������Ȥ��ˤϻ䤿���ϴؿ���������֤����Ȥ�˾�ߡ����Ԥ����Ȥ��ˤ�
-undef ���֤����ߤ�����˾��Ǥ��ޤ���
-�ʲ��˼��� Perl �ץ������Ǥϡ�$timep ���ͤ� undef ������������Τ����줫��
-�ʤ�ޤ���
+ときとしてプログラマには、関数が失敗したときに(返り値とは)別に
+ステータスを表わす値を返すよりは、単純に C<undef> や空リストを
+返したいというときがあるでしょう。
+rpcb_gettime() 関数はまさにこういった状況を提示しています。
+関数が成功したときには私たちは関数が時刻を返すことを望み、失敗したときには
+undef を返して欲しいと望んでいます。
+以下に示す Perl プログラムでは、$timep の値は undef か正しい時刻のいずれかに
+なります。
 
      $timep = rpcb_gettime( "localhost" );
 
@@ -2269,11 +2269,11 @@ the default return value.
 
 =end original
 
-�ʲ��� XSUB �ϡ�C<SV *> �� �ˡ���˥å�(mnemonic)�Τߤ��֤��ͤη��Ȥ���
-�ȤäƤ��ơ�CODE: �֥��å��򥳥�ѥ�����Ф��ƥץ�����ޤ�ɬ�פ�
-�����ɤ��٤Ƥ��󶡤��Ƥ��뤳�Ȥ򼨤�����˻ȤäƤ��ޤ���
-sv_newmortal() �θƤӽФ����֤��ͤ� undef �ǽ�������ơ������ǥե���Ȥ�
-�֤��ͤȤ��ޤ���
+以下の XSUB は、C<SV *> を ニーモニック(mnemonic)のみの返り値の型として
+使っていて、CODE: ブロックをコンパイラに対してプログラマが必要な
+コードすべてを提供していることを示すために使っています。
+sv_newmortal() の呼び出しは返り値を undef で初期化して、それをデフォルトの
+返り値とします。
 
      SV *
      rpcb_gettime(host)
@@ -2293,8 +2293,8 @@ return value, should the need arise.
 
 =end original
 
-������ϡ��֤��ͤ�����ۤ� undef ��ɤΤ褦���֤���arise (ȯ�����롢������)
-����ɬ�פ����뤫�Ȥ�����Ǥ���
+次の例は、返り値の中で陽に undef をどのように置き、arise (発生する、起こる)
+する必要があるかという例です。
 
      SV *
      rpcb_gettime(host)
@@ -2318,8 +2318,8 @@ then not push return values on the stack.
 
 =end original
 
-���ꥹ�Ȥ��֤��ˤϡ�PPCODE: �֥��å���Ȥ�ʤ���Фʤ餺��
-���Ĥ��θ�ǥ����å����֤��ͤ�ץå��夷�ƤϤ����ޤ���
+空リストを返すには、PPCODE: ブロックを使わなければならず、
+かつその後でスタックに返り値をプッシュしてはいけません。
 
      void
      rpcb_gettime(host)
@@ -2344,11 +2344,11 @@ C<XSRETURN> macros.
 
 =end original
 
-�����ˤϡ��嵭��XSUB �ˤ����ơ��Ǹ��ʸ�� fall through ����褦��
-���椹������ۤ� C<return> ��ޤ��褦�ˤ������ȹͤ���ͤ⤤��Ǥ��礦��
-�������ä����ˤϡ������ C<XSRETURN_EMPTY> ��Ȥ��ޤ���
-����� XSUB �����å���Ŭ�ڤ�Ĵ������뤳�Ȥ��ݾڤ��ޤ���
-¾�� C<XSRETURN> �ޥ����ˤĤ��Ƥ� L<perlapi> �򻲾Ȥ��Ƥ���������
+一部には、上記のXSUB において、最後の文へ fall through するように
+制御するよりは陽に C<return> を含めるようにしたいと考える人もいるでしょう。
+そういった場合には、代わりに C<XSRETURN_EMPTY> を使います。
+これは XSUB スタックが適切に調整されることを保証します。
+他の C<XSRETURN> マクロについては L<perlapi> を参照してください。
 
 =begin original
 
@@ -2357,8 +2357,8 @@ rewrite this example as:
 
 =end original
 
-C<XSRETURN_*> �ޥ����� CODE �֥��å��Ǥ�Ȥ���Τǡ�������ϰʲ��Τ褦��
-�񤭴������ޤ�:
+C<XSRETURN_*> マクロは CODE ブロックでも使えるので、この例は以下のように
+書き換えられます:
 
      int
      rpcb_gettime(host)
@@ -2379,8 +2379,8 @@ with PREINIT: simplifications, this leads to:
 
 =end original
 
-�ºݤΤȤ��������Υ����å��� POSTCALL: �����������֤����Ȥ�Ǥ��ޤ���
-PREINIT: ��ñ�㲽�ȶ��ˡ�����ϰʲ��Τ褦�ˤʤ�ޤ�:
+実際のところ、このチェックを POSTCALL: セクションに置くこともできます。
+PREINIT: の単純化と共に、これは以下のようになります:
 
      int
      rpcb_gettime(host)
@@ -2392,7 +2392,7 @@ PREINIT: ��ñ�㲽�ȶ��ˡ�����ϰʲ��Τ褦�ˤʤ�ޤ�:
 
 =head2 The REQUIRE: Keyword
 
-(REQUIRE: �������)
+(REQUIRE: キーワード)
 
 =begin original
 
@@ -2403,16 +2403,16 @@ contains the following statement will compile with only B<xsubpp> version
 
 =end original
 
-������� REQUIRE: �� B<xsubpp> ����ѥ��餬 XS �⥸�塼���
-����ѥ��뤹�뤿��˺����ɬ�פʥС������򼨤�����˻Ȥ��ޤ���
-�ʲ��Τ褦��ʸ�Τ��� XS �⥸�塼��ϥС������ 1.922 �ʹߤ� B<xsubpp> �ǤΤ�
-����ѥ���Ǥ��ޤ���
+キーワード REQUIRE: は B<xsubpp> コンパイラが XS モジュールを
+コンパイルするために最低限必要なバージョンを示すために使われます。
+以下のような文のある XS モジュールはバージョン 1.922 以降の B<xsubpp> でのみ
+コンパイルできます。
 
 	REQUIRE: 1.922
 
 =head2 The CLEANUP: Keyword
 
-(CLEANUP: �������)
+(CLEANUP: キーワード)
 
 =begin original
 
@@ -2424,16 +2424,16 @@ in the XSUB.
 
 =end original
 
-���Υ�����ɤ� XSUB �����ν�λ�������̤ʥ��꡼�󥢥å׼�³����ɬ�פȤ���
-���˻Ȥ����Ȥ��Ǥ��ޤ���
-������� CLEANUP: ���Ȥ���Ȥ��ˤϡ������ CODE:, PPCODE, OUTPUT: 
-�֥��å��Τ����줫��³���Ƥ��ʤ���Фʤ�ޤ���
-���꡼�󥢥åץ֥��å��Τ���Υ����ɤ� XSUB �ˤ���Ǹ�Υ��ơ��ȥ��Ȥ�
-�դ��ä����ޤ���
+このキーワードは XSUB がその終了前に特別なクリーンアップ手続きを必要とする
+場合に使うことができます。
+キーワード CLEANUP: が使われるときには、それは CODE:, PPCODE, OUTPUT: 
+ブロックのいずれかに続いていなければなりません。
+クリーンアップブロックのためのコードは XSUB にある最後のステートメントに
+付け加えられます。
 
 =head2 The POSTCALL: Keyword
 
-(POSTCALL: �������)
+(POSTCALL: キーワード)
 
 =begin original
 
@@ -2444,10 +2444,10 @@ present in the XSUB.
 
 =end original
 
-���Υ�����ɤϡ�C ���֥롼�����¹Ԥ���������̤ʼ�³����ɬ�פ� XSUB ��
-�Ȥ��ޤ���
-POSTCALL: ������ɤ�Ȥ����ϡ�XSUB ��¸�ߤ���
-OUTPUT: �� CLEANUP: �֥��å������ˤʤ���Фʤ�ޤ���
+このキーワードは、C サブルーチンを実行した後に特別な手続きが必要な XSUB に
+使います。
+POSTCALL: キーワードを使う時は、XSUB に存在する
+OUTPUT: と CLEANUP: ブロックの前になければなりません。
 
 =begin original
 
@@ -2455,8 +2455,8 @@ See examples in L<"The NO_OUTPUT Keyword"> and L<"Returning Undef And Empty List
 
 =end original
 
-L<"The NO_OUTPUT Keyword"> �� L<"Returning Undef And Empty Lists"> �����
-���Ȥ��Ƥ���������
+L<"The NO_OUTPUT Keyword"> と L<"Returning Undef And Empty Lists"> の例を
+参照してください。
 
 =begin original
 
@@ -2465,12 +2465,12 @@ call is supplied by user by providing either CODE: or PPCODE: section.
 
 =end original
 
-The POSTCALL: �֥��å��ϡ�C ���֥롼����ƤӽФ����桼��������
-CODE: �� PPCODE: ���������ˤ�ä��󶡤������Ϥ��ޤ��̣�Ϥ���ޤ���
+The POSTCALL: ブロックは、C サブルーチン呼び出しがユーザーから
+CODE: や PPCODE: セクションによって提供される場合はあまり意味はありません。
 
 =head2 The BOOT: Keyword
 
-(BOOT: �������)
+(BOOT: キーワード)
 
 =begin original
 
@@ -2482,12 +2482,12 @@ statements to the bootstrap function.
 
 =end original
 
-������� BOOT: �ϥ������ƥ󥷥��Υ֡��ȥ��ȥ�å״ؿ��Τ���˥����ɤ�
-�ɲä���Τ˻Ȥ��ޤ���
-�֡��ȥ��ȥ�å״ؿ��� B<xsubpp> ����ѥ���ˤ�ä��������졢�̾��
-Perl ����Ͽ����褦�� XSUB ��ɬ�פ�ʸ���ݻ����ޤ���
-BOOT: ������ɤˤ�äƥץ�����ޤϥ���ѥ�����Ф��ơ�
-�֡��ȥ��ȥ�å״ؿ��˥����ɤ��ɲä��뤳�Ȥ�ؼ��Ǥ��ޤ���
+キーワード BOOT: はエクステンションのブートストラップ関数のためにコードを
+追加するのに使われます。
+ブートストラップ関数は B<xsubpp> コンパイラによって生成され、通常は
+Perl に登録するような XSUB に必要な文を保持します。
+BOOT: キーワードによってプログラマはコンパイラに対して、
+ブートストラップ関数にコードを追加することを指示できます。
 
 =begin original
 
@@ -2497,9 +2497,9 @@ terminate the code block.
 
 =end original
 
-���Υ�����ɤϺǽ�� ������� MODULE �����줿���Ȥ�Ǥ�դξ���
-�Ȥ����Ȥ��Ǥ������ιԤˤϤ��Υ�����ɤΤߤ�����褦�ˤ��٤��Ǥ���
-������ɤθ�Ǻǽ�˸������Ԥ������ɥ֥��å��ν�ü�򼨤��ޤ���
+このキーワードは最初に キーワード MODULE が現れたあとの任意の場所で
+使うことができ、その行にはこのキーワードのみがあるようにすべきです。
+キーワードの後で最初に現れる空行がコードブロックの終端を示します。
 
      BOOT:
      # The following message will be printed when the
@@ -2508,7 +2508,7 @@ terminate the code block.
 
 =head2 The VERSIONCHECK: Keyword
 
-(VERSIONCHECK: �������)
+(VERSIONCHECK: キーワード)
 
 =begin original
 
@@ -2520,12 +2520,12 @@ version of the PM module.
 
 =end original
 
-������� VERSIONCHECK: �� B<xsubpp> �Υ��ץ����Ǥ���
-C<-versioncheck> �� C<-noversioncheck> ���������ޤ���
-���Υ�����ɤϥ��ޥ�ɥ饤�󥪥ץ����򥪡��С��饤�ɤ��ޤ���
-�С����������å��ϥǥե���ȤǤ�ͭ���ˤʤäƤ��ޤ���
-�С����������å���ͭ���ˤʤäƤ����硢XS �⥸�塼��Ϥ��ΥС������
-PM �⥸�塼��ΥС������ȥޥå����뤫�ɤ�������������ޤ���
+キーワード VERSIONCHECK: は B<xsubpp> のオプションである
+C<-versioncheck> や C<-noversioncheck> に相当します。
+このキーワードはコマンドラインオプションをオーバーライドします。
+バージョンチェックはデフォルトでは有効になっています。
+バージョンチェックが有効になっている場合、XS モジュールはそのバージョンが
+PM モジュールのバージョンとマッチするかどうかが検査されます。
 
 =begin original
 
@@ -2533,7 +2533,7 @@ To enable version checking:
 
 =end original
 
-�С����������å���ͭ���ˤ���ˤ�:
+バージョンチェックを有効にするには:
 
     VERSIONCHECK: ENABLE
 
@@ -2543,13 +2543,13 @@ To disable version checking:
 
 =end original
 
-�С����������å���̵���ˤ���ˤ�:
+バージョンチェックを無効にするには:
 
     VERSIONCHECK: DISABLE
 
 =head2 The PROTOTYPES: Keyword
 
-(PROTOTYPES: �������)
+(PROTOTYPES: キーワード)
 
 =begin original
 
@@ -2561,13 +2561,13 @@ module to enable and disable prototypes for different parts of the module.
 
 =end original
 
-������� PROTOTYPES: �� B<xsubpp> �� C<-prototypes> �� C<-noprototypes> 
-�Ȥ��ä����ץ������������ޤ���
-���Υ�����ɤϥ��ޥ�ɥ饤�󥪥ץ������񤭤��ޤ���
-�ǥե���ȤǤϥץ��ȥ����פ�ͭ���ˤʤäƤ��ޤ���
-�ץ��ȥ����פ�ͭ���ˤʤäƤ���Ȥ���XSUB �� Perl �˥ץ��ȥ����פ�Ϳ���ޤ���
-���Υ�����ɤ�XS�⥸�塼�����ǡ��⥸�塼��ΰۤʤä���ʬ�ǲ���Ǥ�
-�ץ��ȥ����פ���Ĥ�����ػߤ�����Ǥ��ޤ���
+キーワード PROTOTYPES: は B<xsubpp> の C<-prototypes> や C<-noprototypes> 
+といったオプションに相当します。
+このキーワードはコマンドラインオプションを上書きします。
+デフォルトではプロトタイプが有効になっています。
+プロトタイプが有効になっているとき、XSUB は Perl にプロトタイプを与えます。
+このキーワードはXSモジュールの中で、モジュールの異なった部分で何回でも
+プロトタイプを許可したり禁止したりできます。
 
 =begin original
 
@@ -2575,7 +2575,7 @@ To enable prototypes:
 
 =end original
 
-�ץ��ȥ����פ���Ĥ���ˤ�:
+プロトタイプを許可するには:
 
     PROTOTYPES: ENABLE
 
@@ -2585,13 +2585,13 @@ To disable prototypes:
 
 =end original
 
-�ץ��ȥ����פ�ػߤ���ˤ�:
+プロトタイプを禁止するには:
 
     PROTOTYPES: DISABLE
 
 =head2 The PROTOTYPE: Keyword
 
-(PROTOTYPE: �������)
+(PROTOTYPE: キーワード)
 
 =begin original
 
@@ -2603,12 +2603,12 @@ prototypes.
 
 =end original
 
-���Υ�����ɤ����Ҥ���������� PROTOTYPES: �˻��Ƥ��ޤ�����
-XSUB ���Ф�������Υץ��ȥ����פ�Ȥ��Τ� B<xsubpp> ����Ū��
-�Ȥ����Ȥ��Ǥ��ޤ���
-���Υ�����ɤ�¾�Τ��٤ƤΥץ��ȥ����ץ��ץ����䥭����ɤ�
-��񤭤��ޤ����������Ȥ� XSUB �ˤΤ߱ƶ����ޤ���
-Perl �Υץ��ȥ����פˤĤ��Ƥ� L<perlsub/Prototypes> �򻲾Ȥ��Ƥ���������
+このキーワードは前述したキーワード PROTOTYPES: に似ていますが、
+XSUB に対する特定のプロトタイプを使うのに B<xsubpp> を強制的に
+使うことができます。
+このキーワードは他のすべてのプロトタイプオプションやキーワードを
+上書きしますが、カレントの XSUB にのみ影響します。
+Perl のプロトタイプについては L<perlsub/Prototypes> を参照してください。
 
     bool_t
     rpcb_gettime(timep, ...)
@@ -2632,8 +2632,8 @@ XSUB as in the following example:
 
 =end original
 
-�ץ��ȥ����פ�ͭ���ξ�硢�ʲ�����Τ褦�ˤ��� XSUB ����ǥ��������
-̵���ˤ��뤳�Ȥ��Ǥ��ޤ�:
+プロトタイプが有効の場合、以下の礼のようにして XSUB の中でローカルに
+無効にすることができます:
 
     void
     rpcb_gettime_noproto()
@@ -2642,7 +2642,7 @@ XSUB as in the following example:
 
 =head2 The ALIAS: Keyword
 
-(ALIAS: �������)
+(ALIAS: キーワード)
 
 =begin original
 
@@ -2655,14 +2655,14 @@ declared name C<ix> will be 0.
 
 =end original
 
-ALIAS: �Ȥ���������ɤϡ�XSUB ���Ф�����İʾ�Υ�ˡ����� Perl �Ǥ�̾����
-���������ޤ�����ư���줿�Ȥ��˻Ȥ��Ƥ���(�������ä���ˡ����� Perl �Ǥ�)
-̾�����Τ뤿��μ��ʤ�������ޤ���
-Perl �Ǥ�̾���ϴ����������줿�ѥå�����̾�Ȥ��뤳�Ȥ��Ǥ��ޤ���
-���줾�����̾�ϥ���ǥå����Ȥ���Ϳ�����ޤ���
-����ѥ���ϡ����Ѥ������̾�Υ���ǥå�������Ǽ����Ƥ��� C<ix> ��
-�ƤФ���ѿ��򥻥åȥ��åפ��ޤ���
-XSUB �� C<ix> �Ȥ���̾���ȶ��˸ƤӽФ��줿�Ȥ��������ͤ� 0 �Ȥʤ�ޤ���
+ALIAS: というキーワードは、XSUB に対して二つ以上のユニークな Perl での名前を
+持たせ、また、起動されたときに使われている(そういったユニークな Perl での)
+名前を知るための手段を持たせます。
+Perl での名前は完全修飾されたパッケージ名とすることができます。
+それぞれの別名はインデックスとして与えられます。
+コンパイラは、使用される別名のインデックスが格納されている C<ix> と
+呼ばれる変数をセットアップします。
+XSUB が C<ix> という名前と共に呼び出されたとき、その値は 0 となります。
 
 =begin original
 
@@ -2671,8 +2671,8 @@ C<BAR::getit()> for this function.
 
 =end original
 
-�ʲ��˵󤲤���Ǥϡ�C<FOO::gettime()> �� C<BAR::getit()> �Ȥ���
-��̾�򤳤δؿ��Τ���˺������ޤ���
+以下に挙げる例では、C<FOO::gettime()> と C<BAR::getit()> という
+別名をこの関数のために作成します。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -2688,7 +2688,7 @@ C<BAR::getit()> for this function.
 
 =head2 The OVERLOAD: Keyword
 
-(OVERLOAD: �������)
+(OVERLOAD: キーワード)
 
 =begin original
 
@@ -2703,14 +2703,14 @@ register with the overload magic.
 
 =end original
 
-pure Perl ��Ȥä������С������ɥ��󥿡��ե������������ˡ�
-(��Ҥ� ALIAS: ������ɤ�Ʊ�ͤ�)�ؿ��Τ�����ɲä� Perl ��̾����
-������뤿��� OVERLOAD ������ɤ�Ȥ��ޤ���
-�������������С������ɤ����ؿ��� (4 �Ĥΰ�����ɬ�פ� nomethod() �ؿ���
-������)3 �Ĥΰ�����������ʤ���Фʤ�ޤ���
-�ؿ��� OVERLOAD: ������ɤ�����ȡ������С������ɤ����ޥ��å���
-��Ͽ���뤿��ˡ������Ĥ����ɲäιԤ�xsubpp �ˤ�ä��������줿
-c �ե�������������ޤ���
+pure Perl を使ったオーバーロードインターフェースを書く代わりに、
+(上述の ALIAS: キーワードと同様に)関数のための追加の Perl の名前を
+定義するための OVERLOAD キーワードも使えます。
+しかし、オーバーロードした関数は (4 つの引数が必要な nomethod() 関数を
+除いて)3 つの引数で定義しなければなりません
+関数に OVERLOAD: キーワードがあると、オーバーロードしたマジックを
+登録するために、いくつかの追加の行がxsubpp によって生成された
+c ファイルで定義されます。
 
 =begin original
 
@@ -2721,10 +2721,10 @@ T_PTROBJ_SPECIAL below.
 
 =end original
 
-bless ���줿���֥������Ȥϼºݤˤ� RV �Ȥ����ݴɤ����Τǡ�
-���������������� bless ���줿 RV ���ݴɤ���Ƥ���ºݤ� SV ����Ф��Ȥ���
-typemap �κ�����Ȥ��Τ������Ǥ���
-�ʲ��� T_PTROBJ_SPECIAL ����򻲾Ȥ��Ƥ���������
+bless されたオブジェクトは実際には RV として保管されるので、
+引数を前処理して bless された RV に保管されている実際の SV を取り出すという
+typemap の昨日を使うのが便利です。
+以下の T_PTROBJ_SPECIAL の例を参照してください。
 
 =begin original
 
@@ -2734,8 +2734,8 @@ this:
 
 =end original
 
-OVERLOAD: ������ɤ�Ȥ��ˤϡ��ʲ��Τ褦�� 3 �Ĥ����ϥѥ�᡼�� (�ޤ���
-C ������ '...' ���) ����� XS �ؿ�����ޤ�:
+OVERLOAD: キーワードを使うには、以下のように 3 つの入力パラメータ (または
+C 形式の '...' 定義) を持つ XS 関数を作ります:
 
     SV *
     cmp (lobj, robj, swap)
@@ -2755,15 +2755,15 @@ overload) should be entered as \"\" (i.e. escaped).
 
 =end original
 
-���ξ�硢�ؿ�����ӱ黻�Ҥ� 3 �Ĥ���ˡ���Ƥ򥪡��С������ɤ��ޤ���
-��ѻ���Ȥä����ƤΥ����С����������˴ؤ��ơ������򥯥����Ȥʤ���
-�����פ���ɬ�פ����ꡢʣ���Υ����С������ɤ϶����ʬ�����ޤ���
-"" (ʸ���󲽤Υ����С�������) �� \"\" �����Ϥ���(���������פ���)
-ɬ�פ�����ޤ���
+この場合、関数は比較演算子の 3 つの方法全てをオーバーロードします。
+非英字を使った全てのオーバーロード操作に関して、引数をクォートなしで
+タイプする必要があり、複数のオーバーロードは空白で分けられます。
+"" (文字列化のオーバーロード) は \"\" と入力する(エスケープする)
+必要があります。
 
 =head2 The FALLBACK: Keyword
 
-(FALLBACK: �������)
+(FALLBACK: キーワード)
 
 =begin original
 
@@ -2773,9 +2773,9 @@ FALLBACK keyword in the module header section, like this:
 
 =end original
 
-OVERLOAD ������ɤ��ɲä��ơ���ά���������С������ɱ黻�Ҥ�
-Perl ���ɤΤ褦�˼�ư�������뤫�����椷�������ϡ��ʲ��Τ褦��
-�⥸�塼��إå����������� FALLBACK ������ɤ򥻥åȤǤ��ޤ�:
+OVERLOAD キーワードに追加して、省略したオーバーロード演算子を
+Perl がどのように自動生成するかを制御したい場合は、以下のように
+モジュールヘッダセクションに FALLBACK キーワードをセットできます:
 
 
     MODULE = RPC  PACKAGE = RPC
@@ -2793,17 +2793,17 @@ L<overload/Fallback> for more details.
 
 =end original
 
-������ FALLBACK �� TRUE, FALSE, UNDEF �� 3 �Ĥ��ͤΤ����줫��
-��뤳�Ȥ��Ǥ��ޤ���
-OVERLOAD ��Ȥ��Ȥ��� FALLBACK �ͤ����åȤ���Ƥ��ʤ��ȡ��ǥե���ȤȤ���
-UNDEF �Ȥʤ�ޤ���
-1 �Ĥޤ���ʣ���δؿ��� OVERLOAD ��ȤäƤ�����ʳ��� FALLBACK ��
-�Ȥ��ޤ���
-����ʤ�ܺ٤ˤĤ��Ƥ� L<overload/Fallback> �򻲾Ȥ��Ƥ���������
+ここで FALLBACK は TRUE, FALSE, UNDEF の 3 つの値のいずれかを
+取ることができます。
+OVERLOAD を使うときに FALLBACK 値がセットされていないと、デフォルトとして
+UNDEF となります。
+1 つまたは複数の関数で OVERLOAD を使っている場合以外は FALLBACK は
+使えません。
+さらなる詳細については L<overload/Fallback> を参照してください。
 
 =head2 The INTERFACE: Keyword
 
-(INTERFACE: �������)
+(INTERFACE: キーワード)
 
 =begin original
 
@@ -2814,11 +2814,11 @@ should be attached to the current XSUB.
 
 =end original
 
-���Υ�����ɤϸ��ߤ� XSUB ��Ϳ����줿�ƤӽФ������ͥ���λ�����Ȥ���
-������ޤ���
-������ɤˤʤ�餫��ʸ����³���Ƥ���ȡ�����Ϥ��Υ����ͥ����
-���äƤ���ؿ��Υꥹ�ȤȤ��ư���졢���ߤ� XSUB ���ղä��줿��Τ�
-�����ޤ���
+このキーワードは現在の XSUB を与えられた呼び出しシグネチャの持ち主として
+宣言します。
+キーワードになんらかの文字列が続いていると、それはこのシグネチャを
+持っている関数のリストとして扱われ、現在の XSUB に付加されたものと
+扱われます。
 
 =begin original
 
@@ -2827,8 +2827,8 @@ subtract() all having the signature:
 
 =end original
 
-�㤨�С��ʲ���Ʊ�������ͥ������� 4 �Ĥ� C �ؿ� multiply(), divide(),
-add(), subtract() ��������:
+例えば、以下の同じシグネチャを持つ 4 つの C 関数 multiply(), divide(),
+add(), subtract() がある場合:
 
     symbolic f(symbolic, symbolic);
 
@@ -2838,7 +2838,7 @@ you can make them all to use the same XSUB using this:
 
 =end original
 
-�ʲ��Τ褦�ˤ������Ƥ�Ʊ�� XSUB �ǻȤ��ޤ�:
+以下のようにして全てを同じ XSUB で使えます:
 
     symbolic
     interface_s_ss(arg1, arg2)  
@@ -2855,8 +2855,8 @@ Perl function share names with corresponding C functions.
 
 =end original
 
-(����� 4 �Ĥ� Perl �ؿ��Τ���δ����� XSUB �����ɤǤ�!)
-4 �Ĥ��������줿 Perl �ؿ����б����� C �ؿ���̾����ͭ���ޤ���
+(これは 4 つの Perl 関数のための完全な XSUB コードです!)
+4 つの生成された Perl 関数は対応する C 関数と名前を共有します。
 
 =begin original
 
@@ -2867,11 +2867,11 @@ can attach an extra function remainder() at runtime by using
 
 =end original
 
-ALIAS: ������ɤ���٤����Τ��μ�ˡ��ͭ�������ϡ�switch ʸ��
-�����ǥ��󥰤���ɬ�פ��ʤ������줾��� Perl �ؿ��Ϥɤ� C �ؿ���
-�ƤӽФ��٤������ΤäƤ��롢�Ȥ������ȤǤ���
-���ˡ��ʲ��Τ褦�˻Ȥ����ȤǼ¹Ի����ɲäδؿ� remainder() ��
-¾�� XSUB �����ղäǤ��ޤ�:
+ALIAS: キーワードと比べた場合のこの手法の有利な点は、switch 文を
+コーディングする必要がなく、それぞれの Perl 関数はどの C 関数を
+呼び出すべきかを知っている、ということです。
+更に、以下のように使うことで実行時に追加の関数 remainder() を
+他の XSUB から付加できます:
 
     CV *mycv = newXSproto("Symbolic::remainder", 
 			  XS_Symbolic_interface_s_ss, __FILE__, "$$");
@@ -2885,13 +2885,13 @@ C<XSINTERFACE_FUNC_SET>, see the next section.)
 
 =end original
 
-(������ϡ�INTERFACE_MACRO: ��������󤬤ʤ����Ȥ����ꤷ�Ƥ��ޤ�;
-����ʤ���С�C<XSINTERFACE_FUNC_SET> �ʳ��β�����Ȥ�ɬ�פ�����ޤ�;
-���ξϤ򻲾Ȥ��Ƥ���������)
+(この例は、INTERFACE_MACRO: セクションがないことを想定しています;
+さもなければ、C<XSINTERFACE_FUNC_SET> 以外の何かを使う必要があります;
+次の章を参照してください。)
 
 =head2 The INTERFACE_MACRO: Keyword
 
-(INTERFACE_MACRO: �������)
+(INTERFACE_MACRO: キーワード)
 
 =begin original
 
@@ -2904,13 +2904,13 @@ and the function pointer.
 
 =end original
 
-���Υ�����ɤϡ�XSUB ����ؿ��ݥ��󥿤���Ф�����˰ۤʤä���ˡ��
-�Ȥä� INTERFACE ������Ǥ���褦�ˤ��ޤ���
-���Υ�����ɤ˰���³��ʸ����ϡ��ؿ��ݥ��󥿤�Ÿ��/���åȤ���
-�ޥ�����̾���ˤʤ�ޤ���
-Ÿ���ޥ����ϡ��֤��͡�C<CV*>������ C<CV*> �Τ���� C<XSANY.any_dptr> ��
-�Ϥ���ޤ���
-���å����ޥ����� cv �ȴؿ��ݥ��󥿤��Ϥ���ޤ���
+このキーワードは、XSUB から関数ポインタを取り出すために異なった方法を
+使って INTERFACE を定義できるようにします。
+このキーワードに引き続く文字列は、関数ポインタを展開/セットする
+マクロの名前になります。
+展開マクロは、返り値、C<CV*>、この C<CV*> のための C<XSANY.any_dptr> が
+渡されます。
+セッターマクロは cv と関数ポインタが渡されます。
 
 =begin original
 
@@ -2920,9 +2920,9 @@ INTERFACE_MACRO keyword is used.
 
 =end original
 
-�ǥե�����ͤ� C<XSINTERFACE_FUNC> �� C<XSINTERFACE_FUNC_SET> �Ǥ���
-���δؿ��ꥹ�Ȥ�INTERFACE ������ɤϡ�INTERFACE_MACRO ������ɤ�
-�Ȥ�줿�Ȥ��Ͼ�ά�Ǥ��ޤ���
+デフォルト値は C<XSINTERFACE_FUNC> と C<XSINTERFACE_FUNC_SET> です。
+空の関数リストのINTERFACE キーワードは、INTERFACE_MACRO キーワードが
+使われたときは省略できます。
 
 =begin original
 
@@ -2933,10 +2933,10 @@ C<subtract_off>.  Then one can use
 
 =end original
 
-���Ҥ���ǡ�multiply(), divide(), add(), subtract() �δؿ��ݥ��󥿤�
-C ���� C<fp[]> �˥��ե��å� C<multiply_off>, C<divide_off>, C<add_off>,
-C<subtract_off> ���ݴɤ���Ƥ���Ȳ��ꤷ�ޤ���
-�ʲ��Τ褦��
+前述の例で、multiply(), divide(), add(), subtract() の関数ポインタが
+C 配列 C<fp[]> にオフセット C<multiply_off>, C<divide_off>, C<add_off>,
+C<subtract_off> で保管されていると仮定します。
+以下のように
 
     #define XSINTERFACE_FUNC_BYOFFSET(ret,cv,f) \
 	((XSINTERFACE_CVT(ret,))fp[CvXSUBANY(cv).any_i32])
@@ -2949,7 +2949,7 @@ in C section,
 
 =end original
 
-�� C ���������˽񤭤ޤ���
+と C セクションに書きます。
 
     symbolic
     interface_s_ss(arg1, arg2)  
@@ -2968,11 +2968,11 @@ in XSUB section.
 
 =end original
 
-�� XSUB ���������˽񤭤ޤ���
+と XSUB セクションに書きます。
 
 =head2 The INCLUDE: Keyword
 
-(INCLUDE: �������)
+(INCLUDE: キーワード)
 
 =begin original
 
@@ -2982,10 +2982,10 @@ generate the XS code to be pulled into the module.
 
 =end original
 
-���Υ�����ɤ� XS �⥸�塼���¾�Υե�����������Τ˻Ȥ��ޤ���
-������ե������ XS �����ɤ���Ĥ��Ȥ�Ǥ��ޤ���
-INCLUDE: �� ���륳�ޥ�ɤ�¹Ԥ��Ƥ������������줿 XS �����ɤ�
-�⥸�塼��˼����ळ�Ȥ�Ǥ��ޤ���
+このキーワードは XS モジュールに他のファイルを取り込むのに使われます。
+取り込むファイルは XS コードを持つこともできます。
+INCLUDE: は あるコマンドを実行してそこで生成された XS コードを
+モジュールに取り込むこともできます。
 
 =begin original
 
@@ -2993,8 +2993,8 @@ The file F<Rpcb1.xsh> contains our C<rpcb_gettime()> function:
 
 =end original
 
-F<Rpcb1.xsh> �Ȥ����ե�����ϻ䤿���� C<rpcb_gettime()> �ؿ���
-�ޤ�Ǥ��ޤ���
+F<Rpcb1.xsh> というファイルは私たちの C<rpcb_gettime()> 関数を
+含んでいます。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -3009,7 +3009,7 @@ The XS module can use INCLUDE: to pull that file into it.
 
 =end original
 
-XS �⥸�塼��ϡ��ե����������ि��� INCLUDE: ��Ȥ����Ȥ��Ǥ��ޤ���
+XS モジュールは、ファイルを取り込むために INCLUDE: を使うことができます。
 
     INCLUDE: Rpcb1.xsh
 
@@ -3020,14 +3020,14 @@ the compiler will interpret the parameters as a command.
 
 =end original
 
-������� INCLUDE: ��³���ѥ�᡼���� �ѥ��� (C<|>) ��ȼ�äƤ���С�
-����ѥ���Ϥ��Υѥ�᡼���򥳥ޥ�ɤȤ��Ʋ�ᤷ�ޤ���
+キーワード INCLUDE: に続くパラメータが パイプ (C<|>) を伴っていれば、
+コンパイラはそのパラメータをコマンドとして解釈します。
 
     INCLUDE: cat Rpcb1.xsh |
 
 =head2 The CASE: Keyword
 
-(CASE: �������)
+(CASE: キーワード)
 
 =begin original
 
@@ -3039,13 +3039,13 @@ included in that case.
 
 =end original
 
-������� CASE: �� XSUB �������줾�줬����Ū�� XSUB �Ȥ��ư������Ȥ�
-�Ǥ���ʣ�������ʤ���Ĥ��Ȥ���Ĥ��ޤ���
-CASE: ������ (greedy) �ǡ��Ȥ�줿���ˤ�¾�� XS ������ɤ� CASE: �����
-�ʤ���Фʤ�ޤ���
-����� XSUB �ˤ���ǽ�� CASE: �������¾�Υ�����ɤ��֤��ʤ���
-�������ȤǤ��ꡢ�Ǹ�� CASE �����ˤ����ΤϤ��� case �˴ޤޤ���
-�������ȤǤ���
+キーワード CASE: は XSUB が、それぞれが仮想的な XSUB として扱うことの
+できる複数の部品を持つことを許可します。
+CASE: は貪欲 (greedy) で、使われた場合には他の XS キーワードは CASE: の中に
+なければなりません。
+これは XSUB にある最初の CASE: より前に他のキーワードを置けないと
+いうことであり、最後の CASE よりも後にあるものはその case に含まれると
+いうことです。
 
 =begin original
 
@@ -3061,15 +3061,15 @@ reversed, C<(time_t *timep, char *host)>.
 
 =end original
 
-CASE: �� XSUB �Υѥ�᡼���䡢C<ix> ALIAS: �ѿ�(L<"The ALIAS: Keyword"> ��
-����)���ѿ� C<items> ���̤����ڤ��ؤ��뤳�Ȥ��Ǥ��ޤ���
-�Ǹ�� CASE: �ϡ������˷���դ����Ƥ����郎�ʤ����ˤ�
-B<default> �Ȥʤ�ޤ���
-�ʲ������ CASE: �� C<ix> �ˤ�ä� C<x_gettime()> �Ȥ�����̾����Ĵؿ�
-C<rpcb_gettime()> ���ڤ��ؤ����ΤǤ���
-���δؿ��� C<rpcb_gettime()> �Ȥ��ƸƤФ줿�Ȥ������Υѥ�᡼�����̾
-C<(char *host, time_t *timep)> �Ǥ�����C<x_gettime()> �Ȥ��ƸƤФ줿���ˤ�
-���Υѥ�᡼����ȿž���� C<(time_t *timep, char *host)> �Ȥʤ�ޤ���
+CASE: は XSUB のパラメータや、C<ix> ALIAS: 変数(L<"The ALIAS: Keyword"> を
+参照)、変数 C<items> を通じて切り替えることができます。
+最後の CASE: は、そこに結び付けられている条件がない場合には
+B<default> となります。
+以下の例は CASE: が C<ix> によって C<x_gettime()> という別名を持つ関数
+C<rpcb_gettime()> を切り替えるものです。
+この関数が C<rpcb_gettime()> として呼ばれたとき、そのパラメータは通常、
+C<(char *host, time_t *timep)> ですが、C<x_gettime()> として呼ばれた場合には
+そのパラメータは反転して C<(time_t *timep, char *host)> となります。
 
     long
     rpcb_gettime(a,b)
@@ -3100,8 +3100,8 @@ the different argument lists.
 
 =end original
 
-�������ä��ؿ��ϡ��ʲ��˼��������줫��ʸ�ǸƤӽФ����Ȥ��Ǥ��ޤ���
-�����ꥹ�Ȥ��ۤʤäƤ��뤳�Ȥ����դ��Ƥ���������
+こういった関数は、以下に示すいずれかの文で呼び出すことができます。
+引数リストが異なっていることに注意してください。
 
 	$status = rpcb_gettime( $host, $timep );
 
@@ -3109,7 +3109,7 @@ the different argument lists.
 
 =head2 The & Unary Operator
 
-(& ñ��黻��)
+(& 単項演算子)
 
 =begin original
 
@@ -3119,10 +3119,10 @@ of C<&>, but provide a pointer to this value when the C function is called.
 
 =end original
 
-INPUT: ���������ˤ��� C<&> ñ��黻�Ҥϡ�
-Perl ���ͤ� C ��C<&> �κ��ˤ��� C �η���Ȥä��Ѵ�����ɬ�פ����뤱��ɤ⡢
-C �ؿ����ƤӽФ��줿�Ȥ��Ϥ����ͤؤΥݥ��󥿤��󶡤���뤳�Ȥ�
-B<xsubpp> �������뤿��˻Ȥ��ޤ���
+INPUT: セクションにある C<&> 単項演算子は、
+Perl の値と C を、C<&> の左にある C の型を使って変換する必要があるけれども、
+C 関数が呼び出されたときはこの値へのポインタが提供されることを
+B<xsubpp> に伝えるために使われます。
 
 =begin original
 
@@ -3132,10 +3132,10 @@ C<int> or C<long> but not an C<int*> or C<long*>).
 
 =end original
 
-����ϥѥ�᡼���򻲾��Ϥ����� C �ؿ��Τ���� CODE: �֥��å����򤱤�Ȥ���
-ͭ�ѤǤ���
-ŵ��Ū�ˤϡ��ѥ�᡼�����ݥ��󥿷��Ǥʤ��Ȥ�(C<int*> �� C<long*> �ǤϤʤ���
-C<int> �� C<long>)�˻Ȥ��ޤ���
+これはパラメータを参照渡しする C 関数のための CODE: ブロックを避けるときに
+有用です。
+典型的には、パラメータがポインタ型でないとき(C<int*> や C<long*> ではなく、
+C<int> か C<long>)に使われます。
 
 =begin original
 
@@ -3146,11 +3146,11 @@ parameter to be of type C<time_t*> rather than C<time_t>.
 
 =end original
 
-���� XSUB ���������ʤ� C �����ɤ��������Ƥ��ޤ��ޤ���
-B<xsubpp> ����ѥ���Ϥ����C<(char *host, time_t timep)> �Ȥ���������
-ȼ�ä� C<rpcb_gettime()> ��Ƥ֥����ɤ��Ѵ����ޤ������ºݤ� 
-C<rpcb_gettime()> �� C<timep> �ѥ�᡼���η��Ȥ����׵ᤷ�Ƥ���Τ�
-C<time_t> �ǤϤʤ� C<time_t*> �Ǥ���
+次の XSUB は正しくない C コードを生成してしまいます。
+B<xsubpp> コンパイラはこれを、C<(char *host, time_t timep)> という引数を
+伴って C<rpcb_gettime()> を呼ぶコードに変換しますが、実際に 
+C<rpcb_gettime()> が C<timep> パラメータの型として要求しているのは
+C<time_t> ではなく C<time_t*> です。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -3168,11 +3168,11 @@ C<&> through, so the function call looks like C<rpcb_gettime(host, &timep)>.
 
 =end original
 
-��������� C<&> �黻�Ҥ�Ȥ����Ȥˤ�äƽ����Ǥ��ޤ���
-B<xsubpp> ����ѥ���Ϥ���ˤ�äơ�C<rpcb_gettime()> ��������
-C<(char *host, time_t *timep)>�Ȥ����ѥ�᡼���ǸƤ֤褦�ʥ����ɤˤ��ޤ���
-����� C<&> ���դ��뤳�ȤǤʤ����Τǡ��ؿ��θƤӽФ���
-C<rpcb_gettime(host, &timep)> �Τ褦�˸����ޤ���
+この問題は C<&> 演算子を使うことによって修正できます。
+B<xsubpp> コンパイラはこれによって、C<rpcb_gettime()> を正しく
+C<(char *host, time_t *timep)>というパラメータで呼ぶようなコードにします。
+これは C<&> を付けることでなされるので、関数の呼び出しは
+C<rpcb_gettime(host, &timep)> のように見えます。
 
     bool_t
     rpcb_gettime(host,timep)
@@ -3183,7 +3183,7 @@ C<rpcb_gettime(host, &timep)> �Τ褦�˸����ޤ���
 
 =head2 Inserting POD, Comments and C Preprocessor Directives
 
-(POD�������ȡ�C �ץ�ץ����å��ؼ��Ҥ���������)
+(POD、コメント、C プリプロセッサ指示子を挿入する)
 
 =begin original
 
@@ -3201,20 +3201,20 @@ ensure that a space breaks the sequence "\n=".
 
 =end original
 
-C �ץ�ץ����å��λؼ��Ҥ� BOOT:, PREINIT:, INIT:, CODE:, PPCODE:,
-POSTCALL:, CLEANUP: �Ȥ��ä��֥��å��ʤ��ˡ��ؿ��γ�¦�ΤȤ���Ʊ���褦��
-�Ȥ��ޤ���
-�����Ȥ� MODULE ������ɤθ��Ǥ�դξ��ǻȤ��ޤ���
-����ѥ���ϥץ�ץ����å��ؼ��Ҥ򤤤��餺�ˤ��Τޤ޽��Ϥ���
-�����ȹԤϺ�����ޤ���
-POD ʸ��� C �� XS ��ξ���Υ��������ǡ��ɤ������Ǥ����ѤǤ��ޤ���
-POD �� C<=cut> ���ޥ�ɤǽ�ü����ʤ���Фʤ�ޤ���;
-���줬�ʤ��� C<xsubpp> �ϥ��顼��Ф��ƽ�λ���ޤ���
-�ۤȤ�ɤΥ���ǥ�ȥ�������� C<=> �ǻϤޤ�Ԥ���Ƭ�ˤ϶����
-����뤳�Ȥˤʤ�Τǡ��ʹ֤��������� C �����ɤ��ְ�ä� POD ��
-�ߤʤ���뤳�ȤϤۤȤ�ɤ��ꤽ���ˤʤ����ȤǤ���
-�������������� XS �ե�����ϡ������ "\n=" �Ƕ��ڤ�ʤ��褦�˵����դ��ʤ��ȡ�
-Ʊ��櫤˰��ä����뤫�⤷��ޤ���
+C プリプロセッサの指示子は BOOT:, PREINIT:, INIT:, CODE:, PPCODE:,
+POSTCALL:, CLEANUP: といったブロックなしに、関数の外側のときと同じように
+使えます。
+コメントは MODULE キーワードの後の任意の場所で使えます。
+コンパイラはプリプロセッサ指示子をいじらずにそのまま出力し、
+コメント行は削除します。
+POD 文書は C と XS の両方のセクションで、どの地点でも利用できます。
+POD は C<=cut> コマンドで終端されなければなりません;
+これがないと C<xsubpp> はエラーを出して終了します。
+ほとんどのインデントスタイルは C<=> で始まる行の先頭には空白を
+入れることになるので、人間が生成した C コードが間違って POD と
+みなされることはほとんどありそうにないことです。
+機械が生成した XS ファイルは、空白を "\n=" で区切らないように気を付けないと、
+同じ罠に引っかかるかもしれません。
 
 =begin original
 
@@ -3226,11 +3226,11 @@ the C<#>.
 
 =end original
 
-�Ԥκǽ�ˤ������Ǥʤ�����饯���Ȥ���C<#>��Ȥ����Ȥǡ�
-XSUB �˥����Ȥ��ɲäǤ��ޤ���
-�����Ȥ� C �Υץ�ץ����å��ؼ��Ҥȼ��㤨���ʤ��褦��
-���դ��Ƥ���������
-������ɤ�ñ�����ˡ�ϡ�C<#> �����˶�����֤����ȤǤ���
+行の最初にある空白でないキャラクタとしてC<#>を使うことで、
+XSUB にコメントを追加できます。
+コメントを C のプリプロセッサ指示子と取り違えられないように
+注意してください。
+これを防ぐ単純な方法は、C<#> の前に空白を置くことです。
 
 =begin original
 
@@ -3239,8 +3239,8 @@ versions of a function, use
 
 =end original
 
-�ץ�ץ����å��λؼ��Ҥ���ĤΥС������δؿ��Τ����ΰ�Ĥ�
-���֤���˻Ȥ��ΤǤ���С������Ǥ��ä�:
+プリプロセッサの指示子を二つのバージョンの関数のうちの一つを
+選ぶために使うのであれば、こうであって:
 
     #if ... version1
     #else /* ... version2  */
@@ -3252,7 +3252,7 @@ and not
 
 =end original
 
-�����ǤϤ���ޤ���:
+こうではありません:
 
     #if ... version1
     #endif
@@ -3267,14 +3267,14 @@ definition of the function.  Also, put a blank line before the
 
 =end original
 
-����ϡ��������ʤ���� B<xsubpp> �����ʤ����ؿ��ν�ʣ��������򤷤褦��
-���Ƥ���ȿ����Ƥ��ޤ�����Ǥ���
-Ʊ�ͤˡ�#else/#endif �����˶���Ԥ�����ơ����줬�ؿ����Τΰ�����
-�ߤʤ���ʤ��褦�ˤ��Ƥ���������
+これは、そうしなければ B<xsubpp> があなたが関数の重複した定義をしようと
+していると信じてしまうからです。
+同様に、#else/#endif の前に空白行を入れて、それが関数本体の一部と
+みなされないようにしてください。
 
 =head2 Using XS With C++
 
-(C++ �� XS ��Ȥ�)
+(C++ で XS を使う)
 
 =begin original
 
@@ -3289,14 +3289,14 @@ typemap is shown at the end of this section.
 
 =end original
 
-XSUB ̾�� C<::> ���ޤޤ�Ƥ����硢C++ �Υ᥽�åɤȤ��ư����ޤ���
-�������줿 Perl �ؿ��ϡ����δؿ����Ф��������������֥�������
-�ݥ��󥿤Ǥ���Ȳ��ꤵ��ޤ���
-���Υ��֥������ȥݥ��󥿤� THIS �ȸƤФ���ѿ��˳�Ǽ����ޤ���
-���֥������Ȥ� C++ �� new() ��Ȥäƺ������줿��ΤǤ���٤��ǡ����ġ�
-sv_setref_pv() �ޥ����ˤ�ä� Perl ���� bless ����Ƥ���٤���ΤǤ���
-Perl �ˤ�륪�֥������Ȥ� bless �� typemap �ǰ����ޤ���
-typemap ����Ϥ��Υ��������κǸ�ˤ���ޤ���
+XSUB 名に C<::> が含まれている場合、C++ のメソッドとして扱われます。
+生成された Perl 関数は、その関数に対する第一引数がオブジェクト
+ポインタであると仮定されます。
+このオブジェクトポインタは THIS と呼ばれる変数に格納されます。
+オブジェクトは C++ の new() を使って作成されたものであるべきで、かつ、
+sv_setref_pv() マクロによって Perl から bless されているべきものです。
+Perl によるオブジェクトの bless は typemap で扱えます。
+typemap の例はこのセクションの最後にあります。
 
 =begin original
 
@@ -3307,11 +3307,11 @@ the function will be called using the THIS-E<gt>method() syntax.
 
 =end original
 
-XSUB ���֤��ͷ��� C<static> ���ޤޤ�Ƥ����硢���Υ᥽�åɤ�
-��Ū�᥽�åɤȤ��ư����ޤ���
-����ϡ�class::method() ��ʸ��Ȥä� C++ �ؿ���ƤӽФ��ޤ���
-�᥽�åɤ���Ū�Ǥʤ��ΤǤ���С��ؿ��� THIS-E<gt>method() ��ʸ��Ȥä�
-�ƤӽФ���ޤ���
+XSUB の返り値型に C<static> が含まれている場合、このメソッドは
+静的メソッドとして扱われます。
+これは、class::method() 構文を使って C++ 関数を呼び出します。
+メソッドが静的でないのであれば、関数は THIS-E<gt>method() 構文を使って
+呼び出されます。
 
 =begin original
 
@@ -3319,7 +3319,7 @@ The next examples will use the following C++ class.
 
 =end original
 
-������Ǥϡ��ʲ��� C++ �Υ��饹����Ѥ��ޤ���
+次の例では、以下の C++ のクラスを使用します。
 
      class color {
           public:
@@ -3340,9 +3340,9 @@ not listed.
 
 =end original
 
-blue() �� set_blue() �Ȥ��ä��᥽�åɤ��Ф��� XSUB �ϥ��饹̾��ȼ�ä�
-�������ޤ��������֥�������(THIS �⤷���ϡ�self��)���Ф���
-�ѥ�᡼������������Ƥ��餺���ꥹ�Ȥˤ���ޤ���
+blue() や set_blue() といったメソッドに対する XSUB はクラス名を伴って
+定義されますが、オブジェクト(THIS もしくは“self”)に対する
+パラメータは明示されておらず、リストにありません。
 
      int
      color::blue()
@@ -3360,11 +3360,11 @@ methods will be called as this:
 
 =end original
 
-ξ���� Perl �ؿ��Ȥ��������Ȥ��ƥ��֥������Ȥ���Ԥ��Ƥ��ޤ���
-�������줿 C++ �����ɤǤϥ��֥������Ȥ� C<THIS> �ȸƤФ졢�᥽�åɸƤӽФ���
-���Υ��֥������ȤǼ¹Ԥ���ޤ���
-���Τ��ᡢC++ ������ blue(), set_blue() �᥽�åɤϰʲ��Τ褦�ˤ���
-�ƤӽФ���ޤ�:
+両方の Perl 関数とも第一引数としてオブジェクトを期待しています。
+生成された C++ コードではオブジェクトは C<THIS> と呼ばれ、メソッド呼び出しは
+このオブジェクトで実行されます。
+このため、C++ コード blue(), set_blue() メソッドは以下のようにして
+呼び出されます:
 
      RETVAL = THIS->blue();
 
@@ -3376,7 +3376,7 @@ You could also write a single get/set method using an optional argument:
 
 =end original
 
-ñ��� get/set �᥽�åɤ򡢾�ά��ǽ�ʰ�����Ȥäƽ񤯤��Ȥ�Ǥ��ޤ�:
+単一の get/set メソッドを、省略可能な引数を使って書くこともできます:
 
      int
      color::blue( val = NO_INIT )
@@ -3396,9 +3396,9 @@ called and C<THIS> will be given as its parameter.  The generated C++ code for
 
 =end original
 
-�ؿ�̾�� B<DESTROY> �Ǥ����硢C++ �� C<delete> �ؿ����ƤӽФ���ơ�
-C<THIS> �Ϥ�����Ф���ѥ�᡼���Ȥ���Ϳ�����ޤ���
-���Τ褦���������줿�����ɤ�:
+関数名が B<DESTROY> である場合、C++ の C<delete> 関数が呼び出されて、
+C<THIS> はそれに対するパラメータとして与えられます。
+このような生成されたコードは:
 
      void
      color::DESTROY()
@@ -3409,7 +3409,7 @@ will look like this:
 
 =end original
 
-�ʲ��Τ褦�ˤʤ�ޤ�:
+以下のようになります:
 
      color *THIS = ...;	// Initialized as in typemap
 
@@ -3424,10 +3424,10 @@ argument.
 
 =end original
 
-�ؿ�̾�� B<new> �Ǥ��ä���硢ưŪ�� C++ ���֥������Ȥ�������뤿���
-C++ �� C<new> �ؿ����ƤӽФ���ޤ���
-XSUB �� C<CLASS> �ȸƤФ���ѿ����ݻ�����륯�饹̾�����������Ȥ���
-Ϳ�����뤳�Ȥ���Ԥ��ޤ���
+関数名が B<new> であった場合、動的に C++ オブジェクトを作成するために
+C++ の C<new> 関数が呼び出されます。
+XSUB は C<CLASS> と呼ばれる変数に保持されるクラス名が、第一引数として
+与えられることを期待します。
 
      color *
      color::new()
@@ -3438,7 +3438,7 @@ The generated C++ code will call C<new>.
 
 =end original
 
-C++ �����ɤ� C<new> ��ƤӽФ��ޤ���
+C++ コードは C<new> を呼び出します。
 
      RETVAL = new color();
 
@@ -3449,7 +3449,7 @@ example.
 
 =end original
 
-���� C++ �����Ȥ����ȤΤǤ��� typemap ����򼨤��ޤ���
+この C++ の例を使うことのできる typemap の例を示します。
 
     TYPEMAP
     color *		O_OBJECT
@@ -3471,7 +3471,7 @@ example.
 
 =head2 Interface Strategy
 
-(���󥿡��ե���������ά)
+(インターフェースの戦略)
 
 =begin original
 
@@ -3486,16 +3486,16 @@ identify the more critical parts of the interface.
 
 =end original
 
-Perl �� C �饤�֥��Ȥδ֤Υ��󥿡��ե��������߷פ���Ȥ���
-���Ф��� (C<h2xs -x> �ˤ�ä����������褦��) ���ȥ졼�Ȥ�
-C ���� XS �ؤ��Ѵ����뤳�Ȥǽ�ʬ�Ȥʤ�ޤ���
-���������������󥿡��ե����������� C �˻�����Τ˸�����
-�ä� C �δؿ������Υѥ�᡼�����ѹ������ꡢ(���֤��ͤ���ξ���
-���Ԥ��̣���ޤ��פΤ褦��) �ϰ���μ��Ԥ��֤��褦�ʾ��ˤ�
-ľ��Ū�Ǥʤ���Τˤʤ�ޤ���
-�ץ�����ޤ���ä� Perl Ū�ʥ��󥿡��ե��������ꤿ����˾��Ǥ�����ˤϡ�
-�ʲ��˼�����ά�����󥿡��ե������Τ����פ���ʬ��ǧ�����뤿���
-������Ȥʤ�Ǥ��礦��
+Perl と C ライブラリとの間のインターフェースを設計するとき、
+しばしば (C<h2xs -x> によって生成されるように) ストレートに
+C から XS への変換することで十分となります。
+しかし、時々インターフェースは非常に C に似たものに見え、
+特に C の関数がそのパラメータを変更したり、(「返り値が負の場合は
+失敗を意味します」のような) 範囲内の失敗を返すような場合には
+直感的でないものになります。
+プログラマがもっと Perl 的なインターフェースを作りたいと望んでいる場合には、
+以下に示す戦略がインターフェースのより重要な部分を認識するための
+手助けとなるでしょう。
 
 =begin original
 
@@ -3504,8 +3504,8 @@ these functions may be able to return lists to Perl.
 
 =end original
 
-�����Ϥ���ϤΥѥ�᡼���Τ��� C �δؿ��򸫤Ĥ��Ф��ޤ���
-�������ä��ؿ����Ф��� XSUB �� Perl �˥ꥹ�Ȥ��֤����Ȥ��Ǥ��ޤ���
+入出力や出力のパラメータのある C の関数を見つけ出します。
+こういった関数に対する XSUB は Perl にリストを返すことができます。
 
 =begin original
 
@@ -3519,13 +3519,13 @@ failure.  In more complicated cases use CODE: or PPCODE: sections.
 
 =end original
 
-���Ԥ򼨤��Τ��ϰ���ξ����Ȥ� C �ؿ��򸫤Ĥ��Ф��ޤ���
-�����ϴؿ������Ԥ����Ȥ��ˤ϶��ꥹ�Ȥ� undef ���֤�����Ǥ���
-�⤷ C �ؿ��θƤӽФ��ʤ��˼��Ԥ����Ф����ʤ顢
-���Ԥ���𤹤�Τ� INIT: ����������Ȥ��������⤷��ޤ���
-C �ؿ������֤ä���Ǹ��в�ǽ�ʼ��ԤˤĤ��Ƥϡ����Ԥ�������뤿���
-POSTCALL: ����������Ȥ��������⤷��ޤ���
-��ä�ʣ���ʾ��Ǥ� CODE: �� PPCODE: �Υ���������ȤäƤ���������
+失敗を示すのに範囲内の情報を使う C 関数を見つけ出します。
+これらは関数が失敗したときには空リストや undef を返す候補です。
+もし C 関数の呼び出しなしに失敗が検出されるなら、
+失敗を報告するのに INIT: セクションを使いたいかもしれません。
+C 関数から返った後で検出可能な失敗については、失敗を処理するために
+POSTCALL: セクションを使いたいかもしれません。
+もっと複雑な場合では CODE: か PPCODE: のセクションを使ってください。
 
 =begin original
 
@@ -3534,9 +3534,9 @@ you may want to create a special typedef to handle this situation.  Put
 
 =end original
 
-¿���δؿ����֤��ͤˤ��Ʊ������ɽ����Ȥ���硢���ξ����򰷤������
-���̤� typedef ���ꤿ���Ȼפ����⤷��ޤ���
-�ʲ���ʸ��:
+多くの関数が返り値による同じ失敗表示を使う場合、この状況を扱うための
+特別な typedef を作りたいと思うかもしれません。
+以下の文を:
 
   typedef int negative_is_failure;
 
@@ -3549,11 +3549,11 @@ will create more Perl-like interface.
 
 =end original
 
-XS �ե��������Ƭ�᤯���֤�����ο��� C<undef> ���Ѵ����뤫�������餯
-croak() ����褦��  C<negative_is_failure> �Τ���� OUTPUT typemap ����ȥ��
-�������ޤ���
-���θ塢C<negative_is_failure> �����֤��ͤϡ���� Perl ����
-���󥿡��ե���������ޤ���
+XS ファイルの先頭近くに置き、負の数を C<undef> に変換するか、おそらく
+croak() するような  C<negative_is_failure> のための OUTPUT typemap エントリを
+作成します。
+この後、C<negative_is_failure> 型の返り値は、より Perl 風の
+インターフェースを作ります。
 
 =begin original
 
@@ -3565,10 +3565,10 @@ from C to Perl.
 
 =end original
 
-C �� XSUB �δؿ����켫�ȤǤ����Ȥ��ʤ��褦���ͤ򸫤Ĥ��Ф��ޤ�;
-�Ĥޤꡢ�ؿ��ؤΥѥ�᡼�����������Х��ѿ������ƤǤ���褦�ʤ�ΤǤ���
-Perl ���������ä��ͤ��Ф��륢��������ɬ�פȤ��ʤ��ΤǤ���С������ͤ�
-C ���� Perl ���Ѵ�����ɬ�פϤʤ��Ȥ������Ȥˤʤ�ޤ���
+C と XSUB の関数それ自身でしか使われないような値を見つけ出します;
+つまり、関数へのパラメータがグローバル変数の内容であるようなものです。
+Perl がそういった値に対するアクセスを必要としないのであれば、その値を
+C から Perl へ変換する必要はないということになります。
 
 =begin original
 
@@ -3583,13 +3583,13 @@ file.
 
 =end original
 
-C �δؿ����Ф�������ꥹ�Ȥ��֤��ͤ���ˤ���ݥ��󥿤򸫤Ĥ��Ф��ޤ���
-�����Υݥ��󥿤ϡ������Ϥ���ϤΥѥ�᡼���Τ���˻Ȥ��Ƥ��ꡢ
-������ C<&> ñ��黻�Ҥǰ������Ȥ��Ǥ��������餯�ϡ�NO_INIT ������ɤ�
-�Ȥ��ޤ���
-����¾�Τ����Ĥ��� C<int *> �����򰷤�ɬ�פ����ꡢ
-���Τ褦�ʾ��������� Perl �Ѵ��򤹤뤫����ꤹ��ɬ�פ�����ޤ���
-��̣�������Τʾ�硢�Ѵ��� typemap �ե�������֤����Ȥ�˾�ޤ����Ǥ���
+C の関数に対する引数リストや返り値の中にあるポインタを見つけ出します。
+一部のポインタは、入出力や出力のパラメータのために使われており、
+これらは C<&> 単項演算子で扱うことができ、おそらくは、NO_INIT キーワードが
+使えます。
+その他のいくつかは C<int *> の方を扱う必要があり、
+このような場合に便利な Perl 変換をするかを決定する必要があります。
+意味論が明確な場合、変換を typemap ファイルに置くことが望ましいです。
 
 =begin original
 
@@ -3600,11 +3600,11 @@ blessed objects.  (This is handled automatically by C<h2xs -x>.)
 
 =end original
 
-C �δؿ��ˤ�äƻȤ��Ƥ��빽¤�Τ򸫤Ĥ��Ф��ޤ���
-¿���ξ�硢�������ä���¤�Τ��Ф��� T_PTROBJ typemap ��Ȥ��Τ�
-�����ˤʤ�Τǡ�(���Τ褦�ʹ�¤�Τ�) bless ���줿���֥������ȤȤ���
-Perl ���鰷�����Ȥ��Ǥ��ޤ���
-(����� C<h2xs -x> �Ǽ�ưŪ�˰����ޤ���)
+C の関数によって使われている構造体を見つけ出します。
+多くの場合、こういった構造体に対して T_PTROBJ typemap を使うのが
+助けになるので、(そのような構造体を) bless されたオブジェクトとして
+Perl から扱うことができます。
+(これは C<h2xs -x> で自動的に扱われます。)
 
 =begin original
 
@@ -3615,15 +3615,15 @@ types in declarations of return type and parameters to XSUBs.
 
 =end original
 
-Ʊ�� C �η������ۤʤä��Ѵ���ɬ�פȤ���ۤʤä�ʣ���Υ���ƥ����Ȥ�
-�Ȥ����硢���� C �η��˥ޥåԥ󥰤���뿷���������Ĥ��η���
-C<typedef> ���ơ������ο����������Ф����̡��� F<typemap> ����ȥ��
-�������ޤ���
-�����η����֤��ͤ������ XSUB �ؤΰ����˻Ȥ��ޤ���
+同じ C の型が、異なった変換を必要とする異なった複数のコンテキストで
+使われる場合、この C の型にマッピングされる新しいいくつかの型を
+C<typedef> して、これらの新しい型に対して別々の F<typemap> エントリを
+作成します。
+これらの型を返り値の宣言と XSUB への引数に使います。
 
 =head2 Perl Objects And C Structures
 
-(Perl �Υ��֥������Ȥ� C �ι�¤��)
+(Perl のオブジェクトと C の構造体)
 
 =begin original
 
@@ -3638,14 +3638,14 @@ is of the expected type.
 
 =end original
 
-C �ι�¤�Τ򰷤��Ȥ��ˤϡ�XS �η��Ȥ��� B<T_PTROBJ> �� B<T_PTRREF> ��
-�����줫�����򤹤٤��Ǥ���
-�������Ĥη���ʣ���ʥ��֥������ȤؤΥݥ��󥿤򰷤������
-�ǥ����󤵤�ޤ�����
-T_PTRREF ���� T_PTROBJ ���� bless ���줿���֥������Ȥ��׵᤹��Τ��Ф��ơ�
-bless ����Ƥ��ʤ� Perl ���֥������Ȥ�Ȥ����Ȥ��Ǥ��ޤ���
-T_PTROBJ ��Ȥ����Ȥˤ�äơ�XSUB �� Perl ���֥������Ȥ����Ԥ���
-���Ǥ��뤳�Ȥ��ǧ����褦�ˤʤ�Τǡ��������å���Ԥʤ����Ȥ��Ǥ��ޤ���
+C の構造体を扱うときには、XS の型として B<T_PTROBJ> か B<T_PTRREF> の
+いずれかを選択すべきです。
+これら二つの型は複雑なオブジェクトへのポインタを扱うために
+デザインされました。
+T_PTRREF 型は T_PTROBJ 型が bless されたオブジェクトを要求するのに対して、
+bless されていない Perl オブジェクトも使うことができます。
+T_PTROBJ を使うことによって、XSUB は Perl オブジェクトが期待する
+型であることを確認するようになるので、型チェックを行なうことができます。
 
 =begin original
 
@@ -3662,20 +3662,20 @@ which may have been malloc'd by another XSUB.
 
 =end original
 
-�ʲ��˼��� XS �����ɤ� ONC+ TIRPC �ȶ��˻Ȥ�줿
-�ؿ� getnetconfigent() �Ǥ���
-�ؿ� getnetconfigent() �� C �ι�¤�ΤؤΥݥ��󥿤��֤����ʲ��ˤ���褦��
-C �Υץ��ȥ����פ�����ޤ���
-������ϤɤΤ褦�ˤ��� C �Υݥ��󥿤� Perl �Υ�ե���󥹤ˤ��뤫��
-�����ޤ���
-Perl �Ϥ��Υ�ե���󥹤� bless ���줿���֥������ȤؤΥ�ե���󥹤�
-�ߤʤ��������ƥ��֥������Ȥ��Ф���ǥ��ȥ饯���θƤӽФ����ߤޤ���
-�ǥ��ȥ饯���� XS �Υ������ǡ�getnetconfigent() ���Ȥä������
-�������뤿����󶡤���ޤ���
-XS �ˤ���ǥ��ȥ饯���ϡ�B<DESTROY>�ǽ����̾���� XSUB �ؿ���
-���ꤹ�뤳�ȤǺ������뤳�Ȥ��Ǥ��ޤ���
-XS �ǥ��ȥ饯�����̤� XSUB �ˤ�äƳ�����Ƥ�줿 (malloc ���줿)
-�����������뤿��˻Ȥ����Ȥ�Ǥ��ޤ���
+以下に示す XS コードは ONC+ TIRPC と共に使われた
+関数 getnetconfigent() です。
+関数 getnetconfigent() は C の構造体へのポインタを返し、以下にあるような
+C のプロトタイプを持ちます。
+この例はどのようにして C のポインタを Perl のリファレンスにするかを
+示します。
+Perl はこのリファレンスを bless されたオブジェクトへのリファレンスと
+みなし、そしてオブジェクトに対するデストラクタの呼び出しを試みます。
+デストラクタは XS のソースで、getnetconfigent() が使ったメモリを
+解放するために提供されます。
+XS にあるデストラクタは、B<DESTROY>で終わる名前の XSUB 関数を
+指定することで作成することができます。
+XS デストラクタは別の XSUB によって割り当てられた (malloc された)
+メモリを解放するために使うこともできます。
 
      struct netconfig *getnetconfigent(const char *netid);
 
@@ -3691,14 +3691,14 @@ trim the name to the word DESTROY as Perl will expect.
 
 =end original
 
-C<typedef> �� C<struct netconfig> �Τ������������ޤ���
-Perl �Υ��֥������Ȥ� C �η���̾���ȥޥå����륯�饹�ˤ�����( C<Ptr>��
-�����������ղä����) bless ����ޤ���
-����̾���ϡ�Perl �Υѥå�����̾�Ȥ��ƻȤ��ΤǤ���ж����
-�ޤ�٤��ǤϤ���ޤ���
-�ǥ��ȥ饯���ϥ��֥������ȤΥ��饹���б����륯�饹���֤���ơ�
-������� PREFIX �� Perl �����Ԥ���褦�˥�� DESTOROY ��̾����
-�ڤ�ͤ��Τ˻Ȥ��ޤ���
+C<typedef> が C<struct netconfig> のために生成されます。
+Perl のオブジェクトは C の型の名前とマッチするクラスにおいて( C<Ptr>と
+いうタグが付加されて) bless されます。
+その名前は、Perl のパッケージ名として使うのであれば空白を
+含むべきではありません。
+デストラクタはオブジェクトのクラスに対応するクラスに置かれて、
+キーワード PREFIX は Perl が期待するようにワード DESTOROY の名前を
+切り詰めるのに使われます。
 
      typedef struct netconfig Netconfig;
 
@@ -3724,9 +3724,9 @@ section for more information about adding new typemaps for an extension.
 
 =end original
 
-�����ϡ��ʲ��ˤ��� typemap �Υ���ȥ꡼��ɬ�פȤ��ޤ���
-�������ƥ󥷥��Τ���˿����� typemap ���ɲä��뤳�Ȥ˴ؤ���ܺ٤�
-typemap ���������򻲾Ȥ��Ƥ���������
+上の例は、以下にある typemap のエントリーを必要とします。
+エクステンションのために新しい typemap を追加することに関する詳細は
+typemap セクションを参照してください。
 
      TYPEMAP
      Netconfig *  T_PTROBJ
@@ -3737,7 +3737,7 @@ This example will be used with the following Perl statements.
 
 =end original
 
-������ϼ��Τ褦�� Perl ʸ�ˤ�äƻȤ��ޤ���
+この例は次のような Perl 文によって使われます。
 
      use RPC;
      $netconf = getnetconfigent("udp");
@@ -3752,13 +3752,13 @@ getnetconfigent() XSUB and an object created by a normal Perl subroutine.
 
 =end original
 
-Perl �� $netconf �ˤ�äƥ�ե���󥹤���륪�֥������Ȥ�
-����(destroy)����Ȥ���
-���Υ��֥������Ȥ� (���Υ��֥������ȤΤ����) XSUB DESTROY �������ޤ���
-Perl �Ϥ��Υ��֥������Ȥ� C �ι�¤�ΤʤΤ���Perl �Υ��֥������ȤǤʤΤ���
-���ꤹ�뤳�ȤϽ���ޤ��󤷡����ˤ��뤳�Ȥ⤢��ޤ���
-���ΰ�̣�Ǥϡ�getnetconfigent() XSUB �ˤ�äƺ��줿���֥������Ȥ�
-�̾�� Perl ���֥롼����ˤ�äƺ��줿���֥������Ȥˤϰ㤤�Ϥ���ޤ���
+Perl が $netconf によってリファレンスされるオブジェクトを
+始末(destroy)するとき、
+そのオブジェクトに (そのオブジェクトのための) XSUB DESTROY が送られます。
+Perl はそのオブジェクトが C の構造体なのか、Perl のオブジェクトでなのかを
+決定することは出来ませんし、気にすることもありません。
+この意味では、getnetconfigent() XSUB によって作られたオブジェクトと
+通常の Perl サブルーチンによって作られたオブジェクトには違いはありません。
 
 =head2 The Typemap
 
@@ -3781,21 +3781,21 @@ in the first column on a line by themselves, and must be in uppercase.
 
 =end original
 
-typemap �� C �ؿ��ΰ������ͤ� Perl ���ͤ˥ޥåԥ󥰤��뤿��� B<xsubpp>
-����ѥ���ˤ�äƻȤ��륳�����Ҥν���(collection)�Ǥ���
-typemap �ե������ C<TYPEMAP>, C<INPUT>, C<OUTPUT> �Ȥ�����٥���դ���
-���ĤΥ�������󤫤鹽������ޤ���
-��٥�ΤĤ��Ƥ��ʤ���������������ϡ�C<TYPEMAP> �Ǥ��뤫�Τ褦��
-���ꤵ��ޤ���
-INPUT ���������ϡ�����ѥ�����Ф��� Perl ���ͤ�ɤΤ褦��
-(���Ĥ�����) C �η����Ѵ����뤫��ؼ����ޤ���
-OUTPUT ���������ϡ�����ѥ�����Ф��ƤɤΤ褦�ˤ��� C �η��� Perl ��
-ǧ���Ǥ����ͤ��Ѵ�����Τ���ؼ����ޤ���
-TYPEMAP ���������ϡ�����ѥ�����Ф��ƻؼ����줿 C �η��� Perl ���ͤ�
-�ޥåԥ󥰤���Τ˻Ȥ��٤� INPUT ���������⤷���� OUTPUT ����������
-���륳�����Ҥ�ؼ����ޤ���
-����������٥� C<TYPEMAP>, C<INPUT>, C<OUTPUT> �ϹԤ���Ƭ�ˤ����졢
-��ʸ���Ǥʤ���Фʤ�ޤ���
+typemap は C 関数の引数と値を Perl の値にマッピングするために B<xsubpp>
+コンパイラによって使われるコード片の集合(collection)です。
+typemap ファイルは C<TYPEMAP>, C<INPUT>, C<OUTPUT> というラベルの付いた
+三つのセクションから構成されます。
+ラベルのついていない初期化セクションは、C<TYPEMAP> であるかのように
+仮定されます。
+INPUT セクションは、コンパイラに対して Perl の値をどのように
+(幾つかある) C の型に変換するかを指示します。
+OUTPUT セクションは、コンパイラに対してどのようにして C の型を Perl が
+認識できる値に変換するのかを指示します。
+TYPEMAP セクションは、コンパイラに対して指示された C の型を Perl の値に
+マッピングするのに使うべき INPUT セクションもしくは OUTPUT セクションに
+あるコード片を指示します。
+セクションラベル C<TYPEMAP>, C<INPUT>, C<OUTPUT> は行の先頭におかれ、
+大文字でなければなりません。
 
 =begin original
 
@@ -3808,14 +3808,14 @@ override any mappings which are in the default typemap.
 
 =end original
 
-Perl �Υ������� C<lib/ExtUtils> �ǥ��쥯�ȥ�ˤ���ǥե���Ȥ� typemap ��
-Perl �Υ������ƥ󥷥�󤫤�Ȥ����ȤΤǤ��뤿������������ʷ�������ޤ���
-�����Υ������ƥ󥷥��ǤϤ���˸�ͭ�Υǥ��쥯�ȥ�ˡ�typemap ���Ф���
-�ɲä�������֤��Ƥ��ޤ���
-�������ɲä��줿 typemap �ϥᥤ��� typemap �ˤ��� INPUT �� OUTPUT ��
-�ޥåԥ󥰤򻲾Ȥ��뤳�Ȥ��Ǥ��ޤ���
-B<xsubpp> ����ѥ���ϡ��������ƥ󥷥��˸�ͭ�� typemap ��
-�ǥե���Ȥ�typemap�ˤ���ޥåԥ󥰤򥪡��С��饤�ɤ��뤳�Ȥ�����Ƥ��ޤ���
+Perl のソースの C<lib/ExtUtils> ディレクトリにあるデフォルトの typemap は
+Perl のエクステンションから使うことのできるたくさんの便利な型があります。
+一部のエクステンションではそれに固有のディレクトリに、typemap に対する
+追加の定義を置いています。
+これらの追加された typemap はメインの typemap にある INPUT や OUTPUT の
+マッピングを参照することができます。
+B<xsubpp> コンパイラは、エクステンションに固有の typemap が
+デフォルトのtypemapにあるマッピングをオーバーライドすることを許しています。
 
 =begin original
 
@@ -3829,15 +3829,15 @@ that the C unary operator C<*> is considered to be a part of the C type name.
 
 =end original
 
-�������� typemap ���׵᤹�륨�����ƥ󥷥��ΤۤȤ�ɤϡ�typemap �ե������
-TYEPMAP��������������ɬ�פȤ��Ƥ��ޤ���
-�������� typemap �� getnetconfigent() ����ǳ�ĥ typemap ��ŵ��Ū��
-������Ȥ��ƻȤ��Ƥ��ޤ���
-�������ä� typemap �� C �ι�¤�Τ� T_PTROBJ tyepmap �Ȱ��פ����뤿���
-�Ȥ��Ƥ��ޤ���
-getnetconfigent() �ǻȤ��� typemap �򤳤��Ǽ����ޤ���
-C �η��� XS �η��ȥ��֤�ʬ�����Ƥ��ơ�C ��ñ��黻�� C<*> �� C �η�̾��
-�����Ȥ��Ƥߤʤ���뤳�Ȥ����դ��Ƥ���������
+カスタム typemap を要求するエクステンションのほとんどは、typemap ファイルの
+TYEPMAPセクションだけを必要としています。
+カスタム typemap は getnetconfigent() の例で拡張 typemap の典型的な
+使用例として使われています。
+そういった typemap は C の構造体を T_PTROBJ tyepmap と一致させるために
+使われています。
+getnetconfigent() で使われる typemap をここで示します。
+C の型は XS の型とタブで分けられていて、C の単項演算子 C<*> は C の型名の
+一部としてみなされることに注意してください。
 
 	TYPEMAP
 	Netconfig *<tab>T_PTROBJ
@@ -3850,11 +3850,11 @@ this is to use underscores (_) to separate package names, as follows:
 
 =end original
 
-��ä�ʣ�������󤲤ޤ��礦��
-C<struct netconfig> �� C<Net::Config> �Ȥ������饹�� bless ��������
-�ͤ��Ƥ���Ȳ��ꤷ�ޤ��礦��
-�����Ԥ�������ΰ�Ĥϡ��������������(_)��ʲ����ͤ˥ѥå�����̾��
-���ڤ뤿��˻Ȥ��Ȥ�����ΤǤ���
+もっと複雑な例を挙げましょう。
+C<struct netconfig> を C<Net::Config> というクラスに bless したいと
+考えていると仮定しましょう。
+これを行うやり方の一つは、アンダースコア(_)を以下の様にパッケージ名を
+区切るために使うというものです。
 
         typedef struct netconfig * Net_Config;
 
@@ -3865,9 +3865,9 @@ double-colons (::), and declare C<Net_Config> to be of that type:
 
 =end original
 
-���줫�饢���������������֥륳����(::)�˥ޥåפ��� typemap
-����ȥ꡼ C<T_PTROBJ_SPECIAL> ���Ѱդ��ơ�C<Net_Config> �򤽤η���
-����������ޤ���
+それからアンダースコアをダブルコロン(::)にマップする typemap
+エントリー C<T_PTROBJ_SPECIAL> を用意して、C<Net_Config> をその型と
+して宣言します。
 
         TYPEMAP
         Net_Config      T_PTROBJ_SPECIAL
@@ -3894,9 +3894,9 @@ of the power and versatility of the typemap facility.
 
 =end original
 
-INPUT ���������� OUTPUT ���������ϥ����������������֥륳�����
-���ξ���ִ����ơ����Ԥ������̤�⤿�餷�ޤ���
-������Ǥ� typemap �����ΰ��Ϥ�Ŭ���ϰϤι������㼨���ޤ���
+INPUT セクションと OUTPUT セクションはアンダースコアをダブルコロンへ
+その場で置換して、期待される効果をもたらします。
+この例では typemap 機構の威力と適用範囲の広さを例示します。
 
 =begin original
 
@@ -3907,15 +3907,15 @@ to map the other way, which may be useful in OUTPUT sections.
 
 =end original
 
-(perl.h ���������Ƥ���) INT2PTR �ޥ����ϡ���������Ϳ����줿����
-�ݥ��󥿤ؤΥ��㥹�Ȥ������ȥݥ��󥿤ȤΥ��������ۤʤ��ǽ����
-��θ���ĤĹԤ��ޤ���
-�ޤ���OUTPUT ����������ͭ�Ѥ��⤷��ʤ���¾����ˡ�ǥޥåԥ󥰤��롢
-PTR2IV, PTR2UV, PTR2NV �ޥ����⤢��ޤ���
+(perl.h に定義されている) INT2PTR マクロは、整数から与えられた型の
+ポインタへのキャストを、整数とポインタとのサイズが異なる可能性を
+考慮しつつ行います。
+また、OUTPUT セクションで有用かもしれない、他の方法でマッピングする、
+PTR2IV, PTR2UV, PTR2NV マクロもあります。
 
 =head2 Safely Storing Static Data in XS
 
-(XS ����Ū�ǡ���������˳�Ǽ����)
+(XS に静的データを安全に格納する)
 
 =begin original
 
@@ -3925,9 +3925,9 @@ a multi-threaded Perl.
 
 =end original
 
-Perl 5.8 ���顢�ޥ����ե졼�����ϡ��ޥ������å� Perl ����
-������������� XS �⥸�塼��ǰ������ݴɤ������Ū�ǡ���������褦��
-�������Ƥ��ޤ���
+Perl 5.8 から、マクロフレームワークは、マルチスレッド Perl から
+アクセスされる XS モジュールで安全に保管される静的データを許すように
+定義されています。
 
 =begin original
 
@@ -3936,8 +3936,8 @@ have been designed so that they will work with non-threaded Perl as well.
 
 =end original
 
-�ޥ����ϴ���Ū�ˤϥޥ������å� Perl �ǻȤ���褦���߷פ���Ƥ��ޤ�����
-�󥹥�å� Perl �Ǥ�ư���褦���߷פ���Ƥ��ޤ���
+マクロは基本的にはマルチスレッド Perl で使えるように設計されていますが、
+非スレッド Perl でも動作するように設計されています。
 
 =begin original
 
@@ -3946,8 +3946,8 @@ XS modules that make use of static data.
 
 =end original
 
-���äơ���Ū�ǡ�����Ȥ����Ƥ� XS �⥸�塼��ǤϤ����Υޥ�����Ȥ����Ȥ�
-�����侩����ޤ���
+従って、静的データを使う全ての XS モジュールではこれらのマクロを使うことが
+強く推奨されます。
 
 =begin original
 
@@ -3956,9 +3956,9 @@ the C<-g> (C<--global>) option with h2xs (see L<h2xs>).
 
 =end original
 
-�Ȥ��ޥ����Υƥ�ץ졼�Ȥ����뤿��κǤ��ñ����ˡ�ϡ�h2xs ��
-C<-g> (C<--global>) ���ץ�������ꤹ�뤳�ȤǤ�
-(L<h2xs> �򻲾Ȥ��Ƥ�������)��
+使うマクロのテンプレートを得るための最も簡単な方法は、h2xs に
+C<-g> (C<--global>) オプションを指定することです
+(L<h2xs> を参照してください)。
 
 =begin original
 
@@ -3966,7 +3966,7 @@ Below is an example module that makes use of the macros.
 
 =end original
 
-�ʲ��ϥޥ�����Ȥä�����ץ�⥸�塼��Ǥ���
+以下はマクロを使ったサンプルモジュールです。
 
     #include "EXTERN.h"
     #include "perl.h"
@@ -4042,11 +4042,11 @@ and the module version number.
 
 =end original
 
-���Υޥ����ϡ�XS �⥸�塼��Τ������Ū�ǡ����򻲾Ȥ��뤿��Υ�ˡ�����
-������������뤿��˻Ȥ��ޤ���
-h2xs �ǻȤ��Ƥ��롢�侩�����̿̾��������ϡ��⥸�塼��̾��
-ʸ���� "::_guts"���⥸�塼��ΥС�������ֹ桢����ʤ�ʸ�����
-�Ȥ����ȤǤ���
+このマクロは、XS モジュールのための静的データを参照するためのユニークな
+キーを定義するために使われます。
+h2xs で使われている、推奨される命名スキームは、モジュール名、
+文字列 "::_guts"、モジュールのバージョン番号、からなる文字列を
+使うことです。
 
     #define MY_CXT_KEY "MyModule::_guts" XS_VERSION
 
@@ -4059,8 +4059,8 @@ C<CXT*> macros assume the existence of the C<my_cxt_t> typedef name.
 
 =end original
 
-���ι�¤�� typedef �Ͼ�� C<my_cxt_t> ���� I<�ƤӽФ���ʤ���Фʤ�ޤ���>
--- ����¾�� C<CXT*> �ޥ����� C<my_cxt_t> typedef ̾��¸�ߤ��ꤷ�ޤ���
+この構造体 typedef は常に C<my_cxt_t> から I<呼び出されなければなりません>
+-- その他の C<CXT*> マクロは C<my_cxt_t> typedef 名の存在を仮定します。
 
 =begin original
 
@@ -4069,8 +4069,8 @@ all the data that needs to be interpreter-local.
 
 =end original
 
-���󥿥ץ꥿��������ˤ���ɬ�פ��������ƤΥǡ�����ޤ๽¤�ΤǤ���
-C<my_cxt_t> �Ȥ���̾���� typedef ��������ޤ���
+インタプリタローカルにする必要がある全てのデータを含む構造体である
+C<my_cxt_t> という名前の typedef を宣言します。
 
     typedef struct {
         int some_value;
@@ -4085,7 +4085,7 @@ of C<my_cxt_t>.
 
 =end original
 
-C<my_cxt_t> �������ľ��ˤϾ�� START_MY_CXT �ޥ������֤��ޤ���
+C<my_cxt_t> の宣言の直後には常に START_MY_CXT マクロを置きます。
 
 =item MY_CXT_INIT
 
@@ -4095,7 +4095,7 @@ The MY_CXT_INIT macro initialises storage for the C<my_cxt_t> struct.
 
 =end original
 
-MY_CXT_INIT �ޥ����� C<my_cxt_t> ��¤�ΤΤ������¸�����������ޤ���
+MY_CXT_INIT マクロは C<my_cxt_t> 構造体のための保存場所を初期化します。
 
 =begin original
 
@@ -4103,8 +4103,8 @@ It I<must> be called exactly once -- typically in a BOOT: section.
 
 =end original
 
-��������Τ� I<1 �����> �ƤӽФ���ʤ���Фʤ�ޤ��� -- ŵ��Ū�ˤ�
-BOOT: ���������ǤǤ���
+これは正確に I<1 回だけ> 呼び出されなければなりません -- 典型的には
+BOOT: セクションでです。
 
 =item dMY_CXT
 
@@ -4115,7 +4115,7 @@ MY_CXT.
 
 =end original
 
-MY_CXT �˥��������������Ƥδؿ��� dMY_CXT �ޥ���(���) ��Ȥ��ޤ���
+MY_CXT にアクセスする全ての関数で dMY_CXT マクロ(宣言) を使います。
 
 =item MY_CXT
 
@@ -4126,8 +4126,8 @@ example, if C<my_cxt_t> is
 
 =end original
 
-C<my_cxt_t> ��¤�ΤΥ��Ф˥����������뤿��� MY_CXT �ޥ�����Ȥ��ޤ���
-�㤨�С��⤷ C<my_cxt_t> ��
+C<my_cxt_t> 構造体のメンバにアクセスするために MY_CXT マクロを使います。
+例えば、もし C<my_cxt_t> が
 
     typedef struct {
         int index;
@@ -4139,7 +4139,7 @@ then use this to access the C<index> member
 
 =end original
 
-�ʤ顢����� C<index> ���ФΥ��������˻Ȥ��ޤ�:
+なら、これを C<index> メンバのアクセスに使います:
 
     dMY_CXT;
     MY_CXT.index = 2;
@@ -4148,7 +4148,7 @@ then use this to access the C<index> member
 
 =head1 EXAMPLES
 
-(��)
+(例)
 
 =begin original
 
@@ -4156,7 +4156,7 @@ File C<RPC.xs>: Interface to some ONC+ RPC bind library functions.
 
 =end original
 
-�ե����� C<RPC.xs>: ONC+ RPC bind �饤�֥��ؿ����Ф��륤�󥿡��ե�������
+ファイル C<RPC.xs>: ONC+ RPC bind ライブラリ関数に対するインターフェース。
 
      #include "EXTERN.h"
      #include "perl.h"
@@ -4197,7 +4197,7 @@ File C<typemap>: Custom typemap for RPC.xs.
 
 =end original
 
-�ե����� C<typemap>: RPC.xs �Τ���Υ������� typemap��
+ファイル C<typemap>: RPC.xs のためのカスタム typemap。
 
 
 
@@ -4210,7 +4210,7 @@ File C<RPC.pm>: Perl module for the RPC extension.
 
 =end original
 
-�ե����� C<RPC.pm>: RPC �������ƥ󥷥��Τ���� Perl �⥸�塼�롣
+ファイル C<RPC.pm>: RPC エクステンションのための Perl モジュール。
 
      package RPC;
 
@@ -4228,8 +4228,8 @@ File C<rpctest.pl>: Perl test program for the RPC extension.
 
 =end original
 
-�ե����� C<rpctest.pl>: RPC �������ƥ󥷥��Τ���� Perl ��
-�ƥ��ȥץ�����ࡣ
+ファイル C<rpctest.pl>: RPC エクステンションのための Perl の
+テストプログラム。
 
      use RPC;
 
@@ -4245,7 +4245,7 @@ File C<rpctest.pl>: Perl test program for the RPC extension.
 
 =head1 XS VERSION
 
-(XS �С������)
+(XS バージョン)
 
 =begin original
 
@@ -4253,11 +4253,11 @@ This document covers features supported by C<xsubpp> 1.935.
 
 =end original
 
-���Υɥ�����Ȥ� C<xsubpp> 1.936 ���б����Ƥ��뵡ǽ���б����Ƥ��ޤ���
+このドキュメントは C<xsubpp> 1.936 で対応している機能に対応しています。
 
 =head1 AUTHOR
 
-(����)
+(著者)
 
 =begin original
 
@@ -4265,7 +4265,7 @@ Originally written by Dean Roehrich <F<roehrich@cray.com>>.
 
 =end original
 
-��ʸ�� Dean Roehrich <F<roehrich@cray.com>> �ˤ�äƽ񤫤�ޤ�����
+原文は Dean Roehrich <F<roehrich@cray.com>> によって書かれました。
 
 =begin original
 
@@ -4273,8 +4273,8 @@ Maintained since 1996 by The Perl Porters <F<perlbug@perl.org>>.
 
 =end original
 
-1996 ǯ���顢The Perl Porters <F<perlbug@perl.org>> �ˤ�ä�
-�ݼ餵��Ƥ��ޤ���
+1996 年から、The Perl Porters <F<perlbug@perl.org>> によって
+保守されています。
 
 =begin meta
 

@@ -9,7 +9,7 @@ perlpacktut - tutorial on C<pack> and C<unpack>
 
 =end original
 
-perlpacktut - C<pack> �� C<unpack> �Υ��塼�ȥꥢ��
+perlpacktut - C<pack> と C<unpack> のチュートリアル
 
 =head1 DESCRIPTION
 
@@ -24,16 +24,16 @@ provides. This tutorial will demystify them for you.
 
 =end original
 
-C<pack> �� C<unpack> �ϡ��桼��������������ƥ�ץ졼�Ȥ˽��äơ�
-Perl ���ͤ��ݴɤ����ݸ�줿��ˡ�ȡ�Perl �ץ������δĶ���ɬ�פˤʤ�
-���⤷��ʤ��褯������줿ɽ���δ֤��Ѵ�������Ĥδؿ��Ǥ���
-��ǰ�ʤ��顢������ Perl ���󶡤���ؿ�����Ǥ�äȤ���򤵤졢
-��äȤ⸫��Ȥ���䤹���ؿ��Ǥ⤢��ޤ���
-���Υ��塼�ȥꥢ��ǤϤ�����ʬ����䤹���������ޤ���
+C<pack> と C<unpack> は、ユーザーが定義したテンプレートに従って、
+Perl が値を保管する保護された方法と、Perl プログラムの環境で必要になる
+かもしれないよく定義された表現の間を変換する二つの関数です。
+残念ながら、これらは Perl が提供する関数の中でもっとも誤解され、
+もっとも見落とされやすい関数でもあります。
+このチュートリアルではこれらを分かりやすく説明します。
 
 =head1 The Basic Principle
 
-(���ܸ���)
+(基本原理)
 
 =begin original
 
@@ -45,10 +45,10 @@ to your heart's content.
 
 =end original
 
-¿���Υץ�����ߥ󥰸�����ѿ�����Ǽ����Ƥ��������ݸ�Ƥ��ޤ���
-�㤨�С�C �Ǥϡ������ѿ��Υ��ɥ쥹������Ǥ��ޤ�����
-C<sizeof> �黻�Ҥ��ѿ��˲��Х��ȳ�����Ƥ��Ƥ��뤫���֤��ޤ���
-���ɥ쥹�ȥ�������Ȥäơ���¡���ˤ��륹�ȥ졼���˥��������Ǥ��ޤ���
+多くのプログラミング言語は変数が格納されているメモリを保護していません。
+例えば、C では、ある変数のアドレスを取得できますし、
+C<sizeof> 演算子は変数に何バイト割り当てられているかを返します。
+アドレスとサイズを使って、心臓部にあるストレージにアクセスできます。
 
 =begin original
 
@@ -63,15 +63,15 @@ a very common experience as seasoned travellers are likely to confirm.)
 
 =end original
 
-Perl �Ǥϡ�����˥�����˥����������뤳�ȤϤǤ��ޤ��󤬡�C<pack> ��
-C<unpack> �ˤ�ä��󶡤���빽¤Ū�����ɽ��Ū���Ѵ��������餷��
-���ذƤǤ���
-C<pack> �ؿ��ϡ��ͤ򡢡֥ƥ�ץ졼�ȡװ����ȸƤФ����Ѥ˽��ä�ɽ����ޤ�
-�Х�������Ѵ����ޤ���
-C<unpack> �ϵս����ǡ��Х��Ȥ��¤Ӥ����ͤ�����Ф��ޤ���
-(��������pack ���줿���ƤΥǡ��������ޤ� unpack �Ǥ���Ȥ����櫓�Ǥ�
-�ʤ��Ȥ������Ȥ����դ��Ƥ������� - �и�˭����ι�ͤ���ǧ�������ʡ��ȤƤ�
-����Ū�ʷи��Ǥ���)
+Perl では、メモリにランダムにアクセスすることはできませんが、C<pack> と
+C<unpack> によって提供される構造的および表現的な変換は素晴らしい
+代替案です。
+C<pack> 関数は、値を、「テンプレート」引数と呼ばれる使用に従った表現を含む
+バイト列に変換します。
+C<unpack> は逆処理で、バイトの並びから値を引き出します。
+(しかし、pack された全てのデータがうまく unpack できるというわけでは
+ないということは注意してください - 経験豊かな旅人が確認しそうな、とても
+一般的な経験です。)
 
 =begin original
 
@@ -87,16 +87,16 @@ of these two functions.
 
 =end original
 
-���ʤ��Ϥɤ����ƥХ��ʥ�ɽ��������ͤ��ޤޤ�Ƥ������β���
-ɬ�פʤΤ������䤦���⤷��ޤ���
-�褤��ͳ�ΰ�Ĥϡ��ե����롢�ǥХ������ͥåȥ����³�˥�����������
-�����Ϥǡ����ΥХ��ʥ�ɽ�����������줿��Τ����������뤿��ˤ����餫��
-���פ�������Ǥ���
-�⤦��Ĥθ����ϡ�Perl �ؿ��Ȥ������ѤǤ��ʤ������ƥॳ����˥ǡ�����
-�Ϥ��Ȥ��Ǥ�: C<syscall> �� C �ץ������ǤΤ褦�ʷ����ݴɤ��줿������
-�󶡤��뤳�Ȥ��׵ᤷ�ޤ���
-(�ʲ��ξϤǼ����褦��) �ƥ����Ƚ����Ǥ��顢����� 2 �Ĥδؿ�������
-�Ȥ����Ȥ�ñ�㲽�Ǥ��ޤ���
+あなたはどうしてバイナリ表現の中に値が含まれているメモリの塊が
+必要なのか、と問うかもしれません。
+よい理由の一つは、ファイル、デバイス、ネットワーク接続にアクセスする
+入出力で、このバイナリ表現が強制されたものか、処理するためにいくらかの
+利益がある場合です。
+もう一つの原因は、Perl 関数として利用できないシステムコールにデータを
+渡すときです: C<syscall> は C プログラムでのような形で保管された引数を
+提供することを要求します。
+(以下の章で示すように) テキスト処理ですら、これら 2 つの関数を賢明に
+使うことで単純化できます。
 
 =begin original
 
@@ -111,14 +111,14 @@ about its meaning, we can write
 
 =end original
 
-(un)pack ���ɤΤ褦��Ư���Τ��򸫤뤿��ˡ��Ѵ����Τ��Τ��ȹԤ���ñ���
-�ƥ�ץ졼�ȥ����ɤ���Ϥ�ޤ��礦: �Х��ȥ������󥹤� 16 �ʿ���ʸ����Ȥ�
-�Ѵ��Ǥ���
-C<unpack> ��Ȥ��ޤ��礦; �ʤ��ʤ餳��ϥ���ץץ������䡢
-�Թ��ʥץ�����ब©�����������ˤ��ʤ����ꤲ�����뤳�Ȥ���ȤʤäƤ���
-��˾Ū�ʺǸ�Υ�å�������פ��Ф�������������Ǥ���
-�ѿ� C<$mem> �ˡ����ΰ�̣�ˤĤ��Ʋ��β���⤪������Ĵ���������Х�����
-���äƤ���Ȳ��ꤹ��ȡ��ʲ��Τ褦�˽񤭤ޤ�:
+(un)pack がどのように働くのかを見るために、変換がのろのろと行われる単純な
+テンプレートコードから始めましょう: バイトシーケンスと 16 進数の文字列との
+変換です。
+C<unpack> を使いましょう; なぜならこれはダンププログラムや、
+不幸なプログラムが息を引き取る前にあなたに投げかけることが常となっている
+絶望的な最後のメッセージを思い出させそうだからです。
+変数 C<$mem> に、その意味について何の仮定もおかずに調査したいバイト列が
+入っていると仮定すると、以下のように書きます:
 
    my( $hex ) = unpack( 'H*', $mem );
    print "$hex\n";
@@ -130,8 +130,8 @@ corresponding to a byte:
 
 =end original
 
-����Ȥ����ˡ�1 �Х��Ȥ��б����� 16 �ʿ� 2 ʸ�����б����롢�ʲ��Τ褦��
-��Τ�ɽ������ޤ�:
+するとすぐに、1 バイトに対応して 16 進数 2 文字が対応する、以下のような
+ものが表示されます:
 
    41204d414e204120504c414e20412043414e414c2050414e414d41
 
@@ -153,22 +153,22 @@ remains.
 
 =end original
 
-���Υ���β��Ϥʤ�Ǥ��礦?
-���͡�ʸ�������뤤�Ϥ����κ���Ǥ��礦��?
-�ȤäƤ��륳��ԥ塼���� ASCII ���󥳡��ǥ��� (���뤤�ϻ����褦�ʤ��) ��
-�ȤäƤ���Ȳ��ꤷ�ޤ�: C<0x40> - C<0x5A> �ϰϤ� 16 �ʿ�����ʸ����
-�����Ƥ��ơ�C<0x20> �϶���򥨥󥳡��ɤ�����ΤǤ���
-����ǡ�����ϡ����֥����ɤΤ褦���ɤळ�ȤΤǤ���ƥ����Ȥ����Ҥ�
-����Ǥ��ޤ�; ����¾�� ASCII �ơ��֥����ä� 1 ǯ���δ��Ф�פ��Ф�
-ɬ�פ�����ޤ���
-�����ɤΤ褦�ˤ����ɤफ�ˤĤ��ƤϤ��ޤ굤�ˤ��ʤ����Ȥˤ��ơ�
+このメモリの塊はなんでしょう?
+数値、文字、あるいはそれらの混合でしょうか?
+使っているコンピュータが ASCII エンコーディング (あるいは似たようなもの) を
+使っていると仮定します: C<0x40> - C<0x5A> 範囲の 16 進数は大文字を
+示していて、C<0x20> は空白をエンコードしたものです。
+それで、これは、タブロイドのように読むことのできるテキストの断片と
+仮定できます; その他は ASCII テーブルを持って 1 年生の感覚を思い出す
+必要があります。
+これをどのようにして読むかについてはあまり気にしないことにして、
 we note that 
-C<unpack> �Υƥ�ץ졼�ȥ����� C<H> �ϥХ���������Ƥ򤤤Ĥ�� 16 ��ɽ����
-�Ѵ����뤳�Ȥ����ܤ��ޤ���
-����פȤ����Τ��̤ˤĤ��Ƥ����ޤ��ʤΤǡ�
-C<H> �ϡ�����³���Ʒ����֤�������ʤ�����ñ�� 1 �Ĥ� 16 �ʿ���
-�Ѵ�����褦���������Ƥ��ޤ���
-�����֤����ǤΥ������ꥹ���ϡ��ĤäƤ��������Ƥ�Ȥ����Ȥ��̣���ޤ���
+C<unpack> のテンプレートコード C<H> はバイト列の内容をいつもの 16 進表記に
+変換することに注目します。
+「列」というのは量についてあいまいなので、
+C<H> は、引き続いて繰り返し回数がない場合は単に 1 つの 16 進数を
+変換するように定義されています。
+繰り返し数でのアスタリスクは、残っているもの全てを使うことを意味します。
 
 =begin original
 
@@ -177,8 +177,8 @@ digits - is just as easily written. For instance:
 
 =end original
 
-����� - 16 �ʿ���ʸ���󤫤�Х��Ȥ����Ƥ� pack ���� - �ϴ�ñ�˽񤱤ޤ���
-�㤨��:
+逆操作 - 16 進数の文字列からバイトの内容に pack する - は簡単に書けます。
+例えば:
 
    my $s = pack( 'H2' x 10, map { "3$_" } ( 0..9 ) );
    print "$s\n";
@@ -191,15 +191,15 @@ with ASCII character coding, it will print C<0123456789>.
 
 =end original
 
-16 �ʤ� 2 ��ο��ͤ򼨤�ʸ���� 10 �Ĥ���ʤ�ꥹ�Ȥ� C<pack> ��
-�Ϥ��Ƥ���Τǡ�pack �ƥ�ץ졼�Ȥ� 10 �Ĥ� pack �����ɤ�ޤ�Ǥ���
-ɬ�פ�����ޤ���
-���줬 ASCII ʸ�������ɤΥ���ԥ塼���Ǽ¹Ԥ����ȡ�C<0123456789> ��
-ɽ�����ޤ���
+16 進で 2 桁の数値を示す文字列 10 個からなるリストを C<pack> に
+渡しているので、pack テンプレートは 10 個の pack コードを含んでいる
+必要があります。
+これが ASCII 文字コードのコンピュータで実行されると、C<0123456789> を
+表示します。
 
 =head1 Packing Text
 
-(�ƥ����Ȥ�ѥå�����)
+(テキストをパックする)
 
 =begin original
 
@@ -207,7 +207,7 @@ Let's suppose you've got to read in a data file like this:
 
 =end original
 
-�ʲ��Τ褦�ʥǡ����ե�������ɤ߹��ळ�Ȥ�ͤ��ޤ�:
+以下のようなデータファイルを読み込むことを考えます:
 
     Date      |Description                | Income|Expenditure
     01/24/2001 Ahmed's Camel Emporium                  1147.99
@@ -222,11 +222,11 @@ income or expenditure. Oops. Well, you could always use C<substr>:
 
 =end original
 
-�ɤ�����Ф����Ǥ��礦?
-�ǽ�˻פ��Ĥ��Τ� C<split> ���⤷��ޤ���;
-��������C<split> �϶���Υե�����ɤ�����Ƥ��ޤ��Τǡ�
-���Υ쥳���ɤ��������ä����ٽФ��ä���ʬ����ޤ��󡣤���顣
-�Ǥϡ�C<substr> ��Ȥ��Ȥɤ��Ǥ��礦:
+どうすればいいでしょう?
+最初に思いつくのは C<split> かもしれません;
+しかし、C<split> は空白のフィールドを壊してしまうので、
+そのレコードが収入だったか支出だったが分かりません。あらら。
+では、C<substr> を使うとどうでしょう:
 
     while (<>) { 
         my $date   = substr($_,  0, 11);
@@ -246,11 +246,11 @@ as horribly unfriendly.
 
 =end original
 
-����Ϥ��ޤ������ǤϤʤ��Ǥ����?
-�ºݡ�����ϻפä���갭���Ǥ�; ���տ����ͤϺǽ�Υե�����ɤ� 10 ʸ��ʬ����
-�ʤ������顼��¾�ο��ͤ˳��礷�Ƥ��ޤ� - ��ǿ����ʤ���Фʤ�ޤ��� -
-���Ȥ˵��դ��Ǥ��礦��
-���äơ�����϶��������Կ��ڤǤ����Ʊ�͡��ְ㤤��ȯ�����䤹���Ǥ���
+これはあまり愉快ではないですよね?
+実際、これは思ったより悪いです; 注意深い人は最初のフィールドが 10 文字分しか
+なく、エラーが他の数値に拡大してしまう - 手で数えなければなりません -
+ことに気付くでしょう。
+従って、これは恐ろしく不親切であると同様、間違いが発生しやすいです．
 
 =begin original
 
@@ -258,7 +258,7 @@ Or maybe we could use regular expressions:
 
 =end original
 
-���뤤������ɽ����Ȥ��ޤ�:
+あるいは正規表現も使えます:
 
     while (<>) { 
         my($date, $desc, $income, $expend) = 
@@ -273,8 +273,8 @@ that?
 
 =end original
 
-���濫�������ȡ������ޤ��Ǥ���
-������ - �����ȡ�������ݼ餷�����Ȼפ��ޤ�?
+うわあ。えーと、少しましです。
+しかし - えーと、これを保守したいと思います?
 
 =begin original
 
@@ -285,11 +285,11 @@ look at a solution with C<unpack>:
 
 =end original
 
-�ͤ���Perl �Ϥ��μ�Τ��Ȥ��ñ�ˤǤ��ʤ���?
-�������Ǥ��ޤ���������ƻ���Ȥ��С�
-C<pack> �� C<unpack> �Ͼ嵭�Τ褦�ʸ���Ĺ�ǡ����򰷤�����
-�����ˤʤ�褦���߷פ���Ƥ��ޤ���
-C<unpack> �ˤ���ˡ�򸫤Ƥߤޤ��礦:
+ねえ、Perl はこの手のことを簡単にできないの?
+ええ、できます、正しい道具を使えば。
+C<pack> と C<unpack> は上記のような固定長データを扱う時の
+助けになるように設計されています。
+C<unpack> による解法を見てみましょう:
 
     while (<>) { 
         my($date, $desc, $income, $expend) = unpack("A10xA27xA7A*", $_);
@@ -303,9 +303,9 @@ Where did I pull that out of?
 
 =end original
 
-����Ϥ���äȤޤ��˸����ޤ�;
-�Ǥ��Ѥʥƥ�ץ졼�Ȥ�ʬ�Ϥ��ʤ���Фʤ�ޤ���
-����Ϥɤ������褿�ΤǤ��礦?
+これはちょっとましに見えます;
+でも変なテンプレートを分析しなければなりません。
+これはどこから来たのでしょう?
 
 =begin original
 
@@ -314,9 +314,9 @@ the headers, and a handy ruler so we can keep track of where we are.
 
 =end original
 
-��������������ǥǡ�����⤦���ٸ��Ƥߤޤ��礦;
-�ºݡ��إå���ޤ�ơ����򤷤Ƥ��뤫���ɤ������뤿���
-��񤭤���������դ��Ƥ��ޤ���
+よろしい、ここでデータをもう一度見てみましょう;
+実際、ヘッダも含めて、何をしているかを追いかけるために
+手書きの目盛りも付けています。
 
              1         2         3         4         5        
     1234567890123456789012345678901234567890123456789012345678
@@ -333,10 +333,10 @@ dates, we could say this:
 
 =end original
 
-�������顢���դη�� 1 ���ܤ��� 10 ���ܤޤ� - 10 ʸ�����������뤳�Ȥ�
-�狼��ޤ���
-��ʸ���פΥѥå��� C<A> �ǡ�10 ʸ���ξ��� C<A10> �Ǥ���
-����ǡ��⤷ñ�����դ�Ÿ�������������ʤ顢�ʲ��Τ褦�˽񤱤ޤ�:
+ここから、日付の桁は 1 桁目から 10 桁目まで - 10 文字の幅があることが
+わかります。
+「文字」のパックは C<A> で、10 文字の場合は C<A10> です。
+それで、もし単に日付を展開したいだけなら、以下のように書けます:
 
     my($date) = unpack("A10", $_);
 
@@ -350,13 +350,13 @@ error - there are 27 characters between 12 and 38, not 26. Count 'em!)
 
 =end original
 
-�������������?
-���դ������δ֤ˤ϶���η夬����ޤ�;������ɤ����Ф������Ǥ���
-C<x> �ƥ�ץ졼�Ȥϡ��ɤ����Ф��פ��Ȥ��̣����
-����� 1 ʸ���ɤ����Ф��ޤ���
-���ˡ��̤�ʸ���β��� 12 �夫�� 38 ��ޤǤ���ޤ���
-����� 27 ʸ������Τǡ�C<A27> �Ǥ���
-(�����ְ㤨�ʤ��褦�� - 12 ���� 38 �δ֤ˤ� 26 �ǤϤʤ� 27 ʸ������ޤ���)
+よろしい、次は?
+日付と説明の間には空白の桁があります;これは読み飛ばしたいです。
+C<x> テンプレートは「読み飛ばす」ことを意味し、
+これで 1 文字読み飛ばせます。
+次に、別の文字の塊が 12 桁から 38 桁まであります。
+これは 27 文字あるので、C<A27> です。
+(数え間違えないように - 12 から 38 の間には 26 ではなく 27 文字あります。)
 
 =begin original
 
@@ -364,7 +364,7 @@ Now we skip another character and pick up the next 7 characters:
 
 =end original
 
-����ʸ�����ɤ����Ф��ơ����� 7 ʸ������Ф��ޤ�:
+次の文字は読み飛ばして、次の 7 文字を取り出します:
 
     my($date,$description,$income) = unpack("A10xA27xA7", $_);
 
@@ -379,13 +379,13 @@ remaining".
 
 =end original
 
-�����Ǿ����������ޤ��礦��
-��Ģ�Τ������������������äƻٽФ��ʤ��Ԥ� 46 ���ܤǽ���äƤ��ޤ���
-���äơ����� 12 ʸ���򸫤Ĥ��� B<ɬ�פ�����> �Ȥ������Ȥ�
-C<unpack> �ѥ�����˽񤭤����Ϥ���ޤ���;
-ñ�˼��Τ褦�ˤ��ޤ��֤⤷�������ĤäƤ���С��������ޤ��ס�
-����ɽ�������¬�������⤷��ޤ��󤬡����줬 C<*> �ΰ�̣���뤳�ȤǤ�:
-�ֻĤäƤ��������Ƥ�Ȥ��ޤ��ס�
+ここで少し賢くやりましょう。
+台帳のうち、収入だけがあって支出がない行は 46 行目で終わっています。
+従って、次の 12 文字を見つける B<必要がある> ということを
+C<unpack> パターンに書きたくはありません;
+単に次のようにします「もし何かが残っていれば、それを取ります」。
+正規表現から推測したかもしれませんが、これが C<*> の意味することです:
+「残っているもの全てを使います」。
 
 =over 3
 
@@ -398,9 +398,9 @@ template doesn't match the incoming data, Perl will scream and die.
 
 =end original
 
-â��������ɽ���Ȥϰ㤦���Ȥ����դ��Ƥ���������
-�⤷ C<unpack> �ƥ�ץ졼�Ȥ����ϥǡ����Ȱ��פ��ʤ���硢
-Perl �����Ĥ򤢤��� die ���ޤ���
+但し、正規表現とは違うことに注意してください。
+もし C<unpack> テンプレートが入力データと一致しない場合、
+Perl は悲鳴をあげて die します。
 
 =back
 
@@ -410,7 +410,7 @@ Hence, putting it all together:
 
 =end original
 
-���äơ�������������碌���:
+従って、これを全部あわせると:
 
     my($date,$description,$income,$expend) = unpack("A10xA27xA7xA*", $_);
 
@@ -423,9 +423,9 @@ how much we've spent:
 
 =end original
 
-����ǡ��ǡ������ѡ����Ǥ��ޤ���
-���ۤ�����Τ������ȻٽФ򤽤줾��­����碌�ơ���Ģ�κǸ�� - Ʊ�������� -
-1 ���դ��ä��뤳�Ȥǡ��ɤ�����μ����ȻٽФ����ä����򵭤����Ȥ��Ȥ��ޤ�:
+これで、データがパースできます。
+今ほしいものが収入と支出をそれぞれ足し合わせて、台帳の最後に - 同じ形式で -
+1 行付け加えることで、どれだけの収入と支出があったかを記すことだとします:
 
     while (<>) {
         my($date, $desc, $income, $expend) = unpack("A10xA27xA7xA*", $_);
@@ -448,9 +448,9 @@ Oh, hmm. That didn't quite work. Let's see what happened:
 
 =end original
 
-���顢�դ��ࡣ
-����Ϥ��ޤ�ư���ޤ���
-���������ä��Τ����Ƥߤޤ��礦:
+あら、ふうむ。
+これはうまく動きません。
+何が起こったのか見てみましょう:
 
     01/24/2001 Ahmed's Camel Emporium                   1147.99
     01/28/2001 Flea spray                                 24.99
@@ -464,10 +464,10 @@ we? Shouldn't it skip forward? Let's look at what L<perlfunc/pack> says:
 
 =end original
 
-�ޤ�������ϥ������ȤǤ�; ���������ڡ����˲����������ΤǤ��礦?
-C<x> ����ꤷ�ޤ������?
-����Ǥ����Ф��ʤ�?
-L<perlfunc/pack> �˽񤤤Ƥ��뤳�Ȥ򸫤Ƥߤޤ��礦:
+まあ、これはスタートです; しかしスペースに何が起きたのでしょう?
+C<x> を指定しましたよね?
+これでは飛ばせない?
+L<perlfunc/pack> に書いていることを見てみましょう:
 
     x   A null byte.
 
@@ -480,11 +480,11 @@ it!
 
 =end original
 
-���Ϥ���
-���������Ǥ���
-ʸ�������� 0 �Ρ֥̥�ʸ���פȡ�ʸ�������� 32 �Ρֶ���פ������㤤�ޤ���
-Perl �����դ������δ֤˲�����񤤤��ΤǤ� - ��������ǰ�ʤ��顢
-����ϸ����ޤ���!
+うはあ。
+当たり前です。
+文字コード 0 の「ヌル文字」と、文字コード 32 の「空白」は全然違います。
+Perl は日付と説明の間に何かを書いたのです - しかし残念ながら、
+それは見えません!
 
 =begin original
 
@@ -494,9 +494,9 @@ additional spaces to line up our fields, like this:
 
 =end original
 
-�ºݤ�ɬ�פʤ��Ȥϥե�����ɤ��������䤹���ȤǤ���
-C<A> �ե����ޥåȤ�¸�ߤ��ʤ�ʸ�������ǥѥåǥ��󥰤���Τǡ�
-�ʲ��Τ褦�˥ե�����ɤ˶����ʬ������������䤷�ޤ�:
+実際に必要なことはフィールドの幅を増やすことです。
+C<A> フォーマットは存在しない文字を空白でパッディングするので、
+以下のようにフィールドに空白の分だけ桁数を増やします:
 
     print pack("A11 A28 A8 A*", $date, "Totals", $tot_income, $tot_expend);
 
@@ -508,9 +508,9 @@ this time:
 
 =end original
 
-(�ƥ�ץ졼�Ȥˤ��ɤߤ䤹�����뤿��˶��������뤳�Ȥ��Ǥ��ޤ�����
-���Ϥˤ�ȿ�Ǥ���ʤ����Ȥ����դ��Ƥ���������)
-���������줿�Τϰʲ��Τ�ΤǤ�:
+(テンプレートには読みやすくするために空白を入れることができますが、
+出力には反映されないことに注意してください。)
+これで得られたのは以下のものです:
 
     01/24/2001 Ahmed's Camel Emporium                   1147.99
     01/28/2001 Flea spray                                 24.99
@@ -526,11 +526,11 @@ can get C<sprintf> to do it:
 
 =end original
 
-����Ǿ����ɤ��ʤ�ޤ��������ޤ����Ǹ�η���äȸ������˰�ư������
-ɬ�פ�����ޤ���
-������������ñ����ˡ������ޤ�:
-��ǰ�ʤ��� C<pack> �ǥե�����ɤ򱦴󤻤ˤ��뤳�ȤϽ���ޤ��󤬡�
-C<sprintf> ��Ȥ��н���ޤ�:
+これで少し良くなりましたが、まだ、最後の桁をもっと向こうに移動させる
+必要があります。
+これを修正する簡単な方法があります:
+残念ながら C<pack> でフィールドを右寄せにすることは出来ませんが、
+C<sprintf> を使えば出来ます:
 
     $tot_income = sprintf("%.2f", $tot_income); 
     $tot_expend = sprintf("%12.2f", $tot_expend);
@@ -543,7 +543,7 @@ This time we get the right answer:
 
 =end original
 
-���٤������������������ޤ���:
+今度は正しい答えを得られました:
 
     01/28/2001 Flea spray                                 24.99
     01/29/2001 Camel rides to tourists     1235.00
@@ -556,8 +556,8 @@ we've seen of C<pack> and C<unpack> so far:
 
 =end original
 
-�Ȥ������Ȥǡ����줬����Ĺ�ǡ������ɤ߽񤭤�����ˡ�Ǥ���
-�����ޤǤ� C<pack> �� C<unpack> �ˤĤ��Ƹ������Ȥ��������ޤ��礦:
+ということで、これが固定長データを読み書きする方法です。
+ここまでで C<pack> と C<unpack> について見たことを復習しましょう:
 
 =over 3
 
@@ -571,8 +571,8 @@ pieces of data.
 
 =end original
 
-ʣ���Υǡ����Ҥ��Ĥθ���Ĺ�ǡ����ˤ���ˤ� C<pack> ��Ȥ��ޤ�;
-����Ĺ�ե����ޥå�ʸ�����ʣ���Υǡ����Ҥˤ���ˤ� C<unpack> ��Ȥ��ޤ���
+複数のデータ片を一つの固定長データにするには C<pack> を使います;
+固定長フォーマット文字列を複数のデータ片にするには C<unpack> を使います。
 
 =item *
 
@@ -584,8 +584,8 @@ spaces.
 
 =end original
 
-pack �ե����ޥå� C<A> �ϡ�Ǥ�դ�ʸ���פ��̣���ޤ�; �⤷ C<pack> ���
-pack �����Τ��ʤ��ʤä��顢C<pack> �ϻĤ���������ޤ���
+pack フォーマット C<A> は「任意の文字」を意味します; もし C<pack> 中に
+pack するものがなくなったら、C<pack> は残りを空白で埋めます。
 
 =item *
 
@@ -597,10 +597,10 @@ dealing with plain text.
 
 =end original
 
-C<unpack> �Ǥ� C<x> �ϡ�1 �Х����ɤ����Ф��פ��Ȥ��̣���ޤ�;
-C<pack> �Ǥϡ��֥̥�Х��Ȥ���������פ��Ȥ��̣���ޤ� - 
-����ϡ��ץ졼��ƥ����Ȥ򰷤äƤ�����Ϥ����餯˾��Ǥ����ΤǤ�
-�ʤ��Ǥ��礦��
+C<unpack> での C<x> は「1 バイト読み飛ばす」ことを意味します;
+C<pack> では、「ヌルバイトを生成する」ことを意味します - 
+これは、プレーンテキストを扱っている場合はおそらく望んでいるものでは
+ないでしょう。
 
 =item *
 
@@ -612,9 +612,9 @@ C<x6> means "skip 6 bytes" or "character 0, 6 times".
 
 =end original
 
-�ե����ޥåȤθ�˿��ͤ�Ĥ��뤳�Ȥǡ��ե����ޥåȤ˱ƶ������ʸ������
-���ꤷ�ޤ�: C<A12> �ϡ�12 ʸ�����פ��Ȥ��̣���ޤ�;
-C<x6> �ϡ�6 �Х����ɤ����Ф��פ�֥̥�Х��� 6 �ġפ��̣���ޤ���
+フォーマットの後に数値をつけることで、フォーマットに影響される文字数を
+指定します: C<A12> は「12 文字取る」ことを意味します;
+C<x6> は「6 バイト読み飛ばす」や「ヌルバイト 6 つ」を意味します。
 
 =item *
 
@@ -625,7 +625,7 @@ left".
 
 =end original
 
-���ͤ�����ˡ�C<*> �ǡֻĤäƤ��������Ƥ�Ȥ��פ��Ȥ����Ǥ��ޤ���
+数値の代わりに、C<*> で「残っているもの全てを使う」ことを指定できます。
 
 =begin original
 
@@ -634,9 +634,9 @@ B<Warning>: when packing multiple pieces of data, C<*> only means
 
 =end original
 
-B<�ٹ�>: ʣ���Υǡ����Ҥ� pack ����Ȥ���C<*> �ϡָ��ߤΥǡ����Ҥ�����
-�ޤ�פȤ�����̣�����Ǥ���
-����ϡ��ʲ��Τ褦�ˤ����:
+B<警告>: 複数のデータ片を pack するとき、C<*> は「現在のデータ片を全て
+含む」という意味だけです。
+これは、以下のようにすると:
 
     pack("A*A*", $one, $two)
 
@@ -648,16 +648,16 @@ corresponds to one piece of data to be C<pack>ed.
 
 =end original
 
-C<$one> �����Ƥ�ǽ�� C<A*> �� pack �������줫�� C<$two> �����Ƥ������ܤ�
-pack ���ޤ���
-�����˰���Ū�ʸ�§������ޤ�: �ƥե����ޥå�ʸ���� C<pack> �����ǡ�����
-��Ĥ��б����ޤ���
+C<$one> の全てを最初の C<A*> に pack し、それから C<$two> の全てを二番目に
+pack します。
+ここに一般的な原則があります: 各フォーマット文字は C<pack> されるデータ片
+一つに対応します。
 
 =back
 
 =head1 Packing Numbers
 
-(���ͤ� pack ����)
+(数値を pack する)
 
 =begin original
 
@@ -668,15 +668,15 @@ Perl will do all the finicky labor for you.
 
 =end original
 
-�ƥ����ȥǡ����ˤĤ��ƤϤ��줯�餤�Ǥ���
-C<pack> �� C<unpack> �����ɤǤ��롢����餷����ʪ: ���ͤΤ���ΥХ��ʥ�
-�ե����ޥåȤ˿ʤߤޤ��礦��
-������󡢥Х��ʥ�ե����ޥåȤϤҤȤĤǤϤ���ޤ��� - �����Ϥ���ۤ�
-ñ��ǤϤ���ޤ��� - ����Perl �����Ƥκ٤�����Ȥ�Ԥ��ޤ���
+テキストデータについてはこれくらいです。
+C<pack> と C<unpack> が最良である、いやらしい代物: 数値のためのバイナリ
+フォーマットに進みましょう。
+もちろん、バイナリフォーマットはひとつではありません - 人生はそれほど
+単純ではありません - が、Perl は全ての細かい作業を行います。
 
 =head2 Integers
 
-(����)
+(整数)
 
 =begin original
 
@@ -687,10 +687,10 @@ are:
 
 =end original
 
-���ͤ� pack �� unpack ����Ȥ������Ȥϡ�I<�����> �Х��ʥ�ɽ���Ȥδ֤�
-�Ѵ�����Ȥ������Ȥ��̣���ޤ���
-���ΤȤ�����ư�����������Ƥˤ�äƤ����Ȥ���ȡ����Τ褦��ɽ����
-���פ������Ȥ��Ƥ�:
+数値を pack や unpack するということは、I<特定の> バイナリ表現との間で
+変換するということを意味します。
+今のところ浮動小数点数は脇にやっておくとすると、このような表現の
+主要な性質としては:
 
 =over 4
 
@@ -702,7 +702,7 @@ the number of bytes used for storing the integer,
 
 =end original
 
-��������¸�˻Ȥ��Х��ȿ���
+整数の保存に使うバイト数。
 
 =item *
 
@@ -712,7 +712,7 @@ whether the contents are interpreted as a signed or unsigned number,
 
 =end original
 
-���Ƥ����ʤ����Ȥ��Ʋ�᤹�뤫����դ����Ȥ��Ʋ�᤹�뤫��
+内容を符号なし数として解釈するか符号付き数として解釈するか。
 
 =item *
 
@@ -723,8 +723,8 @@ significant byte (or: little-endian or big-endian, respectively).
 
 =end original
 
-�Х��Ƚ��:�ǽ�ΥХ��ȤϺǲ��̥Х��Ȥ��Ǿ�̥Х��Ȥ�
-(�����������: ���줾���ȥ륨��ǥ����󤫥ӥå�����ǥ�����)��
+バイト順序:最初のバイトは最下位バイトか最上位バイトか
+(言い換えると: それぞれリトルエンディアンかビッグエンディアンか)。
 
 =back
 
@@ -735,8 +735,8 @@ computer's representation you write
 
 =end original
 
-����ǡ��㤨�С�20302 �򤢤ʤ��Υ���ԥ塼��������դ� 16 �ӥå�������
-pack ����Ȥ���ȡ��ʲ��Τ褦�˽񤭤ޤ�:
+それで、例えば、20302 をあなたのコンピュータの符号付き 16 ビット整数に
+pack するとすると、以下のように書きます:
 
    my $ps = pack( 's', 20302 );
 
@@ -750,12 +750,12 @@ Unpacking C<$ps> with the same template returns the original integer value:
 
 =end original
 
-�Ƥӡ���̤� 2 �Х��Ȥ���ʤ�ʸ����Ǥ���
-�⤷����ʸ�����ɽ������(����ϰ���Ū�ˤϤ�����Ǥ��ޤ���)�ȡ�
-C<ON> �� C<NO> (�����ƥ�ΥХ��Ƚ�˰�¸���ޤ�) - �ޤ��ϡ��⤷
-����ԥ塼������ ASCII ʸ�����󥳡��ǥ��󥰤�ȤäƤ��ʤ��ʤ������㤦
-ʸ����ɽ������ޤ���
-C<$ps> ��Ʊ���ƥ�ץ졼�Ȥ� unpack ����ȡ����������ͤ��֤�ޤ�:
+再び、結果は 2 バイトからなる文字列です。
+もしこの文字列を表示する(これは一般的にはお勧めできません)と、
+C<ON> か C<NO> (システムのバイト順に依存します) - または、もし
+コンピューターが ASCII 文字エンコーディングを使っていないなら全く違う
+文字列が表示されます。
+C<$ps> を同じテンプレートで unpack すると、元の整数値が返ります:
 
    my( $s ) = unpack( 's', $ps );
 
@@ -770,14 +770,14 @@ getting set, and unpacking this will smartly return a negative value.
 
 =end original
 
-��������Ƥο��ͥƥ�ץ졼�ȥ����ɤ��Ф��ƿ��Ǥ���
-���������פ���Ԥ��ƤϤ����ޤ���:
-�⤷ pack ���줿�ͤ�������Ƥ�줿�Х������̤�Ķ����ȡ���̥ӥåȤ�
-�ۤäƼΤƤ�졢unpack �ϳμ¤���ˡ��˹�Ҥ���ǡ�����
-���Ф����Ȥ��Ǥ��ޤ���
-�����ơ�C<s> �Τ褦������դ��ƥ�ץ졼�ȥ����ɤ�Ȥä� pack ����ȡ�
-Ķ�����ͤ����ӥåȤ򥻥åȤ��뤳�Ȥˤʤꡢunpack ���������ͤ�
-�֤���뤳�Ȥˤʤ뤫�⤷��ޤ���
+これは全ての数値テンプレートコードに対して真です。
+しかし奇跡を期待してはいけません:
+もし pack された値が割り当てられたバイト容量を超えると、高位ビットは
+黙って捨てられ、unpack は確実に魔法の帽子からデータを
+取り出すことができません。
+そして、C<s> のような符号付きテンプレートコードを使って pack すると、
+超えた値が符号ビットをセットすることになり、unpack すると負の値が
+返されることになるかもしれません。
 
 =begin original
 
@@ -792,14 +792,14 @@ a local C compiler returns for C<sizeof(int)>, but it'll use I<at least>
 
 =end original
 
-16 �ӥåȤ������˽�ʬ�Ȥϸ����ޤ��󤬡�����դ������ʤ��� 32 �ӥå�
-�����Τ���� C<l> �� C<L> �⤢��ޤ���
-�����ơ�����ǽ�ʬ�ǤϤʤ��������ƥब 64 �ӥå��������б����Ƥ���ʤ顢
-pack ������ C<q> �� C<Q> ��ȤäƸ³���ۤ�̵�¤ˤޤǲ�����뤳�Ȥ��Ǥ��ޤ���
-���ܤ��٤��㳰�� pack ������ C<i> �� C<I> �ǡ��֥���������ò�������
-����դ������ʤ����������󶡤��ޤ�: ���Τ褦�������� C<sizeof(int)> ��
-�����Ȥ��˥�������� C ����ѥ��餬�֤��ͤ�Ʊ���Х��ȿ��Ǥ�����
-I<���ʤ��Ȥ�> 32 �ӥåȤ�Ȥ��ޤ��� 
+16 ビットは整数に十分とは言えませんが、符号付きと符号なしの 32 ビット
+整数のための C<l> と C<L> もあります。
+そして、これで十分ではなく、システムが 64 ビット整数に対応しているなら、
+pack コード C<q> と C<Q> を使って限界をほぼ無限にまで押しやることができます。
+注目すべき例外は pack コード C<i> と C<I> で、「ローカルに特化した」
+符号付きと符号なしの整数を提供します: このような整数は C<sizeof(int)> と
+したときにローカルな C コンパイラが返す値と同じバイト数ですが、
+I<少なくとも> 32 ビットを使います。 
 
 =begin original
 
@@ -819,21 +819,21 @@ you have to import it with C<use Config>.)
 
 =end original
 
-���� pack ������ C<sSlLqQ> �Τ��줾��ϡ��ɤ��ǥץ�����ब
-�¹Ԥ��줿�Ȥ��Ƥ����Ĺ�ΥХ�����Ȥʤ�ޤ���
-����ϰ����Υ��ץꥱ�������Ǥ�ͭ�ѤǤ�����(XS �������ƥ󥷥���
-Perl �ؿ� C<syscall> ��ƤӽФ��Ȥ���ɬ�פȤʤ�)
-Perl �� C �Υץ������δ֤ǥǡ�����¤���Ϥ����䡢�Х��ʥ�ե������
-�ɤ߽񤭤���Ȥ��Ρ��ܿ����Τ�����ʤ��󶡤��ޤ���
-���ξ���ɬ�פʤ�Τϡ��㤨�С�C<short> �� C<unsigned long> �Ƚ񤤤��Ȥ���
-��������� C ����ѥ��餬�ɤΤ褦�˥���ѥ��뤹�뤫�˰�¸����
-�ƥ�ץ졼�ȥ����ɤǤ���
-�����Υ����ɤȡ�������б�����Х���Ĺ�ϰʲ��Υơ��֥���ͤˤʤ�ޤ���
-C ɸ��Ϥ��줾��Υǡ��������礭��������¿���μ�ͳ���̤�Ĥ��Ƥ���Τǡ�
-�ºݤ��ͤϰۤʤ뤫�⤷�줺�������Ƥ��줬�ʤ��ͤ� C �� Perl �μ��Ȥ���
-Ϳ�����Ƥ��뤫����ͳ�Ǥ���
-(�⤷�ץ������� C<%Config> ���ͤ�Ȥ��������ϡ�C<use Config> �Ȥ���
-����򥤥�ݡ��Ȥ���ɬ�פ�����ޤ���)
+整数 pack コード C<sSlLqQ> のそれぞれは、どこでプログラムが
+実行されたとしても固定長のバイト列となります。
+これは一部のアプリケーションでは有用ですが、(XS エクステンションや
+Perl 関数 C<syscall> を呼び出すときに必要となる)
+Perl と C のプログラムの間でデータ構造を渡す場合や、バイナリファイルを
+読み書きするときの、移植性のある手段は提供しません
+この場合に必要なものは、例えば、C<short> や C<unsigned long> と書いたときに
+ローカルの C コンパイラがどのようにコンパイルするかに依存する
+テンプレートコードです。
+これらのコードと、それに対応するバイト長は以下のテーブルの様になります。
+C 標準はそれぞれのデータ型の大きさの点で多くの自由裁量を残しているので、
+実際の値は異なるかもしれず、そしてこれがなぜ値が C と Perl の式として
+与えられているかの理由です。
+(もしプログラムで C<%Config> の値を使いたい場合は、C<use Config> として
+これをインポートする必要があります。)
 
 =begin original
 
@@ -845,7 +845,7 @@ C ɸ��Ϥ��줾��Υǡ��������礭��������¿���μ�ͳ���̤�Ĥ��Ƥ���Τǡ�
 
 =end original
 
-  ����դ� ���ʤ� C �ǤΥХ���Ĺ     Perl �ǤΥХ���Ĺ
+  符号付き 符号なし C でのバイト長     Perl でのバイト長
      s!       S!    sizeof(short)      $Config{shortsize}
      i!       I!    sizeof(int)        $Config{intsize}
      l!       L!    sizeof(long)       $Config{longsize}
@@ -858,12 +858,12 @@ tolerated for completeness' sake.
 
 =end original
 
-C<i!> ����� C<I!> �� C<i> ����� C<I> �Ȱ㤤�Ϥ���ޤ���; ������
-�������Τ���˵��Ƥ���Ƥ��ޤ���
+C<i!> および C<I!> は C<i> および C<I> と違いはありません; これらは
+完全性のために許容されています。
 
 =head2 Unpacking a Stack Frame
 
-(�����å��ե졼��� unpack ����)
+(スタックフレームを unpack する)
 
 =begin original
 
@@ -874,9 +874,9 @@ containing a stack frame as it happens on an Intel 8086:
 
 =end original
 
-����Υ������ƥ����㤫���褿�Х��ʥ���Ф��ƺ�Ȥ򤹤�������ץ�����ब
-�����㤦�����ƥ��ư���Ƥ����硢����ΥХ��Ƚ�����׵᤬ɬ�פˤʤ�ޤ���
-��Ȥ��ơ�Intel 8086 �Υ����å��ե졼���ޤ� 24 �Х��Ȥ��ꤷ�ޤ�:
+特定のアーキテクチャから来たバイナリに対して作業をする一方、プログラムが
+全く違うシステムで動いている場合、特定のバイト順序の要求が必要になります。
+例として、Intel 8086 のスタックフレームを含む 24 バイトを仮定します:
 
       +---------+        +----+----+               +---------+
  TOS: |   IP    |  TOS+4:| FL | FH | FLAGS  TOS+14:|   SI    |
@@ -899,12 +899,12 @@ count unpacks all 12 shorts:
 
 =end original
 
-�ޤ������������Τ��� 16 �ӥå� CPU �ϥ�ȥ륨��ǥ������ȤäƤ��ơ�
-���줬��̥Х��Ȥ���̥��ɥ쥹�˳�Ǽ����Ƥ�����ͳ�Ǥ��뤳�Ȥ�
-���դ��ޤ���
-���Τ褦��(����դ�)short �� unpack ����ˤϡ������� C<v> ��Ȥ�ɬ�פ�
-����Ǥ��礦��
-�����֤����ˤ�äơ�12 ���Ƥ� short �� unpack ���ޤ���
+まず、この伝統のある 16 ビット CPU はリトルエンディアンを使っていて、
+それが低位バイトが低位アドレスに格納されている理由であることに
+注意します。
+このような(符号付き)short を unpack するには、コード C<v> を使う必要が
+あるでしょう。
+繰り返し数によって、12 全ての short を unpack します。
 
    my( $ip, $cs, $flags, $ax, $bx, $cd, $dx, $si, $di, $bp, $ds, $es ) =
      unpack( 'v12', $frame );
@@ -916,8 +916,8 @@ accessible byte registers FL, FH, AL, AH, etc.:
 
 =end original
 
-���뤤�ϡ�FL, FH, AL, AH �Ȥ��ä��Х��ȥ쥸�����˸ġ��˥��������Ǥ���褦��
-unpack ���뤿��� C<C> �⤢��ޤ�:
+あるいは、FL, FH, AL, AH といったバイトレジスタに個々にアクセスできるように
+unpack するための C<C> もあります:
 
    my( $fl, $fh, $al, $ah, $bl, $bh, $cl, $ch, $dl, $dh ) =
      unpack( 'C10', substr( $frame, 4, 10 ) );
@@ -931,11 +931,11 @@ together, we may now write:
 
 =end original
 
-����� 1 ��ǹԤ�������Ũ�Ǥ��礦: short �� unpack ���ơ�������äơ�
-���줫�� 2 �Х��� unpack ���ޤ���
-Perl �� I<��Ũ> �ʤΤǡ�1 �Х������ƥ�ץ졼�ȥ����� C<X> ��
-�󶡤��Ƥ��ޤ���
-��������Ƥ���ˤ���ȡ��ʲ��Τ褦�˽񤱤ޤ�:
+これを 1 回で行えたら素敵でしょう: short を unpack して、少し戻って、
+それから 2 バイト unpack します。
+Perl は I<素敵> なので、1 バイト戻るテンプレートコード C<X> を
+提供しています。
+これら全てを一緒にすると、以下のように書けます:
 
    my( $ip, $cs,
        $flags,$fl,$fh,
@@ -949,7 +949,7 @@ Perl �� I<��Ũ> �ʤΤǡ�1 �Х������ƥ�ץ졼�ȥ����� C<X> ��
 
 =end original
 
-(�����Ժٹ��ʥƥ�ץ졼�ȹ�¤���򤱤��ޤ� - �ɤ߿ʤ�Ƥ�������!)
+(この不細工なテンプレート構造は避けられます - 読み進めてください!)
 
 =begin original
 
@@ -961,16 +961,16 @@ says so).
 
 =end original
 
-�ƥ�ץ졼�Ȥ��ۤ���Τ˾�����ϫ�����Τϡ��ե졼��Хåե������Ƥ�
-���פ����뤿��Ǥ���
-����ʤ����̤����ͤ������뤳�Ȥˤʤ뤫�����뤤��
-C<unpack> �ϲ��� unpack �Ǥ��ʤ��ʤ�ޤ���
-�⤷ C<pack> �����Ǥ��ʤ��ʤä��顢��ʸ������䤤�ޤ�
-(pack �����ɤ���������褦�˸��äƤ���С������˶�������ޤ�)��
+テンプレートを構築するのに少し苦労したのは、フレームバッファの内容に
+一致させるためです。
+さもなければ未定義値を受け取ることになるか、あるいは
+C<unpack> は何も unpack できなくなります。
+もし C<pack> で要素がなくなったら、空文字列を補います
+(pack コードがそうするように言っていれば、ゼロに強制されます)。
 
 =head2 How to Eat an Egg on a Net
 
-(���󥿡��ͥåȤ���ο�����)
+(インターネットの卵の食べ方)
 
 =begin original
 
@@ -989,18 +989,18 @@ you could write:
 
 =end original
 
-�ӥå�����ǥ�����(�ǲ��̥��ɥ쥹���Ǿ�̥Х���)�Ǥ� pack �����ɤϡ�
-16 �ӥå������� C<n>�� 32 �ӥå������� C<N> �Ǥ���
-�⤷��򤷤��������ƥ����㤫��ǡ�������뤳�Ȥ�ʬ���äƤ���ʤ�
-�����Υ����ɤ�Ȥ��ޤ�;
-�⤷�ͥåȥ�����̤��Ʋ����Τ�ʤ�¾�Υ����ƥ�ȥХ��ʥ�ǡ�����
-�򴹤�����ˤ⤳���� pack �����ɤ�Ȥ��٤��Ǥ���
-��ͳ��ñ��ǡ����ν���� I<�ͥåȥ�����> �Ȥ������Ф�Ƥ��ơ�ɸ���
-��������ƤΥץ�����ब���δ���˽��äƤ���Ϥ�������Ǥ���
-(����Ϥ�����󾮿�²�ΰ�Ԥΰ�ͤθ������ٱ�ǡ�����Ū��ȯŸ��
-�ƶ���Ϳ���Ƥ��ޤ���)
-����ǡ��⤷���Х��Ȥ��뤫��Ĺ����������뤳�Ȥǥ�å����������뤳�Ȥ�
-�ץ��ȥ��뤬���ꤷ�Ƥ���ʤ顢�ʲ��Τ褦�˽񤱤ޤ�:
+ビッグエンディアン(最下位アドレスが最上位バイト)での pack コードは、
+16 ビット整数が C<n>、 32 ビット整数が C<N> です。
+もし準拠したアーキテクチャからデータが来ることが分かっているなら
+これらのコードを使います;
+もしネットワークを通して何も知らない他のシステムとバイナリデータを
+交換する場合にもこれらの pack コードを使うべきです。
+理由は単純で、この順序が I<ネットワーク順序> として選ばれていて、標準を
+恐れる全てのプログラムがこの慣例に従っているはずだからです。
+(これはもちろん小人族の一行の一人の厳しい支援で、政治的な発展に
+影響を与えています。)
+それで、もし何バイトあるかの長さを先に送ることでメッセージを送ることを
+プロトコルが想定しているなら、以下のように書けます:
 
    my $buf = pack( 'N', length( $msg ) ) . $msg;
 
@@ -1010,7 +1010,7 @@ or even:
 
 =end original
 
-���뤤��:
+あるいは:
 
    my $buf = pack( 'NA*', length( $msg ), $msg );
 
@@ -1023,15 +1023,15 @@ you really code this!)
 
 =end original
 
-������ C<$buf> �������롼������Ϥ��ޤ���
-������Ȥˡ�������ȼ��Ȥ�Ĺ����ޤळ�Ȥ��׵ᤷ�Ƥ���ץ��ȥ����
-����ޤ�: ���λ���ñ�˥ǡ���Ĺ�� 4 ��­���Ƥ���������
-(���������ºݤˤ���򥳡��ǥ��󥰤������� L<"Lengths and Widths"> ��
-�ɤ�Ǥ�������!)
+そして C<$buf> を送信ルーチンに渡します。
+カウントに、カウント自身の長さも含むことを要求しているプロトコルも
+あります: その時は単にデータ長に 4 を足してください。
+(しかし、実際にこれをコーディングする前に L<"Lengths and Widths"> を
+読んでください!)
 
 =head2 Floating point Numbers
 
-(��ư��������)
+(浮動小数点数)
 
 =begin original
 
@@ -1045,19 +1045,19 @@ end of the line.)
 
 =end original
 
-��ư���������� pack ����ˤϡ������ƥ���󶡤���Ƥ���ñ���٤������٤μ¿���
-pack ���� pack ������ C<f> �� C<d> ������褬����ޤ���
-(�¿����Ф��Ƥϥͥåȥ��ɽ���Τ褦�ʤ�ΤϤʤ��Τǡ��⤷¾��
-����ԥ塼���˼¿������ꤿ�����ϡ��ͥåȥ���θ�����¦�ǲ��������뤫��
-������ʬ���äƤ���ΤǤʤ��¤�ϡ�ASCII ɽ���ǲ������������褤�Ǥ���)
+浮動小数点数を pack するには、システムで提供されている単精度と倍精度の実数に
+pack する pack コード C<f> と C<d> の選択肢があります。
+(実数に対してはネットワーク表現のようなものはないので、もし他の
+コンピュータに実数を送りたい場合は、ネットワークの向こう側で何が起きるかが
+完全に分かっているのでない限りは、ASCII 表現で我慢した方がよいです。)
 
 =head1 Exotic Templates
 
-(���Ѥ��ʥƥ�ץ졼��)
+(風変わりなテンプレート)
 
 =head2 Bit Strings
 
-(�ӥå�ʸ����)
+(ビット文字列)
 
 =begin original
 
@@ -1072,14 +1072,14 @@ byte:
 
 =end original
 
-�ӥåȤϥ���������θ��ҤǤ���
-�ġ��ΥӥåȤؤΥ��������ϡ��Ǹ�μ��ʤȤ��ƹԤ��뤫�����줬�ǡ�����
-�����Τ˺Ǥ���������ˡ�Ǥ���Ȥ��˹Ԥ��ޤ���
-(un)pack �����ӥå�ʸ����ϡ�C<0> �� C<1> ��ʸ������ʤ�ʸ����ȡ�
-���줾�� 8 �ӥåȤ�ޤ�Х�����Ȥ��Ѵ����ޤ���
-�Х��Ȥ����Ƥ�ӥå�ʸ����Ȥ��ƽ񤯤ˤ� 2 �Ĥ���ˡ������Ȥ������Ȥ�����С�
-����ϤۤȤ�ɸ����ޤޤ�ñ�㤵�Ǥ���
-�ʲ��������դ��ΥХ��Ȥ򸫤Ƥߤޤ��礦:
+ビットはメモリの世界の原子です。
+個々のビットへのアクセスは、最後の手段として行われるか、それがデータを
+扱うのに最も便利な方法であるときに行われます。
+(un)pack したビット文字列は、C<0> と C<1> の文字からなる文字列と、
+それぞれ 8 ビットを含むバイト列とを変換します。
+バイトの内容をビット文字列として書くには 2 つの方法があるということを除けば、
+これはほとんど見たままの単純さです。
+以下の注釈付きのバイトを見てみましょう:
 
      7 6 5 4 3 2 1 0
    +-----------------+
@@ -1096,11 +1096,11 @@ string codes:
 
 =end original
 
-��ο������η����֤��Ǥ�: ����� "10001100" �Ȥ����ӥå�ʸ����ˤʤ�٤���
-�Ĥޤ�Ǿ�̥ӥåȤ���Ϥ��٤����ȹͤ���ͤ⤤�ޤ�����
-"00110001" �ȼ�ĥ����ͤ⤤�ޤ���
-������Perl ���и����Ƥ��ʤ��Τǡ����줬 2 �ĤΥӥå�ʸ���󥳡��ɤ�����
-��ͳ�Ǥ�:
+卵の食べ方の繰り返しです: これは "10001100" というビット文字列になるべき、
+つまり最上位ビットから始めるべき、と考える人もいますし、
+"00110001" と主張する人もいます。
+ええ、Perl は偏向していないので、これが 2 つのビット文字列コードがある
+理由です:
 
    $byte = pack( 'B8', '10001100' ); # start with MSB
    $byte = pack( 'b8', '00110001' ); # start with LSB
@@ -1116,13 +1116,13 @@ concatenation on unpacked bit strings.)
 
 =end original
 
-�ӥåȥե�����ɤ� pack �� unpack ���뤳�ȤϤǤ��ޤ��� -
-�Х���ñ�̤����Ǥ���
-C<pack> �Ͼ�˼��ΥХ��ȶ�������Ϥޤꡢɬ�פʾ��� 0 �ΥӥåȤ�
-�ɲä��뤳�Ȥ� 8 ���ܿ��ˡ��ڤ�夲�פ��ޤ���
-(�⤷�ӥåȥե����뤬�ۤ����ʤ顢L<perlfunc/vec> ������ޤ���
-���뤤�ϡ�split, substr ����� unpack �����ӥå�ʸ����η���Ȥä�
-ʸ��ñ�̤Υ�٥�ǥӥåȥե����������������뤳�Ȥ����ޤ���)
+ビットフィールドを pack や unpack することはできません -
+バイト単位だけです。
+C<pack> は常に次のバイト境界から始まり、必要な場合は 0 のビットを
+追加することで 8 の倍数に「切り上げ」られます。
+(もしビットフィールがほしいなら、L<perlfunc/vec> があります。
+あるいは、split, substr および unpack したビット文字列の結合を使って
+文字単位のレベルでビットフィールド操作を実装することも出来ます。)
 
 =begin original
 
@@ -1131,8 +1131,8 @@ status register (a "-" stands for a "reserved" bit):
 
 =end original
 
-�ӥå�ʸ����� unpack ��޼����뤿��ˡ�ñ��ʾ��֥쥸������ʬ�򤷤Ƥߤޤ�
-("-" �ϡ�ͽ�󤵤줿�ץӥåȤ��̣���ޤ�):
+ビット文字列の unpack を図示するために、単純な状態レジスタを分解してみます
+("-" は「予約された」ビットを意味します):
 
    +-----------------+-----------------+
    | S Z - A - P - C | - - - - O D I T |
@@ -1150,12 +1150,12 @@ this goes".
 
 =end original
 
-����� 2 �Х��Ȥ���ʸ����ؤ��Ѵ��� unpack �ƥ�ץ졼�� C<'b16'> �ˤ�ä�
-�Ԥ��ޤ���
-�ӥå�ʸ���󤫤�ġ��Υӥå��ͤ�����ˤϡ�C<split> ��ֶ��ץ��ѥ졼����
-�Ȥ����ȤǸġ���ʸ�����ڤ��ߤޤ���
-��ͽ�󤵤줿�װ��֤���Υӥå��ͤ�ñ�� C<undef> ���������Ƥ����ޤ�;
-����ϡ֤����ͤ��ɤ��˹Ԥ��������ˤ��ʤ��פ��Ȥ򼨤������ʵ�ˡ�Ǥ���
+これら 2 バイトから文字列への変換は unpack テンプレート C<'b16'> によって
+行われます。
+ビット文字列から個々のビット値を得るには、C<split> を「空」セパレータで
+使うことで個々の文字に切り刻みます。
+「予約された」位置からのビット値は単に C<undef> に代入しておきます;
+これは「この値がどこに行こうが気にしない」ことを示す便利な記法です。
 
    ($carry, undef, $parity, undef, $auxcarry, undef, $zero, $sign,
     $trace, $interrupt, $direction, $overflow) =
@@ -1168,8 +1168,8 @@ last 4 bits can be ignored anyway.
 
 =end original
 
-���礦��Ʊ���褦�ˡ�unpack �ƥ�ץ졼�� C<'b12'> ��Ȥ��ޤ�;
-�Ǹ�� 4 �ӥåȤϤɤ���ˤ���̵�뤵��뤫��Ǥ���
+ちょうど同じように、unpack テンプレート C<'b12'> も使えます;
+最後の 4 ビットはどちらにしろ無視されるからです。
 
 =head2 Uuencoding
 
@@ -1190,19 +1190,19 @@ prepare this for you, a la minute, when you select pack code C<u> on the menu:
 
 =end original
 
-�ƥ�ץ졼�Ȥ���Τ⤦��Ĥ�Ⱦü�Ԥ� C<u> �ǡ���uuencode ���줿ʸ����פ�
-pack ���ޤ���
-("uu" �� Unix-to-Unix ��̤᤿��ΤǤ���)
-���ʤ��ˤϡ�ñ��� ASCII �ǡ��������б����Ƥ��ʤ��켰���̿���ǥ����η�����
-�������뤿��˳�ȯ���줿���Υ��󥳡��ǥ��󥰵��Ѥ�ɬ�פˤʤ뵡���
-�ʤ��ä����⤷��ޤ���
-�ܼ�Ū�ʥ쥷�Ԥ�ñ��Ǥ�: 3 �Х��ȡ��ޤ��� 24 �ӥåȤ���ޤ���
-����� 4 �Ĥ� 6 �ӥåȤ�ʬ�������줾��˶��� (0x20) ��ä��ޤ���
-���ƤΥǡ�������������ޤǷ����֤��ޤ���
-4 �Х��Ȥ��Ȥ� 60 ʸ����Ķ���ʤ��Ԥ��ޤ���ߡ����ΥХ��ȿ�(0x20 ��
-�ä������)����Ƭ���֤��ơ������� C<"\n"> ���֤��ޤ���
-- ���ʤ�����˥塼���� pack ������ C<u> �����֤ȡ�C<pack> �����դ�
-¨�ʤǡ��������館�򤷤Ƥ���ޤ�:
+テンプレートの中のもう一つの半端者は C<u> で、「uuencode された文字列」を
+pack します。
+("uu" は Unix-to-Unix を縮めたものです。)
+あなたには、単純な ASCII データしか対応していない旧式の通信メディアの欠点を
+克服するために開発されたこのエンコーディング技術が必要になる機会は
+なかったかもしれません。
+本質的なレシピは単純です: 3 バイト、または 24 ビットを取ります。
+これを 4 つの 6 ビットに分け、それぞれに空白 (0x20) を加えます。
+全てのデータが混ぜられるまで繰り返します。
+4 バイトの組を 60 文字を超えない行に折り畳み、元のバイト数(0x20 を
+加えたもの)を先頭に置いて、末尾に C<"\n"> を置きます。
+- あなたがメニューから pack コード C<u> を選ぶと、C<pack> シェフは
+即席で、下ごしらえをしてくれます:
 
    my $uubuf = pack( 'u', $bindat );
 
@@ -1215,13 +1215,13 @@ the repeat count.
 
 =end original
 
-C<u> �θ�η����֤����� uuencode ���줿�Ԥˤ����Х��ȿ��ǡ��ǥե���ȤǤ�
-����� 45 �Ǥ�����3 ���ܿ��Τ���¾��(��꾮����)���ˤǤ��ޤ���
-C<unpack> ��ñ�˷����֤�����̵�뤷�ޤ���
+C<u> の後の繰り返し数は uuencode された行にいれるバイト数で、デフォルトでは
+最大の 45 ですが、3 の倍数のその他の(より小さい)数にできます。
+C<unpack> は単に繰り返し数を無視します。
 
 =head2 Doing Sums
 
-(��פ�׻�����)
+(合計を計算する)
 
 =begin original
 
@@ -1234,13 +1234,13 @@ doing sums. For numeric unpack codes, no big feat is achieved:
 
 =end original
 
-������Ի׵Ĥʥƥ�ץ졼�ȥ����ɤ� C<%>E<lt>I<number>E<gt> �Ǥ���
-���ˡ�����Ϥ���¾�Υƥ�ץ졼�ȥ����ɤ����ֻ�Ȥ��ƻȤ��뤫��Ǥ���
-����ˡ�C<pack> �Ǥ������Ȥ������軰�ˡ�C<unpack> �Ǥϡ���Ԥ���
-�ƥ�ץ졼�ȥ����ɤˤ�ä�������줿�ͤ��֤��ʤ�����Ǥ���
-����ˡ�����ϥǡ����ι�פȤ��Ʒ׻����줿 I<number> �ӥåȤ�������
-Ϳ���ޤ���
-���� unpack �����ɤǤϡ��礭��Υ��ȤϹԤ��ޤ���:
+さらに不思議なテンプレートコードは C<%>E<lt>I<number>E<gt> です。
+第一に、これはその他のテンプレートコードの前置詞として使われるからです。
+第二に、C<pack> では全く使えず、第三に、C<unpack> では、先行する
+テンプレートコードによって定義された値を返さないからです。
+代わりに、これはデータの合計として計算された I<number> ビットの整数を
+与えます。
+数値 unpack コードでは、大きな離れ業は行われません:
 
     my $buf = pack( 'iii', 100, 20, 3 );
     print unpack( '%32i3', $buf ), "\n";  # prints 123
@@ -1252,8 +1252,8 @@ you the trouble of a sum loop with C<substr> and C<ord>:
 
 =end original
 
-ʸ�����ͤ��Ф��Ƥϡ�C<%> �ϥХ����ͤι�פ��֤���C<substr> �� C<ord> �ˤ��
-��׷׻��롼�פˤ�����꤫�餢�ʤ���ߤ��ޤ�:
+文字列値に対しては、C<%> はバイト値の合計を返し、C<substr> と C<ord> による
+合計計算ループによる問題からあなたを救います:
 
     print unpack( '%32A*', "\x01\x10" ), "\n";  # prints 17
 
@@ -1265,9 +1265,9 @@ of bytes, they won't guarantee a noticeable Hamming distance.
 
 =end original
 
-C<%> �����ɤϡ֥����å�����פ��֤���ʸ�񲽤���Ƥ��ޤ���:
-���Τ褦���ͤ˿�����֤��ƤϤ����ޤ���!
-���̤ΥХ������Ŭ�Ѥ�����Ǥ��顢�����ʥϥߥ󥰵�Υ���ݾڤǤ��ޤ���
+C<%> コードは「チェックサム」を返すと文書化されていますが:
+このような値に信頼を置いてはいけません!
+少量のバイト列に適用する場合ですら、顕著なハミング距離を保証できません。
 
 =begin original
 
@@ -1276,8 +1276,8 @@ to good use to count set bits efficiently:
 
 =end original
 
-C<b> �� C<B> �ȶ��˻Ȥ��ȡ�C<%> ��ñ�˥ӥåȤ�ä���Τǡ������
-���åȤ���Ƥ���ӥåȤ��ΨŪ�˿����뤿��Τ褤��ˡ�Ȥʤ�ޤ�:
+C<b> や C<B> と共に使うと、C<%> は単にビットを加えるので、これは
+セットされているビットを効率的に数えるためのよい方法となります:
 
     my $bitcount = unpack( '%32b*', $mask );
 
@@ -1287,7 +1287,7 @@ And an even parity bit can be determined like this:
 
 =end original
 
-�����ƶ����ѥ�ƥ��ӥåȤϰʲ��Τ褦�ˤ��Ʒ���Ǥ��ޤ�:
+そして偶数パリティビットは以下のようにして決定できます:
 
     my $evenparity = unpack( '%1b*', $mask );
 
@@ -1308,16 +1308,16 @@ them - my personal favourites are Telugu and Kannada.)
 
 =end original
 
-Unicode ��������ΤۤȤ�ɤθ���ΤۤȤ�ɤ�ʸ����ɽ���Ǥ���ʸ������ǡ�
-100 ���ʾ�ΰۤʤä�ʸ���Τ���ζ��֤��󶡤��Ƥ��ޤ���
-Unicode 3.1 �� 94,140 ʸ����������Ƥ��ޤ�: ���ܥ�ƥ�ʸ�����ֹ�
-0 - 127 �˳�����Ƥ��Ƥ��ޤ���
-�����Ĥ��Υ衼���åѸ���ǻȤ����ƥ� 1 ����������ϰϤǡ�255 �ޤǤǤ���
-�����Ĥ��Υ�ƥ��ĥ�θ塢������ޥ���ե��٥åȤ�Ȥ������ʸ������
-����ӡ��̲ߵ��桢Zapf Dingbats�������Τ褦���͡��ʵ��潸�礬
-����ФäƤ��ޤ���
-(�����Τ����Ĥ��򸫤뤿��� L<www.unicode.org> ˬ���Τ��ɤ��Ǥ��礦 -
-��θĿ�Ū�ʤ���������� Telugu �� Kannada �Ǥ���)
+Unicode は世界中のほとんどの言語のほとんどの文字を表現できる文字集合で、
+100 万以上の異なった文字のための空間を提供しています。
+Unicode 3.1 は 94,140 文字を定義しています: 基本ラテン文字は番号
+0 - 127 に割り当てられています。
+いくつかのヨーロッパ言語で使われるラテン 1 補助が次の範囲で、255 までです。
+いくつかのラテン拡張の後、非ローマアルファベットを使う言語の文字集合
+および、通貨記号、Zapf Dingbats、点字のような様々な記号集合が
+散らばっています。
+(これらのいくつかを見るために L<www.unicode.org> 訪れるのも良いでしょう -
+私の個人的なお気に入りは Telugu と Kannada です。)
 
 =begin original
 
@@ -1330,12 +1330,12 @@ ones in three or more bytes.
 
 =end original
 
-Unicode ʸ�������ʸ�������������դ��ޤ���
-�����ο��ͤ�Ʊ���Х��ȿ��ǥ��󥳡��ɤ���ȡ���ƥ󥢥�ե��٥åȤ�
-�񤫤줿�ƥ����Ȥ��ݴɤ���Τ� 2 �ܰʾ�ΥХ��ȿ���ɬ�פˤʤ�ޤ���
-UTF-8 ���󥳡��ǥ��󥰤�(���Τ���λ����ˤ�����)��äȤⶦ�̤�ʸ����
-1 �Х��Ȥ˳�Ǽ������굩�ʤ�Τ� 3 �Х��Ȱʾ�˥��󥳡��ɤ��뤳�Ȥ�
-�������򤷤Ƥ��ޤ���
+Unicode 文字集合は文字と整数を結び付けます。
+これらの数値を同じバイト数でエンコードすると、ラテンアルファベットで
+書かれたテキストを保管するのに 2 倍以上のバイト数が必要になります。
+UTF-8 エンコーディングは(西洋からの視点において)もっとも共通の文字を
+1 バイトに格納し、より稀なものを 3 バイト以上にエンコードすることで
+これを回避しています。
 
 =begin original
 
@@ -1346,11 +1346,11 @@ representation of the Euro currency symbol (code number 0x20AC):
 
 =end original
 
-����ǡ������ C<pack> �ϲ����Ǥ���ΤǤ��礦?
-���äȡ��⤷ Unicode �ֹ�Ȥ��� UTF-8 ɽ�����Ѵ��������ʤ顢
-�ƥ�ץ졼�ȥ����� C<U> ��Ȥ����ȤǤǤ��ޤ���
-��Ȥ��ơ��桼���̲ߵ��� (�������ֹ� 0x20AC) �� UTF-8 ɽ����
-�������Ƥߤޤ��礦:
+それで、これで C<pack> は何ができるのでしょう?
+えっと、もし Unicode 番号とその UTF-8 表現を変換したいなら、
+テンプレートコード C<U> を使うことでできます。
+例として、ユーロ通貨記号 (コード番号 0x20AC) の UTF-8 表現を
+生成してみましょう:
 
    $UTF8{Euro} = pack( 'U', 0x20AC );
 
@@ -1361,9 +1361,9 @@ round trip can be completed with C<unpack>:
 
 =end original
 
-C<$UTF8{Euro}> �򸡺�����ȡ�3 �Х��ȤǤ��뤳�Ȥ��狼��ޤ�:
-"\xe2\x82\xac" �Ǥ���
-������ C<unpack> ��Ȥäƴ�λ���ޤ�:
+C<$UTF8{Euro}> を検査すると、3 バイトであることがわかります:
+"\xe2\x82\xac" です。
+往復は C<unpack> を使って完了します:
 
    $Unicode{Euro} = unpack( 'U', $UTF8{Euro} );
 
@@ -1373,7 +1373,7 @@ Usually you'll want to pack or unpack UTF-8 strings:
 
 =end original
 
-���̤� UTF-8 ʸ����� pack �ޤ��� unpack �������Ǥ��礦:
+普通は UTF-8 文字列を pack または unpack したいでしょう:
 
    # pack and unpack the Hebrew alphabet
    my $alefbet = pack( 'U*', 0x05d0..0x05ea );
@@ -1381,7 +1381,7 @@ Usually you'll want to pack or unpack UTF-8 strings:
 
 =head2 Another Portable Binary Encoding
 
-(����¾�ΰܿ����Τ���Х��ʥꥨ�󥳡��ǥ���)
+(その他の移植性のあるバイナリエンコーディング)
 
 =begin original
 
@@ -1395,14 +1395,14 @@ is no size limit to BER encoding, but Perl won't go to extremes.
 
 =end original
 
-pack ������ C<w> �ϡ�ñ��������Ȥ����󤤡��ܿ����Τ���
-�Х��ʥ�ǡ������󥳡��ǥ��󥰥���������б����뤿����ɲä���ޤ�����
-(�ܺ٤ˤĤ��Ƥ� Scarab �ץ��������� L<Casbah.org> �ˤ���ޤ���)
-BER (Binary Encoded Representation) �������ʤ������� 128 �����Ȥ��ơ�
-�Ǿ�̥ӥåȤ�ǽ�ˤ��ơ���ǽ�ʸ¤꾯�ʤ���ˤʤ�褦���ݴɤ��ޤ���
-�ӥå� 8 (�Ǿ�̥ӥå�) �ϡ��Ǹ�ʳ��ΥХ��Ȥǥ��åȤ���ޤ���
-BER ���󥳡��ǥ��󥰤ˤϥ��������¤�����ޤ��󤬡�Perl �϶�ü�ʤ��Ȥ�
-���ޤ���
+pack コード C<w> は、単純な整数とは程遠い、移植性のある
+バイナリデータエンコーディングスキームに対応するために追加されました。
+(詳細については Scarab プロジェクト L<Casbah.org> にあります。)
+BER (Binary Encoded Representation) 圧縮符号なし整数は 128 を基数として、
+最上位ビットを最初にして、可能な限り少ない桁になるように保管します。
+ビット 8 (最上位ビット) は、最後以外のバイトでセットされます。
+BER エンコーディングにはサイズ制限がありませんが、Perl は極端なことは
+しません。
 
    my $berbuf = pack( 'w*', 1, 128, 128+1, 128*128+127 );
 
@@ -1414,14 +1414,14 @@ shows 01 8100 8101 81807F. Since the last byte is always less than
 
 =end original
 
-C<$berbuf> ��Ŭ�ڤʰ��֤˶��������Ĥ� 16 �ʥ���פ���ȡ�
-01 8100 8101 81807F �Ȥʤ�ޤ���
-�Ǹ�ΥХ��ȤϾ�� 128 ��꾮�����ʤ�Τǡ�C<unpack> ����ߤ�����֤�
-�狼��ޤ���
+C<$berbuf> を、適切な位置に空白を入れつつ 16 進ダンプを取ると、
+01 8100 8101 81807F となります。
+最後のバイトは常に 128 より小さくなるので、C<unpack> は停止する位置が
+わかります。
 
 =head1 Template Grouping
 
-(�ƥ�ץ졼�ȤΥ��롼�ײ�)
+(テンプレートのグループ化)
 
 =begin original
 
@@ -1433,11 +1433,11 @@ be written like this:
 
 =end original
 
-Perl 5.8 �����Ǥϡ��ƥ�ץ졼�Ȥη����֤��ϥƥ�ץ졼��ʸ����� C<x> ��
-�����֤����ȤǺ��ɬ�פ�����ޤ�����
-���Ǥϡ�pack ������ C<(> �� C<)> �˷����֤������Ȥ߹�碌�ƻȤ��Ȥ���
-���褤��ˡ������ޤ���
-�����å��ե졼������ C<unpack> �ƥ�ץ졼�Ȥ�ñ�˰ʲ��Τ褦�˽񤱤ޤ�:
+Perl 5.8 以前では、テンプレートの繰り返しはテンプレート文字列を C<x> 回
+繰り返すことで作る必要がありました。
+今では、pack コード C<(> と C<)> に繰り返し数を組み合わせて使うという
+よりよい方法があります。
+スタックフレームの例の C<unpack> テンプレートは単に以下のように書けます:
 
    unpack( 'v2 (vXXCC)5 v5', $frame )
 
@@ -1447,8 +1447,8 @@ Let's explore this feature a little more. We'll begin with the equivalent of
 
 =end original
 
-���ε�ǽ�ˤĤ��Ƥ⤦����������õ�ᤷ�Ƥߤޤ��礦��
-�ʲ��������ʤ�Τ���Ϥ�ޤ�:
+この機能についてもうすこしだけ探求してみましょう。
+以下と等価なものから始めます:
 
    join( '', map( substr( $_, 0, 1 ), @str ) )
 
@@ -1459,8 +1459,8 @@ Using pack, we can write
 
 =end original
 
-����ϡ����줾���ʸ����κǽ��ʸ������ʤ�ʸ������֤��ޤ���
-pack ��Ȥ��ȡ��ʲ��Τ褦�˽񤱤ޤ�:
+これは、それぞれの文字列の最初の文字からなる文字列を返します。
+pack を使うと、以下のように書けます:
 
    pack( '(A)'.@str, @str )
 
@@ -1471,8 +1471,8 @@ simply
 
 =end original
 
-���뤤�ϡ������֤��� C<*> �ϡ�ɬ�פʤ��������֤��פ��Ȥ��̣����Τǡ�
-ñ�˰ʲ��Τ褦�ˤʤ�ޤ�:
+あるいは、繰り返し数 C<*> は「必要なだけ繰り返す」ことを意味するので、
+単に以下のようになります:
 
    pack( '(A)*', @str )
 
@@ -1483,8 +1483,8 @@ length.)
 
 =end original
 
-(�ƥ�ץ졼�Ȥ� C<A*> �� C<$str[0]> �� ������Ĺ���� pack ��������Ȥ���
-���Ȥ����դ��Ƥ���������)
+(テンプレートは C<A*> は C<$str[0]> を 完全な長さで pack するだけという
+ことに注意してください。)
 
 =begin original
 
@@ -1493,8 +1493,8 @@ into a sequence of byte, byte, short integer we can write
 
 =end original
 
-���� C<@dates> �� 3 ���� (�����ǯ) �Ȥ����ݴɤ���Ƥ������դ�
-�Х��ȡ��Х��ȡ�short �� pack ����ˤϡ��ʲ��Τ褦�˽񤭤ޤ�
+配列 C<@dates> に 3 つ組 (日、月、年) として保管されている日付を
+バイト、バイト、short に pack するには、以下のように書きます
 
    $pd = pack( '(CCS)*', map( @$_, @dates ) );
 
@@ -1505,9 +1505,9 @@ several techniques. First, let's use C<x> and C<X> to skip forward and back:
 
 =end original
 
-����ʸ��������(Ʊ��Ĺ����)��ʬʸ������Ȥ�򴹤���ˤϡ������Ĥ���
-�����Ȥ��ޤ���
-�ޤ����ɤ����Ф�����äƤ��뤿��� C<x> �� C<X> ��Ȥ��ޤ��礦:
+ある文字列の中の(同じ長さの)部分文字列の組を交換するには、いくつかの
+技が使えます。
+まず、読み飛ばして戻ってくるために C<x> と C<X> を使いましょう:
 
    $s = pack( '(A)*', unpack( '(xAXXAx)*', $s ) );
 
@@ -1518,8 +1518,8 @@ we were when the last C<(> was encountered:
 
 =end original
 
-�ޤ������ե��åȤ����֤���� C<@> ��Ȥ��ޤ�; ������ 0 �ϺǸ�� C<(> ��
-�����������֤ˤʤ�ޤ�:
+また、オフセットに飛ぶために C<@> も使えます; ここで 0 は最後に C<(> に
+遭遇した位置になります:
 
    $s = pack( '(A)*', unpack( '(@1A @0A @2)*', $s ) );
 
@@ -1530,18 +1530,18 @@ endian shorts and packing them in the reverse byte order:
 
 =end original
 
-�Ǹ�ˡ��ӥå�����ǥ������ short �Ȥ��� unpack ���ơ��դΥХ��Ƚ��
-pack ����Ȥ����������ۤʤä���ˡ�⤢��ޤ�:
+最後に、ビッグエンディアンの short として unpack して、逆のバイト順で
+pack するという、全く異なった手法もあります:
 
    $s = pack( '(v)*', unpack( '(n)*', $s );
 
 =head1 Lengths and Widths
 
-(Ĺ������)
+(長さと幅)
 
 =head2 String Lengths
 
-(ʸ�����Ĺ��)
+(文字列の長さ)
 
 =begin original
 
@@ -1556,14 +1556,14 @@ a length byte:
 
 =end original
 
-���ξϤǡ��ºݤΥ�å����������˥�å�������Ĺ����Х��ʥ�����֤��뤳�Ȥ�
-�������줿�ͥåȥ����å������򸫤ޤ�����
-NUL �Х��Ȥ��ɲä���Ȥ�����ˡ�ϡ��ǡ����ΰ����Ȥ��� NUL �Х��Ȥ�
-�ޤޤ�Ƥ���Ȥ��ˤ�ư��ʤ��Τǡ�����³���ǡ�����Ĺ���� pack ����Ȥ���
-��ˡ�Ϥ褯�����ޤ���
-�ʲ���ξ���ε��Ѥ�Ȥä���Ǥ�: ���긵��������Υ��ɥ쥹�򼨤� 2 �Ĥ�
-NUL ��üʸ����θ塢(�������äؤ�)���硼�ȥ�å�����������Ĺ���θ��
-�����ޤ�:
+前の章で、実際のメッセージの前にメッセージの長さをバイナリで前置することで
+構成されたネットワークメッセージを見ました。
+NUL バイトを追加するという方法は、データの一部として NUL バイトが
+含まれているときには動作しないので、引き続くデータの長さを pack するという
+方法はよく見られます。
+以下は両方の技術を使った例です: 送り元と送り先のアドレスを示す 2 つの
+NUL 終端文字列の後、(携帯電話への)ショートメッセージがその長さの後に
+送られます:
 
    my $msg = pack( 'Z*Z*CA*', $src, $dst, length( $sm ), $sm );
 
@@ -1573,7 +1573,7 @@ Unpacking this message can be done with the same template:
 
 =end original
 
-���Υ�å������� unpack ����ˤ�Ʊ���ƥ�ץ졼�Ȥǲ�ǽ�Ǥ�:
+このメッセージを unpack するには同じテンプレートで可能です:
 
    ( $src, $dst, $len, $sm ) = unpack( 'Z*Z*CA*', $msg );
 
@@ -1585,9 +1585,9 @@ cannot be unpacked naively:
 
 =end original
 
-�󤯤���̯��櫤�����������Ƥ��ޤ�: (�ѿ� C<$sm> �����äƤ���)
-���硼�ȥ�å������θ�˥ե�����ɤ��ɲä���ȡ�pack �����ꤢ��ޤ��󤬡�
-�ͥ��ƥ��֤� unpack ����ʤ��ʤ�ޤ���
+遠くに微妙な罠が顔を覗かせています: (変数 C<$sm> に入っている)
+ショートメッセージの後にフィールドを追加すると、pack は問題ありませんが、
+ネイティブに unpack 出来なくなります。
 
    # pack a message
    my $msg = pack( 'Z*Z*CA*C', $src, $dst, length( $sm ), $sm, $prio );
@@ -1604,11 +1604,11 @@ Watch this:
 
 =end original
 
-pack ������ C<A*> �ϻĤ����ƤΥ����ɤ��ɤ߹���Ǥ��ޤ���C<$prio> ��
-̤����ΤޤޤˤʤäƤ��ޤ��ΤǤ�!
-���ä��ꤷ�ƻε��򤯤����������: Perl �Ϥ��Τ褦�ʥȥ�å����Ф��Ƥ�
-�ڤ껥����äƤ��ޤ�; �⤦����µ��ޤ��äƤ���������
-����򸫤Ƥ�������:
+pack コード C<A*> は残り全てのコードを読み込んでしまい、C<$prio> が
+未定義のままになってしまうのです!
+がっかりして士気をくじかれる前に: Perl はこのようなトリックに対しても
+切り札を持っています; もう少し袖をまくってください。
+これを見てください:
 
    # pack a message: ASCIIZ, ASCIIZ, length/string, byte
    my $msg = pack( 'Z* Z* C/A* C', $src, $dst, $sm, $prio );
@@ -1630,16 +1630,16 @@ or C<Z*>, Perl won't let you.
 
 =end original
 
-��Ĥ� pack �����ɤ򥹥�å��� (C</>) �ǷҤ����Ȥǡ������ꥹ�Ȥ� 1 �Ĥ�
-�ͤȷ���դ����ޤ���
-C<pack> �Ǥϡ�������Ĺ��������ƺǽ�Υ����ɤ˽��ä� pack ����������
-�������Τϥ���å���θ�Υƥ�ץ졼�ȥ����ɤˤ�ä��Ѵ����줿��
-�ɲä���ޤ���
-����� C<length> �ƤӽФ����������뤳�Ȥˤ��ȥ�֥��ߤ��ޤ�����
-�����˸��̤�����Τ� C<unpack> �ˤ����ƤǤ�: Ĺ���򼨤��Х��Ȥ��ͤ�
-�Хåե���������ʸ�����������ޡ������ޤ���
-�����Ȥ߹�碌�� 2 ���ܤ� pack �����ɤ� C<a*>, C<A*>, C<Z*> �Ǥʤ����
-�ʳ��ϰ�̣���ʤ��Τǡ�Perl �Ϥ����Ϥ����ޤ���
+二つの pack コードをスラッシュ (C</>) で繋ぐことで、引数リストの 1 つの
+値と結び付けられます。
+C<pack> では、引数の長さが取られて最初のコードに従って pack される一方、
+引数自体はスラッシュの後のテンプレートコードによって変換された後
+追加されます。
+これは C<length> 呼び出しを挿入することによるトラブルを救いますが、
+本当に効果があるのは C<unpack> においてです: 長さを示すバイトの値は
+バッファから取られる文字列の末尾をマークします。
+この組み合わせは 2 つ目の pack コードが C<a*>, C<A*>, C<Z*> でない場合
+以外は意味がないので、Perl はそうはさせません。
 
 =begin original
 
@@ -1649,10 +1649,10 @@ C<A4> or C<Z*>:
 
 =end original
 
-C</> �������֤� pack �����ɤϡ����ͤ�ɽ������Τ�Ŭ������ΤǤ����
-�ʤ�Ǥ�Ȥ��ޤ�: 
-���Ƥο��ͥХ��ʥ� pack �����ɤ���ӡ�C<A4> �� C<Z*> �Τ褦��
-�ƥ����ȥ����ɤˤ��б����ޤ�:
+C</> の前に置く pack コードは、数値を表現するのに適したものであれば
+なんでも使えます: 
+全ての数値バイナリ pack コードおよび、C<A4> や C<Z*> のような
+テキストコードにも対応します:
 
    # pack/unpack a string preceded by its length in ASCII
    my $buf = pack( 'A4/A*', "Humpty-Dumpty" );
@@ -1667,10 +1667,10 @@ then use it to make a new unpack string. For example
 
 =end original
 
-C</> �� 5.6 ������ Perl �ˤϼ�������Ƥ��ʤ��Τǡ��⤷�����Ť� Perl ��
-ư��뤳�Ȥ��׵ᤵ�����ϡ�Ĺ�������뤿��� C<unpack( 'Z* Z* C')> ��
-�Ȥäơ����줫�鿷���� unpack ʸ������äƤ����Ȥ�ɬ�פ�����ޤ���
-�㤨��:
+C</> は 5.6 以前の Perl には実装されていないので、もし、より古い Perl で
+動作することが要求される場合は、長さを得るために C<unpack( 'Z* Z* C')> を
+使って、それから新しい unpack 文字列を作ってそれを使う必要があります。
+例えば:
 
    # pack a message: ASCIIZ, ASCIIZ, length, string, byte (5.005 compatible)
    my $msg = pack( 'Z* Z* C A* C', $src, $dst, length $sm, $sm, $prio );
@@ -1686,13 +1686,13 @@ string for the template. So maybe we should introduce...
 
 =end original
 
-���������� 2 ���ܤ� C<unpack> ��������ޤ�����
-����ϥƥ�ץ졼�ȤȤ���ñ��ʥ�ƥ��ʸ�����ȤäƤ��ޤ���
-����Ǥ���������٤��Ǥ��礦��
+しかしこの 2 番目の C<unpack> は先走りました。
+これはテンプレートとして単純なリテラル文字列を使っていません。
+それでは説明するべきでしょう…
 
 =head2 Dynamic Templates
 
-(ưŪ�ƥ�ץ졼��)
+(動的テンプレート)
 
 =begin original
 
@@ -1706,14 +1706,14 @@ followed by an additional delimiting null byte. Here's how:
 
 =end original
 
-����ޤǤϡ��ƥ�ץ졼�ȤȤ��ƻȤ����ƥ��򸫤Ƥ��ޤ�����
-pack ���륢���ƥ�Υꥹ�Ȥ�����Ĺ�Ǥʤ����(���餫����ͳ�� C<()*> ��
-�Ȥ��ʤ��ʤ�)���ƥ�ץ졼�Ȥ������뼰��ɬ�פǤ���
-�ʲ�����Ǥ�: C �ץ������ǻȤ��䤹������̾���դ�ʸ�����ͤ��ݴɤ��뤿��ˡ�
-��³����̾���� NUL ��ü���줿 ASCII ʸ�������ޤ�;
-̾�����ͤδ֤ˤ� C<=> ���֤��ơ��Ǹ���ɲäΥǥ�ߥ��Ȥʤ� NUL �Х��Ȥ�
-�֤��ޤ���
-�ʲ��Τ褦�ˤ��ޤ�:
+これまでは、テンプレートとして使われるリテラルを見てきました。
+pack するアイテムのリストが固定長でない場合(何らかの理由で C<()*> が
+使えないなら)、テンプレートを構成する式が必要です。
+以下は例です: C プログラムで使いやすい形で名前付き文字列値を保管するために、
+一続きの名前と NUL 終端された ASCII 文字列を作ります;
+名前と値の間には C<=> を置いて、最後に追加のデリミタとなる NUL バイトを
+置きます。
+以下のようにします:
 
    my $env = pack( '(A*A*Z*)' . keys( %Env ) . 'C',
                    map( { ( $_, '=', $Env{$_} ) } keys( %Env ) ), 0 );
@@ -1731,18 +1731,18 @@ we add a C<0> at the end of the C<pack> list, to be packed with C<C>.
 
 =end original
 
-���ΥХ��Ƚ����������Ǥ��İ��Ĵ�����Ƥߤޤ��礦��
-C<map> �ƤӽФ��ϡ�C<$env> �Хåե�������뤳�Ȥ����ꤷ�Ƥ������Ƥ�
-�����ƥ��������ޤ�:
-(C<$_> ��) ���줾��Υ����ˤĤ��ơ�C<=> ���ѥ졼���ȥϥå��奨��ȥ���ͤ�
-�ɲä��ޤ���
-���줾��� 3 ���Ȥϡ������ο�
-(�Ϥ�������� C<keys> �ؿ��������饳��ƥ����Ȥ��֤���ΤǤ���)
-�˽��äƷ����֤����ƥ�ץ졼�ȥ����ɤ�
-�¤� C<A*A*Z*> �� pack ����ޤ���
-�ޤ��˺Ǹ�� NUL �Х��Ȥ����뤿��ˡ�C<pack> �ꥹ�ȤκǸ�� C<C> ��
-pack ���뤿��� C<0> ���ɲä��ޤ���
-(���տ����ɼԤʤ顢���� 0 �Ͼ�ά�Ǥ��뤳�Ȥ˵��դ������⤷��ޤ���)
+このバイト処理機の要素を一つ一つ調査してみましょう。
+C<map> 呼び出しは、C<$env> バッファに入れることを想定している内容の
+アイテムを作成します:
+(C<$_> の) それぞれのキーについて、C<=> セパレータとハッシュエントリの値を
+追加します。
+それぞれの 3 つ組は、キーの数
+(はい、これは C<keys> 関数がスカラコンテキストで返すものです。)
+に従って繰り返されるテンプレートコードの
+並び C<A*A*Z*> で pack されます。
+まさに最後の NUL バイトを得るために、C<pack> リストの最後に C<C> で
+pack するための C<0> を追加します。
+(注意深い読者なら、この 0 は省略できることに気付いたかもしれません。)
 
 =begin original
 
@@ -1751,8 +1751,8 @@ in the buffer before we can let C<unpack> rip it apart:
 
 =end original
 
-�����Τ���ˡ�C<unpack> ��ʬ�򤵤������˥Хåե��ˤ��륢���ƥ�ο���
-���ꤹ��ɬ�פ�����ޤ�:
+逆操作のために、C<unpack> に分解させる前にバッファにあるアイテムの数を
+決定する必要があります:
 
    my $n = $env =~ tr/\0// - 1;
    my %env = map( split( /=/, $_ ), unpack( "(Z*)$n", $env ) );
@@ -1764,13 +1764,13 @@ name-value pairs each of which is taken apart in the C<map> block.
 
 =end original
 
-C<tr> �ϥ̥�Х��Ȥ�����ޤ���
-C<unpack> �ƤӽФ���̾��-�ͤ��ȤΥꥹ�Ȥ��֤������Τ��줾�줬
-C<map> �֥��å���ʬ�䤵��ޤ���
+C<tr> はヌルバイトを数えます。
+C<unpack> 呼び出しは名前-値の組のリストを返し、そのそれぞれが
+C<map> ブロックで分割されます。
 
 =head2 Counting Repetitions
 
-(�����֤��������)
+(繰り返しを数える)
 
 =begin original
 
@@ -1781,10 +1781,10 @@ we store the number of pairs:
 
 =end original
 
-�ǡ��������ƥ�(���뤤�ϥ����ƥ�Υꥹ��)�κǸ�˸�ĥ��򤪤��ΤǤϤʤ���
-�ǡ����ο�����ˤ����Ƥ������Ȥ�Ǥ��ޤ���
-�Ƥӡ��ϥå���Υ������ͤ� pack ���ޤ�; ���줾������ˤ����ʤ� short ��
-Ĺ�����֤��졢��Ƭ�ˤ��Ȥο����ݴɤ��ޤ�:
+データアイテム(あるいはアイテムのリスト)の最後に見張りをおくのではなく、
+データの数を先においておくこともできます。
+再び、ハッシュのキーと値を pack します; それぞれの前には符号なし short で
+長さが置かれ、先頭には組の数を保管します:
 
    my $env = pack( 'S(S/A* S/A*)*', scalar keys( %Env ), %Env );
 
@@ -1795,7 +1795,7 @@ unpacked with the C</> code:
 
 =end original
 
-�����֤����� C</> �����ɤ� unpack �Ǥ���Τǡ�������ñ��ˤʤ�ޤ�:
+繰り返し数は C</> コードで unpack できるので、逆操作は単純になります:
 
    my %env = unpack( 'S/(S/A* S/A*)', $env );
 
@@ -1807,13 +1807,13 @@ a repeat count for a C<()>-group.
 
 =end original
 
-����ϡ�C<pack> �� C<()> ���롼�פη����֤��������Ǥ��ʤ��Τǡ�
-C<pack> �� C<unpack> ��Ʊ���ƥ�ץ졼�Ȥ��Ȥ��ʤ����������Ǥ��뤳�Ȥ�
-���դ��Ƥ���������
+これは、C<pack> は C<()> グループの繰り返し数を決定できないので、
+C<pack> と C<unpack> で同じテンプレートが使えない珍しい場合であることに
+注意してください。
 
 =head1 Packing and Unpacking C Structures
 
-(C �ι�¤�Τ� pack/unpack ����)
+(C の構造体を pack/unpack する)
 
 =begin original
 
@@ -1825,15 +1825,15 @@ Sorry, no: read on, please.
 
 =end original
 
-���Υ��������ǡ����ͤ�ʸ����� pack ������ˡ�򸫤ޤ�����
-�⤷�����˾㳲���ʤ��ʤ顢��C ��¤�Τˤ�¾�˲���ʤ������äƤ��ʤ���
-���� C ��¤�Τ� pack/unpack ���뤿������Ƥ��ΤäƤ��ޤ�����
-�Ȥ����ʷ�ʸ���ȶ��ˤ��ξϤ򤹤������᤯���뤳�Ȥ��Ǥ��ޤ���
-���ߤޤ��󡢤����ǤϤ���ޤ���: �ɤ����ɤ߿ʤ�Ƥ���������
+前のセクションで、数値と文字列を pack する方法を見ました。
+もしここに障害がないなら、「C 構造体には他に何もなく、従ってあなたは
+既に C 構造体を pack/unpack するための全てを知っています。」
+という簡潔な見解と共にこの章をすぐに締めくくることができます。
+すみません、そうではありません: どうか読み進めてください。
 
 =head2 The Alignment Pit
 
-(���饤���Ȥ���Ȥ���)
+(アライメントの落とし穴)
 
 =begin original
 
@@ -1851,16 +1851,16 @@ that, don't you?)).
 
 =end original
 
-®�٤ȥ������ΥХ�󥹤ϡ����®���¹ԤǤ������˷����Ƥ��ޤ���
-����� C ����ѥ��餬��¤�ΤΤ���˥���������Ƥ���ˡ�˱ƶ����ޤ�:
-������4 ���ܿ������뤤�� 8 ���ܿ��Υ��ɥ쥹�˥��饤���Ȥ���Ƥ���С�
-16 �ӥåȤ� 32 �ӥåȤΥ��ڥ��ɤ� CPU �쥸�����ؤνФ����줬®���ʤ�
-�������ƥ�����Ǥϡ�C ����ѥ���Ϲ�¤�Τ��ɲäΥХ��Ȥ�����뤳�Ȥ�
-����®�٥��åȤ������褦�ˤ��ޤ���
-�⤷ C �γ�������ۤ��ʤ��Τʤ顢���줬�ʤ�餫�����ݤ�������������Ȥ�
-���ꤽ���ˤ���ޤ��� (���������礭�ʥǡ�����¤���߷פ����ꡢ
-�������ƥ�����֤ǰܿ����Τ��륳���ɤ��ۤ������(�����������ʤ��Ǥ���?)��
-���ˤ���٤��Ǥ���)��
+速度とメモリ消費のバランスは、より速く実行できる方に傾いています。
+これは C コンパイラが構造体のためにメモリを割り当てる方法に影響します:
+偶数、4 の倍数、あるいは 8 の倍数のアドレスにアライメントされていれば、
+16 ビットや 32 ビットのオペランドや CPU レジスタへの出し入れが速くなる
+アーキテクチャでは、C コンパイラは構造体に追加のバイトを入れることで
+この速度メリットを受けるようにします。
+もし C の海岸線を越えないのなら、これがなんらかの面倒を引き起こすことは
+ありそうにありません (しかし、大きなデータ構造を設計したり、
+アーキテクチャ間で移植性のあるコードがほしい場合(そうしたくないですか?)、
+気にするべきです。)。
 
 =begin original
 
@@ -1869,8 +1869,8 @@ C structures:
 
 =end original
 
-���줬 C<pack> �� C<unpack> �ˤɤΤ褦�˱ƶ���Ϳ���뤫�򸫤뤿��ˡ�
-����� 2 �Ĥ� C ��¤�Τ���Ӥ��Ƥߤޤ�:
+これが C<pack> と C<unpack> にどのように影響を与えるかを見るために、
+これら 2 つの C 構造体を比較してみます:
 
    typedef struct {
      char     c1;
@@ -1894,10 +1894,10 @@ we can draw memory maps, showing where the extra 4 bytes are hidden:
 
 =end original
 
-ŵ��Ū�ˤϡ�C ����ѥ���� C<gappy_t> �ѿ��ˤ� 12 �Х��Ȥ������Ƥޤ�����
-C<dense_t> �ˤ� 8 �Х��Ȥ���������Ƥޤ���
-����򤵤��Ĵ�������塢;ʬ�� 4 �Х��Ȥ�����Ƥ��뤳�Ȥ�ʬ����
-����ޥåפ��񤱤ޤ�:
+典型的には、C コンパイラは C<gappy_t> 変数には 12 バイトを割り当てますが、
+C<dense_t> には 8 バイトしか割り当てません。
+これをさらに調査した後、余分な 4 バイトが隠れていることが分かる
+メモリマップが書けます:
 
    0           +4          +8          +12
    +--+--+--+--+--+--+--+--+--+--+--+--+
@@ -1918,9 +1918,9 @@ templates have to be stuffed with C<x> codes to get those extra fill bytes.
 
 =end original
 
-�����Ƥ��줬�ǽ�λפ������ʤ�������ͳ�Ǥ�:
-C<pack> �� C<unpack> �Υƥ�ץ졼�Ȥϡ�������;ʬ������Х��ȤΤ����
-C<X> �����ɤ�ͤ��ɬ�פ�����ޤ���
+そしてこれが最初の思いがけない一撃の理由です:
+C<pack> と C<unpack> のテンプレートは、これらの余分に埋めるバイトのために
+C<X> コードを詰める必要があります。
 
 =begin original
 
@@ -1934,14 +1934,14 @@ item alone.
 
 =end original
 
-�����ʼ���: �֤ʤ� Perl �Ϸ�֤�����碌���ʤ���?�פˤ�������Τ�
-�����Ǥ���
-��ĤΤ褤��ͳ�ϡ��ġ��ι�¤�Υե�����ɤΥ�٥�Ǥ�������¤�Τ�
-���饤������ˡ�Τ���������������ˡ������Ƥ���(�� ANSI ��)��ĥ��
-�󶡤��Ƥ���C����ѥ��餬���뤫��Ǥ���
-�����ơ��⤷���줬��ʬ�Ǥʤ��ʤ顢����Х��ȿ������Υ����ƥ��
-���饤���Ȥ����ǤϷ��ꤵ��ʤ���C<union> �ȸƤФ��
-�����ʤ�Τ�����ޤ���
+自然な質問: 「なぜ Perl は隙間を埋め合わせられないの?」には答えるのが
+当然です。
+一つのよい理由は、個々の構造体フィールドのレベルでさえ、構造体の
+アライメント方法のあらゆる種類の制御方法を許している(非 ANSI の)拡張を
+提供しているCコンパイラがあるからです。
+そして、もしこれが十分でないなら、埋めるバイト数が次のアイテムの
+アライメントだけでは決定されない、C<union> と呼ばれる
+陰険なものがあります。
 
 =begin original
 
@@ -1951,9 +1951,9 @@ from the list:
 
 =end original
 
-�褷���ǤϺ�����Ѥ��ޤ��礦��
-����ϡ��ꥹ�Ȥ����б��������Ǥ�Ȥ�ʤ��ƥ�ץ졼�ȥ����� C<x> ��
-�������뤳�Ȥǥ��饤���Ȥ������������Ĥ���ˡ�Ǥ�:
+よし、では困難に耐えましょう。
+これは、リストから対応する要素を使わないテンプレートコード C<x> を
+挿入することでアライメントを正しくする一つの方法です:
 
   my $gappy = pack( 'cxs cxxx l!', $c1, $s, $c2, $l );
 
@@ -1967,13 +1967,13 @@ And somebody somewhere has a platform where it doesn't.
 
 =end original
 
-C<l> �θ�� C<!> �����դ��Ƥ�������: long ������ C ����ѥ����
-����ѥ��뤵���Τ�Ʊ�����ˤʤ�Τ�μ¤ˤ������Ǥ���
-�����Ƥ��λ����Ǥ⡢����ϥ���ѥ��餬��ҤΤ褦�˥��饤���Ȥ���
-�ץ�åȥե�����ǤΤ�ư��ޤ���
-�����Ƥɤ�����ï���Ϥ����Ǥʤ��ץ�åȥե������ȤäƤ��ޤ���
-[�����餯�ϡ�Cray �Ǥ�; ����� C<short>, C<int>, C<long> ������
-8 �Х��ȤǤ���:-)]
+C<l> の後の C<!> に注意してください: long 整数を C コンパイラで
+コンパイルされるのと同じ形になるのを確実にしたいです。
+そしてこの時点でも、これはコンパイラが上述のようにアライメントする
+プラットフォームでのみ動作します。
+そしてどこかの誰かはそうでないプラットフォームを使っています。
+[おそらくは、Cray です; これは C<short>, C<int>, C<long> が全て
+8 バイトです。:-)]
 
 =begin original
 
@@ -1983,9 +1983,9 @@ program? Here's a C program that does the trick:
 
 =end original
 
-�ȤƤ�Ĺ����¤�ΤΥХ��ȿ�������ƥ��饤���Ȥ�ƻ뤹��Τ����ݤʤ��ȤǤ���
-ñ��ʥץ������ǥƥ�ץ졼�Ȥ�����ˡ�Ϥʤ��Ǥ��礦��?
-�ʲ��ϵ���Ȥä� C �ץ������Ǥ�:
+とても長い構造体のバイト数を数えてアライメントを監視するのは面倒なことです。
+単純なプログラムでテンプレートを作る方法はないでしょうか?
+以下は技を使った C プログラムです:
 
    #include <stdio.h>
    #include <stddef.h>
@@ -2014,7 +2014,7 @@ The output line can be used as a template in a C<pack> or C<unpack> call:
 
 =end original
 
-���ϹԤ� C<pack> �� C<unpack> �ƤӽФ��Υƥ�ץ졼�ȤȤ��ƻȤ��ޤ���
+出力行は C<pack> や C<unpack> 呼び出しのテンプレートとして使えます。
 
   my $gappy = pack( '@0c @2s! @4c @8l!', $c1, $s, $c2, $l );
 
@@ -2029,12 +2029,12 @@ C standardese).
 
 =end original
 
-�������������ƥ�ץ졼�ȥ����ɤǤ� - �ޤ���ʬ�ǤϤ���ޤ���Ǥ�����
-������ C<@> �ϼ��Υ����ƥ�Τ���� pack �Хåե�����Ƭ����Υ��ե��åȤ�
-����Ǥ���褦�ˤ��뤳�ȤǼ�֤�ʤ��ޤ�:
-�����ñ�ˡ�C<struct> ���Ȥ��Υե������̾(C ɸ��ǤΡ֥��л���ҡ�)��
-Ϳ�����Ȥ��� (C<E<lt>stddef.hE<gt>> ���������Ƥ���)C<offsetof> �ޥ�����
-�֤��ͤǤ���
+げー、新しいテンプレートコードです - まだ十分ではありませんでした。
+しかし C<@> は次のアイテムのための pack バッファの先頭からのオフセットを
+指定できるようにすることで手間を省きます:
+これは単に、C<struct> 型とそのフィールド名(C 標準での「メンバ指定子」)を
+与えたときに (C<E<lt>stddef.hE<gt>> で定義されている)C<offsetof> マクロが
+返す値です。
 
 =begin original
 
@@ -2046,14 +2046,14 @@ appropriate value. Here's the next version of our struct packaging:
 
 =end original
 
-���ե��åȤ�Ȥä��ꡢ��֤��Ϥ������ C<x> ���ɲä��뤳�ȤǤ�
-��ʬ�ǤϤ���ޤ���
-(��¤�Τ��ѹ����줿�Ȥ��˲��������뤫��ñ���������ƤߤƤ���������)
-������ɬ�פʤ�Τϡ��ּ��� N ���ܿ��ΥХ��Ȥˤʤ�ޤǥ����åפ���פ�
-�񤯳���ˡ�Ǥ���
-ͺ�ۤʥƥ�ץ졼�ȤǤϡ������ C<x!N> �ȤǤ��ޤ� (������ N ��Ŭ�ڤ���
-���֤��������ޤ�)��
-����Ϲ�¤�ΤΥѥå��������μ��ΥС������Ǥ�:
+オフセットを使ったり、隙間を渡すために C<x> を追加することでは
+十分ではありません。
+(構造体が変更されたときに何が起こるかを単に想像してみてください。)
+本当に必要なものは、「次の N の倍数のバイトになるまでスキップする」と
+書く各方法です。
+雄弁なテンプレートでは、これは C<x!N> とできます (ここで N は適切な値
+に置き換えられます)。
+これは構造体のパッケージ化の次のバージョンです:
 
   my $gappy = pack( 'c x!2 s c x!4 l!', $c1, $s, $c2, $l );
 
@@ -2067,19 +2067,19 @@ the very best we can do:
 
 =end original
 
-����ϳμ¤ˤ���ɤ���ΤǤ�����̤�������Ƥ�������Ĺ�����Τ�ɬ�פ����ꡢ
-�ܿ����ȤϤ���Υ��Ƥ��ޤ���
-�㤨�С�C<2> ������ˡ��֤Ȥˤ��� short ��Ĺ���פȽ񤭤����Ǥ���
-�������������Ŭ�ڤ� pack �����ɤ��礫�ä��ǰϤळ�� (C<[s]>) ��
-��ǽ�Ǥ���
-����ǡ�����ϤǤ���¤���ɤΤ�ΤǤ�:
+これは確実により良いものですが、未だに全ての整数の長さを知る必要があり、
+移植性とはかけ離れています。
+例えば、C<2> の代わりに、「とにかく short の長さ」と書きたいです。
+しかし、これは適切な pack コードを大かっこで囲むこと (C<[s]>) で
+可能です。
+それで、これはできる限り最良のものです:
 
   my $gappy = pack( 'c x![s] s c x![l!] l!', $c1, $s, $c2, $l );
 
 
 =head2 Alignment, Take 2
 
-(���饤���ȡ�������)
+(アライメント、第二幕)
 
 =begin original
 
@@ -2088,9 +2088,9 @@ hydra raises another ugly head when you pack arrays of structures:
 
 =end original
 
-���饤���Ȥ���ª�ˤĤ��ơ���ʬ���������Ƥ��ʤ��ΤǤϤʤ�����
-���ۤ��Ƥ��ޤ���
-��¤�Τ������ pack ���褦�Ȥ���ȡ��ҥɥ�Ϥޤ��̤ν���Ƭ��⤿���Ƥ��ޤ���
+アライメントの捕捉について、十分に説明していないのではないかと
+心配しています。
+構造体の配列を pack しようとすると、ヒドラはまた別の醜い頭をもたげてきます。
 
    typedef struct {
      short    count;
@@ -2107,10 +2107,10 @@ like this:
 
 =end original
 
-�ɤ���櫤�����ΤǤ��礦?
-�ǽ�Υե������ C<count> �����䡢����ȼ��Υե������ C<glyph> �δ֤�
-�ѥåǥ��󥰤����פǤ�; ����ʤ�ʤ��ʲ��Τ褦�˴�ñ��
-pack �Ǥ��ʤ��ΤǤ��礦:
+どこに罠があるのでしょう?
+最初のフィールド C<count> の前や、これと次のフィールド C<glyph> の間に
+パッディングは不要です; それならなぜ以下のように簡単に
+pack できないのでしょう:
 
    # something goes wrong here:
    pack( 's!a' x @buffer,
@@ -2126,19 +2126,19 @@ of each component as well. Thus the correct template is:
 
 =end original
 
-����� C<3*@buffer> �Х��Ȥ� pack ���ޤ�����C<buffer_t> �Υ�������
-C<BUFLEN> �� 4 �ܤˤʤ�ΤǤ�!
-���Τ��äζ����ϡ���¤�Τ������ɬ�פʥ��饤���Ȥϡ����줾������Ǥ�
-I<�Ǹ��> �ѥåǥ��󥰤��θ����ɬ�פ�������ǡ����⤤��٥��
-���Ť���Ȥ������ȤǤ���
-���äơ��������ƥ�ץ졼�Ȥ�:
+これは C<3*@buffer> バイトに pack しますが、C<buffer_t> のサイズは
+C<BUFLEN> の 4 倍になるのです!
+このお話の教訓は、構造体や配列で必要なアライメントは、それぞれの要素の
+I<最後に> パッディングを考慮する必要がある場所で、より高いレベルに
+伝播するということです。
+従って、正しいテンプレートは:
 
    pack( 's!ax' x @buffer,
          map{ ( $_->{count}, $_->{glyph} ) } @buffer );
 
 =head2 Alignment, Take 3
 
-(���饤���ȡ��軰��)
+(アライメント、第三幕)
 
 =begin original
 
@@ -2146,7 +2146,7 @@ And even if you take all the above into account, ANSI still lets this:
 
 =end original
 
-�嵭�Τ��Ȥ�����Ƭ�����줿�Ȥ��Ƥ⡢ANSI �ϰʲ��Τ褦�ʾ��:
+上記のことを全て頭に入れたとしても、ANSI は以下のような場合:
 
    typedef struct {
      char     foo[2];
@@ -2161,16 +2161,16 @@ the ARM structure rules make C<sizeof (foo_t)> == 4]
 
 =end original
 
-���������͡��Ǥ���Ȥ��Ƥ��ޤ���
-��¤�Υ��饤��������ϡ����줾������Ǥ����礭�����⤷��ޤ���
-[�����Ƥ⤷���줬����Ū�ˤϲ���ƶ���Ϳ���ʤ��ȹͤ��Ƥ���ʤ顢
-���˸����������ä�ʬ�򤷤ƤߤƤ���������
-¿���� ARM ������ȤäƤ��ơ�ARM ��¤�Υ롼��Ǥ�
-C<sizeof (foo_t)> == 4 �Ȥʤ�ޤ�]
+サイズは様々であるとしています。
+構造のアライメント制約は、それぞれの要素よりも大きいかもしれません。
+[そしてもしこれが一般的には何も影響を与えないと考えているなら、
+次に見た携帯電話を分解してみてください。
+多くは ARM コアを使っていて、ARM 構造体ルールでは
+C<sizeof (foo_t)> == 4 となります]
 
 =head2 Pointers for How to Use Them
 
-(�ݥ��󥿤�ɤ��������Υݥ���)
+(ポインタをどう扱うかのポインタ)
 
 =begin original
 
@@ -2183,12 +2183,12 @@ stored.)
 
 =end original
 
-���ξϤΥ����ȥ�ϡ�C �ι�¤�Τ� pack ����Ȥ����٤����ᤫ��в񤦤��Ȥˤʤ�
-2 ���ܤ������ؤ������Ƥ��ޤ���
-�ƤӽФ����Ȥ��Ƥ���ؿ������㤨�С�C<void *> ���ͤ����ꤷ�Ƥ����硢
-ñ��� Perl ���ѿ��Υ�ե���󥹤�Ȥ����Ȥ� I<�Ǥ��ޤ���>��
-(�Τ����ͤϥ��ꥢ�ɥ쥹�Ǥ������ͤ����Ƥ��ݻ�����Ƥ��륢�ɥ쥹�Ǥ�
-�ʤ�����Ǥ���)
+この章のタイトルは、C の構造体を pack するときに遅かれ早かれ出会うことになる
+2 番目の問題を指し示しています。
+呼び出そうとしている関数が、例えば、C<void *> の値を想定している場合、
+単純に Perl の変数のリファレンスを使うことは I<できません>。
+(確かに値はメモリアドレスですが、値の内容が保持されているアドレスでは
+ないからです。)
 
 =begin original
 
@@ -2197,10 +2197,10 @@ Isn't this what we want? Let's try:
 
 =end original
 
-�ƥ�ץ졼�ȥ����� C<P> �ϡ��ָ���Ĺʸ����ؤΥݥ��󥿡פ� pack ���뤳�Ȥ�
-��«���ޤ���
-���줬˾�ߤΤ�ΤǤϤʤ��Ǥ���?
-��Ƥߤޤ��礦:
+テンプレートコード C<P> は、「固定長文字列へのポインタ」を pack することを
+約束します。
+これが望みのものではないですか?
+試してみましょう:
 
     # allocate some storage and pack a pointer to it
     my $memory = "\x00" x $size;
@@ -2215,11 +2215,11 @@ address from the bytes returned by C<pack>.
 
 =end original
 
-����ä��Ԥä�: C<pack> ��ñ�˥Х��ȥ������󥹤��֤��ΤǤ�?
-�ɤ���äƤ��ΥХ��Ȥ�ʸ����򡢥ݥ��󥿡��Ĥޤ��ɤϿ��ͤǤ����ʤ���Τ�
-���ꤷ�Ƥ��� C �Υ����ɤ��Ϥ���ΤǤ��礦?
-������ñ��Ǥ�: C<pack> ���֤��줿�Х����󤫤���ͤΥ��ɥ쥹�����ʤ����
-�ʤ�ޤ���
+ちょっと待った: C<pack> は単にバイトシーケンスを返すのでは?
+どうやってこのバイトの文字列を、ポインタ、つまり結局は数値でしかないものを
+想定している C のコードに渡せるのでしょう?
+答えは単純です: C<pack> で返されたバイト列から数値のアドレスを得なければ
+なりません。
 
     my $ptr = unpack( 'L!', $memptr );
 
@@ -2233,13 +2233,13 @@ where a pointer is expected. The read(2) system call comes to mind:
 
 =end original
 
-���餫�ˡ�����ϥݥ��󥿤��� unsigned long �ؤΡ�����Ӥ��εդη����㥹�Ȥ�
-��ǽ�Ǥ��뤳�Ȥ��ꤷ�Ƥ��ޤ�; ����Ϥ��Ф���ư��ޤ���������Ū��
-��§�Ȥ��ư����٤��ǤϤ���ޤ���
-- �����Ǥ��Υݥ��󥿤����ޤ����������μ����: ����򤦤ޤ��Ȥ��ˤ�
-�ɤ�����Τ��褤�Ǥ��礦?
-�ݥ��󥿤����ꤷ�Ƥ��� C �ؿ���ƤӽФ�ɬ�פ�����ޤ���
-read(2) �����ƥॳ���뤬�����⤫�Ӥޤ�:
+明らかに、これはポインタから unsigned long への、およびその逆の型キャストが
+可能であることを仮定しています; これはしばしば動作しますが、普遍的な
+原則として扱うべきではありません。
+- ここでこのポインタを得ましたが、次の質問は: これをうまく使うには
+どうするのがよいでしょう?
+ポインタを想定している C 関数を呼び出す必要があります。
+read(2) システムコールが心に浮かびます:
 
     ssize_t read(int fd, void *buf, size_t count);
 
@@ -2250,8 +2250,8 @@ this Perl function copying a file to standard output:
 
 =end original
 
-L<perlfunc> �ˤ��� C<syscall> �λȤ������������ɤ���塢�ե������
-ɸ����Ϥ˥��ԡ����� Perl �ؿ���񤱤ޤ�:
+L<perlfunc> にある C<syscall> の使い方の説明を読んだ後、ファイルを
+標準出力にコピーする Perl 関数を書けます:
 
     require 'syscall.ph';
     sub cat($){
@@ -2276,12 +2276,12 @@ way. You simply pass a string variable, and Perl forwards the address.)
 
 =end original
 
-�����ñ�㤵�θ��ܤǤ�ʤ���аܿ��������ϤǤ⤢��ޤ��󤬡�������
-�����Ƥ��ޤ�: ����΢��Ǧ�ӹ���ǡ�����¾�����Ǥ��ɤ�����Ƥ��� Perl ��
-����˥��������Ǥ��ޤ�!
-(���פ�����: Perl �� C<syscall> �ϡ����β�꤯�ɤ���ˡ�ǥݥ��󥿤�
-��������ɬ�פ� I<����ޤ���> ��
-ñ��ʸ�����ѿ����Ϥ��С�Perl �����ɥ쥹��ž�����ޤ���)
+これは単純さの見本でもなければ移植性の模範でもありませんが、要点を
+示しています: 舞台裏に忍び込んで、その他の点では良く守られている Perl の
+メモリにアクセスできます!
+(重要な注意: Perl の C<syscall> は、この回りくどい方法でポインタを
+構成する必要は I<ありません> 。
+単に文字列変数を渡せば、Perl がアドレスを転送します。)
 
 =begin original
 
@@ -2293,12 +2293,12 @@ it's up to you to specify the actual size as an explicit length after C<P>.
 
 =end original
 
-C<unpack> �Ǥ� C<P> �ϤɤΤ褦��ư���ΤǤ��礦?
-unpack ����褦�Ȥ��Ƥ���Хåե��ˤ���ݥ��󥿤��������ޤ�:
-�⤷���줬(���� C<undef> �ͤ���������)�̥�ݥ��󥿤Ǥʤ���硢���ϥ��ɥ쥹��
-���뤳�Ȥˤʤ�ޤ� - �Ǥ⡢�����?
-Perl �Ϥ��Ρָ���Ĺʸ����פ�Ĺ�����Τ���ˡ���ʤ��Τǡ�C<P> �θ����
-����Ū��Ĺ���Ȥ��Ƽºݤ��礭������ꤹ��ɬ�פ�����ޤ���
+C<unpack> では C<P> はどのように動作するのでしょう?
+unpack されようとしているバッファにあるポインタを想像します:
+もしそれが(賢く C<undef> 値を生成する)ヌルポインタでない場合、開始アドレスを
+得ることになります - でも、それで?
+Perl はこの「固定長文字列」の長さを知る方法がないので、C<P> の後ろに
+明示的な長さとして実際の大きさを指定する必要があります。
 
    my $mem = "abcdefghijklmn";
    print unpack( 'P5', pack( 'P', $mem ) ); # prints "abcde"
@@ -2309,7 +2309,7 @@ As a consequence, C<pack> ignores any number or C<*> after C<P>.
 
 =end original
 
-��̤Ȥ��ơ�C<pack> �� C<P> �θ�ο��ͤ� C<*> ��̵�뤷�ޤ���
+結果として、C<pack> は C<P> の後の数値や C<*> を無視します。
 
 =begin original
 
@@ -2321,13 +2321,13 @@ and that implies a length for the data item to be returned:
 
 =end original
 
-������ C<P> ��ư��ϸ����Τǡ�Ʊ�ͤ� C<p> ���Ƥߤޤ���
-�Ȥˤ������ʤ��ݥ��󥿤� pack ����Τ� 2 ���ܤΥƥ�ץ졼�ȥ����ɤ�
-ɬ�פʤΤǤ��礦?
-�����ϡ�
-C<unpack> �� C<p> �ϥХåե������ä� NUL ��ü���줿ʸ���󤬤���
-���ɥ쥹����ϤޤäƤ��뤳�Ȥ���«���Ƥ��ơ��֤����ǡ��������ƥ��
-Ĺ����ż����Ƥ���Ȥ���ñ��ʻ��¤θ���˲�����äƤ��ޤ�:
+ここで C<P> の動作は見たので、同様に C<p> を試してみます。
+とにかく、なぜポインタを pack するのに 2 番目のテンプレートコードが
+必要なのでしょう?
+答えは、
+C<unpack> の C<p> はバッファから取った NUL 終端された文字列がその
+アドレスから始まっていることを約束していて、返されるデータアイテムの
+長さを暗示しているという単純な事実の後ろに横たわっています:
 
    my $buf = pack( 'p', "abc\x00efhijklmn" );
    print unpack( 'p', $buf );    # prints "abc"
@@ -2340,8 +2340,8 @@ count, not a length as after C<P>.
 
 =end original
 
-����Ǥ⤳��Ϻ��𤷤����Ǥ�: Ĺ����ʸ�����Ĺ����ż����Ƥ���Τǡ�
-C<p> �θ�ο��ͤϷ����֤����Ǥ��äơ�C<P> �θ�Τ褦��Ĺ���ǤϤ���ޤ���
+それでもこれは混乱しがちです: 長さが文字列の長さを暗示しているので、
+C<p> の後の数値は繰り返し数であって、C<P> の後のように長さではありません。
 
 =begin original
 
@@ -2352,11 +2352,11 @@ private matter and doesn't really care that we have obtained a copy. Therefore:
 
 =end original
 
-C<$x> ���ºݤ��ݴɤ���Ƥ��륢�ɥ쥹�����뤿��� C<pack(..., $x)> ��
-C<P> �� C<p> ��Ȥ����ȤϿ��Ť˹Ԥ��ʤ���Фʤ�ޤ���
-Perl �������������ѿ��Ȥ��Υ��ɥ쥹�δط���ȤƤ�ץ饤�١��Ȥ������
-�ͤ����䤿�������ԡ����������Ȥ�ºݤˤϵ��ˤ��ޤ���
-���ä�:
+C<$x> が実際に保管されているアドレスを得るために C<pack(..., $x)> で
+C<P> や C<p> を使うことは慎重に行われなければなりません。
+Perl の内部機構は変数とそのアドレスの関係をとてもプライベートな問題と
+考え、私たちがコピーを得たことを実際には気にしません。
+従って:
 
 =over 4
 
@@ -2370,9 +2370,9 @@ are done with using the memory at that address.
 
 =end original
 
-�����ѿ��Υ��ɥ쥹�Υ����Ȥ���������˥������פ���Ф�(���ä�
-���꤬���������)�褦���ѿ��Υ��ɥ쥹�����뤿���
-C<pack> �� C<p> �� C<P> ��Ȥ�ʤ��Ǥ���������
+その変数のアドレスのメモリを使い終わる前にスコープから出る(従って
+メモリが開放される)ような変数のアドレスを得るために
+C<pack> の C<p> や C<P> を使わないでください。
 
 =item * 
 
@@ -2384,10 +2384,10 @@ reallocation of its storage, leaving you with a pointer into no-man's land.
 
 =end original
 
-�ѿ����ͤ��ѹ����� Perl ���ˤȤƤ����դ��Ƥ���������
-�㤨�С��ͤ˲������ɲä���ȡ������ݴɾ�������֤��뤳�Ȥˤʤäơ�
-�ݥ��󥿤�ï�⤤�ʤ��Ȥ����ˤ����ޤޤˤ��뤳�Ȥ�
-�ʤ뤫�⤷��ޤ���
+変数の値を変更する Perl 操作にとても注意してください。
+例えば、値に何かを追加すると、その保管場所を再配置することになって、
+ポインタを誰もいないところにしたままにすることに
+なるかもしれません。
 
 =item * 
 
@@ -2400,10 +2400,10 @@ had written something like C<$x .= ''>.
 
 =end original
 
-�����������ټ¿��Ȥ����ݴɤ���Ƥ��� Perl �ѿ��Υ��ɥ쥹�����Ȥ�
-�ͤ��ʤ��Ǥ�������!
-C<pack('P', $x)> �ϡ����礦�� C<$x .= ''> �Τ褦�ʤ�Τ�񤤤��Τ�Ʊ�ͤˡ�
-�ѿ�������ɽ����ʸ����˶������ޤ���
+整数や倍精度実数として保管されている Perl 変数のアドレスを取れるとは
+考えないでください!
+C<pack('P', $x)> は、ちょうど C<$x .= ''> のようなものを書いたのと同様に、
+変数の内部表現を文字列に強制します。
 
 =back
 
@@ -2414,12 +2414,12 @@ allocates an anonymous variable.
 
 =end original
 
-��������ʸ�����ƥ��� P �ޤ��� p �� pack ���뤳�Ȥϰ����Ǥ�;
-�ʤ��ʤ� Perl ��ñ��̵̾�ѿ��������Ƥ뤫��Ǥ���
+しかし、文字列リテラルを P または p で pack することは安全です;
+なぜなら Perl は単に無名変数を割り当てるからです。
 
 =head1 Pack Recipes
 
-(pack �쥷��)
+(pack レシピ)
 
 =begin original
 
@@ -2428,7 +2428,7 @@ and C<unpack>:
 
 =end original
 
-�ʲ��� C<pack> �� C<unpack> �˴ؤ��롢(¿ʬ)���Ω�ĥ쥷�Ԥ�ޤȤ�ޤ�:
+以下に C<pack> と C<unpack> に関する、(多分)役に立つレシピをまとめます:
 
     # Convert IP address for socket functions
     pack( "C4", split /\./, "123.4.5.6" ); 
@@ -2454,8 +2454,8 @@ spacing - 16 bytes to a line:
 
 =end original
 
-ñ��ʥ������פΤ���ˡ��Х������ 16 �ʿ����Ȥ� unpack ����
-C<map> ��Ȥä�����Ū��ɽ�� - 1 �Ԥ� 16 �Х��� - �˲ù����ޤ�:
+単純なメモリダンプのために、バイト列を 16 進数の組に unpack し、
+C<map> を使って伝統的な表現 - 1 行に 16 バイト - に加工します:
 
     my $i;
     print map( ++$i % 16 ? "$_ " : "$_\n",
@@ -2464,7 +2464,7 @@ C<map> ��Ȥä�����Ū��ɽ�� - 1 �Ԥ� 16 �Х��� - �˲ù����ޤ�:
 
 =head1 Funnies Section
 
-(�ͥ�����)
+(ネタ部門)
 
     # Pulling digits out of nowhere...
     print unpack( 'C', pack( 'x' ) ),
@@ -2477,7 +2477,7 @@ C<map> ��Ȥä�����Ū��ɽ�� - 1 �Ԥ� 16 �Х��� - �˲ù����ޤ�:
 
 =head1 Authors
 
-(����)
+(著者)
 
 =begin original
 
@@ -2485,7 +2485,7 @@ Simon Cozens and Wolfgang Laun.
 
 =end original
 
-Simon Cozens �� Wolfgang Laun��
+Simon Cozens と Wolfgang Laun。
 
 =begin meta
 

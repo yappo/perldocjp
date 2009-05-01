@@ -9,7 +9,7 @@ perlfaq6 - Regular Expressions ($Revision: 10126 $)
 
 =end original
 
-perlfaq6 - ����ɽ�� ($Revision: 10126 $)
+perlfaq6 - 正規表現 ($Revision: 10126 $)
 
 =head1 DESCRIPTION
 
@@ -25,21 +25,21 @@ a number/whole/integer/float", to be precise).
 
 =end original
 
-���ξϤ϶ä��ۤɾ������ʤäƤ��ޤ���
-�ʤ��ʤ�FAQ�λĤ����ʬ��
-����ɽ����ȼ�ä������Ȱ��ˤ��������˻��ߤ��Ƥ��뤫��Ǥ���
-���Ȥ���URL��ǥ����ɤ���Ȥ������Τ����ͤ��ɤ�����ǧ���뤳�Ȥ�
-����ɽ����Ȥäƽ�������ޤ��������β����Ϥ��λ����Τ�������
-���Ĥ��뤳�Ȥ��Ǥ��ޤ�(���Τˤ� L<perlfaq9>:
-"How do I decode or create those %-encodings on the web" ��
+この章は驚くほど小さくなっています。
+なぜならFAQの残りの部分は
+正規表現を伴った回答と一緒にあちこちに散在しているからです。
+たとえばURLをデコードするとかあるものが数値かどうか確認することは
+正規表現を使って処理されますが、この回答はこの資料のあらゆる所で
+見つけることができます(正確には L<perlfaq9>:
+"How do I decode or create those %-encodings on the web" と
 L<perfaq4>: "How do I determine whether a scalar is
-a number/whole/integer/float")��
+a number/whole/integer/float")。
 
 =head2 How can I hope to use regular expressions without creating illegible and unmaintainable code?
 X<regex, legibility> X<regexp, legibility>
 X<regular expression, legibility> X</x>
 
-(Ƚ�ɤ��񤤡��ݼ�Ǥ��ʤ��褦�ʤ�Τˤ��뤳�Ȥʤ�����ɽ����Ȥ��ˤ�?)
+(判読し難い、保守できないようなものにすることなく正規表現を使うには?)
 
 =begin original
 
@@ -48,14 +48,14 @@ understandable.
 
 =end original
 
-����ɽ�����ݼ��ǽ�ʤ�Τˤ�������Ǥ���褦�ˤ��뤿���
-���Ĥε�ˡ������ޤ���
+正規表現を保守可能なものにし、理解できるようにするための
+三つの技法があります。
 
 =over 4
 
 =item Comments Outside the Regex
 
-(����ɽ���γ�¦�˥����Ȥ��դ���)
+(正規表現の外側にコメントを付ける)
 
 =begin original
 
@@ -64,8 +64,8 @@ comments.
 
 =end original
 
-�̾��Perl�Υ����Ȥ�Ȥäơ�
-���ʤ������򡢤ɤΤ褦�ˤ��Ƥ��뤫���������ޤ���
+通常のPerlのコメントを使って、
+あなたが何を、どのようにしているかを説明します。
 
 	# turn the line into the first word, a colon, and the
 	# number of characters on the rest of the line
@@ -73,7 +73,7 @@ comments.
 
 =item Comments Inside the Regex
 
-(����ɽ������¦�˥����Ȥ��դ���)
+(正規表現の内側にコメントを付ける)
 
 =begin original
 
@@ -84,11 +84,11 @@ a lot.
 
 =end original
 
-<CODE>/x</CODE> �����Ҥϡ�����ɽ����ˤ�������̵�뤹��褦�ˤ���
-(����饯�����饹����ˤ����Τ����)���̾�Υ����Ȥ��Ȥ���褦��
-���ޤ���
-���ʤ��������Ǥ���褦�ˡ�����ȥ����Ȥ����˽�����
-�ʤ�ޤ���
+<CODE>/x</CODE> 修飾子は、正規表現中にある空白を無視するようにし、
+(キャラクタクラスの中にあるものを除く)、通常のコメントが使えるように
+します。
+あなたの想像できるように、空白とコメントは非常に助けに
+なります。
 
 =begin original
 
@@ -96,7 +96,7 @@ C</x> lets you turn this:
 
 =end original
 
-C</x>�ˤ�ä�
+C</x>によって
 
 	s{<(?:[^>'"]*|".*?"|'.*?')+>}{}gs;
 
@@ -106,7 +106,7 @@ into this:
 
 =end original
 
-��������ɽ����ʲ����ͤ˵��ҤǤ��ޤ�:
+この正規表現を以下の様に記述できます:
 
 	s{ <                    # opening angle bracket
 		(?:                 # Non-backreffing grouping paren
@@ -126,12 +126,12 @@ describing the meaning of each part of the pattern.
 
 =end original
 
-����Ǥ�ޤ���ʸ(prose)���ˤ����ΤˤϤʤäƤ��ޤ��󤬡�
-�ѥ�����γ���ʬ�ΰ�̣����������ˤ����������ʤ�ΤǤ���
+これでもまだ散文(prose)程には明確にはなっていませんが、
+パターンの各部分の意味を説明するには非常に便利なものです。
 
 =item Different Delimiters
 
-(�ۤʤä����ڤ�)
+(異なった区切り)
 
 =begin original
 
@@ -143,13 +143,13 @@ delimiter within the pattern:
 
 =end original
 
-�䤿�����̾C</>�Ƕ��ڤ�줿��Τ�ѥ�����Ǥ���ȹͤ��Ƥ��ޤ�����
-�ѥ�����ϤۤȤ�ɤ��٤ƤΥ���饯����Ȥäƶ��ڤ뤳�Ȥ���ǽ�Ǥ���
-L<perlre>�Ϥ�����������Ƥ��ޤ���
-���Ȥ��С���˵󤲤�C<s///>
-�Ǥϡ����ڤ�Ȥ��ƥ����꡼�֥졼����ȤäƤ��ޤ���
-����å���ʳ��ζ��ڤ�����򤹤뤳�Ȥˤ�äơ��ѥ���������¸�ߤ���
-���ڤ국���Ʊ����Τ򥯥����Ȥ����֤�ʤ����Ȥ��Ǥ��ޤ���
+私たちは通常、C</>で区切られたものをパターンであると考えていますが、
+パターンはほとんどすべてのキャラクタを使って区切ることが可能です。
+L<perlre>はこれを説明しています。
+たとえば、先に挙げたC<s///>
+では、区切りとしてカーリーブレースを使っています。
+スラッシュ以外の区切りを選択することによって、パターンの中に存在する
+区切り記号と同じものをクォートする手間を省くことができます。
 
 	s/\/usr\/local/\/usr\/share/g;	# bad delimiter choice
 	s#/usr/local#/usr/share#g;		# better
@@ -159,7 +159,7 @@ L<perlre>�Ϥ�����������Ƥ��ޤ���
 =head2 I'm having trouble matching over more than one line.  What's wrong?
 X<regex, multiline> X<regexp, multiline> X<regular expression, multiline>
 
-(��԰ʾ���Ф���ޥå��󥰤ǥȥ�֥뤬����ޤ��������������ΤǤ��礦?)
+(二行以上に対するマッチングでトラブルがありました。何が悪いのでしょう?)
 
 =begin original
 
@@ -169,9 +169,9 @@ your pattern (possibly).
 
 =end original
 
-�ޥå��󥰤��оݤȤʤäƤ���ʸ���󤬼ºݤˤ���԰ʾ�ˤʤäƤ��ʤ�����
-�ѥ������������������ (modifier)��ȤäƤ��ʤ����Τ����줫�Ǥ��礦
-(¿ʬ)��
+マッチングの対象となっている文字列が実際には二行以上になっていないか、
+パターンで正しい修飾子 (modifier)を使っていないかのいずれかでしょう
+(多分)。
 
 =begin original
 
@@ -182,10 +182,10 @@ allow you to read more than one line at a time.
 
 =end original
 
-ʣ���ԤΥǡ������Ĥ�ʸ����ˤ�����ˡ�Ϥ������󤢤�ޤ���
-��������Ϥ��ɤ߹���Ǥ���ּ�ư�ǹԤʤ碌�����Ȥ����ΤǤ���С�
-���٤���԰ʾ��ɤޤ��뤿��� $/��(�ѥ饰���ñ�̤��ɤ߹��ߤ����ʤ� '' ��
-�ե��������Τ��ɤ߹��ߤ����ʤ� C<undef> ��)���ꤷ�����ʤ�Ǥ��礦��
+複数行のデータを一つの文字列にする方法はたくさんあります。
+これを、入力を読み込んでいる間自動で行なわせたいというのであれば、
+一度に二行以上読ませるために $/を(パラグラフ単位で読み込みたいなら '' を、
+ファイル全体を読み込みたいなら C<undef> を)設定したくなるでしょう。
 
 =begin original
 
@@ -197,11 +197,11 @@ got a multiline string in there.
 
 =end original
 
-���ʤ����Ȥ������Τ� C</s> �� C</m> �Τ�����ʤΤ�(���뤤�Ϥ����
-ξ���ʤΤ�)�����Τ�����뤿��ˡ�L<perlre> ���ɤ�Ǥ�������:
-C</s> �ϥɥåȤ����Ԥ�ޤ�褦�ˤ��ޤ�����C</m> �ϥ����åȤȥɥ뵭�椬
-ʸ�����ξü�����Ǥʤ����Ԥ�����ǥޥå�����褦�ˤ��ޤ���
-�����ơ�ʣ���Ԥ��Ϥ�ʸ������������褦�ˤ�����ɬ�פ�����ޤ���
+あなたが使いたいのは C</s> か C</m> のいずれなのか(あるいはこれら
+両方なのか)を決めるのを助けるために、L<perlre> を読んでください:
+C</s> はドットが改行を含むようにしますし、C</m> はキャレットとドル記号が
+文字列の両端だけでなく改行の前後でマッチするようにします。
+そして、複数行に渡る文字列を取得するようにさせる必要があります。
 
 =begin original
 
@@ -216,15 +216,15 @@ record read in.
 
 =end original
 
-���Ȥ��С��ʲ��˵󤲤�ץ������Ͻ�ʣ����ñ��򡢤��Ȥ����줬�Ԥ�
-�ޤ����äƤ��Ƥ�(�������ѥ饰��դϤޤ����äƤ��ʤ�)õ���Ф���ΤǤ���
-������Ǥϡ�C</s>��ɬ�פϤ���ޤ���
-�ʤ��ʤ顢���ιԤ�ޤ����餻��������ɽ���ǥɥåȤ�ȤäƤ��ʤ�����Ǥ���
-C</m>��Ȥ�ɬ�פ⤢��ޤ���
-����ϡ������åȤ�ɥ뵭���쥳���ɤ���ˤ�����Ԥ������
-�ޥå������뤳�Ȥ�˾��Ǥ��ʤ�����Ǥ���
-��������$/ ��ǥե���Ȱʳ��Τ�Τ����ꤹ�뤳�Ȥ��򤱤��ޤ��󤷡�
-�������ʤ����ʣ���ԥ쥳���ɤ��ɤ߹��ळ�ȤϤǤ��ʤ��ΤǤ���
+たとえば、以下に挙げるプログラムは重複した単語を、たとえそれが行を
+またがっていても(ただしパラグラフはまたがっていない)探し出すものです。
+この例では、C</s>の必要はありません。
+なぜなら、この行をまたがらせたい正規表現でドットを使っていないからです。
+C</m>を使う必要もありません。
+それは、キャレットやドル記号をレコードの中にある改行の前後で
+マッチさせることは望んでいないからです。
+しかし、$/ をデフォルト以外のものに設定することは避けられませんし、
+そうしなければ複数行レコードを読み込むことはできないのです。
 
 	$/ = '';  		# read in more whole paragraph, not just one line
 	while ( <> ) {
@@ -240,8 +240,8 @@ be mangled by many mailers):
 
 =end original
 
-�ʲ�����ϡ���From �ɤǻϤޤ륻��ƥ�(¿���Υᥤ�顼�ˤ�ä�
-�ѷ������Ǥ��������)�򸡺������ΤǤ���
+以下の例は、“From ”で始まるセンテンス(多くのメイラーによって
+変形されるであろうもの)を検索するものです。
 
 	$/ = '';  		# read in more whole paragraph, not just one line
 	while ( <> ) {
@@ -256,7 +256,7 @@ Here's code that finds everything between START and END in a paragraph:
 
 =end original
 
-������ϡ��ѥ饰������ START �� END �˶��ޤ줿��ʬ�򸡺������ΤǤ�:
+次の例は、パラグラフ中の START と END に挟まれた部分を検索するものです:
 
 	undef $/;  		# read in whole file, not just one line or paragraph
 	while ( <> ) {
@@ -268,7 +268,7 @@ Here's code that finds everything between START and END in a paragraph:
 =head2 How can I pull out lines between two patterns that are themselves on different lines?
 X<..>
 
-(�ۤʤ�Ԥˤ�����ĤΥѥ�����˶��ޤ�Ƥ���Ԥ���Ф��ΤϤɤ����ФǤ��ޤ���?)
+(異なる行にある二つのパターンに挟まれている行を取り出すのはどうやればできますか?)
 
 =begin original
 
@@ -277,7 +277,7 @@ L<perlop>):
 
 =end original
 
-Perl�� C<..> �黻�Ҥ�Ȥ��ޤ�(L<perlop> ������������ޤ�)��
+Perlの C<..> 演算子を使えます(L<perlop> に説明があります)。
 
 	perl -ne 'print if /START/ .. /END/' file1 file2 ...
 
@@ -287,7 +287,7 @@ If you wanted text and not lines, you would use
 
 =end original
 
-�ԤǤϤʤ����ƥ����Ȥ�ɬ�פʤ鼡�Τ褦�ˤ��ޤ�
+行ではなく、テキストが必要なら次のようにします
 
 	perl -0777 -ne 'print "$1\n" while /START(.*?)END/gs' file1 file2 ...
 
@@ -299,8 +299,8 @@ on matching balanced text.
 
 =end original
 
-��������C<START> �� C<END> �������Τ�����Ҥˤ��������Ȥ����ΤǤ���С�
-���Υ��������ˤ���������������Ƥ��������ľ�̤��뤳�Ȥˤʤ�ޤ���
+しかし、C<START> と C<END> が現れるのを入れ子にさせたいというのであれば、
+このセクションにある質問で説明されている問題に直面することになります。
 
 =begin original
 
@@ -308,7 +308,7 @@ Here's another example of using C<..>:
 
 =end original
 
-C<..>��Ȥä��̤���Ǥ�:
+C<..>を使った別の例です:
 
 	while (<>) {
 		$in_header =   1  .. /^$/;
@@ -322,7 +322,7 @@ C<..>��Ȥä��̤���Ǥ�:
 X<$/, regexes in> X<$INPUT_RECORD_SEPARATOR, regexes in>
 X<$RS, regexes in>
 
-($/ ������ɽ�������줿����ư���ޤ��󡣲���������?)
+($/ に正規表現を入れたけど動きません。何が悪いの?)
 
 =begin original
 
@@ -331,8 +331,8 @@ do this.
 
 =end original
 
-$/ ��ʸ����Ǥʤ���Фʤ�ޤ���
-�⤷�����ˤ�������ɬ�פ�����ʤ顢�ʲ����㤬�Ȥ��ޤ���
+$/ は文字列でなければなりません。
+もし本当にそうする必要があるなら、以下の例が使えます。
 
 =begin original
 
@@ -340,7 +340,7 @@ If you have File::Stream, this is easy.
 
 =end original
 
-�⤷ File::Stream ������С���ñ�Ǥ���
+もし File::Stream があれば、簡単です。
 
 	use File::Stream;
 
@@ -357,7 +357,7 @@ If you don't have File::Stream, you have to do a little more work.
 
 =end original
 
-File::Stream ���ʤ���С��⤦������Ȥ�ɬ�פǤ���
+File::Stream がなければ、もう少し作業が必要です。
 
 =begin original
 
@@ -367,9 +367,9 @@ complete line (using your regular expression).
 
 =end original
 
-��³Ū�˥Хåե����ɲä��뤿��ˡ�sysread �� 4 �����������Ȥ��ޤ���
-�Хåե����ɲä����塢(����ɽ����Ȥä�)�����Τ�·�äƤ��뤫��
-�����å����ޤ���
+継続的にバッファに追加するために、sysread の 4 引数形式が使えます。
+バッファに追加した後、(正規表現を使って)行全体が揃っているかを
+チェックします。
 
 	local $_ = "";
 	while( sysread FH, $_, 8192, length ) {
@@ -387,9 +387,9 @@ being in memory at the end.
 
 =end original
 
-�⤷�ե��������Τ�Ǹ�ޤǥ��������뤳�Ȥ򵤤ˤ��ʤ��Τʤ顢
-foreach ����ӡ�c �ե饰�� \G ���󥫡���Ȥä��ޥå��󥰤�Ȥä�
-Ʊ�����Ȥ��Ǥ��ޤ���
+もしファイル全体を最後までメモリに入れることを気にしないのなら、
+foreach および、c フラグと \G アンカーを使ったマッチングを使って
+同じことができます。
 
 	local $_ = "";
 	while( sysread FH, $_, 8192, length ) {
@@ -403,8 +403,8 @@ foreach ����ӡ�c �ե饰�� \G ���󥫡���Ȥä��ޥå��󥰤�Ȥä�
 X<replace, case preserving> X<substitute, case preserving>
 X<substitution, case preserving> X<s, case preserving>
 
-(�黻�Ҥκ��դǤ��羮ʸ����̵�뤷�ơ��黻�Ҥα��դǤϸ����羮ʸ������¸���Ƥ����褦��
-�ִ��򤹤�ˤ�?)
+(演算子の左辺では大小文字を無視して、演算子の右辺では元の大小文字を保存しておくような
+置換をするには?)
 
 =begin original
 
@@ -413,8 +413,8 @@ properties of bitwise xor on ASCII strings.
 
 =end original
 
-�ʲ��� Larry Rosler �ˤ��ȤäƤ� Perl �ݤ���ˡ������ޤ���
-����� ASCII ʸ������Ф���ӥå� xor ��ư����Ѥ��ޤ���
+以下に Larry Rosler によるとっても Perl ぽい解法があります。
+これは ASCII 文字列に対するビット xor の動作を悪用します。
 
 	$_= "this is a TEsT case";
 
@@ -435,8 +435,8 @@ And here it is as a subroutine, modeled after the above:
 
 =end original
 
-�ʲ��ϥ��֥롼����ˤ�����ΤǤ���
-�嵭��Ʊ����ˡ�Ǥ�:
+以下はサブルーチンにしたものです。
+上記と同じ手法です:
 
 	sub preserve_case($$) {
 		my ($old, $new) = @_;
@@ -456,7 +456,7 @@ This prints:
 
 =end original
 
-����ϰʲ��Τ褦��ɽ�����ޤ�:
+これは以下のように表示します:
 
 	this is a SUcCESS case
 
@@ -467,8 +467,8 @@ longer than the original, you can use this code, by Jeff Pinyan:
 
 =end original
 
-���ذƤȤ��ơ��⤷���Τ�Τ�����Ĺ�����ˤ��֤�����ñ�����ʸ����ʸ����
-�ݻ�������ϡ�Jeff Pinyan �ˤ��ʲ��Υ����ɤ��Ȥ��ޤ�:
+代替案として、もし元のものの方が長い場合には置き換え単語の大文字小文字を
+維持する場合は、Jeff Pinyan による以下のコードが使えます:
 
 	sub preserve_case {
 		my ($from, $to) = @_;
@@ -486,7 +486,7 @@ This changes the sentence to "this is a SUcCess case."
 
 =end original
 
-�����ʸ�Ϥ� "this is a SUcCess case." ���ѹ����ޤ���
+これは文章を "this is a SUcCess case." に変更します。
 
 =begin original
 
@@ -499,13 +499,13 @@ the case of the last character is used for the rest of the substitution.
 
 =end original
 
-�⤷��ä� C �äݤ����ˡ�����ߤʤ顢
-�ʲ��˵󤲤륹����ץȤϡ��羮ʸ���ΰ㤤���ݤä��ޤޡ�
-ʸ������ִ���Ԥʤ��ޤ���
-(�����Ƥ���� Perl �äݤ���ˡ��� 240% �٤��Ǥ���)
-�ִ��оݤ�ʸ�������¿����ʸ�����ִ����ʸ����ˤ���ΤǤ���С�
-�Ǹ��ʸ�����羮ʸ���μ��̤��ִ����ʸ����λĤ����ʬ��
-ʸ�����Ф��ƻȤ��ޤ���
+もしもっと C っぽい解決法が好みなら、
+以下に挙げるスクリプトは、大小文字の違いを保ったまま、
+文字毎に置換を行ないます。
+(そしてこれは Perl っぽい解法より 240% 遅いです。)
+置換対象の文字列よりも多くの文字が置換後の文字列にあるのであれば、
+最後の文字の大小文字の種別が置換後の文字列の残りの部分の
+文字に対して使われます。
 
 	# Original by Nathan Torkington, massaged by Jeffrey Friedl
 	#
@@ -541,7 +541,7 @@ the case of the last character is used for the rest of the substitution.
 =head2 How can I make C<\w> match national character sets?
 X<\w>
 
-(C<\w> �����������ʸ�����åȤ˥ޥå�����褦�ˤ���ˤ�?)
+(C<\w> がローカルな文字セットにマッチするようにするには?)
 
 =begin original
 
@@ -550,8 +550,8 @@ from the current locale.
 
 =end original
 
-C<use locale;> �򥹥���ץȤ˽񤤤Ƥ���������
-\w ʸ�����饹�����ߤΥ������뤫������褦�ˤʤ�ޤ���
+C<use locale;> をスクリプトに書いてください。
+\w 文字クラスが現在のロケールから取られるようになります。
 
 =begin original
 
@@ -559,12 +559,12 @@ See L<perllocale> for details.
 
 =end original
 
-�ܤ����� L<perllocale> �򻲾Ȥ��Ƥ���������
+詳しくは L<perllocale> を参照してください。
 
 =head2 How can I match a locale-smart version of C</[a-zA-Z]/>?
 X<alpha>
 
-(C</[a-zA-Z]/>�� locale-smart �ʥС������ǥޥå�������ˤ�?)
+(C</[a-zA-Z]/>の locale-smart なバージョンでマッチさせるには?)
 
 =begin original
 
@@ -573,8 +573,8 @@ documented in L<perlre>.
 
 =end original
 
-L<perlre> �ǵ��Ҥ���Ƥ��롢POSIX ʸ�����饹ʸˡ C</[[:alpha:]]/> ��
-�Ȥ��ޤ���
+L<perlre> で記述されている、POSIX 文字クラス文法 C</[[:alpha:]]/> が
+使えます。
 
 =begin original
 
@@ -586,15 +586,15 @@ the digits and the underscore, or C</[\W\d_]/>.
 
 =end original
 
-���ʤ����ɤ��ˤ��뤫�˴ؤ�餺����ʸ���� \w ��������Ȳ������������ΤǤ���
-����ɽ���Ȥ��Ƥϡ������ C</[^\W\d_]/> �Τ褦�ˤʤ�ޤ���
-���εդǤ�����ѻ��ϡ�\W �˴ޤޤ�����Ƥ�ʸ���˿����Ȳ�����ä�����Ρ�
-�Ĥޤ� C</[\W\d_]/> �Ǥ���
+あなたがどこにいるかに関わらず、英文字は \w から数字と下線を除いたものです。
+正規表現としては、これは C</[^\W\d_]/> のようになります。
+その逆である非英字は、\W に含まれる全ての文字に数字と下線を加えたもの、
+つまり C</[\W\d_]/> です。
 
 =head2 How can I quote a variable to use in a regex?
 X<regex, escaping> X<regexp, escaping> X<regular expression, escaping>
 
-(����ɽ������ǻȤ��ѿ��򥯥����Ȥ���ˤ�?)
+(正規表現の中で使う変数をクォートするには?)
 
 =begin original
 
@@ -607,13 +607,13 @@ precede the substitution with \Q.  Here's an example:
 
 =end original
 
-Perl�ι�ʸ���ϴ�(parser)�ϡ����ڤ꤬���󥰥륯�����ơ������Ǥʤ��¤ꡢ
-����ɽ������ˤ��� $variable �� @variable �Ȥ��ä���Τ�Ÿ�����ޤ���
-C<s///> �ˤ���ִ��α�¦�ˤ����Τϥ��֥륯�����ơ�������
-���줿ʸ����Ȥߤʤ����Ȥ������Ȥ�˺��ʤ��Ǥ���������
-�ޤ������٤Ƥ�����ɽ���黻�ҤϤ������� \Q ���֤��Ƥ����ʤ��ȡ�
-����ɽ���黻�ҤȤ��ƿ����񤦤Ȥ������Ȥ�˺��ʤ��Ǥ���������
-�ʲ������󤲤ޤ���
+Perlの構文解析器(parser)は、区切りがシングルクォーテーションでない限り、
+正規表現の中にある $variable や @variable といったものを展開します。
+C<s///> による置換の右側にあるものはダブルクォーテーションで
+括られた文字列とみなされるということを忘れないでください。
+また、すべての正規表現演算子はその前に \Q を置いておかないと、
+正規表現演算子として振る舞うということも忘れないでください。
+以下に例を挙げます。
 
 	$string = "Placido P. Octopus";
 	$regex  = "P.";
@@ -629,8 +629,8 @@ original string.
 
 =end original
 
-C<.> ����ɽ���Ǥ����̤ǡ�Ǥ�դ� 1 ʸ���˥ޥå��󥰤���Τǡ�
-�����Ǥ� C<P.> �ϸ���ʸ����� <Pl> �˥ޥå��󥰤��ޤ���
+C<.> 正規表現では特別で、任意の 1 文字にマッチングするので、
+ここでの C<P.> は元の文字列の <Pl> にマッチングします。
 
 =begin original
 
@@ -638,7 +638,7 @@ To escape the special meaning of C<.>, we use C<\Q>:
 
 =end original
 
-C<.> ���ü�ʰ�̣�򥨥������פ���ˤϡ�C<\Q> ��Ȥ��ޤ�:
+C<.> の特殊な意味をエスケープするには、C<\Q> を使います:
 
 	$string = "Placido P. Octopus";
 	$regex  = "P.";
@@ -653,13 +653,13 @@ regular character, so that C<P.> matches a C<P> followed by a dot.
 
 =end original
 
-C<\Q> ��Ȥ����Ȥˤ�äơ�����ɽ����� C<.> ���̾��ʸ���Ȥ��ư�����Τǡ�
-C<P.> �� C<P> �θ�˥ԥꥪ�ɤ������Τ˥ޥå��󥰤��ޤ���
+C<\Q> を使うことによって、正規表現中の C<.> は通常の文字として扱われるので、
+C<P.> は C<P> の後にピリオドがあるものにマッチングします。
 
 =head2 What is C</o> really for?
 X</o, regular expressions> X<compile, regular expressions>
 
-(C</o> �ϼºݤʤ�Τ���Τ�ΤʤΤǤ���?)
+(C</o> は実際なんのためのものなのですか?)
 
 =begin original
 
@@ -667,7 +667,7 @@ X</o, regular expressions> X<compile, regular expressions>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -678,10 +678,10 @@ and later handle this automatically if the pattern does not change.
 
 =end original
 
-����ɽ���� C</o> ���ץ���� (L<perlop> �� L<perlreref> ��ʸ�񲽤���Ƥ��ޤ�)
-�ϡ�����ɽ������٤�������ѥ��뤹��褦�� Perl �������ޤ���
-����ϥѥ�������ѿ����ޤޤ�Ƥ�����ˤΤ�ͭ�ѤǤ���
-Perls 5.6 �ʹߤǤϡ��ѥ������Ѥ��ʤ����Ϥ����ưŪ�˰����ޤ���
+正規表現の C</o> オプション (L<perlop> と L<perlreref> で文書化されています)
+は、正規表現を一度だけコンパイルするように Perl に伝えます。
+これはパターンに変数が含まれている場合にのみ有用です。
+Perls 5.6 以降では、パターンが変わらない場合はこれを自動的に扱います。
 
 =begin original
 
@@ -693,10 +693,10 @@ details.
 
 =end original
 
-�ޥå��󥰱黻�� C<m//>, �ִ��黻�� C<s///>, ����ɽ���������ȱ黻��
-C<qr//> �ϥ��֥륯����������¤�ʤΤǡ��ѥ���������ѿ���Ÿ���Ǥ��ޤ���
-�ܺ٤ˤĤ��Ƥ� "How can I quote a variable to use in a regex?" ��������
-���Ȥ��Ƥ���������
+マッチング演算子 C<m//>, 置換演算子 C<s///>, 正規表現クォート演算子
+C<qr//> はダブルクォート風構造なので、パターン中で変数を展開できます。
+詳細については "How can I quote a variable to use in a regex?" の答えを
+参照してください。
 
 =begin original
 
@@ -705,8 +705,8 @@ prints the lines of input that match it:
 
 =end original
 
-�����������ɽ��������ꥹ�Ȥ����äơ�����˥ޥå��󥰤������ϹԤ�
-ɽ�����ޤ�:
+この例は正規表現を引数リストから取って、それにマッチングする入力行を
+表示します:
 
 	my $pattern = shift @ARGV;
 	
@@ -723,10 +723,10 @@ time, then reuse that for subsequent iterations:
 
 =end original
 
-�С������ 5.6 ������� Perl �Ǥϡ�C<$pattern> ���ѹ����ʤ��Ƥ�ȿ�����
-����ɽ�����ƥ���ѥ��뤵��ޤ���
-C</o> ��Ĥ���ȡ��ѥ��������˥���ѥ��뤷������³��ȿ���Ǥ�
-�����Ѥ���褦�� Perl �������뤳�Ȥǡ��ƥ���ѥ�����ɤ��ޤ�:
+バージョン 5.6 より前の Perl では、C<$pattern> に変更がなくても反復毎に
+正規表現が再コンパイルされます。
+C</o> をつけると、パターンを初回にコンパイルし、引き続く反復では
+再利用するように Perl に伝えることで、再コンパイルを防ぎます:
 
 	my $pattern = shift @ARGV;
 	
@@ -745,11 +745,11 @@ need the C</o>.
 
 =end original
 
-�С������ 5.6 �ʹߤǤϡ��ѿ����ѹ�����Ƥ��ʤ����� Perl ������ɽ����
-�ƥ���ѥ��뤷�ޤ���Τǡ������餯 C</o> �����פǤ���
-���Ϥ⤿�餷�ޤ��󤬡������ˤ�ʤ�ޤ���
-�ɤΥС������Ǥ⡢���Ȥ��ѿ����ͤ��Ѥ�äƤ�����ɽ������٤���
-����ѥ��뤹��褦�ˤ��������ϡ�̤���� C</o> ��ɬ�פǤ���
+バージョン 5.6 以降では、変数が変更されていない場合は Perl は正規表現を
+再コンパイルしませんので、おそらく C</o> は不要です。
+害はもたらしませんが、助けにもなりません。
+どのバージョンでも、たとえ変数の値が変わっても正規表現を一度だけ
+コンパイルするようにしたい場合は、未だに C</o> が必要です。
 
 =begin original
 
@@ -762,13 +762,13 @@ later, you should only see C<re> report that for the first iteration.
 
 =end original
 
-Perl ������ɽ����ƥ���ѥ��뤷���Ȥ��˼�ʬ���ȤǸ��ڤ��뤿��ˡ�ư�����
-Perl ������ɽ�����󥸥�򸫼�뤳�Ȥ�Ǥ��ޤ���
-C<use re 'debug'> �ץ饰�� (Perl 5.005 �ʹߤǼ�������Ƥ��ޤ�) �Ͼܺ٤�
-ɽ�����ޤ���
-5.6 ������� Perl �Ǥϡ���ȿ��������ɽ��������ѥ��뤵������ C<re> ��
-���򸫤뤳�Ȥˤʤ�ޤ���
-Perl 5.6 �ʹߤǤϡ��ǽ��ȿ���ǤΤ� C<re> �����򸫤뤳�Ȥˤʤ�ޤ���
+Perl が正規表現を再コンパイルしたときに自分自身で検証するために、動作中の
+Perl の正規表現エンジンを見守ることもできます。
+C<use re 'debug'> プラグマ (Perl 5.005 以降で実装されています) は詳細を
+表示します。
+5.6 より前の Perl では、各反復で正規表現がコンパイルされる毎に C<re> の
+報告を見ることになります。
+Perl 5.6 以降では、最初の反復でのみ C<re> の報告を見ることになります。
 
 	use re 'debug';
 	
@@ -781,8 +781,8 @@ Perl 5.6 �ʹߤǤϡ��ǽ��ȿ���ǤΤ� C<re> �����򸫤뤳�Ȥˤʤ�ޤ���
 
 =head2 How do I use a regular expression to strip C style comments from a file?
 
-(�ե����뤫�顢C �����Υ����Ȥ��������(strip)����ˤ�
-�ɤΤ褦������ɽ����Ȥ����ɤ��ΤǤ��礦��?)
+(ファイルから、C 形式のコメントを剥ぎ取る(strip)するには
+どのように正規表現を使えば良いのでしょうか?)
 
 =begin original
 
@@ -791,9 +791,9 @@ For example, this one-liner
 
 =end original
 
-�ºݤ���ϲ�ǽ�ʤΤǤ��������ʤ����ͤ��Ƥ�����������񤷤���ΤǤ���
-���Ȥ��м��ΰ����Ϻ (one-liner) �ϤۤȤ�ɤξ��ˤ��ޤ��Ԥ��ޤ�����
-���٤Ƥξ��ǤϤ���ޤ���
+実際これは可能なのですが、あなたが考えているよりも非常に難しいものです。
+たとえば次の一行野郎 (one-liner) はほとんどの場合にうまく行きますが、
+すべての場合ではありません。
 
 	perl -0777 -pe 's{/\*.*?\*/}{}gs' foo.c
 
@@ -806,10 +806,10 @@ created by Jeffrey Friedl and later modified by Fred Curtis.
 
 =end original
 
-����������� C �Υץ��������ñ�˹ͤ������Ƥ���ΤǤ���
-�äˡ��������Ȥ��줿ʸ����˥����Ȥ��и�����Ȥ������Ȥ��θ���Ƥ��ޤ���
-���Τ��ᡢJeffrey Friedl ������������� Fred Curtis �ˤ�äƽ������줿
-������Τ褦�ʤ��Ȥ�ɬ�פˤʤ�ޤ���
+そう、これは C のプログラムを簡単に考えすぎているのです。
+特に、クォートされた文字列にコメントが出現するということを考慮していません。
+このため、Jeffrey Friedl が作成し、後に Fred Curtis によって修正された
+次の例のようなことが必要になります。
 
 	$/ = undef;
 	$_ = <>;
@@ -823,9 +823,9 @@ whitespace and comments.  Here it is expanded, courtesy of Fred Curtis.
 
 =end original
 
-������󤳤�ϡ�C</x> �����Ҥ�Ȥäƶ���䥳���Ȥ��ղä��뤳�Ȥǡ�
-����ɤߤ䤹�����뤳�Ȥ���ǽ�Ǥ���
-�ʲ��� Fred Curtis ���󶡤ˤ���ĥ�ǤǤ���
+もちろんこれは、C</x> 修飾子を使って空白やコメントを付加することで、
+より読みやすくすることが可能です。
+以下は Fred Curtis の提供による拡張版です。
 
     s{
        /\*         ##  Start of /* ... */ comment
@@ -871,8 +871,8 @@ spread over multiple lines using a continuation character):
 
 =end original
 
-(��³ʸ����Ȥä�ʣ���Ԥˤ錄�äƤ��ʤ��¤��)�������ѹ��� C++ �����Ȥ�
-����ޤ�:
+(継続文字を使って複数行にわたっていない限りは)少しの変更で C++ コメントも
+除去します:
 
 	s#/\*[^*]*\*+([^/*][^*]*\*+)*/|//[^\n]*|("(\\.|[^"\\])*"|'(\\.|[^'\\])*'|.[^/"'\\]*)#defined $2 ? $2 : ""#gse;
 
@@ -880,7 +880,7 @@ spread over multiple lines using a continuation character):
 X<regex, matching balanced test> X<regexp, matching balanced test>
 X<regular expression, matching balanced test>
 
-(Perl ������ɽ����Х�󥹤��줿�ƥ����ȤΥޥå��󥰤˻Ȥ��ޤ���?)
+(Perl の正規表現をバランスされたテキストのマッチングに使えますか?)
 
 =begin original
 
@@ -894,14 +894,14 @@ of this feature.
 
 =end original
 
-���Ū�ˡ�Perl ������ɽ���ϥХ�󥹤��줿�ƥ����Ȥ�ޥå��󥰤���
-ǽ�ϤϤ���ޤ���Ǥ�����
-5.6.1 �ʹߤκǶ�� perl �Ǥϡ������Ԥ���褦�ˤ���¸�Ū��ǽ��
-�ɲä���Ƥ��ޤ���
-�Х�󥹤μ��줿���ä��˥ޥå��󥰤�����򸫤�ˤϡ��Ƕ��
-perlre �ޥ˥奢��ڡ����� (??{ }) ��¤�Υɥ�����Ȥ򸫤Ƥ���������
-���ε�ǽ��Ȥ����ˡ��ޥ˥奢��ˤ���ٹ�ˤĤ����ä����դ���褦��
-���Ƥ���������
+歴史的に、Perl の正規表現はバランスされたテキストをマッチングする
+能力はありませんでした。
+5.6.1 以降の最近の perl では、これを行えるようにする実験的機能が
+追加されています。
+バランスの取られたかっこにマッチングする例を見るには、最近の
+perlre マニュアルページの (??{ }) 構造のドキュメントを見てください。
+この機能を使う前に、マニュアルにある警告について特に注意するように
+してください。
 
 =begin original
 
@@ -912,10 +912,10 @@ general solution to this problem.
 
 =end original
 
-CPAN �ˤϡ�����ƥ����Ȥ˰�¸�����ƥ����Ȥ˥ޥå��󥰤��뤿���ͭ�Ѥ�
-¿���Υ⥸�塼�뤬����ޤ���
-Damian Conway �� Regexp::Common �Ǥ����Ĥ���ͭ�Ѥʥѥ�������󶡤��Ƥ��ޤ���
-Text::Balanced �⥸�塼��Ϥ���������Ф������Ū�ʲ��ˡ���󶡤��ޤ���
+CPAN には、コンテキストに依存したテキストにマッチングするために有用な
+多くのモジュールがあります。
+Damian Conway は Regexp::Common でいくつかの有用なパターンを提供しています。
+Text::Balanced モジュールはこの問題に対する一般的な解決法を提供します。
 
 =begin original
 
@@ -926,11 +926,11 @@ are many others.
 
 =end original
 
-�Х�󥹤��줿�ƥ����ȤΥޥå��󥰤Τ褯�������ˡ�ΤҤȤĤ� XML �� HTML ��
-�Ф����ȤǤ���
-�����Υˡ������б�����¿���Υ⥸�塼�뤬���Ѳ�ǽ�Ǥ���
-2 �Ĥ���� HTML::Parser �� XML::Parser �Ǥ���
-����¾�ˤ⤿�����󤢤�ޤ���
+バランスされたテキストのマッチングのよくある活用法のひとつは XML と HTML に
+対する作業です。
+これらのニーズに対応する多くのモジュールが利用可能です。
+2 つの例は HTML::Parser と XML::Parser です。
+その他にもたくさんあります。
 
 =begin original
 
@@ -941,10 +941,10 @@ http://www.cpan.org/authors/id/TOMC/scripts/pull_quotes.gz .
 
 =end original
 
-�ͥ��Ȥ����ǽ���Τ��� C<`> �� C<'>, C<{> �� C<}>, C<(> �� C<)> �Τ褦��
-ñ�쥭��饯���ΥХ�󥹤򸡺����뤿��������ʥ��֥롼���󤬡�
-http://www.cpan.org/authors/id/TOMC/scripts/pull_quotes.gz ��
-����ޤ�(7-bit ASCII ����)��
+ネストする可能性のある C<`> と C<'>, C<{> と C<}>, C<(> と C<)> のような
+単一キャラクタのバランスを検査するための精巧なサブルーチンが、
+http://www.cpan.org/authors/id/TOMC/scripts/pull_quotes.gz に
+あります(7-bit ASCII 専用)。
 
 =begin original
 
@@ -953,13 +953,13 @@ but they are undocumented.
 
 =end original
 
-CPAN �ˤ��� C::Scan �⥸�塼��⤳�Τ褦�ʥ��֥롼���������Ū��
-�ȤäƤ���ΤǤ������ɥ�����ȤˤϺܤäƤ��ޤ���
+CPAN にある C::Scan モジュールもこのようなサブルーチンを内部的に
+使っているのですが、ドキュメントには載っていません。
 
 =head2 What does it mean that regexes are greedy?  How can I get around it?
 X<greedy> X<greediness>
 
-(����ɽ��������(greedy)�Ǥ���ȤϤɤ��������ȤǤ���?)
+(正規表現が貪欲(greedy)であるとはどういうことですか?)
 
 =begin original
 
@@ -971,12 +971,12 @@ versions of the same quantifiers, use (C<??>, C<*?>, C<+?>, C<{}?>).
 
 =end original
 
-�ۤȤ�ɤοͤ�����������ɽ��(greedy regexps)�ϲ�ǽ�ʸ¤�ޥå������
-�ͤ��Ƥ��ޤ���
-����Ū�ˤϡ��̻����(C<?>, C<*>, C<+>, C<{}>) �ϥѥ��������Τ������ߤǤ���
-Perl �ϡ�����Ū������������ɽ���������¨������­���򹥤ߤޤ���
-Ʊ���̻���Ҥ� non-greedy �С�����������ˤϡ�
-C<??>, C<*?>, C<+?>, C<{}?>��Ȥ��ޤ���
+ほとんどの人が、貪欲正規表現(greedy regexps)は可能な限りマッチすると
+考えています。
+技術的には、量指定子(C<?>, C<*>, C<+>, C<{}>) はパターン全体よりも貪欲です。
+Perl は、全体的な貪欲性よりも局所貪欲性と即時の満足性を好みます。
+同じ量指定子の non-greedy バージョンを得るには、
+C<??>, C<*?>, C<+?>, C<{}?>を使います。
 
 =begin original
 
@@ -984,7 +984,7 @@ An example:
 
 =end original
 
-��:
+例:
 
 	$s1 = $s2 = "I am very very cold";
 	$s1 =~ s/ve.*y //;      # I am cold
@@ -1000,16 +1000,16 @@ playing hot potato.
 
 =end original
 
-�����ܤ��ִ�������y �ɤ򸫤Ĥ��Ƥ����˥ޥå��󥰤����Ǥ��Ƥ��뤳�Ȥ�
-���ܤ��Ƥ���������
-�̻���� C<*?> ������ɽ�����󥸥���Ф��ơ����ʤ���Ǯ�����㥬�����
-���äƤ���Ȥ��Τ褦�ˡ���ǽ�ʸ¤��᤯�ޥå������Τ򸫤Ĥ�������򼡤ιԤ�
-�Ϥ��褦�˸���Ū�˻ؼ����ޤ���
+二番目の置換が、“y ”を見つけてすぐにマッチングを中断していることに
+注目してください。
+量指定子 C<*?> は正規表現エンジンに対して、あなたが熱いジャガイモを
+扱っているときのように、可能な限り早くマッチするものを見つけて制御を次の行に
+渡すように効果的に指示します。
 
 =head2 How do I process each word on each line?
 X<word>
 
-(�ƹԤ�ñ��ñ�̤˽����򤹤�ˤϤɤ�������ɤ��Ǥ���?)
+(各行の単語単位に処理をするにはどうすれば良いですか?)
 
 =begin original
 
@@ -1017,7 +1017,7 @@ Use the split function:
 
 =end original
 
-split �ؿ���Ȥ��ޤ�:
+split 関数を使います:
 
 	while (<>) {
 		foreach $word ( split ) {
@@ -1032,8 +1032,8 @@ chunks of consecutive non-whitespace characters.
 
 =end original
 
-����ϼºݤˤϱѸ�Ǥ����Ȥ����θ�ǤϤʤ����Ȥ����դ��Ƥ���������
-����ϡ�ñ�ʤ�Ϣ³��������Ǥʤ�ʸ���β��Ǥ���
+これは実際には英語でいうところの語ではないことに注意してください。
+これは、単なる連続した空白でない文字の塊です。
 
 =begin original
 
@@ -1042,8 +1042,8 @@ might consider
 
 =end original
 
-����ե��٥åȤ⤷���Ͽ������¤ӤΤߤ��оݤȤ���ˤϰʲ��Τ褦�ˤ���
-�Ǥ��ޤ���
+アルファベットもしくは数字の並びのみを対象とするには以下のようにして
+できます。
 
 	while (<>) {
 		foreach $word (m/(\w+)/g) {
@@ -1053,7 +1053,7 @@ might consider
 
 =head2 How can I print out a word-frequency or line-frequency summary?
 
-(��νи����٤�Ԥνи����٤ΤޤȤ����Ϥ���ˤ�?)
+(語の出現頻度や行の出現頻度のまとめを出力するには?)
 
 =begin original
 
@@ -1064,10 +1064,10 @@ in the previous question:
 
 =end original
 
-�����Ԥ�����ˤϡ����ϥ��ȥ꡼��ˤ���ñ��Τ��줾��ˤĤ��Ʋ��Ϥ���
-ɬ�פ�����ޤ���
-�䤿���Ϥ����ǡ�������μ����Ʊ�ͤˡ������ʸ���β�����
-����ΤǤϤʤ����ѻ����ϥ��ե󡢥��ݥ��ȥ��ե����β����Ȥ��ޤ�:
+これを行うためには、入力ストリームにある単語のそれぞれについて解析する
+必要があります。
+私たちはここで、一つ前の質問と同様に、非空白文字の塊を語と
+するのではなく、英字、ハイフン、アポストロフィ、の塊を語とします:
 
 	while (<>) {
 		while ( /(\b[^\W_\d][\w'-]+\b)/g ) {   # misses "`sheep'"
@@ -1086,7 +1086,7 @@ regular expression:
 
 =end original
 
-Ʊ�����Ȥ�Ԥ��Ф��ƹԤ������ΤǤ���С�����ɽ����ɬ�פʤ��Ǥ��礦��
+同じことを行に対して行いたいのであれば、正規表現は必要ないでしょう。
 
 	while (<>) {
 		$seen{$_}++;
@@ -1103,13 +1103,13 @@ sort a hash (optionally by value instead of key)?".
 
 =end original
 
-�����Ȥ��줿����ǽ��Ϥ������Τʤ顢L<perlfaq4>: "How do I
-sort a hash (optionally by value instead of key)?" �򻲾Ȥ��Ƥ���������
+ソートされた順序で出力したいのなら、L<perlfaq4>: "How do I
+sort a hash (optionally by value instead of key)?" を参照してください。
 
 =head2 How can I do approximate matching?
 X<match, approximate> X<matching, approximate>
 
-(ۣ��ʥޥå��� (approximate matching) �Ϥɤ����ФǤ��ޤ���?)
+(曖昧なマッチング (approximate matching) はどうやればできますか?)
 
 =begin original
 
@@ -1117,13 +1117,13 @@ See the module String::Approx available from CPAN.
 
 =end original
 
-CPAN ������Ǥ��� String::Approx �⥸�塼��򻲾Ȥ��Ƥ���������
+CPAN で入手できる String::Approx モジュールを参照してください。
 
 =head2 How do I efficiently match many regular expressions at once?
 X<regex, efficiency> X<regexp, efficiency>
 X<regular expression, efficiency>
 
-(�������������ɽ������٤˸�Ψ�ɤ��ޥå��󥰤���ˤ�?)
+(たくさんの正規表現を一度に効率良くマッチングするには?)
 
 =begin original
 
@@ -1131,7 +1131,7 @@ X<regular expression, efficiency>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1142,9 +1142,9 @@ loop since it has no way to know what $pattern will be.
 
 =end original
 
-�ޥå��󥰤�Ԥ���� Perl ������ɽ���򥳥�ѥ��뤹�뤳�Ȥ��򤱤Ƥ���������
-������ξ�硢$pattern �����ԤʤΤ����Τ���ˡ���ʤ��Τǡ�perl �� foreach()
-�롼�פ�ȿ���������ɽ����ƥ���ѥ��뤷�ʤ���Фʤ�ޤ���
+マッチングを行う毎に Perl が正規表現をコンパイルすることを避けてください。
+この例の場合、$pattern が何者なのかを知る方法がないので、perl は foreach()
+ループの反復毎に正規表現を再コンパイルしなければなりません。
 
 	@patterns = qw( foo bar baz );
 
@@ -1171,12 +1171,12 @@ but faster.
 
 =end original
 
-qr// �黻�Ҥ� perl 5.005 �Ǹ���ޤ�����
-���������ɽ���򥳥�ѥ��뤷�ޤ�����Ŭ�ѤϤ��ޤ���
-�ץꥳ��ѥ��뤵�줿����ɽ����Ȥ��ȡ�perl �κ�Ȥϸ���ޤ���
-������Ǥϡ��ƥѥ������ץꥳ��ѥ��뤵�줿�������Ѵ����뤿��� map() ��
-�������Ƥ��ޤ���
-������ץȤλĤ����ʬ��Ʊ���Ǥ��������®���Ǥ���
+qr// 演算子は perl 5.005 で現れました。
+これは正規表現をコンパイルしますが、適用はしません。
+プリコンパイルされた正規表現を使うと、perl の作業は減ります。
+この例では、各パターンをプリコンパイルされた形式に変換するための map() を
+挿入しています。
+スクリプトの残りの部分は同じですが、より速いです。
 
 	@patterns = map { qr/\b$_\b/i } qw( foo bar baz );
 
@@ -1197,8 +1197,8 @@ backtracking though.
 
 =end original
 
-�����Ĥ��ξ��Ǥϡ�ʣ���Υѥ�������Ĥ�����ɽ���ˤǤ��뤫�⤷��ޤ���
-���������Хå��ȥ�å��󥰤�ɬ�פˤʤ���������դ��Ƥ���������
+いくつかの場合では、複数のパターンを一つの正規表現にできるかもしれません。
+しかし、バックトラッキングが必要になる状況に注意してください。
 
 	$regex = join '|', qw( foo bar baz );
 
@@ -1217,17 +1217,17 @@ expressions, you can tune them for individual situations.
 
 =end original
 
-����ɽ���θ�Ψ�˴ؤ��뤵��ʤ�ܺ٤ˤĤ��Ƥϡ�Jeffrey Freidl �ˤ��
-Mastering Regular Expressions �򻲾Ȥ��Ƥ���������
-��ϡ��ɤΤ褦������ɽ�����󥸥�ư��뤫�ȡ��ʤ������Υѥ�����
-�ä��ۤ����Ψ���ˤĤ����������Ƥ��ޤ���
-perl ���ɤΤ褦������ɽ����Ŭ�Ѥ��뤫�����򤹤�С�������ġ��ξ�����
-Ĵ���Ǥ��ޤ���
+正規表現の効率に関するさらなる詳細については、Jeffrey Freidl による
+Mastering Regular Expressions を参照してください。
+彼は、どのように正規表現エンジンが動作するかと、なぜある種のパターンが
+驚くほど非効率かについて説明しています。
+perl がどのように正規表現を適用するかを理解すれば、これらを個々の状況に
+調整できます。
 
 =head2 Why don't word-boundary searches with C<\b> work for me?
 X<\b>
 
-(�ʤ� C<\b> ��Ȥä�ñ�춭���θ��������ޤ��Ԥ��ʤ��ΤǤ��礦��?)
+(なぜ C<\b> を使った単語境界の検索がうまく行かないのでしょうか?)
 
 =begin original
 
@@ -1235,7 +1235,7 @@ X<\b>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1246,10 +1246,10 @@ start or end of the string.
 
 =end original
 
-�ºݤ� \b ������Ԥ����򤷤ä������򤷤Ƥ�������:
-�����ñ��ʸ�� (\w) �ȡ�ñ��ʸ���Ǥʤ������Ȥζ����Ǥ���
-ñ��ʸ���Ǥʤ��Ȥ����Τ� \W ���⤷��ޤ��󤬡�ʸ����κǽ�ȺǸ�ˤ�
-����ޤ���
+実際に \b が何を行うかをしっかり理解してください:
+これは単語文字 (\w) と、単語文字でない何かとの境界です。
+単語文字でないというのは \W かもしれませんが、文字列の最初と最後にも
+あります。
 
 =begin original
 
@@ -1258,8 +1258,8 @@ and it's not the stuff between words we use to create sentences.
 
 =end original
 
-����϶���������Ȥζ����ǤϤʤ�(�㤦��Ǥ�!)���䤿����ʸ����Τ�
-�Ȥ�ñ��δ֤Τ�ΤǤϤ���ޤ���
+これは空白と非空白との境界ではなく(違うんです!)、私たちが文を作るのに
+使う単語の間のものではありません。
 
 =begin original
 
@@ -1269,8 +1269,8 @@ condition at a certain position.
 
 =end original
 
-����ɽ��Ū�˸����ȡ�ñ�춭���� (\b) �ϡ֥����������������פǤ�;
-�����ʸ�������ʸ���ǤϤʤ���������֤Ǥξ���ɽ�����Ƥ��ޤ���
+正規表現的に言うと、単語境界は (\b) は「ゼロ幅アサーション」です;
+これは文字列中の文字ではなく、ある位置での条件を表現しています。
 
 =begin original
 
@@ -1281,10 +1281,10 @@ pattern will match. These strings match /\bPerl\b/.
 
 =end original
 
-����ɽ�� /\bPerl\b/ �Ǥϡ�"P" ������ "l" �θ��ñ�춭�����ʤ���Фʤ�ޤ���
-"P" ������ "l" �θ��ñ��ʸ���ʳ��β���������¤ꡢ���Υѥ������
-�ޥå��󥰤��ޤ���
-�ʲ���ʸ����� /\bPerl\b/ �˥ޥå��󥰤��ޤ���
+正規表現 /\bPerl\b/ では、"P" の前と "l" の後に単語境界がなければなりません。
+"P" の前と "l" の後に単語文字以外の何かがある限り、このパターンは
+マッチングします。
+以下の文字列は /\bPerl\b/ にマッチングします。
 
 	"Perl"    # no word char before P or after l
 	"Perl "   # same as previous (space is not a word char)
@@ -1297,7 +1297,7 @@ These strings do not match /\bPerl\b/.
 
 =end original
 
-������ʸ����� /\bPerl\b/ �˥ޥå��󥰤��ޤ���
+これらの文字列は /\bPerl\b/ にマッチングしません。
 
 	"Perl_"   # _ is a word char!
 	"Perler"  # no word char before P, but one after l
@@ -1310,9 +1310,9 @@ match the pattern /\b'\b/.
 
 =end original
 
-��������ñ��˥ޥå��󥰤����뤿��� \b ��Ȥ�ɬ�פϤ���ޤ���
-ñ��ʸ���˰Ϥޤ줿��ñ��ʸ����õ���Τ˻Ȥ��ޤ���
-������ʸ����ϡ��ѥ����� /\b'\b/ �˥ޥå��󥰤��ޤ���
+しかし、単語にマッチングさせるために \b を使う必要はありません。
+単語文字に囲まれた非単語文字を探すのに使えます。
+これらの文字列は、パターン /\b'\b/ にマッチングします。
 
 	"don't"   # the ' char is surrounded by "n" and "t"
 	"qep'a'"  # the ' char is surrounded by "p" and "a"
@@ -1323,7 +1323,7 @@ These strings do not match /\b'\b/.
 
 =end original
 
-������ʸ����� /\b'\b/ �˥ޥå��󥰤��ޤ���
+これらの文字列は /\b'\b/ にマッチングしません。
 
 	"foo'"    # there is no word char after non-word '
 
@@ -1334,7 +1334,7 @@ should not be a word boundary.
 
 =end original
 
-ñ�춭���ǤϤʤ��Ȥ������Ȥ���ꤹ�뤿��ˡ�\b �εդǤ��� \B ��Ȥ��ޤ���
+単語境界ではないということを指定するために、\b の逆である \B も使えます。
 
 =begin original
 
@@ -1343,8 +1343,8 @@ and after the "m". These patterns match /\Bam\B/:
 
 =end original
 
-�ѥ����� /\Bam\B/ �Ǥϡ�"a" ������ "m" �θ����ñ��ʸ����ɬ�פǤ���
-�����ϥѥ����� /\Bam\B/ �˥ޥå��󥰤��ޤ�:
+パターン /\Bam\B/ では、"a" の前と "m" の後ろに単語文字が必要です。
+これらはパターン /\Bam\B/ にマッチングします:
 
 	"llama"   # "am" surrounded by word chars
 	"Samuel"  # same
@@ -1355,7 +1355,7 @@ These strings do not match /\Bam\B/
 
 =end original
 
-������ʸ����� /\Bam\B/ �˥ޥå��󥰤��ޤ���
+これらの文字列は /\Bam\B/ にマッチングしません。
 
 	"Sam"      # no word boundary before "a", but one after "m"
 	"I am Sam" # "am" surrounded by non-word chars
@@ -1363,7 +1363,7 @@ These strings do not match /\Bam\B/
 =head2 Why does using $&, $`, or $' slow my program down?
 X<$MATCH> X<$&> X<$POSTMATCH> X<$'> X<$PREMATCH> X<$`>
 
-(�ʤ� $&, $`, $' ��Ȥ��ȥץ�����ब�٤��ʤ��?)
+(なぜ $&, $`, $' を使うとプログラムが遅くなるの?)
 
 =begin original
 
@@ -1371,7 +1371,7 @@ X<$MATCH> X<$&> X<$POSTMATCH> X<$'> X<$PREMATCH> X<$`>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1387,20 +1387,20 @@ longer "expensive" the way the other two are.
 
 =end original
 
-�ץ������Τɤ����Ǥ������ä��ѿ����Ȥ��Ƥ���Τ򸫤Ĥ��Ƥ��ޤ��ȡ�
-Perl �Ϥ��٤ƤΥѥ�����ޥå��󥰤��Ф��Ƥ�����н褹�뤳�Ȥ�
-���ʤ���Фʤ�ޤ���
-����ϡ����ƤΥѥ�����ޥå��󥰤��֤��ơ������� $` �ˡ������� $& �ˡ�
-������ $' �ˡ��Ȥ�������ʸ�������Τ����ԡ������Ȥ������Ȥ��̣���ޤ���
-���äơ��ڥʥ�ƥ���Ĺ��ʸ����ȥѥ�������٤�ޥå��󥰤�����Ȥ���
-�Ǥ⸷������ΤȤʤ�ޤ���
-��ǽ�Ǥ���� $& �� $'��$` ��Ȥ�ʤ��褦�ˤ��٤��ʤΤǤ�����
-���줬�Ǥ��ʤ��ΤǤ���С����٤������ѿ���ȤäƤ��ޤä��鹥���ʤ褦��
-�Ȥ��ޤ��礦��
-�ʤ��ʤ顢ȳ��Ϥ��Ǥ�ʧ�äƤ��ޤä��ΤǤ����顣
-���르�ꥺ�����ˤϤ������ä��ѿ���Ȥ����Ȥ�Ŭ�ڤǤ����Τ�
-����Ȥ������Ȥ����դ��Ƥ���������
-��꡼�� 5.005 ����ϡ�$& �Ϥ�Ϥ�ȹ���ʡɤ�ΤǤϤ���ޤ���
+プログラムのどこかでそういった変数が使われているのを見つけてしまうと、
+Perl はすべてのパターンマッチングに対してそれに対処することを
+やらなければなりません。
+これは、全てのパターンマッチングに置いて、一部は $` に、一部は $& に、
+一部は $' に、という形で文字列全体がコピーされるということを意味します。
+従って、ペナルティは長い文字列とパターンを何度もマッチングさせるときに
+最も厳しいものとなります。
+可能であれば $& や $'、$` を使わないようにすべきなのですが、
+それができないのであれば、一度これらの変数を使ってしまったら好きなように
+使いましょう。
+なぜなら、罰金はすでに払ってしまったのですから。
+アルゴリズムの中にはこういった変数を使うことが適切であるものが
+あるということに注意してください。
+リリース 5.005 からは、$& はもはや“高価な”ものではありません。
 
 =begin original
 
@@ -1412,17 +1412,17 @@ string copying.
 
 =end original
 
-Perl 5.6.1 ���顢�ü��ѿ� @- �� @+ �� $`, $&, $' �ε�ǽ��
-�֤���������褦�ˤʤ�ޤ�����
-����������Ϥ��줾��Υޥå��󥰤γ��ϰ��֤Ƚ�λ���֤ؤΥݥ��󥿤�
-�ޤߤޤ�(�ܤ����äˤĤ��Ƥ� perlvar �򻲾Ȥ��Ƥ�������)�Τǡ�
-�ܼ�Ū�ˤϤ���餫��Ʊ�����������ޤ�����
-���٤�ʸ���󥳥ԡ��Υꥹ���Ϥ���ޤ���
+Perl 5.6.1 から、特殊変数 @- と @+ で $`, $&, $' の機能を
+置き換えられるようになりました。
+これらの配列はそれぞれのマッチングの開始位置と終了位置へのポインタを
+含みます(詳しい話については perlvar を参照してください)ので、
+本質的にはこれらから同じ情報が得られますが、
+過度の文字列コピーのリスクはありません。
 
 =head2 What good is C<\G> in a regular expression?
 X<\G>
 
-(����ɽ������� C<\G> ��Ȥ��Ȳ����ɤ��ΤǤ���?)
+(正規表現の中で C<\G> を使うと何が良いのですか?)
 
 =begin original
 
@@ -1440,17 +1440,17 @@ to look at it). Each string has its own C<pos()> value.
 
 =end original
 
-���Υޥå��󥰤�Ʊ��ʸ����Τ���������Υޥå��󥰤���ߤ����Ȥ�������
-�Ϥ�뤿��� C<\G> ���󥫡���Ȥ��ޤ���
-����ɽ�����󥸥�Ϥ��Υ��󥫡�������Ȥ��ˤϼ��Υޥå��󥰤�õ�������
-����ʸ�����ɤ����Ф��ʤ��Τǡ�C<\G> ��ʸ������Ƭ���󥫡��Ǥ��� C<^> ��
-���Ƥ��ޤ���
-C<\G> ���󥫡���ŵ��Ū�ˤ� C<g> �ե饰�ȶ��˻Ȥ��ޤ���
-����ϼ��Υޥå��󥰤γ��ϰ��֤Ȥ��� C<pos()> ���ͤ�Ȥ��ޤ���
-�ޥå��󥰱黻�Ҥ��ޥå��󥰤���������ȡ�C<pos()> ���ͤ�Ǹ�Υޥå��󥰤�
-����ʸ��(�ޤ��ϼ��Υޥå��󥰤κǽ��ʸ��; ����Ϥ��ʤ��������ɤΤ褦��
-���뤫������Ǥ�)�ΰ��֤˹������ޤ���
-��ʸ����Ϥ��줾���ȼ��� C<pos()> ���ͤ�����ޤ���
+次のマッチングを同じ文字列のうち、前回のマッチングを中止したところから
+始めるために C<\G> アンカーを使います。
+正規表現エンジンはこのアンカーがあるときには次のマッチングを探すために
+何の文字も読み飛ばさないので、C<\G> は文字列先頭アンカーである C<^> と
+似ています。
+C<\G> アンカーは典型的には C<g> フラグと共に使います。
+これは次のマッチングの開始位置として C<pos()> の値を使います。
+マッチング演算子がマッチングに成功すると、C<pos()> の値を最後のマッチングの
+次の文字(または次のマッチングの最初の文字; これはあなたがこれをどのように
+見るかの問題です)の位置に更新します。
+各文字列はそれぞれ独自の C<pos()> の値を持ちます。
 
 =begin original
 
@@ -1463,12 +1463,12 @@ the C<a> and still matches C<44>.
 
 =end original
 
-"1122a44" �Τ褦��ʸ����ǡ�Ϣ³���������Υڥ������Ƥ˥ޥå��󥰤���������
-�ʤ���Τ����줿����ߤ������Ȥ��ޤ���
-C<11> �� C<22> �ˤϥޥå��󥰤������Ǥ�����C<22> �� C<44> �δ֤� C<a> ��
-�����ȡ�C<a> ����ߤ������Ȥ��ޤ���
-�����Υڥ��Υޥå��󥰤�ñ�� C<a> ���ɤ����Ф�������³�� C<44> ��
-�ޥå��󥰤��ޤ���
+"1122a44" のような文字列で、連続した数字のペアの全てにマッチングし、数字で
+ないものが現れたら停止したいとします。
+C<11> と C<22> にはマッチングしたいですが、C<22> と C<44> の間に C<a> が
+現れると、C<a> で停止したいとします。
+数字のペアのマッチングは単に C<a> を読み飛ばし、引き続き C<44> に
+マッチングします。
 
 	$_ = "1122a44";
 	my @pairs = m/(\d\d)/g;   # qw( 11 22 44 )
@@ -1483,10 +1483,10 @@ found.
 
 =end original
 
-C<\G> ���󥫡���Ȥ��ȡ�C<22> �θ�Υޥå��󥰤� C<a> ����Ϥ�뤳�Ȥ�
-�������ޤ���
-�����ǤϿ��������դ���ʤ��Τǥޥå��󥰤Ǥ��������äƼ��Υޥå��󥰤�
-���Ԥ��ƥޥå��󥰱黻�Ҥϴ��˸��դ��ä��ڥ����֤��ޤ���
+C<\G> アンカーを使うと、C<22> の後のマッチングを C<a> から始めることを
+強制します。
+ここでは数字が見付からないのでマッチングできず、従って次のマッチングは
+失敗してマッチング演算子は既に見付かったペアを返します。
 
 	$_ = "1122a44";
 	my @pairs = m/\G(\d\d)/g; # qw( 11 22 )
@@ -1498,8 +1498,8 @@ still need the C<g> flag.
 
 =end original
 
-�����饳��ƥ����Ȥˤ� C<\G> ���󥫡����Ȥ��ޤ���
-C<g> �ե饰�Ϥޤ�ɬ�פǤ���
+スカラコンテキストにも C<\G> アンカーが使えます。
+C<g> フラグはまだ必要です。
 
 	$_ = "1122a44";
 	while( m/\G(\d\d)/g )
@@ -1514,8 +1514,8 @@ and the next match on the same string starts at the beginning.
 
 =end original
 
-ʸ�� C<a> �Υޥå��󥰤˼��Ԥ����塢perl �� C<pos()> ��ꥻ�åȤ���
-Ʊ��ʸ������Ф��뼡�Υޥå��󥰤���Ƭ����Ԥ��ޤ���
+文字 C<a> のマッチングに失敗した後、perl は C<pos()> をリセットし、
+同じ文字列に対する次のマッチングは先頭から行います。
 
 	$_ = "1122a44";
 	while( m/\G(\d\d)/g )
@@ -1537,13 +1537,13 @@ C<44>.
 
 =end original
 
-L<perlop> �� L<perlreref> �˽񤤤Ƥ���褦�ˡ�C<c> �ե饰��Ĥ��뤳�Ȥ�
-C<pos()> �Υꥻ�åȤ������Ǥ��ޤ���
-����³���ޥå��󥰤ϡ����δ֤�Ʊ��ʸ����ǤΥޥå��󥰤����Ԥ��Ƥ��Ƥ⡢
-ľ�������������ޥå��󥰤���λ������� (C<pos()> ����) ���鳫�Ϥ���ޤ���
-���ξ�硢C<while()> �롼�פθ�Υޥå��󥰤� (�Ǹ�Υޥå��󥰤���ߤ���)
-C<a> ���鳫�Ϥ��졢���Υ��󥫡���ȤäƤ��ʤ��Τǡ�C<44> �򸫤Ĥ��뤿���
-C<a> �򥹥��åפǤ��ޤ���
+L<perlop> と L<perlreref> に書いているように、C<c> フラグをつけることで
+C<pos()> のリセットを抑制できます。
+引き続くマッチングは、その間に同じ文字列でのマッチングが失敗していても、
+直前の成功したマッチングが終了した場所 (C<pos()> の値) から開始されます。
+この場合、C<while()> ループの後のマッチングは (最後のマッチングが停止した)
+C<a> から開始され、何のアンカーも使っていないので、C<44> を見つけるために
+C<a> をスキップできます。
 
 	$_ = "1122a44";
 	while( m/\G(\d\d)/gc )
@@ -1562,10 +1562,10 @@ which works in 5.004 or later.
 
 =end original
 
-ŵ��Ū�ˤϡ��ȡ����ʥ����Τ褦�ʤ�Τ���ǡ���ĤΥޥå��󥰤˼��Ԥ���
-�Ȥ���¾�Υޥå��󥰤������Ȥ��ˡ�C<\G> ���󥫡��� C<c> �ե饰��
-�Ĥ��ƻȤ��ޤ���
-Jeffrey Friedl ����5.004 �ʹߤ�ư��롢����˴ؤ�������󶡤��Ƥ���ޤ�����
+典型的には、トークナイザのようなものの中で、一つのマッチングに失敗した
+ときに他のマッチングを試したいときに、C<\G> アンカーに C<c> フラグを
+つけて使います。
+Jeffrey Friedl が、5.004 以降で動作する、これに関する例を提供してくれました。
 
 	while (<>) {
 		chomp;
@@ -1590,18 +1590,18 @@ pattern.
 
 =end original
 
-���줾��ιԤˤ����ơ�C<PARSER> �롼�פϤޤ���������˰���³��ñ�춭����
-�ޥå��󥰤��褦�Ȼ�ߤޤ���
-���Υޥå��󥰤�ľ���Υޥå��󥰤��Ԥ�줿���(�ǽ�Υޥå��󥰤ξ���
-ʸ�������Ƭ)����Ϥ���ʤ���Фʤ�ޤ���
-C<m/ \G( \d+\b )/gcx> �� C<c> �ե饰��ȤäƤ���Τǡ��⤷ʸ���󤬤���
-����ɽ���˥ޥå��󥰤��ʤ���С�perl �� pos() ��ꥻ�åȤ���������
-�ޥå��󥰤ϡ�¾�Υѥ���������Ǥ�Ʊ�����֤��鳫�Ϥ��ޤ���
+それぞれの行において、C<PARSER> ループはまず数字の列に引き続く単語境界に
+マッチングしようと試みます。
+このマッチングは直前のマッチングが行われた場所(最初のマッチングの場合は
+文字列の先頭)から始められなければなりません。
+C<m/ \G( \d+\b )/gcx> は C<c> フラグを使っているので、もし文字列がこの
+正規表現にマッチングしなければ、perl は pos() をリセットせず、次の
+マッチングは、他のパターンを試す場合でも同じ位置から開始します。
 
 =head2 Are Perl regexes DFAs or NFAs?  Are they POSIX compliant?
 X<DFA> X<NFA> X<POSIX>
 
-(Perl ������ɽ���롼����� DFA �Ǥ��� NFA �Ǥ���? �ޤ�������� POSIX �˽��äƤޤ���?)
+(Perl の正規表現ルーチンは DFA ですか NFA ですか? また、それは POSIX に従ってますか?)
 
 =begin original
 
@@ -1618,21 +1618,21 @@ L<perlfaq2>).
 
 =end original
 
-Perl ������ɽ���� egrep(1) �� DFA (deterministic finite automata, 
-������ͭ�¥����ȥޥȥ�)�Ȼ�����ΤǤϤ���ΤǤ�����
-�ºݤΤȤ����ϥХå��ȥ�å���������� (backreferencing)�Τ����
-NFA �Ȥ��Ƽ�������Ƥ��ޤ���
-�����ơ�Perl ������ɽ���� POSIX �����Τ�ΤǤ⤢��ޤ���
-�ʤ��ʤ顢����Ϥ��٤ƤΥ������ˤ����ƺǰ��ο����񤤤�Ԥ�����Ǥ�
-(�����οͤϡ����줬�٤���⤿�餹�ˤ⤫����鷺���������⤿�餹�Ȥ�������
-����Ǥ���褦�Ǥ�)��
-�嵭�Τ��Ȥʤɤ˴ؤ��Ƥξܺ٤� Jeffrery Friedl �ˤ�� O'Reilly ����
-���Ǥ���Ƥ��� "Mastering Regular Expressions" �Ȥ����ܤ򻲾Ȥ��Ƥ���������
+Perl の正規表現は egrep(1) の DFA (deterministic finite automata, 
+決定性有限オートマトン)と似たものではあるのですが、
+実際のところはバックトラックや後方参照 (backreferencing)のために
+NFA として実装されています。
+そして、Perl の正規表現は POSIX 形式のものでもありません。
+なぜなら、それはすべてのケースにおいて最悪の振る舞いを行うからです
+(一部の人は、それが遅さをもたらすにもかからわず、一貫性をもたらすという点を
+好んでいるようです)。
+上記のことなどに関しての詳細は Jeffrery Friedl による O'Reilly から
+出版されている "Mastering Regular Expressions" という本を参照してください。
 
 =head2 What's wrong with using grep in a void context?
 X<grep>
 
-(̵������ƥ����Ȥ� grep ��Ȥ����ȤΤɤ����ְ�äƤ���ΤǤ��礦��?)
+(無効コンテキストで grep を使うことのどこが間違っているのでしょうか?)
 
 =begin original
 
@@ -1644,12 +1644,12 @@ purpose.
 
 =end original
 
-����ϡ�grep �Ϥ��Υ���ƥ����Ȥˤϴط��ʤ��ꥹ�Ȥ��֤����ȤǤ���
-����ϤĤޤꡢPerl �ˤ��ʤ���̵�뤷�Ƥ��ޤ����������ͤΥꥹ�Ȥ�
-��餻��Ȥ������ȤǤ���
-�⤷�ꥹ�Ȥ��礭���ʤ顢���֤ȥ����ξ����̵�̤ˤ��ޤ���
-���ʤ�����Ū���ꥹ�����Τ��Ф���ȿ�����뤳�Ȥʤ顢for �롼�פ�
-�ȤäƤ���������
+問題は、grep はそのコンテキストには関係なくリストを返すことです。
+これはつまり、Perl にあなたが無視してしまうための戻り値のリストを
+作らせるということです。
+もしリストが大きいなら、時間とメモリの両方を無駄にします。
+あなたの目的がリスト全体に対して反復することなら、for ループを
+使ってください。
 
 =begin original
 
@@ -1659,15 +1659,15 @@ context, no lists are constructed.
 
 =end original
 
-5.8.1 ������� perl �Ǥϡ�map ��Ʊ������αƶ�������Ƥ��ޤ�����
-������ 5.8.1 ���顢����Ͻ������졢map �ϥ���ƥ����Ȥ�
-ǧ������褦�ˤʤ�ޤ��� - ̵������ƥ����ȤǤϥꥹ�ȤϺ���ޤ���
+5.8.1 より前の perl では、map も同じ問題の影響を受けていました。
+しかし 5.8.1 から、これは修正され、map はコンテキストを
+認識するようになりました - 無効コンテキストではリストは作られません。
 
 =head2 How can I match strings with multibyte characters?
 X<regex, and multibyte characters> X<regexp, and multibyte characters>
 X<regular expression, and multibyte characters> X<martian> X<encoding, Martian>
 
-(�ޥ���Х���ʸ����ޤ�ʸ�����ޥå��󥰤�����ˤ�?)
+(マルチバイト文字を含む文字列をマッチングさせるには?)
 
 =begin original
 
@@ -1679,11 +1679,11 @@ and L<Encode>.
 
 =end original
 
-Perl 5.6 ���顢Perl �ˤϤ����٥�Υޥ���Х���ʸ�����ݡ��Ȥ�����ޤ���
-Perl 5.8 �ʹߤ�侩���ޤ���
-�б�����ޥ���Х���ʸ���Υ�ѡ��ȥ꡼�ˤϡ�Unicode �ȡ�Encode �⥸�塼��
-��ͳ�Υ쥬�������󥳡��ǥ��󥰤�ޤߤޤ���
-L<perluniintro>, L<perlunicode>, L<Encode> �򻲾Ȥ��Ƥ���������
+Perl 5.6 から、Perl にはあるレベルのマルチバイト文字サポートがあります。
+Perl 5.8 以降を推奨します。
+対応するマルチバイト文字のレパートリーには、Unicode と、Encode モジュール
+経由のレガシーエンコーディングを含みます。
+L<perluniintro>, L<perlunicode>, L<Encode> を参照してください。
 
 =begin original
 
@@ -1694,11 +1694,11 @@ Japanese encodings, you might try using the jperl 5.005_03.
 
 =end original
 
-�⤷��äȸŤ� Perl ����ޤäƤ���ʤ顢C<Unicode::String> �⥸�塼���
-Unicode ���Ǥ���C<Unicode::Map8> �� C<Unicode::Map> �Υ⥸�塼���Ȥä�
-ʸ���Ѵ����Ǥ��ޤ���
-���ܸ쥨�󥳡��ǥ��󥰤�ȤäƤ���ʤ顢jperl 5.005_03 ��ȤäƤߤ�������
-����ޤ���
+もしもっと古い Perl に捕まっているなら、C<Unicode::String> モジュールで
+Unicode ができ、C<Unicode::Map8> と C<Unicode::Map> のモジュールを使って
+文字変換ができます。
+日本語エンコーディングを使っているなら、jperl 5.005_03 を使ってみたいかも
+しれません。
 
 =begin original
 
@@ -1708,8 +1708,8 @@ this very matter.
 
 =end original
 
-�Ǹ�ˡ�The Perl Journal ����޹�Ǥ�������ˤĤ��Ƥ��ܤ���������񤤤�
-Jeffery Friedl �ˤ����Ƥ��줿��ˡ�δ��Ĥ���󤲤ޤ���
+最後に、The Perl Journal の第五号でこの問題についてより詳しい記事を書いた
+Jeffery Friedl により提案された手法の幾つかを挙げます。
 
 =begin original
 
@@ -1721,9 +1721,9 @@ ASCII.
 
 =end original
 
-���ơ������� ASCII ����ʸ����ʸ���ǲ��������沽�򤷤Ƥ���Ȳ��ꤷ�ޤ��礦
-(���Ȥ��С�"CV", "SG", "VS", "XX" �ʤɤȤ��ä���Х��Ȥ��¤Ӥ�
-������ΰ�ʸ����ɽ�魯�Ȥ������ȤǤ�)��
+さて、ここで ASCII の大文字二文字で火星語の符号化をしていると仮定しましょう
+(たとえば、"CV", "SG", "VS", "XX" などといった二バイトの並びが
+火星語の一文字を表わすということです)。
 
 =begin original
 
@@ -1732,8 +1732,8 @@ nine characters 'I', ' ', 'a', 'm', ' ', 'CV', 'SG', 'XX', '!'.
 
 =end original
 
-�Ǥ����顢���������沽�򤷤Ƥ��� 12 �Х��Ȥ� "I am CVSGXX!" ʸ����ϡ�
-'I', ' ', 'a', 'm', ' ', 'CV', 'SG', 'XX', '!' �Ȥ�����ʸ���ǹ�������ޤ���
+ですから、火星語の符号化をしている 12 バイトの "I am CVSGXX!" 文字列は、
+'I', ' ', 'a', 'm', ' ', 'CV', 'SG', 'XX', '!' という九文字で構成されます。
 
 =begin original
 
@@ -1745,13 +1745,13 @@ looks like it is because "SG" is next to "XX", but there's no real
 
 =end original
 
-�����ǡ�C</GX/> �Ȥ�����ʸ�������򤷤����ȹͤ��Ƥߤޤ��礦��
-Perl �ϲ�����ˤĤ��Ƥϲ����Τ�ޤ��󤫤顢"I am CVSGXX!" �Ȥ���ʸ����ˤ���
-"GX" ��Х��Ȥ򸫤Ĥ��Ф��Ƥ��ޤ��Ǥ��礦���������ʸ���Ȥ���
-�����ˤ����ΤǤϤ���ޤ���
-�Ĥޤꡢ"SG" ��³���� "XX" ������ΤǤ�������������Ǥ��äơ�
-������ "GX" ������櫓�ǤϤʤ��ΤǤ���
-������礭������Ǥ���
+ここで、C</GX/> という一文字検索をしたいと考えてみましょう。
+Perl は火星語については何も知りませんから、"I am CVSGXX!" という文字列にある
+"GX" 二バイトを見つけ出してしまうでしょうが、これは文字として
+そこにあるものではありません。
+つまり、"SG" に続けて "XX" があるのでそう見えるだけであって、
+本当に "GX" があるわけではないのです。
+これは大きな問題です。
 
 =begin original
 
@@ -1759,7 +1759,7 @@ Here are a few ways, all painful, to deal with it:
 
 =end original
 
-����������н褹����ˡ�����ɤ�⤦�󤶤ꤹ��褦�ʤ�ΤǤ��������Ĥ�����ޤ�:
+この問題に対処する方法が、どれもうんざりするようなものですが、幾つかあります:
 
 	# Make sure adjacent "martian" bytes are no longer adjacent.
 	$martian =~ s/([A-Z][A-Z])/ $1 /g;
@@ -1772,7 +1772,7 @@ Or like this:
 
 =end original
 
-���뤤��:
+あるいは:
 
 	@chars = $martian =~ m/([A-Z][A-Z]|[^A-Z])/g;
 	# above is conceptually similar to:     @chars = $text =~ m/(.)/g;
@@ -1787,7 +1787,7 @@ Or like this:
 
 =end original
 
-���뤤��:
+あるいは:
 
 	while ($martian =~ m/\G([A-Z][A-Z]|.)/gs) {  # \G probably unneeded
 		print "found GX!\n", last if $1 eq 'GX';
@@ -1800,8 +1800,8 @@ Goldberg, who uses a zero-width negative look-behind assertion.
 
 =end original
 
-�ʲ��� Benjamin Goldberg �ˤ�롢Ʊ�����Ȥ�⤦�����ޤ��˹Ԥ���Τǡ�
-�����������������ȥ�����������ȤäƤ��ޤ���
+以下は Benjamin Goldberg による、同じことをもう少しましに行うもので、
+ゼロ幅否定前方参照アサーションを使っています。
 
 	print "found GX!\n" if	$martian =~ m/
 		(?<![A-Z])
@@ -1817,10 +1817,10 @@ look-behind assertion, you can replace (?<![A-Z]) with (?:^|[^A-Z]).
 
 =end original
 
-����Ϥ⤷ "martian" ʸ�� GX ��ʸ����ˤ�����������������Ǥʤ����
-���Ԥ��ޤ���
-�����������������ȥ���������� (?<!) ��Ȥ������ʤ��ʤ顢(?<![A-Z]) ��
-(?:^|[^A-Z]) ���֤��������ޤ���
+これはもし "martian" 文字 GX が文字列にあれば成功し、そうでなければ
+失敗します。
+ゼロ幅否定前方参照アサーション (?<!) を使いたくないなら、(?<![A-Z]) を
+(?:^|[^A-Z]) で置き換えられます。
 
 =begin original
 
@@ -1829,14 +1829,14 @@ but this usually can be worked around.
 
 =end original
 
-����ˤ� $-[0] �� $+[0] �˴ְ�ä���Τ�����Ȥ�������������ޤ���������
-����ϲ���Ǥ��ޤ���
+これには $-[0] と $+[0] に間違ったものが入るという欠点がありますが、普通
+これは回避できます。
 
 =head2 How do I match a regular expression that's in a variable?
 X<regex, in variable> X<eval> X<regex> X<quotemeta> X<\Q, regex>
 X<\E, regex>, X<qr//>
 
-(�ѿ������äƤ�������ɽ���ǥޥå��󥰤�Ԥ��ˤ�?)
+(変数に入っている正規表現でマッチングを行うには?)
 
 =begin original
 
@@ -1844,7 +1844,7 @@ X<\E, regex>, X<qr//>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1854,9 +1854,9 @@ pattern in a variable for later use.
 
 =end original
 
-�ޥå��󥰱黻��(���뤤�Ϥ���¾������ɽ���Ȥ���Ư�����)�˥ѥ������
-�ϡ��ɥ����ǥ��󥰤���ɬ�פϤ���ޤ���
-��ǻȤ�����˥ѥ�������ѿ�������뤳�Ȥ��Ǥ��ޤ���
+マッチング演算子(あるいはその他の正規表現として働くもの)にパターンを
+ハードコーディングする必要はありません。
+後で使うためにパターンを変数に入れることができます。
 
 =begin original
 
@@ -1868,10 +1868,10 @@ match operator.
 
 =end original
 
-�ޥå��󥰱黻�Ҥϥ��֥륯�����ȥ���ƥ����ȤʤΤǡ����֥륯������ʸ�����
-Ʊ�ͤ��ѿ�Ÿ���Ǥ��ޤ���
-�Ĥξ�硢����ɽ����桼�������ϤȤ����ɤ߹���ǡ�C<$regex> ���ݴɤ��ޤ���
-�ѥ����� C<$regex> ������С������ѿ���ޥå��󥰱黻�Ҥ���ǻȤ��ޤ���
+マッチング演算子はダブルクォートコンテキストなので、ダブルクォート文字列と
+同様に変数展開できます。
+個の場合、正規表現をユーザー入力として読み込んで、C<$regex> に保管します。
+パターンが C<$regex> に入れば、この変数をマッチング演算子の中で使えます。
 
 	chomp( my $regex = <STDIN> );
 
@@ -1885,9 +1885,9 @@ For instance, in this pattern there is an unpaired parenthesis.
 
 =end original
 
-C<$regex> ������Ƥ�����ɽ���ü�ʸ�����ü�ʤޤޤǡ��ѥ�����
-ͭ���Ǥʤ���� Perl �ϥ��顼��Ф��ޤ���
-�㤨�С����Υѥ�����ˤ��ȤˤʤäƤ��ʤ����ä�������ޤ���
+C<$regex> 内の全ての正規表現特殊文字は特殊なままで、パターンが
+有効でなければ Perl はエラーを出します。
+例えば、このパターンには組になっていないかっこがあります。
 
 	my $regex = "Unmatched ( paren";
 
@@ -1901,9 +1901,9 @@ parenthesis, it complains:
 
 =end original
 
-Perl ������ɽ���򥳥�ѥ��뤹����ˡ����ä���ޥå��󥰵����γ��ϤȤ���
-�����ޤ���
-�Ĥ����ä������Ĥ���ʤ��ȡ����顼���Фޤ�:
+Perl が正規表現をコンパイルする時に、かっこをマッチング記憶の開始として
+扱います。
+閉じかっこが見つからないと、エラーが出ます:
 
 	Unmatched ( in regex; marked by <-- HERE in m/Unmatched ( <-- HERE  paren/ at script line 3.
 
@@ -1915,9 +1915,9 @@ special, you can escape them with C<quotemeta> before you use the string.
 
 =end original
 
-�����˰�¸���ơ������Ĥ�����ˡ�Ǥ�������Ǥ��ޤ���
-�ޤ���ʸ������Τɤ�ʸ�������̤ǤϤʤ��ʤ顢ʸ�����Ȥ�����
-C<quotemeta> �ǥ��������פǤ��ޤ���
+状況に依存して、いくつかの方法でこれを回避できます。
+まず、文字列中のどの文字も特別ではないなら、文字列を使う前に
+C<quotemeta> でエスケープできます。
 
 	chomp( my $regex = <STDIN> );
 	$regex = quotemeta( $regex );
@@ -1933,11 +1933,11 @@ for more details).
 
 =end original
 
-C<\Q> �� C<\E> �Υ������󥹤�Ȥ����Ȥǡ������ޥå��󥰱黻�Ҥ����ľ��
-�Ԥ����Ȥ�Ǥ��ޤ���
-C<\Q> �� Perl ���ü�ʸ���Υ��������פ򳫻Ϥ�����֤򼨤���C<\E> �Ϥ����
-��λ������֤򼨤��ޤ� (����ʤ�ܺ٤ˤĤ��Ƥ� L<perlop> ��
-���Ȥ��Ƥ�������)��
+C<\Q> と C<\E> のシーケンスを使うことで、これをマッチング演算子の中で直接
+行うこともできます。
+C<\Q> は Perl に特殊文字のエスケープを開始する位置を示し、C<\E> はそれを
+終了する位置を示します (さらなる詳細については L<perlop> を
+参照してください)。
 
 	chomp( my $regex = <STDIN> );
 
@@ -1951,10 +1951,10 @@ and you can apply regular expression flags to the pattern.
 
 =end original
 
-���뤤�ϡ�����ɽ���������ȱ黻�ҤǤ��� C<qr//> ���Ȥ��ޤ�(����ʤ�
-�ܺ٤ˤĤ��Ƥ� L<perlop> �򻲾Ȥ��Ƥ�������)��
-����ϥѥ�����򥯥����Ȥ��������餯�ϥ���ѥ��뤵��ޤ�;
-�ޤ����ѥ����������ɽ���ե饰��Ŭ�ѤǤ��ޤ���
+あるいは、正規表現クォート演算子である C<qr//> が使えます(さらなる
+詳細については L<perlop> を参照してください)。
+これはパターンをクォートし、おそらくはコンパイルされます;
+また、パターンに正規表現フラグを適用できます。
 
 	chomp( my $input = <STDIN> );
 
@@ -1969,8 +1969,8 @@ around the whole thing.
 
 =end original
 
-���Τ� C<eval> �֥��å�����ळ�Ȥ����ƤΥ��顼��ȥ�åפ���������
-����ޤ���
+全体を C<eval> ブロックで包むことで全てのエラーをトラップしたいかも
+しれません。
 
 	chomp( my $input = <STDIN> );
 
@@ -1985,7 +1985,7 @@ Or...
 
 =end original
 
-�ޤ���...
+または...
 
 	my $regex = eval { qr/$input/is };
 	if( defined $regex ) {

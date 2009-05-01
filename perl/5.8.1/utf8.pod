@@ -1,8 +1,8 @@
-=head1 ̾��
+=head1 名前
 
-utf8 - ��������������ˡ�UTF-8(����UTF-EBCDIC)��ͭ��/̵���ˤ��뤿��Υץ饰��
+utf8 - ソースコード内に、UTF-8(か、UTF-EBCDIC)を有効/無効にするためのプラグマ
 
-=head1 ����
+=head1 概要
 
     use utf8;
     no utf8;
@@ -16,7 +16,7 @@ utf8 - ��������������ˡ�UTF-8(����UTF-EBCDIC)��ͭ��/̵���ˤ��뤿��Υץ饰��
     $flag = utf8::is_utf8(STRING); # since Perl 5.8.1
     $flag = utf8::valid(STRING);
 
-=head1 ����
+=head1 説明
 
 =begin original
 
@@ -27,11 +27,11 @@ the source text as literal bytes in the current lexical scope.
 
 =end original
 
-C<use utf8>�ץ饰�ޤϡ�Perl �ѡ������ˡ����ߤΥ쥭�����륹���������
-�ץ������Υƥ����Ȥˡ�UTF-8(EBCDIC�١����Υץ�åȥե�����ʤ顢UTF-EBCDIC)
-������褦�������ޤ���
-C<no utf8> �ץ饰�ޤ� Perl �ˡ����ߤΥ쥭�����륹�����פΥ������ƥ����Ȥ�
-��ƥ��ʥХ��ȤȤ��ư����褦�������ޤ���
+C<use utf8>プラグマは、Perl パーサーに、現在のレキシカルスコープ内の
+プログラムのテキストに、UTF-8(EBCDICベースのプラットフォームなら、UTF-EBCDIC)
+を許すように伝えます。
+C<no utf8> プラグマは Perl に、現在のレキシカルスコープのソーステキストを
+リテラルなバイトとして扱うように伝えます。
 
 =begin original
 
@@ -42,9 +42,9 @@ source text.
 
 =end original
 
-���Υץ饰�ޤϡ����⤽�⡢�ߴ����Τ���ι��פǤ���
-Perl 5.6̤���ΥС������Ǥϡ�������������������Ū�ʥХ����������Ƥ��ޤ�����
-�Ǥ��������衢�������ƥ����Ȥˡ�UTF-8 ���󥳡��ǥ��󥰤�ɸ�ಽ�������ȻפäƤ��ޤ���
+このプラグマは、そもそも、互換性のための工夫です。
+Perl 5.6未満のバージョンでは、ソースコード中の恣意的なバイト列を許していました。
+ですが、将来、ソーステキストに、UTF-8 エンコーディングを標準化したいと思っています。
 
 =begin original
 
@@ -55,10 +55,10 @@ useful for their own purposes, but they are not really part of the
 
 =end original
 
-B<Perl �� script �� UTF-8 �ǽ񤫤�Ƥ���Ȥ������Ȥ򶵤�����Ū�ʳ���
-���Υץ饰�ޤ�Ĥ��äƤϤ����ޤ���>
-���˽񤫤�Ƥ��롢utf8�Υ桼�ƥ���ƥ��ؿ��ϡ����켫�Ȥ���Ū��ͭ�פǤ���
-�����������ϡ�"�ץ饰��Ū��"���̤���ʬ�ǤϤޤä�������ޤ���
+B<Perl に script が UTF-8 で書かれているということを教える目的以外で
+このプラグマをつかってはいけません。>
+下に書かれている、utf8のユーティリティ関数は、それ自身の目的で有益です。
+しかしそれらは、"プラグマ的な"効果の部分ではまったくありません。
 
 =begin original
 
@@ -71,14 +71,14 @@ Latin based platforms and UTF-EBCDIC on EBCDIC based platforms.
 
 =end original
 
-UTF-8 ���������ƥ����Ȥ�ɸ��ե����ޥåȤȤʤ�ޤǤϡ�
-��������� UTF-8 ��ǧ�������뤿��ˤ��Υץ饰�ޤ� L</encoding> �ץ饰�ޤ�
-�Ȥ��٤��Ǥ���
-UTF-8 ��ɸ�ॽ�����ե����ޥåȤȤʤä��Ȥ��ˤϡ�
-���Υץ饰�ޤϻ��¾岿�⤷�ʤ��ʤ�ޤ���
-���ؤΤ��ᡢ�ʲ��Ǥ�I<UTF-X>�Ȥ���ñ��ϡ�
-ASCII �� ISO Latin �١����Υץ�åȥե�����Ǥ� UTF-8 �򼨤���
-EBCDIC �١����Υץ�åȥե�����Ǥ� UTF-EBCDIC �򼨤���ΤȤ��ޤ���
+UTF-8 がソーステキストの標準フォーマットとなるまでは、
+ソース中の UTF-8 を認識させるためにこのプラグマか L</encoding> プラグマを
+使うべきです。
+UTF-8 が標準ソースフォーマットとなったときには、
+このプラグマは事実上何もしなくなります。
+利便のため、以下でのI<UTF-X>という単語は、
+ASCII と ISO Latin ベースのプラットフォームでは UTF-8 を示し、
+EBCDIC ベースのプラットフォームでは UTF-EBCDIC を示すものとします。
 
 =begin original
 
@@ -87,7 +87,7 @@ C<$ENV{PERL_UNICODE}>, in L<perlrun>.
 
 =end original
 
-C<-C>�����å��Ȥ��Τ��Ȥ��Ρ�C<$ENV{PERL_UNICODE}>��L<perlrun>�Ǹ��Ʋ�������
+C<-C>スイッチとそのいとこの、C<$ENV{PERL_UNICODE}>を、L<perlrun>で見て下さい。
 
 =begin original
 
@@ -95,7 +95,7 @@ Enabling the C<utf8> pragma has the following effect:
 
 =end original
 
-C<utf8>�ץ饰�ޤ�ͭ���ˤ���ȼ��θ��̤�����ޤ�:
+C<utf8>プラグマを有効にすると次の効果があります:
 
 =over 4
 
@@ -110,10 +110,10 @@ regular expression patterns.
 
 =end original
 
-��ӥåȤΥ��åȤΤ��륽�����ƥ����Ȥˤ���Х��Ȥϡ�
-��ƥ���UTF8����饯������ʬ�Ȥ��ư����ޤ���
-���Τ��Ȥϡ��ۤȤ�ɤΥ�ƥ�롢���̻Ҥ�̾����
-ʸ������������Ѥ�����ɽ���Υѥ������ޤߤޤ���
+高ビットのセットのあるソーステキストにあるバイトは、
+リテラルのUTF8キャラクタの部分として扱われます。
+このことは、ほとんどのリテラル、識別子の名前、
+文字列定数、不変の正規表現のパターンも含みます。
 
 =begin original
 
@@ -122,8 +122,8 @@ treated as being part of a literal UTF-EBCDIC character.
 
 =end original
 
-EBCDIC�ץ�åȥե�����Ǥϡ�Latin 1 ����饯�����åȤΥ���饯���ϡ�
-��ƥ��� UTF-EBCDIC�Υ���饯���Ȥ��ư����ޤ���
+EBCDICプラットフォームでは、Latin 1 キャラクタセットのキャラクタは、
+リテラルの UTF-EBCDICのキャラクタとして扱われます。
 
 =back
 
@@ -137,10 +137,10 @@ utf8 until the end the block (or file, if at top level) by C<no utf8;>.
 
 =end original
 
-������ץ����8bit�ΥХ����󤬤���(���Ȥ��С�ʸ�����ƥ��ˡ�Latin-1������)�ʤ顢
-C<use utf8>�ϡ��Թ���⤿�餹�Ǥ��礦���Х�����ϡ��ۤȤ�ɤξ�硢Ŭ�ڤ�UTF-8�ǤϤʤ�����Ǥ���
-���Τ褦�ʥХ����󤬤���ʤ顢�֥��å�(�ޤ��ϡ��Ǿ����˽񤱤С��ե�����)�ν���ޤǡ� 
-C<no utf8;> �ǡ�utf8 ��̵���ˤǤ��ޤ���
+スクリプト内に8bitのバイト列がある(たとえば、文字列リテラルに、Latin-1がある)なら、
+C<use utf8>は、不幸をもたらすでしょう。バイト列は、ほとんどの場合、適切なUTF-8ではないからです。
+そのようなバイト列がいるなら、ブロック(または、最上部に書けば、ファイル)の終りまで、 
+C<no utf8;> で、utf8 を無効にできます。
 
 =begin original
 
@@ -151,11 +151,11 @@ as used in e.g. C<chr()> and C<\x{...}>, try this:
 
 =end original
 
-��ưŪ�ˡ�8bit�쥬�����ΥХ������UTF-8�˥��åץ��졼�ɤ������ʤ顢 
-L</encoding> �ץ饰�ޤ򡢤��Υץ饰�ޤ�����˻ȤäƤ���������
-���Ȥ��С���ǻȤ��Ƥ���褦�ˡ�ISO 8859-1 (Latin-1) �ΥХ������
-UTF-8�˰Ť˥��åץ��졼�ɤ������ʤ顢C<chr()> �� C<\x{...}>��Ȥ��ޤ���
-���Τ褦�ˤ��ޤ�:
+自動的に、8bitレガシーのバイト列をUTF-8にアップグレードしたいなら、 
+L</encoding> プラグマを、このプラグマの代わりに使ってください。
+たとえば、例で使われているように、ISO 8859-1 (Latin-1) のバイト列を
+UTF-8に暗にアップグレードしたいなら、C<chr()> と C<\x{...}>を使います。
+次のようにします:
 
     use encoding "latin-1";
     my $c = chr(0xc4);
@@ -168,11 +168,11 @@ the same as C<use utf8;>.
 
 =end original
 
-�¤äƤ�����:�������Ƥ���������
-C<use encoding 'utf8';>�ϡ�C<use utf8;>�ȡ��纹����ޤ��� 
+迷っている場合:こうしてください。
+C<use encoding 'utf8';>は、C<use utf8;>と、大差ありません。 
 
 
-=head2 �桼�ƥ���ƥ��ؿ�
+=head2 ユーティリティ関数
 
 =begin original
 
@@ -182,10 +182,10 @@ you should not say that  unless you really want to have UTF-8 source code.
 
 =end original
 
-�����δؿ��ϡ�C<utf8::>�ѥå������ˡ�Perl core �ˤ�äơ��������Ƥ��ޤ���
-�����δؿ���Ȥ��Τˡ�C<use utf8>����ɬ�פϤ���ޤ���
-�ºݡ������� UTF-8 �Υ����������ɤ�񤳤��Ȥ���ΤǤʤ��ʤ顢
-C<use utf8> ���٤��ǤϤ���ޤ���
+下記の関数は、C<utf8::>パッケージに、Perl core によって、定義されています。
+これらの関数を使うのに、C<use utf8>する必要はありません。
+実際、本当に UTF-8 のソースコードを書こうとするのでないなら、
+C<use utf8> すべきではありません。
 
 =over 4
 
@@ -204,14 +204,14 @@ encoding pragma.
 
 =end original
 
-ʸ���������ɽ����Perl������Ū��I<UTF-X>�η�����(Ŭ�ڤ�)�Ѵ����ޤ���
-I<UTF-X>�Ȥ��ơ�ʸ�����ɽ������Τ�ɬ�פ�8�ӥåȤο����֤��ޤ���
-UTF-8�ե饰������Ǥ��뤳�Ȥ��ǧ����Τ˻Ȥ��ޤ���
-�Ǥ��Τǡ�C<\w>����C<lc()>�ϡ�0x80-0xFF(ASCII�Ȥ�������)
-�Υ���饯����ޤ�ʸ����Ǵ��Ԥ����褦��ư���ޤ���
-���Τ��Ȥ����դ��Ƥ����������쥬�����ΥХ��ȥ��󥳡��ǥ��󥰤�
-Unicode �ˤ����Ѵ��˻Ȥ��٤��ǤϤ���ޤ���:
-���Τ���ˤϡ�Encode ��ȤäƲ�������encoding �ץ饰�ޤ˱ƶ�������ޤ���
+文字列の内部表現を、Perlの内部的なI<UTF-X>の形式に(適切に)変換します。
+I<UTF-X>として、文字列を表現するのに必要な8ビットの数を返します。
+UTF-8フラグがオンであることを確認するのに使えます。
+ですので、C<\w>か、C<lc()>は、0x80-0xFF(ASCIIとその派生)
+のキャラクタを含む文字列で期待されるように動きます。
+次のことに注意してください。レガシーのバイトエンコーディングを、
+Unicode にする変換に使うべきではありません:
+そのためには、Encode を使って下さい。encoding プラグマに影響を受けます。
 
 =item * $success = utf8::downgrade($string[, FAIL_OK])
 
@@ -228,14 +228,14 @@ pragma.
 
 =end original
 
-ʸ���������ɽ���򡢥��󥳡��ɤ���Ƥ��ʤ��Х������(Ŭ�ڤ�)�Ѵ����ޤ���
-��������ȿ����֤��ޤ������Ԥ���ȡ���̤���FAIL_OK�����Ǥ���С�
-�����֤��ޤ������Ȥ��С�substr() �� length()�ؿ�����
-�̾�Ϥ��®���Х��ȥ��르�ꥺ���ư���褦�ˤ�������硢
-UTF-8�ե饰�����դǤ���Τ��ǧ����Τ˻Ȥ��ޤ���
-���Τ��Ȥ����դ��Ƥ���������Unicode ��쥬�����ΥХ��ȥ��󥳡��ǥ��󥰤�
-�᤹�Ѵ��˻Ȥ��٤��ǤϤ���ޤ���: ���Τ���ˤϡ�Encode ��ȤäƲ�������
-encoding�ץ饰�ޤˤ�äƱƶ���B<�����ޤ���>��
+文字列の内部表現を、エンコードされていないバイト列に(適切に)変換します。
+成功すると真を返します。失敗すると、死ぬか、FAIL_OKが真であれば、
+偽を返します。たとえば、substr() か length()関数が、
+通常はより速いバイトアルゴリズムで動くようにしたい場合、
+UTF-8フラグがオフであるのを確認するのに使えます。
+次のことに注意してください。Unicode をレガシーのバイトエンコーディングに
+戻す変換に使うべきではありません: そのためには、Encode を使って下さい。
+encodingプラグマによって影響をB<受けません>。
 
 =item * utf8::encode($string)
 
@@ -249,11 +249,11 @@ that.
 
 =end original
 
-��������饯����8�ӥåȥ�������ɽ���ˡ�Perl��I<UTF-X>���󥳡��ǥ��󥰤ˡ�
-(Ŭ�ڤ�)�Ѵ����ޤ��������֤��ޤ���
-Encode::encode_utf8()��Ʊ���Ǥ���
-���Τ��Ȥ����դ��Ƥ����������쥬�����ΥХ��ȥ��󥳡��ǥ��󥰤�
-Unicode �ˤ����Ѵ��˻Ȥ��٤��ǤϤ���ޤ���:���Τ���ˤϡ�Encode ��ȤäƲ�������
+論理キャラクタを、8ビットシーケンス表現に、PerlのI<UTF-X>エンコーディングに、
+(適切に)変換します。何も返しません。
+Encode::encode_utf8()と同じです。
+次のことに注意してください。レガシーのバイトエンコーディングを、
+Unicode にする変換に使うべきではありません:そのためには、Encode を使って下さい。
 
 =item * utf8::decode($string)
 
@@ -266,11 +266,11 @@ byte encoding: use Encode for that.
 
 =end original
 
-I<$string>��Perl��I<UTF-X>���󥳡��ǥ��󥰤�����������饯���ˡ�
-Ŭ�ڤˡ��Ѵ����褦�Ȥ��ޤ��������֤��ޤ���
-Encode::decode_utf8()��Ʊ���Ǥ���
-���Τ��Ȥ����դ��Ƥ���������Unicode ��쥬�����ΥХ��ȥ��󥳡��ǥ��󥰤�
-�᤹�Ѵ��˻Ȥ��٤��ǤϤ���ޤ���: ���Τ���ˤϡ�Encode ��ȤäƲ�������
+I<$string>を、PerlのI<UTF-X>エンコーディングから論理キャラクタに、
+適切に、変換しようとします。何も返しません。
+Encode::decode_utf8()と同じです。
+次のことに注意してください。Unicode をレガシーのバイトエンコーディングに
+戻す変換に使うべきではありません: そのためには、Encode を使って下さい。
 
 =item * $flag = utf8::is_utf8(STRING)
 
@@ -281,8 +281,8 @@ the same as Encode::is_utf8().
 
 =end original
 
-(Perl 5.8.1����) STRING����UTF-8���ɤ�����ƥ��Ȥ��ޤ���
-��ǽŪ�ˤϡ�Encode::is_utf8() ��Ʊ���Ǥ���
+(Perl 5.8.1から) STRINGが、UTF-8かどうかをテストします。
+機能的には、Encode::is_utf8() と同じです。
 
 =item * $flag = utf8::valid(STRING)
 
@@ -297,14 +297,14 @@ probably want to use utf8::is_utf8() instead.
 
 =end original
 
-[�����ѿ�] STRING �� UTF-8 �Ȥ��ư�Ӥ��Ƥ��뤫��Ĵ�٤ޤ���
-STRING �� well-formed UTF-8 �� UTF-8 �ե饰�� on �ξ�� B<�ޤ���>
-ʸ���󤬥Х��ȤȤ����ݻ�����Ƥ�����˿����֤��ޤ�
-(ξ���Ȥ���֤ϡְ�Ӥ��ơפ��ޤ�)��
-���Υ롼����μ���Ū�ϡ�Perl �Υƥ��ȥ������Ȥ�
-������ʸ������Ӥ������֤��ݤäƤ��뤫��Ĵ�٤���褦��
-���뤳�ȤǤ���
-�����餯�����Ƥ��ξ�������� utf8::is_utf8() ��Ȥ������Ϥ��Ǥ���
+[内部変数] STRING が UTF-8 として一貫しているかを調べます。
+STRING が well-formed UTF-8 で UTF-8 フラグが on の場合 B<または>
+文字列がバイトとして保持されている場合に真を返します
+(両方とも状態は「一貫して」います)。
+このルーチンの主目的は、Perl のテストスイートが
+ある操作が文字列を一貫した状態に保っているかを調べられるように
+することです。
+おそらくたいていの場合は代わりに utf8::is_utf8() を使いたいはずです。
 
 =back
 
@@ -322,19 +322,19 @@ C<require utf8> statement-- this may change in future releases.
 
 =end original
 
-C<utf8::encode> �ϡ�C<utf8::upgrade> �˻��Ƥ��ޤ���
-�Ǥ�����UTF8 �ե饰���������ޤ���
-UTF8�ե饰�ξܺ٤ϡ�L<perlunicode> �򸫤Ʋ�������
-�����ơ�C API �ؿ� C<sv_utf8_upgrade>��C<sv_utf8_downgrade>��
-C<sv_utf8_encode>��C<sv_utf8_decode>�ϡ�
-Perl�ؿ��Ρ�C<utf8::upgrade>��C<utf8::downgrade>��C<utf8::encode>��
-C<utf8::decode> �ǥ�åԥ󥰤���Ƥ��ޤ���
-Perl 5.8.0 �ȡ�5.8.1 �μ����ǡ�utf8::is_utf8��utf8::valid��
-utf8::encode��utf8::decode��utf8::upgrade��utf8::downgrade�ϡ�
-���C<require utf8>�ʤ������Ѳ�ǽ�ˤʤäƤ��ޤ���
--- ����ϡ�����Υ�꡼�����Ѥ�뤫�⤷��ޤ���
+C<utf8::encode> は、C<utf8::upgrade> に似ています、
+ですが、UTF8 フラグが削除されます。
+UTF8フラグの詳細は、L<perlunicode> を見て下さい。
+そして、C API 関数 C<sv_utf8_upgrade>、C<sv_utf8_downgrade>、
+C<sv_utf8_encode>、C<sv_utf8_decode>は、
+Perl関数の、C<utf8::upgrade>、C<utf8::downgrade>、C<utf8::encode>、
+C<utf8::decode> でラッピングされています。
+Perl 5.8.0 と、5.8.1 の実装で、utf8::is_utf8、utf8::valid、
+utf8::encode、utf8::decode、utf8::upgrade、utf8::downgradeは、
+常にC<require utf8>なしで利用可能になっています。
+-- これは、将来のリリースで変わるかもしれません。
 
-=head1 �Х�
+=head1 バグ
 
 =begin original
 
@@ -345,11 +345,11 @@ Unicode for the said purposes is unsupported.
 
 =end original
 
-���̻Ҥ�̾���Ȥ��� Unicode ��Ȥ��ޤ������ѥå�����/���饹��
-���֥롼�����̾���Ȥ��ƤϻȤ��ޤ���
-Perl 5.8.0 ����Ϥ���˴ؤ�����ꤵ�줿��ǽ��¸�ߤ��ޤ�����
-������ͽ�ꤵ�줿��ΤȤ������϶����λ�ʪ�Ǥ���
-���Τ褦����Ū�� Unicode ��Ȥ����Ȥ��󥵥ݡ��ȤǤ���
+識別子の名前として Unicode を使えますが、パッケージ/クラスや
+サブルーチンの名前としては使えません。
+Perl 5.8.0 からはこれに関する限定された機能が存在しますが、
+これらは予定されたものというよりは偶然の産物です。
+このような目的で Unicode を使うことは非サポートです。
 
 =begin original
 
@@ -361,10 +361,10 @@ portable answers.
 
 =end original
 
-�����Դ������θ����ΰ�Ĥ�(���ߤΤȤ���)��ŷŪ����ܿ����Ǥ���
-�ѥå�����̾�ȥ��֥롼����̾�Ϥ��줾��ե�����ȥǥ��쥯�ȥ�̾���б��դ�����
-ɬ�פ�����Τǡ��ե����륷���ƥ�� Unicode �б������פȤʤ�ޤ���
-�����ƻ�ǰ�ʤ���ܿ����Τ���������¸�ߤ��ޤ���
+この不完全性の原因の一つは(現在のところ)先天的な非移植性です。
+パッケージ名とサブルーチン名はそれぞれファイルとディレクトリ名に対応付けられる
+必要があるので、ファイルシステムの Unicode 対応が重要となります。
+そして残念ながら移植性のある答えが存在しません。
 
 =head1 SEE ALSO
 

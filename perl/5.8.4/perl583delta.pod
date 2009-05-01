@@ -8,7 +8,7 @@ perl583delta - what is new for perl v5.8.3
 
 =end original
 
-perl583delta - perl v5.8.3 �Ǥ��ѹ���
+perl583delta - perl v5.8.3 での変更点
 
 =head1 DESCRIPTION
 
@@ -19,7 +19,7 @@ the 5.8.3 release.
 
 =end original
 
-���Υɥ�����Ȥ� 5.8.2 ��꡼���� 5.8.3 ��꡼�����ѹ����򵭽Ҥ��Ƥ��ޤ���
+このドキュメントは 5.8.2 リリースと 5.8.3 リリースの変更点を記述しています。
 
 =begin original
 
@@ -30,14 +30,14 @@ between 5.8.0, 5.8.1 and 5.8.2
 
 =end original
 
-�⤷����������Υ�꡼��, �㤨�� 5.6.1 �����饢�åץǡ��Ȥ���Τʤ顢
-5.6.0 �� 5.8.0 �Ȥΰ㤤���񤫤�Ƥ��� L<perl58delta> ����ӡ�
-5.8.0, 5.8.1, 5.8.2 �Ȥΰ㤤���񤫤�Ƥ��� L<perl581delta>,
-L<perl582delta> ���ɤ�Ǥ����������褤�Ǥ��礦��
+もしそれよりも前のリリース, 例えば 5.6.1 等からアップデートするのなら、
+5.6.0 と 5.8.0 との違いが書かれている L<perl58delta> および、
+5.8.0, 5.8.1, 5.8.2 との違いが書かれている L<perl581delta>,
+L<perl582delta> を読んでおいた方がよいでしょう。
 
 =head1 Incompatible Changes
 
-(�ߴ����Τʤ��ѹ�)
+(互換性のない変更)
 
 =begin original
 
@@ -45,11 +45,11 @@ There are no changes incompatible with 5.8.2.
 
 =end original
 
-5.8.2 �Ȥθߴ����Τʤ��ѹ��Ϥ���ޤ���
+5.8.2 との互換性のない変更はありません。
 
 =head1 Core Enhancements
 
-(Core �γ�ĥ)
+(Core の拡張)
 
 =begin original
 
@@ -58,9 +58,9 @@ a tied hash is used in scalar context, such as
 
 =end original
 
-tie ���줿�ϥå���� C<SCALAR> �᥽�åɤ����Ѳ�ǽ�ˤʤ�ޤ�����
-tie ���줿�ϥå��夬�ʲ��Τ褦�˥����饳��ƥ����ȤǻȤ�줿�Ȥ���
-�ƤӽФ���ޤ�:
+tie されたハッシュで C<SCALAR> メソッドが利用可能になりました。
+tie されたハッシュが以下のようにスカラコンテキストで使われたときに
+呼び出されます:
 
     if (%tied_hash) {
 	...
@@ -78,17 +78,17 @@ caveats.
 
 =end original
 
-�����ο����񤤤Ǥϡ�%tied_hash �ϥϥå��夬 tie ��������˥ϥå��夬
-�֤��Ϥ�����(�Ĥޤ����̤� 0)���֤��Ƥ��ޤ�����
-�����������񤤤ϡ�SCALAR �᥽�åɤ��ʤ����� C<each> �����֤�������Ǥ�
-�����֤�������ʤ����(����³�� C<each> �� FIRSTKEY ��ƤӽФ����Ȥ�
-�Ϥޤ뤳�Ȥ�μ¤ˤ��뤿���)�ϥå��夬�����ɤ����ɤ�����Ĵ�٤뤿���
-FIRSTKEY ���ƤӽФ���ޤ���
-�����ʾܺ٤��������ˤĤ��Ƥ� L<perltie/SCALAR> �򻲾Ȥ��Ƥ���������
+以前の振る舞いでは、%tied_hash はハッシュが tie される前にハッシュが
+返すはずの値(つまり普通は 0)を返していました。
+新しい振る舞いは、SCALAR メソッドがない場合は C<each> 繰り返しの途中では
+真を返し、さもなければ(引き続く C<each> が FIRSTKEY を呼び出すことで
+始まることを確実にするために)ハッシュが空かどうかどうかを調べるために
+FIRSTKEY が呼び出されます。
+完全な詳細と問題点については L<perltie/SCALAR> を参照してください。
 
 =head1 Modules and Pragmata
 
-(�⥸�塼��ȥץ饰��)
+(モジュールとプラグマ)
 
 =over 4
 
@@ -113,8 +113,8 @@ directories wish to use FindBin.
 
 =end original
 
-C<again> �ؿ��ϰۤʤä��ǥ��쥯�ȥ�ˤ���⥸�塼�뤬��FindBin ��Ȥ�����
-����������褹�뤿����󶡤���ޤ���
+C<again> 関数は異なったディレクトリにあるモジュールが、FindBin を使いたい
+場合の問題を解決するために提供されます。
 
 =item List::Util
 
@@ -124,7 +124,7 @@ You can now weaken references to read only values.
 
 =end original
 
-�ɤ߹������Ѥ��ͤؤΥ�ե���󥹤�夯���뤳�Ȥ��Ǥ���褦�ˤʤ�ޤ�����
+読み込み専用の値へのリファレンスを弱くすることができるようになりました。
 
 =item Math::BigInt
 
@@ -148,14 +148,14 @@ C<cond_wait> has a new two argument form. C<cond_timedwait> has been added.
 
 =end original
 
-C<cond_wait> �Ͽ����� 2 �����η�����Ĥ褦�ˤʤ�ޤ�����
-C<cond_timedwait> ���ɲä���ޤ�����
+C<cond_wait> は新しい 2 引数の形を持つようになりました。
+C<cond_timedwait> が追加されました。
 
 =back
 
 =head1 Utility Changes
 
-(�ġ�����ѹ�)
+(ツールの変更)
 
 =begin original
 
@@ -164,8 +164,8 @@ needed to be specified explicitly.
 
 =end original
 
-C<find2perl> �ϥǥե���ȤΥ��������Ȥ��� C<-print> ��
-���ꤹ��褦�ˤʤ�ޤ���������������Ū�˻��ꤹ��ɬ�פ�����ޤ�����
+C<find2perl> はデフォルトのアクションとして C<-print> を
+仮定するようになりました。以前は明示的に指定する必要がありました。
 
 =begin original
 
@@ -175,13 +175,13 @@ Perl versions can install from CPAN.
 
 =end original
 
-�������ġ���Ǥ��� C<prove> �ǡ��ġ�����ԥƥ��Ȥ򥳥ޥ�ɥ饤�󤫤�
-��ñ�˼¹ԤǤ��ޤ���C<prove> �� Test::Harness �ΰ����ǡ�
-�����ΥС������� Perl �Υ桼������ CPAN ���饤�󥹥ȡ���Ǥ��ޤ���
+新しいツールである C<prove> で、個々の退行テストをコマンドラインから
+簡単に実行できます。C<prove> は Test::Harness の一部で、
+以前のバージョンの Perl のユーザーは CPAN からインストールできます。
 
 =head1 New Documentation
 
-(�������ɥ������)
+(新しいドキュメント)
 
 =begin original
 
@@ -189,7 +189,7 @@ The documentation has been revised in places to produce more standard manpages.
 
 =end original
 
-���ɸ��Ū�� man �ڡ��������Ϥ����褦�ˡ��ɥ�����Ȥ���ľ����ޤ�����
+より標準的な man ページが出力されるように、ドキュメントが見直されました。
 
 =begin original
 
@@ -198,12 +198,12 @@ has been improved.
 
 =end original
 
-�ü쥳���ɥ֥��å�(BEGIN, CHECK, INIT, END) �Υɥ�����Ȥ�
-���ɤ���ޤ�����
+特殊コードブロック(BEGIN, CHECK, INIT, END) のドキュメントが
+改良されました。
 
 =head1 Installation and Configuration Improvements
 
-(���󥹥ȡ��������β���)
+(インストールと設定の改良)
 
 =begin original
 
@@ -211,11 +211,11 @@ Perl now builds on OpenVMS I64
 
 =end original
 
-OpenVMS I64 �ǥӥ�ɤǤ���褦�ˤʤ�ޤ�����
+OpenVMS I64 でビルドできるようになりました。
 
 =head1 Selected Bug Fixes
 
-(�Х�������ȴ��)
+(バグ修正の抜粋)
 
 =begin original
 
@@ -225,10 +225,10 @@ cached, and is now fixed.
 
 =end original
 
-UTF8 ʸ����� substr() ��Ȥ����ȤǤ��θ夽��ʸ����˥������������
-���ߤ��֤����Ȥ�����ޤ�����
-����ϥ���å��夵�줿 UTF8 �Υ��ե��åȤ��������ʤ��ä��������ǡ�
-��������ޤ�����
+UTF8 文字列に substr() を使うことでその後その文字列にアクセスすると
+ゴミを返すことがありました。
+これはキャッシュされた UTF8 のオフセットが正しくなかったが原因で、
+修正されました。
 
 =begin original
 
@@ -239,10 +239,10 @@ is now fixed.
 
 =end original
 
-join() ʸ�������˽������줿 UTF8 �ǡ�������� 8 bit �Υǡ������������
-������硢���� join() �ǥ��ߤ��֤����Ȥ�����ޤ�����
-����Ϥ���ʸ�Υƥ�ݥ�������ڡ����Υե饰��������
-�ꥻ�åȤ���Ƥ��ʤ��Τ������Ǥ���������Ͻ�������ޤ�����
+join() 文が以前に処理された UTF8 データを持つ 8 bit のデータを処理して
+いた場合、その join() でゴミを返すことがありました。
+これはその文のテンポラリワークスペースのフラグが正しく
+リセットされていないのが原因でした。これは修正されました。
 
 =begin original
 
@@ -250,7 +250,7 @@ C<$a .. $b> will now work as expected when either $a or $b is C<undef>
 
 =end original
 
-C<$a .. $b> �� $a �� $b �� C<undef> �Ǥ�ͽ¬�ɤ����ư���褦�ˤʤ�ޤ�����
+C<$a .. $b> は $a か $b が C<undef> でも予測どおりに動作するようになりました。
 
 =begin original
 
@@ -258,7 +258,7 @@ Using Unicode keys with tied hashes should now work correctly.
 
 =end original
 
-tie ���줿�ϥå���� Unicode ������ȤäƤ�������ư���褦�ˤʤ�ޤ�����
+tie されたハッシュに Unicode キーを使っても正しく動作するようになりました。
 
 =begin original
 
@@ -268,10 +268,10 @@ C<$!> to change unexpectedly.
 
 =end original
 
-$^E ���ɤ�Ȥ��� $! ����¸�����褦�ˤʤ�ޤ�����
-�����ϡ�$^E ��������Ƥ��� C �����ɤ� C<error> ����¸���Ƥ��ʤ��ä��Τǡ�
-$^E ���ɤळ�Ȥ� C<errno> ���ѹ�����뤳�Ȥ����ꡢ����ˤ�ä� C<$!> ��
-�ѹ�����뤳�Ȥ�����ޤ�����
+$^E を読むときに $! が保存されるようになりました。
+以前は、$^E を実装していた C コードが C<error> を保存していなかったので、
+$^E を読むことで C<errno> が変更されることがあり、それによって C<$!> が
+変更されることがありました。
 
 =begin original
 
@@ -280,13 +280,13 @@ which accidentally broke the compilation of Perl extensions written in C++
 
 =end original
 
-������ǽ�ؿ��� (�Ƥ�) C++ ��ư���褦�ˤʤ�ޤ�����
-5.8.2 �ΥХ������ˤ�äƿޤ餺�� C++ �ǽ񤫤줿 Perl ��ĥ�Υ���ѥ����
-�����Ƥ��ޤ�����
+再入可能関数は (再び) C++ で動作するようになりました。
+5.8.2 のバグ修正によって図らずも C++ で書かれた Perl 拡張のコンパイルを
+壊していました。
 
 =head1 New or Changed Diagnostics
 
-(���������ޤ����ѹ����줿���ǥ�å�����)
+(新しい、または変更された診断メッセージ)
 
 =begin original
 
@@ -295,12 +295,12 @@ documented in L<perldiag>.
 
 =end original
 
-��̿Ū���顼 "DESTROY created new reference to dead object" ��
-L<perldiag> �˵��Ҥ���ޤ�����
+致命的エラー "DESTROY created new reference to dead object" が
+L<perldiag> に記述されました。
 
 =head1 Changed Internals
 
-(�������ѹ�)
+(内部の変更)
 
 =begin original
 
@@ -310,9 +310,9 @@ above, there should be no change in behaviour.
 
 =end original
 
-�ϥå���Υ����ɤϥ�ե�������󥰤��졢�������ν�ʣ���������ޤ�����
-�������󥿡��ե�������̵�ѹ��ǡ��嵭�ΥХ������������
-�����񤤤��Ѥ�äƤ��ʤ��Ϥ��Ǥ���
+ハッシュのコードはリファクタリングされ、ソースの重複が減少しました。
+外部インターフェースは無変更で、上記のバグ修正を除いて
+振る舞いも変わっていないはずです。
 
 =begin original
 
@@ -320,7 +320,7 @@ C<hv_clear_placeholders> is now part of the perl API
 
 =end original
 
-C<hv_clear_placeholders> �� perl API �ΰ����Ȥʤ�ޤ�����
+C<hv_clear_placeholders> が perl API の一部となりました。
 
 =begin original
 
@@ -330,9 +330,9 @@ avoid bugs where names clash.
 
 =end original
 
-C �ޥ����Τ����Ĥ�����������ޤ�����
-�ä˰�����������ѿ����������ޥ������ѿ�̾�����ɸ�Ū��
-��������褦�ˤʤꡢ�ѿ�̾���֤Ĥ��ä��Ȥ��ΥХ����ɤ����Ȥ��Ǥ���Ϥ��Ǥ���
+C マクロのいくつかが整理されました。
+特に一時ローカル変数を作成するマクロは変数名をより防御的に
+作成するようになり、変数名がぶつかったときのバグを防ぐことができるはずです。
 
 =begin original
 
@@ -340,11 +340,11 @@ C �ޥ����Τ����Ĥ�����������ޤ�����
 
 =end original
 
-<signal.h> �Ͼ�˴ޤޤ��褦�ˤʤ�ޤ�����
+<signal.h> は常に含まれるようになりました。
 
 =head1 Configuration and Building
 
-(����ȥӥ��)
+(設定とビルド)
 
 =begin original
 
@@ -355,15 +355,15 @@ maintainers writing configuration hints files.
 
 =end original
 
-C<Configure> �ϸƤӽФ����ѿ����ͤ˴ؤ�餺������Хå���
-��ư����褦�ˤʤ�ޤ����������� C<case $variable $define)> ʬ����
-���ˤΤߵ�ư����Ƥ��ޤ�����
-�����ѹ�������ҥ�ȥե������񤯥ץ�åȥե�������ƥʤˤΤ�
-�ƶ�������Ϥ��Ǥ���
+C<Configure> は呼び出した変数の値に関わらずコールバックを
+起動するようになりました。以前は C<case $variable $define)> 分岐の
+場合にのみ起動されていました。
+この変更は設定ヒントファイルを書くプラットフォームメンテナにのみ
+影響があるはずです。
 
 =head1 Platform Specific Problems
 
-(�ץ�åȥե������ͭ������)
+(プラットフォーム固有の問題)
 
 =begin original
 
@@ -374,14 +374,14 @@ and consider upgrading their glibc.
 
 =end original
 
-����� RedHat 9 �� HP-UX 10.20 �ϥ���åɤμ����˥Х������뤿�ᡢ
-ext/threads/shared/t/wait.t ��ԥƥ��Ȥ˼��Ԥ��ޤ���
-RedHat �桼������ https://rhn.redhat.com/errata/RHBA-2003-136.html ��
-���Ȥ��ơ�glibc �Υ��åץ��졼�ɤ��θ����٤��Ǥ���
+初期の RedHat 9 と HP-UX 10.20 はスレッドの実装にバグがあるため、
+ext/threads/shared/t/wait.t 退行テストに失敗します。
+RedHat ユーザーは https://rhn.redhat.com/errata/RHBA-2003-136.html を
+参照して、glibc のアップグレードを考慮するべきです。
 
 =head1 Known Problems
 
-(���Τ�����)
+(既知の問題)
 
 =begin original
 
@@ -390,8 +390,8 @@ memory access violation problems.
 
 =end original
 
-detach ���줿����åɤϤޤ� Windows �Ǥ�ư��ޤ���
-���ꥢ��������ȿ���������������ޤ���
+detach されたスレッドはまだ Windows では動作しません。
+メモリアクセス違反問題を引き起こします。
 
 =begin original
 
@@ -402,11 +402,11 @@ as sudo ( http://www.courtesan.com/sudo/ )
 
 =end original
 
-C<suidperl> �ǥ�����ץȤ򳫤��Ȥ��˶�����֤ˤʤ뤳�Ȥ��狼�äƤ��ޤ���
-C<suidperl> �ϥǥե���ȤǤϥӥ�ɤ䥤�󥹥ȡ���Ϥ���ޤ���
-�ޤ���perl 5.8.0 �ʹߤǤ���侩�ȤʤäƤ��ޤ���
-suidperl ����Ѥ�������� sudo ( http://www.courtesan.com/sudo/ ) ��
-�褦�ʥġ������Ѥ��뤳�Ȥ򤪴��ᤷ�ޤ���
+C<suidperl> でスクリプトを開くときに競合状態になることがわかっています。
+C<suidperl> はデフォルトではビルドやインストールはされません。
+また、perl 5.8.0 以降では非推奨となっています。
+suidperl を使用する代わりに sudo ( http://www.courtesan.com/sudo/ ) の
+ようなツールを使用することをお勧めします。
 
 =begin original
 
@@ -416,10 +416,10 @@ but that is all that we have.
 
 =end original
 
-�䤿����̤���ΥХ��ΰ�������äƤ��ޤ���
-�Х��ȥХ����򰷤��Τ�̥�ϤΤʤ���ȤǤ�;
-����Ū�ˤϥܥ��ƥ�����ϫƯ�Ԥ˳�����Ƥ���٤���ΤǤϤ���ޤ���
-�������䤿���Ϥ�������������ޤ���
+私たちは未解決のバグの一覧を持っています。
+バグとバグ報告を扱うのは魅力のない作業です;
+理想的にはボランティアの労働者に割り当てられるべきものではありません。
+しかし私たちはそうせざるを得ません。
 
 =begin original
 
@@ -428,12 +428,12 @@ problem, which should go live in early 2004.
 
 =end original
 
-perl5 ��ȯ������Ϥ�������򰷤������Ȥʤ��ѹ��������ǡ�
-2004 ǯ��Ƭ�ˤ�ͭ���ˤʤ�ͽ��Ǥ���
+perl5 開発チームはこの問題を扱う助けとなる変更を実装中で、
+2004 年初頭には有効になる予定です。
 
 =head1 Future Directions
 
-(�����������)
+(将来の方向性)
 
 =begin original
 
@@ -443,14 +443,14 @@ the end of June, with release by mid July.
 
 =end original
 
-���Υ��ƥʥ󥹥�꡼��(5.8.4)�� 2004 ǯ 3 �� 31 ���˥����ɥե꡼�����졢
-4 ����ܤޤǤ˥�꡼�������ͽ��Ǥ���
-Ʊ�ͤ� 5.8.5 �� 6 ����˥ե꡼�����졢7 ����ܤޤǤ�
-��꡼�������ͽ��Ǥ���
+次のメンテナンスリリース(5.8.4)は 2004 年 3 月 31 日にコードフリーズされ、
+4 月中旬までにリリースされる予定です。
+同様に 5.8.5 は 6 月終わりにフリーズされ、7 月中旬までに
+リリースされる予定です。
 
 =head1 Obituary
 
-(�������)
+(お悔やみ)
 
 =begin original
 
@@ -460,9 +460,9 @@ He will be missed.
 
 =end original
 
-Perl �ϥå����Ǥ��ꡢL<perlreref> �����ԤǤ��ꡢCPAN ��
-�׸��ԤǤ��� Iain 'Spoon' Truskett �� 2003 ǯ 12 �� 29 ����24 �Ф�
-�޻ष�ޤ�����������ߤ򿽤��夲�ޤ���
+Perl ハッカーであり、L<perlreref> の著者であり、CPAN の
+貢献者である Iain 'Spoon' Truskett は 2003 年 12 月 29 日、24 歳で
+急死しました。お悔やみを申し上げます。
 
 =head1 Reporting Bugs
 
@@ -475,10 +475,10 @@ information at http://www.perl.org, the Perl Home Page.
 
 =end original
 
-�⤷�Х��Ȼפ����Τ����Ĥ��ä��顢 comp.lang.perl.misc �˥塼�����롼�פ�
-�Ƕ���Ƥ��줿������ http://bugs.perl.org �ˤ��� perl �Х��ǡ����١�����
-��ǧ���Ƥ���������
-Perl �ۡ���ڡ�����http://www.perl.org �ˤ���󤬤���ޤ���
+もしバグと思われるものが見つかったら、 comp.lang.perl.misc ニュースグループに
+最近投稿された記事や http://bugs.perl.org にある perl バグデータベースを
+確認してください。
+Perl ホームページ、http://www.perl.org にも情報があります。
 
 =begin original
 
@@ -491,13 +491,13 @@ the Perl 5 bugs at http://bugs.perl.org/
 
 =end original
 
-�⤷�ޤ���𤵤�Ƥ��ʤ��Х����ȳο������顢���Υ�꡼���˴ޤޤ�Ƥ���
-perlbug �ץ��������¹Ԥ��Ƥ���������
-�Х��κƸ�������ץȤ�ʬ��������������ͭ���ʥ����ɤ��ڤ�Ĥ�뤳�Ȥ�
-�ռ����Ƥ����������Х���ݡ��Ȥ� perl -V �ν��ϤȰ���
-perlbug@perl.org ������� Perl porting ������ˤ�äƲ��Ϥ���ޤ���
-Perl 5 �ΥХ��ˤĤ��Ƥ� http://bugs.perl.org/ �Ǳ����ڤ�
-�������뤳�Ȥ��Ǥ��ޤ���
+もしまだ報告されていないバグだと確信したら、そのリリースに含まれている
+perlbug プログラムをを実行してください。
+バグの再現スクリプトを十分小さく、しかし有効なコードに切りつめることを
+意識してください。バグレポートは perl -V の出力と一緒に
+perlbug@perl.org に送られ Perl porting チームによって解析されます。
+Perl 5 のバグについては http://bugs.perl.org/ で閲覧及び
+検索することができます。
 
 =head1 SEE ALSO
 
@@ -507,7 +507,7 @@ The F<Changes> file for exhaustive details on what changed.
 
 =end original
 
-F<Changes> �ե�������ѹ����δ����ʾܺ٤�����ޤ���
+F<Changes> ファイルに変更点の完全な詳細があります。
 
 =begin original
 
@@ -515,7 +515,7 @@ The F<INSTALL> file for how to build Perl.
 
 =end original
 
-F<INSTALL> �ե������ Perl �Υӥ����ˡ������ޤ���
+F<INSTALL> ファイルに Perl のビルド方法があります。
 
 =begin original
 
@@ -523,7 +523,7 @@ The F<README> file for general stuff.
 
 =end original
 
-F<README> �ե�����˰���Ū�ʤ��Ȥ�����ޤ���
+F<README> ファイルに一般的なことがあります。
 
 =begin original
 
@@ -531,7 +531,7 @@ The F<Artistic> and F<Copying> files for copyright information.
 
 =end original
 
-F<Artistic> �ڤ� F<Copying> �ե������������󤬤���ޤ���
+F<Artistic> 及び F<Copying> ファイルに著作権情報があります。
 
 =begin meta
 

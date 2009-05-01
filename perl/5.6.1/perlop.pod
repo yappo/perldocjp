@@ -9,7 +9,7 @@ perlop - Perl operators and precedence
 
 =end original
 
-Perl �α黻�Ҥ�ͥ����
+Perl の演算子と優先順位
 
 =head1 SYNOPSIS
 
@@ -24,13 +24,13 @@ values only, not array values.
 
 =end original
 
-Perl �α黻�Ҥˤϡ��ʲ��Τ褦�ʷ������ͥ���� (�⤤ͥ���̤���
-�㤤��Τ��¤٤Ƥ���) ������ޤ���
-C ������äƤ����黻�Ҥ�ͥ���̤ϡ�C �Ǥ�ͥ���̤�¿�����������Ƥ⡢
-���Τޤޤˤ��Ƥ���ޤ���
-(����ˤ�äơ�C ��ȤäƤ������� Perl �˰ܤ�䤹���ʤäƤ��ޤ���)
-�����Ϥ����㳰���̤Ȥ��ơ����Ƥα黻�Ҥϥ������ͤΤߤ������
-�����ͤ�����ޤ���
+Perl の演算子には、以下のような結合性と優先順位 (高い優先順位から
+低いものへ並べている) があります。
+C から持ってきた演算子の優先順位は、C での優先順位が多少おかしくても、
+そのままにしてあります。
+(これによって、C を使っている方が Perl に移りやすくなっています。)
+ごく僅かな例外を別として、全ての演算子はスカラ値のみを持ち、
+配列値を持ちません。
 
 =begin original
 
@@ -61,30 +61,30 @@ C ������äƤ����黻�Ҥ�ͥ���̤ϡ�C �Ǥ�ͥ���̤�¿�����������Ƥ⡢
 
 =end original
 
-    �����      ��  �ꥹ�ȱ黻�� (���������Ф���)
-    �����      ->
-    ����      ++ --
-    �����      **
-    �����      ! ~ \ ñ���+ ñ���-
-    �����      =~ !~
-    �����      * / % x
-    �����      + - .
-    �����      << >>
-    ����      ̾���դ�ñ��黻��
-    ����      < > <= >= lt gt le ge
-    ����      == != <=> eq ne cmp
-    �����      &
-    �����      | ^
-    �����      &&
-    �����      ||
-    ����      .. ...
-    �����      ?:
-    �����      = += -= *= �ʤɤ������黻��
-    �����      , =>
-    ����      �ꥹ�ȱ黻�� (���������Ф���)
-    �����      not
-    �����      and
-    �����      or xor
+    左結合      項  リスト演算子 (左方向に対して)
+    左結合      ->
+    非結合      ++ --
+    右結合      **
+    右結合      ! ~ \ 単項の+ 単項の-
+    左結合      =~ !~
+    左結合      * / % x
+    左結合      + - .
+    左結合      << >>
+    非結合      名前付き単項演算子
+    非結合      < > <= >= lt gt le ge
+    非結合      == != <=> eq ne cmp
+    左結合      &
+    左結合      | ^
+    左結合      &&
+    左結合      ||
+    非結合      .. ...
+    右結合      ?:
+    右結合      = += -= *= などの代入演算子
+    左結合      , =>
+    非結合      リスト演算子 (右方向に対して)
+    右結合      not
+    左結合      and
+    左結合      or xor
 
 =begin original
 
@@ -92,7 +92,7 @@ In the following sections, these operators are covered in precedence order.
 
 =end original
 
-�ʲ�����Ǥϡ������α黻�Ҥ�ͥ���̤˽��äƾҲ𤷤ޤ���
+以下の節では、これらの演算子を優先順位に従って紹介します。
 
 =begin original
 
@@ -100,14 +100,14 @@ Many operators can be overloaded for objects.  See L<overload>.
 
 =end original
 
-¿���α黻�Ҥϥ��֥������Ȥǥ����С������ɤǤ��ޤ���
-L<overload> �򻲾Ȥ��Ʋ�������
+多くの演算子はオブジェクトでオーバーロードできます。
+L<overload> を参照して下さい。
 
 =head1 DESCRIPTION
 
 =head2 Terms and List Operators (Leftward)
 
-(��ȥꥹ�ȱ黻�� (������))
+(項とリスト演算子 (左方向))
 
 =begin original
 
@@ -120,12 +120,12 @@ the arguments.  These are all documented in L<perlfunc>.
 
 =end original
 
-�ֹ�פ� Perl �Ǥ�äȤ�ͥ���̤��⤤��ΤǤ���
-����ˤϡ��ѿ����������Ȥȥ�������Ū�ʱ黻�ҡ���̤ǳ�ä�Ǥ�դμ���
-�������̤ǳ�ä�Ǥ�դδؿ����ޤޤ�ޤ���
-�ºݤˤϡ����ΰ�̣�Ǥ������δؿ��Ϥʤ����ꥹ�ȱ黻�Ҥȴؿ��Τ褦��Ư��
-ñ��黻�Ҥ����������̤ǳ�뤿�᤽�Τ褦�˸����ޤ���
-�����Ϥ��٤� L<perlfunc> �˵��Ҥ��Ƥ��ޤ���
+「項」は Perl でもっとも優先順位が高いものです。
+これには、変数、クォートとクォート的な演算子、括弧で括った任意の式、
+引数を括弧で括った任意の関数が含まれます。
+実際には、この意味では本当の関数はなく、リスト演算子と関数のように働く
+単項演算子が、引数を括弧で括るためそのように見えます。
+これらはすべて L<perlfunc> に記述しています。
 
 =begin original
 
@@ -136,9 +136,9 @@ just like a normal function call.
 
 =end original
 
-�⤷���ꥹ�ȱ黻�� (print() �ʤ�) ��ñ��黻�� (chdir() �ʤ�)��
-̾���θ�˳�����̤�³�����ˤϡ����α黻�Ҥȳ����ΰ����ϡ�
-�̾�δؿ��ƤӽФ��Τ褦�ˡ���äȤ�⤤ͥ���̤ǽ�������ޤ���
+もし、リスト演算子 (print() など) や単項演算子 (chdir() など)の
+名前の後に開き括弧が続く場合には、その演算子と括弧内の引数は、
+通常の関数呼び出しのように、もっとも高い優先順位で処理されます。
 
 =begin original
 
@@ -149,9 +149,9 @@ For example, in
 
 =end original
 
-��̤�̵�����ˤϡ�C<print>��C<sort>��C<chmod> �Τ褦�ʥꥹ�ȱ黻�Ҥ�
-ͥ���̤ϡ��黻�Ҥκ�¦�򤫤餹������˹⤯����¦���餹���
-�����㤯�����ޤ������Ȥ��С�
+括弧が無い場合には、C<print>、C<sort>、C<chmod> のようなリスト演算子の
+優先順位は、演算子の左側をからすると非常に高く、右側からすると
+非常に低く見えます。たとえば、
 
     @ary = (1, 3, sort 4, 2);
     print @ary;		# prints 1324
@@ -166,13 +166,13 @@ Be careful with parentheses:
 
 =end original
 
-�Ǥϡ�sort �α��Υ���ޤ� sort ��������ɾ������ޤ� (��¦����
-����� sort ��ͥ���̤��㤤) ������¦�Υ���ޤ� sort �Τ��Ȥ�
-ɾ������ޤ� (��¦���鸫��� sort ������ͥ���̤��⤯
-�ʤäƤ���)��
-���������Ѥ���ȡ��ꥹ�ȱ黻�Ҥϼ�ʬ�θ�ˤ�������򤹤٤ƻȤäƽ�����Ԥʤ���
-���η�̤�ʬ�����μ����Ф���ֹ�פǤ��뤫�Τ褦�˸�����Ȥ������ȤǤ���
-����������̤ˤϵ����դ��ʤ��Ȥ����ޤ���:
+では、sort の右のコンマは sort よりも前に評価されます (右側から
+見ると sort の優先順位が低い) が、左側のコンマは sort のあとに
+評価されます (左側から見ると sort の方が優先順位が高く
+なっている)。
+言い方を変えると、リスト演算子は自分の後にある引数をすべて使って処理を行ない、
+その結果を自分の前の式に対する「項」であるかのように見せるということです。
+ただし、括弧には気を付けないといけません:
 
 =begin original
 
@@ -187,14 +187,14 @@ Be careful with parentheses:
 
 =end original
 
-    # �ʲ��� print ��Ԥʤ����� exit ��ɾ�����ޤ�:
-    print($foo, exit);  # ���餫�ˤ�ꤿ�����ȤǤϤʤ��Ǥ��礦��
-    print $foo, exit;   # ����Ǥ�ʤ���
+    # 以下は print を行なう前に exit を評価します:
+    print($foo, exit);  # 明らかにやりたいことではないでしょう。
+    print $foo, exit;   # これでもない。
 
-    # �ʲ��� exit ��ɾ���������� print ��Ԥʤ��ޤ�:
-    (print $foo), exit; # ���줬�������ä���
-    print($foo), exit;  # ����Ǥ⤤����
-    print ($foo), exit; # ����� OK��
+    # 以下は exit を評価する前に print を行ないます:
+    (print $foo), exit; # これがしたかった。
+    print($foo), exit;  # これでもいい。
+    print ($foo), exit; # これも OK。
 
 =begin original
 
@@ -207,12 +207,12 @@ L<Named Unary Operators> for more discussion of this.
 
 =end original
 
-�ޤ���
+また、
 
     print ($foo & 255) + 1, "\n";
 
-��ư�����ܸ���������Ƚ�Ǥ���Τϡ��񤷤��Ǥ��礦��
-�ܤ����ϡ�L<Named Unary Operators> �򻲾Ȥ��Ƥ���������
+の動作を一目見ただけで判断するのは、難しいでしょう。
+詳しくは、L<Named Unary Operators> を参照してください。
 
 =begin original
 
@@ -222,9 +222,9 @@ constructors C<[]> and C<{}>.
 
 =end original
 
-����¾�ˡֹ�פȤ��Ʋ��Ϥ�����Τˤϡ�C<do {}> �� C<eval {}> ��
-���������֥롼�ƥ����᥽�åɤθƤӽФ���̵̾�Υ��󥹥ȥ饯��
-C<[]> �� C<{}> ������ޤ���
+この他に「項」として解析されるものには、C<do {}> や C<eval {}> の
+構成、サブルーティンやメソッドの呼び出し、無名のコンストラクタ
+C<[]> と C<{}> があります。
 
 =begin original
 
@@ -233,12 +233,12 @@ as well as L<"I/O Operators">.
 
 =end original
 
-�������L<Quote and Quote-like Operators>��
-L<"I/O Operators">�⻲�Ȥ��Ƥ���������
+後の方のL<Quote and Quote-like Operators>や
+L<"I/O Operators">も参照してください。
 
 =head2 The Arrow Operator
 
-(����黻��)
+(矢印演算子)
 
 =begin original
 
@@ -252,13 +252,13 @@ assignment.)  See L<perlreftut> and L<perlref>.
 
 =end original
 
-C �� C++ ��Ʊ���褦�� "C<< -> >>" �����֤��ﻲ�ȱ黻�ҤǤ���
-��¦�� C<[...]>, C<{...}>,
-C<(...)> �Τ����줫�η���ź���Ǥ���С���¦�����󡢥ϥå��塢
-���֥롼����ؤΥϡ��ɥ�ե���󥹤�����ܥ�å���ե���� (���뤤��
-����Ū�ˤϡ�����ޤ��ϥϡ��ɥ�ե���󥹤�������ǽ�Ǥ����
-�ϡ��ɥ�ե���󥹤��ݻ��Ǥ�����)
-�Ǥʤ���Фʤ�ޤ���L<perlreftut> �� L<perlref> �򻲾Ȥ��Ƥ���������
+C や C++ と同じように "C<< -> >>" は中置の被参照演算子です。
+右側が C<[...]>, C<{...}>,
+C<(...)> のいずれかの形の添字であれば、左側は配列、ハッシュ、
+サブルーチンへのハードリファレンスかシンボリックリファレンス (あるいは
+技術的には、配列またはハードリファレンスが代入可能であれば
+ハードリファレンスを保持できる場所)
+でなければなりません。L<perlreftut> と L<perlref> を参照してください。
 
 =begin original
 
@@ -269,14 +269,14 @@ or a class name (that is, a package name).  See L<perlobj>.
 
 =end original
 
-�����Ǥʤ���С���¦�ϥ᥽�å�̾�����֥롼����Υ�ե���󥹤���ä�
-ñ�㥹�����ѿ��ǡ���¦�ϥ��֥������� (bless ���줿��ե����) ��
-���饹̾�Ǥʤ���Фʤ�ޤ���
-L<perlobj> �򻲾Ȥ��Ƥ���������
+そうでなければ、右側はメソッド名かサブルーチンのリファレンスを持った
+単純スカラ変数で、左側はオブジェクト (bless されたリファレンス) か
+クラス名でなければなりません。
+L<perlobj> を参照してください。
 
 =head2 Auto-increment and Auto-decrement
 
-(���󥯥���Ȥȥǥ������)
+(インクリメントとデクリメント)
 
 =begin original
 
@@ -286,10 +286,10 @@ placed after, increment or decrement the variable after returning the value.
 
 =end original
 
-"++" �� "--" �ϡ�C �ξ���Ʊ���褦��ư��ޤ���
-�Ĥޤꡢ�ѿ��������֤����С��ͤ��֤������ѿ��򥤥󥯥���Ȥޤ���
-�ǥ�����Ȥ�������֤����С��ͤ��֤�������ѿ���
-���󥯥���Ȥޤ��ϥǥ�����Ȥ��ޤ���
+"++" と "--" は、C の場合と同じように動作します。
+つまり、変数の前に置かれれば、値を返す前に変数をインクリメントまたは
+デクリメントし、後に置かれれば、値を返した後で変数を
+インクリメントまたはデクリメントします。
 
 =begin original
 
@@ -303,13 +303,13 @@ character within its range, with carry:
 
 =end original
 
-���󥯥���ȱ黻�Ҥˤϡ�����ä����Ѥ��ʵ�ǽ���Ȥ߹��ޤ�Ƥ��ޤ���
-���ͤ����ä��ѿ��䡢���ͤ�ʸ̮�ǻȤ��Ƥ����ѿ���
-���󥯥���Ȥ�����ˤϡ��̾�Υ��󥯥���ȤȤ���ư��ޤ���
-�������������ѿ������ꤵ��Ƥ��餺�ä�ʸ�����ʸ̮��
-�����Ȥ��Ƥ��ʤ��ơ���ʸ����Ǥʤ��� C</^[a-zA-Z]*[0-9]*\z/> �˥ޥå�����
-�ͤ���äƤ���Ȥ��ˤϡ��ġ���ʸ�����ϰϤ��ݤ��ʤ���夢����Ԥʤäơ�
-ʸ����Ȥ��ƥ��󥯥���Ȥ��Ԥʤ��ޤ� (�ޥ����륤�󥯥���ȤȸƤФ�ޤ�):
+インクリメント演算子には、ちょっと風変わりな機能が組み込まれています。
+数値が入った変数や、数値の文脈で使われてきた変数を
+インクリメントする場合には、通常のインクリメントとして動作します。
+しかし、その変数が設定されてからずっと文字列の文脈で
+しか使われていなくて、空文字列でなく、 C</^[a-zA-Z]*[0-9]*\z/> にマッチする
+値を持っているときには、個々の文字の範囲を保ちながら桁あげを行なって、
+文字列としてインクリメントが行なわれます (マジカルインクリメントと呼ばれます):
 
     print ++($foo = '99');	# prints '100'
     print ++($foo = 'a0');	# prints 'a1'
@@ -322,11 +322,11 @@ The auto-decrement operator is not magical.
 
 =end original
 
-�ǥ�����ȱ黻�Ҥˤϡ��ޥ�����ʤ�ΤϤ���ޤ���
+デクリメント演算子には、マジカルなものはありません。
 
 =head2 Exponentiation
 
-(�ؿ��黻��)
+(指数演算子)
 
 =begin original
 
@@ -337,15 +337,15 @@ internally.)
 
 =end original
 
-���黻�Ҥ� "**" �ϻؿ��黻�ҤǤ���
-���α黻�Ҥϡ�ñ��Υޥ��ʥ������礬�����黻�Ҥǡ�
--2**4 �� (-2)**4 �ǤϤʤ���-(2**4) �Ȳ�ᤵ��ޤ���
-(����� C �� pow(3) ��ȤäƼ�������Ƥ��ޤ��Τǡ�
-����Ū�ˤ� double ��ư��ޤ���)
+二項演算子の "**" は指数演算子です。
+この演算子は、単項のマイナスよりも結合が強い演算子で、
+-2**4 は (-2)**4 ではなく、-(2**4) と解釈されます。
+(これは C の pow(3) を使って実装されていますので、
+内部的には double で動作します。)
 
 =head2 Symbolic Unary Operators
 
-(ñ��黻��)
+(単項演算子)
 
 =begin original
 
@@ -354,9 +354,9 @@ precedence version of this.
 
 =end original
 
-ñ��黻�Ҥ� "!" �����������Ԥʤ��ޤ���
-�Ĥޤ� ��not�� �Ȥ������ȤǤ���
-���α黻�Ҥ�ͥ���̤��㤯������ΤȤ��ơ�C<not> ���Ѱդ���Ƥ��ޤ���
+単項演算子の "!" は論理否定を行ないます。
+つまり 「not」 ということです。
+この演算子の優先順位を低くしたものとして、C<not> が用意されています。
 
 =begin original
 
@@ -369,12 +369,12 @@ to C<"-bareword">.
 
 =end original
 
-ñ��黻�Ҥ� "-" ����黻�Ҥ����ͤǤ���С����������Ԥʤ��ޤ���
-��黻�Ҥ����̻Ҥʤ�С��ޥ��ʥ�����ˤ��μ��̻Ҥ�Ĥʤ���
-ʸ�����֤���ޤ���
-����ʳ�����黻�Ҥκǽ��ʸ�����ץ饹���ޥ��ʥ��ΤȤ��ˤϡ�
-���ε����դΤ�Τ��֤�������ʸ������֤��ޤ���
-���ε�§�η�̡�C<-bareword> �� C<"-bareword"> �������Ȥʤ�ޤ���
+単項演算子の "-" は被演算子が数値であれば、算術否定を行ないます。
+被演算子が識別子ならば、マイナス記号にその識別子をつなげた
+文字列が返されます。
+これ以外で被演算子の最初の文字がプラスかマイナスのときには、
+その記号を逆のものに置き換えた文字列を返します。
+この規則の結果、C<-bareword> が C<"-bareword"> に等価となります。
 
 =begin original
 
@@ -387,15 +387,15 @@ width, remember use the & operator to mask off the excess bits.
 
 =end original
 
-ñ��黻�Ҥ� "~" �ϥӥåȤ��Ȥ������Ԥʤ��ޤ���
-�Ĥޤꡢ1 ��������֤��ޤ���
-�㤨�С�C<0666 & ~027> �� 0640 �Ǥ���
-(L<Integer Arithmetic> �� L<Bitwise String Operators> �⻲�Ȥ��Ʋ�������)
-��̤����ϥץ�åȥۡ����¸�Ǥ��뤳�Ȥ����դ��Ƥ���������
-~0 �� 32-bit �ץ�åȥۡ���Ǥ� 32 �ӥå����Ǥ�����
-64-bit �ץ�åȥۡ���Ǥ� 64 �ӥå����Ǥ��Τǡ�
-����Υӥå������ꤹ����ϡ�
-;ʬ�ʥӥåȤ�ޥ������뤿��� & �黻�Ҥ�Ȥ����Ȥ�˺��ʤ��Ǥ���������
+単項演算子の "~" はビットごとの否定を行ないます。
+つまり、1 の補数を返します。
+例えば、C<0666 & ~027> は 0640 です。
+(L<Integer Arithmetic> と L<Bitwise String Operators> も参照して下さい。)
+結果の幅はプラットホーム依存であることに注意してください。
+~0 は 32-bit プラットホームでは 32 ビット幅ですが、
+64-bit プラットホームでは 64 ビット幅ですので、
+特定のビット幅を仮定する場合は、
+余分なビットをマスクするために & 演算子を使うことを忘れないでください。
 
 =begin original
 
@@ -406,10 +406,10 @@ arguments.  (See examples above under L<Terms and List Operators (Leftward)>.)
 
 =end original
 
-ñ��黻�Ҥ� "+" �ϡ����Ȥ�ʸ������Ф����Ѥ���줿���ˤ⡢���⤷�ޤ���
-�ؿ�̾��³���Ƴ���դ��μ���񤯾��ˡ��ؿ��ΰ����ꥹ�Ȥ�
-��ᤵ��ʤ��褦�ˤ��뤿����Ѥ��뤳�Ȥ��Ǥ��ޤ���
-(���� L<Terms and List Operators (Leftward)> ����򻲾Ȥ��Ƥ���������)
+単項演算子の "+" は、たとえ文字列に対して用いられた場合にも、何もしません。
+関数名に続けて括弧付きの式を書く場合に、関数の引数リストと
+解釈されないようにするために用いることができます。
+(下記 L<Terms and List Operators (Leftward)> の例を参照してください。)
 
 =begin original
 
@@ -420,14 +420,14 @@ of protecting the next thing from interpolation.
 
 =end original
 
-ñ��黻�Ҥ� "\" �Ϥ��θ��³����ΤؤΥ�ե���󥹤��������ޤ���
-L<perlreftut> �� L<perlref> �򻲾Ȥ��Ƥ���������
-������ˡ��ʸ������ΥХå�����å���⡢���³����Τ�Ÿ�������Τ�
-�ɤ����Ȥˤʤ�ޤ�����ư���Ʊ���ʤ��Ǥ���������
+単項演算子の "\" はその後に続くものへのリファレンスを生成します。
+L<perlreftut> と L<perlref> を参照してください。
+この用法も文字列中のバックスラッシュも、後に続くものが展開されるのを
+防ぐことになりますが、動作を混同しないでください。
 
 =head2 Binding Operators
 
-(��«�黻��)
+(拘束演算子)
 
 =begin original
 
@@ -442,14 +442,14 @@ operator.  See L</"Regexp Quote-Like Operators"> for details.
 
 =end original
 
-���黻�Ҥ� "=~" �ϡ������鼰��ѥ�����ޥå��˹�«���ޤ���
-�ǥե���Ȥ� $_ ��ʸ����򸡺������ꡢ�ѹ������ꤹ��黻������ޤ���
-���α黻�Ҥϡ����Τ褦�ʱ黻��¾��ʸ������Ф��ƹԤʤ碌��褦�ˤ����ΤǤ���
-�������ϡ������ѥ������ִ���ʸ���Ѵ��Τ����줫�Ǥ���
-�������ϡ��ǥե���Ȥ� $_ ������˸������ִ���ʸ���Ѵ����оݤȤʤ��ΤǤ���
-�����饳��ƥ����ȤǻȤ��ȡ��֤��ͤϰ���Ū�˱黻�η�̤������������ݤ��Ǥ���
-�ꥹ�ȥ���ƥ����ȤǤο����񤤤ϱ黻�Ҥ˰�¸���ޤ���
-�ܤ����� L</"Regexp Quote-Like Operators"> �򻲾Ȥ��Ʋ�������
+二項演算子の "=~" は、スカラ式をパターンマッチに拘束します。
+デフォルトで $_ の文字列を検索したり、変更したりする演算があります。
+この演算子は、そのような演算を他の文字列に対して行なわせるようにするものです。
+右引数は、検索パターン、置換、文字変換のいずれかです。
+左引数は、デフォルトの $_ の代わりに検索、置換、文字変換の対象となるものです。
+スカラコンテキストで使うと、返り値は一般的に演算の結果が成功したか否かです。
+リストコンテキストでの振る舞いは演算子に依存します。
+詳しくは L</"Regexp Quote-Like Operators"> を参照して下さい。
 
 =begin original
 
@@ -460,10 +460,10 @@ pattern must be compiled every time the expression is evaluated.
 
 =end original
 
-�������������ѥ������ִ���ʸ���Ѵ��ǤϤʤ������Ǥ���С�
-����ϼ¹Ի��˷�ޤ븡���ѥ�����Ȳ�ᤵ��ޤ���
-����Ū�ʸ�������٤Ƹ�Ψ������뤫�⤷��ޤ���
-����ɾ������뤿�Ӥ˥ѥ�����򥳥�ѥ��뤹��ɬ�פ����뤫��Ǥ���
+右引数が検索パターン、置換、文字変換ではなく、式であれば、
+それは実行時に決まる検索パターンと解釈されます。
+明示的な検索に比べて効率が落ちるかもしれません。
+式が評価されるたびにパターンをコンパイルする必要があるからです。
 
 =begin original
 
@@ -472,12 +472,12 @@ the logical sense.
 
 =end original
 
-���黻�Ҥ� "!~" �ϡ��֤�����ͤ��������ꤵ��뤳�Ȥ������
-"=~" ��Ʊ���Ǥ���
+二項演算子の "!~" は、返される値が論理否定されることを除いて
+"=~" と同じです。
 
 =head2 Multiplicative Operators
 
-(��ˡ�黻��)
+(乗法演算子)
 
 =begin original
 
@@ -485,7 +485,7 @@ Binary "*" multiplies two numbers.
 
 =end original
 
-���黻�Ҥ� "*" �� 2 �Ĥο��ͤ��Ѥ��֤��ޤ���
+二項演算子の "*" は 2 つの数値の積を返します。
 
 =begin original
 
@@ -493,7 +493,7 @@ Binary "/" divides two numbers.
 
 =end original
 
-���黻�Ҥ� "/" �� 2 �Ĥο��ͤξ����֤��ޤ���
+二項演算子の "/" は 2 つの数値の商を返します。
 
 =begin original
 
@@ -510,16 +510,16 @@ execute faster.
 
 =end original
 
-���黻�Ҥ� "%" �� 2 �Ĥο��ͤξ�;���֤��ޤ���
-C<$a> �� C<$b> ����Ĥ���������黻�Ҥ���ޤ���
-C<$b> �����ξ�硢C<$a % $b> �ϡ�C<$a> ���� C<$a> ��Ķ���ʤ�
-����� C<$b> ���ܿ���������ͤǤ���
-C<$b> ����ξ�硢C<$a % $b> �ϡ�C<$a> ���� C<$a> �򲼲��ʤ�
-�Ǿ��� C<$b> ���ܿ���������ͤǤ���(���äƷ�̤ϥ����ʲ��ˤʤ�ޤ���)
-C<use integer> ������������ˤ����硢
-"%" �� C ����ѥ���Ǽ������줿��;�黻�Ҥ�Ȥ��ޤ���
-���α黻�Ҥ���黻�Ҥ���ξ��ε�ư���Գμ¤Ǥ�����
-����®�Ǥ���
+二項演算子の "%" は 2 つの数値の剰余を返します。
+C<$a> と C<$b> の二つの整数の被演算子を取ります。
+C<$b> が正の場合、C<$a % $b> は、C<$a> から C<$a> を超えない
+最大の C<$b> の倍数を引いた値です。
+C<$b> が負の場合、C<$a % $b> は、C<$a> から C<$a> を下回らない
+最小の C<$b> の倍数を引いた値です。(従って結果はゼロ以下になります。)
+C<use integer> がスコープ内にある場合、
+"%" は C コンパイラで実装された剰余演算子を使います。
+この演算子は被演算子が負の場合の挙動が不確実ですが、
+より高速です。
 
 =begin original
 
@@ -531,12 +531,12 @@ parentheses, it repeats the list.
 
 =end original
 
-���黻�Ҥ� "x" �Ϸ����֤��黻�ҤǤ���
-�����饳��ƥ����Ȥޤ��Ϻ����ͤ���̤ǳ���Ƥ��ʤ����ϡ�
-����黻�Ҥ���黻�Ҥ˼��������������֤�����Τǹ��������
-ʸ������֤��ޤ���
-�ꥹ�ȥ���ƥ����ȤǤϡ�����黻�Ҥ���̤ǳ���Ƥ���С�
-�ꥹ�Ȥ򷫤��֤��ޤ���
+二項演算子の "x" は繰り返し演算子です。
+スカラコンテキストまたは左辺値が括弧で括られていない場合は、
+左被演算子を右被演算子に示す数だけ繰り返したもので構成される
+文字列を返します。
+リストコンテキストでは、左被演算子が括弧で括られていれば、
+リストを繰り返します。
 
     print '-' x 80;		# print row of dashes
 
@@ -548,7 +548,7 @@ parentheses, it repeats the list.
 
 =head2 Additive Operators
 
-(��ˡ�黻��)
+(加法演算子)
 
 =begin original
 
@@ -556,7 +556,7 @@ Binary "+" returns the sum of two numbers.
 
 =end original
 
-���黻�Ҥ� "+" �� 2 �Ĥο��ͤ��¤��֤��ޤ���
+二項演算子の "+" は 2 つの数値の和を返します。
 
 =begin original
 
@@ -564,7 +564,7 @@ Binary "-" returns the difference of two numbers.
 
 =end original
 
-���黻�Ҥ� "-" �� 2 �Ĥο��ͤκ����֤��ޤ���
+二項演算子の "-" は 2 つの数値の差を返します。
 
 =begin original
 
@@ -572,11 +572,11 @@ Binary "." concatenates two strings.
 
 =end original
 
-���黻�Ҥ� "." �� 2 �Ĥ�ʸ�����Ϣ�뤷�ޤ���
+二項演算子の "." は 2 つの文字列を連結します。
 
 =head2 Shift Operators
 
-(���եȱ黻��)
+(シフト演算子)
 
 =begin original
 
@@ -586,10 +586,10 @@ integers.  (See also L<Integer Arithmetic>.)
 
 =end original
 
-���黻�Ҥ� "<<" �Ϻ��������ͤ򡢱������Ǽ����ӥåȿ�������
-���˥��եȤ����ͤ��֤��ޤ���
-�����������Ǥʤ���Фʤ�ޤ���
-(L<Integer Arithmetic> �⻲�Ȥ��Ʋ�������)
+二項演算子の "<<" は左引数の値を、右引数で示すビット数だけ、
+左にシフトした値を返します。
+引数は整数でなければなりません。
+(L<Integer Arithmetic> も参照して下さい。)
 
 =begin original
 
@@ -599,14 +599,14 @@ be integers.  (See also L<Integer Arithmetic>.)
 
 =end original
 
-���黻�Ҥ� ">>" �Ϻ��������ͤ򡢱������Ǽ����ӥåȿ�������
-���˥��եȤ����ͤ��֤��ޤ���
-�����������Ǥʤ���Фʤ�ޤ���
-(L<Integer Arithmetic> �⻲�Ȥ��Ʋ�������)
+二項演算子の ">>" は左引数の値を、右引数で示すビット数だけ、
+右にシフトした値を返します。
+引数は整数でなければなりません。
+(L<Integer Arithmetic> も参照して下さい。)
 
 =head2 Named Unary Operators
 
-(̾���դ�ñ��黻��)
+(名前付き単項演算子)
 
 =begin original
 
@@ -616,10 +616,10 @@ operators, like C<-f>, C<-M>, etc.  See L<perlfunc>.
 
 =end original
 
-���ޤ��ޤ�̾���դ�ñ��黻�Ҥ��������� 1 �Ļ�������̤���ά��ǽ�ʡ�
-�ؿ��Ȥ��ư����ޤ���
-����ˤ� C<-f> �� C<-M> �Τ褦�ʥե�����ƥ��ȱ黻�Ҥ�ޤޤ�ޤ���
-L<perlfunc> �򻲾Ȥ��Ƥ���������
+さまざまな名前付き単項演算子が、引数を 1 つ持ち、括弧が省略可能な、
+関数として扱われます。
+これには C<-f> や C<-M> のようなファイルテスト演算子も含まれます。
+L<perlfunc> を参照してください。
 
 =begin original
 
@@ -631,11 +631,11 @@ because named unary operators are higher precedence than ||:
 
 =end original
 
-�ꥹ�ȱ黻�� (print() �ʤ�) ��ñ��黻�� (chdir() �ʤ�) �ϡ�
-���٤Ƽ��Υȡ�����Ȥ��Ƴ�����̤�³���ȡ����α黻�Ҥȳ����ΰ����ϡ�
-�̾�δؿ��ƤӽФ��Τ褦�ˤ�äȤ�⤤ͥ���̤Ȥ��ư����ޤ���
-���Ȥ��С�̾���Ĥ�ñ��黻�Ҥ� || ���ͥ���̤��⤤�Τǡ�
-�ʲ��Τ褦�ˤʤ�ޤ�:
+リスト演算子 (print() など) や単項演算子 (chdir() など) は、
+すべて次のトークンとして開き括弧が続くと、その演算子と括弧内の引数は、
+通常の関数呼び出しのようにもっとも高い優先順位として扱われます。
+たとえば、名前つき単項演算子は || より優先順位が高いので、
+以下のようになります:
 
     chdir $foo    || die;	# (chdir $foo) || die
     chdir($foo)   || die;	# (chdir $foo) || die
@@ -648,7 +648,7 @@ but, because * is higher precedence than named operators:
 
 =end original
 
-������ * ��̾���Ĥ��黻�Ҥ��ͥ���̤��⤤�Τǡ��ʲ��Τ褦�ˤʤ�ޤ�:
+しかし * は名前つき演算子より優先順位が高いので、以下のようになります:
 
     chdir $foo * 20;	# chdir ($foo * 20)
     chdir($foo) * 20;	# (chdir $foo) * 20
@@ -666,11 +666,11 @@ See also L<"Terms and List Operators (Leftward)">.
 
 =end original
 
-L<"Terms and List Operators (Leftward)"> �⻲�Ȥ��Ʋ�������
+L<"Terms and List Operators (Leftward)"> も参照して下さい。
 
 =head2 Relational Operators
 
-(��ӱ黻��)
+(比較演算子)
 
 =begin original
 
@@ -679,8 +679,8 @@ the right argument.
 
 =end original
 
-���黻�Ҥ� "<" �Ϻ�����������Ū�˱��������⾮������С�
-�����֤��ޤ���
+二項演算子の "<" は左引数が数値的に右引数よりも小さければ、
+真を返します。
 
 =begin original
 
@@ -689,8 +689,8 @@ than the right argument.
 
 =end original
 
-���黻�Ҥ� ">" �Ϻ�����������Ū�˱����������礭����С�
-�����֤��ޤ���
+二項演算子の ">" は左引数が数値的に右引数よりも大きければ、
+真を返します。
 
 =begin original
 
@@ -699,8 +699,8 @@ or equal to the right argument.
 
 =end original
 
-���黻�Ҥ� "<=" �Ϻ�����������Ū�˱��������⾮��������������С�
-�����֤��ޤ���
+二項演算子の "<=" は左引数が数値的に右引数よりも小さいか等しければ、
+真を返します。
 
 =begin original
 
@@ -709,8 +709,8 @@ than or equal to the right argument.
 
 =end original
 
-���黻�Ҥ� ">=" �Ϻ�����������Ū�˱����������礭������������С�
-�����֤��ޤ���
+二項演算子の ">=" は左引数が数値的に右引数よりも大きいか等しければ、
+真を返します。
 
 =begin original
 
@@ -719,8 +719,8 @@ the right argument.
 
 =end original
 
-���黻�Ҥ� "lt" �Ϻ�������ʸ����Ū�˱��������⾮������С�
-�����֤��ޤ���
+二項演算子の "lt" は左引数が文字列的に右引数よりも小さければ、
+真を返します。
 
 =begin original
 
@@ -729,8 +729,8 @@ than the right argument.
 
 =end original
 
-���黻�Ҥ� "gt" �Ϻ�������ʸ����Ū�˱����������礭����С�
-�����֤��ޤ���
+二項演算子の "gt" は左引数が文字列的に右引数よりも大きければ、
+真を返します。
 
 =begin original
 
@@ -739,8 +739,8 @@ or equal to the right argument.
 
 =end original
 
-���黻�Ҥ� "le" �Ϻ�������ʸ����Ū�˱��������⾮��������������С�
-�����֤��ޤ���
+二項演算子の "le" は左引数が文字列的に右引数よりも小さいか等しければ、
+真を返します。
 
 =begin original
 
@@ -749,12 +749,12 @@ than or equal to the right argument.
 
 =end original
 
-���黻�Ҥ� "ge" �Ϻ�������ʸ����Ū�˱����������礭������������С�
-�����֤��ޤ���
+二項演算子の "ge" は左引数が文字列的に右引数よりも大きいか等しければ、
+真を返します。
 
 =head2 Equality Operators
 
-(�����黻��)
+(等価演算子)
 
 =begin original
 
@@ -763,8 +763,8 @@ the right argument.
 
 =end original
 
-���黻�Ҥ� "==" �Ϻ�����������Ū�˱���������������С�
-�����֤��ޤ���
+二項演算子の "==" は左引数が数値的に右引数と等しければ、
+真を返します。
 
 =begin original
 
@@ -773,8 +773,8 @@ to the right argument.
 
 =end original
 
-���黻�Ҥ� "!=" �Ϻ�����������Ū�˱��������������ʤ���С�
-�����֤��ޤ���
+二項演算子の "!=" は左引数が数値的に右引数と等しくなければ、
+真を返します。
 
 =begin original
 
@@ -788,15 +788,15 @@ support NaNs then NaN is just a string with numeric value 0.
 
 =end original
 
-���黻�Ҥ� "<=>" �Ϻ�����������Ū�˱�������꾮������������������
-�礭�����˽��äơ�-1, 0, 1 ���֤��ޤ���
-���ͤȤ��� NaN (���) ���б����Ƥ���ץ�åȥե�����Ǥϡ�
-NaN ���Ф��� "<=>" ��Ȥ��� undef ���֤��ޤ���
-NaN �Ϥɤ��ͤ��Ф��Ƥ�(NaN ���Ф��ƤǤ�����) "<", "==", ">",
-"<=", ">=" �Τ��������Ω���ʤ��Τǡ����������Ƶ��Ȥʤ�ޤ���
-NaN != NaN �Ͽ����֤��ޤ���������¾�Τɤ��ͤ��Ф��Ƥ� != �ϵ����֤��ޤ���
-NaN ���б����Ƥ��ʤ��ץ�åȥե�����Ǥϡ�NaN ��
-ñ�˿��Ȥ��Ƥ��� 0 �����ʸ����Ǥ���
+二項演算子の "<=>" は左引数が数値的に右引数より小さいか、等しいか、
+大きいかに従って、-1, 0, 1 を返します。
+数値として NaN (非数) に対応しているプラットフォームでは、
+NaN に対して "<=>" を使うと undef を返します。
+NaN はどの値に対しても(NaN に対してでさえも) "<", "==", ">",
+"<=", ">=" のいずれも成立しないので、これらは全て偽となります。
+NaN != NaN は真を返しますが、その他のどの値に対しても != は偽を返します。
+NaN に対応していないプラットフォームでは、NaN は
+単に数としての値 0 を持つ文字列です。
 
     perl -le '$a = NaN; print "No NaN support here" if $a == $a'
     perl -le '$a = NaN; print "NaN support here" if $a != $a'
@@ -808,8 +808,8 @@ the right argument.
 
 =end original
 
-���黻�Ҥ� "eq" �Ϻ�������ʸ����Ū�˱���������������С�
-�����֤��ޤ���
+二項演算子の "eq" は左引数が文字列的に右引数と等しければ、
+真を返します。
 
 =begin original
 
@@ -818,8 +818,8 @@ to the right argument.
 
 =end original
 
-���黻�Ҥ� "ne" �Ϻ�������ʸ����Ū�˱��������������ʤ���С�
-�����֤��ޤ���
+二項演算子の "ne" は左引数が文字列的に右引数と等しくなければ、
+真を返します。
 
 =begin original
 
@@ -829,8 +829,8 @@ argument.
 
 =end original
 
-���黻�Ҥ� "cmp" �Ϻ�������ʸ����Ū�˱�������꾮��������
-�����������礭�����˽��äơ�-1, 0, 1 ���֤��ޤ���
+二項演算子の "cmp" は左引数が文字列的に右引数より小さいか、
+等しいか、大きいかに従って、-1, 0, 1 を返します。
 
 =begin original
 
@@ -839,13 +839,13 @@ by the current locale if C<use locale> is in effect.  See L<perllocale>.
 
 =end original
 
-"lt", "le", "ge", "gt", "cmp" �� C<use locale> ��ͭ���ʾ���
-���ߤΥ�������ǻ��ꤵ�줿����(������)�礬�Ȥ��ޤ���
-L<perllocale> �򻲾Ȥ��Ʋ�������
+"lt", "le", "ge", "gt", "cmp" は C<use locale> が有効な場合は
+現在のロケールで指定された辞書(ソート)順が使われます。
+L<perllocale> を参照して下さい。
 
 =head2 Bitwise And
 
-(�ӥåȤ��Ȥ� AND)
+(ビットごとの AND)
 
 =begin original
 
@@ -854,13 +854,13 @@ Binary "&" returns its operators ANDed together bit by bit.
 
 =end original
 
-���黻�Ҥ� "&" �ϡ�ξ��黻�ҤΥӥåȤ��Ȥ������Ѥ�Ȥäơ�
-���η�̤��֤��ޤ���
-(L<Integer Arithmetic> �� L<Bitwise String Operators> �⻲�Ȥ��Ʋ�������)
+二項演算子の "&" は、両被演算子のビットごとに論理積をとって、
+その結果を返します。
+(L<Integer Arithmetic> と L<Bitwise String Operators> も参照して下さい。)
 
 =head2 Bitwise Or and Exclusive Or
 
-(�ӥåȤ��Ȥ� OR �� XOR)
+(ビットごとの OR と XOR)
 
 =begin original
 
@@ -869,9 +869,9 @@ Binary "|" returns its operators ORed together bit by bit.
 
 =end original
 
-���黻�Ҥ� "|" �ϡ�ξ��黻�ҤΥӥåȤ��Ȥ������¤�Ȥäơ�
-���η�̤��֤��ޤ���
-(L<Integer Arithmetic> �� L<Bitwise String Operators> �⻲�Ȥ��Ʋ�������)
+二項演算子の "|" は、両被演算子のビットごとに論理和をとって、
+その結果を返します。
+(L<Integer Arithmetic> と L<Bitwise String Operators> も参照して下さい。)
 
 =begin original
 
@@ -880,13 +880,13 @@ Binary "^" returns its operators XORed together bit by bit.
 
 =end original
 
-���黻�Ҥ� "^" �ϡ�ξ��黻�ҤΥӥåȤ��Ȥ���¾�����¤�Ȥäơ�
-���η�̤��֤��ޤ���
-(L<Integer Arithmetic> �� L<Bitwise String Operators> �⻲�Ȥ��Ʋ�������)
+二項演算子の "^" は、両被演算子のビットごとに排他論理和をとって、
+その結果を返します。
+(L<Integer Arithmetic> と L<Bitwise String Operators> も参照して下さい。)
 
 =head2 C-style Logical And
 
-(C ���������������)
+(C スタイルの論理積)
 
 =begin original
 
@@ -897,15 +897,15 @@ is evaluated.
 
 =end original
 
-���黻�Ҥ� "&&" �ϡ�û���������ѱ黻��Ԥʤ��ޤ���
-�Ĥޤꡢ����黻�Ҥ����Ǥ���С�����黻�Ҥ�ɾ������
-�Ԥʤ��ʤ��Ȥ������ȤǤ���
-ɾ���������ˤϡ������顼���ꥹ�Ȥ��Ȥ�������ƥ����Ȥϡ�
-����黻�Ҥˤ�ڤӤޤ���
+二項演算子の "&&" は、短絡の論理積演算を行ないます。
+つまり、左被演算子が偽であれば、右被演算子は評価さえ
+行なわれないということです。
+評価される場合には、スカラーかリストかというコンテキストは、
+右被演算子にも及びます。
 
 =head2 C-style Logical Or
 
-(C ���������������)
+(C スタイルの論理和)
 
 =begin original
 
@@ -916,11 +916,11 @@ is evaluated.
 
 =end original
 
-���黻�Ҥ� "||" �ϡ�û���������±黻��Ԥʤ��ޤ���
-�Ĥޤꡢ����黻�Ҥ����Ǥ���С�����黻�Ҥ�ɾ������
-�Ԥʤ��ʤ��Ȥ������ȤǤ���
-ɾ���������ˤϡ������顼���ꥹ�Ȥ��Ȥ�������ƥ����Ȥϡ�
-����黻�Ҥˤ�ڤӤޤ���
+二項演算子の "||" は、短絡の論理和演算を行ないます。
+つまり、左被演算子が真であれば、右被演算子は評価さえ
+行なわれないということです。
+評価される場合には、スカラーかリストかというコンテキストは、
+右被演算子にも及びます。
 
 =begin original
 
@@ -930,10 +930,10 @@ way to find out the home directory (assuming it's not "0") might be:
 
 =end original
 
-|| �黻�Ҥ� && �黻�Ҥϡ�ñ�� 0 �� 1 ���֤��ΤǤϤʤ����Ǹ��ɾ�����줿�ͤ�
-�֤��Ȥ������ˤ����ơ�C �Ȱ�äƤ��ޤ���
-����ˤ�ꡢ���ʤ����Ū�˻Ȥ���ۡ���ǥ��쥯�ȥ� ("0" �Ǥʤ��Ȥ���) ��
-õ����ˡ��:
+|| 演算子と && 演算子は、単に 0 や 1 を返すのではなく、最後に評価された値を
+返すという点において、C と違っています。
+これにより、かなり一般的に使えるホームディレクトリ ("0" でないとして) を
+探す方法は:
 
     $home = $ENV{'HOME'} || $ENV{'LOGDIR'} ||
 	(getpwuid($<))[7] || die "You're homeless!\n";
@@ -945,8 +945,8 @@ for selecting between two aggregates for assignment:
 
 =end original
 
-�äˡ�����������Τ������Ĥν�������򤹤뤿��ˤ�
-�Ȥ��٤��ǤϤʤ����Ȥ��̣���ޤ���
+特に、これは代入のために二つの集合を選択するためには
+使うべきではないことを意味します。
 
     @a = @b || @c;		# this is wrong
     @a = scalar(@b) || @c;	# really meant this
@@ -962,12 +962,12 @@ list operator without the need for parentheses:
 
 =end original
 
-Perl �Ǥϡ��ե�������˻Ȥ�����¿���ɤߤ䤹�� C<&&> �� C<||> ��Ʊ����Ȥ��ơ�
-C<and> �黻�Ҥ� C<or> �黻�Ҥ��Ѱդ���Ƥ��ޤ� (��������)��
-û����ư�������Ʊ���Ǥ���
-��������"and" �� "or" ��ͥ���̤Ϥ��ʤ��㤯���Ƥ���Τǡ�
-�����˳�̤�ȤäƤ��ʤ��ꥹ�ȱ黻�ҤΤ��Ȥ�³���ƻȤ����ˤ⡢
-�¿����ƻȤ����Ȥ��Ǥ��ޤ�:
+Perl では、フロー制御に使う場合の多少読みやすい C<&&> と C<||> の同義語として、
+C<and> 演算子と C<or> 演算子が用意されています (下記参照)。
+短絡の動作は全く同じです。
+しかし、"and" と "or" の優先順位はかなり低くしてあるので、
+引数に括弧を使っていないリスト演算子のあとに続けて使う場合にも、
+安心して使うことができます:
 
     unlink "alpha", "beta", "gamma"
 	    or gripe(), next LINE;
@@ -978,7 +978,7 @@ With the C-style operators that would have been written like this:
 
 =end original
 
-C ��������α黻�ҤǤϰʲ��Τ褦�˽�ɬ�פ�����ޤ���
+C スタイルの演算子では以下のように書く必要があります。
 
     unlink("alpha", "beta", "gamma")
 	    || (gripe(), next LINE);
@@ -989,12 +989,12 @@ Using "or" for assignment is unlikely to do what you want; see below.
 
 =end original
 
-������ "or" ��Ȥ��ȡ����������ȤȰ㤦���Ȥˤʤ�ޤ���
-�ʲ��򻲾Ȥ��Ʋ�������
+代入で "or" を使うと、したいことと違うことになります。
+以下を参照して下さい。
 
 =head2 Range Operators
 
-(�ϰϱ黻��)
+(範囲演算子)
 
 =begin original
 
@@ -1011,16 +1011,16 @@ like this:
 
 =end original
 
-���黻�Ҥ� ".." ���ϰϱ黻�Ҥǡ��Ȥ��륳��ƥ����Ȥˤ�ä�
-�ۤʤ�ư��򤹤� 2 �Ĥα黻�Ҥ��碌����ΤǤ���
-�ꥹ�ȥ���ƥ����ȤǤϡ������ͤ��鱦���ͤޤ� (1 �Ťľ����) �����������ͤ���
-�ʤ�������֤��ޤ���
-��¦���ͤ���¦���ͤ���礭�����ϡ���������֤��ޤ���
-�ϰϱ黻�Ҥϡ�C<foreach (1..10)> �Τ褦�ʥ롼�פ�񤯤Ȥ��䡢
-����Υ��饤���黻��Ԥʤ��Ȥ��������Ǥ���
-�����μ����Ǥϡ�C<foreach> �롼�פμ�������ϰϱ黻�Ҥ�ȤäƤ�
-�������Ϻ��ޤ��󤬡��Ť� Perl �ϰʲ��Τ褦�ʤ��Ȥ�񤯤ȡ�
-���̤Υ������񤹤뤳�Ȥˤʤ�ޤ�:
+二項演算子の ".." は範囲演算子で、使われるコンテキストによって
+異なる動作をする 2 つの演算子を合わせたものです。
+リストコンテキストでは、左の値から右の値まで (1 づつ昇順で) 数えあげた値から
+なる配列を返します。
+左側の値が右側の値より大きい場合は、空配列を返します。
+範囲演算子は、C<foreach (1..10)> のようなループを書くときや、
+配列のスライス演算を行なうときに便利です。
+現状の実装では、C<foreach> ループの式の中で範囲演算子を使っても
+一時配列は作りませんが、古い Perl は以下のようなことを書くと、
+大量のメモリを消費することになります:
 
     for (1 .. 1_000_000) {
 	# code
@@ -1043,21 +1043,21 @@ two.  In all other regards, "..." behaves just like ".." does.
 
 =end original
 
-�����饳��ƥ����ȤǻȤ�줿�Ȥ��ˤϡ�".." �Ͽ����ͤ��֤��ޤ���
-���α黻�Ҥϡ��ե�åץե��åפΤ褦�� 2 �Ͱ���ǡ�
-B<sed> �� B<awk> ��¿���Υ��ǥ����Ǥι��ϰ� (�����) �黻�Ҥ�
-���ߥ�졼�Ȥ����ΤȤʤ�ޤ���
-�ơ��� ".." �黻�Ҥ����줾�����Ω���Ƽ�ʬ�ο������֤�������ޤ���
-�Ϥ���ϡ�����黻�Ҥ����Ǥ���֡��黻���Τ⵶�ȤʤäƤ��ޤ���
-�ϰϱ黻�Ҥϡ����ä�����黻�Ҥ����ˤʤ�ȡ�����黻�Ҥ����Ǥ���֡�
-�����֤��褦�ˤʤ�ޤ���
-����黻�Ҥ����ˤʤ�ȡ��黻�Ҥ⵶���֤��褦�ˤʤ�ޤ���
-(�����ϰϱ黻�Ҥ�ɾ�������ޤǤϡ����ȤϤʤ�ޤ���
-(B<awk> �ǤΤ褦��) ���Ȥʤä�������ɾ������Ǳ���黻�Ҥ�ƥ��Ȥ���
-���Ȥ��뤳�Ȥ��Ǥ��ޤ�����1 �٤Ͽ����֤����Ȥˤʤ�ޤ���
-B<sed> �ǤΤ褦�ˡ�����ɾ�������ޤǱ���黻�Ҥ�ƥ��Ȥ������ʤ���С�
-2 �ĤΥɥåȤ������ 3 �ĤΥɥå� ("...") ��ȤäƤ���������
-����¾�����Ǥϡ�"..." �� ".." ��Ʊ�ͤ˿��񤤤ޤ���
+スカラコンテキストで使われたときには、".." は真偽値を返します。
+この演算子は、フリップフロップのように 2 値安定で、
+B<sed> や B<awk> や多くのエディタでの行範囲 (コンマ) 演算子を
+エミュレートするものとなります。
+各々の ".." 演算子がそれぞれに独立して自分の真偽状態を管理します。
+はじめは、左被演算子が偽である間、演算全体も偽となっています。
+範囲演算子は、いったん左被演算子が真になると、右被演算子が真である間、
+真を返すようになります。
+右被演算子が偽になると、演算子も偽を返すようになります。
+(次に範囲演算子が評価されるまでは、偽とはなりません。
+(B<awk> でのように) 真となった、その評価の中で右被演算子をテストし、
+偽とすることができますが、1 度は真を返すことになります。
+B<sed> でのように、次に評価されるまで右被演算子をテストしたくなければ、
+2 個のドットの代わりに 3 つのドット ("...") を使ってください。
+その他の点では、"..." は ".." と同様に振舞います．
 
 =begin original
 
@@ -1077,19 +1077,19 @@ current line number.  Examples:
 
 =end original
 
-����黻�Ҥϡ��黻�Ҥξ��֤��ֵ��פǤ���֤�ɾ������뤳�Ȥ��ʤ���
-����黻�Ҥϡ��黻�Ҥξ��֤��ֿ��פǤ���֤�ɾ������뤳�Ȥ�����ޤ���
-ͥ���̤ϡ�|| �� && �ξ������Ǥ���
-���Ȥ��Ƥ϶�ʸ�����֤��졢
-���Ȥ��Ƥ� (1 ����Ϥޤ�) ����¤�����ͤ��֤���ޤ���
-�����̤��ֹ�ϡ��������ϰϤ��Ϥޤ뤴�Ȥ˥ꥻ�åȤ���ޤ���
-�ϰϤκǸ�ο����ˤϡ�ʸ���� "E0" �������ˤĤ����ޤ���
-����ϡ����ͤȤ��Ƥϲ��αƶ��⤢��ޤ��󤬡��ϰϤν����ǲ������̤ʤ��Ȥ�
-���������ˡ��ܰ��Ȥ��ƻȤ����Ȥ��Ǥ��ޤ���
-�ϰϤλϤޤ�ǲ������������ˤϡ��̤��ֹ椬 1 �����礭���ʤ�Τ�
-�ԤäƤ���Ф褤�Ǥ��礦��
-������� ".." ����黻�Ҥ����ɽ���Ǥ���Ȥ��ϡ�������黻�Ҥϰ��ۤˡ�
-�ѿ� C<$.> ����Ӥ���뤳�Ȥˤʤ�ޤ�����:
+右被演算子は、演算子の状態が「偽」である間は評価されることがなく、
+左被演算子は、演算子の状態が「真」である間は評価されることがありません。
+優先順位は、|| と && の少し下です。
+偽としては空文字列が返され、
+真としては (1 から始まる) 順に並んだ数値が返されます。
+この通し番号は、新たに範囲が始まるごとにリセットされます。
+範囲の最後の数字には、文字列 "E0" がお尻につけられます。
+これは、数値としては何の影響もありませんが、範囲の終わりで何か特別なことを
+したい場合に、目印として使うことができます。
+範囲の始まりで何かしたい場合には、通し番号が 1 よりも大きくなるのを
+待っていればよいでしょう。
+スカラの ".." の被演算子が定数表現であるときは、その被演算子は暗黙に、
+変数 C<$.> と比較されることになります。例:
 
 =begin original
 
@@ -1097,7 +1097,7 @@ As a scalar operator:
 
 =end original
 
-�����顼�黻�ҤȤ���:
+スカラー演算子として:
 
     if (101 .. 200) { print; }	# print 2nd hundred lines
     next line if (1 .. /^$/);	# skip header lines
@@ -1118,7 +1118,7 @@ As a list operator:
 
 =end original
 
-�ꥹ�ȱ黻�ҤȤ���:
+リスト演算子として:
 
     for (101 .. 200) { print; }	# print $_ 100 times
     @foo = @foo[0 .. $#foo];	# an expensive no-op
@@ -1132,9 +1132,9 @@ can say
 
 =end original
 
-(�ꥹ�ȥ���ƥ����ȤǤ�) �ϰϱ黻�Ҥϡ���黻�Ҥ�ʸ����Ǥ���Ȥ��ˤϡ�
-�ޥ����륤�󥯥���Ȥε�ǽ��Ȥ��ޤ���
-��ʸ�����٤Ƥ����������Τ�
+(リストコンテキストでの) 範囲演算子は、被演算子が文字列であるときには、
+マジカルインクリメントの機能を使います。
+大文字すべての配列を得るのに
 
     @alphabet = ('A' .. 'Z');
 
@@ -1144,7 +1144,7 @@ to get all normal letters of the alphabet, or
 
 =end original
 
-�Ƚ񤱤ޤ�����
+と書けますし、
 
     $hexdigit = (0 .. 9, 'a' .. 'f')[$num & 15];
 
@@ -1154,7 +1154,7 @@ to get a hexadecimal digit, or
 
 =end original
 
-�Ƚ񤱤С�16 �ʤο����������ޤ�����
+と書けば、16 進の数字が得られますし、
 
     @z2 = ('01' .. '31');  print $z2[$mday];
 
@@ -1167,15 +1167,15 @@ specified.
 
 =end original
 
-�Ȥ���С�0 �դ������դ������ޤ���
-�ޥ����륤�󥯥���Ȥˤ�ä��������ͤ���˻��ꤷ���ǽ��ͤ�
-���礦�ɰ��פ����Τ����Ĥ���ʤ��褦�ʾ��ˤϡ�
-�ޥ����륤�󥯥���Ȥˤ�ä������뼡���ͤ�ʸ����Ĺ����
-�ǽ��ͤȤ��ƻ��ꤷ���ͤΤ�Τ��Ĺ���ʤ�ޤǥ��󥯥���Ȥ�³�����ޤ���
+とすれば、0 付きの日付が得られます。
+マジカルインクリメントによって得られる値の中に指定した最終値に
+ちょうど一致するものが見つからないような場合には、
+マジカルインクリメントによって得られる次の値の文字列長が、
+最終値として指定した値のものより長くなるまでインクリメントが続けられます。
 
 =head2 Conditional Operator
 
-(���黻��)
+(条件演算子)
 
 =begin original
 
@@ -1186,10 +1186,10 @@ is returned.  For example:
 
 =end original
 
-����黻�Ҥ� "?:" �ϡ�C �ξ���Ʊ�����黻�ҤǤ���
-����ϡ�if-then-else �Τ褦��Ư���ޤ���
-"?" �����ΰ��������Ǥ���� ":" �����ΰ������֤���ޤ�����
-���Ǥʤ���С�":" �θ�ΰ������֤���ޤ�����:
+三項演算子の "?:" は、C の場合と同じ条件演算子です。
+これは、if-then-else のように働きます。
+"?" の前の引数が真であれば ":" の前の引数が返されますが、
+真でなければ、":" の後の引数が返されます。例:
 
     printf "I have %d dog%s.\n", $n,
 	    ($n == 1) ? '' : "s";
@@ -1201,8 +1201,8 @@ or 3rd argument, whichever is selected.
 
 =end original
 
-�����饳��ƥ����Ȥ��ꥹ�ȥ���ƥ����Ȥ��Ȥ��������ϡ�
-���򤵤줿 2 ���ܤ⤷���� 3 ���ܤΰ����ˤޤ������ޤ���
+スカラコンテキストかリストコンテキストかという状況は、
+選択された 2 番目もしくは 3 番目の引数にまで伝わります。
 
     $a = $ok ? $b : $c;  # get a scalar
     @a = $ok ? @b : @c;  # get an array
@@ -1215,8 +1215,8 @@ legal lvalues (meaning that you can assign to them):
 
 =end original
 
-2 ���ܤ� 3 ���ܤΰ��������������� (������ǽ�Ȥ�������)�Ǥ���С�
-���α黻�Ҥ�������Ԥʤ����Ȥ�Ǥ��ޤ�:
+2 番目と 3 番目の引数双方が左辺値 (代入可能ということ)であれば、
+この演算子に代入を行なうこともできます:
 
     ($a_or_b ? $a : $b) = $c;
 
@@ -1227,8 +1227,8 @@ without parentheses will get you in trouble.  For example, this:
 
 =end original
 
-���α黻�Ҥ�������ǽ�ʷ�̤����߽Ф��Τǡ�
-��̤ʤ���������Ԥ��Ȥ��������ʤ뤫�⤷��ޤ����㤨��:
+この演算子は代入可能な結果を生み出すので、
+括弧なしで代入を行うとおかしくなるかもしれません。例えば:
 
     $a % 2 ? $a += 10 : $a += 2
 
@@ -1238,7 +1238,7 @@ Really means this:
 
 =end original
 
-�ϰʲ����̣��:
+は以下を意味し:
 
     (($a % 2) ? ($a += 10) : $a) += 2
 
@@ -1248,7 +1248,7 @@ Rather than this:
 
 =end original
 
-�ʲ��Τ褦�ˤϤʤ�ޤ���:
+以下のようにはなりません:
 
     ($a % 2) ? ($a += 10) : ($a += 2)
 
@@ -1258,13 +1258,13 @@ That should probably be written more simply as:
 
 =end original
 
-���餯�ʲ��Τ褦�ˤ�ä�ñ��˽񤯤٤��Ǥ��礦:
+恐らく以下のようにもっと単純に書くべきでしょう:
 
     $a += ($a % 2) ? 10 : 2;
 
 =head2 Assignment Operators
 
-(�����黻��)
+(代入演算子)
 
 =begin original
 
@@ -1272,7 +1272,7 @@ That should probably be written more simply as:
 
 =end original
 
-"=" ���̾�������黻�ҤǤ���
+"=" は通常の代入演算子です。
 
 =begin original
 
@@ -1280,7 +1280,7 @@ Assignment operators work as in C.  That is,
 
 =end original
 
-�����黻�Ҥ� C �ξ���Ʊ�ͤ�Ư���򤷤ޤ����Ĥޤꡢ
+代入演算子は C の場合と同様の働きをします。つまり、
 
     $a += 2;
 
@@ -1290,7 +1290,7 @@ is equivalent to
 
 =end original
 
-�ϰʲ��������Ǥ���
+は以下と等価です。
 
     $a = $a + 2;
 
@@ -1302,9 +1302,9 @@ The following are recognized:
 
 =end original
 
-��������tie() �Τ褦�ʤ�Τǵ����뺸���ͤ��ﻲ�Ȥˤ��
-�����Ѥ� 2 �󵯤��뤳�ȤϤ���ޤ���
-¾�������黻��Ʊ�ͤ�Ư���ޤ����ʲ��Τ�Τ�ǧ������ޤ�:
+しかし、tie() のようなもので起こる左辺値の被参照による
+副作用が 2 回起こることはありません。
+他の代入演算も同様に働きます。以下のものが認識されます:
 
     **=    +=    *=    &=    <<=    &&=
            -=    /=    |=    >>=    ||=
@@ -1318,8 +1318,8 @@ of assignment.
 
 =end original
 
-���롼��ʬ�����Ƥ���ޤ����������Ϥ�����������黻�ҤȤ���
-Ʊ��ͥ���̤ȤʤäƤ��ޤ���
+グループ分けしてありますが、これらはいずれも代入演算子として
+同じ優先順位となっています。
 
 =begin original
 
@@ -1330,10 +1330,10 @@ for modifying a copy of something, like this:
 
 =end original
 
-C �Ȱ�äơ������������黻�Ҥ�ͭ���ʺ����ͤ���Ф��ޤ���
-�����������뤳�Ȥϡ�������ԤʤäƤ��顢�����������줿�ѿ���������Τ�
-Ʊ�����Ȥˤʤ�ޤ���
-����ϡ��ʲ��Τ褦�˲����Υ��ԡ����ѹ��������Ȥ��������Ǥ�:
+C と違って、スカラ代入演算子は有効な左辺値を作り出します。
+代入を修正することは、代入を行なってから、その代入された変数を修正するのと
+同じことになります。
+これは、以下のように何かのコピーを変更したいときに便利です:
 
     ($tmp = $global) =~ tr [A-Z] [a-z];
 
@@ -1343,7 +1343,7 @@ Likewise,
 
 =end original
 
-Ʊ�ͤˡ�
+同様に、
 
     ($a += 2) *= 3;
 
@@ -1353,7 +1353,7 @@ is equivalent to
 
 =end original
 
-�ϰʲ���Ʊ���Ǥ���
+は以下と同等です。
 
     $a += 2;
     $a *= 3;
@@ -1367,13 +1367,13 @@ side of the assignment.
 
 =end original
 
-Ʊ�ͤˡ��ꥹ�ȥ���ƥ����ȤǤΥꥹ�Ȥؤ�������������ǽ�ʺ����ͤΥꥹ�ȤȤʤꡢ
-�����饳��ƥ����ȤǤΥꥹ�Ȥؤ������������α�¦�μ��Ǻ������줿
-���Ǥο����֤��ޤ���
+同様に、リストコンテキストでのリストへの代入は代入可能な左辺値のリストとなり、
+スカラコンテキストでのリストへの代入は代入の右側の式で作成された
+要素の数を返します。
 
 =head2 Comma Operator
 
-(����ޱ黻��)
+(コンマ演算子)
 
 =begin original
 
@@ -1383,10 +1383,10 @@ argument and returns that value.  This is just like C's comma operator.
 
 =end original
 
-���黻�Ҥ� "," �ϥ���ޱ黻�ҤǤ���
-�����饳��ƥ����ȤǤϤ��κ�������ɾ�����������ͤ�ΤƤơ�
-���줫�鱦������ɾ�����������ͤ��֤��ޤ���
-����Ϥ��礦�ɡ�C �Υ���ޱ黻�Ҥ�Ʊ���Ǥ���
+二項演算子の "," はコンマ演算子です。
+スカラコンテキストではその左引数を評価し、その値を捨てて、
+それから右引数を評価し、その値を返します。
+これはちょうど、C のコンマ演算子と同じです。
 
 =begin original
 
@@ -1395,8 +1395,8 @@ both its arguments into the list.
 
 =end original
 
-�ꥹ�ȥ���ƥ����ȤǤϡ������ñ�˥ꥹ�Ȱ����ζ��ڤ�ʸ���ǡ�
-�����ΰ����򤽤Υꥹ�Ȥ���������Ư��������ޤ���
+リストコンテキストでは、これは単にリスト引数の区切り文字で、
+双方の引数をそのリストに挿入する働きがあります。
 
 =begin original
 
@@ -1406,13 +1406,13 @@ any word to the left of it to be interpreted as a string.
 
 =end original
 
-���� => ��ñ�˥���ޱ黻�Ҥ�Ʊ����Ǥ���
-����ϥڥ��ǰ���������򵭽Ҥ���Τ������Ǥ���
-5.001 �ʹߤǤϡ������ͤ�ñ���ɬ��ʸ����Ȥ��ư����Ȥ������̤⤢��ޤ���
+記号 => は単にコンマ演算子の同義語です。
+これはペアで扱われる引数を記述するのに便利です。
+5.001 以降では、左辺値の単語を必ず文字列として扱うという効果もあります。
 
 =head2 List Operators (Rightward)
 
-(�ꥹ�ȱ黻�� (������))
+(リスト演算子 (右方向))
 
 =begin original
 
@@ -1424,11 +1424,11 @@ operators without the need for extra parentheses:
 
 =end original
 
-�ꥹ�ȱ黻�Ҥα�¦�Τ�ΤˤȤäơ��ꥹ�ȱ黻�ҤϤȤƤ��㤤ͥ���̤ˤʤ�ޤ���
-����ˤ�äƥ���ޤǶ��ڤä�����ꥹ�ȱ黻�Ҥΰ����Ȥ���
-�֤����Ȥ��Ǥ��ޤ���
-�������ͥ���̤��㤤��Τϡ������黻�Ҥ� "and", "or", "not" �Τߤǡ�
-;ʬ�ʳ�̤��դ��ʤ��ꥹ�ȱ黻�ҤθƤӽФ���ɾ�����뤿��˻Ȥ����Ȥ��Ǥ��ޤ�:
+リスト演算子の右側のものにとって、リスト演算子はとても低い優先順位になります。
+これによってコンマで区切った式をリスト演算子の引数として
+置くことができます。
+これよりも優先順位が低いものは、論理演算子の "and", "or", "not" のみで、
+余分な括弧を付けないリスト演算子の呼び出しを評価するために使うことができます:
 
     open HANDLE, "filename"
 	or die "Can't open: $!\n";
@@ -1439,11 +1439,11 @@ See also discussion of list operators in L<Terms and List Operators (Leftward)>.
 
 =end original
 
-L<Terms and List Operators (Leftward)> �Υꥹ�ȱ黻�Ҥε����⻲�Ȥ��Ʋ�������
+L<Terms and List Operators (Leftward)> のリスト演算子の議論も参照して下さい。
 
 =head2 Logical Not
 
-(��������)
+(論理否定)
 
 =begin original
 
@@ -1452,12 +1452,12 @@ It's the equivalent of "!" except for the very low precedence.
 
 =end original
 
-ñ��黻�Ҥ� "not" �ϱ�¦����뼰��������֤��ޤ���
-����ϡ�ͥ���̤����ä��㤤���Ȥ�����Ƥ� "!" �������Ǥ���
+単項演算子の "not" は右側に来る式の否定を返します。
+これは、優先順位がずっと低いことを除いては "!" と等価です。
 
 =head2 Logical And
 
-(������)
+(論理積)
 
 =begin original
 
@@ -1468,14 +1468,14 @@ expression is evaluated only if the left expression is true.
 
 =end original
 
-���黻�Ҥ� "and" ��ξ¦�μ��������Ѥ��֤��ޤ���
-����ϡ�ͥ���̤����ä��㤤���Ȥ������ && �������Ǥ���
-�Ĥޤꡢ�����û���黻��Ԥʤ�����¦�μ��Ϻ�¦�μ���
-�ֿ��פǤ��ä����ˤΤ�ɾ������ޤ���
+二項演算子の "and" は両側の式の論理積を返します。
+これは、優先順位がずっと低いことを除けば && と等価です。
+つまり、これも短絡演算を行ない、右側の式は左側の式が
+「真」であった場合にのみ評価されます。
 
 =head2 Logical or and Exclusive Or
 
-(�����¤���¾������)
+(論理和と排他論理和)
 
 =begin original
 
@@ -1485,9 +1485,9 @@ This makes it useful for control flow
 
 =end original
 
-���黻�Ҥ� "or" ��ξ¦�μ��������¤��֤��ޤ���
-����ϡ�ͥ���̤����ä��㤤���Ȥ������ || �������Ǥ���
-����ϥե��������椹��Τ�ͭ�ѤǤ�:
+二項演算子の "or" は両側の式の論理和を返します。
+これは、優先順位がずっと低いことを除いて || と等価です。
+これはフローを制御するのに有用です:
 
     print FH $data		or die "Can't write to FH: $!";
 
@@ -1499,9 +1499,9 @@ probably avoid using this for assignment, only for control flow.
 
 =end original
 
-�Ĥޤꡢ�����û���黻��Ԥʤ�����¦�μ��Ϻ�¦�μ���
-�ֵ��פǤ��ä����ˤΤ�ɾ������ޤ���
-ͥ���٤δط��ǡ�����������ˤϻȤ鷺���ե���������Τߤ˻Ȥ��٤��Ǥ���
+つまり、これも短絡演算を行ない、右側の式は左側の式が
+「偽」であった場合にのみ評価されます。
+優先度の関係で、これは代入には使わず、フローの制御のみに使うべきです。
 
     $a = $b or $c;		# bug: this is wrong
     ($a = $b) or $c;		# really means this
@@ -1515,8 +1515,8 @@ takes higher precedence.
 
 =end original
 
-���������������ꥹ�ȥ���ƥ����Ȥλ��� "||" ��ե�������˻Ȥ����Ȥ����硢
-�����ˤ���礭��ͥ���̤�������뤿��� "or" ��ɬ�פ��⤷��ޤ���
+しかし、代入がリストコンテキストの時に "||" をフロー制御に使おうとする場合、
+代入により大きな優先順位を持たせるために "or" が必要かもしれません。
 
     @info = stat($file) || die;     # oops, scalar sense of stat!
     @info = stat($file) or die;     # better, now @info gets its due
@@ -1527,7 +1527,7 @@ Then again, you could always use parentheses.
 
 =end original
 
-������󡢾�˳�̤�Ĥ��Ƥ�褤�Ǥ���
+もちろん、常に括弧をつけてもよいです。
 
 =begin original
 
@@ -1536,12 +1536,12 @@ It cannot short circuit, of course.
 
 =end original
 
-���黻�Ҥ� "xor" ��ξ¦�μ�����¾�����¤��֤��ޤ���
-����Ϥ������û���ǤϤ���ޤ���
+二項演算子の "xor" は両側の式の排他論理和を返します。
+これはもちろん、短絡ではありません。
 
 =head2 C Operators Missing From Perl
 
-(Perl �ˤʤ� C �α黻��)
+(Perl にない C の演算子)
 
 =begin original
 
@@ -1549,7 +1549,7 @@ Here is what C has that Perl doesn't:
 
 =end original
 
-C �ˤ��ä� Perl ��̵����Τϰʲ����̤�Ǥ�:
+C にあって Perl に無いものは以下の通りです:
 
 =over 8
 
@@ -1561,10 +1561,10 @@ Address-of operator.  (But see the "\" operator for taking a reference.)
 
 =end original
 
-=item ñ�� &
+=item 単項 &
 
-���ɥ쥹�黻�ҡ�
-("\" �黻�Ҥ���ե���󥹤Τ�����Ѥ����ޤ���)
+アドレス演算子。
+("\" 演算子がリファレンスのために用いられます。)
 
 =begin original
 
@@ -1575,10 +1575,10 @@ operators are typed: $, @, %, and &.)
 
 =end original
 
-=item ñ�� * 
+=item 単項 * 
 
-�異�ɥ쥹���ȱ黻�ҡ�
-(Perl ���ﻲ�ȥץ�ե������黻�Ҥ����Ť���Ԥʤ��ޤ�: $, @, %, &��)
+被アドレス参照演算子。
+(Perl の被参照プリフィクス演算子が型づけを行ないます: $, @, %, &。)
 
 =begin original
 
@@ -1588,15 +1588,15 @@ Type-casting operator.
 
 =end original
 
-=item (��)
+=item (型)
 
-���Υ��㥹�ȱ黻�ҡ�
+型のキャスト演算子。
 
 =back
 
 =head2 Quote and Quote-like Operators
 
-(�������Ȥȥ����������α黻��)
+(クォートとクォート風の演算子)
 
 =begin original
 
@@ -1609,12 +1609,12 @@ any pair of delimiters you choose.
 
 =end original
 
-�������Ȥϥ�ƥ���ͤǤ���ȹͤ���Τ����̤Ǥ�����Perl �ˤ����ơ�
-�������Ȥϱ黻�ҤȤ���Ư�������ޤ��ޤ�Ÿ����ѥ�����ޥå��ε�ǽ��
-���äƤ��ޤ���
-���Τ褦��ư��򤵤���Τˡ�Perl �ϴ���Ū�˥�������ʸ����ȤäƤ��ޤ�����
-�ɤμ���Υ������Ȥ⡢��ʬ�ǥ�������ʸ�������٤�褦�ˤʤäƤ��ޤ���
-�ʲ���ɽ�Ǥϡ�{} ���������������ʸ���Υڥ��򼨤��Ƥ��ޤ���
+クォートはリテラル値であると考えるのが普通ですが、Perl において、
+クォートは演算子として働き、さまざまな展開やパターンマッチの機能を
+持っています。
+そのような動作をさせるのに、Perl は慣習的にクォート文字を使っていますが、
+どの種類のクォートも、自分でクォート文字を選べるようになっています。
+以下の表では、{} がその選んだ区切文字のペアを示しています。
 
 =begin original
 
@@ -1630,16 +1630,16 @@ any pair of delimiters you choose.
 
 =end original
 
-     �̾ﵭˡ  ���ѵ�ˡ        ��̣             Ÿ��
+     通常記法  汎用記法        意味             展開
     =================================================
-	''	 q{}	     ��ƥ��		�Բ�
-	""	qq{}	     ��ƥ��		��
-	``	qx{}	     ���ޥ��		�� (''���ǥ�ߥ��Ǥʤ����)
-		qw{}	     ñ��ꥹ��		�Բ�
-	//	 m{}	  �ѥ�����ޥå�	�� (''���ǥ�ߥ��Ǥʤ����)
-		qr{}	     �ѥ�����		�� (''���ǥ�ߥ��Ǥʤ����)
-		 s{}{}	       �ִ�		�� (''���ǥ�ߥ��Ǥʤ����)
-		tr{}{}	       �Ѵ�		�Բ� (â���ʲ��򻲾ȤΤ���)
+	''	 q{}	     リテラル		不可
+	""	qq{}	     リテラル		可
+	``	qx{}	     コマンド		可 (''がデリミタでなければ)
+		qw{}	     単語リスト		不可
+	//	 m{}	  パターンマッチ	可 (''がデリミタでなければ)
+		qr{}	     パターン		可 (''がデリミタでなければ)
+		 s{}{}	       置換		可 (''がデリミタでなければ)
+		tr{}{}	       変換		不可 (但し以下を参照のこと)
 
 =begin original
 
@@ -1649,9 +1649,9 @@ that
 
 =end original
 
-���������ʸ������̤���Ǥʤ����ˤϡ������ʸ���Ȥ���Ʊ��Τ�Τ�
-�Ȥ��ޤ�����4 �Ĥγ�� ((), <>, [], {}) �ξ��ˤϥͥ��ȤǤ��ޤ���
-�Ĥޤꡢ�ʲ��Τ�Τϡ�
+選んだ区切文字が括弧の類でない場合には、前後の文字として同一のものを
+使いますが、4 つの括弧 ((), <>, [], {}) の場合にはネストできます。
+つまり、以下のものは、
 
 	q{foo{bar}baz} 
 
@@ -1661,7 +1661,7 @@ is the same as
 
 =end original
 
-�ʲ���Ʊ���Ǥ���
+以下と同じです。
 
 	'foo{bar}baz'
 
@@ -1671,8 +1671,8 @@ Note, however, that this does not always work for quoting Perl code:
 
 =end original
 
-���������ʲ��Υ����ɤϥ������Ȥ��줿 Perl �����ɤǤ�
-���Ĥ�������ư���櫓�ǤϤʤ����Ȥ����դ��Ƥ�������:
+しかし、以下のコードはクォートされた Perl コードでは
+いつも正しく動くわけではないことに注意してください:
 
 	$s = q{ if($a eq "}") ... }; # WRONG
 
@@ -1683,8 +1683,8 @@ properly.
 
 =end original
 
-�����ʸˡ���顼�Ȥʤ�ޤ���
-CPAN �� C<Text::Balanced> �⥸�塼��Ϥ����Ŭ�ڤ˹Ԥ��ޤ���
+これは文法エラーとなります。
+CPAN の C<Text::Balanced> モジュールはこれを適切に行います。
 
 =begin original
 
@@ -1696,11 +1696,11 @@ from the next line.  This allows you to write:
 
 =end original
 
-�黻�Ҥȥ�������ʸ���δ֤˶�����֤����Ȥ����ޤ���
-��������C<#> �򥯥�����ʸ���Ȥ��ƻȤ������㳰�Ǥ���
-C<q#foo#> ��ʸ���� C<foo> �Ȥ��ƥѡ�������ޤ�����
-C<q #foo#> �� C<q> �黻�Ҥθ�˥����Ȥ�����Ȥߤʤ���ޤ���
-���ΰ����ϼ��ιԤ������ޤ����Ĥޤꡢ�ʲ��Τ褦�˽񤱤ޤ�:
+演算子とクォート文字の間に空白を置くことも出来ます。
+ただし、C<#> をクォート文字として使う場合は例外です。
+C<q#foo#> は文字列 C<foo> としてパースされますが、
+C<q #foo#> は C<q> 演算子の後にコメントがあるとみなされます。
+この引数は次の行から取られます。つまり、以下のように書けます:
 
     s {foo}  # Replace foo
       {bar}  # with bar.
@@ -1713,9 +1713,9 @@ a transliteration, the first eleven of these sequences may be used.
 
 =end original
 
-Ÿ�����Ԥʤ��빽ʸ�Ǥϡ�"C<$>" �� "C<@>" �ǻϤޤ��ѿ�����
-�ʲ��Υ��������ץ������󥹤�Ʊ����Ÿ������ޤ���
-ʸ���Ѵ�����Ǥϡ��������󥹤� 11 ���Ǥ��Ȥ��ޤ�:
+展開が行なわれる構文では、"C<$>" や "C<@>" で始まる変数が、
+以下のエスケープシーケンスと同時に展開されます。
+文字変換の中では、シーケンスの 11 要素が使われます:
 
 =begin original
 
@@ -1734,18 +1734,18 @@ a transliteration, the first eleven of these sequences may be used.
 
 =end original
 
-    \t          ����
-    \n          ����
-    \r          ����
-    \f          ���ڡ���
-    \b          �Хå����ڡ���
-    \a          ���顼�� (�٥�)
-    \e          ����������
-    \033        8 �ʿ���ɽ����ʸ��
-    \x1b        16 �ʿ���ɽ����ʸ��
-    \x{263a}	16 �ʿ���ɽ�����磻��ʸ��	(SMILEY)
-    \c[         ����ȥ�����ʸ��
-    \N{name}	̾���Ĥ�ʸ��
+    \t          タブ
+    \n          改行
+    \r          復帰
+    \f          改ページ
+    \b          バックスペース
+    \a          アラーム (ベル)
+    \e          エスケープ
+    \033        8 進数で表した文字
+    \x1b        16 進数で表した文字
+    \x{263a}	16 進数で表したワイド文字	(SMILEY)
+    \c[         コントロール文字
+    \N{name}	名前つき文字
 
 =begin original
 
@@ -1758,12 +1758,12 @@ a transliteration, the first eleven of these sequences may be used.
 
 =end original
 
-    \l          ����ʸ����ʸ���ˤ���
-    \u          ����ʸ������ʸ���ˤ���
-    \L          \E �ޤǾ�ʸ���ˤ���
-    \U          \E �ޤ���ʸ���ˤ���
-    \E          �ѹ��ν����
-    \Q          \E �ޤ���ñ��ʸ���򥯥����Ȥ���
+    \l          次の文字を小文字にする
+    \u          次の文字を大文字にする
+    \L          \E まで小文字にする
+    \U          \E まで大文字にする
+    \E          変更の終わり
+    \Q          \E まで非単語文字をクォートする
 
 =begin original
 
@@ -1773,11 +1773,11 @@ documentation of C<\N{name}>, see L<charnames>.
 
 =end original
 
-C<use locale> ��ͭ���ξ�硢
-C<\l>, C<\L>, C<\u>, C<\U> �ǻȤ�����ʸ����ʸ���ơ��֥��
-���ߤΥ�������Τ�Τ��Ȥ��ޤ���
-L<perllocale> �򻲾Ȥ��Ʋ�������
-C<\N{name}> �Υɥ�����Ȥ˴ؤ��Ƥϡ�L<charnames> �򻲾Ȥ��Ʋ�������
+C<use locale> が有効の場合、
+C<\l>, C<\L>, C<\u>, C<\U> で使われる大文字小文字テーブルは
+現在のロケールのものが使われます。
+L<perllocale> を参照して下さい。
+C<\N{name}> のドキュメントに関しては、L<charnames> を参照して下さい。
 
 =begin original
 
@@ -1797,22 +1797,22 @@ you may be burned some day.
 
 =end original
 
-���ƤΥ����ƥ�Ǥ� "newline" �ȸƤФ���ü���Ҥ�ɽ�����뤿���
-����Ū�� C<"\n"> ���Ѥ����ޤ���
-���פΡ�ʪ��Ū�� "newline" ʸ���ȸ�����ΤϤ���ޤ���
-���ڥ졼�ƥ��󥰥����ƥࡢ�ǥХ����ɥ饤�С�C �饤�֥�ꡢ
-Perl �����ƶ��Ϥ�����¸���褦�Ȥ���ȸ����Τ�ñ�ʤ븸�ۤǤ���
-���ƤΥ����ƥ�� C<"\r"> �� ASCII CR �Ȥ��ơ��ޤ� C<"\n"> ��
-ASCII LF �Ȥ����ɤ߹���櫓�ǤϤ���ޤ���
-�㤨�� Mac �ǤϤ�������¸���졢��ü���ҤΤʤ������ƥ�Ǥϡ�
-C<"\n"> �� print ���Ƥ�ºݤΥǡ����ϲ�����Ϥ��ޤ���
-���̤ˡ������ƥ�� "newline" ���̣�������Ȥ��ˤ� C<"\n"> ��Ȥ��ޤ�����
-���Τ�ʸ����ɬ�פʾ��ϥ�ƥ��� ASCII ��Ȥ��ޤ���
-�㤨�С��ۤȤ�ɤΥͥåȥ���ץ��ȥ���ǤϹ�ü���ҤȤ���
-CR+LF (C<"\015\012"> �ޤ��� C<"\cM\cJ">) ��ͽ�ۤ����ޤ����ߤޤ�����
-���Ф��� C<"\012"> �����Ǥ���Ƥ�������˻����� C<"\015"> �����Ǥ�ǧ��ޤ���
-�⤷�ͥåȥ���ط��� C<"\n"> ��Ȥ��������Ĥ��Ƥ���ȡ�
-���Ĥ��ˤ��ܤ򸫤뤳�Ȥˤʤ�Ǥ��礦��
+全てのシステムでは "newline" と呼ばれる行端末子を表現するために
+仮想的な C<"\n"> が用いられます。
+普遍の、物理的な "newline" 文字と言うものはありません。
+オペレーティングシステム、デバイスドライバ、C ライブラリ、
+Perl が全て協力して保存しようとすると言うのは単なる幻想です。
+全てのシステムで C<"\r"> を ASCII CR として、また C<"\n"> を
+ASCII LF として読み込むわけではありません。
+例えば Mac ではこれらは保存され、行端末子のないシステムでは、
+C<"\n"> を print しても実際のデータは何も出力しません。
+一般に、システムで "newline" を意味したいときには C<"\n"> を使いますが、
+正確な文字が必要な場合はリテラルな ASCII を使います。
+例えば、ほとんどのネットワークプロトコルでは行端末子として
+CR+LF (C<"\015\012"> または C<"\cM\cJ">) を予想し、また好みますが、
+しばしば C<"\012"> だけでも許容し、さらに時々は C<"\015"> だけでも認めます。
+もしネットワーク関係で C<"\n"> を使う習慣がついていると、
+いつか痛い目を見ることになるでしょう。
 
 =begin original
 
@@ -1823,10 +1823,10 @@ You'll need to write something like C<m/\Quser\E\@\Qhost/>.
 
 =end original
 
-C<\Q> �������󥹤���˥�ƥ��� C<$> �� C<@> ������뤳�ȤϤǤ��ޤ���
-���������פ���ʤ� C<$> �� C<@> ���б������ѿ����Ѵ�����ޤ���
-���������������פ���ȡ���ƥ���ʸ���� C<\$> ����������ޤ���
-C<m/\Quser\E\@\Qhost/> �ʤɤȤ������˽�ɬ�פ�����ޤ���
+C<\Q> シーケンスの中にリテラルな C<$> や C<@> を入れることはできません。
+エスケープされない C<$> や C<@> は対応する変数に変換されます。
+一方、エスケープすると、リテラルな文字列 C<\$> が挿入されます。
+C<m/\Quser\E\@\Qhost/> などという風に書く必要があります。
 
 =begin original
 
@@ -1838,11 +1838,11 @@ interpolate a variable literally.
 
 =end original
 
-�ѥ�����Ϥ���ˡ�����ɽ���Ȥ���Ÿ�����Ԥʤ��ޤ���
-����ϡ��ѿ���Ÿ�����줿��� 2 ���ܤΥѥ��ǹԤʤ���Τǡ�
-�ѿ�������ɽ����ޤ�Ƥ������ѥ���������Ÿ�����뤳�Ȥ��Ǥ��ޤ���
-�⤷�������������ʤ��ΤǤ���С�C<\Q> ��Ȥ����ѿ������Ƥ�ʸ���̤��
-Ÿ�����뤳�Ȥ��Ǥ��ޤ���
+パターンはさらに、正規表現として展開が行なわれます。
+これは、変数が展開された後の 2 回目のパスで行なわれるので、
+変数に正規表現を含めておき、パターンの中へ展開することができます。
+もし、そうしたくないのであれば、C<\Q> を使うと変数の内容を文字通りに
+展開することができます。
 
 =begin original
 
@@ -1854,14 +1854,14 @@ variables when used within double quotes.
 
 =end original
 
-�嵭�ο����񤤤�����С�Perl �� ʣ�����ʳ���Ƨ���Ÿ����Ԥʤ��ޤ���
-�äˡ�������Υץ�����ޤδ��ԤȤ�΢ʢ�ˡ�
-�Хå��������Ȥϥ��֥륯�����Ȥ���Ǥ�Ÿ������ޤ��󤷡����󥰥륯�����Ȥ�
-���֥륯�����Ȥ���ǻȤ��Ƥ⡢�ѿ���Ÿ����˸���뤳�Ȥ� I<����ޤ���>��
+上記の振る舞いを除けば、Perl は 複数の段階を踏んで展開を行ないません。
+特に、シェルのプログラマの期待とは裏腹に、
+バッククォートはダブルクォートの中では展開されませんし、シングルクォートが
+ダブルクォートの中で使われても、変数の展開を妨げることは I<ありません>。
 
 =head2 Regexp Quote-Like Operators
 
-(����ɽ���Υ����������α黻��)
+(正規表現のクォート風の演算子)
 
 =begin original
 
@@ -1870,7 +1870,7 @@ matching and related activities.
 
 =end original
 
-�ʲ��ϥѥ�����ޥå��󥰤ȴ�Ϣ�����ư�˴ؤ��륯���������α黻�ҤǤ���
+以下はパターンマッチングと関連する行動に関するクォート風の演算子です。
 
 =over 8
 
@@ -1886,13 +1886,13 @@ patterns local to the current package are reset.
 
 =end original
 
-����ϡ�reset() �黻�Ҥ�ƤӽФ����Ȥ� 1 �٤�������
-�ޥå����ʤ����Ȥ�����Ƥ� C</pattern/> �ˤ�븡��������Ʊ���Ǥ���
-���Ȥ��С��ե�����ν��ޤ����Ǹġ��Υե�����ˤĤ��ơ�
-�����Τ�õ���Ȥ����ǽ�� 1 �Ĥ�����¸�ߤ��狼����ɤ��ΤǤ���С�
-���ε�ǽ��Ȥäƺ�Ŭ����Ϥ��뤳�Ȥ��Ǥ��ޤ���
-���ߤΥѥå������˥�������ȤʤäƤ��� C<??> �Υѥ����������
-�ꥻ�åȤ���ޤ���
+これは、reset() 演算子を呼び出すごとに 1 度だけしか
+マッチしないことを除いては C</pattern/> による検索と全く同じです。
+たとえば、ファイルの集まりの中で個々のファイルについて、
+あるものを探すとき、最初の 1 つだけの存在がわかれば良いのであれば、
+この機能を使って最適化をはかることができます。
+現在のパッケージにローカルとなっている C<??> のパターンだけが
+リセットされます。
 
     while (<>) {
 	if (?^$?) {
@@ -1910,8 +1910,8 @@ around the year 2168.
 
 =end original
 
-������ˡ�ϡ����ޤꤪ���ᤷ�ޤ���
-Perl �α󤤾���ΥС������(�����餯 2168 ǯ��)�ǤϺ������뤫�⤷��ޤ���
+この方法は、あまりお勧めしません。
+Perl の遠い将来のバージョン(おそらく 2168 年頃)では削除されるかもしれません。
 
 =item m/PATTERN/cgimosx
 
@@ -1932,17 +1932,17 @@ Options are:
 
 =end original
 
-�ѥ�����ޥå���ʸ���󸡺���Ԥʤ��������饳��ƥ����ȤǤ����������Ȥ��Ͽ���
-���Ԥ����Ȥ��ϵ����֤��ޤ���
-C<=~> �黻�Ҥ� C<!~> �黻�ҤǸ����оݤ�ʸ����򼨤��ʤ��ä��Ȥ��ˤϡ�
-C<$_> ��ʸ���󤬸����оݤȤʤ�ޤ���
-(C<=~> �ǻ��ꤵ���ʸ����ϡ������ͤǤ���ɬ�פϤ���ޤ���
-����ɾ��������̤Ǥ⤫�ޤ��ޤ��󤬡�C<=~> ��ͥ���̤������֤�⤤���Ȥ�
-���դ��Ƥ���������)
-L<perlre> �⻲�Ȥ��Ƥ���������
-C<use locale> ��ͭ���ξ��ε����ˤĤ��Ƥ� L<perllocale> �򻲾Ȥ��Ʋ�������
+パターンマッチで文字列検索を行ない、スカラコンテキストでは成功したときは真、
+失敗したときは偽を返します。
+C<=~> 演算子か C<!~> 演算子で検索対象の文字列を示さなかったときには、
+C<$_> の文字列が検索対象となります。
+(C<=~> で指定される文字列は、左辺値である必要はありません。
+式を評価した結果でもかまいませんが、C<=~> の優先順位がいくぶん高いことに
+注意してください。)
+L<perlre> も参照してください。
+C<use locale> が有効の場合の議論については L<perllocale> を参照して下さい。
 
-���ץ����ˤϰʲ��Τ�Τ�����ޤ���
+オプションには以下のものがあります。
 
 =begin original
 
@@ -1956,13 +1956,13 @@ C<use locale> ��ͭ���ξ��ε����ˤĤ��Ƥ� L<perllocale> �򻲾Ȥ��Ʋ�������
 
 =end original
 
-    c	/g ��ͭ���ʤȤ����ޥå��󥰤˼��Ԥ��Ƥ⸡�����֤�ꥻ�åȤ��ʤ�
-    g   �������Х�˥ޥå����Ĥޤꡢ���٤Ƥ�õ���Ф�
-    i   ��ʸ������ʸ������̤��ʤ�
-    m   ʸ�����ʣ���ԤȤ��ư���
-    o   �ѥ�����Υ���ѥ���� 1 �٤����ˤ���
-    s   ʸ�����ñ��ԤȤ��ư���
-    x   ��ĥ����ɽ������Ѥ���
+    c	/g が有効なとき、マッチングに失敗しても検索位置をリセットしない
+    g   グローバルにマッチ、つまり、すべてを探し出す
+    i   大文字、小文字を区別しない
+    m   文字列を複数行として扱う
+    o   パターンのコンパイルを 1 度だけにする
+    s   文字列を単一行として扱う
+    x   拡張正規表現を使用する
 
 =begin original
 
@@ -1975,12 +1975,12 @@ If "'" is the delimiter, no interpolation is performed on the PATTERN.
 
 =end original
 
-����ʸ���� "/" �ΤȤ��ˤϡ��ǽ�� C<m> ���դ��Ƥ��դ��ʤ��Ƥ⤫�ޤ��ޤ���
-C<m> ���դ���Ȥ��ˤϡ��ѿ����Ǥ����Ǥ�ʤ���Ǥ�դ�ʸ���Υڥ���
-����ʸ���Ȥ��ƻȤ����Ȥ��Ǥ��ޤ���
-����� "/" ��ޤ�ѥ�̾�˥ѥ�����ѥå���Ԥʤ��Ȥ��������Ǥ��礦��
-LTS (�̻��м��ɸ���) ���򤱤뤿��ˤ⡣
-"'" ���ǥ�ߥ��ξ�硢PATTERN ���Ф���Ÿ���ϹԤ��ޤ���
+区切文字が "/" のときには、最初の C<m> は付けても付けなくてもかまいません。
+C<m> を付けるときには、英数字でも空白でもない、任意の文字のペアを
+区切文字として使うことができます。
+これは "/" を含むパス名にパターンパッチを行なうときに便利でしょう。
+LTS (楊枝偏執症候群) を避けるためにも。
+"'" がデリミタの場合、PATTERN に対する展開は行われません。
 
 =begin original
 
@@ -1997,19 +1997,19 @@ Perl won't even notice.  See also L<"qr/STRING/imosx">.
 
 =end original
 
-PATTERN �ˤϡ��ѿ����ޤޤ�Ƥ��Ƥ�褯���ѥ�����ɾ������뤴�Ȥˡ�
-(�ǥ�ߥ������󥰥륯�����ȤǤʤ��¤�)
-�ѿ���Ÿ������ (�ѥ����󤬺ƥ���ѥ��뤵��) �ޤ���
-(�ѿ� C<$(>, C<$)>, C<$|> ��ʸ����ν�����Ĵ�٤�ѥ�����Ǥ����
-��ᤵ���Τǡ�Ÿ������ޤ���)
-�ѥ����󤬥���ѥ��뤵���Τ� 1 �٤����ˤ��������ˤϡ�
-�����ζ���ʸ���θ�� C</o> �����Ҥ��դ��ޤ���
-����ˤ�ꡢ�¹Ի��˺ƥ���ѥ��뤬���ˤ˵����뤳�Ȥ��򤱤�졢
-Ÿ�������ͤ�������ץȤμ¹�����Ѳ����ʤ�����ͭ���ʤ�ΤȤʤ�ޤ���
-��������C</o> ���դ��뤳�Ȥϡ��ѥ����������ѿ����ѹ����ʤ����Ȥ�
-��«�����ΤǤ���
-�ѹ������Ȥ��Ƥ⡢Perl ������˵��դ����ȤϤ���ޤ���
-L<"qr/STRING/imosx"> �⻲�Ȥ��Ʋ�������
+PATTERN には、変数が含まれていてもよく、パターンが評価されるごとに、
+(デリミタがシングルクォートでない限り)
+変数は展開され (パターンが再コンパイルされ) ます。
+(変数 C<$(>, C<$)>, C<$|> は文字列の終わりを調べるパターンであると
+解釈されるので、展開されません。)
+パターンがコンパイルされるのを 1 度だけにしたい場合には、
+終わりの区切文字の後に C</o> 修飾子を付けます。
+これにより、実行時に再コンパイルが頻繁に起こることが避けられ、
+展開する値がスクリプトの実行中に変化しない場合に有効なものとなります。
+しかし、C</o> を付けることは、パターンの中の変数を変更しないことを
+約束するものです。
+変更したとしても、Perl がそれに気付くことはありません。
+L<"qr/STRING/imosx"> も参照して下さい。
 
 =begin original
 
@@ -2018,8 +2018,8 @@ I<successfully> matched regular expression is used instead.
 
 =end original
 
-PATTERN ��ɾ��������̤���ʸ����Ȥʤä����ˤϡ�
-�Ǹ�˥ޥå��� I<��������> ����ɽ����������˻Ȥ��ޤ���
+PATTERN を評価した結果が空文字列となった場合には、
+最後にマッチに I<成功した> 正規表現が、代わりに使われます。
 
 =begin original
 
@@ -2035,16 +2035,16 @@ Examples:
 
 =end original
 
-C</g>���ץ���󤬻Ȥ��ʤ��ä���硢�ꥹ�ȥ���ƥ����ȤǤ�C<m//>��
-�ѥ��������γ�̤ǳ��줿��ʬ��˥ޥå�������Τǹ��������ꥹ�Ȥ�
-�֤��ޤ���
-����ϡ�(C<$1>, C<$2>, C<$3>, ...) �Ȥ������ȤǤ���
-(���ξ�硢C<$1> �ʤɤ����ꤵ��ޤ���
-�������� Perl 4 ��ư��Ȱ�äƤ��ޤ���)
-�ѥ�����˳�̤��ʤ����ϡ��֤��ͤ��������ϥꥹ�� C<(1)> �Ǥ���
-��̤Τ���ʤ��˴ؤ�餺�����Ի��϶��ꥹ�Ȥ��֤��ޤ���
+C</g>オプションが使われなかった場合、リストコンテキストでのC<m//>は
+パターンの中の括弧で括られた部分列にマッチしたもので構成されるリストを
+返します。
+これは、(C<$1>, C<$2>, C<$3>, ...) ということです。
+(この場合、C<$1> なども設定されます。
+この点で Perl 4 の動作と違っています。)
+パターンに括弧がない場合は、返り値は成功時はリスト C<(1)> です。
+括弧のあるなしに関わらず、失敗時は空リストを返します。
 
-��򼨤��ޤ�:
+例を示します:
 
     open(TTY, '/dev/tty');
     <TTY> =~ /^y/i && foo();	# do foo if desired
@@ -2070,10 +2070,10 @@ the pattern matched.
 
 =end original
 
-�Ǹ����ϡ�$foo ��ǽ�� 2 �Ĥ�ñ��ȹԤλĤ��ʬ�򤷡�
-$F1 �� $F2 �� $Etc ���������Ƥ��ޤ���
-�ѿ������������С����ʤ���ѥ����󤬥ޥå�����С�
-if �ξ�郎���Ȥʤ�ޤ���
+最後の例は、$foo を最初の 2 つの単語と行の残りに分解し、
+$F1 と $F2 と $Etc に代入しています。
+変数に代入されれば、すなわちパターンがマッチすれば、
+if の条件が真となります。
 
 =begin original
 
@@ -2087,13 +2087,13 @@ pattern.
 
 =end original
 
-C</g> �����Ҥϡ��������Х�ʥѥ�����ޥå�����ꤹ���Τǡ�
-ʸ�������ǲ�ǽ�ʸ¤ꤿ������ޥå���Ԥʤ��ޤ���
-����ư��ϡ�����ƥ����Ȥ˰�¸���ޤ���
-�ꥹ�ȥ���ƥ����ȤǤϡ�����ɽ����γ���դ����줿��Τ˥ޥå�����
-��ʬʸ����Υꥹ�Ȥ��֤���ޤ���
-��̤��ʤ���С��ѥ��������Τ��̤ǳ�äƤ������Τ褦�ˡ�
-���٤ƤΥޥå�����ʸ����Υꥹ�Ȥ��֤���ޤ���
+C</g> 修飾子は、グローバルなパターンマッチを指定するもので、
+文字列の中で可能な限りたくさんマッチを行ないます。
+この動作は、コンテキストに依存します。
+リストコンテキストでは、正規表現内の括弧付けされたものにマッチした
+部分文字列のリストが返されます。
+括弧がなければ、パターン全体を括弧で括っていたかのように、
+すべてのマッチした文字列のリストが返されます。
 
 =begin original
 
@@ -2107,13 +2107,13 @@ string also resets the search position.
 
 =end original
 
-�����饳��ƥ����ȤǤϡ�C<m//g> ��¹Ԥ�����˼��Υޥå���õ���ޤ���
-�ޥå��������Ͽ����֤����⤦�ޥå����ʤ��ʤä��鵶���֤��ޤ���
-�Ǹ�Υޥå��ΰ��֤� pos() �ؿ����ɤ߽Ф������꤬�Ǥ��ޤ���
-L<perlfunc/pos> �򻲾Ȥ��Ʋ�������
-�ޥå��˼��Ԥ�����̾�ϸ������֤�ʸ�������Ƭ�˥ꥻ�åȤ��ޤ�����
-C</c> �����Ҥ�Ĥ���(�Ĥޤ� C<m//gc>)���ȤǤ�����ɤ����Ȥ��Ǥ��ޤ���
-�������åȤȤʤ�ʸ�����ѹ����줿���⸡�����֤ϥꥻ�åȤ���ޤ���
+スカラコンテキストでは、C<m//g> を実行する毎に次のマッチを探します。
+マッチした場合は真を返し、もうマッチしなくなったら偽を返します。
+最後のマッチの位置は pos() 関数で読み出しや設定ができます。
+L<perlfunc/pos> を参照して下さい。
+マッチに失敗すると通常は検索位置を文字列の先頭にリセットしますが、
+C</c> 修飾子をつける(つまり C<m//gc>)ことでこれを防ぐことができます。
+ターゲットとなる文字列が変更された場合も検索位置はリセットされます。
 
 =begin original
 
@@ -2129,16 +2129,16 @@ Examples:
 
 =end original
 
-C<m//g> �ޥå��� C<m/\G.../g> �Ⱥ����뤳�Ȥ�Ǥ��ޤ���
-C<\G> ������� C<m//g> ������Ф���Ʊ�����֤ǥޥå�����
-����ʸ�����Υ������ȤǤ���
-C</g> �����Ҥʤ��ξ�硢C<\G> �������Ȥ� pos() �˸��ꤷ�ޤ�����
-�ޥå��Ϥ��������٤������ޤ���
-������ C</g> �ޥå���Ŭ�Ѥ��Ƥ��ʤ��������å�ʸ������Ф���
-C</g> �ʤ��� C<\G> ��Ȥ��ȡ�ʸ�������Ƭ�˥ޥå����� C<\A> �������Ȥ�
-�Ȥ��Τ�Ʊ�����Ȥˤʤ�ޤ���
+C<m//g> マッチを C<m/\G.../g> と混ぜることもできます。
+C<\G> は前回の C<m//g> があればその同じ位置でマッチする
+ゼロ文字幅のアサートです。
+C</g> 修飾子なしの場合、C<\G> アサートは pos() に固定しますが、
+マッチはもちろん一度だけ試されます。
+以前に C</g> マッチを適用していないターゲット文字列に対して
+C</g> なしで C<\G> を使うと、文字列の先頭にマッチする C<\A> アサートを
+使うのと同じことになります。
 
-��:
+例:
 
     # list context
     ($one,$five,$fifteen) = (`uptime` =~ /(\d+\.\d+)/g);
@@ -2170,7 +2170,7 @@ The last example should print:
 
 =end original
 
-�Ǹ�Τ�Τϰʲ��Τ�Τ�ɽ������Ϥ��Ǥ�:
+最後のものは以下のものを表示するはずです:
 
     1: 'oo', pos=4
     2: 'q', pos=5
@@ -2190,12 +2190,12 @@ older (pre-5.6.0) Perl.
 
 =end original
 
-C<\G> �ʤ��ǤΥޥå����Ԥ�줿���ᡢ�Ǹ�Υޥå��Ǥ� C<p> �ǤϤʤ�
-C<q> ���ޥå����뤳�Ȥ����դ��Ƥ���������
-�ޤ����Ǹ�Υޥå��� C<pos> �򹹿����ʤ����Ȥ����դ��Ƥ���������
-C<pos> �� C</g> �ޥå��ǤΤ߹�������ޤ���
-�⤷�Ǹ�Υޥå��� C<p> �˥ޥå�������硢���ʤ�γ�Ψ��
-�Ť� (5.6.0 ������) Perl �Ǽ¹Ԥ��Ƥ���Ϥ��Ǥ���
+C<\G> なしでのマッチが行われたため、最後のマッチでは C<p> ではなく
+C<q> がマッチすることに注意してください。
+また、最後のマッチは C<pos> を更新しないことに注意してください。
+C<pos> は C</g> マッチでのみ更新されます。
+もし最後のマッチで C<p> にマッチした場合、かなりの確率で
+古い (5.6.0 以前の) Perl で実行しているはずです。
 
 =begin original
 
@@ -2206,11 +2206,11 @@ regexp tries to match where the previous one leaves off.
 
 =end original
 
-C<lex> ���˥�����󤹤뤿��������ʻ���� C</\G.../gc> �Ǥ���
-ʸ�������ʬ���Ȥ˽������뤿��ˤ����Ĥ�������ɽ����Ĥʤ��ơ�
-�ɤ�����ɽ���˥ޥå��������ˤ�äưۤʤ�����򤹤뤳�Ȥ��Ǥ��ޤ���
-���줾�������ɽ������������ɽ�������Ф�����ʬ���Ф���
-�ޥå����ߤޤ���
+C<lex> 風にスキャンするために便利な指定は C</\G.../gc> です。
+文字列を部分ごとに処理するためにいくつかの正規表現をつなげて、
+どの正規表現にマッチしたかによって異なる処理をすることができます。
+それぞれの正規表現は前の正規表現が飛ばした部分に対して
+マッチを試みます。
 
  $_ = <<'EOL';
       $url = new URI::URL "http://www/";   die if $url eq "xXx";
@@ -2233,7 +2233,7 @@ Here is the output (split into several lines):
 
 =end original
 
-���Ϥϰʲ��Τ褦�ˤʤ�ޤ�(���Ԥ���ʬ�䤷�Ƥ��ޤ�):
+出力は以下のようになります(何行かに分割しています):
 
  line-noise lowercase line-noise lowercase UPPERCASE line-noise
  UPPERCASE line-noise lowercase line-noise lowercase line-noise
@@ -2252,11 +2252,11 @@ the delimiter or backslash is interpolated.
 
 =end original
 
-���󥰥륯�����Ȥ��줿����ƥ��ʸ����Ǥ���
-�Хå�����å���ϡ������³����Τ�����ʸ�������̤ΥХå�����å����
-������������ñ�ʤ�Хå�����å���Ǥ���
-����ʸ����Хå�����å��夬³�����ˤϡ����ζ���ʸ�����Ȥ⤷����
-�Хå�����å��夽�Τ�Τ�Ÿ������ޤ���
+シングルクォートされた、リテラル文字列です。
+バックスラッシュは、後ろに続くものが区切文字か、別のバックスラッシュで
+ある場合を除いて単なるバックスラッシュです。
+区切文字やバックスラッシュが続く場合には、その区切文字自身もしくは
+バックスラッシュそのものが展開されます。
 
     $foo = q!I said, "You said, 'She said it.'"!;
     $bar = q('This is it.');
@@ -2272,7 +2272,7 @@ A double-quoted, interpolated string.
 
 =end original
 
-���֥륯�����Ȥ��줿����ƥ��ʸ����Ǥ���
+ダブルクォートされた、リテラル文字列です。
 
     $_ .= qq
      (*** The previous line contains the naughty word "$1".\n)
@@ -2293,13 +2293,13 @@ For example,
 
 =end original
 
-���α黻�Ҥ� I<STRING> ������ɽ���Ȥ��ƥ������Ȥ��ޤ�
-(�����Ʋ�ǽ�ʤ饳��ѥ��뤷�ޤ�)��
-I<STRING> �� C<m/PATTERN/> ��� I<PATTERN> ��Ʊ�ͤ�ʸ���Ѵ�����ޤ���
-"'" ���ǥ�ߥ��Ȥ��ƻ��Ѥ��줿��硢ʸ���Ѵ��ϹԤ��ޤ���
-�б����� C</STRING/imosx> ɽ��������˻Ȥ�줿 Perl ���ͤ��֤��ޤ���
+この演算子は I<STRING> を正規表現としてクォートします
+(そして可能ならコンパイルします)。
+I<STRING> は C<m/PATTERN/> 内の I<PATTERN> と同様に文字変換されます。
+"'" がデリミタとして使用された場合、文字変換は行われません。
+対応する C</STRING/imosx> 表現の代わりに使われた Perl の値を返します。
 
-�㤨��:
+例えば:
 
     $rex = qr/my.STRING/is;
     s/$rex/foo/;
@@ -2310,7 +2310,7 @@ is equivalent to
 
 =end original
 
-�ϰʲ��������Ǥ�:
+は以下と等価です:
 
     s/my.STRING/foo/is;
 
@@ -2320,7 +2320,7 @@ The result may be used as a subpattern in a match:
 
 =end original
 
-��̤ϥޥå��Υ��֥ѥ�����Ȥ��ƻȤ��ޤ�:
+結果はマッチのサブパターンとして使えます:
 
     $re = qr/$pattern/;
     $string =~ /foo${re}bar/;	# can be interpolated in other patterns
@@ -2335,9 +2335,9 @@ notably if the result of qr() is used standalone:
 
 =end original
 
-Perl �� qr() �黻�Ҥ�¹Ԥ���ִ֤˥ѥ�����򥳥�ѥ��뤹��Τǡ�
-qr() ��Ȥ����ȤǤ����Ĥ��ξ��̤�®��Ū��ͭ���ˤʤ�ޤ���
-�ä� qr() �η�̤���Ω���ƻȤ������ͭ���ˤʤ�ޤ���
+Perl は qr() 演算子を実行する瞬間にパターンをコンパイルするので、
+qr() を使うことでいくつかの場面で速度的に有利になります。
+特に qr() の結果が独立して使われる場合に有利になります。
 
     sub match {
 	my $patterns = shift;
@@ -2363,12 +2363,12 @@ Options are:
 
 =end original
 
-qr() �λ����ǥѥ����������ɽ���˥ץꥳ��ѥ��뤹�뤳�Ȥˤ�ꡢ
-C</$pat/> ���ߤ�������ѥ������ƥ���ѥ��뤹��Τ��򤱤뤳�Ȥ��Ǥ��ޤ�
-(Perl �Ϥ���¾�ˤ�¿����������Ŭ����Ԥ��ޤ�����
-������ qr() �黻�Ҥ�Ȥ�ʤ��ä����Ϥɤκ�Ŭ����Ԥ��ޤ���)��
+qr() の時点でパターンを内部表現にプリコンパイルすることにより、
+C</$pat/> を試みる毎に毎回パターンを再コンパイルするのを避けることができます
+(Perl はその他にも多くの内部最適化を行いますが、
+上の例で qr() 演算子を使わなかった場合はどの最適化も行われません)。
 
-���ץ����ϰʲ����̤�Ǥ�:
+オプションは以下の通りです:
 
 =begin original
 
@@ -2380,11 +2380,11 @@ C</$pat/> ���ߤ�������ѥ������ƥ���ѥ��뤹��Τ��򤱤뤳�Ȥ��Ǥ��ޤ�
 
 =end original
 
-    i	�ѥ�����ޥå��ˤ�������ʸ����ʸ������̤��ʤ�
-    m	ʸ�����ʣ���ԤȤ��ư���
-    o	���٤�������ѥ��뤹��
-    s	ʸ������ԤȤ��ư���
-    x	��ĥ����ɽ����Ȥ�
+    i	パターンマッチにおいて大文字小文字を区別しない
+    m	文字列を複数行として扱う
+    o	一度だけコンパイルする
+    s	文字列を一行として扱う
+    x	拡張正規表現を使う
 
 =begin original
 
@@ -2393,8 +2393,8 @@ for a detailed look at the semantics of regular expressions.
 
 =end original
 
-STRING ��ͭ����ʸˡ�˴ؤ����ɲäξ���ȡ�����ɽ���ΰ�̣���˴ؤ���
-�ܺ٤ˤĤ��Ƥ� L<perlre> �򻲾Ȥ��Ʋ�������
+STRING の有効な文法に関する追加の情報と、正規表現の意味論に関する
+詳細については L<perlre> を参照して下さい。
 
 =item qx/STRING/
 
@@ -2413,17 +2413,17 @@ $INPUT_RECORD_SEPARATOR), or an empty list if the command failed.
 
 =end original
 
-Ÿ�����졢C</bin/sh> �ޤ��Ϥ���������ʤ�Τǥ����ƥ�Υ��ޥ�ɤȤ���
-�¹Ԥ����(�Ǥ�����)ʸ����Ǥ���
-������Υ磻��ɥ����ɡ��ѥ��ס�������쥯�Ȥ�ͭ���Ǥ���
-���Υ��ޥ�ɤΡ�ɸ����Ϥ򽸤᤿��Τ��֤���ޤ���
-ɸ�२�顼�ϱƶ���Ϳ���ޤ���
-�����饳��ƥ����ȤǤϡ�(ʣ���Ԥ�ޤफ�⤷��ʤ�)
-1 �Ĥ�ʸ������äƤ��ޤ���
-���ޥ�ɤ����Ԥ����Ȥ���̤����ͤ��֤��ޤ���
-�ꥹ�ȥ���ƥ����ȤǤϡ�($/ �⤷���� $INPUT_RECORD_SEPARATOR ��
-�ɤΤ褦�����ꤷ�Ƥ��Ƥ�) �ԤΥꥹ�Ȥ��֤��ޤ���
-���ޥ�ɤ����Ԥ����Ȥ��϶��ꥹ�Ȥ��֤��ޤ���
+展開され、C</bin/sh> またはそれと等価なものでシステムのコマンドとして
+実行される(であろう)文字列です。
+シェルのワイルドカード、パイプ、リダイレクトが有効です。
+そのコマンドの、標準出力を集めたものが返されます。
+標準エラーは影響を与えません。
+スカラコンテキストでは、(複数行を含むかもしれない)
+1 つの文字列が戻ってきます。
+コマンドが失敗したときは未定義値を返します。
+リストコンテキストでは、($/ もしくは $INPUT_RECORD_SEPARATOR を
+どのように設定していても) 行のリストを返します。
+コマンドが失敗したときは空リストを返します。
 
 =begin original
 
@@ -2433,10 +2433,10 @@ To capture a command's STDERR and STDOUT together:
 
 =end original
 
-�Хå��������Ȥ�ɸ�२�顼�ˤϱƶ���Ϳ���ʤ��Τǡ�
-ɸ�२�顼��Ȥ���������(�����뤬�б����Ƥ����ΤȤ���)
-������Υե����뵭�һҤ�ʸˡ��ȤäƤ���������
-���ޥ�ɤ� STDERR �� STDOUT �򶦤˼�������������:
+バッククォートは標準エラーには影響を与えないので、
+標準エラーを使いたい場合は(シェルが対応しているものとして)
+シェルのファイル記述子の文法を使ってください。
+コマンドの STDERR と STDOUT を共に取得したい場合は:
 
     $output = `cmd 2>&1`;
 
@@ -2446,7 +2446,7 @@ To capture a command's STDOUT but discard its STDERR:
 
 =end original
 
-���ޥ�ɤ� STDOUT �ϼ������뤬 STDERR �ϼΤƤ����:
+コマンドの STDOUT は取得するが STDERR は捨てる場合は:
 
     $output = `cmd 2>/dev/null`;
 
@@ -2457,8 +2457,8 @@ important here):
 
 =end original
 
-���ޥ�ɤ� STDERR �ϼ������뤬 STDOUT �ϼΤƤ����
-(�����ǤϽ�������פǤ�):
+コマンドの STDERR は取得するが STDOUT は捨てる場合は
+(ここでは順序が重要です):
 
     $output = `cmd 2>&1 1>/dev/null`;
 
@@ -2469,8 +2469,8 @@ but leave its STDOUT to come out the old STDERR:
 
 =end original
 
-STDERR ��������뤬��STDOUT �ϸŤ� STDERR �Τ���˻Ĥ��Ƥ��������
-STDOUT �� STDERR ��򴹤���ˤ�:
+STDERR を取得するが、STDOUT は古い STDERR のために残しておくために
+STDOUT と STDERR を交換するには:
 
     $output = `cmd 3>&1 1>&2 2>&3 3>&-`;
 
@@ -2482,9 +2482,9 @@ files when the program is done:
 
 =end original
 
-���ޥ�ɤ� STDOUT �� STDERR ��ξ�����̡����ɤ߹��ߤ�����硢
-���ִ�ñ�ǰ�������ˡ���̡��Υե�����˥�����쥯�Ȥ���
-�ץ�����ब��λ���Ƥ��餽�Υե�������ɤळ�ȤǤ�:
+コマンドの STDOUT と STDERR の両方を別々に読み込みたい場合、
+一番簡単で安全な方法は別々のファイルにリダイレクトし、
+プログラムが終了してからそのファイルを読むことです:
 
     system("program args 1>/tmp/program.stdout 2>/tmp/program.stderr");
 
@@ -2495,8 +2495,8 @@ double-quote interpolation, passing it on to the shell instead:
 
 =end original
 
-���󥰥륯�����Ȥ�ǥ�ߥ��Ȥ��ƻȤ��� Perl �Υ��֥륯������Ÿ������
-�ݸ�졢���Τޤޥ�������Ϥ���ޤ�:
+シングルクォートをデリミタとして使うと Perl のダブルクォート展開から
+保護され、そのままシェルに渡されます:
 
     $perl_info  = qx(ps $$);            # that's Perl's $$
     $shell_info = qx'ps $$';            # that's the new shell's $$
@@ -2512,13 +2512,13 @@ to emulate backticks safely.
 
 =end original
 
-����ʸ���󤬤ɤΤ褦��ɾ������뤫�ϴ����˥����ƥ��
-���ޥ�ɥ��󥿥ץ꥿�˰�¸���ޤ���
-�ۤȤ�ɤΥץ�åȥե�����Ǥϡ�������Υ᥿����饯����
-��ƥ��˰��äƤۤ������Ϥ������ɬ�פ�����ޤ���
-ʸ���򥨥������פ�����ˡ�����ΤǤϤʤ��Τǡ����������Ū�ˤ��񤷤����ȤǤ���
-�ե������Ȥ�����˥��ߥ�졼�Ȥ��뤿��˼�ư�� fork() �� exec() ��
-�Ԥ�����Τ��줤�ǰ�������ˤĤ��Ƥ� L<perlsec> �򻲾Ȥ��Ƥ���������
+この文字列がどのように評価されるかは完全にシステムの
+コマンドインタプリタに依存します。
+ほとんどのプラットフォームでは、シェルのメタキャラクタを
+リテラルに扱ってほしい場合はそれを守る必要があります。
+文字をエスケープする方法が明確ではないので、これは理論的には難しいことです。
+逆クォートを安全にエミュレートするために手動で fork() と exec() を
+行うためのきれいで安全な例については L<perlsec> を参照してください。
 
 =begin original
 
@@ -2531,13 +2531,13 @@ shells; C<&> on the Windows NT C<cmd> shell).
 
 =end original
 
-(�ä� DOS ����)�ץ�åȥե�����ˤϡ������뤬ʣ���ԤΥ��ޥ�ɤ�
-�������Ȥ��Ǥ��ʤ���Τ�����Τǡ�ʸ����˲��Ԥ�������
-���ʤ���˾�ޤʤ���̤ˤʤ��礬����ޤ���
-�����뤬�б����Ƥ���С����ޥ��ʬ��ʸ����ʬ�䤹�뤳�Ȥ�
-1 �Ԥ�ʣ���Υ��ޥ�ɤ�����Ʋ�ᤵ���뤳�Ȥ��Ǥ��ޤ�
-(����ʸ���ϡ�¿���� Unix ������Ǥ� C<;>��Windows NT C<cmd> ������Ǥ�
-C<&> �Ǥ�)��
+(特に DOS 風の)プラットフォームには、シェルが複数行のコマンドを
+扱うことができないものがあるので、文字列に改行を入れると
+あなたの望まない結果になる場合があります。
+シェルが対応していれば、コマンド分割文字で分割することで
+1 行に複数のコマンドを入れて解釈させることができます
+(この文字は、多くの Unix シェルでは C<;>、Windows NT C<cmd> シェルでは
+C<&> です)。
 
 =begin original
 
@@ -2549,12 +2549,12 @@ C<IO::Handle> on any open handles.
 
 =end original
 
-v5.6.0 �ʹߡ�Perl �ϻҥץ������μ¹����˽񤭹����Ѥ˳����Ƥ������Ƥ�
-�ե������ե�å��夷�褦�Ȥ��ޤ�����������б����Ƥ��ʤ�
-�ץ�åȥե�����⤢��ޤ�(L<perlport> �򻲾Ȥ��Ƥ�������)��
-�����Τ���ˤϡ�C<$|> (English �⥸�塼��Ǥ� $AUTOFLUSH)�򥻥åȤ��뤫��
-�����Ƥ������ƤΥϥ�ɥ���Ф��� C<IO::Handle> �� C<autoflush()> �᥽�åɤ�
-�ƤӽФ�ɬ�פ�����ޤ���
+v5.6.0 以降、Perl は子プロセスの実行前に書き込み用に開いている全ての
+ファイルをフラッシュしようとしますが、これに対応していない
+プラットフォームもあります(L<perlport> を参照してください)。
+安全のためには、C<$|> (English モジュールでは $AUTOFLUSH)をセットするか、
+開いている全てのハンドルに対して C<IO::Handle> の C<autoflush()> メソッドを
+呼び出す必要があります。
 
 =begin original
 
@@ -2565,11 +2565,11 @@ release notes for more details about your particular environment.
 
 =end original
 
-���ޥ�ɹԤ�Ĺ�������¤����륳�ޥ�ɥ����뤬���뤳�Ȥ����դ��Ƥ���������
-���Ƥ�ɬ�פ��Ѵ����Ԥ�줿�塢���ޥ��ʸ���󤬤������¤�ۤ��ʤ����Ȥ�
-�ݾ㤹��ɬ�פ�����ޤ���
-����δĶ��˴ؤ��뤵��ʤ�ܺ٤ˤĤ��Ƥϥץ�åȥե������ͭ��
-��꡼���Ρ��Ȥ򻲾Ȥ��Ƥ���������
+コマンド行の長さに制限があるコマンドシェルがあることに注意してください。
+全ての必要な変換が行われた後、コマンド文字列がこの制限を越えないことを
+保障する必要があります。
+特定の環境に関するさらなる詳細についてはプラットフォーム固有の
+リリースノートを参照してください。
 
 =begin original
 
@@ -2584,16 +2584,16 @@ Just understand what you're getting yourself into.
 
 =end original
 
-���α黻�Ҥ�Ȥ��ȡ��ץ������ΰܿ�������ˤʤ�ޤ���
-�ƤӽФ���륷���륳�ޥ�ɤϥ����ƥ�ˤ�äưۤʤꡢ
-�º�����¸�ߤ��ʤ����Ȥ⤢�뤫��Ǥ���
-��Ĥ���Ȥ��Ƥϡ�POSIX ������� C<type> ���ޥ�ɤ�
-DOS �� C<type> ���ޥ�ɤ��礭���ۤʤäƤ��ޤ���
-����ϡ�������٤��������������ˡ�Ȥ��Ƶե������Ȥ�Ȥ����Ȥ�
-�򤱤�٤��Ǥ��뤳�Ȥ��̣���ޤ���
-Perl ������ޤΤ褦�ʸ���Ȥ��ƺ��졢���夵���٤���Τΰ�Ĥ�
-���ޥ�ɤǤ���
-ñ�ˤ��ʤ������򤷤褦�Ȥ��Ƥ��뤫�����򤷤Ƥ����Ƥ���������
+この演算子を使うと、プログラムの移殖が困難になります。
+呼び出されるシェルコマンドはシステムによって異なり、
+実際全く存在しないこともあるからです。
+一つの例としては、POSIX シェルの C<type> コマンドは
+DOS の C<type> コマンドと大きく異なっています。
+これは、何かを為すために正しい方法として逆クォートを使うことを
+避けるべきであることを意味しません。
+Perl は接着剤のような言語として作られ、接着されるべきものの一つは
+コマンドです。
+単にあなたが何をしようとしているかを理解しておいてください。
 
 =begin original
 
@@ -2601,7 +2601,7 @@ See L<"I/O Operators"> for more discussion.
 
 =end original
 
-����ʤ�����ˤĤ��Ƥ� L<"I/O Operators"> �򻲾Ȥ��Ʋ�������
+さらなる議論については L<"I/O Operators"> を参照して下さい。
 
 =item qw/STRING/
 
@@ -2613,9 +2613,9 @@ equivalent to:
 
 =end original
 
-�����ޤ줿��������ʸ���Ȥ��ơ�STRING ����ȴ���Ф���
-ñ��Υꥹ�Ȥ�ɾ�����ޤ���
-����ϡ��ʲ��μ�������Ʊ���ȹͤ����ޤ�:
+埋め込まれた空白を区切文字として、STRING から抜き出した
+単語のリストを評価します。
+これは、以下の式と大体同じと考えられます:
 
     split(' ', q/STRING/);
 
@@ -2626,8 +2626,8 @@ this expression:
 
 =end original
 
-�㤤�ϡ��ºݤΥꥹ�Ȥ򥳥�ѥ�������������뤳�ȤǤ���
-���äơ��ʲ���ɽ����:
+違いは、実際のリストをコンパイル時に生成することです。
+従って、以下の表現は:
 
     qw(foo bar baz)
 
@@ -2637,7 +2637,7 @@ is semantically equivalent to the list:
 
 =end original
 
-�ʲ��Υꥹ�Ȥ�ʸˡŪ�������Ǥ���
+以下のリストと文法的に等価です。
 
     'foo', 'bar', 'baz'
 
@@ -2647,7 +2647,7 @@ Some frequently seen examples:
 
 =end original
 
-�褯�Ԥʤ�����Ȥ��Ƥϰʲ��Τ�ΤǤ�:
+よく行なわれる例としては以下のものです:
 
     use POSIX qw( setlocale localeconv )
     @EXPORT = qw( foo bar baz );
@@ -2661,11 +2661,11 @@ produces warnings if the STRING contains the "," or the "#" character.
 
 =end original
 
-�褯����ְ㤤�ϡ�ñ��򥫥�ޤǶ��ڤä��ꡢʣ���Ԥ� C<qw> ʸ��������
-�����Ȥ�񤤤��ꤹ�뤳�ȤǤ���
-���Τ���ˡ�C<usr warnings> �ץ饰�ޤ� B<-w> �����å�
-(�ĤޤꡢC<$^W> �ѿ�) �� STRING �� "," �� "#" ��ʸ�������äƤ����
-�ٹ��Ф��ޤ���
+よくある間違いは、単語をカンマで区切ったり、複数行の C<qw> 文字列の中に
+コメントを書いたりすることです。
+このために、C<usr warnings> プラグマと B<-w> スイッチ
+(つまり、C<$^W> 変数) は STRING に "," や "#" の文字が入っていると
+警告を出します。
 
 =item s/PATTERN/REPLACEMENT/egimosx
 
@@ -2677,9 +2677,9 @@ made.  Otherwise it returns false (specifically, the empty string).
 
 =end original
 
-ʸ������ǥѥ�����򸡺������⤷���Ĥ���С��ִ��ƥ����Ȥ��֤�������
-�ִ����������֤��ޤ���
-���Ĥ���ʤ���С��� (����Ū�ˤϡ���ʸ����) ���֤��ޤ���
+文字列中でパターンを検索し、もし見つかれば、置換テキストで置き換え、
+置換した数を返します。
+見つからなければ、偽 (具体的には、空文字列) を返します。
 
 =begin original
 
@@ -2690,10 +2690,10 @@ to one of those, i.e., an lvalue.)
 
 =end original
 
-C<=~> �黻�Ҥ� C<!~> �黻�Ҥˤ�ä�ʸ���󤬻��ꤵ��Ƥ��ʤ���С�
-�ѿ� C<$_> ���������졢��������ޤ���
-(C<=~> �ǻ��ꤵ���ʸ����ϡ��������ѿ����������ǡ��ϥå������ǡ�
-���뤤�ϡ������ؤ��������Ȥ��ä������ͤǤʤ���Фʤ�ޤ���)
+C<=~> 演算子や C<!~> 演算子によって文字列が指定されていなければ、
+変数 C<$_> が検索され、修正されます。
+(C<=~> で指定される文字列は、スカラ変数、配列要素、ハッシュ要素、
+あるいは、これらへの代入式といった左辺値でなければなりません。)
 
 =begin original
 
@@ -2710,17 +2710,17 @@ when C<use locale> is in effect.
 
 =end original
 
-���ȤǽҤ٤ޤ��������ڤ�ʸ���ϥ���å���Ȥϸ¤�ޤ���
-���󥰥륯�����Ȥ���ڤ�ʸ���Ȥ��ƻȤä����ˤϡ�
-PATTERN �ˤ� REPLACEMENT �ˤ��ѿ���Ÿ����Ԥʤ��ޤ���
-����ʳ��ξ�硢ʸ����κǸ��ɽ�魯��Τˤϸ����ʤ� $ ��
-PATTERN �˴ޤޤ��ȡ��¹Ի����ѿ����ѥ��������Ÿ������ޤ���
-�ǽ���ѿ���Ÿ�������Ȥ��ˤ����ѥ�����Υ���ѥ����Ԥʤ������Ȥ��ˤϡ�
-C</o> ���ץ�����ȤäƤ���������
-�ѥ������ɾ����̤���ʸ����ˤʤä����ˤϡ��Ǹ��������������ɽ����
-����˻Ȥ��ޤ���
-����ˤĤ��Ƥ���˾ܤ����ϡ�L<perlre> �򻲾Ȥ��Ƥ���������
-C<use locale> ��ͭ���ξ��ε����ˤĤ��Ƥ� L<perllocale> �򻲾Ȥ��Ʋ�������
+あとで述べますが、区切り文字はスラッシュとは限りません。
+シングルクォートを区切り文字として使った場合には、
+PATTERN にも REPLACEMENT にも変数の展開を行ないません。
+それ以外の場合、文字列の最後を表わすものには見えない $ が
+PATTERN に含まれると、実行時に変数がパターン内に展開されます。
+最初に変数が展開されるときにだけパターンのコンパイルを行ないたいときには、
+C</o> オプションを使ってください。
+パターンの評価結果が空文字列になった場合には、最後に成功した正規表現が
+代わりに使われます。
+これについてさらに詳しくは、L<perlre> を参照してください。
+C<use locale> が有効の場合の議論については L<perllocale> を参照して下さい。
 
 =begin original
 
@@ -2736,15 +2736,15 @@ Options are:
 
 =end original
 
-���ץ����ˤϰʲ��Τ�Τ�����ޤ�:
+オプションには以下のものがあります:
 
-    e   ���α�¦��ɾ����Ԥʤ�
-    g   �������Х���ִ����Ĥޤ긫�Ĥ��ä���Τ��٤�
-    i   ��ʸ������ʸ������̤��ʤ��Ǹ���
-    m   ʸ�����ʣ���ԤȤ��ư���
-    o   �ѥ�����Υ���ѥ���� 1 �٤����ˤ���
-    s   ʸ�����ñ��ԤȤ��ư���
-    x   ��ĥ����ɽ������Ѥ���
+    e   式の右側の評価を行なう
+    g   グローバルな置換、つまり見つかったものすべて
+    i   大文字、小文字を区別しないで検索
+    m   文字列を複数行として扱う
+    o   パターンのコンパイルを 1 度だけにする
+    s   文字列を単一行として扱う
+    x   拡張正規表現を使用する
 
 =begin original
 
@@ -2765,22 +2765,22 @@ Examples:
 
 =end original
 
-�ѿ���������ǤϤʤ�Ǥ�դζ��ڤ�ʸ���ǡ�����å����
-�֤������뤳�Ȥ��Ǥ��ޤ���
-��˽Ҥ٤��褦�ˡ����󥰥륯�����Ȥ�Ȥ���
-�ִ�ʸ����Ǥ�Ÿ���Ϥ���ޤ��� (C</e>�����Ҥ�Ȥ��в�ǽ�Ǥ�)��
-Perl 4 �Ȱ�äơ� Perl 5 �ϥХå��������Ȥ��̾�Υǥ�ߥ��Ȥ��ư����ޤ���
-�ִ��ƥ����Ȥϥ��ޥ�ɤȤ���ɾ������ޤ���
-PATTERN ������ǳ�ä����ˤϡ�
-REPLACEMENT �Ѥˤ⤦���Ȥζ��ڤ�ʸ�����Ѱդ��ޤ���
-����ϡ������Ǥ��äƤ⡢�ʤ��Ƥ⤫�ޤ��ޤ���
-��: C<s(foo)(bar)> �� C<< s<foo>/bar/ >>��
-C</e> ���ִ�ʸ��������� Perl �μ��Ȥ��ư��������ξ���ľ���˲�ᤷ�ޤ���
-������������ϥ���ѥ�����˹�ʸ�����å�����ޤ���
-�����ܤ� C<e> �����Ҥ���ꤹ��ȡ��ִ���ʬ���ޤ� Perl �μ��Ȥ���
-C<eval> ����ޤ���
+英数字、空白ではない任意の区切り文字で、スラッシュを
+置き換えることができます。
+先に述べたように、シングルクォートを使うと
+置換文字列での展開はされません (C</e>修飾子を使えば可能です)。
+Perl 4 と違って、 Perl 5 はバッククォートを通常のデリミタとして扱います。
+置換テキストはコマンドとして評価されません。
+PATTERN を括弧類で括った場合には、
+REPLACEMENT 用にもう一組の区切り文字を用意します。
+これは、括弧類であっても、なくてもかまいません。
+例: C<s(foo)(bar)> や C<< s<foo>/bar/ >>。
+C</e> は置換文字列を完全な Perl の式として扱い、その場所で直ちに解釈します。
+しかし、これはコンパイル時に構文チェックされます。
+二番目の C<e> 修飾子を指定すると、置換部分がまず Perl の式として
+C<eval> されます。
 
-��:
+例:
 
     s/\bgreen\b/mauve/g;		# don't change wintergreen
 
@@ -2837,9 +2837,9 @@ Anywhere else it's $<I<digit>>.
 
 =end original
 
-�Ǹ����� \ ������� $ ��ȤäƤ���Τ����դ��Ƥ���������
-B<sed> �Ȱ�äơ�\<I<����>> �η����ϥѥ���������ǤΤ߻��ѤǤ��ޤ���
-����¾�ξ��Ǥϡ�$<I<����>> ��Ȥ��ޤ���
+最後の例で \ の代わりに $ を使っているのに注意してください。
+B<sed> と違って、\<I<数字>> の形式はパターンの方でのみ使用できます。
+その他の場所では、$<I<数字>> を使います。
 
 =begin original
 
@@ -2848,9 +2848,9 @@ to occur that you might want.  Here are two common cases:
 
 =end original
 
-�Ȥ��ˤϡ�C</g> ���դ�������Ǥϡ����ʤ���˾��Ǥ���褦�ʷ���
-���٤Ƥ��ѹ����뤳�Ȥ��Ǥ��ʤ����Ȥ�����ޤ���
-2 ����򼨤��ޤ�:
+ときには、C</g> を付けるだけでは、あなたが望んでいるような形で
+すべてを変更することができないことがあります。
+2 つ例を示します:
 
     # put commas in the right places in an integer
     1 while s/(\d)(\d\d\d)(?!\d)/$1,$2/g;  
@@ -2873,12 +2873,12 @@ hash element, or an assignment to one of those, i.e., an lvalue.)
 
 =end original
 
-�����ꥹ�� (SEARCHLIST) �˴ޤޤ��ʸ�����б������ִ��ꥹ��
-(REPLACEMENTLIST) ��ʸ�����Ѵ����ޤ���
-�ִ��ޤ��Ϻ�����Ԥʤ�줿��ʸ�������֤��ޤ���
-=~ �黻�Ҥ� =! �黻�Ҥ�ʸ���󤬻��ꤵ��Ƥ��ʤ���С�$_ ��ʸ�����Ѵ�����ޤ���
-(=~ �ǻ��ꤵ���ʸ����ϡ��������ѿ����������ǡ��ϥå������ǡ�
-���뤤�Ϥ����ؤ��������Ȥ��ä������ͤǤʤ���Фʤ�ޤ���)
+検索リスト (SEARCHLIST) に含まれる文字を、対応する置換リスト
+(REPLACEMENTLIST) の文字に変換します。
+置換または削除が行なわれた、文字数を返します。
+=~ 演算子や =! 演算子で文字列が指定されていなければ、$_ の文字列が変換されます。
+(=~ で指定される文字列は、スカラ変数、配列要素、ハッシュ要素、
+あるいはこれらへの代入式といった左辺値でなければなりません。)
 
 =begin original
 
@@ -2891,13 +2891,13 @@ e.g., C<tr[A-Z][a-z]> or C<tr(+\-*/)/ABCD/>.
 
 =end original
 
-ʸ�����ϰϤϥϥ��ե��Ȥäƻ���Ǥ��ޤ���
-C<tr/A-J/0-9/> �� C<tr/ACEGIBDFHJ/0246813579/> ��Ʊ���ִ���Ԥ��ޤ���
-B<sed> �ο��ļԤΤ���� C<y> �� C<tr> ��Ʊ����Ȥ����󶡤���Ƥ��ޤ���
-SEARCHLIST ������ǳ�ä����ˤϡ�
-REPLACEMENTLIST �Ѥˡ��⤦���Ȥζ��ڤ�ʸ�����Ѱդ��ޤ���
-����ϡ������Ǥ��äƤ⡢�ʤ��Ƥ⤫�ޤ��ޤ���
-��: C<tr[A-Z][a-z]> �� C<tr(+\-*/)/ABCD/>��
+文字の範囲はハイフンを使って指定できます。
+C<tr/A-J/0-9/> は C<tr/ACEGIBDFHJ/0246813579/> と同じ置換を行います。
+B<sed> の信仰者のために C<y> が C<tr> の同義語として提供されています。
+SEARCHLIST を括弧類で括った場合には、
+REPLACEMENTLIST 用に、もう一組の区切り文字を用意します。
+これは、括弧類であっても、なくてもかまいません。
+例: C<tr[A-Z][a-z]> や C<tr(+\-*/)/ABCD/>。
 
 =begin original
 
@@ -2909,13 +2909,13 @@ using the C<s> operator if you need regular expressions.
 
 =end original
 
-C<tr> �� C<\d> �� C<[:lower:]> �Ȥ��ä�����ɽ��ʸ�����饹��
-B<�Ȥ�ʤ�> ���Ȥ����դ��Ƥ���������
-C<tr> �黻�Ҥ� tr(1) �桼�ƥ���ƥ��������ǤϤ���ޤ���
-ʸ�������ʸ����ʸ����ޥåפ��������ϡ�
-L<perlfunc/lc> �� L<perlfunc/uc> �򻲾Ȥ��Ʋ�������
-�ޤ�����ɽ����ɬ�פʾ��ˤϰ���Ū�� C<s> �黻�Ҥ�Ȥ����Ȥ�
-��θ���ƤߤƤ���������
+C<tr> は C<\d> や C<[:lower:]> といった正規表現文字クラスを
+B<使わない> ことに注意してください。
+C<tr> 演算子は tr(1) ユーティリティと等価ではありません。
+文字列の大文字小文字をマップしたい場合は、
+L<perlfunc/lc> と L<perlfunc/uc> を参照して下さい。
+また正規表現が必要な場合には一般的に C<s> 演算子を使うことを
+考慮してみてください。
 
 =begin original
 
@@ -2928,13 +2928,13 @@ character sets in full.
 
 =end original
 
-�ϰϻ���Ȥ����ͤ�����ʸ�����åȤ��ۤʤ���Ϥ��ܿ����˷礱�뤳�Ȥˤ�
-���դ��Ƥ������� -- ������Ʊ��ʸ�����åȤǤⶲ�餯���Ԥ��Ƥ���ΤȤϰ㤦
-��̤�������������Ȥ⤢��ޤ���
-�����ʸ�§�Ȥ��Ƥϡ��ϰϤκǽ�ȺǸ��ɤ���⥢��ե��٥å�
-(��ʸ����ʸ����Ʊ��)(a-e, A-E)�ˤ��뤫���ɤ��������ˤ���(0-4)���ȤǤ���
-����ʳ������ư����ǤϤ���ޤ���
-���路���Ȥ��ϡ�ʸ�����åȤ����˽񤭽Ф��Ƥ���������
+範囲指定という考え方は文字セットが異なる場合はやや移植性に欠けることにも
+注意してください -- そして同じ文字セットでも恐らく期待しているのとは違う
+結果を引き起こすこともあります。
+健全な原則としては、範囲の最初と最後をどちらもアルファベット
+(大文字小文字も同じ)(a-e, A-E)にするか、どちらも数字にする(0-4)ことです。
+それ以外は全て安全ではありません。
+疑わしいときは、文字セットを完全に書き出してください。
 
 =begin original
 
@@ -2946,11 +2946,11 @@ Options:
 
 =end original
 
-���ץ����ϰʲ����̤�Ǥ�:
+オプションは以下の通りです:
 
-    c   SEARCHLIST ���佸��ˤ���
-    d   ���Ĥ��ä����ִ�����ʤ��ä�ʸ����������
-    s   �ִ����줿ʸ�����Ťʤä��Ȥ��˰��̤���
+    c   SEARCHLIST を補集合にする
+    d   見つかったが置換されなかった文字を削除する
+    s   置換された文字が重なったときに圧縮する
 
 =begin original
 
@@ -2965,14 +2965,14 @@ to a single instance of the character.
 
 =end original
 
-C</c> �����Ҥ����ꤵ���ȡ�SEARCHLIST �ˤ��佸�礬���ꤵ�줿��Τ�
-��ᤵ��ޤ���
-C</d> �����Ҥ����ꤵ���ȡ�SEARCHLIST �˻��ꤵ��ơ�
-REPLACEMENTLIST ���б������Τ��ʤ�ʸ�����������ޤ���
-(����ϡ�SEARCHLIST �Ǹ��Ĥ��ä���Τ������롢������������Ρ�������
-B<tr> �ץ�������ư�������٤�С�����ʬ����ʤ�ΤˤʤäƤ��ޤ���)
-C</s> �����Ҥ����ꤵ���ȡ�Ʊ��ʸ����ʸ���Ѵ����줿ʸ�����¤Ӥ�
-����ʸ�� 1 ʸ�������˰��̤��ޤ�����
+C</c> 修飾子が指定されると、SEARCHLIST には補集合が指定されたものと
+解釈されます。
+C</d> 修飾子が指定されると、SEARCHLIST に指定されて、
+REPLACEMENTLIST に対応するものがない文字が削除されます。
+(これは、SEARCHLIST で見つかったものを削除する、ただそれだけの、ある種の
+B<tr> プログラムの動作よりと比べれば、いく分柔軟なものになっています。)
+C</s> 修飾子が指定されると、同じ文字に文字変換された文字の並びを、
+その文字 1 文字だけに圧縮します。　
 
 =begin original
 
@@ -2987,16 +2987,16 @@ Examples:
 
 =end original
 
-C</d> �����Ҥ��Ȥ���ȡ�REPLACEMENTLIST �ϡ���˻��ꤵ�줿�̤��
-��ᤵ��ޤ���
-C</d> �����ꤵ��ʤ����ǡ�REPLACEMENTLIST �� SEARCHLIST ����û���ȡ�
-Ʊ��Ĺ���ˤʤ�ޤǡ�REPLACEMENTLIST �κǸ��ʸ����
-�����֤���Ƥ����ΤȤ��ư����ޤ���
-REPLACEMENTLIST ����ʸ����ǤΤȤ��ˤϡ�SEARCHLIST ��Ʊ���ˤʤ�ޤ���
-��Ԥϡ�����ʸ�����饹�˴ޤޤ��ʸ�����������Ȥ��䡢
-����ʸ�����饹��ʸ�����¤Ӥ򰵽̤���褦�ʤȤ��������Ǥ���
+C</d> 修飾子が使われると、REPLACEMENTLIST は、常に指定された通りに
+解釈されます。
+C</d> が指定されない場合で、REPLACEMENTLIST が SEARCHLIST よりも短いと、
+同じ長さになるまで、REPLACEMENTLIST の最後の文字が
+繰り返されているものとして扱われます。
+REPLACEMENTLIST が空文字列でのときには、SEARCHLIST と同じになります。
+後者は、ある文字クラスに含まれる文字数を数えるときや、
+ある文字クラスの文字の並びを圧縮するようなときに便利です。
 
-��:
+例:
 
     $ARGV[1] =~ tr/A-Z/a-z/;	# canonicalize to lower case
 
@@ -3022,7 +3022,7 @@ first one is used:
 
 =end original
 
-ʣ����ʸ���Ѵ�����Ĥ�ʸ���ˤĤ��ƻ��ꤵ���ȡ��ǽ�Τ�Τ������Ȥ��ޤ���
+複数の文字変換が一つの文字について指定されると、最初のものだけが使われます。
 
     tr/AAA/XYZ/
 
@@ -3032,7 +3032,7 @@ will transliterate any A to X.
 
 =end original
 
-�� A �� X ���Ѵ����ޤ���
+は A を X に変換します。
 
 =begin original
 
@@ -3043,9 +3043,9 @@ must use an eval():
 
 =end original
 
-�Ѵ��ơ��֥�ϥ���ѥ�����˺����Τǡ�SEARCHLIST ��
-REPLACEMENTLIST ����֥륯������Ÿ�����оݤȤϤʤ�ޤ���
-�ѿ���Ȥ��������ˤϡ�eval() ��Ȥ�ʤ���Фʤ�ʤ��Ȥ������ȤǤ�:
+変換テーブルはコンパイル時に作られるので、SEARCHLIST も
+REPLACEMENTLIST もダブルクォート展開の対象とはなりません。
+変数を使いたい場合には、eval() を使わなければならないということです:
 
     eval "tr/$oldlist/$newlist/";
     die $@ if $@;
@@ -3056,7 +3056,7 @@ REPLACEMENTLIST ����֥륯������Ÿ�����оݤȤϤʤ�ޤ���
 
 =head2 Gory details of parsing quoted constructs
 
-(�������Ȥ��줿��¤�Υѡ����˴ؤ���ܺ�)
+(クォートされた構造のパースに関する詳細)
 
 =begin original
 
@@ -3069,12 +3069,12 @@ notions differ substantially from what the author honestly meant.
 
 =end original
 
-����ʣ���β�᤬��ǽ��ɽ�������ä���硢Perl �ϺǤ�Τ��餷������
-���򤹤뤿��� B<DWIM> ("Do What I Mean")��§��Ȥ��ޤ���
-������ά���������������Τǡ�Perl �ץ�����ޤϤ��Ф���
-��ʬ���񤤤���Τ�̷��򵿤��ޤ���
-���������֤����ĤˤĤ�ơ�Perl �γ�ǰ�Ϻ�Ԥ������˰�̣���Ƥ�����Τ���
-���ʤ��Ѥ��ޤ�����
+何か複数の解釈が可能な表現があった場合、Perl は最も確からしい解釈を
+選択するために B<DWIM> ("Do What I Mean")原則を使います。
+この戦略は非常に成功したので、Perl プログラマはしばしば
+自分が書いたものの矛盾を疑いません。
+しかし時間がたつにつれて、Perl の概念は作者が本当に意味していたものから
+かなり変わりました。
 
 =begin original
 
@@ -3085,10 +3085,10 @@ same for all quoting operators, they are all discussed together.
 
 =end original
 
-���ξϤǤ� Perl ���ɤΤ褦�˥������Ȥ��줿��¤�򰷤�����
-���Τˤ��褦�Ȼפ��ޤ���
-�����ؤܤ��Ȥ���Ǥ�褯������ͳ������ɽ�����µܤ�ۤ�������Ǥ�����
-�ѡ����ν�����ƥåפ����ƤΥ������ȱ黻�Ҥ�Ʊ���ʤΤǡ�����Ʊ���˰����ޤ���
+この章では Perl がどのようにクォートされた構造を扱うかを
+明確にしようと思います。
+これを学ぼうとする最もよくある理由は正規表現の迷宮をほぐすためですが、
+パースの初期ステップは全てのクォート演算子で同じなので、全て同時に扱います。
 
 =begin original
 
@@ -3101,13 +3101,13 @@ expectations much less frequently than this first one.
 
 =end original
 
-Perl �Υѡ����˴ؤ���롼��ǺǤ���פʤ�Τϰʲ��ǽҤ٤Ƥ��뤦��
-�ǽ�Τ�ΤǤ���
-�Ĥޤꡢ�������Ȥ��줿��¤���������Ȥ��ϡ�Perl �Ϥޤ����ι�¤��
-�Ǹ��õ���ơ����줫����Ȥ��ᤷ�ޤ���
-���Υ롼�뤬�狼��С��Ȥꤢ�����Ϥ��ξϤλĤ���ɤ����Ф��Ƥ⤫�ޤ��ޤ���
-����¾�Υ롼��Ϻǽ�Υ롼�����٤ƥ桼������ͽ�ۤ�ȿ�������٤�
-�Ϥ뤫�˾��ʤ��Ǥ���
+Perl のパースに関するルールで最も重要なものは以下で述べているうち
+最初のものです。
+つまり、クォートされた構造を処理するときは、Perl はまずその構造の
+最後を探して、それから中身を解釈します。
+このルールがわかれば、とりあえずはこの章の残りは読み飛ばしてもかまいません。
+その他のルールは最初のルールに比べてユーザーの予想に反する頻度は
+はるかに少ないです。
 
 =begin original
 
@@ -3118,16 +3118,16 @@ one to five, but these passes are always performed in the same order.
 
 =end original
 
-�ʲ��ǵ�������ѥ��ˤ�Ʊ���˼¹Ԥ�����Τ⤢��ޤ�����
-��̤�Ʊ�����ȤʤΤǡ��̡��˹ͤ��뤳�Ȥˤ��ޤ���
-�������ȹ�¤�μ���ˤ�äơ�Perl ���¹Ԥ���ѥ��ο���
-1 ���� 5 �ޤǰۤʤ�ޤ����������Υѥ��Ͼ��Ʊ�����֤Ǽ¹Ԥ���ޤ���
+以下で議論するパスには同時に実行されるものもありますが、
+結果は同じことなので、別々に考えることにします。
+クォート構造の種類によって、Perl が実行するパスの数は
+1 から 5 まで異なりますが、これらのパスは常に同じ順番で実行されます。
 
 =over 4
 
 =item Finding the end
 
-(�Ǹ��õ��)
+(最後を探す)
 
 =begin original
 
@@ -3139,11 +3139,11 @@ fileglob started with C<< < >>.
 
 =end original
 
-�ǽ�Υѥ��ϥ������Ȥ��줿��¤�κǸ��õ�����ȤǤ���
-C<<<EOF> ��¤��ʣ��ʸ���ǥ�ߥ��Ǥ��� C<"\nEOF\n">��
-C<qq//> ��¤�ν����Ǥ��� C</>��
-C<qq[]> ��¤�ν����Ǥ��� C<]>��
-C<< < >> �ǻϤޤ�ե����륰���֤ν����Ǥ��� C<< > >> �ʤɤǤ���
+最初のパスはクォートされた構造の最後を探すことです。
+C<<<EOF> 構造の複数文字デリミタである C<"\nEOF\n">、
+C<qq//> 構造の終わりである C</>、
+C<qq[]> 構造の終わりである C<]>、
+C<< < >> で始まるファイルグロブの終わりである C<< > >> などです。
 
 =begin original
 
@@ -3156,12 +3156,12 @@ delimiters, nothing is skipped.
 
 =end original
 
-C</>�Τ褦�ˡ�1 ʸ���ǥڥ��Ǥʤ��ǥ�ߥ���õ����硢
-C<\\> �� C<\/> ���ɤ����Ф��ޤ���
-��������C<[>�Τ褦�� 1 ʸ���ǥڥ��ˤʤ�ǥ�ߥ��ξ�硢
-C<\\>, C<\]>, C<\[> ���ɤ����Ф���
-����˥ͥ��Ȥ��� C<[>, C<]> ���ɤ����Ф��ޤ���
-ʣ��ʸ���Υǥ�ߥ��ξ�硢�����ɤ����Ф��ޤ���
+C</>のように、1 文字でペアでないデリミタを探す場合、
+C<\\> と C<\/> を読み飛ばします。
+しかし、C<[>のように 1 文字でペアになるデリミタの場合、
+C<\\>, C<\]>, C<\[> を読み飛ばし、
+さらにネストした C<[>, C<]> も読み飛ばします。
+複数文字のデリミタの場合、何も読み飛ばしません。
 
 =begin original
 
@@ -3170,8 +3170,8 @@ C<tr///>), the search is repeated once more.
 
 =end original
 
-3 �ĤΥǥ�ߥ�����ʤ빽¤ (C<s///>, C<y///>, C<tr///>) �ξ�硢
-�����Ϥ⤦���ٷ����֤���ޤ���
+3 つのデリミタからなる構造 (C<s///>, C<y///>, C<tr///>) の場合、
+検索はもう一度繰り返されます。
 
 =begin original
 
@@ -3180,7 +3180,7 @@ Thus:
 
 =end original
 
-��������֡���¤��ʸ̮�Ϲ�θ���ޤ��󡣽��äơ�
+検索する間、構造の文脈は考慮しません。従って、
 
     "$hash{"$foo/$bar"}"
 
@@ -3190,7 +3190,7 @@ or:
 
 =end original
 
-�䡢
+や、
 
     m/ 
       bar	# NOT a comment, this slash / terminated m//!
@@ -3206,16 +3206,16 @@ modifier.  So the embedded C<#> is interpreted as a literal C<#>.
 
 =end original
 
-����������������ɽ���ǤϤ���ޤ���
-�������ȤϺǽ�� C<"> �� C</> �ǽ����Ȥʤꡢ
-�Ĥ����ʬ��ʸˡ���顼�Ȥʤ�ޤ���
-C<m//> �򽪤�餻�Ƥ��륹��å���μ�����Ƥ���Τ� C<����> �ʤΤǡ�
-�����Ǥ� C<m//x> �ǤϤʤ���C</x> �ʤ��� C<m//> �Ȥʤ�ޤ���
-���äơ���ˤ��� C<#> �ϥ�ƥ��� C<#> �Ȥ��ư����ޤ���
+は正しいクォート表現ではありません。
+クォートは最初の C<"> や C</> で終わりとなり、
+残りの部分は文法エラーとなります。
+C<m//> を終わらせているスラッシュの次に来ているのが C<空白> なので、
+上の例では C<m//x> ではなく、C</x> なしの C<m//> となります。
+従って、中にある C<#> はリテラルな C<#> として扱われます。
 
 =item Removal of backslashes before delimiters
 
-(�ǥ�ߥ������ΥХå�����å���κ��)
+(デリミタの前のバックスラッシュの削除)
 
 =begin original
 
@@ -3228,12 +3228,12 @@ Note that the combination C<\\> is left intact, just as it was.
 
 =end original
 
-����Υѥ��Ȥ��ơ����ϥǥ�ߥ��Ƚ�λ�ǥ�ߥ��δ֤Υƥ����Ȥ�
-�����ʾ��˥��ԡ����졢C<\> �ȥǥ�ߥ����Ȥ߹�碌����
-C<\> �������ޤ���
-���ϥǥ�ߥ��Ƚ�λ�ǥ�ߥ����ۤʤ���Ϥ���ξ�����Ф��ƤǤ���
-���κ����ʣ��ʸ���ǥ�ߥ����Ф��ƤϹԤ��ޤ���
-���ޤǤ�Ʊ�͡�C<\\> �Ϥ��Τޤ޻Ĥ���뤳�Ȥ����դ��Ƥ���������
+第二のパスとして、開始デリミタと終了デリミタの間のテキストは
+安全な場所にコピーされ、C<\> とデリミタの組み合わせから
+C<\> を削除します。
+開始デリミタと終了デリミタが異なる場合はその両方に対してです。
+この削除は複数文字デリミタに対しては行われません。
+今までと同様、C<\\> はそのまま残されることに注意してください。
 
 =begin original
 
@@ -3242,12 +3242,12 @@ used in parsing.
 
 =end original
 
-���Υ��ƥåפγ��Ϥ��顢�ǥ�ߥ��˴ؤ������ϰ��ڥѡ����ˤ�
-�Ȥ��ޤ���
+このステップの開始から、デリミタに関する情報は一切パースには
+使われません。
 
 =item Interpolation
 
-(ʸ���Ѵ�)
+(文字変換)
 
 =begin original
 
@@ -3256,8 +3256,8 @@ delimiter-independent.  There are four different cases.
 
 =end original
 
-���Υ��ƥåפϡ�����줿(�ǥ�ߥ��˰�¸���ʤ�)�ƥ����Ȥ��Ф���ʸ���Ѵ��Ǥ���
-4 �ĤΥ�����������ޤ���
+次のステップは、得られた(デリミタに依存しない)テキストに対する文字変換です。
+4 つのケースがあります。
 
 =over 4
 
@@ -3269,7 +3269,7 @@ No interpolation is performed.
 
 =end original
 
-ʸ���Ѵ��ϹԤ��ޤ���
+文字変換は行われません。
 
 =item C<''>, C<q//>
 
@@ -3279,7 +3279,7 @@ The only interpolation is removal of C<\> from pairs C<\\>.
 
 =end original
 
-C<\\> ���Ȥˤ����� C<\> �κ���Τߤ��Ԥ��ޤ���
+C<\\> の組における C<\> の削除のみが行われます。
 
 =item C<"">, C<``>, C<qq//>, C<qx//>, C<< <file*glob> >>
 
@@ -3292,11 +3292,11 @@ The other combinations are replaced with appropriate expansions.
 
 =end original
 
-C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> (�����餯�� C<\E> �Ȥ���)��
-�б����� Perl ��¤���Ѵ�����ޤ���
-���äơ�C<"$foo\Qbaz$bar"> ������Ū��
-C<$foo . (quotemeta("baz" . $bar))> ���Ѵ�����ޤ���
-����¾���Ȥ߹�碌��Ŭ�ڤʳ�ĥ���ִ�����ޤ���
+C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> (おそらくは C<\E> との組)は
+対応する Perl 構造に変換されます。
+従って、C<"$foo\Qbaz$bar"> は内部的に
+C<$foo . (quotemeta("baz" . $bar))> に変換されます。
+その他の組み合わせは適切な拡張に置換されます。
 
 =begin original
 
@@ -3310,14 +3310,14 @@ as C<"\\\t"> (since TAB is not alphanumeric).  Note also that:
 
 =end original
 
-I<C<\Q> �� C<\E> �δ֤ˤ������ƤΤ��> ���̾����ˡ��Ÿ������ޤ���
-C<"\Q\\E"> �Τ褦�ʤ�Τ������ˤ���Τ� C<\E> �ǤϤʤ���
-C<\Q>, C<\\>, C<E> �Ǥ���Τǡ���̤� C<"\\\\E"> ��Ʊ���ˤʤ�ޤ���
-����Ū�ʥ롼��Ȥ��ơ�C<\Q> �� C<\E> �δ֤ˤ���Хå�����å����
-ľ����ȿ������̤ˤʤ�ޤ���
-����ǡ�C<"\Q\t\E"> �� C<quotemeta("\t")> ���Ѵ����졢�����(TAB ��
-�ѿ����ǤϤʤ��Τ� C<"\\\t"> ��Ʊ���Ǥ���
-�ʲ��Τ褦�ʤ��Ȥˤ����դ��Ƥ�������:
+I<C<\Q> と C<\E> の間にある全てのもの> が通常の方法で展開されます。
+C<"\Q\\E"> のようなものは内部にあるのは C<\E> ではなく、
+C<\Q>, C<\\>, C<E> であるので、結果は C<"\\\\E"> と同じになります。
+一般的なルールとして、C<\Q> と C<\E> の間にあるバックスラッシュは
+直感に反した結果になります。
+それで、C<"\Q\t\E"> は C<quotemeta("\t")> に変換され、これは(TAB は
+英数字ではないので C<"\\\t"> と同じです。
+以下のようなことにも注意してください:
 
   $str = '\t';
   return "\Q$str";
@@ -3328,7 +3328,7 @@ may be closer to the conjectural I<intention> of the writer of C<"\Q\t\E">.
 
 =end original
 
-����� C<"\Q\t\E"> ��񤤤��ͤβ�¬��� I<�տ�> �ˤ��ᤤ�Ǥ���
+これは C<"\Q\t\E"> を書いた人の憶測上の I<意図> により近いです。
 
 =begin original
 
@@ -3337,8 +3337,8 @@ C<.> catenation operations.  Thus, C<"$foo XXX '@arr'"> becomes:
 
 =end original
 
-Ÿ�����줿������������������ C<join> �� C<.> �η�������Ѵ�����ޤ���
-���äơ�C<"$foo XXX '@arr'"> �ϰʲ��Τ褦�ˤʤ�ޤ�:
+展開されたスカラと配列は内部で C<join> と C<.> の結合操作に変換されます。
+従って、C<"$foo XXX '@arr'"> は以下のようになります:
 
   $foo . " XXX '" . (join $", @arr) . "'";
 
@@ -3348,7 +3348,7 @@ All operations above are performed simultaneously, left to right.
 
 =end original
 
-�嵭�����Ƥ����ϡ������鱦��Ʊ���˹Ԥ��ޤ���
+上記の全ての操作は、左から右に同時に行われます。
 
 =begin original
 
@@ -3360,11 +3360,11 @@ scalar.
 
 =end original
 
-C<"\Q STRING \E"> �η�̤����ƤΥ᥿ʸ�����������Ȥ���Ƥ���Τǡ�
-C<\Q\E> ���Ȥ���¦�˥�ƥ��� C<$> �� C<@> ������������ˡ�Ϥ���ޤ���
-C<\> �ˤ�äƼ���Ƥ����硢C<$> �ϥ������Ȥ���� C<"\\\$"> ��
-�ʤ�ޤ���
-�����Ǥʤ���硢�����Ÿ������륹�����ѿ��γ��ϤȤ��Ʋ�ᤵ��ޤ���
+C<"\Q STRING \E"> の結果は全てのメタ文字がクォートされているので、
+C<\Q\E> の組の内側にリテラルの C<$> や C<@> を挿入する方法はありません。
+C<\> によって守られている場合、C<$> はクォートされて C<"\\\$"> と
+なります。
+そうでない場合、これは展開されるスカラ変数の開始として解釈されます。
 
 =begin original
 
@@ -3374,13 +3374,13 @@ C<< "a $b -> {c}" >> really means:
 
 =end original
 
-Ÿ�������ɤϡ�Ÿ�����륹�����ѿ����ɤ��ǽ���뤫����ꤹ��ɬ�פ�
-���뤳�Ȥˤ����դ��Ƥ���������
-�㤨�С�C<< "a $b -> {c}" >> ���ºݤˤϰʲ��Τ褦�ˤʤ뤫:
+展開コードは、展開するスカラ変数がどこで終わるかを決定する必要が
+あることにも注意してください。
+例えば、C<< "a $b -> {c}" >> が実際には以下のようになるか:
 
   "a " . $b . " -> {c}";
 
-�ʲ��Τ褦�ˤʤ뤫�Ǥ�:
+以下のようになるかです:
 
   "a " . $b -> {c};
 
@@ -3394,11 +3394,11 @@ Fortunately, it's usually correct for ambiguous cases.
 
 =end original
 
-�ۤȤ�ɤξ�硢���Ǥȡ��ޥå������椫�ä����礫�ä��δ֤˶����ޤޤʤ���
-�Ǥ�Ĺ���ƥ����Ȥˤʤ�ޤ���
-���Ϥ�ȯ��Ū�ʿ���������ɼ�ˤ�äƷ��ꤵ���Τǡ���̤ϸ�̩�ˤ�
-ͽ¬�Ǥ��ޤ���
-������ʶ��路�����Ǥ����̤��������Ǥ���
+ほとんどの場合、要素と、マッチする中かっこや大かっこの間に空白を含まない、
+最も長いテキストになります。
+出力は発見的な推定器をよる投票によって決定されるので、結果は厳密には
+予測できません。
+幸い、紛らわしい場合でも普通は正しいです。
 
 =item C<?RE?>, C</RE/>, C<m/RE/>, C<s/RE/foo/>, 
 
@@ -3414,12 +3414,12 @@ of the C<//x> modifier is relevant.
 
 =end original
 
-C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> �ν�����Ÿ���� C<qq//> ��¤��(�ۤȤ��)
-Ʊ���褦�˵�����ޤ���, C<\> �θ������ɽ�����ü�ʸ��(C<\> ��ޤߤޤ�)��
-³�������ִ��ϹԤ��ޤ���
-����ˡ�C<(?{BLOCK})>, C<(?# comment )>, C<//x> ����ɽ���Ǥ� C<#> ��
-�����Ȥ���Ǥϡ��ɤΤ褦�ʽ�����Ԥ��ޤ���
-����� C<//x> �����Ҥ��ƶ���Ϳ����ǽ�Υ��ƥåפǤ���
+C<\Q>, C<\U>, C<\u>, C<\L>, C<\l> の処理と展開が C<qq//> 構造と(ほとんど)
+同じように起こりますが, C<\> の後に正規表現の特殊文字(C<\> を含みます)が
+続く場合の置換は行われません。
+さらに、C<(?{BLOCK})>, C<(?# comment )>, C<//x> 正規表現での C<#> の
+コメントの中では、どのような処理も行われません。
+これは C<//x> 修飾子が影響を与える最初のステップです。
 
 =begin original
 
@@ -3435,13 +3435,13 @@ the result is not predictable.
 
 =end original
 
-Ÿ���ǤϤ����Ĥ��ü��ư��򤷤ޤ�: C<$|>, C<$(>, C<$)> ��Ÿ�����줺��
-C<$var[SOMETHING]> ��(�����Ĥ��ΰۤʤ�����ˤ�ä�)��������Ǥ�
-C<$var> �θ������ɽ����³���Ƥ���Τ�����ɼ����ޤ���
-����� C<${arr[$bar]}> �������ˤʤ�Ȥ����Ǥ�: C</${arr[0-9]}/> ��
-�������� C<-9> �Ȥ��Ʋ�ᤵ�졢C</$arr[0-9]/> �ξ��Τ褦�� C<$arr> �θ��
-���ͤ�³���Ƥ���褦������ɽ���Ȥ��Ƥϲ�ᤵ��ޤ���
-�ۤʤä������ˤ�ä���ɼ����뤳�Ȥ�����Τǡ���̤�ͽ¬�Ǥ��ޤ���
+展開ではいくつか特殊な動作をします: C<$|>, C<$(>, C<$)> は展開されず、
+C<$var[SOMETHING]> は(いくつかの異なる推定器によって)配列の要素か
+C<$var> の後に正規表現が続いているのかが投票されます。
+これは C<${arr[$bar]}> が便利になるところです: C</${arr[0-9]}/> は
+配列要素 C<-9> として解釈され、C</$arr[0-9]/> の場合のように C<$arr> の後に
+数値が続いているような正規表現としては解釈されません。
+異なった推定器によって投票されることがあるので、結果は予測できません。
 
 =begin original
 
@@ -3453,11 +3453,11 @@ is emitted if the C<use warnings> pragma or the B<-w> command-line flag
 
 =end original
 
-���Υ��ƥåפǤϡ���������ʸˡ��ޤ�Ƴ�����Ƥ��ʤ�������館�ʤ� I<sed>
-�ϥå����Τ���ˡ�C<s///> ���ִ��ƥ����Ȥ���ˤ��� C<\1> �򡢤��֤��֤ʤ���
-C<$1> ���Ѵ����ޤ���
-C<use warnings> �ץ饰�ޤ䥳�ޥ�ɥ饤�󥪥ץ���� B<-w> (����� C<$^W>
-�ѿ��Ǥ�) �����åȤ���Ƥ���ȷٹ���������ޤ���
+このステップでは、より健全な文法をまだ導入していない、手に負えない I<sed>
+ハッカーのために、C<s///> の置換テキストの中にある C<\1> を、しぶしぶながら
+C<$1> に変換します。
+C<use warnings> プラグマやコマンドラインオプション B<-w> (これは C<$^W>
+変数です) がセットされていると警告が生成されます。
 
 =begin original
 
@@ -3473,15 +3473,15 @@ alphanumeric char, as in:
 
 =end original
 
-C<\\> ��������ʤ����Ȥˤ�ꡢ����������ƥ����Ȥ���������¤�����ޤ���
-�ǥ�ߥ��� C</> �ξ�硢���Υ��ƥåפη�̤Ȥ��� C<\/> �����뤳�Ȥ�
-�Ǥ��ޤ���
-C</> ������ɽ���򽪤�餻��C<\/> �����Υ��ƥåפ� C</> ��Ÿ�����졢
-C<\\/> �Ϥ��Τޤ޻Ĥ���ޤ���
-C</> ������ɽ������Ǥ� C<\/> �������ʤΤǡ�����Ϥ��ޤ��ޥǥ�ߥ���
-�����������󥸥�ˤȤä����̤�ʸ���ξ�硢�Ĥޤ� C<s*foo*bar*>,
-C<m[foo]>, C<?foo?> �Τ褦�ʾ�硢���뤤�ϰʲ��Τ褦�˱ѿ����Ǥʤ���С�
-����ˤϤʤ�ޤ���:
+C<\\> を処理しないことにより、後処理したテキストに特定の制限があります。
+デリミタが C</> の場合、このステップの結果として C<\/> を得ることは
+できません。
+C</> は正規表現を終わらせ、C<\/> は前のステップで C</> に展開され、
+C<\\/> はそのまま残されます。
+C</> は正規表現の中では C<\/> と等価なので、これはたまたまデリミタが
+正規検索エンジンにとって特別な文字の場合、つまり C<s*foo*bar*>,
+C<m[foo]>, C<?foo?> のような場合、あるいは以下のように英数字でなければ、
+問題にはなりません:
 
   m m ^ a \s* b mmx;
 
@@ -3495,10 +3495,10 @@ non-whitespace choices.
 
 =end original
 
-�嵭������ɽ���Ǥϡ������Τ���˰տ�Ū�ˤ狼��ˤ������Ƥ��ޤ�����
-�ǥ�ߥ��� C<m> �ǡ������Ҥ� C<mx> �ǡ��Хå�����å��������������
-����ɽ���� C<m/ ^ a s* b /mx>) ��Ʊ���Ǥ���
-�ǥ�ߥ���ѿ��������Ǥʤ���Τ����¤���٤��Ǥ�����ͳ��ʣ������ޤ���
+上記の正規表現では、説明のために意図的にわかりにくくしていますが、
+デリミタは C<m> で、修飾子は C<mx> で、バックスラッシュを取り除いた後の
+正規表現は C<m/ ^ a s* b /mx>) と同じです。
+デリミタを英数字や空白でないものに制限するべきである理由は複数あります。
 
 =back
 
@@ -3509,12 +3509,12 @@ which are processed further.
 
 =end original
 
-���������ɽ���ʳ������Ƥι�¤�ˤȤäƺǸ�Υ��ƥåפǤ���
-����ɽ���Ϥ���˽�����³���ޤ���
+これは正規表現以外の全ての構造にとって最後のステップです。
+正規表現はさらに処理が続きます。
 
 =item Interpolation of regular expressions
 
-(����ɽ����ʸ���Ѵ�)
+(正規表現の文字変換)
 
 =begin original
 
@@ -3527,12 +3527,12 @@ resulting I<string> is passed to the RE engine for compilation.
 
 =end original
 
-�����Υ��ƥåפ� Perl �����ɤΥ���ѥ�����˼¹Ԥ���ޤ�����
-����ϼ¹Ի��˵�����ޤ� -- ���������⤷Ŭ�ڤʤ饳��ѥ������
-�׻��Ǥ���褦�˺�Ŭ������뤳�Ȥ⤢��ޤ���
-�嵭���������θ塢������ɬ�פʤ�Ϣ�롢��硢��ʸ����ʸ���Ѵ���
-�᥿�������Ȳ����Ԥ�줿�塢��̤� I<ʸ����> ������ѥ���Τ����
-����ɽ�����󥸥���Ϥ���ޤ���
+以前のステップは Perl コードのコンパイル中に実行されますが、
+これは実行時に起こります -- しかし、もし適切ならコンパイル時に
+計算できるように最適化されることもあります。
+上記の前処理の後、そして必要なら連結、結合、大文字小文字変換、
+メタクォート化が行われた後、結果の I<文字列> がコンパイルのために
+正規表現エンジンに渡されます。
 
 =begin original
 
@@ -3541,8 +3541,8 @@ but for the sake of continuity, we shall do so here.
 
 =end original
 
-����ɽ�����󥸥�ǵ����뤳�ȤˤĤ��Ƥ� L<perlre> �ǵ�����������
-�褤�Ǥ��礦������³���Τ���ˡ������Ǥ����Ԥ��ޤ���
+正規表現エンジンで起こることについては L<perlre> で議論した方が
+よいでしょうが、継続性のために、ここでそれを行います。
 
 =begin original
 
@@ -3552,9 +3552,9 @@ converts it to a finite automaton.
 
 =end original
 
-����� C<//x> �����Ҥ�¸�ߤ���Ϣ���륹�ƥåפΰ�ĤǤ���
-����ɽ�����󥸥��ʸ����򺸤��鱦�˥�����󤷤ơ�ͭ�¾��֥����ȥޥȥ��
-�Ѵ����ޤ���
+これも C<//x> 修飾子の存在が関連するステップの一つです。
+正規表現エンジンは文字列を左から右にスキャンして、有限状態オートマトンに
+変換します。
 
 =begin original
 
@@ -3568,14 +3568,14 @@ whitespace and C<#>-style comments if C<//x> is present).
 
 =end original
 
-�Хå�����å����դ���ʸ����(C<\{> �Τ褦��)�б������ƥ��ʸ�����
-�ִ�����뤫�����뤤��(C<\b> �Τ褦��)ͭ�¾��֥����ȥޥȥ�����̤�
-�Ρ��ɤ��������ޤ���
-(C<|> �Τ褦��)����ɽ�����󥸥�ˤȤä����̤�ʸ�����б�����Ρ��ɤ�
-�Ρ��ɤΥ��롼�פ��������ޤ���
-�Ĥ�����Ƥϥޥå������ƥ��ʸ������Ѵ�����뤫�������Ǥʤ����
-(C<//x> �����ꤵ�줿���ζ���� C<#> ��������Υ����Ȥ�Ʊ�ͤ�)
-̵�뤵��ޤ���
+バックスラッシュ付きの文字は(C<\{> のように)対応するリテラル文字列に
+置換されるか、あるいは(C<\b> のように)有限状態オートマトンの特別な
+ノードを生成します。
+(C<|> のような)正規表現エンジンにとって特別な文字は対応するノードか
+ノードのグループを生成します。
+残りの全てはマッチするリテラル文字列に変換されるか、そうでなければ
+(C<//x> が指定された時の空白と C<#> スタイルのコメントと同様に)
+無視されます。
 
 =begin original
 
@@ -3590,12 +3590,12 @@ terminator of a C<{}>-delimited construct.
 
 =end original
 
-ʸ�����饹��¤ C<[...]> �Υѡ�����¾�Υѥ�����Ȥϥ롼�뤬�ۤʤ�ޤ���
-���ι�¤�ν�ü�� C<{}> �ǥǥ�ߥ����줿��¤�ν�ü�򸡺�����Τ�Ʊ���롼���
-��������ޤ�; ͣ����㳰�ϡ�C<[> ��ľ��� C<]> �ϥХå�����å��夬
-��Ԥ��Ƥ����ΤȤ��ư����ޤ���
-Ʊ�ͤˡ�C<(?{...})> �ν�ü�� C<{}> �ǥǥ�ߥ����줿��¤�ν�ü��
-���������Τ�Ʊ���롼��Ǹ�������ޤ���
+文字クラス構造 C<[...]> のパースは他のパターンとはルールが異なります。
+この構造の終端は C<{}> でデリミタされた構造の終端を検索するのと同じルールで
+検索されます; 唯一の例外は、C<[> の直後の C<]> はバックスラッシュが
+先行しているものとして扱われます。
+同様に、C<(?{...})> の終端は C<{}> でデリミタされた構造の終端を
+検索されるのと同じルールで検索されます。
 
 =begin original
 
@@ -3606,15 +3606,15 @@ switch documented in L<perlrun/"Command Switches">.
 
 =end original
 
-����ɽ����Ϳ������ʸ����ȡ���̤Ȥ��Ƥ�ͭ�¾��֥����ȥޥȥ��ξ����
-�����Ǥ��ޤ���
-C<use L<re>> �ץ饰�ޤ� C<debug>/C<debugcolor> �����ȡ�
-L<perlrun/"Command Switches"> �˵��Ҥ���Ƥ��� B<-Dr> ���ޥ�ɥ饤��
-���ץ����򻲾Ȥ��Ƥ���������
+正規表現に与えられる文字列と、結果としての有限状態オートマトンの両方を
+検査できます。
+C<use L<re>> プラグマの C<debug>/C<debugcolor> 引数と、
+L<perlrun/"Command Switches"> に記述されている B<-Dr> コマンドライン
+オプションを参照してください。
 
 =item Optimization of regular expressions
 
-(����ɽ���κ�Ŭ��)
+(正規表現の最適化)
 
 =begin original
 
@@ -3625,11 +3625,11 @@ automaton that was generated during the previous pass.
 
 =end original
 
-���Υ��ƥåפϴ������Τ�������˥ꥹ�Ȥ���Ƥ��ޤ���
-����ϰ�̣��Ū�ˤ��Ѳ����ʤ��Τǡ����Υ��ƥåפξܺ٤�ʸ�񲽤���Ƥ��餺��
-����ͽ��ʤ����ѹ�����뤳�Ȥ�����ޤ���
-���Υ��ƥåפϤ����ޤǤν������������줿ͭ�¥����ȥޥȥ���Ф���
-Ŭ�Ѥ���ޤ���
+このステップは完全性のためだけにリストされています。
+これは意味論的には変化がないので、このステップの詳細は文書化されておらず、
+将来予告なしに変更されることがあります。
+このステップはここまでの処理で生成された有限オートマトンに対して
+適用されます。
 
 =begin original
 
@@ -3638,13 +3638,13 @@ mean C</^/m>.
 
 =end original
 
-C<split()> �� C</^/> ����ۤ� C</^/m> �˺�Ŭ������Τ⤳�Υ��ƥåפǤ���
+C<split()> で C</^/> を暗黙に C</^/m> に最適化するのもこのステップです。
 
 =back
 
 =head2 I/O Operators
 
-(I/O �黻��)
+(I/O 演算子)
 
 =begin original
 
@@ -3652,7 +3652,7 @@ There are several I/O operators you should know about.
 
 =end original
 
-�ΤäƤ����������褤 I/O �黻�Ҥ⤤���Ĥ�����ޤ���
+知っておいた方がよい I/O 演算子もいくつかあります。
 
 =begin original
 
@@ -3675,25 +3675,25 @@ security concerns.)
 
 =end original
 
-�Хå��������Ȥǳ��줿ʸ����ϡ��ޤ������֥륯�������䴰�Τ褦��
-�ѿ���Ÿ�����Ԥʤ��ޤ���
-���θ塢������Ǥξ���Ʊ���褦�ˡ��������ޥ�ɤȤ��Ʋ�ᤵ�졢
-���Υ��ޥ�ɤν��Ϥ����ΥХå���������ʸ������ͤȤʤ�ޤ���
-�����顼����ƥ����ȤǤϡ����Ϥ��٤Ƥ�ޤ��Ĥ�ʸ�����֤���ޤ���
-�ꥹ�ȥ���ƥ����ȤǤϡ����Ϥ� 1 �� 1 �Ԥ��ġ������ǤȤʤ�ꥹ�Ȥ��֤���ޤ���
-(C<$/> �����ꤹ��С��Ԥν����򼨤�ʸ�����Ѥ��뤳�Ȥ��Ǥ��ޤ���)
-���ޥ�ɤϡ����ε�����ƥ�뤬ɾ������뤴�Ȥ˼¹Ԥ���ޤ���
-���ޥ�ɤΥ��ơ������ͤ� C<$?> ���֤���ޤ� (C<$?> �β��ˤĤ��Ƥϡ�
-L<perlvar> �򻲾Ȥ��Ƥ�������)��
-B<csh> �Ǥξ��Ȥϰ�äơ���̤Υǡ������Ф����Ѵ��ϹԤʤ�줺��
-���Ԥϲ��ԤΤޤޤǤ���
-�ɤΥ�����Ȥ��äơ����󥰥륯�����Ȥ����ޥ������ѿ�̾��
-��ᤵ���ʤ��褦�ˤ��뤳�ȤϤ���ޤ���
-������˥�ƥ��ʥɥ뵭����Ϥ��ˤϡ��Хå�����å����
-���������פ��ʤ���Фʤ�ޤ���
-�Хå��������Ȥΰ��̷��ϡ�C<qx//> �Ǥ���
-(�Хå��������ȤϾ�˥�����Ÿ������ޤ���
-�������ƥ��˴ؤ��Ƥ� L<perlsec> �򻲾Ȥ��Ʋ�����)
+バッククォートで括られた文字列は、まず、ダブルクォート補完のように
+変数の展開が行なわれます。
+その後、シェルでの場合と同じように、外部コマンドとして解釈され、
+そのコマンドの出力がこのバッククォート文字列の値となります。
+スカラーコンテキストでは、出力すべてを含む一個の文字列が返されます。
+リストコンテキストでは、出力の 1 行 1 行が個々の要素となるリストが返されます。
+(C<$/> を設定すれば、行の終わりを示す文字を変えることができます。)
+コマンドは、この擬似リテラルが評価されるごとに実行されます。
+コマンドのステータス値は C<$?> に返されます (C<$?> の解釈については、
+L<perlvar> を参照してください)。
+B<csh> での場合とは違って、結果のデータに対する変換は行なわれず、
+改行は改行のままです。
+どのシェルとも違って、シングルクォートがコマンド中の変数名を
+解釈させないようにすることはありません。
+シェルにリテラルなドル記号を渡すには、バックスラッシュで
+エスケープしなければなりません。
+バッククォートの一般形は、C<qx//> です。
+(バッククォートは常にシェル展開されます。
+セキュリティに関しては L<perlsec> を参照して下さい)
 
 =begin original
 
@@ -3705,13 +3705,13 @@ returns C<''> the first time, followed by C<undef> subsequently.
 
 =end original
 
-�����顼����ƥ����Ȥǻ���̤���Υե�����ϥ�ɥ��ɾ������ȡ�
-���Υե����뤫�顢���ιԤ��ɤ߹��ळ�Ȥˤʤ�ޤ�
-(���Ԥ�����Ф����ޤޤ�ޤ�)��
-�ե�����κǸ�ޤ��ϥ��顼�ξ��� C<undef> ���֤��ޤ���
-C<$/> �� C<undef> �����ꤵ��Ƥ�����(�ե�����ۤ����ߥ⡼�ɤȸƤФ�ޤ�)
-�ǥե����뤬���ξ�硢
-�ǽ�� C<''> ���֤������� C<undef> ���֤��ޤ���
+スカラーコンテキストで山括弧の中のファイルハンドルを評価すると、
+そのファイルから、次の行を読み込むことになります
+(改行があればそれも含まれます)。
+ファイルの最後またはエラーの場合は C<undef> を返します。
+C<$/> が C<undef> に設定されている場合(ファイル吸い込みモードと呼ばれます)
+でファイルが空の場合、
+最初は C<''> を返し、次は C<undef> を返します。
 
 =begin original
 
@@ -3730,17 +3730,17 @@ The following lines are equivalent:
 
 =end original
 
-�̾�ϡ��֤��줿�ͤ��ѿ����������ʤ���Фʤ�ޤ��󤬡���ưŪ��
-����������礬 1 �Ĥ�������ޤ���
-�������ϥ���ܥ뤬��while ʸ(C<for(;;)> �η��ˤʤäƤ����Ȥ��Ƥ�)�ξ�Ｐ���
-ñ�ȤǸ��줿�������ϡ������ͤ���ưŪ�˥������Х��ѿ� $_ ����������ޤ���
-�������ͤ��˲�����ޤ���
-(����ϡ���̯�˻פ��뤫�⤷��ޤ��󤬡��ۤȤ�ɤ��٤Ƥ� Perl ������ץȤ�
-���줬ɬ�פˤʤ뤳�ȤǤ��礦��)
-$_ �ѿ��ϰ��ۤˤϥ������벽����ޤ���
-�������������ϥ롼�פ����� C<local $_;> �Ƚ�ɬ�פ�����ޤ���
+通常は、返された値を変数に代入しなければなりませんが、自動的に
+代入される場合が 1 つだけあります。
+この入力シンボルが、while 文(C<for(;;)> の形になっていたとしても)の条件式中に
+単独で現れた場合だけは、その値が自動的にグローバル変数 $_ に代入されます。
+以前の値は破壊されます。
+(これは、奇妙に思えるかもしれませんが、ほとんどすべての Perl スクリプトで
+これが必要になることでしょう。)
+$_ 変数は暗黙にはローカル化されません。
+そうしたい場合はループの前に C<local $_;> と書く必要があります。
 
-�ʲ��Τ�Τϡ����ߤ���Ʊ�ͤʤ�ΤǤ�:
+以下のものは、お互いに同値なものです:
 
     while (defined($_ = <STDIN>)) { print; }
     while ($_ = <STDIN>) { print; }
@@ -3756,7 +3756,7 @@ This also behaves similarly, but avoids $_ :
 
 =end original
 
-�ʲ���Ʊ�ͤο����񤤤򤷤ޤ�����$_ ��Ȥ��ޤ���:
+以下は同様の振る舞いをしますが、$_ を使いません:
 
     while (my $line = <STDIN>) { print $line }    
 
@@ -3771,12 +3771,12 @@ to terminate the loop, they should be tested for explicitly:
 
 =end original
 
-�����Υ롼�׹�¤����ǡ��������줿�ͤ� (��������ư������Ū���˴ؤ��ʤ�)
-�������Ƥ��뤫�ɤ����򸫤뤿��˥ƥ��Ȥ���ޤ���
-����ƥ��Ȥϡ��Ԥ� Perl �ˤȤäƵ��Ȥʤ�ʸ�����ͤ���äƤ��뤫�ɤ�����
-������򤱤ޤ����㤨�� newline �ΤĤ��Ƥ��ʤ�  "" �� "0" �Ǥ���
-�⤷�����ˤ��Τ褦���ͤǥ롼�פ�λ���������Ȥ��ϡ�
-�ʲ��Τ褦������Ū�˥ƥ��Ȥ���٤��Ǥ�:
+これらのループ構造の中で、代入された値は (代入が自動か明示的かに関わりなく)
+定義されているかどうかを見るためにテストされます。
+定義テストは、行が Perl にとって偽となる文字列値を持っているかどうかの
+問題を避けます。例えば newline のついていない  "" や "0" です。
+もし本当にこのような値でループを終了させたいときは、
+以下のように明示的にテストするべきです:
 
     while (($_ = <STDIN>) ne '0') { ... }
     while (<STDIN>) { last unless $_; ... }
@@ -3790,10 +3790,10 @@ command-line switch (the C<$^W> variable) is in effect.
 
 =end original
 
-����¾�Υ֡����ͥ���ƥ����ȤǤϡ�����Ū�� C<defined> ����Ӥʤ���
-C<< <I<filehandle>> >> ��Ȥ��ȡ�C<use warnings> �ץ饰�ޤ�
-B<-w> ���ޥ�ɥ饤�󥹥��å� (C<$^W> �ѿ�) ��ͭ���ʤȤ��ˤϡ�
-�ٹ��ȯ�������ޤ���
+その他のブール値コンテキストでは、明示的な C<defined> や比較なしに
+C<< <I<filehandle>> >> を使うと、C<use warnings> プラグマや
+B<-w> コマンドラインスイッチ (C<$^W> 変数) が有効なときには、
+警告を発生させます。
 
 =begin original
 
@@ -3806,13 +3806,13 @@ L<perlfunc/open> for details on this.
 
 =end original
 
-STDIN��STDOUT��STDERR �Ȥ����ե�����ϥ�ɥ�ϡ����餫�����������Ƥ��ޤ���
-(C<stdin>��C<stdout>��C<stderr> �Ȥ����ե�����ϥ�ɥ�⡢
-���������̾���Ǥ����Υ������Х��̾���������ʤ��ʤäƤ���
-�ѥå�����������С����Ѥ��뤳�Ȥ��Ǥ��ޤ���)
-����¾�Υե�����ϥ�ɥ�ϡ�open() �ؿ��ʤɤǺ�뤳�Ȥ��Ǥ��ޤ���
-����˴ؤ���ܺ٤ˤĤ��Ƥ� L<perlopentut> �� L<perlfunc/open> ��
-���Ȥ��Ʋ�������
+STDIN、STDOUT、STDERR というファイルハンドルは、あらかじめ定義されています。
+(C<stdin>、C<stdout>、C<stderr> というファイルハンドルも、
+ローカルな名前でこれらのグローバルな名前が見えなくなっている
+パッケージを除けば、使用することができます。)
+その他のファイルハンドルは、open() 関数などで作ることができます。
+これに関する詳細については L<perlopentut> と L<perlfunc/open> を
+参照して下さい。
 
 =begin original
 
@@ -3823,10 +3823,10 @@ way, so use with care.
 
 =end original
 
-<FILEHANDLE> ���ꥹ�Ȥ�ɬ�פȤ��륳��ƥ����Ȥ��Ѥ�����ȡ�
-1 ���Ǥ� 1 �Ԥ����ϹԤ��٤Ƥ���ʤ�ꥹ�Ȥ��֤���ޤ���
-�����Ȥ��ȴ�ñ�ˤ��ʤ��礭�ʥǡ����ˤʤäƤ��ޤ��ޤ��Τǡ�
-���դ��פ��ޤ���
+<FILEHANDLE> がリストを必要とするコンテキストで用いられると、
+1 要素に 1 行の入力行すべてからなるリストが返されます。
+これを使うと簡単にかなり大きなデータになってしまいますので、
+注意を要します。
 
 =begin original
 
@@ -3835,8 +3835,8 @@ See L<perlfunc/readline>.
 
 =end original
 
-<FILEHANDLE> �� C<readline(*FILEHANDLE)> �Ȥ�񤱤ޤ���
-L<perlfunc/readline> �򻲾Ȥ��Ʋ�������
+<FILEHANDLE> は C<readline(*FILEHANDLE)> とも書けます。
+L<perlfunc/readline> を参照して下さい。
 
 =begin original
 
@@ -3850,15 +3850,15 @@ of filenames.  The loop
 
 =end original
 
-�̥�ե�����ϥ�ɥ� <> �����̤ǡ�B<sed> �� B<awk> ��ư���
-���ߥ�졼�Ȥ��뤿��˻Ȥ��ޤ���
-<> ��������Ϥϡ�ɸ�����Ϥ��餫�����ޥ�ɥ饤�����¤٤�줿�ġ���
-�ե����뤫��Ԥʤ��ޤ���
-ư��γ��פϡ��ʲ��Τ褦�ˤʤ�ޤ���
-�ǽ�� <> ��ɾ�������ȡ����� @ARGV ��Ĵ�٤�졢���Ǥ���С�
-C<$ARGV[0]> �� "-"�����ꤷ�ޤ���
-����ϡ�open �����Ȥ�ɸ�����ϤȤʤ�ޤ���
-���θ塢���� @ARGV ���ե�����̾�Υꥹ�ȤȤ��ƽ�������ޤ���
+ヌルファイルハンドル <> は特別で、B<sed> や B<awk> の動作を
+エミュレートするために使われます。
+<> からの入力は、標準入力からか、コマンドライン上に並べられた個々の
+ファイルから行なわれます。
+動作の概要は、以下のようになります。
+最初に <> が評価されると、配列 @ARGV が調べられ、空であれば、
+C<$ARGV[0]> に "-"を設定します。
+これは、open されるとき標準入力となります。
+その後、配列 @ARGV がファイル名のリストとして処理されます。
 
     while (<>) {
 	...			# code for each line
@@ -3870,7 +3870,7 @@ is equivalent to the following Perl-like pseudo code:
 
 =end original
 
-�ϰʲ��ΤΤ褦�� Perl �ε��������ɤ������Ǥ�:
+は以下ののような Perl の擬似コードと等価です:
 
     unshift(@ARGV, '-') unless @ARGV;
     while ($ARGV = shift) {
@@ -3891,13 +3891,13 @@ is magical.  (The pseudo code above doesn't work because it treats
 
 =end original
 
-â�����鷺��路���񤫤ʤ��Ƥ⡢ư��ޤ���
-�ºݤ� @ARGV �� shift ���ޤ��������λ����Υե�����̾���ѿ� $ARGV ��
-����Ƥ��ޤ���
-�ޤ�������Ū�˥ե�����ϥ�ɥ� ARGV ��ȤäƤ��ơ�<> �ϥޥ������
-<ARGV> ��Ʊ����ȤʤäƤ��ޤ���
-(�嵭�ε��������ɤϡ�<ARGV> ���̾�Τ�ΤȤ��ư��äƤ���Τǡ�
-���ޤ�ư��ޤ���)
+但し、わずらわしく書かなくても、動作します。
+実際に @ARGV を shift しますし、その時点のファイル名を変数 $ARGV に
+入れています。
+また、内部的にファイルハンドル ARGV を使っていて、<> はマジカルな
+<ARGV> の同義語となっています。
+(上記の擬似コードは、<ARGV> を通常のものとして扱っているので、
+うまく動作しません。)
 
 =begin original
 
@@ -3908,12 +3908,12 @@ in L<perlfunc/eof> for how to reset line numbers on each file.
 
 =end original
 
-�ǽ�Ū�ˡ�@ARGV �˰��������ȻפäƤ���ե�����̾���ޤޤ��ΤǤ���С�
-�ǽ�� <> ��ɾ���������� @ARGV ���ѹ����뤳�Ȥ��ǽ�Ǥ���
-���ֹ� (C<$.>) �ϡ����ϥե����뤬�������� 1 �Ĥ��礭�ʥե������
-���뤫�Τ褦�ˡ�³���ƥ�����Ȥ���ޤ���
-�ġ��Υե����뤴�Ȥ˥ꥻ�åȤ�����ˡ�ϡ�L<perlfunc/eof> �����
-���Ȥ��Ƥ���������
+最終的に、@ARGV に扱いたいと思っているファイル名が含まれるのであれば、
+最初に <> を評価する前に @ARGV を変更することも可能です。
+行番号 (C<$.>) は、入力ファイルがあたかも 1 つの大きなファイルで
+あるかのように、続けてカウントされます。
+個々のファイルごとにリセットする方法は、L<perlfunc/eof> の例を
+参照してください。
 
 =begin original
 
@@ -3922,9 +3922,9 @@ This sets @ARGV to all plain text files if no @ARGV was given:
 
 =end original
 
-�ǽ餫�� @ARGV �˼�ʬ�ǥե�����Υꥹ�Ȥ����ꤷ�Ƥ⤫�ޤ��ޤ���
-�ʲ��� @ARGV ��Ϳ�����ʤ��ä��Ȥ������ƤΥƥ����ȥե������
-@ARGV �����ꤷ�ޤ���
+最初から @ARGV に自分でファイルのリストを設定してもかまいません。
+以下は @ARGV が与えられなかったときに全てのテキストファイルを
+@ARGV に設定します。
 
     @ARGV = grep { -f && -T } glob('*') unless @ARGV;
 
@@ -3935,8 +3935,8 @@ filters compressed arguments through B<gzip>:
 
 =end original
 
-�����˥ѥ��ץ��ޥ�ɤ��֤����Ȥ����ޤ���
-�㤨�С��ʲ��ϰ��̤��줿������ưŪ�� B<gzip> �Υե��륿���̤��ޤ�:
+ここにパイプコマンドを置くことも出来ます。
+例えば、以下は圧縮された引数を自動的に B<gzip> のフィルタに通します:
 
     @ARGV = map { /\.(gz|Z)$/ ? "gzip -dc < $_ |" : $_ } @ARGV;
 
@@ -3947,8 +3947,8 @@ Getopts modules or put a loop on the front like this:
 
 =end original
 
-������ץȤ˥����å����Ϥ������ΤǤ���С�Getopts �⥸�塼���
-�Ȥ����Ȥ�Ǥ��ޤ������ºݤν��������ˤΤ褦�ʥ롼�פ��֤����Ȥ�Ǥ��ޤ���
+スクリプトにスイッチを渡したいのであれば、Getopts モジュールを
+使うこともできますし、実際の処理の前にのようなループを置くこともできます。
 
     while ($_ = $ARGV[0], /^-/) {
 	shift;
@@ -3970,10 +3970,10 @@ If you call it again after this, it will assume you are processing another
 
 =end original
 
-����ܥ� <> ���ե�����κǸ�� C<undef> ���֤��Τϰ��٤���Ǥ���
-���Τ��ȤǤ⤦���ٸƤӽФ��ȡ��������̤� @ARGV ����������ΤȤߤʤ��졢
-���λ��� @ARGV �����ꤷ�ʤ����Ƥ��ʤ��ȡ�STDIN ��������Ϥ�
-�ɤ߹��ळ�Ȥˤʤ�ޤ���
+シンボル <> がファイルの最後で C<undef> を返すのは一度きりです。
+そのあとでもう一度呼び出すと、新たに別の @ARGV を処理するものとみなされ、
+その時に @ARGV を設定しなおしていないと、STDIN からの入力を
+読み込むことになります。
 
 =begin original
 
@@ -3984,9 +3984,9 @@ same.  For example:
 
 =end original
 
-����̤����ʸ���� (<$foo> �Τ褦��) ñ�㥹�����ѿ���ϤäƤ���С�
-�����ѿ������Ϥ�Ԥʤ��ե�����ϥ�ɥ��̾�����Τ�Ρ�̾���ؤη������֡�
-̾���ؤΥ�ե���󥹤Τ����줫�򼨤��Ƥ���Ȥߤʤ���ޤ���
+山括弧の中の文字列が (<$foo> のような) 単純スカラ変数を囲っていれば、
+その変数が入力を行なうファイルハンドルの名前そのもの、名前への型グロブ、
+名前へのリファレンスのいずれかを示しているとみなされます。
 
     $fh = \*STDIN;
     $line = <$fh>;
@@ -4005,14 +4005,14 @@ not--it's a hash element.
 
 =end original
 
-����̤����ʸ���󤬥ե�����ϥ�ɥ�Ǥ�ե�����ϥ�ɥ�̾���������֡�
-�������֥�ե���󥹤Τ����줫�����ä�ñ�㥹�����ѿ��Ǥ�ʤ���С�
-�����֤�Ԥʤ��ե�����̾�Υѥ�����Ȳ�ᤵ�졢����ƥ����Ȥˤ�ä�
-�ե�����̾�Υꥹ�Ȥ������Υꥹ�Ȥμ��Υե�����̾���֤���ޤ���
-���ζ��̤�ñ�˹�ʸŪ�˹Ԥ��ޤ���
-C<< <$x> >> �Ͼ�˴��ܥϥ�ɥ뤫�� readline() ���ޤ�����
-C<< <$hash{key}> >> �Ͼ�� glob() ���ޤ���
-$x ��ñ�㥹���顼�ѿ��Ǥ�����C<$hash{key}> �ϰ㤦(�ϥå�������)����Ǥ���
+山括弧の中の文字列がファイルハンドルでもファイルハンドル名、型グロブ、
+型グロブリファレンスのいずれかが入った単純スカラ変数でもなければ、
+グロブを行なうファイル名のパターンと解釈され、コンテキストによって
+ファイル名のリストか、そのリストの次のファイル名が返されます。
+この区別は単に構文的に行われます。
+C<< <$x> >> は常に間接ハンドルから readline() しますが、
+C<< <$hash{key}> >> は常に glob() します。
+$x は単純スカラー変数ですが、C<$hash{key}> は違う(ハッシュ要素)からです。
 
 =begin original
 
@@ -4026,13 +4026,13 @@ way to have done it in the first place.)  For example:
 
 =end original
 
-�ޤ���1 �ʳ��������֥륯������Ÿ�����Ԥʤ��ޤ�������������˽񤤤�
-���ܥե�����ϥ�ɥ��Ʊ���ˤʤ롢C<< <$foo> >> �Τ褦�ˤϽ񤱤ޤ���
-(Perl �θŤ��С������Ǥϡ��ե�����̾�����֤Ȳ�ᤵ���뤿���
-C<< <${foo}> >> �Τ褦�����̤�����Ƥ��ޤ�����
-�Ƕ�ǤϤ�����Τˤ��뤿��ˡ�C<glob($foo)> �������ؿ���
-�Ƥ֤��Ȥ�Ǥ��ޤ���
-�����餯���ޤ�������������ǻ�Τ�����Ǥ��礦��)����:
+まず、1 段階だけダブルクォート展開が行なわれますが、前の段落に書いた
+間接ファイルハンドルと同じになる、C<< <$foo> >> のようには書けません。
+(Perl の古いバージョンでは、ファイル名グロブと解釈させるために
+C<< <${foo}> >> のように中括弧を入れていました。
+最近ではより明確にするために、C<glob($foo)> と内部関数を
+呼ぶこともできます。
+おそらく、まず、こちらの方で試すのが正解でしょう。)　例:
 
     while (<*.c>) {
 	chmod 0644, $_;
@@ -4044,7 +4044,7 @@ is roughly equivalent to:
 
 =end original
 
-�Ϥ��������ʲ��������Ǥ�:
+はだいたい以下と等価です:
 
     open(FOO, "echo *.c | tr -s ' \t\r\f' '\\012\\012\\012\\012'|");
     while (<FOO>) {
@@ -4059,8 +4059,8 @@ C<File::Glob> extension.  Of course, the shortest way to do the above is:
 
 =end original
 
-â���ºݤΥ����֤�����Ū��ɸ��� C<File::Glob> �⥸�塼���Ȥ��ޤ���
-������󡢤�äȴ�ñ�˰ʲ��Τ褦�˽񤱤ޤ�:
+但し実際のグロブは内部的に標準の C<File::Glob> モジュールを使います。
+もちろん、もっと簡単に以下のように書けます:
 
     chmod 0644, <*.c>;
 
@@ -4080,20 +4080,20 @@ say
 
 =end original
 
-(�ե�����)�����֤Ͽ������ꥹ�Ȥ򳫻Ϥ���Ȥ��ˤ���(�Ȥ߹��ߤ�)������
-ɾ�����ޤ���
-���Ƥ��ͤϳ��Ϥ��������ɤ߹���Ǥ��ʤ���Фʤ�ޤ���
-����ϥꥹ�ȥ���ƥ����ȤǤϡ��Ȥˤ�����ưŪ�����Ƥ������Τ�
-���פǤϤ���ޤ���
-�������������顼����ƥ����ȤǤϤ��α黻�ҤϸƤӽФ��줿����
-�����ͤ����ꥹ�Ȥ��ʤ��ʤä��Ȥ��ˤ� C<undef> ���֤��ޤ���
-�ե�����ϥ�ɥ���ɤ߹�����ϡ������֤� C<while> �ξ�����ˤ������
-��ưŪ�� C<defined> ����������ޤ���
-�ʤ��ʤ餽�����ʤ��ȡ������ glob ���֤��� (F<0> �Ȥ����ե�����) ��
-�롼�פ�λ�����뤫��Ǥ���
-�����Ǥ⡢C<undef> �ϰ��٤����֤���ޤ���
-���äơ��⤷�����֤����Ĥ��ͤ��������ꤷ�Ƥ����硢
-�ʲ��Τ褦�˽񤯤��Ȥ�:
+(ファイル)グロブは新しいリストを開始するときにだけ(組み込みの)引数を
+評価します。
+全ての値は開始する前に読み込んでいなければなりません。
+これはリストコンテキストでは、とにかく自動的に全てを取り込むので
+重要ではありません。
+しかし、スカラーコンテキストではこの演算子は呼び出された時の
+次の値か、リストがなくなったときには C<undef> を返します。
+ファイルハンドルを読み込む場合は、グロブが C<while> の条件部にある場合は
+自動的な C<defined> が生成されます。
+なぜならそうしないと、本来の glob の返り値 (F<0> というファイル) が
+ループを終了させるからです。
+ここでも、C<undef> は一度だけ返されます。
+従って、もしグロブから一つの値だけを想定している場合、
+以下のように書くことが:
 
     ($file) = <blurch*>;
 
@@ -4103,7 +4103,7 @@ than
 
 =end original
 
-�ʲ��Τ褦�˽񤯤��Ϥ뤫���ɤ��Ǥ�:
+以下のように書くよりはるかに良いです:
 
     $file = <blurch*>;
 
@@ -4114,7 +4114,7 @@ returning false.
 
 =end original
 
-�ʤ��ʤ��Ԥϥե�����̾���֤����ȵ����֤���礬���뤫��Ǥ���
+なぜなら後者はファイル名を返す場合と偽を返す場合があるからです。
 
 =begin original
 
@@ -4124,15 +4124,15 @@ to become confused with the indirect filehandle notation.
 
 =end original
 
-�ѿ��Ѵ���ĩ�魯���硢���餫�� glob() �ؿ���Ȥ������ɤ��Ǥ���
-�ʤ��ʤ�Ť�ɽ���ϴ��ܥե�����ϥ�ɥ�ɽ���Ⱥ��𤹤뤫���Τ�ʤ�����Ǥ���
+変数変換に挑戦する場合、明らかに glob() 関数を使う方が良いです。
+なぜなら古い表記は間接ファイルハンドル表記と混乱するかも知れないからです。
 
     @files = glob("$dir/*.[ch]");
     @files = glob($files[$i]);
 
 =head2 Constant Folding
 
-(����ξ��߹���)
+(定数の畳み込み)
 
 =begin original
 
@@ -4145,10 +4145,10 @@ compile time.  You can say
 
 =end original
 
-C ��Ʊ���褦�� Perl �Ǥ⡢�黻�Ҥ��Ф��뤹�٤Ƥΰ����������ƥ��å��ǡ�
-�����Ѥ��ʤ���Ƚ�ǤǤ���С�����ѥ�����˼���ɾ����ԤʤäƤ��ޤ��ޤ���
-�äˡ��ѿ��ִ���̵����ƥ��ɤ�����ʸ����Ϣ��ϥ���ѥ�����˹Ԥʤ��ޤ���
-�Хå�����å���β��⥳��ѥ�����˹Ԥʤ��ޤ���
+C と同じように Perl でも、演算子に対するすべての引数がスタティックで、
+副作用がないと判断できれば、コンパイル時に式の評価を行なってしまいます。
+特に、変数置換の無いリテラルどうしの文字列連結はコンパイル時に行なわれます。
+バックスラッシュの解釈もコンパイル時に行なわれます。
 
     'Now is the time for all' . "\n" .
 	'good men to come to.'
@@ -4160,7 +4160,7 @@ you say
 
 =end original
 
-�Ƚ񤤤Ƥ⡢����Ū�� 1 �Ĥ�ʸ����ˤʤ�ޤ���Ʊ�ͤ�
+と書いても、内部的に 1 つの文字列になります。同様に
 
     foreach $file (@filenames) {
 	if (-s $file > 5 + 100 * 2**16) {  }
@@ -4173,12 +4173,12 @@ represents so that the interpreter won't have to.
 
 =end original
 
-�Ƚ񤯤ȥ���ѥ���ϡ�����ɽ�魯���ͤ򤢤餫����׻����ޤ��Τǡ�
-���󥿥ץ꥿�Ƿ׻�����ɬ�פ��ʤ��ʤäƤ��ޤ���
+と書くとコンパイラは、式が表わす数値をあらかじめ計算しますので、
+インタプリタで計算する必要がなくなっています。
 
 =head2 Bitwise String Operators
 
-(�ӥå���黻��)
+(ビット列演算子)
 
 =begin original
 
@@ -4187,7 +4187,7 @@ Bitstrings of any size may be manipulated by the bitwise operators
 
 =end original
 
-Ǥ�դΥ������Υӥå���ϥӥå�ñ�̱黻��(C<~ | & ^>)�����Ǥ��ޤ���
+任意のサイズのビット列はビット単位演算子(C<~ | & ^>)で操作できます。
 
 =begin original
 
@@ -4200,11 +4200,11 @@ bytes.
 
 =end original
 
-���ӥå�ñ�̱黻�ҤΥ��ڥ��ɤ��ۤʤä�Ĺ����ʸ������ä���硢
-B<|> �� B<^> �α黻�Ҥ�û��¦�Υ��ڥ��ɤα�¦���ɲäΥ�����
-�Ĥ��Ƥ���Ȥߤʤ��ޤ���
-���� B<&> �黻�Ҥ�Ĺ�����Υ��ڥ��ɤ�û�������ڤ�ͤ���ޤ���
-���γ�ĥ��û�̤�γ�٤ϥХ���ñ�̤Ǥ���
+二項ビット単位演算子のオペランドが異なった長さの文字列だった場合、
+B<|> と B<^> の演算子は短い側のオペランドの右側に追加のゼロが
+ついているとみなします。
+一方 B<&> 演算子は長い方のオペランドが短い方に切り詰められます。
+この拡張や短縮の粒度はバイト単位です。
 
     # ASCII-based examples 
     print "j p \n" ^ " a h";        	# prints "JAPH\n"
@@ -4221,10 +4221,10 @@ operation you intend by using C<""> or C<0+>, as in the examples below.
 
 =end original
 
-�ӥå�������������ϡ��μ¤˥ӥå����Ϥ����褦�ˤ��Ƥ�������:
-���ڥ��ɤ������ξ�硢B<����> �ӥå�ñ�̱黻���ꤷ�ޤ���
-����Ū�˱黻�η�����ꤹ��Ȥ��ˤϡ��ʲ�����Τ褦��
-C<""> �� C<0+> ��ȤäƤ���������
+ビット列を操作したい場合は、確実にビット列が渡されるようにしてください:
+オペランドが数字の場合、B<数値> ビット単位演算を仮定します。
+明示的に演算の型を指定するときには、以下の例のように
+C<""> か C<0+> を使ってください。
 
     $foo =  150  |  105 ;	# yields 255  (0x96 | 0x69 is 0xFF)
     $foo = '150' |  105 ;	# yields 255
@@ -4241,12 +4241,12 @@ in a bit vector.
 
 =end original
 
-�ӥåȥ٥����θġ��ΥӥåȤ�ɤΤ褦�����뤫�ξ���ˤĤ��Ƥ�
-L<perlfunc/vec> �򻲾Ȥ��Ʋ�������
+ビットベクタの個々のビットをどのように操作するかの情報については
+L<perlfunc/vec> を参照して下さい。
 
 =head2 Integer Arithmetic
 
-(�����黻)
+(整数演算)
 
 =begin original
 
@@ -4255,9 +4255,9 @@ floating point.  But by saying
 
 =end original
 
-�ǥե���ȤǤϡ�Perl �ϱ黻����ư�����ǹԤʤ�ʤ���Фʤ�ʤ���Τ�
-���Ƥ��ޤ���
-��������(�⤷�����������ʤ�)
+デフォルトでは、Perl は演算を浮動小数で行なわなければならないものと
+しています。
+しかし、(もしそうしたいなら)
 
     use integer;
 
@@ -4269,9 +4269,9 @@ An inner BLOCK may countermand this by saying
 
 =end original
 
-�Ƚ񤱤С����ξ�꤫�鸽�ߤ� BLOCK �ν����ޤǤϡ������黻��
-�ԤʤäƤ褤�ȡ�����ѥ���˻ؼ����뤳�Ȥ��Ǥ��ޤ���
-������ BLOCK �ǡ�
+と書けば、その場所から現在の BLOCK の終わりまでは、整数演算を
+行なってよいと、コンパイラに指示することができます。
+内部の BLOCK で、
 
     no integer;
 
@@ -4285,13 +4285,13 @@ or so.
 
 =end original
 
-�Ƚ񤱤С����� BLOCK �ν����ޤǤϡ��ؼ�����ä����Ȥˤʤ�ޤ���
-��������Ƥ�����������Ȥäƽ������뤳�Ȥ��̣����櫓�ǤϤʤ����Ȥ�
-���դ��Ƥ���������
-�����ñ�� Perl ��������Ȥ������Ȼפä��Ȥ��˻Ȥ����⤷��ʤ���
-�Ȥ��������Ǥ���
-�㤨�С�C<use integer> �λ��꤬���äƤ⡢C<sqrt(2)> �Ȥ���ȡ�
-C<1.4142135623731> �Ȥ��ä���̤��֤äƤ��ޤ���
+と書けば、その BLOCK の終わりまでは、指示を取り消すことになります。
+これは全てを整数だけを使って処理することを意味するわけではないことに
+注意してください。
+これは単に Perl が整数を使いたいと思ったときに使うかもしれない、
+というだけです。
+例えば、C<use integer> の指定があっても、C<sqrt(2)> とすると、
+C<1.4142135623731> といった結果が返ってきます。
 
 =begin original
 
@@ -4306,18 +4306,18 @@ machines.
 
 =end original
 
-���ͤ�Ȥ���硢�ӥå�ñ�̱黻�� ("&", "|", "^", "~", "<<", ">>") ��
-��������η�̤��������ޤ�(â�� L<Bitwise String Operators> ��
-���Ȥ��Ʋ�����)��
-������������Ǥ� C<use integer> �ϰ�̣������ޤ���
-�ǥե���ȤǤϡ������η�̤����ʤ������Ȥ��Ʋ�ᤵ��ޤ�����
-C<use integer> ��ͭ���ξ��ϡ�����դ������Ȥ��Ʋ�ᤵ��ޤ���
-�㤨�С�C<~0> ���̾��礭���������ͤȤ���ɾ������ޤ���
-��������C<use integer; ~0> �� 2 ������Υޥ���Ǥ� C<-1> �ˤʤ�ޤ���
+数値を使う場合、ビット単位演算子 ("&", "|", "^", "~", "<<", ">>") は
+常に整数の結果を生成します(但し L<Bitwise String Operators> も
+参照して下さい)。
+しかし、それでも C<use integer> は意味があります。
+デフォルトでは、これらの結果は符号なし整数として解釈されますが、
+C<use integer> が有効の場合は、符号付き整数として解釈されます。
+例えば、C<~0> は通常大きな整数の値として評価されます。
+しかし、C<use integer; ~0> は 2 の補数のマシンでは C<-1> になります。
 
 =head2 Floating-point Arithmetic
 
-(��ư�������黻)
+(浮動小数点演算)
 
 =begin original
 
@@ -4329,10 +4329,10 @@ See L<perlfaq4>.
 
 =end original
 
-C<use integer> �������黻���󶡤����������������η�Ǽ�ưŪ�˴ݤ᤿��
-�ڤ�ΤƤ��ꤹ�뵡���Ϥ���ޤ���
-����ݤ��ˤϡ�sprintf() �� printf() ��Ȥ��Τ����ִ�ñ����ˡ�Ǥ���
-L<perlfaq4> �򻲾Ȥ��Ʋ�������
+C<use integer> が整数演算を提供する一方、数を特定の桁で自動的に丸めたり
+切り捨てたりする機構はありません。
+数を丸めるには、sprintf() や printf() を使うのが一番簡単な方法です。
+L<perlfaq4> を参照して下さい。
 
 =begin original
 
@@ -4342,8 +4342,8 @@ so some corners must be cut.  For example:
 
 =end original
 
-��ư���������Ͽ��ؼԤ��¿��ȸƤ֤�Τζ���Ǥ�������ޤ���
-�¿�����ư���������̵�¤�³���Τǡ�¿���Ѥ��ݤ���ޤ�����:
+浮動小数点数は数学者が実数と呼ぶものの近似でしかありません。
+実数は浮動小数点より無限に続くので、多少角が丸められます。例:
 
     printf "%.20g\n", 123456789123456789;
     #        produces 123456789123456784
@@ -4358,11 +4358,11 @@ this topic.
 
 =end original
 
-��ư�������������������ɤ�������礦��Ʊ�����ɤ�������Ӥ���Τ�
-���������ǥ��ǤϤ���ޤ���
-�ʲ��ˡ���Ĥ���ư�������������ꤵ�줿��ޤ����������ɤ�����
-��Ӥ���(���Ū�Ť�)�����κ��򼨤��ޤ���
-��������˴ؤ����긷̩�ʰ����ˤĤ��Ƥ� Knuth, volume II �򻲾Ȥ��Ʋ�������
+浮動小数点数が等しいかどうかをちょうど同じかどうかで比較するのは
+いいアイデアではありません。
+以下に、二つの浮動小数点数が指定された桁まで等しいかどうかを
+比較する(比較的重い)次善の策を示します。
+この問題に関するより厳密な扱いについては Knuth, volume II を参照して下さい。
 
     sub fp_equal {
 	my ($X, $Y, $POINTS) = @_;
@@ -4383,12 +4383,12 @@ POSIX can't work with complex numbers.
 
 =end original
 
-POSIX �⥸�塼��(Perl ɸ�����ۥѥå������ΰ���) �� ceil(), floor() �ڤ�
-����¾�ο��شؿ��仰�Ѵؿ���������Ƥ��ޤ���
-Math::Complex �⥸�塼��(Perl ɸ�����ۥѥå������ΰ���)��
-�¿��ȵ�����ξ����ư�����شؿ���������Ƥ��ޤ���
-Math::Complex �� POSIX �ۤɸ�ΨŪ�ǤϤ���ޤ��󤬡�
-POSIX ��ʣ�ǿ��ϰ����ޤ���
+POSIX モジュール(Perl 標準配布パッケージの一部) は ceil(), floor() 及び
+その他の数学関数や三角関数を実装しています。
+Math::Complex モジュール(Perl 標準配布パッケージの一部)は
+実数と虚数の両方で動作する数学関数を定義しています。
+Math::Complex は POSIX ほど効率的ではありませんが、
+POSIX は複素数は扱えません。
 
 =begin original
 
@@ -4400,14 +4400,14 @@ need yourself.
 
 =end original
 
-��ͻ���ץꥱ�������ˤ�����ݤ�Ͽ���ʱƶ���Ϳ�����ǽ�������ꡢ
-���Ѥ���ݤ�᥽�åɤϻ��ꤵ�줿���٤ǹԤ���٤��Ǥ���
-���Τ褦�ʾ�硢Perl �����Ѥ��륷���ƥ�ݤ���Ѥ�����
-����˼�ʬ���ȤǴݤ�ؿ����������٤��Ǥ���
+金融アプリケーションにおける丸めは深刻な影響を与える可能性があり、
+使用する丸めメソッドは指定された精度で行われるべきです。
+このような場合、Perl が使用するシステム丸めを信用せず、
+代わりに自分自身で丸め関数を実装するべきです。
 
 =head2 Bigger Numbers
 
-(����礭�ʿ�)
+(より大きな数)
 
 =begin original
 
@@ -4419,10 +4419,10 @@ limited-precision representations.
 
 =end original
 
-ɸ��� Math::BigInt �� Math::BigFloat �⥸�塼���¿��Ĺ�黻���󶡤���
-�黻�Ҥ򥪡��С������ɤ��ޤ����������ϸ��ߤΤȤ������ʤ��٤��Ǥ���
-¿�����ΰ�Ȥ��ʤ��®�٤����ˤ��ơ���������¤���Ƥ��뤳�Ȥˤ��
-���꤬������Ȥ�����򤱤뤳�Ȥ��Ǥ��ޤ���
+標準の Math::BigInt と Math::BigFloat モジュールは多倍長演算を提供し、
+演算子をオーバーロードしますが、これらは現在のところかなり遅いです。
+多少の領域とかなりの速度を犠牲にして、桁数が制限されていることによる
+ありがちな落とし穴を避けることができます。
 
     use Math::BigInt;
     $x = Math::BigInt->new('123456789123456789');
@@ -4439,10 +4439,10 @@ external C libraries.
 
 =end original
 
-(����� CPU ���֤Τߤ˰�¸����)̵���¤���������٤Ǥη׻����Ǥ���
-�⥸�塼�뤬�����Ĥ�����ޤ���
-����˳��� C �饤�֥���ȤäƤ��®���������󶡤���
-��ɸ��Υ⥸�塼��⤢��ޤ���
+(メモリと CPU 時間のみに依存する)無制限か固定の精度での計算ができる
+モジュールがいくつかあります。
+さらに外部 C ライブラリを使ってより速い実装を提供する
+非標準のモジュールもあります。
 
 =begin original
 
@@ -4464,27 +4464,27 @@ Choose wisely.
 
 =end original
 
-�ʲ���û���Ǥ����Դ����ʥꥹ�ȤǤ���
+以下は短いですが不完全なリストです。
 
-	Math::Fraction		9973 / 12967 �Τ褦�ʡ��礭����̵���¤�ʬ��
-	Math::String		ʸ�������ͤΤ褦�˰���
-	Math::FixedPrecision	�������٤Ƿ׻�����
-	Math::Currency		�̲ߤη׻���
-	Bit::Vector		(C ��Ȥä�)�ӥåȥ٥�����®������
-	Math::BigIntFast	�礭�ʿ��Τ���� Bit::Vector �Υ�åѡ�
-	Math::Pari		Pari C �饤�֥��ؤΥ����������󶡤���
-	Math::BigInteger	���� C �饤�֥���Ȥ�
-	Math::Cephes		������ Cephes C ��Ȥ�(�礭�ʿ��Ϥʤ�)
-	Math::Cephes::Fraction	Cephes �饤�֥���Ȥä�ʬ��
-	Math::GMP		����⳰�� C �饤�֥���Ȥ�
+	Math::Fraction		9973 / 12967 のような、大きくて無制限の分数
+	Math::String		文字列を数値のように扱う
+	Math::FixedPrecision	固定精度で計算する
+	Math::Currency		通貨の計算用
+	Bit::Vector		(C を使って)ビットベクタを速く操作する
+	Math::BigIntFast	大きな数のための Bit::Vector のラッパー
+	Math::Pari		Pari C ライブラリへのアクセスを提供する
+	Math::BigInteger	外部 C ライブラリを使う
+	Math::Cephes		外部の Cephes C を使う(大きな数はなし)
+	Math::Cephes::Fraction	Cephes ライブラリを使った分数
+	Math::GMP		これも外部 C ライブラリを使う
 
-���ޤ�����Ǥ���������
+うまく選んでください。
 
 =cut
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp> (5.000)
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp> (5.000)
 Update: Kentaro Shirakata <argrath@ub32.org> (5.6.1-)
 License: GPL or Artistic
 

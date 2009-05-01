@@ -10,7 +10,7 @@ First of all, have you tried using the B<-w> switch?
 
 =end original
 
-�ޤ��ǽ�˰���֤⤦ B<-w> �����å��Ϥ��Ȥ��ˤʤ�ޤ���������
+まず最初に一言「もう B<-w> スイッチはお使いになりましたか。」
 
 =head1 The Perl Debugger
 
@@ -26,14 +26,14 @@ interactively to see what they do.  For example:
 
 =end original
 
-Perl �� B<-d> �����å����դ��Ƶ�ư����С�������ץȤ� Perl �������ǥХå�
-��Ǽ¹Ԥ���뤳�Ȥˤʤ�ޤ���
-���������Ū�� Perl �Ķ��Τ褦��ư���
-�����������ɤ�ɽ�����֥졼���ݥ���Ȥ����ꡢ�����å��ΥХå��ȥ졼����
-�ѿ����ͤ��ѹ����ʤɤ�¹Ԥ���ǥХå����ޥ�ɤ����ϤǤ��ޤ���
-����ϤȤƤ������ʤΤǡ�ñ�ˤ�ꤿ�����Ȥ�����Ū�˻�����
-�ǥХå���ư����褦�ˤʤ�Ǥ��礦��
-�㤨��:
+Perl を B<-d> スイッチを付けて起動すれば、スクリプトは Perl ソースデバッガ
+上で実行されることになります。
+これは対話的な Perl 環境のように動作し、
+ソースコードの表示、ブレークポイントの設定、スタックのバックトレース、
+変数の値の変更、などを実行するデバッガコマンドを入力できます。
+これはとても便利なので、単にやりたいことを対話的に試すために
+デバッガを起動するようになるでしょう。
+例えば:
 
     $ perl -d -e 42
 
@@ -48,13 +48,13 @@ preloads a special Perl library file containing the debugger.
 
 =end original
 
-��������Perl �ǥХå���ŵ��Ū�ʥ���ѥ��뤵�줿�Ķ����ͤ���Ω����
-�ץ������ǤϤ���ޤ��󡣡���������ˡ�
--d �ե饰�ˤ�äơ�����ѥ��餬���󥿥ץ꥿���Ϥ��ѡ����ڤ˥����������
-������褦�ˤ��Ƥ��ޤ�������ϡ����������ǥХå����ư��Ǥ��뤿��ˤϡ�
-��������˥���ѥ���Ǥ��ʤ��Ȥ����ʤ��Ȥ������ȤǤ���
-���줫�饤�󥿥ץ꥿����ư���졢�ǥХå���ޤ�
-���̤� Perl �饤�֥�������ɤ��ޤ���
+しかし、Perl デバッガは典型的なコンパイルされた環境の様に独立した
+プログラムではありません。　その代わりに、
+-d フラグによって、コンパイラがインタプリタに渡すパース木にソース情報を
+埋め込むようにしています。これは、ソースがデバッガ上で動作できるためには、
+一度正常にコンパイルできないといけないということです。
+それからインタプリタが起動され、デバッガを含む
+特別な Perl ライブラリをロードします。
 
 =begin original
 
@@ -66,12 +66,12 @@ line it's I<about> to execute, rather than the one it has just executed.
 
 =end original
 
-�ץ������ϡ��ǽ�μ¹Ի��¹�ʸ��I<ľ��>����ߤ�
-(���������ʲ�����ѥ�����¹�ʸ�ˤĤ��Ƥϸ�Ҥ��ޤ�)���ʲ��˼��������줫��
-���ޥ�ɤ����Ϥ����Τ��Ԥ��ޤ���
-�褯������ԤȤϵդˡ�
-�ǥХå�����ߤ��Ƥ���ԤΥ����ɤ�ɽ�����Ƥ���Ȥ��ϡ�
-ľ���˼¹Ԥ����ԤǤϤʤ������I<������¹Ԥ���>�Ԥ�ɽ�����ޤ���
+プログラムは、最初の実行時実行文のI<直前>で停止し
+(ただし、以下コンパイル時実行文については後述します)、以下に示すいずれかの
+コマンドが入力されるのを待ちます。
+よくある期待とは逆に、
+デバッガが停止してある行のコードを表示しているときは、
+直前に実行した行ではなく、常にI<今から実行する>行を表示します。
 
 =begin original
 
@@ -81,9 +81,9 @@ uses the DB package for keeping its own state information.)
 
 =end original
 
-�ǥХå���ǧ���Ǥ��ʤ����ޥ�ɤϸ��ߤΥѥå�������� Perl �Υ����ɤȤ���
-�¹�(C<eval>)����ޤ���
-(�ǥХå��ϼ�ʬ���Ȥξ��֤���¸���뤿��� DB �ѥå�������Ȥ��ޤ���)
+デバッガが認識できないコマンドは現在のパッケージ内で Perl のコードとして
+実行(C<eval>)されます。
+(デバッガは自分自身の状態を保存するために DB パッケージを使います。)
 
 =begin original
 
@@ -96,15 +96,15 @@ or braces.
 
 =end original
 
-�ǥХå����ޥ�ɤȤ������Ϥ��줿ʸ����ϡ��ޤ���Ƭ��������
-�����ڤ�ͤ���ޤ���
-�ǥХå����ޥ�ɤ��ץ������δؿ�̾�Ȱ��פ����硢
-�ؿ�̾������ C<;> �� C<+> �Τ褦�ʡ��ǥХå����ޥ�ɤ˸����ʤ�ʸ����
-�դ��ä��뤫����̤Ǥ����äƤ���������
+デバッガコマンドとして入力された文字列は、まず先頭と末尾の
+空白が切り詰められます。
+デバッガコマンドがプログラムの関数名と一致する場合、
+関数名の前に C<;> や C<+> のような、デバッガコマンドに見えない文字を
+付け加えるか、括弧でくくってください。
 
 =head2 Debugger Commands
 
-(�ǥХå����ޥ��)
+(デバッガコマンド)
 
 =begin original
 
@@ -112,7 +112,7 @@ The debugger understands the following commands:
 
 =end original
 
-�ǥХå��ϰʲ��Υ��ޥ�ɤ����򤷤ޤ�:
+デバッガは以下のコマンドを理解します:
 
 =over 12
 
@@ -124,7 +124,7 @@ Prints out a help message.
 
 =end original
 
-�إ�ץ�å�������ɽ�����ޤ���
+ヘルプメッセージを表示します。
 
 =begin original
 
@@ -135,10 +135,10 @@ together on one screen.
 
 =end original
 
-¾�ΥǥХå����ޥ�ɤ� C<h> ���ޥ�ɤΰ����Ȥ����Ϥ��ȡ�
-���Υ��ޥ�ɤ�������ɽ�����ޤ���
-C<h h> �Ȥ������̤ʥ��ޥ�ɤϡ�����̤Ǽ��ޤ�褦�˥ǥ����󤵤줿
-��ꥳ��ѥ��Ȥʥإ�ץꥹ�Ȥ�ɽ�����ޤ���
+他のデバッガコマンドを C<h> コマンドの引数として渡すと、
+そのコマンドの説明を表示します。
+C<h h> という特別なコマンドは、一画面で収まるようにデザインされた
+よりコンパクトなヘルプリストを表示します。
 
 =begin original
 
@@ -148,8 +148,8 @@ that it's run through your pager, as in
 
 =end original
 
-C<h> ���ޥ��(��¾�Υ��ޥ�ɤǤ�)�ν��Ϥǲ��̤����������뤷�Ƥ��ޤ���硢
-�ʲ��Τ褦�˥��ޥ�ɤ����˥ѥ��׵����Ĥ���ȥڡ����㡼��ƤӽФ��ޤ�:
+C<h> コマンド(や他のコマンドでも)の出力で画面がスクロールしてしまう場合、
+以下のようにコマンドの前にパイプ記号をつけるとページャーを呼び出します:
 
     DB> |h
 
@@ -159,7 +159,7 @@ You may change the pager which is used via C<O pager=...> command.
 
 =end original
 
-���Ѥ����ڡ����㡼�� C<O pager=...> ���ޥ�ɤ��ѹ��Ǥ��ޤ���
+使用されるページャーは C<O pager=...> コマンドで変更できます。
 
 =item p expr
 
@@ -171,9 +171,9 @@ data structures and objects are not dumped, unlike with the C<x> command.
 
 =end original
 
-���ߤΥѥå������Ǥ� C<print {$DB::OUT} expr> ��Ʊ���Ǥ���
-�äˡ������ Perl ���Ȥ� C<print> �ؿ��ʤΤǡ�
-C<x> ���ޥ�ɤȰ�äơ��ͥ��Ȥ����ǡ�����¤�䥪�֥������Ȥϥ���פ��ޤ���
+現在のパッケージでの C<print {$DB::OUT} expr> と同じです。
+特に、これは Perl 自身の C<print> 関数なので、
+C<x> コマンドと違って、ネストしたデータ構造やオブジェクトはダンプしません。
 
 =begin original
 
@@ -182,9 +182,9 @@ where STDOUT may be redirected to.
 
 =end original
 
-STDOUT ���ɤ��˥�����쥯�Ȥ���Ƥ��Ƥ⡢
-�ե�����ϥ�ɥ� C<DB::OUT> �� F</dev/tty> ���Ф���
-�����ץ󤵤�Ƥ��ޤ���
+STDOUT がどこにリダイレクトされていても、
+ファイルハンドル C<DB::OUT> は F</dev/tty> に対して
+オープンされています。
 
 =item x expr
 
@@ -197,10 +197,10 @@ See L<Dumpvalue> if you'd like to do this yourself.
 
 =end original
 
-����ꥹ�ȥ���ƥ����Ȥ�ɾ��������̤�¿���ɤߤ䤹������ɽ�����ޤ���
-�ͥ��Ȥ����ǡ����ϺƵ�Ū��ɽ�����ޤ���
-����� Perl �μºݤ� C<print> �ؿ��Ȥϰۤʤ�ޤ���
-�����ʬ���ȤǹԤ��������� L<Dumpvalue> �򻲾Ȥ��Ʋ�������
+式をリストコンテキストで評価し、結果を多少読みやすい形で表示します。
+ネストしたデータは再帰的に表示します。
+これは Perl の実際の C<print> 関数とは異なります。
+これを自分自身で行いたい場合は L<Dumpvalue> を参照して下さい。
 
 =begin original
 
@@ -209,8 +209,8 @@ L<"Configurable Options">.
 
 =end original
 
-���ϥե����ޥåȤ� L<"Configurable Options"> �˵����줿
-�͡��ʥ��ץ����αƶ�������ޤ���
+出力フォーマットは L<"Configurable Options"> に記された
+様々なオプションの影響を受けます。
 
 =item V [pkg [vars]]
 
@@ -224,12 +224,12 @@ the symbol names, like this:
 
 =end original
 
-package (�ǥե���Ȥ� C<main>) ��Τ��٤� (�ޤ��ϡ�����) ��
-�ѿ� (variable) ��ǡ����ץ�ƥ��ץ�󥿤�Ȥä�ɽ�����ޤ�
-(�ϥå���ϲ����������褦�ˡ�key �� value ��ɽ������
-����ȥ�����ʸ����ɽ���Ǥ�����ˤ��ޤ�)��
-�ʲ��˼����褦�ˡ�symbol ��̾�������򼨤���(C<$> �ʤɤ�) �����̻Ҥ�
-�դ��ʤ��褦�ˤ��Ƥ�������:
+package (デフォルトは C<main>) 内のすべて (または、一部) の
+変数 (variable) をデータプリティプリンタを使って表示します
+(ハッシュは何が何か解るように、key と value を表示し、
+コントロール文字は表示できる形にします)。
+以下に示すように、symbol は名前だけを示し、(C<$> などの) 型識別子を
+付けないようにしてください:
 
     V DB filename line
 
@@ -239,7 +239,7 @@ Use C<~pattern> and C<!pattern> for positive and negative regexes.
 
 =end original
 
-���ȵդ�����ɽ���Τ���ˤ� C<~pattern> �� C<!pattern> ��ȤäƤ���������
+正と逆の正規表現のためには C<~pattern> と C<!pattern> を使ってください。
 
 =begin original
 
@@ -247,7 +247,7 @@ This is similar to calling the C<x> command on each applicable var.
 
 =end original
 
-�����ͭ�����ѿ��Τ��줾��ˤĤ��� C<x> ��ƤӽФ��ΤȻ��Ƥ��ޤ���
+これは有効な変数のそれぞれについて C<x> を呼び出すのと似ています。
 
 =item X [vars]
 
@@ -257,7 +257,7 @@ Same as C<V currentpackage [vars]>.
 
 =end original
 
-C<V ���ߤΥѥå����� [vars]> ��Ʊ���Ǥ���
+C<V 現在のパッケージ [vars]> と同じです。
 
 =item T
 
@@ -267,7 +267,7 @@ Produce a stack backtrace.  See below for details on its output.
 
 =end original
 
-�����å��ΥХå��ȥ졼����Ԥ��ޤ������ϤˤĤ��Ƥξܺ٤ϸ�Ҥ��ޤ���
+スタックのバックトレースを行います。出力についての詳細は後述します。
 
 =item s [expr]
 
@@ -279,9 +279,9 @@ supplied that includes function calls, it too will be single-stepped.
 
 =end original
 
-���󥰥륹�ƥå׼¹Ԥ��ޤ���
-���֥롼����򤿤ɤ�ʤ��顢�̤μ¹�ʸ����Ƭ����ã����ޤǼ¹Ԥ��ޤ���
-�ؿ��ƤӽФ���ޤ༰��Ϳ����줿��硢����⥷�󥰥륹�ƥå׼¹Ԥ��ޤ���
+シングルステップ実行します。
+サブルーチンをたどりながら、別の実行文の先頭に到達するまで実行します。
+関数呼び出しを含む式が与えられた場合、これもシングルステップ実行します。
 
 =item n [expr]
 
@@ -294,9 +294,9 @@ each statement.
 
 =end original
 
-�ͥ����ȡ����μ¹�ʸ����Ƭ����ã����ޤǡ����֥롼����ˤޤ����äƼ¹Ԥ��ޤ���
-�ؿ��ƤӽФ���ޤ༰��Ϳ����줿��硢
-�ƹ������ߤ��ʤ���ؿ���¹Ԥ��ޤ���
+ネクスト。次の実行文の先頭に到達するまで、サブルーチンにまたがって実行します。
+関数呼び出しを含む式が与えられた場合、
+各行毎に停止しながら関数を実行します。
 
 =item r
 
@@ -307,9 +307,9 @@ Dump the return value if the C<PrintRet> option is set (default).
 
 =end original
 
-���ߤΥ��֥롼���󤫤����ޤǼ¹Ԥ��ޤ���
-C<PrintRet> �����åȤ���Ƥ����(�ǥե���ȤǤϥ��åȤ���Ƥ��ޤ�)
-�֤��ͤ����פ��ޤ���
+現在のサブルーチンから戻るまで実行します。
+C<PrintRet> がセットされていれば(デフォルトではセットされています)
+返り値をダンプします。
 
 =item <CR>
 
@@ -319,7 +319,7 @@ Repeat last C<n> or C<s> command.
 
 =end original
 
-�Ǹ�� C<n> �ޤ��� C<s> �򷫤��֤��ޤ���
+最後の C<n> または C<s> を繰り返します。
 
 =item c [line|sub]
 
@@ -330,9 +330,9 @@ at the specified line or subroutine.
 
 =end original
 
-³����¹Ԥ��ޤ���
-���ץ����Ȥ��ơ�1 ��¤�Υ֥졼���ݥ���Ȥ�
-���ꤵ�줿�Ԥޤ��ϥ��֥롼��������ꤷ�ޤ���
+続きを実行します。
+オプションとして、1 回限りのブレークポイントを
+指定された行またはサブルーチンに設定します。
 
 =item l
 
@@ -342,7 +342,7 @@ List next window of lines.
 
 =end original
 
-���� 1 ����ʬ��ꥹ��ɽ�����ޤ���
+次の 1 画面分をリスト表示します。
 
 =item l min+incr
 
@@ -352,7 +352,7 @@ List C<incr+1> lines starting at C<min>.
 
 =end original
 
-C<min> ���� C<incr+1> �Ԥ�ꥹ��ɽ�����ޤ���
+C<min> から C<incr+1> 行をリスト表示します。
 
 =item l min-max
 
@@ -362,8 +362,8 @@ List lines C<min> through C<max>.  C<l -> is synonymous to C<->.
 
 =end original
 
-C<min> �Ԥ��� C<max> �Ԥ�ꥹ��ɽ�����ޤ���
-C<l -> �� C<-> ��Ʊ���Ǥ���
+C<min> 行から C<max> 行をリスト表示します。
+C<l -> は C<-> と同じです。
 
 =item l line
 
@@ -373,7 +373,7 @@ List a single line.
 
 =end original
 
-����Ԥ�ꥹ��ɽ�����ޤ���
+指定行をリスト表示します。
 
 =item l subname
 
@@ -384,8 +384,8 @@ be a variable that contains a code reference.
 
 =end original
 
-���֥롼����κǽ�ΰ����ʬ��ꥹ��ɽ�����ޤ���
-I<subname> �� �����ɥ�ե���󥹤����ä��ѿ��Ǥ⹽���ޤ���
+サブルーチンの最初の一画面分をリスト表示します。
+I<subname> は コードリファレンスが入った変数でも構いません。
 
 =item -
 
@@ -395,7 +395,7 @@ List previous window of lines.
 
 =end original
 
-���� 1 ����ʬ��ꥹ��ɽ�����ޤ���
+前の 1 画面分をリスト表示します。
 
 =item w [line]
 
@@ -405,7 +405,7 @@ List window (a few lines) around the current line.
 
 =end original
 
-������ն�Υ�����ɥ� (���ԤΥ�����) ��ꥹ��ɽ�����ޤ���
+指定行付近のウィンドウ (数行のコード) をリスト表示します。
 
 =item .
 
@@ -416,8 +416,8 @@ executed, and print out that line.
 
 =end original
 
-�Ǹ�˼¹Ԥ����Ԥؤ������ǥХå��ݥ��󥿤��֤���
-���ιԤ�ɽ�����ޤ���
+最後に実行した行への内部デバッガポインタを返し、
+その行を表示します。
 
 =item f filename
 
@@ -429,9 +429,9 @@ a regex.
 
 =end original
 
-�ۤʤ�ե�����ޤ��� C<eval> �Ԥ�ɽ�����ڤ��ؤ��ޤ���
-�⤷ I<filename> �� %INC �ˤ���ե�ѥ�̾�Ǥʤ���С�
-����ɽ���Ȥ��ư����ޤ���
+異なるファイルまたは C<eval> 行に表示を切り替えます。
+もし I<filename> が %INC にあるフルパス名でなければ、
+正規表現として扱われます。
 
 =begin original
 
@@ -443,11 +443,11 @@ accessible.
 
 =end original
 
-C<eval> ����ʸ�����(����������ǽ�ʤ�)�ե�����̾�Ȥ��ư����ޤ�:
-C<f (eval 7)> �� C<f eval 7\b> �� (�¹Ԥ������) 7 ���ܤ� C<eval> ����
-ʸ�������Ȥ˥����������ޤ���
-���߼¹Ԥ��� C<eval> ����Ȥȡ����֥롼������������ C<eval> ����
-��Ȥ���¸�����Τǡ�����������ǽ�Ǥ���
+C<eval> した文字列は(アクセス可能なら)ファイル名として扱われます:
+C<f (eval 7)> と C<f eval 7\b> は (実行した順で) 7 番目に C<eval> した
+文字列の中身にアクセスします。
+現在実行した C<eval> の中身と、サブルーチンを定義する C<eval> した
+中身は保存されるので、アクセス可能です。
 
 =item /pattern/
 
@@ -457,8 +457,8 @@ Search forwards for pattern (a Perl regex); final / is optional.
 
 =end original
 
-pattern ���Ѥ��� Perl ����ɽ���ˤ������������Ԥ��ޤ���
-�Ǹ�� / �Ϥʤ��Ƥ⤫�ޤ��ޤ���
+pattern を用いて Perl 正規表現による前方検索を行います。
+最後の / はなくてもかまいません。
 
 =item ?pattern?
 
@@ -468,8 +468,8 @@ Search backwards for pattern; final ? is optional.
 
 =end original
 
-pattern ���Ѥ��Ƹ���������Ԥ��ޤ���
-�Ǹ�� ? �Ϥʤ��Ƥ⤫�ޤ��ޤ���
+pattern を用いて後方検索を行います。
+最後の ? はなくてもかまいません。
 
 =item L
 
@@ -479,7 +479,7 @@ List all breakpoints and actions.
 
 =end original
 
-���ƤΥ֥졼���ݥ���Ȥ䥢��������ꥹ�ȥ��åפ��ޤ���
+全てのブレークポイントやアクションをリストアップします。
 
 =item S [[!]regex]
 
@@ -489,7 +489,7 @@ List subroutine names [not] matching the regex.
 
 =end original
 
-regex �˰��פ���(�ޤ��ϰ��פ��ʤ�)���֥롼����̾��ꥹ�ȥ��åפ��ޤ���
+regex に一致する(または一致しない)サブルーチン名をリストアップします。
 
 =item t
 
@@ -499,8 +499,8 @@ Toggle trace mode (see also the C<AutoTrace> option).
 
 =end original
 
-�ȥ졼���⡼�ɤ� on/off ���ڤ��ؤ��ޤ���(C<AutoTrace>
-���ץ����⻲�Ȥ��Ʋ�����)
+トレースモードの on/off を切り替えます。(C<AutoTrace>
+オプションも参照して下さい)
 
 =item t expr
 
@@ -511,9 +511,9 @@ See L<perldebguts/"Frame Listing Output Examples"> for examples.
 
 =end original
 
-C<expr> �μ¹Ԥ�ȥ졼�����ޤ���
-��ˤĤ��Ƥ� L<perldebguts/"Frame Listing Output Examples"> ��
-���Ȥ��Ʋ�������
+C<expr> の実行をトレースします。
+例については L<perldebguts/"Frame Listing Output Examples"> を
+参照して下さい。
 
 =item b [line] [condition]
 
@@ -528,13 +528,13 @@ don't use C<if>:
 
 =end original
 
-Ϳ����줿�Ԥ�ľ���˥֥졼���ݥ���Ȥ����ꤷ�ޤ���
-C<line> ���ά����Ȥޤ��˼¹Ԥ��褦�Ȥ��Ƥ���Ԥ�
-�֥졼���ݥ���Ȥ����ꤷ�ޤ���
-condition �����ꤵ���ȡ�����ʸ�ˤ����������٤�ɾ������ޤ���
-condition �����Ȥʤä��Ȥ��ˤ����֥졼���ݥ���Ȥ�Ư���ޤ���
-�֥졼���ݥ���Ȥϡ��¹Բ�ǽ��ʸ�ǻϤޤ�Ԥˤ�����
-����Ǥ��ޤ�����condition �ˤ� C<if> ��Ȥ��ޤ���:
+与えられた行の直前にブレークポイントを設定します。
+C<line> を省略するとまさに実行しようとしている行に
+ブレークポイントを設定します。
+condition が指定されると、その文にさしかかる度に評価されます。
+condition が真となったときにだけブレークポイントが働きます。
+ブレークポイントは、実行可能な文で始まる行にだけ、
+設定できます。　condition には C<if> を使いません:
 
     b 237 $x > 30
     b 237 ++$count237 < 11
@@ -550,9 +550,9 @@ is not supported).
 
 =end original
 
-���֥롼����κǽ�μ¹Բ�ǽʸ�˥֥졼���ݥ���Ȥ����ꤷ�ޤ���
-I<subname> �� �����ɥ�ե���󥹤����ä��ѿ��Ǥ⹽���ޤ���
-(���ξ��� I<condition> �����б��Ǥ�)��
+サブルーチンの最初の実行可能文にブレークポイントを設定します。
+I<subname> は コードリファレンスが入った変数でも構いません
+(この場合は I<condition> は非対応です)。
 
 =item b postpone subname [condition]
 
@@ -562,7 +562,7 @@ Set a breakpoint at first line of subroutine after it is compiled.
 
 =end original
 
-����ѥ���塢���֥롼����κǽ�ιԤ˥֥졼���ݥ���Ȥ򥻥åȤ��ޤ���
+コンパイル後、サブルーチンの最初の行にブレークポイントをセットします。
 
 =item b load filename
 
@@ -573,8 +573,8 @@ which should be a full pathname found amongst the %INC values.
 
 =end original
 
-I<filename> �κǽ�˼¹Ԥ����Ԥμ����˥֥졼���ݥ���Ȥ򥻥åȤ��ޤ���
-����� %INC ���ͤ˴ޤޤ��ե�ѥ�̾�Ǥ���٤��Ǥ���
+I<filename> の最初に実行される行の手前にブレークポイントをセットします。
+これは %INC の値に含まれるフルパス名であるべきです。
 
 =item b compile subname
 
@@ -585,8 +585,8 @@ subroutine is compiled.
 
 =end original
 
-���ꤵ�줿���֥롼���󤬥���ѥ��뤵�줿�塢�ǽ�˼¹Ԥ����ʸ�μ�����
-�֥졼���ݥ���Ȥ򥻥åȤ��ޤ���
+指定されたサブルーチンがコンパイルされた後、最初に実行される文の手前に
+ブレークポイントをセットします。
 
 =item d [line]
 
@@ -597,9 +597,9 @@ the breakpoint from the line about to be executed.
 
 =end original
 
-I<line> �ǻ��ꤵ�줿�֥졼���ݥ���Ȥ������ޤ���
-I<line> ����ά�����ȡ�
-�ޤ��˼¹Ԥ��褦�Ȥ��Ƥ���ԤΥ֥졼���ݥ���Ȥ������ޤ���
+I<line> で指定されたブレークポイントを削除します。
+I<line> が省略されると、
+まさに実行しようとしている行のブレークポイントを削除します。
 
 =item D
 
@@ -609,7 +609,7 @@ Delete all installed breakpoints.
 
 =end original
 
-���٤ƤΥ֥졼���ݥ���Ȥ������ޤ���
+すべてのブレークポイントを削除します。
 
 =item a [line] command
 
@@ -621,10 +621,10 @@ The sequence of steps taken by the debugger is
 
 =end original
 
-���ιԤ�¹Ԥ������˹Ԥ��������������ꤷ�ޤ���
-I<line> ����ά�����ȡ����ޤޤ��˼¹Ԥ��褦�Ȥ��Ƥ����Ԥ�
-�������������ꤷ�ޤ���
-�ǥХå����¹Ԥ�������ν��֤ϰʲ����̤�Ǥ���
+その行を実行する前に行うアクションを設定します。
+I<line> が省略されると、いままさに実行しようとしていた行に
+アクションを設定します。
+デバッガが実行する処理の順番は以下の通りです。
 
 =begin original
 
@@ -636,11 +636,11 @@ I<line> ����ά�����ȡ����ޤޤ��˼¹Ԥ��褦�Ȥ��Ƥ����Ԥ�
 
 =end original
 
-  1. ���ιԤΥ֥졼���ݥ���Ȥ�����å����ޤ�
-  2. ɬ�פʤ�Ԥ�ɽ�����ޤ�(�ȥ졼��)
-  3. ���ιԤ˷���դ���줿����������¹Ԥ��ޤ�
-  4. �֥졼���ݥ���Ȥ䥷�󥰥륹�ƥåפξ��ϥ桼�����˳�ǧ���ޤ�
-  5. �Ԥ�ɾ�����ޤ�
+  1. この行のブレークポイントをチェックします
+  2. 必要なら行を表示します(トレース)
+  3. この行に結び付けられたアクションを実行します
+  4. ブレークポイントやシングルステップの場合はユーザーに確認します
+  5. 行を評価します
 
 =begin original
 
@@ -649,7 +649,7 @@ For example, this will print out $foo every time line
 
 =end original
 
-�㤨�С��ʲ��Υ����ɤ� 53 �Ԥ��̲᤹����� $foo ��ɽ�����ޤ���
+例えば、以下のコードは 53 行を通過する毎に $foo を表示します。
 
     a 53 print "DB FOUND $foo\n"
 
@@ -662,9 +662,9 @@ the action on the line that is about to be executed.
 
 =end original
 
-���ꤵ�줿�Ԥ����ꤵ�줿���������������ޤ���
-I<line> ����ά�����ȡ����ޤޤ��˼¹Ԥ��褦�Ȥ��Ƥ���Ԥ����ꤵ��Ƥ���
-��������󤬺������ޤ���
+指定された行に設定されたアクションを削除します。
+I<line> が省略されると、いままさに実行しようとしている行に設定されている
+アクションが削除されます。
 
 =item A
 
@@ -674,7 +674,7 @@ Delete all installed actions.
 
 =end original
 
-���ꤵ�줿���٤ƤΥ��������������ޤ���
+設定されたすべてのアクションを削除します。
 
 =item W expr
 
@@ -687,10 +687,10 @@ the I<expr>.
 
 =end original
 
-�������Х�ʥ����å������ɲä��ޤ������ε�ǽ�Ϥ褯�����ΤʤΤǡ�
-�ɤ�������Τ��Ϥ狼�äƤ�館��Ȼפ��ޤ���
-B<�ٹ�>: �ְ㤨�� I<expr> ����ꤷ�ʤ��Ǥ��Υ��ޥ�ɤ�¹Ԥ��Ƥ��ޤ��ȡ�
-���ä�������꤬�ä��Ƥ��ޤ��ޤ���
+グローバルなウォッチ式を追加します。この機能はよくあるものなので、
+どういうものかはわかってもらえると思います。
+B<警告>: 間違えて I<expr> を指定しないでこのコマンドを実行してしまうと、
+あっさりと設定が消えてしまいます。
 
 =item W
 
@@ -700,7 +700,7 @@ Delete all watch-expressions.
 
 =end original
 
-���ƤΥ����å����������ޤ���
+全てのウォッチ式を削除します。
 
 =item O booloption ...
 
@@ -710,7 +710,7 @@ Set each listed Boolean option to the value C<1>.
 
 =end original
 
-�ꥹ�Ȥ��줿�ƿ����ͥ��ץ������ͤ� C<1> �����ꤷ�ޤ���
+リストされた各真偽値オプションの値を C<1> に設定します。
 
 =item O anyoption? ...
 
@@ -720,7 +720,7 @@ Print out the value of one or more options.
 
 =end original
 
-1 �ġ����뤤��ʣ���Υ��ץ������ͤ�ɽ�����ޤ���
+1 つ、あるいは複数のオプションの値を表示します。
 
 =item O option=value ...
 
@@ -739,16 +739,16 @@ it?\"">.
 
 =end original
 
-��Ĥޤ���ʣ���Υ��ץ����򥻥åȤ��ޤ���
-�ͼ��Ȥ˶����ޤ��硢�������Ȥ���ɬ�פ�����ޤ���
-�㤨�С�B<less> �򥪥ץ�����դ��ǸƤӽФ�����
-C<o pager="less -MQeicsNfr"> �Τ褦�ˤ��ޤ���
-���󥰥륯�����Ȥȥ��֥륯�����ȤΤɤ���Ǥ�Ȥ��ޤ������������Ȥ�����ϡ�
-��������ʸ����Ʊ��ʸ���ϥ��������פ���ɬ�פ�����ޤ�;
-�����ƥ���������ʸ�����Ȥ⥨�������פ��ơ���������ʸ����
-���������פ��Ƥ���ΤǤϤʤ����Ȥ򼨤�ɬ�פ�����ޤ���
-����������ȡ��������Ȥ˴ؤ��ʤ������󥰥륯�����ȥ롼��˽����ޤ�;
-�㤨��: C<o option='this isn\'t bad'> ��
+一つまたは複数のオプションをセットします。
+値自身に空白を含む場合、クォートする必要があります。
+例えば、B<less> をオプション付きで呼び出す場合は
+C<o pager="less -MQeicsNfr"> のようにします。
+シングルクォートとダブルクォートのどちらでも使えますが、クォートする場合は、
+クォート文字と同じ文字はエスケープする必要があります;
+そしてエスケープ文字自身もエスケープして、クォート文字を
+エスケープしているのではないことを示す必要があります。
+言い換えると、クォートに関わりなく、シングルクォートルールに従います;
+例えば: C<o option='this isn\'t bad'> や
 C<o option="She said, \"Isn't it?\"">
 
 =begin original
@@ -762,12 +762,12 @@ for a list of these.
 
 =end original
 
-���Ū����ͳ�ˤ�ꡢC<=value> �Ͼ�ά��ǽ�Ǥ�������������Τ������ʾ��ˤΤ�
-�ǥե���Ȥ� 1 �Ǥ� -- ����ϡ��ۤȤ�ɤξ��֡����ͥ��ץ����Ǥ���
-C<=> ��Ȥäƻ��ꤷ���ͤ���������������ˤ褤�Ǥ���
-C<option> ��û�̤Ǥ��ޤ��������β��Τ���ˤϤ������ʤ����������Ǥ��礦��
-�����Ĥ��Υ��ץ����ϸߤ��˥��åȤǤ��ޤ���
-�����ΰ����ˤĤ��Ƥ� L<"Configurable Options"> �򻲾Ȥ��Ƥ���������
+歴史的な理由により、C<=value> は省略可能ですが、そうするのが安全な場合にのみ
+デフォルトは 1 です -- これは、ほとんどの場合ブール値オプションです。
+C<=> を使って指定した値を代入する方が常によいです。
+C<option> は短縮できますが、明確化のためにはそうしない方がいいでしょう。
+いくつかのオプションは互いにセットできます。
+それらの一覧については L<"Configurable Options"> を参照してください。
 
 =item < ? 
 
@@ -777,7 +777,7 @@ List out all pre-prompt Perl command actions.
 
 =end original
 
-�ץ���ץ�ɽ�����˼¹Ԥ��륢������������ɽ�����ޤ���
+プロンプト表示前に実行するアクションを全て表示します。
 
 =item < [ command ]
 
@@ -789,10 +789,10 @@ B<WARNING> If C<command> is missing, all actions are wiped out!
 
 =end original
 
-�ǥХå����ץ���ץȤ�Ф�ľ���ˡ����¹Ԥ��륢�������
-(Perl �Υ��ޥ��)�����ꤷ�ޤ���
-ʣ���Ԥ� command �ϡ��Хå�����å���Ȳ��Ԥǽ񤯤��Ȥ��Ǥ��ޤ���
-B<�ٹ�> �⤷ C<command> ���ʤ��ȡ����ƤΥ�������󤬾ä��Ƥ��ޤ��ޤ�!
+デバッガがプロンプトを出す直前に、毎回実行するアクション
+(Perl のコマンド)を設定します。
+複数行の command は、バックスラッシュと改行で書くことができます。
+B<警告> もし C<command> がないと、全てのアクションが消えてしまいます!
 
 =item << command
 
@@ -803,9 +803,9 @@ A multi-line command may be entered by backwhacking the newlines.
 
 =end original
 
-�ǥХå����ץ���ץȤ�Ф�ľ���ˡ����¹Ԥ��륢�������
-(Perl �Υ��ޥ��)���ɲä��ޤ���
-ʣ���Ԥ� command �ϡ��Хå�����å���Ȳ��Ԥǽ񤯤��Ȥ��Ǥ��ޤ���
+デバッガがプロンプトを出す直前に、毎回実行するアクション
+(Perl のコマンド)を追加します。
+複数行の command は、バックスラッシュと改行で書くことができます。
 
 =item > ?
 
@@ -815,7 +815,7 @@ List out post-prompt Perl command actions.
 
 =end original
 
-�ץ���ץ�ɽ����˼¹Ԥ��륢������������ɽ�����ޤ���
+プロンプト表示後に実行するアクションを全て表示します。
 
 =item > command
 
@@ -829,11 +829,11 @@ missing, all actions are wiped out!
 
 =end original
 
-������ץȤμ¹Ԥ���륳�ޥ�ɤ����Ϥ������ˡ��ǥХå���
-�ץ���ץȤ�Ф�����ǡ����¹Ԥ��륢�������(Perl �Υ��ޥ��)�����ꤷ�ޤ���
-ʣ���Ԥ� command �ϡ��Хå�����å���Ȳ��Ԥǽ񤯤��Ȥ��Ǥ��ޤ�
-(���äȤ��ʤ��Ϻ��ޤǤ��Τ��Ȥ��Τ�ʤ��ä��Ϥ��Ǥ�)��
-B<�ٹ�> �⤷ C<command> ���ʤ��ȡ����ƤΥ�������󤬾ä��Ƥ��ޤ��ޤ�!
+スクリプトの実行に戻るコマンドを入力した時に、デバッガが
+プロンプトを出した後で、毎回実行するアクション(Perl のコマンド)を設定します。
+複数行の command は、バックスラッシュと改行で書くことができます
+(きっとあなたは今までこのことを知らなかったはずです)。
+B<警告> もし C<command> がないと、全てのアクションが消えてしまいます!
 
 =item >> command
 
@@ -845,9 +845,9 @@ command may be entered by backslashing the newlines.
 
 =end original
 
-������ץȤμ¹Ԥ���륳�ޥ�ɤ����Ϥ������ˡ��ǥХå���
-�ץ���ץȤ�Ф�����ǡ����¹Ԥ��륢�������(Perl �Υ��ޥ��)���ɲä��ޤ���
-ʣ���Ԥ� command �ϡ��Хå�����å���Ȳ��Ԥǽ񤯤��Ȥ��Ǥ��ޤ���
+スクリプトの実行に戻るコマンドを入力した時に、デバッガが
+プロンプトを出した後で、毎回実行するアクション(Perl のコマンド)を追加します。
+複数行の command は、バックスラッシュと改行で書くことができます。
 
 =item { ?
 
@@ -857,7 +857,7 @@ List out pre-prompt debugger commands.
 
 =end original
 
-�ץ���ץ�ɽ�����˼¹Ԥ���ǥХå����ޥ�ɤ�ɽ�����ޤ���
+プロンプト表示前に実行するデバッガコマンドを表示します。
 
 =item { [ command ]
 
@@ -869,10 +869,10 @@ B<WARNING> If C<command> is missing, all actions are wiped out!
 
 =end original
 
-�ǥХå����ץ���ץȤ�Ф����ˡ����¹Ԥ��륢�������(�ǥХå���
-���ޥ��)�����ꤷ�ޤ���
-ʣ���Ԥ� command �ϡ����Ĥ����ˡ�ǽ񤯤��Ȥ��Ǥ��ޤ�
-B<�ٹ�> �⤷ C<command> ���ʤ��ȡ����ƤΥ�������󤬾ä��Ƥ��ޤ��ޤ�!
+デバッガがプロンプトを出す前に、毎回実行するアクション(デバッガの
+コマンド)を設定します。
+複数行の command は、いつもの方法で書くことができます
+B<警告> もし C<command> がないと、全てのアクションが消えてしまいます!
 
 =begin original
 
@@ -883,10 +883,10 @@ C<do { ... }>.
 
 =end original
 
-���Υ��ޥ�ɤϤ����̣�������Τǡ��⤷����˴ְ�äƥ֥��å���
-���Ϥ����褦�˸�����Ȥ��ˤϡ��ٹ𤬽Фޤ���
-�������դ��������ϡ�C<;{ ... }> �������ä� C<do { ... }> ��
-�񤤤Ƥ���������
+このコマンドはある意味新しいので、もし代わりに間違ってブロックを
+入力したように見えるときには、警告が出ます。
+本当に奏したい場合は、C<;{ ... }> か、いっそ C<do { ... }> と
+書いてください。
 
 =item {{ command
 
@@ -897,9 +897,9 @@ A multi-line command may be entered, if you can guess how: see above.
 
 =end original
 
-���ǥХå��ץ���ץȤ�ɽ���������˼¹Ԥ��륢�������(�ǥХå����ޥ��)��
-�ɲä��ޤ���ͽ¬��ǽ����ˡ����ˡ��ʣ���ԥ��ޥ�ɤ���Ͽ�Ǥ��ޤ�:
-�嵭�򻲾Ȥ��Ƥ���������
+毎回デバッガプロンプトを表示する前に実行するアクション(デバッガコマンド)を
+追加します。予測可能な方法な方法で複数行コマンドも登録できます:
+上記を参照してください。
 
 =item ! number
 
@@ -909,7 +909,7 @@ Redo a previous command (defaults to the previous command).
 
 =end original
 
-�����Υ��ޥ�ɤ�Ƽ¹Ԥ��ޤ���(number ����ά�����ȡ�ľ���Υ��ޥ�ɤ�¹Ԥ��ޤ�)
+以前のコマンドを再実行します。(number が省略されると、直前のコマンドを実行します)
 
 =item ! -number
 
@@ -919,7 +919,7 @@ Redo number'th previous command.
 
 =end original
 
-�������ʬ���Υ��ޥ�ɤ�¹Ԥ��ޤ���
+指定数値分前のコマンドを実行します。
 
 =item ! pattern
 
@@ -930,9 +930,9 @@ See C<O recallCommand>, too.
 
 =end original
 
-pattern �ǻϤޤ뤦�����Ǥ�Ƕ�˼¹Ԥ��줿���ޥ�ɤ�
-�Ƽ¹Ԥ��ޤ���
-C<O recallCommand> �⻲�Ȥ��Ʋ�������
+pattern で始まるうち、最も最近に実行されたコマンドを
+再実行します。
+C<O recallCommand> も参照して下さい。
 
 =item !! cmd
 
@@ -946,11 +946,11 @@ information.
 
 =end original
 
-cmd �򥵥֥ץ������Ȥ��Ƽ¹Ԥ��ޤ�(DB::IN �����ɤ߹��ߡ�DB::OUT �˽񤭽Ф��ޤ�)��
-C<O shellBang> �⻲�Ȥ��Ƥ���������
-�桼�����θ��ߤΥ�����(�Ĥޤꡢ C<$ENV{SHELL}> �ѿ�)���Ȥ���Τǡ�
-��λ�����ɤ�Ŭ�ڤʲ��䥷���ʥ�ȥ�������פξ���˸������뤫�⤷��ʤ�
-���Ȥ����դ��Ƥ���������
+cmd をサブプロセスとして実行します(DB::IN から読み込み、DB::OUT に書き出します)。
+C<O shellBang> も参照してください。
+ユーザーの現在のシェル(つまり、 C<$ENV{SHELL}> 変数)が使われるので、
+終了コードの適切な解釈やシグナルとコアダンプの情報が妨害されるかもしれない
+ことに注意してください。
 
 =item H -number
 
@@ -961,9 +961,9 @@ listed.  If I<number> is omitted, list them all.
 
 =end original
 
-�Ƕ�λ������ʬ�Υ��ޥ�ɤ�ɽ�����ޤ���
-2 ʸ���ʾ�Υ��ޥ�ɤΤߤ�ɽ������ޤ���
-I<number> ����ά�����ȡ����Ƥ�ɽ�����ޤ���
+最近の指定数値分のコマンドを表示します。
+2 文字以上のコマンドのみが表示されます。
+I<number> が省略されると、全てを表示します。
 
 =item q or ^D
 
@@ -975,10 +975,10 @@ C<exit> twice might work.
 
 =end original
 
-�ǥХå���λ���ޤ���
-(�����ꥢ�������ꤷ�ʤ��¤ꡢ"quit" �Ϥ�����Ū�ˤϻȤ��ޤ���)
-����ϥǥХå���λ����ͣ�����ˡ�Ǥ�����C<exit> ��2��
-���Ϥ��Ƥ�ư��ޤ���
+デバッガを終了します。
+(エイリアスを設定しない限り、"quit" はこの目的には使えません。)
+これはデバッガを終了する唯一の方法ですが、C<exit> を2回
+入力しても動作します。
 
 =begin original
 
@@ -988,10 +988,10 @@ if you want to step through global destruction.
 
 =end original
 
-������ץȤκǸ�˥��ƥå׼¹ԤǤ���褦�ˤ��������ϡ�
-C<inhibit_exit> ���ץ����� 0 �����ꤷ�Ƥ���������
-�������Х�ʥǥ��ȥ饯����¹Ԥ��ƥ��ƥå׼¹Ԥ��������ϡ�
-$finished �� 0 �����ꤹ��ɬ�פ�����ޤ���
+スクリプトの最後にステップ実行できるようにしたい場合は、
+C<inhibit_exit> オプションに 0 を設定してください。
+グローバルなデストラクタを実行してステップ実行したい場合は、
+$finished に 0 を設定する必要があります。
 
 =item R
 
@@ -1003,9 +1003,9 @@ may be lost.
 
 =end original
 
-���������å����� C<exec()> ���뤳�ȤǥǥХå���Ƶ�ư���ޤ���
-����ϻĤ��������Ϥ��ޤ�������������䥳�ޥ�ɥ饤�󥪥ץ�����
-�����뤫�⤷��ޤ���
+新しいセッションを C<exec()> することでデバッガを再起動します。
+履歴は残そうと努力しますが、内部設定やコマンドラインオプションは
+失われるかもしれません。
 
 =begin original
 
@@ -1015,8 +1015,8 @@ options B<-w>, B<-I>, and B<-e>.
 
 =end original
 
-���ΤȤ������ʲ����������¸����ޤ�: ���򡢥֥졼���ݥ���ȡ����������
-�ǥХå����ץ����Perl ���ޥ�ɥ饤�󥪥ץ���� B<-w>, B<-I>, B<-e>��
+今のところ、以下の設定は保存されます: 履歴、ブレークポイント、アクション、
+デバッガオプション、Perl コマンドラインオプション B<-w>, B<-I>, B<-e>。
 
 =item |dbcmd
 
@@ -1026,7 +1026,7 @@ Run the debugger command, piping DB::OUT into your current pager.
 
 =end original
 
-�ǥХå����ޥ�ɤ�¹Ԥ���DB::OUT ��ѥ��פǤ��ʤ��θ��ߤΥڡ�����ȷҤ��ޤ���
+デバッガコマンドを実行し、DB::OUT をパイプであなたの現在のページャと繋ぎます。
 
 =item ||dbcmd
 
@@ -1036,8 +1036,8 @@ Same as C<|dbcmd> but DB::OUT is temporarily C<select>ed as well.
 
 =end original
 
-C<|dbcmd> ��Ʊ�ͤǤ����� DB::OUT �ϰ��Ū�� C<select> ��
-���򤵤�Ƥ����Τˤʤ�ޤ���
+C<|dbcmd> と同様ですが、 DB::OUT は一時的に C<select> で
+選択されているものになります。
 
 =item = [alias value]
 
@@ -1047,7 +1047,7 @@ Define a command alias, like
 
 =end original
 
-�ʲ��Τ褦�˥��ޥ�ɥ����ꥢ�����������:
+以下のようにコマンドエイリアスを定義する:
 
     = quit q
 
@@ -1057,7 +1057,7 @@ or list current aliases.
 
 =end original
 
-�ޤ��ϸ��ߤΥ����ꥢ���ΰ�����ɽ�����ޤ���
+または現在のエイリアスの一覧を表示します。
 
 =item command
 
@@ -1069,9 +1069,9 @@ Perl debugger, use a leading semicolon, too.
 
 =end original
 
-command �� Perl ��ʸ�Ȥ��Ƽ¹Ԥ��ޤ���ʸ���Υ��ߥ�����Ϥʤ��Ƥ⤫�ޤ��ޤ���
-Perl ��ʸ�� Perl �ǥХå��ˤȤä�ʶ��路������
-��Ƭ�˥��ߥ������Ĥ��Ƥ���������
+command を Perl の文として実行します。文末のセミコロンはなくてもかまいません。
+Perl の文が Perl デバッガにとって紛らわしい場合は
+先頭にセミコロンをつけてください。
 
 =item m expr
 
@@ -1083,9 +1083,9 @@ blessed object, or to a package name.
 
 =end original
 
-ɾ������ɽ���η�̤��ƤӽФ��줿�᥽�åɤ����ɽ�����ޤ���
-ɽ���� bless ���줿���֥������ȤؤΥ�ե���󥹤����ѥå�����̾�Ȥ���
-ɾ������ޤ���
+評価した表現の結果が呼び出されたメソッドを一覧表示します。
+表現は bless されたオブジェクトへのリファレンスか、パッケージ名として
+評価されます。
 
 =item man [manpage]
 
@@ -1101,16 +1101,16 @@ you type C<man debug> or C<man op> from the debugger.
 
 =end original
 
-����̾���ˤ�ؤ�餺�������Ϳ����줿�ڡ���(I<manpage> ����ά���줿
-���ϥӥ塼�Ｋ��)���Ф��ƥ����ƥ�Υǥե���ȤΥɥ�����ȥӥ塼���
-�ƤӽФ��ޤ���
-�ӥ塼�郎 B<man> �ξ�硢Ŭ�ڤ� MANPATH �� S<B<-M> I<manpath>>
-���ץ�����Ȥä� B<man> ��ư���뤿��ˡ����ߤ� C<Config> ����
-�Ȥ��ޤ���
-C<XXX> �η��ǰ��פ��� man �ڡ����θ����˼��Ԥ�����硢
-I<perlXXX> �η��Τ�Τ�Ƹ������ޤ���
-����ˤ�ꡢ�ǥХå����� C<man debug> �� C<man op> ��
-�����פǤ���褦�ˤʤ�ޤ���
+その名前にも関わらず、これは与えられたページ(I<manpage> が省略された
+場合はビューワ自身)に対してシステムのデフォルトのドキュメントビューワを
+呼び出します。
+ビューワが B<man> の場合、適切な MANPATH や S<B<-M> I<manpath>>
+オプションを使って B<man> を起動するために、現在の C<Config> 情報が
+使われます。
+C<XXX> の形で一致する man ページの検索に失敗した場合、
+I<perlXXX> の形のものを再検索します。
+これにより、デバッガから C<man debug> や C<man op> と
+タイプできるようになります。
 
 =begin original
 
@@ -1125,15 +1125,15 @@ working example of something along the lines of:
 
 =end original
 
-����Ū�����Ѳ�ǽ�� B<man> ���ޥ�ɤ�å��줿�����ƥ�Ǥϡ��ǥХå���<
-B<perldoc> ��ư���ޤ���
-ȿ��Ū�ʥ٥�����䡢���Ŭ�ڤˤϡ��Ѷ�Ū�ʥ桼�����ˤ�äơ�����Ƚ�Ǥ�
-����������ޤ���
-�⤷���ʤ����ɤ��餫��ʬ������ƤϤޤäƤ��ޤ��ʤ顢Perl �Υɥ�����Ȥ�
-ɽ�����뤿��ˤɤΥӥ塼���Ȥ����򡢼�ư�� $DB::doccmd �ѿ���
-���åȤ��Ƥ���������
-����� rc �ե�����ǤǤ⡢ľ�ܤ������ǤǤ⥻�åȤǤ��ޤ���
-�䤿���ϰʲ��Τ褦�ʴ����ǡ��ºݤ�ư�������ԤäƤ��ޤ�:
+伝統的に利用可能な B<man> コマンドを奪われたシステムでは、デバッガは<
+B<perldoc> を起動します。
+反抗的なベンダーや、より適切には、積極的なユーザーによって、この判断は
+正しくありません。
+もしあなたがどちらかの分類に当てはまってしまうなら、Perl のドキュメントを
+表示するためにどのビューワを使うかを、手動で $DB::doccmd 変数に
+セットしてください。
+これは rc ファイルででも、直接の代入ででもセットできます。
+私たちは以下のような感じで、実際に動作する例を待っています:
 
     $DB::doccmd = 'netscape -remote http://something.here/';
 
@@ -1141,7 +1141,7 @@ B<perldoc> ��ư���ޤ���
 
 =head2 Configurable Options
 
-(�����ǽ�ʥ��ץ����)
+(設定可能なオプション)
 
 =begin original
 
@@ -1151,9 +1151,9 @@ either interactively or from the environment or an rc file.
 
 =end original
 
-�ǥХå��ˤ� C<O> ���ޥ�ɤ�����Ǥ��뤵�ޤ��ޤʥ��ץ���󤬤���ޤ���
-���������Ū���Ķ��ѿ���rc �ե����� (Unix �Ǥ� ./.perldb �ޤ���
-~/.perldb) ������Ǥ��ޤ���
+デバッガには C<O> コマンドで設定できるさまざまなオプションがあります。
+これは対話的、環境変数、rc ファイル (Unix では ./.perldb または
+~/.perldb) で設定できます。
 
 =over 12
 
@@ -1166,8 +1166,8 @@ default, both are set to C<!>, which is unfortunate.
 
 =end original
 
-�ƸƤӽФ����ޥ�ɤȥ����뵯ư�˻Ȥ���ʸ���Ǥ���
-�ǥե���ȤǤϡ���ǰ�ʤ��顢ξ���Ȥ� C<!> �˥��åȤ���Ƥ��ޤ���
+再呼び出しコマンドとシェル起動に使われる文字です。
+デフォルトでは、残念ながら、両方とも C<!> にセットされています。
 
 =item C<pager>
 
@@ -1182,12 +1182,12 @@ will not be readable when sent through the pager.
 
 =end original
 
-�ڡ�����˥ѥ��פ���륳�ޥ��(ʸ�� C<|> �ǻϤޤ���)�ν��Ϥ�
-�Ȥ���ץ�����ࡣ
-�ǥե���ȤǤϡ�C<$ENV{PAGER}> ���Ȥ��ޤ���
-�ǥХå��϶�Ĵ�Ȳ����˴ؤ��Ƹ��ߤ�ü�������Ȥ��Τǡ��⤷���򤷤�
-�ڡ����㤬���������ץ������󥹤��ѹ��������̲ᤵ�����ʤ���硢
-�����ΥǥХå����ޥ�ɤν��Ϥϡ��ڡ��������������ɤ�ʤ��ʤ�Ǥ��礦��
+ページャにパイプされるコマンド(文字 C<|> で始まるもの)の出力に
+使われるプログラム。
+デフォルトでは、C<$ENV{PAGER}> が使われます。
+デバッガは強調と下線に関して現在の端末設定を使うので、もし選択した
+ページャがエスケープシーケンスを変更せずに通過させられない場合、
+一部のデバッガコマンドの出力は、ページャに送られると読めなくなるでしょう。
 
 =item C<tkRunning>
 
@@ -1197,7 +1197,7 @@ Run Tk while prompting (with ReadLine).
 
 =end original
 
-�ץ���ץȤ� (ReadLine �ȶ���) Tk ��¹Ԥ��ޤ���
+プロンプトで (ReadLine と共に) Tk を実行します。
 
 =item C<signalLevel>, C<warnLevel>, C<dieLevel>
 
@@ -1210,12 +1210,12 @@ SEGV signals arrive.  (But see the mention of signals in L<BUGS> below.)
 
 =end original
 
-�ܺ٤��Υ�٥롣
-�ǥե���ȤǤϡ��ǥХå����㳰�ȷٹ�����äƤ����ޤ�;
-������ѹ�����ȡ��ץ�����ब������ư���ʤ��ʤ뤳�Ȥ����뤫��Ǥ���
-��ª����Ƥ��ʤ� INT, BUS, SEGV �����ʥ뤬����ȡ���å�������
-ɽ�����褦�Ȥ��ޤ���
-(���������ʲ��� L<BUGS> �Υ����ʥ�˴ؤ������դ򻲾Ȥ��Ƥ���������)
+詳細さのレベル。
+デフォルトでは、デバッガは例外と警告を放っておきます;
+これを変更すると、プログラムが正しく動かなくなることがあるからです。
+捕捉されていない INT, BUS, SEGV シグナルがあると、メッセージを
+表示しようとします。
+(しかし、以下の L<BUGS> のシグナルに関する注意を参照してください。)
 
 =begin original
 
@@ -1234,20 +1234,20 @@ destroy any program that takes its exception handling seriously.
 
 =end original
 
-���Υǥե���ȤΥ����ե⡼�ɤ�̵���ˤ���ˤϡ��������ͤ� 0 �ʾ��
-���åȤ��Ƥ���������
-��٥� 1 �Ǥϡ����������ηٹ�(����Ϥ��Ф��Ф��󤶤ꤵ�����ΤǤ�)��
-�㳰(����Ϥ��Ф��в��ͤ�����ޤ�)������������˥Хå��ȥ졼�������ޤ���
-��ǰ�ʤ��顢�ǥХå�����̿Ū���㳰����̿Ū�Ǥʤ��㳰���̤Ǥ��ޤ���
-C<dieLevel> �� 1 �Ǥ��äƤ⡢��̿Ū�Ǥʤ��㳰��ȥ졼�����졢
-���줬 C<eval ���줿> ʸ���󤫤餫���ɤ߹��⤦�Ȥ����⥸�塼�����
-���������� C<eval> ����Τ�ΤǤ���ʤ顢�����֤��������ޤ���
-C<dieLevel> �� 2 �ʤ顢�ǥХå����㳰�νн�򵤤ˤ��ޤ���:
-�㳰�ϥ�ɥ�򲣼�ꤷ�ƥȥ졼����ɽ���������줫�����Ƥ��㳰�򼫿Ȥ�������
-�������ޤ���
-����Ϥ����Υȥ졼������Ū�ˤϤ����餯ͭ�ѤǤ�����
-�㳰��ޤ���˰��äƤ���ץ�������ɤ����褦��ʤ��˲����Ƥ��ޤ�������
-����ޤ���
+このデフォルトのセーフモードを無効にするには、これらの値を 0 以上に
+セットしてください。
+レベル 1 では、あらゆる種類の警告(これはしばしばうんざりさせるものです)や
+例外(これはしばしば価値があります)を受信した時にバックトレースを得ます。
+残念ながら、デバッガは致命的な例外と致命的でない例外を識別できません。
+C<dieLevel> は 1 であっても、致命的でない例外もトレースされ、
+それが C<eval された> 文字列からか、読み込もうとしたモジュール内の
+あらゆる種類の C<eval> からのものであるなら、突然置き換えられます。
+C<dieLevel> が 2 なら、デバッガは例外の出所を気にしません:
+例外ハンドラを横取りしてトレースを表示し、それから全ての例外を自身の装飾で
+修正します。
+これはある種のトレースの目的にはおそらく有用ですが、
+例外をまじめに扱っているプログラムをどうしようもなく破壊してしまう傾向が
+あります。
 
 =item C<AutoTrace>
 
@@ -1258,7 +1258,7 @@ C<PERLDB_OPTS>).
 
 =end original
 
-�ȥ졼���⡼��(C<t> ���ޥ�ɤ�Ʊ�ͤǤ�����C<PERLDB_OPTS> �˽񤱤ޤ�)��
+トレースモード(C<t> コマンドと同様ですが、C<PERLDB_OPTS> に書けます)。
 
 =item C<LineInfo>
 
@@ -1272,11 +1272,11 @@ debugger.
 
 =end original
 
-���ֹ�����Ͽ����ե�����ޤ��ϥѥ��ס�
-���줬 (C<|visual_perl_db> �Τ褦��) �ѥ��פξ�硢û��ʸ�Ϥ��Ȥ��ޤ���
-����ϡ����̤� C<vi> �� C<emacs> �Υեå��䡢C<ddd> ����ե�����
-�ǥХå��Τ褦�ʥ��졼�֥��ǥ�����ӥ��奢��ǥХå�����ߺ��Ѥ��뤿���
-�Ȥ��뵡���Ǥ���
+行番号情報を記録するファイルまたはパイプ。
+これが (C<|visual_perl_db> のように) パイプの場合、短い文章が使われます。
+これは、特別な C<vi> や C<emacs> のフックや、C<ddd> グラフィカル
+デバッガのようなスレーブエディタやビジュアルデバッガと相互作用するために
+使われる機構です。
 
 =item C<inhibit_exit>
 
@@ -1286,7 +1286,7 @@ If 0, allows I<stepping off> the end of the script.
 
 =end original
 
-0 ���ȡ�������ץȤκǸ�� I<�ץ�������λ����> ���Ȥ�ǧ��ޤ���
+0 だと、スクリプトの最後で I<プログラムを終了する> ことを認めます。
 
 =item C<PrintRet>
 
@@ -1296,7 +1296,7 @@ Print return value after C<r> command if set (default).
 
 =end original
 
-���ꤵ����(�ǥե����)��C<r> ���ޥ�ɤθ���֤��ͤ�ɽ�����ޤ���
+設定されると(デフォルト)、C<r> コマンドの後に返り値を表示します。
 
 =item C<ornaments>
 
@@ -1309,12 +1309,12 @@ This is considered a bug.
 
 =end original
 
-���ޥ�ɥ饤��β��̤ؤ�ɽ���˱ƶ���Ϳ���ޤ�(L<Term::ReadLine> ��
-���Ȥ��Ƥ�������)��
-���ΤȤ����������̵���ˤ�����ˡ�Ϥ���ޤ���;
-����ˤ�ꡢ�ǥ����ץ쥤��ڡ����㡼�ˤ�äƤ�Ƚ�ɤǤ��ʤ����Ϥ�
-�Ԥ����Ȥ�����ޤ���
-����ϥХ��ȹͤ����Ƥ��ޤ���
+コマンドラインの画面への表示に影響を与えます(L<Term::ReadLine> を
+参照してください)。
+今のところ、これを無効にする方法はありません;
+これにより、ディスプレイやページャーによっては判読できない出力を
+行うことがあります。
+これはバグと考えられています。
 
 =item C<frame>
 
@@ -1326,10 +1326,10 @@ on exit might be useful if interspersed with other messages.)
 
 =end original
 
-���֥롼����ؤν�������Υ�å�����ɽ���˱ƶ���Ϳ���ޤ���
-C<frame & 2> �����ʤ顢���֥롼�����������ˤΤߥ�å���������Ϥ��ޤ���
-(�Ф�Ȥ��Υ�å������ϡ�¾�Υ�å��������ޤ����餵��Ƥ���Ȥ��ˤ�
-ͭ�ѤǤ��礦��)
+サブルーチンへの出入り時のメッセージ表示に影響を与えます。
+C<frame & 2> が偽なら、サブルーチンに入る時にのみメッセージを出力します。
+(出るときのメッセージは、他のメッセージがまき散らされているときには
+有用でしょう。)
 
 =begin original
 
@@ -1340,11 +1340,11 @@ C<tie>d C<FETCH> is enabled on the printed arguments.  If C<frame
 
 =end original
 
-C<frame & 4> �ξ�硢�ؿ��ΰ����˲ä��ơ�����ƥ����ȤȸƤӽФ�����
-�����ɽ�����ޤ���
-C<frame & 8> �ξ�硢������ɽ���˥����С������ɤ��줿 C<ʸ����> ��
-C<tie> ���� C<FETCH> ��ͭ���ˤʤ�ޤ���
-C<frame & 16> �ξ�硢���֥롼���󤫤���֤��ͤ�ɽ������ޤ���
+C<frame & 4> の場合、関数の引数に加えて、コンテキストと呼び出し元の
+情報を表示します。
+C<frame & 8> の場合、引数の表示にオーバーロードされた C<文字列化> と
+C<tie> した C<FETCH> が有効になります。
+C<frame & 16> の場合、サブルーチンからの返り値が表示されます。
 
 =begin original
 
@@ -1353,7 +1353,7 @@ next option:
 
 =end original
 
-�����ꥹ�Ȥ��ڤ�ͤ��줿����Ĺ���ϼ��Υ��ץ����δɳ��Ȥʤ�ޤ�:
+引数リストが切り詰められた時の長さは次のオプションの管轄となります:
 
 =item C<maxTraceLen>
 
@@ -1364,8 +1364,8 @@ bit 4 is set.
 
 =end original
 
-C<frame> ���ץ����� bit 4 �����åȤ���Ƥ�����ΰ����ꥹ�Ȥ��ڤ�ͤ��
-Ĺ����
+C<frame> オプションの bit 4 がセットされている時の引数リストを切り詰める
+長さ。
 
 =back
 
@@ -1376,7 +1376,7 @@ commands:
 
 =end original
 
-�ʲ��Υ��ץ����� C<V>, C<X>, C<x> ���ޥ�ɤ˱ƶ���Ϳ���ޤ���
+以下のオプションは C<V>, C<X>, C<x> コマンドに影響を与えます。
 
 =over 12
 
@@ -1388,7 +1388,7 @@ Print only first N elements ('' for all).
 
 =end original
 
-�ǽ�� N ���Ǥ�����ɽ�����ޤ�('' ����ꤹ�������ɽ�����ޤ�)��
+最初の N 要素だけを表示します('' を指定すると全て表示します)。
 
 =item C<compactDump>, C<veryCompact>
 
@@ -1399,8 +1399,8 @@ may be printed on one line.
 
 =end original
 
-����ȥϥå���ν��ϥ���������ѹ����ޤ���
-C<compactDump> �ξ��ϡ�û������� 1 �Ԥ�ɽ�����ޤ���
+配列とハッシュの出力スタイルを変更します。
+C<compactDump> の場合は、短い配列は 1 行で表示します。
 
 =item C<globPrint>
 
@@ -1410,7 +1410,7 @@ Whether to print contents of globs.
 
 =end original
 
-�����֤����Ƥ�ɽ�����뤫�ɤ����Ǥ���
+グロブの内容を表示するかどうかです。
 
 =item C<DumpDBFiles>
 
@@ -1420,7 +1420,7 @@ Dump arrays holding debugged files.
 
 =end original
 
-�ǥХå����Ƥ��Ƥ���ե����뤬�ݻ����Ƥ�����������פ��ޤ���
+デバッグしていているファイルが保持している配列をダンプします。
 
 =item C<DumpPackages>
 
@@ -1430,7 +1430,7 @@ Dump symbol tables of packages.
 
 =end original
 
-�ѥå������Υ���ܥ�ơ��֥�����פ��ޤ���
+パッケージのシンボルテーブルをダンプします。
 
 =item C<DumpReused>
 
@@ -1440,7 +1440,7 @@ Dump contents of "reused" addresses.
 
 =end original
 
-�ֺ����Ѥ��줿�ץ��ɥ쥹�����Ƥ����פ��ޤ���
+「再利用された」アドレスの内容をダンプします。
 
 =item C<quote>, C<HighBit>, C<undefPrint>
 
@@ -1453,11 +1453,11 @@ with their high bit set are printed verbatim.
 
 =end original
 
-ʸ�������פΥ���������ѹ����ޤ���
-C<quote> �Υǥե���Ȥ� C<auto> �Ǥ�;
-C<"> �� C<'> �˥��åȤ��뤳�Ȥǥ��֥륯���������䥷�󥰥륯����������
-�Ǥ��ޤ���
-�ǥե���ȤǤϡ��Ǿ�̥ӥåȤ����åȤ���Ƥ���ʸ���Ϥ��Τޤ�ɽ������ޤ���
+文字列ダンプのスタイルを変更します。
+C<quote> のデフォルトは C<auto> です;
+C<"> や C<'> にセットすることでダブルクォート風やシングルクォート風に
+できます。
+デフォルトでは、最上位ビットがセットされている文字はそのまま表示されます。
 
 =item C<UsageOnly>
 
@@ -1469,10 +1469,10 @@ include lexicals in a module's file scope, or lost in closures.
 
 =end original
 
-����Ū�ʥѥå�����ñ�̤Υ�������̥���ס�
-�ѥå���������ѿ��Ǹ��Ĥ��ä�ʸ����Υ������ι�פ�׻����ޤ���
-�⥸�塼��Υե����륹��������Υ쥭������䡢�������������
-����줿��Τϴޤޤ�ޤ���
+基本的なパッケージ単位のメモリ使用量ダンプ。
+パッケージ内の変数で見つかった文字列のサイズの合計を計算します。
+モジュールのファイルスコープ内のレキシカルや、クロージャ内で
+失われたものは含まれません。
 
 =back
 
@@ -1486,11 +1486,11 @@ there.
 
 =end original
 
-rc �ե����뤬�ɤ߹��ޤ줿�塢�ǥХå��� C<$ENV{PERLDB_OPTS}> �Ķ��ѿ���
-�ɤ߹��ߡ��ǥХå��Υץ���ץȤ��� `O ...' �Ȥ������Ϥ��줿���Τ褦��
-�ѡ������ޤ���
-��������ץ���� C<TTY>, C<noTTY>, C<ReadLine>, C<NonStop> ��
-����������Ǥ��ޤ���
+rc ファイルが読み込まれた後、デバッガは C<$ENV{PERLDB_OPTS}> 環境変数を
+読み込み、デバッガのプロンプトから `O ...' として入力されたかのように
+パースします。
+初期化オプション C<TTY>, C<noTTY>, C<ReadLine>, C<NonStop> も
+ここで設定できます。
 
 =begin original
 
@@ -1498,7 +1498,7 @@ If your rc file contains:
 
 =end original
 
-rc �ե�����˰ʲ��Τ褦�˽񤯤�:
+rc ファイルに以下のように書くと:
 
   parse_options("NonStop=1 LineInfo=db.out AutoTrace");
 
@@ -1510,10 +1510,10 @@ better reset C<LineInfo> to F</dev/tty> if you expect to see anything.)
 
 =end original
 
-������ץȤϿʹ֤β����ʤ��˼¹Ԥ��졢�ȥ졼�������
-I<db.out> �ե�����˽��Ϥ��ޤ���
-(���Ǥ��ơ�����ɽ������ʤ����ϡ�C<LineInfo> �� F</dev/tty> ��
-�ꥻ�åȤ����ۤ����褤�Ǥ��礦��)
+スクリプトは人間の介入なしに実行され、トレース情報を
+I<db.out> ファイルに出力します。
+(中断して、何も表示されない場合は、C<LineInfo> を F</dev/tty> に
+リセットしたほうがよいでしょう。)
 
 =over 12
 
@@ -1525,7 +1525,7 @@ The TTY to use for debugging I/O.
 
 =end original
 
-�ǥХå� I/O �Ȥ��� TTY ��Ȥ��ޤ���
+デバッグ I/O として TTY を使います。
 
 =item C<noTTY>
 
@@ -1539,11 +1539,11 @@ runtime using the C<Term::Rendezvous> module of your choice.
 
 =end original
 
-���åȤ���ȡ��ǥХå��� C<NonStop> �⡼�ɤȤʤꡢTTY ����³����ޤ���
-�⤷���Ǥ��줿(�ޤ��� Perl ������ץȤ�������Ū�� $DB::signal ��
-$DB::single �򥻥åȤ��뤳�Ȥˤ�äƥǥХå������椬�ܤä�)��硢
-��ư���� C<TTY> ���ץ����ǻ��ꤵ�줿 TTY �����¹Ի��� C<Term::Rendezvous>
-�⥸�塼������򤵤줿 TTY ����³����ޤ���
+セットすると、デバッガは C<NonStop> モードとなり、TTY と接続されません。
+もし中断された(または Perl スクリプトから明示的に $DB::signal や
+$DB::single をセットすることによってデバッガに制御が移った)場合、
+起動時に C<TTY> オプションで指定された TTY か、実行時に C<Term::Rendezvous>
+モジュールで選択された TTY に接続されます。
 
 =begin original
 
@@ -1557,14 +1557,14 @@ possible.
 
 =end original
 
-���Υ⥸�塼��ϡ�2 �ĤΥ᥽�å� C<IN> �� C<OUT> ���ĥ��֥������Ȥ�
-�֤��᥽�å� C<new> ���������ɬ�פ�����ޤ���
-�����Ϥ��줾�졢�ǥХå����ϤȽ��ϤΤ���Υե�����ϥ�ɥ��
-�֤��褦�ˤ��ޤ���
-C<new> �᥽�åɤϵ�ư���� C<$ENV{PERLDB_NOTTY}> ���ͤ�ޤ�Ǥ���
-�����򸡺���������ʤ���� C<"/tmp/perldbtty$$"> �Ȥʤ�ޤ���
-���Υե������Ŭ�ڤʽ�ͭ���ˤĤ��Ƹ�������ʤ��Τǡ�
-����Ū�ˤϥ������ƥ������꤬���������ޤ���
+このモジュールは、2 つのメソッド C<IN> と C<OUT> をもつオブジェクトを
+返すメソッド C<new> を実装する必要があります。
+これらはそれぞれ、デバッグ入力と出力のためのファイルハンドルを
+返すようにします。
+C<new> メソッドは起動時に C<$ENV{PERLDB_NOTTY}> の値を含んでいる
+引数を検査し、さもなければ C<"/tmp/perldbtty$$"> となります。
+このファイルは適切な所有権について検査されないので、
+理論的にはセキュリティの問題が起こり得ます。
 
 =item C<ReadLine>
 
@@ -1575,8 +1575,8 @@ to debug applications that themselves use ReadLine.
 
 =end original
 
-�����ȡ��ǥХå����륢�ץꥱ������󼫿Ȥ� ReadLine ��Ȥ�����ˡ�
-readline �б���̵���ˤ��ޤ���
+偽だと、デバッグするアプリケーション自身が ReadLine を使うために、
+readline 対応を無効にします。
 
 =item C<NonStop>
 
@@ -1587,8 +1587,8 @@ programmatically by setting $DB::signal or $DB::single.
 
 =end original
 
-���ꤵ���ȡ��ǥХå������Ǥ���뤫���ץ������Ū�� $DB::signal ��
-$DB::single �����ꤵ���ޤǡ�������Ū�⡼�ɤȤʤ�ޤ���
+設定されると、デバッガは中断されるか、プログラム的に $DB::signal か
+$DB::single に設定されるまで、非対話的モードとなります。
 
 =back
 
@@ -1598,7 +1598,7 @@ Here's an example of using the C<$ENV{PERLDB_OPTS}> variable:
 
 =end original
 
-�ʲ��� C<$ENV{PERLDB_OPTS}> �ѿ���Ȥä���򼨤��ޤ�:
+以下に C<$ENV{PERLDB_OPTS}> 変数を使った例を示します:
 
     $ PERLDB_OPTS="NonStop frame=2" perl -d myprogram
 
@@ -1613,12 +1613,12 @@ always spell them out in full for legibility and future compatibility.
 
 =end original
 
-����ϡ��ʹ֤δ�Ϳ�ʤ��ǥ�����ץ� B<myprogram> ��¹Ԥ��������Ƚ�λ��
-�ݥ���ȤθƤӽФ��ڤ�ɽ�����ޤ���
-C<NonStop=1 frame=2> �� C<N f=2> �������ǡ���Ȥ�ȥ��ץ����Ϻǽ��ʸ��
-(C<Dump*> ���ץ�����ˡ�Ȥ���) �˾�ά�Ǥ��ޤ���
-����Ǥ��Ϥꡢ�ɤߤ䤹���Ⱦ���θߴ����Τ���ˡ���˥ե륹�ڥ��񤯤��Ȥ�
-�侩����ޤ���
+これは、人間の関与なしでスクリプト B<myprogram> を実行し、進入と終了の
+ポイントの呼び出し木を表示します。
+C<NonStop=1 frame=2> は C<N f=2> と等価で、もともとオプションは最初の文字
+(C<Dump*> オプションを法として) に省略できます。
+それでもやはり、読みやすさと将来の互換性のために、常にフルスペルを書くことが
+推奨されます。
 
 =begin original
 
@@ -1626,7 +1626,7 @@ Other examples include
 
 =end original
 
-�⤦��Ĥ���Ȥ��Ƥ�:
+もう一つの例としては:
 
     $ PERLDB_OPTS="NonStop frame=2" perl -d myprogram
 
@@ -1639,10 +1639,10 @@ into a subroutine and each executed line into the file named F<listing>.
 
 =end original
 
-�Ȥ���ȥ�����ץȤ�������Ū�˼¹Ԥ��졢���֥롼����ؤο����ȼ¹ԹԤ�
-F<listing> �Ȥ���̾���Υե�����˵�Ͽ���ޤ���
-(���Ǥ���ȡ�����������Ū�פˤ��뤿��� C<LineInfo> ��ꥻ�åȤ�������
-�ɤ��Ǥ��礦!)
+とするとスクリプトは非対話的に実行され、サブルーチンへの進入と実行行を
+F<listing> という名前のファイルに記録します。
+(中断すると、何か「対話的」にするために C<LineInfo> をリセットする方が
+良いでしょう!)
 
 =begin original
 
@@ -1651,7 +1651,7 @@ variable settings):
 
 =end original
 
-(�Ķ��ѿ������ɽ������ɸ�ॷ���빽ʸ��Ȥä�)�⤦��Ĥ���Ȥ��Ƥ�:
+(環境変数設定を表示する標準シェル構文を使った)もう一つの例としては:
 
   $ ( PERLDB_OPTS="NonStop frame=1 AutoTrace LineInfo=tperl.out"
       perl -d myprogram )
@@ -1674,11 +1674,11 @@ See L<perldebguts/"Debugger Internals"> for details.
 
 =end original
 
-�ܺ٤ˤĤ��Ƥ� L<perldebguts/"Debugger Internals"> �򻲾Ȥ��Ƥ���������
+詳細については L<perldebguts/"Debugger Internals"> を参照してください。
 
 =head2 Debugger input/output
 
-(�ǥХå���������)
+(デバッガの入出力)
 
 =over 8
 
@@ -1690,7 +1690,7 @@ The debugger prompt is something like
 
 =end original
 
-�ǥХå��Υץ���ץȤϰʲ��Τ褦���ä���:
+デバッガのプロンプトは以下のようだったり:
 
     DB<8>
 
@@ -1700,7 +1700,7 @@ or even
 
 =end original
 
-���뤤�ϰʲ��Τ褦���ä��ꤷ�ޤ�:
+あるいは以下のようだったりします:
 
     DB<<17>>
 
@@ -1717,13 +1717,13 @@ expression> command.
 
 =end original
 
-�����ǿ��ͤϥ��ޥ���ֹ�ǡ��Ȥ߹��ߤ� B<csh> �����򵡹���Ȥä�
-������������Τ˻Ȥ��ޤ���
-�㤨�С�C<!17> �ϥ��ޥ���ֹ� 17 ��Ƽ¹Ԥ��ޤ���
-������ο����ϥǥХå��Υͥ��Ȥο����򼨤��ޤ���
-�㤨�С����˥֥졼���ݥ���Ȥˤ��ơ����켫�Ȥˤ�֥졼���ݥ���Ȥ�
-�ޤ�ؿ��ƤӽФ��η�̤�ɽ���������ꡢC<s/n/t expression> ���ޥ�ɤ�
-�ȤäƼ��򥹥ƥå׼¹Ԥ����ꤷ������ʣ������������Ȥ򸫤뤳�Ȥ�����ޤ���
+ここで数値はコマンド番号で、組み込みの B<csh> 風履歴機構を使って
+アクセスするのに使います。
+例えば、C<!17> はコマンド番号 17 を再実行します。
+不等号の深さはデバッガのネストの深さを示します。
+例えば、既にブレークポイントにいて、それ自身にもブレークポイントを
+含む関数呼び出しの結果を表示させたり、C<s/n/t expression> コマンドを
+使って式をステップ実行したりした時に複数の不等号の組を見ることがあります。
 
 =item Multiline commands
 
@@ -1736,10 +1736,10 @@ Here's an example:
 
 =end original
 
-ʣ����ʸ����ʤ륵�֥롼���������ե����ޥåȤȤ��ä���ʣ���Ԥ�
-���ޥ�ɤ����Ϥ��������ϡ��̾�ϥǥХå����ޥ�ɤ�λ��������Ԥ�
-�Хå�����å���ǥ��������פ��Ƥ���������
-�ʲ�����Ǥ�:
+複数の文からなるサブルーチン定義やフォーマットといった、複数行の
+コマンドを入力したい場合は、通常はデバッガコマンドを終了させる改行を
+バックスラッシュでエスケープしてください。
+以下は例です:
 
       DB<1> for (1..4) {         \
       cont:     print "ok\n";   \
@@ -1756,8 +1756,8 @@ commands typed into the debugger.
 
 =end original
 
-���Ρ����Ԥ򥨥������פ�������ϡ�����Ū�˥ǥХå������Ϥ��줿���ޥ�ɤ�
-��ͭ�Ǥ��뤳�Ȥ����դ��Ƥ���������
+この、改行をエスケープする問題は、対話的にデバッガに入力されたコマンドに
+特有であることに注意してください。
 
 =item Stack backtrace
 
@@ -1768,8 +1768,8 @@ look like:
 
 =end original
 
-����ϡ�C<T> ���ޥ�ɤˤ�ä�ɽ������륹���å��Хå��ȥ졼����
-��Ǥ�:
+これは、C<T> コマンドによって表示されるスタックバックトレースの
+例です:
 
     $ = main::infested called from file `Ambulation.pm' line 10
     @ = Ambulation::legs(1, 2, 3, 4) called from file `camel_flea' line 7
@@ -1792,18 +1792,18 @@ also from I<camel_flea>, but from line 4.
 
 =end original
 
-�嵭�κ�¦��ʸ���ϴؿ����ƤӽФ��줿����ƥ����Ȥ򼨤��Ƥ��ޤ�;
-C<$> �� C<@> �Ϥ��줾�쥹���饳��ƥ����Ȥȥꥹ�ȥ���ƥ����Ȥ��̣����
-C<.> ��̵������ƥ�����(�ºݤΤȤ����ϥ����饳��ƥ����ȤΤ褦�ʤ��)��
-��̣���ޤ���
-�嵭��ɽ���ϡ������å�����פ�¹Ԥ����Ȥ��� C<main::infested> �ˤ��ơ�
-����ϥե����� I<Ambulation.pm> �� 10 ���ܤ��顢�����饳��ƥ����Ȥ�
-�����ʤ��ǸƤӽФ���Ƥ��ޤ�; �Ĥޤ� C<&infested> �Τ褦�ˤ���
-�ƤӽФ���Ƥ��ޤ���
-���Υ����å��ե졼��ϡ��ؿ� C<Ambulation::legs> �� I<camel_flea> ����
-�ꥹ�ȥ���ƥ����Ȥ� 4 �Ĥΰ����ȶ��˸ƤӽФ���Ƥ��ޤ���
-�Ǹ�Υ����å��ե졼��ϡ�C<main::pests> ����Ʊ���ե����� I<camel_flea> ��
-4 ���ܤ��饹���饳��ƥ����ȤǸƤӽФ���Ƥ��ޤ���
+上記の左側の文字は関数が呼び出されたコンテキストを示しています;
+C<$> と C<@> はそれぞれスカラコンテキストとリストコンテキストを意味し、
+C<.> は無効コンテキスト(実際のところはスカラコンテキストのようなもの)を
+意味します。
+上記の表示は、スタックダンプを実行したときに C<main::infested> にいて、
+これはファイル I<Ambulation.pm> の 10 行目から、スカラコンテキストで
+引数なしで呼び出されています; つまり C<&infested> のようにして
+呼び出されています。
+次のスタックフレームは、関数 C<Ambulation::legs> が I<camel_flea> から
+リストコンテキストで 4 つの引数と共に呼び出されています。
+最後のスタックフレームは、C<main::pests> が、同じファイル I<camel_flea> の
+4 行目からスカラコンテキストで呼び出されています。
 
 =begin original
 
@@ -1813,8 +1813,8 @@ an C<eval>) frame.
 
 =end original
 
-ͭ���� C<use> ʸ���椫�� C<T> ���ޥ�ɤ�¹Ԥ���ȡ��Хå��ȥ졼���ˤ�
-C<require> �ե졼��� C<eval> �ե졼���ξ�����ޤޤ�ޤ���
+有効な C<use> 文の中から C<T> コマンドを実行すると、バックとレースには
+C<require> フレームと C<eval> フレームの両方が含まれます。
 
 =item Line Listing Format
 
@@ -1824,7 +1824,7 @@ This shows the sorts of output the C<l> command can produce:
 
 =end original
 
-����� C<l> ���ޥ�ɤν��Ϥ򼨤��Ƥ��ޤ�:
+これは C<l> コマンドの出力を示しています:
 
     DB<<13>> l
   101:                @i{@i} = ();
@@ -1846,10 +1846,10 @@ about to be executed is marked by C<< ==> >>.
 
 =end original
 
-�֥졼����ǽ�ʹԤˤ� C<:> ���դ��Ƥ��ޤ���
-�֥졼���ݥ���ȤΤ���Ԥˤ� C<b> ������������󤬤���Ԥˤ�
-C<a> ������ޤ���
-������¹Ԥ��褦�Ȥ��Ƥ���Ԥˤ� C<< ==> >> ���դ��Ƥ��ޤ���
+ブレーク可能な行には C<:> が付いています。
+ブレークポイントのある行には C<b> が、アクションがある行には
+C<a> があります。
+今から実行しようとしている行には C<< ==> >> が付いています。
 
 =begin original
 
@@ -1860,11 +1860,11 @@ from its original positions or take on entirely different forms.
 
 =end original
 
-�ǥХå���ɽ������륳���ɤϡ����Υ����������ɤ�Ʊ���褦�˸�����Ȥ�
-�¤�ʤ����Ȥ����դ��Ƥ���������
-�Իؼ��Ҥȳ����������ե��륿����Perl �������ɤ򸫤����˥����ɤ�
-�ѹ����뤳�Ȥ����ꡢ����ˤ�äƥ����ɤ����ΰ��֤����ư�����ꡢ
-�����˰ۤʤ���ˤʤä��ꤷ�ޤ���
+デバッガで表示されるコードは、元のソースコードと同じように見えるとは
+限らないことに注意してください。
+行指示子と外部ソースフィルタが、Perl がコードを見る前にコードを
+変更することがあり、それによってコードが元の位置から移動したり、
+完全に異なる形になったりします。
 
 =item Frame listing
 
@@ -1876,15 +1876,15 @@ for incredibly long examples of these.
 
 =end original
 
-C<frame> ���ץ�������ꤵ���ȡ��ǥХå��ϥ��֥롼��������ä��Ȥ�
-(����ӽФ��Ȥ��⥪�ץ�����)��ä����������ɽ�����ޤ���
-����������Ĺ����ˤĤ��Ƥ� L<perldebguts> �򻲾Ȥ��Ƥ���������
+C<frame> オプションが設定されると、デバッガはサブルーチンに入ったとき
+(および出たときもオプションで)違ったスタイルで表示します。
+これらの非常に長い例については L<perldebguts> を参照してください。
 
 =back
 
 =head2 Debugging compile-time statements
 
-(����ѥ�����˼¹Ԥ����ʸ�ΥǥХå�)
+(コンパイル時に実行される文のデバッグ)
 
 =begin original
 
@@ -1898,14 +1898,14 @@ which is harmless if the debugger is not running:
 
 =end original
 
-����ѥ�����˼¹Ԥ����ʸ (BEGIN �� CHECK �Υ֥��å���Υ����ɤ�
-C<use> ʸ) ������С������ϥǥХå��ˤ�ä�I<�ߤ�뤳�Ȥ��Ǥ���
-����>��C<require> �� INIT �֥��å��ϲ�ǽ�Ǥ���
-�ޤ�������ѥ�����¹�ʸ�� C<PERLDB_OPTS> �� C<AutoTrace> ���ץ�����
-���ꤹ�뤳�Ȥǥȥ졼���Ǥ��ޤ���
-���������ʲ��Τ褦��ʸ��ʬ�� Perl �����ɤ˴ޤ��С�
-�ǥХå���������Ϥ����Ȥ��Ǥ��ޤ���
-����ʸ�ϡ��ǥХå���ư���Ƥ��ʤ��Ȥ��ˤϡ����⤷�ޤ���:
+コンパイル時に実行される文 (BEGIN と CHECK のブロック内のコードや
+C<use> 文) があれば、それらはデバッガによってI<止めることができま
+せん>。C<require> と INIT ブロックは可能です。
+また、コンパイル時実行文は C<PERLDB_OPTS> で C<AutoTrace> オプションを
+設定することでトレースできます。
+しかし、以下のような文を自分で Perl コードに含めれば、
+デバッガに制御を渡すことができます。
+この文は、デバッガを起動していないときには、何もしません:
 
     $DB::single = 1;
 
@@ -1918,11 +1918,11 @@ having typed the C<t> command.
 
 =end original
 
-C<$DB::single> �� 2 �򥻥åȤ���ȡ�C<n>���ޥ�ɤ򥿥��פ����Τ�
-�����ˤʤ�ޤ���
-1 �����ꤹ��� C<s> ���ޥ�ɤȤʤ�ޤ���
-C<$DB::trace> �ѿ��� C<t> ���ޥ�ɤ򥿥��פ������֤򥷥ߥ�졼�Ȥ��뤿���
-1 �˥��åȤ���٤��Ǥ���
+C<$DB::single> に 2 をセットすると、C<n>コマンドをタイプしたのと
+等価になります。
+1 を設定すると C<s> コマンドとなります。
+C<$DB::trace> 変数は C<t> コマンドをタイプした状態をシミュレートするために
+1 にセットするべきです。
 
 =begin original
 
@@ -1931,8 +1931,8 @@ breakpoint on the I<load> of some module:
 
 =end original
 
-����ѥ�����˼¹Ԥ���륳���ɤ�ǥХå�����⤦��Ĥ���ˡ�ϡ�
-�⥸�塼��� I<load> �˥֥졼���ݥ���Ȥ����ꤷ��:
+コンパイル時に実行されるコードをデバッグするもう一つの方法は、
+モジュールの I<load> にブレークポイントを設定して:
 
     DB<7> b load f:/perllib/lib/Carp.pm
   Will stop on load of `f:/perllib/lib/Carp.pm'.
@@ -1944,12 +1944,12 @@ compile subname> for the same purpose.
 
 =end original
 
-(��ǽ�ʤ�) C<R> ���ޥ�ɤ�ȤäƥǥХå���Ƶ�ư���뤳�ȤǤ���
-C<b compile subname> ��Ʊ����Ū�˻Ȥ��ޤ���
+(可能なら) C<R> コマンドを使ってデバッガを再起動することです。
+C<b compile subname> も同じ目的に使えます。
 
 =head2 Debugger Customization
 
-(�ǥХå��Υ������ޥ���)
+(デバッガのカスタマイズ)
 
 =begin original
 
@@ -1961,11 +1961,11 @@ from customization files.
 
 =end original
 
-�ǥХå��ˤϤ����餯���ʤ�����ʬ�ǽ�������ɬ�פ�����Ȥϻפ�ʤ��褦��
-�Ȥ����ޤǴޤ������եå�������ޤ���
-�ǥХå��ο����񤤤ϡ��ǥХå���� C<o> ���ޥ�ɤ�Ȥä��ѹ��Ǥ��ޤ�;
-����� C<PERLDB_OPT> �Ķ��ѿ���ͳ�ǥ��ޥ�ɥ饤�󤫤餫������ե����뤫��
-�ѹ��Ǥ��ޤ���
+デバッガにはおそらくあなたが自分で修正する必要があるとは思わないような
+ところまで含んだ設定フックがあります。
+デバッガの振る舞いは、デバッガ内で C<o> コマンドを使って変更できます;
+これは C<PERLDB_OPT> 環境変数経由でコマンドラインからか、設定ファイルから
+変更できます。
 
 =begin original
 
@@ -1975,10 +1975,10 @@ like these (the last one is one people expect to be there):
 
 =end original
 
-����������ɤ����줿�ե����� .perldb �����ꤹ�뤳�ȤǤ⡢
-�����餫�Υ������ޥ������Ǥ��ޤ���
-���Ȥ��С��ʲ��Τ褦�ʥ����ꥢ�����Ԥ��ޤ� (�Ǹ�Τ�Τϡ�
-�͡�������ȻפäƤ����ΤǤ�):
+初期化コードを入れたファイル .perldb を設定することでも、
+いくらかのカスタマイズができます。
+たとえば、以下のようなエイリアスが行えます (最後のものは、
+人々があると思っているものです):
 
     $DB::alias{'len'}  = 's/^len(.*)/p length($1)/';
     $DB::alias{'stop'} = 's/^stop (at|in)/b/';
@@ -1991,7 +1991,7 @@ You can change options from F<.perldb> by using calls like this one;
 
 =end original
 
-F<.perldb> �Υ��ץ����򡢰ʲ��Τ褦�ʸƤӽФ��ˤ�ä��ѹ��Ǥ��ޤ�:
+F<.perldb> のオプションを、以下のような呼び出しによって変更できます:
 
     parse_options("NonStop=1 LineInfo=db.out AutoTrace=1 frame=2");
 
@@ -2008,14 +2008,14 @@ by no one but its owner.
 
 =end original
 
-�����ɤ� C<DB> �ѥå������Ǽ¹Ԥ���ޤ���
-F<.perldb> �� C<PERLDB_OPTS> �����˽�������뤳�Ȥ����դ��Ƥ���������
-F<.perldb> �� C<afterinit> ���֥롼�����������Ƥ���ȡ����δؿ���
-�ǥХå��ν������λ��˸ƤӽФ���ޤ���
-F<.perldb> �ϥ����ȥǥ��쥯�ȥ꤫�ۡ���ǥ��쥯�ȥ���֤����Ȥ��Ǥ��ޤ���
-���Υե������ Perl �ˤ�äƼ¹Ԥ��졢Ǥ�դΥ��ޥ�ɤ�ޤ�뤳�Ȥ�
-�Ǥ���Τǡ��������ƥ������ͳ���顢�����ѡ��桼���������ߤΥ桼������
-��äƽ�ͭ���졢��ͭ�԰ʳ��ˤϽ���߶ػߤˤʤäƤ��ʤ���Фʤ�ޤ���
+コードは C<DB> パッケージで実行されます。
+F<.perldb> は C<PERLDB_OPTS> の前に処理されることに注意してください。
+F<.perldb> で C<afterinit> サブルーチンが定義されていると、この関数は
+デバッガの初期化終了後に呼び出されます。
+F<.perldb> はカレントディレクトリかホームディレクトリに置くことができます。
+このファイルは Perl によって実行され、任意のコマンドを含めることが
+できるので、セキュリティ上の理由から、スーパーユーザーが現在のユーザーに
+よって所有され、所有者以外には書込み禁止になっていなければなりません。
 
 =begin original
 
@@ -2026,9 +2026,9 @@ something like this:
 
 =end original
 
-�ǥХå����ѹ����������ˤϡ�perl5db.pl �� Perl �饤�֥�꤫��
-�̤�̾���˥��ԡ������������Ƥ������������줫��
-�Ķ��ѿ� C<PERL5DB> �ˤϡ��ʲ��Τ褦�����ꤹ��ɬ�פ�����Ǥ��礦:
+デバッガを変更したい場合には、perl5db.pl を Perl ライブラリから
+別の名前にコピーし、修正してください。それから
+環境変数 C<PERL5DB> には、以下のように設定する必要があるでしょう:
 
     BEGIN { require "myperl5db.pl" }
 
@@ -2039,8 +2039,8 @@ by directly setting internal variables or calling debugger functions.
 
 =end original
 
-�Ǹ�μ��ʤȤ��ơ� C<PERL5DB> ��ľ�������ѿ������ꤷ����
-�ǥХå��ؿ���ƤӽФ����ȤǥǥХå��򥫥����ޥ������뤳�Ȥ�Ǥ��ޤ���
+最後の手段として、 C<PERL5DB> を、直接内部変数を設定したり
+デバッガ関数を呼び出すことでデバッガをカスタマイズすることもできます。
 
 =begin original
 
@@ -2050,12 +2050,12 @@ use only, and as such are subject to change without notice.
 
 =end original
 
-���Υɥ������(�� L<perldebguts>)�˵��Ҥ���Ƥ��ʤ��ѿ���
-�ؿ��������������ѤȤ��ư���졢ͽ��ʤ��ѹ�����뤳�Ȥ�����ޤ���
+このドキュメント(や L<perldebguts>)に記述されていない変数や
+関数は内部使用専用として扱われ、予告なく変更されることがあります。
 
 =head2 Readline Support
 
-(readline �б�)
+(readline 対応)
 
 =begin original
 
@@ -2068,13 +2068,13 @@ These do not support normal B<vi> command-line editing, however.
 
 =end original
 
-�вٻ��ξ��֤Ǥϡ����ޥ�ɥ饤�����򻲾ȵ�ǽ�Ȥ����󶡤����Τϡ�
-����������᡼�����ޡ������դ��뤳�Ȥˤ��ñ��ʤ�Τ����Ǥ���
-��������CPAN ���� Term::ReadKey �� Term::ReadLine �Υ⥸�塼���
-���󥹥ȡ��뤹�뤳�Ȥǡ�GNU I<readline>(3) ���󶡤���褦��
-�������Խ���ǽ���Ȥ���褦�ˤʤ�ޤ���
-������ CPAN �� F<modules/by-module/Term> �ǥ��쥯�ȥ�ˤ���ޤ���
-���������������̾�� B<vi> ���ޥ�ɥ饤���Խ����б����Ƥ��ޤ���
+出荷時の状態では、コマンドライン履歴参照機能として提供されるのは、
+エクスクラメーションマークを付けることによる単純なものだけです。
+しかし、CPAN から Term::ReadKey と Term::ReadLine のモジュールを
+インストールすることで、GNU I<readline>(3) が提供するような
+完全な編集機能が使えるようになります。
+これらは CPAN の F<modules/by-module/Term> ディレクトリにあります。
+しかし、これらは通常の B<vi> コマンドライン編集は対応していません。
 
 =begin original
 
@@ -2084,12 +2084,12 @@ completion.
 
 =end original
 
-����Ū�ʥ��ޥ�ɥ饤���䴰�����Ѳ�ǽ�Ǥ���
-��ǰ�ʤ��顢�쥭�������ѿ�̾���䴰�Ǥ��ޤ���
+基本的なコマンドライン補完も利用可能です。
+残念ながら、レキシカル変数名は補完できません。
 
 =head2 Editor Support for Debugging
 
-(�ǥХå��Τ���Υ��ǥ����б�)
+(デバッグのためのエディタ対応)
 
 =begin original
 
@@ -2100,9 +2100,9 @@ with C debuggers.
 
 =end original
 
-FSF �Ǥ� B<emacs> �������ƥ�˥��󥹥ȡ��뤵��Ƥ�����ϡ�
-C �ǥХå��Ȥ�Ϣ�Ȥ�Ϣ�ۤ�����褦�ʡ�Perl �ǥХå��Ȥ�����
-���եȥ�������ȯ�Ķ����󶡤��ޤ���
+FSF 版の B<emacs> がシステムにインストールされている場合は、
+C デバッガとの連携を連想させるような、Perl デバッガとの統合
+ソフトウェア開発環境を提供します。
 
 =begin original
 
@@ -2112,9 +2112,9 @@ Look in the I<emacs> directory of the Perl source distribution.
 
 =end original
 
-Perl �ˤ� B<emacs> �� Perl ��ʸˡ(�ΰ���)���᤹��ʸˡ�ظ���
-���ǥ����Ȥ��ƿ���碌�뤿��Υ������ȥե������Ʊ�����Ƥ��ޤ���
-Perl ���������ۤ� I<emacs> �ǥ��쥯�ȥ�򻲾Ȥ��Ƥ���������
+Perl には B<emacs> を Perl の文法(の一部)を解釈する文法指向の
+エディタとして振舞わせるためのスタートファイルを同梱しています。
+Perl ソース配布の I<emacs> ディレクトリを参照してください。
 
 =begin original
 
@@ -2127,12 +2127,12 @@ Perl distribution was uncertain.
 
 =end original
 
-�٥����Ʊ���� B<vi> ����� X11 ������ɥ������ƥ����ߺ��Ѥ����뤿���
-Tom Christiansen �ˤ������褦�ʥ��åȥ��åפ����Ѳ�ǽ�Ǥ���
-����� B<emacs> ���󶡤�������ޥ��������ɥ����ݡ��Ȥ�Ʊ�ͤ�ư���
-�ǥХå������ǥ��������椷�ޤ���
-������������򵭽Ҥ��Ƥ�������Ǥϡ����Υġ���� Perl ���ۤ���Ǥ�
-�ǽ�Ū�ʰ��֤��Գ���Ǥ���
+ベンダー同梱の B<vi> および X11 ウィンドウシステムと相互作用させるための
+Tom Christiansen による似たようなセットアップも利用可能です。
+これは B<emacs> が提供する統合マルチウィンドウサポートと同様に動作し、
+デバッガがエディタを制御します。
+しかし、これを記述している時点では、このツールの Perl 配布の中での
+最終的な位置は不確定です。
 
 =begin original
 
@@ -2141,8 +2141,8 @@ and windy version, for coloring of Perl keywords.
 
 =end original
 
-B<vi> �桼�����ϡ�Perl �Υ�����ɤ��դ����롢�ޥ����ȥ�����ɥ��б���
-B<vim> �� B<gvim> ��Ĵ�٤ƤߤƤ���������
+B<vi> ユーザーは、Perl のキーワードを色付けする、マウスとウィンドウ対応の
+B<vim> と B<gvim> を調べてみてください。
 
 =begin original
 
@@ -2152,13 +2152,13 @@ your Perl as a C programmer might.
 
 =end original
 
-perl �Τߤ������� Perl ��ѡ����Ǥ���Τǡ���������Ƥ� CASE �ġ���ˤ�
-­��ʤ��Ȥ��������뤳�Ȥ����դ��Ƥ�������; �ä� C �ץ�����ޡ����񤯤褦��
-Perl �ץ�������񤤤Ƥ��ʤ����Ϥ����Ǥ���
+perl のみが完全に Perl をパースできるので、これら全ての CASE ツールには
+足りないところがあることに注意してください; 特に C プログラマーが書くような
+Perl プログラムを書いていない場合はそうです。
 
 =head2 The Perl Profiler
 
-(Perl �ץ��ե�����)
+(Perl プロファイラ)
 
 =begin original
 
@@ -2171,12 +2171,12 @@ just type:
 
 =end original
 
-Perl �μ¹Ԥ����إǥХå���Ȥ��������ϡ�ñ�� B<-d> ���ץ�����
-������ȥѥå���������ʤ�������դ��ƥ�����ץȤ�ư���Ƥ���������
-��äȤ�ͭ̾�� Perl �����إǥХå��� Perl �ץ��ե�����Ǥ���
-Devel::DProf �� Perl ɸ�����ۤ˴ޤޤ�Ƥ��ޤ���
-�ե����� F<mycode.pl> �ˤ��� Perl �ץ�������ץ��ե�����󥰤�����
-��硢�ʲ��Τ褦�ˤ��ޤ�:
+Perl の実行に代替デバッガを使いたい場合は、単に B<-d> オプションに
+コロンとパッケージからなる引数を付けてスクリプトを起動してください。
+もっとも有名な Perl 用代替デバッガは Perl プロファイラです。
+Devel::DProf は Perl 標準配布に含まれています。
+ファイル F<mycode.pl> にある Perl プログラムをプロファイリングしたい
+場合、以下のようにします:
 
     $ perl -d:DProf mycode.pl
 
@@ -2189,14 +2189,14 @@ interpret the information in that profile.
 
 =end original
 
-������ץȤ���λ����ȡ��ץ��ե�����ϥץ��ե���������
-F<tmon.out> �Ȥ����ե�����˥���פ��ޤ���
-Perl ɸ�����ۤ˴ޤޤ�Ƥ��� B<dprofpp> �Τ褦�ʥġ��뤬������
-�ץ��ե�����ξ�����᤹��Τ˻Ȥ��ޤ���
+スクリプトが終了すると、プロファイラはプロファイル情報を
+F<tmon.out> というファイルにダンプします。
+Perl 標準配布に含まれている B<dprofpp> のようなツールが、この
+プロファイルの情報を解釈するのに使えます。
 
 =head1 Debugging regular expressions
 
-(����ɽ���ΥǥХå�)
+(正規表現のデバッグ)
 
 =begin original
 
@@ -2210,18 +2210,18 @@ L<perldebguts/"Debugging regular expressions">.
 
 =end original
 
-C<use re 'debug'> ����ꤹ��ȡ�Perl ����ɽ�����󥸥󤬤ɤΤ褦��
-ư��뤫�ξܺ٤򸫤뤳�Ȥ��Ǥ��ޤ���
-���Ρ�ŵ��Ū�ˤ����̤ν��Ϥ����򤹤뤿��ˤϡ�
-����Ū������ɽ���ޥå����ɤΤ褦�˹Ԥ��뤫�����Ǥʤ���
-Perl ������ɽ��������Ū�ˤɤΤ褦�˥����ȥޥȥ�˥���ѥ��뤵��뤫��
-�Τ�ʤ���Фʤ�ޤ���
-�����λ����Ͼܺ٤�
-L<perldebguts/"Debugging regular expressions"> �ˤ���ޤ���
+C<use re 'debug'> を指定すると、Perl 正規表現エンジンがどのように
+動作するかの詳細を見ることができます。
+この、典型的には大量の出力を理解するためには、
+一般的に正規表現マッチがどのように行われるかだけでなく、
+Perl の正規表現が内部的にどのようにオートマトンにコンパイルされるかを
+知らなければなりません。
+これらの事柄は詳細は
+L<perldebguts/"Debugging regular expressions"> にあります。
 
 =head1 Debugging memory usage
 
-(������ѤΥǥХå�)
+(メモリ使用のデバッグ)
 
 =begin original
 
@@ -2232,11 +2232,11 @@ See L<perldebguts/"Debugging Perl memory usage"> for the details.
 
 =end original
 
-Perl �ˤϼ��ȤΥ�����Ѿ�������𤹤뤿���������ǽ������ޤ���
-����������Ϥ��ʤ���γ�ǰ�ǡ����������Ƥ��ɤΤ褦�˹Ԥ��뤫��
-�Ĥ��Ƥ�����ɬ�פȤʤ�ޤ���
-�ܺ٤ˤĤ��Ƥ�
-L<perldebguts/"Debugging Perl memory usage"> �򻲾Ȥ��Ʋ�������
+Perl には自身のメモリ使用状況を報告するための内部機能があります。
+しかしこれはかなり上級の概念で、メモリ割り当てがどのように行われるかに
+ついての理解が必要となります。
+詳細については
+L<perldebguts/"Debugging Perl memory usage"> を参照して下さい。
 
 =head1 SEE ALSO
 
@@ -2246,7 +2246,7 @@ You did try the B<-w> switch, didn't you?
 
 =end original
 
-B<-w> �����å��Ϥ⤦�Ȥ��ޤ������?
+B<-w> スイッチはもう使いましたよね?
 
 L<perldebguts>,
 L<re>,
@@ -2266,8 +2266,8 @@ that were not compiled by Perl, such as those from C or C++ extensions.
 
 =end original
 
-C �� C++ ��ĥ�Τ褦�ʡ�Perl �ǥ���ѥ��뤵��Ƥ��ʤ���Τ��Ф���
-�����å��ե졼�����䤢����ǥХå��ؿ���Ȥ����ȤϤǤ��ޤ���
+C や C++ 拡張のような、Perl でコンパイルされていないものに対して
+スタックフレーム情報やあらゆるデバッグ関数を使うことはできません。
 
 =begin original
 
@@ -2276,8 +2276,8 @@ or C<pop>, the stack backtrace will not show the original values.
 
 =end original
 
-���֥롼�������(C<shift> �� C<pop> ��Ȥä�) @_ �������ѹ�������硢
-�����å��Хå��ȥ졼���Ǹ����ͤ�ɽ�����뤳�ȤϤǤ��ޤ���
+サブルーチン内で(C<shift> や C<pop> を使って) @_ 引数を変更した場合、
+スタックバックトレースで元の値を表示することはできません。
 
 =begin original
 
@@ -2286,8 +2286,8 @@ command-line switch, because it itself is not free of warnings.
 
 =end original
 
-�ǥХå��ϸ��ߤΤȤ��� B<-W> ���ޥ�ɥ饤�󥹥��å���Ʊ����
-�Ȥ����ȤϤǤ��ޤ��󡣤��켫�Ȥ��ٹ𤫤�ƨ����ʤ�����Ǥ���
+デバッガは現在のところ B<-W> コマンドラインスイッチと同時に
+使うことはできません。これ自身が警告から逃れられないからです。
 
 =begin original
 
@@ -2299,9 +2299,9 @@ it needs to raise an exception to longjmp(3) out of slow syscalls.
 
 =end original
 
-(�����ܡ��ɤ䥽���åȤ���� C<wait>, C<accept>, C<read>�ʤɤ�)
-�٤������ƥॳ�����¹���ǡ��ȼ��� C<$SIG{INT}> �ϥ�ɥ�����ꤷ�Ƥ��ʤ���硢
-�ǥХå�����äƤ��뤿��� CTRL-C ��Ȥ����ȤϤǤ��ޤ���
-����ϡ��ǥХå����Ȥ� C<$SIG{INT}> �ϥ�ɥ餬
-�٤������ƥॳ���뤫�� longjmp(3) �ǽФ뤿����㳰��ȯ��������ɬ������
-���򤷤ʤ�����Ǥ���
+(キーボードやソケットからの C<wait>, C<accept>, C<read>などの)
+遅いシステムコールを実行中で、独自の C<$SIG{INT}> ハンドラを設定していない場合、
+デバッガに戻ってくるために CTRL-C を使うことはできません。
+これは、デバッガ自身の C<$SIG{INT}> ハンドラが
+遅いシステムコールから longjmp(3) で出るための例外を発生させる必要性を
+理解しないからです。

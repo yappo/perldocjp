@@ -1,15 +1,15 @@
-=head1 ̾��
+=head1 名前
 
-perlthrtut - Perl�ˤ����륹��åɤΥ��塼�ȥꥢ��
+perlthrtut - Perlにおけるスレッドのチュートリアル
 
-=head1 ����
+=head1 説明
 
 B<NOTE>: this tutorial describes the new Perl threading flavour
 introduced in Perl 5.6.0 called interpreter threads, or B<ithreads>
 for short.  In this model each thread runs in its own Perl interpreter,
 and any data sharing between threads must be explicit.
 
-B<����>�����Υ��塼�ȥꥢ��ϡ�interpreter threads�����뤤��û��B<i����å�>�ȸƤФ�롢Perl 5.6.0�ˤ�����Ƴ�����줿������Perl����åɤ���ħ�����������ΤǤ��롣���Υ�ǥ�ˤ����Ƥϡ����줾��Υ���åɤϤ���鼫�Ȥ�Perl���󥿡��ץ꥿�Ǽ¹Ԥ��졢����åɴ֤Ƕ�ͭ����ǡ���������Ū�Ǥʤ���Фʤ�ʤ���
+B<注意>：このチュートリアルは、interpreter threads、あるいは短くB<iスレッド>と呼ばれる、Perl 5.6.0において導入された新しいPerlスレッドの特徴を説明するものである。このモデルにおいては、それぞれのスレッドはそれら自身のPerlインタープリタで実行され、スレッド間で共有するデータも明示的でなければならない。
 
 There is another older Perl threading flavour called the 5.005 model,
 unsurprisingly for 5.005 versions of Perl.  The old model is known to
@@ -17,7 +17,7 @@ have problems, deprecated, and will probably be removed around release
 5.10. You are strongly encouraged to migrate any existing 5.005
 threads code to the new model as soon as possible.
 
-Perl�ΥС������5.005�ǻȤ��Ƥ�����5.005��ǥ�ȸƤФ���̤θŤ�����å��ͼ������롣���θŤ���ǥ�����꤬���뤳�Ȥ��Τ��Ƥ��ơ���侩�Ǥ��롣�����餯�С������5.10����꡼������뤳���ˤ�̵���ʤ�Ǥ��������Ǥ������®�䤫�˴�¸��5.005����åɤ򿷤�����Τ˰ܹԤ��뤳�Ȥ�����������롣
+Perlのバージョン5.005で使われていた、5.005モデルと呼ばれる別の古いスレッド様式がある。この古いモデルは問題があることが知られていて、非推奨である。おそらくバージョン5.10がリリースされるころには無くなるであろう。できるだけ速やかに既存の5.005スレッドを新しいものに移行することが強く勧められる。
 
 You can see which (or neither) threading flavour you have by
 running C<perl -V> and looking at the C<Platform> section.
@@ -26,28 +26,28 @@ have C<use5005threads=define> you have 5.005 threads.
 If you have neither, you don't have any thread support built in.
 If you have both, you are in trouble.
 
-C<perl -V>��C<Platform>���������򸫤�С��ɤ���Υ���å��ͼ�������Τ��ʤ��뤤��̵���Τ��ˤ��Τ뤳�Ȥ��Ǥ��롣�⤷C<useithreads=define>�ȤʤäƤ����i����åɤ򥵥ݡ��Ȥ��Ƥ��뤷��C<use5005threads=define>�Ȥ����5.005����åɤ���ξ���Ȥ�Фʤ���硢���ʤ���Perl�ϥ���åɤ򥵥ݡ��Ȥ��Ƥ��ʤ���ξ������������꤬���롣
+C<perl -V>でC<Platform>セクションを見れば、どちらのスレッド様式があるのか（あるいは無いのか）を知ることができる。もしC<useithreads=define>となっていればiスレッドをサポートしているし、C<use5005threads=define>とあれば5.005スレッドだ。両方とも出ない場合、あなたのPerlはスレッドをサポートしていない。両方ある場合は問題がある。
 
 The user-level interface to the 5.005 threads was via the L<Threads>
 class, while ithreads uses the L<threads> class. Note the change in case.
 
-5.005����åɤؤΥ桼����٥�ǤΥ��󥿡��ե�������L<Thread> class���̤��Ƥʤ���롣����i����åɤ�L<threads> class��Ȥ������ξ����Ѳ������դ��뤳�ȡ�
+5.005スレッドへのユーザレベルでのインターフェースはL<Thread> classを通じてなされる。一方iスレッドはL<threads> classを使う。この場合の変化に注意すること。
 
-=head1 ����
+=head1 状況
 
 The ithreads code has been available since Perl 5.6.0, and is considered
 stable. The user-level interface to ithreads (the L<threads> classes)
 appeared in the 5.8.0 release, and as of this time is considered stable
 although it should be treated with caution as with all new features.
 
-i����åɥ����ɤ� Perl 5.6.0 �������ѤǤ���褦�ˤʤäƤ��ơ����ꤷ�Ƥ��롣�桼����٥�Ǥ�i����åɤؤΥ��󥿡��ե�������L<threads> class���ˤ�5.8.0���о줷�������Ƥο�������ħƱ�͡����դ�ɬ�פǤϤ���ȤϤ������������ꤷ�Ƥ��롣
+iスレッドコードは Perl 5.6.0 から利用できるようになっていて、安定している。ユーザレベルでのiスレッドへのインターフェース（L<threads> class群）は5.8.0で登場した。全ての新しい特徴同様、注意が必要ではあるとはいえ、これも安定している。
 
-=head1 ����åɤȤϲ���?
+=head1 スレッドとは何か?
 
 A thread is a flow of control through a program with a single
 execution point.
 
-����åɤȤϥץ���������ή���ñ��μ¹Թ�������ä�����Υե����Ǥ��롣
+スレッドとはプログラム内を流れる単一の実行項点を持った制御のフローである。
 
 Sounds an awful lot like a process, doesn't it? Well, it should.
 Threads are one of the pieces of a process.  Every process has at least
@@ -55,40 +55,40 @@ one thread and, up until now, every process running Perl had only one
 thread.  With 5.8, though, you can create extra threads.  We're going
 to show you how, when, and why.
 
-��������������¿�������ǥץ������˻��Ƥ���褦��ʹ��������������Τ��ˤ��ΤȤ���ǡ�����åɤϤҤȤĤΥץ������ˤ�����٤�����ʬ�ΰ�Ĥ������ƤΥץ������Ͼ��ʤ��Ȥ��ĤΥ���åɤ���ġ������Ƥ���ޤǤϡ�Perl�����餹�ץ����������Ƥ�����ĤΥ���åɤ���äƤ�����������5.8�ˤʤäơ�;ʬ�˥���åɤ�Ĥ��뤳�Ȥ��Ǥ���褦�ˤʤä������줬���ĤɤΤ褦�ˡ������ˤ��Ƥʤ����Τ��򤳤줫��ѤƤ�������
+こういうと非常に多くの点でプロセスに似ているように聞こえるだろう。確かにそのとおりで、スレッドはひとつのプロセスにおける細かい部分の一つだ。全てのプロセスは少なくとも一つのスレッドを持つ。そしてこれまでは、Perlを走らすプロセスは全てただ一つのスレッドを持っていた。しかし5.8になって、余分にスレッドをつくることができるようになった。それがいつどのように、いかにしてなされるのかをこれから観ていこう。
 
-=head1 ����åɥץ������Υ�ǥ�
+=head1 スレッドプログラムのモデル
 
 There are three basic ways that you can structure a threaded
 program.  Which model you choose depends on what you need your program
 to do.  For many non-trivial threaded programs you'll need to choose
 different models for different pieces of your program.
 
-����åɥץ��������ۤ��룳�Ĥδ���Ū����ˡ�����롣�ɤΥ�ǥ�����֤��ϥץ������˲����餻�뤫�˰�¸���롣¿���ν��פʥ���åɥץ������ˤ����ơ��ץ��������ΰۤʤ���ʬ�˰ۤʤ��ǥ�����Ѥ������Ȼפ���������
+スレッドプログラムを構築する３つの基本的な方法がある。どのモデルを選ぶかはプログラムに何をやらせるかに依存する。多くの重要なスレッドプログラムにおいて、プログラム中の異なる部分に異なるモデルを利用したいと思うだろう。
 
-=head2 �ܥ�/�����
+=head2 ボス/ワーカー
 
 The boss/worker model usually has one `boss' thread and one or more
 `worker' threads.  The boss thread gathers or generates tasks that need
 to be done, then parcels those tasks out to the appropriate worker
 thread.
 
-�ܥ����������ǥ�Ǥ��̾��ĤΡ֥ܥ��ץ���åɤȡ���İʾ�Ρ֥�����ץ���åɤ���ġ��ܥ�����åɤ�ɬ�פȤ���륿��������ʤ����������롣���줫�餽���Υ�������Ŭ�������������åɤ�ʬ�ۤ��롣
+ボス・ワーカーモデルでは通常、一つの「ボス」スレッドと、一つ以上の「ワーカー」スレッドを持つ。ボススレッドは必要とされるタスクを集約ないし生成する。それからそれらのタスクを適したワーカースレッドに分配する。
 
 This model is common in GUI and server programs, where a main thread
 waits for some event and then passes that event to the appropriate
 worker threads for processing.  Once the event has been passed on, the
 boss thread goes back to waiting for another event.
 
-���Υ�ǥ��GUI�ȥ����Хץ������˶��̤Ǥ��롣�����Ǥϥᥤ�󥹥�åɤ����٥��ȯ�����Ԥ��������Τ����Ŭ�������������åɤ˥��٥�Ȥ��Ϥ����ҤȤ��ӥ��٥�Ȥ��Ϥ����ȡ��ܥ�����åɤϼ��Υ��٥�ȤΤ�����Ե����롣
+このモデルはGUIとサーバプログラムに共通である。そこではメインスレッドがイベント発生を待ち、処理のために適したワーカースレッドにイベントを渡す。ひとたびイベントが渡されると、ボススレッドは次のイベントのために待機する。
 
 The boss thread does relatively little work.  While tasks aren't
 necessarily performed faster than with any other method, it tends to
 have the best user-response times.
 
-�ܥ�����åɤ�����Ū�˻Ż��̤Ͼ��ʤ�����������ɬ������¾����ˡ��Ȥä���Τ���᤯�¹Ԥ����ɬ�פ��ʤ��ˤ⤫����餺����äȤ�桼�����쥹�ݥ󥹥����ब�ɤ��ʤ뷹���ˤ��롣
+ボススレッドは相対的に仕事量は少ない。タスクは必ずしも他の方法を使ったものより早く実行される必要がないにもかかわらず、もっともユーザーレスポンスタイムが良くなる傾向にある。
 
-=head2 �Ż����
+=head2 仕事仲間
 
 In the work crew model, several threads are created that do
 essentially the same thing to different pieces of data.  It closely
@@ -96,7 +96,7 @@ mirrors classical parallel processing and vector processors, where a
 large array of processors do the exact same thing to many pieces of
 data.
 
-�Ż���֥�ǥ�Ǥϡ��ǡ������͡�����ʬ���Ф��ܼ�Ū��Ʊ����Ȥ�Ԥ������Ĥ��Υ���åɤ��Ĥ����롣����ϡ��ץ����å��ε��������¿���Υǡ����Ҥ��Ф�������Ʊ�����Ȥ�Ԥ���ŵŪ�����������٥��ȥ�����Ȥ��ä���Ǥ��롣
+仕事仲間モデルでは、データの様々な部分に対し本質的に同じ作業を行ういくつかのスレッドがつくられる。これは、プロセッサの巨大な配列が多くのデータ片に対して全く同じことを行う古典的な並列処理やベクトル処理とそっくりである。
 
 This model is particularly useful if the system running the program
 will distribute multiple threads across different processors.  It can
@@ -104,16 +104,16 @@ also be useful in ray tracing or rendering engines, where the
 individual threads can pass on interim results to give the user visual
 feedback.
 
-�ץ����������餻�Ƥ��륷���ƥब�ۤʤ�ץ�������ޤ����ޥ������åɤ�ʬ�ۤ���褦�ʾ��ˤϡ����Υ�ǥ�ϼ�Τۤ������Ǥ��롣�ޤ����쥤�ȥ졼���������󥰥��󥸥�Ȥ��ä����ġ��Υ���åɤ��桼���˥ե����ɥХå����뤿��˰��Ū�ʷ�̤�⤿�餹�褦�ʾ��ˤ������Ǥ�������
+プログラムを走らせているシステムが異なるプロセスをまたぐマルチスレッドを分配するような場合には、このモデルは殊のほか便利である。また、レイトレースやレンダリングエンジンといった、個々のスレッドがユーザにフィードバックするために一時的な結果をもたらすような場合にも便利であろう。
 
-=head2 �ѥ��ץ饤��
+=head2 パイプライン
 
 The pipeline model divides up a task into a series of steps, and
 passes the results of one step on to the thread processing the
 next.  Each thread does one thing to each piece of data and passes the
 results to the next thread in line.
 
-�ѥ��ץ饤���ǥ�Ϥ��륿�������ʳ��ν�����Ϣ³�ؤ�ʬ���롣�����ư�ĤΥ��ƥåפη�̤򼡤ν�����Ԥ�����åɤؤ��Ϥ������줾��Υ���åɤϥǡ����γ���ʬ���Ф���ĤΤ��Ȥ�Ԥ�����̤򼡤Υ���åɤ��Ϥ���
+パイプラインモデルはあるタスクを何段階の処理の連続へと分ける。そして一つのステップの結果を次の処理を行うスレッドへと渡す。それぞれのスレッドはデータの各部分に対し一つのことを行い、結果を次のスレッドへ渡す。
 
 This model makes the most sense if you have multiple processors so two
 or more threads will be executing in parallel, though it can often
@@ -124,7 +124,7 @@ going.  If you're running different parts of the pipeline on different
 processors you may also take advantage of the caches on each
 processor.
 
-���Ф���¾��ʸ̮�Ǥ�Ʊ�����餤�ΰ�̣������Τ�������İʾ�Υ���åɤ�����˽�����Ԥ��褦�ˡ����ʤ����ޥ���ץ����å�����äƤ���ʤ�С����Υ�ǥ�ϺǤ��̣�����롣����ϡ�����ѥ��ץ饤��ΰ������ʹ���δ֤ˡ�¾�Υѥ��ץ饤��ΰ��������㤨��I/O�䥷���ƥॳ����ˤ�֥��å�����Τ���Ĥ���Τ�Ʊ�ͤˡ��ġ��Υ������򾮤���ñ��ʤ�Τ�α��뷹�������롣�⤷�㤦�ץ����å�����̡��Υѥ��ץ饤������餻��ʤ�С����줾��Υץ����å��Υ���å�������Ѥ���Ȥ������פ����뤳�Ȥ��Ǥ����������
+しばしば他の文脈でも同じぐらいの意味があるのだが、二つ以上のスレッドが並列に処理を行うように、あなたがマルチプロセッサを持っているならば、このモデルは最も意味がある。それは、あるパイプラインの一部が進行中の間に、他のパイプラインの一部が（例えばI/Oやシステムコール）をブロックするのを許可するのと同様に、個々のタスクを小さく単純なものに留める傾向がある。もし違うプロセッサ上で別々のパイプラインを走らせるならば、それぞれのプロセッサのキャッシュを利用するという利益を得ることができるだろう。
 
 This model is also handy for a form of recursive programming where,
 rather than having a subroutine call itself, it instead creates
@@ -132,9 +132,9 @@ another thread.  Prime and Fibonacci generators both map well to this
 form of the pipeline model. (A version of a prime number generator is
 presented later on.)
 
-���Υ�ǥ�Ϥޤ�����ʬ���Ȥ�ƤӽФ����֥롼�������������⡢�̤Υ���åɤ����߽Ф��褦�ʺƵ�Ū�ץ������η��֤����Ѥ��䤹�����ǿ���ե��ܥʥå����󥸥��ͥ졼�����ϡ��ɤ���⤳�Υѥ��ץ饤���ǥ�η��֤ˤ��ޤ������դ�������ǿ������ͥ졼�����ϸ���о줹��ˡ�
+このモデルはまた、自分自身を呼び出すサブルーチンを抱えるよりも、別のスレッドを生み出すような再起的プログラムの形態に利用しやすい。素数やフィボナッチ数列ジェネレーターは、どちらもこのパイプラインモデルの形態にうまく位置付けられる（素数ジェネレーターは後で登場する）。
 
-=head1 �ͥ��ƥ��֥���å�
+=head1 ネイティブスレッド
 
 There are several different ways to implement threads on a system.  How
 threads are implemented depends both on the vendor and, in some cases,
@@ -142,30 +142,30 @@ the version of the operating system.  Often the first implementation
 will be relatively simple, but later versions of the OS will be more
 sophisticated.
 
-���륷���ƥ�˥���åɤ��������ˤ��͡��ʤ���������롣�����ˤ��ƥ���åɤ�������뤫�Ȥ�������ϡ��٥�����ȡ����ˤ�äƤϥ��ڥ졼�ƥ��󥰥����ƥ�ΥС������Ȥ�ξ���˰�¸���Ƥ��롣���Ф��С��ǽ�μ��������Ūñ��Ǥ���������OS�ΥС�����󤬾夬��ˤĤ�Ƥ����������Ƥ�����������
+あるシステムにスレッドを実装するには様々なやり方がある。いかにしてスレッドを実装するかという問題は、ベンダーと、場合によってはオペレーティングシステムのバージョンとの両方に依存している。しばしば、最初の実装は比較的単純であろうが、OSのバージョンが上がるにつれてより洗練されていくだろう。
 
 While the information in this section is useful, it's not necessary,
 so you can skip it if you don't feel up to it.
 
-���Υ��������˽񤫤�Ƥ����������Ω�ĤȤϤ�����ɬ�ܤǤϤʤ��������������ʤ��ɤ����Ф��Ƥ⤫�ޤ�ʤ���
+このセクションに書かれている情報は役に立つとはいえ、必須ではない。そう感じたなら読み飛ばしてもかまわない。
 
 There are three basic categories of threads: user-mode threads, kernel
 threads, and multiprocessor kernel threads.
 
-����åɤˤϻ��Ĥδ���Ū�ʥ��ƥ��꡼�����롣�桼�����⡼�ɥ���åɡ������ͥ륹��åɡ������ƥޥ���ץ����å������ͥ륹��åɤ���
+スレッドには三つの基本的なカテゴリーがある。ユーザーモードスレッド、カーネルスレッド、そしてマルチプロセッサカーネルスレッドだ。
 
 User-mode threads are threads that live entirely within a program and
 its libraries.  In this model, the OS knows nothing about threads.  As
 far as it's concerned, your process is just a process.
 
-�桼�����⡼�ɥ���åɤȤϡ������˥ץ������ȥ饤�֥������¸�ߤ��륹��åɤǤ��롣���Υ�ǥ�ˤ����Ƥϡ�OS�ϥ���åɤˤĤ��Ʋ�����Τ��ʤ���OS���餷�Ƥߤ�¤ꡢ���ʤ��Υץ������Ϥ����ΤҤȤĤΥץ������Ǥ��롣
+ユーザーモードスレッドとは、完全にプログラムとライブラリの中に存在するスレッドである。このモデルにおいては、OSはスレッドについて何も関知しない。OSからしてみる限り、あなたのプロセスはただのひとつのプロセスである。
 
 This is the easiest way to implement threads, and the way most OSes
 start.  The big disadvantage is that, since the OS knows nothing about
 threads, if one thread blocks they all do.  Typical blocking activities
 include most system calls, most I/O, and things like sleep().
 
-����ϺǤ��ñ�ʥ���åɤμ����Ǥ��ꡢ�ۤȤ�ɤ�OS���ǽ�ˤȤä�������Ǥ��롣������ˡ���礭�ʷ����ϡ�OS������åɤ˴��Τ��Ƥ��ʤ�����ˡ��⤷���ĤΥ���åɤ��֥��å��򤷤��顢���ƤΥ���åɤ��֥��å����Ƥ��ޤ��Ȥ������Ȥ���ŵ��Ū�ʥ֥��å��԰٤ˤϡ��ۤȤ�ɤΥ����ƥॳ���롢�ۤȤ�ɤ�I/O��������sleep()�Τ褦�ʤ�Τ��ޤޤ�롣
+これは最も簡単なスレッドの実装であり、ほとんどのOSが最初にとったやり方である。この方法の大きな欠点は、OSがスレッドに関知していないために、もしも一つのスレッドがブロックをしたら、全てのスレッドがブロックしてしまうということだ。典型的なブロック行為には、ほとんどのシステムコール、ほとんどのI/O、そしてsleep()のようなものが含まれる。
 
 Kernel threads are the next step in thread evolution.  The OS knows
 about kernel threads, and makes allowances for them.  The main
@@ -174,7 +174,7 @@ blocking.  With kernel threads, things that block a single thread don't
 block other threads.  This is not the case with user-mode threads,
 where the kernel blocks at the process level and not the thread level.
 
-�����ͥ륹��åɤϿʲ��������ʳ�����OS�ϥ����ͥ륹��åɤˤĤ����ΤäƤ��ơ����ε��Ĥ�Ф��������ͥ륹��åɤȥ桼�����⡼�ɥ���åɤμ��פʰ㤤�ϡ��֥��å��󥰤ˤĤ��ƤǤ��롣�����ͥ륹��åɤǤϡ���ĤΥ���åɤ�֥��å���������¾�Υ���åɤޤǥ֥��å�������Ϥ��ʤ������Τ褦�ʤ��Ȥϡ��桼�����⡼�ɥ���åɤˤ����ƤϤʤꤿ���ʤ����桼�����⡼�ɤǤϡ������ͥ뤬�֥��å�����Τϥץ�������٥�Ǥ��äơ�����åɥ�٥�ǤϤʤ��������
+カーネルスレッドは進化の第二段階だ。OSはカーネルスレッドについて知っていて、その許可を出す。カーネルスレッドとユーザーモードスレッドの主要な違いは、ブロッキングについてである。カーネルスレッドでは、一つのスレッドをブロックした事が他のスレッドまでブロックしたりはしない。このようなことは、ユーザーモードスレッドにおいてはなりたたない。ユーザーモードでは、カーネルがブロックするのはプロセスレベルであって、スレッドレベルではないからだ。
 
 This is a big step forward, and can give a threaded program quite a
 performance boost over non-threaded programs.  Threads that block
@@ -182,7 +182,7 @@ performing I/O, for example, won't block threads that are doing other
 things.  Each process still has only one thread running at once,
 though, regardless of how many CPUs a system might have.
 
-������礭�����ʤǤ��ꡢ�󥹥�åɥץ��������Ф�������åɥץ�����ब�礭�ʥѥե����ޥ󥹤θ�������뤳�Ȥ��ǽ�ˤ��Ƥ��롣�㤨�С�I/O�μ¹Ԥ�֥��å����륹��åɤϡ�¾�Τ��Ȥ�Ԥ�����åɤ�֥��å����ʤ����������������������ƥब������CPU�������Ƥ��뤫�˴ط��ʤ������줾��Υץ������Ϥ��ޤ��˰��٤˰�ĤΥ���åɤ������餻�ʤ���
+これは大きな前進であり、非スレッドプログラムに対し、スレッドプログラムが大きなパフォーマンスの向上を得ることを可能にしている。例えば、I/Oの実行をブロックするスレッドは、他のことを行うスレッドをブロックしないだろう。しかし、システムがいくつCPUを備えているかに関係なく、それぞれのプロセスはいまだに一度に一つのスレッドしか走らせない。
 
 Since kernel threading can interrupt a thread at any time, they will
 uncover some of the implicit locking assumptions you may make in your
@@ -192,14 +192,14 @@ threads, as another thread may have changed $a between the time it
 was fetched on the right hand side and the time the new value is
 stored.
 
-�����ͥ�Υ���å����椬���ĤǤ�������Τǡ����ʤ����ץ��������ˤĤ��ä����ۤΥ��å������������β��ˤ��餱�Ф��Ƥ��ޤ����������㤨�С�C<$a = $a + 2>�Τ褦��ñ��ʤ�ΤǤ⡢$a��¾�Υ���åɤ���ߤ���ʤ�С����դ��ͤ���Ф����֤ȿ������ͤ��Ǽ������֤δ֤ˡ�¾�Υ���åɤ�$a���Ѥ��Ƥ��ޤäơ����ʤ���ͽ�����ʤ������񤤤򤷤��롣
+カーネルのスレッド制御がいつでも割り込めるので、あなたがプログラム中につくった暗黙のロックの前提が白日の下にさらけ出してしまうだろう。例えば、C<$a = $a + 2>のような単純なものでも、$aが他のスレッドからみえるならば、右辺の値を取り出す時間と新しい値を格納する時間の間に、他のスレッドが$aを変えてしまって、あなたの予期しない振る舞いをしうる。
 
 Multiprocessor kernel threads are the final step in thread
 support.  With multiprocessor kernel threads on a machine with multiple
 CPUs, the OS may schedule two or more threads to run simultaneously on
 different CPUs.
 
-�ޥ���ץ����å������ͥ륹��åɤϡ�����åɤΥ��ݡ��Ȥˤ�����ǽ��ʳ��Ǥ��롣����Υޥ���ʣ����CPU����äƤ���ޥ���ץ����å������ͥ륹��åɤǤϡ�OS���̡���CPU���Ʊ����ʣ���Υ���åɤ����餻��褦�˥������塼������򤹤��������
+マルチプロセッサカーネルスレッドは、スレッドのサポートにおける最終段階である。一台のマシンが複数のCPUを持っているマルチプロセッサカーネルスレッドでは、OSは別々のCPU上で同時に複数のスレッドを走らせるようにスケジュール管理をするだろう。
 
 This can give a serious performance boost to your threaded program,
 since more than one thread will be executing at the same time.  As a
@@ -207,13 +207,13 @@ tradeoff, though, any of those nagging synchronization issues that
 might not have shown with basic kernel threads will appear with a
 vengeance.
 
-��İʾ�Υ���åɤ�Ʊ���˼¹Ԥ���Τǡ�����ˤ�ꥹ��åɥץ�����������Ū�ʥѥե����ޥ󥹤θ�������뤳�Ȥ��Ǥ��롣�����������������ˡ�����Ū�ʥ����ͥ륹��åɤǤϸ���ʤ��ä��Ǥ��������饤�餹��褦��Ʊ���������꤬�쵤�˻Ѥ򸽤���
+一つ以上のスレッドが同時に実行するので、これによりスレッドプログラムは飛躍的なパフォーマンスの向上を得ることができる。しかし、引き換えに、基本的なカーネルスレッドでは現れなかったであろうイライラするような同期性の問題が一気に姿を現す。
 
 In addition to the different levels of OS involvement in threads,
 different OSes (and different thread implementations for a particular
 OS) allocate CPU cycles to threads in different ways.
 
-����åɤ�������OS�ΰ㤤�Ȥ�����٥�˲ä��ơ����줾���OS�ϡʤ����Ƥ��줾��Υ���åɼ����ϡˤ��줾�����ˡ�Ǥ�ä�CPU��������򥹥�åɤ˳�����Ƥ롣
+スレッドを備えるOSの違いというレベルに加えて、それぞれのOSは（そしてそれぞれのスレッド実装は）それぞれの方法でもってCPUサイクルをスレッドに割り当てる。
 
 Cooperative multitasking systems have running threads give up control
 if one of two things happen.  If a thread calls a yield function, it
@@ -222,22 +222,22 @@ something that would cause it to block, such as perform I/O.  In a
 cooperative multitasking implementation, one thread can starve all the
 others for CPU time if it so chooses.
 
-������ĤΤ����ΰ�Ĥ��������硢��ĴŪ�ޥ�������������ƥ�ϼ¹���Υ���åɤ�����������Ϥ����롣���륹��åɤ�yield�ؿ���ƤӽФ��ȡ�����������Ϥ����ޤ�������åɤ�I/O�μ¹ԤʤɤΥ֥��å�������������褦�ʲ�����Ԥ����⡢����������Ϥ�����ĴŪ�ޥ�������������ƥ�μ����ˤ����Ƥϡ����Τ褦�����򤹤�ʤ�С���ĤΥ���åɤ�¾�����ƤΥ���åɤ�CPU���֤򿩤��Ԥ������Ȥ��Ǥ��롣
+次の二つのうちの一つが起こる場合、協調的マルチタスクシステムは実行中のスレッドに制御を明け渡させる。あるスレッドがyield関数を呼び出すと、制御を明け渡す。また、スレッドがI/Oの実行などのブロックを引き起こすような何かを行う場合も、制御を明け渡す。協調的マルチタスクシステムの実装においては、そのように選択するならば、一つのスレッドが他の全てのスレッドのCPU時間を食い尽くすことができる。
 
 Preemptive multitasking systems interrupt threads at regular intervals
 while the system decides which thread should run next.  In a preemptive
 multitasking system, one thread usually won't monopolize the CPU.
 
-�ץꥨ��ƥ��֤ʥޥ�������������ƥ�ϡ����ˤɤΥ���åɤ�¹Ԥ��뤫���ʤ��顢����δֳ֤ǥ���åɤ˳����ߤ򤤤�롣
+プリエンティブなマルチタスクシステムは、次にどのスレッドを実行するか決めながら、一定の間隔でスレッドに割り込みをいれる。
 
 On some systems, there can be cooperative and preemptive threads
 running simultaneously. (Threads running with realtime priorities
 often behave cooperatively, for example, while threads running at
 normal priorities behave preemptively.)
 
-���륷���ƥ�ˤ����Ƥϡ���ĴŪ����åɤȥץꥨ��ƥ��֤ʥ���åɤ�Ʊ���˼¹Ԥ��뤳�Ȥ��Ǥ�����㤨�С��̾�Υץ饤����ƥ�����ä�����åɤ��ץꥨ��ǥ��֤˿��񤦤Τ��Ф��ơ��ꥢ�륿����Υץ饤����ƥ�����ä�����åɤϤ��Ф��ж�ĴŪ�˿��񤦡ˡ�
+あるシステムにおいては、協調的スレッドとプリエンティブなスレッドを同時に実行することができる（例えば、通常のプライオリティを持ったスレッドがプリエンディブに振舞うのに対して、リアルタイムのプライオリティを持ったスレッドはしばしば協調的に振舞う）。
 
-=head1 Perl����åɤϤɤ�ʥ���åɤ�?
+=head1 Perlスレッドはどんなスレッドか?
 
 If you have experience with other thread implementations, you might
 find that things aren't quite what you expect.  It's very important to
@@ -248,7 +248,7 @@ similarities, and the broad concepts are the same, but if you start
 looking for implementation details you're going to be either
 disappointed or confused.  Possibly both.
 
-�⤷�⤢�ʤ���¾�Υ���åɤμ�����и��������Ȥ�����ʤ顢���֤��������ʤ���ͽ�ۤȤϰ㤦���Ȥ��狼���������Perl����åɤ򰷤����ˤϡ���Perl����åɤ�X����åɤǤϤʤ��ɡ�X�Ϥɤ���ͤǤ�褤�ˤȤ������Ȥ�Ф��Ƥ������Ȥ����פ���
+もしもあなたが他のスレッドの実装を経験したことがあるなら、事態は全くあなたの予想とは違うことがわかるだろう。Perlスレッドを扱う時には、”PerlスレッドはXスレッドではない”（Xはどんな値でもよい）ということを覚えておくことが重要だ。
 
 This is not to say that Perl threads are completely different from
 everything that's ever come before--they're not.  Perl's threading
@@ -258,19 +258,19 @@ find yourself looking for mutexes, or thread priorities, it's time to
 step back a bit and think about what you want to do and how Perl can
 do it.
 
-����ϡ�����ޤ��о줷�Ƥ��������륹��åɤ�Perl����åɤ������˰ۤʤ�Ȥ������Ȥ���äƤ���ΤǤϤʤ���Perl����åɤ�¾�Υ�ǥ롢�ä�POSIX����åɤ�¿������äƤ��롣������Perl��C�ǤϤʤ��褦�ˡ�Perl����åɤ�POSIX����åɤǤϤʤ���������⤷���ʤ����ߥ塼�ƥå����䥹��åɥץ饤����ƥ�����Ԥ��Ƥ���ʤ�С�����ä�Ω����äơ���ʬ�����򤷤����Τ���Perl�Ϥ����ˤ��Ƥ��줬��ǽ�ʤΤ���ͤ��������
+これは、これまで登場してきたあらゆるスレッドとPerlスレッドが完全に異なるということを言っているのではない。Perlスレッドは他のモデル、特にPOSIXスレッドに多くを負っている。だが、PerlがCではないように、PerlスレッドはPOSIXスレッドではない。だからもしあなたがミューテックスやスレッドプライオリティを期待しているならば、ちょっと立ち戻って、自分が何をしたいのか、Perlはいかにしてそれが可能なのかを考える時だ。
 
 However it is important to remember that Perl threads cannot magically
 do things unless your operating systems threads allows it. So if your
 system blocks the entire process on sleep(), Perl usually will as well.
 
-�����������ʤ��Υ����ƥ�Υ���åɤ����Ĥ��Ƥ��ʤ���С�Perl����åɤ���ˡ�Τ褦�ˤ����Ԥ��ʤ�Ƥ��ȤϤǤ��ʤ����Ȥ�Ф��Ƥ������Ȥ����פ���������⤷�������ƥबsleep()�ǥץ�������ݤ��ȥ֥��å�����ʤ顢Perl�����̤ˤ��������������
+しかし、あなたのシステムのスレッドが許可していなければ、Perlスレッドが魔法のようにそれを行うなんてことはできないことを覚えておくことが重要だ。だからもし、システムがsleep()でプロセスを丸ごとブロックするなら、Perlも普通にそうするだろう。
 
 Perl Threads Are Different.
 
-Perl����åɤ��̤�ΤʤΤ���
+Perlスレッドは別ものなのだ。
 
-=head1 ����åɥ����դʥ⥸�塼��
+=head1 スレッドセーフなモジュール
 
 The addition of threads has changed Perl's internals
 substantially. There are implications for people who write
@@ -280,7 +280,7 @@ being thread-safe or can be made thread-safe easily.  Modules that are not
 tagged as thread-safe should be tested or code reviewed before being used
 in production code.
 
-����åɤ��ɲä�Perl������Ū�ʼ��֤��Ѳ������Ƥ��ޤä�������ˤ�XS�⥸�塼��䳰���饤�֥�꡼��񤤤Ƥ���͡���ޤޤ�롣�������ʤ��顢�ǥե���ȤǤϥ���åɴ֤�perl�Υǡ����϶�ͭ����ʤ������Τ���Perl�⥸�塼��ϥ���åɥ����դǤ���Ȥ�������˷äޤ�Ƥ��뤷�����뤤���ưפ˥���åɥ����դˤ��뤳�Ȥ��Ǥ��롣����åɥ����դλ����Ĥ��Ƥ��ʤ��⥸�塼��������Ǥ����˥ƥ��Ȥ���뤫�����ɥ�ӥ塼�������٤��Ǥ��롣
+スレッドの追加はPerlの内部的な実態を変化させてしまった。これにはXSモジュールや外部ライブラリーを書いている人々も含まれる。しかしながら、デフォルトではスレッド間でperlのデータは共有されない。そのためPerlモジュールはスレッドセーフであるという機会に恵まれているし、あるいは容易にスレッドセーフにすることができる。スレッドセーフの札がついていないモジュールは製品版の前にテストされるかコードレビューを受けるべきである。
 
 Not all modules that you might use are thread-safe, and you should
 always assume a module is unsafe unless the documentation says
@@ -288,14 +288,14 @@ otherwise.  This includes modules that are distributed as part of the
 core.  Threads are a new feature, and even some of the standard
 modules aren't thread-safe.
 
-���ʤ����Ȥ����Ȥ��Ƥ���⥸�塼������Ƥ�����åɥ����դȤ����櫓�ǤϤʤ������⥸�塼��Υɥ�����Ȥ˰����Ǥ���Ƚ񤫤�Ƥ��ʤ��ʤ�С���˰����ǤϤʤ���ΤȲ��ꤹ��٤��Ǥ��롣���Τ��Ȥϡ�perl��core��ʬ�Ȥ������ۤ���Ƥ���⥸�塼��ˤ⤢�ƤϤޤ롣����åɤϿ����������ʤΤǤ��ꡢɸ��⥸�塼�����ˤ�������åɥ����դǤʤ���Τ����롣
+あなたが使おうとしているモジュールの全てがスレッドセーフというわけではないし、モジュールのドキュメントに安全であると書かれていないならば、常に安全ではないものと仮定するべきである。このことは、perlのcore部分として配布されているモジュールにもあてはまる。スレッドは新しい機構なのであり、標準モジュールの中にさえスレッドセーフでないものがある。
 
 Even if a module is thread-safe, it doesn't mean that the module is optimized
 to work well with threads. A module could possibly be rewritten to utilize
 the new features in threaded Perl to increase performance in a threaded
 environment.
 
-���ˤ���⥸�塼�뤬����åɥ����դǤ��ä��Ȥ��Ƥ⡢���Υ⥸�塼�뤬���ޤ�Ư���褦�˺�Ŭ������Ƥ���Ȥ������Ȥ��̣����櫓�ǤϤʤ����Ǥ����������åɴĶ��ǥѥե����ޥ󥹤����夹��褦�ˡ�����åɲ����줿Perl�ο����������Ѥ���褦�⥸�塼����ľ�����ۤ����褤��
+仮にあるモジュールがスレッドセーフであったとしても、そのモジュールがうまく働くように最適化されているということを意味するわけではない。できるだけスレッド環境でパフォーマンスが向上するように、スレッド化されたPerlの新機構を利用するようモジュールを書き直したほうがよい。
 
 If you're using a module that's not thread-safe for some reason, you
 can protect yourself by using it from one, and only one thread at all.
@@ -303,13 +303,13 @@ If you need multiple threads to access such a module, you can use semaphores and
 lots of programming discipline to control access to it.  Semaphores
 are covered in L</"Basic semaphores">.
 
-�⤷��ʤ�餫����ͳ�ǥ���åɥ����դǤϤʤ��⥸�塼���ȤäƤ���ʤ�С�������ĤΥ���åɤ��餽���Ȥ����Ȥˤ�ä��ɤ����Ȥ��Ǥ��롣���Τ褦�ʥ⥸�塼��˥�����������ޥ������åɤ�ɬ�פʤ�С����ޥե��䥢�����������椹�뤿��Υץ�����ߥ󥰸�§���Ѥ��뤳�Ȥ��Ǥ��롣���ޥե���L</"�١����å��ʥ��ޥե�">�ǥ��С����Ƥ��롣
+もしもなんらかの理由でスレッドセーフではないモジュールを使っているならば、ただ一つのスレッドからそれを使うことによって防ぐことができる。そのようなモジュールにアクセスするマルチスレッドが必要ならば、セマフォやアクセスを制御するためのプログラミング原則を用いることができる。セマフォはL</"ベーシックなセマフォ">でカバーしている。
 
 See also L</"Thread-Safety of System Libraries">.
 
-�ޤ���L</"�����ƥ�饤�֥��ˤ����륹��åɤΰ�����">�򻲾ȤΤ��ȡ�
+また、L</"システムライブラリにおけるスレッドの安全性">を参照のこと。
 
-=head1 ����åɤδ���
+=head1 スレッドの基本
 
 The core L<threads> module provides the basic functions you need to write
 threaded programs.  In the following sections we'll cover the basics,
@@ -317,36 +317,36 @@ showing you what you need to do to create a threaded program.   After
 that, we'll go over some of the features of the L<threads> module that
 make threaded programming easier.
 
-��ˤȤʤ�L<threads>�⥸�塼��ϡ����ʤ�������åɥץ�������񤯤Τ�ɬ�פȤʤ����Ū�ʵ�ǽ���󶡤��롣������Υ��������Ǥϡ�����åɥץ���������Τ�ɬ�פʤ��Ȥ򼨤��ʤ������Ū�ʤȤ����򥫥С����Ƥ�������
+中核となるL<threads>モジュールは、あなたがスレッドプログラムを書くのに必要となる基本的な機能を提供する。次からのセクションでは、スレッドプログラムを作るのに必要なことを示しながら基礎的なところをカバーしていこう。
 
-=head2 ����Ū�ʥ���åɤΥ��ݡ���
+=head2 基本的なスレッドのサポート
 
 Thread support is a Perl compile-time option - it's something that's
 turned on or off when Perl is built at your site, rather than when
 your programs are compiled. If your Perl wasn't compiled with thread
 support enabled, then any attempt to use threads will fail.
 
-����åɤΥ��ݡ��Ȥϡ����ʤ��Υץ�����ब����ѥ��뤵�����ǤϤʤ���Perl�Υ���ѥ�����Υ��ץ����ˤ�롣�ĤޤꡢPerl��ӥ�Ȥ���Ȥ��ˡ����ݡ��ȤΥ��󡦥��դ�Ԥ�������åɤ����ݡ��Ȥ����褦��Perl������ѥ��뤵��Ƥ��ʤ��ʤ顢����åɤ���Ѥ����ߤϼ��Ԥ����������
+スレッドのサポートは、あなたのプログラムがコンパイルされる時ではなく、Perlのコンパイル時のオプションによる。つまり、Perlをビルトするときに、サポートのオン・オフを行う。スレッドがサポートされるようにPerlがコンパイルされていないなら、スレッドを使用する試みは失敗するだろう。
 
 Your programs can use the Config module to check whether threads are
 enabled. If your program can't run without them, you can say something
 like:
 
-����åɤ����Ѳ�ǽ���ɤ���������å����뤿���Config�⥸�塼������Ѥ��뤳�Ȥ��Ǥ��롣
+スレッドが使用可能かどうかをチェックするためにConfigモジュールを利用することができる。
 
     $Config{useithreads} or die "Recompile Perl with threads to run this program.";
 
 A possibly-threaded program using a possibly-threaded module might
 have code like this:
 
-����åɤ����Ѥ��뤫�⤷��ʤ��⥸�塼���Ȥ��ץ������ˤϡ����Τ褦�ʥ����ɤ�Ĥ��Ƥ����Ȥ褤��
+スレッドを利用するかもしれないモジュールを使うプログラムには、次のようなコードをつけておくとよい。
 
     use Config;
     use MyMod;
 
     BEGIN {
         if ($Config{useithreads}) {
-            # ����åɤ����ѤǤ���
+            # スレッドが利用できる
             require MyMod_threaded;
            import MyMod_threaded;
         } else {
@@ -360,9 +360,9 @@ messy, it's best to isolate the thread-specific code in its own
 module.  In our example above, that's what MyMod_threaded is, and it's
 only imported if we're running on a threaded Perl.
 
-����åɵ�����̵ͭ�˴ؤ�餺����褦�ʥ����ɤ��̾�����˻��ʤ�Τˤʤ�Τǡ��⥸�塼����ˤƥ���å����ѤΥ����ɤ�ʬΥ���Ƥ����Τ��٥��Ȥ��������Ǥϡ�MyMod_threaded������ǡ�����åɲ�ǽ��Perl�������Ȥ���������ݡ��Ȥ���롣
+スレッド機構の有無に関わらず走るようなコードは通常、非常に繁雑なものになるので、モジュール内にてスレッド専用のコードは分離しておくのがベストだ。上の例では、MyMod_threadedがそれで、スレッド可能なPerl上で走るときだけインポートされる。
 
-=head2 ����Ф�������
+=head2 例に対する注意
 
 Although thread support is considered to be stable, there are still a number
 of quirks that may startle you when you try out any of the examples below.
@@ -373,20 +373,20 @@ produce error messages, usually caused by the fact that there are still
 threads running when the program exits.  You should not be alarmed by this.
 Future versions of Perl may fix this problem.
 
-����åɤΥ��ݡ��Ȥ����ꤷ�Ƥ���ȤϤ�������������Ȥ��ˤϡ����ʤ���ä�����褦�ʴ�̯�ʤ��Ȥ��ޤ��������󤪤��롣�ºݤξ������Ǥϡ��ץ�����ब��λ�����������ƤΥ���åɤ��¹Ԥ򽪤��뤳�Ȥ����դ�ʧ��ʤ���Фʤ�ʤ�����������Ż뤷�Ƥ���ΤǤ����Ǽ��夲����ˤ����Ƥϡ����Τ褦�����դ�ʧ�ä�B<���ʤ�>�����������ɤ��Τޤޡɼ¹Ԥ���ȡ��ץ�����ब��λ����ݤˤޤ�����åɤ����äƤ���Ȥ�����ͳ�Ǿ�˥��顼��å��������Ϥ��Ф��������������ηٹ�ϵ��ˤ��ʤ����ɤ��������Perl�ΥС������ǤϤ�������ϼ��������Ǥ�������
+スレッドのサポートが安定しているとはいえ、下の例を試すときには、あなたを驚かせるような奇妙なことがまだたくさんおきる。実際の状況下では、プログラムが終了する前に全てのスレッドが実行を終えることに注意を払わなければならない。簡明さを重視しているのでここで取り上げる例においては、そのような注意を払ってB<いない>。これらの例を”そのまま”実行すると、プログラムが終了する際にまだスレッドが走っているという理由で常にエラーメッセージがはき出されるだろう。この警告は気にしなくて良い。今後のPerlのバージョンではこの問題は取り除かれるであろう。
 
-=head2 ����åɤ�����
+=head2 スレッドの生成
 
 The L<threads> package provides the tools you need to create new
 threads.  Like any other module, you need to tell Perl that you want to use
 it; C<use threads> imports all the pieces you need to create basic
 threads.
 
-L<threads>�ѥå������Ͽ����ʥ���åɤ���������Τ�ɬ�פʥġ�����󶡤��롣¾�Υ⥸�塼��Ʊ�͡������Ȥ�������Perl��������Ф褤�� C<use threads> �ˤ�äƴ���Ū�ʥ���åɤ����߽Ф��Τ�ɬ�פ����Ƥ����ʤ�����ݡ��Ȥ���롣
+L<threads>パッケージは新たなスレッドを生成するのに必要なツールを提供する。他のモジュール同様、それを使いたいとPerlに伝えればよい。 C<use threads> によって基本的なスレッドを生み出すのに必要な全ての部品がインポートされる。
 
 The simplest, most straightforward way to create a thread is with new():
 
-new() �ˤ��Ǥ�ñ���ľ��Ū�ʥ���å�������
+new() による最も単純で直接的なスレッド生成：
 
     use threads; 
 
@@ -400,13 +400,13 @@ The new() method takes a reference to a subroutine and creates a new
 thread, which starts executing in the referenced subroutine.  Control
 then passes both to the subroutine and the caller.
 
-C<new()> �᥽�åɤϥ��֥롼����ؤΥ�ե���󥹤�����ˤȤäƿ���������åɤ��������롣���Υ���åɤϥ�ե���󥹤��줿���֥롼����μ¹Ԥ򳫻Ϥ��롣���ΤȤ�����ϥ��֥롼����ȸƤӽФ�¦�Ȥ�ξ�����Ϥ���롣
+C<new()> メソッドはサブルーチンへのリファレンスを引数にとって新しいスレッドを生成する。このスレッドはリファレンスされたサブルーチンの実行を開始する。このとき制御はサブルーチンと呼び出し側との両方に渡される。
 
 If you need to, your program can pass parameters to the subroutine as
 part of the thread startup.  Just include the list of parameters as
 part of the C<threads::new> call, like this:
 
-�⤷ɬ�פʤ�Х���åɳ��ϻ��Υ��֥롼����˥ѥ�᡼�����Ϥ����Ȥ��Ǥ��롣�ʲ��Τ褦�ˡ� C<threads::new> �θƤӽФ��˥ѥ�᡼���Υꥹ�Ȥ�ޤ�롣
+もし必要ならばスレッド開始時のサブルーチンにパラメータを渡すことができる。以下のように、 C<threads::new> の呼び出しにパラメータのリストを含める。
 
     use threads; 
 
@@ -427,13 +427,13 @@ off several threads using the same subroutine.  Each thread executes
 the same subroutine, but in a separate thread with a separate
 environment and potentially separate arguments.
 
-������ϥ���åɤΤ⤦��Ĥ���ħ�򼨤��Ƥ��롣Ʊ�����֥롼��������Ѥ��뤤���Ĥ�Υ���åɤ��������뤳�Ȥ��Ǥ���Τ������줾��Υ���åɤ�Ʊ��Υ��֥롼�����¹Ԥ��뤬�����줾��Υ���åɤϤ��줾���̡��δĶ��Ȱ�����Ȥ뤳�Ȥ��Ǥ��롣
+この例はスレッドのもう一つの特徴を示している。同じサブルーチンを利用するいくつものスレッドを生成することができるのだ。それぞれのスレッドは同一のサブルーチンを実行するが、それぞれのスレッドはそれぞれ別々の環境と引数をとることができる。
 
 C<create()> is a synonym for C<new()>.
 
-C<create()> �� C<new()> �θ��������Ǥ��롣
+C<create()> は C<new()> の言い換えである。
 
-=head2 ����������Ϥ�
+=head2 制御の明け渡し
 
 There are times when you may find it useful to have a thread
 explicitly give up the CPU to another thread.  Your threading package
@@ -442,12 +442,12 @@ you may be doing something processor-intensive and want to make sure
 that the user-interface thread gets called frequently.  Regardless,
 there are times that you might want a thread to give up the processor.
 
-���륹��åɤ�����Ū��¾�Υ���åɤؤ�CPU������Ϥ���줿���������Ȼפ����Ȥ�������������㤨�Ф��ʤ��Υ���åɥѥå������ϥץꥨ��ƥ��֤ʥޥ����������ǽ�򥵥ݡ��Ȥ��Ƥ��ʤ����⤷��ʤ������뤤�ϥץ����å�������ƥ󥷥֤ʤ��Ȥ򤷤褦�Ȥ��Ƥ��뤫�⤷��ʤ������桼�������󥿡��ե������Υ���åɤ�����ä��夦�ƤӽФ���뤳�Ȥ��ǧ�������Ȼפ����⤷��ʤ����Ȥˤ���������åɤ��ץ����å��������Ϥ�����ʤ��Ȥ������Ȥ��褯���롣
+あるスレッドが明示的に他のスレッドへとCPUを譲り渡せられたら便利だと思うことがあるだろう。例えばあなたのスレッドパッケージはプリエンティブなマルチタスク機能をサポートしていないかもしれない。あるいはプロセッサ・インテンシブなことをしようとしているかもしれないし、ユーザーインターフェースのスレッドがしょっちゅう呼び出されることを確認したいと思うかもしれない。とにかく、スレッドがプロセッサを明け渡せたらなあということがよくある。
 
 Perl's threading package provides the yield() function that does
 this. yield() is pretty straightforward, and works like this:
 
-Perl�Υ���åɥѥå������Ϥ����¸�����yield()�ؿ����󶡤��Ƥ��롣yield()�ϤȤƤ����Ѥǡ����Τ褦��ư��롣
+Perlのスレッドパッケージはこれを実現するyield()関数を提供している。yield()はとても素朴で、このように動作する。
 
     use threads; 
 
@@ -470,15 +470,15 @@ Therefore it is important to note that one should not build the scheduling of
 the threads around yield() calls. It might work on your platform but it won't
 work on another platform.
 
-yield()��CPU�������Ϥ�����Υҥ�ȤǤ����ʤ����ºݤ˲���������Τ��Ȥ������Ȥϡ��ϡ��ɥ�������OS�������ƥ���åɥ饤�֥��˰�¸���Ƥ��롣����椨��yield()��ƤӽФ�����åɤΥ������塼��󥰤򤿤Ƥ�٤��ǤϤʤ����Ȥ����դ��뤳�Ȥ����ڤ���
+yield()はCPUを明け渡すためのヒントでしかない。実際に何が起こるのかということは、ハードウェアやOS、そしてスレッドライブラリに依存している。それゆえ、yield()を呼び出すスレッドのスケジューリングをたてるべきではないことに注意することが大切だ。
 
-=head2 ����åɽ�λ���Ե�
+=head2 スレッド終了の待機
 
 Since threads are also subroutines, they can return values.  To wait
 for a thread to exit and extract any values it might return, you can
 use the join() method:
 
-����åɤϥ��֥롼����Ǥ⤢�뤫�顢�ͤ��֤����Ȥ��Ǥ��롣����åɤ���λ���Ʋ��餫������ͤ�����Τ��ԤĤ���ˡ�join()��Ȥ����Ȥ��Ǥ��롣
+スレッドはサブルーチンでもあるから、値を返すことができる。スレッドが終了して何らかの戻り値を得るのを待つために、join()を使うことができる。
 
     use threads; 
 
@@ -498,9 +498,9 @@ threads.  If you don't want the return values and don't want to wait
 for the thread to finish, you should call the detach() method
 instead, as described next.
 
-�����Ǥϡ�����åɤ���λ����䤤��join()�᥽�åɤ���롣����åɤν�λ�ȡ��֤��٤��ͤ�������뤿����Ե��˲ä��ơ�join()�ϥ���åɤ�ɬ�פȤ���OS��٥���ݽ���¹Ԥ��롣�����ݽ��Ͻ��פ����ä�Ĺ���֤ˤ錄�äƼ¹Ԥ����ץ�����ब���̤Υ���åɤ�����������ˤϡ��⤷������ͤ�ɬ�פȤ���������åɤν�λ���Ԥ�ɬ�פ�ʤ���С������˼�����������detach()�᥽�åɤ�ƤӽФ��٤�����
+上の例では、スレッドが終了するやいなjoin()メソッドが戻る。スレッドの終了と、返すべき値を収集するための待機に加えて、join()はスレッドが必要とするOSレベルの掃除を実行する。この掃除は重要だ。特に長時間にわたって実行されるプログラムが大量のスレッドを生成する場合には。もしも戻り値を必要とせず、スレッドの終了を待つ必要もなければ、かわりに次に説明するdetach()メソッドを呼び出すべきだ。
 
-=head2 ����åɤ�̵�뤹��
+=head2 スレッドを無視する
 
 join() does three things: it waits for a thread to exit, cleans up
 after it, and returns any data the thread may have produced.  But what
@@ -508,19 +508,19 @@ if you're not interested in the thread's return values, and you don't
 really care when the thread finishes? All you want is for the thread
 to get cleaned up after when it's done.
 
-join()�ϻ��ĤΤ��Ȥ�Ԥ�������åɽ�λ���Ե������θ���ݽ��������ƥ���åɤ����߽Ф����Ǥ������ǡ������֤����ȡ�������������åɤ��֤��ͤ˴ؿ����ʤ������ĥ���åɤ���λ����Τ���ºݤˤϵ��ˤ��ʤ����ˤϡ�ɬ�פʤΤϥ���åɤ��ݽ�����뤳�Ȥ�������
+join()は三つのことを行う。スレッド終了の待機、その後の掃除、そしてスレッドが生み出したであろうデータを返すこと。しかし、スレッドが返す値に関心がなく、いつスレッドが終了するのかを実際には気にしない場合には？必要なのはスレッドが掃除されることだけだ。
 
 In this case, you use the detach() method.  Once a thread is detached,
 it'll run until it's finished, then Perl will clean up after it
 automatically.
 
-���Τ褦�ʾ�硢detach()�᥽�åɤ�Ȥ����ҤȤ��ӥ���åɤ�detach�����ȡ�����åɤϽ�λ����ޤǼ¹Ԥ�³�������Τ���Perl����ưŪ���ݽ��򤹤롣
+このような場合、detach()メソッドを使う。ひとたびスレッドがdetachされると、スレッドは終了するまで実行し続け、そのあとPerlが自動的に掃除をする。
 
     use threads; 
 
-    $thr = threads->new(\&sub1); # ����åɤ�����
+    $thr = threads->new(\&sub1); # スレッドを生む
 
-    $thr->detach; # ���ޤ���ˡ����դ�ʧ��ʤ�
+    $thr->detach; # いまや公に、注意を払わない
 
     sub sub1 {
         $a = 0; 
@@ -535,18 +535,18 @@ Once a thread is detached, it may not be joined, and any return data
 that it might have produced (if it was done and waiting for a join) is
 lost.
 
-�ҤȤ��Ӥ��륹��åɤ�detach���줿�顢���Υ���åɤ�join����ʤ�����������join�Τ�����Ե����Ƥ�˥���åɤ����������Ǥ������ǡ����ϼ����롣
+ひとたびあるスレッドがdetachされたら、そのスレッドはjoinされないだろう。（joinのために待機しても）スレッドが生成したであろうデータは失われる。
 
-=head1 ����åɤȥǡ���
+=head1 スレッドとデータ
 
 Now that we've covered the basics of threads, it's time for our next
 topic: data.  Threading introduces a couple of complications to data
 access that non-threaded programs never need to worry about.
 
-���ޤ䥹��åɤδ�����ʬ�ˤĤ��Ƥϸ�����ä�����������ϥǡ�����������åɤ򰷤����Ȥϡ��󥹥�åɥץ�����ब���ۤ��ʤ��Ƥ褫�ä��ǡ��������������Ф�����Ĥ�ʣ������Ƴ�����뤳�Ȥˤʤ롣
+いまやスレッドの基本部分については見終わった。次の話題はデータだ。スレッドを扱うことは、非スレッドプログラムが心配しなくてよかったデータアクセスに対する二つの複雑さを導入することになる。
 
 
-=head2 ��ͭ�ǡ�������ͭ�ǡ���
+=head2 共有データと非共有データ
 
 The biggest difference between Perl ithreads and the old 5.005 style
 threading, or for that matter, to most other threading systems out there,
@@ -557,13 +557,13 @@ This is similar in feel to what happens when a UNIX process forks,
 except that in this case, the data is just copied to a different part of
 memory within the same process rather than a real fork taking place.
 
-i����å� �� 5.005������åɤδ֤Ρʤ�äȤ����С��������鳰���¿���Υ���åɥ����ƥ�ˤȤäƤΡ˺���ΰ㤤�ϡ��ǥե���Ȥǥǡ�������ͭ����ʤ��Ȥ���������������perl����åɤ����������Ȥ������ߤΥ���åɤ˴�Ϣ�������ƤΥǡ����Ͽ���������åɤ˥��ԡ�����롣³���Ƥ��Υǡ����Ͽ���������å���ǥץ饤�١��Ȥʤ�ΤȤʤ롪�����UNIX�Υץ�������fork����Ȥ��˵����뤳�ȤȻ��Ƥ��롣���������ξ�硢�ºݤ�fork�Ǥϥ����Ǥ��֤�������������Τ��Ф��ơ����Υǡ�����Ʊ��ץ����å���ΰ㤦������ʬ�˥��ԡ����������Ǥ���Ȥ������Ͻ�����
+iスレッド と 5.005型スレッドの間の（もっといえば、そこから外れる多くのスレッドシステムにとっての）最大の違いは、デフォルトでデータが共有されないという点だ。新しいperlスレッドが生成されるとき、現在のスレッドに関連する全てのデータは新しいスレッドにコピーされる。続いてそのデータは新しいスレッド内でプライベートなものとなる！これはUNIXのプロセスがforkするときに起きることと似ている。ただしこの場合、実際のforkではメモリ上での置き換えが起こるのに対して、そのデータは同一プロセッサ内の違うメモリ部分にコピーされるだけであるという点は除く。
 
 To make use of threading however, one usually wants the threads to share
 at least some data between themselves. This is done with the
 L<threads::shared> module and the C< : shared> attribute:
 
-����������åɵ�ǽ�����Ѥ���ʤ�С��̾�ϥ���åɴ֤Ǿ��ʤ��Ȥ⤢�����٤�Ʊ��Υǡ�����ͭ��������Τ�������� L<threads::shared>�⥸�塼���C< : shared>°���ˤ�äƤʤ���롣
+しかしスレッド機能を利用するならば、通常はスレッド間で少なくともある程度は同一のデータを共有したいものだ。これは L<threads::shared>モジュールとC< : shared>属性によってなされる。
 
     use threads;
     use threads::shared;
@@ -582,7 +582,7 @@ simple values or references to shared variables are allowed - this is
 so that a private variable can't accidentally become shared. A bad
 assignment will cause the thread to die. For example:
 
-��ͭ�����줿����ξ��ϡ�������������Ƥ���ͭ������롣��ͭ�����줿�ϥå���ξ�硢���Ƥ� key �� value ����ͭ����롣��ͭ�����줿�����ϥå�������Ǥ����������Τ��Ф��Ƥ����¤����롣ñ����ͤ䶦ͭ�����줿�ѿ��ؤΥ�ե���󥹤ϲ�ǽ��������ϡ��ɽ경���줿�ѿ����ޤ餺�ⶦͭ������뤳�Ȥ��ʤ�������������������ϥ���åɤ򻦤��Ƥ��ޤ����������㤨�С�
+共有化された配列の場合は、配列の要素全てが共有化される。共有化されたハッシュの場合、全ての key と value が共有される。共有化された配列やハッシュの要素に代入するものに対しては制限がある。単純な値や共有化された変数へのリファレンスは可能だ。これは、局所化された変数が図らずも共有化されることがないからだ。不正な代入はスレッドを殺してしまうだろう。例えば、
 
     use threads;
     use threads::shared;
@@ -593,26 +593,26 @@ assignment will cause the thread to die. For example:
 
     ... create some threads ...
 
-    $hash{a} = 1;	# �ɤΥ���åɤ���� exists($hash{a}) and $hash{a} == 1
-    $hash{a} = $var	# OK���ͤΥ��ԡ��������̤Ͼ��Ʊ����
-    $hash{a} = $svar	# OK���ͤΥ��ԡ��������̤Ͼ��Ʊ����
-    $hash{a} = \$svar	# OK����ͭ�ѿ��ؤΥ�ե���󥹤���
-    $hash{a} = \$var	# ����ϥ����������
-    delete $hash{a}	# OK���ɤΥ���åɤ���� !exists($hash{a})
+    $hash{a} = 1;	# どのスレッドからも exists($hash{a}) and $hash{a} == 1
+    $hash{a} = $var	# OK、値のコピーだ。効果は上に同じ。
+    $hash{a} = $svar	# OK、値のコピーだ。効果は上に同じ。
+    $hash{a} = \$svar	# OK、共有変数へのリファレンスだ。
+    $hash{a} = \$var	# これはダメだろう。
+    delete $hash{a}	# OK、どのスレッドからも !exists($hash{a})
 
 Note that a shared variable guarantees that if two or more threads try to
 modify it at the same time, the internal state of the variable will not
 become corrupted. However, there are no guarantees beyond this, as
 explained in the next section.
 
-��ͭ�ѿ�����ʣ���Υ���åɤ�Ʊ���ˤ����ѿ����ѹ���ä��褦�Ȥ��Ƥ⡢�ѿ����������֤��˲�����ʤ����Ȥ��ݾڤ��Ƥ��뤳�Ȥ����ա����������Υ�����������������褦�ˡ�������Ķ���Ƥ��ޤ����ݾڤϤʤ��ʤäƤ��ޤ���
+共有変数が、複数のスレッドが同時にその変数に変更を加えようとしても、変数の内部状態は破壊されないことを保証していることに注意。しかし次のセクションで説明するように、ここを超えてしまうと保証はなくなってしまう。
 
-=head2 ����åɤ���Ȥ��ꡧ����
+=head2 スレッドの落とし穴：競合
 
 While threads bring a new set of useful tools, they also bring a
 number of pitfalls.  One pitfall is the race condition:
 
-����åɤϿ����������ʥġ�����·���⤿�餷�Ƥ��������ǡ������������Ȥ����⤿�餹�����ΰ�Ĥ϶�����Ǥ��롣
+スレッドは新しい便利なツールを一揃いもたらしてくれる一方で、たくさんの落とし穴ももたらす。その一つは競合条件である。
 
     use threads; 
     use threads::shared;
@@ -634,7 +634,7 @@ to read and once to write.  Depending on factors ranging from your
 thread implementation's scheduling algorithm to the phase of the moon,
 $a can be 2 or 3.
 
-$a �Ϥɤ��ʤ������������ǰ�ʤ��顢���������ϡɾ��ˤ�ꤱ��ɤ���sub1()�� sub2()�Ϥɤ������٤����ɤ߹��ߡ����٤����񤭹��ि��˥������Х��ѿ� $a �˥����������롣���ʤ��λȤäƤ��륹��åɤ��������륹�����塼��󥰥��르�ꥺ�फ���������礱�ޤǤμ���װ��ˤ�äơ�$a��2�ˤ�3�ˤ�ʤꤦ�롣
+$a はどうなるだろうか？残念ながら、その答えは”場合によりけり”だ。sub1()と sub2()はどちらも一度だけ読み込み、一度だけ書き込むためにグローバル変数 $a にアクセスする。あなたの使っているスレッドが実装するスケジューリングアルゴリズムから月の満ち欠けまでの種々の要因によって、$aは2にも3にもなりうる。
 
 Race conditions are caused by unsynchronized access to shared
 data.  Without explicit synchronization, there's no way to be sure that
@@ -642,7 +642,7 @@ nothing has happened to the shared data between the time you access it
 and the time you update it.  Even this simple code fragment has the
 possibility of error:
 
-������϶�ͭ�ǡ������Ф�����Ʊ���ʥ���������Ԥ����Ȥˤ�ä������롣����Ū��Ʊ����Ȥ�ʤ��¤ꡢ�����������ƥ��åץǡ��Ȥ���ޤǤδ֤˶�ͭ�ǡ����˲��ⵯ����ʤ����Ȥ�μ¤ˤ�����ˡ�Ϥʤ��������ñ��ʥ����ɤǤ��������顼�β�ǽ��������Τ���
+競合条件は共有データに対して非同期なアクセスを行うことによって生じる。明示的に同期をとらない限り、アクセスしてアップデートするまでの間に共有データに何も起こらないことを確実にする方法はない。こんな単純なコードでさえ、エラーの可能性があるのだ。
 
     use threads; 
     my $a : shared = 2;
@@ -657,20 +657,20 @@ Two threads both access $a.  Each thread can potentially be interrupted
 at any point, or be executed in any order.  At the end, $a could be 3
 or 4, and both $b and $c could be 2 or 3.
 
-��ĤΥ���åɤ� $a �˥����������롣���줾��Υ���åɤϤ����줫�λ����ǳ����ޤ줿�ꡢ�����줫�ν��֤Ǽ¹Ԥ�����ǽ�������롣��ɡ�$a ��3��4�ˡ�$b �� $c �ϤȤ��2��3�ˤʤ��������
+二つのスレッドが $a にアクセスする。それぞれのスレッドはいずれかの時点で割り込まれたり、いずれかの順番で実行される可能性がある。結局、$a は3か4に、$b と $c はともに2か3になるだろう。
 
 Even C<$a += 5> or C<$a++> are not guaranteed to be atomic.
 
-C<$a += 5>��C<$a++>�Ǥ��������ȥߥå��ʱ黻�Ǥ��뤳�Ȥ��ݾڤǤ��ʤ���
+C<$a += 5>やC<$a++>でさえ、アトミックな演算であることを保証できない。
 
 Whenever your program accesses data or resources that can be accessed
 by other threads, you must take steps to coordinate access or risk
 data inconsistency and race conditions. Note that Perl will protect its
 internals from your race conditions, but it won't protect you from you.
 
-¾�Υ���åɤˤ�äƥ�������������ǽ���Τ���ǡ�����꥽�����ˤ��ʤ��Υץ�����ब������������Ȥ��Ϥ��ĤǤ⡢����Ū�ʥ��������Τ���μ���Ƨ�ޤʤ���Фʤ�ʤ�������ʤ���Хǡ����ΰ���������줿�ꡢ������˴٤�ꥹ�����餦���Ȥˤʤ롣
+他のスレッドによってアクセスされる可能性のあるデータやリソースにあなたのプログラムがアクセスするときはいつでも、整合的なアクセスのための手順を踏まなければならない。さもなければデータの一貫性が崩れたり、競合条件に陥るリスクを負うことになる。
 
-=head1 Ʊ��������
+=head1 同期と制御
 
 Perl provides a number of mechanisms to coordinate the interactions
 between themselves and their data, to avoid race conditions and the like.
@@ -680,9 +680,9 @@ standard techniques are clumsy and difficult to get right (such as
 condition waits). Where possible, it is usually easier to use Perlish
 techniques such as queues, which remove some of the hard work involved.
 
-������䤽��˻������֤���򤹤뤿��ˡ�����åɤȥǡ����Ȥδ֤���ߺ��Ѥ�Ĵ������¿���Υᥫ�˥����Perl���󶡤��롣�����Τ����Τ����Τϡ�C<pthreads> �Τ褦�ʥ���åɥ饤�֥��ˤ����ƻȤ��붦�̤Υƥ��˥å��˻����߷פ��ʤ���Ƥ��롣�ޤ������Τ�Perl���ò����Ƥ��롣���Ф���ɸ��Ū�ʥƥ��˥å��Ȥ�����ΤϤ������ʤ���ΤǤ��ꡢ�����������ˤ��񤷤�����ǽ�ʤȤ����Ǥ��̾queues�Τ褦��PerlŪ�ƥ��˥å��Ϥ���ñ�Ǥ��ꡢ�񤷤��Ż��Τ����Τ����Τ�������Ƥ���롣
+競合条件やそれに似た状態を回避するために、スレッドとデータとの間の相互作用を調整する多くのメカニズムをPerlは提供する。それらのうちのあるものは、C<pthreads> のようなスレッドライブラリにおいて使われる共通のテクニックに似た設計がなされている。またあるものはPerlに特化している。しばしば標準的なテクニックというものはぎこちないものであり、正しく扱うには難しい。可能なところでは通常、queuesのようなPerl的テクニックはより簡単であり、難しい仕事のうちのあるものを取り除いてくれる。
 
-=head2 �����������桧lock()
+=head2 アクセス制御：lock()
 
 The lock() function takes a shared variable and puts a lock on it.  
 No other thread may lock the variable until the the variable is unlocked
@@ -692,7 +692,7 @@ C<lock()> function.  Using lock() is straightforward: this example has
 several threads doing some calculations in parallel, and occasionally
 updating a running total:
 
-lock()�ؿ��϶�ͭ�ѿ�������ˤȤꡢ����˥��å��򤫤��롣���å����ݻ����륹��åɤˤ�ä��ѿ��Υ��å�����������ޤǡ�¾�Υ���åɤϥ��å��򤫤��뤳�Ȥ��Ǥ��ʤ������������å����Ƥ��륹��åɤ� C<lock()> �ؿ���ޤ�֥��å��γ��˽Ф�ȥ��å��ϼ�ưŪ�˲������롣lock()�����Ѥ�Ψľ�ʤ��������������ϡ�����׻�������Ū�˽����������ޤ��������ͤ򹹿����뤤���Ĥ��Υ���åɤ�ȼ�äƤ��롣
+lock()関数は共有変数を引数にとり、それにロックをかける。ロックを保持するスレッドによって変数のロックが解除されるまで、他のスレッドはロックをかけることができないだろう。ロックしているスレッドが C<lock()> 関数を含むブロックの外に出るとロックは自動的に解除される。lock()の利用は率直なやり方だ。この例は、ある計算を並列的に処理し、時折その総計値を更新するいくつかのスレッドを伴っている。
 
     use threads;
     use threads::shared;
@@ -702,11 +702,11 @@ lock()�ؿ��϶�ͭ�ѿ�������ˤȤꡢ����˥��å��򤫤��롣���å����ݻ����륹��å�
     sub calc {
 	for (;;) {
 	    my $result;
-	    # (... �����׻���Ԥäơ������ͤ� $result ������� ...)
+	    # (... 何か計算を行って、その値を $result に入れる ...)
 	    {
-		lock($total); # ���å�����������ޤǥ֥��å�
+		lock($total); # ロックが成功するまでブロック
 		$total += $result;
-	    } # �������פκǸ�ǰ���Ū�˥��å��ϳ��������
+	    } # スコープの最後で暗黙的にロックは開放される
 	    last if $result == 0;
 	}
     }
@@ -725,26 +725,26 @@ available.  When lock() returns, your thread can be sure that no other
 thread can lock that variable until the outermost block containing the
 lock exits.
 
-���å�����Ƥ��ѿ������Ѳ�ǽ�ˤʤ�ޤǡ�lock()�Ϥ��Υ���åɤ�֥��å����롣lock()����äƤ���ȡ����Υ��å���¸�ߤ��Ƥ���֥��å��ΰ��ֳ��˽Фʤ��¤ꡢ¾�Υ���åɤ������ѿ�����å��Ǥ��ʤ����Ȥ��μ¤ˤʤ롣
+ロックされてる変数が利用可能になるまで、lock()はそのスレッドをブロックする。lock()が戻ってくると、そのロックが存在しているブロックの一番外に出ない限り、他のスレッドがその変数をロックできないことが確実になる。
 
 It's important to note that locks don't prevent access to the variable
 in question, only lock attempts.  This is in keeping with Perl's
 longstanding tradition of courteous programming, and the advisory file
 locking that flock() gives you.  
 
-���å���������ѿ��˥�����������Τ��˻ߤ���ΤǤϤʤ��ơ����å��λ�ߤ��˻ߤ���Τ��Ȥ������Ȥ����դ��뤳�Ȥ����פ��������Perl��Ĺǯ�ˤ錄���ˡ�ɤ���Υץ�����ߥ󥰤������ȡ�flock()���󶡤��봫����å���Ĵ�¤����ΤǤ��롣
+ロックは問題の変数にアクセスするのを阻止するのではなくて、ロックの試みを阻止するのだということに注意することが重要だ。これはPerlの長年にわたる作法どおりのプログラミングの伝統と、flock()が提供する勧告ロックと調和するものである。
 
 You may lock arrays and hashes as well as scalars.  Locking an array,
 though, will not block subsequent locks on array elements, just lock
 attempts on the array itself.
 
-�����顼�ѿ�Ʊ�͡������ϥå���ˤ���å��򤫤��뤳�Ȥ��Ǥ����������������������ؤΥ��å��ϡ���������Ǥ��Ф�����Ū�ʥ��å���֥��å�����ΤǤϤʤ������󤽤Τ�ΤؤΥ��å��λ�ߤ�֥��å����롣
+スカラー変数同様、配列やハッシュにもロックをかけることができるだろう。しかし、配列へのロックは、配列の要素に対する二次的なロックをブロックするのではなく、配列そのものへのロックの試みをブロックする。
 
 Locks are recursive, which means it's okay for a thread to
 lock a variable more than once.  The lock will last until the outermost
 lock() on the variable goes out of scope. For example:
 
-���å��ϺƵ�Ū���Ĥޤꥹ��åɤϤ����ѿ����Ф����٤���å��򤫤�������פ������ֳ�¦��lock()���������פ�ȴ����ޤǥ��å���³�����㤨�С�
+ロックは再帰的、つまりスレッドはある変数に対し何度もロックをかけて大丈夫だ。一番外側のlock()がスコープを抜けるまでロックは続く。例えば、
 
     my $x : shared;
     doit();
@@ -752,27 +752,27 @@ lock() on the variable goes out of scope. For example:
     sub doit {
 	{
 	    {
-		lock($x); # ���å�����ޤ��Ԥ�
-		lock($x); # ̵�� - ���˥��å����Ƥ���
+		lock($x); # ロックするまで待つ
+		lock($x); # 無駄 - 既にロックしている
 		{
-		    lock($x); # ̵��
+		    lock($x); # 無駄
 		    {
-			lock($x); # ̵��
+			lock($x); # 無駄
 			lockit_some_more();
 		    }
 		}
-	    } # *** �����ǰ���Ū�ʥ��å���� ***
+	    } # *** ここで暗黙的なロック解除 ***
 	}
     }
 
     sub lockit_some_more {
-	lock($x); # ̵��
-    } # �����Ǥϲ��ⵯ����ʤ�
+	lock($x); # 無駄
+    } # ここでは何も起こらない
 
 Note that there is no unlock() function - the only way to unlock a
 variable is to allow it to go out of scope.  
 
-unlock()�ؿ���̵�����Ȥ����ա��ѿ��Υ��å�����������ˡ�ϥ������פ�̤������뤳�Ȥ�������
+unlock()関数は無いことに注意。変数のロックを解除する方法はスコープをぬけさせることだけだ。
 
 A lock can either be used to guard the data contained within the variable
 being locked, or it can be used to guard something else, like a section
@@ -781,16 +781,16 @@ useful data, and exists only for the purpose of being locked. In this
 respect, the variable behaves like the mutexes and basic semaphores of
 traditional thread libraries.
 
-���å�����Ƥ����ѿ�����ݻ�����Ƥ���ǡ����򥬡��ɤ��뤫�����뤤�ϥ����ɤΥ��������Τ褦�ʤ�Τ��뤿��ˡ����å����Ѥ����롣��Ԥξ�硢������ѿ������Ω�ĥǡ���������������å�����Ū�Τ���ˤ���¸�ߤ��롣���������餹��ȡ������ѿ�������Ū�ʥ���åɥ饤�֥��ˤ�����ߥ塼�ƥå��������Ū�ʥ��ޥե��Τ褦�ʿ����񤤤򤹤�Ȥ����롣
+ロックされている変数内に保持されているデータをガードするか、あるいはコードのセクションのようなものを守るために、ロックは用いられる。後者の場合、問題の変数は役に立つデータを持たず、ロックの目的のためにだけ存在する。この点からすると、その変数は伝統的なスレッドライブラリにおけるミューテックスや基本的なセマフォのような振る舞いをするといえる。
 
-=head2 A ����åɤ���Ȥ��ꡧ�ǥåɥ��å�
+=head2 A スレッドの落とし穴：デッドロック
 
 Locks are a handy tool to synchronize access to data, and using them
 properly is the key to safe shared data.  Unfortunately, locks aren't
 without their dangers, especially when multiple locks are involved.
 Consider the following code:
 
-���å��ϥǡ�����Ʊ�������������뤿��������ʥġ���Ǥ��롣Ŭ�ڤ˻Ȥ��а����ʶ�ͭ�ǡ����ؤθ��Ȥʤ롣��ǰ�ʤ��Ȥˡ����å��ˤϴ�����ȼ�����ä�ʣ���Υ��å����ؤ��Ȥ����ʤ롣���Υ����ɤ�ͤ��Ƥߤ褦��
+ロックはデータに同期アクセスするための便利なツールである。適切に使えば安全な共有データへの鍵となる。残念なことに、ロックには危険が伴う。特に複数のロックが関わるとそうなる。次のコードを考えてみよう。
 
     use threads; 
 
@@ -814,7 +814,7 @@ won't hang is if one of the two threads acquires both locks
 first.  A guaranteed-to-hang version is more complicated, but the
 principle is the same.
 
-���Υץ������϶��餯���ʤ��� kill ����ޤǸǤޤäƤ��ޤ����������ϥ󥰤����ʤ������ͣ�����ˡ�ϡ��ɤ��餫�Υ���åɤ����ξ���Υ��å���������뤳�Ȥ����ϥ󥰤��ݾڤ���С������Ϥ�ä�ʣ�������������Ϥ����Ʊ������
+このプログラムは恐らくあなたが kill するまで固まってしまうだろう。ハングさせないための唯一の方法は、どちらかのスレッドが先に両方のロックを獲得することだ。ハングを保証するバージョンはもっと複雑だが、原理はこれと同じだ。
 
 The first thread will grab a lock on $a, then, after a pause during which
 the second thread has probably had time to do some work, try to grab a
@@ -822,7 +822,7 @@ lock on $b.  Meanwhile, the second thread grabs a lock on $b, then later
 tries to grab a lock on $a.  The second lock attempt for both threads will
 block, each waiting for the other to release its lock.
 
-�ǽ�Υ���åɤ� $a �Υ��å����ˤ��롣���줫������ܤΥ���åɤ�������äƤ���֤˰����ߤ����塢 $b �ؤΥ��å���������褦�Ȼ�ߤ롣�Ȥ���������������ܤΥ���åɤ� $b �ؤΥ��å����ˤ��롣�����Ƥ��θ� $a �Υ��å���������褦�Ȥ��롣���줾��Υ���åɤ���¾���Υ���åɤΥ��å��������������ԤĤ��ᡢ�����ܤΥ��å��ؤλ�ߤϥ֥��å����Ƥ��ޤ���
+最初のスレッドが $a のロックを手にする。それから二つ目のスレッドが何かやっている間に一時停止した後、 $b へのロックを手に入れようと試みる。ところが、その二つ目のスレッドは $b へのロックを手にする。そしてその後 $a のロックを手に入れようとする。それぞれのスレッドが、他方のスレッドのロックが開放されるの待つため、二番目のロックへの試みはブロックしてしまう。
 
 This condition is called a deadlock, and it occurs whenever two or
 more threads are trying to get locks on resources that the others
@@ -830,7 +830,7 @@ own.  Each thread will block, waiting for the other to release a lock
 on a resource.  That never happens, though, since the thread with the
 resource is itself waiting for a lock to be released.
 
-���ξ��֤�ǥåɥ��å��Ȥ�������İʾ�Υ���åɤ�¾����åɤν�ͭ����꥽��������å����褦�Ȼ�ߤ�Ȥ��ˤϤ��ĤǤ������롣¾�Υ���åɤ��꥽�����ؤΥ��å���������Τ��Ԥäơ��ߤ��˥���åɤ��֥��å����롣���������꥽��������äƤ��륹��åɤ���ʬ���ȤΥ��å��γ������Ԥľ��ϡ��������ʤ���
+この状態をデッドロックという。二つ以上のスレッドが他スレッドの所有するリソースをロックしようと試みるときにはいつでも生じる。他のスレッドがリソースへのロックを開放するのを待って、互いにスレッドがブロックする。しかし、リソースを持っているスレッドが自分自身のロックの開放を待つ場合は、は生じない。
 
 There are a number of ways to handle this sort of problem.  The best
 way is to always have all threads acquire locks in the exact same
@@ -838,21 +838,21 @@ order.  If, for example, you lock variables $a, $b, and $c, always lock
 $a before $b, and $b before $c.  It's also best to hold on to locks for
 as short a period of time to minimize the risks of deadlock.
 
-���μ������򰷤���ˡ�Ϥ������󤢤롣�Ǥ�褤��ˡ�ϡ�������ƤΥ���åɤ����Τ�Ʊ�����֤ǥ��å����������褦�ˤ����뤳�Ȥ����㤨�С� $a, $b, $c������å�����ʤ顢���ĤǤ� $b ������ $a �򡢤����� $c ������ $b ����å�����褦�ˤ��롣�ǥåɥ��å��δ�����Ǿ��ˤ��뤿��ˡ�û�����֤������å����ݻ�����Τ⡢�ɤ������
+この種の問題を扱う方法はたくさんある。最もよい方法は、常に全てのスレッドが正確に同じ順番でロックを獲得するようにさせることだ。例えば、 $a, $b, $c　をロックするなら、いつでも $b の前に $a を、そして $c の前に $b をロックするようにする。デッドロックの危険を最小にするために、短い時間だけロックを保持するのも、良い手だ。
 
 The other synchronization primitives described below can suffer from
 similar problems.
 
-��������������褦��¾�Υץ�ߥƥ��֤�Ʊ����Ʊ�ͤ�������������롣
+下記で説明するような他のプリミティブな同期も同様な問題を抱えうる。
 
-=head2 ���塼���ǡ����μ����Ϥ�
+=head2 キュー：データの受け渡し
 
 A queue is a special thread-safe object that lets you put data in one
 end and take it out the other without having to worry about
 synchronization issues.  They're pretty straightforward, and look like
 this:
 
-���塼�Ȥϡ�������ü�˥ǡ��������졢¾��������Ф����Ȥˤ�äơ�Ʊ����������ۤ��ʤ��Ƥ��ࡢ���̤ʥ���åɥ����ե��֥������ȤǤ��롣�������������Ѥǡ�����ʴ�������
+キューとは、一方の端にデータを入れ、他方から取り出すことによって、同期の問題を心配しなくてすむ、特別なスレッドセーフオブジェクトである。これらは非所に素朴で、こんな感じだ。
 
     use threads; 
     use Thread::Queue;
@@ -876,15 +876,15 @@ add lists of scalars onto the end with enqueue(), and pop scalars off
 the front of it with dequeue().  A queue has no fixed size, and can grow
 as needed to hold everything pushed on to it.
 
-C<new Thread::Queue>�ǥ��塼���������롣���줫�� enqueue() ��Ȥäƥ��塼�κǸ�˥����顼�Υꥹ�Ȥ��ɲä��롣������ dequeue() �ǥ��塼�����������饹���顼����Ф������塼�Υ������ϸ��ꤷ�Ƥ��ʤ������塼����˲��������줿��Τ��ݻ�����ɬ�פ˱����ƥ���������Ĺ���롣
+C<new Thread::Queue>でキューを生成する。それから enqueue() を使ってキューの最後にスカラーのリストを追加する。そして dequeue() でキューの前の方からスカラーを取り出す。キューのサイズは固定していない。キューの中に押し込められたものを保持する必要に応じてサイズは成長する。
 
 If a queue is empty, dequeue() blocks until another thread enqueues
 something.  This makes queues ideal for event loops and other
 communications between threads.
 
-�⤷���塼�����äݤξ�硢¾�Υ���åɤ������򥭥塼����������ޤǡ�dequeue()�ϥ֥��å����롣
+もしキューが空っぽの場合、他のスレッドが何かをキューの中に入れるまで、dequeue()はブロックする。
 
-=head2 ���ޥե����ǡ�������������Ʊ��
+=head2 セマフォ：データアクセスの同期
 
 Semaphores are a kind of generic locking mechanism. In their most basic
 form, they behave very much like lockable scalars, except that thay
@@ -892,16 +892,16 @@ can't hold data, and that they must be explicitly unlocked. In their
 advanced form, they act like a kind of counter, and can allow multiple
 threads to have the 'lock' at any one time.
 
-���ޥե������Ū�ʥ��å��ᥫ�˥���ΰ��Ǥ��롣�Ǥ���ܤȤʤ���֤Ǥϡ����ޥե��ϥǡ�������Ĥ��ȤϤǤ��ʤ���������Ū�˥��å��������ʤ���Фʤ�ʤ����Ȥ�����ȡ����å���ǽ�ʥ����顼���ä���˿��񤦡�ȯŸŪ�ʷ��֤ˤ����Ƥϡ����Υ����󥿡��Τ褦��ư������ĤǤ�ʣ���Υ���åɤ��ɥ��å��ɤ���Ĥ��Ȥ��ǽ�ˤ��롣
+セマフォは包括的なロックメカニズムの一種である。最も基本となる形態では、セマフォはデータを持つことはできないし、明示的にロック解除されなければならないことを除くと、ロック可能なスカラーそっくりに振舞う。発展的な形態においては、一種のカウンターのように動作し、いつでも複数のスレッドが”ロック”を持つことを可能にする。
 
-=head2 �١����å��ʥ��ޥե�
+=head2 ベーシックなセマフォ
 
 Semaphores have two methods, down() and up(): down() decrements the resource
 count, while up increments it. Calls to down() will block if the
 semaphore's current count would decrement below zero.  This program
 gives a quick demonstration:
 
-���ޥե�����ĤΥ᥽�åɡ�down()��up()����ġ�down()�ϥ꥽�����Υ�����Ȥ򸺾������� up() ���������ä����롣���ޥե��θ��ߤΥ�����Ȥ�0�򲼲��褦�ʤ� down()�θƤӽФ��ϥ֥��å����롣���Υץ�������û�������
+セマフォは二つのメソッド、down()とup()を持つ。down()はリソースのカウントを減少させ、 up() の方は増加させる。セマフォの現在のカウントが0を下回るようなら down()の呼び出しはブロックする。このプログラムは短い例だ。
 
     use threads qw(yield); 
     use Thread::Semaphore; 
@@ -938,34 +938,34 @@ The three invocations of the subroutine all operate in sync.  The
 semaphore, though, makes sure that only one thread is accessing the
 global variable at once.
 
-���ĤΥ��֥롼�����Ʊ���˺��Ѥ��롣�����������٤˰�ĤΥ���åɤ������������Х��ѿ��˥����������뤳�Ȥ򥻥ޥե����ݾڤ��롣
+三つのサブルーチンは同時に作用する。しかし、一度に一つのスレッドだけがグローバル変数にアクセスすることをセマフォが保証する。
 
-=head2 ���٤ʥ��ޥե�
+=head2 高度なセマフォ
 
 By default, semaphores behave like locks, letting only one thread
 down() them at a time.  However, there are other uses for semaphores.
 
-�ǥե���ȤǤϡ����ޥե��ϥ��å��Τ褦�˿��񤦡����٤ˤ�����ĤΥ���åɤ����� down()�Ǥ��롣�����������ޥե��ˤ��̤λȤ��������롣
+デフォルトでは、セマフォはロックのように振舞う。一度にただ一つのスレッドだけが down()できる。しかし、セマフォには別の使い方がある。
 
 Each semaphore has a counter attached to it. By default, semaphores are
 created with the counter set to one, down() decrements the counter by
 one, and up() increments by one. However, we can override any or all
 of these defaults simply by passing in different values:
 
-���줾��Υ��ޥե��ϡ���Ϣ�դ���줿�����󥿤���ġ��ǥե���Ȥǥ��ޥե����������������󥿤�1�����åȤ���롣down()�ϥ����󥿤���1�������up()��1��­�������������ε����ͤΰ����ʤ������������̤��ͤǤ�äƾ�񤭤��뤳�Ȥ��Ǥ��롣
+それぞれのセマフォは、関連付けられたカウンタを持つ。デフォルトでセマフォは生成時、カウンタに1がセットされる。down()はカウンタから1を引き、up()は1を足す。しかしこの規定値の一部ないしは全部を別の値でもって上書きすることができる。
 
     use threads;
     use Thread::Semaphore;
     my $semaphore = Thread::Semaphore->new(5);
-                    # �����󥿤�5�򥻥åȤ��ƥ��ޥե�������
+                    # カウンタに5をセットしてセマフォを生成
 
     $thr1 = threads->new(\&sub1);
     $thr2 = threads->new(\&sub1);
 
     sub sub1 {
-        $semaphore->down(5); # �����󥿤���5�����
+        $semaphore->down(5); # カウンタから5を引く
         # Do stuff here
-        $semaphore->up(5); # �����󥿤�5��­��
+        $semaphore->up(5); # カウンタに5を足す
     }
 
     $thr1->detach;
@@ -977,7 +977,7 @@ with a starting count of zero, any up() or down() always changes the
 counter by at least one, and so $semaphore->down(0) is the same as
 $semaphore->down(1).
 
-�⤷��down()�������󥿤�0��꾮�����ͤ˲����褦�Ȥ���ʤ顢down()�ϥ����󥿤���ʬ���礭���ˤʤ�ޤǥ֥��å����롣���ޥե��ϥ����󥿤��ͤ�0�ˤ����������뤳�Ȥ��Ǥ��������up()��down()�Ͼ�ˡ����ʤ��Ȥ�1���Ѳ��򥫥��󥿤��Ф��ƹԤ����Ȥ����դ��뤳�ȡ������顢$semaphore->down(0) �� $semaphore->down(1) �Ȱ�����
+もしもdown()がカウンタを0より小さい値に下げようとするなら、down()はカウンタが十分な大きさになるまでブロックする。セマフォはカウンタの値を0にして生成することができる一方、up()やdown()は常に、少なくとも1の変化をカウンタに対して行うことに注意すること。だから、$semaphore->down(0) は $semaphore->down(1) と一緒だ。
 
 The question, of course, is why would you do something like this? Why
 create a semaphore with a starting count that's not one, or why
@@ -985,7 +985,7 @@ decrement/increment it by more than one? The answer is resource
 availability.  Many resources that you want to manage access for can be
 safely used by more than one thread at once.
 
-�����������Ϥɤ����Ƥ���ʤ��Ȥ򤹤�Τ��Ȥ������Ȥ����ʤ����ޥե���1�ǤϤʤ��ơ�0����Ϥ��褦����������Τ������뤤�ϡ��ʤ�1�ʾ���ͤ�������Ԥ��Τ������������ϥ꥽�������٥���ӥ�ƥ��������ʤ����������������򤷤���¿���Υ꥽�����ϡ�Ʊ���˰�İʾ�Υ���åɤˤ�äư��������Ѥ���롣
+もちろん、問題はどうしてこんなことをするのかということだ。なぜセマフォを1ではなくて、0から始めるように生成するのか？あるいは、なぜ1以上の値で増減を行うのか？その答えはリソースアベイラビリティだ。あなたがアクセス管理をしたい多くのリソースは、同時に一つ以上のスレッドによって安全に利用される。
 
 For example, let's take a GUI driven program.  It has a semaphore that
 it uses to synchronize access to the display, so only one thread is
@@ -994,7 +994,7 @@ to start drawing until things are properly set up.  In this case, you
 can create a semaphore with a counter set to zero, and up it when
 things are ready for drawing.
 
-��Ȥ���GUI��ư���Υץ���������夲�Ƥߤ褦���ץ������ϡ��ǥ����ץ쥤��Ʊ�������������뤿��˥��ޥե�����äƤ��롣�������ư��٤ˤ�����ĤΥ���åɤ����������ԤäƤ��롣��ñ���ä�����������󡢤����Ƚ������Ǥ���ޤǤɤΥ���åɤˤ������Ϥ�Ƥ�餤�����Ϥʤ�������ʾ��ˡ������󥿤�0�ˤ��ƥ��ޥե�����������Τ�������������ν������Ǥ����顢�����󥿤����ä����롣
+例としてGUI駆動型のプログラムを取り上げてみよう。プログラムは、ディスプレイに同期アクセスするためにセマフォを持っている。そうして一度にただ一つのスレッドだけが描画を行っている。簡単な話だが、もちろん、ちゃんと準備ができるまでどのスレッドにも描画を始めてもらいたくはない。こんな場合に、カウンタを0にしてセマフォを生成するのだ。そして描画の準備ができたら、カウンタを増加させる。
 
 Semaphores with counters greater than one are also useful for
 establishing quotas.  Say, for example, that you have a number of
@@ -1005,14 +1005,14 @@ can use a semaphore initialized to the number of concurrent I/O
 requests (or open files) that you want at any one time, and have your
 threads quietly block and unblock themselves.
 
-1����礭�������󥿤���ĥ��ޥե��ϥ��������γ�Ω�ˤ���Ω�ġ��㤨�С�Ʊ����I/O��Ȥ�����åɤ������Ĥ⤢��Ȥ��롣���������ƤΥ���åɤ�Ʊ�����ɤ߽񤭤򤹤�Τ�˾�ޤʤ�������ʤ��Ȥ򤷤���I/O�����ͥ�������뤫�⤷��ʤ������ץ������˳�����Ƥ�줿�ե�����ϥ�ɥ��ϳ餵���Ƥ��ޤ����⤷��ʤ�����������ʤ������ĤǤ�ɬ�פȤ�������åɤˤ��Ȥʤ����֥��å�������֥��å��򤵤����������θ�I/O�ꥯ�����ȿ��ʤ��뤤�ϥ����ץ�ե�������ˤǽ�����ꤵ�줿���ޥե������Ѥ���Ф褤��
+1より大きいカウンタを持つセマフォはクォータの確立にも役立つ。例えば、同時にI/Oを使うスレッドがいくつもあるとする。だが、全てのスレッドが同時に読み書きをするのは望まない。そんなことをしたらI/Oチャンネルを圧迫するかもしれないし、プロセスに割り当てられたファイルハンドルを枯渇させてしまうかもしれないからだ。あなたがいつでも必要とし、スレッドにおとなしくブロック・アンブロックをさせたいだけの現I/Oリクエスト数（あるいはオープンファイル数）で初期設定されたセマフォを利用すればよい。
 
 Larger increments or decrements are handy in those cases where a
 thread needs to check out or return a number of resources at once.
 
-���륹��åɤ����٤ˤ�������Υ꥽������ڤꤿ���ᤷ���ꤹ��褦�ʤ��������������Ǥϡ��礭�ʿ���������Ԥ��Τ���������
+あるスレッドが一度にたくさんのリソースを借りたり戻したりするようなこういうケースでは、大きな数で増減を行うのが便利だ。
 
-=head2 cond_wait()��cond_signal()
+=head2 cond_wait()とcond_signal()
 
 These two functions can be used in conjunction with locks to notify
 co-operating threads that a resource has become available. They are
@@ -1020,26 +1020,26 @@ very similar in use to the functions found in C<pthreads>. However
 for most purposes, queues are simpler to use and more intuitive. See
 L<threads::shared> for more details.
 
-�������Ĥδؿ��ϡ����å���Ʊ��ȯ��������ˡ��꥽���������Ѳ�ǽ�ˤʤä���Ĵ������åɤ����Τ�Ԥ�������Ѥ��롣�����ϡ�C<pthreads> �ˤ���ؿ��Ȥ褯���Ƥ��롣�������ۤȤ�ɤ���Ū�ˤ����ơ����塼���������ñ���ľ��Ū�Ǥ��롣�ܺ٤� L<threads::shared>�򻲾ȡ�
+これら二つの関数は、ロックが同時発生する時に、リソースが利用可能になった協調型スレッドに通知を行うために用いる。これらは、C<pthreads> にある関数とよく似ている。しかしほとんどの目的において、キューの方がより単純で直感的である。詳細は L<threads::shared>を参照。
 
-=head1 ���ѥ���åɥ桼�ƥ���ƥ����롼����
+=head1 汎用スレッドユーティリティ　ルーチン
 
 We've covered the workhorse parts of Perl's threading package, and
 with these tools you should be well on your way to writing threaded
 code and packages.  There are a few useful little pieces that didn't
 really fit in anyplace else.
 
-Perl�Υ���åɥѥå�������Ư����ʬ��ߤƤ�����������ƻ���Ȥäƥ���åɤ�Ȥä������ɤ�ѥå�������񤯺ݤˤ��ޤ����٤�����¾�ξ��ǤϼºݤˤϤ��ޤ������ʤ�����������ʬ��鷺���������롣
+Perlのスレッドパッケージの働き部分をみてきた。これらの道具を使ってスレッドを使ったコードやパッケージを書く際にうまくやるべきだ。他の場所では実際にはうまくいかないが便利な部分もわずかだがある。
 
-=head2 ��ϤɤΥ���åɤˤ���?
+=head2 私はどのスレッドにいる?
 
 The C<< threads->self >> class method provides your program with a way to
 get an object representing the thread it's currently in.  You can use this
 object in the same way as the ones returned from thread creation.
 
-C<< threads->self >> ���饹�᥽�åɤ�Ȥ��ȡ����ߤΥ���åɤ�ɽ�����֥������Ȥ����뤳�Ȥ��Ǥ��롣����åɤ���������Ȥ����֤äƤ��륪�֥������Ȥ�Ʊ���褦�ˡ����Υ��֥������Ȥ�Ȥ����Ȥ��Ǥ��롣
+C<< threads->self >> クラスメソッドを使うと、現在のスレッドを表すオブジェクトを得ることができる。スレッドを生成するときに返ってくるオブジェクトと同じように、このオブジェクトを使うことができる。
 
-=head2 ����å�ID
+=head2 スレッドID
 
 tid() is a thread object method that returns the thread ID of the
 thread the object represents.  Thread IDs are integers, with the main
@@ -1048,31 +1048,31 @@ every thread ever created in your program, assigning the first thread
 to be created a tid of 1, and increasing the tid by 1 for each new
 thread that's created.
 
-tid()�ϥ��֥������Ȥ�ɽ������åɤ�ID���֤��᥽�åɤ�������å�ID�������ǡ��ץ��������Υᥤ�󥹥�åɤ�0�Ǥ��롣���ߤ�Perl�ϡ��ץ����������������줿���ƤΥ���åɤ˰�դ�ID��Ĥ��롣�ǽ���������줿����åɤˤ�1�����Ƥ�졢����������åɤ�������٤�ID��1�Ť������Ƥ�����
+tid()はオブジェクトが表すスレッドのIDを返すメソッドだ。スレッドIDは整数で、プログラム中のメインスレッドは0である。現在のPerlは、プログラム中で生成された全てのスレッドに一意なIDをつける。最初に生成されたスレッドには1があてられ、新しいスレッドが作られる度にIDは1づつ増えていく。
 
-=head2 ���Υ���åɤ�Ʊ����Τ�?
+=head2 このスレッドは同じものか?
 
 The equal() method takes two thread objects and returns true 
 if the objects represent the same thread, and false if they don't.
 
-equal()�᥽�åɤ���ĤΥ���åɥ��֥������Ȥ�����ˤȤꡢ���֥������Ȥ�Ʊ������åɤ򼨤��Ƥ���п��򡢤����Ǥʤ���е����֤���
+equal()メソッドは二つのスレッドオブジェクトを引数にとり、オブジェクトが同じスレッドを示していれば真を、そうでなければ偽を返す。
 
 Thread objects also have an overloaded == comparison so that you can do
 comparison on them as you would with normal objects.
 
-����åɥ��֥������Ȥ���ӱ黻��==�򥪡��С������ɤ���Τǡ����̤Υ��֥������ȤΤ褦�ˤ�������Ӥ��뤳�Ȥ�Ǥ��롣
+スレッドオブジェクトは比較演算子==をオーバーロードするので、普通のオブジェクトのようにそれらを比較することもできる。
 
-=head2 �ɤΥ���åɤ��¹Ԥ���Ƥ���Τ�?
+=head2 どのスレッドが実行されているのか?
 
 C<< threads->list >> returns a list of thread objects, one for each thread
 that's currently running and not detached.  Handy for a number of things,
 including cleaning up at the end of your program:
 
-C<< threads->list >>�ϥ���åɥ��֥������ȤΥꥹ�Ȥ��֤������줾��ϸ��߼¹���� detach����Ƥ��ʤ�����åɤǤ��롣�ץ������ν������ݽ��򤹤�Τ�ޤ�Ƥ���������������������
+C<< threads->list >>はスレッドオブジェクトのリストを返す。それぞれは現在実行中で detachされていないスレッドである。プログラムの終わりに掃除をするのも含めていろいろな点で便利だ。
 
-    # �����Υ���åɤ���Ф��ʤ���롼��
+    # 全部のスレッドを取り出しながらループ
     foreach $thr (threads->list) { 
-        # �ᥤ�󥹥�åɤ伫ʬ���Ȥ� join ���ʤ�
+        # メインスレッドや自分自身は join しない
         if ($thr->tid && !threads::equal($thr, threads->self)) { 
             $thr->join; 
         } 
@@ -1082,17 +1082,17 @@ If some threads have not finished running when the main Perl thread
 ends, Perl will warn you about it and die, since it is impossible for Perl
 to clean up itself while other threads are running
 
-�⤷�ᥤ�󥹥�åɤ���λ������ˡ����륹��åɤ��¹Ԥ�λ���Ƥ��ʤ��ä��顢Perl�Ϸٹ��ȯ����die ���롣����ϡ�¾�Υ���åɤ��¹���δ֤�Perl����ʬ���Ȥ��ݽ����뤳�Ȥ��Ǥ��ʤ��������
+もしメインスレッドが終了する時に、あるスレッドが実行を終了していなかったら、Perlは警告を発し、die する。これは、他のスレッドが実行中の間はPerlが自分自身を掃除することができないためだ。
 
-=head1 ��������
+=head1 完全な例
 
 Confused yet? It's time for an example program to show some of the
 things we've covered.  This program finds prime numbers using threads.
 
-�ޤ����𤷤Ƥ���äơ��Ǥϡ�����ץ�ץ�������ȤäƤ���ޤǸ��Ƥ������ȤΤ����Ĥ��򼨤����������Υץ������ϥ���åɤ�Ȥä��ǿ��򸫤Ĥ�������
+まだ混乱しているって？では、サンプルプログラムを使ってこれまで見てきたことのいくつかを示す時だ。このプログラムはスレッドを使って素数を見つけだす。
 
     1  #!/usr/bin/perl -w
-    2  # prime-pthread, Tom Christiansen �Τ����դˤ��
+    2  # prime-pthread, Tom Christiansen のご厚意による
     3
     4  use strict;
     5
@@ -1135,14 +1135,14 @@ the thread must have found a new prime number.  In that case, a new
 child thread is created for that prime and stuck on the end of the
 pipeline.
 
-���Υץ��������ǿ���ȯ�������뤿��˥ѥ��ץ饤���ǥ�����Ѥ��Ƥ��롣�ѥ��ץ饤��ˤ����뤽�줾��Υ���åɤϡ��ǿ��򸫤Ĥ��뤿��˥����å����������Ϥ�����ץåȡ����塼�ȡ������å��˼��Ԥ������򤫤�����Ƥ��������ȥץåȡ����塼�Ȥ���ġ������å��˼��Ԥ�����������åɤˤ��ꡢ���ġ��ҥ���åɤ��ʤ���硢���Υ���åɤϿ������ǿ��򸫤Ĥ������Ȥˤʤ롣���ξ�硢�������ҥ���åɤϤ����ǿ��Τ�����������졢�ѥ��ץ饤��θ���ˤ��äĤ����롣
+このプログラムは素数を発生させるためにパイプラインモデルを利用している。パイプラインにおけるそれぞれのスレッドは、素数を見つけるためにチェックされる数を渡すインプット・キューと、チェックに失敗した数をかき集めておくアウトプット・キューとを持つ。チェックに失敗した数がスレッドにあり、かつ、子スレッドがない場合、そのスレッドは新しい素数を見つけたことになる。この場合、新しい子スレッドはその素数のために生成され、パイプラインの後ろにくっつけられる。
 
 This probably sounds a bit more confusing than it really is, so let's
 go through this program piece by piece and see what it does.  (For
 those of you who might be trying to remember exactly what a prime
 number is, it's a number that's only evenly divisible by itself and 1)
 
-����ϼºݤ���狼��ˤ������⤷��ʤ��������餳�Υץ���������ʬ��ʬ�ˤ櫓�ơ��ʤˤ��äƤ���Τ��ߤƤߤ褦�����ǿ��Ȥ����Τˤϲ��ä������Ȥ������Ȥ�פ��Ф�������Ƥ������Τ���ˤ����ȡ���ʬ���Ȥ�1�ǤΤ߳���ڤ����Τ��Ȥ�����
+これは実際よりもわかりにくいかもしれない。だからこのプログラムを部分部分にわけて、なにをやっているのかみてみよう。（素数とは正確には何っだたかということを思い出そうされている方のためにいうと、自分自身と1でのみ割り切れる数のことだ。）
 
 The bulk of the work is done by the check_num() subroutine, which
 takes a reference to its input queue and a prime number that it's
@@ -1151,7 +1151,7 @@ the subroutine's checking (line 20), we create a new queue (line 22)
 and reserve a scalar for the thread that we're likely to create later
 (line 21).
 
-��Ȥ���Ⱦ��check_num()�롼����ˤ�äƤʤ���롣���Υ롼����ϥ���ץåȡ����塼�ؤΥ�ե���󥹤ȥ���åɤ����������ǿ�������ˤȤ롣[������]����ץåȡ����塼�ȥ��֥롼���󤬥����å������ǿ�[�Υ��������ѿ�]�����줿���20���ܡˡ����������塼�����������22���ܡˡ������ơ�����������뤫�⤷��ʤ�����åɤ�����륹���顼�ѿ����Ѱդ����21���ܡˡ�
+作業の大半はcheck_num()ルーチンによってなされる。このルーチンはインプット・キューへのリファレンスとスレッドが受け持つ素数を引数にとる。[引数を]インプット・キューとサブルーチンがチェックする素数[のローカル変数]に入れた後（20行目）、新しいキューを生成する（22行目）。そして、後で生成するかもしれないスレッドを入れるスカラー変数を用意する（21行目）。
 
 The while loop from lines 23 to line 31 grabs a scalar off the input
 queue and checks against the prime this thread is responsible
@@ -1161,19 +1161,19 @@ must not be evenly divisible by our prime, so we need to either pass
 it on to the next thread if we've created one (line 26) or create a
 new thread if we haven't.
 
-23���ܤ���31���ܤޤǤ� while �롼�פǥ���ץåȡ����塼���饹���顼�ͤ���Ф������Υ���åɤ����������ǿ��ǥ����å����롣24���ܤǤϡ������å����������Ф���ˡ��Ԥ���;�꤬���뤫�ɤ�����Ĵ�٤롣�⤷����С����ο����ǿ��Ǥϳ��ʤ��Ȥ������Ȥ��������Ǥ��ο��򡢤��Ǥ��������Ƥ���ΤǤ���м��Υ���åɤ��Ϥ����������Ǥʤ���п���������åɤ�Ĥ��롣
+23行目から31行目までの while ループでインプット・キューからスカラー値を取り出し、このスレッドが受け持つ素数でチェックする。24行目では、チェックされる数に対する法を行い、余りがあるかどうかを調べる。もしあれば、その数は素数では割れないということだ。そこでその数を、すでに生成してあるのであれば次のスレッドに渡すし、そうでなければ新しいスレッドをつくる。
 
 The new thread creation is line 29.  We pass on to it a reference to
 the queue we've created, and the prime number we've found.
 
-29���ܤǿ���������åɤ�������ԤäƤ��롣���Υ���åɤˡ���ˤĤ��ä����塼�ؤΥ�ե���󥹤�ȯ�����줿�ǿ����Ϥ���
+29行目で新しいスレッドの生成を行っている。そのスレッドに、先につくったキューへのリファレンスと発見された素数を渡す。
 
 Finally, once the loop terminates (because we got a 0 or undef in the
 queue, which serves as a note to die), we pass on the notice to our
 child and wait for it to exit if we've created a child (lines 32 and
 37).
 
-�Ǹ�ˡ��ʥ��塼����� 0 �� undef �����뤫���ơ˥롼�פ���λ�����顢�ҥ���åɤ�Ĥ��Ƥ������ˤϻҥ���åɤ����դ�¥��[��undef�������]���¹Ԥ���λ����Τ��Ԥġ�32,33����[��ʸ��37]�ˡ�
+最後に、（キューの中に 0 か undef があるかして）ループが終了したら、子スレッドをつくていた場合には子スレッドに注意を促し[（undefを送る）]、実行が終了するのを待つ（32,33行目[原文は37]）。
 
 Meanwhile, back in the main thread, we create a queue (line 9) and the
 initial child thread (line 10), and pre-seed it with the first prime:
@@ -1182,14 +1182,14 @@ initial child thread (line 10), and pre-seed it with the first prime:
 thread to terminate (line 17).  Because a child won't die until its
 child has died, we know that we're done once we return from the join.
 
-�������ᥤ�󥹥�åɤ���äƤߤ�ȡ����塼��������9���ܡˡ��ҥ���åɤ�������10���ܡˡ������ƺǽ���ǿ� "2" ���Ȥ��ƥ��åȤ��롣���줫������å����뤿���3����1000�ޤǤο����򥭥塼��������12��14���ܡˡ����塼�� die ����[undef]��������16���ܡˡ������ƺǽ�λҥ���åɤ���λ����Τ��Ԥġ�17���ܡˡ�����ҥ���åɤλҥ���åɤ� die ����ޤǡ����Υ���åɤϡ�die ���ʤ��Τǡ� join ������äƤ������Ȥ�����ä����Ȥˤʤ롣
+一方、メインスレッドに戻ってみると、キューを生成（9行目）、子スレッドを初期化（10行目）、そして最初の素数 "2" を種としてセットする。それからチェックするための3から1000までの数字をキューに入れる（12〜14行目）。キューに die 通知[undef]を入れる（16行目）。そして最初の子スレッドが終了するのを待つ（17行目）。ある子スレッドの子スレッドが die するまで、そのスレッドは　die しないので、 join から戻ってきたら作業が終わったことになる。
 
 That's how it works.  It's pretty simple; as with many Perl programs,
 the explanation is much longer than the program.
 
-�ʾ夬���Ȥߤ����ȤƤ�ñ���������¿����Perl�ץ������ˤȤäƤ����Ǥ���褦�ˡ��������������Υץ������ʾ�ˤȤƤ�Ĺ����
+以上が仕組みだ。とても単純だ。が、多くのPerlプログラムにとってそうであるように、説明の方が当のプログラム以上にとても長い。
 
-=head1 �ѥե����ޥ󥹤ι�θ
+=head1 パフォーマンスの考慮
 
 The main thing to bear in mind when comparing ithreads to other threading
 models is the fact that for each new thread created, a complete copy of
@@ -1202,53 +1202,53 @@ may not always be possible, so compromises have to be made. However, after
 a thread has been created, its performance and extra memory usage should
 be little different than ordinary code.
 
-i����åɤ�¾�Υ���åɥ�ǥ����Ӥ���ݤ�˺��Ƥʤ�ʤ��Τ�������������åɤϤߤʡ��ƥ���åɤ��ѿ��ȥǡ��������ƴ����˥��ԡ����ư����Ϥ����Ȥ������¤������Τ��ᡢ��������̤ȼ¹Ի��֤�ξ�������ǡ�����åɤ����������˹⤯�Ĥ������Υ����Ȥ򸺤餹����Ū����ˡ�ϡ�Ĺ�����ʥ���åɤ����Ū���ʤ�˻��Ĥ��Ȥ������Υ���åɤ����ơ��١����Ȥʤ륹��åɤ�����¿���Υǡ��������Ѥ������ˡ�Ŭ�ڤ��ᤤ�ʳ�����������롣������󡢤���Ϥ��Ĥ��ǽ�Ȥ����櫓�ǤϤʤ����������顢�Ŷ���ɬ�פ���������������åɤ��������줿��ϡ����Υѥե����ޥ󥹤�Ķ����꡼�����̤ϡ����̤Υ����ɤΤ���ȤۤȤ�ɰ㤤��̵����
+iスレッドと他のスレッドモデルを比較する際に忘れてならないのが、新しいスレッドはみな、親スレッドの変数とデータを全て完全にコピーして引き渡されるという事実だ。そのため、メモリ使用量と実行時間の両方の点で、スレッドの生成は非常に高くつく。このコストを減らす理想的な方法は、長生きなスレッドを比較的少なめに持つことだ。このスレッドは全て、ベースとなるスレッドが非常に多くのデータを蓄積する前に、適切に早い段階で生成される。もちろん、これはいつも可能というわけではないだろうから、妥協も必要だ。しかし、スレッドが生成された後は、そのパフォーマンスと超過メモリー使用量は、普通のコードのそれとほとんど違いは無い。
 
 Also note that under the current implementation, shared variables
 use a little more memory and are a little slower than ordinary variables.
 
-�ޤ������ߤμ������Ǥϡ���ͭ�ѿ����̾���ѿ�����٤ƾ���;�פ˥������Ѥ������ԡ��ɤ⾯���٤����Ȥ����ա�
+また、現在の実装下では、共有変数は通常の変数に比べて少し余計にメモリを使用し、スピードも少し遅いことに注意。
 
-=head1 �ץ������������פ��ѹ�
+=head1 プロセススコープの変更
 
 Note that while threads themselves are separate execution threads and
 Perl data is thread-private unless explicitly shared, the threads can
 affect process-scope state, affecting all the threads.
 
-����åɤ��켫�Ȥ��̡��˼¹Ԥ��졢Perl�Υǡ���������Ū�˶�ͭ�����ʤ��¤�ϥ���å���ǥץ饤�١��Ȥʤ�Τ������ΰ���������åɤ����ƤΥ���åɤ˱ƶ���Ϳ���ʤ��顢�ץ������������פξ��֤˱ƶ���Ϳ���Ƥ��ޤ����Ȥ����դ��뤳�ȡ�
+スレッドそれ自身は別々に実行され、Perlのデータは明示的に共有化しない限りはスレッド内でプライベートなものだ。その一方、スレッドは全てのスレッドに影響を与えながら、プロセススコープの状態に影響を与えてしまうことに注意すること。
 
 The most common example of this is changing the current working
 directory using chdir().  One thread calls chdir(), and the working
 directory of all the threads changes.
 
-���κǤ����Ū�����chdir()��Ȥä��Ȥ��˸��ߺ����Υǥ��쥯�ȥ꤬�ѹ�����Ƥ��ޤ����Ȥ�����ĤΥ���åɤ�chdir()��Ƥ֤ȡ����ƤΥ���åɤκ�ȥǥ��쥯�ȥ꤬�ѹ�����롣
+この最も一般的な例はchdir()を使ったときに現在作業中のディレクトリが変更されてしまうことだ。一つのスレッドがchdir()を呼ぶと、全てのスレッドの作業ディレクトリが変更される。
 
 Even more drastic example of a process-scope change is chroot():
 the root directory of all the threads changes, and no thread can
 undo it (as opposed to chdir()).
 
-����˷�Ū�ʥץ������������פ��ѹ����chroot()���������Υ���åɤΥ롼�ȥǥ��쥯�ȥ꤬�ѹ�����롣����åɤϤ���򸵤��᤹���ȤϤǤ��ʤ���chdir()�����ϲ�ǽ�ˡ�
+さらに劇的なプロセススコープの変更例はchroot()だ。全部のスレッドのルートディレクトリが変更される。スレッドはそれを元に戻すことはできない（chdir()の方は可能）。
 
 Further examples of process-scope changes include umask() and
 changing uids/gids.
 
-����ʤ�ץ��������������Ѳ�����ϡ�umask()��uid/gid���ѹ��Ǥ��롣
+さらなるプロセススコープ変化の例は、umask()とuid/gidの変更である。
 
 Thinking of mixing fork() and threads?  Please lie down and wait
 until the feeling passes-- but in case you really want to know,
 the semantics is that fork() duplicates all the threads.
 (In UNIX, at least, other platforms will do something different.)
 
-fork()�ȥ���åɤ򺮺ߤ�������ɤ��ʤ뤫�äơ�����ʵ�ʬ��������ޤǡ����ˤʤäƵ٤�Ǥ��Ƥ��������ġ��������������Τꤿ���ʤ顢fork()�����ƤΥ���åɤ�ʣ������Ȥ����Τ������Υ��ޥ�ƥ��������ʾ��ʤ��Ȥ�UNIX�ξ��Ǥϡ�¾�Υץ�åȥե�����Ǥϰ㤦���Ȥˤʤ�������ˡ�
+fork()とスレッドを混在させたらどうなるかって？そんな気分が失せるまで、横になって休んでいてください…。だが、本当に知りたいなら、fork()は全てのスレッドを複製するというのが、そのセマンティクスだ（少なくともUNIXの場合では。他のプラットフォームでは違うことになるだろう）。
 
 Similarly, mixing signals and threads should not be attempted.
 Implementations are platform-dependent, and even the POSIX
 semantics may not be what you expect (and Perl doesn't even
 give you the full POSIX API).
 
-Ʊ���褦�ˡ������ʥ�ȥ���åɤ򺮤���Τ���٤��ǤϤʤ��������ϥץ�åȥե������¸������POSIX�Υ��ޥ�ƥ������Ǥ��������ʤ��δ����̤�ˤϤʤ�ʤ����⤷��ʤ��ʤ�����Perl�ϥե륻�åȤ�POSIX API���󶡤��뤳�Ȥ����Ǥ��ʤ��ˡ�
+同じように、シグナルとスレッドを混ぜるのもやるべきではない。実装はプラットフォーム依存だし、POSIXのセマンティクスでさえ、あなたの期待通りにはならないかもしれない（そしてPerlはフルセットのPOSIX APIを提供することさえできない）。
 
-=head1 �����ƥ�饤�֥��ˤ����륹��åɤΰ�����
+=head1 システムライブラリにおけるスレッドの安全性
 
 Whether various library calls are thread-safe is outside the control
 of Perl.  Calls often suffering from not being thread-safe include:
@@ -1256,31 +1256,31 @@ localtime(), gmtime(), get{gr,host,net,proto,serv,pw}*(), readdir(),
 rand(), and srand() -- in general, calls that depend on some global
 external state.
 
-�͡��ʥ饤�֥��δؿ��ƤӽФ�������åɤˤȤäư������ɤ����Ȥ������Ȥϡ�Perl�Υ���ȥ������Կ���Ǥ��롣���Ф��Х���åɥ����դǤϤʤ���Τˤ�ä������������ƤӽФ��ˤϡ�localtime(), gmtime(), get{gr,host,net,proto,serv,pw}*(), readdir(),rand(), ������ srand() �ġ�����Ū�ˤ��äơ��������Х�ʳ��������˰�¸����ƤӽФ����ޤޤ�롣
+様々なライブラリの関数呼び出しがスレッドにとって安全かどうかということは、Perlのコントロールの埒外である。しばしばスレッドセーフではないものによって問題の生じる呼び出しには、localtime(), gmtime(), get{gr,host,net,proto,serv,pw}*(), readdir(),rand(), そして srand() …　一般的にいって、グローバルな外部状況に依存する呼び出しが含まれる。
 
 If the system Perl is compiled in has thread-safe variants of such
 calls, they will be used.  Beyond that, Perl is at the mercy of
 the thread-safety or -unsafety of the calls.  Please consult your
 C library call documentation.
 
-Perl������ѥ��뤵�줿�����ƥब���������ä��ƤӽФ��Υ���åɥ����դʥС���������äƤ���ʤ顢�����餬�Ȥ��롣�����Ķ����ȡ�Perl�ϸƤӽФ�������åɥ����դ��ɤ����Τʤ����ޤޤˤʤ롣C �饤�֥��Υɥ�����Ȥ�褯��̣���Ƥۤ�����
+Perlがコンパイルされたシステムが、そういった呼び出しのスレッドセーフなバージョンを持っているなら、そちらが使われる。それを超えると、Perlは呼び出しがスレッドセーフかどうかのなすがままになる。C ライブラリのドキュメントをよく吟味してほしい。
 
 In some platforms the thread-safe interfaces may fail if the result
 buffer is too small (for example getgrent() may return quite large
 group member lists).  Perl will retry growing the result buffer
 a few times, but only up to 64k (for safety reasons).
 
-�ץ�åȥե�����ˤ�äƤϡ���̤��ݻ�����Хåե�������������ȡ�����åɥ����դʥ��󥿥ե����������Ԥ��뤳�Ȥ�������㤨�С�getgrent()�������礭�ʥ��롼�׾���Τꥹ�Ȥ��֤����⤷��ʤ��ˡ�Perl�ϲ��٤��Хåե����礭������褦��ߤ����������64k�ޤǤ��ʰ��������ͳ����ˡ�
+プラットフォームによっては、結果を保持するバッファが小さすぎると、スレッドセーフなインタフェースが失敗することがある（例えば、getgrent()は非常に大きなグループ情報のりストを返すかもしれない）。Perlは何度かバッファを大きくするよう試みるだろうが、64kまでだ（安全上の理由から）。
 
-=head1 ������
+=head1 おわりに
 
 A complete thread tutorial could fill a book (and has, many times),
 but with what we've covered in this introduction, you should be well
 on your way to becoming a threaded Perl expert.
 
-�����ʥ���åɤΥ��塼�ȥꥢ���Ĥ���Ȱ�����ܤˤʤäƤ��ޤ�������������Ƴ����Ǹ��Ƥ������Ȥ�Ȥäơ�����å�Perl�Υ������ѡ��Ȥˤʤ�ƻ�򤦤ޤ��ʤ�Ǥ��äƤۤ�����
+完全なスレッドのチュートリアルをつくると一冊の本になってしまう。しかしこの導入書で見てきたことを使って、スレッドPerlのエキスパートになる道をうまく進んでいってほしい。
 
-=head1 ����ʸ��
+=head1 参考文献
 
 Here's a short bibliography courtesy of Jurgen Christoffel:
 
@@ -1336,7 +1336,7 @@ France, September 1992, Yves Bekkers and Jacques Cohen, eds. Springer,
 Artur Bergman, "Where Wizards Fear To Tread", June 11, 2002,
 L<http://www.perl.com/pub/a/2002/06/11/threads.html>
 
-=head1 �ռ�
+=head1 謝辞
 
 Thanks (in no particular order) to Chaim Frenkel, Steve Fink, Gurusamy
 Sarathy, Ilya Zakharevich, Benjamin Sugars, Jurgen Christoffel, Joshua
@@ -1344,28 +1344,28 @@ Pritikin, and Alan Burlison, for their help in reality-checking and
 polishing this article.  Big thanks to Tom Christiansen for his rewrite
 of the prime number generator.
 
-=head1 ����
+=head1 著者
 
 Dan Sugalski E<lt>dan@sidhe.org<gt>
 
 Slightly modified by Arthur Bergman to fit the new thread model/module.
 
-����������åɥ�ǥ롦�⥸�塼����б�����褦�� Arthur Bergman �ˤ�äƼ㴳�ν������ʤ��줿
+新しいスレッドモデル・モジュールに対応するように Arthur Bergman によって若干の修正がなされた
 
 Reworked slightly by Jorg Walter E<lt>jwalt@cpan.org<gt> to be more concise
 about thread-safety of perl code.
 
-perl�����ɤΥ���åɥ����եƥ��ˤĤ��Ƥ������ˤʤ�褦 Jorg Walter E<lt>jwalt@cpan.org<gt>�ˤ�äƲ������줿��
+perlコードのスレッドセーフティについてより簡明になるよう Jorg Walter E<lt>jwalt@cpan.org<gt>によって改訂された。
 
-=head1 ���
+=head1 著作権
 
 The original version of this article originally appeared in The Perl
 Journal #10, and is copyright 1998 The Perl Journal. It appears courtesy
 of Jon Orwant and The Perl Journal.  This document may be distributed
 under the same terms as Perl itself.
 
-���ε����θ��Ǥ� The Perl Journal 10�� ��copyright 1998 The Perl Journal�ˤˤ��롣Jon Orwant �� The Perl Journal �θ��դˤ�롣����ʸ������ۤ�Perl�Τ����Ʊ�����Τ�Ȥˤʤ���롣
+この記事の元版は The Perl Journal 10号 （copyright 1998 The Perl Journal）にある。Jon Orwant と The Perl Journal の厚意による。この文書の配布はPerlのそれと同じ条件のもとになされる。
 
 For more information please see L<threads> and L<threads::shared>.
 
-���ܺ٤ʾ����L<threads>��L<threads::shared>�򻲾ȡ�
+より詳細な情報はL<threads>とL<threads::shared>を参照。

@@ -10,7 +10,7 @@ perldsc - Perl Data Structures Cookbook
 
 =end original
 
-perldsc - Perl �Υǡ�����¤���å��֥å�
+perldsc - Perl のデータ構造クックブック
 
 =head1 DESCRIPTION
 
@@ -28,18 +28,18 @@ to develop and maintain--to put it mildly.
 
 =end original
 
-Perl �Ȥ����ץ�����ߥ󥰸���Ρ�5.0 �����Τ�ΤǺǤ�礱�Ƥ�����Ĥε�ǽ�Ȥ�
-ʣ���ʥǡ�����¤�Ǥ�����
-����ˤ��ľ�ܤΥ��ݡ��Ȥ��ʤ��Ƥ⡢�����α�ͺŪ�ʥץ�����ޡ�ã��ʣ����
-�ǡ�����¤�򥨥ߥ�졼�Ȥ��Ƥ��ޤ�����
-������������ϤȤƤ����Ѥʺ�ȤǤ�����
-���ʤ���(¿��������򥨥ߥ�졼�Ȥ��뤿���) B<awk> ����ڤ�Ƥ���
-C<$m{$AoA,$b}> �Ȥ�����ˡ��Ȥ����Ȥ��Ǥ��ޤ�����������ϼºݤˤ�
-���Υ����� C<"$AoA$b"> �Τ褦��Ϣ�뤵�줿ʸ����ˤ��Ƥ���Τǡ�
-ʬ��䥽���Ȥ�����Ǥ�����
-��ä�̿�Τ餺�Υץ�����ޡ������ϥǡ�����¤��ͥ���� put ���뤿��ˡ�Perl ��
-��������ܥ�ơ��֥��ľ�ܥϥå����뤳�Ȥ����Ԥäơ���ȯ���ݼ����ˤ���
-��ά��Ȥä��ΤǤ���
+Perl というプログラミング言語の、5.0 以前のもので最も欠けていた一つの機能とは
+複雑なデータ構造でした。
+言語による直接のサポートがなくても、一部の英雄的なプログラマー達は複雑な
+データ構造をエミュレートしていました。
+しかし、それはとても大変な作業でした。
+あなたは(多次元配列をエミュレートするために) B<awk> から借りてきた
+C<$m{$AoA,$b}> という記法を使うことができましたが、これは実際には
+そのキーを C<"$AoA$b"> のような連結された文字列にしているので、
+分解やソートが困難でした。
+もっと命知らずのプログラマーたちはデータ構造を優しく put するために、Perl の
+内部シンボルテーブルを直接ハックすることさえ行って、開発や保守を困難にする
+戦略をとったのです。
 
 =begin original
 
@@ -49,8 +49,8 @@ with three dimensions!
 
 =end original
 
-Perl �Υ�꡼�� 5.0 �ϡ��䤿����ʣ���ʥǡ�����¤��⤿�餷�ޤ�����
-���ʤ��Ϻ��Ǥϻ�����������Τ褦�ʤ�Τ��äƵ��ҤǤ����Ǥ�!
+Perl のリリース 5.0 は、私たちに複雑なデータ構造をもたらしました。
+あなたは今では三次元の配列のようなものだって記述できるんです!
 
     for $x (1 .. 10) {
 	for $y (1 .. 10) {
@@ -68,7 +68,7 @@ elaborate construct than meets the eye!
 
 =end original
 
-�����������ñ��˸����뤱�ɸ����ʤ��Ȥ�����ʣ���ʤ�Τ�����Ƥ��Ǥ�!
+ああ、これは単純に見えるけど見えないところに複雑なものが隠れてるんです!
 
 =begin original
 
@@ -80,14 +80,14 @@ all the values have to be numeric?
 
 =end original
 
-�����ɤΤ褦�˽��Ϥ��ޤ���? �ʤ�ñ�� C<print @AoA> �Ȥ��Ƥ�
-�����ʤ��ΤǤ��礦?
-�����ȤϤɤ����ΤǤ���? �ɤ�����дؿ��˰����Ȥ����Ϥ����ꡢ�ؿ���
-����ͤȤ��Ƽ�����뤳�Ȥ��Ǥ���Ǥ��礦��?
-����ϥ��֥������ȤǤ���? ����ɤ��֤�����˥ǥ������˥����֤��뤳�Ȥ�
-�Ǥ��ޤ���?
-����ι����Τ������Τˤɤ������������ޤ���?
-���٤Ƥ��ͤϿ��ͤǤʤ���Ф����ʤ��ΤǤ��礦��?
+これをどのように出力しますか? なぜ単に C<print @AoA> としては
+いけないのでしょう?
+ソートはどうやるのですか? どうすれば関数に引数として渡したり、関数の
+戻り値として受け取ることができるでしょうか?
+それはオブジェクトですか? 後で読み返すためにディスクにセーブすることが
+できますか?
+配列の行全体や列全体にどうアクセスしますか?
+すべての値は数値でなければいけないのでしょうか?
 
 =begin original
 
@@ -98,10 +98,10 @@ examples designed for the beginner.
 
 =end original
 
-���Ƥ��̤ꡢ����ϴ�ñ�˺��𤷤Ƥ��ޤ��ޤ���
-������Ф��� portion of blame �ΰ����ϥ�ե���󥹥١����μ�����
-�����뤳�Ȥ��Ǥ���Ȥ��Ƥ⡢�鿴�Ը����˥ǥ����󤵤줿�����ä�
-�ɥ�����Ȥ��礱�Ƥ���Ȥ������Ȥ��礭���Ǥ��礦��
+見ての通り、これは簡単に混乱してしまいます。
+これに対する portion of blame の一部はリファレンスベースの実装に
+帰することができるとしても、初心者向けにデザインされた例を持った
+ドキュメントが欠けているということが大きいでしょう。
 
 =begin original
 
@@ -113,11 +113,11 @@ purloin a drop-in example from here.
 
 =end original
 
-�ܥɥ�����ȤϾܤ����������뤳�Ȥ���Ū�Ǥ��������ʤ�����ȯ���褦��
-�ͤ��뤫�⤷��ʤ��ǡ�����¤��¿����������ΰ����������ǽ�ʤ�ΤǤ���
-�ܺ٤������ϥ���ץ�Υ쥷�Խ��˼�äƤ����٤���ΤǤ���
-���ʤ��������ʣ���ʥǡ�����¤�ΰ�Ĥ��������ɬ�פ������硢���ʤ���
-�����ˤ����㤫��Ҥ礤�Ȼ��äƤ������Ȥ��Ǥ��ޤ���
+本ドキュメントは詳しく説明することが目的ですが、あなたが開発しようと
+考えるかもしれないデータ構造の多くの相違点の扱いは理解可能なものです。
+詳細な説明はサンプルのレシピ集に取っておくべきものです。
+あなたがこれら複雑なデータ構造の一つを作成する必要がある場合、あなたは
+ここにある例からひょいと持っていくことができます。
 
 =begin original
 
@@ -126,8 +126,8 @@ sections on each of the following:
 
 =end original
 
-������ǽ�ʹ�¤�򤽤줾��ܤ������ƹԤ��ޤ��礦��
-�ʲ����ͤˡ����줾�쥻�������Ȥ�����Ω���Ƥ��ޤ���
+これら可能な構造をそれぞれ詳しく見て行きましょう。
+以下の様に、それぞれセクションとして独立しています。
 
 =over 5
 
@@ -145,15 +145,15 @@ sections on each of the following:
 
 =end original
 
-=item * ���������
+=item * 配列の配列
 
-=item * ����Υϥå���
+=item * 配列のハッシュ
 
-=item * �ϥå��������
+=item * ハッシュの配列
 
-=item * �ϥå���Υϥå���
+=item * ハッシュのハッシュ
 
-=item * ����ι������¤
+=item * より手の込んだ構造
 
 =back
 
@@ -168,7 +168,7 @@ these types of data structures.
 =head1 REFERENCES
 X<reference> X<dereference> X<dereferencing> X<pointer>
 
-(��ե����)
+(リファレンス)
 
 =begin original
 
@@ -182,13 +182,13 @@ X<multidimensional array> X<array, multidimensional>
 
 =end original
 
-¿���������ޤ᤿ Perl �ˤ����뤹�٤ƤΥǡ�����¤�����򤹤�������ä�
-�Ǥ���פʻ��ϡ�Perl �� C<@ARRAY> �� C<%HASH> �ϳ����Ϥ����ϸ����ʤ��Ƥ⡢
-����Ū�ˤ����ư켡���Ǥ���Ȥ������ȤǤ���
-�����Τ�Τϥ����顼��(ʸ�������͡���ե����)�������ݻ����뤳�Ȥ�
-�Ǥ��ޤ���
-(�����ϥå����)ľ��¾�������ϥå�����ݻ����뤳�ȤϤǤ��ޤ��󤬡�
-¾�����󡢥ϥå�����Ф��� B<��ե����> ���ݻ����뤳�Ȥ��Ǥ��ޤ���
+多次元配列も含めた Perl におけるすべてのデータ構造を理解するに当たって
+最も重要な事は、Perl の C<@ARRAY> や C<%HASH> は外見はそうは見えなくても、
+内部的には全て一次元であるということです。
+これらのものはスカラー値(文字列や数値、リファレンス)だけを保持することが
+できます。
+(配列やハッシュは)直接他の配列やハッシュを保持することはできませんが、
+他の配列、ハッシュに対する B<リファレンス> を保持することができます。
 X<multidimensional array> X<array, multidimensional>
 
 =begin original
@@ -201,12 +201,12 @@ and a pointer to a structure.
 
 =end original
 
-����ؤΥ�ե���󥹤�ϥå���Υ�ե���󥹤������������ϥå����
-Ʊ��������ǻȤ����ȤϤǤ��ޤ���
-C �� C++ �ץ�����ޡ��ϡ����������(�������Ǥη��ؤ�)�ݥ��󥿡��Ȥδ֤�
-���̤��Ƥ��ޤ��󤫤麮�𤷤Ƥ��ޤ����⤷��ޤ���
-�⤷�����˺��𤷤Ƥ��ޤä��顢��¤�Τȹ�¤�ΤؤΥݥ��󥿤ΰ㤤�Τ褦��
-��ΤǤ���ȹͤ��Ƥ���������
+配列へのリファレンスやハッシュのリファレンスを、本当の配列やハッシュと
+同じやり方で使うことはできません。
+C や C++ プログラマーは、ある配列と(配列要素の型への)ポインターとの間の
+区別していませんから混乱してしまうかもしれません。
+もし本当に混乱してしまったら、構造体と構造体へのポインタの違いのような
+ものであると考えてください。
 
 =begin original
 
@@ -223,17 +223,17 @@ multidimensional arrays work as well.
 
 =end original
 
-perlref(1) �ޥ˥奢��ڡ������ɤ�Х�ե���󥹤˴ؤ��Ƥ��¿���Τ��Ȥ�
-����ޤ������������٤��Ǥ���
-����Ǹ����С���ե���󥹤ϼ�ʬ������ؤ��Ƥ��뤫���ΤäƤ���ݥ��󥿡���
-�褦�ʤ�ΤǤ�(���֥������Ȥ�ޤ���ե���󥹤Τ褦�ʤ�ΤǤ�����
-���ޤ�����������ɬ�פϤʤ��Ǥ��礦)��
-����ϤĤޤꡢ���ʤ����󼡸������뤤�Ϥ���ʾ��
-��������ä������ϥå���˥����������褦�Ȥ����Ȥ����ºݤ�
-�Ϥ��줬���Υ�٥�ؤΥ�ե���󥹤��ݻ����Ƥ���켡���μ���
-(entity)�Ǥ���Ȥ������ȤʤΤǤ���
-���ʤ��Ϥ�����󼡸�����Ǥ��뤫�Τ褦��B<�Ȥ����Ȥ��Ǥ��ޤ�>��
-����ϤۤȤ�ɤ��٤Ƥ� C ��¿��������ư��Ƥ���Τ�Ʊ����ˡ�Ǥ���
+perlref(1) マニュアルページを読めばリファレンスに関してより多くのことが
+ありますし、そうすべきです。
+一言で言えば、リファレンスは自分が何を指しているかを知っているポインターの
+ようなものです(オブジェクトもまたリファレンスのようなものですが、
+いますぐそうする必要はないでしょう)。
+これはつまり、あなたが二次元、あるいはそれ以上の
+次元を持った配列やハッシュにアクセスしようとしたとき、実際に
+はそれが次のレベルへのリファレンスを保持している一次元の実体
+(entity)であるということなのです。
+あなたはこれを二次元配列であるかのようにB<使うことができます>。
+これはほとんどすべての C の多次元配列が動作しているのと同じ方法です。
 
 =begin original
 
@@ -244,10 +244,10 @@ perlref(1) �ޥ˥奢��ڡ������ɤ�Х�ե���󥹤˴ؤ��Ƥ��¿���Τ��Ȥ�
 
 =end original
 
-    $array[7][12]			# ���������
-    $array[7]{string}			# �ϥå��������
-    $hash{string}[7]			# ����Υϥå���
-    $hash{string}{'another string'}	# �ϥå���Υϥå���
+    $array[7][12]			# 配列の配列
+    $array[7]{string}			# ハッシュの配列
+    $hash{string}[7]			# 配列のハッシュ
+    $hash{string}{'another string'}	# ハッシュのハッシュ
 
 =begin original
 
@@ -257,9 +257,9 @@ that doesn't look very nice, like this:
 
 =end original
 
-�ȥåץ�٥�ϥ�ե���󥹤Τߤǹ��������Τǡ������������ñ���
-print() �ؿ���Ȥäƽ��Ϥ��褦�Ȥ���С����Τ褦���ɤ��狼��
-�ʤ���̤Ȥʤ�Ǥ��礦��
+トップレベルはリファレンスのみで構成されるので、これらの配列を単純に
+print() 関数を使って出力しようとすれば、次のような良くわから
+ない結果となるでしょう。
 
     @AoA = ( [2, 3], [4, 5, 7], [0] );
     print $AoA[1][2];
@@ -278,15 +278,15 @@ like C<$a-E<gt>[3]>, C<$h-E<gt>{fred}>, or even C<$ob-E<gt>method()-E<gt>[3]>.
 
 =end original
 
-�����Perl�����ʤ��λȤ��ѿ��Υǥ�ե����(dereference)�򤳤ä�����ʤ�����Ǥ���
-��ե���󥹤����Ȥ��Ƥ����Τ���Ф������Τʤ顢C<${$blah}>, C<@{$blah}>,
-C<@{$blah[$i]}> �Τ褦�ʷ�����Ҥ����֤����ꡢ���뤤��C<$a-E<gt>[3]>, 
-C<$h-E<gt>{fred}>, C<$ob-E<gt>method()-E<gt>[3]> �Τ褦��pointer arrow��
-���֤��Ƽ�ʬ���Ȥǥǥ�ե���󥹤򤷤ʤ���Фʤ�ޤ���
+これはPerlがあなたの使う変数のデリファレンス(dereference)をこっそりやらないからです。
+リファレンスが参照しているものを取り出したいのなら、C<${$blah}>, C<@{$blah}>,
+C<@{$blah[$i]}> のような型指定子を前置したり、あるいはC<$a-E<gt>[3]>, 
+C<$h-E<gt>{fred}>, C<$ob-E<gt>method()-E<gt>[3]> のようにpointer arrowを
+後置して自分自身でデリファレンスをしなければなりません。
 
 =head1 COMMON MISTAKES
 
-(�褯����ְ㤤)
+(よくある間違い)
 
 =begin original
 
@@ -298,10 +298,10 @@ of a nested array:
 
 =end original
 
-�����������ۤ���褦�ʤȤ��Ȥ��䤹���ְ㤤�Ȥ��ơ����ä����Ǥ�
-��������Ƥ��ޤ����Ȥȡ�Ʊ��������֤ˤ����Υ�ե���󥹤�
-�����֤��ȤäƤ��ޤ��Ȥ�����Ĥ�����ޤ���
-�ʲ�����ϡ��ͥ��Ȥ������������ˤ��ο�������Ƥ��ޤ��Ȥ�����Ǥ���
+配列の配列を構築するようなとき犯しやすい間違いとして、誤って要素の
+数を数えてしまうことと、同じメモリ位置にあるものリファレンスを
+繰り返しとってしまうという二つがあります。
+以下の例は、ネストした配列の代わりにその数を数えてしまうという例です。
 
     for $i (1..10) {
 	@array = somefunc($i);
@@ -316,10 +316,10 @@ might do well to consider being a tad more explicit about it, like this:
 
 =end original
 
-���������򥹥��顼�����������������ǿ����������Ȥ���ñ���
-����ץ�Ǥ���
-�⤷�����ˤ��줬���ʤ��Τ�ꤿ�����ȤǤ���Ȥ����ΤǤ���С�
-��������Τˤ��뤿��˰ʲ����ͤˤ��뤳�Ȥ��ɤ����⤷��ޤ���:
+これは配列をスカラーに代入し、その要素数を取得するという単純な
+サンプルです。
+もし本当にそれがあなたのやりたいことであるというのであれば、
+それを明確にするために以下の様にすることが良いかもしれません:
 
     for $i (1..10) {
 	@array = somefunc($i);
@@ -333,8 +333,8 @@ again and again:
 
 =end original
 
-������ϡ�Ʊ��������֤ˤ����ե���󥹤��٤⤯���֤���ä�
-���ޤ��Ȥ�����ΤǤ���
+次の例は、同じメモリ位置にあるリファレンスを何度もくり返し取って
+しまうというものです。
 
     for $i (1..10) {
 	@array = somefunc($i);
@@ -349,10 +349,10 @@ golly, you've made me one!
 
 =end original
 
-���ơ���������ʤ�Ǥ��礦?
-�������褦�˸����ޤ������㤦�ΤǤ��礦��?
-��ե���󥹤�����ɬ�פ��Ȥ����ޤ�����͡�
-���졢���ʤ��⤦��äƤ뤸��ʤ��Ǥ���!
+さて、何が問題なんでしょう?
+正しいように見えますが、違うのでしょうか?
+リファレンスの配列が必要だといいましたよね。
+あれ、あなたもう作ってるじゃないですか!
 
 =begin original
 
@@ -363,11 +363,11 @@ the following C program:
 
 =end original
 
-��ǰ�ʤ��Ȥˡ�������������ΤǤ����ޤ����������ΤǤ���
-@AoA �ˤ��뤹�٤ƤΥ�ե���󥹤�I<����Ʊ�����>�򻲾Ȥ��Ƥ��ơ�
-���Τ��᤽�����ä���ե���󥹤Ϥ��٤ƺǸ�� @array �ˤ��ä���Τ�
-�ݻ����Ƥ��Ǥ�!
-�Ĥޤꡢ�ʲ��� C �ץ������ˤ��������Ʊ���Ǥ���
+残念なことに、これは正しいのですがまだおかしいのです。
+@AoA にあるすべてのリファレンスはI<全く同じ場所>を参照していて、
+そのためそういったリファレンスはすべて最後に @array にあったものを
+保持してるんです!
+つまり、以下の C プログラムにある問題と同じです。
 
     #include <pwd.h>
     main() {
@@ -385,7 +385,7 @@ Which will print
 
 =end original
 
-����ν��ϤϤ����ʤ�ޤ�:
+これの出力はこうなります:
 
     daemon name is daemon
     root name is daemon
@@ -401,13 +401,13 @@ X<[]> X<{}>
 
 =end original
 
-��������ϡ�C<rp> �� C<dp> ��ξ����Ʊ��������֤�ؤ��Ƥ���
-�ݥ��󥿡��Ǥ���Ȥ������ȤǤ�!
-C �Ǥϡ������ʥ������ݤ��뤿��˼�ʬ��malloc()���뤳�Ȥ�
-˺��ƤϤ����ޤ���
-Perl�Ǥϡ���������󥳥󥹥ȥ饯�� C<[]> ��
-�ϥå��女�󥹥ȥ饯�� C<{}> ��Ȥ��ޤ���
-�ʲ�����ϡ���˵󤲤��ְ�ä��������Ҥ�������������Ǥ�:
+この問題は、C<rp> と C<dp> の両方が同じメモリ位置を指している
+ポインターであるということです!
+C では、新たなメモリを確保するために自分でmalloc()することを
+忘れてはいけません。
+Perlでは、代わりに配列コンストラクタ C<[]> や
+ハッシュコンストラクタ C<{}> を使います。
+以下の例は、先に挙げた間違ったコード片の正しいやり方です:
 X<[]> X<{}>
 
     for $i (1..10) {
@@ -423,9 +423,9 @@ you want.
 
 =end original
 
-�֥饱�åȤϿ���������ؤλ��Ȥ���Ф��������ΤȤ��� @array �����Ƥ�
-B<���ԡ�> ���ޤ���
-���줬���ʤ���˾�ळ�ȤǤ���
+ブラケットは新たな配列への参照を作り出し、代入のときに @array の内容を
+B<コピー> します。
+これがあなたの望むことです。
 
 =begin original
 
@@ -434,8 +434,8 @@ much harder to read:
 
 =end original
 
-�ʲ��Τ褦�ʤ�����Ǥ�Ʊ�ͤη�̤Ȥʤ�ޤ������ɤߤ䤹���Ȥ������Ǥ�
-����Ȥ������Ȥ����դ��Ƥ���������
+以下のようなやり方でも同様の結果となりますが、読みやすさという点では
+劣るということに注意してください。
 
     for $i (1..10) {
 	@array = 0 .. $i;
@@ -455,16 +455,16 @@ references, as in
 
 =end original
 
-Ʊ�����Ȥʤ�Ǥ��礦��? ������Ʊ���Ǥ⤢��Ǥ��礦����
-�㤦�Ȥ������Ǥ��礦��
-�����ˤ�����̯�ʰ㤤�Ȥϡ��礫�ä�����ˤ��벿�����������褦�Ȥ����Ȥ��ϡ�
-����Ͼ�˥ǡ����ο����� B<���ԡ�> �ˤ��
-�����ʥ�ե���󥹤Ǥ���Ȥ������ȤǤ���
-�����Ǥʤ����ˤϡ������κ��դ� C<@{$AoA[$i]}> �Υǥ�ե���󥹤�
-���褦�Ȥ��뤫�⤷��ޤ���
-����� C<$AoA[$i]> ��̤����ξ��֤Ǥ��뤫���뤤�Ϥ��Ǥ˥�ե���󥹤�
-���äƤ��뤫�Ȥ������Ȥ˰�¸���Ƥ��ޤ���
-���Ǥ˼��Τ褦�ˤ��� @AoA ���ե���󥹤Τ���˻ȤäƤ������:
+同じことなんでしょうか? そう、同じでもあるでしょうし、
+違うとも言えるでしょう。
+そこにある微妙な違いとは、大かっこの中にある何かを代入しようとしたときは、
+それは常にデータの新たな B<コピー> による
+新たなリファレンスであるということです。
+そうでない場合には、代入の左辺で C<@{$AoA[$i]}> のデリファレンスを
+しようとするかもしれません。
+これは C<$AoA[$i]> が未定義の状態であるかあるいはすでにリファレンスが
+入っているかということに依存しています。
+すでに次のようにして @AoA をリファレンスのために使っていた場合:
 
     $AoA[3] = \@another_array;
 
@@ -475,8 +475,8 @@ use the existing reference that was already there:
 
 =end original
 
-�����ƺ��դδ��������Ǥϡ�����¸�ߤ����ե���󥹤�
-�Ȥ����Ȥˤʤ�ޤ�:
+そして左辺の間接代入では、既に存在するリファレンスを
+使うことになります:
 
     @{$AoA[3]} = @array;
 
@@ -490,12 +490,12 @@ they're disturbingly more apt to mean that it's "annoying",
 
 =end original
 
-������󤳤�ϡ�@another_array ������Ȥ����ֶ�̣�����׸��̤�
-�⤿�餹�Ǥ��礦��
-(�ץ�����ޡ���������ֶ�̣�����פȤ��ä��Ȥ��ˡ�
-����ϡֹ��񿴤򤽤����ΡפȤ������Ϥष���ֺ��ä���Ρס�
-�ֺ���ʤ�ΡפȤ�����̣�ǻȤ���Ȥ������Ȥ�
-�����Ĥ������Ȥ�����ޤ���? :-)
+もちろんこれは、@another_array を壊すという「興味深い」効果を
+もたらすでしょう。
+(プログラマーが何かを「興味深い」といったときに、
+それは「好奇心をそそるもの」というよりはむしろ「困ったもの」、
+「困難なもの」という意味で使われるということに
+気がついたことがありますか? :-)
 
 =begin original
 
@@ -505,10 +505,10 @@ efficient.
 
 =end original
 
-C<[]>��C<{}>�ˤ�������ϥå���Υ��󥹥ȥ饯������
-��˻Ȥ��Τ��ȸ������Ȥ�˺��ʤ��Ǥ���������
-��������С����Ȥ����줬��ΨŪ�˺��ɤǤʤ���礬����ˤ��衢
-���ʤ��ϵ������褯������Ǥ��礦��
+C<[]>やC<{}>による配列やハッシュのコンストラクターを
+常に使うのだと言うことを忘れないでください。
+そうすれば、たとえそれが効率的に最良でない場合があるにせよ、
+あなたは気持ちよくいられるでしょう。
 
 =begin original
 
@@ -517,8 +517,8 @@ actually work out fine:
 
 =end original
 
-�ä��٤����Ȥˡ��ʲ�����ϴ����ʤ�ΤΤ褦�˸�����ˤ�ؤ餺��
-�ºݤˤϤ������ư��ޤ���
+驚くべきことに、以下の例は危険なもののように見えるにも関らず、
+実際にはきちんと動作します。
 
     for $i (1..10) {
         my @array = somefunc($i);
@@ -543,21 +543,21 @@ do the right thing behind the scenes.
 
 =end original
 
-�ʤ��ʤ顢my() �ϥ���ѥ�����˽�����������ʸ�ǤϤʤ���
-�¹Ի��˽��������ʸ�Ǥ��뤫��Ǥ���
-����ϤĤޤꡢmy ��������줿�ѿ��ϡ��롼�פ��̲᤹���٤˿�����
-�����������Ȥ������ȤǤ���
-���Τ��ᡢ���Υ����ɤ����Ʊ���ѿ��Υ�ե���󥹤��Ǽ���Ƥ���褦��
-������ˤ�ؤ餺���ºݤˤϤ����ǤϤʤ��ΤǤ�!
-����ϡ����������ץ�����ޡ��ʳ��οͤ���򤵤����������Ϥ�����ǡ�
-����Ψ���ɤ������ɤ��뤳�ȤΤǤ���褦����̯�ʰ㤤�Ǥ���
-�Ǥ����顢������ʤϽ鿴�Ԥ��Ф��Ƥ����Ȥ�ʤ��褦�˶�����ΤǤ���
-���¡��ؿ����Ф��ƥѥ�᡼�������Ϥ��Ȥ�������ơ���ϥץ���������
-���ȱ黻�Ҥ������㤦����Ǥ���뤳�Ȥ򹥤ߤޤ���
-�������ꡢ��Ͻ鿴�Ԥ�(�鿴�Ԥȡ��桹������ʬ��)�쥭������
-(�ޤ���ưŪ)�������פ䱣�줿���ȥ�����Ȥ˱ƶ��������ϡ�
-������򤷤䤹�� C<[]>, C<{}> ���äȻȤ��褦�ˤ��٤��Ǥ����
-���ɥХ������Ƥ��ޤ���
+なぜなら、my() はコンパイル時に処理される宣言文ではなく、
+実行時に処理される文であるからです。
+これはつまり、my で宣言された変数は、ループを通過する度に新たに
+再生成されるということです。
+このため、このコードが毎回同じ変数のリファレンスを格納しているように
+見えるにも関らず、実際にはそうではないのです!
+これは、熟練したプログラマー以外の人を誤解させる危険性をはらんだ上で、
+より効率の良いコードを作ることのできるような微妙な違いです。
+ですから、私は普段は初心者に対してこれを使わないように教えるのです。
+事実、関数に対してパラメーターを渡すときを除いて、私はプログラム中に
+参照演算子がうじゃうじゃでて来ることを好みません。
+その代わり、私は初心者に(初心者と、我々の大部分は)レキシカル
+(または動的)スコープや隠れた参照カウントに影響されるよりは、
+より理解しやすい C<[]>, C<{}> をもっと使うようにすべきであると
+アドバイスしています。
 
 =begin original
 
@@ -565,7 +565,7 @@ In summary:
 
 =end original
 
-�ޤȤ��Ȥ����ʤ�ޤ�:
+まとめるとこうなります:
 
 =begin original
 
@@ -575,14 +575,14 @@ In summary:
 
 =end original
 
-    $AoA[$i] = [ @array ];	# ���̤Ϥ��줬����
-    $AoA[$i] = \@array;		# ����; just how my() was that array?
-    @{ $AoA[$i] } = @array;	# �ۤȤ�ɤΥץ�����ޤˤϵ���Ū�᤮
+    $AoA[$i] = [ @array ];	# 普通はこれが最善
+    $AoA[$i] = \@array;		# 危険; just how my() was that array?
+    @{ $AoA[$i] } = @array;	# ほとんどのプログラマには技巧的過ぎ
 
 =head1 CAVEAT ON PRECEDENCE
 X<dereference, precedence> X<dereferencing, precedence>
 
-(ͥ���̤˴ؤ���ٹ�)
+(優先順位に関する警告)
 
 =begin original
 
@@ -592,7 +592,7 @@ X<< -> >>
 
 =end original
 
-C<@{$AoA[$i]}> �ΤȤ���Ʊ�͡��ʲ�����Ĥ�Ʊ��ư��򤷤ޤ���
+C<@{$AoA[$i]}> のときと同様、以下の二つは同じ動作をします。
 
 =begin original
 
@@ -601,8 +601,8 @@ C<@{$AoA[$i]}> �ΤȤ���Ʊ�͡��ʲ�����Ĥ�Ʊ��ư��򤷤ޤ���
 
 =end original
 
-    $aref->[2][2]	# ����
-    $$aref[2][2]	# �ޤ���路��
+    $aref->[2][2]	# 明快
+    $$aref[2][2]	# まぎらわしい
 
 =begin original
 
@@ -616,15 +616,15 @@ dereference the thing at that subscript.  That's fine in C, but this isn't C.
 
 =end original
 
-����ϡ�Perl��ͥ���̵�§�Ǥ� 5�Ĥ����ַ����Υǥ�ե���󥹱黻��
-(C<$ @ * % &>)�ϡ����ַ�����ź�����դ��黻�ҤΥ֥饱�åȤ�
-�����꡼�֥졼�����⶯������դ�����ʤΤǤ�!
-����� C<*a[i]> ��C<a>��B<i����>���ؤ��Ƥ����ΤǤ���Ȥߤʤ����Ȥ�
-���줭�ä� C/C++ �ץ�����ޡ��ˤȤäƤ��礭�ʾ׷�Ǥ��뤳�Ȥ�
-�����ʤ��Ǥ��礦��
-�Ĥޤꡢ�ޤ��ǽ��ź�������äơ����줫��ź�����դ����줿��Τ�
-�ǥ�ե���󥹤�Ԥ��Ȥ������ȤǤ���
-����� C �Ǥ����������ȤǤ���������� C ����ʤ��ΤǤ���
+これは、Perlの優先順位規則では 5つの前置形式のデリファレンス演算子
+(C<$ @ * % &>)は、後置形式の添え字付け演算子のブラケットや
+カーリーブレースよりも強く結び付くからなのです!
+これは C<*a[i]> を、C<a>のB<i番目>が指しているものであるとみなすことに
+慣れきった C/C++ プログラマーにとっては大きな衝撃であることは
+疑いないでしょう。
+つまり、まず最初に添え字を取って、それから添え字付けされたものの
+デリファレンスを行うということです。
+それは C では正しいことですが、これは C じゃないのです。
 
 =begin original
 
@@ -637,17 +637,17 @@ before the leading C<$> dereferencer.
 
 =end original
 
-Perl�ˤ����������ʹ�¤�� C<$$aref[$i]> �Ǥϡ��ǽ�� $aref ��
-�ǥ�ե���󥹤򤷤ơ�$aref ��������ؤλ��Ȥˤ��ޤ���
-�����Ƥ��Υǥ�ե���󥹤򤷤ơ��Ǹ�� $AoA �ˤ�äƻؤ���Ƥ��������
-B<i����> ���ͤ���Ф��ޤ���
-�⤷ C �ε�ˡ��˾��Τʤ顢��Ƭ�Υǥ�ե���󥹱黻�� C<$> �������
-C<$AoA[$i]> ��ɾ�����뤳�Ȥ������뤿��ˡ�C<${$AoA[$i]}> ��
-���Ҥ��ʤ���Фʤ�ޤ���
+Perlにおける等価な構造の C<$$aref[$i]> では、最初に $aref の
+デリファレンスをして、$aref から配列への参照にします。
+そしてそのデリファレンスをして、最後に $AoA によって指されている配列の
+B<i番目> の値を取り出します。
+もし C の記法を望むのなら、先頭のデリファレンス演算子 C<$> より前に
+C<$AoA[$i]> を評価することを強制するために、C<${$AoA[$i]}> と
+記述しなければなりません
 
 =head1 WHY YOU SHOULD ALWAYS C<use strict>
 
-(�ʤ���� C<use strict> ��Ȥ��٤��ʤΤ�)
+(なぜ常に C<use strict> を使うべきなのか)
 
 =begin original
 
@@ -657,11 +657,11 @@ way to avoid getting confused is to start every program like this:
 
 =end original
 
-�⤷���Τ��Ȥ������ͤ����ΤȤ�����궲��������Τ˴������Ƥ�
-���å������Ƥ���������
-Perl�Ϥ��꤬������Ȥ�����򤱤뤿��δ��Ĥ��ε�ǽ�������Ƥ��ޤ���
-������򤱤뤿��κ�������ˡ�ϡ����٤ƤΥץ�������ʲ��Τ褦��
-�ԤǻϤ�뤳�ȤǤ�:
+もしこのことが、価値あるものというより恐ろしいものに感じられても
+リラックスしてください。
+Perlはありがちな落とし穴を避けるための幾つかの機能を備えています。
+混乱を避けるための最善の方法は、すべてのプログラムを以下のような
+行で始めることです:
 
     #!/usr/bin/perl -w
     use strict;
@@ -674,9 +674,9 @@ this:
 
 =end original
 
-���ξ�硢���ʤ��Ϥ��٤Ƥ��ѿ��� my() ��Ȥä�������뤳�Ȥ��������졢
-�ְ�ä��֥���ܥ�å��ǥ�ե���󥹡פ��ػߤ���ޤ���
-�������äơ��ʲ��Τ褦�ˤ������:
+この場合、あなたはすべての変数を my() を使って宣言することが強制され、
+間違った「シンボリックデリファレンス」が禁止されます。
+したがって、以下のようにした場合:
 
     my $aref = [
 	[ "fred", "barney", "pebbles", "bambam", "dino", ],
@@ -694,9 +694,9 @@ variable, and it would thereby remind you to write instead:
 
 =end original
 
-�������Ƥ��ʤ��ѿ� C<@aref> �˴ְ�äƥ���������������ˡ�
-����ѥ���� B<����ѥ����> �˥ե饰�򥨥顼�����ꤷ�����Τ褦��
-�񤯤Ȥ������Ȥ��ʤ��˻פ��Ф�����Ǥ��礦��
+宣言されていない変数 C<@aref> に間違ってアクセスしたために、
+コンパイラは B<コンパイル時> にフラグをエラーに設定し、次のように
+書くということあなたに思い出させるでしょう。
 
     print $aref->[2][2]
 
@@ -706,7 +706,7 @@ X<AoA, debugging> X<HoA, debugging> X<AoH, debugging> X<HoH, debugging>
 X<array of arrays, debugging> X<hash of arrays, debugging>
 X<array of hashes, debugging> X<hash of hashes, debugging>
 
-(�ǥХå�)
+(デバッグ)
 
 =begin original
 
@@ -718,13 +718,13 @@ example, given the assignment to $AoA above, here's the debugger output:
 
 =end original
 
-5.002 ������Ρ�ɸ��� Perl �ǥХå���ʣ���ʥǡ�����¤�򤭤����
-���줤�˽��Ϥ��뤳�Ȥ��Ǥ��ޤ���Ǥ�����
-5.002 �ʹߤΥǥХå��Ǥ�ʣ���ʥǡ�����¤�����פ��뤿���
-C<x> ���ޥ�ɤ䥳�ޥ�ɥ饤���Խ��ʤɤδ��Ĥ��ο����ʵ�ǽ��
-������Ǥ��ޤ���
-���Ȥ��С������ˤ��ä� $AoA ���Ф���������ǥХå����Ϥ����Ȥ���
-���ν��ϤϤ����ʤ�ޤ���
+5.002 より前の、標準の Perl デバッガは複雑なデータ構造をきちんと
+きれいに出力することができませんでした。
+5.002 以降のデバッガでは複雑なデータ構造をダンプするための
+C<x> コマンドやコマンドライン編集などの幾つかの新たな機能を
+取り込んでいます。
+たとえば、先の例にあった $AoA に対する代入をデバッガに渡したとき、
+その出力はこうなります。
 
     DB<1> x $AoA
     $AoA = ARRAY(0x13b5a0)
@@ -747,7 +747,7 @@ C<x> ���ޥ�ɤ䥳�ޥ�ɥ饤���Խ��ʤɤδ��Ĥ��ο����ʵ�ǽ��
 
 =head1 CODE EXAMPLES
 
-(��������)
+(コード例)
 
 =begin original
 
@@ -757,18 +757,18 @@ types of data structures.
 
 =end original
 
-�����ˤ������äȤ���������(�������Ω�����ޥ˥奢��ڡ�����
-�ʤ�Ǥ��礦)�ϡ��͡��ʷ����Υǡ�����¤�ؤΥ���������
-�㼨���륵��ץ�Ǥ���
+ここにあるちょっとしたコメント(将来は独立したマニュアルページと
+なるでしょう)は、様々な形式のデータ構造へのアクセスを
+例示するサンプルです。
 
 =head1 ARRAYS OF ARRAYS
 X<array of arrays> X<AoA>
 
-(���������)
+(配列の配列)
 
 =head2 Declaration of an ARRAY OF ARRAYS
 
-(�������������)
+(配列の配列の宣言)
 
  @AoA = (
         [ "fred", "barney" ],
@@ -778,7 +778,7 @@ X<array of arrays> X<AoA>
 
 =head2 Generation of an ARRAY OF ARRAYS
 
-(��������������)
+(配列の配列の生成)
 
 =begin original
 
@@ -803,28 +803,28 @@ X<array of arrays> X<AoA>
 
 =end original
 
- # �ե����뤫���ɤ߹���
+ # ファイルから読み込む
  while ( <> ) {
      push @AoA, [ split ];
  }
 
- # �ؿ���Ƥ�
+ # 関数を呼ぶ
  for $i ( 1 .. 10 ) {
      $AoA[$i] = [ somefunc($i) ];
  }
 
- # ����ѿ���Ȥ�
+ # 一時変数を使う
  for $i ( 1 .. 10 ) {
      @tmp = somefunc($i);
      $AoA[$i] = [ @tmp ];
  }
 
- # ���Ǥˤ���Ԥ��ɲä���
+ # すでにある行に追加する
  push @{ $AoA[0] }, "wilma", "betty";
 
 =head2 Access and Printing of an ARRAY OF ARRAYS
 
-(���������ؤΥ��������Ƚ���)
+(配列の配列へのアクセスと出力)
 
 =begin original
 
@@ -853,23 +853,23 @@ X<array of arrays> X<AoA>
 
 =end original
 
- # ��Ĥ�����
+ # 一つの要素
  $AoA[0][0] = "Fred";
 
- # �⤦��Ĥ�����
+ # もう一つの要素
  $AoA[1][1] =~ s/(\w)/\u$1/;
 
- # ��ե���󥹤�Ȥä����Τ����
+ # リファレンスを使って全体を出力
  for $aref ( @AoA ) {
      print "\t [ @$aref ],\n";
  }
 
- # ź������Ȥä����Τ����
+ # 添え字を使って全体を出力
  for $i ( 0 .. $#AoA ) {
      print "\t [ @{$AoA[$i]} ],\n";
  }
 
- # ���٤˰�Ĥ��ġ����Τ����
+ # 一度に一つずつ、全体を出力
  for $i ( 0 .. $#AoA ) {
      for $j ( 0 .. $#{ $AoA[$i] } ) {
          print "elt $i $j is $AoA[$i][$j]\n";
@@ -879,11 +879,11 @@ X<array of arrays> X<AoA>
 =head1 HASHES OF ARRAYS
 X<hash of arrays> X<HoA>
 
-(����Υϥå���)
+(配列のハッシュ)
 
 =head2 Declaration of a HASH OF ARRAYS
 
-(����Υϥå�������)
+(配列のハッシュの宣言)
 
  %HoA = (
         flintstones        => [ "fred", "barney" ],
@@ -893,7 +893,7 @@ X<hash of arrays> X<HoA>
 
 =head2 Generation of a HASH OF ARRAYS
 
-(����Υϥå��������)
+(配列のハッシュの生成)
 
 =begin original
 
@@ -928,14 +928,14 @@ X<hash of arrays> X<HoA>
 
 =end original
 
- # �ե����뤫���ɤ߹���
+ # ファイルから読み込む
  # flintstones: fred barney wilma dino
  while ( <> ) {
      next unless s/^(.*?):\s*//;
      $HoA{$1} = [ split ];
  }
 
- # ���¿���ΰ���ѿ���Ȥäƥե����뤫���ɤ߹���
+ # より多くの一時変数を使ってファイルから読み込む
  # flintstones: fred barney wilma dino
  while ( $line = <> ) {
      ($who, $rest) = split /:\s*/, $line, 2;
@@ -943,23 +943,23 @@ X<hash of arrays> X<HoA>
      $HoA{$who} = [ @fields ];
  }
 
- # �ꥹ�Ȥ��֤��ؿ���ƤӽФ�
+ # リストを返す関数を呼び出す
  for $group ( "simpsons", "jetsons", "flintstones" ) {
      $HoA{$group} = [ get_family($group) ];
  }
 
- # Ʊ�ͤ���������ѿ���Ȥ�
+ # 同様だが、一時変数を使う
  for $group ( "simpsons", "jetsons", "flintstones" ) {
      @members = get_family($group);
      $HoA{$group} = [ @members ];
  }
 
- # ���Ǥˤ����²�˿��������С����ɲä���
+ # すでにある家族に新しいメンバーを追加する
  push @{ $HoA{"flintstones"} }, "wilma", "betty";
 
 =head2 Access and Printing of a HASH OF ARRAYS
 
-(����Υϥå���ؤΥ��������Ƚ���)
+(配列のハッシュへのアクセスと出力)
 
 =begin original
 
@@ -1000,18 +1000,18 @@ X<hash of arrays> X<HoA>
 
 =end original
 
- # ��Ĥ�����
+ # 一つの要素
  $HoA{flintstones}[0] = "Fred";
 
- # �⤦��Ĥ�����
+ # もう一つの要素
  $HoA{simpsons}[1] =~ s/(\w)/\u$1/;
 
- # ���Τ����
+ # 全体を出力
  foreach $family ( keys %HoA ) {
      print "$family: @{ $HoA{$family} }\n"
  }
 
- # ź������Ȥä����Τ���Ϥ���
+ # 添え字を使って全体を出力する
  foreach $family ( keys %HoA ) {
      print "family: ";
      foreach $i ( 0 .. $#{ $HoA{$family} } ) {
@@ -1020,12 +1020,12 @@ X<hash of arrays> X<HoA>
      print "\n";
  }
 
- # ���С��ο��ǥ����Ȥ������Τ����
+ # メンバーの数でソートして全体を出力
  foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} } keys %HoA ) {
      print "$family: @{ $HoA{$family} }\n"
  }
 
- # ���С��ο���̾���ǥ����Ȥ������Τ���Ϥ���
+ # メンバーの数と名前でソートして全体を出力する
  foreach $family ( sort {
 			    @{$HoA{$b}} <=> @{$HoA{$a}}
 					||
@@ -1038,11 +1038,11 @@ X<hash of arrays> X<HoA>
 =head1 ARRAYS OF HASHES
 X<array of hashes> X<AoH>
 
-(�ϥå��������)
+(ハッシュの配列)
 
 =head2 Declaration of an ARRAY OF HASHES
 
-(�ϥå������������)
+(ハッシュの配列の宣言)
 
  @AoH = (
         {
@@ -1063,7 +1063,7 @@ X<array of hashes> X<AoH>
 
 =head2 Generation of an ARRAY OF HASHES
 
-(�ϥå�������������)
+(ハッシュの配列の生成)
 
 =begin original
 
@@ -1103,7 +1103,7 @@ X<array of hashes> X<AoH>
 
 =end original
 
- # �ե����뤫���ɤ߹���
+ # ファイルから読み込む
  # format: LEAD=fred FRIEND:barney
  while ( <> ) {
      $rec = {};
@@ -1115,31 +1115,31 @@ X<array of hashes> X<AoH>
  }
 
 
- # �ե����뤫���ɤ߹���
+ # ファイルから読み込む
  # format: LEAD=fred FRIEND:barney
- # ����ѿ��ʤ�
+ # 一時変数なし
  while ( <> ) {
      push @AoH, { split /[\s+=]/ };
  }
 
  # "lead","fred","daughter","pebbles"
- # �Τ褦�ʡ�����/�ͤΥڥ��Υꥹ�Ȥ��֤��ؿ���ƤӽФ�
+ # のような、キー/値のペアのリストを返す関数を呼び出す
  while ( %fields = getnextpairset() ) {
      push @AoH, { %fields };
  }
 
- # Ʊ�ͤ���������ѿ���Ȥ�ʤ�
+ # 同様だが、一時変数を使わない
  while (<>) {
      push @AoH, { parsepairs($_) };
  }
 
- # ���Ǥ˥���/�ͤ��ɲ�
+ # 要素にキー/値を追加
  $AoH[0]{pet} = "dino";
  $AoH[2]{pet} = "santa's little helper";
 
 =head2 Access and Printing of an ARRAY OF HASHES
 
-(�ϥå��������ؤΥ��������Ƚ���)
+(ハッシュの配列へのアクセスと出力)
 
 =begin original
 
@@ -1176,13 +1176,13 @@ X<array of hashes> X<AoH>
 
 =end original
 
- # ��Ĥ�����
+ # 一つの要素
  $AoH[0]{lead} = "fred";
 
- # �⤦��Ĥ�����
+ # もう一つの要素
  $AoH[1]{lead} =~ s/(\w)/\u$1/;
 
- # ��ե���󥹤�Ȥä����Τ����
+ # リファレンスを使って全体を出力
  for $href ( @AoH ) {
      print "{ ";
      for $role ( keys %$href ) {
@@ -1191,7 +1191,7 @@ X<array of hashes> X<AoH>
      print "}\n";
  }
 
- # ź������Ȥä����Τ����
+ # 添え字を使って全体を出力
  for $i ( 0 .. $#AoH ) {
      print "$i is { ";
      for $role ( keys %{ $AoH[$i] } ) {
@@ -1200,7 +1200,7 @@ X<array of hashes> X<AoH>
      print "}\n";
  }
 
- # ���٤˰�Ĥ������Τ���Ϥ���
+ # 一度に一つずつ全体を出力する
  for $i ( 0 .. $#AoH ) {
      for $role ( keys %{ $AoH[$i] } ) {
          print "elt $i $role is $AoH[$i]{$role}\n";
@@ -1210,11 +1210,11 @@ X<array of hashes> X<AoH>
 =head1 HASHES OF HASHES
 X<hash of hashes> X<HoH>
 
-(�ϥå���Υϥå���)
+(ハッシュのハッシュ)
 
 =head2 Declaration of a HASH OF HASHES
 
-(�ϥå���Υϥå�������)
+(ハッシュのハッシュの宣言)
 
  %HoH = (
         flintstones => {
@@ -1235,7 +1235,7 @@ X<hash of hashes> X<HoH>
 
 =head2 Generation of a HASH OF HASHES
 
-(�ϥå���Υϥå��������)
+(ハッシュのハッシュの生成)
 
 =begin original
 
@@ -1284,7 +1284,7 @@ X<hash of hashes> X<HoH>
 
 =end original
 
- # �ե����뤫���ɤ߹���
+ # ファイルから読み込む
  # flintstones: lead:fred pal:barney wife:wilma pet:dino
  while ( <> ) {
      next unless s/^(.*?):\s*//;
@@ -1294,7 +1294,7 @@ X<hash of hashes> X<HoH>
          $HoH{$who}{$key} = $value;
      }
 
- # ���¿���ΰ���ѿ���Ȥäƥե����뤫���ɤ߹���
+ # より多くの一時変数を使ってファイルから読み込む
  while ( <> ) {
      next unless s/^(.*?):\s*//;
      $who = $1;
@@ -1306,18 +1306,18 @@ X<hash of hashes> X<HoH>
      }
  }
 
- # �������ͤΥϥå�����֤��ؿ���ƤӽФ�
+ # キーと値のハッシュを返す関数を呼び出す
  for $group ( "simpsons", "jetsons", "flintstones" ) {
      $HoH{$group} = { get_family($group) };
  }
 
- # Ʊ�ͤ���������ѿ���Ȥ�
+ # 同様だが、一時変数を使う
  for $group ( "simpsons", "jetsons", "flintstones" ) {
      %members = get_family($group);
      $HoH{$group} = { %members };
  }
 
- # ���Ǥˤ����²�˥��С����ɲ�
+ # すでにある家族にメンバーを追加
  %new_folks = (
      wife => "wilma",
      pet  => "dino",
@@ -1329,7 +1329,7 @@ X<hash of hashes> X<HoH>
 
 =head2 Access and Printing of a HASH OF HASHES
 
-(�ϥå���Υϥå�����Ф��륢�������Ƚ���)
+(ハッシュのハッシュに対するアクセスと出力)
 
 =begin original
 
@@ -1383,13 +1383,13 @@ X<hash of hashes> X<HoH>
 
 =end original
 
- # ��Ĥ�����
+ # 一つの要素
  $HoH{flintstones}{wife} = "wilma";
 
- # �⤦��Ĥ�����
+ # もう一つの要素
  $HoH{simpsons}{lead} =~ s/(\w)/\u$1/;
 
- # ���Τ����
+ # 全体を出力
  foreach $family ( keys %HoH ) {
      print "$family: { ";
      for $role ( keys %{ $HoH{$family} } ) {
@@ -1398,7 +1398,7 @@ X<hash of hashes> X<HoH>
      print "}\n";
  }
 
- # �����Ȥ��줿���Τ����
+ # ソートされた全体を出力
  foreach $family ( sort keys %HoH ) {
      print "$family: { ";
      for $role ( sort keys %{ $HoH{$family} } ) {
@@ -1407,7 +1407,7 @@ X<hash of hashes> X<HoH>
      print "}\n";
  }
 
- # ���С��ο��ǥ����Ȥ������Τ����
+ # メンバーの数でソートした全体を出力
  foreach $family ( sort { keys %{$HoH{$b}} <=> keys %{$HoH{$a}} } keys %HoH ) {
      print "$family: { ";
      for $role ( sort keys %{ $HoH{$family} } ) {
@@ -1416,7 +1416,7 @@ X<hash of hashes> X<HoH>
      print "}\n";
  }
 
- # ���ǥ����Ƚ�����ꤹ��
+ # 役割でソート順を設定する
  $i = 0;
  for ( qw(lead wife son daughter pal pet) ) { $rank{$_} = ++$i }
 
@@ -1433,11 +1433,11 @@ X<hash of hashes> X<HoH>
 =head1 MORE ELABORATE RECORDS
 X<record> X<structure> X<struct>
 
-(��ä�ʣ���ʥ쥳����)
+(もっと複雑なレコード)
 
 =head2 Declaration of MORE ELABORATE RECORDS
 
-(��ä�ʣ���ʥ쥳���ɤ����)
+(もっと複雑なレコードの宣言)
 
 =begin original
 
@@ -1446,8 +1446,8 @@ many different sorts:
 
 =end original
 
-�ʲ��˼����Τϡ�¿���ΰۤʤä�����Υե�����ɤ���ä��쥳���ɤ�
-�����Ȼ��ѤΥ���ץ�Ǥ���
+以下に示すのは、多くの異なった種類のフィールドを持ったレコードの
+作成と使用のサンプルです。
 
      $rec = {
 	 TEXT      => $string,
@@ -1478,7 +1478,7 @@ many different sorts:
 
 =head2 Declaration of a HASH OF COMPLEX RECORDS
 
-(ʣ���ʥ쥳���ɤΥϥå�������)
+(複雑なレコードのハッシュの宣言)
 
      %TV = (
         flintstones => {
@@ -1514,7 +1514,7 @@ many different sorts:
 
 =head2 Generation of a HASH OF COMPLEX RECORDS
 
-(ʣ���ʥ쥳���ɤΥϥå��������)
+(複雑なレコードのハッシュの生成)
 
 =begin original
 
@@ -1526,11 +1526,11 @@ many different sorts:
 
 =end original
 
-     # �ե����뤫����ɤ߹���
-     # ����ϥե����뤽�켫�Ȥ��������Ǽ������褦�� raw data
-     # format �ˤʤäƤ���ΤǤȤƤ��ñ�Ǥ���perl�ϡ��ǡ����Τ�
-     # �����������Ƥ���ΤǤ���С�ʣ���ʥǡ�����¤����ǲ�
-     # �Ϥ��ޤ����Ǥ�����ȤƤ��ñ�˺Ѥळ�Ȥ�����ΤǤ���
+     # ファイルからの読み込み
+     # これはファイルそれ自身が、先の例で示したように raw data
+     # format になっているのでとても簡単です。perlは、データのよ
+     # うに宣言されているのであれば、複雑なデータ構造を喜んで解
+     # 析します。ですからとても簡単に済むことがあるのです。
 
 =begin original
 
@@ -1541,7 +1541,7 @@ many different sorts:
 
 =end original
 
-     # �ե��������˹��ۤ���
+     # フィールド毎に構築する
      $rec = {};
      $rec->{series} = "flintstones";
      $rec->{nights} = [ find_days() ];
@@ -1559,7 +1559,7 @@ many different sorts:
 =end original
 
      @members = ();
-     # ���Υե������ �ե������=�� �Ȥ�����ʸ�ȤʤäƤ���Ȳ���
+     # このファイルは フィールド=値 という構文となっていると仮定
      while (<>) {
          %fields = split /[\s=]+/;
          push @members, { %fields };
@@ -1601,12 +1601,12 @@ many different sorts:
 =end original
 
      ###########################################################
-     # �����ǡ����ʤ���Ʊ���ǡ����ؤ����ݥ��󥿡��Τ褦�ʶ�̣
-     # �����ɲåե�����ɤ�����������Ȼפ����⤷��ޤ��󡣤���
-     # �ˤ�ꡢ�����Ĥ��ѹ�����Ȥ��٤Ƥ��ѹ�����ޤ���������
-     # �Ǹ����С�{kid}�Ȥ����ե�����ɤϻҶ��Υ쥳���ɤ������
-     # �����������쥳���ɤν�ʣ��ʤ����ƹ����������ʤ�����
-     # �Ȥ��Ǥ���褦�ʤ�ΤǤ���
+     # ここで、あなたは同じデータへの戻るポインターのような興味
+     # 深い追加フィールドを作成したいと思うかもしれません。これ
+     # により、ある一つを変更するとすべてが変更されます。この例
+     # で言えば、{kid}というフィールドは子供のレコードの配列で
+     # すが、これをレコードの重複をなくして更新の問題もなくすこ
+     # とができるようなものです。
      ###########################################################
      foreach $family (keys %TV) {
          $rec = $TV{$family}; # temp pointer
@@ -1628,10 +1628,10 @@ many different sorts:
 
 =end original
 
-     # ���ʤ�������򥳥ԡ����ޤ������Ǥ⡢���󤽤켫�Ȥϥ���
-     # ������Ƥ��ʤ����֥������ȤؤΥݥ��󥿡����鹽������Ƥ���
-     # ��������Ϥ��ʤ���bart���ä���Ť���Τ��̤��ƤǼ�������
-     # ��Ȥ������ȤǤ���
+     # あなたは配列をコピーしました。でも、配列それ自身はコピ
+     # ーされていないオブジェクトへのポインターから構成されていま
+     # す。これはあなたがbartを作ったら古いものを通してで取得され
+     # るということです。
 
 =begin original
 
@@ -1648,7 +1648,7 @@ many different sorts:
 
 =end original
 
-     # �����Ƥ�����ѹ����줿��ΤǤ�
+     # そしてこれは変更されたものです
      print $TV{simpsons}{members}[2]{age};
 
 =begin original
@@ -1658,8 +1658,8 @@ many different sorts:
 
 =end original
 
-     # �ʤ��ʤ� $TV{simpsons}{kids}[0] �� $TV{simpsons}{members}[2]
-     # ��ξ���Ȥ�Ʊ��̵̾�Υϥå���ơ��֥��ؤ��Ƥ��뤫��Ǥ���
+     # なぜなら $TV{simpsons}{kids}[0] と $TV{simpsons}{members}[2]
+     # は両方とも同じ無名のハッシュテーブルを指しているからです。
 
 =begin original
 
@@ -1679,7 +1679,7 @@ many different sorts:
 
 =end original
 
-     # ���Τ�ɽ������
+     # 全体を表示する
      foreach $family ( keys %TV ) {
          print "the $family";
          print " is on during @{ $TV{$family}{nights} }\n";
@@ -1695,7 +1695,7 @@ many different sorts:
 
 =head1 Database Ties
 
-(�ǡ����١����� tie)
+(データベースの tie)
 
 =begin original
 
@@ -1709,15 +1709,15 @@ source code to MLDBM.
 
 =end original
 
-(�ϥå���Υϥå���Τ褦��)ʣ����٥�Υǡ�����¤�� dbm �ե������
-tie ���뤳�Ȥϴ�ñ�ˤϤǤ��ޤ���
-����ϡ�GDBM �� Berkeley DB �ϥ����������¤����ꡢ�����Ķ���뤳�Ȥ�
-�Ǥ��ʤ��Ȥ������Ȥǡ��ޤ����ǥ�������ˤ����Τ򻲾Ȥ�����ˡ�ˤĤ��Ƥ�
-���꤬����ޤ���
-��ʬŪ�ˤ�����褷�褦�Ȥ��Ƥ���¸�Ū�ʥ⥸�塼��ΰ�Ĥˡ�
-MLDBM �Ȥ�����Τ�����ޤ���
-�����������ɤ� L<perlmodlib> �ˤ���褦�ˡ�
-���ʤ��Τ��᤯�� CPAN �����Ȥ�Τ���Ƥ���������
+(ハッシュのハッシュのような)複数レベルのデータ構造を dbm ファイルに
+tie することは簡単にはできません。
+問題は、GDBM と Berkeley DB はサイズに制限があり、それを超えることが
+できないということで、また、ディスク上にあるものを参照する方法についても
+問題があります。
+部分的にこれを解決しようとしている実験的なモジュールの一つに、
+MLDBM というものがあります。
+ソースコードは L<perlmodlib> にあるように、
+あなたのお近くの CPAN サイトを確かめてください。
 
 =head1 SEE ALSO
 

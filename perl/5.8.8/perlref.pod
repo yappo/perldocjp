@@ -7,11 +7,11 @@ perlref - Perl references and nested data structures
 
 =end original
 
-perlref - Perl�Υ�ե���󥹤ȥͥ��Ȥ����ǡ�����¤
+perlref - Perlのリファレンスとネストしたデータ構造
 
 =head1 NOTE
 
-(����)
+(注意)
 
 =begin original
 
@@ -21,8 +21,8 @@ see L<perlreftut>.
 
 =end original
 
-�ܥɥ�����Ȥϥ�ե���󥹤˴ؤ����ΤǤ���
-���塼�ȥꥢ��˴ؤ��Ƥ� L<perlrefut> �򻲾Ȥ��Ƥ���������
+本ドキュメントはリファレンスに関するものです。
+チュートリアルに関しては L<perlrefut> を参照してください。
 
 =head1 DESCRIPTION
 
@@ -39,16 +39,16 @@ hashes of arrays, arrays of hashes of functions, and so on.
 
 =end original
 
-��꡼�� 5 ������ Perl �ǤϤ��٤ƤΥ�ե���󥹤ϥ���ܥ�å��Ǥʤ����
-�ʤ�ʤ��ä�����ˡ�ʣ���ʥǡ�����¤��ɽ�����뤳�Ȥ�����Ǥ�����
-�����ƥ���ܥ�ơ��֥�Υ���ȥ꡼�ǤϤʤ��ѿ��򻲾Ȥ�������˾����Ȥ���
-����Ǥ��ä��ΤǤ���
-Perl �ϥ���ܥ�å���ե���󥹤��ѿ��Ȥ��ƻȤ����Ȥ��ñ�ˤ��������Ǥʤ���
-Ǥ�դΥǡ����ˤĤ��ơ֥ϡ��ɡץ�ե���󥹤���Ĥ��Ȥ��ǽ�Ȥ����ΤǤ���
-Ǥ�դΥ�����ϥϡ��ɥ�ե���󥹤��ݻ����뤳�Ȥ��Ǥ��ޤ���
-����ȥϥå���ϥ����餫�鹽������Ƥ���Τǡ����ʤ��Ϥ��ޤ����������
-�ϥå������������Υϥå��塢�ؿ��Υϥå���������������ñ��
-�Ȥ�Ω�Ƥ뤳�Ȥ��Ǥ���ΤǤ���
+リリース 5 以前の Perl ではすべてのリファレンスはシンボリックでなければ
+ならなかったために、複雑なデータ構造を表現することが困難でした。
+そしてシンボルテーブルのエントリーではなく変数を参照したいと望んだときも
+困難であったのです。
+Perl はシンボリックリファレンスを変数として使うことを簡単にしただけでなく、
+任意のデータについて「ハード」リファレンスを持つことを可能としたのです。
+任意のスカラはハードリファレンスを保持することができます。
+配列とハッシュはスカラから構成されているので、あなたはいまや配列の配列、
+ハッシュの配列、配列のハッシュ、関数のハッシュの配列等々を簡単に
+組み立てることができるのです。
 
 =begin original
 
@@ -64,16 +64,16 @@ have been officially "blessed" into a class package.)
 
 =end original
 
-�ϡ��ɥ�ե���󥹤ϸ����ºݤ˻��Ȥ���Ƥ������������Ƥ��ơ����ο���
-0 �ˤʤ�м�ưŪ�˲�����Ԥʤ��ޤ���
-(���ʻ��Ȥ�۴ĥǡ���(cyclic data)�ˤ����ͤ��Ф��뻲�ȥ�����Ȥϡ�
-����äȤ���������ʤ��ˤϥ����ˤϤʤ�ޤ���
-�ܤ����� L<perlobj/"Two-Phased Garbage Collection"> �򻲾Ȥ��Ƥ���������)
-���Τ�Τ����֥������ȤǤ���Ȥ��ˤϡ��ǥ��ȥ饯����ư��ޤ���
-���֥������ȤˤĤ��Ƥ��ܤ����ϡ�L<perlobj> �򻲾Ȥ��Ƥ���������
-(�����̣�Ǥϡ�Perl �Τ��٤Ƥ����֥������ȤǤ������̾
-���饹�ѥå�������Ǹ��� "bless" ����Ƥ����ΤؤΥ�ե���󥹤��Ф��ơ�
-�����Ѹ���Ѥ��ޤ���)
+ハードリファレンスは賢く実際に参照されている数を管理していて、その数が
+0 になれば自動的に解放を行ないます。
+(自己参照や循環データ(cyclic data)にある値に対する参照カウントは、
+ちょっとした手助けなしにはゼロにはなりません。
+詳しくは L<perlobj/"Two-Phased Garbage Collection"> を参照してください。)
+そのものがオブジェクトであるときには、デストラクタが動作します。
+オブジェクトについてより詳しくは、L<perlobj> を参照してください。
+(ある意味では、Perl のすべてがオブジェクトですが、通常、
+クラスパッケージ内で公に "bless" されているものへのリファレンスに対して、
+この用語を用います。)
 
 =begin original
 
@@ -87,13 +87,13 @@ X<symbolic reference> X<soft reference>
 
 =end original
 
-UNIX �ե����륷���ƥ��ǤΥ���ܥ�å���󥯤�ñ�˥ե������̾����
-���äƤ�������Ǥ���Τ�Ʊ�ͤˡ�����ܥ�å���ե���󥹤��ѿ���
-̾�����ݻ����ޤ���
-C<*glob> �ε�ˡ�ϡ�����ܥ�å���ե���󥹤ΰ��Ǥ�
-(����ܥ�å���ե���󥹤ϻ��ޡȥ��եȥ�ե���󥹡ɤ�
-�ƤФ�ޤ��������������ƤӤ����򤷤ʤ��Ǥ���������
-��ե���󥹤�Ʊ�����Ȥ�ʤ��Ǥ��Ƥ�������򾷤��ΤǤ�����)��
+UNIX ファイルシステム上でのシンボリックリンクが単にファイルの名前を
+持っているだけであるのと同様に、シンボリックリファレンスは変数の
+名前を保持します。
+C<*glob> の記法は、シンボリックリファレンスの一種です
+(シンボリックリファレンスは時折“ソフトリファレンス”と
+呼ばれますが、そういう呼びかたをしないでください。
+リファレンスは同義語を使わないでいてさえ混乱を招くのですから)。
 X<reference, symbolic> X<reference, soft>
 X<symbolic reference> X<soft reference>
 
@@ -108,12 +108,12 @@ X<reference, hard> X<hard reference>
 
 =end original
 
-�о�Ū�ˡ� �ϡ��ɥ�ե���󥹤�UNIX�Υե����륷���ƥ��Υϡ��ɥ�󥯤�
-���Ƥ��ޤ���
-�ϡ��ɥ�󥯤Ϥ��줬�ʤ��̾���Ǥ���Τ��򵤤ˤ�����
-���ä�ʤ����֥������Ȥ˥����������뤿��˻Ȥ��ޤ���
-�ʲ�����ˤ���褦�ˡȥ�ե���󥹡ɤȸ������դ���Ƥʤ��˻Ȥä�
-��硢�̾�ϥϡ��ɥ�ե���󥹤Τ��Ȥ�ؤ��ޤ���
+対照的に、 ハードリファレンスはUNIXのファイルシステム上のハードリンクに
+似ています。
+ハードリンクはそれがなんの名前であるのかを気にせずに
+基礎をなすオブジェクトにアクセスするために使われます。
+以下の節にあるように“リファレンス”と言う言葉を形容なしに使った
+場合、通常はハードリファレンスのことを指します。
 X<reference, hard> X<hard reference>
 
 =begin original
@@ -126,20 +126,20 @@ tell it explicitly to do so, by dereferencing it.
 
 =end original
 
-Perl�ǥ�ե���󥹤�Ȥ��Τ����˴�ñ�Ǥ���
-��§�Υ����С��饤�ɤ���Ĥ�������Ǥ���
-Perl �ϥ�ե����(referencing)��ǥ�ե����(defreferencing)��
-���ۤ˹Ԥ����ȤϤ���ޤ���
-�����餬��ե���󥹤��ݻ����Ƥ���Ȥ�������Ͼ��ñ��ʥ�����Ȥ���
-�����񤤤ޤ���
-���������䡢�ϥå��塢���֥롼����Ȥ��ƿ����񤦤褦�ʤ��ȤϤ���ޤ���
-�ǥ�ե���󥹤򤹤뤳�Ȥˤ�äơ���ʬ������Ū�� Perl ��
-������ɬ�פ�����ޤ���
+Perlでリファレンスを使うのは非常に簡単です。
+原則のオーバーライドが一つあるだけです。
+Perl はリファレンス(referencing)やデリファレンス(defreferencing)を
+暗黙に行うことはありません。
+スカラがリファレンスを保持しているとき、それは常に単純なスカラとして
+振る舞います。
+勝手に配列や、ハッシュ、サブルーチンとして振る舞うようなことはありません。
+デリファレンスをすることによって、自分で明示的に Perl に
+教える必要があります。
 
 =head2 Making References
 X<reference, creation> X<referencing>
 
-(��ե���󥹤���)
+(リファレンスを作る)
 
 =begin original
 
@@ -147,7 +147,7 @@ References can be created in several ways.
 
 =end original
 
-��ե���󥹤ϴ��Ĥ��Τ�����ǹ��ۤ��뤳�Ȥ��Ǥ��ޤ���
+リファレンスは幾つかのやり方で構築することができます。
 
 =over 4
 
@@ -165,13 +165,13 @@ reference that the backslash returned.  Here are some examples:
 
 =end original
 
-�ѿ������֥롼�����ͤ˥Хå�����å���黻�Ҥ�Ȥ����Ȥˤ��
-(����� C �Ǥ� & (���ɥ쥹) �黻�Ҥ˻���Ư���򤷤ޤ�)��
-���˥���ܥ�ơ��֥�ˤ��ѿ��ؤΥ�ե���󥹤�¸�ߤ��Ƥ��ޤ����顢
-������ˡ�� I<�̤�> ��ե���󥹤����ΤǤ���
-������������ܥ�ơ��֥�Υ�ե���󥹤��ʤ��ʤä��Ȥ��Ƥ⡢
-�Хå�����å��夬�֤�����ե���󥹤�¸�ߤ��뤳�Ȥˤʤ�ޤ���
-��򤤤��Ĥ������ޤ�:
+変数、サブルーチン、値にバックスラッシュ演算子を使うことによる
+(これは C での & (アドレス) 演算子に似た働きをします)。
+既にシンボルテーブルには変数へのリファレンスが存在していますから、
+この方法は I<別の> リファレンスを作るものです。
+しかし、シンボルテーブルのリファレンスがなくなったとしても、
+バックスラッシュが返したリファレンスが存在することになります。
+例をいくつかあげます:
 
     $scalarref = \$foo;
     $arrayref  = \@ARGV;
@@ -189,13 +189,13 @@ you can still use type globs and globrefs as though they were IO handles.
 
 =end original
 
-�Хå�����å���黻�Ҥ�Ȥä� IO �ϥ�ɥ�(�ե�����ϥ�ɥ�ޤ���
-�ǥ��쥯�ȥ�ϥ�ɥ�)�ؤΥ�ե���󥹤��������뤳�ȤϤǤ��ޤ���
-��äȤ��ɤ�������ե���󥹤Ϸ������֤��Ф����ե����(�ºݤˤ�
-����ܥ�ơ��֥�Υ���ȥ�Ǥ���)�Ǥ��礦��
-��Ҥ��� *foo{THING} ��ʸ�������򻲾Ȥ��Ƥ���������
-�������ʤ��顢IO �ϥ�ɥ�Ǥ��ä���ΤȤ��Ʒ������֤䷿�����֤�
-��ե����(grobref)��Ȥ����Ȥ�Ǥ��ޤ���
+バックスラッシュ演算子を使って IO ハンドル(ファイルハンドルまたは
+ディレクトリハンドル)へのリファレンスを生成することはできません。
+もっとも良く扱うリファレンスは型グロブに対するリファレンス(実際には
+シンボルテーブルのエントリである)でしょう。
+後述する *foo{THING} 構文の説明を参照してください。
+しかしながら、IO ハンドルであったものとして型グロブや型グロブの
+リファレンス(grobref)を使うこともできます。
 
 =item 2.
 X<array, anonymous> X<[> X<[]> X<square bracket>
@@ -208,7 +208,7 @@ brackets:
 
 =end original
 
-̾����̵������ؤΥ�ե���󥹤ϡ��礫�ä���Ȥäƺ�뤳�Ȥ��Ǥ��ޤ�:
+名前の無い配列へのリファレンスは、大かっこを使って作ることができます:
 
     $arrayref = [1, 2, ['a', 'b', 'c']];
 
@@ -222,11 +222,11 @@ the value "b".)
 
 =end original
 
-�����Ǥϡ��ء�̾����̵�� 3 �Ĥ����Ǥ��������פ�Ǹ�����ǤȤ��ƻ���
-3 �����Ǥ�̾����̵������٤ؤΥ�ե���󥹤��äƤ��ޤ���
-(���ȤǽҤ٤�¿������ʸ��Ȥäơ�����򥢥��������뤳�Ȥ��Ǥ��ޤ���
-���Ȥ��С��嵭�Τ褦�ˤ�����Ǥϡ�
-C<< $arrayref->[2][1] >> �� "b" �Ȥʤ�ޤ���)
+ここでは、『「名前の無い 3 個の要素を持つ配列」を最後の要素として持つ
+3 個要素の名前の無い配列』へのリファレンスを作っています。
+(あとで述べる多次元構文を使って、これをアクセスすることができます。
+たとえば、上記のようにした後では、
+C<< $arrayref->[2][1] >> が "b" となります。)
 
 =begin original
 
@@ -236,9 +236,9 @@ a list of references!
 
 =end original
 
-���ꥹ�Ȥ��Ф����ե���󥹤���Ȥ������Ȥϡ��礫�ä���Ȥ����Ȥ�
-Ʊ���ǤϤ���ޤ���
-����ϥ�ե���󥹤Υꥹ�Ȥ��������뤳�Ȥ�Ʊ���ʤΤǤ�!
+列挙リストに対するリファレンスを取るということは、大かっこを使うことと
+同じではありません。
+これはリファレンスのリストを生成することと同じなのです!
 
     @list = (\$a, \@b, \%c);
     @list = \($a, @b, %c);	# same thing!
@@ -252,11 +252,11 @@ strings rather than full-fledged scalars).
 
 =end original
 
-�ü�ʾ��Ȥ��ơ�C<\(@foo)> �� C<@foo> �����ƤؤΥ�ե���󥹤Υꥹ�Ȥ��֤���
-C<@foo> ���ȤؤΥ�ե���󥹤��֤��ޤ���
-����� C<%foo> �Ȼ��Ƥ��ޤ����������Υ�ե���󥹤����ԡ����Ф����Τ�
-���������ۤʤ�ޤ�(����ϥ����������ʥ�����ǤϤʤ�
-ñ�ʤ�ʸ����Ǥ��뤿��Ǥ�)��
+特殊な場合として、C<\(@foo)> は C<@foo> の内容へのリファレンスのリストを返し、
+C<@foo> 自身へのリファレンスは返しません。
+これは C<%foo> と似ていますが、キーのリファレンスがコピーに対するもので
+ある点が異なります(これはキーが完全なスカラではなく
+単なる文字列であるためです)。
 
 =item 3.
 X<hash, anonymous> X<{> X<{}> X<curly bracket>
@@ -269,7 +269,7 @@ brackets:
 
 =end original
 
-̾����̵���ϥå���ؤΥ�ե���󥹤ϡ��椫�ä���Ȥäƺ�뤳�Ȥ��Ǥ��ޤ�:
+名前の無いハッシュへのリファレンスは、中かっこを使って作ることができます:
 
     $hashref = {
 	'Adam'  => 'Eve',
@@ -287,12 +287,12 @@ statements, not compile-time declarations.
 
 =end original
 
-̵̾�ϥå��������Υ��󥹥ȥ饯���ϡ�ʣ���ʹ�¤���뤿��˼�ͳ��
-�Ȥ߹�碌�뤳�Ȥ��Ǥ��ޤ���
-��Ҥ���¿������ʸ�ϡ����Τ褦�ʤ�Τ��Ф��Ƥ�Ȥ����Ȥ��Ǥ��ޤ���
-�嵭���ͤϥ�ƥ��Ǥ������ѿ��估�Ǥ��äƤ⤫�ޤ��ޤ���
-Perl �Ǥ������黻�ϡ�(���Ȥ���local() �� my() ����Ǥ�) ����ѥ������
-���ʸ�ǤϤʤ����¹�ʸ������Ǥ���
+無名ハッシュと配列のコンストラクタは、複雑な構造を作るために自由に
+組み合わせることができます。
+後述する多次元構文は、そのようなものに対しても使うことができます。
+上記の値はリテラルですが、変数や式であってもかまいません。
+Perl での代入演算は、(たとえ、local() や my() の中でも) コンパイル時の
+宣言文ではなく、実行文だからです。
 
 =begin original
 
@@ -305,12 +305,12 @@ hassle.
 
 =end original
 
-�椫�ä��ϡ�BLOCK ��Ϥ�Ȥ���¾�Τ��Ȥˤ�Ȥ��ޤ����顢
-�������椫�ä��� BLOCK �γ��ϤǤʤ����Ȥ� Perl �˶�����
-�����ʸ�κǽ���椫�ä������� C<+> �� C<return> ��Ĥ��ơ�
-ۣ�椵��ʤ����褦�ˤ���ɬ�פ������礬����ޤ���
-���Τ���äȤ���;ʬ�ʺ�Ȥϡ��椫�ä��λ��Ѥ˴�Ϣ����
-�ºݤ˻ȤäƤߤ���ͤ�Ф��Ƥ��������β��ͤ�����Ǥ��礦��
+中かっこは、BLOCK を始めとして他のことにも使われますから、
+開きの中かっこが BLOCK の開始でないことを Perl に教える
+ために文の最初の中かっこの前に C<+> や C<return> をつけて、
+曖昧さをなくすようにする必要がある場合があります。
+このちょっとした余分な作業は、中かっこの使用に関連して
+実際に使ってみる価値や覚えておくだけの価値があるでしょう。
 
 =begin original
 
@@ -319,8 +319,8 @@ reference to it, you have these options:
 
 =end original
 
-���Ȥ��С��������ϥå�����äơ�����ؤΥ�ե���󥹤��֤��ؿ����ߤ�����С�
-�ʲ��Τ褦������褬����ޤ�:
+たとえば、新しいハッシュを作って、それへのリファレンスを返す関数が欲しければ、
+以下のような選択肢があります:
 
     sub hashem {        { @_ } }   # silently wrong
     sub hashem {       +{ @_ } }   # ok
@@ -332,7 +332,7 @@ On the other hand, if you want the other meaning, you can do this:
 
 =end original
 
-���ΰ����ǡ��ʲ��Τ褦�ˤ��뤳�Ȥ�Ǥ��ޤ�:
+その一方で、以下のようにすることもできます:
 
     sub showem {        { @_ } }   # ambiguous (currently ok, but may change)
     sub showem {       {; @_ } }   # ok
@@ -345,9 +345,9 @@ the expression to mean either the HASH reference, or the BLOCK.
 
 =end original
 
-��Ƭ�ˤ��� C<+{> �� C<{;> �������μ����ºݤˤ�
-�ϥå���Υ�ե���󥹤ʤΤ��֥��å��ʤΤ���
-ۣ�椵�����뤿��ˤ���ޤ���
+先頭にある C<+{> や C<{;> が、その式が実際には
+ハッシュのリファレンスなのかブロックなのかの
+曖昧さを除去するためにあります。
 
 =item 4.
 X<subroutine, anonymous> X<subroutine, reference> X<reference, subroutine>
@@ -360,8 +360,8 @@ C<sub> without a subname:
 
 =end original
 
-̵̾���֥롼����ΤؤΥ�ե���󥹤ϡ����֥롼����̾��̵�� C<sub> ��Ȥä�
-��뤳�Ȥ��Ǥ��ޤ�:
+無名サブルーチンのへのリファレンスは、サブルーチン名の無い C<sub> を使って
+作ることができます:
 
     $coderef = sub { print "Boink!\n" };
 
@@ -376,11 +376,11 @@ anonymous subroutine.)
 
 =end original
 
-���ߥ���������դ��Ƥ���������
-�����Υ����ɤ�¨�¤˼¹Ԥ����ΤǤϤʤ��Ȥ������Ȥ�����С�C<sub{}> �ϡ�
-����Ȥ�������ष����C<do{}> �� C<eval{}> �Τ褦�ʱ黻�ҤǤ�(��������
-C<eval("...")> ����Ǥʤ���С����󤽤ιԤ�¹Ԥ��褦�Ȥ� 
-$coderef �ϡ�I<Ʊ���> ̵̾���֥롼������ե���󥹤��뤳�Ȥˤʤ�ޤ�)��
+セミコロンに注意してください。
+内部のコードが即座に実行されるのではないということを除けば、C<sub{}> は、
+宣言というよりもむしろ、C<do{}> や C<eval{}> のような演算子です(しかし、
+C<eval("...")> の中でなければ、何回その行を実行しようとも 
+$coderef は、I<同一の> 無名サブルーチンをリファレンスすることになります)。
 
 =begin original
 
@@ -392,12 +392,12 @@ context even when it's called outside the context.
 
 =end original
 
-̵̾���֥롼����� my() �ѿ��˴�Ϣ���륯��������Τ褦�˿����񤤤ޤ���
-�Ĥޤꡢ�ѿ��ϥ����ȤΥ������פ���ˤ����ƥ쥭������˸����ޤ���
-����������ϡ�̵̾�ؿ��򤢤�����Υ쥭�����륳��ƥ����Ȥ�
-����������ˤ��Ȥ����Υ���ƥ����Ȥγ�¦�ǸƤӽФ��줿�Ȥ��Ƥ�
-������줿�Ȥ��Υ���ƥ����ȤǼ¹Ԥ���뤳�Ȥ��׵᤹��Ȥ���
-Lisp �������γ�ǰ�Ǥ���
+無名サブルーチンは my() 変数に関連するクロージャのように振る舞います。
+つまり、変数はカレントのスコープの中においてレキシカルに見えます。
+クロージャは、無名関数をある特定のレキシカルコンテキストで
+定義した場合にたとえそのコンテキストの外側で呼び出されたとしても
+定義されたときのコンテキストで実行されることを要求するという
+Lisp の世界の概念です。
 
 =begin original
 
@@ -409,12 +409,12 @@ mechanism to do that--see L<perlobj>.
 
 =end original
 
-�狼��䤹�������С����ʤ������֥롼�����ƤӽФ��Ȥ���Ʊ���褦�ˡ�
-���֥롼������������Ȥ��˰������Ϥ��Ȥ�����̯�ʤ�����Ȥ������ȤǤ���
-���ʤ��Ϥ���ǥ��֥������Ȼظ�Ū������¸����뤳�Ȥ�
-�Ǥ��ޤ���
-����Perl �Ϥ��Ǥˤ���Ȥϰۤʤ���Ȥߤ��󶡤��Ƥ��ޤ� --
-L<perlobj> �򻲾Ȥ��Ƥ���������
+わかりやすく言えば、あなたがサブルーチンを呼び出すときと同じように、
+サブルーチンを定義するときに引数を渡すという奇妙なやり方ということです。
+あなたはこれでオブジェクト指向的性質を実現することも
+できます。
+が、Perl はすでにこれとは異なる仕組みを提供しています --
+L<perlobj> を参照してください。
 
 =begin original
 
@@ -424,9 +424,9 @@ closures work:
 
 =end original
 
-����������� eval �ʤ��˥��֥롼����Υƥ�ץ졼�Ȥ򵭽Ҥ�����ˡ���Ȥ���
-�ͤ�����Ǥ��ޤ���
-�ʲ��˼����Τϡ����������㤬�ɤΤ褦��ư���Τ�����Ǥ���
+クロージャは eval なしにサブルーチンのテンプレートを記述する方法だという
+考え方もできます。
+以下に示すのは、クロージャがどのように動作するのかの例です。
 
     sub newprint {
 	my $x = shift;
@@ -446,7 +446,7 @@ This prints
 
 =end original
 
-���ϤϤ����ʤ�ޤ���
+出力はこうなります。
 
     Howdy, world!
     Greetings, earthlings!
@@ -460,10 +460,10 @@ about.
 
 =end original
 
-�������äˡ�̵̾���֥롼����μ¹Ի��ˤϡ�my $x�ɤ��������פγ��ˤ���ˤ�
-B<������餺>��$x �� newprint() ���Ϥ��줿�ͤ򻲾Ȥ��ĤŤ��Ƥ��뤳�Ȥ�
-���դ��Ƥ���������
-���줬���������㤬���������㤿��ͳ��Ǥ���
+ここで特に、無名サブルーチンの実行時には“my $x”がスコープの外にあるにも
+B<かかわらず>、$x が newprint() に渡された値を参照しつづけていることに
+注意してください。
+これがクロージャがクロージャたる由縁です。
 
 =begin original
 
@@ -473,10 +473,10 @@ that most Perl programmers need trouble themselves about to begin with.
 
 =end original
 
-����ϥ쥭�������ѿ��ˤΤ�Ŭ�Ѥ���ޤ���
-ưŪ�ѿ��Ϥ���ޤǤ�Ʊ���褦��ư��ޤ���
-����������ϡ�����ʬ�� Perl �ץ�����ޡ��������Ȥ��Ϥ���뤿���
-�ȥ�֥�򤷤礤����Ǥ��ޤ��褦����ʪ�ǤϤ���ޤ���
+これはレキシカル変数にのみ適用されます。
+動的変数はこれまでと同じように動作します。
+クロージャは、大部分の Perl プログラマーがそれを使いはじめるために
+トラブルをしょいこんでしまうような代物ではありません。
 
 =item 5.
 X<constructor> X<new>
@@ -493,15 +493,15 @@ named new() and called indirectly:
 
 =end original
 
-��ե���󥹤ϥ��󥹥ȥ饯���ȸƤФ�����̤ʥ��֥롼�����֤��褦�ˤ���
-���뤳�Ȥ�¿���ʤäƤ��ޤ���
-Perl�Υ��֥������Ȥϡ���ʬ���ɤΥѥå������ȴط�����äƤ��뤫��
-�ΤäƤ����ΤؤΥ�ե���󥹤Ǥ�������ޤ���
-���󥹥ȥ饯���ϡ����δط��դ���ɤΤ褦�˹Ԥʤ������ΤäƤ���Ȥ�����̣�ǡ�
-���̤ʥ��֥롼����ˤ����ޤ���
-ñ�ʤ��ե���󥹤Ȥ��ƥ������Ȥ������֥������ȤȤ����Ƥ���֤Ǥ�
-�̾�Υ�ե���󥹤Ǥ��뤳�Ȥ��Ѥ��Ϥ���ޤ���
-���󥹥ȥ饯���ϡ�����Ū�� new() ��̾�����դ���졢����Ū�˸ƤӽФ���ޤ�:
+リファレンスはコンストラクタと呼ばれる特別なサブルーチンが返すようにして
+いることが多くなっています。
+Perlのオブジェクトは、自分がどのパッケージと関係を持っているかを
+知っているものへのリファレンスでしかありません。
+コンストラクタは、その関係付けをどのように行なうかを知っているという意味で、
+特別なサブルーチンにすぎません。
+単なるリファレンスとしてスタートし、オブジェクトといわれている間でも
+通常のリファレンスであることに変わりはありません。
+コンストラクタは、慣習的に new() と名前を付けられ、間接的に呼び出されます:
 
     $objref = new Doggie (Tail => 'short', Ears => 'long');
 
@@ -511,7 +511,7 @@ But don't have to be:
 
 =end original
 
-�ʲ��Τ褦�ˤ��Ƥ⤫�ޤ��ޤ���
+以下のようにしてもかまいません。
 
     $objref   = Doggie->new(Tail => 'short', Ears => 'long');
 
@@ -534,9 +534,9 @@ talked about dereferencing yet, we can't show you any examples yet.
 
 =end original
 
-Ŭ�ڤʷ��Υ�ե���󥹤Ϥ������ä���ե���󥹤�¸�ߤ��뤫�Τ褦��ʸ̮�ǹԤ��ȡ�
-�ºݤ�¸�ߤ���褦�ˤʤ�ޤ���
-�ǥ�ե���󥹤ˤĤ��ƤϤޤ��ä��Ƥ��ʤ��Τǡ��ޤ���򼨤����Ȥ��Ǥ��ޤ���
+適切な型のリファレンスはそういったリファレンスが存在するかのような文脈で行うと、
+実際に存在するようになります。
+デリファレンスについてはまだ話していないので、まだ例を示すことができません。
 
 =item 7.
 X<*foo{THING}> X<*>
@@ -550,11 +550,11 @@ known as foo).
 
 =end original
 
-��ե���󥹤ϡ�*foo{THING} ��ʸ�Ȥ����Τ��Ƥ���
-�ü�ʹ�ʸ��Ȥä��������뤳�Ȥ��Ǥ��ޤ���
-*foo{THING} �ϥ�ե���󥹤� *foo �� THING �����å�(�����
-foo �Ȥ����Τ������ƤΤ�Τ��ݻ����륷��ܥ�ơ��֥�Υ���ȥ�Ǥ�)��
-�֤��ޤ���
+リファレンスは、*foo{THING} 構文として知られている
+特殊な構文を使って生成することができます。
+*foo{THING} はリファレンスを *foo の THING スロット(これは
+foo として知られる全てのものを保持するシンボルテーブルのエントリです)に
+返します。
 
     $scalarref = *foo{SCALAR};
     $arrayref  = *ARGV{ARRAY};
@@ -576,14 +576,14 @@ of its use.
 
 =end original
 
-��������Ƥ� C<*foo{IO}> ���������������Ū�Ǥ���
-�ե�����ϥ�ɥ�(L<perlfunc/open>)�������å�(L<perlfunc/socket> ��
-L<perlfunc/socketpair>)���ǥ��쥯�ȥ�ϥ�ɥ�(L<perlfunc/opendir>)
-�Ȥ��ƻȤ��� IO �ϥ�ɥ���֤��ޤ���
-���ΥС������� Perl ���Ф���ߴ����Τ���ˡ�
-C<*foo{FILEHANDLE}> �� C<*foo{IO}> ��Ʊ����Ǥ�����5.8.0 �����
-��侩�Ǥ���
-�ٹ�ͭ���ˤʤäƤ���С���侩�ٹ𤬽Фޤ���
+これら全ては C<*foo{IO}> を除き、自己説明的です。
+ファイルハンドル(L<perlfunc/open>)、ソケット(L<perlfunc/socket> と
+L<perlfunc/socketpair>)、ディレクトリハンドル(L<perlfunc/opendir>)
+として使われる IO ハンドルを返します。
+過去のバージョンの Perl に対する互換性のために、
+C<*foo{FILEHANDLE}> は C<*foo{IO}> の同義語ですが、5.8.0 からは
+非推奨です。
+警告が有効になっていれば、非推奨警告が出ます。
 
 =begin original
 
@@ -594,11 +594,11 @@ future release.
 
 =end original
 
-C<*foo{THING}> �ϡ�������ξ������������� THING ���ޤ��Ȥ��Ƥ�
-�ʤ����ˤ� undef ���֤��ޤ���
-C<*foo{SCALAR}> �� $foo ���ޤ��Ȥ��Ƥ��ʤ��ä����ˤ�
-̵̾������ؤΥ�ե���󥹤��֤��ޤ���
-����Ͼ���Υ�꡼���Ǥ��Ѥ���ǽ��������ޤ���
+C<*foo{THING}> は、スカラの場合を除いた特定の THING がまだ使われてい
+ない場合には undef を返します。
+C<*foo{SCALAR}> は $foo がまだ使われていなかった場合には
+無名スカラへのリファレンスを返します。
+これは将来のリリースでは変わる可能性があります。
 
 =begin original
 
@@ -614,16 +614,16 @@ below, there's no risk of that happening.
 
 =end original
 
-C<*foo{IO}> �ϡ�L<perldata/"Typeglobs and Filehandles"> �ˤ���
-�ե�����ϥ�ɥ�򥵥֥롼������Ϥ����ꡢ���뤤�ϵդ�
-���֥롼���󤫤��֤�����ˡ����뤤���礭�ʥǡ�����¤���Ǽ����
-������Ѥ����� C<*HANDLE> ���������ؤǤ���
-�������������Ͽ������ϥ�ɥ�򤢤ʤ��Τ���˺��Ф����ȤϤ��ʤ���
-�������ȤǤ���
-ͭ�������ϡ��������֤�������Ȥ����ⵤ��Ĥ���ɬ�פ����ޤ�ʤ��Ȥ������ȤǤ���
-(������������Ϥޤ��ե�����ϥ�ɥ�ȥǥ��쥯�ȥ�ϥ�ɥ��ͻ�礷�ޤ���)
-���������⤷�ʲ�����ǹԤäƤ���褦�ˡ��ͤ򷿥����֤ǤϤʤ��������
-��������ȡ������뤳�Ȥ��Ф���ꥹ���Ϥ���ޤ���
+C<*foo{IO}> は、L<perldata/"Typeglobs and Filehandles"> にある
+ファイルハンドルをサブルーチンに渡したり、あるいは逆に
+サブルーチンから返すために、あるいは大きなデータ構造を格納する
+ために用いられる C<*HANDLE> 機構の代替です。
+その不利な点は新しいハンドルをあなたのために作り出すことはしないと
+いうことです。
+有利な点は、型グロブの代入を使うよりも気をつかう必要があまりないということです。
+(しかし、これはまだファイルハンドルとディレクトリハンドルを融合します。)
+しかし、もし以下の例で行っているように、値を型グロブではなくスカラに
+代入すると、起きることに対するリスクはありません。
 
     splutter(*STDOUT);		# pass the whole glob
     splutter(*STDOUT{IO});	# pass both file and dir handles
@@ -646,7 +646,7 @@ C<*foo{IO}> �ϡ�L<perldata/"Typeglobs and Filehandles"> �ˤ���
 =head2 Using References
 X<reference, use> X<dereferencing> X<dereference>
 
-(��ե���󥹤�Ȥ�)
+(リファレンスを使う)
 
 =begin original
 
@@ -656,10 +656,10 @@ are several basic methods.
 
 =end original
 
-��ե���󥹤κ�����Ϥ�������Ǥ���
-�����ޤǤ���ȡ��ɤ������ȤΤ��ʤ��عԤäƤ��ޤä��ǡ��������᤹����ˡ�
-�ɤ���äƥ�ե���󥹤�Ȥ������Τꤿ�����ȤǤ��礦��
-����Ū����ˡ�������Ĥ�����ޤ���
+リファレンスの作り方はこれだけです。
+ここまでくると、どこか参照のかなたへ行ってしまったデータを取り戻すために、
+どうやってリファレンスを使うかを知りたいことでしょう。
+基本的な方法がいくつかあります。
 
 =over 4
 
@@ -673,9 +673,9 @@ a simple scalar variable containing a reference of the correct type:
 
 =end original
 
-�ѿ�̾�䥵�֥롼����̾�ΰ����Ȥ��Ƽ��̻Ҥ��֤��Ȥ����Ǥϡ�Ŭ�ڤ�
-���Υ�ե���󥹤���ä�ñ�㥹�����ѿ��Ǥ��μ��̻Ҥ�
-�֤������뤳�Ȥ��Ǥ��ޤ�:
+変数名やサブルーチン名の一部として識別子を置くところでは、適切な
+型のリファレンスを持った単純スカラ変数でその識別子を
+置き換えることができます:
 
     $bar = $$scalarref;
     push(@$arrayref, $filename);
@@ -695,14 +695,14 @@ However, a "simple scalar" includes an identifier that itself uses method
 
 =end original
 
-$arrayref[0] �� $hashref{"KEY"} �Ȥ������Ǥ��Ƥ���� I<�ǤϤʤ�> ���Ȥ�
-���ڤǤ���
-�������ѿ��Υǥ�ե���󥹤ϡ������ʤ� key �θ������� I<����> �Ԥʤ��ޤ���
-ñ�㥹�����ѿ����������ä���ΤϤ��٤ơ�
-�ʲ��� 2 �֤� 3 �֤���ˡ���Τ��ޤ���
-�������ʤ��顢��ñ�㥹����פˤϡ����� 1 ���ܤ���ˡ��Ƶ�Ū�˻ȤäƤ���
-���̻Ҥ�ޤޤ�ޤ���
-�������äơ��ʲ��Ϥϡ�"howdy" �Ƚ��Ϥ��ޤ���
+$arrayref[0] や $hashref{"KEY"} という形でしているの I<ではない> ことが
+大切です。
+スカラ変数のデリファレンスは、いかなる key の検索よりも I<前に> 行なわれます。
+単純スカラ変数より込み入ったものはすべて、
+以下の 2 番か 3 番の方法が採られます。
+しかしながら、「単純スカラ」には、この 1 番目の方法を再帰的に使っている
+識別子も含まれます。
+したがって、以下はは、"howdy" と出力します。
 
     $refrefref = \\\"howdy";
     print $$$$refrefref;
@@ -719,9 +719,9 @@ previous examples could be written like this:
 
 =end original
 
-�ѿ�̾�䥵�֥롼����̾�ΰ����Ȥ��Ƽ��̻Ҥ��֤��Ȥ����Ǥϡ�Ŭ�ڤʷ���
-��ե���󥹤��֤� BLOCK ��ȼ�����̻Ҥ��֤������뤳�Ȥ��Ǥ��ޤ���
-����������ȡ������ϰʲ��Τ褦�˽񤯤��Ȥ��Ǥ��ޤ�:
+変数名やサブルーチン名の一部として識別子を置くところでは、適切な型の
+リファレンスを返す BLOCK を伴う識別子で置き換えることができます。
+言い換えると、先の例は以下のように書くことができます:
 
     $bar = ${$scalarref};
     push(@{$arrayref}, $filename);
@@ -738,8 +738,8 @@ subscripted expressions:
 
 =end original
 
-�Τ��ˤ��ξ��ˤ��椫�ä����դ���ΤϤФ��������Ȥ��⤷��ޤ��󤬡�
-BLOCK �ˤ�Ǥ�դμ����ä�ź�����դ�����������뤳�Ȥ��Ǥ��ޤ�:
+確かにこの場合には中かっこを付けるのはばかげたことかもしれませんが、
+BLOCK には任意の式、特に添字を付けた式を入れることができます:
 
     &{ $dispatch{$index} }(1,2,3);	# call correct routine
 
@@ -754,15 +754,15 @@ I<not> case 2:
 
 =end original
 
-ñ��� <$$x> �ξ��ˤ��椫�ä�����ά�Ǥ���Τǡ�����ܥ��
-�ǥ�ե���󥹤�Ŭ���ʱ黻�ҤΤ褦�˼�����äơ�����ͥ���̤ϤɤΤ��餤����
-Ǻ��ͤ�����ޤ���
-���������⤷�黻�ҤǤ���С��椫�ä�������ˡ�
-���̤γ�̤��Ȥ��뤳�ȤǤ��礦��
-�����ǤϤ���ޤ���
-�ʲ��ΰ㤤��ͤ��ƤߤƤ���������
-CASE 0 �ϡ�CASE 1 ��û��������ΤǤ��ꡢCASE 2 ��
-û��������ΤǤ� B<����ޤ���>:
+単純な <$$x> の場合には中かっこが省略できるので、シンボルの
+デリファレンスを適当な演算子のように受け取って、その優先順位はどのくらいかと
+悩む人があります。
+しかし、もし演算子であれば、中かっこの代わりに、
+普通の括弧が使えることでしょう。
+そうではありません。
+以下の違いを考えてみてください。
+CASE 0 は、CASE 1 を短くしたものであり、CASE 2 を
+短くしたものでは B<ありません>:
 
     $$hashref{"KEY"}   = "VALUE";	# CASE 0
     ${$hashref}{"KEY"} = "VALUE";	# CASE 1
@@ -777,10 +777,10 @@ it's presumably referencing.  That would be case 3.
 
 =end original
 
-CASE 2 ��ޤ��ְ㤨�䤹����Τǡ�%hashref �Ȥ����ѿ��򥢥����������ΤǤ���
-$hashref ����𤷤ơ����줬�ؤ����ȤˤʤäƤ���ϥå����
-�ǥ�ե���󥹤��Ƥ����ΤǤϤ���ޤ���
-����ϡ�CASE 3 �Ǥ���
+CASE 2 もまた間違えやすいもので、%hashref という変数をアクセスするものです。
+$hashref を仲介して、それが指すことになっているハッシュを
+デリファレンスしているものではありません。
+それは、CASE 3 です。
 
 =item 3.
 X<autovivification> X<< -> >> X<arrow>
@@ -793,9 +793,9 @@ syntactic sugar, the examples for method 2 may be written:
 
 =end original
 
-����θġ������Ǥ�Ȥ���礬������ȡ�2 �֤���ˡ��Ȥ��Τ�
-�Ѥ路���ʤäƤ��ޤ���
-��ʸ����ǳ����Ȥ��ƾ嵭�� 2 �Ԥϡ��ʲ��Τ褦�˽񤱤ޤ�:
+配列の個々の要素を使う場合が増えると、2 番の方法を使うのが
+煩わしくなってきます。
+構文上の打開策として上記の 2 行は、以下のように書けます:
 
     $arrayref->[0] = "January";   # Array element
     $hashref->{"KEY"} = "VALUE";  # Hash element
@@ -809,8 +809,8 @@ same thing as C<< $array->[$x] >> here:
 
 =end original
 
-����κ�¦�ˤ���Ԥ���ǥ�ե���󥹤�ޤ�ơ���ե���󥹤��֤�Ǥ�դμ���
-�񤱤ޤ�(C<$array[$x]> �ϡ�C<< $array->[$x] >> ��Ʊ���Ǥ� I<����ޤ���>)��
+矢印の左側には先行するデリファレンスを含めて、リファレンスを返す任意の式が
+書けます(C<$array[$x]> は、C<< $array->[$x] >> と同じでは I<ありません>)。
 
     $array[$x]->{"foo"}->[0] = "January";
 
@@ -826,14 +826,14 @@ This process is called I<autovivification>.
 
 =end original
 
-���줬����κ����ͥ���ƥ����Ȥ��Ѥ���ȥ�ե���󥹤�
-¸�ߤ���褦�ˤʤ�Ȥ����������ΰ�ĤǤ���
-����ʸ�����ˤϡ�C<$array[$x]> ��̤������⤷��ޤ���
-���ξ�缫ưŪ�˥ϥå����ե���󥹤��������ơ�C<{"foo"}> ��
-�����Ǥ���褦�ˤʤ�ޤ���
-Ʊ���褦��  C<< $array[$x]->{"foo"} >> �������ե���󥹤���������Τǡ�
-C<[0]> �򤽤���õ�����Ȥ��Ǥ��ޤ���
-���Υץ������� I<��ưͭ����> (autovivification) �ȸƤФ�ޤ���
+これが、先の左辺値コンテキストで用いるとリファレンスが
+存在するようになるというケースの一つです。
+この文以前には、C<$array[$x]> は未定義かもしれません。
+その場合自動的にハッシュリファレンスと定義されて、C<{"foo"}> が
+検索できるようになります。
+同じように  C<< $array[$x]->{"foo"} >> が配列リファレンスで定義されるので、
+C<[0]> をそこで探すことができます。
+このプロセスは I<自動有効化> (autovivification) と呼ばれます。
 
 =begin original
 
@@ -842,8 +842,8 @@ subscripts, so you can shrink the above down to
 
 =end original
 
-�⤦��ġ�����ϡ�����դ���ź���� I<��> �Ǥϡ���ά���뤳�Ȥ��Ǥ��ޤ��Τǡ�
-�����ϡ��ʲ��Τ褦�˽񤱤ޤ�:
+もう一つ。矢印は、括弧付きの添字の I<間> では、省略することができますので、
+上の例は、以下のように書けます:
 
     $array[$x]{"foo"}[0] = "January";
 
@@ -854,8 +854,8 @@ multidimensional arrays just like C's:
 
 =end original
 
-�̾�����������Ȥ��褦�˸��ꤹ��С����礦�� C ��¿��������Τ褦��
-�Ȥ����Ȥ��Ǥ��ޤ�:
+通常の配列だけを使うように限定すれば、ちょうど C の多次元配列のように
+使うことができます:
 
     $score[$x][$y][$z] += 42;
 
@@ -866,9 +866,9 @@ to grow its arrays on demand.  Perl does.
 
 =end original
 
-���������������ºݤˤ����� C �������Ʊ���Ȥ������ǤϤ���ޤ���
-C �Ǥϡ�ɬ�פ˱�����������礭������ʤɤȤ������ȤϤǤ��ޤ���
-Perl �Ǥϡ����줬�Ǥ��ޤ���
+ああ、そうだ、実際には全く C の配列と同じという訳ではありません。
+C では、必要に応じて配列を大きくするなどということはできません。
+Perl では、それができます。
 
 =item 4.
 X<encapsulation>
@@ -885,15 +885,15 @@ civility though.
 
 =end original
 
-��ե���󥹤������֥������Ȥ��Ф����ΤǤ�����ˤϡ����Ȥ�����Τ�
-�����������뤿��Υ᥽�åɤ�����Ϥ��ǡ����֥������ȤΥ᥽�åɤ�
-������륯�饹�ѥå�������Ǥʤ���С����Υ᥽�åɤ�Ȥ��褦��
-���������ɤ��Ǥ��礦��
-����������ȡ��ɼ����äơ�������������ͳ���ʤ��¤ꡢ
-���֥������ȤΥ��ץ��벽��ȿ�Ťˤ��ƤϤ����ʤ��Ȥ������ȤǤ���
-Perl �ϡ����ץ��벽���פ�����Ϥ��ޤ���
-��ã�ϡ����μ���ԤǤϤ���ޤ���
-�������ʤˤ������δ���Ū�����٤���Ԥ��Ƥ��ޤ���
+リファレンスが、オブジェクトに対するものである場合には、参照されるものを
+アクセスするためのメソッドがあるはずで、オブジェクトのメソッドを
+定義するクラスパッケージ内でなければ、そのメソッドを使うように
+した方が良いでしょう。
+言い換えると、良識をもって、特別正当な理由がない限り、
+オブジェクトのカプセル化を反古にしてはいけないということです。
+Perl は、カプセル化を強要したりはしません。
+私達は、全体主義者ではありません。
+ただ、なにがしかの基本的な節度を期待しています。
 
 =back
 
@@ -908,12 +908,12 @@ X<reference, numeric context>
 
 =end original
 
-ʸ�������ͤ��ե���󥹤Ȥ��ƻȤ��ȡ���Ҥ����褦�˥���ܥ�å�
-��ե���󥹤��������ޤ���
-��ե���󥹤���ͤȤ��ƻȤ��ȡ�������Υ��ȥ졼���ΰ��֤�
-����ɽ�����������ޤ���
-��������Ѥ���������ͣ��ξ����ϡ���ĤΥ�ե���󥹤���ͤȤ���
-��Ӥ��뤳�Ȥǡ�Ʊ�����򻲾Ȥ��Ƥ��뤫�ɤ�����Ĵ�٤���Ǥ���
+文字列や数値をリファレンスとして使うと、上述したようにシンボリック
+リファレンスを生成します。
+リファレンスを数値として使うと、メモリ内のストレージの位置の
+整数表現を生成します。
+これを利用して便利な唯一の状況は、二つのリファレンスを数値として
+比較することで、同じ場所を参照しているかどうかを調べる場合です。
 X<reference, numeric context>
 
     if ($ref1 == $ref2) {  # cheap numeric compare of references
@@ -931,12 +931,12 @@ X<reference, string context>
 
 =end original
 
-��ե���󥹤�ʸ����Ȥ��ƻȤ��ȡ����Ȥ��Ƥ����Τη�
-(L<perlobj> �ǵ��Ҥ��Ƥ���褦�ˡ�bless ���Ƥ���ѥå�������ޤߤޤ�)�ȡ�
-16 �ʿ���ɽ�����줿���ͥ��ɥ쥹��ξ�����������ޤ���
-ref() �黻�Ҥϡ����ɥ쥹ȴ���ǡ���ե���󥹤������Ƥ����Τη�������
-�֤��ޤ���
-���λȤ����ξܺ٤���ˤĤ��Ƥ� L<perlfunc/ref> �򻲾Ȥ��Ƥ���������
+リファレンスを文字列として使うと、参照しているものの型
+(L<perlobj> で記述しているように、bless しているパッケージを含みます)と、
+16 進数で表現された数値アドレスの両方を生成します。
+ref() 演算子は、アドレス抜きで、リファレンスが示しているものの型だけを
+返します。
+この使い方の詳細と例については L<perlfunc/ref> を参照してください。
 X<reference, string context>
 
 =begin original
@@ -946,9 +946,9 @@ points to with a package functioning as an object class.  See L<perlobj>.
 
 =end original
 
-bless() �黻�Ҥϡ����֥������Ȥ򥪥֥������ȥ��饹�Ȥ��Ƶ�ǽ����
-�ѥå������ȷ���դ��뤿��˻Ȥ����Ȥ��Ǥ��ޤ���
-L<perlobj> �򻲾Ȥ��Ƥ���������
+bless() 演算子は、オブジェクトをオブジェクトクラスとして機能する
+パッケージと結び付けるために使うことができます。
+L<perlobj> を参照してください。
 
 =begin original
 
@@ -958,11 +958,11 @@ So C<${*foo}> and C<${\$foo}> both indicate the same scalar variable.
 
 =end original
 
-�ǥ�ե���󥹤ι�ʸ�ǤϾ����Ū�Ȥ����ե���󥹤η���
-�������Ȥ��Ǥ��ޤ��Τǡ��������֤��ե���󥹤�Ʊ���褦��
-�ǥ�ե���󥹤��뤳�Ȥ��Ǥ��ޤ���
-�ĤޤꡢC<${*foo}> �� C<${\$foo}> �ϡ��ɤ����Ʊ���������ѿ���
-�������Ȥˤʤ�ޤ���
+デリファレンスの構文では常に目的とするリファレンスの型を
+示すことができますので、型グロブをリファレンスと同じように
+デリファレンスすることができます。
+つまり、C<${*foo}> と C<${\$foo}> は、どちらも同じスカラ変数を
+示すことになります。
 
 =begin original
 
@@ -970,7 +970,7 @@ Here's a trick for interpolating a subroutine call into a string:
 
 =end original
 
-������˼����Τϡ�ʸ����˥��֥롼����ƤӽФ���������ųݤ��Ǥ�:
+次の例に示すのは、文字列にサブルーチン呼び出しを埋め込む仕掛けです:
 
     print "My sub returned @{[mysub(1,2,3)]} that time.\n";
 
@@ -985,14 +985,14 @@ chicanery is also useful for arbitrary expressions:
 
 =end original
 
-���֥륯�����ȤǰϤޤ줿ʸ������� C<@{...}> �����Ĥ���ȡ�����
-ʸ����ϥ֥��å��Ȥ���ɾ������ޤ���
-�֥��å��Ǥϡ�C<mysub(1,2,3)> �θƤӽФ���¹Ԥ������η�̤��Ф���
-̵̾����ؤΥ�ե���󥹤�����ޤ���
-�Ĥޤꡢ�֥��å����ΤǤϡ�����ؤΥ�ե���󥹤��֤����ȤȤʤꡢ
-C<@{...}> �ǥǥ�ե���󥹤��줿�塢���֥륯�����ȤǰϤޤ줿ʸ�������ˡ�
-�����ޤ�뤳�Ȥˤʤ�ޤ���
-���Τ��ޤ����ϤϤä��ꤷ�ʤ����ˤ�ͭ�ѤǤ�:
+ダブルクォートで囲まれた文字列中に C<@{...}> が見つかると、その
+文字列はブロックとして評価されます。
+ブロックでは、C<mysub(1,2,3)> の呼び出しを実行し、その結果に対する
+無名配列へのリファレンスが作られます。
+つまり、ブロック全体では、配列へのリファレンスを返すこととなり、
+C<@{...}> でデリファレンスされた後、ダブルクォートで囲まれた文字列の中に、
+埋め込まれることになります。
+このごまかしははっきりしない式にも有用です:
 
     print "That yields @{[$n + 5]} widgets\n";
 
@@ -1000,7 +1000,7 @@ C<@{...}> �ǥǥ�ե���󥹤��줿�塢���֥륯�����ȤǰϤޤ줿ʸ�������ˡ�
 X<reference, symbolic> X<reference, soft>
 X<symbolic reference> X<soft reference>
 
-(����ܥ�å���ե����)
+(シンボリックリファレンス)
 
 =begin original
 
@@ -1014,13 +1014,13 @@ value.
 
 =end original
 
-��ե���󥹤Ϥ⤷̤����Ǥ����ɬ�פ˱�����¸�ߤ���褦�ˤʤ�ȸ����ޤ�������
-�⤷��ե���󥹤Ȥ��ƻȤ�줿�ͤ������������Ƥ����Ȥ��ˤϤɤΤ褦��
-�ʤ�Τ������Ƥ��ޤ���Ǥ�����
-����ϥϡ��ɥ�ե���󥹤Ǥ� I<����ޤ���>��
-��ե���󥹤Ȥ��ƻȤä��ʤ餽��ϥ���ܥ�å���ե���󥹤Ȥ��ư����ޤ���
-�Ĥޤꡢ��������ͤ�(�����餯)̵̾���ͤؤ�ľ�ܤΥ�󥯤ǤϤʤ���
-�ѿ��� I<̾��> �Ȥ��ư����ޤ���
+リファレンスはもし未定義であれば必要に応じて存在するようになると言いましたが、
+もしリファレンスとして使われた値が既に定義されていたときにはどのように
+なるのか示していませんでした。
+これはハードリファレンスでは I<ありません>。
+リファレンスとして使ったならそれはシンボリックリファレンスとして扱われます。
+つまり、スカラの値は(おそらく)無名の値への直接のリンクではなく、
+変数の I<名前> として扱われます。
 
 =begin original
 
@@ -1028,8 +1028,8 @@ People frequently expect it to work like this.  So it does.
 
 =end original
 
-���Τ褦��Ư���Ȼפ��Ƥ��뤳�Ȥ�¿����ΤǤ���
-�Ǥ����餽��ư���ΤǤ���
+そのように働くと思われていることが多いものです。
+ですからそう動作するのです。
 
     $name = "foo";
     $$name = 1;			# Sets $foo
@@ -1050,10 +1050,10 @@ that, you can say
 
 =end original
 
-����϶��Ϥǡ�����¿�������Ǥ⤢��ޤ���
-(����¤����դ�Ϥ�ä�) �ϡ��ɥ�ե���󥹤�Ȥ����Ȥ������ˤ⡢
-���äƥ���ܥ�å���ե���󥹤�ȤäƤ��ޤ��褦�ʾ�礬���뤫��Ǥ���
-������ɻߤ���ˤϡ�
+これは強力で、かつ多少危険でもあります。
+(最大限の注意をはらって) ハードリファレンスを使おうとした場合にも、
+誤ってシンボリックリファレンスを使ってしまうような場合があるからです。
+これを防止するには、
 
     use strict 'refs';
 
@@ -1064,9 +1064,9 @@ block.  An inner block may countermand that with
 
 =end original
 
-�Ƚ񤤤ơ��ϤäƤ���֥��å���λĤ����ʬ�Ǥϥϡ��ɥ�ե���󥹤Τߤ�
-�������褦�ˤ��뤳�Ȥ��Ǥ��ޤ���
-��¦�Υ֥��å��Ǥϡ��ʲ��Τ褦�˽񤤤��Ǥ��ä����Ȥ�Ǥ��ޤ�:
+と書いて、囲っているブロック内の残りの部分ではハードリファレンスのみが
+許されるようにすることができます。
+内側のブロックでは、以下のように書いて打ち消すこともできます:
 
     no strict 'refs';
 
@@ -1078,11 +1078,11 @@ a symbol table, and thus are invisible to this mechanism.  For example:
 
 =end original
 
-����ܥ�å���ե���󥹤Ǥϡ��ѥå������ѿ�(�ɽ경����Ƥ����Ȥ��Ƥ�
-�������Х�)�����򸫤뤳�Ȥ��Ǥ��ޤ���
-(my() ���������) ��Ū�ʥ��������ѿ��ϡ�����ܥ�ơ��֥��
-¸�ߤ��ʤ��Τǥ���ܥ�å���ե���󥹤Ǥϻ��Ȥ��뤳�Ȥ��Ǥ��ޤ���
-���Ȥ���:
+シンボリックリファレンスでは、パッケージ変数(局所化されていたとしても
+グローバル)だけを見ることができます。
+(my() で宣言した) 静的なローカル変数は、シンボルテーブルに
+存在しないのでシンボリックリファレンスでは参照することができません。
+たとえば:
 
     local $value = 10;
     $ref = "value";
@@ -1098,13 +1098,13 @@ variables, which are all "global" to the package.
 
 =end original
 
-����ϡ�20 �ǤϤʤ���10 �Ƚ��Ϥ��ޤ���
-local() �ϡ��ѥå������ǡ֥������Х�ʡס��ѥå������ѿ���
-�ƶ������ΤǤ���
+これは、20 ではなく、10 と出力します。
+local() は、パッケージで「グローバルな」、パッケージ変数に
+影響するものです。
 
 =head2 Not-so-symbolic references
 
-(���ޤꥷ��ܥ�å��ǤϤʤ���ե����)
+(あまりシンボリックではないリファレンス)
 
 =begin original
 
@@ -1114,9 +1114,9 @@ always have within a string.  That is,
 
 =end original
 
-perl �ΥС������ 5.001 �ǡ��椫�ä��˰Ϥޤ줿����ܥ�å���ե���󥹤�
-��ꥯ�����ȤΤ褦�ˡ����礦�ɤ��줬ʸ�������ˤ��뤫�Τ褦��
-�����񤦤Ȥ��������ʵ�ǽ���ɤߤ䤹���Τ�����ɲä���ޤ�����
+perl のバージョン 5.001 で、中かっこに囲まれたシンボリックリファレンスが
+よりクォートのように、ちょうどそれが文字列の中にあるかのように
+振る舞うという新たな機能が読みやすさのために追加されました。
 
     $push = "pop on ";
     print "${push}over";
@@ -1129,9 +1129,9 @@ of quotes, so that
 
 =end original
 
-����� push ��ͽ���Ǥ���ˤ�ؤ餺��ˡ�pop on over�ɤȤʤ�ޤ���
-����ϥ������Ȥγ��Ǥ��äƤ�Ʊ�ͤǤ���
-�Ǥ����顢
+これは push が予約語であるにも関らず常に“pop on over”となります。
+これはクォートの外であっても同様です。
+ですから、
 
     print ${push} . "over";
 
@@ -1141,7 +1141,7 @@ and even
 
 =end original
 
-��
+や
 
     print ${ push } . "over";
 
@@ -1154,11 +1154,11 @@ using strict refs:
 
 =end original
 
-�Ǥ�����Ʊ�����̤Ȥʤ�ޤ���
-(����� Perl 4 �� ����̵���η���������Ƥ���ˤ�ؤ餺��
-Perl 5.000 �ǤϹ�ʸ���顼�Ȥʤ�ޤ�)��
-���ι�¤�Ϥ��ʤ��� strict refs ��ȤäƤ���Ȥ��ˡ�
-����ܥ�å���ե���󥹤Ǥ��뤳�Ȥ��θ I<���Ƥ��ޤ���>��
+でさえも同じ効果となります。
+(これは Perl 4 が 空白無しの形式を許しているにも関らず、
+Perl 5.000 では構文エラーとなります)。
+この構造はあなたが strict refs を使っているときに、
+シンボリックリファレンスであることを考慮 I<していません>。
 
     use strict 'refs';
     ${ bareword };	# Okay, means $bareword.
@@ -1172,10 +1172,10 @@ subscripting a hash.  So now, instead of writing
 
 =end original
 
-Ʊ�ͤ�ź�����դ��Τ��٤Ƥ�ñ��θ�ǹԤ��Ƥ���Τǡ�
-Ʊ���롼���ϥå�����Ф���ź�����դ��˻Ȥ���
-Ǥ�դ����ñ���Ŭ�Ѥ��ޤ���
-�Ǥ����顢
+同様に添え字付けのすべてが単一の語で行われているので、
+同じルールをハッシュに対する添え字付けに使われる
+任意の裸の単語に適用します。
+ですから、
 
     $array{ "aaa" }{ "bbb" }{ "ccc" }
 
@@ -1185,7 +1185,7 @@ you can write just
 
 =end original
 
-������˰ʲ��Τ褦�˽񤱤�:
+の代わりに以下のように書けて:
 
     $array{ aaa }{ bbb }{ ccc }
 
@@ -1196,8 +1196,8 @@ rare event that you do wish to do something like
 
 =end original
 
-������ź������ͽ���Ǥ��뤫�ɤ������ۤ��뤳�ȤϤ���ޤ���
-�ʲ��Τ褦�ʤ��Ȥ��������Ȥ������������ˤ�:
+そして添え字が予約語であるかどうかを心配することはありません。
+以下のようなことがしたいという珍しい場合には:
 
     $array{ shift }
 
@@ -1208,8 +1208,8 @@ makes it more than a bareword:
 
 =end original
 
-���ñ��Ǥʤ��褦�ˤ����벿�����ɲä��뤳�Ȥ�ͽ���Ǥ���褦��
-����Ū�˲�ᤵ���뤳�Ȥ��Ǥ��ޤ���
+裸の単語でないようにさせる何かを追加することで予約語であるように
+強制的に解釈させることができます。
 
     $array{ shift() }
     $array{ +shift }
@@ -1224,15 +1224,15 @@ string is effectively quoted.
 
 =end original
 
-C<use warnings> �ץ饰�ޤ� B<-w> �����å���ʸ����ͽ���Ȥ���
-��ᤵ�줿�Ȥ��ˤϷٹ��ȯ���ޤ���
-�����������ʤ�����ʸ����������ʤ�ñ���Ȥä����ˤϤ�Ϥ�ٹ𤵤�ޤ���
-�ʤ��ʤ�ʸ����ϻ��¾奯�����Ȥ���Ƥ��뤫��Ǥ���
+C<use warnings> プラグマや B<-w> スイッチは文字列が予約語として
+解釈されたときには警告を発します。
+しかし、あなたが小文字だけからなる単語を使った場合にはもはや警告されません。
+なぜなら文字列は事実上クォートされているからです。
 
 =head2 Pseudo-hashes: Using an array as a hash
 X<pseudo-hash> X<pseudo hash> X<pseudohash>
 
-(�����ϥå���: �����ϥå���Ȥ��ƻȤ�)
+(擬似ハッシュ: 配列をハッシュとして使う)
 
 =begin original
 
@@ -1241,8 +1241,8 @@ change without notice in future versions.
 
 =end original
 
-B<�ٹ�>: ���Υ��������ϼ¸�Ū��ǽ���������Ƥ��ޤ���
-����ΥС������ˤ����ơ��٤�������ͽ��ʤ����ѹ�������ǽ��������ޤ���
+B<警告>: このセクションは実験的機能を説明しています。
+将来のバージョンにおいて、細かな点は予告なしに変更される可能性があります。
 
 =begin original
 
@@ -1255,12 +1255,12 @@ noticeably.  The 'fields' pragma interface will remain available.
 
 =end original
 
-B<����>: ���ߤΥ桼������������ε����ϥå���μ���(����κǽ�����Ǥ�
-��̯�ʷ��ǻȤ����)�� Perl 5.8.0 ������侩�Ȥʤ�ޤ���; Perl 5.10.0 �����
-��������ơ����ε�ǽ���̤���ˡ�Ǽ��������ͽ��Ǥ���
-���ߤΥ��󥿡��ե������Ͻ��������Ǥʤ������ߤμ������̾������ȥϥå����
-���Ѥ򤫤ʤ���Ω�ķ����٤����Ƥ��ޤ���
-"fields" �ץ饰�ޥ��󥿡��ե����������Ѳ�ǽ�ʤޤ޻Ĥ�ޤ���
+B<注意>: 現在のユーザー見える形の擬似ハッシュの実装(配列の最初の要素を
+奇妙な形で使うもの)は Perl 5.8.0 から非推奨となりました; Perl 5.10.0 からは
+取り除かれて、この機能は別の方法で実装される予定です。
+現在のインターフェースは醜いだけでなく、現在の実装は通常の配列とハッシュの
+利用をかなり目立つ形で遅くしています。
+"fields" プラグマインターフェースは利用可能なまま残ります。
 
 =begin original
 
@@ -1271,10 +1271,10 @@ were fields in a structure.
 
 =end original
 
-5.005 �Υ�꡼�����顢�̾�ϥå����ե���󥹤��׵ᤵ���褦��
-����ƥ����Ȥΰ����ˤ����������ե���󥹤��Ȥ���褦�ˤʤ�ޤ�����
-����Ϥ��줬��¤�ΤΥե�����ɤǤ��뤫�Τ��Ȥ�
-����ܥ�̾��Ȥä��������ǤΥ����������ǽ�ˤ��ޤ���
+5.005 のリリースから、通常ハッシュリファレンスが要求されるような
+コンテキストの一部において配列リファレンスが使えるようになりました。
+これはそれが構造体のフィールドであるかのごとく
+シンボル名を使った配列要素のアクセスを可能にします。
 
 =begin original
 
@@ -1284,10 +1284,10 @@ to array indices.  Here is an example:
 
 =end original
 
-�����Ԥ�����ˤϡ������;�פʾ��������ʤ���Фʤ�ޤ���
-����κǽ�����Ǥϥե������̾�������ź�����˥ޥåԥ󥰤���
-�ϥå����ե���󥹤Ǥʤ���Фʤ�ޤ���
-���󤲤ޤ��礦:
+これを行うためには、配列は余計な情報を持たなければなりません。
+配列の最初の要素はフィールド名を配列の添え字にマッピングする
+ハッシュリファレンスでなければなりません。
+例を挙げましょう:
 
     $struct = [{foo => 1, bar => 2}, "FOO", "BAR"];
 
@@ -1309,10 +1309,10 @@ provided by the C<fields> pragma.
 
 =end original
 
-¸�ߤ��ʤ��ե�����ɤ��Ф��ƥ����������褦�Ȥ�����硢Perl ��
-�㳰��ȯ�����ޤ���
-̷����򤱤뤿��ˡ�C<fields> �ץ饰�ޤ��󶡤���� fields::phash() �ؿ���
-��˻ȤäƤ���������
+存在しないフィールドに対してアクセスしようとした場合、Perl は
+例外を発生します。
+矛盾を避けるために、C<fields> プラグマで提供される fields::phash() 関数を
+常に使ってください。
 
     use fields;
     $pseudohash = fields::phash(foo => "FOO", bar => "BAR");
@@ -1325,10 +1325,10 @@ See L<fields>.
 
 =end original
 
-�ѥե����ޥ󥹤���夵���뤿��ˡ�Perl �Ϸ��դ����줿
-���֥������ȥ�ե���󥹤Τ���Υե������̾��������ź�����ؤ��Ѵ���
-����ѥ�����˹ԤäƤ��ޤ����Ȥ�Ǥ��ޤ���
-L<fields> �򻲾Ȥ��Ƥ���������
+パフォーマンスを向上させるために、Perl は型付けされた
+オブジェクトリファレンスのためのフィールド名から配列添え字への変換を
+コンパイル時に行ってしまうこともできます。
+L<fields> を参照してください。
 
 =begin original
 
@@ -1339,12 +1339,12 @@ of a regular hash.  For instance:
 
 =end original
 
-�����ϥå���ǥ�����¸�ߤ�����å�������ˡ�� 2 �Ĥ���ޤ���
-1 �Ĥ�� exists() ��Ȥ����ȤǤ���
-���Υ����å��ϡ����ꤵ�줿�ե�����ɤ��ͤ����åȤ��줿���Ȥ����뤫�ɤ�����
-�狼��ޤ���
-����Ϥ��ΰ�̣���̾�Υϥå���ο����񤤤Ȱ��פ��ޤ���
-�㤨��:
+擬似ハッシュでキーの存在をチェックする方法は 2 つあります。
+1 つめは exists() を使うことです。
+このチェックは、指定されたフィールドに値がセットされたことがあるかどうかが
+わかります。
+これはこの意味で通常のハッシュの振る舞いと一致します。
+例えば:
 
     use fields;
     $phash = fields::phash([qw(foo bar pants)], ['FOO']);
@@ -1362,9 +1362,9 @@ field in the pseudo-hash.
 
 =end original
 
-2 �Ĥ�ϡ��ǽ���������Ǥˤ���ϥå����ե���󥹤� exists() ��
-�Ȥ����ȤǤ���
-����ϡ������������ϥå����ͭ���ʥե�����ɤǤ��뤫������å����ޤ���
+2 つめは、最初の配列要素にあるハッシュリファレンスに exists() を
+使うことです。
+これは、キーが擬似ハッシュの有効なフィールドであるかをチェックします。
 
     print exists $phash->[0]{bar};	# true, 'bar' is a valid field
     print exists $phash->[0]{shoes};# false, 'shoes' can't be used
@@ -1377,9 +1377,9 @@ explicitly delete it from the first hash element.
 
 =end original
 
-�����ϥå�������Ǥ��Ф��� delete() �ϥ������Τ�ΤǤϤʤ����������б�����
-�ͤ����������ޤ���
-������������ˤϡ��ǽ�Υϥå������Ǥ�������Ū�˺������ɬ�פ�����ޤ���
+擬似ハッシュの要素に対する delete() はキーそのものではなく、キーに対応する
+値だけを削除します。
+キーを削除するには、最初のハッシュ要素から明示的に削除する必要があります。
 
     print delete $phash->{foo};     # prints $phash->[1], "FOO"
     print exists $phash->{foo};     # false
@@ -1391,7 +1391,7 @@ explicitly delete it from the first hash element.
 X<scope, lexical> X<closure> X<lexical> X<lexical scope>
 X<subroutine, nested> X<sub, nested> X<subroutine, local> X<sub, local>
 
-(�ؿ��ƥ�ץ졼��)
+(関数テンプレート)
 
 =begin original
 
@@ -1402,11 +1402,11 @@ later, such as in a signal handler or a Tk callback.
 
 =end original
 
-������������褦�ˡ��ؿ�������ѥ��뤵�줿�Ȥ��˲Ļ�ʥ쥭�������ѿ���
-������������̵̾�ؿ��ϥ������������ޤ���
-�������ä��ѿ����Ф��륢�������ϥ����ʥ�ϥ�ɥ�Ǥ���Ȥ� Tk ��
-������Хå��Τ褦�ˡ����ȤǼ¹Ԥ����Ȥ��ޤ��ݻ�����Ƥ����ͤ�
-���Ф��ޤ���
+先に説明したように、関数がコンパイルされたときに可視なレキシカル変数に
+アクセスする無名関数はクロージャを作ります。
+そういった変数に対するアクセスはシグナルハンドラであるとか Tk の
+コールバックのように、あとで実行されるときまで保持されてきた値を
+取り出します。
 
 =begin original
 
@@ -1416,10 +1416,10 @@ that generated HTML font changes for the various colors:
 
 =end original
 
-�����ƥ�ץ졼�ȤȤ��ƥ����������Ȥ����Ȥˤ�äơ�Ʊ���褦�ʴؿ���
-���������뤳�Ȥ���ǽ�ˤʤ�ޤ���
-�����ǡ����ʤ����͡����Τ���˥ե���Ȥ��ѹ����� HTML ����������褦��
-����̾���ΤĤ����ؿ���ɬ�פȤ��Ƥ���Ȥ��ޤ��礦:
+巻数テンプレートとしてクロージャを使うことによって、同じような関数を
+たくさん作ることが可能になります。
+ここで、あなたが様々色のためにフォントを変更する HTML を生成するような
+色の名前のついた関数を必要としているとしましょう:
 
     print "Be ", red("careful"), "with that ", green("light");
 
@@ -1431,9 +1431,9 @@ trying to build.
 
 =end original
 
-red() �� green() �Ȥ��ä��ؿ��ϻ��̤ä���Τˤʤ�ޤ���
-��������Ф�����ˡ�������Ȥ��Ƥ���ؿ���̾���η������֤�
-������������������ޤ���
+red() と green() といった関数は似通ったものになります。
+これらを作り出すために、作ろうとしている関数の名前の型グロブに
+クロージャを代入します。
 
     @colors = qw(red blue green yellow orange purple violet);
     for my $name (@colors) {
@@ -1452,13 +1452,13 @@ That's the reasons for the C<my> on the loop iteration variable.
 
 =end original
 
-����ǡ����줾��δؿ����̸Ĥ˺�������ޤ���
-red(), RED(), blue(), BLUE(), green() �Τ褦�˸ƤӽФ����Ȥ���ǽ�Ǥ���
-���Υƥ��˥å��ϥ���ѥ�����֤ȥ��꡼�λ����̤��ޤ���
-Ʊ�ͤ˥��顼�򾯤ʤ����ޤ���
-�ʤ��ʤ顢��ʸ�����å��ϥ���ѥ�����˹Ԥ��뤫��Ǥ���
-̵̾�ؿ��ˤ����ѿ��Ϥ��٤ơ�Ŭ�ڤʥ����������������뤿��˽��פʤ�ΤǤ���
-����ϥ롼�פη����֤��ѿ����Ф��� C<my> ����ͳ��Ʊ���Ǥ���
+これで、それぞれの関数が別個に作成されます。
+red(), RED(), blue(), BLUE(), green() のように呼び出すことが可能です。
+このテクニックはコンパイル時間とメモリーの使用量を抑え、
+同様にエラーを少なくします。
+なぜなら、構文チェックはコンパイル時に行われるからです。
+無名関数にある変数はすべて、適切なクロージャを作成するために重要なものです。
+これはループの繰り返し変数に対する C<my> の理由と同じです。
 
 =begin original
 
@@ -1469,10 +1469,10 @@ you could have written it this way instead:
 
 =end original
 
-����ϥ���������˥ץ��ȥ����פ�Ϳ���뤿��ξ��ΰ�ĤǤ⤢��ޤ���
-��������ؿ��ΰ����˥����饳��ƥ����Ȥ�Ϳ���褦�Ȥ���ʤ�
-(�����餯�Ϥ�����˴ؤ��ƤϤ��ޤ긭��������ǤϤʤ��Ǥ��礦)��
-�ʲ��Τ褦�˵��Ҥ��뤳�Ȥ��Ǥ��ޤ�:
+これはクロージャにプロトタイプを与えるための場所の一つでもあります。
+生成する関数の引数にスカラコンテキストを与えようとするなら
+(おそらくはこの例に関してはあまり賢いやり方ではないでしょう)、
+以下のように記述することができます:
 
     *$name = sub ($) { "<FONT COLOR='$name'>$_[0]</FONT>" };
 
@@ -1485,10 +1485,10 @@ to occur during compilation.
 
 =end original
 
-�������ʤ��顢�ץ��ȥ����פθ����ϥ���ѥ�����˹Ԥ���Τǡ�
-��������ʸ�ϥץ��ȥ����פ�Ȥ��ˤ��٤�����ΤǤ���
-����ʸ�Υ롼�����Τ� BEGIN �֥��å����֤��Ƥ��٤Ƥ�
-����ѥ�����˹Ԥ��褦�ˤ��뤳�ȤǤ�����н褹�뤳�Ȥ��Ǥ��ޤ���
+しかしながら、プロトタイプの検査はコンパイル時に行われるので、
+この代入文はプロトタイプを使うには遅すぎるのです。
+代入文のループ全体を BEGIN ブロックに置いてすべてを
+コンパイル時に行うようにすることでこれに対処することができます。
 
 =begin original
 
@@ -1505,20 +1505,20 @@ intuitive coding of this type of thing incurs mysterious warnings about
 
 =end original
 
-�����ѹ�����褦�ʥ쥭�������ѿ����Ф��륢������ -- �㤨��������
-C<for> �롼�פΤ褦�ʤ�� -- �ϥ�����������֤��ƤΤ�ư���
-����Ū�ʥ��֥롼����Ǥ�ư��ޤ���
-����Ū�ʥ������Ǥϡ�̾���դ����֥롼�����Ŭ�ڤ˥ͥ��Ȥ��뤳�ȤϤʤ���
-(�ͥ��Ȥ����Τ�)̵̾�ؿ��Ǥ��äƤ�Ʊ���Ǥ���
-����ϡ�̾���Ĥ��Υ��֥롼����ϥ���ѥ�����˰��٤������������
-(�����Ƴ�¦�Υ쥭���������ª�����)�Τ��Ф���̵̾���֥롼�����
-'sub' �黻�Ҥ��¹Ԥ���������ª����뤫��Ǥ���
-¾�Υץ�����ߥ󥰸���ˤ���褦�ʡ���ͭ�Υץ饤�١����ѿ�����ä�
-�ͥ��Ȥ������֥롼�����Ȥ������ΤǤ���С�Perl �ǤϤ���ä�
-��֤�������ޤ���
-ľ��Ū�ˤ������Ȼפ��褦�ʥ����ǥ��󥰤ϡ��ԲĻ׵Ĥʷٹ�
-"will not stay shared" �Ȥʤ�Ǥ��礦��
-���󤲤�ȡ��ʲ�����Ϥ��ޤ�ư��ޤ���:
+型を変更するようなレキシカル変数に対するアクセス -- 例えば先の例の
+C<for> ループのようなもの -- はクロージャに置いてのみ動作し、
+一般的なサブルーチンでは動作しません。
+一般的なケースでは、名前付きサブルーチンは適切にネストすることはなく、
+(ネストするものが)無名関数であっても同じです。
+これは、名前つきのサブルーチンはコンパイル時に一度だけ作成される
+(そして外側のレキシカルに捕捉される)のに対し、無名サブルーチンは
+'sub' 演算子が実行される毎に捕捉されるからです。
+他のプログラミング言語にあるような、固有のプライベート変数を持った
+ネストしたサブルーチンを使いたいのであれば、Perl ではちょっと
+手間がかかります。
+直感的にこうだと思うようなコーディングは、不可思議な警告
+"will not stay shared" となるでしょう。
+例を挙げると、以下の例はうまく動作しません:
 
     sub outer {
         my $x = $_[0] + 35;
@@ -1532,7 +1532,7 @@ A work-around is the following:
 
 =end original
 
-�ʲ��Τ褦�ˤ���Ȥ��ޤ������ޤ�:
+以下のようにするとうまくいきます:
 
     sub outer {
         my $x = $_[0] + 35;
@@ -1549,10 +1549,10 @@ of outer().
 
 =end original
 
-����ǡ�inner() �� outer() ���椫��Τ߸ƤӽФ���褦�ˤʤ�ޤ���
-�ʤ��ʤ顢����������(̵̾�ؿ�)�ΰ���ѿ����Ф������������뤫��Ǥ���
-�����������Ԥä��Ȥ���outer() �Υ������פ���쥭�������ѿ� $x ��
-�����������̾��̤�Ǥ���
+これで、inner() は outer() の中からのみ呼び出せるようになります。
+なぜなら、クロージャ(無名関数)の一時変数に対する代入があるからです。
+しかしこれを行ったとき、outer() のスコープからレキシカル変数 $x の
+アクセスは通常通りです。
 
 =begin original
 
@@ -1561,13 +1561,13 @@ function, something not normally supported in Perl.
 
 =end original
 
-����ϡ��̾� Perl �Ǥϥ��ݡ��Ȥ���Ƥ��ʤ��褦��
-����ؿ��˥�������ʴؿ�����������Ȥ��ζ�̣�������̤Ǥ���
+これは、通常 Perl ではサポートされていないような
+ある関数にローカルな関数を生成するときの興味深い効果です。
 
 =head1 WARNING
 X<reference, string context> X<reference, use as hash key>
 
-(�ٹ�)
+(警告)
 
 =begin original
 
@@ -1576,8 +1576,8 @@ converted into a string:
 
 =end original
 
-��ե���󥹤�ϥå�����Ф��륭���Ȥ��ƻȤ����ȤϤǤ��ޤ���
-�����ʸ������Ѵ�����Ƥ��ޤ��ޤ���
+リファレンスをハッシュに対するキーとして使うことはできません。
+それは文字列へ変換されてしまいます。
 
     $x{ \$a } = $a;
 
@@ -1589,10 +1589,10 @@ more like
 
 =end original
 
-������ǥ�ե���󥹤��褦�Ȥ���ΤǤ���С������
-�ϡ��ɥ�ե���󥹤ˤ�Ư���ޤ���
-�����ơ����ʤ������褦�Ȥ������ȤϤǤ��ʤ��Ǥ��礦��
-���Τ褦�ʽ����򤷤����Ȼפ����⤷��ޤ��󤬡�
+キーをデリファレンスしようとするのであれば、それは
+ハードリファレンスには働きません。
+そして、あなたがしようとしたことはできないでしょう。
+次のような書き方をしたいと思うかもしれませんが、
 
     $r = \@a;
     $x{ $r } = $r;
@@ -1604,8 +1604,8 @@ real refs, instead of the keys(), which won't.
 
 =end original
 
-ư��ʤ� keys() ������ˡ����ʤ��Ȥ������Υ�ե���󥹤Ȥʤ�
-values() ��Ȥ����Ȥ��Ǥ��ޤ���
+動作しない keys() の代わりに、少なくとも本当のリファレンスとなる
+values() を使うことができます。
 
 =begin original
 
@@ -1613,8 +1613,8 @@ The standard Tie::RefHash module provides a convenient workaround to this.
 
 =end original
 
-ɸ��⥸�塼�� Tie::RefHash �Ϥ���򰷤��䤹�����뤿���
-���ʤ��󶡤��Ƥ��ޤ���
+標準モジュール Tie::RefHash はこれを扱いやすくするための
+手段を提供しています。
 
 =head1 SEE ALSO
 
@@ -1626,9 +1626,9 @@ in the F<t/op/ref.t> regression test in the Perl source directory.
 
 =end original
 
-�ɥ�����Ȥ�¾�ˡ������������ɤ⤿��ˤʤ�ޤ���
-���Ĥ��Υ�ե���󥹤�ȤäƤ���������Ū�ʥ���ץ�� Perl ��
-�������ǥ��쥯�ȥ�ˤ��� F<t/op/ref.t> �Ȥ�����ԥƥ��Ȥˤ���ޤ���
+ドキュメントの他に、ソースコードもためになります。
+幾つかのリファレンスを使っている病理学的なサンプルは Perl の
+ソースディレクトリにある F<t/op/ref.t> という退行テストにあります。
 
 =begin original
 
@@ -1638,10 +1638,10 @@ for how to use them to create objects.
 
 =end original
 
-ʣ���ʥǡ�����¤���������뤿��Υ�ե���󥹤λȤ�����
-L<perldsc> �� L<perllol> �򻲾Ȥ��Ƥ���������
-���֥������Ȥ��������뤿��Υ�ե���󥹤λȤ�����
-L<perltoot>��L<perlobj>��L<perlbot> �򻲾Ȥ��Ƥ���������
+複雑なデータ構造を生成するためのリファレンスの使い方は
+L<perldsc> と L<perllol> を参照してください。
+オブジェクトを生成するためのリファレンスの使い方は
+L<perltoot>、L<perlobj>、L<perlbot> を参照してください。
 
 =begin meta
 

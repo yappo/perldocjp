@@ -8,7 +8,7 @@ perl582delta - what is new for perl v5.8.2
 
 =end original
 
-perl v5.8.2 �Ǥ��ѹ���
+perl v5.8.2 での変更点
 
 =head1 DESCRIPTION
 
@@ -19,7 +19,7 @@ the 5.8.2 release.
 
 =end original
 
-���Υɥ�����Ȥ� 5.8.1 ��꡼���� 5.8.2 ��꡼�����ѹ����򵭽Ҥ��Ƥ��ޤ���
+このドキュメントは 5.8.1 リリースと 5.8.2 リリースの変更点を記述しています。
 
 =begin original
 
@@ -30,14 +30,14 @@ the L<perl58delta>, which describes differences between 5.6.0 and
 
 =end original
 
-�⤷����������Υ�꡼��, �㤨�� 5.6.1 �����饢�åץǡ��Ȥ���Τʤ顢
-5.6.0 �� 5.8.0 �Ȥΰ㤤���񤫤�Ƥ��� L<perl58delta> ����ӡ�
-5.8.0 �� 5.8.1 �Ȥΰ㤤���񤫤�Ƥ��� L<perl581delta> ���ɤ�Ǥ���������
-�褤�Ǥ��礦��
+もしそれよりも前のリリース, 例えば 5.6.1 等からアップデートするのなら、
+5.6.0 と 5.8.0 との違いが書かれている L<perl58delta> および、
+5.8.0 と 5.8.1 との違いが書かれている L<perl581delta> を読んでおいた方が
+よいでしょう。
 
 =head1 Incompatible Changes
 
-(�ߴ����Τʤ��ѹ�)
+(互換性のない変更)
 
 =begin original
 
@@ -49,12 +49,12 @@ lesser of two evils.
 
 =end original
 
-�����Υꥨ��ȥ��Ȥʥ����ƥॳ�����ƤӽФ��⥸�塼��Τ����
-����åɲ��ӥ�ɤΤ���ˡ�5.8.0 �� 5.8.1 �ΥХ��ʥ�ߴ�����
-�פ�̷��Ǽ����Ƥ��ޤ�����
-5.8.0 �ȤΥХ��ʥ�ߴ����� 5.8.2 �����줷�Ƥ��ޤ��������Τ����
-5.8.1 �Ȥθߴ�����ʤ���ɬ�פ�����ޤ�����
-�������Ĥΰ��Τ��������������Ȥߤʤ��Ƥ��ޤ���
+ある種のリエントラントなシステムコールを呼び出すモジュールのための
+スレッド化ビルドのために、5.8.0 と 5.8.1 のバイナリ互換性が
+思わぬ形で失われていました。
+5.8.0 とのバイナリ互換性は 5.8.2 で復旧していますが、そのために
+5.8.1 との互換性をなくす必要がありました。
+これは二つの悪のうち小さい方だとみなしています。
 
 =begin original
 
@@ -64,18 +64,18 @@ with 5.8.2. The fix is to re-compile and re-install the modules using 5.8.2.
 
 =end original
 
-����� ����åɲ����줿 5.8.1 ��ȤäƤ��ơ������θƤӽФ���Ȥ��⥸�塼���
-����ѥ��뤷�Ƥ��ơ�����ѥ��뤵�줿�⥸�塼��� 5.8.2 �ǻȤ����Ȥ��Ƥ���
-�͡��ˤΤ߱ƶ���Ϳ���ޤ�����������ˤ� 5.8.2 ��Ȥäƺƥ���ѥ��뤷��
-�ƥ��󥹥ȡ��뤷�Ƥ���������
+これは スレッド化された 5.8.1 を使っていて、これらの呼び出しを使うモジュールを
+コンパイルしていて、コンパイルされたモジュールを 5.8.2 で使おうとしている
+人々にのみ影響を与えます。修正するには 5.8.2 を使って再コンパイルして
+再インストールしてください。
 
 =head1 Core Enhancements
 
-(Core �γ�ĥ)
+(Core の拡張)
 
 =head2 Hash Randomisation
 
-(�ϥå���Υ����ಽ)
+(ハッシュのランダム化)
 
 =begin original
 
@@ -88,12 +88,12 @@ attack which prompted the change for 5.8.1.
 
 =end original
 
-5.8.1 ��Ƴ�����줿�ϥå���Υ����ಽ�Ͻ�������ޤ�����
-5.8.1 ��Ƴ�����줿������ 5.8.0 �ȥ������ߴ���������ޤ�����
-�Х��ʥ�ߴ������ʤ���礬����ޤ�����
-5.8.2 �� 5.8.0 �� 5.8.1 ��ξ�����Ф��ƥ������ȥХ��ʥ�θߴ��������ꡢ
-5.8.1 �Ǥ��ѹ����б�����������Ф��ƴ趯�ʤޤޤǤ��롢���ɤ��줿
-�������ʤ���Ƥ��ޤ���
+5.8.1 で導入されたハッシュのランダム化は修正されました。
+5.8.1 で導入された実装は 5.8.0 とソース互換性がありますが、
+バイナリ互換性がない場合がありました。
+5.8.2 は 5.8.0 と 5.8.1 の両方に対してソースとバイナリの互換性があり、
+5.8.1 での変更で対応した攻撃に対して頑強なままである、改良された
+実装がなされています。
 
 =begin original
 
@@ -103,13 +103,13 @@ rationale behind this change.
 
 =end original
 
-�䤿���Ϥ���ʬ��ˤ����� Debian �ץ��������Ȥξ����󶡤˴��դ��ޤ���
-�����ѹ��˴ؤ������������Ū�����ˤĤ��Ƥ� L<perlsec/"Algorithmic Complexity Attacks"> ��
-���Ȥ��Ƥ���������
+私たちはこの分野における Debian プロジェクトの情報提供に感謝します。
+この変更に関する本来の理論的説明については L<perlsec/"Algorithmic Complexity Attacks"> を
+参照してください。
 
 =head2 Threading
 
-(����å�)
+(スレッド)
 
 =begin original
 
@@ -118,15 +118,15 @@ have been fixed.
 
 =end original
 
-����åɴ֤Ƕ�ͭ�����ѿ��˴�Ϣ���뤤���Ĥ��Υ���꡼������������ޤ�����
+スレッド間で共有する変数に関連するいくつかのメモリリークが修正されました。
 
 =head1 Modules and Pragmata
 
-(�⥸�塼��ȥץ饰��)
+(モジュールとプラグマ)
 
 =head2 Updated Modules And Pragmata
 
-(�������줿�⥸�塼��ȥץ饰��)
+(更新されたモジュールとプラグマ)
 
 =begin original
 
@@ -134,7 +134,7 @@ The following modules and pragmata have been updated since Perl 5.8.1:
 
 =end original
 
-�ʲ��Υ⥸�塼��ȥץ饰�ޤ� 5.8.1 ���鹹������ޤ���:
+以下のモジュールとプラグマが 5.8.1 から更新されました:
 
 =over 4
 
@@ -158,7 +158,7 @@ Documentation improved
 
 =end original
 
-�ɥ�����Ȥ����ɤ���ޤ�����
+ドキュメントが改良されました。
 
 =item Tie::Hash
 
@@ -168,7 +168,7 @@ Documentation improved
 
 =end original
 
-�ɥ�����Ȥ����ɤ���ޤ�����
+ドキュメントが改良されました。
 
 =item Time::HiRes
 
@@ -184,13 +184,13 @@ Documentation improved
 
 =end original
 
-�ɥ�����Ȥ����ɤ���ޤ�����
+ドキュメントが改良されました。
 
 =back
 
 =head1 Selected Bug Fixes
 
-(�Х�������ȴ��)
+(バグ修正の抜粋)
 
 =begin original
 
@@ -199,12 +199,12 @@ correctly by the parser.
 
 =end original
 
-ǧ���Ǥ��ʤ��ե�����ƥ��ȱ黻�Ҥ˴ؤ���ʸˡ���顼�ϥѡ����ˤ�ä�
-������������褦�ˤʤ�ޤ�����
+認識できないファイルテスト演算子に関する文法エラーはパーサによって
+正しく扱われるようになりました。
 
 =head1 Changed Internals
 
-(�������ѹ�)
+(内部の変更)
 
 =begin original
 
@@ -214,13 +214,13 @@ interpreter more than once in a single process.
 
 =end original
 
--DMULTIPLICITY �����դξ��Υ��󥿥ץ꥿�ν��������괰���ˤʤ�ޤ�����
-����ˤ�� Perl ���󥿥ץ꥿���ĤΥץ�������ʣ������������Ӻ������
-�������꤬��褷�Ƥ���Ϥ��Ǥ���
+-DMULTIPLICITY がオフの場合のインタプリタの初期化がより完全になりました。
+これにより Perl インタプリタを一つのプロセスで複数回初期化および削除した
+場合の問題が解決しているはずです。
 
 =head1 Platform Specific Problems
 
-(�ץ�åȥե������ͭ������)
+(プラットフォーム固有の問題)
 
 =begin original
 
@@ -229,8 +229,8 @@ solve problems seen while building some XS modules.
 
 =end original
 
-�����ʥߥå���󥫥ե饰�� Solaris �� OS X �Ǥ��������ʤäƤ��ޤ�����
-����Ϥ����Ĥ��� XS �⥸�塼���ӥ�ɤ���֤�ȯ�����졢��������ޤ�����
+ダイナミックリンカフラグが Solaris と OS X でおかしくなっていました。
+これはいくつかの XS モジュールをビルドする間に発見され、修正されました。
 
 =begin original
 
@@ -238,7 +238,7 @@ Bugs in OS/2 sockets and tmpfile have been fixed.
 
 =end original
 
-OS/2 �ǤΥ����åȤȰ���ե�����ΥХ��Ͻ�������ޤ�����
+OS/2 でのソケットと一時ファイルのバグは修正されました。
 
 =begin original
 
@@ -247,12 +247,12 @@ around their problems as best possible.
 
 =end original
 
-OS X �Ǥ� C<setreuid> �ȴ�Ϣ�Τ�Τ����꤬����ޤ� - perl �Ǥ�
-�����������򤹤뤿��ˤǤ�������λ��򤷤Ƥ��ޤ���
+OS X では C<setreuid> と関連のものは問題があります - perl では
+この問題を回避するためにできるだけの事をしています。
 
 =head1 Future Directions
 
-(�����������)
+(将来の方向性)
 
 =begin original
 
@@ -266,13 +266,13 @@ as follows
 
 =end original
 
-5.8.3 ���顢�䤿�����ѹ����ξ��ʤ����ƥʥ󥹥�꡼������
-���ˤ˹Ԥ����Ȥ��Ƥ��ޤ���������Ū�ϡ������Ǥ��Ф���Х�������
-����᤯���Ť����������ǥ�꡼���򥢥åץ��졼�ɤ�����ξ׷��
-��꾮�������뤳�ȤǤ�������ˤ�ꡢ����ɥ桼������
-���åץ��졼�ɤΥ����ߥ󥰤˽�������������뤳�Ȥ��Ǥ���
-���åץ��졼�ɤαƶ�Ĵ�������Ѱդ˹Ԥ���Ϥ��Ǥ���
-���ߤΥ����ɥե꡼���ηײ�ϰʲ����̤�Ǥ�:
+5.8.3 から、私たちは変更点の少ないメンテナンスリリースをより
+頻繁に行おうとしています。この目的は、安定版に対するバグ修正を
+より早く伝播させ、安定版リリースをアップグレードする時の衝撃を
+より小さくすることです。これにより、エンドユーザーは
+アップグレードのタイミングに柔軟性を持たせることができ、
+アップグレードの影響調査をより用意に行えるはずです。
+現在のコードフリーズの計画は以下の通りです:
 
 =over 4
 
@@ -296,7 +296,7 @@ with the release following soon after, when testing is complete.
 
 =end original
 
-����³����꡼���⡢�ƥ��Ȥ���λ�����褹���˹Ԥ���Ǥ��礦��
+引き続くリリースも、テストが終了し次第すぐに行われるでしょう。
 
 =begin original
 
@@ -304,8 +304,8 @@ See L<perl581delta/"Future Directions"> for more soothsaying.
 
 =end original
 
-����ʤ�ͽ���ˤĤ��Ƥ� L<perl581delta/"Future Directions"> ��
-���Ȥ��Ƥ���������
+さらなる予言については L<perl581delta/"Future Directions"> を
+参照してください。
 
 =head1 Reporting Bugs
 
@@ -318,10 +318,10 @@ information at http://www.perl.com/, the Perl Home Page.
 
 =end original
 
-�⤷�Х��Ȼפ����Τ����Ĥ��ä��顢 comp.lang.perl.misc �˥塼�����롼�פ�
-�Ƕ���Ƥ��줿������ http://bugs.perl.org �ˤ��� perl �Х��ǡ����١�����
-��ǧ���Ƥ���������
-Perl �ۡ���ڡ�����http://www.perl.org �ˤ���󤬤���ޤ���
+もしバグと思われるものが見つかったら、 comp.lang.perl.misc ニュースグループに
+最近投稿された記事や http://bugs.perl.org にある perl バグデータベースを
+確認してください。
+Perl ホームページ、http://www.perl.org にも情報があります。
 
 =begin original
 
@@ -334,13 +334,13 @@ the Perl 5 bugs at http://bugs.perl.org/
 
 =end original
 
-�⤷�ޤ���𤵤�Ƥ��ʤ��Х����ȳο������顢���Υ�꡼���˴ޤޤ�Ƥ���
-perlbug �ץ��������¹Ԥ��Ƥ���������
-�Х��κƸ�������ץȤ�ʬ��������������ͭ���ʥ����ɤ��ڤ�Ĥ�뤳�Ȥ�
-�ռ����Ƥ����������Х���ݡ��Ȥ� perl -V �ν��ϤȰ���
-perlbug@perl.org ������� Perl porting ������ˤ�äƲ��Ϥ���ޤ���
-Perl 5 �ΥХ��ˤĤ��Ƥ� http://bugs.perl.org/ �Ǳ����ڤ�
-�������뤳�Ȥ��Ǥ��ޤ���
+もしまだ報告されていないバグだと確信したら、そのリリースに含まれている
+perlbug プログラムをを実行してください。
+バグの再現スクリプトを十分小さく、しかし有効なコードに切りつめることを
+意識してください。バグレポートは perl -V の出力と一緒に
+perlbug@perl.org に送られ Perl porting チームによって解析されます。
+Perl 5 のバグについては http://bugs.perl.org/ で閲覧及び
+検索することができます。
 
 =head1 SEE ALSO
 
@@ -350,7 +350,7 @@ The F<Changes> file for exhaustive details on what changed.
 
 =end original
 
-F<Changes> �ե�������ѹ����δ����ʾܺ٤�����ޤ���
+F<Changes> ファイルに変更点の完全な詳細があります。
 
 =begin original
 
@@ -358,7 +358,7 @@ The F<INSTALL> file for how to build Perl.
 
 =end original
 
-F<INSTALL> �ե������ Perl �Υӥ����ˡ������ޤ���
+F<INSTALL> ファイルに Perl のビルド方法があります。
 
 =begin original
 
@@ -366,7 +366,7 @@ The F<README> file for general stuff.
 
 =end original
 
-F<README> �ե�����˰���Ū�ʤ��Ȥ�����ޤ���
+F<README> ファイルに一般的なことがあります。
 
 =begin original
 
@@ -374,7 +374,7 @@ The F<Artistic> and F<Copying> files for copyright information.
 
 =end original
 
-F<Artistic> �ڤ� F<Copying> �ե������������󤬤���ޤ���
+F<Artistic> 及び F<Copying> ファイルに著作権情報があります。
 
 =cut
 

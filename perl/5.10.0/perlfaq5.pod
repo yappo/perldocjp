@@ -6,7 +6,7 @@ perlfaq5 - Files and Formats ($Revision: 10126 $)
 
 =end original
 
-perlfaq5 - �ե�����ȥե����ޥå� ($Revision: 10126 $)
+perlfaq5 - ファイルとフォーマット ($Revision: 10126 $)
 
 =head1 DESCRIPTION
 
@@ -17,15 +17,15 @@ formats, and footers.
 
 =end original
 
-���Υ��������Ǥϡ������Ϥȡ�f�ɤ˴ؤ������: �ե�����ϥ�ɥ�
-(filehandle)���ե�å���(flushing)���ե����ޥå�(format)��
-�եå���(footer)�򰷤��ޤ���
+このセクションでは、入出力と“f”に関する事柄: ファイルハンドル
+(filehandle)、フラッシング(flushing)、フォーマット(format)、
+フッター(footer)を扱います。
 
 =head2 How do I flush/unbuffer an output filehandle?  Why must I do this?
 X<flush> X<buffer> X<unbuffer> X<autoflush>
 
-(���ϥե�����ϥ�ɥ�� flush/unbuffer����ˤ�? �ʤ���Ϥ����
-���ʤ���Фʤ�ʤ���?)
+(出力ファイルハンドルを flush/unbufferするには? なぜ私はこれを
+やらなければならないの?)
 
 =begin original
 
@@ -36,10 +36,10 @@ command.
 
 =end original
 
-Perl�������ΥХåե���󥰤ʤ����Ϥ򥵥ݡ��Ȥ��ƤϤ��ޤ��� 
-(C<syswrite(OUT, $char, 1)>�Τ褦�ˤǤ��뤳�ȤϽ����ޤ�)����
-�ȥ��ޥ�ɥХåե���󥰡ɤ򥵥ݡ��Ȥ��Ƥ��ޤ���
-����ϳƥ��ޥ�ɤν��Ϥθ��ʪ��Ū�ʽ񤭽Ф����Ԥ���Ȥ�����ΤǤ���
+Perlは本当のバッファリングなし出力をサポートしてはいません 
+(C<syswrite(OUT, $char, 1)>のようにできることは除きます)が、
+“コマンドバッファリング”をサポートしています。
+これは各コマンドの出力の後で物理的な書き出しが行われるというものです。
 
 =begin original
 
@@ -52,13 +52,13 @@ bypasses buffering all together.
 
 =end original
 
-C��ɸ�������ϥ饤�֥��(stdio)�ϡ��̾�ϥ���饯������Хåե���󥰤���
-�ǥХ��������Ф���Τǡ��Х���ñ�̤Υ����ƥॳ����Ϥ���ޤ���
-����ʬ��stdio�μ����Ǥϡ��Хåե���󥰤������ȥХåե��Υ�������
-�ǥХ����η��˽��ä���ΤˤʤäƤ��ޤ���
-Perl �� C<print()> �ؿ��� C<write()> �ؿ����̾���Ϥ�
-�Хåե���󥰤��ޤ�����C<syswrite()> �ؿ��ϥХåե���󥰤�
-�Х��ѥ����ޤ���
+Cの標準入出力ライブラリ(stdio)は、通常はキャラクターをバッファリングして
+デバイスへ送出するので、バイト単位のシステムコールはありません。
+大部分のstdioの実装では、バッファリングの方式とバッファのサイズは
+デバイスの型に従ったものになっています。
+Perl の C<print()> 関数と C<write()> 関数は通常出力を
+バッファリングしますが、C<syswrite()> 関数はバッファリングを
+バイパスします。
 
 =begin original
 
@@ -73,15 +73,15 @@ L<perlvar/$E<verbar>> and L<perlfunc/select>).
 
 =end original
 
-(�㤨�С����餫�Υͥåȥ���ץ��ȥ���Τ����)
-C<print()> �� C<write()> �μ¹Ը�ľ���˽��Ϥ������ʤ顢���Υϥ�ɥ��
-��ư�ե�å���ե饰�򥻥åȤ��ʤ���Фʤ�ޤ���
-���Υե饰�� Perl �ѿ�C<$|> �ǡ�����򿿤��ͤ˥��åȤ���ȡ�Perl ��
-C<print()> �� C<write()> �θ�˥ϥ�ɥ�ΥХåե���ե�å��夷�ޤ���
-C<$|> ������ϸ������򤵤�Ƥ���ǥե���ȥե�����ϥ�ɥ��
-�Хåե���󥰤ˤΤ߱ƶ���Ϳ���ޤ���
-���Υϥ�ɥ�� 1 ������ C<select()> �ƤӽФ������򤷤ޤ�
-(L<perlvar/$E<verbar>> �� L<perlfunc/select> �򻲾Ȥ��Ƥ�������)��
+(例えば、何らかのネットワークプロトコルのために)
+C<print()> や C<write()> の実行後直ちに出力したいなら、そのハンドルの
+自動フラッシュフラグをセットしなければなりません。
+このフラグは Perl 変数C<$|> で、これを真の値にセットすると、Perl は
+C<print()> や C<write()> の後にハンドルのバッファをフラッシュします。
+C<$|> の設定は現在選択されているデフォルトファイルハンドルの
+バッファリングにのみ影響を与えます。
+このハンドルは 1 引数の C<select()> 呼び出しで選択します
+(L<perlvar/$E<verbar>> と L<perlfunc/select> を参照してください)。
 
 =begin original
 
@@ -90,8 +90,8 @@ per-filehandle variables.
 
 =end original
 
-��Ū�Υϥ�ɥ�����򤹤뤿��� C<select()> ��Ȥ������줫�餽��
-�ե�����ϥ�ɥ�ñ�̤��ѿ��򥻥åȤ��ޤ���
+目的のハンドルを選択するために C<select()> を使い、それからその
+ファイルハンドル単位の変数をセットします。
 
 	$old_fh = select(OUTPUT_HANDLE);
 	$| = 1;
@@ -105,9 +105,9 @@ do with them.  You can use C<IO::Handle>:
 
 =end original
 
-�ϥ�ɥ�Ȥ����ѿ��˥��֥������Ȼظ��ǥ��������Ǥ���褦�ˤ���⥸�塼���
-����ޤ��������ʤ���ñ�ˤ�������򤷤����ʤ���Ĳ᤮�뤫�⤷��ޤ���
-C<IO::Handle> ���Ȥ��ޤ�:
+ハンドルとその変数にオブジェクト指向でアクセスできるようにするモジュールも
+ありますが、あなたが単にこれだけをしたいなら大仰過ぎるかもしれません。
+C<IO::Handle> が使えます:
 
 	use IO::Handle;
 	open my( $printer ), ">", "/dev/printer");   # but is this?
@@ -119,7 +119,7 @@ or C<IO::Socket> (which inherits from C<IO::Handle>):
 
 =end original
 
-�ޤ��ϡ�(C<IO::Handle> ����Ѿ����줿)C<IO::Socket> ��Ȥä�:
+または、(C<IO::Handle> から継承された)C<IO::Socket> を使って:
 
 	use IO::Socket;		  # this one is kinda a pipe?
 	my $sock = IO::Socket::INET->new( 'www.example.com:80' );
@@ -133,8 +133,8 @@ C<autoflush>. Call the C<flush> method to flush the buffer yourself:
 
 =end original
 
-C<autoflush> �򥻥åȤ����� C<IO::Handle> ���֥������Ȥ�ե�å���Ǥ��ޤ���
-�Хåե����Ȥ�ե�å��夹�뤿��� C<flush> �᥽�åɤ�ƤӽФ��Ƥ�������:
+C<autoflush> をセットせずに C<IO::Handle> オブジェクトをフラッシュできます。
+バッファ自身をフラッシュするために C<flush> メソッドを呼び出してください:
 
 	use IO::Handle;
 	open my( $printer ), ">", "/dev/printer"); 
@@ -144,8 +144,8 @@ C<autoflush> �򥻥åȤ����� C<IO::Handle> ���֥������Ȥ�ե�å���Ǥ��ޤ���
 =head2 How do I change, delete, or insert a line in a file, or append to the beginning of a file?
 X<file, editing>
 
-(�ե�����ΰ�Ԥ��ѹ�����/�ե�����Τ���Ԥ�������/
-�ե�����������ǰ����������/�ե��������Ƭ���ɲä���ˤ�?)
+(ファイルの一行を変更する/ファイルのある行を削除する/
+ファイルの中程で一行挿入する/ファイルの先頭に追加するには?)
 
 =begin original
 
@@ -153,7 +153,7 @@ X<file, editing>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -166,11 +166,11 @@ such as C<Tie::File> can fake it.
 
 =end original
 
-�ƥ����ȥե�����ιԤ��������ѹ���������뤿��δ���Ū�ʹͤ����ϡ�
-�ե�������ѹ������������ޤ��ɤ߹����ɽ�������ѹ���Ԥ����ե������
-�Ĥ���ɤ߹����ɽ������Ȥ�����ΤǤ���
-(�ä˥쥳�������ϥ��ѥ졼�� C<$/> ���ѹ���ǽ�ʤΤ�) Perl �ϹԤ��Ф���
-�����ॢ���������󶡤��Ƥ��ޤ��󤬡�C<Tie::File> �Ϥ���򸫤������ޤ���
+テキストファイルの行を挿入、変更、削除するための基本的な考え方は、
+ファイルを変更したい地点まで読み込んで表示し、変更を行い、ファイルの
+残りを読み込んで表示するというものです。
+(特にレコード入力セパレータ C<$/> は変更可能なので) Perl は行に対する
+ランダムアクセスは提供していませんが、C<Tie::File> はそれを見せかけます。
 
 =begin original
 
@@ -179,8 +179,8 @@ file, printing its lines, then closing the file:
 
 =end original
 
-���κ�Ȥ򤹤� Perl �ץ������ϡ��ե�����򳫤��ơ�������ɽ������
-�ե�������Ĥ���Ȥ�������Ū�ʷ���Ȥ�ޤ�:
+この作業をする Perl プログラムは、ファイルを開いて、一行毎に表示し、
+ファイルを閉じるという基本的な形をとります:
 
 	open my $in,  '<',  $file      or die "Can't read old file: $!";
 	open my $out, '>', "$file.new" or die "Can't write new file: $!";
@@ -199,7 +199,7 @@ or delete lines.
 
 =end original
 
-���ܷ�����ˡ��Ԥ��ɲá�����������Ȥ���ɬ�פʺ�Ȥ��ɲä��ޤ���
+基本形の中に、行の追加、修正、削除という必要な作業を追加します。
 
 =begin original
 
@@ -208,7 +208,7 @@ the loop that prints the existing lines.
 
 =end original
 
-��Ƭ���ɲä���ˤϡ���¸�ιԤ�ɽ������롼�פ����������ɲùԤ�ɽ�����ޤ���
+先頭に追加するには、既存の行を表示するループに入る前に追加行を表示します。
 
 	open my $in,  '<',  $file      or die "Can't read old file: $!";
 	open my $out, '>', "$file.new" or die "Can't write new file: $!";
@@ -231,10 +231,10 @@ be sure that you're supposed to do that on every line!
 
 =end original
 
-���ˤ���Ԥ��ѹ�����ˤϡ�C<while> ����˹Ԥ��ѹ����륳���ɤ��ɲä��ޤ���
-����ξ�硢�����ɤϾ�ʸ���� "perl" ��õ���Ƥ������ʸ���ˤ��ޤ���
-��������ƤιԤ��Ф��Ƶ�����Τǡ����ƤιԤ��Ф��Ƥ����Ԥ������Ȥ������Ȥ�
-��ǧ���Ƥ�������!
+既にある行を変更するには、C<while> の中に行を変更するコードを追加します。
+今回の場合、コードは小文字の "perl" を探してそれを大文字にします。
+これは全ての行に対して起こるので、全ての行に対してこれを行いたいということを
+確認してください!
 
 	open my $in,  '<',  $file      or die "Can't read old file: $!";
 	open my $out, '>', "$file.new" or die "Can't write new file: $!";
@@ -258,10 +258,10 @@ print it. After that, read the rest of the lines and print those:
 
 =end original
 
-����ιԤ����ѹ�����ˤϡ����Ϲ��ֹ� C<$.> �������Ǥ���
-�ޤ����ѹ��������Ԥޤ��ɤ߹����ɽ�����ޤ���
-���ˡ��ѹ��������Ԥ� 1 ���ɤ�ǡ��ѹ�����ɽ�����ޤ���
-���θ塢�Ĥ�ιԤ��ɤ߹����ɽ�����ޤ�:
+特定の行だけ変更するには、入力行番号 C<$.> が便利です。
+まず、変更したい行まで読み込んで表示します。
+次に、変更したい行を 1 行読んで、変更し、表示します。
+その後、残りの行を読み込んで表示します:
 
 	while( <$in> )   # print the lines before the change
 		{
@@ -286,9 +286,9 @@ encounters either C<__END__> or C<__DATA__>.
 
 =end original
 
-�Ԥ��ɤ����Ф��ˤϡ��롼�������Ȥ��ޤ���
-������� C<next> �ϥ����ȹԤ��ɤ����Ф���C<last> �ϡ�C<__END__> ��
-C<__DATA__> �Τɤ��餫�˽в�ä�������Ƥν�������ߤ��ޤ���
+行を読み飛ばすには、ループ制御を使います。
+この例の C<next> はコメント行を読み飛ばし、C<last> は、C<__END__> か
+C<__DATA__> のどちらかに出会った後は全ての処理を停止します。
 
 	while( <$in> )
 		{
@@ -305,7 +305,7 @@ example skips every fifth line:
 
 =end original
 
-Ʊ���褦�ʤ��Ȥϡ�C<next> ��Ȥä�ɽ���������ʤ��Ԥ����Ф����ȤǹԤ��ޤ���
+同じようなことは、C<next> を使って表示したくない行を飛ばすことで行えます。
 
 	while( <$in> )
 		{
@@ -321,9 +321,9 @@ you can fit the whole thing in memory!):
 
 =end original
 
-�⤷���ʤ�餫���Ѥ�ä���ͳ�ˤ�ꡢ��Ԥ��Ľ�������ΤǤϤʤ���������
-�ե��������Τ���٤��ɤ߹��ߤ�����硢(���꤬�����!)�ʲ��Τ褦�ˤ���
-�Ǥ��ޤ�:
+もし、なんらかの変わった理由により、一行ずつ処理するのではなく、本当に
+ファイル全体を一度に読み込みたい場合、(メモリがあれば!)以下のようにして
+できます:
 
 	open my $in,  '<',  $file      or die "Can't read old file: $!"
 	open my $out, '>', "$file.new" or die "Can't write new file: $!";
@@ -343,9 +343,9 @@ finishes.
 
 =end original
 
-C<File::Slurp> �� C<Tie::File> �Τ褦�ʥ⥸�塼��⤳�ν����ˤʤ�ޤ���
-���������⤷��ǽ�ʤ顢�ե��������Τ���٤��ɤ߹���Τ��򤱤Ƥ���������
-Perl �� OS ������ݤ�������򡢥ץ������������ޤ��֤��ޤ���
+C<File::Slurp> や C<Tie::File> のようなモジュールもこの助けになります。
+しかし、もし可能なら、ファイル全体を一度に読み込むのは避けてください。
+Perl は OS から確保したメモリを、プロセスが終わるまで返しません。
 
 =begin original
 
@@ -359,14 +359,14 @@ L<perlrun> for more details.
 
 =end original
 
-�ե�����򤽤ξ���ѹ����뤿��ˡ�Perl �ΰ����Ϻ��Ȥ��ޤ���
-�ʲ�����Ǥϡ�F<inFile.txt> �ˤ������Ƥ� 'Fred' �� 'Barney' ���ѹ�����
-�ե�����򿷤������ƤǾ�񤭤��ޤ���
-C<-p> �����å��դ��ξ�硢C<-e> �ǻ��ꤷ�������ɤ� C<while> �롼�פ���ߡ�
-C<-i> �Ϥ��ξ��Խ���ͭ���ˤ��ޤ���
-���߹Ԥ� C<$_> �����äƤ��ޤ���
-C<-p> ������ȡ�Perl �ϥ롼�פκǸ�� C<$_> ���ͤ�ưŪ��ɽ�����ޤ���
-����ʤ�ܺ٤ˤĤ��Ƥ� L<perlrun> �򻲾Ȥ��Ƥ���������
+ファイルをその場で変更するために、Perl の一行野郎も使えます。
+以下の例では、F<inFile.txt> にある全ての 'Fred' を 'Barney' に変更し、
+ファイルを新しい内容で上書きします。
+C<-p> スイッチ付きの場合、C<-e> で指定したコードを C<while> ループで包み、
+C<-i> はその場編集を有効にします。
+現在行は C<$_> に入っています。
+C<-p> があると、Perl はループの最後に C<$_> の値を自動的に表示します。
+さらなる詳細については L<perlrun> を参照してください。
 
 	perl -pi -e 's/Fred/Barney/' inFile.txt
 
@@ -376,7 +376,7 @@ To make a backup of C<inFile.txt>, give C<-i> a file extension to add:
 
 =end original
 
-C<inFile.txt> ��Хå����åפ���ˤϡ�C<-i> ���ɲä����ĥ�Ҥ���ꤷ�ޤ�:
+C<inFile.txt> をバックアップするには、C<-i> で追加する拡張子を指定します:
 
 	perl -pi.bak -e 's/Fred/Barney/' inFile.txt
 
@@ -388,8 +388,8 @@ passes:
 
 =end original
 
-5 ���ܤ������ѹ�����ˤϡ����Ϲ��ֹ� C<$.> ������å�����ƥ��Ȥ��ɲä���
-�ƥ��Ȥ��̲ᤷ�����ˤΤ�����Ԥ��ޤ�:
+5 行目だけを変更するには、入力行番号 C<$.> をチェックするテストを追加し、
+テストに通過した場合にのみ操作を行います:
 
 	perl -pi -e 's/Fred/Barney/ if $. == 5' inFile.txt
 
@@ -400,7 +400,7 @@ before Perl prints C<$_>:
 
 =end original
 
-����ιԤ������ɲä���ˤϡ�Perl �� C<$_> ��ɽ���������˹Ԥ��ɲä��ޤ�:
+特定の行の前に追加するには、Perl が C<$_> を表示する前に行を追加します:
 
 	perl -pi -e 'print "Put before third line\n" if $. == 3' inFile.txt
 
@@ -411,8 +411,8 @@ line prints at the end of the loop:
 
 =end original
 
-���߹Ԥϥ롼�פν�����ɽ�������Τǡ��ե��������Ƭ�˹Ԥ�
-�ɲä��뤳�Ȥ�Ǥ��ޤ�:
+現在行はループの終わりに表示されるので、ファイルの先頭に行を
+追加することもできます:
 
 	perl -pi -e 'print "Put before first line\n" if $. == 1' inFile.txt
 
@@ -425,10 +425,10 @@ first, then print the line that you want to add.
 
 =end original
 
-���˥ե�����ˤ���Ԥθ�˹Ԥ��ɲä���ˤϡ�C<-n> �����å���Ȥ��ޤ���
-����� C<-p> ��Ʊ�ͤǤ������롼�פν����� C<$_> ��ɽ�����ʤ��Τǡ�
-��ʬ���Ȥ�ɽ������ɬ�פ�����ޤ���
-���ξ�硢�ޤ� C<$_> ��ɽ���������줫���ɲä������Ԥ�ɽ�����ޤ���
+既にファイルにある行の後に行を追加するには、C<-n> スイッチを使います。
+これは C<-p> と同様ですが、ループの終わりに C<$_> を表示しないので、
+自分自身で表示する必要があります。
+この場合、まず C<$_> を表示し、それから追加したい行を表示します。
 
 	perl -ni -e 'print; print "Put after fifth line\n" if $. == 5' inFile.txt
 
@@ -438,7 +438,7 @@ To delete lines, only print the ones that you want.
 
 =end original
 
-�Ԥ�������ˤϡ�ɬ�פʤ�Τ�����ɽ�����ޤ�:
+行を削除するには、必要なものだけを表示します:
 
 	perl -ni -e 'print unless /d/' inFile.txt
 
@@ -449,7 +449,7 @@ To delete lines, only print the ones that you want.
 =head2 How do I count the number of lines in a file?
 X<file, counting lines> X<lines> X<line>
 
-(����ե�����ιԿ��������ˤ�?)
+(あるファイルの行数を数えるには?)
 
 =begin original
 
@@ -460,11 +460,11 @@ proper text file, so this may report one fewer line than you expect.
 
 =end original
 
-���˸�Ψ���ɤ�������ΰ�Ĥϥե�����β��Ԥο��������Ȥ�����ΤǤ���
-�ʲ��Υץ�������L<perlop>����������Ƥ���褦��tr///�ε�ǽ��ȤäƤ��ޤ���
-�ƥ����ȥե����뤬���Ԥǽ���äƤ��ʤ���С�
-�����Ŭ�ڤʥƥ����ȥե�����ǤϤ���ޤ���
-���Τ��ᡢ���Ԥ��Ƥ������쾯�ʤ��Կ�����𤹤�Ǥ��礦��
+非常に効率の良いやり方の一つはファイルの改行の数を数えるというものです。
+以下のプログラムはL<perlop>で説明されているようなtr///の機能を使っています。
+テキストファイルが改行で終わっていなければ、
+それは適切なテキストファイルではありません。
+そのため、期待しているよりも一少ない行数を報告するでしょう。
 
 	$lines = 0;
 	open(FILE, $filename) or die "Can't open `$filename': $!";
@@ -479,12 +479,12 @@ This assumes no funny games with newline translations.
 
 =end original
 
-����ϲ��Ԥ�����̯��ư��ʤ��Ȳ��ꤷ�Ƥ��ޤ���
+これは改行に絡む妙な動作がないと仮定しています。
 
 =head2 How can I use Perl's C<-i> option from within a program?
 X<-i> X<in-place>
 
-(�ץ�������⤫�� Perl �� C<-i> ���ץ�����Ȥ��ˤ�?)
+(プログラム内から Perl の C<-i> オプションを使うには?)
 
 =begin original
 
@@ -495,12 +495,12 @@ behavior within a larger program.  For example:
 
 =end original
 
-C<-i> �� Perl �� C<$^I> �ѿ����ͤ򥻥åȤ�������ˤ�� C<< <> >> ��
-�����񤤤˱ƶ���Ϳ���ޤ�; ���ʤ�ܺ٤ˤĤ��Ƥ� L<perlrun> ��
-���Ȥ��Ƥ���������
-Ŭ�ڤ��ѿ���ľ�ܽ������뤳�Ȥˤ�äơ�����礭�ʥץ����������Ʊ�����̤�
-�����ޤ���
-�㤨��:
+C<-i> は Perl の C<$^I> 変数の値をセットし、これにより C<< <> >> の
+振る舞いに影響を与えます; 更なる詳細については L<perlrun> を
+参照してください。
+適切な変数を直接修正することによって、より大きなプログラムの中で同じ効果が
+得られます。
+例えば:
 
 	# ...
 	{
@@ -524,13 +524,13 @@ C<.c.orig> file.
 
 =end original
 
-���Υ֥��å��ϥ����ȥǥ��쥯�ȥ�����Ƥ� the C<.c> �ե������������
-�ƥե�����θ��ǡ����ΥХå����åפ򿷤��� C<.c.orig> �ե�����˻Ĥ��ޤ���
+このブロックはカレントディレクトリの全ての the C<.c> ファイルを修正し、
+各ファイルの元データのバックアップを新しい C<.c.orig> ファイルに残します。
 
 =head2 How can I copy a file?
 X<copy> X<file, copy>
 
-(�ե�����򥳥ԡ�����ˤ�?)
+(ファイルをコピーするには?)
 
 =begin original
 
@@ -538,7 +538,7 @@ X<copy> X<file, copy>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -548,9 +548,9 @@ a portable fashion.
 
 =end original
 
-File::Copy �⥸�塼���Ĥ����ޤ��礦��
-����� Perl ��Ʊ������Ƥ��ơ��ե����륷���ƥ�֤ǿ��Υ��ԡ����Ԥ�졢
-�ܿ������̤Ǥκٹ�������Ƥ��ޤ���
+File::Copy モジュールをつかいましょう。
+これは Perl に同梱されていて、ファイルシステム間で真のコピーが行われ、
+移植性の面での細工がされています。
 
 	use File::Copy;
 
@@ -564,14 +564,14 @@ to the destination file as you read the original.
 
 =end original
 
-File::Copy ���Ȥ��ʤ���硢��Ȥ�ʬ���ȤǤ���ɬ�פ�����ޤ�:
-���ե�����򳫤���������ե�����򳫤������ե����뤫���ɤ����Τ򰸤���
-�ե�����˽񤭹��ߤޤ���
+File::Copy が使えない場合、作業を自分自身でする必要があります:
+元ファイルを開き、宛て先ファイルを開き、元ファイルから読んだものを宛て先
+ファイルに書き込みます。
 
 =head2 How do I make a temporary file name?
 X<file, temporary>
 
-(����ե������̾������Ф��ˤ�?)
+(一時ファイルの名前を作り出すには?)
 
 =begin original
 
@@ -581,9 +581,9 @@ creates an anonymous temporary file.
 
 =end original
 
-�⤷�ե�����̾���Τ�ɬ�פ��ʤ��ʤ顢C<open()> �ǥե�����̾����ʬ��
-C<undef> ����ꤷ�ޤ���
-C<open()> �ؿ���̵̾����ե������������ޤ���
+もしファイル名を知る必要がないなら、C<open()> でファイル名の部分に
+C<undef> を指定します。
+C<open()> 関数は無名一時ファイルを作成します。
 
 	open my $tmp, '+>', undef or die $!;
 
@@ -593,7 +593,7 @@ Otherwise, you can use the File::Temp module.
 
 =end original
 
-����ʤ���С�File::Temp �⥸�塼�뤬�Ȥ��ޤ���
+さもなければ、File::Temp モジュールが使えます。
 
 	use File::Temp qw/ tempfile tempdir /;
 
@@ -615,9 +615,9 @@ reading and writing.  Use it if you don't need to know the file's name:
 
 The File::Temp has been a standard module since Perl 5.6.1.  If you
 don't have a modern enough Perl installed, 
-IO::File�⥸�塼��ˤ��륯�饹�᥽�å�C<new_tmpfile>��Ȥä�
-�ɤ߽񤭤Τ���˥����ץ󤵤줿�ե�����ϥ�ɥ��������ޤ���
-�ե����뤬�ɤ��̾���ʤΤ����Τ�ɬ�פ��ʤ����Ϥ����ȤäƤ���������
+IO::FileモジュールにあるクラスメソッドC<new_tmpfile>を使って
+読み書きのためにオープンされたファイルハンドルを取得します。
+ファイルがどんな名前なのかを知る必要がない場合はこれを使ってください。
 
 	use IO::File;
 	$fh = IO::File->new_tmpfile()
@@ -631,10 +631,10 @@ temporary files in one process, use a counter:
 
 =end original
 
-����ե�����κ�������ȤǹԤ������Τʤ顢
-�ץ�����ID�䤽�λ����Ǥλ���(���뤤�Ϥ����ξ��)����Ѥ��Ƥ���������
-��ĤΥץ�������ʣ���ΰ���ե��������Ѥ���ΤǤ���С�
-�����󥿡�����Ѥ��ޤ��礦:
+一時ファイルの作成を手作業で行いたいのなら、
+プロセスIDやその時点での時刻(あるいはこれら両方)を使用してください。
+一つのプロセスで複数の一時ファイルを使用するのであれば、
+カウンターを使用しましょう:
 
 	BEGIN {
 	use Fcntl;
@@ -663,7 +663,7 @@ temporary files in one process, use a counter:
 =head2 How can I manipulate fixed-record-length files?
 X<fixed-length> X<file, fixed-length records>
 
-(����Ĺ�쥳���ɤΥե����������ˤ�?)
+(固定長レコードのファイルを操作するには?)
 
 =begin original
 
@@ -674,11 +674,11 @@ slower for just a few.
 
 =end original
 
-�Ǥ��ΨŪ�ʤ������L<pack()|perlfunc/"pack"> ��
-L<unpack()|perlfunc/"unpack"> ��Ȥ���ΤǤ���
-�����ʸ�������̤ˤ���Ȥ��ˤ�L<substr()|perlfunc/"substr"> ��
-�Ȥ������®�Ǥ���
-®���㲼��ۤȤ�ɤ���ޤ���
+最も効率的なやり方はL<pack()|perlfunc/"pack"> と
+L<unpack()|perlfunc/"unpack"> を使うものです。
+これは文字列が大量にあるときにはL<substr()|perlfunc/"substr"> を
+使うよりも高速です。
+速度低下もほとんどありません。
 
 =begin original
 
@@ -688,9 +688,9 @@ Berkeley-style ps:
 
 =end original
 
-�ʲ��˵󤲤��Τϴ��Ĥ��θ���ե����ޥåȤ򤷤����ϹԤ��Ф���
-ʬ���Ԥä�����ᤷ�򤹤륳�����Ҥ���ǡ����Ϥ�
-Berkeley������ps�˽स�Ƥ��ޤ���
+以下に挙げたのは幾つかの固定フォーマットをした入力行に対して
+分解を行ったり書き戻しをするコード片の例で、出力は
+Berkeley形式のpsに準じています。
 
 	# sample input line:
 	#   15158 p5  T      0:00 perl /home/tchrist/scripts/now-what
@@ -716,18 +716,18 @@ with global variables and using symbolic references.
 
 =end original
 
-���줾��ιԤΥե�����ɤ��ñ�˰�������˥ϥå��她�饤����Ȥ��ޤ�����
-������������ݴɤ���Ȥ������Ȥϡ������򥰥롼�פ�롼�פǴ�ñ�˰������
-�������Ȥ��̣���ޤ���
-����Ϥޤ����������Х��ѿ��ȥ���ܥ�å���ե���󥹤λ��Ѥǥץ�����ब
-��������뤳�Ȥ��ɤ��ޤ���
+それぞれの行のフィールドを簡単に扱うためにハッシュスライスを使いました。
+キーを配列に保管するということは、これらをグループやループで簡単に扱えると
+いうことを意味します。
+これはまた、グローバル変数とシンボリックリファレンスの使用でプログラムが
+汚染されることを防ぎます。
 
 =head2 How can I make a filehandle local to a subroutine?  How do I pass filehandles between subroutines?  How do I make an array of filehandles?
 X<filehandle, local> X<filehandle, passing> X<filehandle, reference>
 
-(�ե�����ϥ�ɥ�򥵥֥롼����˶ɽ경����ˤ�?
-���֥롼����˥ե�����ϥ�ɥ���Ϥ��ˤ�?
-�ե�����ϥ�ɥ���������ˤ�?)
+(ファイルハンドルをサブルーチンに局所化するには?
+サブルーチンにファイルハンドルを渡すには?
+ファイルハンドルの配列を作るには?)
 
 =begin original
 
@@ -738,10 +738,10 @@ and use them in the place of named handles.
 
 =end original
 
-perl5.6 ���顢open() �˥ե�����ϥ�ɥ��ǥ��쥯�ȥ�ϥ�ɥ�Ȥ���̤�����
-�������ѿ����Ϥ��ȡ�������ե���󥹤Ȥ��Ƽ�ưͭ�������ޤ���
-���θ夳���Υ�ե���󥹤Ϥ���¾�Υ������Ʊ���褦�˰�����̾���դ�
-�ϥ�ɥ����ꤹ����ǻȤ��ޤ���
+perl5.6 から、open() にファイルハンドルやディレクトリハンドルとして未定義の
+スカラ変数を渡すと、これをリファレンスとして自動有効化します。
+その後これらのリファレンスはその他のスカラと同じように扱え、名前付き
+ハンドルを指定する場所で使えます。
 
 	open my    $fh, $file_name;
 
@@ -761,12 +761,12 @@ the filehandle reference is a simple scalar.
 
 =end original
 
-�����ߤʤ顢�����Υե�����ϥ�ɥ�������ϥå�����ݴɤ��뤳�Ȥ�Ǥ��ޤ���
-������ľ�ܥ�����������ȡ�������ñ�ʤ륹����ǤϤʤ��Τǡ�
-�ե�����ϥ�ɥ���椫�ä��ǰϤळ�Ȥ� C<print> �˾���������Ϳ����ɬ�פ�
-����ޤ���
-Perl �ϥե�����ϥ�ɥ��ե���󥹤�ñ��ʥ�����ξ��ˤΤߥե�����
-�ϥ�ɥ��ե���󥹤�ǧ�����ޤ���
+お好みなら、これらのファイルハンドルを配列やハッシュに保管することもできます。
+これらを直接アクセスすると、これらは単なるスカラではないので、
+ファイルハンドルを中かっこで囲むことで C<print> に少し助けを与える必要が
+あります。
+Perl はファイルハンドルリファレンスが単純なスカラの場合にのみファイル
+ハンドルリファレンスと認識します。
 
 	my @fhs = ( $fh1, $fh2, $fh3 );
 
@@ -781,8 +781,8 @@ which you may see in older code.
 
 =end original
 
-perl5.6 ������Ǥϡ��Ť������ɤˤ���褦�ʡ��͡��ʷ������֤δ���ˡ��
-����ʤ���Фʤ�ޤ���
+perl5.6 より前では、古いコードにあるような、様々な型グロブの慣用法を
+扱わなければなりません。
 
 	open FILE, "> $filename";
 	process_typeglob(   *FILE );
@@ -798,13 +798,13 @@ check out the Symbol or IO::Handle modules.
 
 =end original
 
-���̤�̵̾�ϥ�ɥ���ꤿ���ΤǤ���С�
-Symbol, FileHandle, IO::Handle �Ȥ��ä��⥸�塼��򻲾Ȥ��Ƥ���������
+大量の無名ハンドルを作りたいのであれば、
+Symbol, FileHandle, IO::Handle といったモジュールを参照してください。
 
 =head2 How can I use a filehandle indirectly?
 X<filehandle, indirect>
 
-(�ե�����ϥ�ɥ�����Ū�˰����ˤ�?)
+(ファイルハンドルを間接的に扱うには?)
 
 =begin original
 
@@ -814,9 +814,9 @@ to get indirect filehandles:
 
 =end original
 
-���ܥե�����ϥ�ɥ�ϡ�����ե�����ϥ�ɥ����Ԥ��Ƥ�������֤��줿
-����ܥ�ʳ��Τʤˤ���ȤäƤ��ޤ���
-�ʲ��˴��ܥե�����ϥ�ɥ�����󤲤ޤ�:
+間接ファイルハンドルは、あるファイルハンドルを期待している場所に置かれた
+シンボル以外のなにかを使っています。
+以下に間接ファイルハンドルの例を挙げます:
 
 	$fh =   SOME_FH;       # bareword is strict-subs hostile
 	$fh =  "SOME_FH";      # strict-refs hostile; same package only
@@ -832,9 +832,9 @@ and use it as though it were a normal filehandle.
 
 =end original
 
-���뤤�ϡ�FileHandle�⥸�塼���IO�⥸�塼���C<new>�᥽�åɤ�Ȥ���
-����򥹥��顼�ѿ��˳�Ǽ���Ƥ��餽������̤Υե�����ϥ�ɥ��
-Ʊ���褦�˰����ޤ���
+あるいは、FileHandleモジュールやIOモジュールのC<new>メソッドを使い、
+それをスカラー変数に格納してからそれを普通のファイルハンドルと
+同じように扱います。
 
 	use IO::Handle;                     # 5.004 or higher
 	$fh = IO::Handle->new();
@@ -850,13 +850,13 @@ or a scalar variable containing one:
 
 =end original
 
-�嵭�Τ褦�˺������ơ�������̤Υե�����ϥ�ɥ��Ʊ���褦�˻Ȥ��ޤ���
-Perl���ե�����ϥ�ɥ����Ԥ��Ƥ���Ȥ����ǤϤɤ��Ǥ�
-���ܥե�����ϥ�ɥ��Ȥ����Ȥ��Ǥ���Ǥ��礦��
-���ܥե�����ϥ�ɥ�ϡ��ե�����ϥ�ɥ���ݻ����Ƥ��륹���顼�ѿ���
-�����ޤ���C<print>, C<open>, C<seek>�Τ褦�ʴؿ��䡢
-��������ɱ黻�� C<< <FH> >> �ϥե�����ϥ�ɥ��ե�����ϥ�ɥ��
-�ݻ����Ƥ��륹���顼�ѿ���ξ���Ȥ�����դ��ޤ���
+上記のように作成して、後は普通のファイルハンドルと同じように使います。
+Perlがファイルハンドルを期待しているところではどこでも
+間接ファイルハンドルを使うことができるでしょう。
+間接ファイルハンドルは、ファイルハンドルを保持しているスカラー変数に
+すぎません。C<print>, C<open>, C<seek>のような関数や、
+ダイヤモンド演算子 C<< <FH> >> はファイルハンドルもファイルハンドルを
+保持しているスカラー変数の両方とも受け付けます。
 
 	($ifh, $ofh, $efh) = (*STDIN, *STDOUT, *STDERR);
 	print $ofh "Type it: ";
@@ -870,7 +870,7 @@ the function in two ways:
 
 =end original
 
-�ե�����ϥ�ɥ��ؿ����Ϥ�����硢�Ϥ����ؿ��������ν������Ǥ��ޤ�:
+ファイルハンドルを関数に渡した場合、渡される関数は二種類の書き方ができます:
 
 	sub accept_fh {
 		my $fh = shift;
@@ -883,7 +883,7 @@ Or it can localize a typeglob and use the filehandle directly:
 
 =end original
 
-�������֤�ɽ경���ơ��ե�����ϥ�ɥ��ľ�ܻȤ����Ȥ��ǽ�Ǥ�:
+型グロブを局所化して、ファイルハンドルを直接使うことも可能です:
 
 	sub accept_fh {
 		local *FH = shift;
@@ -898,8 +898,8 @@ is risky.)
 
 =end original
 
-ξ���η����Ȥ⡢���֥������ȤǤ�ºݤΥե�����ϥ�ɥ�η������֤Ǥ�ư��ޤ�
-(������ˤ����Ƥ�ʸ����Ǥ��ǽ�Ǥ���������Ϥ���äȥꥹ��������ޤ�)��
+両方の形式とも、オブジェクトでも実際のファイルハンドルの型グロブでも動作します
+(ある場合においては文字列でも可能ですが、これはちょっとリスクがあります)。
 
 	accept_fh(*STDOUT);
 	accept_fh($handle);
@@ -915,11 +915,11 @@ illegal and won't even compile:
 
 =end original
 
-�����Ǥϡ��ե�����ϥ�ɥ��Ȥ����ˤ���򥹥��顼�ѿ����������Ƥ��ޤ�����
-����ϼ��Ǥ�ʤ����ϥå���������ź�����Ǥ�ʤ�ñ�㥹�����ѿ�������
-C<print>��C<printf>����������ɱ黻�ҤȰ��˻Ȥ��뤫��Ǥ���
-ñ�㥹�����ѿ��ʳ��Τ�Τ�ե�����ϥ�ɥ�Ȥ��ƻȤ��Τ������Ǥ��ꡢ
-����ѥ�����˥��顼�Ȥʤ�ޤ�:
+上の例では、ファイルハンドルを使う前にそれをスカラー変数に代入していました。
+これは式でもなく、ハッシュや配列の添え字でもなく単純スカラ変数だけが
+C<print>やC<printf>、ダイヤモンド演算子と一緒に使えるからです。
+単純スカラ変数以外のものをファイルハンドルとして使うのは不正であり、
+コンパイル時にエラーとなります:
 
 	@fd = (*STDIN, *STDOUT, *STDERR);
 	print $fd[1] "Type it: ";                           # WRONG
@@ -933,8 +933,8 @@ an expression where you would place the filehandle:
 
 =end original
 
-C<print>��C<printf>�ξ��ˤϡ��֥��å���ȤäƤ�����˥ե�����ϥ�ɥ��
-�ޤ༰���֤����Ȥˤ�ä��н褹�뤳�Ȥ��Ǥ��ޤ�:
+C<print>やC<printf>の場合には、ブロックを使ってその中にファイルハンドルを
+含む式を置くことによって対処することができます:
 
 	print  { $fd[1] } "funny stuff\n";
 	printf { $fd[1] } "Pity the poor %x.\n", 3_735_928_559;
@@ -947,9 +947,9 @@ complicated code there.  This sends the message out to one of two places:
 
 =end original
 
-�����Υ֥��å��������ʤ�ΤǤ����顢���ʣ���ʥ����ɤ򤽤����
-���줳�ळ�Ȥ��Ǥ��ޤ���
-�ʲ�����ϥ�å������������Τɤ��餫�ҤȤĤ�����Ф��ޤ�:
+これらのブロックは妥当なものですから、より複雑なコードをその中に
+入れこむことができます。
+以下の例はメッセージを二ヶ所のどちらかひとつに送り出します:
 
 	$ok = -x "/bin/cat";
 	print { $ok ? $fd[1] : $fd[2] } "cat stat $ok\n";
@@ -968,17 +968,17 @@ work with objects or strings, which might be a bug we haven't fixed yet.
 
 =end original
 
-���Υ��ץ�������C<print>��C<printf>�򥪥֥������ȥ᥽�åɤθƤӽФ��Τ褦��
-������ΤǤ���������ϥ�������ɱ黻�ҤˤϻȤ��ޤ���
-�ʤ��ʤ顢��������ɱ黻�Ҥϥ���ޤʤ��ΰ�������ؿ��ǤϤʤ���������
-�黻�Ҥ�����Ǥ���
-���ơ��嵭����Τ褦�˷������֤򤢤ʤ��κ�ä���¤�˳�Ǽ�����Ȥ��ޤ��礦��
-C<readline>�Ȥ���̾�����Ȥ߹��ߴؿ���Ȥä�C<< <> >> ���Ԥ��褦��
-�쥳���ɤ��ɤ߹��ळ�Ȥ��Ǥ��ޤ���
-@fd����ˤ��ä��褦�˽�������Ƥ�뤳�ȤǤ��ޤ�ư��ޤ���
-��������readline()�Ϸ������֤��׵᤹�뤫��Ǥ���
-����ϥ��֥������Ȥ�ʸ����Ǥ�ư��ޤ���
-���Τ��ȤϥХ��Ȥ�������ΤǸ������ǤϽ�������Ƥ��ޤ���
+このアプローチはC<print>やC<printf>をオブジェクトメソッドの呼び出しのように
+扱うものですが、これはダイヤモンド演算子には使えません。
+なぜなら、ダイヤモンド演算子はカンマなしの引数を取る関数ではなくて本当の
+演算子だからです。
+さて、上記の例のように型グロブをあなたの作った構造に格納したとしましょう。
+C<readline>という名前の組み込み関数を使ってC<< <> >> が行うように
+レコードを読み込むことができます。
+@fdを例にあったように初期化してやることでうまく動作します。
+しかし、readline()は型グロブを要求するからです。
+これはオブジェクトや文字列では動作しません。
+このことはバグとも言えるもので現時点では修正されていません。
 
 	$got = readline($fd[0]);
 
@@ -991,16 +991,16 @@ game doesn't help you at all here.
 
 =end original
 
-���ܥե�����ϥ�ɥ��̯�����Ϥ��줬ʸ����Ǥ��뤫���������֤Ǥ��뤫��
-���֥������ȤǤ��뤫���Ϥ��ޤ��̤β��ԤǤ��뤫�ˤϴط����ʤ��Ȥ������Ȥ�
-���դ��Ƥ���������
-����ϴ���Ū�ʱ黻�Ҥι�ʸ�ʤΤǤ���
-���֥������Ȥ򤤤�����ޤ路��ͷ�֤��ȤϤ����Ǥϲ��ν����ˤ�ʤ�ޤ���
+間接ファイルハンドルの妙な点はそれが文字列であるか、型グロブであるか、
+オブジェクトであるか、はたまた別の何者であるかには関係しないということに
+注意してください。
+これは基本的な演算子の構文なのです。
+オブジェクトをいじくりまわして遊ぶことはここでは何の助けにもなりません。
 
 =head2 How can I set up a footer format to be used with write()?
 X<footer>
 
-(write()�Ȱ��˻Ȥ��եå����Υե����ޥåȤΥ��åȥ��åפ򤹤���ˡ��?)
+(write()と一緒に使うフッターのフォーマットのセットアップをする方法は?)
 
 =begin original
 
@@ -1009,14 +1009,14 @@ techniques to make it possible for the intrepid hacker.
 
 =end original
 
-�����Ԥ�������Ȥ߹��ߤ���ˡ�Ϥ���ޤ���
-������L<perlform>�ˤϤ�����ǽ�ˤ��뤿��Ρ�������Ũ�ʥϥå���������
-�����Ĥ��Υƥ��˥å�������ޤ���
+これを行うための組み込みの方法はありません。
+しかしL<perlform>にはこれを可能にするための、大胆不敵なハッカー向けの
+いくつかのテクニックがあります。
 
 =head2 How can I write() into a string?
 X<write, into a string>
 
-(ʸ������Ф��� write() ����ˤ�?)
+(文字列に対して write() するには?)
 
 =begin original
 
@@ -1024,12 +1024,12 @@ See L<perlform/"Accessing Formatting Internals"> for an C<swrite()> function.
 
 =end original
 
-L<perlform/"Accessing Formatting Internals">�� C<swrite()> �ؿ��򻲾Ȥ��Ƥ���������
+L<perlform/"Accessing Formatting Internals">の C<swrite()> 関数を参照してください。
 
 =head2 How can I open a filehandle to a string?
 X<string>, X<open>, X<IO::Scalar>, X<filehandle>
 
-(�ե�����ϥ�ɥ��ʸ����Ȥ��ƥ����ץ󤹤�ˤ�?)
+(ファイルハンドルを文字列としてオープンするには?)
 
 =begin original
 
@@ -1037,7 +1037,7 @@ X<string>, X<open>, X<IO::Scalar>, X<filehandle>
 
 =end original
 
-(Peter J. Holzer, hjp-usenet2@hjp.at �ˤ�äƴ�£����ޤ���)
+(Peter J. Holzer, hjp-usenet2@hjp.at によって寄贈されました)
 
 =begin original
 
@@ -1047,8 +1047,8 @@ a string:
 
 =end original
 
-Perl 5.8.0 ���顢ʸ������ɤ߽񤭤Ǥ���ե�����ϥ�ɥ���뤿��ˡ�
-�ե�����̾���Ѥ��˥�����ؤΥ�ե���󥹤��Ϥ��ޤ�:
+Perl 5.8.0 から、文字列を読み書きできるファイルハンドルを作るために、
+ファイル名の変わりにスカラへのリファレンスを渡せます:
 
 	open(my $fh, '>', \$string) or die "Could not open string for writing";
 	print $fh "foo\n";
@@ -1064,13 +1064,13 @@ functionality.
 
 =end original
 
-Perl �Τ��Ť��С������Ǥϡ�C<IO::String> �⥸�塼�뤬�����褦�ʵ�ǽ��
-�󶡤��ޤ���
+Perl のより古いバージョンでは、C<IO::String> モジュールが似たような機能を
+提供します。
 
 =head2 How can I output my numbers with commas added?
 X<number, commify>
 
-(���Ϥ�������˥���ޤ��ղä���ˤ�?)
+(出力する数字にカンマを付加するには?)
 
 =begin original
 
@@ -1078,7 +1078,7 @@ X<number, commify>
 
 =end original
 
-(brian d foy �� Benjamin Goldberg �ˤ�äƴ�£����ޤ���)
+(brian d foy と Benjamin Goldberg によって寄贈されました)
 
 =begin original
 
@@ -1089,9 +1089,9 @@ really).
 
 =end original
 
-���ͤ���ڤ뤿��� L<Number::Format> ���Ȥ��ޤ���
-���������˥ԥꥪ��(�ޤ��ϼºݤΤȤ����ϻȤ�������β��Ǥ�)��
-�����������ͤΤ���ˡ������������򰷤��ޤ���
+数値を区切るために L<Number::Format> が使えます。
+これは代わりにピリオド(または実際のところは使いたいもの何でも)を
+挿入したい人のために、ロケール情報を扱います。
 
 =begin original
 
@@ -1099,7 +1099,7 @@ This subroutine will add commas to your number:
 
 =end original
 
-���Υ��֥롼����Ͽ��ͤ˥���ޤ��ɲä��ޤ�:
+このサブルーチンは数値にカンマを追加します:
 
 	sub commify {
 		local $_  = shift;
@@ -1113,7 +1113,7 @@ This regex from Benjamin Goldberg will add commas to numbers:
 
 =end original
 
-Benjamin Goldberg �ˤ������ɽ���Ͽ��ͤ˥���ޤ��ɲä��ޤ�:
+Benjamin Goldberg による正規表現は数値にカンマを追加します:
 
 	s/(^[-+]?\d+?(?=(?>(?:\d{3})+)(?!\d))|\G\d{3}(?=\d))/$1,/g;
 
@@ -1123,7 +1123,7 @@ It is easier to see with comments:
 
 =end original
 
-�������դ��Ǹ���Ф���ñ�ˤʤ�ޤ�:
+コメント付きで見ればより簡単になります:
 
 	s/(
 		^[-+]?             # beginning of number.
@@ -1140,7 +1140,7 @@ It is easier to see with comments:
 =head2 How can I translate tildes (~) in a filename?
 X<tilde> X<tilde expansion>
 
-(�ե�����̾����ˤ������� (~) ���Ѵ�����ˤ�?)
+(ファイル名の中にあるチルダ (~) を変換するには?)
 
 =begin original
 
@@ -1152,11 +1152,11 @@ functionality.
 
 =end original
 
-L<perlfunc>����������Ƥ��� <> (glob()) ��Ȥ��ޤ���
-�Ť��С������� Perl �Ǥϡ��������Ÿ�����륷���뤬����
-���󥹥ȡ��뤵��Ƥ��뤳�Ȥ��׵ᤷ�ޤ���
-�Ƕ�ΥС������� Perl �������ˤ��ε�ǽ����äƤ��ޤ���
-Glob::KGlob �⥸�塼��(CPAN�������ǽ)�Ϥ��ܿ����Τ���glob��ǽ���󶡤��ޤ���
+L<perlfunc>で説明されている <> (glob()) を使います。
+古いバージョンの Perl では、チルダを展開するシェルが既に
+インストールされていることを要求します。
+最近のバージョンの Perl は内部にこの機能を持っています。
+Glob::KGlob モジュール(CPANで入手可能)はより移植性のあるglob機能を提供します。
 
 =begin original
 
@@ -1164,7 +1164,7 @@ Within Perl, you may use this directly:
 
 =end original
 
-Perl ��Ȥ��С������ʲ��Τ褦��ľ��Ū�˹Ԥ��ޤ���
+Perl を使えば、これを以下のように直接的に行えます。
 
 	$filename =~ s{
 	  ^ ~             # find a leading tilde
@@ -1181,7 +1181,7 @@ Perl ��Ȥ��С������ʲ��Τ褦��ľ��Ū�˹Ԥ��ޤ���
 =head2 How come when I open a file read-write it wipes it out?
 X<clobber> X<read-write> X<clobbering> X<truncate> X<truncating>
 
-(�ե�������ɤ߽񤭥⡼�ɤǥ����ץ󤷤��Ȥ������Ƥ򥯥ꥢ���Ƥ��ޤ��ΤϤʤ�?)
+(ファイルを読み書きモードでオープンしたときに内容をクリアしてしまうのはなぜ?)
 
 =begin original
 
@@ -1190,8 +1190,8 @@ I<then> gives you read-write access:
 
 =end original
 
-�ե�������ڤ�ͤ�ơ�B<���θ��>�ɤ߽񤭥����������󶡤���褦�ʤ�Τ�
-�Ȥ����Ȥ�������Ǥ���
+ファイルを切り詰めて、B<その後で>読み書きアクセスを提供するようなものを
+使おうとしたからです。
 
 	open(FH, "+> /path/name");		# WRONG (almost always)
 
@@ -1202,8 +1202,8 @@ doesn't exist.
 
 =end original
 
-���äȡ�
-�ե����뤬�ʤ��ä��Ȥ��˼��Ԥ���褦�ʰʲ��Τ������Ȥ��٤��Ǥ��礦��
+おっと。
+ファイルがなかったときに失敗するような以下のやり方を使うべきでしょう。
 
 	open(FH, "+< /path/name");  	# open for update
 
@@ -1214,9 +1214,9 @@ either.  The "+" doesn't change this.
 
 =end original
 
-">"��Ȥ��Ⱦ���ڤ�ͤᤫ�������Ԥ��ޤ���
-"<"��Ȥä����ˤϤɤ����Ԥ��ޤ���
-"+"�Ϥ������ѹ����뤳�ȤϤ���ޤ���
+">"を使うと常に切り詰めか作成が行われます。
+"<"を使った場合にはどちらも行いません。
+"+"はこれらを変更することはありません。
 
 =begin original
 
@@ -1225,8 +1225,8 @@ all assume
 
 =end original
 
-�ե�����򥪡��ץ󤹤�¿���Τ���������ʲ��˵󤲤ޤ���
-sysopen��ȤäƤ����ΤϤ��٤Ƥ�ʲ��򤷤Ƥ����ΤȲ��ꤷ�ޤ���
+ファイルをオープンする多くのやり方の例を以下に挙げます。
+sysopenを使っているものはすべてを以下をしているものと仮定します。
 
 	use Fcntl;
 
@@ -1236,7 +1236,7 @@ To open file for reading:
 
 =end original
 
-�ե�������ɤ߹��ߤΤ���˥����ץ󤹤�ˤ�:
+ファイルを読み込みのためにオープンするには:
 
 	open(FH, "< $path")                                 || die $!;
 	sysopen(FH, $path, O_RDONLY)                        || die $!;
@@ -1247,8 +1247,8 @@ To open file for writing, create new file if needed or else truncate old file:
 
 =end original
 
-�ե������񤭽Ф��Τ���˥����ץ󤷡��ե����뤬�ʤ���п��������
-����иŤ��ե�������ڤ�ͤ��ˤ�:
+ファイルを書き出しのためにオープンし、ファイルがなければ新しく作り
+あれば古いファイルを切り詰めるには:
 
 	open(FH, "> $path") || die $!;
 	sysopen(FH, $path, O_WRONLY|O_TRUNC|O_CREAT)        || die $!;
@@ -1260,8 +1260,8 @@ To open file for writing, create new file, file must not exist:
 
 =end original
 
-�ե������񤭽Ф��Τ���˥����ץ󤷡��ե�����򿷤��˺������뤬
-������¸�ߤ��Ƥ��ƤϤ����ʤ����:
+ファイルを書き出しのためにオープンし、ファイルを新たに作成するが
+慈善に存在していてはいけない場合:
 
 	sysopen(FH, $path, O_WRONLY|O_EXCL|O_CREAT)         || die $!;
 	sysopen(FH, $path, O_WRONLY|O_EXCL|O_CREAT, 0666)   || die $!;
@@ -1272,7 +1272,7 @@ To open file for appending, create if necessary:
 
 =end original
 
-�ե�������ɲäΤ���˥����ץ󤷡�ɬ�פ�����Хե�������������ˤ�:
+ファイルを追加のためにオープンし、必要があればファイルを作成するには:
 
 	open(FH, ">> $path") || die $!;
 	sysopen(FH, $path, O_WRONLY|O_APPEND|O_CREAT)       || die $!;
@@ -1284,7 +1284,7 @@ To open file for appending, file must exist:
 
 =end original
 
-�ե�������ɲäΤ���˥����ץ󤹤뤬���ե����뤬�����ˤʤ���Ф����ʤ����:
+ファイルを追加のためにオープンするが、ファイルが事前になければいけない場合:
 
 	sysopen(FH, $path, O_WRONLY|O_APPEND)               || die $!;
 
@@ -1294,7 +1294,7 @@ To open file for update, file must exist:
 
 =end original
 
-�ե�����򹹿��Τ���˥����ץ󤹤뤬���ե����뤬�����ˤʤ���Ф����ʤ����:
+ファイルを更新のためにオープンするが、ファイルが事前になければいけない場合:
 
 	open(FH, "+< $path")                                || die $!;
 	sysopen(FH, $path, O_RDWR)                          || die $!;
@@ -1305,7 +1305,7 @@ To open file for update, create file if necessary:
 
 =end original
 
-�ե�����򹹿��Τ���˥����ץ󤷡�ɬ�פ�����Хե���������������:
+ファイルを更新のためにオープンし、必要があればファイルを作成する場合:
 
 	sysopen(FH, $path, O_RDWR|O_CREAT)                  || die $!;
 	sysopen(FH, $path, O_RDWR|O_CREAT, 0666)            || die $!;
@@ -1316,7 +1316,7 @@ To open file for update, file must not exist:
 
 =end original
 
-�ե�����򹹿��Τ���˥����ץ󤹤뤬���ե����뤬������¸�ߤ��ƤϤ����ʤ����:
+ファイルを更新のためにオープンするが、ファイルが事前に存在してはいけない場合:
 
 	sysopen(FH, $path, O_RDWR|O_EXCL|O_CREAT)           || die $!;
 	sysopen(FH, $path, O_RDWR|O_EXCL|O_CREAT, 0666)     || die $!;
@@ -1327,7 +1327,7 @@ To open a file without blocking, creating if necessary:
 
 =end original
 
-�֥��å��󥰤ʤ��ǥե���򥪡��ץ󤷡�ɬ�פ�����к�������ˤ�:
+ブロッキングなしでフィルをオープンし、必要があれば作成するには:
 
 	sysopen(FH, "/foo/somefile", O_WRONLY|O_NDELAY|O_CREAT)
 	    or die "can't open /foo/somefile: $!":
@@ -1341,10 +1341,10 @@ isn't as exclusive as you might wish.
 
 =end original
 
-�ե�����κ���������NFS�ۤ��ξ��ˤϥ��ȥߥå������ǤϤʤ����Ȥ�
-���դ��Ƥ���������
-�Ĥޤꡢ��ĤΥץ�������Ʊ���ե�����κ����������������뤫�⤷��ʤ��ΤǤ�!
-�������ä�O_EXCL�Ϥ��ʤ������Ԥ��Ƥ���褦�ˤ���¾Ū�ǤϤʤ��ΤǤ���
+ファイルの作成や削除はNFS越しの場合にはアトミックな操作ではないことに
+注意してください。
+つまり、二つのプロセスが同じファイルの作成や削除に成功するかもしれないのです!
+したがってO_EXCLはあなたが期待しているようには排他的ではないのです。
 
 =begin original
 
@@ -1352,13 +1352,13 @@ See also the new L<perlopentut> if you have it (new for 5.6).
 
 =end original
 
-�⤷����� ������ L<perlopentut> (5.6 �б�) �⻲�Ȥ��Ʋ�������
+もしあれば 新しい L<perlopentut> (5.6 対応) も参照して下さい。
 
 =head2 Why do I sometimes get an "Argument list too long" when I use E<lt>*E<gt>?
 X<argument list too long>
 
-(�ʤ� E<lt>*E<gt> ��Ȥä��Ȥ��� "Argument list too long" (�����ꥹ�Ȥ�Ĺ������)��
-�ʤ뤳�Ȥ������?)
+(なぜ E<lt>*E<gt> を使ったときに "Argument list too long" (引数リストが長すぎる)と
+なることがあるの?)
 
 =begin original
 
@@ -1371,13 +1371,13 @@ have this problem, but their users may be surprised by it.
 
 =end original
 
-<*> �黻�Ҥϥ��������(globbing operation)��Ԥ��ޤ���
-v5.6.0 ������ Perl �Ǥϡ�glob() ��csh(1)��ư���ơ�
-�ºݤΥ����֤�Ԥ��ޤ���
-��������csh��127��ۤ��륢���ƥ�򰷤����Ȥ��Ǥ��ʤ��Τǡ�
-�������ä����顼��å����� C<Argument list too long>�Ȥʤ�ΤǤ���
-csh��csh�Ȥ��ƥ��󥹥ȡ��뤷�Ƥ���ͤϤ��������ľ�̤��뤳�ȤϤʤ��Ǥ��礦����
-�桼�������Ӥä��ꤹ�뤳�Ȥ����뤫�⤷��ޤ���
+<*> 演算子はグロブ操作(globbing operation)を行います。
+v5.6.0 以前の Perl では、glob() はcsh(1)を起動して、
+実際のグロブを行います。
+しかし、cshは127を越えるアイテムを扱うことができないので、
+そういったエラーメッセージ C<Argument list too long>となるのです。
+cshをcshとしてインストールしている人はこの問題に直面することはないでしょうが、
+ユーザーがびっくりすることがあるかもしれません。
 
 =begin original
 
@@ -1387,15 +1387,15 @@ one that doesn't use the shell to do globbing.
 
 =end original
 
-������н褹��ˤϡ�Perl v5.6.0 �ʹߤ˥��åץ��졼�ɤ��뤫
-�����֤�readdir()�ȥѥ������Ȥä�
-��ʬ���ȤǼ¹Ԥ��뤫�����뤤��Glob::KGlob�Τ褦�ʥ⥸�塼���Ȥäơ�
-������ˤ�륰���֤�Ԥ�ʤ��褦�ˤ��ޤ���
+これに対処するには、Perl v5.6.0 以降にアップグレードするか
+グロブをreaddir()とパターンを使って
+自分自身で実行するか、あるいはGlob::KGlobのようなモジュールを使って、
+シェルによるグロブを行わないようにします。
 
 =head2 Is there a leak/bug in glob()?
 X<glob>
 
-(glob()�� leak/bug �Ϥ����?)
+(glob()に leak/bug はあるの?)
 
 =begin original
 
@@ -1406,16 +1406,16 @@ best therefore to use glob() only in list context.
 
 =end original
 
-�����Υ��ڥ졼�ƥ��󥰥����ƥ��μ����Τ���ˡ�
-glob()�ؿ��䥹���顼����ƥ����ȤǤΥ��󥰥�֥饱�åȤˤ��
-���Υ����ꥢ����Ȥä���硢����꡼����ͽ¬�Ǥ��ʤ������񤤤�
-������������ǽ��������ޤ���
-�������äơ�glob()�ϥꥹ�ȥ���ƥ����ȤǤΤ߻Ȥ��Τ������Ǥ���
+一部のオペレーティングシステム上の実装のために、
+glob()関数やスカラーコンテキストでのアングルブラケットによる
+そのエイリアスを使った場合、メモリリークや予測できない振る舞いを
+引き起こす可能性があります。
+したがって、glob()はリストコンテキストでのみ使うのが最善です。
 
 =head2 How can I open a file with a leading ">" or trailing blanks?
 X<filename, special characters>
 
-(̾������Ƭ��">"�����ä��������˶��򤬤���褦�ʥե�����򥪡��ץ󤹤�ˤ�?)
+(名前の先頭に">"があったり末尾に空白があるようなファイルをオープンするには?)
 
 =begin original
 
@@ -1423,7 +1423,7 @@ X<filename, special characters>
 
 =end original
 
-(Brian McCauley �ˤ�äƴ�£����ޤ���)
+(Brian McCauley によって寄贈されました)
 
 =begin original
 
@@ -1434,10 +1434,10 @@ only version of open() and so it is prevalent in old code and books.
 
 =end original
 
-Perl �� open() �ؿ����ü�� 2 ���������ϥե�����̾�������ζ����̵�뤷��
-��Ƭ��ʸ�� (���뤤�������� "|") ����⡼�ɤ�������ޤ���
-�Ť��С������� Perl �ǤϤ��줬 open() ��ͣ��η����ʤΤǡ��Ť������ɤ�
-�ܤˤ���ڤ��Ƥ��ޤ���
+Perl の open() 関数の特殊な 2 引数形式はファイル名の末尾の空白を無視し、
+先頭の文字 (あるいは末尾の "|") からモードを推論します。
+古いバージョンの Perl ではこれが open() の唯一の形式なので、古いコードや
+本には普及しています。
 
 =begin original
 
@@ -1447,8 +1447,8 @@ characters in the filename as special.
 
 =end original
 
-2 ����������Ȥ���ͭ����ͳ���ʤ��¤ꡢ�ե�����̾�Τɤ�ʸ�������̤ʤ�ΤȤ���
-����ʤ� 3 ���������� open() ��Ȥ��٤��Ǥ���
+2 引数形式を使う特有の理由がない限り、ファイル名のどの文字も特別なものとして
+扱わない 3 引数形式の open() を使うべきです。
 
 	open FILE, "<", "  file  ";  # filename is "   file   "
 	open FILE, ">", ">file";     # filename is ">file"
@@ -1456,7 +1456,7 @@ characters in the filename as special.
 =head2 How can I reliably rename a file?
 X<rename> X<mv> X<move> X<file, rename> X<ren>
 
-(�������Τ���ե�����Υ�͡���򤹤�ˤ�?)
+(信頼性のあるファイルのリネームをするには?)
 
 =begin original
 
@@ -1465,9 +1465,9 @@ functional equivalent, this works:
 
 =end original
 
-���ʤ��λȤäƤ��륪�ڥ졼�ƥ��󥰥����ƥब��Ŭ�ڤ� mv(1) ���뤤��
-����ȵ�ǽŪ�������ʥץ������򥵥ݡ��Ȥ��Ƥ���Τʤ�ʲ��Τ褦��
-��������Ȥ���Ǥ��礦:
+あなたの使っているオペレーティングシステムが、適切な mv(1) あるいは
+それと機能的に等価なプログラムをサポートしているのなら以下のような
+やり方が使えるでしょう:
 
 	rename($old, $new) or system("mv", $old, $new);
 
@@ -1481,11 +1481,11 @@ permissions, timestamps, inode info, etc.
 
 =end original
 
-File::Copy �⥸�塼���Ȥ��Τ������ܿ��������뤫�⤷��ޤ���
-������̾���ǿ������ե�����˥��ԡ�����(����������ͤ�����å�)��
-�Ť���Τ�����������Ǥ���
-������������ϥѡ��ߥå���󡢥����ॹ����ס�inode����Ȥ��ä�
-�᥿������¸����ʤ��Τǡ�rename() ��Ʊ���ˤϤʤ�ޤ���
+File::Copy モジュールを使うのが、より移植性があるかもしれません。
+新しい名前で新しいファイルにコピーして(ここで戻り値をチェック)、
+古いものを削除するだけです。
+ただし、これはパーミッション、タイムスタンプ、inode情報といった
+メタ情報が保存されないので、rename() と同じにはなりません。
 
 =begin original
 
@@ -1493,12 +1493,12 @@ Newer versions of File::Copy export a move() function.
 
 =end original
 
-�������С�������File::Copy�ϴؿ�move()�򥨥����ݡ��Ȥ��Ƥ��ޤ���
+新しいバージョンのFile::Copyは関数move()をエクスポートしています。
 
 =head2 How can I lock a file?
 X<lock> X<file, lock> X<flock>
 
-(�ե��������å�����ˤ�?)
+(ファイルをロックするには?)
 
 =begin original
 
@@ -1510,13 +1510,13 @@ Here are some gotchas with Perl's flock():
 
 =end original
 
-Perl���Ȥ߹��ߤ� flock�ؿ�(�ܤ�����L<perlfunc>�򻲾�)�ϡ�flock(2)��
-����Ф���򡢤ʤ����fcntl(2)��ƤӽФ��ޤ�(5.004�ʹߤξ��)��
-�����ơ��������ĤΥ����ƥॳ����Τ������ʤ����ˤ�lockf(3)��
-�ƤӽФ��ޤ���
-�����Υ����ƥ�Ǥϡ��ͥ��ƥ��֤ʥ��å��󥰤Ȥϰۤʤä��Ȥ�����
-���뤫�⤷��ޤ���
-�ʲ��ˡ�Perl��flock()�˴ؤ����(gotchas)��󤲤Ƥ����ޤ�:
+Perlに組み込みの flock関数(詳しくはL<perlfunc>を参照)は、flock(2)が
+あればそれを、なければfcntl(2)を呼び出します(5.004以降の場合)。
+そして、これら二つのシステムコールのいずれもない場合にはlockf(3)を
+呼び出します。
+一部のシステムでは、ネイティブなロッキングとは異なった使い方を
+するかもしれません。
+以下に、Perlのflock()に関する罠(gotchas)を挙げておきます:
 
 =over 4
 
@@ -1529,8 +1529,8 @@ close equivalent) exists.
 
 =end original
 
-���ĤΥ����ƥॳ���뤬�ɤ��ʤ����(�⤷���������ʤ�Τ��ʤ����)��
-��̿Ū���顼���������ޤ���
+三つのシステムコールがどれもなければ(もしくは等価なものがなければ)、
+致命的エラーを生成します。
 
 =item 2
 
@@ -1541,8 +1541,8 @@ filehandle be open for writing (or appending, or read/writing).
 
 =end original
 
-lockf(3)�϶�ͭ���å��򥵥ݡ��Ȥ��ޤ��󡣤����ơ��񤭹����Ѥ�(�⤷����
-�ɲå⡼�ɤ��ɤ߽񤭥⡼��)�����ץ󤵤�Ƥ���ե�����ϥ�ɥ���׵ᤷ�ޤ���
+lockf(3)は共有ロックをサポートしません。そして、書き込み用に(もしくは
+追加モードか読み書きモード)オープンされているファイルハンドルを要求します。
 
 =item 3
 
@@ -1556,12 +1556,12 @@ building Perl to do this.
 
 =end original
 
-flock()�ΰ����ΥС������ϥͥåȥ���ۤ�(NFS�ե����륷���ƥ�ʤ�)��
-�ե��������å����뤳�ȤϤǤ��ޤ���
-���Τ��ᡢPerl��ӥ�ɤ���Ȥ���fcntl(2)��Ȥ��褦�˶�������ɬ�פ�
-���뤫�⤷��ޤ��󡣤���������Ǥ�������ɤ����ϵ��路���Ǥ���
-L<perlfunc>��flock()�Υ���ȥ�ȡ����Τ����Perl��ӥ�ɤ���
-����Τ��롢������������ˤ���F<INSTALL>�Ȥ����ե�����򻲾Ȥ��Ƥ���������
+flock()の一部のバージョンはネットワーク越し(NFSファイルシステムなど)に
+ファイルをロックすることはできません。
+このため、Perlをビルドするときにfcntl(2)を使うように強制する必要が
+あるかもしれません。しかしこれでも最善かどうかは疑わしいです。
+L<perlfunc>のflock()のエントリと、そのためのPerlをビルドする
+情報のある、ソース配布中にあるF<INSTALL>というファイルを参照してください。
 
 =begin original
 
@@ -1581,20 +1581,20 @@ your getting your job done.)
 
 =end original
 
-��Ĥ�����Ū�����餫�Ǥʤ�����ɤ⡢����Ū�� flock �μ�ˡ������ޤ���
-��Ĥϥ��å���Ϳ������ޤ�̵�¤��Ԥ��������Ƥ��Υ��å���
-I<��ä�����𤵤�ޤ���>�����Τ褦�ʼ�ͳ�٤ι⤤���å��Ϥ�����Ǥ�����
-�����ΤϤ�꾯�ʤ��Ǥ���
-�Ĥޤꡢ flock() �ǥ��å����줿�ե������ flock() ��ȤäƤ��ʤ�
-�ץ������ˤ�äƽ���������ǽ�������뤫��Ǥ���
-�ֿ���ǻߤޤ��Ʊ�Τʤ餦�ޤ������ޤ������������������ʤ��ʤ�
-���ޤ������ʤ��Ȥ������ȤǤ���
-�ܺ٤ˤĤ��Ƥ� perlport man �ڡ������ȤäƤ���С�������ȼ��Υɥ�����ȡ�
-�����ƥ��ȼ��Υ�������� man �ڡ����򻲾Ȥ��Ƥ���������
-�ܿ����Τ���ץ������Τ���ˤϡ�����Ū�ʿ����񤤤��ꤹ��Τ������Ǥ���
-(�������ʤ��ʤ顢���ʤ��ϼ�ʬ�Υ����ƥ����(�ֻ��͡פȤ�ƤФ�ޤ�)��
-��碌�ƽ񤯤��Ȥ򤤤ĤǤⵤ�ˤ��ʤ��褦�ˤ���٤��Ǥ���
-���ʤ��λŻ�����뤲����ˡ�����Ū�˰ܿ������θ����٤��ǤϤ���ޤ���)
+二つの潜在的に明らかでないけれども、伝統的な flock の手法があります。
+一つはロックが与えられるまで無限に待ち、そしてそのロックは
+I<めったに忠告されません>。このような自由度の高いロックはより柔軟ですが、
+得るものはより少ないです。
+つまり、 flock() でロックされたファイルは flock() を使っていない
+プログラムによって修正される可能性があるからです。
+赤信号で止まる車同士ならうまくいきますが、片方が信号を守らないなら
+うまくいかないということです。
+詳細については perlport man ページ、使っているバージョン独自のドキュメント、
+システム独自のローカルな man ページを参照してください。
+移植性のあるプログラムのためには、伝統的な振る舞いを仮定するのが最善です。
+(そうしないなら、あなたは自分のシステムの癖(「仕様」とも呼ばれます)に
+合わせて書くことをいつでも気にしないようにするべきです。
+あなたの仕事をやり遂げる時に、盲目的に移植性を考慮するべきではありません。)
 
 =begin original
 
@@ -1603,15 +1603,15 @@ L<perlopentut/"File Locking"> if you have it (new for 5.6).
 
 =end original
 
-�ե�����Υ��å��󥰤˴ؤ���ܺ٤�<perlopentut/"FileLocking">��
-���Ȥ��Ƥ�������(5.6 �б�)��
+ファイルのロッキングに関する詳細は<perlopentut/"FileLocking">を
+参照してください(5.6 対応)。
 
 =back
 
 =head2 Why can't I just open(FH, "E<gt>file.lock")?
 X<lock, lockfile race condition>
 
-(�ʤ�ñ�� open(FH, "E<gt>file.lock")�ȤǤ��ʤ���?)
+(なぜ単に open(FH, "E<gt>file.lock")とできないの?)
 
 =begin original
 
@@ -1619,7 +1619,7 @@ A common bit of code B<NOT TO USE> is this:
 
 =end original
 
-�ʲ��Τ褦�ʤ��Ȥ� B<���ƤϤ����ޤ���>:
+以下のようなことを B<してはいけません>:
 
 	sleep(3) while -e "file.lock";	# PLEASE DO NOT USE
 	open(LCK, "> file.lock");		# THIS BROKEN CODE
@@ -1632,11 +1632,11 @@ atomic test-and-set instruction.   In theory, this "ought" to work:
 
 =end original
 
-����ϸ�ŵŪ�ʶ�����֤Ǥ�: ���ʤ��Ϥ����ǡ�
-��ĤΥ��ƥåפǤ��ʤ���Фʤ�ʤ����Ȥ���ĤΥ��ƥåפǤ�äƤ��ޤ���
-�Ĥޤꤳ�줬������ԥ塼�����Υϡ��ɥ����������ȥߥå��� 
-test-and-set ��̿��������Ƥ�����ͳ�Ǥ���
-����Ū�ˤϡ������ư���ˤ�����ˤ�:
+これは古典的な競合状態です: あなたはここで、
+一つのステップでやらなければならないことを二つのステップでやっています。
+つまりこれが、コンピューターのハードウェアがアトミックな 
+test-and-set の命令を備えている理由です。
+理論的には、これを動作するにさせるには:
 
 	sysopen(FH, "file.lock", O_WRONLY|O_EXCL|O_CREAT)
 		or die "can't open  file.lock: $!";
@@ -1650,18 +1650,18 @@ these tend to involve busy-wait, which is also less than desirable.
 
 =end original
 
-��ǰ�ʤ��Ȥˡ�NFS���̤������ˤϥե�����κ���(�Ⱥ��)��
-���ȥߥå��ǤϤ���ޤ���
-���Τ��ᡢ������ϥͥåȥ�����̤������ˤϤ��ޤ�ư���ޤ���
-(���ʤ��Ȥ⼺�Ԥ����ǽ��������ޤ�)��
-link()��ޤᡢ�͡��ʤ������������Ƥ���Ƥ��ޤ����������� busy-wait��
-ȼ����ΤǤ��ꤢ�ޤ�˾�ޤ�����ΤǤϤ���ޤ���
+残念なことに、NFSを通じた場合にはファイルの作成(と削除)は
+アトミックではありません。
+このため、この例はネットワークを通した場合にはうまく動きません
+(少なくとも失敗する可能性があります)。
+link()を含め、様々なやり方が既に提案されていますが、これらは busy-waitを
+伴うものでありあまり望ましいものではありません。
 
 =head2 I still don't get locking.  I just want to increment the number in the file.  How can I do this?
 X<counter> X<file, counter>
 
-(�ޤ����å����Ǥ��ޤ��󡣤���ñ�˥ե�����ˤ�����ͤ򥤥󥯥���Ȥ����������ʤ�����ɡ�
-�ɤ�����Ф�����?)
+(まだロックができません。ただ単にファイルにある数値をインクリメントしたいだけなんだけど。
+どうすればいいの?)
 
 =begin original
 
@@ -1672,11 +1672,11 @@ they're more realistic.
 
 =end original
 
-����ޤǤ����ΰ�ͤ⤢�ʤ���web�ڡ����Υҥåȥ����󥿡����򤿤����ʤ����
-�������Ȥ����ʤ��ä���Ǥ���?
-�ҥåȥ����󥿡��ϥҥåȤ������Ͽ����������֤�ϲ�񤷡�����˸�����
-��ԤΤ��̤ܤ��á���Τ���Ω�Ĥ����Ǥ���
-�������Ф����ۤ�����äݤɤޤ��Ǥ���
+これまでただの一人もあなたにwebページのヒットカウンターは役たたずなんだと
+いうことを言わなかったんですか?
+ヒットカウンターはヒットした数は数えず、時間を浪費し、さらに言えば
+作者のうぬぼれを叩くのに役立つだけです。
+乱数を取り出したほうがよっぽどましです。
 
 =begin original
 
@@ -1684,7 +1684,7 @@ Anyway, this is what you can do if you can't help yourself.
 
 =end original
 
-�ޤ�������ˤ������ʲ��Τ褦�ˤ��Ƥ��ޤ�:
+まあいずれにしろ、以下のようにしてやります:
 
 	use Fcntl qw(:DEFAULT :flock);
 	sysopen(FH, "numfile", O_RDWR|O_CREAT) 	 or die "can't open numfile: $!";
@@ -1701,7 +1701,7 @@ Here's a much better web-page hit counter:
 
 =end original
 
-�ʲ�����Ϥ�ä��ɤ� web �ڡ����ҥåȥ����󥿡��Ǥ�:
+以下の例はもっと良い web ページヒットカウンターです:
 
 	$hits = int( (time() - 850_000_000) / rand(1_000) );
 
@@ -1711,13 +1711,13 @@ If the count doesn't impress your friends, then the code might.  :-)
 
 =end original
 
-������Ȥ����ʤ���ͧã�򴶿������ʤ��Τʤ顢���Υ����ɤ⤽���Ǥ��礦�� :-)
+カウントがあなたの友達を感心させないのなら、このコードもそうでしょうね :-)
 
 =head2 All I want to do is append a small amount of text to the end of a file.  Do I still have to use locking?
 X<append> X<file, append>
 
-(�ե�����������ˤ���äȤ����ƥ����Ȥ��ɲä����������ʤ�Ǥ���
-����Ǥ���å���ɬ�פʤ�?)
+(ファイルの末尾にちょっとしたテキストを追加したいだけなんです。
+それでもロックが必要なの?)
 
 =begin original
 
@@ -1730,12 +1730,12 @@ then that is what you should do.
 
 =end original
 
-�⤷ flock() ����������������Ƥ��륷���ƥ��ȤäƤ��ơ�
-"perldoc -f flock" �ˤ����ɲå����ɤ����ȤäƤ���ʤ顢���Ȥ��ȤäƤ���
-OS ���ɲå⡼�ɤ��������������Ƥ��ʤ�(�⤷���Τ褦�ʥ����ƥब�����)
-���Ǥ⡢���Ƥ��ޤ������ޤ���
-���äơ��¹Ԥ��� OS �� flock() ����������Ƥ����Τ����¤��Ƥ�褤�ʤ�
-(����ϼºݤΤȤ�������ۤ��礭�����¤ǤϤ���ޤ���)����������٤��Ǥ���
+もし flock() が正しく実装されているシステムを使っていて、
+"perldoc -f flock" にある追加コードの例を使っているなら、たとえ使っている
+OS が追加モードを正しく実装していない(もしそのようなシステムがあれば)
+場合でも、全てうまくいきます。
+従って、実行する OS を flock() が実装されているものに制限してもよいなら
+(これは実際のところそれほど大きな制限ではありません)、そうするべきです。
 
 =begin original
 
@@ -1745,9 +1745,9 @@ the code in the previous answer.
 
 =end original
 
-�������ɲä�������Ƥ���(�Ĥޤ� Win32 �ǤϤʤ�)�����ƥ��
-���Ѥ��Ƥ���Ȥ狼�äƤ�����Τߡ������������Υ����ɤ��� seek() ��
-��ά�Ǥ��ޤ���
+正しく追加を実装している(つまり Win32 ではない)システムを
+利用しているとわかっている場合のみ、以前の答えのコードから seek() を
+省略できます。
 
 =begin original
 
@@ -1762,14 +1762,14 @@ simply a wrapper around your systems write(2) system call.
 
 =end original
 
-�ɲå⡼�ɤ��������������Ƥ��� OS �ȥե����륷���ƥ�(�㤨�кǶ�� Unix ��
-��������ե����륷���ƥ�)�ǤΤ߼¹Ԥ���뤳�Ȥ��狼�äƤ��ơ�
-�ե������֥��å��Хåե��⡼�ɤΤޤޤ˰ݻ����Ƥ��ơ�
-��ư�ǤΥХåե��Υե�å���δ֤˥Хåե������äѤ��ˤʤ�ۤɤ�
-�񤭹��ߤ�Ԥ�ʤ����ϡ����줾��ΥХåե���¾����ν��Ϥ������뤳�Ȥʤ���
-�ե�����������ˤҤȤĤβ��ǽ񤭹��ޤ�뤳�Ȥ��ۤȤ���ݾڤ���ޤ�
-write(2) �����ƥॳ�����ñ�ʤ��åѤǤ��� syswrite() ��Ȥ����Ȥ�
-�Ǥ��ޤ���
+追加モードを正しく実装している OS とファイルシステム(例えば最近の Unix の
+ローカルファイルシステム)でのみ実行されることがわかっていて、
+ファイルをブロックバッファモードのままに維持していて、
+手動でのバッファのフラッシュの間にバッファがいっぱいになるほどの
+書き込みを行わない場合は、それぞれのバッファは他からの出力が混ざることなく、
+ファイルの末尾にひとつの塊で書き込まれることがほとんど保証されます
+write(2) システムコールの単なるラッパである syswrite() を使うことも
+できます。
 
 =begin original
 
@@ -1781,16 +1781,16 @@ systems where this probability is reduced to zero.
 
 =end original
 
-̤���ˡ�����Ū�ˤϥ����ƥ��٥�� write() ����λ���˥����ʥ뤬������
-��ǽ������������ޤ���
-STDIO �μ����ˤ�äƤϡ��Хåե��������饹�����Ȥ��Ƥ⡢ʣ���Υ����ƥ�
-��٥�� write() ��ƤӽФ���Τ������ǽ��������ޤ���
-���γ�Ψ�� 0 �ˤ��Ƥ��륷���ƥ�⤢�뤫�⤷��ޤ���
+未だに、理論的にはシステムレベルの write() 操作が終了前にシグナルが割り込む
+可能性が少しあります。
+STDIO の実装によっては、バッファが空からスタートしても、複数のシステム
+レベルの write() を呼び出すものがある可能性があります。
+この確率を 0 にしているシステムもあるかもしれません。
 
 =head2 How do I randomly update a binary file?
 X<file, binary patch>
 
-(�Х��ʥ�ե�����������˹�������ˤ�?)
+(バイナリファイルをランダムに更新するには?)
 
 =begin original
 
@@ -1799,8 +1799,8 @@ simple as this works:
 
 =end original
 
-ñ�˥Х��ʥ�˥ѥå��򤢤Ƥ����Ȥ����Τʤ顢¿���ξ��ϰʲ��Τ褦��
-ñ��ˤǤ��ޤ�:
+単にバイナリにパッチをあてたいというのなら、多くの場合は以下のように
+単純にできます:
 
 	perl -i -pe 's{window manager}{window mangler}g' /usr/bin/emacs
 
@@ -1811,8 +1811,8 @@ like this:
 
 =end original
 
-�⤷���ꥵ�����Υ쥳���ɤ���äƤ���Τʤ顢�ʲ��Τ褦�ˤ��ƹԤ����Ȥ�
-�Ǥ��ޤ�:
+もし固定サイズのレコードを持っているのなら、以下のようにして行うことも
+できます:
 
 	$RECSIZE = 220; # size of record, in bytes
 	$recno   = 37;  # which record to update
@@ -1831,14 +1831,14 @@ Don't forget them or you'll be quite sorry.
 
 =end original
 
-���å��ȥ��顼�����å����ɼԤ������Ȥ��ƻĤ��Ƥ���ޤ���
-������Ԥ����Ȥ�˺��ƤϤ����ޤ���
-����ʤ��ФȤƤ������뤳�Ȥˤʤ�Ǥ��礦��
+ロックとエラーチェックは読者の練習として残してあります。
+これらを行うことを忘れてはいけません。
+さもなくばとても後悔することになるでしょう。
 
 =head2 How do I get a file's timestamp in perl?
 X<timestamp> X<file, timestamp>
 
-(perl �ǥե�����Υ����ॹ����פ��������ˤ�?)
+(perl でファイルのタイムスタンプを取得するには?)
 
 =begin original
 
@@ -1856,15 +1856,15 @@ human-readable form.
 
 =end original
 
-���Υե����뤬�Ǹ���ɤ߹��ޤ졢�񤭽Ф��졢���Υ᥿�ǡ���(��ͭ�Ԥʤ�)��
-�ѹ����줿���������������ΤǤ���С�L<perlfunc>������������
-B<-A>, B<-M>, B<-C> �Ȥ��ä��ե�����ƥ��ȱ黻�Ҥ�Ȥ��ޤ���
-�����ϥե������ǯ��(���ʤ��Υץ������μ¹Գ��Ϥ��Ф�����)��
-��ư����������ɽ�����줿�����Ǽ������ޤ���
-�ץ�åȥե�����ˤ�äƤϤ�������Ƥ����ѤǤ��ʤ���Τ⤢��ޤ���
-��������ηв��ÿ��ˤ������Ρɻ��֤����뤿��ˤϡ�
-stat�ؿ���ƤӽФ��ơ������ͤ�localtime()��gmtime()��POSIX::strftime()��
-�Ȥäƿͤ��ɤ��褦�ʷ����Ѵ����ޤ���
+そのファイルが最後に読み込まれ、書き出され、そのメタデータ(所有者など)が
+変更された時刻を取得したいのであれば、L<perlfunc>に説明がある
+B<-A>, B<-M>, B<-C> といったファイルテスト演算子を使います。
+これらはファイルの年齢(あなたのプログラムの実行開始に対するもの)を
+浮動小数点数で表現された日数で取得します。
+プラットフォームによってはこれら全ては利用できないものもあります。
+紀元からの経過秒数による“生の”時間を得るためには、
+stat関数を呼び出して、その値をlocaltime()、gmtime()、POSIX::strftime()を
+使って人が読めるような形へ変換します。
 
 =begin original
 
@@ -1872,7 +1872,7 @@ Here's an example:
 
 =end original
 
-���󤲤ޤ��礦:
+例を挙げましょう:
 
 	$write_secs = (stat($file))[9];
 	printf "file %s updated at %s\n", $file,
@@ -1885,8 +1885,8 @@ If you prefer something more legible, use the File::stat module
 
 =end original
 
-��ä��ɤߤ䤹����Τ������ߤʤ顢File::stat�⥸�塼���Ȥ��ޤ�
-(�����5.004�ʹߤ�ɸ�����ۥ��åȤ˴ޤޤ�Ƥ��ޤ�)��
+もっと読みやすいものがお好みなら、File::statモジュールを使います
+(これは5.004以降の標準配布キットに含まれています)。
 
 	# error checking left as an exercise for reader.
 	use File::stat;
@@ -1902,13 +1902,13 @@ for details.
 
 =end original
 
-POSIX::strftime()���ץ�����������Ū�ˤϥ����������¸�ǡ�
-�Ȥ����ͤ�����ޤ����ܤ�����L<perllocale>�򻲾Ȥ��Ƥ���������
+POSIX::strftime()アプローチは理論的にはロカール非依存で、
+使う価値があります。詳しくはL<perllocale>を参照してください。
 
 =head2 How do I set a file's timestamp in perl?
 X<timestamp> X<file, timestamp>
 
-(perl �ǥե�����Υ����ॹ����פ����ꤹ��ˤ�?)
+(perl でファイルのタイムスタンプを設定するには?)
 
 =begin original
 
@@ -1919,9 +1919,9 @@ of them.
 
 =end original
 
-L<perlfunc/utime>����������Ƥ���utime()�Ȥ����ؿ���Ȥ��ޤ���
-��Ȥ��ơ������κǽ�Υե������read and write ������ɤ�ǡ�
-�Ĥ�Υե�����ˤ��λ�������ꤹ�뾮���ʥץ�������󤲤ޤ��礦��
+L<perlfunc/utime>で説明されているutime()という関数を使います。
+例として、引数の最初のファイルのread and write 時刻を読んで、
+残りのファイルにその時刻を設定する小さなプログラムを挙げましょう。
 
 	if (@ARGV < 2) {
 		die "usage: cptimes timestamp_file other_files ...\n";
@@ -1936,7 +1936,7 @@ Error checking is, as usual, left as an exercise for the reader.
 
 =end original
 
-��ˤ�äơ����顼�����å����ɼԤ������Ȥ��ƻĤ��Ƥ���ޤ���
+例によって、エラーチェックは読者の練習として残してあります。
 
 =begin original
 
@@ -1945,8 +1945,8 @@ effect as touch(1) on files that I<already exist>.
 
 =end original
 
-utime �� perldoc �ˤϡ�I<���ˤ���> �ե�������Ф��� touch(1) ��Ʊ��
-���̤Τ����㤬����ޤ���
+utime の perldoc には、I<既にある> ファイルに対する touch(1) と同じ
+効果のある例があります。
 
 =begin original
 
@@ -1958,16 +1958,16 @@ the filesystems, not of utime().
 
 =end original
 
-ͽ¬���줿��٥�����٤ǥե�����λ������¸����ǽ�Ϥ����¤��줿
-�ե����륷���ƥ�⤢��ޤ���
-�㤨�С�FAT �� HPFS �� 2 �ä���٤������٤ǥե�����κ��������
-����Ǥ��ޤ���
-����ϥե����륷���ƥ�����¤Ǥ��ꡢutime() �Ǥ�����Ǥ���ޤ���
+予測されたレベルの制度でファイルの時刻を保存する能力が制限された
+ファイルシステムもあります。
+例えば、FAT と HPFS は 2 秒よりも細かい精度でファイルの作成時刻を
+設定できません。
+これはファイルシステムの制限であり、utime() での問題でありません。
 
 =head2 How do I print to more than one file at once?
 X<print, to multiple files>
 
-(ʣ���Υե��������٤�ɽ������ˤ�?)
+(複数のファイルを一度に表示するには?)
 
 =begin original
 
@@ -1976,8 +1976,8 @@ you can use the IO::Tee or Tie::FileHandle::Multiplex modules.
 
 =end original
 
-��ĤΥե�����ϥ�ɥ��ʣ���ν��ϥե�����ϥ�ɥ����³����ˤϡ�
-IO::Tee �� Tie::FileHandle::Multiplex �Υ⥸�塼�뤬�Ȥ��ޤ���
+一つのファイルハンドルを複数の出力ファイルハンドルに接続するには、
+IO::Tee や Tie::FileHandle::Multiplex のモジュールが使えます。
 
 =begin original
 
@@ -1986,14 +1986,14 @@ to each filehandle.
 
 =end original
 
-����򤹤�ɬ�פ�����Τ��������ʤ顢�ʲ��Τ褦�ˤ��ƤǤ��ޤ�:
+これをする必要があるのが一回だけなら、以下のようにしてできます:
 
 	for $fh (FH1, FH2, FH3) { print $fh "whatever\n" }
 
 =head2 How can I read in an entire file all at once?
 X<slurp> X<file, slurping>
 
-(�ե��������Τ���٤��ɤߤ���ˤ�?)
+(ファイル全体を一度に読みこむには?)
 
 =begin original
 
@@ -2001,7 +2001,7 @@ You can use the File::Slurp module to do it in one step.
 
 =end original
 
-����� 1 ���ƥåפǹԤ�����ˤϡ�File::Slurp �⥸�塼�뤬�Ȥ��ޤ���
+これを 1 ステップで行うためには、File::Slurp モジュールが使えます。
 
 	use File::Slurp;
 
@@ -2015,8 +2015,8 @@ do so one line at a time:
 
 =end original
 
-Perl �ˤ����ƥե���������ƤιԤ�������뤿��δ���Ū�ʼ�ˡ��
-1 �Ԥ����ɤߤ��ळ�ȤǤ�:
+Perl においてファイルの全ての行を処理するための慣例的な手法は
+1 行ずつ読みこむことです:
 
 	open (INPUT, $file) 	|| die "can't open $file: $!";
 	while (<INPUT>) {
@@ -2034,10 +2034,10 @@ you see someone do this:
 
 =end original
 
-����ϥե��������Τ�Ԥ�����Ȥ����ɤߤ���Ǥ���1�Ԥ��Ľ�������Ȥ���
-(�ۤȤ�ɾ�ˡ��Ǥʤ��Τʤ�)���Ф��и��ä���ˡ����
-�ڤ��˸�ΨŪ�Ǥ���
-����Ǥ�ե��������Τ��ɤ߹��ߤ����ʤ�ʲ��Τ褦�ˤ��ޤ�:
+これはファイル全体を行の配列として読みこんでから1行ずつ処理するという
+(ほとんど常に、でないのなら)しばしば誤った手法よりも
+遥かに効率的です。
+それでもファイル全体を読み込みたいなら以下のようにします:
 
 	@lines = <INPUT>;
 
@@ -2052,12 +2052,12 @@ line in the file.
 
 =end original
 
-���������Ƥ���٤��ɤ߹���ɬ�פ�����Τ����ɤ��ͤ���٤��Ǥ���
-�����ñ�˥������������ǤϤ���ޤ���
-ɸ��� Tie::File �⥸�塼�뤫 DB_File �⥸�塼��� $DB_RECNO
-�Х���ǥ��󥰤�������깥�ޤ����ȹͤ��뤫�⤷��ޤ���
-���������ȥե���������դ���Τǡ�����˥�����������ȡ��ºݤˤ�
-�ե�������б�����Ԥ˥����������뤳�Ȥˤʤ�ޤ���
+本当に全てを一度に読み込む必要があるのかを良く考えるべきです。
+これは単にスケールの問題ではありません。
+標準の Tie::File モジュールか DB_File モジュールの $DB_RECNO
+バインディングの方がより好ましいと考えるかもしれません。
+これは配列とファイルを結び付けるので、配列にアクセスすると、実際には
+ファイルの対応する行にアクセスすることになります。
 
 =begin original
 
@@ -2065,7 +2065,7 @@ You can read the entire filehandle contents into a scalar.
 
 =end original
 
-�ե�����ϥ�ɥ���������Τ��ĤΥ������ѿ����ɤ߹��ळ�Ȥ��Ǥ��ޤ���
+ファイルハンドルの内容全体を一つのスカラ変数に読み込むことができます。
 
 	{
 	local(*INPUT, $/);
@@ -2080,9 +2080,9 @@ close the file at block exit.  If the file is already open, just use this:
 
 =end original
 
-����ϰ��Ū�˥쥳���ɥ��ѥ졼����̤����ˤ����֥��å���Ф�Ȥ���
-��ưŪ�˥ե�����򥯥��������ޤ����ե����뤬���˥����ץ󤷤Ƥ���ʤ顢
-ñ�˰ʲ��Τ褦�ˤ��ޤ�:
+これは一時的にレコードセパレータを未定義にし、ブロックを出るときに
+自動的にファイルをクローズします。ファイルが既にオープンしているなら、
+単に以下のようにします:
 
 	$var = do { local $/; <INPUT> };
 
@@ -2092,7 +2092,7 @@ For ordinary files you can also use the read function.
 
 =end original
 
-�̾�Υե�����ξ��� read �ؿ���Ȥ��ޤ���
+通常のファイルの場合は read 関数も使えます。
 
 	read( INPUT, $var, -s INPUT );
 
@@ -2103,13 +2103,13 @@ and reads that many bytes into the buffer $var.
 
 =end original
 
-3 ���ܤΰ����� INPUT �ե�����ϥ�ɥ�Υǡ����ΥХ��ȥ�������ƥ��Ȥ���
-���ΥХ��ȿ������Хåե� $var ���ɤ߹��ߤޤ���
+3 番目の引数は INPUT ファイルハンドルのデータのバイトサイズをテストし、
+そのバイト数だけバッファ $var に読み込みます。
 
 =head2 How can I read in a file by paragraphs?
 X<file, reading by paragraphs>
 
-(�ե������ѥ饰�������ɤ߹���ˤ�?)
+(ファイルをパラグラフ毎に読み込むには?)
 
 =begin original
 
@@ -2120,10 +2120,10 @@ C<"\n\n"> to accept empty paragraphs.
 
 =end original
 
-C<$/>�Ȥ����ѿ���Ȥ��ޤ�(�ܤ�����L<perlvar>�򻲾Ȥ��Ƥ�������)��
-���Ȥ��� (C<"abc\n\n\n\ndef">�ǻ��ĤǤϤʤ���ĤΥѥ饰��դ��
-����롢�Ĥޤ���Υѥ饰��դ�����ˤ�C<"">�����ꤷ�ޤ�����
-�Υѥ饰��դ�����դ���ˤ�C<"\n\n">�����ꤷ�ޤ���
+C<$/>という変数を使います(詳しくはL<perlvar>を参照してください)。
+たとえば (C<"abc\n\n\n\ndef">で三つではなく二つのパラグラフを受
+け取る、つまり空のパラグラフを除去するにはC<"">を設定します。空
+のパラグラフを受け付けるにはC<"\n\n">を設定します。
 
 =begin original
 
@@ -2132,14 +2132,14 @@ S<C<"fred\n \nstuff\n\n">> is one paragraph, but C<"fred\n\nstuff\n\n"> is two.
 
 =end original
 
-���Ԥϥ֥�󥯤���äƤ��ƤϤ����ʤ��Ȥ������Ȥ����դ��ޤ��礦��
-���Τ��ᡢS<C<"fred\n \nstuff\n\n">> �ϰ�ĤΥѥ饰��դǤ���
-C<"fred\n\nstuff\n\n">����ĤΥѥ饰��դǤ���
+空行はブランクを持っていてはいけないということに注意しましょう。
+このため、S<C<"fred\n \nstuff\n\n">> は一つのパラグラフですが
+C<"fred\n\nstuff\n\n">は二つのパラグラフです。
 
 =head2 How can I read a single character from a file?  From the keyboard?
 X<getc> X<file, reading one character at a time>
 
-(�ե����뤫�� 1 ʸ�������ɤ߽Ф��ˤ�? �����ܡ��ɤ����?)
+(ファイルから 1 文字だけ読み出すには? キーボードからは?)
 
 =begin original
 
@@ -2150,10 +2150,10 @@ L<perlfunc/getc>.
 
 =end original
 
-�ۤȤ�ɤΥե�����ϥ�ɥ���Ф��Ƥ�C<getc()>�Ȥ����Ȥ߹��ߴؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���������ϥ����ߥʥ�ǥХ������Ф��ƤϤ��ޤ������ޤ���
-STDIN ���Ф��Ƥϡ�CPAN �ˤ��� Term::ReadKey ��Ȥ���
-L<perlfunc/getc>�ˤ��륵��ץ륳���ɤ�Ȥ��ޤ���
+ほとんどのファイルハンドルに対してはC<getc()>という組み込み関数を
+使うことができますが、これはターミナルデバイスに対してはうまくいきません。
+STDIN に対しては、CPAN にある Term::ReadKey を使うか
+L<perlfunc/getc>にあるサンプルコードを使います。
 
 =begin original
 
@@ -2163,8 +2163,8 @@ turns off echo processing as well.
 
 =end original
 
-���ʤ��λȤäƤ��륷���ƥबPOSIX�򥵥ݡ��Ȥ��Ƥ���Τʤ顢echo ��
-���դˤ��Ƥ���Τ򵤤�Ĥ��ʤ���ʲ��Τ褦�ʥ����ɤǤǤ��ޤ���
+あなたの使っているシステムがPOSIXをサポートしているのなら、echo を
+オフにしているのを気をつけながら以下のようなコードでできます。
 
 	#!/usr/bin/perl -w
 	use strict;
@@ -2222,8 +2222,8 @@ include also support for non-portable systems as well.
 
 =end original
 
-CPAN �ˤ��� Term::ReadKey �⥸�塼��ʤ��äȴ�ñ�˻Ȥ��ޤ���
-�ǿ��ΥС������Ǥ� non-portable �����ƥ�Υ��ݡ��Ȥ�ޤޤ�Ƥ��ޤ�:
+CPAN にある Term::ReadKey モジュールならもっと簡単に使えます。
+最新のバージョンでは non-portable システムのサポートも含まれています:
 
 	use Term::ReadKey;
 	open(TTY, "</dev/tty");
@@ -2236,7 +2236,7 @@ CPAN �ˤ��� Term::ReadKey �⥸�塼��ʤ��äȴ�ñ�˻Ȥ��ޤ���
 
 =head2 How can I tell whether there's a character waiting on a filehandle?
 
-(����ե�����ϥ�ɥ뤬�ɤ߹����Ԥ���ʸ�����ԤäƤ��뤫�ɤ������Τ�ˤ�?)
+(あるファイルハンドルが読み込み待ちの文字を待っているかどうかを知るには?)
 
 =begin original
 
@@ -2247,10 +2247,10 @@ not POSIX, not Unix, etc) systems.
 
 =end original
 
-���ʤ������٤����Τ��Ȥϡ�CPAN �ˤ��� Term::ReadKey �����ꤹ�뤳�ȤǤ���
-���Ǥ��ĺ�Ū�����ꥷ���ƥ�
-(�����ץ�ʥ����ƥ�ǤϤʤ���POSIX �Ǥ�ʤ���UNIX �Ǥ�ʤ��褦�ʡ�)��
-�Ф������Ū�ʥ��ݡ��Ȥ�������ޤ���
+あなたがすべき第一のことは、CPAN にある Term::ReadKey を入手することです。
+今では閉鎖的な独占システム
+(オープンなシステムではない、POSIX でもなく、UNIX でもないような…)に
+対する限定的なサポートさえあります。
 
 =begin original
 
@@ -2261,10 +2261,10 @@ systems:
 
 =end original
 
-comp.unix.* �� Frequently Asked Questions(���Ф��пҤͤ������)�ꥹ�Ȥǡ�
-Ʊ���褦�ʤ�Τ�����å����٤��Ǥ��礦: �����������ܼ�Ū��Ʊ����ΤǤ���
-�Ĥޤꡢ���˥����ƥ��¸�ʤ�ΤǤ���
-�ʲ��˵󤲤��Τϡ�BSD�����ƥ��ư�������ΰ�ĤǤ���
+comp.unix.* の Frequently Asked Questions(しばしば尋ねられる質問)リストで、
+同じようなものをチェックすべきでしょう: この答えは本質的に同じものです。
+つまり、非常にシステム依存なものです。
+以下に挙げたのは、BSDシステムで動作する解決策の一つです。
 
 	sub key_ready {
 		my($rin, $nfd);
@@ -2282,11 +2282,11 @@ I<sys/ioctl.ph> file:
 
 =end original
 
-�ɤΰ̤Υ���饯�������ԤäƤ���Τ����Τꤿ���ΤǤ���С�
-FIONREAD ioctl �ƤӽФ���Ȥ����Ȥ��Ǥ��ޤ���
-I<h2ph>�ġ���� C �Υ��󥯥롼�ɥե������ Perl ���Ѵ������Τǡ����η�̤�
-C<require>�ˤ�äƸƤӽФ����Ȥ���ǽ�Ǥ���
-FIONREAD �� I<sys/ioctl.ph> �ˤ���ؿ��Ȥ����������ޤ���
+どの位のキャラクターが待っているのかを知りたいのであれば、
+FIONREAD ioctl 呼び出しを使うことができます。
+I<h2ph>ツールは C のインクルードファイルを Perl に変換するもので、その結果は
+C<require>によって呼び出すことが可能です。
+FIONREAD は I<sys/ioctl.ph> にある関数として定義されます。
 
 	require 'sys/ioctl.ph';
 
@@ -2301,8 +2301,8 @@ I<grep> the include files by hand:
 
 =end original
 
-I<h2ph> �����󥹥ȡ��뤵��Ƥ��ʤ��������ޤ�ư��ʤ��ä��ΤǤ���С�
-�ʲ��Τ褦�ˤǤ��ޤ���
+I<h2ph> がインストールされていないか、うまく動作しなかったのであれば、
+以下のようにできます。
 
 	% grep FIONREAD /usr/include/*/*
 	/usr/include/asm/ioctls.h:#define FIONREAD      0x541B
@@ -2313,7 +2313,7 @@ Or write a small C program using the editor of champions:
 
 =end original
 
-���뤤�ϥ��ǥ������β��ͤ�Ȥäƾ����� C �ץ�������񤭤ޤ�:
+あるいはエディターの王様を使って小さな C プログラムを書きます:
 
 	% cat > fionread.c
 	#include <sys/ioctl.h>
@@ -2331,8 +2331,8 @@ And then hard code it, leaving porting as an exercise to your successor.
 
 =end original
 
-���θ�Ǥ����ͤ�ϡ��ɥ����ɤ��Ƥ�äơ����ʤ��λŻ�������Ѥ��ͤΤ����
-�����Ȥ��ưܿ��򤵤ܤ�ޤ���
+その後でその値をハードコードしてやって、あなたの仕事を引き継ぐ人のための
+練習として移植をさぼります。
 
 	$FIONREAD = 0x4004667f;         # XXX: opsys dependent
 
@@ -2347,14 +2347,14 @@ pipes, and tty devices work, but I<not> files.
 
 =end original
 
-FIONREAD �ϥ��ȥ꡼�����³���줿�ե�����ϥ�ɥ���׵ᤷ�ޤ���
-����ϥ����åȡ��ѥ��ס����뤤�� tty �ǥХ����ǤϤ��ޤ�ư��ޤ�����
-�ե�������Ф��Ƥ�B<���ޤ��Ԥ��ޤ���>��
+FIONREAD はストリームに接続されたファイルハンドルを要求します。
+これはソケット、パイプ、あるいは tty デバイスではうまく動作しますが、
+ファイルに対してはB<うまく行きません>。
 
 =head2 How do I do a C<tail -f> in perl?
 X<tail> X<IO::Handle> X<File::Tail> X<clearerr>
 
-(perl�� C<tail -f> �򤹤�ˤ�?)
+(perlで C<tail -f> をするには?)
 
 =begin original
 
@@ -2362,7 +2362,7 @@ First try
 
 =end original
 
-�ޤ��ǽ�˰ʲ��Τ�Τ��ƤߤƤ�������
+まず最初に以下のものを試してみてください
 
 	seek(GWFILE, 0, 1);
 
@@ -2374,9 +2374,9 @@ next C<< <GWFILE> >> makes Perl try again to read something.
 
 =end original
 
-C<seek(GWFILE, 0, 1)>�Ȥ���ʸ�ϥ����Ȥΰ��֤��ѹ����ޤ��󤬡�
-���Υե�����ϥ�ɥ�ˤ����� end-fo-file ���֤������ޤ���
-���Τ��ᡢ���� C<< <GWFILE> >> �Ȥ���� Perl �Ϻ��ٲ������ɤ⤦�Ȥ���ΤǤ���
+C<seek(GWFILE, 0, 1)>という文はカレントの位置を変更しませんが、
+そのファイルハンドルにおける end-fo-file 状態を解除します。
+このため、次に C<< <GWFILE> >> とすると Perl は再度何かを読もうとするのです。
 
 =begin original
 
@@ -2385,8 +2385,8 @@ then you need something more like this:
 
 =end original
 
-���Τ���������ޤ������ʤ�(����Ϥ��ʤ��λȤäƤ��� stdio ���������Ƥ���
-��ǽ�˰�¸���Ƥ��ޤ�)�Τʤ顢�ʲ��Τ褦�ˤ���ɬ�פ�����Ǥ��礦:
+このやり方がうまくいかない(これはあなたの使っている stdio が実装している
+機能に依存しています)のなら、以下のようにする必要があるでしょう:
 
 	for (;;) {
 	  for ($curpos = tell(GWFILE); <GWFILE>; $curpos = tell(GWFILE)) {
@@ -2404,8 +2404,8 @@ on the handle.
 
 =end original
 
-����Ǥ⤦�ޤ��Ԥ��ʤ���С�C<IO::Handle> �� C<clearerr> �᥽�åɤ�
-��Ƥ���Ƥ�������; ����ϥϥ�ɥ�Υ��顼�� end-of-file ���֤�ꥻ�åȤ��ޤ���
+これでもうまく行かなければ、C<IO::Handle> の C<clearerr> メソッドを
+検討してください; これはハンドルのエラーと end-of-file 状態をリセットします。
 
 =begin original
 
@@ -2413,12 +2413,12 @@ There's also a C<File::Tail> module from CPAN.
 
 =end original
 
-CPAN�ˤ� C<File::Tail> �⥸�塼�뤬����ޤ���
+CPANには C<File::Tail> モジュールがあります。
 
 =head2 How do I dup() a filehandle in Perl?
 X<dup>
 
-(Perl �ǥե�����ϥ�ɥ�� dup() �򤹤�ˤ�?)
+(Perl でファイルハンドルの dup() をするには?)
 
 =begin original
 
@@ -2427,8 +2427,8 @@ to call open() should do the trick.  For example:
 
 =end original
 
-L<perlfunc/open> �򸫤�С������Ԥ������ open() �θƤӽФ�����
-���̤�⤢�뤳�Ȥ˵����Ĥ��Ǥ��礦�����󤲤ޤ�:
+L<perlfunc/open> を見れば、それを行うための open() の呼び出し方が
+何通りもあることに気がつくでしょう。例を挙げます:
 
 	open(LOG, ">>/foo/logfile");
 	open(STDERR, ">&LOG");
@@ -2439,7 +2439,7 @@ Or even with a literal numeric descriptor:
 
 =end original
 
-���뤤�ϡ���ƥ��ο��͵��һҤ�Ȥ��ޤ�:
+あるいは、リテラルの数値記述子を使います:
 
    $fd = $ENV{MHCONTEXTFD};
    open(MHCONTEXT, "<&=$fd");	# like fdopen(3S)
@@ -2453,11 +2453,11 @@ a copied one.
 
 =end original
 
-"<&STDIN" �ϥ��ԡ����������"<&=STDIN" �������ꥢ�����������Ȥ������Ȥ�
-���դ��Ƥ���������
-����ϤĤޤꡢ���ʤ��������ꥢ�����������줿�ե�����ϥ�ɥ��
-������������ȡ������ꥢ���Ϥ��٤ƥ��������Ǥ��ʤ��ʤ�ޤ���
-����ϥ��ԡ��ξ��ˤϤ����Ϥʤ�ޤ���
+"<&STDIN" はコピーを作成し、"<&=STDIN" がエイリアスを作成するということに
+注意してください。
+これはつまり、あなたがエイリアスが作成されたファイルハンドルを
+クローズすると、エイリアスはすべてアクセスできなくなります。
+これはコピーの場合にはそうはなりません。
 
 =begin original
 
@@ -2465,12 +2465,12 @@ Error checking, as always, has been left as an exercise for the reader.
 
 =end original
 
-���顼�����å��Ϥ��Ĥ�Τ褦���ɼԤ������Τ���˻Ĥ��Ƥ���ޤ���
+エラーチェックはいつものように読者の練習のために残してあります。
 
 =head2 How do I close a file descriptor by number?
 X<file, closing file descriptors> X<POSIX> X<close>
 
-(���ͤˤ��ե����뵭�һҤ򥯥���������ˤ�?)
+(数値によるファイル記述子をクローズするには?)
 
 =begin original
 
@@ -2480,9 +2480,9 @@ C<close()> function from the C<POSIX> module:
 
 =end original
 
-�⤷�����餫����ͳ�ǡ��ե�����ϥ�ɥ�ǤϤʤ��ե����뵭�һҤ���äƤ�����
-(�����餯 C<POSIX::open> ��Ȥä��ΤǤ��礦)��C<POSIX> �⥸�塼���
-C<close()> �ؿ����Ȥ��ޤ�:
+もし、何らかの理由で、ファイルハンドルではなくファイル記述子を持っている場合
+(おそらく C<POSIX::open> を使ったのでしょう)、C<POSIX> モジュールの
+C<close()> 関数が使えます:
 
 	use POSIX ();
 	
@@ -2497,11 +2497,11 @@ to, you may be able to do this:
 
 =end original
 
-Perl �� C<close()> �ؿ��ϡ������ˤ��ä� C<MHCNOTEXT> �Τ褦�˿���
-���һҤ�Ȥä� dup ������ΤǤ�����ޤ�ơ�
-Perl ���Ȥ������ץ󤷤���Τ��Ф��ƻȤ����Ȥ��Ǥ��ޤ����顢
-����ɬ�פϤۤȤ�ɤʤ��Ϥ��Ǥ���
-�����������ˤ�������ɬ�פ�����Τʤ顢�ʲ��Τ褦�ˤǤ���Ǥ��礦:
+Perl の C<close()> 関数は、先の例にあった C<MHCNOTEXT> のように数値
+記述子を使って dup したものでさえも含めて、
+Perl 自身がオープンしたものに対して使うことができますから、
+その必要はほとんどないはずです。
+しかし本当にそうする必要があるのなら、以下のようにできるでしょう:
 
 	require 'sys/syscall.ph';
 	$rc = syscall(&SYS_close, $fd + 0);  # must force numeric
@@ -2513,7 +2513,7 @@ Or, just use the fdopen(3S) feature of C<open()>:
 
 =end original
 
-���뤤�ϡ�ñ�� C<open()> �� fdopen(3S) ��ǽ��Ȥ��ޤ�:
+あるいは、単に C<open()> の fdopen(3S) 機能を使います:
 
 	{
 	open my( $fh ), "<&=$fd" or die "Cannot reopen fd=$fd: $!";
@@ -2523,7 +2523,7 @@ Or, just use the fdopen(3S) feature of C<open()>:
 =head2 Why can't I use "C:\temp\foo" in DOS paths?  Why doesn't `C:\temp\foo.exe` work?
 X<filename, DOS issues>
 
-(�ʤ� DOS �Υѥ��� "C:\temp\foo" ���Ȥ��ʤ���? �ʤ� `C:\temp\foo.exe` �Ϥ��ޤ������ʤ���?)
+(なぜ DOS のパスで "C:\temp\foo" が使えないの? なぜ `C:\temp\foo.exe` はうまくいかないの?)
 
 =begin original
 
@@ -2536,16 +2536,16 @@ have a file called "c:(tab)emp(formfeed)oo" or
 
 =end original
 
-�����ä�!
-�ե�����̾�˥��֤���ڡ���������Ƥ��ޤ��ޤ�����! 
-"like\this"�Τ褦�˥��֥륯�����Ȥǳ��줿ʸ�������Ǥϡ�
-�Хå�����å���ϥ��������ץ���饯�����Ǥ���Ȥ������Ȥ�פ��Ф��Ƥ���������
-���������ץ���饯�������ƤΥꥹ�Ȥ�
-L<perlop/Quote and Quote-like Operators>�ˤ���ޤ���
-�����Τ��ȤǤ��礦�������ʤ��λȤäƤ���DOS�Υե����륷���ƥ�Ǥ�
-"c:(tab)emp(formfeed)oo" �Ȥ�
+おーっと!
+ファイル名にタブや改ページを入れてしまいましたね! 
+"like\this"のようにダブルクォートで括られた文字列の中では、
+バックスラッシュはエスケープキャラクターであるということを思い出してください。
+エスケープキャラクター全てのリストは
+L<perlop/Quote and Quote-like Operators>にあります。
+当然のことでしょうが、あなたの使っているDOSのファイルシステムでは
+"c:(tab)emp(formfeed)oo" とか
 "c:(tab)emp(formfeed)oo.exe" 
-�ʤ��̾���Υե�����ϤǤ��ޤ����͡�
+なんて名前のファイルはできませんよね。
 
 =begin original
 
@@ -2558,17 +2558,17 @@ are more portable, too.
 
 =end original
 
-ʸ�������Τ˥��󥰥륯�����Ȥ�Ȥ������⤷����(�����餬���ޤ���)
-����å����ȤäƤ���������
-���Ƥ�DOS�����Windows�ϡ�MS-DOS 2.0�ʹߡ��ѥ���ˤ���C</> �� C<\>��
-Ʊ���˰����ޤ����顢���ʤ���Perl��������Ȥʤ��Ȥ��ޤ���
-�⤷���� POSIX�����롢ANSI C��C++��awk��tcl��Java��Python ���θ���Ƥ���������
-POSIX�ѥ��Ϥ��ܿ������٤�Ǥ��ޤ���
+文字列を括るのにシングルクォートを使うか、もしくは(こちらが好ましい)
+スラッシュを使ってください。
+全てのDOSおよびWindowsは、MS-DOS 2.0以降、パス中にあるC</> と C<\>を
+同じに扱いますから、あなたはPerlを壊すことなく使えます。
+もしくは POSIXシェル、ANSI CとC++、awk、tcl、Java、Python を考慮してください。
+POSIXパスはより移植性に富んでいます。
 
 =head2 Why doesn't glob("*.*") get all the files?
 X<glob>
 
-(�ʤ� glob("*.*") �����ƤΥե�����������ʤ���?)
+(なぜ glob("*.*") で全てのファイルを得られないの?)
 
 =begin original
 
@@ -2580,17 +2580,17 @@ documentation for details.
 
 =end original
 
-�� UNIX �����ƥ���Ф���ܿ��Ǥ��äƤ⡢Perl �� glob �ؿ��� UNIX ��ɸ��Ū��
-�����֤ο����񤤤˽�������Ǥ���
-���Ƥ�(����°���Ǥʤ�)�ե����������ˤ� C<glob("*")>�Ȥ���ɬ�פ�����ޤ���
-����� glob() �ΰܿ�������ޤ���
-���ʤ��λȤäƤ��� Perl ���ȼ��Υ����ִؿ��򥵥ݡ��Ȥ��Ƥ��뤫�⤷��ޤ���
-�ܤ����ϥɥ�����Ȥ򻲾Ȥ��Ƥ���������
+非 UNIX システムに対する移植であっても、Perl の glob 関数は UNIX の標準的な
+グロブの振る舞いに従うからです。
+全ての(隠し属性でない)ファイルを得るには C<glob("*")>とする必要があります。
+これは glob() の移植性を高めます。
+あなたの使っている Perl が独自のグロブ関数をサポートしているかもしれません。
+詳しくはドキュメントを参照してください。
 
 =head2 Why does Perl let me delete read-only files?  Why does C<-i> clobber protected files?  Isn't this a bug in Perl?
 
-(�ʤ� Perl ���ɤߤȤ����ѥե�����������Ƥ��ޤ���?
-�ʤ�C<-i> clobber�ϥե������ץ��ƥ��Ȥ����? ����� Perl �ΥХ�����ʤ���?)
+(なぜ Perl は読みとり専用ファイルを削除してしまうの?
+なぜC<-i> clobberはファイルをプロテクトするの? これは Perl のバグじゃないの?)
 
 =begin original
 
@@ -2600,9 +2600,9 @@ Know" collection in http://www.cpan.org/misc/olddoc/FMTEYEWTK.tgz .
 
 =end original
 
-http://www.cpan.org/misc/olddoc/FMTEYEWTK.tgz ��
-"Far More Than You Ever Wanted To Know" �ˤ���F<file-dir-perms> ��
-����������Ū�����ĺ�����ǫ�ˤ���������������Ƥ��ޤ���
+http://www.cpan.org/misc/olddoc/FMTEYEWTK.tgz の
+"Far More Than You Ever Wanted To Know" にあるF<file-dir-perms> の
+記事が教育的、かつ懇切丁寧にこの問題を説明しています。
 
 =begin original
 
@@ -2616,22 +2616,22 @@ the permissions of the file govern whether you're allowed to.
 
 =end original
 
-��ñ�ʤޤȤ�: ���ʤ��λȤäƤ���ե����륷���ƥब�ɤΤ褦��ư��Ƥ���Τ���
-�ͤ��Ƥ���������
-�ե�������Ф���ѡ��ߥå����Ϥ��Υե�����ˤ���ǡ����˲���
-�Ǥ��뤫�Ȥ������Ȥ�ɽ���Ƥ��ޤ���
-�ǥ��쥯�ȥ���Ф���ѡ��ߥå����ϡ����Υǥ��쥯�ȥ�ˤ���ե�����ꥹ�Ȥ�
-�Ф��Ʋ����Ǥ���Τ��Ȥ������Ȥ�ɽ���Ƥ��ޤ���
-�ե�������������Ȥ������Υե�������Ф���̾�����ǥ��쥯�ȥ꤫��
-��������ޤ�(�������äƤ������ϥե�������Ф���ѡ��ߥå����Ǥ�
-�ʤ����ǥ��쥯�ȥ���Ф���ѡ��ߥå����˰�¸���Ƥ���ΤǤ�)��
-�ե�������Ф��ƽ񤭹��ߤ�Ԥ����Ȥ���ȡ��ե�������Ф���ѡ��ߥå����
-���줬�Ǥ��뤫�ɤ�������ꤷ�ޤ���
+簡単なまとめ: あなたの使っているファイルシステムがどのように動作しているのかを
+考えてください。
+ファイルに対するパーミッションはそのファイルにあるデータに何が
+できるかということを表しています。
+ディレクトリに対するパーミッションは、そのディレクトリにあるファイルリストに
+対して何ができるのかということを表しています。
+ファイルを削除したとき、そのファイルに対する名前がディレクトリから
+取り除かれます(したがってこの操作はファイルに対するパーミッションでは
+なく、ディレクトリに対するパーミッションに依存しているのです)。
+ファイルに対して書き込みを行おうとすると、ファイルに対するパーミッションが
+それができるかどうかを決定します。
 
 =head2 How do I select a random line from a file?
 X<file, selecting a random line>
 
-(����ե����뤫�������˹Ԥ����򤹤�ˤ�?)
+(あるファイルからランダムに行を選択するには?)
 
 =begin original
 
@@ -2639,7 +2639,7 @@ Here's an algorithm from the Camel Book:
 
 =end original
 
-�ʲ��˼����Τ� �餯���ܤˤ��ä����르�ꥺ��Ǥ�:
+以下に示すのは らくだ本にあったアルゴリズムです:
 
 	srand;
 	rand($.) < 1 && ($line = $_) while <>;
@@ -2652,11 +2652,11 @@ Programming>, Volume 2, Section 3.4.2, by Donald E. Knuth.
 
 =end original
 
-����ϡ��ե��������Τ��ɤ߹���ǽ���������������٤ƻ��Ѥ�����֤�
-�礭���ˤ��������餫�ʥ��ɥХ�ơ���������ޤ���
-���μ�ˡ�ξ����� Donald E. Knuth �� 
-I<The Art of Computer Programming>, Volume 2, Section 3.4.2 ��
-����ޤ���
+これは、ファイル全体を読み込んで処理するやり方に比べて使用する空間の
+大きさにおいて明らかなアドバンテージがあります。
+この手法の証明は Donald E. Knuth の 
+I<The Art of Computer Programming>, Volume 2, Section 3.4.2 に
+あります。
 
 =begin original
 
@@ -2665,7 +2665,7 @@ for that algorithm:
 
 =end original
 
-���Υ��르�ꥺ��δؿ����󶡤��� File::Random �⥸�塼�뤬�Ȥ��ޤ�:
+このアルゴリズムの関数を提供する File::Random モジュールが使えます:
 
 	use File::Random qw/random_line/;
 	my $line = random_line($filename);
@@ -2677,13 +2677,13 @@ file as an array.  Simply access a random array element.
 
 =end original
 
-�⤦��Ĥ���ˡ�� Tie::File �⥸�塼���Ȥ����Ȥǡ�����ϥե��������Τ�
-����Ȥ��ư����ޤ���
-ñ�˥����������˥����������Ƥ���������
+もう一つの方法は Tie::File モジュールを使うことで、これはファイル全体を
+配列として扱います。
+単にランダムな配列にアクセスしてください。
 
 =head2 Why do I get weird spaces when I print an array of lines?
 
-(�Ԥ��������Ϥ����Ȥ��ˤʤ�;�פʥ��ڡ������Ĥ���?)
+(行の配列を出力したときになぜ余計なスペースがつくの?)
 
 =begin original
 
@@ -2691,7 +2691,7 @@ Saying
 
 =end original
 
-�ʲ��Τ褦�ˤ����:
+以下のようにすると:
 
 	print "@lines\n";
 
@@ -2703,9 +2703,9 @@ statement would print
 
 =end original
 
-C<@line>�����Ǥ�Ҥ����碌�����δ֤˶�����֤��ޤ���
-C<@lines> �� C<("little", "fluffy", "clouds")>���ä��Ȥ���ȡ�
-��Τ�����ǽ��Ϥ������ʲ��Τ褦�ˤʤ�ޤ�:
+C<@line>の要素を繋ぎあわせ、その間に空白を置きます。
+C<@lines> が C<("little", "fluffy", "clouds")>だったとすると、
+先のやり方で出力した場合以下のようになります:
 
 	little fluffy clouds
 
@@ -2716,9 +2716,9 @@ character C<("little\n", "fluffy\n", "clouds\n")> then it would print:
 
 =end original
 
-��������C<@lines>�γ����Ǥ��ƥ����ȤιԤǤ��äƽ�ü�˲��Ԥ�����
-C<("little\n", "fluffy\n", "clouds\n")>�Τ褦�ʤ�Τ��äȤ����
-���η�̤ϰʲ��Τ褦�ˤʤ�ޤ�:
+しかし、C<@lines>の各要素がテキストの行であって終端に改行がある
+C<("little\n", "fluffy\n", "clouds\n")>のようなものだっとすると
+その結果は以下のようになります:
 
 	little
 	 fluffy
@@ -2730,7 +2730,7 @@ If your array contains lines, just print them:
 
 =end original
 
-���󤬹Ԥ��鹽������Ƥ���Τʤ顢���Ϥ���ˤ�ñ�˰ʲ��Τ褦�ˤ��ޤ�:
+配列が行から構成されているのなら、出力するには単に以下のようにします:
 
 	print @lines;
 

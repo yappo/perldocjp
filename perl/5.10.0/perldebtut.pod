@@ -9,7 +9,7 @@ perldebtut - Perl debugging tutorial
 
 =end original
 
-perldebtut - Perl �ǤΥǥХå��Υ��塼�ȥꥢ��
+perldebtut - Perl でのデバッグのチュートリアル
 
 =head1 DESCRIPTION
 
@@ -21,8 +21,8 @@ perl programs.
 
 =end original
 
-perl �ǥХå��λȤ�����(�ȤƤ�) ���̤ʾҲ𤪤�ӡ� perl �ץ�������
-�ǥХå��˴ؤ��롢���Ǥ�¸�ߤ����꿼�����󸻤ؤΥݥ��󥿤Ǥ���
+perl デバッガの使い方の(とても) 軽量な紹介および、 perl プログラムの
+デバッグに関する、すでに存在するより深い情報源へのポインタです。
 
 =begin original
 
@@ -33,9 +33,9 @@ This is for them.
 
 =end original
 
-perl �������ȤäƤ���Τˡ�perl �ǥХå���Ȥ����ȤˤĤ��Ʋ����Τ�ʤ��褦��
-�פ���ͤ����ˤ������󤤤ޤ���
-����Ϥ��Τ褦�ʿͤ����Τ���Τ�ΤǤ���
+perl を毎日使っているのに、perl デバッガを使うことについて何も知らないように
+思われる人が非常にたくさんいます。
+これはそのような人たちのためのものです。
 
 =head1 use strict
 
@@ -48,11 +48,11 @@ a problem:
 
 =end original
 
-�ޤ��ǽ�ˡ�perl �Υץ�������ǥХå�����Ȥ��ˡ��ǥХå�������
-�Ȥ����Ȥʤ����������ڤ�����ľ�ʤ�Τˤ��뤿��ˤǤ��뤳�Ȥ������Ĥ�
-����ޤ���
-����򼨤�����ˡ�"hello" �Ȥ���̾���Ρ�ñ��Ǥ��������������������ץȤ�
-�����ޤ�:
+まず最初に、perl のプログラムをデバッグするときに、デバッガを全く
+使うことなく、人生を遥かに素直なものにするためにできることがいくつか
+あります。
+それを示すために、"hello" という名前の、単純ですが問題を抱えたスクリプトを
+示します:
 
 	#!/usr/bin/perl
 
@@ -73,13 +73,13 @@ there's really 3:
 
 =end original
 
-����ϥ��顼�ʤ�����ѥ��뤪��Ӽ¹Ԥ���ޤ����������餯���ꤷ�����Ȥ�
-�����ʤ��Ǥ��礦; ���ʤ����"Hello World\n" �Ȥ�����ɽ������ޤ���;
-���� (����ԥ塼���˾������뷹���̤��) ����褦�˸���줿�̤��
-ư��Ƥ��ޤ���
-����ϡ�����ʸ����ɽ�����Ƥ��ơ����줬���ԤΤ褦�˸�����ΤǤ���
-2 �Ĥ��ѿ�������褦�˸����ޤ������ºݤˤ� (�����ץߥ��Τ����)
-3 �Ĥ��ѿ�������ΤǤ�:
+これはエラーなくコンパイルおよび実行されますが、おそらく想定したことは
+起きないでしょう; すなわち、"Hello World\n" とは全く表示されません;
+一方 (コンピュータに少しある傾向通りに) するように言われた通りに
+動作しています。
+これは、改行文字を表示していて、それが空行のように見えるのです。
+2 つの変数があるように見えますが、実際には (タイプミスのために)
+3 つの変数があるのです:
 
 	$var1 = 'Hello World';
 	$varl = undef;
@@ -93,9 +93,9 @@ first line of the script.
 
 =end original
 
-���μ���������­����ˤϡ�������ץȤκǽ�ιԤθ�� 'use strict;' ��
-�񤤤� strict �⥸�塼���Ƴ�����뤳�Ȥǡ��ѿ���Ȥ����ˤ�������뤳�Ȥ�
-�����Ǥ��ޤ���
+この種の問題を補足するには、スクリプトの最初の行の後に 'use strict;' を
+書いて strict モジュールを導入することで、変数を使う前には宣言することを
+強制できます。
 
 =begin original
 
@@ -104,8 +104,8 @@ get four error messages because one variable is referenced twice:
 
 =end original
 
-����Ǽ¹Ԥ���ȡ�perl �� 3 �Ĥ�̤����ѿ��˴ؤ��� 4 �ĤΥ��顼��å�������
-�Ǥޤ�; �ʤ��ʤ� 1 �Ĥ��ѿ��� 2 �󻲾Ȥ���Ƥ��뤫��Ǥ�:
+これで実行すると、perl は 3 つの未宣言変数に関して 4 つのエラーメッセージが
+でます; なぜなら 1 つの変数は 2 回参照されているからです:
 
  Global symbol "$var1" requires explicit package name at ./t1 line 4.
  Global symbol "$var2" requires explicit package name at ./t1 line 5.
@@ -120,9 +120,9 @@ script looks like this:
 
 =end original
 
-�Хå����!
-�����Ƥ���������뤿��ˡ����Ƥ��ѿ�������Ū��������뤳�Ȥˤ���ȡ�
-������ץȤϰʲ��Τ褦�ˤʤ�ޤ�:
+バッチリだ!
+そしてこれを修正するために、全ての変数を明示的に宣言することにすると、
+スクリプトは以下のようになります:
 
 	#!/usr/bin/perl
 	use strict;
@@ -140,8 +140,8 @@ We then do (always a good idea) a syntax check before we try to run it again:
 
 =end original
 
-���줫�顢�⤦���ټ¹Ԥ�������ʸˡ�����å���Ԥ��ޤ�(����Ͼ��
-�����ͤ��Ǥ�):
+それから、もう一度実行する前に文法チェックを行います(これは常に
+いい考えです):
 
 	> perl -c hello
 	hello syntax OK 
@@ -154,14 +154,14 @@ variable, and simply changing $varl to $var1 solves the problem.
 
 =end original
 
-�����Ƽ¹Ԥ���ȡ���Ϥ� "\n" ��ɽ������ޤ��������ʤ��Ȥ�ʤ�����
-ʬ����ޤ���
-����ѥ��뤷��������ץȤ� '$varl' (ʸ�� 'l' �Ǥ�) �����뤳�Ȥ����餫�ˤʤꡢ
-ñ�� $varl �� $var1 ���ѹ����������ϲ�褷�ޤ���
+そして実行すると、やはり "\n" が表示されますが、少なくともなぜかは
+分かります。
+コンパイルしたスクリプトに '$varl' (文字 'l' です) があることが明らかになり、
+単に $varl を $var1 に変更すれば問題は解決します。
 
 =head1 Looking at data and -w and v
 
-(�ǡ����θ����� -w �� v)
+(データの見方と -w と v)
 
 =begin original
 
@@ -170,7 +170,7 @@ dynamic variable, just before using it?
 
 =end original
 
-�褷���Ǥ������ˡ�ưŪ�ѿ������äƤ���ǡ����򡢤����Ȥ�ľ�����Τ�ˤ�?
+よし、でも本当に、動的変数に入っているデータを、それを使う直前に知るには?
 
 	#!/usr/bin/perl 
 	use strict;
@@ -194,9 +194,9 @@ run it and all we get is a blank line again!  Hmmmm.
 
 =end original
 
-�ɤ������˸����ޤ�; ʸˡ�����å� (perl -c scriptname) �θ塢�¹Ԥ��Ƥߤ�ȡ�
-�ޤ�����Ԥ����Фޤ���!
-�ա��ࡣ
+良さそうに見えます; 文法チェック (perl -c scriptname) の後、実行してみると、
+またも空行しか出ません!
+ふーむ。
 
 =begin original
 
@@ -206,8 +206,8 @@ after:
 
 =end original
 
-�����ǰ���Ū�ʥǥХå���ˡ�ΰ�Ĥϡ�print ʸ��ͳ�ˤ����Ĥ��Ф�ޤ��ơ�
-�ǡ�����ץ��Ȥ���ľ���Υ����å����ɲä��뤳�ȤǤ�:
+ここで一般的なデバッグ手法の一つは、print 文を自由にいくつかばらまいて、
+データをプリントする直前のチェックを追加することです:
 
 	print "All OK\n" if grep($key, keys %data);
 	print "$data{$key}\n";
@@ -219,7 +219,7 @@ And try again:
 
 =end original
 
-�����ƺ�ĩ�路�ޤ�:
+そして再挑戦します:
 
 	> perl data
 	All OK     
@@ -235,10 +235,10 @@ line:
 
 =end original
 
-Ʊ���������Ҥ򸫤Ĥ᤹���ơ��ڤ򸫤ƿ��򸫤��ˤʤäƤ��뤳�Ȥ�����ޤ�;
-�������ư㤦��ˡ���ޤ��礦��
-����ϡ����ޥ�ɥ饤��� perl �� 'B<-d>' ���ץ�����Ϳ���뤳�Ȥǵ�ʼ���
-�ޤ�����뤳�ȤǤ�:
+同じコード片を見つめすぎて、木を見て森を見ずになっていることがあります;
+一服して違う手法を試しましょう。
+それは、コマンドラインで perl に 'B<-d>' オプションを与えることで騎兵隊を
+迎え入れることです:
 
 	> perl -d data 
 	Default die handler restored.
@@ -258,9 +258,9 @@ input.
 
 =end original
 
-�����Ǥ������Ȥϡ�������ץȤ��Ф����Ȥ߹��� perl �ǥХå���
-��ư�������ȤǤ���
-����ϼ¹ԥ����ɤκǽ�ιԤ���ߤ��ơ����Ϥ��ԤäƤ��ޤ���
+ここでしたことは、スクリプトに対して組み込み perl デバッガを
+起動したことです。
+それは実行コードの最初の行で停止して、入力を待っています。
 
 =begin original
 
@@ -269,8 +269,8 @@ just the letter 'B<q>', not the words 'quit' or 'exit':
 
 =end original
 
-��˿ʤ����ˡ��ɤ���äƥǥХå���ȴ���뤫���Τꤿ���Ǥ��礦: ñ��
-'quit' �� 'exit' �ǤϤʤ���ñ��ʸ�� 'B<q>' �򥿥��פ��Ƥ�������:
+先に進む前に、どうやってデバッガを抜けるかを知りたいでしょう: 単語
+'quit' や 'exit' ではなく、単に文字 'B<q>' をタイプしてください:
 
 	DB<1> q
 	>
@@ -281,11 +281,11 @@ That's it, you're back on home turf again.
 
 =end original
 
-����ǡ��Ƥӥۡ��॰�饦��ɤ���äƤ��ޤ���
+これで、再びホームグラウンドに戻ってきます。
 
 =head1 help
 
-(�إ��)
+(ヘルプ)
 
 =begin original
 
@@ -297,12 +297,12 @@ the entire help screen.  Here is the summary page:
 
 =end original
 
-������ץȤ��Ф��Ƥ⤦���٥ǥХå���ư���ơ��إ�ץ�˥塼�򸫤Ƥߤޤ���
-�إ�פ�ƤӽФ��ˤ�ʣ������ˡ������ޤ�: ñ��� 'B<h>' �ϥإ�ץꥹ�Ȥ�
-�������Ϥ���'B<|h>' (�ѥ���-h) �ϥإ�פ�ڡ�����(¿ʬ 'more' ��
-'less') �����ꡢ�Ǹ�� 'B<h h>' (h-����-h) �ϥإ�ץ����꡼�����Τ�
-ɽ�����ޤ���
-�ʲ�������ڡ����Ǥ�:
+スクリプトに対してもう一度デバッガを起動して、ヘルプメニューを見てみます。
+ヘルプを呼び出すには複数の方法があります: 単純な 'B<h>' はヘルプリストの
+要約を出力し、'B<|h>' (パイプ-h) はヘルプをページャ(多分 'more' か
+'less') に送り、最後に 'B<h h>' (h-空白-h) はヘルプスクリーン全体を
+表示します。
+以下は要約ページです:
 
 DB<1>h
 
@@ -339,9 +339,9 @@ it looks and it's very useful to know more about all of it, and fun too!
 
 =end original
 
-�ȤƤ�¿���κ��𤵤��륪�ץ���󤬤���ޤ�!
-����ϸ����ܤۤɰ����Ϥ���ޤ��󤷡�����餹�٤ƤˤĤ��Ƥ�ä��Τ뤳�Ȥ�
-�ȤƤ�ͭ�ѤǤ������ڤ����⤢��ޤ�!
+とても多くの混乱させるオプションがあります!
+これは見た目ほど悪くはありませんし、これらすべてについてもっと知ることは
+とても有用ですし、楽しくもあります!
 
 =begin original
 
@@ -354,13 +354,13 @@ scope and can be constrained by pattern.
 
 =end original
 
-�ޤ��ΤäƤ����٤������Ĥ��Υ��ޥ�ɤ�����ޤ���
-���λ����Ǥϲ����Υ饤�֥���ȤäƤ���ȤϹͤ��Ƥ��ʤ��Ǥ��礦����
-'B<M>' �ϸ����ɤ߹��ޤ�Ƥ���⥸�塼��ȥС�������ֹ��ɽ������
-���� 'B<m>' �ϥ᥽�åɤ�ɽ������'B<S>' �ϰʲ��Τ褦�ˡ�(�ѥ�����ˤ�ä�)
-���ƤΥ��֥롼�����ɽ�����ޤ���
-'B<V>' ��'B<X>' �ϡ��ѥå������������פȡ��ѥ�����ˤ�ä����¤Ǥ��롢
-�ѿ���ɽ�����ޤ���
+まず知っておくべきいくつかのコマンドがあります。
+この時点では何かのライブラリを使っているとは考えていないでしょうが、
+'B<M>' は現在読み込まれているモジュールとバージョン番号を表示し、
+一方 'B<m>' はメソッドを表示し、'B<S>' は以下のように、(パターンによって)
+全てのサブルーチンを表示します。
+'B<V>' と'B<X>' は、パッケージスコープと、パターンによって制限できる、
+変数を表示します。
 
 	DB<2>S str 
 	dumpvar::stringify
@@ -375,8 +375,8 @@ the 'name':
 
 =end original
 
-X' �Ȥ��ο����Ȥ����ˤϡ��������($@%)��Ȥ�ɬ�פϤ���ޤ���;
-ñ�� 'name' �����Ϥ��Ƥ�������:
+X' とその親類を使う時には、型指定子($@%)を使う必要はありません;
+単に 'name' を入力してください:
 
 	DM<3>X ~err
 	FileHandle(stderr) => fileno(2)    
@@ -389,10 +389,10 @@ at our present position (the first line of code in this case), via 'B<v>':
 
 =end original
 
-����������������ʥץ�����ब���äơ����ɤ��ˤ��뤫�������ƥǡ�����
-�ɤΤ褦�ˤ��äƤ���Τ��򸫤褦�Ȥ��Ƥ��뤳�Ȥ�פ��Ф��Ƥ���������
-�ޤ��ǽ�ˡ����߰��� (���ξ��Ǥϥ����ɤκǽ�ι�) �Υ����ɤ򸫤Ƥߤޤ��礦;
-'B<v>' ��Ȥ��ޤ�:
+問題を抱えた小さなプログラムがあって、今どこにいるか、そしてデータが
+どのようにあっているのかを見ようとしていることを思い出してください。
+まず最初に、現在位置 (この場合ではコードの最初の行) のコードを見てみましょう;
+'B<v>' を使います:
 
 	DB<4> v
 	1       #!/usr/bin/perl
@@ -413,8 +413,8 @@ see more code, type 'v' again:
 
 =end original
 
-���ֹ� 4 �ˤ���ΤϽ����ˤʤ�ݥ��󥿤ǡ����ɤ��ˤ���Τ��򼨤��Ƥ��ޤ���
-����˥����ɤ򸫤�ˤϡ��Ƥ� 'v' �򥿥��פ��ޤ�:
+行番号 4 にあるのは助けになるポインタで、今どこにいるのかを示しています。
+さらにコードを見るには、再び 'v' をタイプします:
 
 	DB<4> v
 	8               'welcome' => q(Hello World),
@@ -432,8 +432,8 @@ And if you wanted to list line 5 again, type 'l 5', (note the space):
 
 =end original
 
-�����Ƥ⤷���ֹ� 5 ��ƤӸ������ʤ顢'l 5' �򥿥��פ��ޤ�
-(��������դ��Ƥ�������):
+そしてもし行番号 5 を再び見たいなら、'l 5' をタイプします
+(空白に注意してください):
 
 	DB<4> l 5
 	5:      my %data = (
@@ -446,10 +446,10 @@ line we're about to execute, type a lone period '.':
 
 =end original
 
-���ξ�硢�������ΤϤ��ޤ�¿���Ϥ���ޤ��󤬡�����������̤ϸ��Ϥ��Τ�
-���ڡ����ˤ�ʤ����Ƥ�����Τǡ�'l' �ϤȤƤ�ͭ�ѤǤ���
-���Ƥ������¹Ԥ��褦�Ȥ��Ƥ���Ȥ����˥ꥻ�åȤ���ˤϡ�ñ��� '.' ��
-�����פ��ޤ�:
+この場合、見られるものはあまり多くはありませんが、もちろん普通は見渡すのに
+何ページにもなる内容があるので、'l' はとても有用です。
+見ている場所を実行しようとしているところにリセットするには、単一の '.' を
+タイプします:
 
 	DB<5> .
 	main::(./data_a:4):     my $key = 'welcome';  
@@ -463,11 +463,11 @@ do is to step through the next executable statement with an 'B<s>':
 
 =end original
 
-ɽ������Ƥ���Ԥ� B<����> �¹Ԥ���褦�Ȥ��Ƥ����Τǡ��ޤ�
-�¹Ԥ���Ƥ��ޤ���
-���äơ�������ʸ�� 'B<p>' ��Ȥä��ѿ���ɽ���Ǥ��ޤ��������λ����Ǥ�
-ɽ�������Τ϶�(̤���)�ͤ����Ǥ���
-����٤����Ȥϡ�'B<s>' ��ȤäƼ��μ¹Բ�ǽʸ�˿ʤळ�ȤǤ�:
+表示されている行は B<次に> 実行されようとしているもので、まだ
+実行されていません。
+従って、ここで文字 'B<p>' を使って変数を表示できますが、この時点では
+表示されるのは空(未定義)値だけです。
+するべきことは、'B<s>' を使って次の実行可能文に進むことです:
 
 	DB<6> s
 	main::(./data_a:5):     my %data = (
@@ -483,7 +483,7 @@ Now we can have a look at that first ($key) variable:
 
 =end original
 
-�����Ǻǽ�� ($key) �ѿ��򸫤뤳�Ȥ��Ǥ��ޤ�:
+ここで最初の ($key) 変数を見ることができます:
 
 	DB<7> p $key 
 	welcome 
@@ -496,9 +496,9 @@ line or sub routine:
 
 =end original
 
-�� 13 �������ξ��ʤΤǡ�ʸ�� 'B<c>' ��Ȥäơ����٤ϡְ������פ�
-�֥졼���ݥ���Ȥ�Ϳ����줿�Ԥ����֥롼������������뤳�ȤǤ����ޤ�
-�ʤ�Ƥ����ޤ��礦:
+行 13 が処理の場所なので、文字 'B<c>' を使って、今度は「一回だけ」の
+ブレークポイントを与えられた行かサブルーチンに挿入することでそこまで
+進めていきましょう:
 
 	DB<8> c 13
 	All OK
@@ -512,10 +512,10 @@ to see what is happening:
 
 =end original
 
-�����å�('All OK' ��ɽ�����줿���)���̤�᤮�ơ���Ȥ�������ľ����
-��ߤ��ޤ�����
-���������Ƥ���Τ��򸫤뤿�����Ĥ��ѿ���ɽ�������褦�Ȥ��뤳�Ȥ�
-�Ǥ��ޤ�:
+チェック('All OK' が表示された場所)を通り過ぎて、作業の要点の直線で
+停止しました。
+何が起きているのかを見るために二つの変数を表示させようとすることが
+できます:
 
 	DB<9> p $data{$key}
 
@@ -525,7 +525,7 @@ Not much in there, lets have a look at our hash:
 
 =end original
 
-���ޤꤢ��ޤ��󤬡��ϥå���򸫤Ƥߤޤ��礦:
+あまりありませんが、ハッシュを見てみましょう:
 
 	DB<10> p %data
 	Hello Worldziptomandwelcomejerrywelcomethisthat 
@@ -540,8 +540,8 @@ Well, this isn't very easy to read, and using the helpful manual (B<h h>), the
 
 =end original
 
-�����󡢤���ϤȤƤ��ɤߤ䤹���Ȥ�����ΤǤϤ���ޤ���; �����ƿ��ڤ�
-�ޥ˥奢�� (B<h h>) ��Ȥ��ȡ�'B<x>' ���ޥ�ɤ������ߤ����ꤽ���Ǥ�:
+うーん、これはとても読みやすいというものではありません; そして親切な
+マニュアル (B<h h>) を使うと、'B<x>' コマンドが見込みがありそうです:
 
 	DB<12> x %data
 	0  'Hello World'
@@ -564,10 +564,10 @@ to the data structure:
 
 =end original
 
-����Ϥ��ޤ�����ˤϤʤ�ޤ���; �����ˤ� 2 �Ĥ� "welcome" ������ޤ�����
-�ɤ줬�����Ǥɤ줬�ͤ��򼨤���Τ��ʤ���ñ���������פΰ����ǡ�
-���ξ�硢�ä����Ω�Ĥ�ΤǤϤ���ޤ���
-�����Ǥε��ϡ��ǡ�����¤�ؤ� B<��ե����> ��Ȥ����ȤǤ�:
+これはあまり助けにはなりません; ここには 2 つの "welcome" がありますが、
+どれがキーでどれが値かを示すものがなく、単に配列ダンプの一覧で、
+この場合、特に役に立つものではありません。
+ここでの技は、データ構造への B<リファレンス> を使うことです:
 
 	DB<13> x \%data
 	0  HASH(0x8194bc4)
@@ -586,10 +586,10 @@ evenly paired hash structure out of alignment.
 
 =end original
 
-��ե���󥹤������˥���פ���ơ��Ĥ��˰��äƤ����Τ������ޤ�����
-�������Ȥϴ�����ͭ���Ǥ��������������Ū�ˤϴְ�ä���ΤǤ���;
-'and jerry' ���ϸ�ǤϤʤ���2 �Ĥ��̡���ñ��Ȥ��ư����Ƥ��ޤ�;
-���äơ�2 ���ȤΥϥå��幽¤�Υ��饤���Ȥ����줿�ΤǤ���
+リファレンスが完全にダンプされて、ついに扱っているものが見えました。
+クォートは完全に有効でしたが、今回の目的には間違ったものでした;
+'and jerry' が熟語ではなく、2 つの別々の単語として扱われています;
+従って、2 つ組のハッシュ構造のアライメントがずれたのです。
 
 =begin original
 
@@ -598,8 +598,8 @@ and saved us a lot of trouble:
 
 =end original
 
-'B<-w>' ���ץ����Ϥ���ˤĤ��ƶ����Ƥ����Τǡ��ǽ�˻ȤäƤ����С�
-¿�������꤫��ߤäƤ���Ƥ��ޤ���:
+'B<-w>' オプションはこれについて教えてくれるので、最初に使っておけば、
+多くの問題から救ってくれていました:
 
 	> perl -w data
 	Odd number of elements in hash assignment at ./data line 5.    
@@ -611,8 +611,8 @@ our expected output:
 
 =end original
 
-�������Ȥ������ޤ�: 'tom' => q(and jerry)�������ƺƼ¹Ԥ���ȡ����٤�
-ͽ���̤�ν��Ϥ������ޤ�:
+クォートを修正します: 'tom' => q(and jerry)、そして再実行すると、今度は
+予想通りの出力が得られます:
 
 	> perl -w data
 	Hello World
@@ -626,9 +626,9 @@ and will merrily dump out nested references, complete objects, partial objects
 
 =end original
 
-�����ˤ���֤� 'B<x>' ���ޥ�ɤ���᤯�Ǹ��Ƥߤ�ȡ������������ͭ�Ѥǡ�
-�ͥ��Ȥ�����ե���󥹡������ʥ��֥������ȡ����֥������Ȥΰ��� - ���ޥ�ɤ�
-Ϳ������Τϲ��Ǥ� - �ڤ�������פ��ޤ�:
+ここにいる間に 'B<x>' コマンドをより近くで見てみると、これは本当に有用で、
+ネストしたリファレンス、完全なオブジェクト、オブジェクトの一部 - コマンドに
+与えたものは何でも - 楽しくダンプします:
 
 =begin original
 
@@ -638,9 +638,9 @@ a zero:
 
 =end original
 
-��ñ�ʥ��֥������Ȥ��äơ����Ƥߤޤ��礦; �ޤ��ǥХå���ư���ޤ�:
-����� STDIN ���鲿�餫�η������Ϥ��׵᤹��Τǡ�����̵���ʤ�� - ���� - ��
-���Ϥ��ޤ�:
+簡単なオブジェクトを作って、見てみましょう; まずデバッガを起動します:
+これは STDIN から何らかの形の入力を要求するので、何か無害なもの - ゼロ - を
+入力します:
 
 	> perl -de 0
 	Default die handler restored.
@@ -658,8 +658,8 @@ Now build an on-the-fly object over a couple of lines (note the backslash):
 
 =end original
 
-�����ǡ�ʣ���Ԥ�ȤäƤ��ξ�ǥ��֥������Ȥ��ۤ��ޤ�
-(�Хå�����å�������դ��Ƥ�������):
+ここで、複数行を使ってその場でオブジェクトを構築します
+(バックスラッシュに注意してください):
 
 	DB<1> $obj = bless({'unique_id'=>'123', 'attr'=> \
 	cont: 	{'col' => 'black', 'things' => [qw(this that etc)]}}, 'MY_class')
@@ -689,9 +689,9 @@ of code or regexes until the cows come home:
 
 =end original
 
-�����Ǥ��礦?
-�����ǤۤȤ�ɤʤ�Ǥ� eval �Ǥ��ơ�����äȤ��������ɤ�����ɽ����
-���ĤޤǤ�¸��Ǥ��ޤ���
+便利でしょう?
+ここでほとんどなんでも eval できて、ちょっとしたコードや正規表現を
+いつまでも実験できます。
 
 	DB<3> @data = qw(this that the other atheism leather theory scythe)
 
@@ -710,7 +710,7 @@ If you want to see the command History, type an 'B<H>':
 
 =end original
 
-���ޥ������򸫤����ʤ顢'B<H>' �򥿥��פ��ޤ�:
+コマンド履歴を見たいなら、'B<H>' をタイプします:
 
 	DB<5> H
 	4: p 'saw -> '.($cnt += map { print "\t:\t$_\n" } grep(/the/, sort @data))
@@ -726,7 +726,7 @@ And if you want to repeat any previous command, use the exclamation: 'B<!>':
 
 =end original
 
-�����˻Ȥä����ޥ�ɤ򷫤��֤��������ϡ���ò���Ȥ��ޤ�: 'B<!>':
+以前に使ったコマンドを繰り返したい場合は、感嘆符を使います: 'B<!>':
 
 	DB<5> !4
 	p 'saw -> '.($cnt += map { print "$_\n" } grep(/the/, sort @data))
@@ -744,12 +744,12 @@ For more on references see L<perlref> and L<perlreftut>
 
 =end original
 
-��ե���󥹤ˤĤ��ƤΤ���ʤ����ˤĤ��Ƥ� L<perlref> �� L<perlreftut> ��
-���Ȥ��Ƥ���������
+リファレンスについてのさらなる情報については L<perlref> と L<perlreftut> を
+参照してください。
 
 =head1 Stepping through code
 
-(�����ɤ򥹥ƥå׼¹Ԥ���)
+(コードをステップ実行する)
 
 =begin original
 
@@ -758,7 +758,7 @@ has a problem:
 
 =end original
 
-�ʲ����ݻ�Ȳڻ�Ȥ��Ѵ�����ñ��ʥץ������ǡ���Ϥ�����������Ƥ��ޤ�:
+以下は摂氏と華氏とを変換する単純なプログラムで、やはり問題を抱えています:
 
 	#!/usr/bin/perl -w
 	use strict;
@@ -803,8 +803,8 @@ expected output.  This is what it does:
 
 =end original
 
-�ʤ������ڻᤫ���ݻ�ؤ��Ѵ��Ͽ�¬������̤��֤��Τ˼��Ԥ��ޤ���
-�ʲ��Ϥɤ��ʤ뤫�Ǥ�:
+なぜか、華氏から摂氏への変換は推測される結果を返すのに失敗します。
+以下はどうなるかです:
 
 	> temp -c0.72
 	33.30 f
@@ -823,14 +823,14 @@ little messy, to leave in production code.
 
 =end original
 
-������Ӥ��Ƥ��ޤ���!
-��ư�ǥ����ɤ˥֥졼���ݥ���Ȥ򥻥åȤ��ơ����������Ƥ��뤫�򸫤뤿���
-�ǥХå��Ǽ¹Ԥ��Ƥߤޤ���
-�֥졼���ݥ���Ȥϡ��ǥХå������Ǥʤ��Ǽ¹Ԥ��뤿��Υե饰�ǡ�
-�֥졼���ݥ���Ȥ���ã����ȡ��¹Ԥ���ߤ��Ƥ���ʤ����äΤ���˥ץ���ץȤ�
-�Ф��ޤ���
-�̾�λ��ѤǤϡ������ΥǥХå����ޥ�ɤϴ�����̵�뤵�졢������
-���ʥ����ɤ˻Ĥ��Ƥ�����Ǥ� - �������𻨤��⤷��ޤ��󤬡�
+全く一貫していません!
+手動でコードにブレークポイントをセットして、何が起きているかを見るために
+デバッガで実行してみます。
+ブレークポイントは、デバッガを中断なしで実行するためのフラグで、
+ブレークポイントに到達すると、実行を停止してさらなる対話のためにプロンプトを
+出します。
+通常の使用では、これらのデバッガコマンドは完全に無視され、これらは
+製品コードに残しても安全です - すこし乱雑かもしれませんが。
 
 	my ($in, $out) = ($num, $num);
 	$DB::single=2; # insert at line 9!
@@ -853,7 +853,7 @@ We'll simply continue down to our pre-set breakpoint with a 'B<c>':
 
 =end original
 
-'B<c>' �򥿥��פ��ơ�ñ���ͽ�᥻�åȤ��줿�֥졼���ݥ���Ȥޤ�³���ޤ�:
+'B<c>' をタイプして、単純に予めセットされたブレークポイントまで続けます:
 
   	DB<1> c
 	main::(temp:10):                if ($deg eq 'c') {   
@@ -864,7 +864,7 @@ Followed by a view command to see where we are:
 
 =end original
 
-����³����ɽ�����ޥ�ɤǺ��ɤ��ˤ��뤫�򸫤ޤ�:
+引き続いて表示コマンドで今どこにいるかを見ます:
 
 	DB<1> v
 	7:              my ($deg, $num) = ($1, $2);
@@ -884,7 +884,7 @@ And a print to show what values we're currently using:
 
 =end original
 
-�����ƺ��ȤäƤ����ͤ�ɽ�������ޤ�:
+そして今使っている値を表示させます:
 
 	DB<1> p $deg, $num
 	f33.3
@@ -897,9 +897,9 @@ pause there later on:
 
 =end original
 
-��������դ��Ƥ���ɤιԤˤ��̤Υ֥졼���ݥ���Ȥ��֤����Ȥ��Ǥ��ޤ�;
-���֥롼���󤫤��֤äƤ����Ф���ΤȤ����Ǥ��� 17 ���ܤ�Ȥ����Ȥˤ��ơ�
-���Ȥ��餳���ǰ�ö��ߤ������Ȥ��ޤ�:
+コロンの付いているどの行にも別のブレークポイントを置くことができます;
+サブルーチンから返ってきたばかりのところである 17 行目を使うことにして、
+あとからここで一旦停止したいとします:
 
 	DB<2> b 17
 
@@ -910,8 +910,8 @@ using the list 'L' command:
 
 =end original
 
-������Ф���ȿ���Ϥ���ޤ��󤬡����� 'L' ���ޥ�ɤ�Ȥ����Ȥǡ��ɤ�
-�֥졼���ݥ���Ȥ����åȤ���Ƥ��뤫�򸫤뤳�Ȥ��Ǥ��ޤ�:
+これに対する反応はありませんが、一覧 'L' コマンドを使うことで、どの
+ブレークポイントがセットされているかを見ることができます:
 
 	DB<3> L
 	temp:
@@ -924,8 +924,8 @@ Note that to delete a breakpoint you use 'd' or 'D'.
 
 =end original
 
-�֥졼���ݥ���Ȥ������뤿��ˤ� 'd' �� 'D' ��Ȥ����Ȥ�
-���դ��Ƥ���������
+ブレークポイントを削除するためには 'd' や 'D' を使うことに
+注意してください。
 
 =begin original
 
@@ -934,8 +934,8 @@ number, we'll use the subroutine name, followed by the now familiar 'v':
 
 =end original
 
-�����ǥ��֥롼�����������äƤ������Ȥˤ��ޤ�; ����Ϲ��ֹ�ǤϤʤ���
-���֥롼����̾��Ȥ��ޤ�; ���θ塢���ȤʤäƤϤ��ʤ��ߤ� 'v' ��Ȥ��ޤ�:
+ここでサブルーチンの中に入っていくことにします; 今回は行番号ではなく、
+サブルーチン名を使います; その後、今となってはおなじみの 'v' を使います:
 
 	DB<3> c f2c
 	main::f2c(temp:30):             my $f = shift;  
@@ -962,11 +962,11 @@ it for inspection.  In this case though, we simply continue down to line 29:
 
 =end original
 
-������ 29 ���ܤȤδ֤˥��֥롼���󤬤��ꡢ������ B<���󥰥륹�ƥå�> ������
-��硢'B<s>' ���ޥ�ɤ�Ȥ��ޤ��������֥롼����ϼ¹Ԥ��뤱��ɤ�
-���֥롼���������ϸ������ʤ��Ȥ��� 'B<n>' ���ޥ�ɤ�
-���ƥåץ����С��Ǥ��ޤ���
-�����������ξ��ˤϡ�ñ�� 29 �Ԥޤǿʤ�Ƥ����ޤ�:
+ここと 29 行目との間にサブルーチンがあり、そこを B<シングルステップ> したい
+場合、'B<s>' コマンドも使えますし、サブルーチンは実行するけれども
+サブルーチン内部は検査しないという 'B<n>' コマンドで
+ステップオーバーできます。
+しかし、この場合には、単に 29 行まで進めていきます:
 
 	DB<4> c 29  
 	main::f2c(temp:29):             return $c;
@@ -977,7 +977,7 @@ And have a look at the return value:
 
 =end original
 
-�������֤��ͤ򸫤Ƥߤޤ�:
+そして返り値を見てみます:
 
 	DB<5> p $c
 	162.944444444444
@@ -990,9 +990,9 @@ possibilities with our sum:
 
 =end original
 
-����������ְ�ä������Ǥ�������פ��������褦�˸����ޤ���
-�黻�Ҥ�ͥ���̤�������ԤäƤ���ΤǤ��礦��?
-��פ˴ؤ��Ƥ���¾�β�ǽ�����Ƥߤޤ�:
+これは全く間違った答えですが、合計は正しいように見えます。
+演算子の優先順位が何かを行っているのでしょうか?
+合計に関してその他の可能性を試してみます:
 
 	DB<6> p (5 * $f - 32 / 9)
 	162.944444444444
@@ -1013,8 +1013,8 @@ return out of the sub with an 'r':
 
 =end original
 
-:-) ����Ϥ����Ƥ��ޤ�!
-�褷���������ȼ����֤��ͤ򥻥åȤ��ơ�'r' ��Ȥäƥ��֥롼���󤫤��֤�ޤ�:
+:-) これはより似ています!
+よし、ここで独自の返り値をセットして、'r' を使ってサブルーチンから返ります:
 
 	DB<10> $c = 5 * ($f - 32) / 9
 
@@ -1027,7 +1027,7 @@ Looks good, let's just continue off the end of the script:
 
 =end original
 
-�ɤ������Ǥ�; ������ץȤκǸ�ޤǼ¹Ԥ��Ƥ��ޤ��礦:
+良さそうです; スクリプトの最後まで実行していましょう:
 
 	DB<12> c
 	0.72 c 
@@ -1042,12 +1042,12 @@ actual program and we're finished.
 
 =end original
 
-�ºݤΥץ�����������Τ���Ԥ˵ߵ޽���(��­���Ƥ������ä�����������)��
-�ܤ��ơ������Ǥ���
+実際のプログラムの問題のある行に救急処置(不足していたかっこを挿入する)を
+施して、終わりです。
 
 =head1 Placeholder for a, w, t, T
 
-(a, w, t, T �Τ���Υץ졼���ۥ��)
+(a, w, t, T のためのプレースホルダ)
 
 =begin original
 
@@ -1055,7 +1055,7 @@ Actions, watch variables, stack traces etc.: on the TODO list.
 
 =end original
 
-����������ѿ��δƻ롢�����å��ȥ졼���ʤ�: TODO �ꥹ�ȤǤ���
+アクション、変数の監視、スタックトレースなど: TODO リストです。
 
 	a 
 
@@ -1068,7 +1068,7 @@ Actions, watch variables, stack traces etc.: on the TODO list.
 
 =head1 REGULAR EXPRESSIONS
 
-(����ɽ��)
+(正規表現)
 
 =begin original
 
@@ -1077,9 +1077,9 @@ the DEBUGGING flag for this one:
 
 =end original
 
-����ɽ�����ɤΤ褦�˸����뤫�Τꤿ���Ȼפ��ޤ�����?
-�ʲ��Τ褦�ˤ���ˤ� perl �� DEBUGGING �ե饰�դ��ǥ���ѥ��뤹��ɬ�פ�
-����ޤ�:
+正規表現がどのように見えるか知りたいと思いましたか?
+以下のようにするには perl を DEBUGGING フラグ付きでコンパイルする必要が
+あります:
 
 	> perl -Dr -e '/^pe(a)*rl$/i'
 	Compiling REx `^pe(a)*rl$'
@@ -1113,14 +1113,14 @@ etc. above), see L<perldebguts>.
 
 =end original
 
-�������Τꤿ���ä��Ǥ���? :-)
-����ɽ����ư��˴ؤ���ܺ٤ˤĤ��Ƥϡ�L<perlre>, L<perlretut> ��
-(��Ҥ� BOL �� CURLYN �ʤɤ�)�Ի׵Ĥʥ�٥����ɤ���ˤϡ�
-L<perldebguts> �򻲾Ȥ��Ƥ���������
+本当に知りたかったですか? :-)
+正規表現の動作に関する詳細については、L<perlre>, L<perlretut> を、
+(上述の BOL や CURLYN などの)不思議なラベルを解読するには、
+L<perldebguts> を参照してください。
 
 =head1 OUTPUT TIPS
 
-(���Ϥξ���)
+(出力の小技)
 
 =begin original
 
@@ -1130,9 +1130,9 @@ your script:
 
 =end original
 
-���顼������������Ƥν��Ϥ����ơ����ڤ� OS �ΥХåե���󥰤�
-��å������򼺤�ʤ��褦�ˤ���ˤϡ�������ץȤκǽ�˰ʲ��Τ褦�ʹԤ�
-�������Ƥ�������:
+エラーログからの全ての出力を得て、親切な OS のバッファリングで
+メッセージを失わないようにするには、スクリプトの最初に以下のような行を
+挿入してください:
 
 	$|=1;	
 
@@ -1142,7 +1142,7 @@ To watch the tail of a dynamically growing logfile, (from the command line):
 
 =end original
 
-ưŪ������³��������ե������������ƻ뤹��ˤϡ�(���ޥ�ɥ饤�󤫤�):
+動的に増え続けるログファイルの末尾を監視するには、(コマンドラインから):
 
 	tail -f $error_log
 
@@ -1153,8 +1153,8 @@ where, they're being called, L<perlvar> has more information:
 
 =end original
 
-���Ƥ� die �ƤӽФ���ϥ�ɥ�롼����ǰϤ�ȡ��ɤ��ǡ��ɤΤ褦��
-�ƤӽФ���Ƥ��뤫���Τ�Τ�ͭ�ѤǤ�; L<perlvar> �ˤ���ʤ���󤬤���ޤ�:
+全ての die 呼び出しをハンドラルーチンで囲むと、どこで、どのように
+呼び出されているかを知るのに有用です; L<perlvar> にさらなる情報があります:
 
 	BEGIN { $SIG{__DIE__} = sub { require Carp; Carp::confess(@_) } }
 
@@ -1165,8 +1165,8 @@ are explained in L<perlopentut> and L<perlfaq8>.
 
 =end original
 
-STDOUT �� STDERR �ե�����ϥ�ɥ�Υ�����쥯�Ȥ˴ؤ����͡���������
-�ƥ��˥å��� L<perlopentut> �� L<perlfaq8> �˵��Ҥ���Ƥ��ޤ���
+STDOUT と STDERR ファイルハンドルのリダイレクトに関する様々な便利な
+テクニックが L<perlopentut> と L<perlfaq8> に記述されています。
 
 =head1 CGI
 
@@ -1178,9 +1178,9 @@ script from the command-line, try something like this:
 
 =end original
 
-�������Ԥ��ץץ���ץȤ���ɤ�����ƨ�����Τ���ʬ����ʤ����Ƥ�
-CGI �ץ�����ޤؤδ�ñ�ʥҥ�ȤȤ��ơ�
-CGI �򥳥ޥ�ɥ饤�󤫤�¹Ԥ���Ȥ��ˡ��ʲ��Τ褦�ʤ�Τ��Ƥ�������:
+「入力待ち」プロンプトからどうやれば逃れられるのかが分からない全ての
+CGI プログラマへの簡単なヒントとして、
+CGI をコマンドラインから実行するときに、以下のようなものを試してください:
 
 	> perl -d my_cgi.pl -nodebug 
 
@@ -1190,7 +1190,7 @@ Of course L<CGI> and L<perlfaq9> will tell you more.
 
 =end original
 
-������� L<CGI> �� L<perlfaq9> �ˤϤ�ä�¿���ξ��󤬤���ޤ���
+もちろん L<CGI> と L<perlfaq9> にはもっと多くの情報があります。
 
 =head1 GUIs
 
@@ -1203,8 +1203,8 @@ and there's a B<vi> interface too.
 
 =end original
 
-���ޥ�ɥ饤�󥤥󥿡��ե������� B<emacs> ��ĥ��̩�ܤ����礵��Ƥ��ơ�
-B<vi> ���󥿡��ե������⤢��ޤ���
+コマンドラインインターフェースは B<emacs> 拡張と密接に統合されていて、
+B<vi> インターフェースもあります。
 
 =begin original
 
@@ -1215,11 +1215,11 @@ popup balloon, no more tiresome typing of 'x $varname' :-)
 
 =end original
 
-����������������Ƥ򥳥ޥ�ɥ饤��Ǽ¹Ԥ���ɬ�פϤ���ޤ���;
-�����Ĥ��� GUI �������⤢��ޤ���
-�����Τ褤�Ȥ����ϡ��ޥ�������������ѿ��ξ�˰�ư�������Ŭ�ڤ�
-������ɥ���Х롼��ˤ��Υǡ���������פ��졢�⤦ 'x $varname' ��
-�����פ��ʤ��Ƥ������ȤǤ� :-)
+しかし、これら全てをコマンドラインで実行する必要はありません;
+いくつかの GUI の選択肢もあります。
+これらのよいところは、マウスカーソルを変数の上に移動させると適切な
+ウィンドウやバルーンにそのデータがダンプされ、もう 'x $varname' と
+タイプしなくていいことです :-)
 
 =begin original
 
@@ -1227,7 +1227,7 @@ In particular have a hunt around for the following:
 
 =end original
 
-�ä˰ʲ��Τ�Τ��դ��Ĵ�٤ƤߤƤ�������:
+特に以下のものの辺りを調べてみてください:
 
 =begin original
 
@@ -1235,7 +1235,7 @@ B<ptkdb> perlTK based wrapper for the built-in debugger
 
 =end original
 
-B<ptkdb> �ӥ�ɥ���ǥХå��Τ���� perlTK �١����Υ�åѡ�
+B<ptkdb> ビルドインデバッガのための perlTK ベースのラッパー
 
 =begin original
 
@@ -1243,7 +1243,7 @@ B<ddd> data display debugger
 
 =end original
 
-B<ddd> �ǡ���ɽ���ǥХå�
+B<ddd> データ表示デバッガ
 
 =begin original
 
@@ -1251,7 +1251,7 @@ B<PerlDevKit> and B<PerlBuilder> are NT specific
 
 =end original
 
-B<PerlDevKit> �� B<PerlBuilder> �� NT ��ͭ�Ǥ�
+B<PerlDevKit> と B<PerlBuilder> は NT 固有です
 
 =begin original
 
@@ -1259,12 +1259,12 @@ NB. (more info on these and others would be appreciated).
 
 =end original
 
-���դ��衣
-(�����䤽��¾�Τ�Τ˴ؤ��뤵��ʤ�����ĺ����й����Ǥ�)��
+注意せよ。
+(これらやその他のものに関するさらなる情報を頂ければ幸いです)。
 
 =head1 SUMMARY
 
-(�ޤȤ�)
+(まとめ)
 
 =begin original
 
@@ -1277,14 +1277,14 @@ intuitive stuff when you get down to it.
 
 =end original
 
-B<use strict> �� B<-w> ��ȤäƤɤ���ä��ɤ������ǥ��󥰤�������뤫��
-���ޤ�����
-B<perl -d scriptname> �Ȥ��뤳�Ȥ� perl �ǥХå���ư�Ǥ����ǥХå���
-B<p> �� B<x> �Υ��ޥ�ɤǥǡ����򸡺��Ǥ��ޤ���
-�����ɤ�����̤�ȴ���ơ�B<b> �ǥ֥졼���ݥ���Ȥ����ꤷ��
-B<s> �� B<n> �ǥ��ƥå׼¹Ԥ�Ԥ���B<c> �ǺƳ����ơ�B<r> ���֥롼���󤫤�
-���ޤ���
-���󤶤ꤷ���Ȥ��ˤϤ��ʤ�ľ��Ū�ʵ�ǽ�Ǥ���
+B<use strict> と B<-w> を使ってどうやって良いコーディングを実践するかを
+見ました。
+B<perl -d scriptname> とすることで perl デバッガを起動でき、デバッガの
+B<p> や B<x> のコマンドでデータを検査できます。
+コードの中を通り抜けて、B<b> でブレークポイントを設定し、
+B<s> や B<n> でステップ実行を行い、B<c> で再開して、B<r> サブルーチンから
+戻ります。
+うんざりしたときにはかなり直感的な機能です。
 
 =begin original
 
@@ -1295,11 +1295,11 @@ place to go), and of course, experiment.
 
 =end original
 
-��������ä�¿����Ĵ�٤�٤����Ȥ�����ޤ����������ɽ�̤�
-�ʤ��ä������Ǥ���
-���¿����ؤ֤���κ�������ˡ�ϡ�����˴ؤ��Ƥ��¿����Ĵ�٤뤿���
-����饤��إ�פ��ɤि��� perldoc ��Ȥ�(�����餯���˿ʤ�٤�
-�Ȥ����� L<perldebug> �Ǥ��礦)���Ȥȡ������������Ǥ���
+もちろんもっと多くの調べるべきことがありますが、これは表面を
+なぞっただけです。
+より多くを学ぶための最善の方法は、言語に関してより多くを調べるために
+オンラインヘルプを読むために perldoc を使う(おそらく次に進むべき
+ところは L<perldebug> でしょう)ことと、もちろん実践です。
 
 =head1 SEE ALSO
 
@@ -1315,7 +1315,7 @@ Richard Foley <richard@rfi.net> Copyright (c) 2000
 
 =head1 CONTRIBUTORS
 
-(�׸���)
+(貢献者)
 
 =begin original
 
@@ -1323,7 +1323,7 @@ Various people have made helpful suggestions and contributions, in particular:
 
 =end original
 
-�͡��ʿ͡���ͭ�פ���Ƥ�׸��򤷤Ƥ���ޤ���; �ä�:
+様々な人々が有益な提案や貢献をしてくれました; 特に:
 
 Ronald J Kimball <rjk@linguist.dartmouth.edu>
 

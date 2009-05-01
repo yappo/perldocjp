@@ -20,12 +20,12 @@ read after L<perlunitut>.
 
 =end original
 
-����ϡ�L<perlunitut> �θ���ɤळ�Ȥ����ꤷ����Perl �Ǥ� Unicode �˴ؤ���
-����������ΰ����Ǥ���
+これは、L<perlunitut> の後で読むことを想定した、Perl での Unicode に関する
+質問と答えの一覧です。
 
 =head2 perlunitut isn't really a Unicode tutorial, is it?
 
-(perlunitut �ϼºݤˤ� Unicode ���塼�ȥꥢ�뤸��ʤ��󤸤�ʤ���?)
+(perlunitut は実際には Unicode チュートリアルじゃないんじゃないの?)
 
 =begin original
 
@@ -33,7 +33,7 @@ No, and this isn't really a Unicode FAQ.
 
 =end original
 
-�Ϥ����㤤�ޤ�; �����Ƥ���ϼºݤˤ� Unicode FAQ �ǤϤ���ޤ���
+はい、違います; そしてこれは実際には Unicode FAQ ではありません。
 
 =begin original
 
@@ -44,16 +44,16 @@ them, so I decided to call the document a Unicode tutorial.
 
 =end original
 
-Perl ���б����Ƥ������Ƥ�ʸ�����󥳡��ǥ��󥰤ؤ���ݥ��󥿡��ե�������
-���äƤ���Τǡ��ºݤˤ����Ѥ� C<Encode> ���塼�ȥꥢ���
-C<Encode> FAQ �Ǥ���
-��������¿���ο͡�����Unicode �����̤ǥޥ�����ʤ�Τ��ȹͤ��Ƥ��ơ�
-�������˾���������ʤ��ä��Τǡ����Υɥ�����Ȥ�
-Unicode ���塼�ȥꥢ��ȸƤ֤��Ȥ˷��ޤ�����
+Perl は対応している全ての文字エンコーディングへの抽象インターフェースを
+持っているので、実際には汎用の C<Encode> チュートリアルと
+C<Encode> FAQ です。
+しかし、多くの人々が、Unicode は特別でマジカルなものだと考えていて、
+私は彼らを失望させたくなかったので、そのドキュメントを
+Unicode チュートリアルと呼ぶことに決めました。
 
 =head2 What character encodings does Perl support?
 
-(Perl ���б����Ƥ���ʸ�����󥳡��ǥ��󥰤ϲ�?)
+(Perl が対応している文字エンコーディングは何?)
 
 =begin original
 
@@ -61,14 +61,14 @@ To find out which character encodings your Perl supports, run:
 
 =end original
 
-Perl ���ɤ�ʸ�����󥳡��ǥ��󥰤��б����Ƥ��뤫�򸫤Ĥ���ˤϡ��ʲ���
-�¹Ԥ��Ƥ�������:
+Perl がどの文字エンコーディングに対応しているかを見つけるには、以下を
+実行してください:
 
     perl -MEncode -le "print for Encode->encodings(':all')"
 
 =head2 Which version of perl should I use?
 
-(�ɤΥС������� perl ��Ȥ��٤�?)
+(どのバージョンの perl を使うべき?)
 
 =begin original
 
@@ -77,9 +77,9 @@ The tutorial and FAQ are based on the status quo as of C<5.8.8>.
 
 =end original
 
-�����󡢤⤷��ǽ�ʤ顢�ǿ��˥��åץ��졼�ɤ��Ƥ�������; â�����μ¤�
-C<5.8.1> �ʹߤˤϤ��Ƥ���������
-���塼�ȥꥢ��� FAQ �� C<5.8.8> �ξ��֤��ˤ��Ƥ��ޤ���
+うーん、もし可能なら、最新にアップグレードしてください; 但し、確実に
+C<5.8.1> 以降にはしてください。
+チュートリアルと FAQ は C<5.8.8> の状態を基にしています。
 
 =begin original
 
@@ -89,13 +89,13 @@ changelog is silent about this.
 
 =end original
 
-�⥸�塼�������å����ơ��⤷ɬ�פʤ饢�åץ��졼�ɤ���٤��Ǥ���
-�㤨�� HTML::Entities �ϡ�changelog �ϲ��⿨��Ƥ��ޤ��󤬡�������
-ư��뤿��ˤϥС������ >= 1.32 ��ɬ�פǤ���
+モジュールもチェックして、もし必要ならアップグレードするべきです。
+例えば HTML::Entities は、changelog は何も触れていませんが、正しく
+動作するためにはバージョン >= 1.32 が必要です。
 
 =head2 What about binary data, like images?
 
-(���᡼���Τ褦�ʥХ��ʥ�ǡ����Ϥɤ������?)
+(イメージのようなバイナリデータはどうするの?)
 
 =begin original
 
@@ -105,9 +105,9 @@ systems.)
 
 =end original
 
-���������� C<binmode $fh> ���̤Ȥ��ơ����̤˰���ɬ�פϤʤ��Ϥ��Ǥ���
-(Win32 �����ƥ�� Perl ����ü���ѹ����ʤ��褦�ˤ��뤿��ˡ�binmode ��
-ɬ�פǤ���)
+うーん、生の C<binmode $fh> を別として、特別に扱う必要はないはずです。
+(Win32 システムで Perl が行端を変更しないようにするために、binmode が
+必要です。)
 
 =begin original
 
@@ -118,16 +118,16 @@ don't encode?".
 
 =end original
 
-â�����褷�ƥƥ�����ʸ����ȥХ��ʥ�ʸ������礷�ʤ��褦��
-���դ��Ƥ���������
-�⤷�Х��ʥꥹ�ȥ꡼��˥ƥ����Ȥ�ɬ�פʤ顢�ޤ��ƥ�����ʸ�����Ŭ�ڤ�
-���󥳡��ǥ��󥰤�Ȥäƥ��󥳡��ɤ��ơ������Х��ʥ�ʸ�����
-��礷�Ƥ���������
-L<"What if I don't encode?"> �⻲�Ȥ��Ƥ���������
+但し、決してテキスト文字列とバイナリ文字列を結合しないように
+注意してください。
+もしバイナリストリームにテキストが必要なら、まずテキスト文字列を適切な
+エンコーディングを使ってエンコードして、それをバイナリ文字列と
+結合してください。
+L<"What if I don't encode?"> も参照してください。
 
 =head2 When should I decode or encode?
 
-(�ǥ����ɤ䥨�󥳡��ɤϤ��ĹԤ��٤�?)
+(デコードやエンコードはいつ行うべき?)
 
 =begin original
 
@@ -137,13 +137,13 @@ the thing you're communicating with is also written in Perl.
 
 =end original
 
-�ǡ����١������ƥ����ȥե����롢�����åȡ�¾�Υץ������Ȥ��ä�����ʬ��
-perl �ץ������γ�¦�ˤ��벿���ȥƥ����Ȥ��̿�����Ȥ��Ϥ��ĤǤ⡢�Ǥ���
-�̿�����꤬ Perl �ǽ񤫤�Ƥ������Ʊ���Ǥ���
+データベース、テキストファイル、ソケット、他のプログラムといった、自分の
+perl プロセスの外側にある何かとテキストを通信するときはいつでも、です。
+通信の相手が Perl で書かれている場合も同じです。
 
 =head2 What if I don't decode?
 
-(�ǥ����ɤ��ʤ��Ȥɤ��ʤ��?)
+(デコードしないとどうなるの?)
 
 =begin original
 
@@ -157,13 +157,13 @@ can be compared to double HTML encoding (C<&amp;gt;>), or double URI encoding
 
 =end original
 
-���󥳡��ɤ��줿�Х��ʥ�ʸ�����ƥ�����ʸ����Ȱ��˻Ȥä��Ȥ��Ϥ��ĤǤ⡢
-Perl �ϥХ��ʥ�ʸ���� ISO-8859-1 �ޤ���̾�� latin-1 �Ȳ��ꤷ�ޤ���
-�⤷���줬 latin-1 �Ǥʤ��ä���硢�ǡ������������ʷ����Ѵ�����ޤ���
-�㤨�С��⤷�ǡ����� UTF-8 ���ä���硢�ޥ���Х���ʸ���Τ��줾��ΥХ��Ȥ�
-ʸ���Ȥ��ư���졢���줫��Ƥ� UTF-8 ���Ѵ�����ޤ���
-���Τ褦����ť��󥳡��ɤ���� HTML ���󥳡��ǥ��� (C<&amp;gt;>) ��
-��� URI ���󥳡��ǥ��� (C<%253E>) ����ӤǤ��ޤ���
+エンコードされたバイナリ文字列をテキスト文字列と一緒に使ったときはいつでも、
+Perl はバイナリ文字列が ISO-8859-1 またの名を latin-1 と仮定します。
+もしこれが latin-1 でなかった場合、データは不愉快な形に変換されます。
+例えば、もしデータが UTF-8 だった場合、マルチバイト文字のそれぞれのバイトが
+文字として扱われ、それから再び UTF-8 に変換されます。
+このような二重エンコードは二重 HTML エンコーディング (C<&amp;gt;>) や
+二重 URI エンコーディング (C<%253E>) と比較できます。
 
 =begin original
 
@@ -172,12 +172,12 @@ positive, but it's best to avoid it.
 
 =end original
 
-���Ρ����ۤΤ����˹Ԥ���ǥ����ɤϡ־��ʡ�("upgrading")�ȸƤФ�ޤ���
-������������ʤ��Ȥ�ʹ�����뤫�⤷��ޤ��󤬡��򤱤�Τ����ɤǤ���
+この、暗黙のうちに行われるデコードは「昇格」("upgrading")と呼ばれます。
+これは前向きなことに聞こえるかもしれませんが、避けるのが最良です。
 
 =head2 What if I don't encode?
 
-(���󥳡��ɤ��ʤ��Ȥɤ��ʤ��?)
+(エンコードしないとどうなるの?)
 
 =begin original
 
@@ -187,9 +187,9 @@ friendly warning:
 
 =end original
 
-�ƥ�����ʸ����� Perl �����������ΥХ������Ȥä���������ޤ���
-�����Ĥ��ξ��Ǥϡ�Perl �ϲ������ְ�äƤ��뤳�Ȥ򡢿��ڤʥ�å�������
-�ٹ𤷤ޤ�:
+テキスト文字列は Perl の内部形式のバイト列を使って送信されます。
+いくつかの場合では、Perl は何かが間違っていることを、親切なメッセージで
+警告します:
 
     Wide character in print at example.pl line 2.
 
@@ -203,16 +203,16 @@ thought this through.
 
 =end original
 
-���������Ϥ��Ф��� UTF-8 �ʤΤǡ����ΥХ���ȯ�����ˤ����Ǥ�; �ʤ��ʤ�
-���ʤ����ۤ����Τ����� UTF-8 ������Ǥ�!
-�����������ȴ���ʤ��Ǥ�������; ������ Perl ������������ UTF-8 �Ǥ��뤳�Ȥ�
-���Ѥ��褦�Ȥ��ʤ��Ǥ���������
-��̯�ʥХ����ɤ����ᡢ�������ݼ�ץ�����ޤ��Ф��Ƥ��ʤ�������ͤ�������
-��������ˡ�����Ū�˥��󥳡��ɤ��Ƥ���������
+内部形式はしばしば UTF-8 なので、このバグは発見しにくいです; なぜなら
+あなたがほしいのは普通 UTF-8 だからです!
+しかし、手を抜かないでください; そして Perl の内部形式が UTF-8 であることを
+利用しようとしないでください。
+奇妙なバグを防ぐため、そして保守プログラマに対してあなたが何を考えたかを
+示すために、明示的にエンコードしてください。
 
 =head2 Is there a way to automatically decode or encode?
 
-(��ưŪ�˥ǥ����ɤ䥨�󥳡��ɤ�����ˡ�Ϥ���?)
+(自動的にデコードやエンコードする方法はある?)
 
 =begin original
 
@@ -223,11 +223,11 @@ or encode anymore, on things that use the layered handle.
 
 =end original
 
-�⤷������ϥ�ɥ뤫��������ƤΥǡ��������Τ�Ʊ����ˡ��
-���󥳡��ɤ���Ƥ���ʤ顢C<encoding> �ؤ�Ȥäơ� PerlIO �����ƥ�˼�ưŪ��
-���Ƥ�ǥ����ɤ���褦�������뤳�Ȥ��Ǥ��ޤ���
-�����Ԥ��С������ؤΥϥ�ɥ��ȤäƤ���¤ꡢ���ä���ǥ����ɤ�
-���󥳡��ɤ�˺��뤳�ȤϤ���ޤ���
+もし、あるハンドルから来る全てのデータが正確に同じ方法で
+エンコードされているなら、C<encoding> 層を使って、 PerlIO システムに自動的に
+全てをデコードするように伝えることができます。
+これを行えば、この層のハンドルを使っている限り、うっかりデコードや
+エンコードを忘れることはありません。
 
 =begin original
 
@@ -235,7 +235,7 @@ You can provide this layer when C<open>ing the file:
 
 =end original
 
-�ե������ C<open> ����Ȥ��ˤ����ؤ���ꤹ�뤳�Ȥ��Ǥ��ޤ�:
+ファイルを C<open> するときにこの層を指定することができます:
 
     open my $fh, '>:encoding(UTF-8)', $filename;  # auto encoding on write
     open my $fh, '<:encoding(UTF-8)', $filename;  # auto decoding on read
@@ -246,7 +246,7 @@ Or if you already have an open filehandle:
 
 =end original
 
-���뤤�ϴ��˥����ץ󤷤Ƥ���ե�����ϥ�ɥ뤬����ʤ�:
+あるいは既にオープンしているファイルハンドルがあるなら:
 
     binmode $fh, ':encoding(UTF-8)';
 
@@ -257,12 +257,12 @@ that is sometimes limited to the UTF-8 encoding.
 
 =end original
 
-DBI �Υǡ����١����ɥ饤�ФΤ����Ĥ��⡢���󥳡��ɤȥǥ����ɤ�ưŪ��
-�Ԥ��ޤ������Ȥ��ɤ������ UTF-8 ���󥳡��ǥ��󥰤����¤���Ƥ��ޤ���
+DBI のデータベースドライバのいくつかも、エンコードとデコードを自動的に
+行いますが、ときどきこれは UTF-8 エンコーディングに制限されています。
 
 =head2 What if I don't know which encoding was used?
 
-(�ɤΥ��󥳡��ǥ��󥰤��Ȥ��Ƥ��뤫�狼��ʤ��Ȥ���?)
+(どのエンコーディングが使われているかわからないときは?)
 
 =begin original
 
@@ -271,8 +271,8 @@ document your guess with a comment.)
 
 =end original
 
-�ʤ�Ȥ����Ƹ��Ĥ��뤫���⤷ɬ�פʤ顢��¬���Ƥ���������
-(�ɤ���¬�������򥳥��ȤȤ���ʸ�񲽤���Τ�˺��ʤ��Ǥ���������)
+なんとかして見つけるか、もし必要なら、推測してください。
+(どう推測したかをコメントとして文書化するのを忘れないでください。)
 
 =begin original
 
@@ -282,9 +282,9 @@ way they should.
 
 =end original
 
-�ɥ�����Ȥ� web �֥饦���ǳ����ơ����Ƥ�ʸ��������٤����Ǥ��뤳�Ȥ�
-���Ū�˳�ǧ�Ǥ���ޤ�ʸ�������ʸ�����󥳡��ǥ��󥰤��ѹ�������ˡ��
-����ޤ���
+ドキュメントを web ブラウザで開いて、全ての文字があるべき形であることを
+視覚的に確認できるまで文字集合や文字エンコーディングを変更する方法も
+あります。
 
 =begin original
 
@@ -293,13 +293,13 @@ keep sending you data without charset indication, you may have to educate them.
 
 =end original
 
-���󥳡��ǥ��󥰤�ưŪ�˸��Ф��뤿��ο������Τ�����ˡ�Ϥʤ��Τǡ�
-�⤷�͡������ʤ���ʸ������λؼ��ʤ��˥ǡ���������³����ʤ顢����
-���餹��ɬ�פ����뤫�⤷��ޤ���
+エンコーディングを自動的に検出するための信頼性のある方法はないので、
+もし人々があなたに文字集合の指示なしにデータを送り続けるなら、彼らを
+教育する必要があるかもしれません。
 
 =head2 Can I use Unicode in my Perl sources?
 
-(Perl �Υ����������ɤ� Unicode �ϻȤ���?)
+(Perl のソースコードに Unicode は使える?)
 
 =begin original
 
@@ -308,9 +308,9 @@ C<use utf8> pragma.
 
 =end original
 
-�Ϥ����Ǥ��ޤ�!
-�����������ɤ� UTF-8 �ǥ��󥳡��ɤ���Ƥ���ʤ顢C<use utf8> �ץ饰�ޤ�
-�ȤäƤ���򼨤����Ȥ��Ǥ��ޤ���
+はい、できます!
+ソースコードが UTF-8 でエンコードされているなら、C<use utf8> プラグマを
+使ってそれを示すことができます。
 
     use utf8;
 
@@ -323,14 +323,14 @@ and even in custom delimiters.
 
 =end original
 
-����������Ϥ��Ф��Ƥϲ���Ԥ��ޤ���
-���������ɤ߹�����ˡ�Τߤ˱ƶ���Ϳ���ޤ���
-ʸ�����ƥ�롢���̻�(������ C<\w> �˽��ä���ñ��ʸ���פǤ���ɬ�פ�
-����ޤ�)���������ȼ��ǥ�ߥ��ˤ��� Unicode ���Ȥ��ޤ���
+これは入出力に対しては何も行いません。
+ソースを読み込む方法のみに影響を与えます。
+文字列リテラル、識別子(しかし C<\w> に従った「単語文字」である必要が
+あります)、そして独自デリミタにすら Unicode が使えます。
 
 =head2 Data::Dumper doesn't restore the UTF8 flag; is it broken?
 
-(Data::Dumper �� UTF8 �ե饰���������ޤ���; ����ϲ���Ƥ��?)
+(Data::Dumper は UTF8 フラグを復元しません; これは壊れてるの?)
 
 =begin original
 
@@ -341,11 +341,11 @@ nothing indicates that Data::Dumper should break this rule.
 
 =end original
 
-��������Data::Dumper �� Unicode ǽ�Ϥϡ�����٤����Ǥ���ޤ���
-C<eval> �ǺƤӥǡ������ɤ߹���Ȥ���UTF8 �ե饰����������٤����Ȥ���
-�����뤳�Ȥ�����ޤ���
-���������ºݤˤϥե饰�򸫤�٤��ǤϤʤ��Ǥ�����Data::Dumper �����ε�§��
-�ˤäƤ��뤳�Ȥ򼨤���Τϲ��⤢��ޤ���
+いいえ、Data::Dumper の Unicode 能力は、あるべき形であります。
+C<eval> で再びデータを読み込むとき、UTF8 フラグを復元するべきだという
+苦情が来ることがあります。
+しかし、実際にはフラグを見るべきではないですし、Data::Dumper がこの規則を
+破っていることを示すものは何もありません。
 
 =begin original
 
@@ -357,12 +357,12 @@ UTF-8.
 
 =end original
 
-�����Ƥ���Τϰʲ��Τ褦�ʤ��ȤǤ�: Perl ��ʸ�����ƥ����ɤ߹���Ȥ���
-��ǽ�ʸ¤�Ĺ�� 8 �ӥåȥ��󥳡��ǥ��󥰤ˤ������ޤ���
-(�����������餯����������פ����Ȥ��ˤ������Ǥ� UTF-8 �ǥ��󥳡���
-����Ƥ��ޤ�����)
-����ʳ���ʸ����ƥ�����ʸ������ɲä��뤿��ˤ��������ʤ���Фʤ�ʤ�
-�Ȥ���Perl �ϰ��ۤΤ�����ʸ����� UTF-8 �˾��ʤ����ޤ���
+起きているのは以下のようなことです: Perl が文字列リテラルを読み込むとき、
+可能な限り長く 8 ビットエンコーディングにこだわります。
+(しかしおそらく、これをダンプしたときには内部では UTF-8 でエンコード
+されていました。)
+それ以外の文字をテキスト文字列に追加するためにこれを諦めなければならない
+とき、Perl は暗黙のうちに文字列を UTF-8 に昇格させます。
 
 =begin original
 
@@ -371,16 +371,16 @@ concern, and you can just C<eval> dumped data as always.
 
 =end original
 
-�����Ѥ�ʸ�����Ŭ�ڤ˥��󥳡��ɤ��Ƥ���С�����ˤĤ��Ƥ��ʤ��ϲ���
-���ۤ��뤳�ȤϤʤ������Ĥ��̤�˥���פ����ǡ����� C<eval> �Ǥ��ޤ���
+出力用の文字列を適切にエンコードしていれば、これについてあなたは何も
+心配することはなく、いつも通りにダンプしたデータを C<eval> できます。
 
 =head2 Why do regex character classes sometimes match only in the ASCII range?
 
-(�ʤ�����ɽ��ʸ�����饹�ϻ��� ASCII ���ϰϤˤ����ޥå����ʤ���?)
+(なぜ正規表現文字クラスは時々 ASCII の範囲にしかマッチしないの?)
 
 =head2 Why do some characters not uppercase or lowercase correctly?
 
-(�ʤ������Ĥ���ʸ������������ʸ���侮ʸ���ˤʤ�ʤ���?)
+(なぜいくつかの文字は正しく大文字や小文字にならないの?)
 
 =begin original
 
@@ -391,10 +391,10 @@ strings differently, depending on the internal state.
 
 =end original
 
-Perl �� Unicode �б��ˤʤä������Ǥϡ������ɸ��ʸ�����Ʊ����̣����
-�ݻ�����Τˤ����ͤ����Ȼפ��ޤ�����
-����������Ͼ��轤������뤫�⤷��ʤ��Τǡ�Perl ��Ʊ��ʸ������������֤�
-��äưۤʤ밷���򤹤�Ȥ������¤��б�����ɬ�פ��ФƤ��ޤ�����
+Perl が Unicode 対応になった時点では、これは標準文字列と同じ意味論を
+維持するのにいい考えだと思われました。
+一方、これは将来修正されるかもしれないので、Perl が同じ文字列を内部状態に
+よって異なる扱いをするという事実に対応する必要が出てきました。
 
 =begin original
 
@@ -404,9 +404,9 @@ C</[[:posix:]]/>.
 
 =end original
 
-�ƶ��������Τ� C<uc>, C<lc>, C<ucfirst>, C<lcfirst>, C<\U>, C<\L>, C<\u>, C<\l>,
+影響を受けるのは C<uc>, C<lc>, C<ucfirst>, C<lcfirst>, C<\U>, C<\L>, C<\u>, C<\l>,
 C<\d>, C<\s>, C<\w>, C<\D>, C<\S>, C<\W>, C</.../i>, C<(?i:...)>,
-C</[[:posix:]]/> �Ǥ���
+C</[[:posix:]]/> です。
 
 =begin original
 
@@ -416,9 +416,9 @@ already upgraded.
 
 =end original
 
-Unicode �ΰ�̣���������뤿��ˡ�C<utf8::upgrade($string)> �Ȥ��뤳�Ȥ�
-����ɽ���򾺳ʤǤ��ޤ���
-����ϴ��˾��ʤ��Ƥ���ʸ������ѹ����ޤ���
+Unicode の意味論を強制するために、C<utf8::upgrade($string)> とすることで
+内部表現を昇格できます。
+これは既に昇格している文字列は変更しません。
 
 =begin original
 
@@ -426,12 +426,12 @@ For a more detailed discussion, see L<Unicode::Semantics> on CPAN.
 
 =end original
 
-����ʤ�ܺ٤ʵ����ˤĤ��Ƥϡ�CPAN �� L<Unicode::Semantics> ��
-���Ȥ��Ƥ���������
+さらなる詳細な議論については、CPAN の L<Unicode::Semantics> を
+参照してください。
 
 =head2 How can I determine if a string is a text string or a binary string?
 
-(ʸ���󤬥ƥ�����ʸ���󤫥Х��ʥ�ʸ���󤫤���ꤹ��ˤ�?)
+(文字列がテキスト文字列かバイナリ文字列かを決定するには?)
 
 =begin original
 
@@ -442,12 +442,12 @@ used to store the string.
 
 =end original
 
-����ϤǤ��ޤ���
-���Τ���� UTF8 �ե饰��Ȥ��ͤ⤤�ޤ���������ϸ��Ѥǡ�Data::Dumper �Τ褦��
-�����������񤦥⥸�塼��򤪤��������ޤ���
-���Υե饰�Ϥ�����Ū�Τ���ˤϻȤ��ޤ���; �ʤ��ʤ�ʸ������ݴɤ� 8 �ӥå�
-���󥳡��ǥ��󥰤��Ȥ��Ƥ����� (�ǥե���ȤǤ� ISO-8859-1 �Ǥ�)��
-���դ�����Ǥ���
+それはできません。
+このために UTF8 フラグを使う人もいますが、これは誤用で、Data::Dumper のように
+正しく振る舞うモジュールをおかしくします。
+このフラグはこの目的のためには使えません; なぜなら文字列の保管に 8 ビット
+エンコーディングが使われている場合 (デフォルトでは ISO-8859-1 です)、
+オフだからです。
 
 =begin original
 
@@ -456,13 +456,13 @@ consider adopting a kind of "Hungarian notation" to help with this.
 
 =end original
 
-�İ����Ƥ���ɬ�פ�����ץ�����ޤ˸����뤳�ȤϤ���Ǥ�; �����ʤ�����
-���������뤿��ˡ��֥ϥ󥬥ꥢ��ˡ�פΤ褦�ʤ�Τκ��Ѥ�
-��Ƥ���뤳�Ȥ�Ǥ��ޤ���
+把握しておく必要があるプログラマに言えることはこれです; ごめんなさい。
+これを助けるために、「ハンガリアン記法」のようなものの採用を
+検討することもできます。
 
 =head2 How do I convert from encoding FOO to encoding BAR?
 
-(���󥳡��ǥ��� FOO ���� ���󥳡��ǥ��� BAR ���Ѵ�����ˤ�?)
+(エンコーディング FOO から エンコーディング BAR に変換するには?)
 
 =begin original
 
@@ -471,8 +471,8 @@ text string to a BAR-encoded byte string:
 
 =end original
 
-�ޤ� FOO �ǥ��󥳡��ɤ��줿�Х���ʸ�����ƥ�����ʸ������Ѳ�����
-���줫��ƥ�����ʸ����� BAR ���󥳡��ɤ��줿�Х���ʸ������Ѵ����ޤ�:
+まず FOO でエンコードされたバイト文字列をテキスト文字列に変化し、
+それからテキスト文字列を BAR エンコードされたバイト文字列に変換します:
 
     my $text_string = decode('FOO', $foo_string);
     my $bar_string  = encode('BAR', $text_string);
@@ -484,8 +484,8 @@ encoding to the other:
 
 =end original
 
-���뤤�ϡ��ƥ�����ʸ�������ʬ�����Ф��ơ�����Х��ʥꥨ�󥳡��ǥ��󥰤���
-¾�Τ�Τ�ľ���Ѵ����ޤ�:
+あるいは、テキスト文字列の部分を飛ばして、あるバイナリエンコーディングから
+他のものへ直接変換します:
 
     use Encode qw(from_to);
     from_to($string, 'FOO', 'BAR');  # changes contents of $string
@@ -496,7 +496,7 @@ or by letting automatic decoding and encoding do all the work:
 
 =end original
 
-���뤤�ϡ���ư�ǥǥ����ɤȥ��󥳡��ɤ򤵤��뤳�Ȥ����Ƥκ�Ȥ�Ԥ��ޤ�:
+あるいは、自動でデコードとエンコードをさせることで全ての作業を行います:
 
     open my $foofh, '<:encoding(FOO)', 'example.foo.txt';
     open my $barfh, '>:encoding(BAR)', 'example.bar.txt';
@@ -504,7 +504,7 @@ or by letting automatic decoding and encoding do all the work:
 
 =head2 What are C<decode_utf8> and C<encode_utf8>?
 
-(C<decode_utf8> �� C<encode_utf8> �äƲ�?)
+(C<decode_utf8> と C<encode_utf8> って何?)
 
 =begin original
 
@@ -513,12 +513,12 @@ These are alternate syntaxes for C<decode('utf8', ...)> and C<encode('utf8',
 
 =end original
 
-������ C<decode('utf8', ...)> ����� C<encode('utf8', ...)> �Τ⤦��Ĥ�
-ʸˡ�Ǥ���
+これらは C<decode('utf8', ...)> および C<encode('utf8', ...)> のもう一つの
+文法です。
 
 =head2 What is a "wide character"?
 
-(�֥磻��ʸ���פäƲ�?)
+(「ワイド文字」って何?)
 
 =begin original
 
@@ -528,8 +528,8 @@ than one byte, depending on the context.
 
 =end original
 
-�����ʸ̮�˰�¸���ơ� 127 ����礭�����������ʸ����255 ����礭��������
-����ʸ����1 �Х��ȤǼ��ޤ�ʤ�ʸ�����Τ����줫�ΰ�̣�ǻȤ����Ѹ�Ǥ���
+これは文脈に依存して、 127 より大きい序数を持つ文字、255 より大きい序数を
+持つ文字、1 バイトで収まらない文字、のいずれかの意味で使われる用語です。
 
 =begin original
 
@@ -541,12 +541,12 @@ instead.
 
 =end original
 
-Perl �ηٹ� "Wide character in ..." �� 255 ����礭�����������ʸ���ˤ�ä�
-������������ޤ���
-���󥳡��ǥ����ؤ����ꤵ��Ƥ��ʤ���硢Perl �ϲ��ߴ�������ͳ�ˤ�ä�
-ʸ���� ISO-8859-1 �˹�碌�褦�Ȥ��ޤ���
-���줬�Ǥ��ʤ��ȡ�(�ٹ�ͭ���ʤ�)���ηٹ𤬽��Ϥ��졢����� UTF-8 ��
-���󥳡��ɤ��줿�ǡ��������Ϥ���ޤ���
+Perl の警告 "Wide character in ..." は 255 より大きい序数を持つ文字によって
+引き起こされます。
+エンコーディング層が指定されていない場合、Perl は過去互換性の理由によって
+文字を ISO-8859-1 に合わせようとします。
+これができないと、(警告が有効なら)この警告が出力され、代わりに UTF-8 で
+エンコードされたデータが出力されます。
 
 =begin original
 
@@ -555,19 +555,19 @@ stream, always specify an encoding explicitly, for example with a PerlIO layer:
 
 =end original
 
-���ηٹ����򤷡���ĤΥ��ȥ꡼��˰ۤʤä����ϥ��󥳡��ǥ��󥰤�
-���Ϥ���뤳�Ȥ���򤹤�ˤϡ��������Ū�˥��󥳡��ǥ��󥰤���ꤷ�Ƥ�������;
-�㤨�� PerlIO �ؤ�Ȥä�:
+この警告を回避し、一つのストリームに異なった出力エンコーディングが
+出力されることを回避するには、常に明示的にエンコーディングを指定してください;
+例えば PerlIO 層を使って:
 
     binmode STDOUT, ":encoding(UTF-8)";
 
 =head1 INTERNALS
 
-(������¤)
+(内部構造)
 
 =head2 What is "the UTF8 flag"?
 
-(��UTF8 �ե饰�פäƲ�?)
+(「UTF8 フラグ」って何?)
 
 =begin original
 
@@ -577,10 +577,10 @@ use C<is_utf8>, C<_utf8_on> or C<_utf8_off> at all.
 
 =end original
 
-������ϥå����褦�Ȥ��Ƥ��뤫���Ѥʤ�Τ�ǥХå����褦�Ȥ��Ƥ���ΤǤʤ�
-�¤ꡢ�ɤ��� UTF8 �ե饰�Τ��Ȥϰ��ڹͤ��ʤ��Ǥ���������
-����ϡ��ޤ��ְ㤤�ʤ� C<is_utf8>, C<_utf8_on>, C<_utf8_off> ��
-���ڻȤ��٤��Ǥʤ����Ȥ��̣���ޤ���
+内部をハックしようとしているか、変なものをデバッグしようとしているのでない
+限り、どうか UTF8 フラグのことは一切考えないでください。
+これは、まず間違いなく C<is_utf8>, C<_utf8_on>, C<_utf8_off> を
+一切使うべきでないことを意味します。
 
 =begin original
 
@@ -590,10 +590,10 @@ ISO-8859-1. Perl converts between these automatically.
 
 =end original
 
-UTF8 �ե饰(SvUTF8 �Ȥ�ƤФ�ޤ�)�ϡ����ߤ�����ɽ���� UTF-8 �Ǥ��뤳�Ȥ�
-���������ե饰�Ǥ���
-���Υե饰���ʤ���硢ISO-8859-1 �Ȳ��ꤷ�ޤ���
-Perl �Ϥ�����ưŪ���Ѵ����ޤ���
+UTF8 フラグ(SvUTF8 とも呼ばれます)は、現在の内部表現が UTF-8 であることを
+示す内部フラグです。
+このフラグがない場合、ISO-8859-1 と仮定します。
+Perl はこれらを自動的に変換します。
 
 =begin original
 
@@ -604,15 +604,15 @@ encoding, and that you always have to encode and decode explicitly.
 
 =end original
 
-Perl ������ɽ���ΰ�ĤϤ��ޤ��� UTF-8 �Ǥ���
-��ǰ�ʤ��顢Perl ����̩����ʤ��Τǡ����Τ��ȤϤߤ���ΤäƤ��ޤ���
-���줬¿���κ���θ��Ǥ���
-����ɽ���ϲ���ʬ����ʤ����󥳡��ǥ��󥰤ǡ��������Ū�˥��󥳡��ɤ�
-�ǥ����ɤ�ɬ�פȤ������Ȥˤ��Ƥ����������褤�Ǥ���
+Perl の内部表現の一つはたまたま UTF-8 です。
+残念ながら、Perl は秘密を守れないので、このことはみんな知っています。
+これが多くの混乱の源です。
+内部表現は何か分からないエンコーディングで、常に明示的にエンコードと
+デコードが必要ということにしておいた方がよいです。
 
 =head2 What about the C<use bytes> pragma?
 
-(C<use bytes> �ץ饰�ޤäƲ�?)
+(C<use bytes> プラグマって何?)
 
 =begin original
 
@@ -623,12 +623,12 @@ character counts for decoded data, and byte counts for encoded data.
 
 =end original
 
-����ϻȤ�ʤ��Ǥ���������
-�ƥ�����ʸ�����Х���ñ�̤ǰ������Ȥ˰�̣�Ϥ���ޤ��󤷡�
-�Х���ʸ�����ʸ��ñ�̤ǰ������Ȥˤϰ�̣�Ϥ���ޤ���
-Ŭ�ڤ��Ѵ�(�ǥ����ɤ����󥳡���)��Ԥ��С�ʪ���Ϥ��ޤ������ޤ�:
-�ǥ����ɤ����ǡ�����ʸ�����������ޤ��������󥳡��ɤ����ǡ����ΥХ��ȿ���
-�����ޤ���
+これは使わないでください。
+テキスト文字列をバイト単位で扱うことに意味はありませんし、
+バイト文字列を文字単位で扱うことには意味はありません。
+適切な変換(デコードかエンコード)を行えば、物事はうまくいきます:
+デコードしたデータの文字数を得られますし、エンコードしたデータのバイト数を
+得られます。
 
 =begin original
 
@@ -637,12 +637,12 @@ about it.
 
 =end original
 
-C<use bytes> �ϲ���ͭ�Ѥʤ��Ȥ򤷤褦�Ȥ��뤿��ˤϴְ�ä���ˡ�Ǥ���
-����Τ��Ȥ�ñ��˺��Ƥ���������
+C<use bytes> は何か有用なことをしようとするためには間違った方法です。
+これのことは単に忘れてください。
 
 =head2 What about the C<use encoding> pragma?
 
-(C<use encoding> �ץ饰�ޤäƲ�?)
+(C<use encoding> プラグマって何?)
 
 =begin original
 
@@ -653,11 +653,11 @@ machine, the source code does not change, but the STDIO environment might.
 
 =end original
 
-����ϻȤ�ʤ��Ǥ���������
-��ǰ�ʤ��顢����ϥץ�����ޤδĶ��ȥ桼�����δĶ���Ʊ���Ǥ���Ȳ��ꤷ�ޤ���
-����ϥ����������ɤ� STDIN �� STDOUT ��Ʊ�����󥳡��ǥ��󥰤�Ȥ��ޤ���
-�ץ�����ब¾�Υޥ���˥��ԡ������ȡ������������ɤ��Ѥ��ޤ��󤬡�
-STDIO �Ķ����Ѥ�뤫�⤷��ޤ���
+これは使わないでください。
+残念ながら、これはプログラマの環境とユーザーの環境が同じであると仮定します。
+これはソースコードと STDIN や STDOUT で同じエンコーディングを使います。
+プログラムが他のマシンにコピーされると、ソースコードは変わりませんが、
+STDIO 環境は変わるかもしれません。
 
 =begin original
 
@@ -666,8 +666,8 @@ file and C<use utf8>.
 
 =end original
 
-�⤷�����������ɤ��� ASCII ʸ����ɬ�פʤ顢�ե������ UTF-8 ��
-���󥳡��ɤ��ơ�C<use utf8> ��ȤäƤ���������
+もしソースコードに非 ASCII 文字が必要なら、ファイルを UTF-8 で
+エンコードして、C<use utf8> を使ってください。
 
 =begin original
 
@@ -676,12 +676,12 @@ based on the user's locale, C<use open>.
 
 =end original
 
-�⤷ STDIN, STDOUT, STDERR �Υ��󥳡��ǥ��󥰤��㤨�Х桼�����Υ��������
-��碌�ƥ��åȤ���ɬ�פ�����ʤ顢C<use open> ���Ƥ���������
+もし STDIN, STDOUT, STDERR のエンコーディングを、例えばユーザーのロケールに
+合わせてセットする必要があるなら、C<use open> してください。
 
 =head2 What is the difference between C<:encoding> and C<:utf8>?
 
-(C<:encoding> �� C<:utf8> �ΰ㤤��?)
+(C<:encoding> と C<:utf8> の違いは?)
 
 =begin original
 
@@ -690,8 +690,8 @@ encoding or decoding step, and manipulate the UTF8 flag directly.
 
 =end original
 
-UTF-8 �� Perl �����������ΤҤȤĤʤΤǡ����Ф��Х��󥳡��ɤ�ǥ����ɤ�
-�����ά���ơ�UTF8 �ե饰��ľ�����Ǥ��ޤ���
+UTF-8 は Perl の内部形式のひとつなので、しばしばエンコードやデコードの
+手順を省略して、UTF8 フラグを直接操作できます。
 
 =begin original
 
@@ -704,13 +704,13 @@ breaches, so please use C<:encoding(UTF-8)> instead.
 
 =end original
 
-C<:encoding(UTF-8)> �������ñ�� C<:utf8> ��Ȥ����Ȥǡ��⤷�ǡ�����
-�����Ǵ��� UTF8 ��ɽ������Ƥ���С����󥳡��ɤμ����ά���ޤ���
-����ϡ��񤭹���Ȥ��ˤϤ褤�����񤤤Ǥ���ȹ�������������Ƥ��ޤ�����
-�ɤ߹���Ȥ��ˤϴ���������ޤ�; �ʤ��ʤ������ʥХ�������������
-����̷����������������Ǥ���
-���Ϥ� C<:utf8> ��Ȥ��ȥ������ƥ������������������ǽ��������Τǡ�
-�ɤ�������� C<:encoding(UTF-8)> ��ȤäƤ���������
+C<:encoding(UTF-8)> の代わりに単に C<:utf8> を使うことで、もしデータが
+内部で既に UTF8 で表現されていれば、エンコードの手順を省略します。
+これは、書き込むときにはよい振る舞いであると広く受け入れられていますが、
+読み込むときには危険があります; なぜなら不正なバイト列を受け取ると
+内部矛盾を引き起こすからです。
+入力に C<:utf8> を使うとセキュリティ侵害を引き起こす可能性があるので、
+どうか代わりに C<:encoding(UTF-8)> を使ってください。
 
 =begin original
 
@@ -720,9 +720,9 @@ the same reason that C<:utf8> can.
 
 =end original
 
-C<decode> �� C<encode> ������ˡ�C<_utf8_on> �� C<_utf8_off> ��
-�Ȥ��ޤ���������ϰ�����������ȹͤ����Ƥ��ޤ���
-�ä� C<_utf8_on> �ϡ�C<:utf8> ��Ʊ����ͳ�Ǵ����Ǥ���
+C<decode> と C<encode> の代わりに、C<_utf8_on> と C<_utf8_off> を
+使えますが、これは悪いスタイルと考えられています。
+特に C<_utf8_on> は、C<:utf8> と同じ理由で危険です。
 
 =begin original
 
@@ -730,11 +730,11 @@ There are some shortcuts for oneliners; see C<-C> in L<perlrun>.
 
 =end original
 
-�����Ϻ�Τ���ξ�ά��������ޤ�; L<perlrun> �� C<-C> �򻲾Ȥ��Ƥ���������
+一行野郎のための省略形があります; L<perlrun> の C<-C> を参照してください。
 
 =head2 What's the difference between C<UTF-8> and C<utf8>?
 
-(C<UTF-8> �� C<utf8> �ΰ㤤��?)
+(C<UTF-8> と C<utf8> の違いは?)
 
 =begin original
 
@@ -746,13 +746,13 @@ L<Encode>.
 
 =end original
 
-C<UTF-8> �ϸ�����ɸ��Ǥ���
-C<utf8> �ϡ������������뤫�˴ؤ��Ƽ�ͳ�� Perl �Τ�����Ǥ���
-�⤷����ۤɼ�ͳ�Ǥʤ���Τ����ä���ɬ�פ�����ʤ顢
-C<UTF-8> ��Ȥ����Ȥ�ͤ������ʤ뤫�⤷��ޤ���
-��ͳ�������Τ����ä���ɬ�פ�����ʤ顢C<utf8> ��
-�Ȥ�ʤ���Фʤ�ʤ����⤷��ޤ���
-������������ L<Encode> �ˤ���ޤ���
+C<UTF-8> は公式な標準です。
+C<utf8> は、何を受け入れるかに関して自由な Perl のやり方です。
+もしそれほど自由でないものと対話する必要があるなら、
+C<UTF-8> を使うことを考えたくなるかもしれません。
+自由すぎるものと対話する必要があるなら、C<utf8> を
+使わなければならないかもしれません。
+完全な説明は L<Encode> にあります。
 
 =begin original
 
@@ -762,10 +762,10 @@ distinction can be hard to make, and is mostly irrelevant.
 
 =end original
 
-C<UTF-8> �������Ǥ� C<utf-8-strict> �Ȥ����Τ��ޤ���
-���塼�ȥꥢ��Ǥϡ����Ȥ������Ǥϼºݤˤ� utf8 ���Ȥ�����Ǥ�
-��Ӥ��� UTF-8 ��ȤäƤ��ޤ�; �ʤ��ʤ���̤�Ĥ���Τ��񤷤����ۤȤ��
-̵��̣������Ǥ���
+C<UTF-8> は内部では C<utf-8-strict> として知られます。
+チュートリアルでは、たとえ内部では実際には utf8 が使われる場合でも
+一貫して UTF-8 を使っています; なぜなら区別をつけるのは難しく、ほとんど
+無意味だからです。
 
 =begin original
 
@@ -776,10 +776,10 @@ this.)
 
 =end original
 
-�㤨�� utf8 �ϡ�9999999 �Τ褦�ʡ�Unicode ��¸�ߤ��ʤ������֤�Ȥ��ޤ�����
-����� UTF-8 �ǥ��󥳡��ɤ���ȡ�����ʸ�������뤳�Ȥˤʤ�ޤ�(�����
-�ǥե���Ȥξ��Ǥ�; ����򰷤�¾����ˡ�ˤĤ��Ƥ�
-L<Encode/"Handling Malformed Data"> �򻲾Ȥ��Ƥ���������)
+例えば utf8 は、9999999 のような、Unicode に存在しない符号位置も使えますが、
+これを UTF-8 でエンコードすると、代替文字を得ることになります(これは
+デフォルトの場合です; これを扱う他の方法については
+L<Encode/"Handling Malformed Data"> を参照してください。)
 
 =begin original
 
@@ -788,13 +788,13 @@ some other encoding.)
 
 =end original
 
-�狼��ޤ������ɤ����Ƥ�ȸ����Τʤ�:�����������פ� utf8 �Ǥ��äơ�
-UTF-8 �ǤϤ���ޤ���
-(�⤷����¾�Υ��󥳡��ǥ��󥰤Ǥʤ��Τʤ顣)
+わかりました、どうしてもと言うのなら:「内部形式」は utf8 であって、
+UTF-8 ではありません。
+(もしその他のエンコーディングでないのなら。)
 
 =head2 I lost track; what encoding is the internal format really?
 
-(�»Ҥˤʤ�ޤ���; �ºݤΤȤ������������Υ��󥳡��ǥ��󥰤ϲ�?)
+(迷子になりました; 実際のところ内部形式のエンコーディングは何?)
 
 =begin original
 
@@ -805,12 +805,12 @@ history of the string. On EBCDIC platforms, this may be different even.
 
 =end original
 
-�»Ҥˤʤä��ΤϤ褤���ȤǤ�; �ʤ��ʤ���������������Υ��󥳡��ǥ��󥰤�
-���뤳�Ȥ˰�¸����٤��ǤϤʤ�����Ǥ���
-������ʹ���줿�Τ������ޤ��礦: �ǥե���ȤǤϡ�����������
-ISO-8859-1 (latin-1) �� utf8 �ǡ��ɤ���ˤʤ뤫��ʸ�������ˤ�
-��¸���ޤ���
-EBCDIC �ץ�åȥե�����Ǥϡ�����ϰۤʤäƤ��뤫�⤷��ޤ���
+迷子になったのはよいことです; なぜなら内部形式が特定のエンコーディングで
+あることに依存するべきではないからです。
+しかし聞かれたので答えましょう: デフォルトでは、内部形式は
+ISO-8859-1 (latin-1) か utf8 で、どちらになるかは文字列の歴史に
+依存します。
+EBCDIC プラットフォームでは、これは異なっているかもしれません。
 
 =begin original
 
@@ -821,11 +821,11 @@ that you want.
 
 =end original
 
-Perl ��ʸ���������ǤɤΤ褦���ݴɤ���Ƥ��뤫���ΤäƤ��ơ������μ���
-C<���󥳡��ɤ���> �Ȥ��˻Ȥ��ޤ���
-�����������: �����ʸ������������󥳡��ǥ��󥰤�������
-Ĵ�٤褦�Ȥ��ƤϤ����ޤ���; ����ˡ�ñ��˾�ߤΥ��󥳡��ǥ��󥰤�
-���󥳡��ɤ��Ƥ���������
+Perl は文字列が内部でどのように保管されているかを知っていて、この知識を
+C<エンコードする> ときに使います。
+言い換えると: 特定の文字列の内部エンコーディングが何かを
+調べようとしてはいけません; 代わりに、単に望みのエンコーディングに
+エンコードしてください。
 
 =head1 AUTHOR
 

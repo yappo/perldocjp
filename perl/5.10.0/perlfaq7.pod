@@ -9,7 +9,7 @@ perlfaq7 - General Perl Language Issues ($Revision: 10100 $)
 
 =end original
 
-perlfaq7 - Perl ������̤˴ؤ��뤳�Ȥ��� ($Revision: 10100 $)
+perlfaq7 - Perl 言語一般に関することがら ($Revision: 10100 $)
 
 =head1 DESCRIPTION
 
@@ -20,12 +20,12 @@ clearly fit into any of the other sections.
 
 =end original
 
-���Υ��������Ǥϡ�¾�Υ��������ˤϤ��ä���Ȥ��ƤϤޤ�ʤ��褦��
-Perl ����˴ؤ������Ū�ʻ����򰷤��ޤ���
+このセクションでは、他のセクションにはきっちりとあてはまらないような
+Perl 言語に関する一般的な事柄を扱います。
 
 =head2 Can I get a BNF/yacc/RE for the Perl language?
 
-(Perl �Τ���� BNF/yacc/RE ������Ǥ��ޤ���?)
+(Perl のための BNF/yacc/RE は入手できますか?)
 
 =begin original
 
@@ -36,11 +36,11 @@ venture into toke.c as well.
 
 =end original
 
-BNF�Ϥ���ޤ��󤬡��⤷¿����ͦ����������碌�Ƥ���ΤǤ����
-���ۥ������˴ޤޤ�Ƥ��� perly.y �ˤ��� yacc ʸˡ�򤤤�����ޤ魯���Ȥ�
-�Ǥ��ޤ���
-����ʸˡ�����˸���������ϥ롼����˰�¸������ΤʤΤǡ�
-toke.c ��į�������⤷�Ƥ����ޤ��礦��
+BNFはありませんが、もし多少の勇気を持ちあわせているのであれば
+配布ソースに含まれている perly.y にある yacc 文法をいじくりまわすことが
+できます。
+その文法は非常に賢い字句解析ルーチンに依存したものなので、
+toke.c を眺める準備もしておきましょう。
 
 =begin original
 
@@ -51,14 +51,14 @@ and mirrors."
 =end original
 
 reduce
-Chaim Frenkel �θ��դ�ڤ��Ф����Ǥ�: 
-��Perl ��ʸˡ�� BNF �ޤǽ̾����뤳�Ȥ��Ǥ��ʤ���
-perl �ι�ʸ���Ϥκ�Ȥ� yacc��������ϴ��ȶ��Ȥ�ʬ�ۤ���롣��
+Chaim Frenkel の言葉を借りればこうです: 
+「Perl の文法は BNF まで縮小することができない。
+perl の構文解析の作業は yacc、字句解析器、煙と鏡とに分配される。」
 
 =head2 What are all these $@%&* punctuation signs, and how do I know when to use them?
 
-($@%&* �Υޡ����Ϥʤ�Ǥ���? �����򤤤ĻȤ��Ф����Τ����Τ�ˤ�
-�ɤ�����Ф����Ǥ���?)
+($@%&* のマークはなんですか? これらをいつ使えばいいのかを知るには
+どうすればいいですか?)
 
 =begin original
 
@@ -66,7 +66,7 @@ They are type specifiers, as detailed in L<perldata>:
 
 =end original
 
-�����Ϸ������(type specifiers)�ǡ�L<perldata> ����������Ƥ��ޤ�:
+これらは型指定子(type specifiers)で、L<perldata> で説明されています:
 
 =begin original
 
@@ -79,12 +79,12 @@ They are type specifiers, as detailed in L<perldata>:
 
 =end original
 
-	$ ��������(���͡�ʸ���󡢥�ե����)���Ф�����
-	@ ������Ф�����
-	% �ϥå���(Ϣ������)���Ф�����
-	& ���֥롼����(�ޤ���̾��ؿ�����³�����᥽�å�)���Ф�����
-	* ����ܥ�̾���Ф������Ƥη����С������ 4 �Ǥϥݥ��󥿤Τ褦��
-	  �Ȥ��Ƥ��ޤ������������� perl �Ǥϥ�ե���󥹤��Ȥ��ޤ���
+	$ スカラ値(数値、文字列、リファレンス)に対するもの
+	@ 配列に対するもの
+	% ハッシュ(連想配列)に対するもの
+	& サブルーチン(またの名を関数、手続き、メソッド)に対するもの
+	* シンボル名に対する全ての型。バージョン 4 ではポインタのように
+	  使われていましたが、新しい perl ではリファレンスが使えます。
 
 =begin original
 
@@ -93,8 +93,8 @@ really type specifiers:
 
 =end original
 
-�ºݤˤϷ�����ҤȤ��Ƹ��뤳�ȤϤʤ��Ǥ�������ĤΤ�Τ�
-����¾�ˤ⤢��ޤ�:
+実際には型指定子として見ることはないであろう二つのものが
+この他にもあります:
 
 =begin original
 
@@ -103,8 +103,8 @@ really type specifiers:
 
 =end original
 
-	<> ����ե�����ϥ�ɥ뤫��쥳���ɤ����Ϥ���Τ˻Ȥ��ޤ���
-	\  �ʤˤ��Υ�ե���󥹤���ޤ���
+	<> あるファイルハンドルからレコードを入力するのに使われます。
+	\  なにかのリファレンスを取ります。
 
 =begin original
 
@@ -119,22 +119,22 @@ I<not> use the brackets.  These are correct: C<eof(FH)>, C<seek(FH, 0,
 
 =end original
 
-<FILE> �ϡ��ե�������Ф��뷿����Ҥˤ�ϥ�ɥ��̾����
-I<�ɤ���Ǥ�ʤ�> �Ȥ������Ȥ����դ��Ƥ���������
-����ϥϥ�ɥ� FILE ���Ф��� C<< <> >> �黻�ҤǤ���
-���(�������쥳���ɤǤ��͡�L<perlvar/$E<sol>> �򻲾Ȥ��Ƥ�������) ��
-FILE �Ȥ����ϥ�ɥ뤫�饹���饳��ƥ����Ȥ��ɤ߽Ф��ޤ���
-�ꥹ�ȥ���ƥ����Ȥξ��� B<���Ƥ�> �Ԥ��ɤ߽Ф��ޤ���
-�ե������ C<< <> >> �˴ط����� open��close �ʤɤ�����Ԥ��Ȥ��ˤϡ�
-�ϥ�ɥ�ˤĤ��ƹԤäƤ�����Ǥ��äƤ�
-���󥰥�֥饱�åȤ�ȤäƤ� B<�����ޤ���>��
-C<eof(FH)>, C<seek(FH, 0,2)> �� "copying from STDIN to FILE" ��
-��������ΤʤΤǤ���
+<FILE> は、ファイルに対する型指定子にもハンドルの名前の
+I<どちらでもない> ということに注意してください。
+これはハンドル FILE に対する C<< <> >> 演算子です。
+一行(そう、レコードですね。L<perlvar/$E<sol>> を参照してください) を
+FILE というハンドルからスカラコンテキストで読み出します。
+リストコンテキストの場合は B<全ての> 行を読み出します。
+ファイルの C<< <> >> に関係する open、close などの操作を行うときには、
+ハンドルについて行っている場合であっても
+アングルブラケットを使っては B<いけません>。
+C<eof(FH)>, C<seek(FH, 0,2)> や "copying from STDIN to FILE" は
+正しいものなのです。
 
 =head2 Do I always/never have to quote my strings or use semicolons and commas?
 
-(ʸ����Ǥ� ��˥������Ȥ���/�褷�ƥ������Ȥ��ʤ� ɬ�פ�����ΤǤ��礦��?
-�ޤ������ߥ�����䥫��ޤˤĤ��Ƥ�?)
+(文字列では 常にクォートする/決してクォートしない 必要があるのでしょうか?
+また、セミコロンやカンマについては?)
 
 =begin original
 
@@ -146,12 +146,12 @@ count as though they were quoted:
 
 =end original
 
-�̾�ϡ����ñ��(barewords)�ϥ������Ȥ���ɬ�פϤ���ޤ��󤬡�
-�ۤȤ�ɾ��ϥ������Ȥ��٤��Ǥ��礦(�����ơ�C<use strcit> ���Ƥ���Ȥ���
-���ʤ���Фʤ�ޤ���)��
-��������ñ���ñ��(���֥롼�����̾���Ȥ����������Ƥ��ʤ����)����
-���������ϥå���ȡ�C<< => >> �黻�Ҥκ�¦�ˤ��륪�ڥ��ɤ�
-ξ���Ȥ⥯�����Ȥ���Ƥ���Ȥߤʤ���ޤ�:
+通常は、裸の単語(barewords)はクォートする必要はありませんが、
+ほとんど場合はクォートすべきでしょう(そして、C<use strcit> しているときは
+しなければなりません)。
+しかし、単純な単語(サブルーチンの名前として定義されていないもの)から
+構成されるハッシュと、C<< => >> 演算子の左側にあるオペランドは
+両方ともクォートされているとみなされます:
 
 	This                    is like this
 	------------            ---------------
@@ -166,10 +166,10 @@ one-liners:
 
 =end original
 
-�֥��å��κǸ�ˤ��륻�ߥ�����ϡ��ꥹ�ȤκǸ�ˤ��륫��ޤ�Ʊ����
-��ά��ǽ�Ǥ���
-�ɤ���������(L<perlstyle> �򻲾�)�ϰ����Ϻ(one-liners)�Ǥʤ����
-������Ȥ��褦�ˤ��ޤ��礦�ȸ��äƤ��ޤ���
+ブロックの最後にあるセミコロンは、リストの最後にあるカンマと同じく
+省略可能です。
+良いスタイル(L<perlstyle> を参照)は一行野郎(one-liners)でなければ
+それらを使うようにしましょうと言っています。
 
 	if ($whoops) { exit 1 }
 	@nums = (1, 2, 3);
@@ -185,7 +185,7 @@ one-liners:
 
 =head2 How do I skip some return values?
 
-(����ͤΰ����򥹥��åפ���ˤ�?)
+(戻り値の一部をスキップするには?)
 
 =begin original
 
@@ -193,7 +193,7 @@ One way is to treat the return values as a list and index into it:
 
 =end original
 
-��ˡ�ΰ�Ĥϡ�����ͤ�ꥹ�ȤȤߤʤ��ơ������ź�����Ť�����Ȥ�����ΤǤ�:
+方法の一つは、戻り値をリストとみなして、それに添え字づけするというものです:
 
 	$dir = (getpwnam($user))[7];
 
@@ -203,7 +203,7 @@ Another way is to use undef as an element on the left-hand-side:
 
 =end original
 
-�⤦��ĤΤ�꤫���ϡ����դ����ǤȤ��� undef ��Ȥ��Ȥ�����ΤǤ�:
+もう一つのやりかたは、左辺の要素として undef を使うというものです:
 
 	($dev, $ino, undef, undef, $uid, $gid) = stat($file);
 
@@ -214,13 +214,13 @@ you need:
 
 =end original
 
-ɬ�פ����Ǥ��������򤹤뤿��ˡ��ꥹ�ȥ��饤����Ȥ��ޤ�:
+必要な要素だけを選択するために、リストスライスも使えます:
 
 	($dev, $ino, $uid, $gid) = ( stat($file) )[0,1,4,5];
 
 =head2 How do I temporarily block warnings?
 
-(���Ū�˷ٹ��֥��å�����ˤ�?)
+(一時的に警告をブロックするには?)
 
 =begin original
 
@@ -230,9 +230,9 @@ See L<perllexwarn> for more details.
 
 =end original
 
-Perl 5.6.0 �ʹߤ�ȤäƤ���ʤ顢C<use warnings> �ץ饰�ޤ�
-�ɤ�ʷٹ���������뤫�򤦤ޤ�����Ǥ��ޤ���
-�ܺ٤ˤĤ��Ƥ� L<perllexwarn> �򻲾Ȥ��Ƥ���������
+Perl 5.6.0 以降を使っているなら、C<use warnings> プラグマで
+どんな警告を生成するかをうまく制御できます。
+詳細については L<perllexwarn> を参照してください。
 
 	{
 	no warnings;          # temporarily turn off warnings
@@ -248,10 +248,10 @@ complete details, including the category names and hierarchy.
 
 =end original
 
-����ˡ��ٹ��ʬ����˷ٹ��ͭ���ޤ���̵���ˤǤ��ޤ���
-̵�뤷�������ƥ����̵���ˤ��Ƥ⡢�Ĥ�Υ��ƥ���ηٹ�ϼ������ޤ���
-���ƥ���̾�ȳ��ؤ�ޤࡢ�����ʾܺ٤ˤĤ��Ƥ� L<perllexwarn> ��
-���Ȥ��Ƥ���������
+さらに、警告の分野毎に警告を有効または無効にできます。
+無視したいカテゴリを無効にしても、残りのカテゴリの警告は受けられます。
+カテゴリ名と階層を含む、完全な詳細については L<perllexwarn> を
+参照してください。
 
 	{
 	no warnings 'uninitialized';
@@ -265,8 +265,8 @@ in L<perlvar>) controls runtime warnings for a block:
 
 =end original
 
-���Ť��С������ξ��ϡ��ѿ� C<$^W>(L<perlvar> ������������ޤ�)��
-�¹Ի��ηٹ�Υ֥��å������椷�ޤ�:
+より古いバージョンの場合は、変数 C<$^W>(L<perlvar> に説明があります)は
+実行時の警告のブロックを制御します:
 
 =begin original
 
@@ -278,8 +278,8 @@ in L<perlvar>) controls runtime warnings for a block:
 =end original
 
     {
-	local $^W = 0;        # ���Ū�˷ٹ�򥪥դˤ���
-	$a = $b + $c;         # ����餬 undef ���⤷��ʤ����Ȥ��ΤäƤ���
+	local $^W = 0;        # 一時的に警告をオフにする
+	$a = $b + $c;         # これらが undef かもしれないことを知っている
     }
 
 =begin original
@@ -289,13 +289,13 @@ use my() on C<$^W>, only local().
 
 =end original
 
-���Ƥζ������ѿ�(punctuation variable)��Ʊ�͡��������Ǥ� C<$^W> ���Ф���
-my() ��Ȥ����ȤϤǤ�����local() ���������Ȥ��ʤ��Ȥ������Ȥ�
-���դ��Ƥ���������
+全ての句読点変数(punctuation variable)と同様、現時点では C<$^W> に対して
+my() を使うことはできず、local() だけしか使えないということに
+注意してください。
 
 =head2 What's an extension?
 
-(�������ƥ󥷥��Ƥʤ�Ǥ���?)
+(エクステンションてなんですか?)
 
 =begin original
 
@@ -304,13 +304,13 @@ L<perlxstut> is a good place to learn more about extensions.
 
 =end original
 
-�������ƥ󥷥��Ȥϡ�Perl ���饳��ѥ���Ѥߤ� C �����ɤ�ƤӽФ������
-��ˡ�Ǥ���
-�������ƥ󥷥��ˤĤ����Τ�ˤ� L<perlxstut> ���ɤ�Τ��ɤ��Ǥ��礦��
+エクステンションとは、Perl からコンパイル済みの C コードを呼び出すための
+方法です。
+エクステンションについて知るには L<perlxstut> を読むのが良いでしょう。
 
 =head2 Why do Perl operators have different precedence than C operators?
 
-(�ʤ� Perl �α黻�Ҥ� C �α黻�ҤȤϰۤʤä�ͥ���̤���äƤ���ΤǤ��礦��?)
+(なぜ Perl の演算子は C の演算子とは異なった優先順位を持っているのでしょうか?)
 
 =begin original
 
@@ -323,12 +323,12 @@ L<perlop>.
 
 =end original
 
-�ºݤϤ����ǤϤ���ޤ���Perl �˻������ޤ줿C�α黻�ҤϤ��٤ơ�
-C �� Perl �Ȥ�Ʊ��ͥ���̤���äƤ��ޤ���
-����ϡ�C �ˤϤʤ��黻�ҡ��äˤ��α��դ��Ф��ƤĤͤ˥ꥹ�ȥ���ƥ����Ȥ�
-Ϳ����ؿ����㤨�� print��chmod��exce �ʤɤǤ���
-�������ä��ؿ��ϡ֥ꥹ�ȱ黻�ҡפȸƤФ졢
-L<perlop> �ˤ���ͥ���̥ơ��֥�ˤ���ޤ���
+実際はそうではありません。Perl に持ち込まれたCの演算子はすべて、
+C と Perl とで同じ優先順位を持っています。
+問題は、C にはない演算子、特にその右辺に対してつねにリストコンテキストを
+与える関数、例えば print、chmod、exce などです。
+そういった関数は「リスト演算子」と呼ばれ、
+L<perlop> にある優先順位テーブルにあります。
 
 =begin original
 
@@ -336,7 +336,7 @@ A common mistake is to write:
 
 =end original
 
-���꤬���ʴְ㤤�ϰʲ��Τ褦�ˤΤ褦�˽񤤤Ƥ��ޤ����ȤǤ�:
+ありがちな間違いは以下のようにのように書いてしまうことです:
 
 	unlink $file || die "snafu";
 
@@ -346,7 +346,7 @@ This gets interpreted as:
 
 =end original
 
-����ϰʲ��Τ褦�˲�ᤵ��ޤ�:
+これは以下のように解釈されます:
 
 	unlink ($file || die "snafu");
 
@@ -357,8 +357,8 @@ super low precedence C<or> operator:
 
 =end original
 
-����������򤱤뤿��ˤϡ�;�פʳ�̤�Ĥ��뤫���ͥ���̤��㤤
-C<or> �黻�Ҥ�Ȥ��褦�ˤ��ޤ�:
+この問題を避けるためには、余計な括弧をつけるかより優先順位の低い
+C<or> 演算子を使うようにします:
 
 	(unlink $file) || die "snafu";
 	unlink $file or die "snafu";
@@ -371,8 +371,8 @@ just such situations as the one above.
 
 =end original
 
-"English" �黻��(C<and>, C<or>, C<xor>, C<not>) ������������Ƥ���
-Ʊ��Ư���򤹤�ꥹ�ȱ黻�Ҥ����㤤ͥ���̤�ΰդ˻�������Ƥ��ޤ���
+"English" 演算子(C<and>, C<or>, C<xor>, C<not>) は先に説明している
+同じ働きをするリスト演算子よりも低い優先順位を故意に持たされています。
 
 =begin original
 
@@ -383,12 +383,12 @@ that C<2**3**2> is two raised to the ninth power, not eight squared.
 
 =end original
 
-�⤦��ĤΡ��Ӥä��ꤹ��褦��ͥ���̤���äƤ���黻�Ҥ�
-�٤���(exponentiation)�Ǥ���
-�����ñ��Υޥ��ʥ����⶯������դ��Τǡ�C<-2**2> �ϥץ饹 4 �ǤϤʤ���
-�ޥ��ʥ� 4 ���������ޤ���
-���α黻�Ҥϱ���礹��Τǡ�C<2**3**2> �� 8 �� 2 ��ǤϤʤ���
-2 �� 9 ��Ǥ���
+もう一つの、びっくりするような優先順位を持っている演算子は
+べき乗(exponentiation)です。
+これは単項のマイナスよりも強く結び付くので、C<-2**2> はプラス 4 ではなく、
+マイナス 4 を生成します。
+この演算子は右結合するので、C<2**3**2> は 8 の 2 乗ではなく、
+2 の 9 乗です。
 
 =begin original
 
@@ -398,16 +398,16 @@ on the trueness of $maybe:
 
 =end original
 
-C ��Ʊ��ͥ���̤���äƤ���ˤ�ؤ餺��Perl �Ǥ� C<?:> �黻�Ҥ�
-�����ͤ���Ф��ޤ���
-�ʲ��������Ǥϡ�$maybe ���ͤ˱����ơ�$a �� $b �Τ����줫��
-$x ���ͤ��������ޤ�:
+C と同じ優先順位を持っているにも関らず、Perl では C<?:> 演算子は
+左辺値を作り出します。
+以下の代入では、$maybe の値に応じて、$a か $b のいずれかに
+$x の値を代入します:
 
 	($maybe ? $a : $b) = $x;
 
 =head2 How do I declare/create a structure?
 
-(��¤�Τ������������������ˤ�?)
+(構造体を宣言したり生成するには?)
 
 =begin original
 
@@ -417,10 +417,10 @@ Here's an example:
 
 =end original
 
-����Ū�ˤϡ���¤�Τ������ɤ��뤳�ȤϤ���ޤ���
-ñ��(�����餯��̵̾��)�ϥå����ե���󥹤�Ȥ������Ǥ���
-�ܤ����� L<perlref>�� L<perldsc> �򻲾Ȥ��Ƥ���������
-���󤲤ޤ��礦:
+一般的には、構造体を“宣言”することはありません。
+単に(おそらくは無名の)ハッシュリファレンスを使うだけです。
+詳しくは L<perlref>と L<perldsc> を参照してください。
+例を挙げましょう:
 
 	$person = {};                   # new anonymous hash
 	$person->{AGE}  = 24;           # set field AGE to 24
@@ -432,12 +432,12 @@ If you're looking for something a bit more rigorous, try L<perltoot>.
 
 =end original
 
-�⤦����ä����Τʤʤˤ�����Ƥ���Τʤ顢
-L<perltoot> ��ĩ�路�ƤߤƤ���������
+もうちょっと正確ななにかを求めているのなら、
+L<perltoot> に挑戦してみてください。
 
 =head2 How do I create a module?
 
-(�⥸�塼����������ˤ�?)
+(モジュールを作成するには?)
 
 =begin original
 
@@ -445,7 +445,7 @@ L<perltoot> ��ĩ�路�ƤߤƤ���������
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -456,10 +456,10 @@ about style.
 
 =end original
 
-L<perlmod>, L<perlmodlib>, L<perlmodstyle> �ϥ⥸�塼��˴ؤ������Ƥ�
-�������ʾܺ٤ˤĤ����������Ƥ��ޤ���
-L<perlnewmod> �ˤϤ��Υץ������˴ؤ�����ޤ��ʳ��פȡ���������˴ؤ���
-�����Ĥ�����𤬤���ޤ���
+L<perlmod>, L<perlmodlib>, L<perlmodstyle> はモジュールに関する全ての
+不愉快な詳細について説明しています。
+L<perlnewmod> にはこのプロセスに関する大まかな概要と、スタイルに関する
+いくつかの忠告があります。
 
 =begin original
 
@@ -470,11 +470,11 @@ you'll need.  L<perlxs> and L<perlxstut> explain the details.
 
 =end original
 
-�⤷�⥸�塼��� C �����ɤ� C �饤�֥�ꥤ�󥿡��ե�������ޤ᤿���ʤ顢
-h2xs ��ɬ�פǤ���
-h2xs ��ɬ�פˤʤ�⥸�塼�����۹�¤�Ƚ�����󥿡��ե������ե������
-�������ޤ���
-L<perlxs> �� L<perlxstut> �Ͼܺ٤��������Ƥ��ޤ���
+もしモジュールに C コードや C ライブラリインターフェースを含めたいなら、
+h2xs が必要です。
+h2xs は必要になるモジュール配布構造と初期インターフェースファイルを
+作成します。
+L<perlxs> と L<perlxstut> は詳細を説明しています。
 
 =begin original
 
@@ -484,9 +484,9 @@ create a skeleton module distribution.
 
 =end original
 
-C �Υ����ɤ�Ȥ�ɬ�פ��ʤ��Τʤ顢ExtUtils::ModuleMaker ��
-Module::Starter �Ȥ��ä��ġ��뤬���⥸�塼�����ۤι��ʤ���Τ�
-�����Ƥ���ޤ���
+C のコードを使う必要がないのなら、ExtUtils::ModuleMaker や
+Module::Starter といったツールが、モジュール配布の骨格を作るのを
+助けてくれます。
 
 =begin original
 
@@ -497,13 +497,13 @@ distributions.
 
 =end original
 
-�⥸�塼�����ۤ�������뤿��κ��ɤμ����������ɤǤ��롢Sam Tregar �ˤ��
+モジュール配布を作成するための最良の実践型ガイドである、Sam Tregar による
 "Writing Perl Modules for CPAN"
-( http://apress.com/book/bookDisplay.html?bID=14 ) �򸫤�Τ�褤�Ǥ��礦��
+( http://apress.com/book/bookDisplay.html?bID=14 ) を見るのもよいでしょう。
 
 =head2 How do I adopt or take over a module already on CPAN?
 
-(���Ǥ� CPAN �ˤ���⥸�塼�������Ѥ��ˤ�?)
+(すでに CPAN にあるモジュールを引き継ぐには?)
 
 =begin original
 
@@ -511,7 +511,7 @@ distributions.
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -521,9 +521,9 @@ the module to you.
 
 =end original
 
-�⥸�塼�������Ѥ��Τ˰��ִ�ñ����ˡ�ϡ����ߤΥ⥸�塼��Υ��ƥʤ�
-Ϣ�����ơ���Ʊ���ƥʤˤ��Ƥ�餦�����⥸�塼�������Ϥ��Ƥ�餦
-���ȤǤ���
+モジュールを引き継ぐのに一番簡単な方法は、現在のモジュールのメンテナに
+連絡して、共同メンテナにしてもらうか、モジュールを引き渡してもらう
+ことです。
 
 =begin original
 
@@ -533,9 +533,9 @@ treat each case individually.
 
 =end original
 
-�⤷���餫����ͳ(�᡼�뤬�֤äƤ����ʤ�)�Ǻ�Ԥ�Ϣ�������ʤ���硢
-PAUSE �����ԤǤ��� modules@perl.org �������ˤʤ뤫�⤷��ޤ���
-PAUSE �����ԤϤ��줾��ξ�����̤˰����ޤ���
+もし何らかの理由(メールが返ってきたなど)で作者と連絡が取れない場合、
+PAUSE 管理者である modules@perl.org が助けになるかもしれません。
+PAUSE 管理者はそれぞれの場合を個別に扱います。
 
 =over 4
 
@@ -548,8 +548,8 @@ already have one: http://pause.perl.org
 
 =end original
 
-�ޤ����äƤ��ʤ��ʤ顢the Perl Authors Upload Server (PAUSE) �Υ�������Ȥ�
-���ޤ�: http://pause.perl.org
+まだ持っていないなら、the Perl Authors Upload Server (PAUSE) のアカウントを
+取ります: http://pause.perl.org
 
 =item
 
@@ -561,8 +561,8 @@ maintainer.
 
 =end original
 
-���ߤΥ��ƥʤ�Ϣ�����뤿��ˤ������Ȥ������� modules@perl.org �˽񤭤ޤ���
-PAUSE �����Ԥ���ƥʤ�Ϣ�����ߤޤ���
+現在のメンテナに連絡するためにしたことの説明を modules@perl.org に書きます。
+PAUSE 管理者もメンテナに連絡を試みます。
 
 =item 
 
@@ -573,8 +573,8 @@ intention to take over the module.
 
 =end original
 
-�⥸�塼�������Ѥ������Ȥ����ջפ�ɽ�����뤿��ˡ��ȥ�ե��å���¿��
-�����Ȥ˸�Ū�ʥ�å���������Ƥ��ޤ���
+モジュールを引き継ぎたいという意思を表明するために、トラフィックの多い
+サイトに公的なメッセージを投稿します。
 
 =item
 
@@ -587,17 +587,17 @@ it to you.
 
 =end original
 
-���Ф餯�Ԥ��ޤ���
-PAUSE �����Ԥϡ����ߤΥ��ƥʤ��ٲ���ξ��ˡ����ޤ�����ޤ˹�ư�������Ȥ�
-�פ��ޤ���
-�⤷��Ū���̿����Ū����Ƥ�ȿ�����ʤ���硢PAUSE �����Ԥϥ⥸�塼���
-���ʤ��˰ܹԤǤ��ޤ���
+しばらく待ちます。
+PAUSE 管理者は、現在のメンテナが休暇中の場合に、あまりに性急に行動したいとは
+思いません。
+もし私的な通信や公的な投稿に反応がない場合、PAUSE 管理者はモジュールを
+あなたに移行できます。
 
 =back
 
 =head2 How do I create a class?
 
-(���饹����ˤ�?)
+(クラスを作るには?)
 
 =begin original
 
@@ -606,12 +606,12 @@ L<perlobj> and L<perlbot>.
 
 =end original
 
-���饹�ȥ��֥������ȤˤĤ��Ƥ������ L<perltoot> �򻲾Ȥ��Ƥ���������
-Ʊ�ͤˡ�L<perlobj> �� L<perlbot> �⻲�Ȥ��Ƥ���������
+クラスとオブジェクトについての入門は L<perltoot> を参照してください。
+同様に、L<perlobj> と L<perlbot> も参照してください。
 
 =head2 How can I tell if a variable is tainted?
 
-(�ѿ�����������Ƥ��뤫�ɤ�����Τ����ˤ�?)
+(変数が汚染されているかどうかを確かめるには?)
 
 =begin original
 
@@ -621,13 +621,13 @@ See also L<perlsec/"Laundering and Detecting Tainted Data">.
 
 =end original
 
-CPAN �ˤ��� (��꡼�� 5.8.0 ����� Perl �˴ޤޤ�Ƥ���) Scalar::Util
-�⥸�塼��� tainted() �ؿ����Ȥ��ޤ���
-L<perlsec/"Laundering and Detecting Tainted Data"> �⻲�Ȥ��Ƥ���������
+CPAN にある (リリース 5.8.0 からは Perl に含まれている) Scalar::Util
+モジュールの tainted() 関数が使えます。
+L<perlsec/"Laundering and Detecting Tainted Data"> も参照してください。
 
 =head2 What's a closure?
 
-(����������(closure)�äƤʤ�Ǥ���?)
+(クロージャ(closure)ってなんですか?)
 
 =begin original
 
@@ -635,7 +635,7 @@ Closures are documented in L<perlref>.
 
 =end original
 
-����������� L<perlref> ������������ޤ���
+クロージャは L<perlref> に説明があります。
 
 =begin original
 
@@ -648,12 +648,12 @@ binding).
 
 =end original
 
-B<����������> �ϡ�������Ȥ����������ä�����ԥ塼���ʳؤ��Ѹ�Ǥ���
-���ΰ�̣����������ΤϤȤƤ��񤷤��ΤǤ���
-����������� Perl �Ǥϡ����Υ������פγ�¦�Ǥ�쥭�������ѿ����Ф���
-��ե���󥹤��ݻ����ĤŤ���̵̾���֥롼����Ȥ��Ƽ�������Ƥ��ޤ���
-�����Υ쥭������ϡ����֥롼����������줿�Ȥ����ѿ����Ф��ơ�
-��ˡ�Τ褦�ʻ���(magically refer)��Ԥ��ޤ�(����«����deep binding)��
+B<クロージャ> は、きちんとした定義を持ったコンピュータ科学の用語ですが
+その意味を説明するのはとても難しいのです。
+クロージャは Perl では、そのスコープの外側でもレキシカル変数に対する
+リファレンスを保持しつづける無名サブルーチンとして実装されています。
+これらのレキシカルは、サブルーチンが定義されたときの変数に対して、
+魔法のような参照(magically refer)を行います(深い束縛、deep binding)。
 
 =begin original
 
@@ -667,14 +667,14 @@ but encourages closures.
 
 =end original
 
-����������ϡ�Perl ���Ǥ���褦�ʴؿ�������ͤȤ��ƴؿ����켫�Ȥ��֤��ؿ���
-���Ĥ��Ȥ��Ǥ���ץ�����ߥ󥰸���Ǥ�äȤ�褯�Ȥ��ޤ���
-�����θ���Ǥϡ�̵̾�ؿ����󶡤��Ƥ��뤱��ɤ�Ŭ�ڤʥ�����������󶡤���
-ǽ�ϤϤʤ��Ȥ������Ȥ����դ��Ƥ���������
-���Ȥ��� Python �������Ǥ���
-����������˴ؤ�����ܤ������Ȥϡ��ؿ�����˴ؤ���ʤ�餫�ζ��ʽ��
-�ߤƤ���������
-Scheme �ϥ���������򥵥ݡ��Ȥ�������Ǥʤ��������侩���Ƥ������Ǥ���
+クロージャは、Perl ができるような関数の戻り値として関数それ自身を返す関数を
+持つことができるプログラミング言語でもっともよく使われます。
+一部の言語では、無名関数を提供しているけれども適切なクロージャを提供する
+能力はないということに注意してください。
+たとえば Python がそうです。
+クロージャに関するより詳しいことは、関数言語に関するなんらかの教科書を
+みてください。
+Scheme はクロージャをサポートするだけでなく、それを推奨している言語です。
 
 =begin original
 
@@ -682,7 +682,7 @@ Here's a classic non-closure function-generating function:
 
 =end original
 
-�ʲ��ϡ���ŵŪ�ʡ�����������ǤϤʤ��ؿ�����������ؿ��Ǥ�:
+以下は、古典的な、クロージャではない関数を生成する関数です:
 
 	sub add_function_generator {
 		return sub { shift() + shift() };
@@ -700,11 +700,11 @@ customization slots left out to be filled later.
 
 =end original
 
-add_function_generator() ���֤���̵̾���֥롼����ϵ���Ū�ˤ�
-����������ǤϤ���ޤ���
-�ʤ��ʤ顢����ϥ������פγ�¦�ǻ��Ȥ���褦�ʥ쥭�����뤬�ʤ�����Ǥ���
-�����������Ȥ����Ȥˤ�äơ�������뤳�ȤΤǤ��륫�����ޥ�����ǽ��
-���Ĥ��Υ����åȤ���� B<�ؿ��ƥ�ץ졼��> �Τ褦��Ư���ޤ���
+add_function_generator() が返した無名サブルーチンは技術的には
+クロージャではありません。
+なぜなら、あれはスコープの外側で参照するようなレキシカルがないからです。
+クロージャを使うことによって、後で埋めることのできるカスタマイズ可能な
+幾つかのスロットを持つ B<関数テンプレート> のように働きます。
 
 =begin original
 
@@ -716,11 +716,11 @@ value that the lexical had when the function was created.
 
 =end original
 
-����Ȥ��о�Ū�ˡ����δؿ� make_adder() �Ǥϡ��ؿ����ȤΥ������פγ�¦��
-�쥭�������ѿ����Ф����ե���󥹤����̵̾�ؿ����֤��ޤ���
-���Τ褦�ʥ�ե���󥹤� Perl ��Ŭ�ڤʥ�����������֤��褦���׵᤹��Τǡ�
-�����ѿ��򻲾Ȥ���Ȥ��Ϥ��ĤǤ�ؿ����������줿�Ȥ���
-�쥭�����뤬���Ȥ���ޤ���
+それとは対照的に、次の関数 make_adder() では、関数自身のスコープの外側で
+レキシカル変数に対するリファレンスを持つ無名関数を返します。
+そのようなリファレンスは Perl が適切なクロージャを返すように要求するので、
+その変数を参照するときはいつでも関数が生成されたときの
+レキシカルが参照されます。
 
 	sub make_adder {
 		my $addpiece = shift;
@@ -738,9 +738,9 @@ in the closure sticks around.
 
 =end original
 
-����ǡ�C<&$f1($n)> �� ������Ϥ��� $n ���Ф��ƾ�� 20 ��ä���
-C<&$f2($n)> ���Ϥ��줿 $n �˾�� 555 ��ä��ޤ���
-�������������ˤ��� $addpiece ���Ż��򤷤Ƥ��ޤ���
+これで、C<&$f1($n)> は それに渡した $n に対して常に 20 を加え、
+C<&$f2($n)> は渡された $n に常に 555 を加えます。
+クロージャの中にある $addpiece が仕事をしています。
 
 =begin original
 
@@ -749,8 +749,8 @@ you want to pass in a bit of code into a function:
 
 =end original
 
-����������ϡ�����ۤ��񤷤��ʤ������Ǥ褯�Ȥ��ޤ���
-���Ȥ��С��ؿ��ˤ���äȤ��������ɤ򲡤����ߤ����Ȥ��������Ǥ�:
+クロージャは、それほど難しくない状況でよく使われます。
+たとえば、関数にちょっとしたコードを押しこみたいときがそうです:
 
 	my $line;
 	timeout( 30, sub { $line = <STDIN> } );
@@ -764,10 +764,10 @@ $line back in its caller's scope.
 
 =end original
 
-�⤷�¹Ԥ��٤������ɤ�ʸ����Ȥ����Ϥ���Ƥ����ΤǤ���С�
-C<< '$line = <STDIN>' >> �Ȥ��Ƥ���Ȥ����ϡ�����Ū�� timeout() �ؿ���
-������������쥭�������ѿ� $line ��ƤӽФ����Υ������פΤ�Τ��᤹
-���ʤ��ʤ��ʤäƤ��ޤ��ޤ���
+もし実行すべきコードが文字列として渡されていたのであれば、
+C<< '$line = <STDIN>' >> としているところは、仮想的な timeout() 関数が
+アクセスするレキシカル変数 $line を呼び出し元のスコープのものに戻す
+手段がなくなってしまいます。
 
 =begin original
 
@@ -780,11 +780,11 @@ package:
 
 =end original
 
-�⤦��ĤΥ���������λ���ˡ�ϡ������ѿ���̾���Ĥ����֥롼�����
-I<�ץ饤�١���> �ˤ��뤳�ȤǤ�; �㤨�С����֥롼����κ������˽�������졢
-���֥롼������ǤΤ��ѹ���ǽ�ʥ����󥿤Ǥ���
-����ϡ��ѥå���������¸��������ѿ������Ĥ���뤳�Ȥ��ʤ��褦�ˡ��Ȥ���
-�ѥå������ե������ BEGIN �֥��å��ǻȤ��ޤ�:
+もう一つのクロージャの使用法は、ある変数を名前つきサブルーチンで
+I<プライベート> にすることです; 例えば、サブルーチンの作成時に初期化され、
+サブルーチン内でのみ変更可能なカウンタです。
+これは、パッケージの生存期間中に変数が干渉されることがないように、とき毒
+パッケージファイルの BEGIN ブロックで使われます:
 
 	BEGIN {
 		my $id = 0;
@@ -798,12 +798,12 @@ I<Persistent Private Variables>.
 
 =end original
 
-����� L<perlsub> �Ǥ��ܤ�����������Ƥ���Τǡ�
-I<Persistent Private Variables> �Υ���ȥ�򻲾Ȥ��Ƥ���������
+これは L<perlsub> でより詳しく議論されているので、
+I<Persistent Private Variables> のエントリを参照してください。
 
 =head2 What is variable suicide and how can I prevent it?
 
-(�ѿ��μ���(variable suicide)�äƲ��ǡ������ɤ�������ɤ��ޤ���?)
+(変数の自殺(variable suicide)って何で、それをどうすれば防げますか?)
 
 =begin original
 
@@ -812,8 +812,8 @@ your version of perl. ;)
 
 =end original
 
-��������� 5.004_05 �ǽ������줿�Τǡ��ɤ�����ˤ� perl ��
-�С�����󥢥åפ��ޤ� :)
+この問題は 5.004_05 で修正されたので、防ぐためには perl を
+バージョンアップします :)
 
 =begin original
 
@@ -825,14 +825,14 @@ variable's value this way, but now it's much harder.  Take this code:
 
 =end original
 
-�ѿ��μ����Ȥϡ�(���Ū�ˤ���������Ū�ˤ���)�ѿ����ͤ򼺤ä��Ȥ��Τ��Ȥ�
-�ؤ��ޤ���
-����ϡ����������㡢�⤷������̾�Ĥ����줿 foreach ���ƥ졼���ѿ���
-���֥롼����ΰ�������ߺ��Ѥ��Ƥ��� my() �� local() ���̤���
-�������פˤ�äư�����������ޤ���
-�����Ϥ��Τ�������ѿ����ͤ򤦤ä���Ȥʤ����Ƥ��ޤ��褦��
-�Ȥ�줬���Ǥ����������ߤ������񤷤��ʤäƤ��ޤ���
-�ʲ��Υ����ɤ�ͤ��Ƥߤޤ��礦:
+変数の自殺とは、(一時的にしろ、恒久的にしろ)変数の値を失ったときのことを
+指します。
+これは、クロージャ、もしくは別名つけされた foreach イテレータ変数や
+サブルーチンの引数と相互作用している my() や local() を通した
+スコープによって引き起こされます。
+以前はこのやり方で変数の値をうっかりとなくしてしまうように
+使われがちでしたが、現在は非常に難しくなっています。
+以下のコードを考えてみましょう:
 
 	my $f = 'foo';
 	sub T {
@@ -851,10 +851,10 @@ shouldn't, as in this output:
 
 =end original
 
-�⤷�ѿ��μ��������������顢���֥롼������� C<my $f> �ϡ��ͤ� C<foo> �Ǥ���
-C<$f> �κǿ��Υ��ԡ���ǤϤ���ޤ���
-���ν��Ϥϡ�ϳ��ƤϤ����ʤ����֥롼������� C<$f> ���ͤ�ϳ��Ƥ��뤳�Ȥ�
-�������ʲ��Τ褦�ˤʤ�ޤ�:
+もし変数の自殺に遭遇したら、サブルーチン内の C<my $f> は、値が C<foo> である
+C<$f> の最新のコピーをではありません。
+この出力は、漏れてはいけないサブルーチン内の C<$f> の値が漏れていることを
+示し、以下のようになります:
 
 	foobar
 	foobarbar
@@ -869,9 +869,9 @@ The expected output is:
 
 =end original
 
-"bar" ���ݻ����Ƥ��� $f �ϻ��� new C<$f> �����٤���ΤǤ� (C<my $f> �ϡ�
-�롼�פ��̤��٤˿����ʥ쥭�������ѿ����������٤��ʤΤǤ�)��
-ͽ�ۤ������Ϥϰʲ��Τ�ΤǤ�:
+"bar" を保持している $f は三回 new C<$f> されるべきものです (C<my $f> は、
+ループが通る度に新たなレキシカル変数を生成すべきなのです)。
+予想される出力は以下のものです:
 
 	foobar
 	foobar
@@ -880,7 +880,7 @@ The expected output is:
 
 =head2 How can I pass/return a {Function, FileHandle, Array, Hash, Method, Regex}?
 
-({�ؿ�, �ե�����ϥ�ɥ�, ����, �ϥå���, �᥽�å�, ����ɽ��} ���Ϥ������֤����ꤹ��ˤ�?)
+({関数, ファイルハンドル, 配列, ハッシュ, メソッド, 正規表現} を渡したり返したりするには?)
 
 =begin original
 
@@ -890,9 +890,9 @@ question, and L<perlref> for information on references.
 
 =end original
 
-����ɽ��������ơ������Υ��֥������ȤΥ�ե���󥹤��Ϥ�ɬ�פ�����ޤ���
-L<perlsub/"Pass by Reference"> �ˤ����Ϣ��������ȡ�
-L<perlref> �ˤ����ե���󥹤˴ؤ������򻲾Ȥ��Ƥ���������
+正規表現を除いて、これらのオブジェクトのリファレンスを渡す必要があります。
+L<perlsub/"Pass by Reference"> にある関連した質問と、
+L<perlref> にあるリファレンスに関する情報を参照してください。
 
 =begin original
 
@@ -901,14 +901,14 @@ passing regular expressions.
 
 =end original
 
-����ɽ�����Ϥ�����ξ���ˤĤ��Ƥϡ�L<perlfaq7> �Ǹ�Ҥ���
-"Passing Regexes" �򻲾Ȥ��Ʋ�������
+正規表現を渡すための情報については、L<perlfaq7> で後述する
+"Passing Regexes" を参照して下さい。
 
 =over 4
 
 =item Passing Variables and Functions
 
-(�ѿ���ؿ����Ϥ�)
+(変数や関数を渡す)
 
 =begin original
 
@@ -917,8 +917,8 @@ reference to an existing or anonymous variable or function:
 
 =end original
 
-���̤��ѿ���ؿ��ϤȤƤ��ñ���Ϥ��ޤ�: ����¸�ߤ��Ƥ����ѿ���ؿ����Ф���
-��ե���󥹤���̵̾�ѿ���̵̾�ؿ����Ф����ե���󥹤��Ϥ��Ф褤�ΤǤ���
+普通の変数や関数はとても簡単に渡せます: 既に存在している変数や関数に対する
+リファレンスか、無名変数や無名関数に対するリファレンスを渡せばよいのです。
 
 	func( \$some_scalar );
 
@@ -940,7 +940,7 @@ which you treat as any other scalar.
 
 =end original
 
-Perl 5.6 ���顢¾�Υ������Ʊ�ͤ˥ե�����ϥ�ɥ�⥹�����ѿ��ǰ����ޤ���
+Perl 5.6 から、他のスカラと同様にファイルハンドルもスカラ変数で扱えます。
 
 	open my $fh, $filename or die "Cannot open $filename! $!";
 	func( $fh );
@@ -959,14 +959,14 @@ and especially L<perlsub/"Pass by Reference"> for more information.
 
 =end original
 
-Perl 5.6 ������Ǥϡ�C<*FH> �� C<\*FH> �Ȥ��ä���ˡ��Ȥ�ɬ�פ�����ޤ���
-�����ϡȷ������֡�(typeglob)�Ǥ���
-L<perldata/"Typeglobs and Filehandles">) �� L<perlsub/"Pass by Reference"> ��
-�ܤ�������������ޤ���
+Perl 5.6 より前では、C<*FH> や C<\*FH> といった記法を使う必要があります。
+これらは“型グロブ”(typeglob)です。
+L<perldata/"Typeglobs and Filehandles">) と L<perlsub/"Pass by Reference"> に
+詳しい説明があります。
 
 =item Passing Regexes
 
-(����ɽ�����Ϥ�)
+(正規表現を渡す)
 
 =begin original
 
@@ -976,9 +976,9 @@ strings and use an exception-trapping eval, or else be very, very clever.
 
 =end original
 
-����ɽ�����Ϥ��ˤϡ�C<qr//> ��¤�����Ѳ�ǽ�ʺǶ�� Perl ��Ȥ�����
-ʸ������Ϥ������Ȥ��㳰����館�� eval ��Ȥ�����
-����ʤ���ФȤƤ�ȤƤ⸭���Ǥʤ���Фʤ�ޤ���
+正規表現を渡すには、C<qr//> 構造が利用可能な最近の Perl を使うか、
+文字列を渡したあとで例外を捕らえる eval を使うか、
+さもなければとてもとても賢明でなければなりません。
 
 =begin original
 
@@ -987,7 +987,7 @@ using C<qr//>:
 
 =end original
 
-�ʲ�����ϡ�c<qr//>��Ȥä�����ɽ���Ȥ�����Ӥ��٤�ʸ������Ϥ���ˡ����Ǥ�:
+以下の例は、c<qr//>を使って正規表現として比較すべき文字列を渡す方法の例です:
 
 	sub compare($$) {
 		my ($val1, $regex) = @_;
@@ -1006,13 +1006,13 @@ it is again if you don't have C<qr//>:
 
 =end original
 
-C<qr//> ���������դ��뤳�Ȥ��Ǥ���ե饰�����դ��Ƥ���������
-���Υѥ�����ϰ��٤�������ѥ�����˥���ѥ��뤵�졢
-�¹Ի��ˤϥ���ѥ��뤵��ޤ���
-���Τ���줿 C<qr//> ��ˡ�� 5.005 ��꡼���ǽ����󶡤���ޤ�����
-����ޤǤϡ�����������Ф����ڤ���ľ��Ū�Ǥʤ���ˡ��
-�Ȥ�ʤ���Фʤ�ޤ���Ǥ�����
-�㤨�С���ۤɤΥ����ɤ� C<qr//> �ʤ��ǽ񤯤�:
+C<qr//> の末尾に付けることができるフラグに注意してください。
+このパターンは一度だけコンパイル時にコンパイルされ、
+実行時にはコンパイルされません。
+このしゃれた C<qr//> 記法は 5.005 リリースで初めて提供されました。
+それまでは、この問題に対して遥かに直感的でない手法を
+とらなければなりませんでした。
+例えば、先ほどのコードを C<qr//> なしで書くと:
 
 	sub compare($$) {
 		my ($val1, $regex) = @_;
@@ -1029,7 +1029,7 @@ Make sure you never say something like this:
 
 =end original
 
-�褷�ưʲ��Τ褦�ˤ��ƤϤ����ޤ���:
+決して以下のようにしてはいけません:
 
 	return eval "\$val =~ /$regex/";   # WRONG
 
@@ -1040,9 +1040,9 @@ interpolation of the eval and the double-quoted string.  For example:
 
 =end original
 
-���뤤�ϡ�ï���� eval �����Ÿ���ȥ��֥륯�����Ȥǳ��줿ʸ����Τ���ˡ�
-����ɽ����̯�ʥ����륨�������פ򲡤����फ�⤷��ޤ���
-���󤲤ޤ��礦:
+あるいは、誰かが eval の二重展開とダブルクォートで括られた文字列のために、
+正規表現に妙なシェルエスケープを押し込むかもしれません。
+例を挙げましょう:
 
 	$pattern_of_evil = 'danger ${ system("rm -rf * &") } danger';
 
@@ -1057,14 +1057,14 @@ citation of this book is given in L<perlfaq2>.
 
 =end original
 
-�����Τ��Ȥ˴ؤ��ƤȤƤ�ȤƤ⸭���ˤʤ�ˤϡ�Jeffrey Friedl �ˤ��
-O'Reilly ���� I<Mastering Regular Expressions> ���ɤळ�ȤǤ��礦��
-�ä� 273 �ڡ����ˤ��� Build_MatchMany_Function() �϶�̣������ΤǤ���
-�����ܤ˴ؤ��봰���ʾ���� L<perlfaq2> �ˤ���ޤ���
+これらのことに関してとてもとても賢明になるには、Jeffrey Friedl による
+O'Reilly の本 I<Mastering Regular Expressions> を読むことでしょう。
+特に 273 ページにある Build_MatchMany_Function() は興味深いものです。
+この本に関する完全な情報は L<perlfaq2> にあります。
 
 =item Passing Methods
 
-(�᥽�åɤ��Ϥ�)
+(メソッドを渡す)
 
 =begin original
 
@@ -1072,7 +1072,7 @@ To pass an object method into a subroutine, you can do this:
 
 =end original
 
-���֥롼����˥��֥������ȥ᥽�åɤ��Ϥ��ˤϡ��ʲ��Τ褦�ˤǤ��ޤ�:
+サブルーチンにオブジェクトメソッドを渡すには、以下のようにできます:
 
 	call_a_lot(10, $some_obj, "methname")
 	sub call_a_lot {
@@ -1089,8 +1089,8 @@ method call, and arguments:
 
 =end original
 
-���֥������ȤȤ��Υ᥽�åɸƤӽФ��Ȱ����Ȥ�ޤȤ�뤿���
-�����������Ȥ����Ȥ�Ǥ��ޤ�:
+オブジェクトとそのメソッド呼び出しと引数とをまとめるために
+クロージャを使うこともできます:
 
 	my $whatnot =  sub { $some_obj->obfuscate(@args) };
 	func($whatnot);
@@ -1106,14 +1106,14 @@ You could also investigate the can() method in the UNIVERSAL class
 
 =end original
 
-UNIVERSAL ���饹�ˤ��� can() �᥽�åɤ����Ȥ�Ǥ��ޤ�
-(�����ɸ��� perl ���ۥ��åȤΰ����Ǥ�)��
+UNIVERSAL クラスにある can() メソッドを試すこともできます
+(これは標準の perl 配布キットの一部です)。
 
 =back
 
 =head2 How do I create a static variable?
 
-(��Ū�ѿ�����ˤ�?)
+(静的変数を作るには?)
 
 =begin original
 
@@ -1121,7 +1121,7 @@ UNIVERSAL ���饹�ˤ��� can() �᥽�åɤ����Ȥ�Ǥ��ޤ�
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1131,8 +1131,8 @@ with lexical variables, though.
 
 =end original
 
-Perl �ˤϡ�������줿�ؿ�����Τߥ��������Ǥ��� "��Ū" �ѿ��Ϥ���ޤ���
-���������쥭�������ѿ��ˤ�ä�Ʊ�����̤������ޤ���
+Perl には、宣言された関数からのみアクセスできる "静的" 変数はありません。
+しかし、レキシカル変数によって同じ効果が得られます。
 
 =begin original
 
@@ -1152,21 +1152,21 @@ C<counter>.
 
 =end original
 
-�������׳��ǥ쥭�������ѿ���Ȥ����Ȥǥ����ƥ��å��ѿ���
-�Ǥä��夲�뤳�Ȥ��Ǥ��ޤ���
-������Ǥϡ����֥롼���� C<counter> ��������������ǥ쥭�������ѿ�
-C<$count> ��Ȥ��ޤ���
-����� BEGIN �֥��å��ǰϤäƤ���Τǡ�C<$count> �ϥ���ѥ������
-�������ޤ�����BEGIN �֥��å��ν����ǥ������פ��鳰��ޤ���
-BEGIN �֥��å��Ϥޤ������֥롼����Ȥ����ǻȤ��Ƥ����ͤϥ���ѥ������
-��������Τǡ����Υ��֥롼����Ϥ���¾�ΤɤΥ��֥롼���󤫤��
-�Ȥ������������Ƥ��ơ����Υ����ɤ�ץ������ƥ��������¾�Υ��֥롼�����
-Ʊ�ͤ�Ʊ�����(ŵ��Ū�ˤϡ������ɤκǸ�)�ˤ��Υ����ɤ��֤��뤳�Ȥ��ݾڤ��ޤ���
-���֥롼���� C<counter> ��̤���˥ǡ����ؤΥ�ե���󥹤���äƤ��ơ�
-���줬�ͤ˥��������Ǥ���ͣ�����ˡ�Ǥ�(�����Ƥ��������٤ˡ��ͤ�
-���󥯥���Ȥ���ޤ�)��
-C<$count> ��������줿����β��ˤ���ǡ����� C<counter> ��
-�ץ饤�١��ȤǤ���
+スコープ外でレキシカル変数を使うことでスタティック変数を
+でっち上げることができます。
+この例では、サブルーチン C<counter> を定義し、そこでレキシカル変数
+C<$count> を使います。
+これを BEGIN ブロックで囲っているので、C<$count> はコンパイル時に
+定義されますが、BEGIN ブロックの終わりでスコープから外れます。
+BEGIN ブロックはまた、サブルーチンとそこで使われている値はコンパイル時に
+定義されるので、このサブルーチンはその他のどのサブルーチンからも
+使える準備が出来ていて、このコードをプログラムテキスト中の他のサブルーチンと
+同様に同じ場所(典型的には、コードの最後)にこのコードを置けることを保証します。
+サブルーチン C<counter> は未だにデータへのリファレンスを持っていて、
+これが値にアクセスできる唯一の方法です(そしてそうする度に、値が
+インクリメントされます)。
+C<$count> で定義されたメモリの塊にあるデータは C<counter> に
+プライベートです。
 
 	BEGIN {
 		my $count = 1;
@@ -1194,17 +1194,17 @@ there is no other way to access it.
 
 =end original
 
-���Ҥ���Ǥϡ��ؿ��ǥץ饤�١��Ȥ��ѿ����äƤ��ޤ�; 
-������Ĥδؿ����������Υ�ե���󥹤�Ф��Ƥ��뤫��Ǥ���
-�ѿ�������������ˤ���֤�ʣ���δؿ�������Ǥ����ƴؿ��ϡ֥ץ饤�١��ȡ�
-�ѿ���ͭ�Ǥ��ޤ���
-�쥭�������ѿ�������������ǤϤ��뤱��ɤ�ؿ��γ�¦�����ѿ��˥��������Ǥ���
-������Ф����ե���󥹤�������Ǥ��뤿�ᡢ����ϼºݤˤ�
-����Ū���ѿ��ǤϤ���ޤ���
-������Ǥϡ�C<increment_count> �� C<return_count> ���ѿ���ͭ���Ƥ��ޤ���
-�����δؿ����ͤ�ä����⤦������ñ���ͤ��֤��ޤ���
-������ξ���Ȥ� C<$count> �˥��������Ǥ����������׳�����Υ��뤿�ᡢ
-����˥����������뤽��¾����ˡ�Ϥ���ޤ���
+前述の例では、関数でプライベートな変数を作っています; 
+ただ一つの関数だけがこのリファレンスを覚えているからです。
+変数がスコープ内にある間に複数の関数を定義でき、各関数は「プライベート」
+変数を共有できます。
+レキシカル変数がスコープ内ではあるけれども関数の外側から変数にアクセスでき、
+それに対するリファレンスすら作成できるため、これは実際には
+「静的」変数ではありません。
+この例では、C<increment_count> と C<return_count> は変数を共有しています。
+片方の関数が値を加え、もう片方は単に値を返します。
+これらは両方とも C<$count> にアクセスでき、スコープ外から離れるため、
+これにアクセスするその他の方法はありません。
 
 	BEGIN {
 		my $count = 1;
@@ -1220,9 +1220,9 @@ cannot be seen from any other file.
 
 =end original
 
-�ե�����ץ饤�١��Ȥ��ѿ����������ˤϡ���Ϥ�쥭�������ѿ����Ȥ��ޤ���
-�ե�����⥹�����פȤʤ�Τǡ�����ե������������줿�쥭�������ѿ���
-����¾�Υե����뤫��ϸ����ޤ���
+ファイルプライベートな変数を宣言するには、やはりレキシカル変数が使えます。
+ファイルもスコープとなるので、あるファイルで定義されたレキシカル変数は
+その他のファイルからは見えません。
 
 =begin original
 
@@ -1233,16 +1233,16 @@ L<perlsub/"Persistent Private Variables"> for details.
 
 =end original
 
-����ʤ����ˤĤ��Ƥ� L<perlsub/"Persistent Private Variables"> ��
-���Ȥ��Ƥ���������
-L<perlref> �ǤΥ���������˴ؤ�������ϡ����������ˤ�̵̾���֥롼�����
-�ȤäƤ��ʤ��Ǥ����������ˤʤ뤫�⤷��ޤ���
-�ܺ٤ˤĤ��Ƥ� L<perlsub/"Persistent Private Variables"> �򻲾Ȥ��Ƥ���������
+さらなる情報については L<perlsub/"Persistent Private Variables"> を
+参照してください。
+L<perlref> でのクロージャに関する議論は、この答えには無名サブルーチンは
+使っていないですが、助けになるかもしれません。
+詳細については L<perlsub/"Persistent Private Variables"> を参照してください。
 
 =head2 What's the difference between dynamic and lexical (static) scoping?  Between local() and my()?
 
-(ưŪ�������פȥ쥭������(�ޤ�����Ū)�������פȤδ֤ΰ㤤�ϲ��Ǥ���?
-local() �� my() �Ȥΰ㤤��?)
+(動的スコープとレキシカル(または静的)スコープとの間の違いは何ですか?
+local() と my() との違いは?)
 
 =begin original
 
@@ -1254,12 +1254,12 @@ variables, also called package variables or dynamic variables.
 
 =end original
 
-C<local($x)> �ϡ��������Х��ѿ� C<$x> �θŤ��ͤ���¸���ơ�
-I<���Υ��֥롼���󤫤�ƤӽФ��줿�ؿ����黲�ȤǤ���> ���֥롼�����
-¸�ߤ���֤ο������ͤ��������ޤ���
-����ϥ���ѥ�����ǤϤʤ����¹Ի��˹Ԥ���Τǡ�ưŪ�������פȸƤФ�ޤ���
-local() �Ͼ�˥������Х��ѿ����Ф��ƺ��Ѥ���
-�ѥå������ѿ��Ȥ�ưŪ�ѿ��ȸƤФ�뤳�Ȥ⤢��ޤ���
+C<local($x)> は、グローバル変数 C<$x> の古い値を保存して、
+I<そのサブルーチンから呼び出された関数から参照できる> サブルーチンの
+存在する間の新たな値を代入します。
+これはコンパイル時ではなく、実行時に行われるので、動的スコープと呼ばれます。
+local() は常にグローバル変数に対して作用し、
+パッケージ変数とか動的変数と呼ばれることもあります。
 
 =begin original
 
@@ -1270,12 +1270,12 @@ lexical variables or (improperly) static(ly scoped) variables.
 
 =end original
 
-C<my($x)> �ϡ����ߤΥ��֥롼����ˤ����ƤΤ߻��ȤǤ����ѿ��򿷤���
-�������ޤ���
-����ϥ���ѥ�����˹Ԥ���Τǡ��쥭�����륹�����פ��Ȥ�
-��Ū�������פȸƤФ�ޤ���
-my() �ϥץ饤�١����ѿ��˺��Ѥ����쥭�������ѿ��Ȥ���(�ְ�ä�)��Ū
-(�������פ���ä�)�ѿ��ȸƤФ�뤳�Ȥ⤢��ޤ���
+C<my($x)> は、現在のサブルーチンにおいてのみ参照できる変数を新たに
+生成します。
+これはコンパイル時に行われるので、レキシカルスコープだとか
+静的スコープと呼ばれます。
+my() はプライベート変数に作用し、レキシカル変数とか、(間違って)静的
+(スコープを持った)変数と呼ばれることもあります。
 
 =begin original
 
@@ -1283,7 +1283,7 @@ For instance:
 
 =end original
 
-���󤲤ޤ��礦:
+例を挙げましょう:
 
 	sub visible {
 		print "var has value $var\n";
@@ -1313,9 +1313,9 @@ function, and it is hidden from called subroutine.
 
 =end original
 
-"private"�Ȥ����ͤ���Ϥ�������ˡ���ʤ��Ȥ������Ȥ����ܤ��Ƥ���������
-����ϡ�$var ���ؿ��� lexical() �ʥ֥��å�����¦�ǤΤߤ����ͤ���äƤ��ơ�
-��������ƤӽФ��줿���֥롼���󤫤�ϱ�����Ƥ��ޤ�����Ǥ���
+"private"という値を出力させる方法がないということに注目してください。
+これは、$var が関数の lexical() なブロックの内側でのみその値を持っていて、
+そこから呼び出されたサブルーチンからは隠されてしまうからです。
 
 =begin original
 
@@ -1325,11 +1325,11 @@ what you're looking for if you want private variables.
 
 =end original
 
-�ޤȤ��ȡ�local() �Ϥ��ʤ����ץ饤�١��Ȥȹͤ���褦�ʤ��Ȥ���������
-�ѿ����Ф��ƹԤ��褦�ʤ��ȤϤ���ޤ���
-����ϥ������Х��ѿ��˰��Ū���ͤ�Ϳ��������Ǥ���
-���ʤ����ץ饤�١����ѿ���ɬ�פȤ��Ƥ����硢my() �����ʤ���
-õ�����Ƥ����ΤǤ���
+まとめると、local() はあなたがプライベートと考えるようなことをローカルな
+変数に対して行うようなことはありません。
+これはグローバル変数に一時的な値を与えるだけです。
+あなたがプライベート変数を必要としている場合、my() があなたが
+探し求めているものです。
 
 =begin original
 
@@ -1338,12 +1338,12 @@ L<perlsub/"Temporary Values via local()"> for excruciating details.
 
 =end original
 
-���Τ��Ȥ���ܤ����������Ƥ��� L<perlsub/"Private Variables via my()"> ��
-L<perlsub/"Temporary Values via local()"> �򻲾Ȥ��Ƥ���������
+このことをより詳しく説明している L<perlsub/"Private Variables via my()"> と
+L<perlsub/"Temporary Values via local()"> を参照してください。
 
 =head2 How can I access a dynamic variable while a similarly named lexical is in scope?
 
-(�ɤ�����Ʊ��̾���Υ쥭�������ѿ����������פˤ���Ȥ���ưŪ�ѿ��˥��������Ǥ��ޤ���?)
+(どうやれば同じ名前のレキシカル変数がスコープにあるときに動的変数にアクセスできますか?)
 
 =begin original
 
@@ -1354,10 +1354,10 @@ though you had written $main::var.
 
 =end original
 
-��ʬ�Υѥå��������ΤäƤ���Τʤ顢����� $Some_Pack::var ������Ū��
-���ҤǤ��ޤ���
-$::var �Ȥ�����ˡ�ϥ����ȥѥå������ˤ�����ưŪ�� $var �ǤϤʤ���
-"main" �ѥå���������ˤ��뤽��ʤΤ��Ȥ������Ȥ����դ��Ƥ���������
+自分のパッケージを知っているのなら、これを $Some_Pack::var と明示的に
+記述できます。
+$::var という記法はカレントパッケージにおける動的な $var ではなく、
+"main" パッケージの中にあるそれなのだということに注意してください。
 
 	use vars '$var';
 	local $var = "global";
@@ -1373,8 +1373,8 @@ dynamic variable into the current lexical scope.
 
 =end original
 
-���뤤�ϡ�ưŪ�ѿ��򸽺ߤΥ쥭�����륹�����פˤ⤿�餹����ˡ�����ѥ���
-�ؼ��� our() ��Ȥ��ޤ���
+あるいは、動的変数を現在のレキシカルスコープにもたらすために、コンパイラ
+指示子 our() を使えます。
 
 	require 5.006; # our() did not exist before 5.6
 	use vars '$var';
@@ -1391,7 +1391,7 @@ dynamic variable into the current lexical scope.
 
 =head2 What's the difference between deep and shallow binding?
 
-(����«��(deep binding)������«��(shallow binding)�Ȥδ֤ΰ㤤�Ȥ�?)
+(深い束縛(deep binding)と浅い束縛(shallow binding)との間の違いとは?)
 
 =begin original
 
@@ -1406,20 +1406,20 @@ not to use them.  See the answer to L<"What's a closure?">.
 
 =end original
 
-����«���Ǥϡ�̵̾���֥롼������֤���Ƥ���쥭�������ѿ���
-���Υ��֥롼�����������줿�Ȥ��Τ�Τ�Ʊ��Τ�Τˤʤ�ޤ���
-����«���Ǥϡ�����Ϥ��Υ��֥롼���󤬸ƤӽФ��줿�Ȥ��Υ������פ�
-¸�ߤ��Ƥ���Ʊ��̾������ä��ѿ��Τɤ줫���ˤʤ�ޤ���
-Perl �ϥ쥭�������ѿ�(�Ĥޤꡢmy() �ˤ�äƺ������)���Ф��Ƥ�
-��˿���«����Ȥ��ޤ���
-������Ф�ưŪ�ѿ�(�Ĥޤꥰ�����Х��ѿ��������������ѿ�����
-�ѥå������ѿ�)�Ǥϡ�����«�����ʤ���ޤ���
-�������ä���Τ�Ȥ�ʤ���ͳ���⤦��Ĥ���ޤ���
-���������� L<"What's a closure?"> �򻲾Ȥ��Ƥ���������
+深い束縛では、無名サブルーチンに置かれているレキシカル変数は
+そのサブルーチンが生成されたときのものと同一のものになります。
+浅い束縛では、これはそのサブルーチンが呼び出されたときのスコープに
+存在している同じ名前を持った変数のどれか、になります。
+Perl はレキシカル変数(つまり、my() によって作られるもの)に対しては
+常に深い束縛を使います。
+それに対し動的変数(つまりグローバル変数か、ローカル変数か、
+パッケージ変数)では、浅い束縛がなされます。
+こういったものを使わない理由がもう一つあります。
+その答えは L<"What's a closure?"> を参照してください。
 
 =head2 Why doesn't "my($foo) = E<lt>FILEE<gt>;" work right?
 
-(�ʤ� "my($foo) = E<lt>FILEE<gt>;" ��������ư��ʤ��ΤǤ��礦��?)
+(なぜ "my($foo) = E<lt>FILEE<gt>;" が正しく動作しないのでしょうか?)
 
 =begin original
 
@@ -1434,14 +1434,14 @@ doesn't help you (such as with sort()).
 
 =end original
 
-C<my()> �� C<local()> �� C<=> �α��դ��Ф��ƥꥹ�ȥ���ƥ����Ȥ�Ϳ���ޤ���
-�ɤ߹������ <FH> �� Perl�δؿ���黻�Ҥ�¿����Ʊ�������줬�ƤӽФ��줿�Ȥ���
-����ƥ����Ȥ�ʬ���뤳�Ȥ��Ǥ��ơ�����˱�����Ŭ�ڤ˿����񤤤ޤ���
-����Ū�ˤϡ�scalar() �ؿ��������ˤʤ�Ǥ��礦��
-���δؿ���(����Ū�ʿ��äȤ�ȿ����)�����Ȥʤ�ǡ������Ф���
-����Ԥ��ޤ��󤬡�������������Ȥ��ƿ����񤦤褦�˻ؼ����ޤ���
-�ؿ��Υ�������ο����񤤤��������Ƥ��ʤ��ΤǤ���С�
-�����ʤ��餳��Ϥ��ʤ��ν����ˤϤʤ�ޤ���(sort() �������Ǥ�)��
+C<my()> と C<local()> は C<=> の右辺に対してリストコンテキストを与えます。
+読み込み操作 <FH> は Perlの関数や演算子の多くと同じくそれが呼び出されたときの
+コンテキストを見分けることができて、それに応じて適切に振る舞います。
+一般的には、scalar() 関数が助けになるでしょう。
+その関数は(一般的な神話とは反して)引数となるデータに対して
+何も行いませんが、引数がスカラとして振る舞うように指示します。
+関数のスカラ時の振る舞いが定義されていないのであれば、
+当然ながらこれはあなたの助けにはなりません(sort() がそうです)。
 
 =begin original
 
@@ -1450,8 +1450,8 @@ merely omit the parentheses:
 
 =end original
 
-�������ʤ�������Υ������ˤ����Ƥϡ������饳��ƥ����Ȥ������뤿���
-ñ�˳�̤������ɬ�פ�����ޤ�:
+しかしながら特定のケースにおいては、スカラコンテキストを強制するために
+単に括弧を取り除く必要があります:
 
 	local($foo) = <FILE>;	    # WRONG
 	local($foo) = scalar(<FILE>);   # ok
@@ -1464,14 +1464,14 @@ issue is the same here:
 
 =end original
 
-�����Ʊ�����꤬�����ΤΡ��ʤ�ˤ����쥭�������ѿ���Ȥ��٤��Ǥ��礦��
+これと同じ問題があるものの、なんにしろレキシカル変数を使うべきでしょう。
 
 	my($foo) = <FILE>;	# WRONG
 	my $foo  = <FILE>;	# right
 
 =head2 How do I redefine a builtin function, operator, or method?
 
-(�Ȥ߹��ߤδؿ���黻�ҡ��᥽�åɤ���������ˤ�?)
+(組み込みの関数や演算子、メソッドを再定義するには?)
 
 =begin original
 
@@ -1479,7 +1479,7 @@ Why do you want to do that? :-)
 
 =end original
 
-�ʤ���äƤ���ʤ��Ȥ򤷤�����ΤǤ���? :-)
+なんだってそんなことをしたがるのですか? :-)
 
 =begin original
 
@@ -1490,10 +1490,10 @@ also an example in L<perltoot/"Class::Template">.
 
 =end original
 
-open() �Τ褦�ʤ��餫�����������Ƥ���ؿ��򥪡��С��饤�ɤ������ΤǤ���С�
-�ۤʤ�⥸�塼�뤫�鿷��������򥤥�ݡ��Ȥ���ɬ�פ�����ޤ���
-L<perlsub/"Overriding Built-in Functions"> �򻲾Ȥ��Ƥ���������
-L<perltoot/"Class::Template"> �ˤ��㤬����ޤ���
+open() のようなあらかじめ定義されている関数をオーバーライドしたいのであれば、
+異なるモジュールから新しい定義をインポートする必要があります。
+L<perlsub/"Overriding Built-in Functions"> を参照してください。
+L<perltoot/"Class::Template"> にも例があります。
 
 =begin original
 
@@ -1503,9 +1503,9 @@ in L<overload>.
 
 =end original
 
-C<+> �� C<**> �Τ褦�� Perl �α黻�Ҥ򥪡��С������ɤ������ΤǤ����
-L<overload> ����������Ƥ���褦�� C<use overload> �ץ饰�ޤ�
-�Ȥ������ʤ�Ǥ��礦��
+C<+> や C<**> のような Perl の演算子をオーバーロードしたいのであれば
+L<overload> で説明されているような C<use overload> プラグマを
+使いたくなるでしょう。
 
 =begin original
 
@@ -1514,12 +1514,12 @@ see L<perltoot/"Overridden Methods">.
 
 =end original
 
-�ƥ��饹�ˤ����������Ƥʥ᥽�åɸƤӽФ��ˤĤ��ƹͤ��Ƥ���Τʤ顢
-L<perltoot/"Overridden Methods"> �򻲾Ȥ��Ƥ���������
+親クラスにおける不明瞭なメソッド呼び出しについて考えているのなら、
+L<perltoot/"Overridden Methods"> を参照してください。
 
 =head2 What's the difference between calling a function as &foo and foo()?
 
-(�ؿ��ƤӽФ��� &foo �ǹԤä��Ȥ��� foo() �ǹԤä��Ȥ��Ȥΰ㤤�Ϥʤ�Ǥ���?)
+(関数呼び出しを &foo で行ったときと foo() で行ったときとの違いはなんですか?)
 
 =begin original
 
@@ -1531,12 +1531,12 @@ would be hard to consider this a feature in most cases.
 
 =end original
 
-�ؿ��� C<&foo> �Ȥ��ƸƤӽФ����Ȥ������δؿ��ϥץ��ȥ����פ�̵�뤷��
-�����Ȥ� @_ �������Ƥ˥����������뤳�Ȥ��Ǥ��ޤ���
-����ϤĤޤꡢ���� @_ ��������ΤǤϤʤ��Ƥ��ʤ����ȤäƤ���
-�����������Ȥ������ȤʤΤǤ�!
-����ϸ�̩�˥Х��ȤϹͤ����Ƥ��ޤ���(L<perlsub> ������������ޤ�)��
-�ۤȤ�ɤξ��Ϥ��ε�ǽ���Ȥ���ȤϹͤ����ʤ��Ǥ��礦��
+関数を C<&foo> として呼び出したとき、その関数はプロトタイプを無視して
+カレントの @_ の値全てにアクセスすることができます。
+これはつまり、空の @_ を受け取るのではなくてあなたが使っていた
+それを受け取るということなのです!
+これは厳密にバグとは考えられていませんが(L<perlsub> に説明があります)、
+ほとんどの場合はこの機能が使われるとは考えられないでしょう。
 
 =begin original
 
@@ -1545,8 +1545,8 @@ but prototyping is still circumvented.
 
 =end original
 
-C<&foo()> �Τ褦�˴ؿ���ƤӽФ������ˤϿ����� @_ ��������ޤ�����
-���ξ���ץ��ȥ����פ�̵�뤵��ޤ���
+C<&foo()> のように関数を呼び出した場合には新たな @_ を受け取りますが、
+この場合もプロトタイプは無視されます。
 
 =begin original
 
@@ -1559,16 +1559,16 @@ where they don't belong.
 
 =end original
 
-�̾�ϡ��ؿ��� C<foo()> �Τ褦�˸ƤӽФ������Ǥ��礦��
-�������������Ƥ�����(C<require> �ǤϤʤ� C<use>)����������ȤäƤ����ꡢ
-C<use subs> ����ʤɤ����äƥ���ѥ��顼�����ˤ��δؿ����ΤäƤ���Ȥ��ˤΤ�
-��̤��ά���뤳�Ȥ��Ǥ��ޤ���
-���ξ��Ǥ����������ˤ���٤��Ǥʤ��Ť��ͤ�ϳ������Ƥ��뤳�ȤΤʤ�
-���꡼��� @_ �������ޤ���
+通常は、関数を C<foo()> のように呼び出したいでしょう。
+既に定義がされていたり(C<require> ではなく C<use>)、先行宣言を使っていたり、
+C<use subs> 宣言などがあってコンパイラーが既にその関数を知っているときにのみ
+括弧を省略することができます。
+この場合でさえ、そこにあるべきでない古い値が漏れだしていることのない
+クリーンな @_ を得られます。
 
 =head2 How do I create a switch or case statement?
 
-(switch ʸ�� case ʸ����ˤ�?)
+(switch 文や case 文を作るには?)
 
 =begin original
 
@@ -1577,8 +1577,8 @@ prior to 5.10, the general answer is to write a construct like this:
 
 =end original
 
-�⤷�ԥ奢 Perl ��Ȥäơ��С������ 5.10 ������ȸߴ���������������ʤ顢
-��¤ʸ��񤯤���ΰ���Ū�������ϰʲ��Τ褦�ʤ�ΤǤ�:
+もしピュア Perl を使って、バージョン 5.10 より前と互換性を持たせたいなら、
+構造文を書くための一般的な答えは以下のようなものです:
 
 	for ($variable_to_test) {
 		if    (/pat1/)  { }     # do something
@@ -1596,9 +1596,9 @@ in $whatchamacallit:
 
 =end original
 
-�ʲ�����ϡ��ѥ�����ޥå��󥰤˴�Ť���ñ��� switch ����Ǥ���
-$whatchamacallit �˳�Ǽ���줿��ե���󥹤η��˴�Ť���¿�ͤʤ������
-���Ƚ�Ǥ�ԤäƤ��ޤ�:
+以下の例は、パターンマッチングに基づいた単純な switch の例です。
+$whatchamacallit に格納されたリファレンスの型に基づいて多様なやり方の
+条件判断を行っています:
 
     SWITCH: for (ref $whatchamacallit) {
 
@@ -1636,7 +1636,7 @@ See L<perlsyn> for other examples in this style.
 
 =end original
 
-���Υ�������˴ؤ��뤽��¾����ˤĤ��Ƥ� L<perlsyn> �򻲾Ȥ��Ƥ���������
+このスタイルに関するその他の例については L<perlsyn> を参照してください。
 
 =begin original
 
@@ -1650,13 +1650,13 @@ C<"STOP"> here:
 
 =end original
 
-������ѿ��ΰ��֤��Ѥ��������ɤ����Ȥ����뤫�⤷��ޤ���
-���Ȥ��С�Ϳ����줿������������ˤĤ��ƥƥ��Ȥ�Ԥ������Ȥ��ޤ��礦��
-���ξ���羮ʸ����̵�뤹�뤳�Ȥ�Ǥ��ޤ�����
-ά�����뤳�Ȥ⤢��ޤ����⤷����ʸ���󤬰ۤʤ륭��饯�����ǻϤޤäƤ����ꡢ
-C<"SEND"> �� C<"STOP"> ���⤤ͥ���̤���Ĥ褦��Ĵ�����������Τʤ�
-�ޥå��ν���򥢥�󥸤������ΤǤ���аʲ��˼����褦�ʥƥ��˥å���
-�Ȥ����Ȥ��Ǥ��ޤ���
+定数や変数の位置を変えた方が良いことがあるかもしれません。
+たとえば、与えられたたくさんの答についてテストを行いたいとしましょう。
+この場合大小文字を無視することもできますし、
+略記することもあります。もし全て文字列が異なるキャラクターで始まっていたり、
+C<"SEND"> が C<"STOP"> より高い優先順位を持つように調整したくいのなら
+マッチの順序をアレンジしたいのであれば以下に示すようなテクニックを
+使うことができます。
 
 	chomp($answer = <>);
 	if    ("SEND"  =~ /^\Q$answer/i) { print "Action is send\n"  }
@@ -1671,8 +1671,8 @@ A totally different approach is to create a hash of function references.
 
 =end original
 
-�ޤä����ۤʤ륢�ץ������ˡ��ؿ��Υ�ե���󥹤Υϥå�����������Ȥ���
-�����������ޤ���
+まったく異なるアプローチに、関数のリファレンスのハッシュを作成するという
+やり方があります。
 
 	my %commands = (
 		"happy" => \&joy,
@@ -1696,9 +1696,9 @@ statement. See L<perlsyn>.
 
 =end original
 
-�С������ 5.10 ���顢Perl �ϥͥ��ƥ��֤� switch ʸ�����뤳�Ȥ�
-���դ��Ƥ���������
-L<perlsyn> �򻲾Ȥ��Ƥ���������
+バージョン 5.10 から、Perl はネイティブな switch 文があることに
+注意してください。
+L<perlsyn> を参照してください。
 
 =begin original
 
@@ -1710,15 +1710,15 @@ when complex syntax is involved.
 
 =end original
 
-Perl 5.8 ���顢�������ե��륿�⥸�塼�� C<Switch> �� switch �� case ��
-�Ȥ�����˻Ȥ��ޤ���
-Perl 5.10 �ˤϴ����ߴ��Υͥ��ƥ��֤� switch �����ꡢ�ޤ�������ϥ�����
-�ե��륿�Ȥ��Ƽ�������Ƥ���Τǡ�ʣ����ʸˡ�ξ��Ϥ��Ĥ������̤��
-ư���Ȥϸ¤�ʤ�����Ǥ���
+Perl 5.8 から、ソースフィルタモジュール C<Switch> も switch と case を
+使うために使えます。
+Perl 5.10 には完全互換のネイティブな switch があり、また、これはソース
+フィルタとして実装されているので、複雑な文法の場合はいつも想定通りに
+動くとは限らないからです。
 
 =head2 How can I catch accesses to undefined variables, functions, or methods?
 
-(�ɤ������̤������ѿ�, �ؿ�, �᥽�åɤ��Ф��륢����������ª�Ǥ��ޤ���?)
+(どうすれば未定義な変数, 関数, メソッドに対するアクセスを捕捉できますか?)
 
 =begin original
 
@@ -1728,9 +1728,9 @@ undefined functions and methods.
 
 =end original
 
-L<perlsub/"Autoloading"> �� L<perltoot/"AUTOLOAD: Proxy Methods"> ��
-���ڤ���Ƥ��� AUTOLOAD �᥽�åɤϡ�̤����ʴؿ���᥽�åɤ��Ф���
-�ƤӽФ�����ª�����Ƥ���ޤ���
+L<perlsub/"Autoloading"> と L<perltoot/"AUTOLOAD: Proxy Methods"> で
+言及されている AUTOLOAD メソッドは、未定義な関数やメソッドに対する
+呼び出しを捕捉させてくれます。
 
 =begin original
 
@@ -1739,14 +1739,14 @@ under C<use warnings>, you can promote the warning to an error.
 
 =end original
 
-C<use warnings> ��ͭ���ʤȤ��˷ٹ�ΰ�����ˤʤ�褦��̤����ѿ��ؤ�
-�������������ä��Ȥ����ٹ�򥨥顼�˾��ʤ����뤳�Ȥ��Ǥ��ޤ���
+C<use warnings> が有効なときに警告の引き金になるような未定義変数への
+アクセスがあったとき、警告をエラーに昇格させることができます。
 
 	use warnings FATAL => qw(uninitialized);
 
 =head2 Why can't a method included in this same file be found?
 
-(�ʤ�Ʊ���ե�����ˤ���᥽�åɤ����Ĥ����ʤ��ΤǤ��礦��?)
+(なぜ同じファイルにあるメソッドが見つけられないのでしょうか?)
 
 =begin original
 
@@ -1758,11 +1758,11 @@ blessed into.
 
 =end original
 
-���Ĥ�����ͳ���ͤ����ޤ�: ���ʤ����Ѿ�������Τ����𤷤Ƥ��Ƥ��뤫��
-�᥽�å�̾��ְ㤨���������뤤�ϥ��֥������Ȥη����ְ�äƤ�������
-�嵭�ξ��˴ؤ���ܺ٤� L<perltoot> ������å����ƤߤƤ���������
-C<$object> �� bless ����Ƥ��륯�饹�� C<print ref($object)> �Ȥ���
-��ʬ���뤳�Ȥ��Ǥ��ޤ���
+幾つかの理由が考えられます: あなたが継承したものが混乱していているか、
+メソッド名を間違えたか、あるいはオブジェクトの型が間違っていたか。
+上記の場合に関する詳細は L<perltoot> をチェックしてみてください。
+C<$object> が bless されているクラスは C<print ref($object)> として
+見分けることができます。
 
 =begin original
 
@@ -1777,13 +1777,13 @@ L<perlobj>.
 
 =end original
 
-�⤦��Ĥ��ꤦ����ͳ�ϡ�Perl ���ѥå������򸫤��������˥��饹̾��Ȥä�
-���ܥ��֥������ȹ�ʸ(C<find Guru "Samy"> �Τ褦�ʤ��)��Ȥä�����Ǥ��礦��
-�ѥå������ϡ������Ȥ������������Ƥ��������Ƥ���褦�ˤ��ޤ���
-����� C<require> ʸ�ǤϤʤ� C<use> ʸ��Ȥ��й�θ����ޤ���
-���뤤�ϡ�����������ˡ(arrow notation��
-C<< Guru->find("Samy") >> �Τ褦�ʤ��)��Ȥ��褦�ˤ��Ƥ���������
-���֥������Ȥε�ˡ�� L<perlobj> ����������Ƥ��ޤ���
+もう一つありうる理由は、Perl がパッケージを見いだす前にクラス名を使った
+間接オブジェクト構文(C<find Guru "Samy"> のようなもの)を使ったためでしょう。
+パッケージは、それを使うよりも前に全てが定義されているようにします。
+これは C<require> 文ではなく C<use> 文を使えば考慮されます。
+あるいは、代わりに矢印記法(arrow notation、
+C<< Guru->find("Samy") >> のようなもの)を使うようにしてください。
+オブジェクトの記法は L<perlobj> で説明されています。
 
 =begin original
 
@@ -1792,12 +1792,12 @@ the perils of indirect objects in L<perlobj/"Method Invocation">.
 
 =end original
 
-�⥸�塼��κ�����ˤĤ��Ƥ� L<perlmod> �򡢴��ܥ��֥������Ȥ���������
-�Ĥ��Ƥ� L<perlobj/"WARNING"> ���ǧ���Ƥ���������
+モジュールの作り方については L<perlmod> を、間接オブジェクトの問題点に
+ついては L<perlobj/"WARNING"> を確認してください。
 
 =head2 How can I find out my current package?
 
-(�����ȤΥѥå������Ϥɤ�����Ф狼��ޤ���?)
+(カレントのパッケージはどうすればわかりますか?)
 
 =begin original
 
@@ -1806,8 +1806,8 @@ out what the currently compiled package is:
 
 =end original
 
-������ʥץ������Ǥ���ʤ顢�ʲ��Τ褦�ˤ���и��ߥ���ѥ��뤵��Ƥ���
-�ѥå��������Τ뤳�Ȥ��Ǥ��ޤ�:
+ランダムなプログラムであるなら、以下のようにすれば現在コンパイルされている
+パッケージを知ることができます:
 
 	my $packname = __PACKAGE__;
 
@@ -1819,9 +1819,9 @@ not necessarily the same as the one in which you were compiled):
 
 =end original
 
-���������оݤ��᥽�åɤǡ��ƤӽФ��줿���֥������Ȥμ��ब�ʤ�Ǥ��뤫��
-�ޤ�����顼��å���������Ϥ������Τʤ�(����Ϥ��줬
-����ѥ��뤵�줿��Τ�Ʊ��Ǥ���ɬ�פϤ���ޤ���):
+しかし、対象がメソッドで、呼び出されたオブジェクトの種類がなんであるかを
+含んだエラーメッセージを出力したいのなら(これはそれが
+コンパイルされたものと同一である必要はありません):
 
 	sub amethod {
 		my $self  = shift;
@@ -1831,8 +1831,8 @@ not necessarily the same as the one in which you were compiled):
 
 =head2 How can I comment out a large block of perl code?
 
-(perl �ץ��������礭�ʥ֥��å��򥳥��ȥ����Ȥ���Τ�
-�ɤ�����ФǤ��ޤ���?)
+(perl プログラムの大きなブロックをコメントアウトするのは
+どうすればできますか?)
 
 =begin original
 
@@ -1844,12 +1844,12 @@ with <=end>.
 
 =end original
 
-�Ȥ߹��ߤ� POD ��Ȥ��ޤ���
-�����ȥ����Ȥ������֥��å��� POD �ޡ������ǰϤ�Ǥ���������
-<=begin> �ؼ��Ҥ϶�������Υե����ޥå��ѤȤ��ƥޡ������ޤ���
-C<comment> �ե����ޥåȤ�ȤäƤ�������; �����(����ˤ��)�ɤ�
-�ե����ޥå����ĥ���ޤ���
-<=end> �ǥ֥��å��ν�����ޡ������Ƥ���������
+組み込みの POD を使えます。
+コメントアウトしたいブロックを POD マーカーで囲んでください。
+<=begin> 指示子は区域を特定のフォーマッタ用としてマークします。
+C<comment> フォーマットを使ってください; これは(規定により)どの
+フォーマッタも主張しません。
+<=end> でブロックの終わりをマークしてください。
 
 	# program is here
 	
@@ -1875,10 +1875,10 @@ arbitrary grammar production.
 
 =end original
 
-pod �ؼ��ҤϤɤ��ˤǤ��֤���櫓�ǤϤ���ޤ���
-�ѡ����������������ơ��ȥ��Ȥ���Ԥ��Ƥ������ pod �ؼ��Ҥ�
-�֤�ɬ�פ����äơ�
-��������Ǥ���Ȥ�����¾Ǥ�դ�ʸˡ������§�ˤ��֤��ޤ���
+pod 指示子はどこにでも置けるわけではありません。
+パーサーが新しいステートメントを期待している場所に pod 指示子を
+置く必要があって、
+式の途中であるとかその他任意の文法生成規則には置けません。
 
 =begin original
 
@@ -1886,11 +1886,11 @@ See L<perlpod> for more details.
 
 =end original
 
-���ʤ�ܺ٤ˤĤ��Ƥ� L<perlpod> �򻲾Ȥ��Ƥ���������
+更なる詳細については L<perlpod> を参照してください。
 
 =head2 How do I clear a package?
 
-(�ѥå������򥯥ꥢ����ˤ�?)
+(パッケージをクリアするには?)
 
 =begin original
 
@@ -1898,7 +1898,7 @@ Use this code, provided by Mark-Jason Dominus:
 
 =end original
 
-Mark-Jason Dominus �ˤ��ʲ��Υ����ɤ�Ȥ��ޤ�:
+Mark-Jason Dominus による以下のコードを使います:
 
 	sub scrub_package {
 		no strict 'refs';
@@ -1925,12 +1925,12 @@ just use the Symbol::delete_package() function instead.
 
 =end original
 
-���뤤�ϡ����ʤ����ȤäƤ��� Perl ���Ƕ�Υ�꡼���Τ�ΤǤ���С�
-ñ�� Symbol::delete_package() �Ȥ����ؿ�������˻Ȥ����Ȥ��Ǥ��ޤ���
+あるいは、あなたが使っている Perl が最近のリリースのものであれば、
+単に Symbol::delete_package() という関数を代わりに使うことができます。
 
 =head2 How can I use a variable as a variable name?
 
-(�ѿ����ѿ�̾�Ȥ��ƻȤ��ˤϤɤ�����Ф����Ǥ���?)
+(変数を変数名として使うにはどうすればいいですか?)
 
 =begin original
 
@@ -1939,7 +1939,7 @@ of a variable.
 
 =end original
 
-�鿴�ԤϤ��Ф����ѿ�̾�����ä��ѿ���Ȥ������ȹͤ��ޤ���
+初心者はしばしば変数名が入った変数を使いたいと考えます。
 
 	$fred    = 23;
 	$varname = "fred";
@@ -1951,8 +1951,8 @@ This works I<sometimes>, but it is a very bad idea for two reasons.
 
 =end original
 
-����� I<���ˤ�> ư��ޤ���
-�������������Ĥ���ͳ�ˤ�갭�������ǥ��Ǥ���
+これは I<時には> 動作します。
+しかしこれは二つの理由により悪いアイデアです。
 
 =begin original
 
@@ -1965,13 +1965,13 @@ accidentally and in general make for non-scalable and confusing code.
 
 =end original
 
-����ܤ���ͳ�ϡ����Υƥ��˥å��� I<�������Х��ѿ��ǤΤ�ư���> ����Ǥ���
-�Ĥޤꡢ�⤷�嵭����ˤ����� $fred �� my() �Ǻ������줿�쥭�������ѿ��ξ�硢
-���Υ����ɤ�����ư��ޤ���
-�ץ饤�١��Ȥʥ쥭�������ѿ������Ф��ơ��פ��������������Х��ѿ���
-�����������뤳�Ȥˤʤ�ޤ���
-�������Х��ѿ��ϡ���ñ�˾��ͤ������̤˳�ĥ�����ʤ������𤹤륳���ɤ�
-��뤳�Ȥˤʤ�Τǡ��褯�ʤ���ΤǤ���
+一つ目の理由は、このテクニックは I<グローバル変数でのみ動作する> からです。
+つまり、もし上記の例において $fred が my() で作成されたレキシカル変数の場合、
+このコードは全く動作しません。
+プライベートなレキシカル変数を飛ばして、思いがけずグローバル変数に
+アクセスすることになります。
+グローバル変数は、簡単に衝突し、一般に拡張性がなく、混乱するコードを
+作ることになるので、よくないものです。
 
 =begin original
 
@@ -1981,9 +1981,9 @@ or garbage collected.
 
 =end original
 
-����ܥ�å���ե���󥹤� C<use strict> �ץ饰�ޤθ��Ǥ϶ػߤ���ޤ���
-����Ͽ��Υ�ե���󥹤ǤϤʤ��Τǡ���ե���󥹥�����Ȥ˴ޤޤ줺��
-���١������쥯�����⤵��ޤ���
+シンボリックリファレンスは C<use strict> プラグマの元では禁止されます。
+これは真のリファレンスではないので、リファレンスカウントに含まれず、
+ガベージゴレクションもされません。
 
 =begin original
 
@@ -1996,12 +1996,12 @@ use your own hash or a real reference instead.
 
 =end original
 
-�ѿ���¾���ѿ���̾����Ͽ����Ȥ����Τ��褯�ʤ��ͤ��Ǥ���Ȥ���
-�̤���ͳ�Ȥ��Ƥϡ����Τ褦�ʵ���Ϥ��Ф��� Perl �Υǡ�����¤��
-�ä˥ϥå���˴ؤ����������­����ȯ�����뤫��Ǥ���
-����ܥ�å���ե���󥹤�Ȥ����Ȥˤ�äơ��桼��������Υϥå���������
-�ѥå������Υ���ܥ�ơ��֥�ϥå���(C<%main::> �ʤ�)��Ȥ����Ȥ��Ǥ��ޤ���
-���ˡ�ϡ�����˼�ʬ���ȤΥϥå���俿�Υ�ե���󥹤�Ȥ����ȤǤ���
+変数に他の変数の名前を記録するというのがよくない考えであるという
+別の理由としては、このような疑問はしばしば Perl のデータ構造、
+特にハッシュに関する理解の不足から発生するからです。
+シンボリックリファレンスを使うことによって、ユーザー定義のハッシュの代わりに
+パッケージのシンボルテーブルハッシュ(C<%main::> など)を使うことができます。
+解決法は、代わりに自分自身のハッシュや真のリファレンスを使うことです。
 
 	$USER_VARS{"fred"} = 23;
 	$varname = "fred";
@@ -2019,15 +2019,15 @@ own variables:
 
 =end original
 
-�����Ǥϥ���ܥ�å���ե���󥹤������ %USER_VARS �ϥå����
-�ȤäƤ��ޤ���
-��������ϥ桼��������ʸ������ѿ��ؤΥ�ե���󥹤Ȥ����ɤ߹���ǡ�
-����� perl �ץ��������ѿ����ͤȤ��Ƴ�ĥ���뤳�Ȥ�����ޤ���
-�����褯�ʤ��ͤ��Ǥ���
-�ʤ��ʤ顢�ץ�����ब���ꤹ��̾�����֤ȥ桼���������ꤹ��̾�����֤�
-ͻ�礵���뤳�Ȥˤʤ뤫��Ǥ���
-�ʲ��Τ褦��ʸ������ɤ߹���Ǥ��ʤ��Υץ��������ѿ��μºݤ����Ƥ�
-����˳�ĥ����ΤǤϤʤ�:
+ここではシンボリックリファレンスの代わりに %USER_VARS ハッシュを
+使っています。
+時々これはユーザーから文字列を変数へのリファレンスとして読み込んで、
+それを perl プログラムの変数の値として拡張することがあります。
+これもよくない考えです。
+なぜなら、プログラムが指定する名前空間とユーザーが指定する名前空間を
+融合させることになるからです。
+以下のように文字列を読み込んであなたのプログラムの変数の実際の内容の
+ために拡張するのではなく:
 
 	$str = 'this has a $fred and $barney in it';
 	$str =~ s/(\$\w+)/$1/eeg;		  # need double eval
@@ -2039,8 +2039,8 @@ variable references actually refer to entries in that hash:
 
 =end original
 
-%USER_VARS �Τ褦�ʥϥå������¸�������Υϥå���Υ���ȥ�򻲾Ȥ���
-�ѿ���ե���󥹤���Ĥ��褤��ˡ�Ǥ�:
+%USER_VARS のようなハッシュを保存し、このハッシュのエントリを参照する
+変数リファレンスを持つよりよい方法です:
 
 	$str =~ s/\$(\w+)/$USER_VARS{$1}/g;   # no /e here at all
 
@@ -2052,9 +2052,9 @@ make it less confusing, like bracketed percent symbols, etc.
 
 =end original
 
-��������Ҥμ�ˡ���⡢����®�ǡ���������ǡ��������Ǥ���
-������󡢥ɥ뵭���Ȥ�ɬ�פϤ���ޤ���
-�ѡ�����ȵ���ǰϤ�ʤɤΤ�꺮�𤷤ˤ����ȼ��Υ��������Ȥ��ޤ���
+これは前述の手法よりも、より高速で、より明快で、より安全です。
+もちろん、ドル記号を使う必要はありません。
+パーセント記号で囲むなどのより混乱しにくい独自のスキームを使えます。
 
 	$str = 'this has a %fred% and %barney% in it';
 	$str =~ s/%(\w+)%/$USER_VARS{$1}/g;   # no /e here at all
@@ -2069,10 +2069,10 @@ wanted to use another scalar variable to refer to those by name.
 
 =end original
 
-�͡��������ѿ�̾�����ä��ѿ����ߤ�����⤦��Ĥ���ͳ�ϡ�
-�ϥå����Ȥä�Ŭ�ڤʥǡ�����¤���ۤ�����ˡ���Τ�ʤ�����Ǥ���
-�㤨�С��ץ������� %fred �� %barney ��ɬ�פǡ�
-����ˤ�����̾���ǻ��Ȥ��륹������ѿ���ɬ�פ��Ȥ��ޤ���
+人々が時々変数名が入った変数を欲しがるもう一つの理由は、
+ハッシュを使った適切なデータ構造を構築する方法を知らないからです。
+例えば、プログラムで %fred と %barney が必要で、
+さらにこれらを名前で参照するスカラへ変数が必要だとします。
 
 	$name = "fred";
 	$$name{WIFE} = "wilma";     # set %fred
@@ -2087,8 +2087,8 @@ problems enumerated above.  It would be far better to write:
 
 =end original
 
-����Ϥ�Ϥꥷ��ܥ�å���ե���󥹤ǡ���Ϥ�嵭��������������ޤޤǤ���
-�ʲ��Τ褦�˽񤱤��ڤ��˲������ޤ�:
+これはやはりシンボリックリファレンスで、やはり上記の問題を抱えたままです。
+以下のように書けば遥かに改善します:
 
 	$folks{"fred"}{WIFE}   = "wilma";
 	$folks{"barney"}{WIFE} = "betty";
@@ -2099,7 +2099,7 @@ And just use a multilevel hash to start with.
 
 =end original
 
-�����ƻϤ��Τ�ñ��¿�ʥϥå����Ȥ��ޤ���
+そして始めるのに単に多段ハッシュを使います。
 
 =begin original
 
@@ -2111,12 +2111,12 @@ through the symbol table for resolution.
 
 =end original
 
-ͣ�줢�ʤ��������˥���ܥ�å���ե���󥹤� I<�Ȥ�ʤ���Фʤ�ʤ�> ���ϡ�
-����ܥ�ơ��֥���Ф����ե���󥹤�ɬ�פʤȤ������Ǥ���
-����ϡ��ե����ޥå�̾�Ȥ��ä���Τ��Ф��뿿�Υ�ե���󥹤����뤳�Ȥ�
-�Ǥ��ʤ�����Ǥ���
-�������뤳�Ȥϥ᥽�åɸƤӽФ��Τ���ˤ���פǤ���
-�ʤ��ʤ�̾�����Τ���˥���ܥ�ơ��֥��Ȥ�����Ǥ���
+唯一あなたが完全にシンボリックリファレンスを I<使わなければならない> 場合は、
+シンボルテーブルに対するリファレンスが必要なときだけです。
+これは、フォーマット名といったものに対する真のリファレンスを得ることが
+できないからです。
+そうすることはメソッド呼び出しのためにも重要です。
+なぜなら名前解決のためにシンボルテーブルを使うからです。
 
 =begin original
 
@@ -2125,9 +2125,9 @@ can play around with the symbol table.  For example:
 
 =end original
 
-�����ξ�硢���Ū�� C<strict 'refs'> �ˤ���
-����ܥ�ơ��֥��Ȥ��褦�ˤǤ��ޤ���
-�㤨��:
+これらの場合、一時的に C<strict 'refs'> にして
+シンボルテーブルを使うようにできます。
+例えば:
 
 	@colors = qw(red blue green yellow orange purple violet);
 	for my $name (@colors) {
@@ -2142,8 +2142,8 @@ but the real code in the closure actually was compiled only once.
 
 =end original
 
-�����(red(), blue(), green() �ʤ�)�δؿ����Ƥ��̡��˸���ޤ�����
-�������������μºݤΥ����ɤϰ���������ѥ��뤵��ޤ���
+これら(red(), blue(), green() など)の関数全ては別々に現れますが、
+クロージャの中の実際のコードは一回だけコンパイルされます。
 
 =begin original
 
@@ -2155,16 +2155,16 @@ you probably only want to use hard references.
 
 =end original
 
-����ܥ�ơ��֥��ľ�����뤿��˥���ܥ�å���ե���󥹤�
-�Ȥ������ʤ뤳�Ȥ����뤫�⤷��ޤ���
-����ˤϡ��ե����ޥåȡ��ϥ�ɥ롢���֥롼����ˤϴط�����ޤ���
-�����Ͼ�˥������Х������Ǥ�--������ my() ��Ȥ����ȤϤǤ��ޤ���
-�����餯�������顢���󡢥ϥå���Τ����--���������̤ϥ��֥롼�����
-�����--�������ϡ��ɥ�ե���󥹤�ɬ�פǤ��礦��
+シンボルテーブルを直接操作するためにシンボリックリファレンスを
+使いたくなることがあるかもしれません。
+これには、フォーマット、ハンドル、サブルーチンには関係ありません。
+これらは常にグローバルだからです--これらに my() を使うことはできません。
+おそらく、スカラ、配列、ハッシュのために--そして普通はサブルーチンの
+ために--だけ、ハードリファレンスが必要でしょう。
 
 =head2 What does "bad interpreter" mean?
 
-("bad interpreter" �ȤϤɤ�������̣�Ǥ���?)
+("bad interpreter" とはどういう意味ですか?)
 
 =begin original
 
@@ -2172,7 +2172,7 @@ you probably only want to use hard references.
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -2182,9 +2182,9 @@ settings.
 
 =end original
 
-"bad interpreter" �Ȥ�����å������� perl �ǤϤʤ��������뤬���Ϥ��Ƥ��ޤ���
-�ºݤΥ�å������ϥץ�åȥե����ࡢ�����롢������������ˤ�ä�
-�͡��Ǥ���
+"bad interpreter" というメッセージは perl ではなく、シェルが出力しています。
+実際のメッセージはプラットフォーム、シェル、ロケール設定によって
+様々です。
 
 =begin original
 
@@ -2200,13 +2200,13 @@ destination machine has LF only: the shell tries to find
 
 =end original
 
-"bad interpreter - no such file or directory" ��ɽ�����줿�顢perl
-������ץȤκǽ�ι� ("#!" ��) �� perl (���뤤�ϥ�����ץȤ�¹Ԥ���
-��ǽ�Τ��뤽��¾�Υץ������) �ؤ��������ѥ����ޤޤ�Ƥ��ޤ���
-������ץȤ򤢤�ޥ��󤫤顢perl �Υѥ����ۤʤ� -- �㤨�� /usr/bin/perl ��
-/usr/local/bin/perl -- ¾�Υޥ���˰�ư���������˻���������ޤ���
-����Ϥޤ������Υޥ���ιԽ�ü�� CRLF �ǡ���ư��Υޥ��� LF �Τߤξ��ˤ�
-������ޤ�; �����뤬 /usr/bin/perl<CR> ��õ�����Ȥ��ޤ��������Ԥ��ޤ���
+"bad interpreter - no such file or directory" と表示されたら、perl
+スクリプトの最初の行 ("#!" 行) に perl (あるいはスクリプトを実行する
+機能のあるその他のプログラム) への正しいパスが含まれていません。
+スクリプトをあるマシンから、perl のパスが異なる -- 例えば /usr/bin/perl と
+/usr/local/bin/perl -- 他のマシンに移動させた場合に時々起こります。
+これはまた、元のマシンの行終端が CRLF で、移動先のマシンが LF のみの場合にも
+起こります; シェルが /usr/bin/perl<CR> を探そうとしますが、失敗します。
 
 =begin original
 
@@ -2215,8 +2215,8 @@ script executable.
 
 =end original
 
-"bad interpreter: Permission denied" ��ɽ�����줿�顢������ץȤ�
-�¹Բ�ǽ�ˤ���ɬ�פ�����ޤ���
+"bad interpreter: Permission denied" と表示されたら、スクリプトを
+実行可能にする必要があります。
 
 =begin original
 
@@ -2225,7 +2225,7 @@ explicitly:
 
 =end original
 
-�ɤ���ξ��Ǥ⡢����Ū�� perl �ǥ�����ץȤ�¹ԤǤ���褦�ˤ���٤��Ǥ�:
+どちらの場合でも、明示的に perl でスクリプトを実行できるようにするべきです:
 
 	% perl script.pl
 
@@ -2237,9 +2237,9 @@ where you expect it so you need to adjust your shebang line.
 
 =end original
 
-"perl: command not found" �Τ褦�ʥ�å��������Ф���硢perl �� PATH ��
-����ޤ���; �Ĥޤꤪ���餯�� perl �ΰ��֤����ʤ������ꤷ�Ƥ���
-���ǤϤʤ����Ȥ��̣���Ƥ���Τǡ�#! �Ԥ�Ĵ������ɬ�פ�����ޤ���
+"perl: command not found" のようなメッセージが出た場合、perl が PATH に
+ありません; つまりおそらくは perl の位置があなたの想定している
+場所ではないことも意味しているので、#! 行を調整する必要があります。
 
 =head1 REVISION
 

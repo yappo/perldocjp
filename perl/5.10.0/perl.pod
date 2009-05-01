@@ -33,9 +33,9 @@ navigate the rest of Perl's extensive documentation.
 
 =end original
 
-¤â¤· Perl ¤¬½é¤á¤Æ¤Ê¤é¡¢ L<perlintro> ¤«¤é»Ï¤á¤ë¤Î¤¬¤è¤¤¤Ç¤·¤ç¤¦;
-¤³¤ì¤Ï½é¿´¼Ô¤Î¤¿¤á¤ÎÁ´ÂÎÅª¤ÊÆ³Æş¤Ç¤¢¤ê¡¢Perl ¤ÎË­ÉÙ¤Ê¥É¥­¥å¥á¥ó¥È¤Î»Ä¤ê¤ò
-ÆÉ¤à¤Î¤ò½õ¤±¤ë¡¢¤¤¤¯¤é¤«¤ÎÇØ·Ê¤òÄó¶¡¤·¤Ş¤¹¡£
+ã‚‚ã— Perl ãŒåˆã‚ã¦ãªã‚‰ã€ L<perlintro> ã‹ã‚‰å§‹ã‚ã‚‹ã®ãŒã‚ˆã„ã§ã—ã‚‡ã†;
+ã“ã‚Œã¯åˆå¿ƒè€…ã®ãŸã‚ã®å…¨ä½“çš„ãªå°å…¥ã§ã‚ã‚Šã€Perl ã®è±Šå¯Œãªãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®æ®‹ã‚Šã‚’
+èª­ã‚€ã®ã‚’åŠ©ã‘ã‚‹ã€ã„ãã‚‰ã‹ã®èƒŒæ™¯ã‚’æä¾›ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -43,11 +43,11 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-»²¾È¤·¤ä¤¹¤¤¤è¤¦¤Ë Perl ¤Î¥Ş¥Ë¥å¥¢¥ë¤Ï¡¢¤¤¤¯¤Ä¤«¤ÎÀá¤ËÊ¬³ä¤·¤Æ¤¤¤Ş¤¹¡£
+å‚ç…§ã—ã‚„ã™ã„ã‚ˆã†ã« Perl ã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã¯ã€ã„ãã¤ã‹ã®ç¯€ã«åˆ†å‰²ã—ã¦ã„ã¾ã™ã€‚
 
 =head2 Overview
 
-(³µ´Ñ)
+(æ¦‚è¦³)
 
 =begin original
 
@@ -57,13 +57,13 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perl		Perl ¤Î³µ´Ñ(¤³¤Î¾Ï)
-    perlintro		½é¿´¼Ô¤Î¤¿¤á¤Î Perl ¤Î¼ê°ú¤­
-    perltoc		Perl Ê¸½ñ¤ÎÌÜ¼¡
+    perl		Perl ã®æ¦‚è¦³(ã“ã®ç« )
+    perlintro		åˆå¿ƒè€…ã®ãŸã‚ã® Perl ã®æ‰‹å¼•ã
+    perltoc		Perl æ–‡æ›¸ã®ç›®æ¬¡
 
 =head2 Tutorials
 
-(¥Á¥å¡¼¥È¥ê¥¢¥ë)
+(ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«)
 
 =begin original
 
@@ -73,9 +73,9 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlreftut		Perl ¥ê¥Õ¥¡¥ì¥ó¥¹¤ÎÃ»¤¤¼ê°ú¤­
-    perldsc		Perl ¥Ç¡¼¥¿¹½Â¤¤Î¼ê°ú¤­
-    perllol		Perl ¥Ç¡¼¥¿¹½Â¤: ÇÛÎó¤ÎÇÛÎó
+    perlreftut		Perl ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã®çŸ­ã„æ‰‹å¼•ã
+    perldsc		Perl ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã®æ‰‹å¼•ã
+    perllol		Perl ãƒ‡ãƒ¼ã‚¿æ§‹é€ : é…åˆ—ã®é…åˆ—
 
 =begin original
 
@@ -84,8 +84,8 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlrequick 	Perl Àµµ¬É½¸½¥¯¥¤¥Ã¥¯¥¹¥¿¡¼¥È
-    perlretut		Perl Àµµ¬É½¸½¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
+    perlrequick 	Perl æ­£è¦è¡¨ç¾ã‚¯ã‚¤ãƒƒã‚¯ã‚¹ã‚¿ãƒ¼ãƒˆ
+    perlretut		Perl æ­£è¦è¡¨ç¾ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 
 =begin original
 
@@ -96,10 +96,10 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlboot		½é¿´¼Ô¤Î¤¿¤á¤Î Perl OO ¥Á¥å¡¼¥È¥ê¥¢¥ë
-    perltoot		Perl OO ¥Á¥å¡¼¥È¥ê¥¢¥ë¡¢Âè 1 Éô
-    perltooc		Perl OO ¥Á¥å¡¼¥È¥ê¥¢¥ë¡¢Âè 2 Éô
-    perlbot		Perl OO ¥È¥ê¥Ã¥¯¤ÈÎã
+    perlboot		åˆå¿ƒè€…ã®ãŸã‚ã® Perl OO ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
+    perltoot		Perl OO ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã€ç¬¬ 1 éƒ¨
+    perltooc		Perl OO ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã€ç¬¬ 2 éƒ¨
+    perlbot		Perl OO ãƒˆãƒªãƒƒã‚¯ã¨ä¾‹
 
 =begin original
 
@@ -107,7 +107,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlstyle		Perl ¥¹¥¿¥¤¥ë¥¬¥¤¥É
+    perlstyle		Perl ã‚¹ã‚¿ã‚¤ãƒ«ã‚¬ã‚¤ãƒ‰
 
 =begin original
 
@@ -117,9 +117,9 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlcheat		Perl ¥Á¡¼¥È¥·¡¼¥È
-    perltrap		ÉÔÃí°Õ¤Ë¤è¤ë Perl ¤Î¤ï¤Ê
-    perldebtut		Perl ¥Ç¥Ğ¥Ã¥°¥Á¥å¡¼¥È¥ê¥¢¥ë
+    perlcheat		Perl ãƒãƒ¼ãƒˆã‚·ãƒ¼ãƒˆ
+    perltrap		ä¸æ³¨æ„ã«ã‚ˆã‚‹ Perl ã®ã‚ãª
+    perldebtut		Perl ãƒ‡ãƒãƒƒã‚°ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 
 =begin original
 
@@ -136,20 +136,20 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlfaq		Perl ¤Ç¤è¤¯¤¢¤ë¼ÁÌä¤ÈÅú¤¨
-      perlfaq1		Perl ¤Ë´Ø¤¹¤ë°ìÈÌÅª¤Ê¼ÁÌä
-      perlfaq2		Perl ¤ÎÆş¼ê¤È³Ø½¬
-      perlfaq3		¥×¥í¥°¥é¥ß¥ó¥°¥Ä¡¼¥ë
-      perlfaq4		¥Ç¡¼¥¿Áàºî
-      perlfaq5		¥Õ¥¡¥¤¥ë¤È¥Õ¥©¡¼¥Ş¥Ã¥È
-      perlfaq6		Àµµ¬É½¸½
-      perlfaq7		Perl ¸À¸ì¤Ë´Ø¤¹¤ë¤³¤È¤¬¤é
-      perlfaq8		¥·¥¹¥Æ¥à¤È¤ÎÁê¸ßºîÍÑ
-      perlfaq9		¥Í¥Ã¥È¥ï¡¼¥¯
+    perlfaq		Perl ã§ã‚ˆãã‚ã‚‹è³ªå•ã¨ç­”ãˆ
+      perlfaq1		Perl ã«é–¢ã™ã‚‹ä¸€èˆ¬çš„ãªè³ªå•
+      perlfaq2		Perl ã®å…¥æ‰‹ã¨å­¦ç¿’
+      perlfaq3		ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ãƒ„ãƒ¼ãƒ«
+      perlfaq4		ãƒ‡ãƒ¼ã‚¿æ“ä½œ
+      perlfaq5		ãƒ•ã‚¡ã‚¤ãƒ«ã¨ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
+      perlfaq6		æ­£è¦è¡¨ç¾
+      perlfaq7		Perl è¨€èªã«é–¢ã™ã‚‹ã“ã¨ãŒã‚‰
+      perlfaq8		ã‚·ã‚¹ãƒ†ãƒ ã¨ã®ç›¸äº’ä½œç”¨
+      perlfaq9		ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯
 
 =head2 Reference Manual
 
-(¥ê¥Õ¥¡¥ì¥ó¥¹¥Ş¥Ë¥å¥¢¥ë)
+(ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ãƒãƒ‹ãƒ¥ã‚¢ãƒ«)
 
 =begin original
 
@@ -179,29 +179,29 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlsyn		Perl ¤ÎÊ¸Ë¡
-    perldata		Perl ¤Î¥Ç¡¼¥¿¹½Â¤
-    perlop		Perl ¤Î±é»»»Ò¤ÈÍ¥Àè½ç°Ì
-    perlsub		Perl ¤Î¥µ¥Ö¥ë¡¼¥Á¥ó
-    perlfunc		Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô
-      perlopentut	Perl ¤Î open() ¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
-      perlpacktut	Perl ¤Î pack() ¤È unpack() ¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
+    perlsyn		Perl ã®æ–‡æ³•
+    perldata		Perl ã®ãƒ‡ãƒ¼ã‚¿æ§‹é€ 
+    perlop		Perl ã®æ¼”ç®—å­ã¨å„ªå…ˆé †ä½
+    perlsub		Perl ã®ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³
+    perlfunc		Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•°
+      perlopentut	Perl ã® open() ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
+      perlpacktut	Perl ã® pack() ã¨ unpack() ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
     perlpod		Perl plain old documentation
-    perlpodspec 	Perl plain old documentation ·Á¼°ÄêµÁ
-    perlrun		Perl ¤Î¼Â¹Ô¤È¥ª¥×¥·¥ç¥ó
-    perldiag		Perl ¤Î¿ÇÃÇ¥á¥Ã¥»¡¼¥¸
-    perllexwarn 	Perl ¤Î·Ù¹ğ¤È¤½¤ÎÀ©¸æ
-    perldebug		Perl ¤Î¥Ç¥Ğ¥Ã¥°
-    perlvar		Perl ¤ÎÄêµÁºÑ¤ßÊÑ¿ô
-    perlre		Perl Àµµ¬É½¸½; ¤½¤ÎÂ¾¤ÎÏÃÂê
-    perlrebackslash	Perl Àµµ¬É½¸½¥Ğ¥Ã¥¯¥¹¥é¥Ã¥·¥å¥·¡¼¥±¥ó¥¹
-    perlrecharclass	Perl Àµµ¬É½¸½Ê¸»ú¥¯¥é¥¹
-    perlreref		Perl Àµµ¬É½¸½¥¯¥¤¥Ã¥¯¥ê¥Õ¥¡¥ì¥ó¥¹
-    perlref		Perl ¤Î¥ê¥Õ¥¡¥ì¥ó¥¹; ¤½¤ÎÂ¾¤ÎÏÃÂê
-    perlform		Perl ¤Î¥Õ¥©¡¼¥Ş¥Ã¥È
-    perlobj		Perl ¤Î¥ª¥Ö¥¸¥§¥¯¥È
-    perltie		Perl ¤Î¡¢Ã±½ã¤ÊÊÑ¿ô¤Ë±£¤µ¤ì¤¿¥ª¥Ö¥¸¥§¥¯¥È
-      perldbmfilter	Perl DBM ¥Õ¥£¥ë¥¿
+    perlpodspec 	Perl plain old documentation å½¢å¼å®šç¾©
+    perlrun		Perl ã®å®Ÿè¡Œã¨ã‚ªãƒ—ã‚·ãƒ§ãƒ³
+    perldiag		Perl ã®è¨ºæ–­ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+    perllexwarn 	Perl ã®è­¦å‘Šã¨ãã®åˆ¶å¾¡
+    perldebug		Perl ã®ãƒ‡ãƒãƒƒã‚°
+    perlvar		Perl ã®å®šç¾©æ¸ˆã¿å¤‰æ•°
+    perlre		Perl æ­£è¦è¡¨ç¾; ãã®ä»–ã®è©±é¡Œ
+    perlrebackslash	Perl æ­£è¦è¡¨ç¾ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã‚·ãƒ¼ã‚±ãƒ³ã‚¹
+    perlrecharclass	Perl æ­£è¦è¡¨ç¾æ–‡å­—ã‚¯ãƒ©ã‚¹
+    perlreref		Perl æ­£è¦è¡¨ç¾ã‚¯ã‚¤ãƒƒã‚¯ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹
+    perlref		Perl ã®ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹; ãã®ä»–ã®è©±é¡Œ
+    perlform		Perl ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
+    perlobj		Perl ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    perltie		Perl ã®ã€å˜ç´”ãªå¤‰æ•°ã«éš ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+      perldbmfilter	Perl DBM ãƒ•ã‚£ãƒ«ã‚¿
 
 =begin original
 
@@ -211,9 +211,9 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlipc		Perl ¤Î¥×¥í¥»¥¹´ÖÄÌ¿®
-    perlfork		Perl ¤Î fork() ¾ğÊó
-    perlnumber		Perl ¤Î¿ôÃÍ¤Î°ÕÌ£ÏÀ
+    perlipc		Perl ã®ãƒ—ãƒ­ã‚»ã‚¹é–“é€šä¿¡
+    perlfork		Perl ã® fork() æƒ…å ±
+    perlnumber		Perl ã®æ•°å€¤ã®æ„å‘³è«–
 
 =begin original
 
@@ -222,8 +222,8 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlthrtut		Perl ¤Î¥¹¥ì¥Ã¥É¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
-      perlothrtut	ÀÎ¤Î Perl ¤Î¥¹¥ì¥Ã¥É¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
+    perlthrtut		Perl ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
+      perlothrtut	æ˜”ã® Perl ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 
 =begin original
 
@@ -237,13 +237,13 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlport		Perl ¤Î°Ü¿¢À­¥¬¥¤¥É
-    perllocale		Perl ¤Î¥í¥±¡¼¥ëÂĞ±ş
-    perluniintro	Perl ¤Î Unicode ¤Î¾Ò²ğ
-    perlunicode 	Perl ¤Î Unicode ÂĞ±ş
-    perlunifaq		Perl ¤Î Unicode FAQ
-    perlunitut		Perl ¤Î Unicode ¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
-    perlebcdic		EBCDIC ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ç Perl ¤ò¼Â¹Ô¤¹¤ëºİ¤Î¸¡Æ¤ºàÎÁ
+    perlport		Perl ã®ç§»æ¤æ€§ã‚¬ã‚¤ãƒ‰
+    perllocale		Perl ã®ãƒ­ã‚±ãƒ¼ãƒ«å¯¾å¿œ
+    perluniintro	Perl ã® Unicode ã®ç´¹ä»‹
+    perlunicode 	Perl ã® Unicode å¯¾å¿œ
+    perlunifaq		Perl ã® Unicode FAQ
+    perlunitut		Perl ã® Unicode ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
+    perlebcdic		EBCDIC ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ Perl ã‚’å®Ÿè¡Œã™ã‚‹éš›ã®æ¤œè¨ææ–™
 
 =begin original
 
@@ -251,7 +251,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlsec		Perl ¤Î¥»¥­¥å¥ê¥Æ¥£
+    perlsec		Perl ã®ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£
 
 =begin original
 
@@ -264,12 +264,12 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlmod		Perl ¥â¥¸¥å¡¼¥ë: ¤É¤Î¤è¤¦¤ËÆ°ºî¤¹¤ë¤«
-    perlmodlib		Perl ¥â¥¸¥å¡¼¥ë: ½ñ¤­Êı¤È»È¤¤Êı
-    perlmodstyle	Perl ¥â¥¸¥å¡¼¥ë: ¾åÉÊ¤Ê¥â¥¸¥å¡¼¥ë¤Î½ñ¤­Êı
-    perlmodinstall	Perl ¥â¥¸¥å¡¼¥ë: CPAN ¤«¤é¤Î¥¤¥ó¥¹¥È¡¼¥ë¤Î»ÅÊı
-    perlnewmod		Perl ¥â¥¸¥å¡¼¥ë: ¿·¤·¤¤¥â¥¸¥å¡¼¥ë¤ÎÇÛÉÛ¤Î½àÈ÷
-    perlpragma		Perl ¥â¥¸¥å¡¼¥ë: ¥æ¡¼¥¶¡¼¥×¥é¥°¥Ş¤ò½ñ¤¯
+    perlmod		Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: ã©ã®ã‚ˆã†ã«å‹•ä½œã™ã‚‹ã‹
+    perlmodlib		Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: æ›¸ãæ–¹ã¨ä½¿ã„æ–¹
+    perlmodstyle	Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: ä¸Šå“ãªãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ›¸ãæ–¹
+    perlmodinstall	Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: CPAN ã‹ã‚‰ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã®ä»•æ–¹
+    perlnewmod		Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: æ–°ã—ã„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…å¸ƒã®æº–å‚™
+    perlpragma		Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ—ãƒ©ã‚°ãƒã‚’æ›¸ã
 
 =begin original
 
@@ -277,7 +277,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlutil		Perl ÇÛÉÛ¤Ë´Ş¤Ş¤ì¤ë¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+    perlutil		Perl é…å¸ƒã«å«ã¾ã‚Œã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =begin original
 
@@ -285,7 +285,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlcompile 	Perl ¥³¥ó¥Ñ¥¤¥éµ¡Ç½¤Î¾Ò²ğ
+    perlcompile 	Perl ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©æ©Ÿèƒ½ã®ç´¹ä»‹
 
 =begin original
 
@@ -293,7 +293,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlfilter		Perl ¥½¡¼¥¹¥Õ¥£¥ë¥¿
+    perlfilter		Perl ã‚½ãƒ¼ã‚¹ãƒ•ã‚£ãƒ«ã‚¿
 
 =begin original
 
@@ -301,11 +301,11 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlglossary	Perl ÍÑ¸ì½¸
+    perlglossary	Perl ç”¨èªé›†
 
 =head2 Internals and C Language Interface
 
-(ÆâÉô¤È C ¸À¸ì¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹)
+(å†…éƒ¨ã¨ C è¨€èªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹)
 
 =begin original
 
@@ -321,15 +321,15 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlembed		C ¤ä C++ ¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ë perl ¤òÁÈ¤ß¹ş¤àÊıË¡
-    perldebguts 	Perl ¥Ç¥Ğ¥Ã¥°¤ÎÆâÉô¤È¾®µ»
-    perlxstut		Perl XS ¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
-    perlxs		Perl XS ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥×¥í¥°¥é¥ß¥ó¥°¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
-    perlclib		É¸½à C ¥é¥¤¥Ö¥é¥ê´Ø¿ô¤ÎÆâÉôÃÖ´¹
-    perlguts		¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó¤Î¤¿¤á¤Î Perl ¤ÎÆâÉô´Ø¿ô
-    perlcall		C ¤«¤é¤Î Perl ¸Æ¤Ó½Ğ¤·»ÅÍÍ
-    perlreapi		Perl Àµµ¬É½¸½¥×¥é¥°¥¤¥ó¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
-    perlreguts		Perl Àµµ¬É½¸½¥¨¥ó¥¸¥ó¤ÎÆâÉô
+    perlembed		C ã‚„ C++ ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã« perl ã‚’çµ„ã¿è¾¼ã‚€æ–¹æ³•
+    perldebguts 	Perl ãƒ‡ãƒãƒƒã‚°ã®å†…éƒ¨ã¨å°æŠ€
+    perlxstut		Perl XS ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
+    perlxs		Perl XS ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
+    perlclib		æ¨™æº– C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªé–¢æ•°ã®å†…éƒ¨ç½®æ›
+    perlguts		ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³ã®ãŸã‚ã® Perl ã®å†…éƒ¨é–¢æ•°
+    perlcall		C ã‹ã‚‰ã® Perl å‘¼ã³å‡ºã—ä»•æ§˜
+    perlreapi		Perl æ­£è¦è¡¨ç¾ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
+    perlreguts		Perl æ­£è¦è¡¨ç¾ã‚¨ãƒ³ã‚¸ãƒ³ã®å†…éƒ¨
 
 =begin original
 
@@ -340,10 +340,10 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlapi		Perl API °ìÍ÷ (¼«Æ°À¸À®)
-    perlintern		Perl ÆâÉô´Ø¿ô (¼«Æ°À¸À®)
-    perliol		I/O ÁØ¤Î Perl ¤Ç¤Î¼ÂÁõ¤Î¤¿¤á¤Î C API
-    perlapio		Perl ÆâÉôl I/O Ãê¾İ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+    perlapi		Perl API ä¸€è¦§ (è‡ªå‹•ç”Ÿæˆ)
+    perlintern		Perl å†…éƒ¨é–¢æ•° (è‡ªå‹•ç”Ÿæˆ)
+    perliol		I/O å±¤ã® Perl ã§ã®å®Ÿè£…ã®ãŸã‚ã® C API
+    perlapio		Perl å†…éƒ¨l I/O æŠ½è±¡ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =begin original
 
@@ -351,11 +351,11 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlhack		Perl ¥Ï¥Ã¥«¡¼¥º¥¬¥¤¥É
+    perlhack		Perl ãƒãƒƒã‚«ãƒ¼ã‚ºã‚¬ã‚¤ãƒ‰
 
 =head2 Miscellaneous
 
-(¤½¤ÎÂ¾)
+(ãã®ä»–)
 
 =begin original
 
@@ -365,9 +365,9 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlbook		Perl ¤Î½ñÀÒ¾ğÊó
-    perlcommunity	Perl ¤Î¥³¥ß¥å¥Ë¥Æ¥£¾ğÊó
-    perltodo		Perl ¤Î¡Ö¤¹¤ë¤³¤È¥ê¥¹¥È¡×
+    perlbook		Perl ã®æ›¸ç±æƒ…å ±
+    perlcommunity	Perl ã®ã‚³ãƒŸãƒ¥ãƒ‹ãƒ†ã‚£æƒ…å ±
+    perltodo		Perl ã®ã€Œã™ã‚‹ã“ã¨ãƒªã‚¹ãƒˆã€
 
 =begin original
 
@@ -375,7 +375,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perldoc		Pod ·Á¼°¤Î Perl ¥É¥­¥å¥á¥ó¥È¤ò¸«¤ë
+    perldoc		Pod å½¢å¼ã® Perl ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’è¦‹ã‚‹
 
 =begin original
 
@@ -407,31 +407,31 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlhist		Perl ¤ÎÎò»Ë¤Îµ­Ï¿
-    perldelta		Perl ¤ÎÁ°²ó¤Î¥Ğ¡¼¥¸¥ç¥ó¤«¤é¤ÎÊÑ¹¹ÅÀ
-    perl595delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.9.5
-    perl594delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.9.4
-    perl593delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.9.3
-    perl592delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.9.2
-    perl591delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.9.1
-    perl590delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.9.0
-    perl588delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.8
-    perl587delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.7
-    perl586delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.6
-    perl585delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.5
-    perl584delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.4
-    perl583delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.3
-    perl582delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.2
-    perl581delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.1
-    perl58delta 	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.8.0
-    perl573delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.7.3
-    perl572delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.7.2
-    perl571delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.7.1
-    perl570delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.7.0
-    perl561delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.6.1
-    perl56delta 	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.6
-    perl5005delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.005
-    perl5004delta	Perl ¤ÎÊÑ¹¹ÅÀ: ¥Ğ¡¼¥¸¥ç¥ó 5.004
+    perlhist		Perl ã®æ­´å²ã®è¨˜éŒ²
+    perldelta		Perl ã®å‰å›ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‹ã‚‰ã®å¤‰æ›´ç‚¹
+    perl595delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.9.5
+    perl594delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.9.4
+    perl593delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.9.3
+    perl592delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.9.2
+    perl591delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.9.1
+    perl590delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.9.0
+    perl588delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.8
+    perl587delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.7
+    perl586delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.6
+    perl585delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.5
+    perl584delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.4
+    perl583delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.3
+    perl582delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.2
+    perl581delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.1
+    perl58delta 	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.8.0
+    perl573delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.7.3
+    perl572delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.7.2
+    perl571delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.7.1
+    perl570delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.7.0
+    perl561delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.6.1
+    perl56delta 	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.6
+    perl5005delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.005
+    perl5004delta	Perl ã®å¤‰æ›´ç‚¹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5.004
 
 =begin original
 
@@ -445,7 +445,7 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =head2 Language-Specific
 
-(¸À¸ìÆÃÍ­)
+(è¨€èªç‰¹æœ‰)
 
 =begin original
 
@@ -456,14 +456,14 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlcn		Perl ¾ğÊó: ´ÊÂÎÃæ¹ñ¸ì (EUC-CN)
-    perljp		Perl ¾ğÊó: ÆüËÜ¸ì (EUC-JP)
-    perlko		Perl ¾ğÊó: ´Ú¹ñ¸ì (EUC-KR)
-    perltw		Perl ¾ğÊó: ÈËÂÎÃæ¹ñ¸ì (Big5)
+    perlcn		Perl æƒ…å ±: ç°¡ä½“ä¸­å›½èª (EUC-CN)
+    perljp		Perl æƒ…å ±: æ—¥æœ¬èª (EUC-JP)
+    perlko		Perl æƒ…å ±: éŸ“å›½èª (EUC-KR)
+    perltw		Perl æƒ…å ±: ç¹ä½“ä¸­å›½èª (Big5)
 
 =head2 Platform-Specific
 
-(¥×¥é¥Ã¥È¥Õ¥©¡¼¥àÆÃÍ­)
+(ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ç‰¹æœ‰)
 
 =begin original
 
@@ -506,42 +506,42 @@ For ease of access, the Perl manual has been split up into several sections.
 
 =end original
 
-    perlaix		Perl ¾ğÊó: AIX
-    perlamiga		Perl ¾ğÊó: AmigaOS
-    perlapollo		Perl ¾ğÊó: Apollo DomainOS
-    perlbeos		Perl ¾ğÊó: BeOS
-    perlbs2000		Perl ¾ğÊó: POSIX-BC BS2000
-    perlce		Perl ¾ğÊó: WinCE
-    perlcygwin		Perl ¾ğÊó: Cygwin
-    perldgux		Perl ¾ğÊó: DG/UX
-    perldos		Perl ¾ğÊó: DOS
-    perlepoc		Perl ¾ğÊó: EPOC
-    perlfreebsd 	Perl ¾ğÊó: FreeBSD
-    perlhpux		Perl ¾ğÊó: HP-UX
-    perlhurd		Perl ¾ğÊó: Hurd
-    perlirix		Perl ¾ğÊó: Irix
-    perllinux		Perl ¾ğÊó: Linux
-    perlmachten 	Perl ¾ğÊó: Power MachTen
-    perlmacos		Perl ¾ğÊó: Mac OS (Classic)
-    perlmacosx		Perl ¾ğÊó: Mac OS X
-    perlmint		Perl ¾ğÊó: MiNT
-    perlmpeix		Perl ¾ğÊó: MPE/iX
-    perlnetware 	Perl ¾ğÊó: NetWare
-    perlopenbsd 	Perl ¾ğÊó: OpenBSD
-    perlos2		Perl ¾ğÊó: OS/2
-    perlos390		Perl ¾ğÊó: OS/390
-    perlos400		Perl ¾ğÊó: OS/400
-    perlplan9		Perl ¾ğÊó: Plan 9
-    perlqnx		Perl ¾ğÊó: QNX
-    perlriscos		Perl ¾ğÊó: RISC OS
-    perlsolaris 	Perl ¾ğÊó: Solaris
-    perlsymbian 	Perl ¾ğÊó: Symbian
-    perltru64		Perl ¾ğÊó: Tru64
-    perluts		Perl ¾ğÊó: UTS
-    perlvmesa		Perl ¾ğÊó: VM/ESA
-    perlvms		Perl ¾ğÊó: VMS
-    perlvos		Perl ¾ğÊó: Stratus VOS
-    perlwin32		Perl ¾ğÊó: Windows
+    perlaix		Perl æƒ…å ±: AIX
+    perlamiga		Perl æƒ…å ±: AmigaOS
+    perlapollo		Perl æƒ…å ±: Apollo DomainOS
+    perlbeos		Perl æƒ…å ±: BeOS
+    perlbs2000		Perl æƒ…å ±: POSIX-BC BS2000
+    perlce		Perl æƒ…å ±: WinCE
+    perlcygwin		Perl æƒ…å ±: Cygwin
+    perldgux		Perl æƒ…å ±: DG/UX
+    perldos		Perl æƒ…å ±: DOS
+    perlepoc		Perl æƒ…å ±: EPOC
+    perlfreebsd 	Perl æƒ…å ±: FreeBSD
+    perlhpux		Perl æƒ…å ±: HP-UX
+    perlhurd		Perl æƒ…å ±: Hurd
+    perlirix		Perl æƒ…å ±: Irix
+    perllinux		Perl æƒ…å ±: Linux
+    perlmachten 	Perl æƒ…å ±: Power MachTen
+    perlmacos		Perl æƒ…å ±: Mac OS (Classic)
+    perlmacosx		Perl æƒ…å ±: Mac OS X
+    perlmint		Perl æƒ…å ±: MiNT
+    perlmpeix		Perl æƒ…å ±: MPE/iX
+    perlnetware 	Perl æƒ…å ±: NetWare
+    perlopenbsd 	Perl æƒ…å ±: OpenBSD
+    perlos2		Perl æƒ…å ±: OS/2
+    perlos390		Perl æƒ…å ±: OS/390
+    perlos400		Perl æƒ…å ±: OS/400
+    perlplan9		Perl æƒ…å ±: Plan 9
+    perlqnx		Perl æƒ…å ±: QNX
+    perlriscos		Perl æƒ…å ±: RISC OS
+    perlsolaris 	Perl æƒ…å ±: Solaris
+    perlsymbian 	Perl æƒ…å ±: Symbian
+    perltru64		Perl æƒ…å ±: Tru64
+    perluts		Perl æƒ…å ±: UTS
+    perlvmesa		Perl æƒ…å ±: VM/ESA
+    perlvms		Perl æƒ…å ±: VMS
+    perlvos		Perl æƒ…å ±: Stratus VOS
+    perlwin32		Perl æƒ…å ±: Windows
 
 =begin original
 
@@ -550,8 +550,8 @@ F</usr/local/man/> directory.
 
 =end original
 
-¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï¡¢¾å½Ò¤·¤¿ man ¥Ú¡¼¥¸¤Ï F</usr/local/man/> ¥Ç¥£¥ì¥¯¥È¥ê¤Ë
-¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Ş¤¹¡£
+ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€ä¸Šè¿°ã—ãŸ man ãƒšãƒ¼ã‚¸ã¯ F</usr/local/man/> ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¾ã™ã€‚
 
 =begin original
 
@@ -564,12 +564,12 @@ documentation for third-party modules there.
 
 =end original
 
-Perl ¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤ÎË­ÉÙ¤ÊÄÉ²Ã¤Î¥É¥­¥å¥á¥ó¥È¤¬ÍøÍÑ²ÄÇ½¤Ç¤¹¡£
-perl ¤Î¥Ç¥Õ¥©¥ë¥ÈÀßÄê¤Ç¤ÏÄÉ²Ã¤Î¥É¥­¥å¥á¥ó¥È¤Ï
-F</usr/local/lib/perl5/man> ¥Ç¥£¥ì¥¯¥È¥ê (¤¢¤ë¤¤¤Ï Perl ¥é¥¤¥Ö¥é¥ê
-¥Ç¥£¥ì¥¯¥È¥ê¤Î F<man> ¥µ¥Ö¥Ç¥£¥ì¥¯¥È¥ê)¤Ë¤¢¤ê¤Ş¤¹¡£
-¤³¤ÎÄÉ²Ã¥É¥­¥å¥á¥ó¥È¤Ï Perl ¤ÎÉ¸½àÇÛÉÛ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤â¤Î¤â¤¢¤ê¤Ş¤¹¤¬¡¢
-¥µ¡¼¥É¥Ñ¡¼¥Æ¥£¥â¥¸¥å¡¼¥ë¤Î¥É¥­¥å¥á¥ó¥È¤â¤³¤³¤Ë¤¢¤ê¤Ş¤¹¡£
+Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã®è±Šå¯Œãªè¿½åŠ ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãŒåˆ©ç”¨å¯èƒ½ã§ã™ã€‚
+perl ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®šã§ã¯è¿½åŠ ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯
+F</usr/local/lib/perl5/man> ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª (ã‚ã‚‹ã„ã¯ Perl ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã® F<man> ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª)ã«ã‚ã‚Šã¾ã™ã€‚
+ã“ã®è¿½åŠ ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ Perl ã®æ¨™æº–é…å¸ƒã«å«ã¾ã‚Œã¦ã„ã‚‹ã‚‚ã®ã‚‚ã‚ã‚Šã¾ã™ãŒã€
+ã‚µãƒ¼ãƒ‰ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚‚ã“ã“ã«ã‚ã‚Šã¾ã™ã€‚
 
 =begin original
 
@@ -580,11 +580,11 @@ configuration has installed the manpages, type:
 
 =end original
 
-Å¬ÀÚ¤Ê¥Ç¥£¥ì¥¯¥È¥ê¤òÅ¬ÀÚ¤Ê¥¹¥¿¡¼¥È¥¢¥Ã¥×¥Õ¥¡¥¤¥ë¤« MANPATH ´Ä¶­ÊÑ¿ô¤Ë
-ÄÉ²Ã¤¹¤ë¤³¤È¤Ç¡¢Perl ¤Î¥É¥­¥å¥á¥ó¥È¤ò man(1) ¥×¥í¥°¥é¥à¤Ç¸«¤é¤ì¤ë¤è¤¦¤Ë
-¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
-¤É¤³¤Ë man ¥Ú¡¼¥¸¤¬¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤ëÀßÄê¤«¤ò¸«¤ë¤Ë¤Ï¡¢°Ê²¼¤Î¤è¤¦¤Ë
-¤·¤Æ¤¯¤À¤µ¤¤:
+é©åˆ‡ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’é©åˆ‡ãªã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‹ MANPATH ç’°å¢ƒå¤‰æ•°ã«
+è¿½åŠ ã™ã‚‹ã“ã¨ã§ã€Perl ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’ man(1) ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã§è¦‹ã‚‰ã‚Œã‚‹ã‚ˆã†ã«
+ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ã©ã“ã« man ãƒšãƒ¼ã‚¸ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã‚‹è¨­å®šã‹ã‚’è¦‹ã‚‹ã«ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«
+ã—ã¦ãã ã•ã„:
 
     perl -V:man.dir
 
@@ -598,10 +598,10 @@ both stems.
 
 =end original
 
-F</usr/local/man/man1> ¤È F</usr/local/man/man3> ¤Î¤è¤¦¤Ë¡¢¥Ç¥£¥ì¥¯¥È¥ê¤Ë
-ÅÓÃæ¤Ş¤Ç¶¦ÄÌ¤ÎÉôÊ¬¤¬¤¢¤ë¾ì¹ç¤Ï¡¢¶¦ÄÌ¤ÎÉôÊ¬ (F</usr/local/man>) ¤À¤±¤ò
-man(1) ÀßÄê¥Õ¥¡¥¤¥ë¤« MANPATH ´Ä¶­ÊÑ¿ô¤ËÀßÄê¤¹¤ë¤À¤±¤Ç¤¹¤ß¤Ş¤¹¡£
-¶¦ÄÌ¤ÎÉôÊ¬¤¬¤Ê¤¤¾ì¹ç¤Ï¡¢Î¾Êı¤òÄÉ²Ã¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£
+F</usr/local/man/man1> ã¨ F</usr/local/man/man3> ã®ã‚ˆã†ã«ã€ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«
+é€”ä¸­ã¾ã§å…±é€šã®éƒ¨åˆ†ãŒã‚ã‚‹å ´åˆã¯ã€å…±é€šã®éƒ¨åˆ† (F</usr/local/man>) ã ã‘ã‚’
+man(1) è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‹ MANPATH ç’°å¢ƒå¤‰æ•°ã«è¨­å®šã™ã‚‹ã ã‘ã§ã™ã¿ã¾ã™ã€‚
+å…±é€šã®éƒ¨åˆ†ãŒãªã„å ´åˆã¯ã€ä¸¡æ–¹ã‚’è¿½åŠ ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 
 =begin original
 
@@ -611,9 +611,9 @@ also look into getting a replacement man program.
 
 =end original
 
-¤â¤·¤³¤ì¤¬²¿¤é¤«¤ÎÍıÍ³¤ÇÆ°ºî¤·¤Ê¤¤¾ì¹ç¡¢¥â¥¸¥å¡¼¥ë¾ğÊó¤ò¸«¤ë¤¿¤á¤Î
-F<perldoc> ¥¹¥¯¥ê¥×¥È¤â»È¤¨¤Ş¤¹¡£
-¤¢¤ë¤¤¤Ï¡¢man ¥×¥í¥°¥é¥à¤ÎÂåÂØ¤òÃµ¤¹¼ê¤â¤¢¤ê¤Ş¤¹¡£
+ã‚‚ã—ã“ã‚ŒãŒä½•ã‚‰ã‹ã®ç†ç”±ã§å‹•ä½œã—ãªã„å ´åˆã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«æƒ…å ±ã‚’è¦‹ã‚‹ãŸã‚ã®
+F<perldoc> ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚‚ä½¿ãˆã¾ã™ã€‚
+ã‚ã‚‹ã„ã¯ã€man ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ä»£æ›¿ã‚’æ¢ã™æ‰‹ã‚‚ã‚ã‚Šã¾ã™ã€‚
 
 =begin original
 
@@ -623,9 +623,9 @@ will often point out exactly where the trouble is.
 
 =end original
 
-¥×¥í¥°¥é¥à¤Î¼Â¹Ô»ş¤Ë²¿¤«ÊÑ¤Ê¤³¤È¤¬µ¯¤³¤Ã¤Æ¡¢¤É¤³¤ò»²¾È¤·¤¿¤é
-¤è¤¤¤«¤ï¤«¤é¤Ê¤¤¾ì¹ç¤Ë¤Ï¡¢¼è¤ê´º¤¨¤º B<-w> ¥¹¥¤¥Ã¥Á¤ò»î¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤¡£
-¤³¤ì¤Ç¡¢ÌäÂê¤«½ê¤òÆÃÄê¤Ç¤­¤ë¾ì¹ç¤â¡¢Â¿¡¹¤¢¤ê¤Ş¤¹¡£
+ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å®Ÿè¡Œæ™‚ã«ä½•ã‹å¤‰ãªã“ã¨ãŒèµ·ã“ã£ã¦ã€ã©ã“ã‚’å‚ç…§ã—ãŸã‚‰
+ã‚ˆã„ã‹ã‚ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€å–ã‚Šæ•¢ãˆãš B<-w> ã‚¹ã‚¤ãƒƒãƒã‚’è©¦ã—ã¦ã¿ã¦ãã ã•ã„ã€‚
+ã“ã‚Œã§ã€å•é¡Œã‹æ‰€ã‚’ç‰¹å®šã§ãã‚‹å ´åˆã‚‚ã€å¤šã€…ã‚ã‚Šã¾ã™ã€‚
 
 =head1 DESCRIPTION
 
@@ -640,12 +640,12 @@ elegant, minimal).
 
 =end original
 
-Perl ¤Ï¡¢¥Æ¥­¥¹¥È¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¼è¤ê¡¢¤½¤³¤«¤é¾ğÊó¤ò°ú¤­½Ğ¤·¡¢
-¤½¤Î¾ğÊó¤ò¸µ¤ËÍÍ¡¹¤ÊÊó¹ğ¤ò¹Ô¤Ê¤¦¤è¤¦¤ËÀß·×¤µ¤ì¤¿¸À¸ì¤Ç¤¹¡£
-¤Ş¤¿¡¢Â¿¤¯¤Î¥·¥¹¥Æ¥à¥Ş¥Í¥¸¥á¥ó¥È¤Îºî¶È¤ò¹Ô¤Ê¤¦¤Î¤Ë
-Å¬¤·¤¿¸À¸ì¤Ç¤â¤¢¤ê¤Ş¤¹¡£
-¤³¤Î¸À¸ì¤Ï¡¢åºÎï¤µ (¾®µ¬ÌÏ¡¢¥¨¥ì¥¬¥ó¥È¡¢ºÇ¾¯) ¤Ç¤Ï¤Ê¤¯¡¢
-¼ÂÍÑÀ­ (»È¤¤°×¤µ¡¢¸úÎ¨¡¢´°Á´À­) ¤òÌÜ»Ø¤·¤Æ¤¤¤Ş¤¹¡£
+Perl ã¯ã€ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿å–ã‚Šã€ãã“ã‹ã‚‰æƒ…å ±ã‚’å¼•ãå‡ºã—ã€
+ãã®æƒ…å ±ã‚’å…ƒã«æ§˜ã€…ãªå ±å‘Šã‚’è¡Œãªã†ã‚ˆã†ã«è¨­è¨ˆã•ã‚ŒãŸè¨€èªã§ã™ã€‚
+ã¾ãŸã€å¤šãã®ã‚·ã‚¹ãƒ†ãƒ ãƒãƒã‚¸ãƒ¡ãƒ³ãƒˆã®ä½œæ¥­ã‚’è¡Œãªã†ã®ã«
+é©ã—ãŸè¨€èªã§ã‚‚ã‚ã‚Šã¾ã™ã€‚
+ã“ã®è¨€èªã¯ã€ç¶ºéº—ã• (å°è¦æ¨¡ã€ã‚¨ãƒ¬ã‚¬ãƒ³ãƒˆã€æœ€å°‘) ã§ã¯ãªãã€
+å®Ÿç”¨æ€§ (ä½¿ã„æ˜“ã•ã€åŠ¹ç‡ã€å®Œå…¨æ€§) ã‚’ç›®æŒ‡ã—ã¦ã„ã¾ã™ã€‚
 
 =begin original
 
@@ -668,27 +668,27 @@ security holes.
 
 =end original
 
-Perl ¤Ï¡¢(¾¯¤Ê¤¯¤È¤âºî¼Ô¤Î°Õ¸«¤Ç¤Ï) C, B<sed>, B<awk>, B<sh> ¤ÎÎÉ¤¤ÉôÊ¬¤ò
-ÁÈ¤ß¹ç¤ï¤»¤Æ¤¤¤ë¤Î¤Ç¡¢¤³¤ì¤é¤Î¸À¸ì¤ËÆëÀ÷¤ß¤Î¤¢¤ëÊı¤Ë¤Ï¡¢¤½¤ì¤Û¤É
-Æñ¤·¤¤¤â¤Î¤Ç¤Ï¤Ê¤¤¤Ç¤·¤ç¤¦¡£
-(¸À¸ìÎò»Ë³Ø¼Ô¤Ï¤Ş¤¿¡¢B<csh>, Pascal ¤¢¤ë¤¤¤Ï BASIC-PLUS ¤Îº¯À×¤Ë¤â
-µ¤ÉÕ¤¯¤«¤â¤·¤ì¤Ş¤»¤ó¡£)
-¼°¤Î¹½Ê¸¤Ï¡¢C ¤Î¼°¤Î¹½Ê¸¤ËÂĞ±ş¤·¤¿¤â¤Î¤È¤Ê¤Ã¤Æ¤¤¤Ş¤¹¡£
-Â¿¤¯¤Î UNIX ¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤È¤Ï°ã¤Ã¤Æ¡¢Perl ¤Ï¥Ç¡¼¥¿¤ÎÂç¤­¤µ¤Ë
-×ó°ÕÅª¤ÊÀ©¸Â¤òÀß¤±¤Ş¤»¤ó¡£
-¤Ä¤Ş¤ê Perl ¤Ç¤Ï¡¢¥á¥â¥ê¤µ¤¨½½Ê¬¤Ë¤¢¤ì¤Ğ¡¢¥Õ¥¡¥¤¥ë¤ò´İ¤´¤È 1 ¤Ä¤Î
-Ê¸»úÎó¤ËÆş¤ì¤Æ¤·¤Ş¤¦¤³¤È¤â¤Ç¤­¤Ş¤¹¡£
-ºÆµ¢¤Î¿¼¤µ¤Ë¤âÀ©¸Â¤¬¤¢¤ê¤Ş¤»¤ó¡£
-¤Ş¤¿¡¢¥Ï¥Ã¥·¥å(¡ÖÏ¢ÁÛÇÛÎó¡×¤È¸Æ¤Ğ¤ì¤ë¤³¤È¤â¤¢¤ê¤Ş¤¹)¤¬»ÈÍÑ¤¹¤ë¥Æ¡¼¥Ö¥ë¤Ï¡¢
-¥Ñ¥Õ¥©¡¼¥Ş¥ó¥¹¤òÂ»¤Ê¤ï¤Ê¤¤¤è¤¦¤Ë¡¢É¬Í×¤Ë±ş¤¸¤Æ¡¢¼«Æ°Åª¤ËÂç¤­¤¯¤Ê¤ê¤Ş¤¹¡£
-Perl ¤Ç¤Ï¡¢ÂçÎÌ¤Î¥Ç¡¼¥¿¤ò¤¹¤Ğ¤ä¤¯Áöºº¤Ç¤­¤ë¤è¤¦¤Ë¡¢¹©É×¤ò¶Å¤é¤·¤¿
-¥Ñ¥¿¡¼¥ó¥Ş¥Ã¥Á¤Îµ»½Ñ¤¬»È¤¨¤Ş¤¹¡£
-¥Æ¥­¥¹¥È¤ÎÁöºº¤Î¤¿¤á¤ËÀß·×¤µ¤ì¤Æ¤Ï¤¤¤Ş¤¹¤¬¡¢Perl ¤Ç¤Ï¡¢
-¥Ğ¥¤¥Ê¥ê¥Ç¡¼¥¿¤ò°·¤¦¤³¤È¤â¤Ç¤­¤Ş¤¹¤·¡¢
-dbm ¥Õ¥¡¥¤¥ë¤ò¥Ï¥Ã¥·¥å¤Î¤è¤¦¤Ë¤·¤Æ°·¤¦¤³¤È¤â¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤Ã¤Æ¤¤¤Ş¤¹¡£
-¥Ç¡¼¥¿¥Õ¥í¡¼¥È¥ì¡¼¥¹µ¡¹½¤ò»È¤Ã¤Æ¡¢Ã±½ã¥ß¥¹¤Ë¤è¤ë¥»¥­¥å¥ê¥Æ¥£¥Û¡¼¥ë¤ò
-ºÉ¤°¤è¤¦¤Ë¤·¤Æ¤¤¤ë¤¿¤á¡¢Â¿¤¯¤Î¾ì¹ç¡¢setuid Perl ¥¹¥¯¥ê¥×¥È¤Ï C ¤Î
-¥×¥í¥°¥é¥à¤è¤ê¤â°ÂÁ´¤Ç¤¹¡£
+Perl ã¯ã€(å°‘ãªãã¨ã‚‚ä½œè€…ã®æ„è¦‹ã§ã¯) C, B<sed>, B<awk>, B<sh> ã®è‰¯ã„éƒ¨åˆ†ã‚’
+çµ„ã¿åˆã‚ã›ã¦ã„ã‚‹ã®ã§ã€ã“ã‚Œã‚‰ã®è¨€èªã«é¦´æŸ“ã¿ã®ã‚ã‚‹æ–¹ã«ã¯ã€ãã‚Œã»ã©
+é›£ã—ã„ã‚‚ã®ã§ã¯ãªã„ã§ã—ã‚‡ã†ã€‚
+(è¨€èªæ­´å²å­¦è€…ã¯ã¾ãŸã€B<csh>, Pascal ã‚ã‚‹ã„ã¯ BASIC-PLUS ã®ç—•è·¡ã«ã‚‚
+æ°—ä»˜ãã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚)
+å¼ã®æ§‹æ–‡ã¯ã€C ã®å¼ã®æ§‹æ–‡ã«å¯¾å¿œã—ãŸã‚‚ã®ã¨ãªã£ã¦ã„ã¾ã™ã€‚
+å¤šãã® UNIX ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã¨ã¯é•ã£ã¦ã€Perl ã¯ãƒ‡ãƒ¼ã‚¿ã®å¤§ãã•ã«
+æ£æ„çš„ãªåˆ¶é™ã‚’è¨­ã‘ã¾ã›ã‚“ã€‚
+ã¤ã¾ã‚Š Perl ã§ã¯ã€ãƒ¡ãƒ¢ãƒªã•ãˆååˆ†ã«ã‚ã‚Œã°ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¸¸ã”ã¨ 1 ã¤ã®
+æ–‡å­—åˆ—ã«å…¥ã‚Œã¦ã—ã¾ã†ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
+å†å¸°ã®æ·±ã•ã«ã‚‚åˆ¶é™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
+ã¾ãŸã€ãƒãƒƒã‚·ãƒ¥(ã€Œé€£æƒ³é…åˆ—ã€ã¨å‘¼ã°ã‚Œã‚‹ã“ã¨ã‚‚ã‚ã‚Šã¾ã™)ãŒä½¿ç”¨ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã¯ã€
+ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’æãªã‚ãªã„ã‚ˆã†ã«ã€å¿…è¦ã«å¿œã˜ã¦ã€è‡ªå‹•çš„ã«å¤§ãããªã‚Šã¾ã™ã€‚
+Perl ã§ã¯ã€å¤§é‡ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã™ã°ã‚„ãèµ°æŸ»ã§ãã‚‹ã‚ˆã†ã«ã€å·¥å¤«ã‚’å‡ã‚‰ã—ãŸ
+ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒã®æŠ€è¡“ãŒä½¿ãˆã¾ã™ã€‚
+ãƒ†ã‚­ã‚¹ãƒˆã®èµ°æŸ»ã®ãŸã‚ã«è¨­è¨ˆã•ã‚Œã¦ã¯ã„ã¾ã™ãŒã€Perl ã§ã¯ã€
+ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã‚’æ‰±ã†ã“ã¨ã‚‚ã§ãã¾ã™ã—ã€
+dbm ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒãƒƒã‚·ãƒ¥ã®ã‚ˆã†ã«ã—ã¦æ‰±ã†ã“ã¨ã‚‚ã§ãã‚‹ã‚ˆã†ã«ãªã£ã¦ã„ã¾ã™ã€‚
+ãƒ‡ãƒ¼ã‚¿ãƒ•ãƒ­ãƒ¼ãƒˆãƒ¬ãƒ¼ã‚¹æ©Ÿæ§‹ã‚’ä½¿ã£ã¦ã€å˜ç´”ãƒŸã‚¹ã«ã‚ˆã‚‹ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ãƒ›ãƒ¼ãƒ«ã‚’
+å¡ãã‚ˆã†ã«ã—ã¦ã„ã‚‹ãŸã‚ã€å¤šãã®å ´åˆã€setuid Perl ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ C ã®
+ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚ˆã‚Šã‚‚å®‰å…¨ã§ã™ã€‚
 
 =begin original
 
@@ -700,11 +700,11 @@ scripts into Perl scripts.
 
 =end original
 
-ÉáÄÌ¤Ï B<sed> ¤ä B<awk> ¤ä B<sh> ¤Ç½ñ¤¯¤è¤¦¤ÊÌäÂê¤Ç¤â¡¢¾¯¤·²Ù¤¬
-½Å¤¹¤®¤ë¤è¤¦¤Ê¤È¤­¡¢Â¿¾¯¤Ç¤â¼Â¹ÔÂ®ÅÙ¤òÂ®¤¯¤·¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¤È¤­¤ä¡¢
-C ¤Ç½ñ¤¯Äø¤Ç¤â¤Ê¤¤¤È¤­¤Ë¤Ï¡¢Perl ¤¬ºÇÅ¬¤Ç¤·¤ç¤¦¡£
-¤Ş¤¿¡¢B<sed> ¤ä B<awk> ¤Î¥¹¥¯¥ê¥×¥È¤ò Perl ¤Î¥¹¥¯¥ê¥×¥È¤ËÊÑ´¹¤¹¤ë
-¥È¥é¥ó¥¹¥ì¡¼¥¿¤âÍÑ°Õ¤µ¤ì¤Æ¤¤¤Ş¤¹¡£
+æ™®é€šã¯ B<sed> ã‚„ B<awk> ã‚„ B<sh> ã§æ›¸ãã‚ˆã†ãªå•é¡Œã§ã‚‚ã€å°‘ã—è·ãŒ
+é‡ã™ãã‚‹ã‚ˆã†ãªã¨ãã€å¤šå°‘ã§ã‚‚å®Ÿè¡Œé€Ÿåº¦ã‚’é€Ÿãã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã¨ãã‚„ã€
+C ã§æ›¸ãç¨‹ã§ã‚‚ãªã„ã¨ãã«ã¯ã€Perl ãŒæœ€é©ã§ã—ã‚‡ã†ã€‚
+ã¾ãŸã€B<sed> ã‚„ B<awk> ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ Perl ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«å¤‰æ›ã™ã‚‹
+ãƒˆãƒ©ãƒ³ã‚¹ãƒ¬ãƒ¼ã‚¿ã‚‚ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 =begin original
 
@@ -712,7 +712,7 @@ But wait, there's more...
 
 =end original
 
-¤Á¤ç¤Ã¤ÈÂÔ¤Ã¤Æ¤¯¤À¤µ¤¤¡¢¤Ş¤À¤¢¤ê¤Ş¤¹¡Ä
+ã¡ã‚‡ã£ã¨å¾…ã£ã¦ãã ã•ã„ã€ã¾ã ã‚ã‚Šã¾ã™â€¦
 
 =begin original
 
@@ -721,8 +721,8 @@ rewrite that provides the following additional benefits:
 
 =end original
 
-1993 Ç¯¤«¤é(L<perlhist> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤)¡¢Perl ¥Ğ¡¼¥¸¥ç¥ó 5 ¤Ï¡¢
-°Ê²¼¤Î¤è¤¦¤Ê¤³¤È¤òÄÉ²Ã¤¹¤ë¤¿¤á¤Ë¤Û¤È¤ó¤ÉÁ´¤Æ½ñ¤­Ä¾¤·¤Æ¤¤¤Ş¤¹:
+1993 å¹´ã‹ã‚‰(L<perlhist> ã‚’å‚ç…§ã—ã¦ãã ã•ã„)ã€Perl ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 5 ã¯ã€
+ä»¥ä¸‹ã®ã‚ˆã†ãªã“ã¨ã‚’è¿½åŠ ã™ã‚‹ãŸã‚ã«ã»ã¨ã‚“ã©å…¨ã¦æ›¸ãç›´ã—ã¦ã„ã¾ã™:
 
 =over 4
 
@@ -734,7 +734,7 @@ modularity and reusability using innumerable modules
 
 =end original
 
-Ìµ¿ô¤Î¥â¥¸¥å¡¼¥ë¤Ë¤è¤ë¥â¥¸¥å¡¼¥ëÀ­¤ÈºÆÍøÍÑÀ­
+ç„¡æ•°ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«ã‚ˆã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«æ€§ã¨å†åˆ©ç”¨æ€§
 
 =begin original
 
@@ -742,7 +742,7 @@ Described in L<perlmod>, L<perlmodlib>, and L<perlmodinstall>.
 
 =end original
 
-L<perlmod>, L<perlmodlib>, L<perlmodinstall> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perlmod>, L<perlmodlib>, L<perlmodinstall> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -752,7 +752,7 @@ embeddable and extensible
 
 =end original
 
-ÁÈ¤ß¹ş¤ßÍÆ°×À­¤È³ÈÄ¥À­
+çµ„ã¿è¾¼ã¿å®¹æ˜“æ€§ã¨æ‹¡å¼µæ€§
 
 =begin original
 
@@ -762,7 +762,7 @@ L<perlguts>, and L<xsubpp>.
 =end original
 
 L<perlembed>, L<perlxstut>, L<perlxs>, L<perlcall>, L<perlguts>,
-L<xsubpp> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<xsubpp> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -773,7 +773,7 @@ implementations)
 
 =end original
 
-(Â¿½ÅÆ±´ü DBM ¼ÂÁõ¤ò´Ş¤à) ¼«Ê¬¼«¿È¤ÎÌò³ä¤ò¹Ô¤¦¥Ş¥¸¥«¥ëÊÑ¿ô
+(å¤šé‡åŒæœŸ DBM å®Ÿè£…ã‚’å«ã‚€) è‡ªåˆ†è‡ªèº«ã®å½¹å‰²ã‚’è¡Œã†ãƒã‚¸ã‚«ãƒ«å¤‰æ•°
 
 =begin original
 
@@ -781,7 +781,7 @@ Described in L<perltie> and L<AnyDBM_File>.
 
 =end original
 
-L<perltie> ¤È L<AnyDBM_File> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perltie> ã¨ L<AnyDBM_File> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -791,7 +791,7 @@ subroutines can now be overridden, autoloaded, and prototyped
 
 =end original
 
-¥µ¥Ö¥ë¡¼¥Á¥óÄêµÁ¤¬¥ª¡¼¥Ğ¥é¥¤¥É¡¢¥ª¡¼¥È¥í¡¼¥É¡¢¥×¥í¥¿¥¤¥×Àë¸À²ÄÇ½¤Ë
+ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³å®šç¾©ãŒã‚ªãƒ¼ãƒãƒ©ã‚¤ãƒ‰ã€ã‚ªãƒ¼ãƒˆãƒ­ãƒ¼ãƒ‰ã€ãƒ—ãƒ­ã‚¿ã‚¤ãƒ—å®£è¨€å¯èƒ½ã«
 
 =begin original
 
@@ -799,7 +799,7 @@ Described in L<perlsub>.
 
 =end original
 
-L<perlsub> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perlsub> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -809,7 +809,7 @@ arbitrarily nested data structures and anonymous functions
 
 =end original
 
-Ç¤°Õ¤ÎÂ¿½Å¥Ç¡¼¥¿¹½Â¤¤ÈÌµÌ¾´Ø¿ô
+ä»»æ„ã®å¤šé‡ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã¨ç„¡åé–¢æ•°
 
 =begin original
 
@@ -817,7 +817,7 @@ Described in L<perlreftut>, L<perlref>, L<perldsc>, and L<perllol>.
 
 =end original
 
-L<perlreftut>, L<perlref>, L<perldsc>, L<perllol> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perlreftut>, L<perlref>, L<perldsc>, L<perllol> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -827,7 +827,7 @@ object-oriented programming
 
 =end original
 
-¥ª¥Ö¥¸¥§¥¯¥È»Ø¸ş¥×¥í¥°¥é¥ß¥ó¥°
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°
 
 =begin original
 
@@ -836,8 +836,8 @@ and L<perlbot>.
 
 =end original
 
-L<perlobj>, L<perlboot>, L<perltoot>, L<perltooc>, L<perlbot> ¤Ë
-µ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perlobj>, L<perlboot>, L<perltoot>, L<perltooc>, L<perlbot> ã«
+è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -847,7 +847,7 @@ support for light-weight processes (threads)
 
 =end original
 
-·ÚÎÌ¥×¥í¥»¥¹(¥¹¥ì¥Ã¥É)ÂĞ±ş
+è»½é‡ãƒ—ãƒ­ã‚»ã‚¹(ã‚¹ãƒ¬ãƒƒãƒ‰)å¯¾å¿œ
 
 =begin original
 
@@ -855,7 +855,7 @@ Described in L<perlthrtut> and L<threads>.
 
 =end original
 
-L<perlthrtut> ¤È L<threads> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perlthrtut> ã¨ L<threads> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -865,7 +865,7 @@ support for Unicode, internationalization, and localization
 
 =end original
 
-Unicode¡¢¹ñºİ²½¡¢ÃÏ°è²½ÂĞ±ş
+Unicodeã€å›½éš›åŒ–ã€åœ°åŸŸåŒ–å¯¾å¿œ
 
 =begin original
 
@@ -873,7 +873,7 @@ Described in L<perluniintro>, L<perllocale> and L<Locale::Maketext>.
 
 =end original
 
-L<perluniintro>, L<perllocale>, L<Locale::Maketext> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perluniintro>, L<perllocale>, L<Locale::Maketext> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -883,7 +883,7 @@ lexical scoping
 
 =end original
 
-¥ì¥­¥·¥«¥ë¥¹¥³¡¼¥×
+ãƒ¬ã‚­ã‚·ã‚«ãƒ«ã‚¹ã‚³ãƒ¼ãƒ—
 
 =begin original
 
@@ -891,7 +891,7 @@ Described in L<perlsub>.
 
 =end original
 
-L<perlsub> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perlsub> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -901,7 +901,7 @@ regular expression enhancements
 
 =end original
 
-Àµµ¬É½¸½¤Î³ÈÄ¥
+æ­£è¦è¡¨ç¾ã®æ‹¡å¼µ
 
 =begin original
 
@@ -909,7 +909,7 @@ Described in L<perlre>, with additional examples in L<perlop>.
 
 =end original
 
-L<perlre> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹; ÄÉ²Ã¤ÎÎã¤¬ L<perlop> ¤Ë¤¢¤ê¤Ş¤¹¡£
+L<perlre> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™; è¿½åŠ ã®ä¾‹ãŒ L<perlop> ã«ã‚ã‚Šã¾ã™ã€‚
 
 =item *
 
@@ -920,7 +920,7 @@ with integrated editor support
 
 =end original
 
-Åı¹ç¥¨¥Ç¥£¥¿ÂĞ±şÉÕ¤­¤Î¶¯²½¥Ç¥Ğ¥Ã¥¬¤ÈÂĞÏÃÅª Perl ´Ä¶­
+çµ±åˆã‚¨ãƒ‡ã‚£ã‚¿å¯¾å¿œä»˜ãã®å¼·åŒ–ãƒ‡ãƒãƒƒã‚¬ã¨å¯¾è©±çš„ Perl ç’°å¢ƒ
 
 =begin original
 
@@ -928,7 +928,7 @@ Described in L<perldebtut>, L<perldebug> and L<perldebguts>.
 
 =end original
 
-L<perldebtut>, L<perldebug>, L<perldebguts> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<perldebtut>, L<perldebug>, L<perldebguts> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =item *
 
@@ -938,7 +938,7 @@ POSIX 1003.1 compliant library
 
 =end original
 
-POSIX 1003.1 ½àµò¥é¥¤¥Ö¥é¥ê
+POSIX 1003.1 æº–æ‹ ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
 
 =begin original
 
@@ -946,7 +946,7 @@ Described in L<POSIX>.
 
 =end original
 
-L<POSIX> ¤Ëµ­½Ò¤·¤Æ¤¤¤Ş¤¹¡£
+L<POSIX> ã«è¨˜è¿°ã—ã¦ã„ã¾ã™ã€‚
 
 =back
 
@@ -956,7 +956,7 @@ Okay, that's I<definitely> enough hype.
 
 =end original
 
-¤µ¤¢¡¢¸ØÂç¹­¹ğ¤Ë¤Ï¤³¤ì¤¯¤é¤¤¤Ë¤·¤Ş¤·¤ç¤¦¡£
+ã•ã‚ã€èª‡å¤§åºƒå‘Šã«ã¯ã“ã‚Œãã‚‰ã„ã«ã—ã¾ã—ã‚‡ã†ã€‚
 
 =head1 AVAILABILITY
 
@@ -968,9 +968,9 @@ for a listing.
 
 =end original
 
-Perl ¤Ï»ö¼Â¾åÁ´¤Æ¤Î Unix É÷¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤ò´Ş¤à¡¢¤Û¤È¤ó¤É¤Î OS ¤Ç
-ÍøÍÑ²ÄÇ½¤Ç¤¹¡£
-°ìÍ÷¤Ë¤Ä¤¤¤Æ¤Ï L<perlport/"Supported Platforms"> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+Perl ã¯äº‹å®Ÿä¸Šå…¨ã¦ã® Unix é¢¨ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’å«ã‚€ã€ã»ã¨ã‚“ã©ã® OS ã§
+åˆ©ç”¨å¯èƒ½ã§ã™ã€‚
+ä¸€è¦§ã«ã¤ã„ã¦ã¯ L<perlport/"Supported Platforms"> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =head1 ENVIRONMENT
 
@@ -980,7 +980,7 @@ See L<perlrun>.
 
 =end original
 
-L<perlrun> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+L<perlrun> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =head1 AUTHOR
 
@@ -990,7 +990,7 @@ Larry Wall <larry@wall.org>, with the help of oodles of other folks.
 
 =end original
 
-Larry Wall <larry@wall.org>; Â¿¤¯¤ÎÊı¤Î½õÎÏ¤òÆÀ¤Ä¤Ä¡£
+Larry Wall <larry@wall.org>; å¤šãã®æ–¹ã®åŠ©åŠ›ã‚’å¾—ã¤ã¤ã€‚
 
 =begin original
 
@@ -1001,10 +1001,10 @@ Perl developers, please write to perl-thanks@perl.org .
 
 =end original
 
-¤â¤·¤¢¤Ê¤¿¤Î Perl ¤Ë´Ø¤¹¤ëÀ®¸ùÊª¸ì¤È¿äÁ¦¾õ¤¬¡¢¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ë Perl ¤ò
-»È¤¦¤³¤È¤ò¿ä¾©¤·¤¿¤¤¤È´ê¤Ã¤Æ¤¤¤ëÂ¾¤Î¿Í¡¹¤Î½õ¤±¤Ë¤Ê¤ë¤È¹Í¤¨¤¿¤Ê¤é¡¢
-¤¢¤ë¤¤¤ÏÃ±¤Ë Larry ¤È Perl ³«È¯¼Ô¤Ë´¶¼Õ¤Î°Õ¤òÅÁ¤¨¤¿¤¤¤Ê¤é¡¢
-perl-thanks@perl.org ¤ËÁ÷¤Ã¤Æ¤¯¤À¤µ¤¤¡£
+ã‚‚ã—ã‚ãªãŸã® Perl ã«é–¢ã™ã‚‹æˆåŠŸç‰©èªã¨æ¨è–¦çŠ¶ãŒã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã« Perl ã‚’
+ä½¿ã†ã“ã¨ã‚’æ¨å¥¨ã—ãŸã„ã¨é¡˜ã£ã¦ã„ã‚‹ä»–ã®äººã€…ã®åŠ©ã‘ã«ãªã‚‹ã¨è€ƒãˆãŸãªã‚‰ã€
+ã‚ã‚‹ã„ã¯å˜ã« Larry ã¨ Perl é–‹ç™ºè€…ã«æ„Ÿè¬ã®æ„ã‚’ä¼ãˆãŸã„ãªã‚‰ã€
+perl-thanks@perl.org ã«é€ã£ã¦ãã ã•ã„ã€‚
 
 =head1 FILES
 
@@ -1014,7 +1014,7 @@ perl-thanks@perl.org ¤ËÁ÷¤Ã¤Æ¤¯¤À¤µ¤¤¡£
 
 =end original
 
- "@INC"                 perl ¥é¥¤¥Ö¥é¥ê¤Î°ÌÃÖ
+ "@INC"                 perl ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ä½ç½®
 
 =head1 SEE ALSO
 
@@ -1025,8 +1025,8 @@ perl-thanks@perl.org ¤ËÁ÷¤Ã¤Æ¤¯¤À¤µ¤¤¡£
 
 =end original
 
- a2p    awk ¤«¤é perl ¤Ø¤Î¥È¥é¥ó¥¹¥ì¡¼¥¿
- s2p    sed ¤«¤é perl ¤Ø¤Î¥È¥é¥ó¥¹¥ì¡¼¥¿
+ a2p    awk ã‹ã‚‰ perl ã¸ã®ãƒˆãƒ©ãƒ³ã‚¹ãƒ¬ãƒ¼ã‚¿
+ s2p    sed ã‹ã‚‰ perl ã¸ã®ãƒˆãƒ©ãƒ³ã‚¹ãƒ¬ãƒ¼ã‚¿
 
  http://www.perl.org/       the Perl homepage
  http://www.perl.com/       Perl articles (O'Reilly)
@@ -1042,8 +1042,8 @@ lovely diagnostics.
 
 =end original
 
-C<use warnings> ¥×¥é¥°¥Ş (¤ª¤è¤Ó B<-w> ¥¹¥¤¥Ã¥Á)¤Ï¡¢
-´öÊ¬¤ï¤«¤ê¤ä¤¹¤¤¿ÇÃÇ¥á¥Ã¥»¡¼¥¸¤ò½Ğ¤·¤Ş¤¹¡£
+C<use warnings> ãƒ—ãƒ©ã‚°ãƒ (ãŠã‚ˆã³ B<-w> ã‚¹ã‚¤ãƒƒãƒ)ã¯ã€
+å¹¾åˆ†ã‚ã‹ã‚Šã‚„ã™ã„è¨ºæ–­ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºã—ã¾ã™ã€‚
 
 =begin original
 
@@ -1053,10 +1053,10 @@ and errors into these longer forms.
 
 =end original
 
-¤¹¤Ù¤Æ¤Î Perl ¤Î¿ÇÃÇ¥á¥Ã¥»¡¼¥¸¤Ë¤Ä¤¤¤Æ¤Ï¡¢L<perldiag> ¤ò
-»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
-C<use diagnostics> ¥×¥é¥°¥Ş¤Ï¡¢Perl ¤ÎÄÌ¾ï¤Î´Ê·é¤Ê·Ù¹ğ¤È¥¨¥é¡¼¤ò¼«Æ°Åª¤Ë
-¤è¤êÄ¹¤¤·Á¼°¤ËÊÑ¹¹¤·¤Ş¤¹¡£
+ã™ã¹ã¦ã® Perl ã®è¨ºæ–­ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ã¤ã„ã¦ã¯ã€L<perldiag> ã‚’
+å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+C<use diagnostics> ãƒ—ãƒ©ã‚°ãƒã¯ã€Perl ã®é€šå¸¸ã®ç°¡æ½”ãªè­¦å‘Šã¨ã‚¨ãƒ©ãƒ¼ã‚’è‡ªå‹•çš„ã«
+ã‚ˆã‚Šé•·ã„å½¢å¼ã«å¤‰æ›´ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -1067,10 +1067,10 @@ B<-e> is counted as one line.)
 
 =end original
 
-¥³¥ó¥Ñ¥¤¥ë»ş¤Î¥¨¥é¡¼¤Ç¤Ï¡¢¥¨¥é¡¼¤Îµ¯¤³¤Ã¤¿¹ÔÈÖ¹æ¤Ë¡¢¼¡¤Ë
-Ä´¤Ù¤é¤ì¤ë¤Ï¤º¤À¤Ã¤¿¥È¡¼¥¯¥ó¤«¥È¡¼¥¯¥ó¤Î·¿¤ò¼¨¤·¤Ş¤¹¡£
-(¥¹¥¯¥ê¥×¥È¤¬ B<-e> ¥¹¥¤¥Ã¥Á¤Ç Perl ¤ËÅÏ¤µ¤ì¤ë¾ì¹ç¤Ë¤Ï¡¢B<-e> ¥¹¥¤¥Ã¥Á
-1 ¤Ä¤¬ 1 ¹Ô¤È¥«¥¦¥ó¥È¤µ¤ì¤Ş¤¹¡£)
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã®ã‚¨ãƒ©ãƒ¼ã§ã¯ã€ã‚¨ãƒ©ãƒ¼ã®èµ·ã“ã£ãŸè¡Œç•ªå·ã«ã€æ¬¡ã«
+èª¿ã¹ã‚‰ã‚Œã‚‹ã¯ãšã ã£ãŸãƒˆãƒ¼ã‚¯ãƒ³ã‹ãƒˆãƒ¼ã‚¯ãƒ³ã®å‹ã‚’ç¤ºã—ã¾ã™ã€‚
+(ã‚¹ã‚¯ãƒªãƒ—ãƒˆãŒ B<-e> ã‚¹ã‚¤ãƒƒãƒã§ Perl ã«æ¸¡ã•ã‚Œã‚‹å ´åˆã«ã¯ã€B<-e> ã‚¹ã‚¤ãƒƒãƒ
+1 ã¤ãŒ 1 è¡Œã¨ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œã¾ã™ã€‚)
 
 =begin original
 
@@ -1079,9 +1079,9 @@ messages such as "Insecure dependency".  See L<perlsec>.
 
 =end original
 
-setuid ¥¹¥¯¥ê¥×¥È¤Ç¤Ï¡¢À©¸Â»ö¹à¤¬Áı¤¨¤ë¤¿¤á¡¢"Insecure dependency" ¤È
-¤¤¤Ã¤¿¥¨¥é¡¼¥á¥Ã¥»¡¼¥¸¤¬É½¼¨¤µ¤ì¤ë¤³¤È¤¬¤¢¤ê¤Ş¤¹¡£
-L<perlsec> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+setuid ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ã¯ã€åˆ¶é™äº‹é …ãŒå¢—ãˆã‚‹ãŸã‚ã€"Insecure dependency" ã¨
+ã„ã£ãŸã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã™ã€‚
+L<perlsec> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -1090,7 +1090,7 @@ switch?
 
 =end original
 
-ÀäÂĞ¤Ë B<-w> ¥¹¥¤¥Ã¥Á¤ò»È¤Ã¤¿Êı¤¬ÎÉ¤¤¤Ã¤Æ¤¤¤¦¤Î¤Ï¡¢¤â¤¦½ñ¤­¤Ş¤·¤¿¤Ã¤±?
+çµ¶å¯¾ã« B<-w> ã‚¹ã‚¤ãƒƒãƒã‚’ä½¿ã£ãŸæ–¹ãŒè‰¯ã„ã£ã¦ã„ã†ã®ã¯ã€ã‚‚ã†æ›¸ãã¾ã—ãŸã£ã‘?
 
 =head1 BUGS
 
@@ -1100,7 +1100,7 @@ The B<-w> switch is not mandatory.
 
 =end original
 
-B<-w> ¥¹¥¤¥Ã¥Á¤¬É¬¿Ü¤Ë¤Ê¤Ã¤Æ¤¤¤Ş¤»¤ó¡£
+B<-w> ã‚¹ã‚¤ãƒƒãƒãŒå¿…é ˆã«ãªã£ã¦ã„ã¾ã›ã‚“ã€‚
 
 =begin original
 
@@ -1110,8 +1110,8 @@ output with sprintf().
 
 =end original
 
-Perl ¤Ï·¿¤Î¥­¥ã¥¹¥È¡¢atof()¡¢sprintf() ¤Ë¤è¤ëÉâÆ°¾®¿ôÅÀ½ĞÎÏ¤Î¤è¤¦¤Ê
-ÍÍ¡¹¤ÊÁàºî¤Î¥Ş¥·¥ó¤´¤È¤ÎÄêµÁ¤Ë°ÍÂ¸¤·¤Ş¤¹¡£
+Perl ã¯å‹ã®ã‚­ãƒ£ã‚¹ãƒˆã€atof()ã€sprintf() ã«ã‚ˆã‚‹æµ®å‹•å°æ•°ç‚¹å‡ºåŠ›ã®ã‚ˆã†ãª
+æ§˜ã€…ãªæ“ä½œã®ãƒã‚·ãƒ³ã”ã¨ã®å®šç¾©ã«ä¾å­˜ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -1121,9 +1121,9 @@ and syswrite().)
 
 =end original
 
-»ÈÍÑ¤·¤Æ¤¤¤ëÉ¸½àÆş½ĞÎÏ¥é¥¤¥Ö¥é¥ê¤¬¡¢read ¤È write ¤Î´Ö¤Ë
-seek ¤ä eof ¤¬É¬Í×¤Ê¤â¤Î¤Ç¤¢¤ì¤Ğ¡¢Perl ¤Ç¤âÆ±ÍÍ¤È¤Ê¤ê¤Ş¤¹¡£
-(¤¿¤À¤·¡¢sysread() ¤ä syswrite() ¤Ë¤ÏÅ¬ÍÑ¤µ¤ì¤Ş¤»¤ó¡£)
+ä½¿ç”¨ã—ã¦ã„ã‚‹æ¨™æº–å…¥å‡ºåŠ›ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒã€read ã¨ write ã®é–“ã«
+seek ã‚„ eof ãŒå¿…è¦ãªã‚‚ã®ã§ã‚ã‚Œã°ã€Perl ã§ã‚‚åŒæ§˜ã¨ãªã‚Šã¾ã™ã€‚
+(ãŸã ã—ã€sysread() ã‚„ syswrite() ã«ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚)
 
 =begin original
 
@@ -1136,11 +1136,11 @@ affected by wraparound).
 
 =end original
 
-ÁÈ¤ß¹ş¤ß¤Î¥Ç¡¼¥¿·¿¤Ë¤Ï (¥á¥â¥ê¥µ¥¤¥º¤«¤é¤¯¤ë¤â¤Î¤ò½ü¤¤¤Æ) ×ó°ÕÅª¤Ê
-¥µ¥¤¥º¤ÎÀ©¸Â¤Ï¤¢¤ê¤Ş¤»¤ó¤¬¡¢¤½¤ì¤Ç¤â¤¤¤¯¤Ä¤«¤Î×ó°ÕÅªÀ©¸Â¤ÏÂ¸ºß¤·¤Ş¤¹:
-¤É¤ÎÊÑ¿ôÌ¾¤â 251 Ê¸»ú¤è¤êÄ¹¤¯¤Æ¤Ï¤Ê¤ê¤Ş¤»¤ó¡£
-¿ÇÃÇ¤ÇÉ½¼¨¤µ¤ì¤ë¹ÔÈÖ¹æ¤ÏÆâÉôÅª¤Ë short À°¿ô¤ÇÊİ´É¤·¤Æ¤¤¤ë¤Î¤Ç¡¢¤½¤Î
-ºÇÂçÃÍ¤Ï 65535 ¤ËÀ©¸Â¤µ¤ì¤Ş¤¹(¤è¤êÂç¤­¤Ê¿ôÃÍ¤ÏÉáÄÌ²ó¤ê¹ş¤ß¤Î±Æ¶Á¤ò¼õ¤±¤Ş¤¹)¡£
+çµ„ã¿è¾¼ã¿ã®ãƒ‡ãƒ¼ã‚¿å‹ã«ã¯ (ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‹ã‚‰ãã‚‹ã‚‚ã®ã‚’é™¤ã„ã¦) æ£æ„çš„ãª
+ã‚µã‚¤ã‚ºã®åˆ¶é™ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€ãã‚Œã§ã‚‚ã„ãã¤ã‹ã®æ£æ„çš„åˆ¶é™ã¯å­˜åœ¨ã—ã¾ã™:
+ã©ã®å¤‰æ•°åã‚‚ 251 æ–‡å­—ã‚ˆã‚Šé•·ãã¦ã¯ãªã‚Šã¾ã›ã‚“ã€‚
+è¨ºæ–­ã§è¡¨ç¤ºã•ã‚Œã‚‹è¡Œç•ªå·ã¯å†…éƒ¨çš„ã« short æ•´æ•°ã§ä¿ç®¡ã—ã¦ã„ã‚‹ã®ã§ã€ãã®
+æœ€å¤§å€¤ã¯ 65535 ã«åˆ¶é™ã•ã‚Œã¾ã™(ã‚ˆã‚Šå¤§ããªæ•°å€¤ã¯æ™®é€šå›ã‚Šè¾¼ã¿ã®å½±éŸ¿ã‚’å—ã‘ã¾ã™)ã€‚
 
 =begin original
 
@@ -1152,11 +1152,11 @@ can be used to help mail in a bug report.
 
 =end original
 
-¥Ğ¥°¥ì¥İ¡¼¥È¤Ï perlbug@perl.org ¤ËÁ÷¤Ã¤Æ¤¯¤À¤µ¤¤
-(perl ¥½¡¼¥¹¥Ä¥ê¡¼¤Ë¤¢¤ë myconfig ¥×¥í¥°¥é¥à¤« C<perl -V> ¤Ç½ĞÎÏ¤µ¤ì¤ë
-´°Á´¤ÊÀßÄê¾ğÊó¤ò´Ş¤á¤ë¤³¤È¤òËº¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤)¡£
-¤â¤· perl ¤Î¥³¥ó¥Ñ¥¤¥ë¤ËÀ®¸ù¤·¤Æ¤¤¤ë¤Ê¤é¡¢F<utils/> ¥µ¥Ö¥Ç¥£¥ì¥¯¥È¥ê¤Ë¤¢¤ë
-B<perlbug> ¤¬¡¢¥Ğ¥°¥ì¥İ¡¼¥È¤ò¥á¡¼¥ë¤¹¤ë½õ¤±¤È¤·¤Æ»È¤¨¤Ş¤¹¡£
+ãƒã‚°ãƒ¬ãƒãƒ¼ãƒˆã¯ perlbug@perl.org ã«é€ã£ã¦ãã ã•ã„
+(perl ã‚½ãƒ¼ã‚¹ãƒ„ãƒªãƒ¼ã«ã‚ã‚‹ myconfig ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‹ C<perl -V> ã§å‡ºåŠ›ã•ã‚Œã‚‹
+å®Œå…¨ãªè¨­å®šæƒ…å ±ã‚’å«ã‚ã‚‹ã“ã¨ã‚’å¿˜ã‚Œãªã„ã§ãã ã•ã„)ã€‚
+ã‚‚ã— perl ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«æˆåŠŸã—ã¦ã„ã‚‹ãªã‚‰ã€F<utils/> ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹
+B<perlbug> ãŒã€ãƒã‚°ãƒ¬ãƒãƒ¼ãƒˆã‚’ãƒ¡ãƒ¼ãƒ«ã™ã‚‹åŠ©ã‘ã¨ã—ã¦ä½¿ãˆã¾ã™ã€‚
 
 =begin original
 
@@ -1165,9 +1165,9 @@ don't tell anyone I said that.
 
 =end original
 
-Perl ¤ÏËÜÅö¤Ï¡ÖÉÂÅªÀŞÃï¼çµÁ¥¬¥é¥¯¥¿½ĞÎÏµ¡¡×(Pathologically
-Eclectic Rubbish Lister) ¤ò°ÕÌ£¤·¤Æ¤¤¤Ş¤¹¤¬¡¢»ä¤¬¤½¤¦¤¤¤Ã¤¿
-»ö¤ò¤Ğ¤é¤·¤Æ¤Ï¤¤¤±¤Ş¤»¤ó¡£
+Perl ã¯æœ¬å½“ã¯ã€Œç—…çš„æŠ˜è¡·ä¸»ç¾©ã‚¬ãƒ©ã‚¯ã‚¿å‡ºåŠ›æ©Ÿã€(Pathologically
+Eclectic Rubbish Lister) ã‚’æ„å‘³ã—ã¦ã„ã¾ã™ãŒã€ç§ãŒãã†ã„ã£ãŸ
+äº‹ã‚’ã°ã‚‰ã—ã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚
 
 =head1 NOTES
 
@@ -1178,8 +1178,8 @@ how many more is left as an exercise to the reader.
 
 =end original
 
-Perl ¤Î¥â¥Ã¥È¡¼¤Ï¡Ö¤ä¤êÊı¤Ï 1 ÄÌ¤ê¤Ç¤Ï¤Ê¤¤¡£¡×¤È¤¤¤¦¤³¤È¤Ç¤¹¡£
-¤³¤Î¥Ş¥Ë¥å¥¢¥ë¤ò¡¢¸å¤¤¤¯¤Ä¤ËÊ¬³ä¤Ç¤­¤ë¤«¤Ï¡¢½ÉÂê¤È¤·¤Ş¤¹¡£
+Perl ã®ãƒ¢ãƒƒãƒˆãƒ¼ã¯ã€Œã‚„ã‚Šæ–¹ã¯ 1 é€šã‚Šã§ã¯ãªã„ã€‚ã€ã¨ã„ã†ã“ã¨ã§ã™ã€‚
+ã“ã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã‚’ã€å¾Œã„ãã¤ã«åˆ†å‰²ã§ãã‚‹ã‹ã¯ã€å®¿é¡Œã¨ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -1188,12 +1188,12 @@ Impatience, and Hubris.  See the Camel Book for why.
 
 =end original
 
-¥×¥í¥°¥é¥Ş¤Î 3 ¤Ä¤ÎÈşÆÁ¤Ï¡¢ÌµÀº¡¢Ã»µ¤¡¢ĞşËı¤Ç¤¹¡£
-ÍıÍ³¤Ï¡¢¥é¥¯¥ÀËÜ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+ãƒ—ãƒ­ã‚°ãƒ©ãƒã® 3 ã¤ã®ç¾å¾³ã¯ã€ç„¡ç²¾ã€çŸ­æ°—ã€å‚²æ…¢ã§ã™ã€‚
+ç†ç”±ã¯ã€ãƒ©ã‚¯ãƒ€æœ¬ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =begin meta
 
-Created: µÈÂ¼ ¼÷¿Í <JAE00534@niftyserve.or.jp> (5.000)
+Created: å‰æ‘ å¯¿äºº <JAE00534@niftyserve.or.jp> (5.000)
 Updated: Kentaro Shirakata <argrath@ub32.org> (5.10.0)
 License: GPL or Artistic
 

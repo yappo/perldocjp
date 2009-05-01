@@ -9,7 +9,7 @@ perlreftut - Mark's very short tutorial about references
 
 =end original
 
-perlreftut - Mark �ˤ���ե���󥹤˴ؤ���ȤƤ�û�����塼�ȥꥢ��
+perlreftut - Mark によるリファレンスに関するとても短いチュートリアル
 
 =head1 DESCRIPTION
 
@@ -26,15 +26,15 @@ it can be hard to tell what is important and what isn't.
 
 =end original
 
-Perl 5 �ˤ�����Ǥ���פʿ���ǽ�ΰ�Ĥϡ�¿���������ͥ��Ȥ���
-�ϥå���Τ褦��ʣ���ʥǡ�����¤�򰷤����ȤΤǤ���ǽ�ϤǤ���
-�������ǽ�Ȥ��뤿��ˡ�Perl 5 �ϡ֥�ե���󥹡פȸƤФ�뵡ǽ��Ƴ������
-�����ƥ�ե���󥹤�Ȥ����Ȥϡ�ʣ���ǹ�¤�����줿�ǡ�����Perl�ǰ������Ȥ�
-���Ǥ���
-��ǰ�ʤ��Ȥˡ��ؤ֤ˤϤ������ʹ�ʸ���������󤢤ꡢ�ᥤ���
-�ޥ˥奢��ڡ����ϥե���������Τ��񤷤����֤Ǥ���
-�ޥ˥奢��Ϥܴۤ����ǡ��Ȥ��Ȥ����ɼԤϲ������פǲ������פǤʤ�����
-��������Τ��񤷤��Τ�����򸫤Ĥ��뤳�Ȥ�����ޤ���
+Perl 5 における最も重要な新機能の一つは、多次元配列やネストした
+ハッシュのような複雑なデータ構造を扱うことのできる能力です。
+これらを可能とするために、Perl 5 は「リファレンス」と呼ばれる機能を導入し、
+そしてリファレンスを使うことは、複雑で構造化されたデータをPerlで扱うことの
+鍵です。
+残念なことに、学ぶにはおかしな構文がたくさんあり、メインの
+マニュアルページはフォローするのが難しい状態です。
+マニュアルはほぼ完璧で、ときとして読者は何が重要で何が重要でないかを
+説明するのが難しいので問題を見つけることがあります。
 
 =begin original
 
@@ -43,13 +43,13 @@ Fortunately, you only need to know 10% of what's in the main page to get
 
 =end original
 
-�����ˤ⡢�ᥤ��ڡ����ˤ��뤳�Ȥ� 10% ���Τ������ 90% �β��ä�
-�����뤳�Ȥ��Ǥ��ޤ���
-���Υڡ����ǤϤ��ʤ��ˤ��� 10% �򤪸������ޤ���
+幸運にも、メインページにあることの 10% を知るだけで 90% の恩恵を
+受けることができます。
+このページではあなたにその 10% をお見せします。
 
 =head1 Who Needs Complicated Data Structures?
 
-(ï��ʣ��ǡ�����¤��ɬ�פȤ��Ƥ����?)
+(誰が複合データ構造を必要としているの?)
 
 =begin original
 
@@ -59,10 +59,10 @@ values had to be scalars; they couldn't be lists.
 
 =end original
 
-Perl 4 �λ���ˤ��ä�����ΰ�Ĥ����ꥹ�Ȥ��ͤ���ä��ϥå����ɽ����
-�ɤΤ褦�˹Ԥ����Ȥ������ȤǤ�����
-Perl 4 �Ϥ������ϥå������äƤ��ޤ������������ͤ�
-������Ǥʤ���Фʤ餺���ꥹ�Ȥ�Ȥ����ȤϤǤ��ޤ���Ǥ�����
+Perl 4 の時代にあった問題の一つが、リストの値を持ったハッシュの表現を
+どのように行うかということでした。
+Perl 4 はもちろんハッシュを持っていましたが、その値は
+スカラでなければならず、リストを使うことはできませんでした。
 
 =begin original
 
@@ -71,9 +71,9 @@ have a file of city and country names, like this:
 
 =end original
 
-�ꥹ�ȤΥϥå����ʤ��Ȥ������ΤǤ��礦��?
-��ñ����ǹͤ��Ƥߤޤ��礦:
-���ʤ����ʲ��Τ褦���ԻԤȹ��̾���Υե��������äƤ����Ȥ��ޤ�:
+リストのハッシュをなぜ使いたいのでしょうか?
+簡単な例で考えてみましょう:
+あなたが以下のような都市と国の名前のファイルを持っていたとします:
 
 	Chicago, USA
 	Frankfurt, Germany
@@ -89,8 +89,8 @@ once, and then an alphabetical list of the cities in that country:
 
 =end original
 
-�����ơ��ʲ��Τ褦�ˡ���ϰ��٤�������Ƥ��ι���ԻԤ�����ե��٥åȽ��
-�����褦�ʽ��Ϥ��������ä��Ȥ��ޤ�:
+そして、以下のように、国は一度だけ現れてその国の都市がアルファベット順に
+現れるような出力を得たかったとします:
 
 	Finland: Helsinki.
 	Germany: Berlin, Frankfurt.
@@ -108,11 +108,11 @@ before you print it out.
 
 =end original
 
-�����Ԥ���������ˡ�ϡ����������̾���Ǥ���ϥå����Ȥ����ȤǤ���
-���̾���Ϥ��ι���ԻԤΥꥹ�Ȥ˴�Ϣ�դ����ޤ���
-���Ϥ��ɤि�Ӥ˹���ԻԤ�ʬ�䤷���������ԻԤ�ꥹ�Ȥ��ɲä��ޤ���
-���Ϥ��ɤ߽��������̾��̤�ϥå���򥤥ƥ졼�Ȥ��ơ����Ϥ������ԻԤ�
-�ƥꥹ�Ȥ򥽡��Ȥ��Ƥ��ޤ���
+これを行う自然な方法は、キーが国の名前であるハッシュを使うことです。
+国の名前はその国の都市のリストに関連付けられます。
+入力を読むたびに国と都市に分割し、新たな都市をリストに追加します。
+入力を読み終えたら通常通りハッシュをイテレートして、出力の前に都市の
+各リストをソートしてやります。
 
 =begin original
 
@@ -127,18 +127,18 @@ use them.
 
 =end original
 
-�⤷�ϥå�����ͤ��ꥹ�ȤˤǤ��ʤ���Ф��ʤ����餱�Ǥ���
-Perl 4 �Ǥϡ��ϥå�����ͤϥꥹ�ȤˤϤǤ�����ʸ�����������ǽ�Ǥ�����
-�����餯�Ϥ��٤Ƥ��ԻԤ��Ĥ�ʸ�����Ϣ�뤷�����Ϥ���Ȥ��ˤ���ʸ�����
-�ꥹ�Ȥ�ʬ�򤷤Ƥ��餽�Υꥹ�Ȥ򥽡��Ȥ��ơ����η�̤����ʸ������᤹
-ɬ�פ�����Ǥ��礦��
-����Ϥ狼��ˤ����ơ����顼��������ߤ䤹��������Ǥ���
-�ϥå�����ͤ�ꥹ�ȤˤǤ���������С��������Ǥ��봰���ʥꥹ�Ȥ�
-���Ǥ� Perl �ϻ��äƤ���Τǡ���������������ޤ�ޤ���
+もしハッシュの値がリストにできなければあなたの負けです。
+Perl 4 では、ハッシュの値はリストにはできず、文字列だけが可能でした。
+おそらくはすべての都市を一つの文字列に連結し、出力するときにその文字列を
+リストに分解してからそのリストをソートして、その結果を再度文字列へ戻す
+必要があるでしょう。
+これはわかりにくくて、エラーを持ち込みやすいやり方です。
+ハッシュの値をリストにできさえすれば、問題を解決できる完璧なリストを
+すでに Perl は持っているので、これは不満がたまります。
 
 =head1 The Solution
 
-(���ˡ)
+(解決法)
 
 =begin original
 
@@ -148,9 +148,9 @@ references.
 
 =end original
 
-Perl 5 �λ���Ǥ⡢���Ǥˤ��Υǥ�����˺��äƤ��ޤ���: �ϥå�����ͤ�
-������Ǥʤ���Фʤ�ʤ��ΤǤ���
-������褹��Τ���ե���󥹤Ǥ���
+Perl 5 の時代でも、すでにこのデザインに困っていました: ハッシュの値は
+スカラでなければならないのです。
+これを解決するのがリファレンスです。
 
 =begin original
 
@@ -163,13 +163,13 @@ you need is the easy, convenient scalar string "George Bush".
 
 =end original
 
-��ե���󥹤��������Τ�ϥå�������(�⤷���Ϥ���ʳ��β���)�� I<���Ȥ���>
-������Ǥ���
-̾���Ϥ��Ǥˤʤ��ߤο�����ե���󥹤ΰ��Ǥ���
-����ꥫ�罰��������Τ�ͤ��Ƥߤޤ��礦: �����Լ�ͳ�ʡ�������
-���ä��ޤǤ���
-����������ˤĤ��Ƹ��Ȥ��䥳��ԥ塼���ץ����������ɽ���Τ����
-ɬ�פʤΤϡ���ñ�ǡ������ʥ�����ʸ�����George Bush�פʤΤǤ���
+リファレンスは配列全体やハッシュ全体(もしくはそれ以外の何か)を I<参照する>
+スカラです。
+名前はすでになじみの深いリファレンスの一種です。
+アメリカ合衆国の大統領を考えてみましょう: 厄介で不自由な、血や骨の
+入った袋です。
+しかし、彼について語るときやコンピュータプログラムで彼を表すのために
+必要なのは、簡単で、便利なスカラ文字列「George Bush」なのです。
 
 =begin original
 
@@ -183,13 +183,13 @@ reference is still an easy, compact scalar value.
 
 =end original
 
-Perl �ˤ������ե���󥹤������ϥå����̾���˻��Ƥ��ޤ���
-������ Perl �Υץ饤�١��Ȥ�����Ū�ʤ�̾���ʤΤ�ۣ�椵���ʤ����Ȥ�
-�ݾڤǤ��ޤ���
-��George Bush�פȤϰۤʤꡢ��ĤΥ�ե���󥹤ϰ�ĤΤ�Τ������Ȥ��ޤ���
-�������Τ��Ĥ�̾���ǥꥫ�С��Ǥ��ޤ���
-�ϥå���ؤΥ�ե���󥹤���äƤ���С��ϥå������Τ�ꥫ�С��Ǥ��ޤ���
-����������ե���󥹤ϴ�ñ�ǡ�����ѥ��Ȥʥ������ͤʤΤǤ���
+Perl におけるリファレンスは配列やハッシュの名前に似ています。
+それらは Perl のプライベートで内部的なな名前なので曖昧さがないことを
+保証できます。
+「George Bush」とは異なり、一つのリファレンスは一つのものしか参照しません。
+配列全体を一つの名前でリカバーできます。
+ハッシュへのリファレンスを持っていれば、ハッシュ全体をリカバーできます。
+しかし、リファレンスは簡単で、コンパクトなスカラ値なのです。
 
 =begin original
 
@@ -201,13 +201,13 @@ it'll be just as useful as a hash of arrays.
 
 =end original
 
-���ʤ����ͤ�����Ǥ���ϥå������Ĥ��ȤϤǤ��ޤ���
-�ϥå�����ͤϥ�����Τ߲�ǽ�Ǥ���
-�錄�������Ϥ���˺��äƤ��ޤ���
-����������ĤΥ�ե���󥹤��������Τ򻲾Ȥ��뤳�Ȥ��Ǥ�����ե���󥹤�
-������ʤΤǡ�����ؤΥ�ե���󥹤Υϥå������Ĥ��Ȥ��Ǥ��ޤ���
-�����Ƥ��������Υϥå���Τ褦�˿����񤤡�����Υϥå���Ǥ��뤫�Τ褦��
-�����ʤΤǤ���
+あなたは値が配列であるハッシュを持つことはできません。
+ハッシュの値はスカラのみ可能です。
+わたしたちはそれに困っています。
+しかし、一つのリファレンスは配列全体を参照することができ、リファレンスは
+スカラなので、配列へのリファレンスのハッシュを持つことができます。
+そしてそれは配列のハッシュのように振る舞い、配列のハッシュであるかのように
+便利なのです。
 
 =begin original
 
@@ -216,12 +216,12 @@ some syntax for managing references.
 
 =end original
 
-�����ԻԤȹ������ˤϥ�ե���󥹤򰷤�����δ��Ĥ��ι�ʸ�򸫤����
-���ޤ���
+この都市と国の問題にはリファレンスを扱うための幾つかの構文を見た後で
+戻ります。
 
 =head1 Syntax
 
-(ʸˡ)
+(文法)
 
 =begin original
 
@@ -230,15 +230,15 @@ it once you have it.
 
 =end original
 
-��ե���󥹤���ˤ���Ĥ���ˡ�����ꡢ�Ȥ��ˤ���Ĥ���ˡ������ޤ���
+リファレンスを作るには二つの方法があり、使うにも二つの方法があります。
 
 =head2 Making References
 
-(��ե���󥹤���)
+(リファレンスを作る)
 
 =head3 B<Make Rule 1>
 
-(B<�����롼�� 1>)
+(B<作成ルール 1>)
 
 =begin original
 
@@ -247,8 +247,8 @@ reference to that variable.
 
 =end original
 
-�����ѿ�����Ƭ�� C<\> ��Ĥ���С������ѿ��ؤΥ�ե���󥹤�
-���뤳�Ȥ��Ǥ��ޤ���
+ある変数の先頭に C<\> をつければ、その変数へのリファレンスを
+得ることができます。
 
 =begin original
 
@@ -258,9 +258,9 @@ reference to that variable.
 
 =end original
 
-    $aref = \@array;         # $aref �� @array �ؤΥ�ե���󥹤��ݻ�����
-    $href = \%hash;          # $href �� %hash �ؤΥ�ե���󥹤��ݻ�����
-    $sref = \$scalar;        # $sref �� $scalar �ؤΥ�ե���󥹤��ݻ�����
+    $aref = \@array;         # $aref は @array へのリファレンスを保持する
+    $href = \%hash;          # $href は %hash へのリファレンスを保持する
+    $sref = \$scalar;        # $sref は $scalar へのリファレンスを保持する
 
 =begin original
 
@@ -269,8 +269,8 @@ can copy it or store it just the same as any other scalar value:
 
 =end original
 
-$aref �� $href �Τ褦���ѿ��˥�ե���󥹤��Ǽ���ꤷ�ޤ��С�
-�������ѿ��Τ褦�˥��ԡ��������Ǽ���뤳�Ȥ��Ǥ��ޤ�:
+$aref や $href のような変数にリファレンスを格納指定しまえば、
+スカラ変数のようにコピーしたり格納することができます:
 
 =begin original
 
@@ -280,9 +280,9 @@ $aref �� $href �Τ褦���ѿ��˥�ե���󥹤��Ǽ���ꤷ�ޤ��С�
 
 =end original
 
-    $xy = $aref;             # $xy �� @array �ؤΥ�ե���󥹤��ݻ�����
-    $p[3] = $href;           # $p[3] �� %hash �ؤΥ�ե���󥹤��ݻ�����
-    $z = $p[3];              # $z �� %hash �ؤΥ�ե���󥹤��ݻ�����
+    $xy = $aref;             # $xy は @array へのリファレンスを保持する
+    $p[3] = $href;           # $p[3] は %hash へのリファレンスを保持する
+    $z = $p[3];              # $z は %hash へのリファレンスを保持する
 
 =begin original
 
@@ -294,12 +294,12 @@ variable first.
 
 =end original
 
-��������ϡ�̾����Ȥä��ѿ��ؤΥ�ե���󥹤�����ˡ��
-�㼨�����ΤǤ�����
-�Ȥ��Ȥ��ơ�̾������äƤ��ʤ������ϥå�����ꤿ���Ȥ���
-���뤫�⤷��ޤ���
-����ϡ�ʸ���� C<"\n"> �䡢���� 80 �򡢰�ö̾���դ��ѿ����ݴɤ���
-ɬ�פʤ��˻Ȥ���褦�ˤ�����ˡ�Ȼ��Ƥ��ޤ���
+これらの例は、名前を使って変数へのリファレンスを作る方法を
+例示するものでした。
+ときとして、名前を持っていない配列やハッシュを作りたいときが
+あるかもしれません。
+これは、文字列 C<"\n"> や、数値 80 を、一旦名前付き変数に保管する
+必要なしに使えるようにする方法と似ています。
 
 =begin comment
 
@@ -309,7 +309,7 @@ B<Make Rule 2>
 
 =head3 B<Make Rule 2>
 
-(B<�����롼�� 2>)
+(B<作成ルール 2>)
 
 =begin original
 
@@ -319,9 +319,9 @@ reference to that hash.
 
 =end original
 
-C<[ ITEMS ]> �Ͽ�����̵̾������ꡢ��������ؤΥ�ե���󥹤��֤��ޤ���
-C<{ ITEMS }> �Ͽ�����̵̾�ϥå�����ꡢ���Υϥå���ؤΥ�ե���󥹤�
-�֤��ޤ���
+C<[ ITEMS ]> は新たな無名配列を作り、その配列へのリファレンスを返します。
+C<{ ITEMS }> は新たな無名ハッシュを作り、そのハッシュへのリファレンスを
+返します。
 
 =begin original
 
@@ -331,7 +331,7 @@ C<{ ITEMS }> �Ͽ�����̵̾�ϥå�����ꡢ���Υϥå���ؤΥ�ե���󥹤�
 =end original
 
     $aref = [ 1, "foo", undef, 13 ];  
-    # $aref ������ؤΥ�ե���󥹤��ݻ����Ƥ���
+    # $aref は配列へのリファレンスを保持している
 
 =begin original
 
@@ -341,7 +341,7 @@ C<{ ITEMS }> �Ͽ�����̵̾�ϥå�����ꡢ���Υϥå���ؤΥ�ե���󥹤�
 =end original
 
     $href = { APR => 4, AUG => 8 };   
-    # $href �ϥϥå���ؤΥ�ե���󥹤��ݻ����Ƥ���
+    # $href はハッシュへのリファレンスを保持している
 
 =begin original
 
@@ -350,8 +350,8 @@ references that you get from rule 1:
 
 =end original
 
-�롼�� 2 �ˤ�ä�������ե���󥹤ϥ롼�� 1 �ˤ�ä�����Ʊ���
-��ե���󥹤�Ʊ���Ǥ�:
+ルール 2 によって得たリファレンスはルール 1 によって得た同種の
+リファレンスと同じです:
 
 =begin original
 
@@ -360,7 +360,7 @@ references that you get from rule 1:
 
 =end original
 
-	# �����:
+	# これは:
 	$aref = [ 1, 2, 3 ];
 
 =begin original
@@ -371,7 +371,7 @@ references that you get from rule 1:
 
 =end original
 
-	# �����Ʊ��:
+	# これと同じ:
 	@array = (1, 2, 3);
 	$aref = \@array;
 
@@ -382,8 +382,8 @@ that it doesn't create the superfluous array variable C<@array>.
 
 =end original
 
-�ǽ�ιԤ�³����Ԥ�û��������Τǡ�C<@array> �Ȥ���;ʬ�������ѿ���
-���ޤ���
+最初の行は続く二行を短くしたもので、C<@array> という余分な配列変数を
+作りません。
 
 =begin original
 
@@ -392,13 +392,13 @@ If you write just C<{}>, you get a new, empty anonymous hash.
 
 =end original
 
-C<[]> �Ƚ񤤤����ˤϿ����ʶ���̵̾���������ޤ���
-C<{}> �Ƚ񤤤����ˤϿ����ʶ���̵̾�ϥå��夬�����ޤ���
+C<[]> と書いた場合には新たな空の無名配列が得られます。
+C<{}> と書いた場合には新たな空の無名ハッシュが得られます。
 
 
 =head2 Using References
 
-(��ե���󥹤�Ȥ�)
+(リファレンスを使う)
 
 =begin original
 
@@ -408,14 +408,14 @@ again just like any scalar.  There are just two more ways to use it:
 
 =end original
 
-��ե���󥹤�������Ǥ�����Ф��ƤǤ��뤳�Ȥ�?
-��ե���󥹤ϥ������ͤǤ��ꡢ������Ǥ��뤫�Τ褦�˳�Ǽ������
-�ͤ�������Ǥ��뤳�Ȥ򸫤Ƥ��ޤ�����
-��ե���󥹤�Ȥ��ˤ�¾����Ĥ���ˡ������ޤ���
+リファレンスを得た後でそれに対してできることは?
+リファレンスはスカラ値であり、スカラであるかのように格納したり
+値を得たりできることを見てきました。
+リファレンスを使うには他に二つの方法があります。
 
 =head3 B<Use Rule 1>
 
-(B<���ѥ롼�� 1>)
+(B<使用ルール 1>)
 
 =begin original
 
@@ -424,9 +424,9 @@ the name of an array.  For example, C<@{$aref}> instead of C<@array>.
 
 =end original
 
-����Υ�ե���󥹤������̾�����֤������ǥ����꡼�֥졼�������
-�Ȥ����Ȥ��Ǥ��ޤ���
-���Ȥ��С�C<@array> ������� C<@{$aref}> �Ȥ��ޤ���
+配列のリファレンスを、配列の名前が置かれる場所でカーリーブレースの中で
+使うことができます。
+たとえば、C<@array> の代わりに C<@{$aref}> とします。
 
 =begin original
 
@@ -434,7 +434,7 @@ Here are some examples of that:
 
 =end original
 
-�ʲ������󤲤ޤ�:
+以下に例を挙げます:
 
 =begin original
 
@@ -442,7 +442,7 @@ Arrays:
 
 =end original
 
-����:
+配列:
 
 =begin original
 
@@ -453,10 +453,10 @@ Arrays:
 
 =end original
 
-	@a		@{$aref}		����
-	reverse @a	reverse @{$aref}	�����ȿž����
-	$a[3]		${$aref}[3]		���������
-	$a[3] = 17;	${$aref}[3] = 17	���Ǥ�����
+	@a		@{$aref}		配列
+	reverse @a	reverse @{$aref}	配列を反転する
+	$a[3]		${$aref}[3]		配列の要素
+	$a[3] = 17;	${$aref}[3] = 17	要素の代入
 
 =begin original
 
@@ -468,11 +468,11 @@ things to the arrays.
 
 =end original
 
-�ƹԤ���Ĥμ���Ʊ�����Ȥ�Ԥ��ޤ���
-��¦�Τ�Τ� C<@a> �Ȥ���������Ф������ǡ���¦�Τ�Τ� C<$aref> �ˤ�ä�
-���Ȥ����������Ф������Ǥ���
-���������򸫤Ĥ���С�ξ���ΥС�������������Ф���Ʊ�����Ȥ�
-�Ԥ��ޤ���
+各行の二つの式は同じことを行います。
+左側のものは C<@a> という配列に対する操作で、右側のものは C<$aref> によって
+参照される配列に対する操作です。
+操作される配列を見つければ、両方のバージョンは配列に対して同じことを
+行います。
 
 =begin original
 
@@ -480,7 +480,7 @@ Using a hash reference is I<exactly> the same:
 
 =end original
 
-�ϥå���Υ�ե���󥹤�Ȥ����Ȥ� I<�ޤä���> Ʊ���Ǥ�:
+ハッシュのリファレンスを使うことも I<まったく> 同じです:
 
 =begin original
 
@@ -491,10 +491,10 @@ Using a hash reference is I<exactly> the same:
 
 =end original
 
-	%h		%{$href}	      �ϥå���
-	keys %h		keys %{$href}	      �ϥå��夫�饭��������
-	$h{'red'}	${$href}{'red'}       �ϥå��������
-	$h{'red'} = 17	${$href}{'red'} = 17  ���Ǥؤ�����
+	%h		%{$href}	      ハッシュ
+	keys %h		keys %{$href}	      ハッシュからキーを得る
+	$h{'red'}	${$href}{'red'}       ハッシュの要素
+	$h{'red'} = 17	${$href}{'red'} = 17  要素への代入
 
 =begin original
 
@@ -507,12 +507,12 @@ would write
 
 =end original
 
-��ե���󥹤��Ф��ƹԤ��������ȤϤ��٤ơ�L<Use Rule 1> ��
-�ɤΤ褦�˹Ԥ�������������Ƥ��ޤ���
-�̾�������ϥå�����Ф���Ʊ�����Ȥ�Ԥ��褦�� Perl �����ɤ�񤭡�����
-�����ϥå�����ե���� C<{$reference}> ���֤�������ΤǤ���
-�ֻ䤬���äƤ���Τ���ե���󥹤Ǥ���Ȥ���������Ф��ƥ롼�פ���ˤ�?��
-������������Ф��ƥ롼�פ���ˤϼ��Τ褦�˽񤯤Ǥ��礦
+リファレンスに対して行いたいことはすべて、L<Use Rule 1> で
+どのように行うかが説明されています。
+通常の配列やハッシュに対して同じことを行うような Perl コードを書き、その
+配列やハッシュをリファレンス C<{$reference}> で置き換えるのです。
+「私が持っているのがリファレンスであるとき、配列に対してループするには?」
+そう、配列に対してループするには次のように書くでしょう
 
         for my $element (@array) {
            ...
@@ -524,7 +524,7 @@ so replace the array name, C<@array>, with the reference:
 
 =end original
 
-�����Ƥ�������̾ C<@array> ���ե���󥹤��֤������ޤ�:
+そしてこの配列名 C<@array> をリファレンスで置き換えます:
 
         for my $element (@{$aref}) {
            ...
@@ -537,8 +537,8 @@ reference?"  First write the code for printing out a hash:
 
 =end original
 
-�ֻ䤬���äƤ���Τ���ե���󥹤Ǥ���Ȥ����ϥå�������Ƥ���Ϥ���ˤ�?��
-�ޤ��Ϥ���˥ϥå������Ϥ��륳���ɤ�񤭤ޤ�:
+「私が持っているのがリファレンスであるとき、ハッシュの内容を出力するには?」
+まずはじめにハッシュを出力するコードを書きます:
 
         for my $key (keys %hash) {
           print "$key => $hash{$key}\n";
@@ -550,7 +550,7 @@ And then replace the hash name with the reference:
 
 =end original
 
-�����ƥϥå����̾�����ե���󥹤��֤������ޤ�:
+そしてハッシュの名前をリファレンスで置き換えます:
 
         for my $key (keys %{$href}) {
           print "$key => ${$href}{$key}\n";
@@ -558,7 +558,7 @@ And then replace the hash name with the reference:
 
 =head3 B<Use Rule 2>
 
-(B<���ѥ롼�� 2>)
+(B<使用ルール 2>)
 
 =begin original
 
@@ -570,11 +570,11 @@ abbreviation.
 
 =end original
 
-L<Use Rule 1> �Ϥ��ʤ����ºݤ�ɬ�פȤ��뤹�٤ƤǤ���
-�ʤ��ʤ顢��ե���󥹤ˤĤ���ɬ�פȤʤ뤳�Ȥ��٤Ƥ��������Ƥ��뤫��Ǥ���
-�������������ϥå���ˤĤ��ƹԤ��������Ȥ�����ʬ�ϰ�Ĥ����Ǥ�
-���Ф����Ȥǡ�L<Use Rule 1> �ε�ˡ�ϰ����ˤ�����ΤǤ���
-���Τ��ᡢά��ˡ������ޤ���
+L<Use Rule 1> はあなたが実際に必要とするすべてです。
+なぜなら、リファレンスについて必要となることすべてを説明しているからです。
+しかし、配列やハッシュについて行いたいことの大部分は一つの要素を
+取り出すことで、L<Use Rule 1> の記法は扱いにくいものです。
+そのため、略記法があります。
 
 =begin original
 
@@ -583,8 +583,8 @@ instead.
 
 =end original
 
-C<${$aref}[3]> ���ɤߤŤ餤�Τǡ������ C<< $aref->[3] >> �Ƚ񤯤��Ȥ�
-�Ǥ��ޤ���
+C<${$aref}[3]> は読みづらいので、代わりに C<< $aref->[3] >> と書くことが
+できます。
 
 =begin original
 
@@ -593,8 +593,8 @@ C<< $href->{red} >> instead.
 
 =end original
 
-C<${$href}{red}> ���ɤߤŤ餤�Τǡ������ C<< $href->{red} >> ��
-�񤯤��Ȥ��Ǥ��ޤ���
+C<${$href}{red}> は読みづらいので、代わりに C<< $href->{red} >> と
+書くことができます。
 
 =begin original
 
@@ -606,12 +606,12 @@ same way that C<$item> and C<@item> are.
 
 =end original
 
-C<$aref> ������ؤΥ�ե���󥹤��ݻ����Ƥ���Ȥ���C<< $aref->[3] >> ��
-��������λ����ܤ����ǤǤ���
-����� C<$aref[3]> ��Ʊ���ʤ��Ǥ���������
-��Ԥ� C<@aref> �Ȥ���̾���ΤĤ�������λ����ܤ����ǤǤ���
-C<$aref> �� C<@aref> �ϡ�C<$item> �� C<@item> �������Ǥ���褦��
-̵�ط��ʤ�ΤǤ���
+C<$aref> が配列へのリファレンスを保持しているとき、C<< $aref->[3] >> は
+その配列の四番目の要素です。
+これと C<$aref[3]> を混同しないでください。
+後者は C<@aref> という名前のついた配列の四番目の要素です。
+C<$aref> と C<@aref> は、C<$item> と C<@item> がそうであるように
+無関係なものです。
 
 =begin original
 
@@ -625,16 +625,16 @@ to use.
 
 =end original
 
-Ʊ�ͤˡ�C<< $href->{'red'} >> �ϥ������ѿ� C<$href> �ˤ�äƻ��Ȥ����
-�ϥå���(�����餯��̾���Τʤ����)�ΰ���ʬ�Ǥ���
-C<$href{'red'}> �� C<%href> �Ȥ���̾���ΤĤ����ϥå���ΰ����Ǥ���
-C<< -> >> �ϤĤ�˺��䤹�����⤷�Ĥ�˺�줿�ʤ�Ф��ʤ��Υץ�����ब�����
-�ϥå�������Ǥ���Ф����Ȥ����Ȥ��ˡ�ͽ�����Ƥ��ʤ��ϥå���������
-���������������Ȥˤ���̯�ʷ�̤����뤳�Ȥˤʤ�Ǥ��礦��
+同様に、C<< $href->{'red'} >> はスカラ変数 C<$href> によって参照される
+ハッシュ(おそらくは名前のないもの)の一部分です。
+C<$href{'red'}> は C<%href> という名前のついたハッシュの一部です。
+C<< -> >> はつけ忘れやすく、もしつけ忘れたならばあなたのプログラムが配列や
+ハッシュの要素を取り出そうとしたときに、予期していないハッシュや配列を
+アクセスしたことによる奇妙な結果を得ることになるでしょう。
 
 =head2 An Example
 
-(��)
+(例)
 
 =begin original
 
@@ -642,7 +642,7 @@ Let's see a quick example of how all this is useful.
 
 =end original
 
-���줬�ɤ�ʤ������ʤ��Ȥ������󤲤ƤߤƤߤޤ��礦��
+これがどんなに便利なことかを例を挙げてみてみましょう。
 
 =begin original
 
@@ -651,8 +651,8 @@ C<(1, 2, 3)>, and gives you a reference to that array.
 
 =end original
 
-�ޤ��Ϥ���ˡ�C<[1, 2, 3]> �� C<(1, 2, 3)> ���鹽�������̵̾�����
-���Ф�������������Ф����ե���󥹤�Ϳ���뤳�Ȥ�פ��Ф��Ƥ���������
+まずはじめに、C<[1, 2, 3]> が C<(1, 2, 3)> から構成される無名配列を
+作り出し、その配列に対するリファレンスを与えることを思い出してください。
 
 =begin original
 
@@ -660,7 +660,7 @@ Now think about
 
 =end original
 
-�����ǰʲ��ˤĤ��ƹͤ��ޤ�
+ここで以下について考えます
 
 	@a = ( [1, 2, 3],
                [4, 5, 6],
@@ -674,8 +674,8 @@ another array.
 
 =end original
 
-@a�ϻ��Ĥ����Ǥ�������ǡ��������ǤϤ��줾���̤�������Ф���
-��ե���󥹤Ǥ���
+@aは三つの要素をもつ配列で、その要素はそれぞれ別の配列に対する
+リファレンスです。
 
 =begin original
 
@@ -689,15 +689,15 @@ or set the element in any row and any column of the array.
 
 =end original
 
-C<$a[1]> �Ϥ��Τ褦�ʥ�ե���󥹤ΰ�ĤǤ���
-����� C<(4,5,6)> ����ʤ�����򻲾Ȥ��ޤ���
-���������ؤΥ�ե���󥹤ǡ�L<Use Rule 2> �Ϥ��Τ褦��������軰���Ǥ�
-���뤿��� C<< $a[1]->[2] >> �Ƚ񤱤뤳�Ȥ�Ҥ٤Ƥ����Τǡ�
-C<< $a[1]->[2] >> �� 6 �ˤʤ�ޤ���
-Ʊ�ͤˡ�C<< $a[0]->[1] >> �� 2 �Ǥ���
-�����ǻ䤿����������Τ��󼡸�����Τ褦�ʤ�ΤǤ�;
-�����Ǥ�դιԤ�Ǥ�դ���ˤ������Ǥ������ꡢ����˥��åȤ����ꤹ��Τ�
-C<< $a[ROW]->[COLUMN] >> �Ƚ񤯤��Ȥ��Ǥ��ޤ���
+C<$a[1]> はそのようなリファレンスの一つです。
+これは C<(4,5,6)> からなる配列を参照します。
+これは配列へのリファレンスで、L<Use Rule 2> はそのような配列の第三要素を
+得るために C<< $a[1]->[2] >> と書けることを述べていたので、
+C<< $a[1]->[2] >> は 6 になります。
+同様に、C<< $a[0]->[1] >> は 2 です。
+ここで私たちが得たものは二次元配列のようなものです;
+配列の任意の行の任意の列にある要素を得たり、それにセットしたりするのに
+C<< $a[ROW]->[COLUMN] >> と書くことができます。
 
 =begin original
 
@@ -706,11 +706,11 @@ abbreviation:
 
 =end original
 
-���ε�ˡ�Ϥޤ����������ˤ�����ΤʤΤǡ�ά��ˡ������ޤ�:
+この記法はまだ少々扱いにくいものなので、略記法があります:
 
 =head2 Arrow Rule
 
-(����Υ롼��)
+(矢印のルール)
 
 =begin original
 
@@ -718,7 +718,7 @@ In between two B<subscripts>, the arrow is optional.
 
 =end original
 
-����ϡ���Ĥ� B<ź����> �δ֤ˤ���Τʤ顢��ά�Ǥ��ޤ���
+矢印は、二つの B<添え字> の間にあるのなら、省略できます。
 
 =begin original
 
@@ -728,10 +728,10 @@ C<$a[0][1] = 23>; it means the same thing.
 
 =end original
 
-C<< $a[1]->[2] >> �� C<$a[1][2]> �Ƚ񤯤��Ȥ��Ǥ��ޤ�;
-������Ʊ�����Ȥ��̣���ޤ���
-C<< $a[0]->[1] = 23 >> �Ƚ������ C<$a[0][1] = 23> �ȤǤ��ޤ���
-������Ʊ�����ȤǤ���
+C<< $a[1]->[2] >> は C<$a[1][2]> と書くことができます;
+これらは同じことを意味します。
+C<< $a[0]->[1] = 23 >> と書く代わりに C<$a[0][1] = 23> とできます。
+これらは同じことです。
 
 =begin original
 
@@ -739,7 +739,7 @@ Now it really looks like two-dimensional arrays!
 
 =end original
 
-������������󼡸�����餷���ʤ�ޤ���!
+これで本当に二次元配列らしくなりました!
 
 =begin original
 
@@ -750,15 +750,15 @@ the unreadable C<${${$x[2]}[3]}[5]>.
 
 =end original
 
-��������פʤ��Ȥ�����Ǥ狼��ޤ���
-�⤷������ʤ���С�C<$a[1][2]> ������� C<${$a[1]}[2]> ��
-�񤫤ʤ���Фʤ�ޤ���
-����������Ǥϡ�C<${${$x[2]}[3]}[5]> �Τ褦���ɤߤŤ餤��ΤǤϤʤ���
-C<$x[2][3][5]> �ȤǤ��ޤ���
+矢印が重要なことがこれでわかります。
+もし矢印がなければ、C<$a[1][2]> の代わりに C<${$a[1]}[2]> と
+書かなければなりません。
+三次元配列では、C<${${$x[2]}[3]}[5]> のような読みづらいものではなくて
+C<$x[2][3][5]> とできます。
 
 =head1 Solution
 
-(����)
+(答え)
 
 =begin original
 
@@ -767,8 +767,8 @@ file of city and country names.
 
 =end original
 
-�ʲ��������α���Ƥ���������Ф�������Ǥ���
-�ԻԤȹ��̾���Υե�����κƥե����ޥåȤ�Ԥ���ΤǤ���
+以下は先に保留していた問題に対する解答です。
+都市と国の名前のファイルの再フォーマットを行うものです。
 
     1   my %table;
 
@@ -797,12 +797,12 @@ structure will look like this:
 
 =end original
 
-�ץ���������Ĥ���ʬ���鹽������Ƥ��ޤ�: 2 ���ܤ��� 7 ���ܤ����Ϥ�
-�ɤ߹���ǥǡ�����¤���ۤ��ޤ���
-������ 8 ���ܤ��� 13 ���ܤǥǡ�������Ϥ��Ʒ�̤���Ϥ��ޤ���
-�錄�������Ϥ����ǡ������Ȥ��ƹ��̾����������ͤȤ����Ի�̾�Υꥹ�Ȥؤ�
-��ե���󥹤���ĥϥå��� C<%table> �������Ȥ��Ƥ��ޤ���
-�ǡ�����¤�ϰʲ��Τ褦�ʤ�ΤǤ�:
+プログラムは二つの部分から構成されています: 2 行目から 7 行目は入力を
+読み込んでデータ構造を構築します。
+そして 8 行目から 13 行目でデータを解析して結果を出力します。
+わたしたちはここで、キーとして国の名前を持ち、値として都市名のリストへの
+リファレンスを持つハッシュ C<%table> を作ろうとしています。
+データ構造は以下のようなものです:
 
            %table
         +-------+---+
@@ -826,9 +826,9 @@ how do we print it out?
 
 =end original
 
-�ǽ�˽��Ϥ򸫤ޤ��礦��
-�����ǡ����Ǥ˾嵭�ι�¤���Ǥ��Ƥ���Ȥ��ޤ���
-�ɤΤ褦�˽��Ϥ���ΤǤ��礦��?
+最初に出力を見ましょう。
+ここで、すでに上記の構造ができているとします。
+どのように出力するのでしょうか?
 
     8   foreach $country (sort keys %table) {
     9     print "$country: ";
@@ -850,13 +850,13 @@ C<@{$table{$country}}>.  Line 10 is just like
 
 =end original
 
-C<%table> ���̾�Υϥå���ǡ��������饭���Υꥹ�Ȥ����Ƥ���򥽡��Ȥ���
-�̾��̤ꥭ�����Ф��ƥ롼�פ��ޤ���
-��ե���󥹤� 10 ���ܤǤ����Ȥ��Ƥ��ޤ���
-C<$table{$country}> �ϥϥå���� C<$country> �����򻲾Ȥ��ޤ���
-����Ϥ��ι���ԻԤ�������Ф����ե���󥹤Ǥ���
-L<Use Rule 1> ������� C<@{$table{$country}}> �Ǽ��Ф���Ȥ��äƤ��ޤ���
-10���ܤ�
+C<%table> は通常のハッシュで、そこからキーのリストを得てそれをソートして
+通常通りキーに対してループします。
+リファレンスは 10 行目でだけ使われています。
+C<$table{$country}> はハッシュの C<$country> キーを参照します。
+これはその国の都市の配列に対するリファレンスです。
+L<Use Rule 1> は配列を C<@{$table{$country}}> で取り出せるといっています。
+10行目は
 
 	@cities = @array;
 
@@ -869,11 +869,11 @@ out as usual.
 
 =end original
 
-��Ʊ���褦�ʤ�ΤǤ�����C<array> �Ȥ���̾���� C<{$table{$country}}> �Ȥ���
-��ե���󥹤��֤��������Ƥ��ޤ���
-C<@> �� Perl ���������Τ���Ф����Ȥ�ؼ����Ƥ��ޤ���
-�ԻԤΥꥹ�Ȥ������餽��򥽡��Ȥ��ơ��Ĥʤ����������̾��Ʊ���褦��
-���Ϥ��ޤ���
+と同じようなものですが、C<array> という名前が C<{$table{$country}}> という
+リファレンスに置き換えられています。
+C<@> は Perl に配列全体を取り出すことを指示しています。
+都市のリストを得たらそれをソートして、つなげ、そして通常と同じように
+出力します。
 
 =begin original
 
@@ -882,8 +882,8 @@ place.  Here they are again:
 
 =end original
 
-2 ���ܤ��� 7 ���ܤϹ�¤���ۤ��Ƥ�����ʬ�Ǥ���
-�ƷǤ��ޤ�:
+2 行目から 7 行目は構造を構築している部分です。
+再掲します:
 
     2   while (<>) {
     3    chomp;
@@ -902,11 +902,11 @@ the hash under the appropriate key.
 
 =end original
 
-2 ���ܤ��� 4 ���ܤ��ԻԤȹ��̾�������Ƥ��ޤ���
-5p���ܤϤ��ι񤬤��Ǥ˥ϥå���Υ����Ȥ���¸�ߤ��Ƥ��뤫�ɤ����򸫤Ƥ��ޤ���
-�⤷¸�ߤ��Ƥ��ʤ���С��ץ�������[]��ˡ(L<Make Rule 2>)��Ȥäƿ�����
-�����ԻԤ���Ǽ�����̵̾�������Ф��ޤ���
-�����ơ���ե���󥹤������Ŭ�ڤʥ����˥��åȤ��ޤ���
+2 行目から 4 行目は都市と国の名前を得ています。
+5p行目はその国がすでにハッシュのキーとして存在しているかどうかを見ています。
+もし存在していなければ、プログラムは[]記法(L<Make Rule 2>)を使って新しい
+空の都市が格納される無名配列を作り出します。
+そして、リファレンスを配列の適切なキーにセットします。
 
 =begin original
 
@@ -916,10 +916,10 @@ in that country so far.  Line 6 is exactly like
 
 =end original
 
-6���ܤ��Ի�̾���б���������˥��󥹥ȡ��뤷�ޤ���
-C<$table{$country}> �Ϥ����Ǥ��ι���ԻԤ�������Ф����ե���󥹤�
-�ݻ����Ƥ��ޤ���
-6 ���ܤ�
+6行目は都市名を対応する配列にインストールします。
+C<$table{$country}> はここでその国の都市の配列に対するリファレンスを
+保持しています。
+6 行目は
 
 	push @array, $city;
 
@@ -931,9 +931,9 @@ referred-to array.
 
 =end original
 
-�Τ褦�ʤ�ΤǤ������ۤʤ�Τ� C<array> �� C<{$table{$country}}> �Ȥ���
-��ե���󥹤��֤�����äƤ������Ǥ���
-C<push> ���Ի�̾�򻲾Ȥ���Ƥ���������������ɲä��ޤ���
+のようなものですが、異なるのは C<array> が C<{$table{$country}}> という
+リファレンスに置き換わっている点です。
+C<push> は都市名を参照されている配列の末尾に追加します。
 
 =begin original
 
@@ -942,8 +942,8 @@ get rid of it.
 
 =end original
 
-�����åפ�����������ޤ���
-5 ���ܤ���ɬ�פʤΤǡ����������Ȥ��Ǥ��ޤ���
+スキップした点があります。
+5 行目は不必要なので、取り除くことができます。
 
     2   while (<>) {
     3    chomp;
@@ -963,12 +963,12 @@ C<$country> holds a key, say C<Greece>, that is not yet in C<%table>?
 
 =end original
 
-C<%table> ����˸��ߤ� C<$country> �Τ���Υ���ȥ꤬���Ǥ�¸�ߤ��Ƥ����
-�ۤʤ����Ϥ���ޤ���
-6 ���ܤ�����ؤΥ�ե���󥹤Ǥ��� C<$table{$country}> ���ͤ����ܤ���
-��������� C<$city> ��ץå��夷�ޤ���
-��������C<$country> �� C<%table> ����ˤʤ� C<Greece> �Τ褦�ʥ�����
-�ݻ����Ƥ����鲿�򤹤�ΤǤ��礦��?
+C<%table> の中に現在の C<$country> のためのエントリがすでに存在していれば
+異なる点はありません。
+6 行目は配列へのリファレンスである C<$table{$country}> の値に注目し、
+その配列に C<$city> をプッシュします。
+しかし、C<$country> が C<%table> の中にない C<Greece> のようなキーを
+保持していたら何をするのでしょうか?
 
 =begin original
 
@@ -985,22 +985,22 @@ element longer to hold the new city name.
 
 =end original
 
-����� Perl �Ǥ�; �Ǥ����顢���������������Ȥ�Ԥ��ޤ���
-¸�ߤ��Ƥ��ʤ������ Athens ��ץå��夷�褦�Ȥ���Τǡ�����������
-̵̾����򤢤ʤ��Τ���˺��Ф��Ƥ���� C<%table> �˥��󥹥ȡ��뤷�ޤ���
-�����Ƥ��줫�� C<Athens> �򤽤��˥ץå��夷�ޤ���
-����� `autovivification' �ȸƤФ�ޤ���
-Perl �ϥϥå������ˤ����Υ�����¸�ߤ��ʤ����Ȥ��ǧ�����������ϥå���
-����ȥ��ưŪ�˺��Ф��ޤ���
-Perl �Ϥ��ʤ����ϥå�����ͤ�����Ȥ��ư��������äƤ��뤳�Ȥ�
-�ΤäƤ���Τǡ������������������Ф��ƥϥå������ˤ�����Ф���
-��ե���󥹤�ưŪ�˥��󥹥ȡ��뤷�ޤ���
-���Ĥ��Ʊ���褦�ˡ�Perl�Ͽ������Ի�̾���ݻ���������Ǥ������
-���Ф��ޤ���
+これは Perl です; ですから、本当に正しいことを行います。
+存在していない配列に Athens をプッシュしようとするので、新しく空の
+無名配列をあなたのために作り出してそれを C<%table> にインストールします。
+そしてそれから C<Athens> をそこにプッシュします。
+これは `autovivification' と呼ばれます。
+Perl はハッシュの中にそれらのキーが存在しないことを確認し、新しいハッシュ
+エントリを自動的に作り出します。
+Perl はあなたがハッシュの値を配列として扱いたがっていることを
+知っているので、新しい空の配列を作り出してハッシュの中にそれに対する
+リファレンスを自動的にインストールします。
+いつもと同じように、Perlは新たな都市名を保持する一要素の配列を
+作り出します。
 
 =head1 The Rest
 
-(�Ĥ�)
+(残り)
 
 =begin original
 
@@ -1011,11 +1011,11 @@ L<perlref> manual page, which discusses 100% of the details.
 
 =end original
 
-�錄���Ϥ��ʤ��� 10% �ξܺ٤� 90% �����פ����뤳�Ȥ���«���ޤ�����
-�����Ƥ���Ͼܺ٤� 90% �򤽤Τޤޤˤ��Ƥ���Ȥ������ȤǤ���
-�������ʤ��Ͻ��פ���ʬ�򸫤Ƥ��ޤ�����
-����ˤ��ܺ٤�100% ��Ҥ٤Ƥ��� L<perlref> man �ڡ��������ñ��
-�ɤळ�Ȥ��Ǥ���褦�ˤʤä��Ǥ��礦��
+わたしはあなたに 10% の詳細で 90% の利益を得ることを約束しました。
+そしてそれは詳細の 90% をそのままにしているということです。
+今、あなたは重要な部分を見てきました。
+それにより詳細の100% を述べている L<perlref> man ページをより簡単に
+読むことができるようになったでしょう。
 
 =begin original
 
@@ -1023,7 +1023,7 @@ Some of the highlights of L<perlref>:
 
 =end original
 
-L<perlref> �Υϥ��饤�Ȥδ��Ĥ���󤲤Ƥ����ޤ�:
+L<perlref> のハイライトの幾つかを挙げておきます:
 
 =over 4
 
@@ -1036,8 +1036,8 @@ other references.
 
 =end original
 
-Ǥ�դΤ�Τ��Ф����ե���󥹤�������뤳�Ȥ��Ǥ��ޤ���
-�����ˤϥ����顢�ؿ���¾�Υ�ե���󥹤�ޤޤ�ޤ���
+任意のものに対するリファレンスを作成することができます。
+そこにはスカラ、関数、他のリファレンスも含まれます。
 
 =item *
 
@@ -1051,12 +1051,12 @@ the habit of always including the curly brackets.
 
 =end original
 
-L<Use Rule 1> ����ǡ�������ˤ����Τ� C<$aref> �Τ褦�ʥ��ȥߥå���
-�������ѿ��Ǥ�����ˤϥ����꡼�֥饱�åȤ��ά���뤳�Ȥ��Ǥ��ޤ���
-���Ȥ��С�C<@$aref> �� C<@{$aref}> ��Ʊ���ǡ�C<$$aref[1]> ��
-C<${$aref}[1]> ��Ʊ���Ǥ���
-�Ϥ᤿�Ф���ʤΤǤ���С���˥����꡼�֥饱�åȤǰϤळ�Ȥ�
-�����դ������ʤ뤫�⤷��ޤ���
+L<Use Rule 1> の中で、その中にあるものが C<$aref> のようなアトミックな
+スカラ変数である場合にはカーリーブラケットを省略することができます。
+たとえば、C<@$aref> は C<@{$aref}> と同じで、C<$$aref[1]> は
+C<${$aref}[1]> と同じです。
+始めたばかりなのであれば、常にカーリーブラケットで囲むことを
+習慣付けたくなるかもしれません。
 
 =item *
 
@@ -1066,7 +1066,7 @@ This doesn't copy the underlying array:
 
 =end original
 
-�ʲ�����������Ƥ򥳥ԡ����ޤ���:
+以下は配列の内容をコピーしません:
 
         $aref2 = $aref1;
 
@@ -1078,9 +1078,9 @@ C<< $aref2->[23] >> you'll see the change.
 
 =end original
 
-Ʊ��������Ф�����ĤΥ�ե���󥹤������ޤ���
-�⤷ C<< $aref1->[23] >> ���ѹ����ơ�C<< $aref2->[23] >> ��
-���Ȥ����ʤ���ѹ�������Τ�������Ǥ��礦��
+同じ配列に対する二つのリファレンスが得られます。
+もし C<< $aref1->[23] >> を変更して、C<< $aref2->[23] >> を
+参照したならば変更したものが見えるでしょう。
 
 =begin original
 
@@ -1088,7 +1088,7 @@ To copy the array, use
 
 =end original
 
-����򥳥ԡ�����ˤϰʲ��Τ褦�ˤ��ޤ�
+配列をコピーするには以下のようにします
 
         $aref2 = [@{$aref1}];
 
@@ -1100,9 +1100,9 @@ initialized with the contents of the array referred to by C<$aref1>.
 
 =end original
 
-����Ͽ�����̵̾�������Ф������ C<[...]> ��ˡ��ȤäƤ��ޤ���
-�����ơ�C<$aref2> �Ͽ�����������Ф����ե���󥹤���������ޤ���
-����������� C<$aref1> �ˤ�äƻ��Ȥ������������Ƥˤ�äƽ��������ޤ���
+これは新たな無名配列を作り出すために C<[...]> 記法を使っています。
+そして、C<$aref2> は新たな配列に対するリファレンスが代入されます。
+新たな配列は C<$aref1> によって参照される配列の内容によって初期化されます。
 
 =begin original
 
@@ -1110,7 +1110,7 @@ Similarly, to copy an anonymous hash, you can use
 
 =end original
 
-Ʊ�ͤˡ�̵̾�ϥå���򥳥ԡ�����ˤϰʲ��Τ褦�ˤ��ޤ�
+同様に、無名ハッシュをコピーするには以下のようにします
 
         $href2 = {%{$href1}};
 
@@ -1125,11 +1125,11 @@ for array references.
 
 =end original
 
-���󤬥�ե���󥹤��ݻ����Ƥ���Ȥ��ˤ�����ǧ����ˤϡ�C<ref> �ؿ���
-�Ȥ��ޤ���
-���δؿ��Ϥ��ΰ�������ե���󥹤Ǥ���Ȥ��ˤϿ����֤��ޤ���
-�ºݤˤϤ⤦����ä��ɤ��ơ��ϥå����ե���󥹤Ǥ���� C<HASH> ��
-�����ե���󥹤Ǥ���� C<ARRAY> ���֤��ޤ���
+配列がリファレンスを保持しているときにそれを確認するには、C<ref> 関数を
+使います。
+この関数はその引数がリファレンスであるときには真を返します。
+実際にはもうちょっと良くて、ハッシュリファレンスであれば C<HASH> を、
+配列リファレンスであれば C<ARRAY> を返します。
 
 =item *
 
@@ -1139,7 +1139,7 @@ If you try to use a reference like a string, you get strings like
 
 =end original
 
-��ե���󥹤�ʸ����Τ褦�˻Ȥä����ˤϡ��ʲ��Τ褦��ʸ���������ޤ�
+リファレンスを文字列のように使った場合には、以下のような文字列が得られます
 
 	ARRAY(0x80f5dec)   or    HASH(0x826afc0)
 
@@ -1150,8 +1150,8 @@ printed out a reference by mistake.
 
 =end original
 
-�⤷���Τ褦��ʸ����򸫤��ʤ�С���ե���󥹤�ְ�äƽ��Ϥ������Ȥ�
-�Τ뤳�ȤȤʤ�Ǥ��礦��
+もしこのような文字列を見たならば、リファレンスを間違って出力したことを
+知ることとなるでしょう。
 
 =begin original
 
@@ -1161,9 +1161,9 @@ C<==> instead because it's much faster.)
 
 =end original
 
-����ɽ���������Ѥϡ�C<eq> ����ĤΥ�ե���󥹤�Ʊ����Τ�
-���Ȥ��Ƥ��뤫�ɤ������ǧ���뤿��˻Ȥ����Ȥ��Ǥ���Ȥ������ȤǤ�
-(���������̾�Ϥ���ᤤ C<==> ������˻Ȥ��٤��Ǥ��礦)��
+この表現の副作用は、C<eq> を二つのリファレンスが同じものを
+参照しているかどうかを確認するために使うことができるということです
+(しかし、通常はより早い C<==> を代わりに使うべきでしょう)。
 
 =item *
 
@@ -1177,13 +1177,13 @@ feature, which can cause all sorts of trouble if you use it by accident.
 
 =end original
 
-ʸ������ե���󥹤Ǥ��뤫�Τ褦�˻Ȥ����Ȥ��Ǥ��ޤ���
-ʸ���� C<"foo"> �������ե���󥹤Ȥ��ƻȤ��Ȥ���C<@foo> �ؤ�
-���ȤǤ��뤫�Τ褦�˼����դ����ޤ���
-����� I<���եȥ�ե����> �ޤ��� I<����ܥ�å���ե����> ��
-�ƤФ�ޤ���
-C<use strict 'refs'> ��������뤳�Ȥˤ�äơ��������ǥ�Ȥˤ�ä����꤬
-��������������礬���뤳�ε�ǽ��ػߤ��뤳�Ȥ��Ǥ��ޤ���
+文字列をリファレンスであるかのように使うことができます。
+文字列 C<"foo"> を配列リファレンスとして使うとき、C<@foo> への
+参照であるかのように受け付けられます。
+これは I<ソフトリファレンス> または I<シンボリックリファレンス> と
+呼ばれます。
+C<use strict 'refs'> と宣言することによって、アクシデントによって問題が
+引き起こされる場合があるこの機能を禁止することができます。
 
 =back
 
@@ -1197,15 +1197,15 @@ of arrays, and other kinds of data.
 
 =end original
 
-L<perlref> ���� L<perllol> �˹Ԥ������Ȼפ����⤷��ޤ���
-�����Ǥϥꥹ�ȤΥꥹ�Ȥ�¿��������ˤĤ��ƾܤ����Ҥ٤��Ƥ��ޤ���
-���θ�ǡ�L<perldsc> �˹Ԥ����ɤ��Ǥ��礦��
-����ϥǡ�����¤���å��֥å�(Data Structure Cookbook)�ǡ��ϥå��������
-����Υϥå��塢����¾�Υǡ����λ��Ѥ���ϤˤĤ��ƤΥ쥷�Ԥ�����ޤ���
+L<perlref> よりも L<perllol> に行きたいと思うかもしれません。
+そこではリストのリストや多次元配列について詳しく述べられています。
+その後で、L<perldsc> に行くと良いでしょう。
+これはデータ構造クックブック(Data Structure Cookbook)で、ハッシュの配列、
+配列のハッシュ、その他のデータの使用や出力についてのレシピがあります。
 
 =head1 Summary
 
-(�ޤȤ�)
+(まとめ)
 
 =begin original
 
@@ -1217,12 +1217,12 @@ to do with references.
 
 =end original
 
-���٤Ƥοͤ�ʣ��ǡ�����¤��ɬ�פȤ��Ƥ��ơ�Perl�ǤΤ��������������
-��ե���󥹤Ǥ���
-��ե���󥹤򰷤��ˤ����äƻͤĤν��פʥ롼�뤬����ޤ�: ��Ĥ�
-��ե���󥹤κ����ˤĤ��Ƥǡ���Ĥϥ�ե���󥹤λ��ѤˤĤ��ƤǤ���
-�����Υ롼����ΤäƤ��ޤ��С����ʤ�����ե���󥹤�ȤäƹԤ�ɬ�פ�
-���뤳�Ȥν��פ���ʬ�ΤۤȤ�ɤ�Ԥ����Ȥ��Ǥ��ޤ���
+すべての人が複合データ構造を必要としていて、Perlでのそれを得るやり方は
+リファレンスです。
+リファレンスを扱うにあたって四つの重要なルールがあります: 二つは
+リファレンスの作成についてで、二つはリファレンスの使用についてです。
+これらのルールを知ってしまえば、あなたがリファレンスを使って行う必要が
+あることの重要な部分のほとんどを行うことができます。
 
 =head1 Credits
 
@@ -1232,7 +1232,7 @@ Author: Mark Jason Dominus, Plover Systems (C<mjd-perl-ref+@plover.com>)
 
 =end original
 
-���: Mark Jason Dominus, Plover Systems (C<mjd-perl-ref+@plover.com>)
+作者: Mark Jason Dominus, Plover Systems (C<mjd-perl-ref+@plover.com>)
 
 =begin original
 
@@ -1241,9 +1241,9 @@ This article originally appeared in I<The Perl Journal>
 
 =end original
 
-���ε����Ϻǽ�� I<The Perl Journal> ( http://www.tpj.com/ )
-volume 3, #2 ���о줷�ޤ�����
-���Ĥ�����ž�ܤ��Ƥ��ޤ���
+この記事は最初は I<The Perl Journal> ( http://www.tpj.com/ )
+volume 3, #2 に登場しました。
+許可を得て転載しています。
 
 =begin original
 
@@ -1251,7 +1251,7 @@ The original title was I<Understand References Today>.
 
 =end original
 
-���Υ����ȥ�� I<Understand References Today> �Ǥ�����
+元のタイトルは I<Understand References Today> でした。
 
 =head2 Distribution Conditions
 

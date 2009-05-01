@@ -9,7 +9,7 @@ perlipc - Perl interprocess communication (signals, fifos, pipes, safe subproces
 
 =end original
 
-perlipc - Perl �Υץ��������̿� (�����ʥ�, fifo, �ѥ���, ���������ץ�����, �����å�, ���ޥե�)
+perlipc - Perl のプロセス間通信 (シグナル, fifo, パイプ, 安全な副プロセス, ソケット, セマフォ)
 
 =head1 DESCRIPTION
 
@@ -21,13 +21,13 @@ IPC calls.  Each is used in slightly different situations.
 
 =end original
 
-Perl �δ���Ū�� IPC ��ǽ�ϡ��Ť��褭 UNIX �Υ����ʥ롢̾���դ��ѥ��ס�
-�ѥ��ס�Berkeley �����åȥ롼���� SysV IPC �����뤫�鹽������Ƥ��ޤ���
-�����ơ��ϤϤä���Ȱۤʤ�����ǻȤ��ޤ���
+Perl の基本的な IPC 機能は、古きよき UNIX のシグナル、名前付きパイプ、
+パイプ、Berkeley ソケットルーチン、 SysV IPC コールから構成されています。
+これら各々ははっきりと異なる状況で使われます。
 
 =head1 Signals
 
-(�����ʥ�)
+(シグナル)
 
 =begin original
 
@@ -42,16 +42,16 @@ running out of stack space, or hitting file size limit.
 
 =end original
 
-Perl ��ñ��ʥ����ʥ�ϥ�ɥ�󥰥�ǥ��ȤäƤ��ޤ�: %SIG �Ȥ���
-�ϥå���ϡ��桼���������󥹥ȡ��뤷�������ʥ�ϥ�ɥ��̾����
-�⤷���ϥϥ�ɥ���Ф����ե���󥹤��ݻ����ޤ���
-�����Υϥ�ɥ�ϡ���ư���줿�����ʥ��̾��������Ȥ��ƸƤӽФ���ޤ���
-�����ʥ�� control-C �� control-Z �Τ褦������Υ����ܡ��ɥ������󥹤�
-�ռ�Ū���������뤳�Ȥ�Ǥ��ޤ�����¾�Υץ������������ʥ��
-���뤳�Ȥ⤢��ޤ���
-���뤤�ϻҥץ���������λ�����Ȥ����ץ������������å���Ȥ����ä���
-�ե����륵�������¤˰��óݤ��ä��Ȥ��ä��ü�ʥ��٥�Ȥ�ȯ�������Ȥ��ˡ�
-�����ͥ뤬��ưŪ�˥����ʥ��ȯ�������뤳�Ȥ⤢��ޤ���
+Perl は単純なシグナルハンドリングモデルを使っています: %SIG という
+ハッシュは、ユーザーがインストールしたシグナルハンドラの名前、
+もしくはハンドラに対するリファレンスを保持します。
+これらのハンドラは、起動されたシグナルの名前を引数として呼び出されます。
+シグナルは control-C や control-Z のような特定のキーボードシーケンスで
+意識的に生成することもできますし、他のプロセスがシグナルを
+送ることもあります。
+あるいは子プロセスが終了したとか、プロセスがスタックを使いきった、
+ファイルサイズ制限に引っ掛かったといった特殊なイベントが発生したときに、
+カーネルが自動的にシグナルを発生させることもあります。
 
 =begin original
 
@@ -59,8 +59,8 @@ For example, to trap an interrupt signal, set up a handler like this:
 
 =end original
 
-�㤨�г����ߥ����ʥ�(interrupt signal)��ȥ�åפ���ˤϡ�
-�ʲ�����Τ褦�˥ϥ�ɥ�����ꤷ�ޤ�:
+例えば割り込みシグナル(interrupt signal)をトラップするには、
+以下の例のようにハンドラを設定します:
 
     sub catch_zap {
 	my $signame = shift;
@@ -82,15 +82,15 @@ dump - see L</Deferred Signals (Safe Signals)> below.
 
 =end original
 
-Perl 5.7.3 �����Ǥϡ���ʬ�Υϥ�ɥ�����Ȥ����Ȥ��Ǥ��ޤ���
-�䤿����ǧ�����Ƥ��뤳�Ȥϡ��������Х��ѿ������ꤷ������㳰��
-�����������Ȥ������Ȥ����Ǥ��뤳�Ȥ����դ��Ƥ���������
-����ϡ��ۤȤ�ɤΥ����ƥ��Ǥϥ饤�֥�ꡢ�Ȥ��˥������դ���
-�����Ϥ˴ؤ����ΤϺ�����ǽ�ǤϤʤ�����Ǥ���
-����ϡ����ʤ��Υϥ�ɥ���ΤۤȤ�� I<�����뤳��> ������Ū�ˤ�
-����ե�����Ȥ䤽���³����������֤������������ǽ����
-����Ȥ������ȤǤ� - �ʲ��� L</Deferred Signals (Safe Signals)> ��
-���Ȥ��Ƥ���������
+Perl 5.7.3 以前では、自分のハンドラの中を使うことができます。
+私たちが認識していることは、グローバル変数に設定した後で例外を
+引き起こすということだけであることに注意してください。
+これは、ほとんどのシステム上ではライブラリ、とくにメモリ割り付けや
+入出力に関するものは再入可能ではないためです。
+これは、あなたのハンドラ内のほとんど I<あらゆること> が理論的には
+メモリフォールトやそれに続くコアダンブを引き起こす可能性が
+あるということです - 以下の L</Deferred Signals (Safe Signals)> を
+参照してください。
 
 =begin original
 
@@ -101,12 +101,12 @@ indexed by name to get the number:
 
 =end original
 
-���ʤ��λȤäƤ��륷���ƥ�ˤ����륷���ʥ��̾�Τ� C<kill -l> ��
-��äƥꥹ�ȥ��åפ���ޤ���
-���뤤�ϥ���ե����⥸�塼�뤫��������뤳�Ȥ�Ǥ��ޤ���
-̾�������뤿����ֹ�ˤ�ä�ź�����Ť������ @signame �Ȥ����ꥹ�Ȥ�
-�ֹ�����뤿���̾���ˤ�ä�ź�����Ť������ %signo �Ȥ����ơ��֥��
-���åȥ��åפ��ޤ���
+あなたの使っているシステムにおけるシグナルの名称は C<kill -l> に
+よってリストアップされます。
+あるいはコンフィグモジュールから取得することもできます。
+名前を得るための番号によって添え字づけされる @signame というリストと
+番号を得るための名前によって添え字づけされる %signo というテーブルを
+セットアップします。
 
     use Config;
     defined $Config{sig_name} || die "No sigs?";
@@ -122,8 +122,8 @@ So to check whether signal 17 and SIGALRM were the same, do just this:
 
 =end original
 
-�Ǥ����顢17 �֤Υ����ʥ�� SIGALRM ��Ʊ��Ǥ��뤫�ɤ����ϰʲ��Τ褦�ˤ���
-�����å��Ǥ��ޤ�:
+ですから、17 番のシグナルと SIGALRM が同一であるかどうかは以下のようにして
+チェックできます:
 
     print "signal #17 = $signame[17]\n";
     if ($signo{ALRM}) {
@@ -138,10 +138,10 @@ default thing.
 
 =end original
 
-�ϥ�ɥ�Ȥ��� C<'IGNORE'> �� C<'DEFAULT'> �Ȥ��ä�ʸ�����
-�������뤳�Ȥ�����Ǥ��ޤ���
-�����Υϥ�ɥ�ϡ�perl �������ʥ���˴�������褦�ˤ�����
-�ǥե���Ȥ�ư���Ԥ��褦�ˤ������ΤǤ���
+ハンドラとして C<'IGNORE'> や C<'DEFAULT'> といった文字列を
+代入することも選択できます。
+これらのハンドラは、perl がシグナルを破棄させるようにしたり
+デフォルトの動作を行うようにさせるものです。
 
 =begin original
 
@@ -155,14 +155,14 @@ C<-1> on such platforms.
 
 =end original
 
-�ۤȤ�ɤ� UNIX �ץ�åȥե�����Ǥϡ�C<CHLD>(C<CLD> �ξ��⤢��)
-�����ʥ�� C<'IGNORE'> ���ͤ��б�����褦�����̤ʿ����񤤤򤷤ޤ���
-���Τ褦�ʥץ�åȥե�����Ǥ� C<'IGNORE'> �� C<$SIG{CHLD}> ��
-���ꤹ�뤳�Ȥˤ�äơ��ƥץ������� C<wait()> �˼��Ԥ����褦�ʤȤ���
-����ӥץ��������Ǥ��뤳�Ȥ��ɤ��ޤ�(�ҥץ������ϼ�ưŪ��
-�������ޤ�)��
-C<$SIG{CHLD}> �� C<'IGNORE'> �����ꤷ�� C<wait()> ��ƤӽФ����Ȥˤ�äơ�
-���Τ褦�ʥץ�åȥե�����Ǥ� C<-1> ���̾��֤���ޤ���
+ほとんどの UNIX プラットフォームでは、C<CHLD>(C<CLD> の場合もあり)
+シグナルは C<'IGNORE'> の値に対応するような特別な振る舞いをします。
+そのようなプラットフォームでは C<'IGNORE'> に C<$SIG{CHLD}> を
+設定することによって、親プロセスが C<wait()> に失敗したようなときに
+ゾンビプロセスができることを防ぎます(子プロセスは自動的に
+刈り取られます)。
+C<$SIG{CHLD}> を C<'IGNORE'> を設定して C<wait()> を呼び出すことによって、
+このようなプラットフォームでは C<-1> が通常返されます。
 
 =begin original
 
@@ -174,13 +174,13 @@ values are "inherited" by functions called from within that block.)
 
 =end original
 
-KILL �����ʥ�� STOP �����ʥ�(TSTP �ǤϤʤ�)�Τ褦�ʴ��Ĥ��Υ����ʥ�ϡ�
-�ȥ�åפ��뤳�Ȥ�̵�뤹�뤳�Ȥ�Ǥ��ޤ���
-���Ū�˥����ʥ��̵�뤹�뤿�����ά�� local() ʸ��Ȥ��Ȥ�����ΤǤ���
-����Ϥ��� local() ʸ��Ϥ�֥��å�����Ф��Ȥ��ˡ���ưŪ�˸��ξ��֤�
-�������ޤ���
-(local() �ˤ���ͤ� �֥��å�����¦����ƤӽФ��줿�ؿ���
-�Ȱ����Ѥ�����(inherited) ���Ȥ�˺��ʤ��Ǥ�������)��
+KILL シグナルや STOP シグナル(TSTP ではない)のような幾つかのシグナルは、
+トラップすることも無視することもできません。
+一時的にシグナルを無視するための戦略は local() 文を使うというものです。
+これはその local() 文を囲むブロックから出たときに、自動的に元の状態に
+復帰します。
+(local() による値は ブロックの内側から呼び出された関数に
+“引き継がれる”(inherited) ことを忘れないでください)。
 
     sub precious {
 	local $SIG{INT} = 'IGNORE';
@@ -199,11 +199,11 @@ it doesn't kill itself):
 
 =end original
 
-��Υץ����� ID ���Ф��ƥ����ʥ�����뤳�Ȥϡ�UNIX �ץ��������롼��
-���Τ˥����ʥ�����뤳�Ȥˤʤ�ޤ���
-�ʲ��Υ����ɤϡ������ȤΥץ��������롼�פ�°�������ƤΥץ�������
-hang-up �����ʥ�����Ф��ޤ�(�����ơ�$SIG{HUP} �� IGNORE �����ꤹ��Τǡ�
-��ʬ���Ȥ� kill ���뤳�ȤϤ���ޤ���)��
+負のプロセス ID に対してシグナルを送ることは、UNIX プロセスグループ
+全体にシグナルを送ることになります。
+以下のコードは、カレントのプロセスグループに属する全てのプロセスに
+hang-up シグナルを送出します(そして、$SIG{HUP} に IGNORE を設定するので、
+自分自身を kill することはありません)。
 
     {
 	local $SIG{HUP} = 'IGNORE';
@@ -219,9 +219,9 @@ or has changed its UID.
 
 =end original
 
-����¾�ζ�̣���������ʥ�ϡ������ʥ��ֹ� 0 �Ǥ���
-����ϼºݤˤϻҥץ������˱ƶ���ڤܤ����ȤϤ���ޤ��󤬡�UID ��
-�����Ƥ���Τ������뤤���ѹ����줿�Τ��Υ����å���Ԥ��ޤ���
+この他の興味深いシグナルは、シグナル番号 0 です。
+これは実際には子プロセスに影響を及ぼすことはありませんが、UID が
+生きているのか、あるいは変更されたのかのチェックを行います。
 
     unless (kill 0 => $kid_pid) {
 	warn "something wicked happened to $kid_pid";
@@ -236,9 +236,9 @@ You may be able to determine the cause of failure using C<%!>.
 
 =end original
 
-������Υץ������� UID �������긵��Ʊ���ǤϤʤ���硢���Ȥ��ץ�������
-�����Ƥ��Ƥ⡢�����ʥ�����븢�¤��ʤ��Τǡ������ʥ��ֹ� 0 �ϼ��Ԥ��ޤ���
-���Ԥθ����ϡ�C<%!> ��ȤäƷ���Ǥ��ޤ���
+送り先のプロセスの UID が、送り元と同じではない場合、たとえプロセスが
+生きていても、シグナルを送る権限がないので、シグナル番号 0 は失敗します。
+失敗の原因は、C<%!> を使って決定できます。
 
     unless (kill 0 => $pid or $!{EPERM}) {
 	warn "$pid looks dead";
@@ -251,7 +251,7 @@ handlers:
 
 =end original
 
-ñ��ʥ����ʥ�ϥ�ɥ�ˤ�̵̾�ؿ���Ȥ������ʤ뤫�⤷��ޤ���:
+単純なシグナルハンドラには無名関数を使いたくなるかもしれません:
 
     $SIG{INT} = sub { die "\nOutta here!\n" };
 
@@ -267,14 +267,14 @@ signal handlers like this:
 
 =end original
 
-����������ϡ���ʬ���Ȥ�ƥ��󥹥ȡ��뤹��ɬ�פ�����褦�ʡ���ä�ʣ����
-�ϥ�ɥ���Ф��Ƥ�����ˤʤ��ǽ��������ޤ���
-Perl �Υ����ʥ뵡���ϸ��ߤΤȤ��� C �饤�֥���  signal(3) �ؿ��˴�Ť���
-��ΤʤΤǡ��ؿ����Ȥ֤ò��줿�ɤ褦�ʡ��Ĥޤꡢ��꿷�����ƿ������Τ���
-BSD ������ POSIX �����ǤϤʤ��Ť��ƿ��ѤǤ��ʤ� SysV �����ο����񤤤�
-����褦�ʤ�Υ����ƥ�Ǽ¹Ԥ���褦���Ա���Ω��ˤʤ뤫�⤷��ޤ���
-���Τ��ᡢ�ʲ��Τ褦�˥����ʥ�ϥ�ɥ��񤤤ƿͤ��äƤ����Τ�
-����Ǥ��礦:
+しかしこれは、自分自身を再インストールする必要があるような、もっと複雑な
+ハンドラに対しては問題になる可能性があります。
+Perl のシグナル機構は現在のところ C ライブラリの  signal(3) 関数に基づいた
+ものなので、関数が“ぶっ壊れた”ような、つまり、より新しくて信頼性のある
+BSD 形式や POSIX 形式ではなく古くて信用できない SysV 方式の振る舞いを
+するようなものシステムで実行するような不運な立場になるかもしれません。
+そのため、以下のようにシグナルハンドラを書いて人を守っているものを
+見るでしょう:
 
     sub REAPER {
 	$waitedpid = wait;
@@ -291,7 +291,7 @@ or better still:
 
 =end original
 
-���뤤�Ϥ�äȤޤ��ʤ褦��:
+あるいはもっとましなように:
 
     use POSIX ":sys_wait_h";
     sub REAPER {
@@ -320,15 +320,15 @@ using longjmp() or throw() in other languages.
 
 =end original
 
-UNIX �Ǥϡ������ʥ�ϥ�ɥ�ϥ����ॢ���ȤΤ���ˤ�Ȥ��ޤ���
-C<eval{}> �֥��å�����Ǥϰ������ݸ�줤��֤ˡ�alarm �����ʥ��
-�ȥ�åפ��뤿��˥����ʥ�ϥ�ɥ�����ꤷ�ơ����θ�ǲ��������
-�ÿ��򥹥����塼��󥰤��ޤ���
-���줫��֥��å��������ơ�
-���줬��λ������ C<eval{}> �֥��å���ȴ�������� alarm �򥯥ꥢ�����ޤ���
-���ꤷ�����֤��ФäƤ��ޤä����ˤϡ�¾�θ���ˤ����� longjmp() ��
-throw() ��Ȥä��Ȥ���Ʊ���褦�˥֥��å���ȴ���뤿��� die() ��
-�Ȥ��ޤ���
+UNIX では、シグナルハンドラはタイムアウトのためにも使われます。
+C<eval{}> ブロックの中では安全に保護されいる間に、alarm シグナルを
+トラップするためにシグナルハンドラを設定して、その後で解放される
+秒数をスケジューリングします。
+それからブロッキング操作を試して、
+それが完了したら C<eval{}> ブロックを抜ける前に alarm をクリアーします。
+設定した時間が経ってしまった場合には、他の言語における longjmp() や
+throw() を使ったときと同じようにブロックを抜けるために die() を
+使います。
 
 =begin original
 
@@ -336,7 +336,7 @@ Here's an example:
 
 =end original
 
-���󤲤ޤ��礦:
+例を挙げましょう:
 
     eval {
         local $SIG{ALRM} = sub { die "alarm clock restart" };
@@ -354,10 +354,10 @@ need to do your own fork() and exec(), and kill the errant child process.
 
 =end original
 
-�����ڤ�򵯤������� system() �� qx() �ʤ顢���Υƥ��˥å��ϥ���Ӥ�
-�������뷹��������ޤ���
-�⤷���줬����ʤ顢���Ϥ� fork() �� exec() ��Ԥäơ����顼�ε�����
-�ҥץ������� kill ����ɬ�פ�����Ǥ��礦��
+時間切れを起こした操作が system() か qx() なら、このテクニックはゾンビを
+生成する傾向があります。
+もしそれが問題なら、自力で fork() と exec() を行って、エラーの起きた
+子プロセスを kill する必要があるでしょう。
 
 =begin original
 
@@ -368,15 +368,15 @@ examples in it.
 
 =end original
 
-���ʣ���ʥ����ʥ�����Τ���ˤϡ�ɸ��� POSIX �⥸�塼���Τ�����
-�褤���⤷��ޤ���
-ò���路�����Ȥˤ���ϤۤȤ�ɥ���ɥ�����Ȥʾ��֤Ǥ�����Perl ��
-���������ۥ��åȤˤ��� F<t/lib/posix.t> �Ȥ����ե�����ˤϴ��Ĥ���
-����ץ뤬����ޤ���
+より複雑なシグナル処理のためには、標準の POSIX モジュールを確かめると
+よいかもしれません。
+嘆かわしいことにこれはほとんどアンドキュメントな状態ですが、Perl の
+ソース配布キットにある F<t/lib/posix.t> というファイルには幾つかの
+サンプルがあります。
 
 =head2 Handling the SIGHUP Signal in Daemons
 
-(�ǡ����� SIGHUP �����ʥ�򰷤�)
+(デーモンで SIGHUP シグナルを扱う)
 
 =begin original
 
@@ -391,15 +391,15 @@ you simply send it the C<SIGHUP> signal.
 
 =end original
 
-���̥����ƥ�֡��Ȼ��˵�ư���������ƥॷ��åȥ�������˽�λ����ץ�������
-���Ȥ�ǡ����(daemon: Disk And Execution MONitor)�ȸƤӤޤ���
-�⤷�ǡ����ץ�����������ե����뤬���ꡢ���줬�ץ����������Ϥ��Ƥ���
-�ѹ����줿��硢�ץ�������ߤ�뤳�Ȥʤ����ץ�����������ե������
-���ɤ߹��ߤ��뤳�Ȥ��Τ餻����ˡ������٤��Ǥ���
-¿���Υǡ����Ϥ��ε����� C<SIGHUP> �����ʥ�ϥ�ɥ��Ȥä�
-�󶡤��Ƥ��ޤ���
-�ǡ����˥ե��������ɤ߹��ߤ��Ƥۤ�����硢ñ�˥ǡ�����
-C<SIGHUP> �����ʥ������ޤ���
+普通システムブート時に起動し、システムシャットダウン時に終了するプロセスの
+ことをデーモン(daemon: Disk And Execution MONitor)と呼びます。
+もしデーモンプロセスに設定ファイルがあり、それがプロセスが開始してから
+変更された場合、プロセスを止めることなく、プロセスに設定ファイルを
+再読み込みすることを知らせる方法があるべきです。
+多くのデーモンはこの機構を C<SIGHUP> シグナルハンドラを使って
+提供しています。
+デーモンにファイルを再読み込みしてほしい場合、単にデーモンに
+C<SIGHUP> シグナルを送ります。
 
 =begin original
 
@@ -411,12 +411,12 @@ is well-defined.
 
 =end original
 
-���ƤΥץ�åȥե�����ˤ����ơ������ʥ������θ弫ưŪ��(�ͥ��ƥ��֤�)
-�����ʥ�ϥ�ɥ������ꤹ��櫓�ǤϤ���ޤ���
-����ϡ��ϥ�ɥ�Ϻǽ�˥����ʥ뤬����줿�Ȥ��ˤΤ�ư��뤳�Ȥ�
-��̣���ޤ���
-��������β����ϡ��⤷���Ѳ�ǽ�Ǥ���С������񤤤����ΤǤ���
-C<POSIX> �����ʥ�ϥ�ɥ��Ȥ����ȤǤ���
+全てのプラットフォームにおいて、シグナル配送の後自動的に(ネイティブな)
+シグナルハンドラを再設定するわけではありません。
+これは、ハンドラは最初にシグナルが送られたときにのみ動作することを
+意味します。
+この問題の解決策は、もし利用可能であれば、振る舞いが明確である
+C<POSIX> シグナルハンドラを使うことです。
 
 =begin original
 
@@ -427,10 +427,10 @@ info to show that it works and should be replaced with the real code.
 
 =end original
 
-�ʲ�����ϡ�C<SIGHUP> ����������˺Ƶ�ư����Ȥ���ñ��ʥǡ�����
-�������Ƥ��ޤ���
-�ºݤΥ����ɤϥ��֥롼���� C<code()> ���֤���Ƥ��ơ��ɤΤ褦��ư��뤫��
-�������ºݤΥ����ɤ��֤���������褦�ˡ�ñ�˥ǥХå��������Ϥ��ޤ���
+以下の例は、C<SIGHUP> を受け取る毎に再起動するという単純なデーモンを
+実装しています。
+実際のコードはサブルーチン C<code()> に置かれていて、どのように動作するかを
+示し、実際のコードと置き換えられるように、単にデバッグ情報を出力します。
 
   #!/usr/bin/perl -w
 
@@ -474,7 +474,7 @@ info to show that it works and should be replaced with the real code.
 
 =head1 Named Pipes
 
-(̾���դ��ѥ���)
+(名前付きパイプ)
 
 =begin original
 
@@ -485,10 +485,10 @@ processes rendezvous using a filename and don't have to be related.
 
 =end original
 
-̾���դ��ѥ���(���Ф��� FIFO �Ȥ��ƻ��Ȥ���ޤ�)�ϡ�Ʊ���ޥ����Ǥ�
-�ץ��������̿��Τ���θŤ� UNIX IPC �����Ǥ���
-������̾��̵̾�ѥ��פ���³��Ʊ�ͤ�ư��ޤ������ե�����̾��Ȥä�
-�ץ������Υ��ǥ֡����Ԥ�졢��Ϣ�Ť���ɬ�פ��ʤ��Ȥ��������ۤʤ�ޤ���
+名前付きパイプ(しばしば FIFO として参照されます)は、同じマシン上での
+プロセス間通信のための古い UNIX IPC 機構です。
+これは通常の無名パイプの接続と同様に動作しますが、ファイル名を使って
+プロセスのランデブーが行われ、関連づける必要がないという点が異なります。
 
 =begin original
 
@@ -496,7 +496,7 @@ To create a named pipe, use the C<POSIX::mkfifo()> function.
 
 =end original
 
-̾���դ��ѥ��פ���������ˤϡ�C<POSIX::mkfifo()> �ؿ���ȤäƤ���������
+名前付きパイプを生成するには、C<POSIX::mkfifo()> 関数を使ってください。
 
     use POSIX qw(mkfifo);
     mkfifo($path, 0700) or die "mkfifo $path failed: $!";
@@ -508,9 +508,9 @@ systems, mkfifo(1).  These may not be in your normal path.
 
 =end original
 
-�����Υ����ƥ�Ǥ� Unix ���ޥ�� mknod(1) ���������ƥ�ˤ�äƤ�
-mkfifo(1) ��Ȥ��ޤ���
-�����Ϥ��ʤ����̾�ѥ�(normal path)���֤����ȤϤǤ��ޤ���
+一部のシステムでは Unix コマンド mknod(1) か、システムによっては
+mkfifo(1) を使えます。
+これらはあなたの通常パス(normal path)に置くことはできません。
 
     # system return val is backwards, so && not ||
     #
@@ -530,10 +530,10 @@ on the other end.
 
 =end original
 
-fifo �ϡ�����ץ������򤽤�Ȥϴط��ʤ��̤Υץ���������³�������Ȥ���
-�����Ǥ���
-fifo �򥪡��ץ󤷤��Ȥ����ץ������Ϥ⤦������ü���˲�����
-�֤����ޤǥ֥��å�����ޤ���
+fifo は、あるプロセスをそれとは関係ない別のプロセスに接続したいときに
+便利です。
+fifo をオープンしたとき、プログラムはもう一方の端点に何かが
+置かれるまでブロックされます。
 
 =begin original
 
@@ -546,14 +546,14 @@ to find out whether anyone (or anything) has accidentally removed our fifo.
 
 =end original
 
-���Ȥ��С�F<.signature> �Ȥ����ե�����򡢤⤦������ü���� Perl
-�ץ�����ब�֤���Ƥ���̾���դ��ѥ��פ���³�������Ȥ��ޤ��礦��
-���ΤȤ���Ǥ�դΥץ�����बǤ�դλ�����(�ᥤ�顼���˥塼���꡼������
-finger �ץ������ʤɤΤ褦��)���Υե�������ɤ߽Ф����Ȥ��ޤ����顢
-�ɤ߽Ф��ץ������ϥ֥��å��򤷤Ƥ��餢�ʤ��Υץ�����ब������
-�����ͥ��㡼���󶡤���褦�ˤ��ʤ���Фʤ�ޤ���
-ï��(�⤷���ϲ���)���ְ�äƻ䤿����fifo���������ꤷ�ʤ����ɤ�����
-�ƻ뤹�뤿��� B<-p> �Ȥ��� pipe-cheching �ե�����ƥ��Ȥ���Ѥ��ޤ���
+たとえば、F<.signature> というファイルを、もう一方の端点に Perl
+プログラムが置かれている名前付きパイプに接続したいとしましょう。
+このとき、任意のプログラムが任意の時点で(メイラー、ニューズリーダー、
+finger プログラムなどのように)そのファイルを読み出そうとしますから、
+読み出しプログラムはブロックをしてからあなたのプログラムが新しい
+シグネチャーを提供するようにしなければなりません。
+誰か(もしくは何か)が間違って私たちのfifoを削除したりしないかどうかを
+監視するために B<-p> という pipe-cheching ファイルテストを使用します。
 
     chdir; # go home
     $FIFO = '.signature';
@@ -575,7 +575,7 @@ finger �ץ������ʤɤΤ褦��)���Υե�������ɤ߽Ф����Ȥ��ޤ����顢
 
 =head2 Deferred Signals (Safe Signals)
 
-(��α�����ʥ�(�����ʥ����ʥ�))
+(保留シグナル(安全なシグナル))
 
 =begin original
 
@@ -591,17 +591,17 @@ unpredictable behaviour may result.
 
 =end original
 
-Perl 5.7.3 ������ Perl �Ǥϡ������ʥ���갷�� Perl �ץ�������
-���󥹥ȡ��뤹�뤳�Ȥˤ�äơ����ʤ�����Ĥδ�������ľ�̤��뤳�Ȥ�
-�ʤ�ޤ�����
-���ˡ�������ǽ�ʥ饤�֥��ؿ��������������ƥ�Ͽ����ʤ����ȡ�
-Perl ������ؿ�(malloc(3) �� printf(3) �ʤ�)��¹���˥����ʥ�����ߤ�
-���ä��Ȥ���ȡ����ʤ��Υ����ʥ�ϥ�ɥ��Ʊ���ؿ���
-���ٸƤӽФ�����̤Ȥ���ͽ¬�ΤĤ��ʤ�ư��ˤʤ��ǽ��������ޤ���
-����ˡ�Perl ���Ȥ�����٥�ˤ����ƤϺ�����ǽ��
-�ʤäƤ��ʤ��Ȥ������ȤǤ���
-Perl ����ʬ��������¤�����Ƥ���Ȥ��˥����ʥ�����ߤ�
-���ä��Ȥ���ȡ������ޤ�ͽ¬�ΤĤ��ʤ�ư��ˤʤ�Ǥ��礦��
+Perl 5.7.3 以前の Perl では、シグナルを取り扱う Perl プログラムを
+インストールすることによって、あなたは二つの危険性に直面することに
+なりました。
+第一に、再入可能なライブラリ関数を備えたシステムは数少ないこと。
+Perl がある関数(malloc(3) や printf(3) など)を実行中にシグナル割り込みが
+あったとすると、あなたのシグナルハンドラは同じ関数を
+再度呼び出し、結果として予測のつかない動作になる可能性があります。
+第二に、Perl 自身も最低レベルにおいては再入可能に
+なっていないということです。
+Perl が自分の内部構造を操作しているときにシグナル割り込みが
+あったとすると、これもまた予測のつかない動作になるでしょう。
 
 =begin original
 
@@ -618,20 +618,20 @@ and be prepared to clean up core dumps now and again.
 
 =end original
 
-���ʤ��μ�ꤦ����ʤ���Ĥ���ޤ���:
-�м���Ū�ˤʤ뤫����Ū�ˤʤ뤫�Ǥ���
-�м���Ū���ץ������ϡ����ʤ��Υ����ʥ�ϥ�ɥ����ǤǤ������
-���ʤ����Ȥ�Ԥ��Ȥ�����ΤǤ�����
-�����ͤ��ä�¸�ߤ��Ƥ��������ѿ����ͤ����ꤷ�ƥ꥿���󤷤ޤ���
-�����ñ�˥ꥹ�����Ȥ���褦���٤������ƥॳ�������ˤ���Ȥ��ˤ�
-�����ˤʤ�ޤ���
-����ϤĤޤꡢ�ϥ�ɥ�γ��� longjmp(3) ����ˤ� C<die> ����ɬ�פ�
-����Ȥ������ȤǤ���
-������������м����Ȥ����ΤˤϤ���äȤ��������Ǥ������ϥ�ɥ����
-C<die> ���ӽ����ޤ���
-����Ū�ʥ��ץ������ϡ֥ꥹ��������Τ�ʬ���äƤ뤱�ɤ��������ʤ�
-��������ʤ��פȤ�����Τǡ������ʥ�ϥ�ɥ���ǹԤ��������Ȥ�
-���ƹԤ�����������פ��ݽ���������򤷤Ƥ�����ٹԤ��Ȥ�����ΤǤ�����
+あなたの取りうる手段が二つありました:
+偏執狂的になるか現実的になるかです。
+偏執狂的アプローチは、あなたのシグナルハンドラの中でできるだけ
+少ないことを行うというものでした。
+既に値をもって存在している整数変数に値を設定してリターンします。
+これは単にリスタートするような遅いシステムコールの中にいるときには
+助けになりません。
+これはつまり、ハンドラの外に longjmp(3) するには C<die> する必要が
+あるということです。
+これは本当の偏執狂というのにはちょっとおおげさですが、ハンドラ中で
+C<die> を排除します。
+現実的なアプローチは「リスクがあるのは分かってるけどさ、便利なら
+いいじゃない」というもので、シグナルハンドラ中で行いたいことを
+全て行い、コアダンプを掃除する準備をしてから再度行うというものでした。
 
 =begin original
 
@@ -649,22 +649,22 @@ previous Perls in the following ways:
 
 =end original
 
-Perl 5.7.3 �ʹߤǤϡ�����������򤱤뤿��ˡ������ʥ�ϡ���α�פ���ޤ� --
-����ϡ������ƥ�ˤ�äƥ����ʥ뤬 (Perl ��������Ƥ��� C �����ɤ�)
-���������ȡ��ե饰�򥻥åȤ��ơ��ϥ�ɥ��ľ�����֤�ޤ���
-���줫�顢Perl ���󥿥ץ꥿����άŪ�ˡְ����ʡ�����
-(�㤨�С����������ڥ����ɤ�¹Ԥ��褦�Ȥ��Ƥ������) �ǡ�
-�ե饰������å����ơ�%SIG �� Perl ��٥�ϥ�ɥ��¹Ԥ��ޤ���
-����α�ץ�������ϡ�Perl ���󥿥ץ꥿�������ʾ��֤ˤ��äơ��ϥ�ɥ餬
-�ƤӽФ��줿�Ȥ��˥����ƥ�饤�֥�����ǤϤʤ����Ȥ�ʬ���äƤ���Τǡ�
-�����ʥ�ϥ�ɥ�Υ����ǥ��󥰤��ڤ��˽���ˤʤ�ޤ���
-�������������ϰʲ��������ǰ����� Perl �Ȱۤʤ�ޤ�:
+Perl 5.7.3 以降では、この問題を避けるために、シグナルは「保留」されます --
+これは、システムによってシグナルが (Perl を実装している C コードに)
+配送されると、フラグをセットして、ハンドラは直ちに返ります。
+それから、Perl インタプリタの戦略的に「安全な」地点
+(例えば、新しいオペコードを実行しようとしている時点) で、
+フラグをチェックして、%SIG の Perl レベルハンドラを実行します。
+「保留」スキームは、Perl インタプリタが安全な状態にあって、ハンドラが
+呼び出されたときにシステムライブラリの中ではないことが分かっているので、
+シグナルハンドラのコーディングが遥かに柔軟になります。
+しかし、実装は以下の方向で以前の Perl と異なります:
 
 =over 4
 
 =item Long-running opcodes
 
-(Ĺ���ּ¹Ԥ���륪�ڥ�����)
+(長時間実行されるオペコード)
 
 =begin original
 
@@ -675,10 +675,10 @@ not be seen until the current opcode completes.
 
 =end original
 
-Perl ���󥿥ץ꥿�ϡ��⤷Ĺ���ּ¹Ԥ���륪�ڥ�����
-(�㤨�ФȤƤ�Ĺ��ʸ����Ǥ�����ɽ�����)������ǥ����ʥ뤬
-���夹��ȡ����������ڥ����ɤ�¹Ԥ��褦�Ȥ�����ˤΤߥ����ʥ�ե饰��
-����Τǡ������ʥ�ϸ��ߤΥ��ڥ����ɤ���λ����ޤǸ���ޤ���
+Perl インタプリタは、もし長時間実行されるオペコード
+(例えばとても長い文字列での正規表現操作)の途中でシグナルが
+到着すると、新しいオペコードを実行しようとする時にのみシグナルフラグを
+見るので、シグナルは現在のオペコードが完了するまで現れません。
 
 =begin original
 
@@ -698,24 +698,24 @@ may change in future versions of Perl.
 
 =end original
 
-����: �⤷�ɤΤ褦�ʼ���Υ����ʥ�Ǥ�(�㤨�й����٤Υ����ޡ�����)
-1 �ĤΥ��ڥ����ɤδ֤�ʣ����ȯ��������硢���Υ����ʥ�Υϥ�ɥ��
-���ڥ����ɤδ�λ�� 1 �٤����ƤӽФ��줺������¾�μ��Τ��˴�����ޤ���
-����ˡ������ƥ�Υ����ʥ륭�塼�����դ줿�����
-���륪�ڥ����ɤ���λ���ˡ�ȯ����������ɤ�ޤ���ª����Ƥ��ʤ�
-(���äƤޤ���α����Ƥ��ʤ�)�����ʥ뤬�����
-�����Υ����ʥ뤬����³�����ڥ����ɤδ���ª�������α���졢����
-�ä��٤���̤Ȥʤ뤳�Ȥ�����ޤ���
-�㤨�С�C<alarm(0)> �ϥ��顼���ȯ����ߤ�ޤ�����
-ȯ����������ɤ�ޤ���ª���Ƥ��ʤ����顼�����ã������󥻥뤷�ʤ��Τǡ�
-C<alarm(0)> ��ƤӽФ�����ˤ⥢�顼�ब��������뤳�Ȥ�����ޤ���
-����ϸ��ߤμ����������ѤǤ��ꡢ����ΥС������� Perl �Ǥ�
-�ѹ�����뤫�⤷��ʤ��Τǡ���������˵��Ҥ��줿�����񤤤˰�¸���Ƥ�
-�����ޤ���
+注意: もしどのような種類のシグナルでも(例えば高精度のタイマーから)
+1 つのオペコードの間に複数回発生した場合、そのシグナルのハンドラは
+オペコードの完了後 1 度しか呼び出されず、その他の実体は破棄されます。
+さらに、システムのシグナルキューがあふれたために
+あるオペコードが完了時に、発生したけれどもまだ捕捉されていない
+(従ってまだ保留されていない)シグナルがあると
+これらのシグナルが引き続くオペコードの間捕捉および保留され、時々
+驚くべき結果となることがあります。
+例えば、C<alarm(0)> はアラームの発生を止めますが、
+発生したけれどもまだ捕捉していないアラームの配達がキャンセルしないので、
+C<alarm(0)> を呼び出した後にもアラームが配送されることがあります。
+これは現在の実装の副作用であり、将来のバージョンの Perl では
+変更されるかもしれないので、この段落に記述された振る舞いに依存しては
+いけません。
 
 =item Interrupting IO
 
-(I/O ������)
+(I/O 割り込み)
 
 =begin original
 
@@ -733,20 +733,20 @@ the signal flags and calls %SIG handlers before resuming IO operation.)
 
 =end original
 
-(INT control-C �ʤɤ�) �����ʥ뤬���������ȡ�
-OS �� (Perl E<lt>E<gt> �黻�Ҥμ����ǻȤ��Ƥ���) C<read> �Τ褦��
-I/O �������Ǥ��ޤ���
-�Ť� Perl �Ǥϥϥ�ɥ�򤹤��˸ƤӽФ��ޤ�
-(������ C<read> �Ϥ��ޤ�ư���Τǡְ����ǤϤʤ��פ��ȤϤ���ޤ���)��
-����α�ץ�������Ǥϥϥ�ɥ�Ϥ����˸ƤӽФ��줺��
-�⤷ Perl �������ƥ�� C<stdio> �饤�֥���ȤäƤ���ȡ��饤�֥���
-Perl ���֤ä� %SIG �ϥ�ɥ��ƤӽФ����뵡��ʤ��� C<read> ��
-�Ƶ�ư���ޤ���
-�⤷���줬��������硢���ˡ�ϡ�I/O ��Ԥ��Ȥ��ˡ�
-- ���ʤ��Ȥ⥷���ʥ�����ǤǤ���褦�ˤ������ϥ�ɥ�� -
-C<:perlio> �ؤ�Ȥ����ȤǤ� 
-(C<:perlio> �ؤϥ����ʥ�ե饰������å����ơ�I/O ����³�Ԥ�������
-%SIG �ϥ�ɥ��ƤӽФ��ޤ���)
+(INT control-C などで) シグナルが配送されると、
+OS は (Perl E<lt>E<gt> 演算子の実装で使われている) C<read> のような
+I/O 操作を中断します。
+古い Perl ではハンドラをすぐに呼び出します
+(そして C<read> はうまく動くので「安全ではない」ことはありません)。
+「保留」スキームではハンドラはすぐに呼び出されず、
+もし Perl がシステムの C<stdio> ライブラリを使っていると、ライブラリは
+Perl に返って %SIG ハンドラを呼び出しする機会なしに C<read> を
+再起動します。
+もしこれが起きた場合、解決法は、I/O を行うときにー
+- 少なくともシグナルで中断できるようにしたいハンドルで -
+C<:perlio> 層を使うことです 
+(C<:perlio> 層はシグナルフラグをチェックして、I/O 操作を続行する前に
+%SIG ハンドラを呼び出します。)
 
 =begin original
 
@@ -755,8 +755,8 @@ the C<:perlio> layer.
 
 =end original
 
-Perl 5.7.3 �ʹߤǤϥǥե���ȤǤϼ�ưŪ�� C<:perlio> �ؤ��Ȥ��뤳�Ȥ�
-���դ��Ƥ���������
+Perl 5.7.3 以降ではデフォルトでは自動的に C<:perlio> 層が使われることに
+注意してください。
 
 =begin original
 
@@ -770,13 +770,13 @@ C<$SIG{ALRM}>:
 
 =end original
 
-gethostbyname() �Τ褦�ʥͥåȥ���饤�֥��ؿ����ȼ��Υ����ॢ����
-��������äƤ��뤳�Ȥ��Τ��Ƥ���Τǡ����ʤ��Υ����ॢ���Ȥ�
-���礹�뤫�⤷��ʤ����Ȥ����դ��Ƥ���������
-�⤷���Τ褦�ʴؿ������꤬���������ϡ�Perl �ΰ����ʥ����ʥ����򤹤�
-POSIX sigaction() �ؿ������Ȥ��Ǥ��ޤ�
-(����Ͼ�ҤΡ������˲��β�ǽ��������Ȥ������Ȥ����դ��Ƥ�������)��
-C<$SIG{ALRM}> �򥻥åȤ��������:
+gethostbyname() のようなネットワークライブラリ関数は独自のタイムアウト
+実装を持っていることが知られているので、あなたのタイムアウトと
+競合するかもしれないことに注意してください。
+もしこのような関数で問題が起きた場合は、Perl の安全なシグナルを回避する
+POSIX sigaction() 関数を試すことができます
+(これは上述の、メモリ破壊の可能性があるということに注意してください)。
+C<$SIG{ALRM}> をセットする代わりに:
 
    local $SIG{ALRM} = sub { die "alarm" };
 
@@ -786,7 +786,7 @@ try something like the following:
 
 =end original
 
-�ʲ��Τ褦�ʤ��Ȥ��ƤߤƤ�������:
+以下のようなことを試してみてください:
 
     use POSIX qw(SIGALRM);
     POSIX::sigaction(SIGALRM,
@@ -801,13 +801,13 @@ all signals).
 
 =end original
 
-�����ʥ����ʥ�ο����񤤤�ɽ�Ū��̵���ˤ���⤦��Ĥ���ˡ��
-CPAN �� C<Perl::Unsafe::Signals> �⥸�塼���Ȥ����ȤǤ�
-(���ƤΥ����ʥ�˱ƶ���Ϳ���ޤ�)��
+安全なシグナルの振る舞いを局所的に無効にするもう一つの方法は
+CPAN の C<Perl::Unsafe::Signals> モジュールを使うことです
+(全てのシグナルに影響を与えます)。
 
 =item Restartable system calls
 
-(�Ƶ�ư��ǽ�ʥ����ƥॳ����)
+(再起動可能なシステムコール)
 
 =begin original
 
@@ -821,14 +821,14 @@ where they previously would have succeeded.
 
 =end original
 
-������б����Ƥ��륷���ƥ�Ǥϡ����Ť��С������� Perl �Ǥ� %SIG
-�ϥ�ɥ�����ꤹ��Ȥ��� SA_RESTART �ե饰��Ȥ��ޤ���
-����ϡ��Ƶ�ư��ǽ�ʥ����ƥॳ����Ǥϥ����ʥ뤬�������줿�Ȥ���
-���ΤǤϤʤ�³�Ԥ��뤳�Ȥ��̣���ޤ���
-��α�����ʥ�����᤯�������뤿��ˡ�
-Perl 5.7.3 �ʹߤǤ� SA_RESTART �� I<�ȤäƤ��ޤ���>��
-��̤Ȥ��ơ��Ƶ�ư��ǽ�ʥ����ƥॳ����ϡ����ޤޤ��������Ƥ����Ȥ����Ǥ�
-($! �� C<EINTR> �򥻥åȤ���) ���Ԥ��뤳�Ȥ�����ޤ���
+これに対応しているシステムでは、より古いバージョンの Perl では %SIG
+ハンドラを設定するときに SA_RESTART フラグを使います。
+これは、再起動可能なシステムコールではシグナルが配送されたときに
+戻るのではなく続行することを意味します。
+保留シグナルを素早く配送するために、
+Perl 5.7.3 以降では SA_RESTART を I<使っていません>。
+結果として、再起動可能なシステムコールは、いままで成功していたところでも
+($! に C<EINTR> をセットして) 失敗することがあります。
 
 =begin original
 
@@ -838,13 +838,13 @@ C<waitpid> calls will always be retried.
 
 =end original
 
-�ǥե���Ȥ� C<:perlio> �ؤǤ� C<read>, C<write>, C<close> �Ͼ�Ҥ����褦��
-�ƻ�Ԥ������Ǥ��줿 C<wait> �� C<waitpid> �θƤӽФ��Ͼ��
-�ƻ�Ԥ���뤳�Ȥ����դ��Ƥ���������
+デフォルトの C<:perlio> 層では C<read>, C<write>, C<close> は上述したように
+再試行し、中断された C<wait> と C<waitpid> の呼び出しは常に
+再試行されることに注意してください。
 
 =item Signals as "faults"
 
-(�־㳲�פȤ��ƤΥ����ʥ�)
+(「障害」としてのシグナル)
 
 =begin original
 
@@ -855,14 +855,14 @@ immediately rather than attempting to defer them.
 
 =end original
 
-SEGV, ILL, BUS �Τ褦�ʥ����ʥ�ϡ����ۥ���䤽��¾�Ρ־㳲�פη�̤Ȥ���
-��������ޤ���
-������������̿Ū�ǡ�Perl-��٥�Υϥ�ɥ餬�Ǥ��뤳�ȤϤۤȤ��
-�ʤ��Τǡ���������α���褦�Ȥ�����ľ�����������ޤ���
+SEGV, ILL, BUS のようなシグナルは、仮想メモリやその他の「障害」の結果として
+生成されます。
+これらは普通致命的で、Perl-レベルのハンドラができることはほとんど
+ないので、これらを保留しようとせず、直ちに配送します。
 
 =item Signals triggered by operating system state
 
-(OS �ξ��֤ˤ�ä�ȯ�����륷���ʥ�)
+(OS の状態によって発生するシグナル)
 
 =begin original
 
@@ -877,15 +877,15 @@ there are un-waited-for completed child processes.
 
 =end original
 
-OS �ˤ�äƤϡ������Υ����ʥ�ϥ�ɥ���֤����ˡֲ����򤹤�פ��Ȥ�
-�ʤäƤ����Τ⤢��ޤ���
-1 �Ĥ���Ȥ��Ƥϡ�CHLD �� CLD �ϻҥץ���������λ�������Ȥ򼨤��Ƥ��ޤ���
-OS �ˤ�äƤϡ������ʥ�ϥ�ɥ�ϴ�λ�����ҥץ������Τ����
-C<wait> ���뤳�Ȥ����ꤵ��Ƥ����Τ⤢��ޤ���
-���Τ褦�ʥ����ƥ�Ǥ���α�����ʥ륹������Ϥ����Υ����ʥ�Ǥ�
-ư��ޤ���(C<wait> ���ޤ���)��
-�Ƥӡ�����ϡ�wait ���Ƥ��ʤ���λ�����ҥץ����������뤫�Τ褦�˥����ʥ뤬
-�Ƥ�ȯ�����뤳�Ȥǥ롼�פΤ褦�˸����ޤ���
+OS によっては、ある種のシグナルハンドラは返る前に「何かをする」ことに
+なっているものもあります。
+1 つの例としては、CHLD や CLD は子プロセスが完了したことを示しています。
+OS によっては、シグナルハンドルは完了した子プロセスのために
+C<wait> することを想定されているものもあります。
+このようなシステムでは保留シグナルスキームはこれらのシグナルでは
+動作しません(C<wait> しません)。
+再び、問題は、wait していない完了した子プロセスがあるかのようにシグナルが
+再び発生することでループのように見えます。
 
 =back
 
@@ -897,13 +897,13 @@ C<"unsafe"> (a new feature since Perl 5.8.1).
 
 =end original
 
-�⤷�������˲��β�ǽ���ˤ⤫����餺���Ť������ʥ�ο����񤤤�
-�ۤ����ʤ顢�Ķ��ѿ� C<PERL_SIGNALS> �� C<"unsafe"> �����ꤷ�Ƥ�������
-(Perl 5.8.1 ����ο���ǽ�Ǥ�)��
+もし、メモリ破壊の可能性にもかかわらず、古いシグナルの振る舞いが
+ほしいなら、環境変数 C<PERL_SIGNALS> を C<"unsafe"> に設定してください
+(Perl 5.8.1 からの新機能です)。
 
 =head1 Using open() for IPC
 
-(IPC �Τ���� open() ��Ȥ�)
+(IPC のために open() を使う)
 
 =begin original
 
@@ -914,9 +914,9 @@ something up in a child process you intend to write to:
 
 =end original
 
-Perl�� open() ʸ�ϡ�������������ǥѥ��ץ���ܥ�����֤��뤫������
-�ղä��뤳�Ȥˤ�äơ��������Υץ��������̿��Τ���˻Ȥ����Ȥ��Ǥ��ޤ���
-�ʲ�����ϡ��񤭹��ߤ�Ԥ������ҥץ�������ư�����������Ǥ�:
+Perlの open() 文は、その第二引数でパイプシンボルを前置するか末尾に
+付加することによって、一方向のプロセス間通信のために使うことができます。
+以下の例は、書き込みを行いたい子プロセスを起動させるやり方です:
 
     open(SPOOLER, "| cat -v | lpr -h 2>/dev/null")
 		    || die "can't fork: $!";
@@ -930,7 +930,7 @@ And here's how to start up a child process you intend to read from:
 
 =end original
 
-�����ưʲ�����Ϥ��������ɤ߹��ߤ�Ԥ������ҥץ�������ư������ˡ�Ǥ�:
+そして以下の例はそこから読み込みを行いたい子プロセスを起動する方法です:
 
     open(STATUS, "netstat -an 2>&1 |")
 		    || die "can't fork: $!";
@@ -948,9 +948,9 @@ like this:
 
 =end original
 
-����Υץ������ΰ�Ĥ� @ARGV �ˤ���ե�����̾����Ԥ��Ƥ���
-Perl ������ץȤǤ��äƤ����Τʤ顢�����ץ�����ޤϰʲ��Τ褦��
-�񤯤��Ȥ�Ǥ��ޤ�:
+特定のプログラムの一つが @ARGV にあるファイル名を期待している
+Perl スクリプトであっていいのなら、賢いプログラマは以下のように
+書くこともできます:
 
     % program f1 "cmd1|" - f2 "cmd2|" f3 < tmpfile
 
@@ -963,11 +963,11 @@ file.  Pretty nifty, eh?
 
 =end original
 
-�����Ƥ����Ƥ��������ˤϴط��ʤ������� Perl �ץ������� F<f1> �Ȥ���
-�ե����롢F<cmd1> �Ȥ����ץ�������ɸ������(������Ǥ� F<tmpfile>)��
-F<f2> �Ȥ����ե����롢F<cmd2> �Ȥ������ޥ�ɡ�F<f3> �Ȥ����ե����뤫��
-�ɤ߹��ߤ�Ԥ��ޤ���
-�������������?
+そしてそれを呼んだシェルには関係なく、この Perl プログラムは F<f1> という
+ファイル、F<cmd1> というプロセス、標準入力(この例では F<tmpfile>)、
+F<f2> というファイル、F<cmd2> というコマンド、F<f3> というファイルから
+読み込みを行います。
+すごくいいよね?
 
 =begin original
 
@@ -976,8 +976,8 @@ same effect as opening a pipe for reading:
 
 =end original
 
-�ɤ߹��ߤΤ���Υѥ��פ򳫤�����ˡ��ե������Ȥ�Ȥä�Ʊ�����Ȥ�
-�Ǥ��뤳�Ȥ˵����Ĥ����⤷��ޤ���:
+読み込みのためのパイプを開くために、逆クォートを使って同じことが
+できることに気がつくかもしれません:
 
     print grep { !/^(tcp|udp)/ } `netstat -an 2>&1`;
     die "bad netstat" if $?;
@@ -992,11 +992,11 @@ like.
 
 =end original
 
-���ο�¬��ɽ��Ū�ˤ����������ȤΤ褦�˸����뤫���Τ�ޤ��󤬡����٤�
-����ˤ��٤Ƥ��ɤ߹���ɬ�פ��ʤ��Τǡ����٤˥ե�����ΰ�Ԥ�
-��쥳���ɤ��������ˤ�(�ǽ����Τۤ���)����ΨŪ�ʤΤǤ���
-Ʊ�ͤ˥ץ��������Τ������Ϳ����Τǡ����ʤ���˾����ᤤ������
-�ҥץ������� kill ���뤳�Ȥ��Ǥ��ޤ���
+その推測は表面的には正しいことのように見えるかも知れませんが、一度に
+メモリにすべてを読み込む必要がないので、一度にファイルの一行や
+一レコードを処理するには(最初の例のほうが)より効率的なのです。
+同様にプロセス全体の制御を与えるので、あなたが望めば早い時期に
+子プロセスを kill することができます。
 
 =begin original
 
@@ -1013,19 +1013,19 @@ handle.  Consider:
 
 =end original
 
-open() �� close() ������ͤ�����å�����Ȥ������դ��Ƥ���������
-�ѥ��פ��Ф��� B<�񤭹���> �򤷤��Τʤ顢SIGPIPE ��ȥ�åפ��٤��Ǥ���
-�������ʤ���С�¸�ߤ��ʤ����ޥ�ɤ��Ф���ѥ��פ�ư�����Ȥ���
-�����뤳�ȤˤĤ��ƹͤ����ळ�Ȥˤʤ�Ǥ��礦: open() �ϤۤȤ�ɤ�
-�����������ȸ����ޤ��Ǥ��礦��(����� fork() ������������
-ȿ�Ǥ��ޤ�)�����ʤ��ν��ϤϤ��θ���ԴѤ�(spectacularly)���Ԥ���Ǥ��礦��
-���ޥ�ɤϡ��ºݤˤ� exec() �����Ԥ��Ƥ����̤Υץ�������
-�¹Ԥ���Ƥ���Τǡ�Perl �ϥ��ޥ�ɤ����ޤ�ư���Ƥ��뤫�ɤ�����
-�Τ뤳�ȤϤǤ��ޤ���
-�������äơ����Υ��ޥ��(bugus command)���ɤ߼�Ϥ����� end of file ��
-������ꡢ���Υ��ޥ�ɤ��Ф���񤭼�ϻ����˼�갷�äƤ����٤�
-�����ʥ��ȯ��������Ǥ��礦��
-�ʲ������ͤ��Ƥߤޤ��礦:
+open() と close() の戻り値をチェックするときは注意してください。
+パイプに対して B<書き込み> をしたのなら、SIGPIPE をトラップすべきです。
+そうしなければ、存在しないコマンドに対するパイプを起動したときに
+起こることについて考え込むことになるでしょう: open() はほとんどの
+場合成功すると見込まれるでしょうが(これは fork() の成功だけを
+反映します)、あなたの出力はその後で壮観に(spectacularly)失敗するでしょう。
+コマンドは、実際には exec() が失敗している別のプロセスで
+実行されているので、Perl はコマンドがうまく動いているかどうかを
+知ることはできません。
+したがって、偽のコマンド(bugus command)の読み手はすぐに end of file を
+受け取り、偽のコマンドに対する書き手は事前に取り扱っておくべき
+シグナルを発生させるでしょう。
+以下の例を考えてみましょう:
 
     open(FH, "|bogus")	or die "can't fork: $!";
     print FH "bang\n"	or die "can't write: $!";
@@ -1038,8 +1038,8 @@ To catch it, you could use this:
 
 =end original
 
-����ϥ�����������ޤ���ȯ��������ȯ����� SIGPIPE ��ȯ�������ޤ���
-�������館��ˤϡ��ʲ��Τ褦�ˤ��ޤ�:
+これはクローズするまで爆発せず、爆発すると SIGPIPE を発生させます。
+これを捕らえるには、以下のようにします:
 
     $SIG{PIPE} = 'IGNORE';
     open(FH, "|bogus")  or die "can't fork: $!";
@@ -1048,7 +1048,7 @@ To catch it, you could use this:
 
 =head2 Filehandles
 
-(�ե�����ϥ�ɥ�)
+(ファイルハンドル)
 
 =begin original
 
@@ -1061,19 +1061,19 @@ child process cannot outlive the parent.
 
 =end original
 
-�ᥤ��ץ������Ȼҥץ�������Ʊ���ե�����ϥ�ɥ� STDIN, STDOUT, 
-STDERR ��ͭ���ޤ���
-ξ���Υץ�������Ʊ���ˤ����Υϥ�ɥ�˥����������褦�Ȥ�����硢
-�������ʻ���ȯ�������ǽ��������ޤ���
-���ʤ��ϻҥץ������Τ���˥ե�����ϥ�ɥ�Υ��������Ⱥƥ����ץ�ˤ�������
-�ͤ��뤫�⤷��ޤ���
-����ϡ�open() ��Ȥäƥѥ��פ򥪡��ץ󤹤뤳�Ȥˤ�ä��н褹�뤳�Ȥ�
-�Ǥ��ޤ����������Υ����ƥ�ˤ����Ƥϻҥץ������Ϥ��οƥץ���������
-Ĺ�������뤳�ȤϤǤ��ޤ���
+メインプロセスと子プロセスで同じファイルハンドル STDIN, STDOUT, 
+STDERR を共有します。
+両方のプロセスが同時にそれらのハンドルにアクセスしようとした場合、
+おかしな事が発生する可能性があります。
+あなたは子プロセスのためにファイルハンドルのクローズと再オープンにしたいと
+考えるかもしれません。
+これは、open() を使ってパイプをオープンすることによって対処することが
+できますが、一部のシステムにおいては子プロセスはその親プロセスよりも
+長生きすることはできません。
 
 =head2 Background Processes
 
-(�Хå����饦��ɥץ�����)
+(バックグラウンドプロセス)
 
 =begin original
 
@@ -1081,7 +1081,7 @@ You can run a command in the background with:
 
 =end original
 
-�ʲ��Τ褦�ˤ��ƥ��ޥ�ɤ�Хå����饦��ɤǼ¹Ԥ��뤳�Ȥ��Ǥ��ޤ�:
+以下のようにしてコマンドをバックグラウンドで実行することができます:
 
     system("cmd &");
 
@@ -1094,14 +1094,14 @@ details).
 
 =end original
 
-���ޥ�ɤ� STDOUT �� STDERR (�Ȥ��ʤ��λȤ�������ˤ�äƤ� STDIN ��)��
-���οƥץ������Τ�Τ�Ʊ��ˤʤ�ޤ���
-double-fork �μ¹Ԥˤ�äơ�SIGCHLD ����ª����ɬ�פϤ���ޤ���
-(�ܤ����ϸ�Ҥ��ޤ�)��
+コマンドの STDOUT と STDERR (とあなたの使うシェルによっては STDIN も)は
+その親プロセスのものと同一になります。
+double-fork の実行によって、SIGCHLD を捕捉する必要はありません
+(詳しくは後述します)。
 
 =head2 Complete Dissociation of Child from Parent
 
-(�ҤοƤ���δ�����ʬΥ)
+(子の親からの完全な分離)
 
 =begin original
 
@@ -1115,13 +1115,13 @@ output doesn't wind up on the user's terminal).
 
 =end original
 
-�����ξ��(�㤨�Х����С��ץ������Υ�������)���ƥץ������Ȼҥץ�������
-������̵�ط��Τ�Τˤ��������Ȥ�����Ǥ��礦��
-����Ϥ��Ф��Хǡ���󲽤ȸƤФ�ޤ���
-�鵷�������ǡ����ϥ롼�ȥǥ��쥯�ȥ�� chdir() (���Τ���¹ԥե������
-���ä��ǥ��쥯�ȥ��ޤ�ե����륷���ƥ�Υ���ޥ���Ȥ���⤹�뤳�Ȥ�
-����ޤ���)��������ɸ��ե����뵭�һҤ� F</fdev/null> ��
-������쥯�Ȥ��ޤ���
+一部の場合(例えばサーバープロセスのスタート)、親プロセスと子プロセスを
+完全に無関係のものにしたいことがあるでしょう。
+これはしばしばデーモン化と呼ばれます。
+礼儀正しいデーモンはルートディレクトリに chdir() (そのため実行ファイルの
+あったディレクトリを含むファイルシステムのアンマウントを邪魔することが
+ありません)し、その標準ファイル記述子を F</fdev/null> に
+リダイレクトします。
 
     use POSIX 'setsid';
 
@@ -1145,12 +1145,12 @@ C<TIOCNOTTY> ioctl() on it instead.  See tty(4) for details.
 
 =end original
 
-fork() �ϥץ��������롼�ץ꡼����(�⤷�����ʤ� setsid() ��
-���Ԥ���Ǥ��礦)�Ǥʤ����Ȥ��ݾڤ��뤿���
-setsid() �����ˤʤ���Фʤ�ޤ���
-���ʤ��λȤäƤ��륷���ƥब sesid() �ؿ�����äƤ��ʤ��ΤǤ���С�
-F</dev/tty> �򥪡��ץ󤷤� C<TIONCNOTTY> ioctl() ������˻Ȥ��ޤ���
-�ܤ����� tty(4) �򻲾Ȥ��Ƥ���������
+fork() はプロセスグループリーダー(もしそうなら setsid() は
+失敗するでしょう)でないことを保証するために
+setsid() の前になければなりません。
+あなたの使っているシステムが sesid() 関数を持っていないのであれば、
+F</dev/tty> をオープンして C<TIONCNOTTY> ioctl() を代わりに使います。
+詳しくは tty(4) を参照してください。
 
 =begin original
 
@@ -1159,12 +1159,12 @@ solutions.
 
 =end original
 
-�� UNIX �桼�����Ϥ��ʤ��� OS �� Process �⥸�塼�������å�����
-¾�β�����õ���ޤ��礦��
+非 UNIX ユーザーはあなたの OS の Process モジュールをチェックして
+他の解決策を探しましょう。
 
 =head2 Safe Pipe Opens
 
-(�����ʥѥ��ץ����ץ�)
+(安全なパイプオープン)
 
 =begin original
 
@@ -1181,20 +1181,20 @@ you opened whatever your kid writes to his STDOUT.
 
 =end original
 
-�⤦��ĤΡ�IPC �Τ���ζ�̣�������ץ������ϥޥ���ץ������ˤʤä�
-���줾��δ֤��̿���Ԥ�ñ��Υץ���������Ȥ�����ΤǤ���
-open() �ؿ��� C<"-|"> �� C<"|-"> �Ȥ��ä��ե��������������
-���⤷�������Ȥ�Ԥ�����˼����դ��ޤ�: ����Ϥ��ʤ��������ץ󤷤�
-�ե�����ϥ�ɤΤ���λҥץ�������fork()����ΤǤ���
-���λҥץ������Ͽƥץ�������Ʊ���ץ�������¹Ԥ��ޤ���
-����Ϥ��Ȥ��С����ꤵ�줿 UID �� GID �Τ�ȤǼ¹Ԥ���ݤ˰����˥ե������
-�����ץ󤹤�Τ������Ǥ���
-�ޥ��ʥ���B<�Ф���>�ѥ��פ򥪡��ץ󤹤�ȡ����ʤ��ϥ����ץ󤷤�
-�ե�����ϥ�ɥ�˽񤭹��ߤ��Ǥ����ҥץ������Ϥ����ʬ�� STDIN ��
-���������ޤ���
-�ޥ��ʥ� B<�����> �ѥ��פ򥪡��ץ󤷤����ˤϡ��ҥץ�����������
-STDOUT �˽񤭽Ф�����Τ������ץ󤷤��ե�����ϥ�ɥ뤫��
-�ɤߤ������뤳�Ȥ��Ǥ���ΤǤ���
+もう一つの、IPC のための興味深いアプローチはマルチプロセスになって
+それぞれの間で通信を行う単一のプログラムを作るというものです。
+open() 関数は C<"-|"> や C<"|-"> といったファイル引数を非常に
+おもしろいことを行うために受け付けます: これはあなたがオープンした
+ファイルハンドのための子プロセスをfork()するのです。
+その子プロセスは親プロセスと同じプログラムを実行します。
+これはたとえば、仮定された UID や GID のもとで実行する際に安全にファイルを
+オープンするのに便利です。
+マイナスにB<対する>パイプをオープンすると、あなたはオープンした
+ファイルハンドルに書き込みができ、子プロセスはそれを自分の STDIN に
+見いだします。
+マイナス B<からの> パイプをオープンした場合には、子プロセスがその
+STDOUT に書き出したものがオープンしたファイルハンドルから
+読みだしすることができるのです。
 
     use English '-no_match_vars';
     my $sleep_count = 0;
@@ -1231,12 +1231,12 @@ your arguments.   Instead, use lower-level control to call exec() directly.
 
 =end original
 
-���Τ������Ԥ��⤦��Ĥΰ���Ū����ϡ�������Υ��󥿡��ե�����ȴ����
-������¹Ԥ���ɬ�פ�����Ȥ��Ǥ��礦��
-system() ��Ȥ��Ȥ����ľ��Ū�ʤ�ΤǤ������ѥ��פΥ����ץ��
-�Хå��������Ȥ�����˻Ȥ����Ȥ��Ǥ��ޤ���
-����ϥ����뤬���ʤ��ΰ����򿨤�Τ�ߤ����ˡ���ʤ�����Ǥ���
-����ˡ�exec() ��ľ�ܸƤӽФ����٥�������Ȥ��ޤ���
+このやり方を行うもう一つの一般的な例は、シェルのインターフェース抜きで
+何かを実行する必要があるときでしょう。
+system() を使うとそれは直接的なものですが、パイプのオープンや
+バッククォートを安全に使うことができません。
+これはシェルがあなたの引数を触るのを止める方法がないからです。
+代わりに、exec() を直接呼び出す低レベルな制御を使います。
 
 =begin original
 
@@ -1244,7 +1244,7 @@ Here's a safe backtick or pipe open for read:
 
 =end original
 
-�ʲ�����ϡ��ɤ߹����Ѥΰ����ʥХå��������Ȥ�ѥ��ץ����ץ�Τ�ΤǤ�:
+以下の例は、読み込み用の安全なバッククォートやパイプオープンのものです:
 
     # add error processing as above
     $pid = open(KID_TO_READ, "-|");
@@ -1269,8 +1269,8 @@ And here's a safe pipe open for writing:
 
 =end original
 
-�����ưʲ�����ϡ��񤭹����Ѥΰ����ʥХå��������Ȥ�
-�ѥ��ץ����ץ�Τ�ΤǤ�:
+そして以下の例は、書き込み用の安全なバッククォートや
+パイプオープンのものです:
 
     # add error processing as above
     $pid = open(KID_TO_WRITE, "|-");
@@ -1296,8 +1296,8 @@ the syntax
 
 =end original
 
-Perl 5.8.0 ���� �ѥ��פΤ���� C<open> �Υꥹ�ȷ�����Ȥ��ޤ�;
-�ʲ��Τ褦��ʸˡ��:
+Perl 5.8.0 から パイプのために C<open> のリスト形式を使えます;
+以下のような文法で:
 
     open KID_PS, "-|", "ps", "aux" or die $!;
 
@@ -1310,10 +1310,10 @@ pipes (with C<"|-"> in place of C<"-|">) is also implemented.
 
 =end original
 
-ps(1) ���ޥ�ɤ� fork ��(3 �ʾ�ΰ����� open() �Τ褦�˥������
-��ư���뤳�Ȥʤ�)��C<KID_PS> �ե�����ϥ�ɥ��ͳ��ɸ����Ϥ��ɤ߹��ߤޤ���
-���ޥ�ɥѥ��פ˽񤭹��ि����б�����ʸˡ (C<"-|"> �������
-C<"|-">) ���������Ƥ��ޤ���
+ps(1) コマンドを fork し(3 以上の引数の open() のようにシェルを
+起動することなく)、C<KID_PS> ファイルハンドル経由で標準出力を読み込みます。
+コマンドパイプに書き込むための対応する文法 (C<"-|"> の代わりに
+C<"|-">) も実装されています。
 
 =begin original
 
@@ -1324,15 +1324,15 @@ F<modules> file mentioned below in the SEE ALSO section.
 
 =end original
 
-���������� UNIX �� fork �Ǥ��äѤ��ǡ����� fork ��¾�Υ����ƥ�Ǥ�
-Ŭ�ڤ˼�������Ƥ��ʤ���ǽ��������Τ��Ȥ������Ȥ����դ��Ƥ���������
-����˲ä��ơ������Τ�����������Υޥ������åɤǤϤ���ޤ���
-����åɤˤĤ��Ƥ��ؤӤ����ΤǤ���С���Ҥ��� SEE ALSO �ξϤ�
-���ڤ���Ƥ��� F<modules> �ե�����򻲾Ȥ��Ƥ���������
+これらの操作は UNIX の fork でいっぱいで、その fork が他のシステムでは
+適切に実装されていない可能性があるのだということに注意してください。
+それに加えて、これらのやり方は本当のマルチスレッドではありません。
+スレッドについてより学びたいのであれば、後述する SEE ALSO の章で
+言及されている F<modules> ファイルを参照してください。
 
 =head2 Bidirectional Communication with Another Process
 
-(¾�Υץ������Ȥ��������̿�)
+(他のプロセスとの双方向通信)
 
 =begin original
 
@@ -1342,9 +1342,9 @@ doesn't actually work:
 
 =end original
 
-����ϡ��������̿����Ф��Ƥ��ޤ�Ư���ޤ���
-�Ǥ��������̿���?
-���ʤ�����ꤿ���������Ȥޤ��ͤ��뤳�Ȥϡ��ºݤˤϤ��ޤ������ޤ���:
+これは、片方向通信に対してうまく働きます。
+では双方向通信は?
+あなたがやりたいだろうとまず考えることは、実際にはうまくいきません:
 
     open(PROG_FOR_READING_AND_WRITING, "| some program |")
 
@@ -1355,8 +1355,8 @@ then you'll miss out entirely on the diagnostic message:
 
 =end original
 
-���ξ��֤� C<use warnings> �ץ饰�ޤ� B<-w> �ե饰��Ȥ��Τ�˺��Ƥ��ޤ��ȡ�
-�ʲ��Τ褦�ʿ��ǥ�å����������뵡���ƨ�����Ȥˤʤ�Ǥ��礦��
+この状態で C<use warnings> プラグマか B<-w> フラグを使うのを忘れてしまうと、
+以下のような診断メッセージを得る機会を逃すことになるでしょう。
 
     Can't do bidirectional pipe at -e line 1.
 
@@ -1370,12 +1370,12 @@ operations.
 
 =end original
 
-�����ˤ������ä����Ȥ򤷤����Τʤ顢ɸ��� open2() �Ȥ����饤�֥��ؿ���
-�Ȥ����Ȥǡ��ѥ��פ�ξ����ü�������뤳�Ȥ��Ǥ��ޤ���
-������(tridirectional)�������ϤΤ���� open3() �⤢��Τǡ��ҥץ�������
-STDERR ����ª���뤳�Ȥ�Ǥ���ΤǤ��������Τ���ˤ� �Գʹ���
-select() �롼�פ�ɬ�פȤʤꡢPerl ���̾����������Ԥ����Ȥ�
-�Ǥ��ޤ���
+本当にこういったことをしたいのなら、標準の open2() というライブラリ関数を
+使うことで、パイプの両方の端点を得ることができます。
+三方向(tridirectional)の入出力のための open3() もあるので、子プロセスの
+STDERR を捕捉することもできるのですが、そのためには 不格好な
+select() ループが必要となり、Perl の通常の入力操作を行うことが
+できません。
 
 =begin original
 
@@ -1388,13 +1388,13 @@ system or some other one purporting to be POSIX compliant.
 
 =end original
 
-open2() �Υ������򸫤Ƥߤ�С����줬���Ƥ���³���������뤿���
-UNIX �Ǥ� pipe() �� exec() �Τ褦������Υץ�ߥƥ��֤�ȤäƤ��뤳�Ȥ�
-�����Ĥ��Ǥ��礦��
-����� socketpair() ��Ȥ�����Ψ�����ʤ��ɤ��ΤǤ������ܿ����Ȥ����̤Ǥ�
-�����ꤷ�ޤ���
-open2() �� open3() �� UNIX �����ƥ�䤽��¾�� POSIX �˽��ä������ƥ��
-�����ƤϤ����餯ư��ʤ��Ǥ��礦��
+open2() のソースを見てみれば、それが全ての接続を生成するために
+UNIX での pipe() と exec() のような低水準のプリミティブを使っていることに
+気がつくでしょう。
+これは socketpair() を使うより効率が格段に良いのですが、移植性という面では
+見劣りします。
+open2() と open3() は UNIX システムやその他の POSIX に従ったシステムを
+除いてはおそらく動作しないでしょう。
 
 =begin original
 
@@ -1402,7 +1402,7 @@ Here's an example of using open2():
 
 =end original
 
-�ʲ��� open2() ��Ȥä���Ǥ�:
+以下は open2() を使った例です:
 
     use FileHandle;
     use IPC::Open2;
@@ -1424,17 +1424,17 @@ double-ended pipe.
 
 =end original
 
-����˴ؤ�������ϡ�UNIX �ΥХåե���󥰤��ºݤˤϤ�������˻��ޤ�
-α�ޤ�Ȥ������Ȥˤ���ޤ���
-�ե�����ϥ�ɥ� C<Writer> ��ư�ե�å���ˤ����Ȥ��Ƥ⡢�⤦������
-ü���ˤ���ץ�����������줿�ǡ�����Ŭ���ʥ����ߥ󥰤�
-������뤳�Ȥˤʤ�ޤ�; ����Ū�˱��äơ����ƤΤ��Ȥ˴ؤ���¨�¤�
-ȿ������褦�˶������뤳�ȤϤǤ��ޤ���
-�嵭����Ǥϡ��Хåե���󥰤򤷤ʤ��褦�ˤ��뤿��� B<-u> �ե饰��
-I<cat> ��Ϳ���뤳�Ȥ��Ǥ����ΤǤ��줬�Ǥ��ޤ�����
-�ѥ��ױۤ��˻Ȥ��뤳�Ȥ����ꤷ���߷פ��줿 UNIX ���ޥ�ɤ�����
-�����ʤΤǡ�������Τ褦�ʤ��Ȥϡ�ξü�Τ���ѥ��פΤ⤦������ü���ˤ���
-�ץ�������ʬ���Ȥǽ񤫤ʤ��¤�ϤۤȤ�ɤǤ��ʤ��ΤǤ���
+これに関する問題は、UNIX のバッファリングが実際にはある時点に至るまで
+留まるということにあります。
+ファイルハンドル C<Writer> を自動フラッシュにしたとしても、もう一方の
+端点にあるプロセスは送られたデータを適当なタイミングで
+受け取ることになります; 一般的に云って、全てのことに関して即座に
+反応するように強制することはできません。
+上記の例では、バッファリングをしないようにするために B<-u> フラグを
+I<cat> に与えることができたのでそれができました。
+パイプ越しに使われることを想定して設計された UNIX コマンドは非常に
+少数なので、この例のようなことは、両端のあるパイプのもう一方の端点にある
+プログラムを自分自身で書かない限りはほとんどできないのです。
 
 =begin original
 
@@ -1443,9 +1443,9 @@ pseudo-ttys to make your program behave more reasonably:
 
 =end original
 
-���β�������ɸ��� F<Comm.pl> �饤�֥��Ǥ���
-����Ϥ��ʤ��Υץ��������꿮�����Τ����ΤȤ��뤿���
-���� TTY ��Ȥ��ޤ�:
+この解決策は非標準の F<Comm.pl> ライブラリです。
+これはあなたのプログラムをより信頼性のあるものとするために
+擬似 TTY を使います:
 
     require 'Comm.pl';
     $ph = open_proc('cat -n');
@@ -1464,11 +1464,11 @@ in the SEE ALSO section below.
 
 =end original
 
-���Τ�����Ǥϡ����ʤ����Ȥ����Ȥ��Ƥ���ץ������Υ����������ɤ�
-��������ޤ魯�褦��ɬ�פϤ���ޤ���
-F<Comm> �饤�֥��ˤ�¾�ˤ� expect() �� interact() �Ȥ��ä��ؿ��⤢��ޤ���
-��Ҥ��� SEE ALSO �ξϤˤ��������κǴ��� CPAN �ǡ����Υ饤�֥��(��
-���θ�ѼԤȴ��Ԥ��Ƥ��� F<IPC::Chat>) �򸫤Ĥ��Ƥ���������
+このやり方では、あなたが使おうとしているプログラムのソースコードを
+いじくりまわすような必要はありません。
+F<Comm> ライブラリには他にも expect() や interact() といった関数もあります。
+後述する SEE ALSO の章にある説明の最寄りの CPAN で、このライブラリ(と
+その後継者と期待している F<IPC::Chat>) を見つけてください。
 
 =begin original
 
@@ -1480,17 +1480,17 @@ amongst those supported, this may be your best bet.
 
 =end original
 
-CPAN �ˤ����꿷�����⥸�塼�� Expect.pm �Ϥ���������н褹���ΤǤ���
-���Υ⥸�塼���¾�� IO:Pty��IO::Stty �Ȥ�����Ĥ� CPAN �⥸�塼���
-ɬ�פȤ��ޤ���
-���Υ⥸�塼��ϡ������ߥʥ�ǥХ����ɥ饤�Фȱ�������褦��
-�ץ����������ä��뤿��ˡ�����ü���򥻥åȥ��åפ��ޤ���
-�⤷���ʤ��λȤäƤ��륷���ƥब�������ä���Τ򥵥ݡ��Ȥ��Ƥ���ΤǤ���С�
-�������Ȥä������ɤ��Ǥ��礦��
+CPAN にあるより新しいモジュール Expect.pm はこの問題に対処するものです。
+このモジュールは他に IO:Pty、IO::Stty という二つの CPAN モジュールを
+必要とします。
+このモジュールは、ターミナルデバイスドライバと応答するような
+プログラムと対話するために、擬似端末をセットアップします。
+もしあなたの使っているシステムがこういったものをサポートしているのであれば、
+そちらを使った方が良いでしょう。
 
 =head2 Bidirectional Communication with Yourself
 
-(��ʬ���������̿�����)
+(自分で双方向通信する)
 
 =begin original
 
@@ -1501,11 +1501,11 @@ handles to STDIN and STDOUT and call other processes.
 
 =end original
 
-�⤷˾��Τʤ顢���٥�ʥ����ƥॳ���� pipe() �� fork() ��
-���ȤǹԤ�����˻Ȥ����Ȥ��Ǥ��ޤ���
-�ʲ������ñ�������Τ���Τ�ΤǤ�����STDIN �� STDOOUT ���Ф���
-Ŭ�ڤʥϥ�ɥ��ƥ����ץ󤹤뤳�Ȥ��Ǥ���������̤Υץ�������
-�ƤӽФ����Ȥ��Ǥ��ޤ���
+もし望むのなら、低レベルなシステムコール pipe() や fork() を
+手作業で行うために使うことができます。
+以下の例は単に説明のためのものですが、STDIN や STDOOUT に対する
+適切なハンドルを再オープンすることができ、さらに別のプロセスを
+呼び出すことができます。
 
     #!/usr/bin/perl -w
     # pipe1 - bidirectional communication using two pipe pairs
@@ -1540,9 +1540,9 @@ have the socketpair() system call, it will do this all for you.
 
 =end original
 
-�������ºݤ���Ĥ� pipe �θƤӽФ���Ԥ�ɬ�פϤ���ޤ���
-���ʤ��λȤäƤ��륷���ƥब socketpair() �����ƥॳ�����
-���ݡ��Ȥ��Ƥ���С����줬���ʤ�������˺�Ȥ�ԤäƤ���ޤ���
+しかし実際に二つの pipe の呼び出しを行う必要はありません。
+あなたの使っているシステムが socketpair() システムコールを
+サポートしていれば、それがあなたの代わりに作業を行ってくれます。
 
     #!/usr/bin/perl -w
     # pipe2 - bidirectional communication using socketpair
@@ -1578,7 +1578,7 @@ have the socketpair() system call, it will do this all for you.
 
 =head1 Sockets: Client/Server Communication
 
-(�����å�: ���饤�����/�����С��̿�)
+(ソケット: クライアント/サーバー通信)
 
 =begin original
 
@@ -1591,14 +1591,14 @@ depending on your system.
 
 =end original
 
-UNIX ���������������ڥ졼�ƥ��󥰥����ƥ�˸��ꤵ��뤳�ȤϤʤ�
-(�㤨�� PC �Ǥ� WinSock ��(���Ĥ��� VMS �饤�֥��Τ褦��)
-�����åȥ��ݡ��Ȥ��󶡤��Ƥ��ޤ�)�ˤ�ؤ餺�����ʤ����ȤäƤ���
-�����ƥ�Ǥϥ����åȤ��Ȥ��ʤ����⤷��ޤ���
-���ξ�硢���ι�˽񤫤�Ƥ��뤳�ȤϤ��ʤ�����ˤ�Ω���ʤ��Ǥ��礦��
-�����åȤ�Ȥ��С����۲�ϩ(�Ĥޤ� TCP ���ȥ꡼��)��ǡ��������(UDP
-�ѥ��å�)��ξ������ǽ�ˤʤ�ޤ���
-�ȤäƤ��륷���ƥ�ˡ������ذ�¸���뤳�Ȥˤʤ뤫�⤷��ޤ���
+UNIX から派生したオペレーティングシステムに限定されることはない
+(例えば PC では WinSock が(幾つかの VMS ライブラリのように)
+ソケットサポートを提供しています)にも関らず、あなたが使っている
+システムではソケットが使えないかもしれません。
+その場合、この項に書かれていることはあなたの役には立たないでしょう。
+ソケットを使えば、仮想回路(つまり TCP ストリーム)やデータグラム(UDP
+パケット)の両方が可能になります。
+使っているシステムに、より一層依存することになるかもしれません。
 
 =begin original
 
@@ -1610,13 +1610,13 @@ don't need to pass that information.
 
 =end original
 
-�����åȤ򰷤������ Perl �δؿ��ƤӽФ����б����� C �ǤΥ����ƥॳ�����
-Ʊ��̾������äƤ��ޤ���
-�������������˴ؤ��Ƥ���Ĥ���ͳ�ˤ�äưۤʤ��ΤȤʤäƤ��ޤ�:
-���ˡ�Perl �Υե�����ϥ�ɥ�� C �Υե����뵭�һҤȤ�
-�ۤʤ�Ư���򤹤��ΤǤ��롣
-����ˡ�Perl �Ϥ��Ǥ�ʸ�����Ĺ�����ΤäƤ���Τǡ����ξ�����Ϥ�
-ɬ�פ��ʤ����Ȥ�����ΤǤ���
+ソケットを扱うための Perl の関数呼び出しは対応する C でのシステムコールと
+同じ名前を持っています。
+しかし、引数に関しては二つの理由によって異なるものとなっています:
+第一に、Perl のファイルハンドルは C のファイル記述子とは
+異なる働きをするものである。
+第二に、Perl はすでに文字列の長さを知っているので、その情報を渡す
+必要がない、というものです。
 
 =begin original
 
@@ -1629,14 +1629,14 @@ reliably grants access to various constants and functions you'll need.
 
 =end original
 
-Perl �ˤ�����Ť������åȥץ������˴�Ϣ�����礭������Ȥϡ�������
-������ͤȤ���(�������ܿ�����»�ʤäƤ��ޤ�)�ϡ��ɥ����ɤ��줿��Τ�
-�Ȥ��Ƥ����Ȥ������ȤǤ���
-C<$AF_INET = 2> �Τ褦���ۤ˲��������ꤷ�Ƥ���ץ������򸫤���������С�
-���ʤ��Ϥ��줬�礭�ʥȥ�֥�ˤʤ�Ȥ������Ȥ��ΤäƤ���Ǥ��礦:
-���ͥ�줿������� C<Socket> �⥸�塼���Ȥ��Ȥ�����ΤǤ���
-����ϡ����ʤ���ɬ�פȤ���Ǥ������͡��������ؿ����Ф����꿮����֤���
-�����������󶡤��ޤ���
+Perl における古いソケットプログラムに関連する大きな問題とは、一部の
+定数の値として(著しく移植性を損なってしまう)ハードコードされたものが
+使われていたということです。
+C<$AF_INET = 2> のように陽に何かを設定しているプログラムを見た事があれば、
+あなたはそれが大きなトラブルになるということを知っているでしょう:
+より優れたやり方は C<Socket> モジュールを使うというものです。
+これは、あなたが必要とするであろう様々な定数や関数に対するより信頼の置ける
+アクセスを提供します。
 
 =begin original
 
@@ -1650,18 +1650,18 @@ messages and responses that end with a period on an empty line
 
 =end original
 
-NNTP �� SMTP �Τ褦�˴���¸�ߤ��Ƥ���ץ��ȥ���Τ���˥����С�/
-���饤����Ȥ�񤯤ΤǤʤ���С����ʤ��κ�륵���С����ɤΤ褦�ˤ���
-���饤����Ȥ����ä򽪤����Ȥ����Τä��ꡢ����ȿ�ФΤ��Ȥ�
-�Τ�Τ��Ȥ������Ȥ�ͤ��Ƥ����٤��Ǥ��礦��
-�ۤȤ�ɤΥץ��ȥ���ϰ�ԤΥ�å��������ֻ�(�����Υץ������ϡ�
-��\n�ɤ������ä��Ȥ��ˤ⤦��ĤΥץ������Ǥν�������λ�������Ȥ�
-�Τ�ޤ�)�������Ԥ��֤��줿�ԥꥪ�ɤǽ�ü�����("\n.\n" ����å�����/�ֻ���
-��ü����)ʣ���ԥ�å��������ֻ��˴�Ť��Ƥ��ޤ���
+NNTP や SMTP のように既に存在しているプロトコルのためにサーバー/
+クライアントを書くのでなければ、あなたの作るサーバーがどのようにして
+クライアントが通話を終えたときを知ったり、その反対のことを
+知るのかということを考えておくべきでしょう。
+ほとんどのプロトコルは一行のメッセージと返事(片方のプロセスは、
+“\n”を受け取ったときにもう一つのプロセスでの処理が終了したことを
+知ります)か、空行に置かれたピリオドで終端される("\n.\n" がメッセージ/返事を
+終端する)複数行メッセージと返事に基づいています。
 
 =head2 Internet Line Terminators
 
-(���󥿡��ͥåȤιԽ�ü��)
+(インターネットの行終端子)
 
 =begin original
 
@@ -1676,20 +1676,20 @@ but unless you're on a Mac, you'll probably be ok.
 
 =end original
 
-���󥿡��ͥåȤǤιԽ�ü�Ҥ� "\015\012" �Ǥ���
-UNIX �ǻȤ��� ASCII �ΥХꥨ�������Ǥϡ��̾�ϡ�\r\n�ɤΤ褦��
-���Ҥ��ޤ�����¾�Υ����ƥ�Ǥϡ���\r\n�ɤ�"\015\015\012" ���ä��ꡢ
-"\012\012\015" ���ä��ꤢ�뤤�Ϥޤä����㤦��ΤǤ��ä��ꤷ�ޤ���
-��\015\012�ɤ�ɸ��Ū�ʽ���(���ʤ����񤤤��ޤޤΤ�Τˤʤ�ޤ�)�Ǥ�����
-������ˤ�����Ω������\012�ɤ�����դ��뤳�Ȥ�侩����Ƥ��ޤ�(����
-���ʤ����׵᤹��Ȥ��ˤϤ���򲺤䤫�ʤ�Τˤ��ޤ��礦)��
-���Υޥ˥奢��ڡ����ˤ���ץ������ˤĤ��ơ���˺����Τ�Τ�
-�ȤäƤϤ��ޤ��󤬡����ʤ��� Mac ��ȤäƤ���ΤǤʤ����
-���ˤ��뤳�ȤϤʤ��Ǥ��礦��
+インターネットでの行終端子は "\015\012" です。
+UNIX で使われる ASCII のバリエーションでは、通常は“\r\n”のように
+記述しますが、他のシステムでは、“\r\n”は"\015\015\012" だったり、
+"\012\012\015" だったりあるいはまったく違うものであったりします。
+“\015\012”は標準的な書き方(あなたが書いたままのものになります)ですが、
+入力中にある独立した“\012”を受け付けることも推奨されています(が、
+あなたが要求するときにはそれを穏やかなものにしましょう)。
+このマニュアルページにあるプログラムについて、常に最善のものを
+使ってはいませんが、あなたが Mac を使っているのでなければ
+気にすることはないでしょう。
 
 =head2 Internet TCP Clients and Servers
 
-(���󥿡��ͥåȤ� TCP ���饤����Ȥȥ����С�)
+(インターネットの TCP クライアントとサーバー)
 
 =begin original
 
@@ -1698,8 +1698,8 @@ communication that might extend to machines outside of your own system.
 
 =end original
 
-��ʬ�λȤäƤ��륷���ƥ�γ�¦�ˤ����ޥ���ˤޤǥ��饤�����-
-�����С����̿��򹭤��������ˤ� Internet-domain �����åȤ�Ȥ��ޤ���
+自分の使っているシステムの外側にあるもマシンにまでクライアント-
+サーバーの通信を広げたい場合には Internet-domain ソケットを使います。
 
 =begin original
 
@@ -1707,8 +1707,8 @@ Here's a sample TCP client using Internet-domain sockets:
 
 =end original
 
-�ʲ��Υץ������ϡ�Internet-domain �����åȤ�Ȥä� TCP ���饤����Ȥ�
-��Ǥ�:
+以下のプログラムは、Internet-domain ソケットを使った TCP クライアントの
+例です:
 
     #!/usr/bin/perl -w
     use strict;
@@ -1743,12 +1743,12 @@ instead.
 
 =end original
 
-�����ưʲ��˵󤲤�Τ��嵭�Υ��饤����Ȥ��б����륵���С��Ǥ���
-�����Ǥϥ��ɥ쥹�� INADDR_ANY �Ȥ��Ƥ���Τǡ������ͥ�� multihomed
-hosts ���Ŭ�ڤʥ��󥿡��ե����������򤹤뤳�Ȥ��Ǥ��ޤ���
-(�ե����䡼��������䥲���ȥ������γ�¦�Τ褦��)����Υ��󥿡��ե�������
-�Ȥ������ΤǤ���С�������ʬ�򡢼�ʬ�λȤ����������Υ��ɥ쥹��
-����褦�ˤ��٤��Ǥ���
+そして以下に挙げるのが上記のクライアントと対応するサーバーです。
+ここではアドレスを INADDR_ANY としているので、カーネルは multihomed
+hosts 上の適切なインターフェースを選択することができます。
+(ファイヤーウォールやゲイトウェイの外側のように)特定のインターフェースを
+使いたいのであれば、この部分を、自分の使いたい本当のアドレスで
+埋めるようにすべきです。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -1797,12 +1797,12 @@ go back to service a new client.
 
 =end original
 
-�ʲ�����ϥޥ������åɥС������Ǥ���
-����ϤۤȤ�ɤ�ŵ��Ū�ʥ����С��������Ǥ���褦�˥ޥ������åɤ�
-�ʤäƤ��ơ����饤����ȤΥꥯ�����Ȥ�������뤿��˥��쥤�֥����С���
-spawn(fork) ���ޤ���
-���Τ��ᡢ�ޥ����������С��Ͽ��������饤����Ȥ��Ф��ƥ����ӥ����뤿���
-¨�¤������Ǥ��ޤ���
+以下の例はマルチスレッドバージョンです。
+これはほとんどの典型的なサーバーがそうであるようにマルチスレッドに
+なっていて、クライアントのリクエストを処理するためにスレイブサーバーを
+spawn(fork) します。
+このため、マスターサーバーは新しいクライアントに対してサービスするために
+即座に復帰できます。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -1904,19 +1904,19 @@ living dead.
 
 =end original
 
-���Υ����С��ϥꥯ�����Ȥ������٤� fork() ��ȤäƻҥС�������ʣ����
-�Ԥ��Τǡ������������ޤ���
-���Τ�����ϡ����ʤ������˾��ǤϤ��ʤ����⤷��ޤ��󤬡����٤�¿����
-�ꥯ�����Ȥ�������뤳�Ȥ��Ǥ��ޤ���
-fork()��Ȥ�ʤ��ä��Ȥ��Ƥ⡢listen() ��¿���ΰ����ߤ���
-���ͥ������(pending connections) �򰷤��ޤ���
-�����С��� fork ����Τǡ������Ҷ�(UNIX �����Ǥϥ���ӤȸƤФ����)��
-������˴ؤ������տ�������ɬ�פ�����ޤ���
-�ʤ��ʤ顢�������ʤ���Хץ������ơ��֥뤬���������Ĥ�����뤳�Ȥ�
-�ʤ뤫��Ǥ���
-������ REAPER ���֥롼����Ͻ�λ�������Ƥλҥץ������Τ����
-waitpid() ��ƤӽФ�����˻Ȥ�졢���äƻҥץ����������줤�˽�λ����
-����Ӥν��Ĥ˲ä��ʤ����Ȥ�μ¤ˤ��ޤ���
+このサーバーはリクエストがくる度に fork() を使って子バージョンの複製を
+行うので、問題を取り除きます。
+このやり方は、あなたが常に望んではいないかもしれませんが、一度に多くの
+リクエストを処理することができます。
+fork()を使わなかったとしても、listen() は多くの一時停止した
+コネクション(pending connections) を扱えます。
+サーバーを fork するので、死んだ子供(UNIX 世界ではゾンビと呼ばれるもの)の
+後始末に関して注意深くする必要があります。
+なぜなら、そうしなければプロセステーブルがすぐに埋めつくされることに
+なるからです。
+ここで REAPER サブルーチンは終了した全ての子プロセスのために
+waitpid() を呼び出すために使われ、従って子プロセスがきれいに終了し、
+ゾンビの集団に加わらないことを確実にします。
 
 =begin original
 
@@ -1930,15 +1930,15 @@ notifies the parent process with a CHLD signal.
 
 =end original
 
-while �롼�פ���� accept() ��ƤӽФ��ơ������ͤ��֤����ɤ�����
-�����å����ޤ���
-�����������𤹤�ɬ�פΤ��륷���ƥ२�顼�򼨤��Ƥ��ޤ���
-��������Perl 5.7.3 ��Ƴ�����줿�����ʥ����ʥ�(��Ҥ�
-L</Deferred Signals (Safe Signals)> �򻲾Ȥ��Ƥ�������) ��Ƴ���ϡ�
-�ץ������������ʥ������������ˤ� accept() �����Ǥ��줦�뤳�Ȥ�
-��̣���ޤ���
-�����ŵ��Ū�ˤϡ�fork �����ҥץ������ΰ�Ĥ���λ���ơ��ƥץ�������
-CHLD �����ʥ�����Τ������˵�����ޤ���
+while ループの中で accept() を呼び出して、偽の値を返すかどうかを
+チェックします。
+これは普通報告する必要のあるシステムエラーを示しています。
+しかし、Perl 5.7.3 で導入された安全なシグナル(上述の
+L</Deferred Signals (Safe Signals)> を参照してください) の導入は、
+プロセスがシグナルを受信した場合にも accept() が中断されうることを
+意味します。
+これは典型的には、fork した子プロセスの一つが終了して、親プロセスに
+CHLD シグナルを通知した場合に起こります。
 
 =begin original
 
@@ -1953,15 +1953,15 @@ update the local copy leaving the original unchanged.
 
 =end original
 
-�⤷ accept() �������ʥ�����Ǥ����ȡ�$! �� EINTR �����åȤ���ޤ���
-���줬��������硢����ȿ���ȼ��� accept() �θƤӽФ��������³�ԤǤ��ޤ���
-�����ʥ�ϥ�ɥ饳���ɤ� $! ���ѹ����ʤ��褦�ˤ��ʤ��ȡ����Υƥ��Ȥ�
-�ۤܳμ¤˼��Ԥ���Ȥ������ȤϽ��פǤ���
-REAPER ���֥롼����Ǥ� waitpid() ��ƤӽФ����˥��������Ǥ� $! ��
-�������Ƥ��ޤ���
-waitpid() �� $! �� ECHILD �򥻥åȤ����(����Ϥɤλҥץ��������ԤäƤ��ʤ�
-�Ȥ���ɬ��Ū��ȯ�����ޤ�)������ϸ����ͤ��ѹ���������������ʥ��ԡ���
-�������ޤ���
+もし accept() がシグナルで中断されると、$! に EINTR がセットされます。
+これが起きた場合、次の反復と次の accept() の呼び出しを安全に続行できます。
+シグナルハンドラコードが $! を変更しないようにしないと、このテストが
+ほぼ確実に失敗するということは重要です。
+REAPER サブルーチンでは waitpid() を呼び出す前にローカル版の $! を
+作成しています。
+waitpid() が $! に ECHILD をセットすると(これはどの子プロセスも待っていない
+ときに必然的に発生します)、これは元の値を変更せず、ローカルなコピーを
+更新します。
 
 =begin original
 
@@ -1973,12 +1973,12 @@ be able to compromise your system.
 
 =end original
 
-setuid ��setgid �򤵤�Ƥ��ʤ����֤Ǽ¹Ԥ���Ƥ���Ȥ��Ƥ⡢��������
-(L<perlsec> �򻲾�)�򤹤뤿��� B<-T> �ե饰��Ȥ����Ȥ򤪴��ᤷ�ޤ���
-����ϡ������С��䤽��¾��¾��ï���Τ���˼¹Ԥ����(CGI ������ץȤΤ褦��)
-�ץ��������Ф��ƤϾ���ɤ��ͤ��ˤʤ�ޤ���
-�ʤ��ʤ餽�����뤳�Ȥˤ�äơ������οʹ֤����ʤ��Υ����ƥ�����äƤ���
-���Ȥ��Ǥ����ǽ���򸺤餹����Ǥ���
+setuid やsetgid をされていない状態で実行されているとしても、汚染検査
+(L<perlsec> を参照)をするために B<-T> フラグを使うことをお勧めします。
+これは、サーバーやその他の他の誰かのために実行される(CGI スクリプトのような)
+プログラムに対しては常に良い考えになります。
+なぜならそうすることによって、外部の人間があなたのシステムに入ってくる
+ことができる可能性を減らすからです。
 
 =begin original
 
@@ -1988,9 +1988,9 @@ differ from the system on which it's being run:
 
 =end original
 
-�⤦��Ĥ� TCP ���饤����Ȥ򸫤Ƥߤޤ��礦��
-�����ʣ���ΰۤʤ�ޥ����� TCP �Ρ�time�ɥ����ӥ�����³���ƥ��饤����Ȥ�
-���äƤ��륷���ƥ�Ȼ��פ��ɤ줯�餤��äƤ���Τ���Ϥ��ޤ�:
+もう一つの TCP クライアントを見てみましょう。
+これは複数の異なるマシン上の TCP の“time”サービスに接続してクライアントが
+走っているシステムと時計がどれくらい違っているのを出力します:
 
     #!/usr/bin/perl  -w
     use strict;
@@ -2023,7 +2023,7 @@ differ from the system on which it's being run:
 
 =head2 Unix-Domain TCP Clients and Servers
 
-(UNIX �ɥᥤ��� TCP ���饤����Ȥȥ����С�)
+(UNIX ドメインの TCP クライアントとサーバー)
 
 =begin original
 
@@ -2035,14 +2035,14 @@ domain sockets can show up in the file system with an ls(1) listing.
 
 =end original
 
-Internet-domain �Υ����С��ȥ��饤����Ȥ��ɤ���ΤǤ�������������
-���ߥ�˥��������˴ؤ��ƤϤɤ��Ǥ��礦��?
-Ʊ���褦�˥��åȥ��åפ��뤳�Ȥ��Ǥ��ޤ�����Ʊ���ͤ�(�̿���)�Ԥ����Ȥ�
-�Ǥ��ޤ���
-UNIX �ɥᥤ�󥽥��åȤϥ����ȥۥ��Ȥ˥�������ǡ����Ф��Хѥ��פ�
-�������뤿�������Ū�˻Ȥ��Ƥ��ޤ���
-Internet �ɥᥤ�󥽥��åȤȤϰۤʤꡢUNIX �ɥᥤ�󥽥��åȤϡ�
-ls(1) ��Ȥäƥե����륷���ƥ����Ǹ��Ĥ��뤳�Ȥ��Ǥ��ޤ���
+Internet-domain のサーバーとクライアントは良いものですが、ローカル
+コミュニケーションに関してはどうでしょうか?
+同じようにセットアップすることができますが、同じ様に(通信を)行うことは
+できません。
+UNIX ドメインソケットはカレントホストにローカルで、しばしばパイプを
+実装するために内部的に使われています。
+Internet ドメインソケットとは異なり、UNIX ドメインソケットは、
+ls(1) を使ってファイルシステムの中で見つけることができます。
 
     % ls -l /dev/log
     srw-rw-rw-  1 root            0 Oct 31 07:23 /dev/log
@@ -2053,7 +2053,7 @@ You can test for these with Perl's B<-S> file test:
 
 =end original
 
-�����Perl �Υե�����ƥ��� B<-S> ��ȤäƹԤ��ޤ�:
+これを、Perl のファイルテスト B<-S> を使って行えます:
 
     unless ( -S '/dev/log' ) {
 	die "something's wicked with the log system";
@@ -2065,7 +2065,7 @@ Here's a sample Unix-domain client:
 
 =end original
 
-UNIX �ɥᥤ�󥯥饤����Ȥ���Ǥ�:
+UNIX ドメインクライアントの例です:
 
     #!/usr/bin/perl -w
     use Socket;
@@ -2088,11 +2088,11 @@ to be on the localhost, and thus everything works right.
 
 =end original
 
-�������б����륵���С��Ǥ���
-�����ǡ����ʤ��Ϥ�ä����ʥͥåȥ����ü�ҤˤĤ��ƻפ��Ѥ�
-ɬ�פϤ���ޤ���
-�ʤ��ʤ顢UNIX �Υɥᥤ�󥽥��åȤϥ�������ۥ��Ȥˤ����ƴ�����
-����������ΤǤ��äơ����Τ��ᡢ���ƤϤ��ޤ������ΤǤ���
+そして対応するサーバーです。
+ここで、あなたはやっかいなネットワーク終端子について思い煩う
+必要はありません。
+なぜなら、UNIX のドメインソケットはローカルホストにおいて完全に
+満たされるものであって、そのため、全てはうまくいくのです。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -2172,9 +2172,9 @@ other server.
 
 =end original
 
-���Ƥ狼��褦�ˡ�Internet domain TCP �����С��ȤۤȤ��Ʊ���Ǥ���
-�ºݤˤϡ��ޤä����ѤäƤ��ʤ����Ĥ��ν�ʣ�����ؿ� spawn(), 
-logmsg(), ctime(), REAPER() ��������Ƥ���ޤ���
+見てわかるように、Internet domain TCP サーバーとほとんど同じです。
+実際には、まったく変っていない幾つかの重複した関数 spawn(), 
+logmsg(), ctime(), REAPER() を取り除いてあります。
 
 =begin original
 
@@ -2186,13 +2186,13 @@ arguments.
 
 =end original
 
-�ǤϤʤ���ñ���̾���դ��ѥ��פǤϤʤ� UNIX �ɥᥤ�󥽥��åȤ�
-�Ȥ�������ΤǤ��礦��?
-������ͳ�ϡ�̾���դ��ѥ��פ����ʤ��˥��å�����Ϳ���ʤ�����Ǥ���
-���ʤ��Ϥ���ץ����������褿�ǡ����ȡ�����Ȥ��̤Υץ��������餭��
-�ǡ����Ȥ���̤��뤳�Ȥ��Ǥ��ޤ���
-�����åȥץ�����ߥ󥰤�Ԥ����Ȥǡ����饤���������̡��Υ��å�����
-���Ƥ�褦�ˤʤ�ޤ�: ���줬 accept() ����Ĥΰ���������ͳ�Ǥ���
+ではなぜ、単純な名前付きパイプではなく UNIX ドメインソケットを
+使いたがるのでしょうか?
+その理由は、名前付きパイプがあなたにセッションを与えないからです。
+あなたはあるプロセスから来たデータと、それとは別のプロセスからきた
+データとを区別することができません。
+ソケットプログラミングを行うことで、クライアント毎に別々のセッションを
+持てるようになります: これが accept() が二つの引数を取る理由です。
 
 =begin original
 
@@ -2204,15 +2204,15 @@ as a Unix-domain client and connects to your private server.
 
 =end original
 
-�㤨�С�CGI ���󥿡��ե��������̤��ƤΤ� World Wide Web ���饢����������롢
-Ĺ���ּ¹Ԥ���Ƥ���ǡ����١��������С��ǡ�������äƤ���Ȥ��ޤ��礦��
-���ξ�硢���ʤ��ι����ʤ褦�˥����å�������ε�Ͽ��¹Ԥ���褦�ʾ�������
-ñ��� CGI �ץ���������äơ�UNIX �ɥᥤ�󥯥饤����ȤȤ��ƿ�����
-�ץ饤�١��Ȥʥ����С�����³������Ȥ��ä����Ȥ��Ǥ���Ǥ��礦��
+例えば、CGI インターフェースを通してのみ World Wide Web からアクセスされる、
+長時間実行されているデータベースサーバーデーモンを持っているとしましょう。
+この場合、あなたの好きなようにチェックやログの記録を実行するような小さく、
+単純な CGI プログラムを持って、UNIX ドメインクライアントとして振る舞う
+プライベートなサーバーに接続させるといったことができるでしょう。
 
 =head1 TCP Clients with IO::Socket
 
-(IO::Socket ��Ȥä� TCP ���饤�����)
+(IO::Socket を使った TCP クライアント)
 
 =begin original
 
@@ -2227,19 +2227,19 @@ to name a few.
 
 =end original
 
-�����åȥץ�����ߥ󥰤��Ф�����।�󥿡��ե������Τ���ˡ�IO::Socket
-�⥸�塼��ϥ��֥������Ȼظ����ץ��������󶡤��ޤ���
-IO::Socket �⥸�塼��ϥ�꡼�� 5.004 ��ɸ�� Perl ���ۥ��åȤΰ����Ȥ���
-�ޤޤ�Ƥ��ޤ���
-���ʤ��������ΥС������� Perl ��ȤäƤ���ΤǤ���С�
-CPAN ���� IO::Socket �����ꤷ�ޤ���
-�����Ǥϡ��ʲ��˵󤲤�褦�ʥ����ƥ���Ф����ñ�ʥ��󥿡��ե�������
-�󶡤��륷���ƥ�⸫�Ĥ��뤳�Ȥ��Ǥ���Ǥ��礦: DNS, FTP, Ident (RFC 931),
-NIS, NISPlus, NNTP, Ping, POP3, SMTP, SNMP, SSLeay, Telnet, Time �ʤɡ�
+ソケットプログラミングに対する高水準インターフェースのために、IO::Socket
+モジュールはオブジェクト指向アプローチを提供します。
+IO::Socket モジュールはリリース 5.004 の標準 Perl 配布キットの一部として
+含まれています。
+あなたが以前のバージョンの Perl を使っているのであれば、
+CPAN から IO::Socket を入手します。
+そこでは、以下に挙げるようなシステムに対する簡単なインターフェースを
+提供するシステムも見つけることができるでしょう: DNS, FTP, Ident (RFC 931),
+NIS, NISPlus, NNTP, Ping, POP3, SMTP, SNMP, SSLeay, Telnet, Time など。
 
 =head2 A Simple Client
 
-(ñ��ʥ��饤�����)
+(単純なクライアント)
 
 =begin original
 
@@ -2249,9 +2249,9 @@ that the server there cares to provide.
 
 =end original
 
-�ʲ�����ϡ�localhost�ɤȤ����ۥ���̾�� 13 �֥ݡ��Ȥˤ����dyatime��
-�����ӥ����Ф��� TCP ���ͥ�������������륯�饤����Ȥǡ����Υ����С���
-�󶡤���ǡ����򤹤٤ƽ��Ϥ��ޤ���
+以下の例は“localhost”というホスト名の 13 番ポートにある“dyatime”
+サービスに対する TCP コネクションを作成するクライアントで、そのサーバーが
+提供するデータをすべて出力します。
 
     #!/usr/bin/perl -w
     use IO::Socket;
@@ -2270,7 +2270,7 @@ looks like this:
 
 =end original
 
-���Υץ�������¹Ԥ���ȡ��ʲ��Τ褦���ֻ����֤äƤ���Ǥ��礦:
+このプログラムを実行すると、以下のような返事が返ってくるでしょう:
 
     Wed May 14 08:40:46 MDT 1997
 
@@ -2280,7 +2280,7 @@ Here are what those parameters to the C<new> constructor mean:
 
 =end original
 
-C<new> ���󥹥ȥ饯�������Ф���ѥ�᡼�����ΰ�̣���������ޤ�:
+C<new> コンストラクターに対するパラメーターの意味を説明します:
 
 =over 4
 
@@ -2296,13 +2296,13 @@ can be used to make a datagram socket, used for message-passing.
 
 =end original
 
-����ϻ��Ѥ���ץ��ȥ���Ǥ���
-������Ǥϡ��䤿���ϥ��ȥ꡼��ظ��Υ��ͥ�����󡢤Ĥޤꡢ�Τʤ�������̤�
-�ե�����Τ褦�˿����񤦤�Τ�Ȥ������Τǡ������åȤ� TCP �����åȤ�
-��³���줿��Τ򰷤��ޤ���
-�����åȤˤϤ���ʳ��Υ����פ⤢�뤳�Ȥ����դ��Ƥ���������
-���Ȥ��С�UDP �ץ��ȥ����(��å����������˻Ȥ��Ƥ���)
-�ǡ�������ॽ���åȤ�������뤿��˻Ȥ����Ȥ��Ǥ��ޤ���
+これは使用するプロトコルです。
+この例では、私たちはストリーム指向のコネクション、つまり、昔ながらの普通の
+ファイルのように振る舞うものを使いたいので、ソケットは TCP ソケットに
+接続されたものを扱います。
+ソケットにはこれ以外のタイプもあることに注意してください。
+たとえば、UDP プロトコルは(メッセージ送信に使われている)
+データグラムソケットを作成するために使うことができます。
 
 =item C<PeerAddr>
 
@@ -2317,14 +2317,14 @@ for localhost is C<"127.1">, if you'd rather use that.
 
 =end original
 
-����ϥ����С����¹Ԥ���Ƥ����⡼�ȥۥ��ȤΡ����󥿡��ͥåȥ��ɥ쥹
-�⤷����̾���Ǥ���
-����� C<"www.perl.com"> �Τ褦��Ĺ��̾���ǻ��ꤹ�뤳�Ȥ�
-C<"204.148.40.9"> �Τ褦�ʥ��ɥ쥹�ǻ��ꤹ�뤳�Ȥ�Ǥ��ޤ���
-�����ǻȤä� C<"localhost"> �ϡ���˼�ʬ�����Ѥ��Ƥ��븽�ߤΥޥ����
-��̣�������̤ʥۥ���̾�Ǥ���
-��������ۥ��Ȥ��Ф��륤�󥿡��ͥåȥ��ɥ쥹�� C<"127.1"> �ǡ��������
-�Ȥ����Ȥ�Ǥ��ޤ���
+これはサーバーが実行されているリモートホストの、インターネットアドレス
+もしくは名前です。
+これを C<"www.perl.com"> のような長い名前で指定することも
+C<"204.148.40.9"> のようなアドレスで指定することもできます。
+先の例で使った C<"localhost"> は、常に自分が使用している現在のマシンを
+意味する特別なホスト名です。
+ローカルホストに対するインターネットアドレスは C<"127.1"> で、こちらを
+使うこともできます。
 
 =item C<PeerPort>
 
@@ -2339,13 +2339,13 @@ worked, but constant numbers make careful programmers nervous.
 
 =end original
 
-�������³�����������ӥ���̾�Ρ��⤷���ϥݡ����ֹ�Ǥ���
-�䤿���������ǡ�����������ꤵ�줿�����ƥॵ���ӥ��λȤ���
-�����ƥ�Ǥʤ� C<"daytime"> ��Ȥ����Ȥ�Ǥ��ޤ���
-[FOOTNOTE: UNIX�Ǥ� I</etc/services> �˥����ƥॵ���ӥ��ե����뤬����ޤ�]��
-���������ºݤˤϳ�̤Ǥ����ä� (13) �Ȥ����ݡ����ֹ�λ����ԤäƤ��ޤ�����
-ñ���ֹ��ȤäƤ�Ʊ�ͤ�ư���ΤǤ�������������տ����ץ�����ޤ�
-���м��ˤ����Ƥ��ޤ��ޤ���
+これは接続したいサービスの名称、もしくはポート番号です。
+私たちは先の例で、きちんと設定されたシステムサービスの使える
+システムでなら C<"daytime"> を使うこともできました
+[FOOTNOTE: UNIXでは I</etc/services> にシステムサービスファイルがあります]。
+しかし、実際には括弧でくくって (13) というポート番号の指定を行っていました。
+単に番号を使っても同様に動作するのですが、定数は注意深いプログラマを
+神経質にさせてしまいます。
 
 =back
 
@@ -2359,12 +2359,12 @@ can read one line from it this way:
 
 =end original
 
-���󥹥ȥ饯���� C<new> ������ͤ���C<while> �롼�פ���Υե�����
-�ϥ�ɥ�Ȥ��ƤɤΤ褦�˻Ȥ��Ƥ��뤫�Ȥ������Ȥ˵����Ĥ��ޤ�����?
-����ϴ��ܥե�����ϥ�ɥ�ȸƤФ���Τǡ��ե�����ϥ�ɥ���ݻ����Ƥ���
-�����顼�ѿ��Ǥ���
-����ϡ��̾�Υե�����ϥ�ɥ��Ʊ�ͤΤ�����ǻȤ����Ȥ��Ǥ��ޤ���
-�㤨�С��ʲ��Τ褦�ˤ���а���ɤ߹��ߤ��Ǥ��ޤ�:
+コンストラクター C<new> の戻り値が、C<while> ループの中のファイル
+ハンドルとしてどのように使われているかということに気がつきましたか?
+これは間接ファイルハンドルと呼ばれるもので、ファイルハンドルを保持している
+スカラー変数です。
+これは、通常のファイルハンドルと同様のやり方で使うことができます。
+例えば、以下のようにすれば一行読み込みができます:
 
     $line = <$handle>;
 
@@ -2374,7 +2374,7 @@ all remaining lines from is this way:
 
 =end original
 
-�Ĥ�ι����Ƥ��ɤ߹��ߤϰʲ��Τ褦�ˤ��ޤ�:
+残りの行全ての読み込みは以下のようにします:
 
     @lines = <$handle>;
 
@@ -2384,13 +2384,13 @@ and send a line of data to it this way:
 
 =end original
 
-�ǡ�����������ˤϰʲ��Τ褦�ˤ��ޤ�:
+データを一行送るには以下のようにします:
 
     print $handle "some data\n";
 
 =head2 A Webget Client
 
-(Webget ���饤�����)
+(Webget クライアント)
 
 =begin original
 
@@ -2401,11 +2401,11 @@ something to the server before fetching the server's response.
 
 =end original
 
-�ʲ�����ϡ��ɥ�����Ȥ򤽤��������⡼�ȥۥ��Ȥȡ����Υۥ��Ȥ���
-��������ɥ�����ȤΥꥹ�Ȥ�����˼��ñ��ʥ��饤����ȤǤ���
-������������ⶽ̣������ΤǤ���
-�ʤ��ʤ顢������ˤ����Ƥϥ����С���ȿ����ե��å��������˺ǽ�˲�����
-�����С����������뤫��Ǥ���
+以下の例は、ドキュメントをそこから取るリモートホストと、そのホストから
+取得するドキュメントのリストを引数に取る単純なクライアントです。
+これは先の例よりも興味深いものです。
+なぜなら、この例においてはサーバーの反応をフェッチする前に最初に何かを
+サーバーに送信するからです。
 
     #!/usr/bin/perl -w
     use IO::Socket;
@@ -2438,16 +2438,16 @@ be a C<"\015\012"> instead.)
 
 =end original
 
-�����Ǥϡ���http�ɥ����ӥ����󶡤��� web �����С�������ɸ��ݡ��ȤǤ���
-80 �֥ݡ��Ȥ�ȤäƤ���Ȳ��ꤷ�Ƥ��ޤ���
-���ʤ��λȤäƤ��� web �����С����ۤʤ�ݡ���(�㤨�� 1080 �Ȥ� 8080 �Ȥ�)��
-���Ѥ��Ƥ���ΤǤ���С�̾���դ��ѥ�᡼���ڥ��ˤ���C<< PeerPort => 8080 >>
-�Τ褦�ʷ����ǻ��ꤹ�٤��Ǥ��礦��
-C<autoflush> �᥽�åɤ������åȤ��Ф��ƻȤ��ޤ���
-�������ʤ���Х����ƥ�ϻ䤿���������������Ϥ�
-�Хåե���󥰤��Ƥ��ޤ��Ǥ��礦(���ʤ��� Mac ��ȤäƤ���ΤǤ���С�
-�ͥåȥ���ۤ��˥ǡ�������������ץ��������ˤ��뤹�٤Ƥ�
-C<"\n"> �� C<"\015\012"> ���ѹ�����ɬ�פ⤢��ޤ�)��
+ここでは、“http”サービスを提供する web サーバーがその標準ポートである
+80 番ポートを使っていると仮定しています。
+あなたの使っている web サーバーが異なるポート(例えば 1080 とか 8080 とか)を
+使用しているのであれば、名前付きパラメータペアにしてC<< PeerPort => 8080 >>
+のような形式で指定すべきでしょう。
+C<autoflush> メソッドがソケットに対して使われます。
+そうしなければシステムは私たちが送信した出力を
+バッファリングしてしまうでしょう(あなたが Mac を使っているのであれば、
+ネットワーク越しにデータを送信するプログラム中にあるすべての
+C<"\n"> を C<"\015\012"> に変更する必要もあります)。
 
 =begin original
 
@@ -2464,18 +2464,18 @@ such a request.
 
 =end original
 
-�����С��ؤ���³�ϡ����Υץ������κǽ�ΰ���ʬ�Ǥ�������ޤ���: 
-������³����Ƥ��ޤ��С������С��θ����Ȥ��٤��ʤΤǤ���
-�ͥåȥ����γƥ����С��ϡ����ϤȤ��ƴ��Ԥ��Ƥ��뤽�줾��ξ�����
-���ޥ�ɸ������äƤ��ޤ���
-HTTP ��ʸ�ˤ����ƺǽ�˥����С�����������Τ� "GET" �Ǥ���
-���ξ�硢ñ��˻��ꤵ�줿�ɥ�����ȤΤ��줾���ꥯ�����Ȥ��ޤ���
-�������䤿���ϼºݤˤϡ����Ȥ�Ʊ���ۥ��ȤǤ��ä��Ȥ��Ƥ�ɥ���������
-���������ͥ�������������Ƥ��ޤ���
-���줬 HTTP ��Ȥ��Ȥ��˾�ˤ������ʤ���Фʤ�ʤ���ˡ�ʤΤǤ���
-�Ƕ��web�֥饦�����Ǥϥ��ͥ������򳫤����ޤޤ���äȤδ֥�⡼�ȥ����С���
-Υ���ꥯ�����Ȥ򤹤뤳�Ȥ��Ǥ��ޤ����������С��Ϥ��Τ褦�ʥꥯ�����Ȥ�
-�������ʤ���Фʤ�ʤ��Ȥ����櫓�ǤϤ���ޤ���
+サーバーへの接続は、このプロセスの最初の一部分でしかありません: 
+一度接続されてしまえば、サーバーの言語を使うべきなのです。
+ネットワーク上の各サーバーは、入力として期待しているそれぞれの小さな
+コマンド言語を持っています。
+HTTP 構文において最初にサーバーに送信するのは "GET" です。
+この場合、単純に指定されたドキュメントのそれぞれをリクエストします。
+そう、私たちは実際には、たとえ同じホストであったとしてもドキュメント毎に
+新しいコネクションを作成しています。
+これが HTTP を使うときに常にそうしなければならない方法なのです。
+最近のwebブラウザーではコネクションを開いたままちょっとの間リモートサーバーを
+離れるリクエストをすることができますが、サーバーはそのようなリクエストを
+処理しなければならないというわけではありません。
 
 =begin original
 
@@ -2483,8 +2483,8 @@ Here's an example of running that program, which we'll call I<webget>:
 
 =end original
 
-�ʲ��˵󤲤�Τϡ��䤿����I<webget>�ȸƤ֤Ǥ������ץ�������
-�¹Ԥ�����Ǥ���
+以下に挙げるのは、私たちがI<webget>と呼ぶであろうプログラムを
+実行した例です。
 
     % webget www.perl.com /guanaco.html
     HTTP/1.1 404 File Not Found
@@ -2505,9 +2505,9 @@ particular document.  But a long response wouldn't have fit on this page.
 
 =end original
 
-���������Υɥ�����Ȥ򸫤Ĥ����ʤ��Ȥ�����ΤǤ����餢�ޤ�
-���򤤤�ΤǤ⤢��ޤ���
-�Ǥ⡢Ĺ���쥹�ݥ󥹤򤳤��˺ܤ���櫓�ˤ⤤���ʤ��Ǥ��礦��
+これは特定のドキュメントを見つけられないというものですからあまり
+面白いものでもありません。
+でも、長いレスポンスをここに載せるわけにもいかないでしょう。
 
 =begin original
 
@@ -2516,12 +2516,12 @@ the I<lwp-request> program included with the LWP modules from CPAN.
 
 =end original
 
-���Υץ�����������ǽ�С������(fully-featured version)�ϡ�CPAN �ˤ���
-LWP �⥸�塼����� I<lwp-request> �Ȥ����ץ������򸫤�Ȥ褤�Ǥ��礦��
+このプログラムの全機能バージョン(fully-featured version)は、CPAN にある
+LWP モジュール中の I<lwp-request> というプログラムを見るとよいでしょう。
 
 =head2 Interactive Client with IO::Socket
 
-(IO::Socket ��Ȥä�����Ū���饤�����)
+(IO::Socket を使った対話的クライアント)
 
 =begin original
 
@@ -2532,10 +2532,10 @@ type a line, get the answer, etc.
 
 =end original
 
-��ĤΥ��ޥ�ɤ�����������Ĥ�����������Ȥ����ΤǤ���ж�礬�ɤ��ΤǤ�����
-����������Ū�ʲ��������ꤷ��I<telnet> �Τ褦��ư����ΤϤɤ��Ǥ��礦��?
-�����ǤǤ���Τϡ������Ԥ򥿥��פ����������ơ��̤ιԤ򥿥��פ��Ƥ����
-�Ф����������ơĤȤ���������Ǥ���
+一つのコマンドを送信し、一つの返答を得るというのであれば具合が良いのですが、
+完全に対話的な何かを設定し、I<telnet> のように動作するものはどうでしょうか?
+ここでできるのは、ある一行をタイプして答を得て、別の行をタイプしてそれに
+対する答を得て…というやり方です。
 
 =begin original
 
@@ -2554,21 +2554,21 @@ well, which is probably why it's spread to other systems.)
 
 =end original
 
-���Υ��饤����Ȥϴ��˽ФƤ�����ĤΤ�Τ���ʣ���Ǥ��������ʤ���
-���Ϥ� C<fork> �ƤӽФ��򥵥ݡ��Ȥ��Ƥ��륷���ƥ��ȤäƤ���ΤǤ���С�
-��������˽�ʤ�ΤǤϤ���ޤ���
-�̿��������ʤ�餫�Υ����ӥ����Ф��ƥ��ͥ��������äƤ��ޤ��С��ץ�������
-ʣ�����뤿��� C<fork> ��ƤӽФ��ޤ���
-����ˤ����ĤΥץ������Ϥ��줾�졢����ñ��ʥ���֤�Ԥ��ޤ�:
-�ƥץ������ϥ����åȤ������Ϥ��줿���٤Ƥ�ɸ����Ϥ˥��ԡ������ҥץ�������
-ɸ�����Ϥ򥽥��åȤؤ�Ʊ���褦�˥��ԡ����ޤ���
-������ĤΥץ�������Ȥä��Ȥ���Ʊ�����Ȥ򤹤�Τ� B<����>
-�񤷤��Ǥ��礦��
-�ʤ��ʤ顢��ĤΤ��Ȥ�Ԥ���ĤΥץ������Τ���Υץ���������
-��ĤΤ��Ȥ�Ԥ���ĤΥץ������Τ���Υץ������Τۤ���
-��ñ������Ǥ�(���� keep-it-simple ˡ§�� UNIX ʸ�������Фǡ��ɤ�
-���եȥ��������󥸥˥����Ȥ��褦�ˡ�(UNIX ��)¾�Υ����ƥ���⹭��
-�Ȥ��Ƥ��뤳�Ȥ���ͳ�Ǥ��礦)��
+このクライアントは既に出てきた二つのものよりも複雑ですが、あなたが
+強力な C<fork> 呼び出しをサポートしているシステムを使っているのであれば、
+解決策は乱暴なものではありません。
+通信したいなんらかのサービスに対してコネクションを作ってしまえば、プロセスの
+複製を作るために C<fork> を呼び出します。
+それによる二つのプロセスはそれぞれ、非常に単純なジョブを行います:
+親プロセスはソケットから入力されたすべてを標準出力にコピーし、子プロセスは
+標準入力をソケットへと同じようにコピーします。
+ただ一つのプロセスを使ったときに同じことをするのは B<非常に>
+難しいでしょう。
+なぜなら、二つのことを行う一つのプロセスのためのプログラムよりも
+一つのことを行う二つのプロセスのためのプログラムのほうが
+簡単だからです(この keep-it-simple 法則は UNIX 文化の要石で、良い
+ソフトウェアエンジニアが使うように、(UNIX が)他のシステムよりも広く
+使われていることの理由でしょう)。
 
 =begin original
 
@@ -2576,7 +2576,7 @@ Here's the code:
 
 =end original
 
-�ץ���������Ǥ�:
+プログラムの例です:
 
     #!/usr/bin/perl -w
     use strict;
@@ -2622,9 +2622,9 @@ as soon as the remote server has closed its end of the connection.
 
 =end original
 
-�ƥץ������� C<if> �֥��å��ˤ��� C<kill> �ؿ��ϡ���⡼�ȥ����С���
-���ͥ�������λ���ƥ����������Ƥ����˻ҥץ�����(C<else> �֥��å���
-�¹Ԥ��Ƥ��ޤ�)�˥����ʥ�����뤿��Τ�ΤǤ���
+親プロセスの C<if> ブロックにある C<kill> 関数は、リモートサーバーが
+コネクションを終了してクローズしてすぐに子プロセス(C<else> ブロックを
+実行しています)にシグナルを送るためのものです。
 
 =begin original
 
@@ -2635,9 +2635,9 @@ following:
 
 =end original
 
-��⡼�ȥ����С������٤˰�Х������äƤ��ơ������ơ����ʤ������Ԥ�
-�ԤĤ��Ȥʤ���¨�¤˥ǡ�����ɬ�פȤ���(���������ʤ����ȤǤ��礦��)�Τʤ顢
-C<while> �롼�פ�ʲ��Τ褦�ʤ�Τ��֤����������ʤ�Ǥ��礦:
+リモートサーバーが一度に一バイト送っていて、そして、あなたが改行を
+待つことなしに即座にデータを必要とする(そうそうないことでしょうが)のなら、
+C<while> ループを以下のようなものに置き換えたくなるでしょう:
 
     my $byte;
     while (sysread($handle, $byte, 1) == 1) {
@@ -2652,12 +2652,12 @@ well.
 
 =end original
 
-�ɤ߽Ф��Τ���˰�Х�����˥����ƥॳ�����Ԥ��Τϼ¤����ΨŪ�Ǥ�����
-��������Τ˴�ñ�ǤȤꤢ������ư���ΤǤ�:
+読み出しのために一バイト毎にシステムコールを行うのは実に非効率的ですが、
+説明するのに簡単でとりあえずは動くのです:
 
 =head1 TCP Servers with IO::Socket
 
-(IO::Socket ��Ȥä� TCP �����С�)
+(IO::Socket を使った TCP サーバー)
 
 =begin original
 
@@ -2669,12 +2669,12 @@ slightly different arguments than the client did.
 
 =end original
 
-��ˤ����Ǥ���褦�ˡ������С��Υ��åƥ��󥰤ϥ��饤����Ȥ�¹Ԥ������
-�ۤ�Τ���äȼ�֤�������ޤ���
-�����ǻȤ��Τϡ������С�������Υݡ��Ȥ���³���ԤĤ����Ȥ����ü�ʼ����
-�����åȤ��������Ȥ�����ǥ�Ǥ���
-����ϡ�C<< IO::Socket::INET->new() >> �Ȥ����᥽�åɤ�Ϥä���Ȱۤʤ�
-�������դ��ƸƤӽФ��Ƥ��饯�饤����Ȥ�¹Ԥ��뤳�ȤǹԤ��ޤ���
+常にそうであるように、サーバーのセッティングはクライアントを実行するよりも
+ほんのちょっと手間がかかります。
+ここで使うのは、サーバーが特定のポートで接続を待つだけという特殊な種類の
+ソケットを作成するというモデルです。
+これは、C<< IO::Socket::INET->new() >> というメソッドをはっきりと異なる
+引数を付けて呼び出してからクライアントを実行することで行います。
 
 =over 4
 
@@ -2687,8 +2687,8 @@ still specify C<"tcp"> here.
 
 =end original
 
-����ϻ��Ѥ���ץ��ȥ���Ǥ���
-���饤����Ȥ�Ʊ�͡������Ǥ� C<"tcp"> ����ꤷ�ޤ���
+これは使用するプロトコルです。
+クライアントと同様、ここでは C<"tcp"> を指定します。
 
 =item LocalPort
 
@@ -2706,15 +2706,15 @@ which services current have servers.
 
 =end original
 
-C<LocalPort> �����ǥ�������ݡ��Ȥ���ꤷ�ޤ���
-����ϥ����С��ˤ����������ӥ�̾���ݡ����ֹ�Τ����줫�Ǥ�(UNIX �Ǥϡ�
-1024 ̤���Υݡ��Ȥϥ����ѡ��桼��������Ǥ�)��
-�䤿���Υ���ץ�Ǥ� 9000 �֥ݡ��Ȥ�Ȥ��ޤ��������ʤ��λȤäƤ��륷���ƥ��
-��ʣ���ʤ���й������ֹ��Ȥ����Ȥ��Ǥ��ޤ���
-�⤷���˻Ȥ��Ƥ���ݡ��Ȥ�Ȥ����Ȥ���С�"Address already in use" ��
-�褦�ʥ�å����������뤳�ȤȤʤ�Ǥ��礦��
-UNIX �Ǥϡ�C<netstat -a> ���ޥ�ɤ�Ȥäƥ����ӥ������߻ȤäƤ��륵���С���
-���뤳�Ȥ��Ǥ��ޤ���
+C<LocalPort> 引数でローカルポートを指定します。
+これはサーバーにしたいサービス名かポート番号のいずれかです(UNIX では、
+1024 未満のポートはスーパーユーザー限定です)。
+私たちのサンプルでは 9000 番ポートを使いますが、あなたの使っているシステムで
+重複しなければ好きな番号を使うことができます。
+もし既に使われているポートを使おうとすれば、"Address already in use" の
+ようなメッセージを得ることとなるでしょう。
+UNIX では、C<netstat -a> コマンドを使ってサービスが現在使っているサーバーを
+見ることができます。
 
 =item Listen
 
@@ -2728,11 +2728,11 @@ is SOMAXCONN.
 
 =end original
 
-C<Listen> �ѥ�᡼�����ϡ����饤����Ȥ��Ԥ����Ƥ����Ƽ����դ��뤳�ȤΤǤ���
-���ͥ������κ���������ꤷ�ޤ���
-���äθƤӽФ���ͤ��ƤߤƤ���������
-���ॽ���åȥ⥸�塼��� SOMAXCONN �Ȥ������Υ����ƥ�κ����ͤ�ɽ��
-�ü�ʥ���ܥ����äƤ��ޤ���
+C<Listen> パラメーターは、クライアントを待たせておいて受け付けることのできる
+コネクションの最大数を設定します。
+電話の呼び出しを考えてみてください。
+低水準ソケットモジュールは SOMAXCONN というそのシステムの最大値を表す
+特殊なシンボルを持っています。
 
 =item Reuse
 
@@ -2744,8 +2744,8 @@ clear out.
 
 =end original
 
-C<Reuse> �ѥ�᡼�����ϡ������ƥब�Хåե����򥯥ꥢ���뤿��λ��֤�
-�ݤ����˻䤿���Υ����С�����ȤǺƵ�ư����Τ�ɬ�פǤ���
+C<Reuse> パラメーターは、システムがバッファーをクリアするための時間を
+掛けずに私たちのサーバーを手作業で再起動するのに必要です。
 
 =back
 
@@ -2759,11 +2759,11 @@ this handle to circumvent buffering.)
 
 =end original
 
-��ǽҤ٤��ѥ�᡼��������ä����ѤΥ����С������åȤ����������С�
-���Υ����С�����³����뿷���ʥ��饤����Ȥ��Ԥ��ޤ���
-C<accept> �᥽�åɤˤ��륵���С��֥��å��ϥ�⡼�ȥ��饤����Ȥ����
-��������³����Ĥ��ޤ�(�Хåե���󥰤��������뤿��˥ϥ�ɥ���Ф���
-autoflush ���뤳�Ȥ�˺��ʤ��褦��)��
+上で述べたパラメーターを持った汎用のサーバーソケットが生成されれば、
+そのサーバーは接続される新たなクライアントを待ちます。
+C<accept> メソッドにあるサーバーブロックはリモートクライアントからの
+双方向接続を許可します(バッファリングを抑制するためにハンドルに対して
+autoflush することを忘れないように)。
 
 =begin original
 
@@ -2773,11 +2773,11 @@ you'll have to use the C<sysread> variant of the interactive client above.
 
 =end original
 
-�桼�����˿��ڤˤ��뤿��ˡ��䤿���Υ����С��ϥ��ޥ�ɤ����ϤΥץ���ץȤ�
-ɽ�����ޤ���
-�ۤȤ�ɤΥ����С��Ϥ����������Ȥ򤷤Ƥ��ޤ���
-�ץ���ץȤˤϲ��Ԥ��ʤ��Τǡ������ˤ��ä��褦������Ū��
-���饤����Ȥ���Ǥ� C<sysread> ��Ȥ�ɬ�פ�����Ǥ��礦��
+ユーザーに親切にするために、私たちのサーバーはコマンドの入力のプロンプトを
+表示します。
+ほとんどのサーバーはこうしたことをしていません。
+プロンプトには改行がないので、上の例にあったような対話的な
+クライアントの類では C<sysread> を使う必要があるでしょう。
 
 =begin original
 
@@ -2788,11 +2788,11 @@ covered in Chapter 6 of the Camel.
 
 =end original
 
-���Υ����С��ϸ޼���Υ��ޥ�ɤΤ����줫��Ĥ��ꡢ���饤����Ȥ��Ф���
-(���ޥ�ɤ˱�����)���Ϥ�Ԥ��ޤ���
-¿���Υͥåȥ�������С��Ȥϰۤʤꡢ���Υ����С��ץ������ϰ��٤˰�Ĥ�
-���饤����Ȥ��������ʤ��Ȥ������Ȥ����դ��Ƥ���������
-�ޥ������åɲ����줿�����С��Ϥ餯���ܤ���ϻ�Ϥǥ��С�����Ƥ��ޤ���
+このサーバーは五種類のコマンドのいずれか一つを取り、クライアントに対して
+(コマンドに応じた)出力を行います。
+多くのネットワークサーバーとは異なり、このサーバープログラムは一度に一つの
+クライアントしか扱えないということに注意してください。
+マルチスレッド化されたサーバーはらくだ本の第六章でカバーされています。
 
 =begin original
 
@@ -2800,7 +2800,7 @@ Here's the code.  We'll
 
 =end original
 
-�ʲ��ץ������Ǥ���
+以下プログラムです。
 
  #!/usr/bin/perl -w
  use IO::Socket;
@@ -2840,7 +2840,7 @@ Here's the code.  We'll
 
 =head1 UDP: Message Passing
 
-(UDP: ��å���������)
+(UDP: メッセージ配送)
 
 =begin original
 
@@ -2856,16 +2856,16 @@ with.
 
 =end original
 
-���饤����ȡ������С��򥻥åȥ��åפ���⤦��Ĥμ���ϥ��ͥ������ǤϤʤ�
-��å�������Ȥ���ΤǤ���
-UDP �̿��ϥ����С��إåɤ��㤤��ΤΡ���å����������٤����夹��Ȥ���
-�ݾڤ��ʤ�����ν���⤭������ݤ���Ƥ��뤳�Ȥ��ݾڤ���Ƥʤ������
-��������ޤ������ΤˤʤäƤ��ޤ���
-����Ǥ⡢UDP �ˤϰ��٤˰�����ۥ��Ȥβ�����
-(�̾�ϥ������륵�֥ͥå�)���Ф��ơȥ֥����ɥ��㥹�ȡɡ��ȥޥ�����㥹�ȡɤ�
-�Ǥ���Ȥ������Ȥ�ޤᡢTCP���Ф�����Ĥ��Υ��ɥХ�ơ���������ޤ���
-�������˴ؤ��Ʋ��٤˴ؿ�����������������å����������ƥ�˸���������
-�Ȥ߹��⤦�Ȥ����ΤǤ���С��ष�� TCP ��Ȥ��褦�ˤ��������褤�Ǥ��礦��
+クライアント・サーバーをセットアップするもう一つの種類はコネクションではなく
+メッセージを使うものです。
+UDP 通信はオーバーヘッドが低いものの、メッセージがすべて到着するという
+保証がなく到着の順序もきちんと保たれていることも保証されてないために
+信頼性もまた劣るものになっています。
+それでも、UDP には一度に宛て先ホストの塊全体
+(通常はローカルサブネット)に対して“ブロードキャスト”、“マルチキャスト”が
+できるということを含め、TCPに対する幾つかのアドバンテージがあります。
+信頼性に関して過度に関心を持ち、作成するメッセージシステムに検査機構を
+組み込もうというのであれば、むしろ TCP を使うようにした方がよいでしょう。
 
 =begin original
 
@@ -2876,11 +2876,11 @@ or better send(), like in the example below.
 
 =end original
 
-UDP �ϥХ��ȥ��ȥ꡼�� I<�ǤϤʤ�> �����Τ褦�˰����٤��Ǥ�ʤ����Ȥ�
-���դ��Ƥ���������
-����� stdio(�Ĥޤ� print() �䤽�ο���) �Τ褦�������Хåե�����դ���
-I/O �������ä˰����ˤ������ޤ���
-�ʲ�����Τ褦�ˡ�syswrite() �������褤 send() ��ȤäƤ���������
+UDP はバイトストリーム I<ではなく> 、そのように扱うべきでもないことに
+注意してください。
+これは stdio(つまり print() やその親戚) のような内部バッファリング付きの
+I/O 機構を特に扱いにくくします。
+以下の例のように、syswrite() か、よりよい send() を使ってください。
 
 =begin original
 
@@ -2892,12 +2892,12 @@ with TCP, you'd have to use a different socket handle for each host.
 
 =end original
 
-�ʲ��˵󤲤� UDP �ץ���������˵󤲤����󥿡��ͥ� TCP ���饤����Ȥ�
-��Ȼ��Ƥ��ޤ��������٤˰�ĤΥۥ��Ȥ�����å�����ΤǤϤʤ���
-�ޥ�����㥹�Ȥ򥷥ߥ�졼�Ȥ������ġ�select() �������ϤΥ����ॢ�����Ԥ���
-����˻Ȥ����Ȥˤ����Ʊ��Ū�ˤ�������Υ����å���Ԥ��ޤ���
-TCP �Ǥ����Ʊ�����Ȥ�Ԥ��ˤϡ��ۥ�����˰ۤʤ륽���åȥϥ�ɥ��
-�Ȥ�ʤ���Фʤ�ʤ��Ǥ��礦��
+以下に挙げた UDP プログラムは先に挙げたインターネト TCP クライアントの
+例と似ていますが、一度に一つのホストをチェックするのではなく、
+マルチキャストをシミュレートし、かつ、select() を入出力のタイムアウト待ちの
+ために使うことにより非同期的にたくさんのチェックを行います。
+TCP でこれと同じことを行うには、ホスト毎に異なるソケットハンドルを
+使わなければならないでしょう。
 
     #!/usr/bin/perl -w
     use strict;
@@ -2952,10 +2952,10 @@ list of hosts to contact is sufficiently large.
 
 =end original
 
-������Ǥϰ��ںƻ�Ԥ�Ԥ�ʤ��Τǡ���ã��ǽ�ʥۥ��Ȥؤ���³��
-���Ԥ��뤳�Ȥ����뤳�Ȥ����դ��Ƥ���������
-����Τ�äȤ�ͭ̾�ʸ����ϡ��⤷��³����ۥ��ȤΥꥹ�Ȥο�����ʬ���礭���ȡ�
-�����ۥ��ȤΥ��塼���������뤳�ȤǤ���
+この例では一切再試行を行わないので、到達可能なホストへの接続に
+失敗することがあることに注意してください。
+これのもっとも有名な原因は、もし接続するホストのリストの数が十分に大きいと、
+送信ホストのキューが混雑することです。
 
 =head1 SysV IPC
 
@@ -2969,13 +2969,13 @@ you weren't wanting it to.
 
 =end original
 
-System V IPC �ϥ����åȤȤ��ƤϤ����������Ȥ��ƤϤ��ޤ��󤬡�
-���Ĥ��ζ�̣��������ˡ������ޤ���
-��������System V �� IPC �� Berkley �� mmap() ��(�ۤʤ���Ĥ��Υץ�������
-�֤��ѿ���ͭ���뤿���)��ͭ����������Ū�Τ���˸�Ψ�ɤ�
-�Ȥ����ȤϤǤ��ޤ���
-�ʤ��ʤ� Perl �������ʤ���˾�ޤʤ��Ȥ���ʸ����κƳ���դ����äƤ��ޤ�
-��ǽ�������뤫��Ǥ���
+System V IPC はソケットとしてはそれ程広く使われてはいませんが、
+幾つかの興味深い使用法があります。
+ただし、System V の IPC や Berkley の mmap() を(異なる幾つかのプロセスの
+間で変数を共有するための)共有メモリを持つ目的のために効率良く
+使うことはできません。
+なぜなら Perl が、あなたが望まないときに文字列の再割り付けをやってしまう
+可能性があるからです。
 
 =begin original
 
@@ -2983,7 +2983,7 @@ Here's a small example showing shared memory usage.
 
 =end original
 
-��ͭ����λȤ������㼨���뾮������Ǥ���
+共有メモリの使い方を例示する小さな例です。
 
     use IPC::SysV qw(IPC_PRIVATE IPC_RMID S_IRUSR S_IWUSR);
 
@@ -3011,7 +3011,7 @@ Here's an example of a semaphore:
 
 =end original
 
-�ʲ��ϥ��ޥե�����Ǥ�:
+以下はセマフォの例です:
 
     use IPC::SysV qw(IPC_CREAT);
 
@@ -3026,9 +3026,9 @@ Call the file F<take>:
 
 =end original
 
-��İʾ�Υץ�������ư���褦�ˡ����Υ����ɤ�ʬ�䤵�줿�ե������
-�֤��ޤ���
-���Υե������ F<take> �ȸƤӤޤ�:
+二つ以上のプロセスで動作するように、このコードを分割されたファイルに
+置きます。
+そのファイルを F<take> と呼びます:
 
     # create a semaphore
 
@@ -3058,9 +3058,9 @@ Call this file F<give>:
 
 =end original
 
-���Υ����ɤ���İʾ�Υץ������Ǽ¹ԤǤ���褦���̤Υե������
-�֤��ޤ���
-���Υե������ F<give> �ȸƤӤޤ���
+このコードを、二つ以上のプロセスで実行できるように別のファイルに
+置きます。
+このファイルを F<give> と呼びます。
 
     # 'give' the semaphore
     # run this in the original process and you will see
@@ -3087,10 +3087,10 @@ which is included with Perl starting from Perl 5.005.
 
 =end original
 
-�������㼨���� System V �� IPC �����ɤϤϤ뤫���Τ˽񤫤줿��Τǡ�
-�ؤܤʤ�Τ˸����ޤ���
-��긽��Ū�ʤ�ΤˤĤ��Ƥϡ�Perl 5.005 ����ޤޤ�Ƥ���
-IPC::SysV �⥸�塼��򻲾Ȥ��Ƥ���������
+ここで例示した System V の IPC コードははるかな昔に書かれたもので、
+へぼなものに見えます。
+より現代的なものについては、Perl 5.005 から含まれている
+IPC::SysV モジュールを参照してください。
 
 =begin original
 
@@ -3098,7 +3098,7 @@ A small example demonstrating SysV message queues:
 
 =end original
 
-SysV ��å��������塼���㼨�����ñ����Ǥ�:
+SysV メッセージキューを例示する簡単な例です:
 
     use IPC::SysV qw(IPC_PRIVATE IPC_RMID IPC_CREAT S_IRUSR S_IWUSR);
 
@@ -3143,14 +3143,14 @@ taint checking flag to the #! line for servers:
 
 =end original
 
-�����Υ롼����ΤۤȤ�ɤ�ʪ�Ť��Ǥ����������˼��Ԥ������ˤ�
-���ʤ��Υץ�������λ�����Ƥ��ޤä�����ª����ʤ��㳰��
-�������������ꤹ������� C<undef> ���֤��ޤ�(�ºݤˤϡ�������
-I<Socket> �Ѵ��ؿ��δ��Ĥ��������ʰ������Ф��� croak() ���ޤ�)��
-�������ä������ϡ������δؿ�������ͤ��ǧ���٤��Ǥ���Ȥ������ȤǤ���
-�����åȥץ������Ͼ�˺��ɤ�����(optimal success)�Τ���ˤ��Τ������
-�Ϥᡢ�����ƥ����С����Ф��� pound-bang line (#! �ιԤΤ���)��
-���������ե饰 B<-T> ���ɲä��뤳�Ȥ�˺��ʤ��褦�ˤ��Ƥ���������
+これらのルーチンのほとんどは物静かですが、何かに失敗した場合には
+あなたのプログラムを終了させてしまったり捕捉されない例外を
+引き起こしたりする代わりに C<undef> を返します(実際には、新しい
+I<Socket> 変換関数の幾つかは不正な引数に対して croak() します)。
+したがって要点は、これらの関数の戻り値を確認すべきであるということです。
+ソケットプログラムは常に最良の成功(optimal success)のためにこのやり方で
+始め、そしてサーバーに対して pound-bang line (#! の行のこと)に
+汚染検査フラグ B<-T> を追加することを忘れないようにしてください。
 
     #!/usr/bin/perl -Tw
     use strict;
@@ -3170,15 +3170,15 @@ want your code to stand a chance of being portable.
 
 =end original
 
-�����Υ롼��������ơ������ƥ��ͭ�ΰܿ����������Ф��ޤ���
-¾�ξ������������褦�ˡ�Perl �ο����񤤤ϻ��Ѥ��Ƥ���C�饤�֥���
-��������ޤ���
-System V �Τ������ʥ����ʥ�Υ��ޥ�ƥ��������ꤹ�뤳�Ȥȡ�ñ���
-TCP ����� UDP �����å����˽��Ϥ���褦�ˤ��뤳�Ȥ������餯�ϺǤ�
-�����ʤ�ΤΤǤ��礦��
-���Ȥ��С����ʤ�����ʬ�Υץ������˰ܿ������������褦�ˤ������ΤǤ���С�
-��������� UDP �ǡ��������Υ����åȤ��̤��ƥե����뵭�һҤ�
-�Ϥ��褦�ʤ��Ȥ򤷤褦�Ȥ��ƤϤ����ʤ��Ȥ������ȤǤ���
+これらのルーチンは全て、システム固有の移植性問題を作り出します。
+他の場所で説明したように、Perl の振る舞いは使用しているCライブラリに
+左右されます。
+System V のおかしなシグナルのセマンティクスを仮定することと、単純な
+TCP および UDP ソケット操作に終始するようにすることがおそらくは最も
+安全なもののでしょう。
+たとえば、あなたが自分のプログラムに移植性を持たせるようにしたいのであれば、
+ローカルな UDP データグラムのソケットを通してファイル記述子を
+渡すようなことをしようとしてはいけないということです。
 
 =head1 AUTHOR
 
@@ -3189,8 +3189,8 @@ version and suggestions from the Perl Porters.
 
 =end original
 
-Tom Christiansen (Larry Wall �ˤ�븵��ʸ�����ʬŪ��̾�Ĥȡ�
-Perl Porters �ˤ�뼨���ȶ���)
+Tom Christiansen (Larry Wall による元の文書の部分的な名残と、
+Perl Porters による示唆と共に)
 
 =head1 SEE ALSO
 
@@ -3201,8 +3201,8 @@ started.
 
 =end original
 
-�ͥåȥ���˴ؤ�������Ϥޤ��ޤ��������󤢤�ޤ���
-�����ˤ��뤳�Ȥϥ������ȤǤ�������ޤ���
+ネットワークに関する事柄はまだまだたくさんあります。
+ここにあることはスタートでしかありません。
 
 =begin original
 
@@ -3214,12 +3214,12 @@ to Perl is left as an exercise for the reader.
 
 =end original
 
-Richard Stevens �ˤ�����˽��פʶ��ʽ�
+Richard Stevens による非常に重要な教科書
 I<Unix Network Programming, 2nd Edition, Volume 1>
-(Prentice-Hall ������Ǥ���Ƥ��ޤ�)������ޤ���
-�ͥåȥ���˴ؤ���ۤȤ�ɤ��ܤϡ�C �ץ�����ޤ��оݤȤ��Ƥ�������
-���դ��Ƥ���������
-Perl �ؤ��Ѵ��ϡ��ɼԤν���Ȥ��ƻĤ��Ƥ����ޤ���
+(Prentice-Hall から出版されています)があります。
+ネットワークに関するほとんどの本は、C プログラマを対象としている点に
+注意してください。
+Perl への変換は、読者の宿題として残しておきます。
 
 =begin original
 
@@ -3231,12 +3231,12 @@ FAQ> for a description of what CPAN is and where to get it.)
 
 =end original
 
-IO::Socket(3) �ޥ˥奢��ڡ����ˤϥ��֥������ȥ饤�֥������������ꡢ
-Socket(3) �ˤ�����Υ����åȤ��Ф��륤�󥿡��ե�����������������ޤ���
-L<perlfunc> �ˤ���ؿ���¾�ˤ⡢���ˤ��� CPAN �����Ȥ�
-F<modules> �ե����������å������ۤ����ɤ��Ǥ��礦(L<perlmodlib> ��
-���Ȥ��뤫��CPAN ���ɤ��ˤ��뤫������������ F<Perl FAQ> �򸫤��
-�褤�Ǥ��礦)��
+IO::Socket(3) マニュアルページにはオブジェクトライブラリの説明があり、
+Socket(3) には低水準のソケットに対するインターフェースの説明があります。
+L<perlfunc> にある関数の他にも、至近にある CPAN サイトで
+F<modules> ファイルをチェックしたほうが良いでしょう(L<perlmodlib> を
+参照するか、CPAN がどこにあるかの説明がある F<Perl FAQ> を見ると
+よいでしょう)。
 
 =begin original
 
@@ -3248,12 +3248,12 @@ Threads, and ToolTalk--just to name a few.
 
 =end original
 
-F<modlues> �ե�������� 5 �Ϥ�
+F<modlues> ファイルの第 5 章は
 "Networking, Device Control (modems), and Interprocess Communication"
-�˽��Ƥ��Ƥ��ơ��Х�ɥ뤵��ʤ��ä�¿���Υͥåȥ����Ϣ�⥸�塼�롢
-����å� �� Expect operations, CGI �ץ�����ߥ�, DCE, 
-FTP, IPC, NNTP, Proxy, Ptty, RPC, SNMP, SMTP, Telnet, ����åɡ�
-������ ToolTalk ��ޤ�Ǥ��ޤ���
+に充てられていて、バンドルされなかった多くのネットワーク関連モジュール、
+チャット と Expect operations, CGI プログラミング, DCE, 
+FTP, IPC, NNTP, Proxy, Ptty, RPC, SNMP, SMTP, Telnet, スレッド、
+そして ToolTalk を含んでいます。
 
 =begin meta
 

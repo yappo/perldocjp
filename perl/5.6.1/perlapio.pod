@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-perlapio - perl ����������ݥ��󥿡��ե�����
+perlapio - perl の入出力抽象インターフェース
 
 =head1 SYNOPSIS
 
@@ -58,114 +58,114 @@ perlapio - perl ����������ݥ��󥿡��ե�����
 
 =head1 DESCRIPTION
 
-Perl �Υ����������ɤǤϡ�ANSI C �� I<stdio.h> �ˤ���ؿ��ǤϤʤ�
-�嵭�δؿ���Ȥ��٤��Ǥ��ꡢI<perlio.h> �� Configure �μ¹Ի������򤷤�
-I/O ������ C<#define> ���ޤ���
+Perl のソースコードでは、ANSI C の I<stdio.h> にある関数ではなく
+上記の関数を使うべきであり、I<perlio.h> が Configure の実行時に選択した
+I/O 機構へ C<#define> します。
 
-�����δؿ��� I<stdio.h> �ˤ����Τ���ǥ�ˤʤäƤ��ޤ�����
-������Ϥ��ѥ�᡼�����ϡȤ���äȤФ������ܡɤ���Ƥ��ޤ���
+これらの関数は I<stdio.h> にあるものがモデルになっていますが、
+それに渡すパラメーターは“ちょっとばかし整頓”されています。
 
 =over 4
 
 =item B<PerlIO *>
 
-����� FILE * �Ȼ�����ΤǤϤ���ޤ�����FILE * �Ȱۤʤ�ΤϤ��줬
-��Ʃ���ʤ�ΤǤ���褦�˰����٤����Ȥ������ȤǤ�
-(���줬�������Ф���ݥ��󥿡��Ǥ���Ȳ��ꤹ��Τ������Ǥ��礦)��
+これは FILE * と似たものではありますが、FILE * と異なるのはこれが
+不透明なものであるように扱うべきだということです
+(これが何かに対するポインターであると仮定するのが安全でしょう)。
 
 =item B<PerlIO_stdin()>, B<PerlIO_stdout()>, B<PerlIO_stderr()>
 
-C<stdin>, C<stdout>, C<stderr> ������˻ȤäƤ���������
-�������ѿ��Ǥʤ��ȴؿ��ƤӽФ��ɤΤ褦�˵��Ҥ���Ƥ��ޤ�����
-����ϻ��Ѥ���ץ�åȥե�����ˤ����ƥ����ɥ⥸�塼����Ф���ǡ�����
-�������ݡ��Ȥ��Ǥ��ʤ��ä��ꡢ���뤤�ϰۤʤ�ȥ���åɡɤ��ۤʤ��ͤ�
-���Ĳ�ǽ��������Ȥ��ä��Ȥ��ˡ�������B<�ؿ��ƤӽФ��ˤ���>�Τ�
-��ñ�ˤʤ뤫��Ǥ���
+C<stdin>, C<stdout>, C<stderr> の代わりに使ってください。
+これらは変数でなく“関数呼び出し”のように記述されていますが、
+これは使用するプラットフォームにおいてロードモジュールに対するデータの
+エクスポートができなかったり、あるいは異なる“スレッド”が異なる値を
+持つ可能性があるといったときに、これらをB<関数呼び出しにする>のが
+簡単になるからです。
 
 =item B<PerlIO_open(path, mode)>, B<PerlIO_fdopen(fd,mode)>
 
-�б����� fopen()/fdopen() ��Ʊ����������ޤ���
+対応する fopen()/fdopen() と同じ引数を取ります。
 
 =item B<PerlIO_printf(f,fmt,...)>, B<PerlIO_vprintf(f,fmt,a)>
 
-fprintf()/vfprintf() �������Ǥ���
+fprintf()/vfprintf() と等価です。
 
 =item B<PerlIO_stdoutf(fmt,...)>
 
-����� printf() �������Ǥ���printf �Ϥ��δؿ����Ф��� #define �ȤʤäƤ��ޤ����顢
-(�������Ǥ�) Perl �Υ�������������� C<printf(fmt,...)> �Ȥ��뤳�ȤϹ�ˡ�Ǥ���
+これは printf() と等価です。printf はこの関数に対する #define となっていますから、
+(現時点では) Perl のソースコード中で C<printf(fmt,...)> とすることは合法です。
 
 =item B<PerlIO_read(f,buf,count)>, B<PerlIO_write(f,buf,count)>
 
-fread() ����� fwrite() ���б����ޤ��������ΰ���������Ȥϰۤʤꡢ
-��count�ɤϰ�Ĥ��������ʤ��ơ�file�ɤ���Ƭ�Ǥ���Ȥ������Ȥ�
-���դ��Ƥ���������
+fread() および fwrite() に対応します。これらの引数がそれとは異なり、
+“count”は一つだけしかなくて“file”が先頭であるということに
+注意してください。
 
 =item B<PerlIO_close(f)>
 
 =item B<PerlIO_puts(s,f)>, B<PerlIO_putc(c,f)>
 
-fputs() ����� fputc() ���б����ޤ����ǽ�ΰ����ˡ�file�ɤ����Ȥ������Ȥ�
-���դ��Ƥ���������
+fputs() および fputc() に対応します。最初の引数に“file”が来るということに
+注意してください。
 
 =item B<PerlIO_ungetc(c,f)>
 
-ungetc() ���б����ޤ����ǽ�ΰ����ˡ�file�ɤ����Ȥ������Ȥ����դ��Ƥ���������
+ungetc() に対応します。最初の引数に“file”が来るということに注意してください。
 
 =item B<PerlIO_getc(f)>
 
-getc() ���б����ޤ���
+getc() に対応します。
 
 =item B<PerlIO_eof(f)>
 
-feof() ���б����ޤ���
+feof() に対応します。
 
 =item B<PerlIO_error(f)>
 
-ferror()���б����ޤ���
+ferror()に対応します。
 
 =item B<PerlIO_fileno(f)>
 
-fileno() ���б����ޤ��������Υץ�åȥե�����ˤ����Ƥϡ���fileno�ɤ�
-��̣����Ȥ�����UNIX�Ȥϰ㤦�Ȥ������Ȥ����դ��Ƥ���������
+fileno() に対応します。一部のプラットフォームにおいては、“fileno”の
+意味するところがUNIXとは違うということに注意してください。
 
 =item B<PerlIO_clearerr(f)>
 
-clearerr() ���б������ȥ��ȥ꡼��ɤ�`eof'��`error'�Ȥ��ä��ե饰��
-���ꥢ���ޤ���
+clearerr() に対応し、“ストリーム”の`eof'や`error'といったフラグを
+クリアします。
 
 =item B<PerlIO_flush(f)>
 
-fflush() ���б����ޤ���
+fflush() に対応します。
 
 =item B<PerlIO_tell(f)>
 
-ftell() ���б����ޤ���
+ftell() に対応します。
 
 =item B<PerlIO_seek(f,o,w)>
 
-fseek() ���б����ޤ���
+fseek() に対応します。
 
 =item B<PerlIO_getpos(f,p)>, B<PerlIO_setpos(f,p)>
 
-���줾�� ftgetpos() �� fsetpos() ���б����ޤ���
-�ץ�åȥե����ब stdio �ƤӽФ�����äƤ��ʤ����ˤϤ����δؿ���
-PerlIO_tell()��PerlIO_seek() �ˤ�äƼ�������ޤ���
+それぞれ ftgetpos() と fsetpos() に対応します。
+プラットフォームが stdio 呼び出しを持っていない場合にはこれらの関数は
+PerlIO_tell()、PerlIO_seek() によって実装されます。
 
 =item B<PerlIO_rewind(f)>
 
-rewind() ���б����ޤ��������ξ����ˤ����ƤϤ���� PerlIO_seek() �ˤ�ä�
-���������Ƥ����ǽ��������Τ����դ��Ƥ���������
+rewind() に対応します。一部の状況においてはこれは PerlIO_seek() によって
+再定義されている可能性があるので注意してください。
 
 =item B<PerlIO_tmpfile()>
 
-tmpfile() ���б����������������˼�ưŪ�˺�������̵̾ PerlIO ���֤��ޤ���
+tmpfile() に対応し、クローズ時に自動的に削除される無名 PerlIO を返します。
 
 =back
 
 =head2 Co-existence with stdio
 
-(stdio �Ȥζ�¸)
+(stdio との共存)
 
 =begin original
 
@@ -177,11 +177,11 @@ to library code which is going to use stdio calls.
 
 =end original
 
-PerlIO �� stdio �Ȥζ�¸�򥵥ݡ��Ȥ��뤿��Υ����ȥ饤�󤬤���ޤ���
-PerlIO �� stdio ��ȤäƼ�������Ƥ���ΤǤ���С�����Ϥ���ޤ���
-��������perlio �� sfio �ξ�˼�������Ƥ���ΤǤ���� stdio �ƤӽФ���
-�Ȥ����Ȥ���饤�֥�ꥳ���ɤ��Ϥ����Ȥ��Ǥ��� FILE * ��������뵡����
-�ʤ���Фʤ�ޤ���
+PerlIO と stdio との共存をサポートするためのアウトラインがあります。
+PerlIO が stdio を使って実装されているのであれば、問題はありません。
+しかし、perlio が sfio の上に実装されているのであれば stdio 呼び出しを
+使おうとするライブラリコードに渡すことができる FILE * を作成する機構が
+なければなりません。
 
 =over 4
 
@@ -194,33 +194,33 @@ May need additional arguments, interface under review.
 
 =end original
 
-FILE * ���� PerlIO * ������Τ˻Ȥ��ޤ���
-�ɲäΰ����䥤�󥿥ե������Υ�ӥ塼��ɬ�פǤ���
+FILE * から PerlIO * を得るのに使います。
+追加の引数やインタフェースのレビューが必要です。
 
 =item B<PerlIO_exportFILE(f,flags)>
 
-PerlIO * ���ꡢANSI C �� I<stdio.h> �Υ롼������Ϥ��ƻȤ���
-�ƥͥ��ƥ��֡Ǥ� FILE * ��¤�Τ��֤��ޤ���
+PerlIO * を取り、ANSI C の I<stdio.h> のルーチンに渡して使われる
+‘ネイティブ’な FILE * 構造体を返します。
 
-��export�Ǥ��줿 FILE * �ϵ�Ͽ���졢����ʸ�Υ��ꥸ�ʥ�� 
-PerlIO * ���Ф��� PerlIO ���˱ƶ���ڤܤ���ǽ��������ޤ���
+‘export’された FILE * は記録され、それ以後のオリジナルの 
+PerlIO * に対する PerlIO 操作に影響を及ぼす可能性があります。
 
 =item B<PerlIO_findFILE(f)>
 
-ľ����`export'���줿 FILE * ��(�⤷�����)�֤��ޤ������󥿡��ե�������
-��������������ޤǤϤ���ϥץ졼���ۥ�����Ǥ���
+直前の`export'された FILE * を(もしあれば)返します。インターフェースが
+完全に定義されるまではこれはプレースホルダーです。
 
 =item B<PerlIO_releaseFILE(p,f)>
 
-PerlIO_releaseFILE �ϡ�PerlIO �ˤ��٤Ƥ�FILE * �λ��Ѥ���λ�������Ȥ��Τ餻�ޤ���
-��λ������Τϡ�export�Ǥ��줿 FILE * �Υꥹ�Ȥ���������ޤ���
-�����ơ�����˷���դ����Ƥ��� PerlIO * �ϸ����ο����񤤤����ޤ���
+PerlIO_releaseFILE は、PerlIO にすべてのFILE * の使用が完了したことを知らせます。
+完了したものは‘export’された FILE * のリストから削除されます。
+そして、それに結び付けられている PerlIO * は元々の振る舞いに戻ります。
 
 =item B<PerlIO_setlinebuf(f)>
 
-����� setlinebuf() ���б����ޤ��������Ȥ����Ȥϸ������Ǥ��򤱤Ƥ���������
-(Perl core �ϡ�dumping�ɤ� $| �μ�ư�ե�å���˴ط����Ƥ��ʤ�B<�Ȥ��ˤΤ�>
-�����Ȥ��ޤ�)��
+これは setlinebuf() に対応します。これを使うことは現時点では避けてください。
+(Perl core は“dumping”が $| の自動フラッシュに関係していないB<ときにのみ>
+これを使います)。
 
 =back
 
@@ -235,36 +235,36 @@ PerlIO mapping.
 
 =end original
 
-��Ҥ����桼���� API �˲ä��ơ�perl �� PerlIO �������ǰ������Ȥ�
-�Ǥ���褦�ˤ���ּ����ץ��󥿡��ե�����������ޤ���
-�ʲ��˵󤲤�ƤӽФ��ϡ����줾�� Configure ���������� FILE_xxx �ޥ�����
-�б����Ƥ��ޤ���
-���Υ��������Ǥϡ�perl-core �ο����񤤤� PerlIO �Υޥåԥ󥰤�
-�ܺ٤ˤĤ��ƤΤ����ܤ��ޤ���
+上述したユーザー API に加えて、perl が PerlIO の内部で扱うことが
+できるようにする「実装」インターフェースがあります。
+以下に挙げる呼び出しは、それぞれ Configure で定義される FILE_xxx マクロに
+対応しています。
+このセクションでは、perl-core の振る舞いや PerlIO のマッピングの
+詳細についてのみ注目します。
 
 =over 4
 
 =item B<PerlIO_has_cntptr(f)>
 
-�ȥХåե�����Υ����ȥݥ������ؤΥݥ��󥿡��ȥХåե��ˤ���
-�Х��ȿ����֤����ȤΤǤ�������Ǥ���
+“バッファ”中のカレントポジションへのポインターとバッファにある
+バイト数を返すことのできる実装です。
 
 =item B<PerlIO_get_ptr(f)>
 
-�Хåե���ˤ��뼡���ɤ߽Ф���ǽ�Х��ȤؤΥݥ��󥿡����֤��ޤ���
+バッファ中にある次の読み出し可能バイトへのポインターを返します。
 
 =item B<PerlIO_get_cnt(f)>
 
-�Хåե�����ɤ߽Ф����ȤΤǤ���Х��ȿ����֤��ޤ���
+バッファ中の読み出すことのできるバイト数を返します。
 
 =item B<PerlIO_canset_cnt(f)>
 
-�Хåե��ˤ���Х��ȿ���Ĵ�����뤳�ȤΤǤ�������Ǥ���
+バッファにあるバイト数を調整することのできる実装です。
 
 =item B<PerlIO_fast_gets(f)>
 
-<FILE> �������갷������� perl �� fast code ������Τ��׵ᤵ���
-���󥿡��ե������Τ��٤Ƥ�������Ƥ��ޤ���
+<FILE> 機構を取り扱うための perl の fast code を許すのに要求される
+インターフェースのすべてを実装しています。
 
   PerlIO_fast_gets(f) = PerlIO_has_cntptr(f) && \
                         PerlIO_canset_cnt(f) && \
@@ -272,32 +272,32 @@ PerlIO mapping.
 
 =item B<PerlIO_set_ptrcnt(f,p,c)>
 
-�ݥ��󥿡���Хåե��˥��åȤ����Хåե��ˤ���Х��ȿ��Ϥ��ΤޤޤǤ���
-������ C<PerlIO_get_ptr> �� C<PerlIO_get_cnt> �θƤӽФ�����
-��¬������ϰ���Υݥ��󥿡��򥻥åȤ��뤳�ȤΤߤ˻Ȥ��٤��Ǥ��礦��
+ポインターをバッファにセットし、バッファにあるバイト数はそのままです。
+以前の C<PerlIO_get_ptr> と C<PerlIO_get_cnt> の呼び出しから
+推測される範囲内のポインターをセットすることのみに使うべきでしょう。
 
 =item B<PerlIO_set_cnt(f,c)>
 
-������ - �Хåե��ˤ���Х��ȿ��򥻥åȤ��ޤ����Ȥ��ΤϤ�����Ǥ��ޤ���
-���ߤ���ϡ�doio.c �ǤΤ� count < -1 �� ����Ū�� -1 �ˤ��뤿��˻Ȥ��Ƥ��ޤ���
-�����餯 PerlIO_set_empty �䤽����ह���Τ�����٤��Ǥ��礦��
-���θƤӽФ��ϡ���count�ɤ��ݥ��󥿡��ȡ�limit�ɤ���Ƴ���Ф������ˤ�
-�ºݤˤϤʤˤ⤷�ޤ���
+不明瞭 - バッファにあるバイト数をセットします。使うのはお薦めできません。
+現在これは、doio.c でのみ count < -1 を 強制的に -1 にするために使われています。
+おそらく PerlIO_set_empty やそれに類するものがあるべきでしょう。
+この呼び出しは、“count”がポインターと“limit”から導き出される場合には
+実際にはなにもしません。
 
 =item B<PerlIO_has_base(f)>
 
-�Хåե�����äƤ��ơ��Хåե����ΤؤΥݥ��󥿡��䤽���礭����
-�֤����Ȥ��Ǥ�������Ǥ���
-B<-T>/B<-B>�ƥ��ȤΤ����perl�ˤ�äƻȤ��ޤ���
-���Τۤ��Τ�Τ����ˤϤä��ꤷ�ʤ����ǻȤ��ޤ���
+バッファを持っていて、バッファ全体へのポインターやその大きさを
+返すことができる実装です。
+B<-T>/B<-B>テストのためにperlによって使われます。
+そのほかのものは非常にはっきりしない形で使われます…
 
 =item B<PerlIO_get_base(f)>
 
-�Хåե���B<���ϰ���>���֤��ޤ���
+バッファのB<開始位置>を返します。
 
 =item B<PerlIO_get_bufsiz(f)>
 
-�Хåե���B<�ȡ����륵����>���֤��ޤ���
+バッファのB<トータルサイズ>を返します。
 
 =back
 

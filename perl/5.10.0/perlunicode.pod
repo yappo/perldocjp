@@ -9,13 +9,13 @@ perlunicode - Unicode support in Perl
 
 =end original
 
-perlunicode - Perl �ˤ����� Unicode ���ݡ���
+perlunicode - Perl における Unicode サポート
 
 =head1 DESCRIPTION
 
 =head2 Important Caveats
 
-(���פʷٹ�)
+(重要な警告)
 
 =begin original
 
@@ -25,10 +25,10 @@ from cover to cover, Perl does support many Unicode features.
 
 =end original
 
-Uncode ���ݡ��Ȥ��絬�Ϥ��׵�Ǥ���
-Perl ��ɸ�� Unicode ���տ魯�뵻��Ū�ʥ�ݡ��Ȥ��ĻĤ餺
-�������Ƥ���櫓�ǤϤ���ޤ��󤬡�¿���� Unicode ��ǽ��
-���ݡ��Ȥ��Ƥ��ޤ���
+Uncode サポートは大規模な要求です。
+Perl は標準 Unicode や付随する技術的なレポートを一つ残らず
+実装しているわけではありませんが、多くの Unicode 機能を
+サポートしています。
 
 =begin original
 
@@ -38,14 +38,14 @@ document.
 
 =end original
 
-Perl �� Unicode ��Ȥ����Ȥ�ؤӤ����ͤϡ�¿ʬ���Υ�ե���󥹤��ɤ�����
-L<the Perl Unicode tutorial|perlunitut> ���ɤ�������褤�Ǥ��礦��
+Perl で Unicode を使うことを学びたい人は、多分このリファレンスを読む前に
+L<the Perl Unicode tutorial|perlunitut> を読んだ方がよいでしょう。
 
 =over 4
 
 =item Input and Output Layers
 
-(��������)
+(入出力層)
 
 =begin original
 
@@ -57,13 +57,13 @@ encoding on input or from Perl's encoding on output by use of the
 
 =end original
 
-Perl �ϡ��ե�����ϥ�ɥ뤬 ":utf8" �ؤ���ꤷ�ƥ����ץ󤵤��ȡ�
-�ե�����ϥ�ɥ뤬 Perl ������ Unicode ���󥳡��ǥ���
-(UTF-8, �ޤ��� EBCDIC �λ��� UTF-EBCDIC) ��Ȥ����Ȥ�ʬ����ޤ��� 
-����¾�Υ��󥳡��ǥ��󥰤ϡ�":encoding(...)" �ؤ�Ȥ����Ȥǡ�
-���ϻ��� Perl �Υ��󥳡��ǥ��󥰤ؤ��Ѵ�����ϻ��� Perl ��
-���󥳡��ǥ��󥰤�����Ѵ���Ԥ��ޤ���
-L<open> �򻲾Ȥ��Ƥ���������
+Perl は、ファイルハンドルが ":utf8" 層を指定してオープンされると、
+ファイルハンドルが Perl の内部 Unicode エンコーディング
+(UTF-8, または EBCDIC の時は UTF-EBCDIC) を使うことが分かります。 
+その他のエンコーディングは、":encoding(...)" 層を使うことで、
+入力時の Perl のエンコーディングへの変換や出力時の Perl の
+エンコーディングからの変換を行えます。
+L<open> を参照してください。
 
 =begin original
 
@@ -71,12 +71,12 @@ To indicate that Perl source itself is in UTF-8, use C<use utf8;>.
 
 =end original
 
-Perl �Υ��������Ȥ� UTF-8 �Ǥ��뤳�Ȥ򼨤��ˤϡ�C<use utf8;> ��
-�ȤäƤ���������
+Perl のソース自身が UTF-8 であることを示すには、C<use utf8;> を
+使ってください。
 
 =item Regular Expressions
 
-(����ɽ��)
+(正規表現)
 
 =begin original
 
@@ -88,11 +88,11 @@ byte data.
 
 =end original
 
-����ɽ������ѥ����¿��Ū�ʥ��ڥ����ɤ��������ޤ���
-�Ĥޤꡢ�ѥ�����ϥǡ������Ф���Ŭ�Ѥ��졢�ǡ����������� UTF-8 ��
-���󥳡��ɤ���Ƥ�����ˤ� Unicode ʸ����������˼�ưŪ��
-�ڤ��ؤ��ޤ� -- ����ʤ���С��Х��ȥǡ�����ɽ����Ƥ�����ˤ�
-����Ū�ʥХ��ȥ������ब�Ȥ��ޤ���
+正規表現コンパイラは多態的なオペコードを生成します。
+つまり、パターンはデータに対して適用され、データが内部で UTF-8 で
+エンコードされている場合には Unicode 文字スキームに自動的に
+切り替わります -- さもなければ、バイトデータで表されている場合には
+伝統的なバイトスキームが使われます。
 
 =item C<use utf8> still needed to enable UTF-8/UTF-EBCDIC in scripts
 
@@ -107,12 +107,12 @@ is needed.>  See L<utf8>.
 
 =end original
 
-�ߴ����Τ���ˡ�ASCII �١����Υޥ���ˤ����� Perl ������ץȤ��켫�Ȥ�
-��� UTF-8 ��(ʸ���������ɽ����ƥ�롢���뤤���ѿ�̾��) ǧ����ǽ��
-���뤿��䡢EBCDIC �١����Υޥ���� UTF-EBCDIC ��ǧ�������뤿���
-C<use utf8> �ץ饰�ޤ�����Ū�˴ޤ�ʤ���Фʤ�ޤ���
-B<����������Ū�� C<use utf8> ��ɬ�פ�ͣ��ξ��Ǥ���>
-L<utf8> �򻲾Ȥ��Ƥ���������
+互換性のために、ASCII ベースのマシンにおいて Perl スクリプトそれ自身の
+中の UTF-8 を(文字列や正規表現リテラル、あるいは変数名で) 認識可能に
+するためや、EBCDIC ベースのマシンで UTF-EBCDIC を認識させるために
+C<use utf8> プラグマを明示的に含めなければなりません。
+B<これらは明示的に C<use utf8> が必要な唯一の場合です。>
+L<utf8> を参照してください。
 
 =item BOM-marked scripts and UTF-16 scripts autodetected
 
@@ -126,12 +126,12 @@ ISO 8859-1 or other eight-bit encodings.)
 
 =end original
 
-Unicode BOM (UTF-16LE, UTF16-BE, �ޤ���UTF-8)�� Perl ������ץȤ�
-�ϤޤäƤ����ꡢ������ץȤ� BOM ���Ĥ��Ƥ��ʤ�
-UTF-16(BE �� LE �Τ����줫) �Ǥ��ä���硢Perl �Ϥ��Υ�����ץȤ�
-Unicode �Ǥ���Ȥ����������ɤ߹��ߤޤ�(BOM ���ʤ� UTF-8 �ϡ�
-��ΨŪ�� ISO 8859-1 �ʤɤ� 8 �ӥåȥ��󥳡��ǥ��󥰤ȶ��̤�����
-ǧ�����뤳�Ȥ��Ǥ��ޤ���)
+Unicode BOM (UTF-16LE, UTF16-BE, またはUTF-8)で Perl スクリプトが
+始まっていたり、スクリプトが BOM がついていない
+UTF-16(BE か LE のいずれか) であった場合、Perl はそのスクリプトを
+Unicode であるとして正しく読み込みます(BOM がない UTF-8 は、
+効率的に ISO 8859-1 などの 8 ビットエンコーディングと区別したり
+認識することができません。)
 
 =item C<use encoding> needed to upgrade non-Latin-1 byte strings
 
@@ -145,12 +145,12 @@ codepoints in Unicode happens to agree with Latin-1.
 
 =end original
 
-�ǥե���ȤǤϡ�Perl �� Unicode ��ǥ�ˤ��������Ū�����оΤ�����ޤ�:
-�Х���ʸ���󤫤� Unicode ʸ����ؤΰ��ۤξ��ʤϤ���ʸ����
-I<ISO 8859-1 (Latin-1)> �ǥ��󥳡��ɤ���Ƥ����ΤȲ��ꤷ�ޤ�����
-Unicode ʸ���󤫤�Υ����󥰥졼�ɤ�
-UTF-8 ���󥳡��ǥ��󥰤ؤȹԤ��ޤ���
-����� Unicode �κǽ�� 256 ʸ���� Latin-1 �ȶ��̤Ǥ��뤫��Ǥ���
+デフォルトでは、Perl の Unicode モデルにおける基本的な非対称があります:
+バイト文字列から Unicode 文字列への暗黙の昇格はその文字列が
+I<ISO 8859-1 (Latin-1)> でエンコードされているものと仮定しますが、
+Unicode 文字列からのダウングレードは
+UTF-8 エンコーディングへと行われます。
+これは Unicode の最初の 256 文字が Latin-1 と共通であるからです。
 
 =begin original
 
@@ -158,13 +158,13 @@ See L</"Byte and Character Semantics"> for more details.
 
 =end original
 
-�ܺ٤� L</"Byte and Character Semantics"> �򻲾Ȥ��Ƥ���������
+詳細は L</"Byte and Character Semantics"> を参照してください。
 
 =back
 
 =head2 Byte and Character Semantics
 
-(�Х��Ȥ�ʸ���Υ��ޥ�ƥ�����)
+(バイトと文字のセマンティクス)
 
 =begin original
 
@@ -173,8 +173,8 @@ represent strings internally.
 
 =end original
 
-�С������ 5.6 ���顢Perl ������Ū�ʥ磻��ʸ��������Ū��ʸ�����
-ɽ���Τ���˻ȤäƤ��ޤ���
+バージョン 5.6 から、Perl は論理的なワイド文字を内部的な文字列の
+表現のために使っています。
 
 =begin original
 
@@ -183,7 +183,7 @@ characters rather than bytes.
 
 =end original
 
-����ϡ�Perl ��٥�����ϥХ��ȤǤϤʤ�ʸ�����Ф���Ư�����Ȥˤʤ�Ǥ��礦��
+将来は、Perl レベルの操作はバイトではなく文字に対して働くことになるでしょう。
 
 =begin original
 
@@ -197,13 +197,13 @@ favor of compatibility and chooses to use byte semantics.
 
 =end original
 
-�������ʤ��顢���Ū�ʸߴ��������֤Ȥ��ơ�Perl ��
-�ץ��������Ф���Х��ȥ��ޥ�ƥ���������ʸ�����ޥ�ƥ������ؤ�
-�����ʰܹԥѥ����󶡤��뤳�Ȥ��ܻؤ��ޤ���
-���ϥǡ�����ʸ���Ǥ���� Perl ��ۣ�椵�ʤ�����Ǥ������ˤĤ��Ƥϡ�
-Perl ��ʸ�����ޥ�ƥ��������ڤ��ؤ��ޤ���
-�桼����������ղ�Ū�ʾ���ȴ���˷��ꤹ�뤳�Ȥ��Ǥ��ʤ����ˤĤ��Ƥ�
-Perl �ϸߴ����δ�������Х��ȥ��ޥ�ƥ����������򤷤ޤ���
+しかしながら、一時的な互換性の措置として、Perl は
+プログラムに対するバイトセマンティクスから文字セマンティクスへの
+安全な移行パスを提供することを目指します。
+入力データが文字であると Perl が曖昧さなく決定できる操作については、
+Perl は文字セマンティクスに切り替えます。
+ユーザーからの付加的な情報抜きに決定することができない操作については
+Perl は互換性の観点からバイトセマンティクスを選択します。
 
 =begin original
 
@@ -216,12 +216,12 @@ or from literals and constants in the source text.
 
 =end original
 
-����ư��� Perl �ΰ����ΥС������Ȥθߴ�����ݻ������ץ�������
-���Ϥ� Unicode ��ʸ���ǡ����Υ������Ǥ���ȥޡ�������Ƥ��ʤ����ˤΤ�
-Perl �����ǥХ��ȥ��ޥ�ƥ���������Ĥ��ޤ���
-���Τ褦�ʥǡ����ϡ��ե�����ϥ�ɥ롢�����ץ������θƤӽФ���
-�����ƥफ���󶡤�������(%ENV �Τ褦��)���������ƥ�������Υ�ƥ���
-����Ȥ��ä���Τ��餯���ΤǤ���
+この動作は Perl の以前のバージョンとの互換性を維持し、プログラムの
+入力が Unicode の文字データのソースであるとマークされていない場合にのみ
+Perl の操作でバイトセマンティクスを許可します。
+そのようなデータは、ファイルハンドル、外部プログラムの呼び出し、
+システムから提供される情報(%ENV のような)、ソーステキスト中のリテラルや
+定数といったものからくるものです。
 
 =begin original
 
@@ -230,9 +230,9 @@ semantics in a particular lexical scope.  See L<bytes>.
 
 =end original
 
-C<bytes> �ץ饰�ޤϾ�ˡ��ץ�åȥե�����Ȥ�̵�ط��ˡ������
-�쥭�����륹�����פˤ����ƥХ��ȥ��ޥ�ƥ������������ޤ���
-L<bytes> �򻲾Ȥ��Ƥ���������
+C<bytes> プラグマは常に、プラットフォームとは無関係に、特定の
+レキシカルスコープにおいてバイトセマンティクスを強制します。
+L<bytes> を参照してください。
 
 =begin original
 
@@ -244,13 +244,13 @@ may become a no-op.  See L<utf8>.
 
 =end original
 
-C<utf8> �ץ饰�ޤϼ�Ȥ��ƥѡ��������������ƥ����� UTF-(8|EBCDIC) ��
-ǧ����ͭ���ˤ���ߴ��ǥХ���(compatibility device)�Ǥ���
-���Υץ饰�ޤ� Perl �Υǥե���Ȥ��Х��ȥ��ޥ�ƥ������Ǥ���Ȥ��ˤΤ�
-ɬ�פǤ��뤳�Ȥ����դ��Ƥ���������
-ʸ�����ޥ�ƥ��������ǥե���ȤǤ�����ˤϡ�
-���Υץ饰�ޤϲ��⤷�ޤ���
-L<utf8> �򻲾Ȥ��Ƥ���������
+C<utf8> プラグマは主としてパーサが遭遇するリテラル中の UTF-(8|EBCDIC) の
+認識を有効にする互換デバイス(compatibility device)です。
+このプラグマは Perl のデフォルトがバイトセマンティクスであるときにのみ
+必要であることに注意してください。
+文字セマンティクスがデフォルトである場合には、
+このプラグマは何もしません。
+L<utf8> を参照してください。
 
 =begin original
 
@@ -265,17 +265,17 @@ be used to force byte semantics on Unicode data.
 
 =end original
 
-����Ū�˻��ꤵ��ʤ��¤ꡢPerl �α黻�Ҥ� Unicode �ǡ������Ф��Ƥ�
-ʸ�����ޥ�ƥ��������Ѥ����� Unicode �ǡ������Ф��Ƥ�
-�Х��ȥ��ޥ�ƥ��������Ѥ��ޤ���
-ʸ�����ޥ�ƥ������λ��Ѥη���ϥȥ�󥹥ڥ����Ȥ˹Ԥ��ޤ���
-�⤷���ϥǡ����� Unicode �����������褿��� -- ���Ȥ��С�
-ʸ�����󥳡��ǥ����ؤ��ե�����ϥ�ɥ�����ä���Ƥ��뤫
-��ƥ��� Unicode ʸ����������ץ���������ˤ��� -- �ΤǤ����
-ʸ�����ޥ�ƥ�������Ŭ�Ѥ���ޤ���
-�����Ǥʤ���С��Х��ȥ��ޥ�ƥ�������ͭ���ˤʤ�ޤ���
-C<bytes> �ץ饰�ޤ� Unicode �ǡ������Ф��ƥХ��ȥ��ޥ�ƥ�������
-��������Ȥ��˻Ȥ����ɤ��Ǥ��礦��
+明示的に指定されない限り、Perl の演算子は Unicode データに対しては
+文字セマンティクスを用い、非 Unicode データに対しては
+バイトセマンティクスを用います。
+文字セマンティクスの使用の決定はトランスペアレントに行われます。
+もし入力データが Unicode ソースから来たもの -- たとえば、
+文字エンコーディング層がファイルハンドルに附加されているか
+リテラルの Unicode 文字列定数がプログラムの中にある -- のであれば
+文字セマンティクスが適用されます。
+そうでなければ、バイトセマンティクスが有効になります。
+C<bytes> プラグマは Unicode データに対してバイトセマンティクスを
+強制するときに使うと良いでしょう。
 
 =begin original
 
@@ -287,12 +287,12 @@ regard to the system's native 8-bit encoding.
 
 =end original
 
-�Х��ȥ��ޥ�ƥ������θ��Ǥ�ʸ��������ǡ�Unicode ʸ���ǡ�����
-Ϣ�뤵�줿ʸ����Ǥ��ä���硢������ʸ����ϡ��Ť� Unicode ʸ����
-EBCDIC ��ȤäƤ����Ȥ��Ƥ⡢�Х���ʸ����� I<ISO 8859-1 (Latin-1)> �Ȥ���
-�ǥ����ɤ��뤳�ȤǺ�������ޤ���
-�����Ѵ��ϥ����ƥ�Υͥ��ƥ��֤� 8 �ӥåȥ��󥳡��ǥ��󥰤Ȥ�
-̵�ط��˹Ԥ��ޤ���
+バイトセマンティクスの元での文字列の操作で、Unicode 文字データが
+連結された文字列であった場合、新たな文字列は、古い Unicode 文字列が
+EBCDIC を使っていたとしても、バイト文字列を I<ISO 8859-1 (Latin-1)> として
+デコードすることで作成されます。
+この変換はシステムのネイティブな 8 ビットエンコーディングとは
+無関係に行われます。
 
 =begin original
 
@@ -305,16 +305,16 @@ See L<perluniintro> for more.
 
 =end original
 
-ʸ�����ޥ�ƥ������θ��Ǥϡ�����Ū�˥Х��Ȥ��Ф���Ư���Ƥ�������¿����
-ʸ�����Ф���Ư���ޤ���
-Perl �ˤ�����ʸ��������Ū�ˤ� 0 ���� 2**31 �ޤǤ��ϰϤο��ͤǤ���
-�礭��ʸ��������Ū�ˤϤ��Ĺ���������󥹤˥��󥳡��ɤ�����ǽ����
-����ޤ��������������ξܺ٤� Perl �ץ�����फ��ۤȤ�ɱ�����Ƥ��ޤ���
-�ܺ٤� L<perluniintro> �򻲾Ȥ��Ƥ���������
+文字セマンティクスの元では、伝統的にバイトに対して働いていた操作の多くが
+文字に対して働きます。
+Perl における文字は論理的には 0 から 2**31 までの範囲の数値です。
+大きな文字は内部的にはより長いシーケンスにエンコードされる可能性が
+ありますが、この内部の詳細は Perl プログラムからほとんど隠されています。
+詳細は L<perluniintro> を参照してください。
 
 =head2 Effects of Character Semantics
 
-(ʸ�����ޥ�ƥ������θ���)
+(文字セマンティクスの効果)
 
 =begin original
 
@@ -322,7 +322,7 @@ Character semantics have the following effects:
 
 =end original
 
-ʸ�����ޥ�ƥ������ϰʲ��θ��̤���äƤ��ޤ�:
+文字セマンティクスは以下の効果を持っています:
 
 =over 4
 
@@ -335,8 +335,8 @@ contain characters that have an ordinal value larger than 255.
 
 =end original
 
-ʸ���� -- �ϥå���Υ�����ޤ� -- ������ɽ���ѥ�����Ͻ����ͤȤ��� 255 ��
-Ķ�����ͤ����ʸ����ޤ�뤳�Ȥ��Ǥ��ޤ���
+文字列 -- ハッシュのキーを含め -- と正規表現パターンは序数値として 255 を
+超える値を持つ文字を含めることができます。
 
 =begin original
 
@@ -347,10 +347,10 @@ occur directly within the literal strings in UTF-8 encoding, or UTF-16.
 =end original
 
 
-�ץ��������Խ�����Τ� Unicode ���ǥ�����ȤäƤ���ΤǤ���С�Unicode ��
-ʸ�� UTF-8 �� UTF-16 �Υ��󥳡��ǥ��󥰥����ǥ��󥰤ǥ�ƥ��ʸ�����
-�ޤ�뤳�Ȥ��Ǥ��ޤ���
-(���Ԥ� BOM �� C<use utf8> ��ɬ�פȤ�����Ԥ� BOM ��ɬ�פȤ��ޤ���)
+プログラムを編集するのに Unicode エディタを使っているのであれば、Unicode の
+文字 UTF-8 か UTF-16 のエンコーディングコーディングでリテラル文字列に
+含めることができます。
+(前者は BOM か C<use utf8> を必要とし、後者は BOM を必要とします。)
 
 =begin original
 
@@ -363,13 +363,13 @@ internally, for optimization and/or backward compatibility.
 
 =end original
 
-Unicode ��ʸ���� C<\x{...}> ɽ����Ȥ����Ȥˤ��ʸ�����
-�ɲä��뤳�Ȥ�Ǥ��ޤ���
-����ɽ������� Unicode �����ɤϡ�16 �ʤǥ֥졼���˰Ϥߤޤ���
-���Ȥ��С�smiley face �� C<\x{263A}> �Ǥ���
-���Υ��󥳡��ǥ��󥰥�������� 0x100 ̤�������Ƥ�ʸ���ǤΤ�ư��ޤ�;
-Perl �Ϻ�Ŭ��������ߴ����Τ���������� 8 �ӥåȥ��󥳡��ǥ��󥰤�
-�Ȥ����⤷��ʤ����Ȥ����դ��Ƥ���������
+Unicode の文字は C<\x{...}> 表記を使うことにより文字列に
+追加することもできます。
+その表現される Unicode コードは、16 進でブレースに囲みます。
+たとえば、smiley face は C<\x{263A}> です。
+このエンコーディングスキームは 0x100 未満の全ての文字でのみ動作します;
+Perl は最適化や後方互換性のために内部で 8 ビットエンコーディングを
+使うかもしれないことに注意してください。
 
 =begin original
 
@@ -377,7 +377,7 @@ Additionally, if you
 
 =end original
 
-����˲ä��ơ�
+これに加えて、
 
    use charnames ':full';
 
@@ -388,8 +388,8 @@ character name within the braces, such as C<\N{WHITE SMILING FACE}>.
 
 =end original
 
-�Ȥ���� C<\N{...}> ɽ����Ȥ����Ȥ��Ǥ��������� Unicode ʸ��̾��
-C<\N{WHITE SMILING FACE}> �Τ褦�˥֥졼��������֤����Ȥ��Ǥ��ޤ���
+とすると C<\N{...}> 表記を使うことができ、公式な Unicode 文字名を
+C<\N{WHITE SMILING FACE}> のようにブレースの中に置くことができます。
 
 =item *
 
@@ -402,9 +402,9 @@ names.
 
 =end original
 
-Ŭ�ڤ� L<encoding> �����ꤵ��Ƥ���С�Perl ������ץȤ���μ��̻Ҥ�
-ɽ��ʸ����ޤ᤿ Unicode �αѿ�����ޤ�뤳�Ȥ��Ǥ��ޤ���
-Perl �ϸ��ߡ��ѿ�̾�����������褦�ȤϤ��ޤ���
+適切な L<encoding> が指定されていれば、Perl スクリプトの中の識別子で
+表意文字を含めた Unicode の英数字を含めることができます。
+Perl は現在、変数名を正規化しようとはしません。
 
 =item *
 
@@ -415,8 +415,8 @@ a character instead of a byte.
 
 =end original
 
-����ɽ���ϥХ��ȤǤϤʤ�ʸ���˥ޥå����ޤ���
-"." �ϰ�Х��ȤǤϤʤ����ҤȤĤ�ʸ���˥ޥå����ޤ���
+正規表現はバイトではなく文字にマッチします。
+"." は一バイトではなく、ひとつの文字にマッチします。
 
 =item *
 
@@ -429,9 +429,9 @@ ideograph, for instance.
 
 =end original
 
-����ɽ�����ʸ�����饹�ϥХ��ȤǤϤʤ�ʸ���˥ޥå�����Unicode ��
-�����ǡ����١������������Ƥ���ʸ���������Ф��ƥޥå���Ԥ��ޤ���
-���Ȥ��С�C<\w> �����ܸ��ɽ��ʸ���˥ޥå������뤿��˻Ȥ����Ȥ��Ǥ��ޤ���
+正規表現中の文字クラスはバイトではなく文字にマッチし、Unicode の
+特性データベースで定義されている文字特性に対してマッチを行います。
+たとえば、C<\w> は日本語の表意文字にマッチさせるために使うことができます。
 
 =item *
 
@@ -443,9 +443,9 @@ the C<\P{}> negation, "doesn't match property".
 
 =end original
 
-̾���դ����줿 Unicode ���������ѻ����֥��å����ϰϤ� C<\p{}>
-"matches property" ��¤�䤽��������� C<\P{}> "doesn't match property" ��
-�Ȥä�ʸ�����饹�ǻȤ����Ȥ��Ǥ��ޤ���
+名前付けされた Unicode の特性、用字、ブロックの範囲は C<\p{}>
+"matches property" 構造やその否定形の C<\P{}> "doesn't match property" を
+使った文字クラスで使うことができます。
 
 =begin original
 
@@ -453,8 +453,8 @@ See L</"Unicode Character Properties"> for more details.
 
 =end original
 
-����ʤ�ܺ٤ˤĤ��Ƥ� L</"Unicode Character Properties"> ��
-���Ȥ��Ƥ���������
+さらなる詳細については L</"Unicode Character Properties"> を
+参照してください。
 
 =begin original
 
@@ -463,7 +463,7 @@ in the regular expression with the C<\p{}> or C<\P{}> construct.
 
 =end original
 
-�ȼ���ʸ������������Ǥ���C<\p{}> �� C<\P{}> ��¤�Ǥ�����ɽ���ǻȤ��ޤ���
+独自の文字特性を定義でき、C<\p{}> や C<\P{}> 構造での正規表現で使えます。
 
 =begin original
 
@@ -471,8 +471,8 @@ See L</"User-Defined Character Properties"> for more details.
 
 =end original
 
-���ʤ�ܺ٤ˤĤ��Ƥ� L</"User-Defined Character Properties"> ��
-���Ȥ��Ƥ���������
+更なる詳細については L</"User-Defined Character Properties"> を
+参照してください。
 
 =item *
 
@@ -486,10 +486,10 @@ C<(?:\PM\pM*)>.
 
 =end original
 
-�ü�ʥѥ����� C<\X> �ϳ�ĥ Unicode �������� -- Standardese ��
-"a combining character sequence" -- �ǽ��ʸ�������ܤȤʤ�ʸ����
-³��ʸ��������ʸ����Ŭ�Ѥ����ޡ���ʸ���˥ޥå����ޤ���
-C<\X> �� C<(?:\PM\pM*)> �������Ǥ���
+特殊なパターン C<\X> は拡張 Unicode シーケンス -- Standardese の
+"a combining character sequence" -- 最初の文字が基本となる文字で
+続く文字が基本文字に適用されるマーク文字にマッチします。
+C<\X> は C<(?:\PM\pM*)> と等価です。
 
 =item *
 
@@ -501,10 +501,10 @@ functionality see pack('U0', ...) and pack('C0', ...).
 
 =end original
 
-C<tr///> �黻�ҤϥХ��ȤǤϤʤ�ʸ�����Ѵ����ޤ���
-C<tr///CU> �Ϻ�����줿���Ȥ����դ��Ƥ���������
-Ʊ�ͤΤ��Ȥ�Ԥ��ˤ� pack('U0', ...) �� pack('C0', ...) ��
-���Ȥ��Ƥ���������
+C<tr///> 演算子はバイトではなく文字で変換します。
+C<tr///CU> は削除されたことに注意してください。
+同様のことを行うには pack('U0', ...) と pack('C0', ...) を
+参照してください。
 
 =item *
 
@@ -518,11 +518,11 @@ that make the distinction.
 
 =end original
 
-�羮ʸ�����Ѵ��黻�Ҥ� Unicode ���羮ʸ���Ѵ��ơ��֥��ʸ�������Ϥ�
-���ä��Ȥ��˻��Ѥ��ޤ���
-C<uc()> ��Ÿ��ʸ������� C<\U> ����ʸ�����Ѵ�����C<ucfirst> ��
-Ÿ��ʸ������� C<\u> �Ϥ��θ���Ƕ��̤���Ƥ���Ȥ���
-�����ȥ륱�������Ѵ����ޤ���
+大小文字の変換演算子は Unicode の大小文字変換テーブルを、文字の入力が
+あったときに使用します。
+C<uc()> や展開文字列中の C<\U> は大文字に変換し、C<ucfirst> や
+展開文字列中の C<\u> はその言語で区別されているときに
+タイトルケースに変換します。
 
 =item *
 
@@ -538,13 +538,13 @@ C<sort()>, and operators dealing with filenames.
 
 =end original
 
-ʸ����ΰ��֤�Ĺ�����갷���黻�Ҥ�����ʬ�ϼ�ưŪ��ʸ���ΰ��֤�
-�Ȥ��褦���ѹ�����ޤ�����
-����ˤ� C<chop()>, C<chomp()>, C<substr()>, C<pos()>, C<index()>,
-C<rindex()>, C<sprintf()>, C<write()>, C<length()> ���ޤޤ�ޤ���
-C<vec()> ���ѹ�����Ƥ��ޤ���
-ʸ�����ӥåȤΥХ��ĤΤ褦�˰��� C<sort()>���ե�����̾���갷��
-�黻�Ҥ�ʸ�����ɤ����򵤤ˤ��ޤ���
+文字列の位置や長さを取り扱う演算子の大部分は自動的に文字の位置を
+使うように変更されました。
+これには C<chop()>, C<chomp()>, C<substr()>, C<pos()>, C<index()>,
+C<rindex()>, C<sprintf()>, C<write()>, C<length()> が含まれます。
+C<vec()> は変更されていません。
+文字列をビットのバケツのように扱う C<sort()>、ファイル名を取り扱う
+演算子は文字かどうかを気にしません。
 
 =item *
 
@@ -555,9 +555,9 @@ used for byte-oriented formats.  Again, think C<char> in the C language.
 
 =end original
 
-C<pack()>/C<unpack()> ��ʸ�� C<C> �� I<�ѹ�����Ƥ��ޤ���>��
-�ʤ��ʤ顢�����Ϥ��Ф��ХХ��Ȼظ��ν񼰤Τ���˻Ȥ��뤫��Ǥ���
-�����֤��ޤ�����C ����� C<char> ��ͤ��Ƥ���������
+C<pack()>/C<unpack()> の文字 C<C> は I<変更されていません>。
+なぜなら、これらはしばしばバイト指向の書式のために使われるからです。
+繰り返しますが、C 言語の C<char> を考えてください。
 
 =begin original
 
@@ -567,9 +567,9 @@ C<chr>/C<ord> and properly handles character values even if they are above 255.
 
 =end original
 
-Unicode ��ʸ���������֤δ֤��Ѵ���Ԥ������� C<U> ����Ҥ�����ޤ���
-C<chr>/C<ord> �������ǡ�ʸ�����ͤ� 255 ��Ķ���Ƥ��Ƥ�Ŭ�ڤ˰�����
-C<W> ����Ҥ⤢��ޤ���
+Unicode の文字と符号位置の間の変換を行う新たな C<U> 指定子があります。
+C<chr>/C<ord> と等価で、文字の値が 255 を超えていても適切に扱える
+C<W> 指定子もあります。
 
 =item *
 
@@ -584,12 +584,12 @@ that is not something one normally needs to care about at all.
 
 =end original
 
-C<chr()> �ؿ��� C<ord()> �ؿ��� C<pack("W")> �� C<unpack("W")> �Τ褦��
-ʸ�����Ф���Ư����C<pack("C")> �� C<unpack("C")> �Τ褦�ˤ� I<Ư���ޤ���>��
-C<pack("C")> �� C<unpack("C")> �� Unicode ʸ����ˤ����ƥХ��Ȼظ���
-C<chr()> �� C<ord()> �򥨥ߥ�졼�Ȥ��뤿��Υ᥽�åɤǤ���
-�����Υ᥽�åɤ� Unicode ʸ������������󥳡��ǥ��󥰤����餫�ˤ���Τǡ�
-�̾�ϥ�������ɬ�פϤ���ޤ���
+C<chr()> 関数と C<ord()> 関数は C<pack("W")> や C<unpack("W")> のように
+文字に対して働き、C<pack("C")> や C<unpack("C")> のようには I<働きません>。
+C<pack("C")> と C<unpack("C")> は Unicode 文字列においてバイト指向の
+C<chr()> や C<ord()> をエミュレートするためのメソッドです。
+これらのメソッドが Unicode 文字列の内部エンコーディングを明らかにするので、
+通常はケアする必要はありません。
 
 =item *
 
@@ -607,15 +607,15 @@ complement B<and> the full character-wide bit complement.
 
 =end original
 
-�ӥå�ʸ����黻�� C<& | ^ ~> ��ʸ���ǡ��������Ǥ��ޤ���
-���������㤨�����Ƥ�ʸ�����ͤ� 255 �ʲ��ΤȤ���
-�ӥå�ʸ����黻��Ȥä����θ����ߴ����Τ���ˡ�
-256 �ʾ���ͤ�ʸ���� 255 �ʲ����ͤ�ʸ����ξ�����ޤޤ�Ƥ���ʸ�����
-C<~> (�ӥå����) ��Ȥ��٤��ǤϤ���ޤ���
-�Ǥ���פʤ��Ȥϡ��ɡ���륬���ˡ§ (C<~($x|$y) eq ~$x&~$y> ��
-C<~($x&$y) eq ~$x|~$y>) ������Ω���ʤ��Ȥ������ȤǤ���
-���ο���Ū�� I<�Ἲ> ����ͳ�����(complement)�� 8 �ӥåȤΥӥå����
-B<�����> ʸ�����Υӥå������ B<ξ��> ���֤����Ȥ��Ǥ��ʤ�����Ǥ���
+ビット文字列演算子 C<& | ^ ~> は文字データを操作できます。
+しかし、例えば全ての文字の値が 255 以下のときに
+ビット文字列演算を使った場合の後方互換性のために、
+256 以上の値の文字と 255 以下の値の文字の両方が含まれている文字列に
+C<~> (ビット補数) を使うべきではありません。
+最も重要なことは、ド・モルガンの法則 (C<~($x|$y) eq ~$x&~$y> と
+C<~($x&$y) eq ~$x|~$y>) が成り立たないということです。
+この数学的な I<過失> の理由は補数(complement)が 8 ビットのビット補数
+B<および> 文字幅のビット補数の B<両方> を返すことができないためです。
 
 =item *
 
@@ -625,7 +625,7 @@ lc(), uc(), lcfirst(), and ucfirst() work for the following cases:
 
 =end original
 
-lc(), uc(), lcfirst(), ucfirst() �ϰʲ��ξ���Ư���ޤ�:
+lc(), uc(), lcfirst(), ucfirst() は以下の場合に働きます:
 
 =over 8
 
@@ -638,8 +638,8 @@ single Unicode character, or
 
 =end original
 
-�������ޥåԥ󥰤�ñ��� Unicode ʸ������
-�̤�ñ��� Unicode ʸ���ؤΤ�ΤǤ��뤫��
+ケースマッピングが単一の Unicode 文字から
+別の単一の Unicode 文字へのものであるか、
 
 =item *
 
@@ -650,8 +650,8 @@ than one Unicode character.
 
 =end original
 
-�������ޥåԥ󥰤�ñ��� Unicode ʸ������
-��ʸ���ʾ�� Unicode ʸ���ؤΤ�ΤǤ��롣
+ケースマッピングが単一の Unicode 文字から
+一文字以上の Unicode 文字へのものである。
 
 =back
 
@@ -662,8 +662,8 @@ since Perl does not understand the concept of Unicode locales.
 
 =end original
 
-��������(Lithuanian, Turkish, Azeri)���տ魯�뤳�Ȥ� B<Ư���ޤ���>��
-����� Perl �� Unicode �Υ�������Υ��󥻥ץȤ����򤷤ʤ�����Ǥ���
+ロケール(Lithuanian, Turkish, Azeri)に付随することは B<働きません>。
+それは Perl が Unicode のロケールのコンセプトを理解しないからです。
 
 =begin original
 
@@ -671,7 +671,7 @@ See the Unicode Technical Report #21, Case Mappings, for more details.
 
 =end original
 
-�ܤ����� Unicode Technical Report #21 �� Case Mappings �򻲾Ȥ��Ƥ���������
+詳しくは Unicode Technical Report #21 の Case Mappings を参照してください。
 
 =begin original
 
@@ -680,8 +680,8 @@ lcfirst(), uc(), and ucfirst() (or their string-inlined versions).
 
 =end original
 
-������ lc(), lcfirst(), uc(), ucfirst() (����Ӥ�����
-ʸ���󥤥�饤����) �ǻȤ����ȼ��Υޥåԥ󥰤�����Ǥ��ޤ���
+しかし lc(), lcfirst(), uc(), ucfirst() (およびこれらの
+文字列インライン版) で使える独自のマッピングも定義できます。
 
 =begin original
 
@@ -689,7 +689,7 @@ See L</"User-Defined Case Mappings"> for more details.
 
 =end original
 
-���ʤ�ܺ٤ˤĤ��Ƥ� L</"User-Defined Case Mappings"> �򻲾Ȥ��Ƥ���������
+更なる詳細については L</"User-Defined Case Mappings"> を参照してください。
 
 =back
 
@@ -703,14 +703,14 @@ And finally, C<scalar reverse()> reverses by character rather than by byte.
 
 =end original
 
-�����ƺǸ�ˡ�C<scalar reverse()> �ϥХ���ñ�̤ǤϤʤ�ʸ��ñ�̤�
-ȿž��Ԥ��ޤ���
+そして最後に、C<scalar reverse()> はバイト単位ではなく文字単位で
+反転を行います。
 
 =back
 
 =head2 Unicode Character Properties
 
-(Unicode ʸ������)
+(Unicode 文字特性)
 
 =begin original
 
@@ -720,9 +720,9 @@ the C<\P{}> negation, "doesn't match property".
 
 =end original
 
-̾���դ����줿 Unicode ���������ѻ����֥��å����ϰϤ� C<\p{}>
-"matches property" ��¤�䤽��������� C<\P{}> "doesn't match property" ��
-�Ȥä�ʸ�����饹�ǻȤ����Ȥ��Ǥ��ޤ���
+名前付けされた Unicode の特性、用字、ブロックの範囲は C<\p{}>
+"matches property" 構造やその否定形の C<\P{}> "doesn't match property" を
+使った文字クラスで使うことができます。
 
 =begin original
 
@@ -735,12 +735,12 @@ C<\p{Mirrored}> and C<\p{Tibetan}>.
 
 =end original
 
-���Ȥ��С�C<\p{Lu}> �� Unicode �� "Lu" (Letter, uppercase) ���������Ǥ�դ�
-ʸ���˥ޥå�����C<\p{M}> �� "M" (mark -- ��������Ȥʤ�) ���������Ǥ�դ�
-ʸ���˥ޥå����ޤ���
-�֥饱�åȤϰ�ʸ���������ǤϾ�ά���뤳�Ȥ��Ǥ���Τǡ�C<\p{M}> ��
-C<\PM> �������Ǥ���
-C<\p{Mirrored}> �� C<\p{Tibetan}> �ʤ�¿�����������������Ƥ��ޤ���
+たとえば、C<\p{Lu}> は Unicode の "Lu" (Letter, uppercase) 特性を持つ任意の
+文字にマッチし、C<\p{M}> は "M" (mark -- アクセントなど) 特性を持つ任意の
+文字にマッチします。
+ブラケットは一文字の特性では省略することができるので、C<\p{M}> は
+C<\PM> と等価です。
+C<\p{Mirrored}> や C<\p{Tibetan}> など多くの特性が定義されています。
 
 =begin original
 
@@ -755,14 +755,14 @@ becomes C<Latin1Supplement>.
 
 =end original
 
-������ Unicode �ѻ�����ӥ֥��å���̾���ϥ��ڡ����ȥ��å����
-���ѥ졼���Ȥ��ƻȤäƤ��ޤ����������Τ��ᡢ���å��塢���ڡ�����
-��������С���Ȥ����Ȥ��Ǥ����ޤ����羮ʸ���ΰ㤤�Ͻ��פǤϤ���ޤ���
-�������ʤ��顢�ʲ��Υ͡��ߥ󥰤ˤ������äơ�������Ӥ��ƻȤ����Ȥ�
-�����ᤷ�ޤ�: Unicode ���ѻ����������֥��å���̾�� (�֥��å�̾��
-Ŭ�Ѥ�����ղ�Ū�ʥ롼��ˤĤ��ưʲ��򻲾Ȥ��Ƥ�������) ����
-����ȥ��å�����������ñ�����Ƭ����ʸ���ˤ��Ĥ��ʸ���ˤ��ޤ���
-�������äơ�C<Latin-1 Supplement> �� C<Latin1Supplement> �Ȥʤ�ޤ���
+公式の Unicode 用字およびブロックの名前はスペースとダッシュを
+セパレータとして使っていますが、便利のため、ダッシュ、スペース、
+アンダーバーを使うことができ、また、大小文字の違いは重要ではありません。
+しかしながら、以下のネーミングにしたがって、首尾一貫して使うことを
+お勧めします: Unicode の用字、特性、ブロックの名前 (ブロック名に
+適用される付加的なルールについて以下を参照してください) から
+空白とダッシュを取り除き、単語の先頭を大文字にし残りを小文字にします。
+したがって、C<Latin-1 Supplement> は C<Latin1Supplement> となります。
 
 =begin original
 
@@ -772,9 +772,9 @@ equal to C<\P{Tamil}>.
 
 =end original
 
-C<\p{}> �� C<\P{}> ��ξ���ǡ������å�(^) ��ǽ�Υ֥졼����
-����̾�δ֤��֤����Ȥˤ�äư�̣��ȿž���뤳�Ȥ��Ǥ��ޤ�:
-C<\p{^Tamil}> �� C<\P{Tamil}> �������Ǥ���
+C<\p{}> と C<\P{}> の両方で、キャレット(^) を最初のブレースと
+特性名の間に置くことによって意味を反転することができます:
+C<\p{^Tamil}> は C<\P{Tamil}> と等価です。
 
 =begin original
 
@@ -783,8 +783,8 @@ Unicode 5.0.0 in July 2006.>
 
 =end original
 
-B<����: �����Ǥ��������ѻ����֥��å��� 2006 ǯ 7 ��� Unicode 5.0.0 ��
-���äƤ��ޤ���>
+B<注意: ここでの特性、用字、ブロックは 2006 年 7 月の Unicode 5.0.0 に
+従っています。>
 
 =over 4
 
@@ -798,10 +798,10 @@ for instance, are identical.
 
 =end original
 
-�ʲ��˵󤲤�Τϡ�Unicode �ΰ��̥��ƥ�������(General Category properties) �ǡ�
-Ĺ�������¤�Ǥ��ޤ���
-���Ȥ��С�C<\p{Lu}> �� C<\p{UppercaseLetter}> ��Ʊ����ΤȤ���
-�������Ȥ��Ǥ��ޤ���
+以下に挙げるのは、Unicode の一般カテゴリ特性(General Category properties) で、
+長形式が並んでいます。
+たとえば、C<\p{Lu}> と C<\p{UppercaseLetter}> は同じものとして
+扱うことができます。
 
     Short       Long
 
@@ -861,9 +861,9 @@ C<Ll>, C<Lu>, and C<Lt>.
 
 =end original
 
-ñ��ʸ����������Ʊ��ʸ���ǻϤޤ���ʸ����Ǥ�դΥ��������˴ޤޤ��
-���٤Ƥ�ʸ���˥ޥå����ޤ���
-C<LC> �� C<L&> �����̤ʥ������ǡ������ C<Ll>, C<Lu>, C<Lt> ����̾�Ǥ���
+単一文字の特性は同じ文字で始まる二文字の任意のサブ特性に含まれる
+すべての文字にマッチします。
+C<LC> と C<L&> は特別なケースで、これは C<Ll>, C<Lu>, C<Lt> の別名です。
 
 =begin original
 
@@ -874,10 +874,10 @@ supported.
 
 =end original
 
-Perl �ϥ桼������ Unicode ʸ��������ɽ���ˤĤ������򤹤�ɬ�פ�
-�ʤ��褦�ˤ��Ƥ���Τǡ����������Ȥ����ݤʥ��󥻥ץȤˤĤ���
-��������ɬ�פϤ���ޤ���
-���äơ�C<Cs> �ϥ��ݡ��Ȥ���Ƥ��ޤ���
+Perl はユーザーが Unicode 文字の内部表現について理解する必要が
+ないようにしているので、サロゲートの面倒なコンセプトについて
+実装する必要はありません。
+従って、C<Cs> はサポートされていません。
 
 =item Bidirectional Character Types
 
@@ -889,8 +889,8 @@ the BidiClass class:
 
 =end original
 
-�ѻ��Ϥ����������ǰۤʤ�Τ�--���Ȥ��Хإ֥饤��ϱ����麸�˽񤭤ޤ� --
-Unicode �ϰʲ��������� BidiClass ���饹���󶡤��Ƥ��ޤ�:
+用字はその方向性で異なるので--たとえばヘブライ語は右から左に書きます --
+Unicode は以下の特性を BidiClass クラスで提供しています:
 
     Property    Meaning
 
@@ -921,7 +921,7 @@ written right to left.
 
 =end original
 
-���Ȥ��С�C<\p{BidiClass:R}> ���̾ﱦ���麸�˽�ʸ���˥ޥå����ޤ���
+たとえば、C<\p{BidiClass:R}> は通常右から左に書く文字にマッチします。
 
 =item Scripts
 
@@ -932,8 +932,8 @@ such as in C<\p{Latin}> or C<\p{Cyrillic}>, are as follows:
 
 =end original
 
-C<\p{Latin}> �� C<\p{Cyrillic}> �Τ褦�ʡ�C<\p{...}> �� C<\P{...}> ��
-�Ȥ����ȤΤǤ����ѻ�̾�ϰʲ����̤�:
+C<\p{Latin}> や C<\p{Cyrillic}> のような、C<\p{...}> と C<\P{...}> で
+使うことのできる用字名は以下の通り:
 
     Arabic
     Armenian
@@ -1010,8 +1010,8 @@ properties, defined by the F<PropList> Unicode database:
 
 =end original
 
-��ĥ�������饹�ϴ����������䴰����Unicode �ǡ����١����� 
-F<PropList> ���������Ƥ��ޤ�:
+拡張特性クラスは基本特性を補完し、Unicode データベースの 
+F<PropList> で定義されています:
 
     ASCIIHexDigit
     BidiControl
@@ -1052,7 +1052,7 @@ and there are further derived properties:
 
 =end original
 
-����¾�ˤ�������������������ޤ�:
+その他にも派生した特性があります:
 
     Alphabetic  =  Lu + Ll + Lt + Lm + Lo + Nl + OtherAlphabetic
     Lowercase   =  Ll + OtherLowercase
@@ -1085,9 +1085,9 @@ example, is equal to C<\P{Lu}>.
 
 =end original
 
-(Perl 5.6 �Ȥ�)�����ߴ����Τ��ᡢ���٤Ƥ������Ϥ���̾�������� C<Is> ��
-�֤����Ȥ��Ǥ��ޤ���
-�������äơ�C<\P{IsLu}> �� C<\P{Lu}> �������Ǥ���
+(Perl 5.6 との)後方互換性のため、すべての特性はその名前の前に C<Is> を
+置くことができます。
+したがって、C<\P{IsLu}> は C<\P{Lu}> と等価です。
 
 =item Blocks
 
@@ -1105,16 +1105,16 @@ punctuation, are in a category called C<Common>.
 
 =end original
 
-B<�ѻ�> �˲ä���Unicode �Ǥ�ʸ���� B<�֥��å�> ��������Ƥ��ޤ���
-�ѻ��ȥ֥��å��ΰ㤤�ϡ��ѻ��Υ��󥻥ץȤ����������
-̩�夷����ΤǤ���Τ��Ф��ơ��֥��å��Υ��󥻥ץȤ� 256 ��
-Unicode ʸ���Υ��롼�פ˴�Ť������͹�Ū�ʥ��롼��ʬ���Ǥ��뤳�ȤǤ���
-���Ȥ��С�C<Latin> �ѻ���¿���Υ֥��å������ʸ����ޤ�Ǥ��ޤ�����
-�����Υ֥��å��Τ��٤Ƥ�ʸ����ޤ�ǤϤ��ޤ���
-���󤲤�ȡ�������¿�����ѻ���ۤ��ƶ�ͭ����Ƥ���Τǡ�
-(Latin �ѻ���)������ޤߤޤ���
-�����ȡ��������Τ褦��Ʊ�ͤΥ��롼�פ� C<Common> �ȸƤФ��
-���ƥ���ˤ���ޤ���
+B<用字> に加え、Unicode では文字の B<ブロック> を定義しています。
+用字とブロックの違いは、用字のコンセプトが自然言語に
+密着したものであるのに対して、ブロックのコンセプトは 256 の
+Unicode 文字のグループに基づいたより人工的なグループ分けであることです。
+たとえば、C<Latin> 用字は多くのブロックからの文字を含んでいますが、
+それらのブロックのすべての文字を含んではいません。
+例を挙げると、数字は多くの用字を越えて共有されているので、
+(Latin 用字は)数字を含みません。
+数字と、句読点のような同様のグループは C<Common> と呼ばれる
+カテゴリにあります。
 
 =begin original
 
@@ -1122,7 +1122,7 @@ For more about scripts, see the UAX#24 "Script Names":
 
 =end original
 
-�ѻ��Τ��ܤ�������� UTR #24 "Script Names" �򻲾Ȥ��Ƥ�������:
+用字のより詳しい情報は UTR #24 "Script Names" を参照してください:
 
    http://www.unicode.org/reports/tr24/
 
@@ -1132,7 +1132,7 @@ For more about blocks, see:
 
 =end original
 
-�֥��å��ˤĤ��ƤΤ��ܤ��������:
+ブロックについてのより詳しい情報は:
 
    http://www.unicode.org/Public/UNIDATA/Blocks.txt
 
@@ -1146,11 +1146,11 @@ for block tests to avoid confusion.
 
 =end original
 
-�֥��å�̾�� C<In> ��Ƭ���ȤȤ��Ϳ�����ޤ���
-���Ȥ��С��������ʥ֥��å��� C<\p{InKatakana}> �Ȥ��ƻ��Ȥ���ޤ���
-C<In> ��Ƭ�����ѻ���¾�Υץ��ѥƥ��Ⱦ��ͤ��ʤ���о�ά���뤳�Ȥ�
-��ǽ�Ǥ���������Τʤ��֥��å��ƥ��ȤΤ���˾�� C<In> ��Ȥ����Ȥ�
-�����ᤷ�ޤ���
+ブロック名は C<In> 接頭辞とともに与えられます。
+たとえば、カタカナブロックは C<\p{InKatakana}> として参照されます。
+C<In> 接頭辞は用字や他のプロパティと衝突しなければ省略することも
+可能ですが、混乱のないブロックテストのために常に C<In> を使うことを
+お勧めします。
 
 =begin original
 
@@ -1158,7 +1158,7 @@ These block names are supported:
 
 =end original
 
-�ʲ��Υ֥��å�̾�����ݡ��Ȥ���Ƥ��ޤ�:
+以下のブロック名がサポートされています:
 
     InAegeanNumbers
     InAlphabeticPresentationForms
@@ -1319,7 +1319,7 @@ These block names are supported:
 
 =head2 User-Defined Character Properties
 
-(�桼�����ʸ������)
+(ユーザ定義文字特性)
 
 =begin original
 
@@ -1332,12 +1332,12 @@ its package in the C<\p> or C<\P> construct.
 
 =end original
 
-���ʤ����Ȥ�ʸ��������"In" �ޤ��� "Is" �ǻϤޤ�̾���Υ��֥롼�����
-������뤳�Ȥˤ�äƻ��Ĥ��Ȥ��Ǥ��ޤ���
-���Υ��֥롼�����Ǥ�դΥѥå�������������뤳�Ȥ��Ǥ��ޤ���
-�桼�����������������ɽ���� C<\p> ��¤�� C<\P> ��¤�ǻȤ����Ȥ��Ǥ��ޤ���
-�⤷�桼������������򤽤줬����ѥå������ʳ��ǻȤ������ΤǤ���С�
-�ѥå�����̾�� C<\p> (�⤷���� C<\P>)�Τ���˻��ꤹ��ɬ�פ�����ޤ���
+あなた自身の文字特性を、"In" または "Is" で始まる名前のサブルーチンを
+定義することによって持つことができます。
+そのサブルーチンは任意のパッケージで定義することができます。
+ユーザー定義特性は正規表現の C<\p> 構造や C<\P> 構造で使うことができます。
+もしユーザー定義特性をそれがあるパッケージ以外で使いたいのであれば、
+パッケージ名を C<\p> (もしくは C<\P>)のために指定する必要があります。
 
     # assuming property IsForeign defined in Lang::
     package main;  # property package name required
@@ -1353,8 +1353,8 @@ Note that the effect is compile-time and immutable once defined.
 
 =end original
 
-���θ��̤ϥ���ѥ�����Τ�Τǡ�����������Ƥ��ޤä���
-�ѹ��Ǥ��ʤ����Ȥ����դ��Ƥ���������
+この効果はコンパイル時のもので、一度定義してしまったら
+変更できないことに注意してください。
 
 =begin original
 
@@ -1363,9 +1363,9 @@ or more newline-separated lines.  Each line must be one of the following:
 
 =end original
 
-���֥롼����ϡ��ҤȤİʾ�β��ԤǶ��ڤ�줿����η�����ʸ�����
-�֤��ʤ���Фʤ�ޤ���
-�ƹԤϰʲ��Τ����줫�η����Ǥʤ���Фʤ�ޤ���:
+サブルーチンは、ひとつ以上の改行で区切られた特定の形式の文字列を
+返さなければなりません。
+各行は以下のいずれかの形式でなければなりません:
 
 =over 4
 
@@ -1377,7 +1377,7 @@ A single hexadecimal number denoting a Unicode code point to include.
 
 =end original
 
-�ޤޤ�� Unicode �����֤򼨤� 1 �Ĥ� 16 �ʿ���
+含まれる Unicode 符号位置を示す 1 つの 16 進数。
 
 =item *
 
@@ -1388,8 +1388,8 @@ tabular characters) denoting a range of Unicode code points to include.
 
 =end original
 
-�ޤޤ�� Unicode �������֤��ϰϤ򼨤���
-��ʿŪ����(���ڡ����⤷���ϥ���)�ˤ�äƶ��ڤ��� 2 �Ĥ� 16 �ʿ���
+含まれる Unicode の符号位置の範囲を示す、
+水平的空白(スペースもしくはタブ)によって区切られる 2 つの 16 進数。
 
 =item *
 
@@ -1402,9 +1402,9 @@ points for a range; or a single hexadecimal code point.
 
 =end original
 
-("+" �����֤���) ���������˴ޤ����:
-("utf8::" �����֤��줿) �Ȥ߹��ߤ�ʸ�������⤷���ϥ桼���������ʸ������;
-�ϰϤΤ���� 2 �Ĥ� 16 ��������; ���뤤��ñ��� 16 �������֡�
+("+" を前置して) その特性に含めるもの:
+("utf8::" が前置された) 組み込みの文字特性もしくはユーザー定義の文字特性;
+範囲のための 2 つの 16 進符号位置; あるいは単一の 16 進符号位置。
 
 =item *
 
@@ -1417,9 +1417,9 @@ points for a range; or a single hexadecimal code point.
 
 =end original
 
-("-" �����֤���) ���������������������:
-("utf8::" �����֤��줿) �Ȥ߹��ߤ�ʸ�������⤷���ϥ桼���������ʸ������;
-�ϰϤΤ���� 2 �Ĥ� 16 ��������; ���뤤��ñ��� 16 �������֡�
+("-" を前置して) その特性から除外するもの:
+("utf8::" が前置された) 組み込みの文字特性もしくはユーザー定義の文字特性;
+範囲のための 2 つの 16 進符号位置; あるいは単一の 16 進符号位置。
 
 =item *
 
@@ -1432,9 +1432,9 @@ points for a range; or a single hexadecimal code point.
 
 =end original
 
-("!" �����֤���)���������:
-("utf8::" �����֤��줿) �Ȥ߹��ߤ�ʸ�������⤷���ϥ桼���������ʸ������;
-�ϰϤΤ���� 2 �Ĥ� 16 ��������; ���뤤��ñ��� 16 �������֡�
+("!" を前置して)否定を取るもの:
+("utf8::" が前置された) 組み込みの文字特性もしくはユーザー定義の文字特性;
+範囲のための 2 つの 16 進符号位置; あるいは単一の 16 進符号位置。
 
 =item *
 
@@ -1447,10 +1447,10 @@ hexadecimal code points for a range; or a single hexadecimal code point.
 
 =end original
 
-("&" �����֤���)���̽��������:
-�����ˤ���ʸ���ʳ������Ƥ�ʸ���Τ����
-("utf8::" �����֤��줿) ����¸�ߤ���ʸ�������ޤ��ϥ桼�������ʸ������;
-�ϰϤΤ���� 2 �Ĥ� 16 ��������; ���뤤��ñ��� 16 �������֡�
+("&" を前置して)共通集合を取るもの:
+特性にある文字以外の全ての文字のための
+("utf8::" が前置された) 既に存在する文字特性またはユーザー定義文字特性;
+範囲のための 2 つの 16 進符号位置; あるいは単一の 16 進符号位置。
 
 =back
 
@@ -1461,8 +1461,8 @@ syllabaries (hiragana and katakana), you can define
 
 =end original
 
-�㤨�С�ξ�������ܸ�β���(�Ҥ餬�ʤȥ�������)���оݤȤ���������
-�������ˤϡ��ʲ��Τ褦��������ޤ�
+例えば、両方の日本語の音節(ひらがなとカタカナ)を対象とする特性を
+定義するには、以下のように定義します
 
     sub InKana {
 	return <<END;
@@ -1478,8 +1478,8 @@ Now you can use C<\p{InKana}> and C<\P{InKana}>.
 
 =end original
 
-�ҥ��ɥ�����Ȥν�ü�ޡ������ϹԤ���Ƭ���֤���뤳�Ȥ�פ��Ф��Ƥ���������
-����ǡ�C<\p{InKana}> �� C<\P{InKana}> ��Ȥ����Ȥ��Ǥ��ޤ���
+ヒアドキュメントの終端マーカーは行の先頭に置かれることを思い出してください。
+これで、C<\p{InKana}> や C<\P{InKana}> を使うことができます。
 
 =begin original
 
@@ -1487,7 +1487,7 @@ You could also have used the existing block property names:
 
 =end original
 
-���Ǥ�¸�ߤ��Ƥ���֥��å�����̾��Ȥ����Ȥ�Ǥ��ޤ�:
+すでに存在しているブロック特性名を使うこともできます:
 
     sub InKana {
 	return <<'END';
@@ -1504,9 +1504,9 @@ the non-characters:
 
 =end original
 
-���Υ֥��å��ϰϤǤϤʤ���������Ƥ�줿ʸ���Τߤ˥ޥå�����������
-�ͤ��Ƥ���Ȥ��ޤ��礦: ����������С�ʸ���ʳ��Τ�Τ�
-�����������Ȥ������ȤǤ�:
+生のブロック範囲ではなく、割り当てられた文字のみにマッチさせたいと
+考えているとしましょう: 言い換えれば、文字以外のものを
+取り除きたいということです:
 
     sub InKana {
 	return <<'END';
@@ -1522,7 +1522,7 @@ The negation is useful for defining (surprise!) negated classes.
 
 =end original
 
-��������ꥯ�饹���������Τ������Ǥ���
+否定は否定クラスを定義するのに便利です。
 
     sub InNotKana {
 	return <<'END';
@@ -1539,8 +1539,8 @@ two (or more) classes.
 
 =end original
 
-���̽���(intersection)����İʾ�Υ��饹�˥ޥå����붦�̤�ʸ��������Τ�
-�����Ǥ���
+共通集合(intersection)は二つ以上のクラスにマッチする共通の文字を得るのに
+便利です。
 
     sub InFooAndBar {
         return <<'END';
@@ -1556,12 +1556,12 @@ would be intersecting with nothing (resulting in an empty set).
 
 =end original
 
-�ǽ�ν���� "&" ��Ȥ�ʤ��Ȥ������Ȥ�˺��ʤ��Ǥ������� --
-�������Ƥ��ޤ��ȶ��Ȥζ��̽�����äƤ��ޤ��ޤ�(��̤϶�����Ǥ�)��
+最初の集合に "&" を使わないということを忘れないでください --
+そうしてしまうと空との共通集合を取ってしまいます(結果は空集合です)。
 
 =head2 User-Defined Case Mappings
 
-(�桼���������ʸ������ʸ�����б��ط�)
+(ユーザ定義の大文字・小文字の対応関係)
 
 =begin original
 
@@ -1575,12 +1575,12 @@ rest of the characters in ucfirst()).
 
 =end original
 
-Ʊ�ͤˡ�lc()��lcfirst()��uc()��ucfirst() (���뤤�Ϥ���ʸ�����Ȥ߹�����)��
-���ʤ����Ȥ��б��ط���������뤳�Ȥ�Ǥ��ޤ���
-��§��
-�桼�������ʸ�������ξ��Ȼ��Ƥ��ޤ�: C<ToLower> (lc() �� lcfirst()��), 
-C<ToTitle> (ucfirst() �κǽ��ʸ����), C<ToUpper> (uc() �Ѥ� ucfirst() ��
-�Ĥ��ʸ����) �Τ褦��̾���Υ��֥롼����� C<main> �ѥå�������������ޤ���
+同様に、lc()、lcfirst()、uc()、ucfirst() (あるいはその文字列組み込み版)で
+あなた自身の対応関係を定義することもできます。
+原則は
+ユーザー定義文字特性の場合と似ています: C<ToLower> (lc() と lcfirst()用), 
+C<ToTitle> (ucfirst() の最初の文字用), C<ToUpper> (uc() 用と ucfirst() の
+残りの文字用) のような名前のサブルーチンを C<main> パッケージで定義します。
 
 =begin original
 
@@ -1591,10 +1591,10 @@ For example:
 
 =end original
 
-���֥롼���󤫤��֤����ʸ����ϥ��֤Ƕ��ڤ�줿 3 �Ĥ� 16 �ʿ���
-ɬ�פȤ��ޤ�: ���������ϰϤλϤޤꡢ���������ϰϤν���ꡢ������
-�ǥ��ƥ��͡�������ϰϤλϤޤ�Ǥ���
-���󤲤ޤ��礦:
+サブルーチンから返される文字列はタブで区切られた 3 つの 16 進数を
+必要とします: ソースの範囲の始まり、ソースの範囲の終わり、そして
+デスティネーション範囲の始まりです。
+例を挙げましょう:
 
     sub ToUpper {
 	return <<END;
@@ -1610,8 +1610,8 @@ unchanged.
 
 =end original
 
-����ϡ�"a", "b", "c" ��ʸ���Τߤ� "A", "B", "C" �˥ޥåԥ󥰤���
-����¾�Τ��٤Ƥ�ʸ�����ѹ����ʤ��Ȥ��� uc() �Υޥåԥ󥰤�������Ƥ��ޤ���
+これは、"a", "b", "c" の文字のみを "A", "B", "C" にマッピングして
+その他のすべての文字は変更しないという uc() のマッピングを定義しています。
 
 =begin original
 
@@ -1622,10 +1622,10 @@ For example:
 
 =end original
 
-�⤷���������ϰϤ˸��ڤ��뤳�Ȥ��ʤ���С��Ĥޤꡢ�б��ط���ñ���
-ʸ�������̤�ñ���ʸ�����Ѵ������ΤǤ��ä��ʤ�С����������ϰϤ�
-�����϶��ΤޤޤǤ褤����ɤ���ĤΥ��֤�ɬ�פǤ���
-���󤲤ޤ��礦:
+もしソースの範囲に言及することがなければ、つまり、対応関係が単一の
+文字から別の単一の文字に変換するものであったならば、ソースの範囲の
+終わりは空のままでよいけれども二つのタブは必要です。
+例を挙げましょう:
 
     sub ToLower {
 	return <<END;
@@ -1640,8 +1640,8 @@ other characters will remain unchanged.
 
 =end original
 
-"A" �� "a" �˥ޥåԥ󥰤��Ƥ���¾�Τ��٤Ƥ�ʸ�����ѹ����ʤ� lc() ��
-�ޥåԥ󥰤�������Ƥ��ޤ���
+"A" を "a" にマッピングしてその他のすべての文字は変更しない lc() の
+マッピングを定義しています。
 
 =begin original
 
@@ -1657,15 +1657,15 @@ the C<Fold> mapping is used).
 
 =end original
 
-(�����ʥϥå�������) �ǥե���ȤΥޥåԥ󥰤���ʤ������Τʤ顢
-C<$Config{privlib}>/F<unicore/To/> �Ȥ����ǥ��쥯�ȥ�˥ǡ�����
-���Ĥ��Ф����Ȥ��Ǥ��ޤ���
-�ޥåԥ󥰥ǡ����ϥҥ��ɥ�����ȤȤ����֤��졢C<utf8::ToSpecFoo> ��
-C<$Config{privlib}>/F<unicore/SpecialCasing.txt> �������������ü��
-�㳰�ޥåԥ󥰤Ǥ���
-���Υǥ��쥯�ȥ�Ǹ��Ĥ��뤳�ȤΤǤ��� C<Digit> �� C<Fold> �Υޥåԥ󥰤�
-�桼�����������쥯�Ȥ˥��������Ǥ�����C<Unicode::UCD> �⥸�塼���Ȥ���
-�羮ʸ����̵�뤷�ƥޥåԥ󥰤��ޤ�(C<Fold> �ޥåԥ󥰤��Ȥ��Ƥ���Ȥ�)��
+(真剣なハッカー専用) デフォルトのマッピングを内省したいのなら、
+C<$Config{privlib}>/F<unicore/To/> というディレクトリにデータを
+見つけ出すことができます。
+マッピングデータはヒアドキュメントとして返され、C<utf8::ToSpecFoo> は
+C<$Config{privlib}>/F<unicore/SpecialCasing.txt> から派生した特殊な
+例外マッピングです。
+そのディレクトリで見つけることのできる C<Digit> と C<Fold> のマッピングは
+ユーザーがダイレクトにアクセスできず、C<Unicode::UCD> モジュールを使うか
+大小文字を無視してマッピングします(C<Fold> マッピングが使われているとき)。
 
 =begin original
 
@@ -1675,13 +1675,13 @@ Old byte-style strings will not be affected.
 
 =end original
 
-�桼�����������ʸ������ʸ�����б��ط��˴ؤ���Ǹ������: �����ϥ����餬
-Unicode ʸ���Ȥ��ƥޡ�������Ƥ���Ȥ��ˤΤ߻Ȥ��ޤ���
-�Ť��Х��ȷ�����ʸ����ˤϱƶ���ڤܤ��ޤ���
+ユーザー定義の大文字・小文字の対応関係に関する最後の注意: これらはスカラが
+Unicode 文字としてマークされているときにのみ使われます。
+古いバイト形式の文字列には影響を及ぼしません。
 
 =head2 Character Encodings for Input and Output
 
-(�����ϤΤ����ʸ�����󥳡��ǥ���)
+(入出力のための文字エンコーディング)
 
 =begin original
 
@@ -1689,11 +1689,11 @@ See L<Encode>.
 
 =end original
 
-L<Encode> �򻲾Ȥ��Ƥ���������
+L<Encode> を参照してください。
 
 =head2 Unicode Regular Expression Support Level
 
-(Unicode ����ɽ���б���٥�)
+(Unicode 正規表現対応レベル)
 
 =begin original
 
@@ -1704,12 +1704,12 @@ and the section numbers refer to the Unicode Technical Standard #18,
 
 =end original
 
-�ʲ��˵󤲤�ꥹ�Ȥϡ������б����Ƥ������Ƥε�ǽ�򵭽Ҥ��롢
-����ɽ���Τ���� Unicode �б��Υꥹ�ȤǤ���
-"Level N" ���Ф��뻲�Ȥȥ���������ֹ��
+以下に挙げるリストは、現在対応している全ての機能を記述する、
+正規表現のための Unicode 対応のリストです。
+"Level N" に対する参照とセクション番号は
 Unicode Technical Standard #18,
 "Unicode Regular Expressions", version 11, in May 2005
-�򻲾Ȥ��Ƥ��ޤ���
+を参照しています。
 
 =over 4
 
@@ -1758,8 +1758,8 @@ For example, what UTS#18 might write as
 
 =end original
 
-[a] class subtraction �����ɤߤ�Ȥä����魯�뤳�Ȥ��Ǥ��ޤ���
-���Ȥ��С��ʲ��� UTR #18 ��
+[a] class subtraction を先読みを使って模倣することができます。
+たとえば、以下の UTR #18 は
 
     [{Greek}-[{UNASSIGNED}]]
 
@@ -1769,7 +1769,7 @@ in Perl can be written as:
 
 =end original
 
-�ʲ��Τ褦�� Perl �ǵ��ҤǤ��ޤ�:
+以下のように Perl で記述できます:
 
     (?!\p{Unassigned})\p{InGreekAndCoptic}
     (?=\p{Assigned})\p{InGreekAndCoptic}
@@ -1780,7 +1780,7 @@ But in this particular example, you probably really want
 
 =end original
 
-�������������������Ǥϡ����ʤ����ºݤ�˾��Ǥ����Τϼ��Τ�ΤǤ��礦
+しかし、この特定の例では、あなたが実際に望んでいたのは次のものでしょう
 
     \p{GreekAndCoptic}
 
@@ -1790,7 +1790,7 @@ which will match assigned characters known to be part of the Greek script.
 
 =end original
 
-����� Greek �ѻ��ΰ����Ȥ����Τ��Ƥ��� assigned character �˥ޥå����ޤ���
+これは Greek 用字の一部として知られている assigned character にマッチします。
 
 =begin original
 
@@ -1799,9 +1799,9 @@ UTS#18 grouping, intersection, union, and removal (subtraction) syntax.
 
 =end original
 
-Ʊ�ͤ� Unicode::Regex::Set �⥸�塼��򻲾Ȥ��Ƥ���������
-����� UTR #18�Υ��롼�ԥ󥰡�intersection��union, removal(substraction)��ʸ��
-�ե�˼������Ƥ��ޤ���
+同様に Unicode::Regex::Set モジュールを参照してください。
+これは UTR #18のグルーピング、intersection、union, removal(substraction)構文を
+フルに実装しています。
 
 =begin original
 
@@ -1810,9 +1810,9 @@ UTS#18 grouping, intersection, union, and removal (subtraction) syntax.
 
 =end original
 
-[b] ���Τ���ˤ� '+'������(������)�Τ���ˤ� '-'��
-���̽���Τ���ˤ� '&' �Ǥ�
-(L</"User-Defined Character Properties"> �򻲾Ȥ��Ƥ�������)
+[b] 結合のためには '+'、除去(差集合)のためには '-'、
+共通集合のためには '&' です
+(L</"User-Defined Character Properties"> を参照してください)
 
 =begin original
 
@@ -1820,7 +1820,7 @@ UTS#18 grouping, intersection, union, and removal (subtraction) syntax.
 
 =end original
 
-[c] C<:crlf> �ؤ��Ƥ������� (L<PerlIO> �򻲾Ȥ��Ƥ�������)��
+[c] C<:crlf> 層を試してください (L<PerlIO> を参照してください)。
 
 =begin original
 
@@ -1829,8 +1829,8 @@ U+FFFF (C<\x{FFFF}>).
 
 =end original
 
-[d] U+FFFF (C<\x{FFFF}>) ����Ĥ��뤿��ˡ�C<use warning 'utf8';> ��
-���ʤ��Ǥ������� (�ޤ��� C<no warning 'utf8';> �Ȥ��Ƥ�������)��
+[d] U+FFFF (C<\x{FFFF}>) を許可するために、C<use warning 'utf8';> を
+しないでください (または C<no warning 'utf8';> としてください)。
 
 =item *
 
@@ -1859,7 +1859,7 @@ Level 2 - Extended Unicode Support
 
 =end original
 
-[e] C<\N{...}> ��̾�����֤���Ĥ��ޤ� (L<charnames> �򻲾Ȥ��Ƥ�������)��
+[e] C<\N{...}> は名前空間を許可します (L<charnames> を参照してください)。
 
 =item *
 
@@ -1889,7 +1889,7 @@ Level 3 - Tailored Support
 
 =head2 Unicode Encodings
 
-(Unicode �Υ��󥳡��ǥ���)
+(Unicode のエンコーディング)
 
 =begin original
 
@@ -1898,8 +1898,8 @@ numbers.  To use these numbers, various encodings are needed.
 
 =end original
 
-Unicode ʸ�������Ū�ʿ��ͤǤ��� I<������> �˥������󤵤�Ƥ��ޤ���
-�����ο��ͤ�Ȥ�����ˡ����ޤ��ޤʥ��󥳡��ǥ��󥰤�ɬ�פȤʤ�ޤ���
+Unicode 文字は抽象的な数値である I<符号位置> にアサインされています。
+これらの数値を使うために、さまざまなエンコーディングが必要となります。
 
 =over 4
 
@@ -1916,10 +1916,10 @@ transparent.
 
 =end original
 
-UTF-8 �ϲ���Ĺ(1 ���� 6 �Х���; ���ߤ�ʸ�����֤Ǥ� 4 �Х��Ȥ��׵ᤷ�ޤ�)�ǡ�
-�Х��Ȥ��¤ӽ�˰�¸���ʤ����󥳡��ǥ��󥰤Ǥ���
-ASCII(�����Ǥ� 7-bit ASCII �Τ��Ȥǡ�¾�� 8-bit ���󥳡��ǥ��󥰤Τ��ȤǤ�
-����ޤ���)�� UTF-8 ��Ʃ��Ǥ���
+UTF-8 は可変長(1 から 6 バイト; 現在の文字配置では 4 バイトを要求します)で、
+バイトの並び順に依存しないエンコーディングです。
+ASCII(ここでは 7-bit ASCII のことで、他の 8-bit エンコーディングのことでは
+ありません)と UTF-8 は透過です。
 
 =begin original
 
@@ -1927,7 +1927,7 @@ The following table is from Unicode 3.2.
 
 =end original
 
-�ʲ��Υơ��֥�� Unicode 3.2 �Τ�ΤǤ���
+以下のテーブルは Unicode 3.2 のものです。
 
  Code Points            1st Byte  2nd Byte  3rd Byte  4th Byte
 
@@ -1954,14 +1954,14 @@ be used.  So that's what Perl does.
 
 =end original
 
-C<U+0800..U+0FFF> ����� C<A0..BF>��C<U+D000...U+D7FF> ����� C<80..9F>��
-C<U+10000..U+3FFFF> ����� C<90..BF>��C<U+100000..U+10FFFF> �����
-C<80...8F> �����դ��Ƥ���������
-���Ρַ�֡פϡ������� UTF-8 ����û�Ǥʤ����󥳡��ɤ��򤱤뤿���
-����ޤ�: ����Ū�ˤ� UTF-8 ���󥳡��ɤϰ�Ĥ������֤�ʣ������ˡ��
-ɽ�����Ȥ��Ǥ��ޤ��������������Ū�˶ػߤ���Ƥ��ơ���ǽ�ʸ¤��û��
-���󥳡��ɤ���˻Ȥ��ޤ���
-���äơ�Perl �⤽�����ޤ���
+C<U+0800..U+0FFF> の中の C<A0..BF>、C<U+D000...U+D7FF> の中の C<80..9F>、
+C<U+10000..U+3FFFF> の中の C<90..BF>、C<U+100000..U+10FFFF> の中の
+C<80...8F> に注意してください。
+この「隙間」は、正当な UTF-8 が最短でないエンコードを避けるために
+あります: 技術的には UTF-8 エンコードは一つの符号位置を複数の方法で
+表すことができますが、これは明示的に禁止されていて、可能な限り最短の
+エンコードが常に使われます。
+従って、Perl もそうします。
 
 =begin original
 
@@ -1969,7 +1969,7 @@ Another way to look at it is via bits:
 
 =end original
 
-����򸫤�⤦��Ĥ���ˡ�ϥӥå�ñ�̤Ǹ��뤳�ȤǤ�:
+これを見るもう一つの方法はビット単位で見ることです:
 
  Code Points                    1st Byte   2nd Byte  3rd Byte  4th Byte
 
@@ -1986,8 +1986,8 @@ encoded character.
 
 =end original
 
-���Ƥ��̤ꡢ��³�Х��ȤϤ��٤� C<10> ����ϤޤäƤ��ơ����ϥХ��Ȥ�
-��ԥӥåȤϥ��󥳡��ɤ��줿ʸ�����ɤΤ��餤��Ĺ���Ǥ��뤫�򼨤��Ƥ��ޤ���
+見ての通り、後続バイトはすべて C<10> から始まっていて、開始バイトの
+先行ビットはエンコードされた文字がどのくらいの長さであるかを示しています。
 
 =item *
 
@@ -1999,7 +1999,7 @@ Like UTF-8 but EBCDIC-safe, in the way that UTF-8 is ASCII-safe.
 
 =end original
 
-UTF-8 �Ȼ��Ƥ��ޤ�����UTF-8 �� ASCII-safe �Ǥ���褦�� EBCDIC-safe �Ǥ���
+UTF-8 と似ていますが、UTF-8 が ASCII-safe であるように EBCDIC-safe です。
 
 =item *
 
@@ -2009,7 +2009,7 @@ UTF-16, UTF-16BE, UTF-16LE, Surrogates, and BOMs (Byte Order Marks)
 
 =end original
 
-UTF-16, UTF-16BE, UTF-16LE, ����������, BOM (Byte Order Marks)
+UTF-16, UTF-16BE, UTF-16LE, サロゲート, BOM (Byte Order Marks)
 
 =begin original
 
@@ -2018,8 +2018,8 @@ knowledge, Perl doesn't use these constructs internally.
 
 =end original
 
-�ʲ��ι��ܤϤۤȤ�ɻ��Ȥ���Ӱ���Ū�� Unicode �μ��Τ���Τ�Τǡ�
-Perl �Ϥ����ι�¤�������ǻȤäƤ��ޤ���
+以下の項目はほとんど参照および一般的な Unicode 知識のためのもので、
+Perl はこれらの構造を内部で使っていません。
 
 =begin original
 
@@ -2031,13 +2031,13 @@ surrogate>, and the second being the I<low surrogate>.
 
 =end original
 
-UTF-16 �� 2 �Х��Ȥ⤷���� 4 �Х��ȤΥ��󥳡��ǥ��󥰤Ǥ���
-C<U+0000..U+FFFF> ���ϰϤ� Unicode �������֤ϤҤȤĤ� 16 �ӥå�
-��˥åȤ˼����졢C<U+10000..U+10FFFF> ���ϰϤ������֤� 2 �Ĥ�
-16 �ӥåȥ�˥åȤ˼�����ޤ���
-��Ԥ򥵥�������(surrogates) �ȸƤӤޤ���
-�ǽ�� 16 �ӥåȥ�˥åȤ� I<high surrogate> �ǡ������ܤ�
-I<low surrogate> �Ȥʤ�ޤ���
+UTF-16 は 2 バイトもしくは 4 バイトのエンコーディングです。
+C<U+0000..U+FFFF> の範囲の Unicode の符号位置はひとつの 16 ビット
+ユニットに収められ、C<U+10000..U+10FFFF> の範囲の符号位置は 2 つの
+16 ビットユニットに収められます。
+後者をサロゲート(surrogates) と呼びます。
+最初の 16 ビットユニットは I<high surrogate> で、二番目は
+I<low surrogate> となります。
 
 =begin original
 
@@ -2048,11 +2048,11 @@ are the range C<U+DC00..U+DFFF>.  The surrogate encoding is
 
 =end original
 
-���������Ȥ� Unicode �������֤� C<U+10000..U+10FFFF> ���ϰϤ�
-16 �ӥåȥ�˥åȤΥڥ���ɽ�����뽸��Ǥ���
-I<high surrogates> �� C<U+D800..U+DBFF> ���ϰϤǡ�I<low surrogates> ��
-C<U+DC00..U+DFFF> ���ϰϤǤ���
-���������ȤΥ��󥳡��ǥ��󥰤�
+サロゲートは Unicode の符号位置の C<U+10000..U+10FFFF> の範囲を
+16 ビットユニットのペアで表現する集合です。
+I<high surrogates> は C<U+D800..U+DBFF> の範囲で、I<low surrogates> は
+C<U+DC00..U+DFFF> の範囲です。
+サロゲートのエンコーディングは
 
 	$hi = ($uni - 0x10000) / 0x400 + 0xD800;
 	$lo = ($uni - 0x10000) % 0x400 + 0xDC00;
@@ -2063,7 +2063,7 @@ and the decoding is
 
 =end original
 
-�Ǥ��ꡢ�ǥ����ɤϰʲ��Τ褦�ʤ�ΤǤ�
+であり、デコードは以下のようなものです
 
 	$uni = 0x10000 + ($hi - 0xD800) * 0x400 + ($lo - 0xDC00);
 
@@ -2075,9 +2075,9 @@ points are not valid for a Unicode character.
 
 =end original
 
-(���Ȥ��� chr() ��Ȥä�)���������Ȥ��������褦�Ȥ����ʤ�С�
-�ٹ�ͭ���Ǥ���зٹ�ȯ������Ǥ��礦��
-�ʤ��ʤ顢�������ä������֤� Unicode ʸ���Ȥ��Ƥ���������ΤǤϤʤ�����Ǥ���
+(たとえば chr() を使って)サロゲートを生成しようとしたならば、
+警告が有効であれば警告が発生するでしょう。
+なぜなら、そういった符号位置は Unicode 文字としては正しいものではないからです。
 
 =begin original
 
@@ -2088,10 +2088,10 @@ transfer is required either UTF-16BE (big-endian) or UTF-16LE
 
 =end original
 
-16-bitness �Τ��ᡢUTF-16 �ϥХ��Ȥ��¤ӽ�˰�¸���ޤ���
-UTF-16 ���켫�Ȥϥ�����η׻��˻Ȥ����Ȥ��Ǥ��ޤ�������Ǽ��ž���κݤˤ�
-UTF-16BE (�ӥå�����ǥ�����)�� UTF-16LE (��ȥ륨��ǥ�����)��
-�����줫�Υ��󥳡��ǥ��󥰤����򤷤ʤ���Фʤ�ޤ���
+16-bitness のため、UTF-16 はバイトの並び順に依存します。
+UTF-16 それ自身はメモリ内の計算に使うことができますが、格納や転送の際には
+UTF-16BE (ビッグエンディアン)か UTF-16LE (リトルエンディアン)の
+いずれかのエンコーディングを選択しなければなりません。
 
 =begin original
 
@@ -2103,11 +2103,11 @@ code point C<U+FEFF> is the BOM.
 
 =end original
 
-���Τ��Ȥ��̤����������������ޤ�: ���ʤ��Υǡ����� UTF-16 �Ǥ��뤳�Ȥ�����
-�ΤäƤ��ơ����ΥХ����¤ӽ���Τ�ʤ��ä��Ȥ�����?
-�Х��Ƚ�ޡ��� (Byte Order Marks)��ά���� BOM �Ϥ�����褷�ޤ���
-�Х����¤ӤΥޡ������Ȥ��Ƥε�ǽ�Τ���� Unicode �Ǥ��ü��ʸ����
-ͽ�󤵤�Ƥ��ޤ�: ����ʸ���������֤� C<U+FEFF> �Ǥ���
+このことは別の問題を引き起こします: あなたのデータが UTF-16 であることだけを
+知っていて、そのバイト並び順を知らなかったとしたら?
+バイト順マーク (Byte Order Marks)、略して BOM はこれを解決します。
+バイト並びのマーカーとしての機能のために Unicode では特殊な文字が
+予約されています: その文字は符号位置の C<U+FEFF> です。
 
 =begin original
 
@@ -2119,12 +2119,12 @@ was writing in UTF-8, you will read the bytes C<0xEF 0xBB 0xBF>.)
 
 =end original
 
-���Υȥ�å��ϡ�BOM ���ɤ߹�����Ȥ��˥Х��Ƚ礬�狼��Ȥ������ȤǤ���
-�ӥå�����ǥ�����Υץ�åȥե�����ǽ񤫤줿��Τʤ�ʤ�
-C<0xFE 0xFF> ���ɤ߽Ф�����ȥ륨��ǥ�����Υץ�åȥե������
-�񤫤줿��Τʤ� C<0xFF 0xFE> ���ɤ߽Ф��ޤ���
-(�����Ƥ⤷���Υץ�åȥե������ UTF-8 �ǽ񤫤줿��Τʤ��
-C<0xEF 0xBB 0xBF> �Ȥ����Х�������ɤळ�Ȥˤʤ�Ǥ��礦��)
+このトリックは、BOM を読み込んだときにバイト順がわかるということです。
+ビッグエンディアンのプラットフォームで書かれたものならなら
+C<0xFE 0xFF> を読み出し、リトルエンディガンのプラットフォームで
+書かれたものなら C<0xFF 0xFE> を読み出します。
+(そしてもし元のプラットフォームで UTF-8 で書かれたものならば
+C<0xEF 0xBB 0xBF> というバイト列を読むことになるでしょう。)
 
 =begin original
 
@@ -2136,10 +2136,10 @@ format".
 
 =end original
 
-���Υȥ�å������ޤ������Τ������� C<U+FFFE> ��ʸ����������
-Unicode ʸ���Ǥʤ��Ȥ������Ȥˤ�äơ�C<0xFF 0xFE> �Ȥ����¤Ӥ�ʶ��ʤ�
-"��ȥ륨��ǥ�����ե����ޥåȤ� BOM" �Ǥ��ä�
-"�ӥå�����ǥ������ C<U+FFFE>" �ȤϤʤ�ʤ��ΤǤ���
+このトリックがうまくいくのは符号位置 C<U+FFFE> の文字は正当な
+Unicode 文字でないということによって、C<0xFF 0xFE> という並びは紛れなく
+"リトルエンディアンフォーマットの BOM" であって
+"ビッグエンディアンの C<U+FFFE>" とはならないのです。
 
 =item *
 
@@ -2154,10 +2154,10 @@ C<0xFF 0xFE 0x00 0x00> for LE.
 
 =end original
 
-UTF-32 �ե��ߥ꡼�� UTF-16 �ե��ߥ꡼���ɤ����Ƥ��ޤ�������˥åȤ�
-32 �ӥåȤǡ����Τ��᥵��������������ɬ�פ��ʤ��Ȥ��������ۤʤ�ޤ���
-BOM �����ͥ���� BE �Ǥ� C<0x00 0x00 0xFE 0xFF> �ˡ�
-LE �Ǥ� C<0xFF 0xFE 0x00 0x00> �ˤʤ�ޤ���
+UTF-32 ファミリーは UTF-16 ファミリーと良く似ていますが、ユニットが
+32 ビットで、そのためサロゲート方式の必要がないという点が異なります。
+BOM シグネチャは BE では C<0x00 0x00 0xFE 0xFF> に、
+LE では C<0xFF 0xFE 0x00 0x00> になります。
 
 =item *
 
@@ -2172,11 +2172,11 @@ functionally identical to UTF-32.
 
 =end original
 
-ISO 10646 ɸ����������Ƥ��륨�󥳡��ǥ��󥰤Ǥ���
-UCS-2 �� 16 �ӥåȥ��󥳡��ǥ��󥰤Ǥ���
-UTF-16 �ȤϰۤʤꡢUCS-2 �� C<U+FFFF> ��Ķ�����ϰϤ˳�ĥ�Ǥ��ޤ���
-����ϥ��������Ȥ�Ȥ�ʤ�����Ǥ���
-UCS-4 �� 32 �ӥåȥ��󥳡��ǥ��󥰤ǡ���ǽŪ�ˤ� UTF-32 ��Ʊ���Ǥ���
+ISO 10646 標準で定義されているエンコーディングです。
+UCS-2 は 16 ビットエンコーディングです。
+UTF-16 とは異なり、UCS-2 は C<U+FFFF> を超えた範囲に拡張できません。
+これはサロゲートを使わないためです。
+UCS-4 は 32 ビットエンコーディングで、機能的には UTF-32 と同じです。
 
 =item *
 
@@ -2189,15 +2189,15 @@ transport or storage is not eight-bit safe.  Defined by RFC 2152.
 
 =end original
 
-7 �ӥåȥ�����(�� 8 �ӥå�)���󥳡��ǥ��󥰤ǡ�8 �ӥåȥ����դǤʤ�
-ž�����Ǽ�������Ǥ���
-RFC 2152 �ˤ�ä��������Ƥ��ޤ���
+7 ビットセーフ(非 8 ビット)エンコーディングで、8 ビットセーフでない
+転送や格納に便利です。
+RFC 2152 によって定義されています。
 
 =back
 
 =head2 Security Implications of Unicode
 
-(Unicode �Υ������ƥ��ؤαƶ�)
+(Unicode のセキュリティへの影響)
 
 =over 4
 
@@ -2209,7 +2209,7 @@ Malformed UTF-8
 
 =end original
 
-������ UTF-8
+不正な UTF-8
 
 =begin original
 
@@ -2225,14 +2225,14 @@ surrogates, which are not real Unicode code points.
 
 =end original
 
-��ǰ�ʤ��顢UTF-8 �λ��ͤǤϤҤȤĤ� Unicode ʸ�������Ϥ���
-���Х��ȤΥ��󥳡��ɤ��줿���ϤȤ��Ʋ�᤹��Τ��ˤĤ��Ƥ����餫��
-;�Ϥ�����ޤ���
-��̩�ˤ����С���ǽ�ʸ¤�Ǥ�û�� UTF-8 �Х��������������٤��Ǥ���
-�ʤ��ʤ顢�������ʤ��� UTF-8 ���ͥ������ν����ˤ����ơ����ϥХåե���
-�����С��ե��������ǽ�������뤫��Ǥ���
-Perl �Ͼ�˺Ǥ�û��Ĺ���� UTF-8 ���������������� Unicode �������֤Ǥʤ�
-���������ȤΤ褦�������ʷ����κ�û�Ǥʤ� UTF-8 �˴ؤ��Ʒٹ��ȯ���ޤ���
+残念ながら、UTF-8 の仕様ではひとつの Unicode 文字の入力から
+何バイトのエンコードされた出力として解釈するのかについていくらかの
+余地があります。
+厳密にいえば、可能な限り最も短い UTF-8 バイト列が生成されるべきです。
+なぜなら、そうしないと UTF-8 コネクションの終わりにおいて、入力バッファが
+オーバーフローする可能性があるからです。
+Perl は常に最も短い長さの UTF-8 を生成し、本当の Unicode の符号位置でない
+サロゲートのような不正な形式の最短でない UTF-8 に関して警告を発します。
 
 =item *
 
@@ -2245,10 +2245,10 @@ or Unicode.
 
 =end original
 
-����ɽ���ϥХ��ȥǡ�����ʸ��(Unicode)�ǡ����ȤǤޤä����ۤʤ�
-�����񤤤򤷤ޤ���
-���Ȥ��С�ñ��ʸ��("word character")���饹 C<\w> �Ϥ��Υǡ�����
-8 �ӥåȥХ��Ȥ� Unicode ���˰�¸���ưۤʤ�Ư���򤷤ޤ���
+正規表現はバイトデータと文字(Unicode)データとでまったく異なる
+振る舞いをします。
+たとえば、単語文字("word character")クラス C<\w> はそのデータが
+8 ビットバイトか Unicode かに依存して異なる働きをします。
 
 =begin original
 
@@ -2259,10 +2259,10 @@ more letters according to your language and country.
 
 =end original
 
-���ξ�硢C<\w> ʸ���ν��������Ū�˾�������ΤǤ� -- ����ե��٥åȡ�
-������������ "_" �Υǥե���Ƚ��� -- �⤷���ϥ�������(L<perllocale> �򻲾�)��
-�ȤäƤ���ΤǤ���С�C<\w> �Ϥ��ʤ��λȤäƤ��������˱����Ƥ����Ĥ���
-ʸ���������Ƥ��뤫�⤷��ޤ���
+第一の場合、C<\w> 文字の集合は相対的に小さいものです -- アルファベット、
+数字、そして "_" のデフォルト集合 -- もしくはロケール(L<perllocale> を参照)を
+使っているのであれば、C<\w> はあなたの使っている言語や国に応じていくつかの
+文字が増えているかもしれません。
 
 =begin original
 
@@ -2276,14 +2276,14 @@ you happen to speak Icelandic), but Unicode does.
 
 =end original
 
-����ξ�硢C<\w> ��ʸ�����������Ū���礭�ʤ�Τˤʤ�ޤ���
-�Ǥ���פʤ��Ȥϡ��ǽ�� 256 ʸ���ν���ˤ��äƤ����ۤʤ�ʸ����
-�ޥå������ǽ��������Ȥ������ȤǤ�: ����ȹ�Υڥ��ǻ��ꤵ���
-����ʬ�Υ�������ȰۤʤꡢUnicode �Υ��饹ʬ���� I<�ɤ����ˤ���>
-���٤Ƥ�ʸ���� C<\w> ��°�����ΤȤ��ޤ���
-���Ȥ��С����ʤ��λȤäƤ����������� LATIN SMALL LETTER ETH ��
-(���������ɸ��ȤäƤ��ʤ��¤�)°���Ƥ��ʤ��Ȥߤʤ��Ƥ���Ǥ��礦����
-Unicode ��°�����ΤȤ��Ƥߤʤ��ΤǤ���
+第二の場合、C<\w> の文字集合は相対的に大きなものになります。
+最も重要なことは、最初の 256 文字の集合にあってさえ異なる文字と
+マッチする可能性があるということです: 言語と国のペアで指定される
+大部分のロケールと異なり、Unicode のクラス分けは I<どこかにある>
+すべての文字を C<\w> に属するものとします。
+たとえば、あなたの使っているロケールは LATIN SMALL LETTER ETH が
+(アイスランド語を使っていない限り)属していないとみなしているでしょうが、
+Unicode は属するものとしてみなすのです。
 
 =begin original
 
@@ -2299,22 +2299,22 @@ code.  Use warnings and the C<strict> pragma.
 
 =end original
 
-���Ǥ˽Ҥ٤Ƥ����̤ꡢPerl ����Ĥ������Τ��줾���������­
-(��ĤΤҤŤ�?) ���ͤù���Ǥ��ޤ�: �Ť��Х��Ȥ������ȿ�����ʸ���������ǡ�
-ɬ�פ˱����ƥХ��Ȥ���ʸ���˾��ʤ��ޤ���
-�⤷���ʤ��θŤ������ɤ�����Ū�� Unicode ��ȤäƤ��ʤ��Τʤ顢ʸ���ؤ�
-�ڤ��ؤ�����ưŪ�ˤʤ���뤳�ȤϤ���ޤ���
-ʸ���ϥХ��Ȥ˥����󥰥졼�ɤ����٤��ǤϤ���ޤ���
-��ȯŪ�˥Х��Ȥ�ʸ�����������ǽ��������ޤ���(L<perluniintro> �򻲾�)��
-���Τ褦�ʾ������ɽ����� C<\w> �ϰۤʤ�դ�ޤ��򤹤뤫�⤷��ޤ���
-���ʤ��Υ����ɤ��ӥ塼���Ƥ���������
-warnings �� C<strict> �ץ饰�ޤ�ȤäƤ���������
+すでに述べている通り、Perl は二つの世界のそれぞれに片方の足
+(二つのひづめ?) を突っ込んでいます: 古いバイトの世界と新しい文字の世界で、
+必要に応じてバイトから文字に昇格します。
+もしあなたの古いコードが明示的に Unicode を使っていないのなら、文字への
+切り替えが自動的になされることはありません。
+文字はバイトにダウングレードされるべきではありません。
+偶発的にバイトと文字が混じる可能性がありますが(L<perluniintro> を参照)、
+そのような場合正規表現中の C<\w> は異なるふるまいをするかもしれません。
+あなたのコードをレビューしてください。
+warnings と C<strict> プラグマを使ってください。
 
 =back
 
 =head2 Unicode in Perl on EBCDIC
 
-(EBCDIC ��� Perl �Ǥ� Unicode)
+(EBCDIC 上の Perl での Unicode)
 
 =begin original
 
@@ -2329,19 +2329,19 @@ for more discussion of the issues.
 
 =end original
 
-EBCDIC �ץ�åȥե�����Ǥ� Unicode �ΰ�������̤���¸�Ū�Ǥ���
-���Τ褦�ʥץ�åȥե�����Ǥϡ�����ʸ��䤽��¾�Ǥ�
-UTF-8 ���󥳡��ǥ��󥰤ؤθ��ڤϡ��ä� ASCII �� EBCDIC ����ˤĤ���
-��������Ƥ�����Ǥʤ��¤�ϡ�Unicode Technical Report 16 ��
-�������Ƥ��� UTF-EBCDIC ���̣�����ΤȤ����ɤ�٤��Ǥ���
-C<utfebcdic> �ץ饰�ޤ� ":utfebcdic" �ؤϤ���ޤ���;
-����ˡ�"utf8" �� ":utf8" �������Υץ�åȥե�����Ρּ����ʡ�
-Unicode �� 8 �ӥåȥ��󥳡��ǥ��󥰤��̣����褦�˺����Ѥ���Ƥ��ޤ���
-��������˴ؤ��빹�ʤ�����ˤĤ��Ƥ� L<perlebcdic> �򻲾Ȥ��Ƥ���������
+EBCDIC プラットフォームでの Unicode の扱い方は未だ実験的です。
+このようなプラットフォームでは、この文書やその他での
+UTF-8 エンコーディングへの言及は、特に ASCII 対 EBCDIC 問題について
+議論されている場合でない限りは、Unicode Technical Report 16 で
+定義されている UTF-EBCDIC を意味するものとして読むべきです。
+C<utfebcdic> プラグマや ":utfebcdic" 層はありません;
+代わりに、"utf8" と ":utf8" が、そのプラットフォームの「自然な」
+Unicode の 8 ビットエンコーディングを意味するように再利用されています。
+この問題に関する更なる議論については L<perlebcdic> を参照してください。
 
 =head2 Locales
 
-(��������)
+(ロケール)
 
 =begin original
 
@@ -2350,8 +2350,8 @@ there are a couple of exceptions:
 
 =end original
 
-�̾�������������� Unicode �ϸߤ��˱ƶ���ڤܤ����ȤϤ���ޤ��󤬡�
-�����Ĥ����㳰������ޤ�:
+通常ロケールの設定と Unicode は互いに影響を及ぼすことはありませんが、
+いくつかの例外があります:
 
 =over 4
 
@@ -2366,10 +2366,10 @@ variable, see L<perlrun> for the documentation of the C<-C> switch.
 
 =end original
 
-�ǥե���Ȥ� C<open()> �ؤ� C<@ARGV> ��ɸ��ե�����ϥ�ɥ��
-��ưŪ�� UTF-8 ����C<-C> ���ޥ�ɥ饤�󥹥��å���
-�Ķ��ѿ� C<PERL_UNICODE> �ˤ�ä�ͭ���ˤǤ��ޤ���
-C<-C> �����å��ˤĤ��Ƥ������� L<perlrun> �򻲾Ȥ��Ƥ���������
+デフォルトの C<open()> 層や C<@ARGV> の標準ファイルハンドルの
+自動的な UTF-8 化を、C<-C> コマンドラインスイッチか
+環境変数 C<PERL_UNICODE> によって有効にできます。
+C<-C> スイッチについての説明は L<perlrun> を参照してください。
 
 =item *
 
@@ -2381,15 +2381,15 @@ straddling of the proverbial fence causes problems.
 
 =end original
 
-Perl �� Unicode �ȸŤ��Х��Ȼظ���������ξ����Ư������˶�ϫ���Ƥ��ޤ���
-�ۤȤ�ɤξ��Ϥ��ޤ������ޤ������Ȥ��ˤ� Perl ����Ԥ򤫤��Ƥ��뤳�Ȥ�
-�����������������Ȥ⤢��ޤ���
+Perl は Unicode と古いバイト指向の世界の両方で働くために苦労しています。
+ほとんどの場合はうまくいきますが、ときには Perl が二股をかけていることが
+問題を引き起こすこともあります。
 
 =back
 
 =head2 When Unicode Does Not Happen
 
-(Unicode �ǤϤʤ����)
+(Unicode ではない場合)
 
 =begin original
 
@@ -2401,11 +2401,11 @@ results, or both, but it is not.
 
 =end original
 
-Perl �ˤ������Ϥ� Unicode �ǹԤ������¿������ˡ�����ꡢ
-@ARGV �Τ褦�� Unicode (UTF-8) �Ȥ��Ʋ��Ǥ���褦�ʤ���¾��
-�֥���ȥ�ݥ���ȡפϤۤȤ�ɤʤ�������(���餫�Υ��󥳡��ǥ��󥰤�)
-Unicode �������Ȥ���Ϳ����줿���̤Ȥ����֤����٤��ˤ�ؤ�餺��
-�����ʤäƤ��ʤ�����̤��¿������ޤ���
+Perl には入出力を Unicode で行うための多数の方法があり、
+@ARGV のように Unicode (UTF-8) として解釈できるようなその他の
+「エントリポイント」はほとんどない一方、(何らかのエンコーディングで)
+Unicode が引数として与えられたり結果として返されるべきにも関わらず、
+そうなっていない場所も未だ多くあります。
 
 =begin original
 
@@ -2415,10 +2415,10 @@ and results, or UTF-8 strings if the C<encoding> pragma has been used.
 
 =end original
 
-�ʲ��˵󤲤�ΤϤ��Τ褦�ʥ��󥿡��ե������Ǥ���
-����餹�٤Ƥ����ߤ� Perl(5.8.3) �Ǥ�ñ��˰���������ͤ�ξ����
-�Х���ʸ���󤫡�C<encoding> �ץ饰�ޤ��Ȥ��Ƥ���� UTF-8 ʸ�����
-����Ȳ��ꤷ�Ƥ��ޤ���
+以下に挙げるのはそのようなインターフェースです。
+これらすべてが現在の Perl(5.8.3) では単純に引数と戻り値の両方が
+バイト文字列か、C<encoding> プラグマが使われていれば UTF-8 文字列で
+あると仮定しています。
 
 =begin original
 
@@ -2431,14 +2431,14 @@ portable concept.  Similarly for the qx and system: how well will the
 
 =end original
 
-���Τ褦�ʥ������ˤ����ơ�Perl ���ʤ� Unicode �ˤ�����
-���ʤ��Τ�����ͳ�ΰ�Ĥϡ����������ڥ졼�ƥ��󥰥����ƥ��
-�ե����륷���ƥ�˶�����¸���Ƥ��뤫��Ǥ���
-���Ȥ��С��ե�����̾�� Unicode �ǵ��ҤǤ��ƥ��󥳡��ǥ��󥰤�
-��äƤ����Ȥ��Ƥ⤽��ϰܿ����Τ��륳�󥻥ץȤǤϤʤ��ΤǤ���
-Ʊ�ͤʤ��Ȥ� qx �� system �ˤ�����ޤ�:
-�֥��ޥ�ɥ饤�󥤥󥿡��ե������פ� Unicode ��ɤΤ褦��
-�����ΤǤ��礦��?
+このようなケースにおいて、Perl がなぜ Unicode による解決を
+しないのかの理由の一つは、答えがオペレーティングシステムや
+ファイルシステムに強く依存しているからです。
+たとえば、ファイル名が Unicode で記述できてエンコーディングが
+合っていたとしてもそれは移植性のあるコンセプトではないのです。
+同様なことが qx や system にも言えます:
+「コマンドラインインターフェース」は Unicode をどのように
+扱うのでしょうか?
 
 =over 4
 
@@ -2459,7 +2459,7 @@ glob (aka the <*>)
 
 =end original
 
-glob (�ޤ��� <*>)
+glob (または <*>)
 
 =item *
 
@@ -2473,7 +2473,7 @@ qx (aka the backtick operator), system
 
 =end original
 
-qx (�ޤ��ϵե������ȱ黻��), system
+qx (または逆クォート演算子), system
 
 =item *
 
@@ -2483,7 +2483,7 @@ readdir, readlink
 
 =head2 Forcing Unicode in Perl (Or Unforcing Unicode in Perl)
 
-(Unicode �� Perl �˶������� (���뤤�� Unicode �Ǥʤ����Ȥ� Perl �˶�������))
+(Unicode を Perl に強制する (あるいは Unicode でないことを Perl に強制する))
 
 =begin original
 
@@ -2495,10 +2495,10 @@ the answers.
 
 =end original
 
-�Ȥ��Ȥ���(L</When Unicode Does Not Happen> �򻲾�)��Perl �˥Х������
-UTF-8 �Ǥ���褦�˶��������ꤽ�εդ�Ԥ���礬���뤫�⤷��ޤ���
-���٥�θƤӽФ� utf8::upgrade($bytestring) ��
-utf8::downgrade($utf8string) �����β����Ǥ���
+ときとして(L</When Unicode Does Not Happen> を参照)、Perl にバイト列を
+UTF-8 であるように強制したりその逆を行う場合があるかもしれません。
+低レベルの呼び出し utf8::upgrade($bytestring) と
+utf8::downgrade($utf8string) がその回答です。
 
 =begin original
 
@@ -2509,15 +2509,15 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 
 =end original
 
-��������������Ȥ��Ȥ��ˤϽ�ʬ���դ��ʤ���Фʤ�ޤ���: ���ʤ�������
-������Τ褦��'����'(nature)�������Ѥ����ꤷ���顢Perl �ϴ�ñ�˺��𤷡�
-�ܤꡢ����å��夷�Ƥ��ޤ��ޤ���
-utf8::upgrade() ��Ȥ��Ȥ��ˤ��ä����դ�ɬ�פǤ�: Ǥ�դΥ������
-�Х������������ UTF-8 �ǤϤ���ޤ���
+しかし、これらを使うときには十分注意しなければなりません: あなたが突然
+スカラのような'性質'(nature)を突然変えたりしたら、Perl は簡単に混乱し、
+怒り、クラッシュしてしまいます。
+utf8::upgrade() を使うときには特に注意が必要です: 任意のランダムな
+バイト列は正当な UTF-8 ではありません。
 
 =head2 Using Unicode in XS
 
-(XS �� Unicode ��Ȥ�)
+(XS で Unicode を使う)
 
 =begin original
 
@@ -2528,10 +2528,10 @@ details.
 
 =end original
 
-Perl �� Unicode �� XS ��ĥ�Ǽ�갷�������Ȼפ��Τʤ顢�ʲ��˵󤲤�
-API �������������Τ�ޤ���
-XS ��٥�Ǥ� Unicode �˴ؤ��Ƥ������� L<perlguts/"Unicode Support"> ��
-API �ξܺ٤ˤĤ��Ƥ� L<perlapi> �򻲾Ȥ��Ƥ���������
+Perl の Unicode を XS 拡張で取り扱いたいと思うのなら、以下に挙げる
+API 群が便利かも知れません。
+XS レベルでの Unicode に関しての説明は L<perlguts/"Unicode Support"> を、
+API の詳細については L<perlapi> を参照してください。
 
 =over 4
 
@@ -2553,17 +2553,17 @@ Unicode model is not to use UTF-8 until it is absolutely necessary.
 
 =end original
 
-C<DO_UTF8(sv)> �� C<UTF8> �ե饰������ǥХ��ȥץ饰�ޤ����̤�
-��äƤ��ʤ��Ȥ��˿����֤��ޤ���
-C<SvUTF8(sv)> �� C<UTF8> ������ΤȤ����Х��ȥץ饰�ޤξ��֤ˤ�
-�ط��ʤ������֤��ޤ���
-C<UTF8> �ե饰�ϥ��������� 255(�⤷����127)��Ķ���������֤�ʸ����
-����Ȥ������Ȥ� I<��̣���ޤ���>��
-C<UTF8> �ե饰�ΰ�̣����Ȥ����ϡ���������Τ��Υ����ƥåȤ��¤Ӥ�
-ʸ����Ȥ���UTF-8�ǥ��󥳡��ɤ��줿�����֤��¤Ӥ��Ȥ������ȤǤ���
-C<UTF8> �ե饰�����դǤ���Ȥ������Ȥ�ʸ�������Υ��󥳡��ɤ��줿
-ʸ���� 0..255 ���ϰϤǥ��󥳡��ɤ��줿�����ƥåȤǤ��뤳�Ȥ��̣���ޤ���
-Perl �� Unicode ��ǥ��������ɬ�פȤʤ�ޤ� UTF-8 ����Ѥ��ޤ���
+C<DO_UTF8(sv)> は C<UTF8> フラグがオンでバイトプラグマが効果を
+もっていないときに真を返します。
+C<SvUTF8(sv)> は C<UTF8> がオンのとき、バイトプラグマの状態には
+関係なく真を返します。
+C<UTF8> フラグはスカラの中で 255(もしくは127)を超える符号位置の文字が
+あるということを I<意味しません>。
+C<UTF8> フラグの意味するところは、スカラ中のそのオクテットの並びが
+文字列としてUTF-8でエンコードされた符号位置の並びだということです。
+C<UTF8> フラグがオフであるということは文字列の中のエンコードされた
+文字が 0..255 の範囲でエンコードされたオクテットであることを意味します。
+Perl の Unicode モデルは本当に必要となるまで UTF-8 を使用しません。
 
 =item *
 
@@ -2575,9 +2575,9 @@ pointing after the UTF-8 bytes.
 
 =end original
 
-C<uvuni_to_utf8(buf, chr)> �� Unicode ��ʸ�������֤� UTF-8 ��
-���󥳡��ɤ��줿�������֤Ȥ��ƥХåե��˽񤭹��ߤޤ���
-�����ơ����� UTF-8 �Х��Ȥθ��ؤ������ݥ��󥿤��֤��ޤ���
+C<uvuni_to_utf8(buf, chr)> は Unicode の文字符号位置を UTF-8 で
+エンコードされたの符号位置としてバッファに書き込みます。
+そして、その UTF-8 バイトの後を指し示すポインタを返します。
 
 =item *
 
@@ -2589,9 +2589,9 @@ the UTF-8 byte sequence.
 
 =end original
 
-C<utf8_to_uvuni(buf, lenp)> �ϥХåե����� UTF-8 ���󥳡��ɤ��줿�Х��Ȥ�
-�ɤ߽Ф���Unicode ��ʸ�������֤ȡ����ץ����Ǥ���
-UTF-8 �Х��ȥ������󥹤�Ĺ�����֤��ޤ���
+C<utf8_to_uvuni(buf, lenp)> はバッファから UTF-8 エンコードされたバイトを
+読み出し、Unicode の文字符号位置と、オプションでその
+UTF-8 バイトシーケンスの長さを返します。
 
 =item *
 
@@ -2603,9 +2603,9 @@ scalar.
 
 =end original
 
-C<utf8_length(start, end)> �� UTF-8 ���󥳡��ɤ��줿�Хåե���Ĺ����
-ʸ�����֤��ޤ���
-C<sv_len_utf8(sv)> �� UTF-8 ���󥳡��ɤ��줿�������Ĺ�����֤��ޤ���
+C<utf8_length(start, end)> は UTF-8 エンコードされたバッファの長さを
+文字で返します。
+C<sv_len_utf8(sv)> は UTF-8 エンコードされたスカラの長さを返します。
 
 =item *
 
@@ -2623,17 +2623,17 @@ designed to be a one-way street).
 
 =end original
 
-C<sv_utf8_upgrade(sv)> �ϥ������ʸ����򤽤� UTF-8 ���󥳡��ɤ��줿
-�������Ѵ����ޤ���
-C<sv_utf8_downgrade(sv)> ��(��ǽ�Ǥ����)����ȿ�Ф�ư��򤷤ޤ���
-C<sv_utf8_encode(sv)> �� C<sv_utf8_upgrade> �˻��Ƥ��ޤ�����
-C<UTF8> �ե饰�򥻥åȤ��ʤ������ۤʤ�ޤ���
-�����η�ǡ������Ū����Ū�Υ��󥳡��ǥ��󥰤�ǥ����ǥ��󥰤�
-���󥿡��ե������Ȥ��ƻȤ��Ƥ��뤳�Ȥ����դ��Ƥ�������:
-C<use Encode> �����Τ���ˤ���ޤ���
-C<sv_utf8_upgrade()> �ϥ��󥳡��ǥ��󥰥ץ饰�ޤ˱ƶ�������ޤ�����
-C<sv_utf8_downgrade()> �Ϥ����ǤϤ���ޤ���(�ʤ��ʤ饨�󥳡��ǥ���
-�ץ饰�ޤϰ����̹Ԥ˥ǥ����󤵤�Ƥ��뤫��Ǥ�)��
+C<sv_utf8_upgrade(sv)> はスカラの文字列をその UTF-8 エンコードされた
+形式に変換します。
+C<sv_utf8_downgrade(sv)> は(可能であれば)その反対の動作をします。
+C<sv_utf8_encode(sv)> は C<sv_utf8_upgrade> に似ていますが、
+C<UTF8> フラグをセットしない点が異なります。
+これらの欠如が一般的な目的のエンコーディングやデコーディングの
+インターフェースとして使われていることに注意してください:
+C<use Encode> がそのためにあります。
+C<sv_utf8_upgrade()> はエンコーディングプラグマに影響を受けますが、
+C<sv_utf8_downgrade()> はそうではありません(なぜならエンコーディング
+プラグマは一方通行にデザインされているからです)。
 
 =item *
 
@@ -2644,8 +2644,8 @@ character.
 
 =end original
 
-C<is_utf8_char(s)> �ϥݥ��󥿤������� UTF-8 ʸ����ؤ������Ƥ���Ȥ���
-�����֤��ޤ���
+C<is_utf8_char(s)> はポインタが正しい UTF-8 文字を指し示しているときに
+真を返します。
 
 =item *
 
@@ -2656,8 +2656,8 @@ are valid UTF-8.
 
 =end original
 
-C<is_utf8_string(buf, len)> �ϥХåե��� C<len> �Х��Ȥ�������
-UTF-8 ʸ���Ǥ���Ȥ��˿����֤��ޤ���
+C<is_utf8_string(buf, len)> はバッファの C<len> バイトが正しい
+UTF-8 文字であるときに真を返します。
 
 =item *
 
@@ -2672,14 +2672,14 @@ the size required for a UTF-8 encoded buffer.
 
 =end original
 
-C<UTF8SKIP(buf)> �ϥХåե�����ˤ��� UTF-8 ���󥳡��ɤ��줿ʸ����
-�Х��ȿ����֤��ޤ���
-C<UNISKIP(chr)> �� UTF-8 ���󥳡��ɤ��� Unicode ʸ���������֤��׵᤹��
-�Х��ȿ����֤��ޤ���
-C<UTF8SKIP()> �� UTF-8 ���󥳡��ɤ��줿�Хåե���ʸ�����Ф��Ʒ����֤���
-�Ԥ��褦����������Ǥ���
-C<UNISKIP()> �Ϥ��Ȥ��С�UTF-8 ���󥳡��ɤ��줿�Хåե����׵᤹���礭����
-�׻�����Τ������Ǥ���
+C<UTF8SKIP(buf)> はバッファの中にある UTF-8 エンコードされた文字の
+バイト数を返します。
+C<UNISKIP(chr)> は UTF-8 エンコードする Unicode 文字の符号位置が要求する
+バイト数を返します。
+C<UTF8SKIP()> は UTF-8 エンコードされたバッファの文字に対して繰り返しを
+行うような例に便利です。
+C<UNISKIP()> はたとえば、UTF-8 エンコードされたバッファの要求する大きさを
+計算するのに便利です。
 
 =item *
 
@@ -2690,8 +2690,8 @@ two pointers pointing to the same UTF-8 encoded buffer.
 
 =end original
 
-C<utf8_distance(a, b)> ��Ʊ�� UTF-8 ���󥳡��ɤ��줿�Хåե��򤵤�
-��ĤΥݥ��󥿤δ֤�ʸ��ñ�̤ε�Υ���֤��ޤ���
+C<utf8_distance(a, b)> は同じ UTF-8 エンコードされたバッファをさす
+二つのポインタの間の文字単位の距離を返します。
 
 =item *
 
@@ -2705,11 +2705,11 @@ buffer if told to do so.
 
 =end original
 
-C<utf8_hop(s, off)> �ϡ�UTF-8 �Хåե� C<s> ���� Unicode �� C<off> ʸ��ʬ
-(�����Ǥ�����Ǥ�) ��ư���� UTF-8 ���󥳡��ǥ��󥰥Хåե��ؤ�
-�ݥ��󥿤��֤��ޤ���
-�Хåե���Ķ���ʤ��褦�����դ��Ƥ�������: C<utf8_hop()> �ϡ�����
-�ؼ������в��ⵤ�ˤ����˥Хåե�����Ƭ��������Ƨ�߱ۤ��ޤ���
+C<utf8_hop(s, off)> は、UTF-8 バッファ C<s> から Unicode で C<off> 文字分
+(正数でも負数でも) 移動した UTF-8 エンコーディングバッファへの
+ポインタを返します。
+バッファを超えないように注意してください: C<utf8_hop()> は、そう
+指示されれば何も気にせずにバッファの先頭や末尾を踏み越えます。
 
 =item *
 
@@ -2725,13 +2725,13 @@ output more readable.
 
 =end original
 
-C<pv_uni_display(dsv, spv, len, pvlim, flags)> ��
-C<sv_uni_display(dsv, ssv, pvlim, flags)> �� Unicode ��ʸ����䥹�����
-���Ϥ�ǥХå�����Τ������Ǥ���
-�ǥե���ȤǤϥǥХå��Τߤ������Ǥ� -- B<���٤Ƥ�> ʸ����
-16 �ʤ������֤Ȥ���ɽ�����ޤ� -- ������ C<UNI_DISPLAY_ISPRINT>,
-C<UNI_DISPLAY_BACKSLASH>, C<UNI_DISPLAY_QQ> �Ȥ����ե饰��
-Ϳ���뤳�Ȥˤ�äơ����Ϥ��ɤߤ䤹���Ǥ��ޤ���
+C<pv_uni_display(dsv, spv, len, pvlim, flags)> と
+C<sv_uni_display(dsv, ssv, pvlim, flags)> は Unicode の文字列やスカラの
+出力をデバッグするのに便利です。
+デフォルトではデバッグのみに便利です -- B<すべての> 文字を
+16 進の符号位置として表示します -- しかし C<UNI_DISPLAY_ISPRINT>,
+C<UNI_DISPLAY_BACKSLASH>, C<UNI_DISPLAY_QQ> というフラグを
+与えることによって、出力を読みやすくできます。
 
 =item *
 
@@ -2743,10 +2743,10 @@ comparisons you can just use C<memEQ()> and C<memNE()> as usual.
 
 =end original
 
-C<ibcmp_utf8(s1, pe1, u1, l1, u1, s2, pe2, l2, u2)> �� Unicode ��
-�������羮ʸ����̵�뤷��ʸ������Ӥ˻Ȥ����Ȥ��Ǥ��ޤ���
-�羮ʸ����ռ�������Ӥˤ��̾�ɤ��� C<memEQ()> �� C<memNE()> ��
-�Ȥ����Ȥ��Ǥ��ޤ���
+C<ibcmp_utf8(s1, pe1, u1, l1, u1, s2, pe2, l2, u2)> は Unicode に
+おいて大小文字を無視した文字列比較に使うことができます。
+大小文字を意識した比較には通常どおり C<memEQ()> や C<memNE()> を
+使うことができます。
 
 =back
 
@@ -2757,14 +2757,14 @@ in the Perl source code distribution.
 
 =end original
 
-��äȾܤ�������ϡ�L<perlapi> �ȡ�Perl �Υ��������������ۤ�
-F<utf8.c> �� F<utf8.h> �򻲾Ȥ��Ƥ���������
+もっと詳しい情報は、L<perlapi> と、Perl のソースコード配布の
+F<utf8.c> と F<utf8.h> を参照してください。
 
 =head1 BUGS
 
 =head2 Interaction with Locales
 
-(��������Ȥ���ߺ���)
+(ロケールとの相互作用)
 
 =begin original
 
@@ -2777,18 +2777,18 @@ Unicode is discouraged.
 
 =end original
 
-Unicode �ǡ����ȶ��˥��������Ȥ����ȤϤ������ʷ�̤�
-�⤿�餹���Ȥˤʤ�䤹���Ǥ���
-���ߤΤȤ�����Perl ��ʸ���� 0..255 ���ϰϤ� 8 �ӥåȥ��������
-������Ƥ褦�Ȥ��Ƥ��ޤ��������Υƥ��˥å��� Unicode ��
-�ޥåפ��褦�Ȥ����Ȥ�������ϰϤ�ʸ������Ѥ������������Ф���
-���餫������������ޤ���
-Perl �� Unicode ���ݡ��ȤϤޤ����٤��ʤ꤬���Ǥ���
-Unicode �Ȥ��ä���˥��������Ȥ����ȤϤ�����Ǥ��ޤ���
+Unicode データと共にロケールを使うことはおかしな結果を
+もたらすことになりやすいです。
+現在のところ、Perl は文字に 0..255 の範囲の 8 ビットロケールを
+割り当てようとしていますが、このテクニックは Unicode に
+マップしようとしたときに先の範囲の文字を使用するロケールに対して
+明らかに正しくありません。
+Perl の Unicode サポートはまた、遅くなりがちです。
+Unicode といっしょにロケールを使うことはお勧めできません。
 
 =head2 Interaction with Extensions
 
-(�������ƥ󥷥��Ȥ���ߺ���)
+(エクステンションとの相互作用)
 
 =begin original
 
@@ -2799,10 +2799,10 @@ will return incorrectly-flagged data.
 
 =end original
 
-Perl ���������ƥ󥷥��ȥǡ��������ꤹ��Ȥ������Υ������ƥ󥷥���
-UTF8 �ե饰�����򤷡��ޤ�������˽��ä������񤤤򤹤٤��Ǥ���
-�������ƥ󥷥�󤬤��Υե饰�ˤĤ��Ʋ����Τ�ʤ���С����Υ������ƥ󥷥���
-�������ʤ��ե饰���Ĥ����ǡ������֤���ǽ��������ޤ���
+Perl がエクステンションとデータをやり取りするとき、そのエクステンションは
+UTF8 フラグを理解し、また、それに従った振る舞いをすべきです。
+エクステンションがこのフラグについて何も知らなければ、そのエクステンションは
+正しくないフラグがついたデータを返す可能性があります。
 
 =begin original
 
@@ -2816,15 +2816,15 @@ in other programming languages are at risk.
 
 =end original
 
-���Τ��ᡢ�⤷ Unicode �ǡ����򰷤����Ȥ����ΤǤ���С� Unicode �ǡ�����
-�򴹤˴ؤ��Ʋ��餫�ε��Ҥ�����Τʤ�Ȥ��⥸�塼�뤹�٤ƤΥɥ�����Ȥ�
-Ĵ�٤Ƥ���������
-�ɥ�����Ȥ� Unicode �˴ؤ��Ʋ��θ��ڤ⤷�Ƥ��ʤ��Τʤ顢�ǰ��Υ�������
-��θ���������Ƥ��Υ⥸�塼�뤬�ɤΤ褦�˼�������Ƥ��뤫���Τ뤿���
-�������򸫤뤳�Ȥˤʤ뤫�⤷��ޤ���
-������ Perl �ǽ񤫤줿�⥸�塼������������������ޤ���
-¾�Υץ�����ߥ󥰸���ǽ񤫤�Ƥ���ľ�ܤޤ��ϴ��ܤ˥����������륳���ɤ�
-�ꥹ��������ΤǤ���
+そのため、もし Unicode データを扱おうというのであれば、 Unicode データの
+交換に関して何らかの記述があるのなら使うモジュールすべてのドキュメントを
+調べてください。
+ドキュメントが Unicode に関して何の言及もしていないのなら、最悪のケースを
+考慮し、そしてそのモジュールがどのように実装されているかを知るために
+ソースを見ることになるかもしれません。
+完全に Perl で書かれたモジュールは問題を引き起こしません。
+他のプログラミング言語で書かれている直接または間接にアクセスするコードに
+リスクがあるのです。
 
 =begin original
 
@@ -2837,15 +2837,15 @@ you can later change the functions when the extension catches up.
 
 =end original
 
-�ƶ���������ؿ��Τ���Ρ��ǡ���������(data corruption)���ɤ�ñ���
-��ά�Ȥϡ��򴹤���ǡ����Υ��󥳡��ǥ��󥰤������Τˤ���Ȥ������ȤǤ���
-�������ƥ󥷥�󤬼�갷�����Ȥ��Ǥ�����ΤäƤ��륨�󥳡��ǥ��󥰤�
-���򤷤Ƥ���������
-�������ƥ󥷥����Ϥ����������򤷤����󥳡��ǥ��󥰤��Ѵ�����
-�������ƥ󥷥�󤫤��֤äƤ�����̤򤽤Υ��󥳡��ǥ��󥰤���
-���������Ѵ����ޤ���
-�Ѵ���ԤäƤ�����åѴؿ���񤤤Ƥ����ơ�
-�������ƥ󥷥���ɤ��Ĥ������˴ؿ����ѹ��Ǥ���褦�ˤ��Ƥ����ޤ���
+影響を受けた関数のための、データの劣化(data corruption)を防ぐ単純な
+戦略とは、交換するデータのエンコーディングを常に明確にするということです。
+エクステンションが取り扱うことができると知っているエンコーディングを
+選択してください。
+エクステンションに渡す引数を選択したエンコーディングに変換し、
+エクステンションから返ってきた結果をそのエンコーディングから
+逆方向に変換します。
+変換を行ってくれるラッパ関数を書いておいて、
+エクステンションが追いついた時に関数を変更できるようにしておきます。
 
 =begin original
 
@@ -2856,10 +2856,10 @@ Perl's internal representation like so:
 
 =end original
 
-��Ȥ��ơ��ޤ� Unicode �ǡ������갷���褦�ˤϤǤ��Ƥ��ʤ���
-ͭ̾�ʤ� Foo::Bar::escape_html �ˤĤ��ƽҤ٤ޤ��礦��
-��åѴؿ��ϰ��������� UTF-8 ���Ѵ�������̤� Perl ������ɽ����
-���Ѵ����ޤ�:
+例として、まだ Unicode データを取り扱うようにはできていない、
+有名なな Foo::Bar::escape_html について述べましょう。
+ラッパ関数は引数を生の UTF-8 に変換し、結果を Perl の内部表現に
+逆変換します:
 
     sub my_escape_html ($) {
       my($what) = shift;
@@ -2877,12 +2877,12 @@ lets you store and retrieve data according to these prototypes:
 
 =end original
 
-�������ƥ󥷥�󤬥ǡ������Ѵ����ʤ�����ɤ��Ǽ��������Ф����ꤹ��Ȥ��ˡ�
-�Ȥ��Ȥ��ƴ����� Encode::_utf8_on() �ؿ��ʳ��Τ�Τ�
-�Ȥ����Ȥ����뤫�⤷��ޤ���
-C �ǽ񤫤�Ƥ��ơ��ǡ�����ʲ��Υץ��ȥ����פ˽��äƳ�Ǽ������
-���Ф����ꤹ�� C<param> �᥽�åɤ���äƤ���
-ͭ̾�� C<Foo::Bar> �������ƥ󥷥��ˤĤ��ƽҤ٤Ƥߤޤ��礦:
+エクステンションがデータを変換しないけれども格納したり取り出したりするときに、
+ときとして危険な Encode::_utf8_on() 関数以外のものを
+使うことがあるかもしれません。
+C で書かれていて、データを以下のプロトタイプに従って格納したり
+取り出したりする C<param> メソッドを持っている
+有名な C<Foo::Bar> エクステンションについて述べてみましょう:
 
     $self->param($name, $value);            # set a scalar
     $value = $self->param($name);           # retrieve a scalar
@@ -2894,9 +2894,9 @@ derived class with such a C<param> method:
 
 =end original
 
-�ɤΥ��󥳡��ǥ��󥰤�ޤ����ݡ��Ȥ��Ƥ��ʤ��Τʤ顢
-�ʲ��Τ褦�� C<param> �᥽�åɤ���ä��������饹��
-���Ҥ��뤳�Ȥ��Ǥ���Ǥ��礦:
+どのエンコーディングもまだサポートしていないのなら、
+以下のような C<param> メソッドを持った派生クラスを
+記述することができるでしょう:
 
     sub param {
       my($self,$name,$value) = @_;
@@ -2920,16 +2920,16 @@ Unicode data much easier.
 
 =end original
 
-�����Υ������ƥ󥷥��ϥǡ����Υ���ȥ�/æ�Хݥ���Ȥǥե��륿����
-�󶡤��Ƥ��ޤ���
-���Ȥ��� DB_File::filter_store_key�Ȥ�����֤Ǥ���
-���ʤ��Ȥ��������ƥ󥷥��Υɥ�����Ȥˤ��뤽�Τ褦�ʥե��륿����
-���դ��Ƥ���������
-������ Unicode �ǡ������Ѳ������ưפˤ��ޤ���
+一部のエクステンションはデータのエントリ/脱出ポイントでフィルターを
+提供しています。
+たとえば DB_File::filter_store_keyとその仲間です。
+あなた使うエクステンションのドキュメントにあるそのようなフィルターに
+注意してください。
+それらは Unicode データの変化をより容易にします。
 
 =head2 Speed
 
-(®��)
+(速度)
 
 =begin original
 
@@ -2941,11 +2941,11 @@ byte-encoded.
 
 =end original
 
-�����δؿ��� UTF-8 �ǥ��󥳡��ɤ��줿ʸ������Ф���Ŭ�Ѥ����Ȥ��˥Х���
-���󥳡��ɤ��줿ʸ������Ф���Ȥ������٤��ʤ�ޤ���
-ʸ�����Ф���Ư��ɬ�פΤ��� length()��substr()��index()�Τ褦�ʴؿ��Τ��٤Ƥ�
-����ɽ���ޥå��󥰤ϡ��ǡ�����
-�Х��ȥ��󥳡��ɤ���Ƥ���Ȥ��ˤ� B<���ʤ�> �᤯ư��Ǥ��ޤ���
+一部の関数は UTF-8 でエンコードされた文字列に対して適用したときにバイト
+エンコードされた文字列に対するときよりも遅くなります。
+文字に対して働く必要のある length()、substr()、index()のような関数のすべてと
+正規表現マッチングは、データが
+バイトエンコードされているときには B<かなり> 早く動作できます。
 
 =begin original
 
@@ -2960,18 +2960,18 @@ compared with the 10 ASCII characters matching C<d>).
 
 =end original
 
-Perl 5.8.0 �ǤϤ����٤��Ϥ��Ф�����Ω�Ĥ�ΤǤ�����
-Perl 5.8.1 �ǤϾ��ʤ��Ȥ���������ˤĤ��Ƥϡ��٤���������뤳�Ȥ�
-���Ԥ��륭��å��󥰥�������(caching scheme)��Ƴ������ޤ�����
-����Ū�ˤϡ�UTF-8 ���󥳡��ɤ��줿ʸ������Ф������Ϥޤ��٤���ΤǤ���
-���Ȥ��С�C<\p{Nd}> �Τ褦�� Unicode ������(ʸ�����饹)���б�����
-C<\d> �Τ褦��ñ��ʤ�Τ�����Ω�ä��٤�(5 �ܤ���10 ��)���Ȥ�
-�Τ��Ƥ��ޤ�(�����֤��ޤ�����C<d> �� 10 �� ASCII ʸ�����Ф���
-�ޥå�����Τ��Ф��� C<Nd> �� 268 �� Unicode ʸ���˥ޥå����ޤ�)��
+Perl 5.8.0 ではこの遅さはしばしば目立つものでした。
+Perl 5.8.1 では少なくとも一部の操作については、遅さを改善することを
+期待するキャッシングスキーム(caching scheme)が導入されました。
+一般的には、UTF-8 エンコードされた文字列に対する操作はまだ遅いものです。
+たとえば、C<\p{Nd}> のような Unicode の特性(文字クラス)は対応する
+C<\d> のような単純なものよりも目立って遅い(5 倍から10 倍)ことが
+知られています(繰り返しますが、C<d> は 10 の ASCII 文字に対して
+マッチするのに対して C<Nd> は 268 の Unicode 文字にマッチします)。
 
 =head2 Porting code from perl-5.6.X
 
-(perl 5.6.X ���饳���ɤ�ܿ�����)
+(perl 5.6.X からコードを移植する)
 
 =begin original
 
@@ -2985,13 +2985,13 @@ to work under 5.6, so you should be safe to try them out.
 
 =end original
 
-Perl 5.8 �� 5.6 �Ȥϰۤʤ� Unicode ��ǥ����äƤ��ޤ���
-5.6 �Ǥϥץ�����ޤϡ�����Ϳ����줿�������פ� Unicode �ǡ�����
-��갷���Τ� Unicode �ǡ������������Υ������פˤ��뤳�Ȥ��������Τ�
-C<utf8> �ץ饰�ޤλ��Ѥ��׵ᤵ��Ƥ��ޤ�����
-5.6 ��ư���Ƥ����ץ���������äƤ���Τʤ顢�ʲ��˵󤲤���Ĵ����ܤ�
-ɬ�פ�����Ǥ��礦��
-��� 5.6 �Ǥ�ư���褦�˽񤫤�Ƥ���Τǡ��¿����ƻ���Ȥ��Ǥ��ޤ���
+Perl 5.8 は 5.6 とは異なる Unicode モデルを持っています。
+5.6 ではプログラマは、ある与えられたスコープが Unicode データを
+取り扱うのと Unicode データだけがそのスコープにあることを宣言するのに
+C<utf8> プラグマの使用を要求されていました。
+5.6 で動いていたプログラムを持っているのなら、以下に挙げる微調整を施す
+必要があるでしょう。
+例は 5.6 でも動くように書かれているので、安心して試すことができます。
 
 =over 4
 
@@ -3003,7 +3003,7 @@ A filehandle that should read or write UTF-8
 
 =end original
 
-UTF-8 ���ɤ߽񤭤��٤��ե�����ϥ�ɥ�
+UTF-8 で読み書きすべきファイルハンドル
 
   if ($] > 5.007) {
     binmode $fh, ":encoding(utf8)";
@@ -3017,7 +3017,7 @@ A scalar that is going to be passed to some extension
 
 =end original
 
-���餫�Υ������ƥ󥷥����Ϥ����Ȥ��륹����
+何らかのエクステンションに渡そうとするスカラ
 
 =begin original
 
@@ -3029,12 +3029,12 @@ check the documentation to verify if this is still true.
 
 =end original
 
-Compress::Zlib��Apache::Request �ʤɤΡ��ޥ˥奢��ڡ����� Unicode ��
-�ؤ��뵭�ܤ��ʤ����餫�Υ������ƥ󥷥��ǡ��μ¤� UTF8 �ե饰��
-���դˤ���ɬ�פ�����ޤ���
-�����񤤤Ƥ������(2002 ǯ 10 ��)�Ǥϡ��嵭�Υ⥸�塼���
-UTF-8 �б��Ǥʤ����Ȥ����դ��Ƥ���������
-���줬�ޤ����Ǥ���Τʤ顢�ɥ�����Ȥ�����å����ƳΤ���Ƥ���������
+Compress::Zlib、Apache::Request などの、マニュアルページに Unicode に
+関する記載がない何らかのエクステンションで、確実に UTF8 フラグが
+オフにする必要があります。
+これを書いている時点(2002 年 10 月)では、上記のモジュールは
+UTF-8 対応でないことに注意してください。
+これがまだ真であるのなら、ドキュメントをチェックして確かめてください。
 
   if ($] > 5.007) {
     require Encode;
@@ -3049,7 +3049,7 @@ A scalar we got back from an extension
 
 =end original
 
-�������ƥ󥷥�󤫤��֤äƤ���������
+エクステンションから返ってきたスカラ
 
 =begin original
 
@@ -3058,8 +3058,8 @@ want the UTF8 flag restored:
 
 =end original
 
-���Υ����餬 UTF-8 �Ȥ����֤äƤ�����Τ��ȿ����Ƥ���Τʤ顢
-UTF-8 �ե饰��ꥹ�ȥ��������ȹͤ���Ǥ��礦:
+そのスカラが UTF-8 として返ってきたものだと信じているのなら、
+UTF-8 フラグをリストアしたいと考えるでしょう:
 
   if ($] > 5.007) {
     require Encode;
@@ -3074,7 +3074,7 @@ Same thing, if you are really sure it is UTF-8
 
 =end original
 
-Ʊ�ͤˡ�UTF-8 ���ȳο����Ƥ���Τʤ�
+同様に、UTF-8 だと確信しているのなら
 
   if ($] > 5.007) {
     require Encode;
@@ -3089,7 +3089,7 @@ A wrapper for fetchrow_array and fetchrow_hashref
 
 =end original
 
-fetchrow_array �� fetchrow_hashref �ؤΥ�å�
+fetchrow_array と fetchrow_hashref へのラッパ
 
 =begin original
 
@@ -3103,14 +3103,14 @@ that is still true.
 
 =end original
 
-�ǡ����١����� UTF-8 �Τߤ��鹽������Ƥ���Ȥ�����åѴؿ���
-��åѥ᥽�åɤϤ��ʤ��� fetchrow_array �� fetchrow_hashref �θƤӽФ���
-�֤�������Τ���������ˡ�Ǥ��礦��
-��åѴؿ��Ϥޤ������ʤ��λȤäƤ���ǡ����١����ɥ饤�Ф�
-�����ĥ���줿�Ȥ���Ŭ�Ѥ��䤹������Ǥ��礦��
-���Υɥ�����Ȥ�񤤤Ƥ������(2002 ǯ 10 ��)�Ǥϡ�DBI �� UTF-8 �Υǡ�����
-����ɸ��Ū����ˡ����äƤ��ޤ���
-���줬�ޤ����ʤ�ɥ�����Ȥ�����å����ƳΤ���Ƥ���������
+データベースが UTF-8 のみから構成されているとき、ラッパ関数や
+ラッパメソッドはあなたの fetchrow_array や fetchrow_hashref の呼び出しを
+置き換えるのに便利な方法でしょう。
+ラッパ関数はまた、あなたの使っているデータベースドライバが
+将来拡張されたときに適用しやすくするでしょう。
+このドキュメントを書いている時点(2002 年 10 月)では、DBI は UTF-8 のデータを
+扱う標準的な方法を持っていません。
+これがまだ真ならドキュメントをチェックして確かめてください。
 
   sub fetchrow {
     my($self, $sth, $what) = @_; # $what is one of fetchrow_{array,hashref}
@@ -3147,7 +3147,7 @@ A large scalar that you know can only contain ASCII
 
 =end original
 
-ASCII �������ޤޤ�Ƥ����ʬ���äƤ����礭�ʥ�����
+ASCII だけが含まれていると分かっている大きなスカラ
 
 =begin original
 
@@ -3157,9 +3157,9 @@ the UTF8 flag:
 
 =end original
 
-ASCII �������鹽������Ƥ���Τ� UTF8 �Ȥ��ư��դ�����Ƥ��륹���餬
-���ʤ��Υץ������ذ������ꤳ�ޤ�뤳�Ȥ�����ޤ���
-���Τ褦�ʾ���ǧ�������ʤ�С�ñ�� UTF-8 �ե饰��������Ƥ�������:
+ASCII だけから構成されているのに UTF8 として印付けされているスカラが
+あなたのプログラムへ引きずりこまれることがあります。
+そのような場合を認識したならば、単に UTF-8 フラグを取り除いてください:
 
   utf8::downgrade($val) if $] > 5.007;
 

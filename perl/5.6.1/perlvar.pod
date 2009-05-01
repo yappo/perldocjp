@@ -8,13 +8,13 @@ perlvar - Perl predefined variables
 
 =end original
 
-perlvar - Perl ������Ѥߤ��ѿ�
+perlvar - Perl で定義済みの変数
 
 =head1 DESCRIPTION
 
 =head2 Predefined Names
 
-(����Ѥߤ��ѿ�)
+(定義済みの変数)
 
 =begin original
 
@@ -25,9 +25,9 @@ you need only say
 
 =end original
 
-�ʲ���̾���� Perl �Ǥ����̤ʰ�̣������ޤ���
-����Ū��̾����¿���ϵ���ˡ�����뤫��������Ǥ���䤬��ǽ�Ǥ���
-����Ǥ�Ĺ��̾������Ѥ��������ˤ�
+以下の名前は Perl では特別な意味を持ちます。
+記号的な名前の多くは記憶法があるか、シェルでの類推が可能です。
+それでも長い名前を使用したい場合には
 
     use English;
 
@@ -39,10 +39,10 @@ generally borrowed from B<awk>.
 
 =end original
 
-�ȥץ������κǽ�˽񤤤Ƥ���������
-����ϡ����٤Ƥ�û��̾������̾�Ȥ��ơ�
-�����ȥѥå�������Ĺ��̾�����դ����ΤǤ���
-B<awk> ������äƤ������Ū��̾������äƤ����Τ⤢��ޤ���
+とプログラムの最初に書いてください。
+これは、すべての短い名前の別名として、
+カレントパッケージで長い名前を付けるものです。
+B<awk> から持ってきた中間的な名前を持っているものもあります。
 
 =begin original
 
@@ -53,11 +53,11 @@ below for this contain the word HANDLE.)  First you must say
 
 =end original
 
-��ǽ�򵤤ˤ��ʤ��Τʤ顢�������򤵤�Ƥ���ե�����ϥ�ɥ��
-��¸�����ѿ��ξ��ˤϡ������ IO::Handle ���֥������Ȥ�
-�ؤ��륪�֥������ȥ᥽�åɤ�ƤӽФ������ꤹ�뤳�Ȥ��Ǥ��ޤ���
-(�ʲ�������Ǥ� HANDLE �Ȥ������ޤ�Ǥ��ޤ���)
-�ޤ��ǽ��ɬ����
+性能を気にしないのなら、現在選択されているファイルハンドルに
+依存する変数の場合には、代わりに IO::Handle オブジェクトに
+関するオブジェクトメソッドを呼び出して設定することができます。
+(以下の要約では HANDLE という語を含んでいます。)
+まず最初に必ず、
 
     use IO::Handle;
 
@@ -67,7 +67,7 @@ after which you may use either
 
 =end original
 
-�Ƚ񤭡����θ�ǰʲ��Τ褦�˽񤯤���
+と書き、その後で以下のように書くか、
 
     method HANDLE EXPR
 
@@ -77,7 +77,7 @@ or more safely,
 
 =end original
 
-�⤷���Ϥ������˰ʲ��Τ褦�˽񤭤ޤ�:
+もしくはより安全に以下のように書きます:
 
     HANDLE->method(EXPR)
 
@@ -93,13 +93,13 @@ learn how to use the regular built-in variables.
 
 =end original
 
-���줾��Υ᥽�åɤϡ�IO::Handle °�����Τ��ͤ��֤��ޤ���
-�᥽�åɤϤ��줾�� EXPR ��Ȥ뤳�Ȥ��Ǥ������ꤷ�����ˤϡ�
-����� IO::Handle °���ο������ͤ���ꤹ�뤳�Ȥˤʤ�ޤ���
-���ꤷ�ʤ����ˤϡ�¿���Υ᥽�åɤǤϸ��ߤ��ͤ��Ф��Ʋ��⤷�ޤ��󤬡�
-autoflush() �Ǥ� 1 ����ꤵ�줿��ΤȤ��ޤ���
-IO::Handle ���饹���ɤ߹���Τϥ����Ȥι⤤���ʤΤǡ�
-�̾���Ȥ߹����ѿ��λȤ�����Ф���٤��Ǥ���
+それぞれのメソッドは、IO::Handle 属性の昔の値を返します。
+メソッドはそれぞれ EXPR をとることができ、指定した場合には、
+問題の IO::Handle 属性の新しい値を指定することになります。
+指定しない場合には、多くのメソッドでは現在の値に対して何もしませんが、
+autoflush() では 1 を指定されたものとします。
+IO::Handle クラスを読み込むのはコストの高い操作なので、
+通常の組み込み変数の使い方を覚えるべきです。
 
 =begin original
 
@@ -109,10 +109,10 @@ a reference, you'll raise a run-time exception.
 
 =end original
 
-�������ѿ�����ˤ� "read-only" �Ȥ��ư������Τ⤢��ޤ���
-�Ĥޤꡢ�������ä��ѿ����Ф��ơ�ľ�ܤˤ�������ե���󥹤�
-�𤷤ƴ��ܤˤ�����������Ԥʤ����Ȥ������ˤϡ��¹Ի���
-�㳰��������ư����ޤ���
+これらの変数の中には "read-only" として扱われるものもあります。
+つまり、そういった変数に対して、直接にしろ、リファレンスを
+介して間接にしろ、代入を行なおうとした場合には、実行時に
+例外処理が起動されます。
 
 =begin original
 
@@ -121,8 +121,8 @@ arrays, then the hashes.
 
 =end original
 
-�ʲ��Υꥹ�ȤϤޤ��������ѿ������줫�����󡢥ϥå���ν��
-�¤�Ǥ��ޤ���
+以下のリストはまずスカラ変数、それから配列、ハッシュの順に
+並んでいます。
 
 =over 8
 
@@ -137,8 +137,8 @@ equivalent:
 
 =end original
 
-�ǥե���Ȥ����Ϥȥѥ����󸡺��Υ��ڡ�����
-�ʲ��� 2�Ĥ�Ʊ�ͤǤ�:
+デフォルトの入力とパターン検索のスペース。
+以下の 2つは同値です:
 
     while (<>) {...}	# equivalent only in while!
     while (defined($_ = <>)) {...}
@@ -159,7 +159,7 @@ don't use it:
 
 =end original
 
-Perl ��(���ʤ����Ȥ������ʤ��Ƥ�) $_ ���ꤹ���礬�����Ĥ�����ޤ���
+Perl が(あなたが使いたくなくても) $_ を仮定する場合がいくつかあります。
 
 =over 3
 
@@ -173,8 +173,8 @@ STDIN.
 
 =end original
 
-�͡���ñ��ؿ���ord() �� int()���ޤ� C<-t> �ʳ������Ƥ�
-�ե�����ƥ��� (C<-f>, C<-d>)�ʤɡ�C<-t> �Υǥե���Ȥ� STDIN �Ǥ���
+様々な単項関数。ord() や int()、また C<-t> 以外の全ての
+ファイルテスト (C<-f>, C<-d>)など。C<-t> のデフォルトは STDIN です。
 
 =item *
 
@@ -184,7 +184,7 @@ Various list functions like print() and unlink().
 
 =end original
 
-print() �� unlink() �ʤɤ��͡��ʥꥹ�ȴؿ���
+print() や unlink() などの様々なリスト関数。
 
 =item *
 
@@ -195,7 +195,7 @@ without an C<=~> operator.
 
 =end original
 
-C<=~> �黻�Ҥʤ����Ѥ���줿�ѥ�����ޥå��黻 C<m//>, C<s///>, C<tr///>��
+C<=~> 演算子なしで用いられたパターンマッチ演算 C<m//>, C<s///>, C<tr///>。
 
 =item *
 
@@ -206,8 +206,8 @@ variable is supplied.
 
 =end original
 
-C<foreach> �롼�פǤ�¾���ѿ�������ʤ��ä����Υǥե���Ȥ�
-�����֤��ѿ���
+C<foreach> ループでの他の変数が補われなかった場合のデフォルトの
+繰り返し変数。
 
 =item *
 
@@ -217,7 +217,7 @@ The implicit iterator variable in the grep() and map() functions.
 
 =end original
 
-grep() �ؿ��� map() �ؿ��ΰ��ۤη����֤��ѿ���
+grep() 関数と map() 関数の暗黙の繰り返し変数。
 
 =item *
 
@@ -229,9 +229,9 @@ test.  Outside a C<while> test, this will not happen.
 
 =end original
 
-C<< <FH> >> ��ñ�Ȥ� C<while> �ƥ��Ȥǥƥ��Ȥ��줿����
-��̤������ǥե���Ȥξ�ꡣ
-C<while> �ƥ��Ȱʳ��ǤϤ���ϵ�����ޤ���
+C<< <FH> >> が単独で C<while> テストでテストされた場合の
+結果を入れるデフォルトの場所。
+C<while> テスト以外ではこれは起こりません。
 
 =back
 
@@ -241,7 +241,7 @@ C<while> �ƥ��Ȱʳ��ǤϤ���ϵ�����ޤ���
 
 =end original
 
-(����ˡ: �����Ϥ�������Ф��뤿��Τ�Ρ�)
+(記憶法: 下線はある操作を覚えるためのもの。)
 
 =back
 
@@ -259,11 +259,11 @@ scoped to the current BLOCK.
 
 =end original
 
-�Ǹ�Υѥ�����ޥå����б������̤Υ��֥ѥ�����˥ޥå�����
-ʸ�������äƤ��뤬������ȴ���Ƥ��ޤä��֥��å��Ǥ�
-�ѥ�����ޥå��ϴ��������ʤ���
-(����ˡ: \(����) �Τ褦�ʤ�Ρ�)
-�������ѿ��Ϥ��٤� read-only�ǡ����ߤ� BLOCK ��ưŪ�ʥ������פ�����ޤ���
+最後のパターンマッチで対応する括弧のサブパターンにマッチした
+文字列が入っているが、既に抜けてしまったブロックでの
+パターンマッチは勘定に入れない。
+(記憶法: \(数字) のようなもの。)
+これらの変数はすべて read-onlyで、現在の BLOCK に動的なスコープを持ちます。
 
 =item $MATCH
 
@@ -278,11 +278,11 @@ and dynamically scoped to the current BLOCK.
 
 =end original
 
-�Ǹ�����������ѥ�����ޥå��ǥޥå�����ʸ���� (���ߤ�
-BLOCK �ǰϤޤ줿 BLOCK �� eval() �Ǳ���Ƥ�����ʬ�ǤΥޥå���
-���������ʤ�)��
-(����ˡ: ���륨�ǥ����� & �褦�ʤ�Ρ�) 
-�����ѿ��� read-only �ǡ����ߤ� BLOCK ��ưŪ�ʥ������פ�����ޤ���
+最後に成功したパターンマッチでマッチした文字列 (現在の
+BLOCK で囲まれた BLOCK や eval() で隠れている部分でのマッチは
+勘定に入れない)。
+(記憶法: あるエディタの & ようなもの。) 
+この変数は read-only で、現在の BLOCK に動的なスコープを持ちます。
 
 =begin original
 
@@ -291,9 +291,9 @@ performance penalty on all regular expression matches.  See L<BUGS>.
 
 =end original
 
-�����ѿ���ץ������Τɤ����ǻȤ��ȡ��ץ������������Ƥ�����ɽ��
-�ޥå��󥰤ˤ����Ƥ��ʤ����ǽ�㲼������������ޤ���
-L<BUGS> �򻲾Ȥ��Ʋ�������
+この変数をプログラムのどこかで使うと、プログラム中の全ての正規表現
+マッチングにおいてかなりの性能低下を引き起こします。
+L<BUGS> を参照して下さい。
 
 =item $PREMATCH
 
@@ -308,11 +308,11 @@ string.)  This variable is read-only.
 
 =end original
 
-�Ǹ�����������ѥ�����ޥå� (���ߤ�BLOCK �ǰϤޤ줿
-BLOCK �� eval() �˱���Ƥ�����ʬ�ǤΥޥå��ϴ��������ʤ�) ��
-�ޥå�������ʬ������ʸ����
-(����ˡ: C<`> ��¿���ξ�祯�����Ȥ��줿ʸ��������ˤ��롣)
-�����ѿ��� read-only �Ǥ���
+最後の成功したパターンマッチ (現在のBLOCK で囲まれた
+BLOCK や eval() に隠れている部分でのマッチは勘定に入れない) で
+マッチした部分の前の文字列。
+(記憶法: C<`> は多くの場合クォートされた文字列の前にある。)
+この変数は read-only です。
 
 =begin original
 
@@ -321,9 +321,9 @@ performance penalty on all regular expression matches.  See L<BUGS>.
 
 =end original
 
-�����ѿ���ץ������Τɤ����ǻȤ��ȡ��ץ������������Ƥ�����ɽ��
-�ޥå��󥰤ˤ����Ƥ��ʤ����ǽ�㲼������������ޤ���
-L<BUGS> �򻲾Ȥ��Ʋ�������
+この変数をプログラムのどこかで使うと、プログラム中の全ての正規表現
+マッチングにおいてかなりの性能低下を引き起こします。
+L<BUGS> を参照して下さい。
 
 =item $POSTMATCH
 
@@ -338,10 +338,10 @@ string.)  Example:
 
 =end original
 
-�Ǹ�����������ѥ�����ޥå� (���ߤ�BLOCK �ǰϤޤ줿
-BLOCK �� eval() �˱���Ƥ�����ʬ�ǤΥޥå��ϴ��������ʤ�) ��
-�ޥå�������ʬ��³��ʸ����
-(����ˡ: C<'> ��¿���ξ�祯�����Ȥ��줿ʸ����θ�ˤ��롣)����:
+最後の成功したパターンマッチ (現在のBLOCK で囲まれた
+BLOCK や eval() に隠れている部分でのマッチは勘定に入れない) で
+マッチした部分に続く文字列。
+(記憶法: C<'> は多くの場合クォートされた文字列の後にある。)　例:
 
     $_ = 'abcdefghi';
     /def/;
@@ -353,7 +353,7 @@ This variable is read-only and dynamically scoped to the current BLOCK.
 
 =end original
 
-�����ѿ��� read-only �ǡ����ߤ� BLOCK ��ưŪ�ʥ������פ�����ޤ���
+この変数は read-only で、現在の BLOCK に動的なスコープを持ちます。
 
 =begin original
 
@@ -362,9 +362,9 @@ performance penalty on all regular expression matches.  See L<BUGS>.
 
 =end original
 
-�����ѿ���ץ������Τɤ����ǻȤ��ȡ��ץ������������Ƥ�����ɽ��
-�ޥå��󥰤ˤ����Ƥ��ʤ����ǽ�㲼������������ޤ���
-L<BUGS> �򻲾Ȥ��Ʋ�������
+この変数をプログラムのどこかで使うと、プログラム中の全ての正規表現
+マッチングにおいてかなりの性能低下を引き起こします。
+L<BUGS> を参照して下さい。
 
 =item $LAST_PAREN_MATCH
 
@@ -378,9 +378,9 @@ example:
 
 =end original
 
-�Ǹ�˸������줿�ѥ�����κǸ�γ�̤˥ޥå�����ʸ����
-����Ϥ����Ĥ�����������Ǥɤ줬�ޥå�����Τ�
-�狼��ʤ��褦�ʾ��˻Ȥ��������Ǥ������Ȥ���:
+最後に検索されたパターンの最後の括弧にマッチした文字列。
+これはいくつかの選択肢の中でどれがマッチするのか
+わからないような場合に使うと便利です。たとえば:
 
     /Version: (.*)|Revision: (.*)/ && ($rev = $+);
 
@@ -391,8 +391,8 @@ This variable is read-only and dynamically scoped to the current BLOCK.
 
 =end original
 
-(����ˡ: �ݥ��ƥ��֤���������)
-�����ѿ��� read-only �ǡ����ߤ� BLOCK ��ưŪ�ʥ������פ�����ޤ���
+(記憶法: ポジティブで前向き。)
+この変数は read-only で、現在の BLOCK に動的なスコープを持ちます。
 
 =item @LAST_MATCH_END
 
@@ -413,17 +413,17 @@ examples given for the C<@-> variable.
 
 =end original
 
-��������ϡ����ߥ����ƥ��֤�ưŪ�������פǺǸ����������
-���֥ޥå��κǸ�ؤΥ��ե��åȤ��ݻ����ޤ���
-C<$+[0]> �ϥޥå����Τ�ʸ����κǸ�ؤΥ��ե��åȤǤ���
-����ϥޥå������ѿ����Ф��� C<pos> �ؿ���ƤӽФ����Ȥ���
-�֤��ͤ�Ʊ���Ǥ���
-��������� I<n> ���ܤ����Ǥ� I<n> ���ܤΥ��֥ޥå��Υ��ե��åȤ�
-�ݻ����Ƥ��ޤ��Τǡ�C<$+[1]> �ϲ��� $1 �ν����Υ��ե��åȡ�
-C<$+[2]> �� $2 �Υ��ե��åȡ��Ȥ������ˤʤ�ޤ���
-C<$#+> �ϺǸ�����������ޥå��Ǥ����ĥ��֥��롼�פ����뤫��
-���ꤹ��Τ˻Ȥ��ޤ���
-C<@-> �ѿ�����򻲾Ȥ��Ʋ�������
+この配列は、現在アクティブな動的スコープで最後に成功した
+サブマッチの最後へのオフセットを保持します。
+C<$+[0]> はマッチ全体の文字列の最後へのオフセットです。
+これはマッチした変数に対して C<pos> 関数を呼び出したときの
+返り値と同じです。
+この配列の I<n> 番目の要素は I<n> 番目のサブマッチのオフセットを
+保持していますので、C<$+[1]> は過去の $1 の終わりのオフセット、
+C<$+[2]> は $2 のオフセット、という形になります。
+C<$#+> は最後に成功したマッチでいくつサブグループがあるかを
+決定するのに使えます。
+C<@-> 変数の例を参照して下さい。
 
 =item $MULTILINE_MATCHING
 
@@ -442,16 +442,16 @@ for even when C<$* == 0>.
 
 =end original
 
-ʸ�������ʣ���ԥޥå���Ԥʤ�������󥼥������ꤷ��
-0 (�ޤ��� undef)�ˤ���ȡ�Perl ��ʸ����� 1 �Ԥ���̵���Ȳ��ꤷ�ơ�
-�����Υѥ�����ޥå��˴ؤ����Ŭ����Ԥʤ��褦�ˤʤ�ޤ���
-ʣ���β��Ԥ�ޤ�ʸ����ǤΥѥ�����ޥå���
-C<$*> �� 0 �ޤ��� undef �Τޤ޹Ԥʤ��ȷ�̤Ͽ��Ѥ�
-�ʤ���Τˤʤ�ޤ���
-�ǥե���ȤǤ� undef �ˤʤäƤ��ޤ���
-(����ˡ: * ��ʣ���Τ�Τ˥ޥå����ޤ���)
-�����ѿ��� C<^> �� C<$> �β��ˤΤ߱ƶ����ޤ���
-��ƥ��β���ʸ���ϡ�C<$* == 0> �Ǥ��äƤ⸡�����뤳�Ȥ���ǽ�Ǥ���
+文字列中で複数行マッチを行なうために非ゼロに設定し、
+0 (または undef)にすると、Perl が文字列に 1 行しか無いと仮定して、
+ある種のパターンマッチに関する最適化を行なうようになります。
+複数の改行を含む文字列でのパターンマッチを
+C<$*> が 0 または undef のまま行なうと結果は信用の
+ないものになります。
+デフォルトでは undef になっています。
+(記憶法: * は複数のものにマッチします。)
+この変数は C<^> と C<$> の解釈にのみ影響します。
+リテラルの改行文字は、C<$* == 0> であっても検索することが可能です。
 
 =begin original
 
@@ -460,8 +460,8 @@ the C</s> and C</m> modifiers on pattern matching.
 
 =end original
 
-�Ƕ�� Perl �Ǥ� "$*" ��Ȥ�ʤ��褦�ˤ��Ƥ���������
-�ѥ�����ޥå��� C</s> �� C</m> �ν����Ҥ˼�ä������Ƥ��ޤ���
+最近の Perl では "$*" を使わないようにしてください。
+パターンマッチの C</s> と C</m> の修飾子に取って代わられています。
 
 =begin original
 
@@ -471,9 +471,9 @@ makes that an implicit C<int> is applied on the value.
 
 =end original
 
-���ͤǤʤ��ͤ� C<$*> ����������ȷٹ������������ޤ�
-(������ C<$*> �� C<$* == 0> �Τ褦�˿����񤤤ޤ�)��
-�������ͤ� C<$*> ����������Ȱ��ۤ� C<int> ���ͤ�Ŭ�Ѥ���ޤ���
+数値でない値を C<$*> に代入すると警告を引き起こします
+(そして C<$*> は C<$* == 0> のように振る舞います)。
+一方数値を C<$*> に代入すると暗黙に C<int> が値に適用されます。
 
 =item input_line_number HANDLE EXPR
 
@@ -500,20 +500,20 @@ number.)
 
 =end original
 
-�Ǹ��read() (�ޤ��� C<seek> �ޤ��� C<tell>)��
-�Ԥʤä��ե�����ϥ�ɥ�θ��ߤ����ϥ쥳�����ֹ档
-�����ͤϥե�����μºݤ�ʪ�����ֹ�Ȥϰۤʤ뤫�⤷��ޤ���
-�ֹԡפȤϲ����ˤ��ޤ���
-������Ѥ���ˤ� C<$/> �򻲾Ȥ��Ʋ�������
-����Ū�˥ե�����ϥ�ɥ�򥯥������������ˡ����ֹ椬�ꥻ�åȤ���ޤ���
-C<< <> >> ��ʸ�Ǥ�����Ū�˥���������Ԥʤ��ޤ��󤫤顢ARGV ��
-�ե�����˸٤äƹ��ֹ椬�������뤳�Ȥˤʤ�ޤ� (����
-L<perlfunc/eof> ����򻲾Ȥ��Ƥ�������)��
-�����ѿ����ɤ߹������Ѥȹͤ��Ƥ���������
-�ͤ����֤��Ƥ⥷�����ݥ��󥿤ϰ�ư���ޤ��󡣼��ϤǤ���ɬ�פ�����ޤ���
-C<$.>�� local ������ȡ�Perl �ΡֺǸ���ɤ���ե�����ϥ�ɥ�פ�
-local ��������̤�����ޤ���
-(����ˡ: ¿���Υץ������� "." �����߹��ֹ�򼨤��褦�˻Ȥ��Ƥ��ޤ���)
+最後にread() (または C<seek> または C<tell>)を
+行なったファイルハンドルの現在の入力レコード番号。
+この値はファイルの実際の物理行番号とは異なるかもしれません。
+「行」とは何かによります。
+これを変えるには C<$/> を参照して下さい。
+明示的にファイルハンドルをクローズした場合に、行番号がリセットされます。
+C<< <> >> 構文では明示的にクローズを行ないませんから、ARGV の
+ファイルに跨って行番号が数えられることになります (が、
+L<perlfunc/eof> の例を参照してください)。
+この変数は読み込み専用と考えてください。
+値を設置してもシークポインタは移動しません。自力でする必要があります。
+C<$.>を local 化すると、Perl の「最後に読んだファイルハンドル」を
+local 化する効果があります。
+(記憶法: 多くのプログラムで "." が現在行番号を示すように使われています。)
 
 =item input_record_separator HANDLE EXPR
 
@@ -541,19 +541,19 @@ line boundaries when quoting poetry.)
 
 =end original
 
-���ϥ쥳���ɥ��ѥ졼���ǡ��ǥե���ȤǤϲ���ʸ����
-����� Perl �ǤΡֹԡפȤϲ������Ȥ������Ȥ˱ƶ���Ϳ���ޤ���
-��ʸ��������ꤵ���ȡ����Ԥ򥻥ѥ졼���Ȥ��ư������Ȥ�
-�ޤ�ơ�B<awk> ���ѿ� RS �Τ褦��Ư���ޤ�
-(���Ԥϥ��ڡ����䥿�֤�ޤ�Ǥ��ƤϤ����ޤ���)��
-ʣ��ʸ���ζ���ʸ���򼨤�����ˡ�ʸ��������ꤹ�뤳�Ȥ�Ǥ��ޤ���
-�ޤ����ե�����κǸ�ޤ��ɤ߹��ि��� undef ����ꤹ�뤳�Ȥ�Ǥ��ޤ���
-�����ѿ��� C<"\n\n"> �����ꤹ��ȡ����Ԥ�³�����ˤ����ơ�
-C<""> �����ꤷ�����Ȥ鷺���˰㤦ư��򤹤�褦�ˤʤ�ޤ���
-C<""> �����ꤷ�����ˤϡ�ʣ���ζ��Ԥ� 1 �Ĥζ��ԤǤ��뤫�Τ褦�˰����ޤ���
-C<"\n\n"> �����ꤷ�����ˤϡ�ñ��˼���ʸ���� (���Ȥ�����ʸ���Ǥ��äƤ�)
-��������˴ޤޤ���ΤȤ��ư����ޤ���
-(����ˡ: /�ϡ�������Ѥ���Ȥ��ˡ��Ԥζ��ڤ�򼨤��ޤ���)
+入力レコードセパレータで、デフォルトでは改行文字。
+これは Perl での「行」とは何か、ということに影響を与えます。
+空文字列に設定されると、空行をセパレータとして扱うことを
+含めて、B<awk> の変数 RS のように働きます
+(空行はスペースやタブを含んでいてはいけません)。
+複数文字の区切文字を示すために、文字列を設定することもできます。
+また、ファイルの最後まで読み込むために undef を指定することもできます。
+この変数に C<"\n\n"> を設定すると、空行が続く場合において、
+C<""> を設定した場合とわずかに違う動作をするようになります。
+C<""> を設定した場合には、複数の空行も 1 つの空行であるかのように扱います。
+C<"\n\n"> を設定した場合には、単純に次の文字が (たとえ改行文字であっても)
+次の段落に含まれるものとして扱います。
+(記憶法: /は、詩を引用するときに、行の区切りを示します。)
 
     undef $/;		# enable "slurp" mode
     $_ = <FH>;		# whole file now here
@@ -566,8 +566,8 @@ better for something. :-)
 
 =end original
 
-����: C<$/> ��ʸ����Ǥ��ꡢ����ɽ���ǤϤ���ޤ���
-B<awk> �ϲ�����äȤ��ޤ����ʤ��ƤϤ����ޤ���:-)
+注意: C<$/> は文字列であり、正規表現ではありません。
+B<awk> は何かもっとうまくやらなくてはいけません。:-)
 
 =begin original
 
@@ -578,9 +578,9 @@ integer.  So this:
 
 =end original
 
-C<$/> ��������������ޤॹ���顢�������Ѵ��Ǥ��륹����Τ����줫�ؤ�
-��ե���󥹤򥻥åȤ���ȡ��Ԥ��ɤ�����˥쥳���ɤ��ɤ⤦�Ȥ��ޤ���
-���ξ�硢����쥳���ɥ������ϥ�ե������������ͤȤʤ�ޤ����Ĥޤ�:
+C<$/> に整数、整数を含むスカラ、整数に変換できるスカラのいずれかへの
+リファレンスをセットすると、行を読む代わりにレコードを読もうとします。
+この場合、最大レコードサイズはリファレンス先の整数値となります。つまり:
 
     $/ = \32768; # or \"32768", or \$var_containing_32768
     open(FILE, $myfile);
@@ -596,12 +596,12 @@ set, you'll get the record back in pieces.
 
 =end original
 
-����� FILE ���� 32768 �Х��Ȥ�Ķ���ʤ��褦�˥쥳���ɤ��ɤ߹��ߤޤ���
-�⤷�쥳���ɻظ��Υե�������ɤ߹��ޤʤ����
-(���뤤�� OS ���쥳���ɻظ��ե����������ʤ����)��
-�ɤ߹�����˥ǡ����Υ��������������ߤޤ���
-�⤷�쥳���ɤ����åȤ����쥳���ɥ���������礭����硢
-�쥳���ɤ���ʬ������ߤޤ���
+これは FILE から 32768 バイトを超えないようにレコードを読み込みます。
+もしレコード指向のファイルを読み込まない場合
+(あるいは OS がレコード指向ファイルを持たない場合)、
+読み込み毎にデータのチャンク全部を取り込みます。
+もしレコードがセットしたレコードサイズより大きい場合、
+レコードの部分を取り込みます。
 
 =begin original
 
@@ -614,12 +614,12 @@ non-record reads of a file.
 
 =end original
 
-VMS �Ǥϡ��쥳�����ɤ߹��ߤ� C<sysread> �������˹Ԥ��ޤ��Τǡ�
-�쥳�����ɤ߹��ߤ���쥳�����ɤ߹��ߤ�Ʊ���ե�����Ǻ����ʤ��Τ�
-�����Ǥ���(����Ϥ��ޤ�����ˤʤ�ޤ��󡣤ʤ��ʤ�
-�쥳�����ɤ߹��ߤ������ե������¿ʬ�ԥ⡼�ɤǤϻȤ��ʤ���Τ�����Ǥ���)
-VMS �ʳ��Υ����ƥ�Ǥ����̤� I/O ��Ȥ��ޤ��Τǡ�
-Ʊ���ե�����Υ쥳�����ɤ߹��ߤ���쥳�����ɤ߹��ߤ򺮤��Ƥ�����Ǥ���
+VMS では、レコード読み込みは C<sysread> と等価に行われますので、
+レコード読み込みと非レコード読み込みを同じファイルで混ぜないのが
+最善です。(これはあまり問題になりません。なぜなら
+レコード読み込みしたいファイルは多分行モードでは使えないものだからです。)
+VMS 以外のシステムでは普通の I/O を使いますので、
+同じファイルのレコード読み込みと非レコード読み込みを混ぜても安全です。
 
 =begin original
 
@@ -627,7 +627,7 @@ See also L<perlport/"Newlines">.  Also see C<$.>.
 
 =end original
 
-L<perlport/"Newlines"> �� C<$.> �⻲�Ȥ��Ƥ���������
+L<perlport/"Newlines"> と C<$.> も参照してください。
 
 =item autoflush HANDLE EXPR
 
@@ -651,20 +651,20 @@ for that.  (Mnemonic: when you want your pipes to be piping hot.)
 
 =end original
 
-0 �ʳ������ꤵ���ȡ�
-���λ��������򤵤�Ƥ�����ϥ���ͥ��
-ľ���ˤ��ξ�ǥե�å��夷��
-����� write �� print ��Ԥʤ����Ȥˡ�����Ū�˥ե�å��夷�ޤ���
-�ǥե���ȤǤ� 0 �ȤʤäƤ��ޤ�
-(�����ͥ뤬�ºݤ˥����ƥ�ˤ�äƥХåե���󥰤���Ƥ��뤫�ɤ�����
-���Τ��ޤ���C<$|> �� Perl ������Ū�����񤭹��ߤθ��
-�ե�å��夹�뤫�ɤ����Τߤ򼨤��ޤ�)��
-STDOUT ���̾�Ǥϡ�ü���ؤν��ϻ��ˤϹԥХåե���󥰡�
-����ʳ��Ǥϥ֥��å��Хåե���󥰤Ǥ��뤳�Ȥ����դ��Ƥ���������
-����ϡ�Perl �Υ�����ץȤ� rsh �۲��Ǽ¹Ԥ��ơ�
-�¹Ծ������ǧ���������Τ褦�ˡ��ѥ��פ䥽���åȤ˽��Ϥ���Ȥ����ä������Ǥ��礦��
-��������ϥХåե���󥰤ˤϲ��αƶ���Ϳ���ޤ���
-(����ˡ: �ѥ��פ�ۥåȤʾ��֤ˤ��Ƥ�������˻Ȥ���)
+0 以外に設定されると、
+その時点で選択されている出力チャネルを
+直ちにその場でフラッシュし、
+さらに write や print を行なうごとに、強制的にフラッシュします。
+デフォルトでは 0 となっています
+(チャンネルが実際にシステムによってバッファリングされているかどうかは
+関知しません。C<$|> は Perl が明示的に毎回書き込みの後に
+フラッシュするかどうかのみを示します)。
+STDOUT は通常では、端末への出力時には行バッファリング、
+それ以外ではブロックバッファリングであることに注意してください。
+これは、Perl のスクリプトを rsh 配下で実行して、
+実行状況を確認したい場合のように、パイプやソケットに出力するときに特に便利でしょう。
+これは入力バッファリングには何の影響も与えません。
+(記憶法: パイプをホットな状態にしておくために使う。)
 
 =item output_field_separator HANDLE EXPR
 
@@ -685,12 +685,12 @@ your print statement.)
 
 =end original
 
-print �黻�ҤΤ���ν��ϥե�����ɥ��ѥ졼����
-�̾� print �黻�Ҥϡ������򽤾��ʤ���ñ��˰������ޤ���
-��ꡢB<awk> �˶ᤤư��򤵤���ˤϡ�
-�ե�����ɤζ��ڤ�Ȥ��ư���������ΤȤ��� B<awk> ��
-�ѿ� OFS �����ꤹ���Τ򡢤����ѿ������ꤷ�ޤ���
-(����ˡ: print ʸ�� "," ��񤤤����˰���������Ρ�)
+print 演算子のための出力フィールドセパレータ。
+通常 print 演算子は、引数を修飾なしで単純に印字します。
+より、B<awk> に近い動作をさせるには、
+フィールドの区切りとして印字されるものとして B<awk> の
+変数 OFS に設定するものを、この変数に設定します。
+(記憶法: print 文で "," を書いた場所に印字されるもの。)
 
 =item output_record_separator HANDLE EXPR
 
@@ -713,14 +713,14 @@ get "back" from Perl.)
 
 =end original
 
-print �黻�ҤΤ���ν��ϥ쥳���ɥ��ѥ졼����
-�̾�print �黻�Ҥϡ�������ñ��˰�������
-���Ԥʤɥ쥳���ɽ�����ʸ�����Ĥ��ޤ���
-��� B<awk> �˶ᤤư��򤵤���ˤϡ�
-print �κǸ�˰���������ΤȤ��� B<awk> ���ѿ� ORS ��
-���ꤹ���Τ򡢤����ѿ������ꤷ�ޤ���
-(����ˡ: print �κǸ�� "\n" ���դ��ä�������� C<$\> �����ꤹ�롣
-�ޤ���C<$/> �˻��̤äƤ��뤬��Perl ����֥Хå��פ�����ΤǤ���)
+print 演算子のための出力レコードセパレータ。
+通常print 演算子は、引数を単純に印字し、
+改行などレコード終わりの文字列をつけません。
+より B<awk> に近い動作をさせるには、
+print の最後に印字されるものとして B<awk> の変数 ORS に
+設定するものを、この変数に設定します。
+(記憶法: print の最後に "\n" を付け加える代わりに C<$\> を設定する。
+また、C<$/> に似通っているが、Perl から「バック」されるものです。)
 
 =item $LIST_SEPARATOR
 
@@ -734,10 +734,10 @@ string).  Default is a space.  (Mnemonic: obvious, I think.)
 
 =end original
 
-C<$,> ��Ʊ�ͤǤ���������� 2 �Ű�����ǳ��줿ʸ����
-(�ޤ��ϡ�Ʊ�ͤ˰�����ʸ����) �������ȥ��饤�����ͤ�Ÿ�������
-�ݤ�Ŭ�Ѥ���ޤ���
-�ǥե���ȤǤϥ��ڡ����ˤʤäƤ��ޤ���(����ˡ: ���餫�Ǥ��礦��)
+C<$,> と同様ですが、これは 2 重引用符で括られた文字列
+(または、同様に扱われる文字列) 内で配列とスライスの値が展開される
+際に適用されます。
+デフォルトではスペースになっています。(記憶法: 明らかでしょう。)
 
 =item $SUBSCRIPT_SEPARATOR
 
@@ -766,20 +766,20 @@ which means
 
 =end original
 
-¿��������Υ��ߥ�졼�ȤΤ����ź�����ζ���ʸ����
-�ϥå�������Ǥ�
+多次元配列のエミュレートのための添え字の区切文字。
+ハッシュの要素を
 
     $foo{$a,$b,$c}
 
-�Τ褦�ˤ��ƻ��Ȥ���ȡ��ºݤˤ�
+のようにして参照すると、実際には
 
     $foo{join($;, $a, $b, $c)}
 
-�Ȥ�����̣�ˤʤ�ޤ�������������
+という意味になります。　しかし、
 
-    @foo{$a,$b,$c}      # ���饤�� -- @ ������
+    @foo{$a,$b,$c}      # スライス -- @ に注意
 
-�Ȥ��ƤϤ����ޤ��󡣤���ϰʲ��ΰ�̣�ˤʤ�ޤ���
+としてはいけません。これは以下の意味になります。
 
     ($foo{$a},$foo{$b},$foo{$c})
 
@@ -793,13 +793,13 @@ taken for something more important.)
 
 =end original
 
-�ǥե���Ȥ� "\034" �ǡ�C<awk> �� SUBSEP ��Ʊ���Ǥ���
-�Ȥ����Ȥ��Ƥ��� key ���ͤ��Х��ʥ�Υǡ�����ޤ�ʤ�С�
-C<$;> �����ꤹ��������ͤʤɤϤʤ����Ȥˤʤ�ޤ���
-(����ˡ: ����� (��ʸ���ź�������ڤ�ʸ��) ��
-���ߡݥ��ߥ�����ʤΤǤ���
-���������ۤ��ȤϤ狼�äƤޤ�����C<$,> �Ϥ⤦���ˤ�ä�
-���פ�Ǥ̳����äƤ��Ǥ���)
+デフォルトは "\034" で、C<awk> の SUBSEP と同じです。
+使おうとしている key の値がバイナリのデータを含むならば、
+C<$;> に設定する安全な値などはないことになります。
+(記憶法: コンマ (構文上の添え字区切り文字) は
+セミ−セミコロンなのです。
+ええ、詭弁だとはわかってますが、C<$,> はもう既にもっと
+重要な任務を持ってるんです。)
 
 =begin original
 
@@ -808,7 +808,7 @@ in L<perllol>.
 
 =end original
 
-L<perllol> �ǵ��Ҥ��Ƥ������ʪ�Ρ�¿���������Ȥ��褦�ˤ��Ƥ���������
+L<perllol> で記述している「本物の」多次元配列を使うようにしてください。
 
 =item $OFMT
 
@@ -826,15 +826,15 @@ explicitly to get B<awk>'s value.  (Mnemonic: # is the number sign.)
 
 =end original
 
-�������������ݤν��ϥե����ޥåȡ�
-�����ѿ��ϡ��Խ�ʬ�ǤϤ���ޤ�����B<awk> ���ѿ� OFMT ��
-���ߥ�졼�Ȥ��褦�Ȥ����ΤǤ���
-�������ʤ��顢B<awk> �� Perl �ϰۤʤ뵭ˡ�ǿ��ͤ�ɽ�路�Ƥ��ޤ���
-�ޤ�������ͤ�"%.I<n>g" �ǡ������� I<n> �ϥ����ƥ�� F<float.h> ��
-�������Ƥ���ޥ��� DBL_DIG ���ͤǤ���
-�����B<awk> ��OFMT �Υǥե�����ͤǤ��� "%.6g" �ȰۤʤäƤ��ޤ��Τǡ�
-awk �Ǥ��ͤ�����ˤϡ�����Ū�� C<$#> �����ꤹ��ɬ�פ�����ޤ���
-(����ˡ: # �Ͽ��͵���Ǥ���)
+数字を印字する際の出力フォーマット。
+この変数は、不十分ではありますが、B<awk> の変数 OFMT を
+エミュレートしようとするものです。
+しかしながら、B<awk> と Perl は異なる記法で数値を表わしています。
+また、初期値は"%.I<n>g" で、ここで I<n> はシステムの F<float.h> で
+定義されているマクロ DBL_DIG の値です。
+これはB<awk> のOFMT のデフォルト値である "%.6g" と異なっていますので、
+awk での値を得るには、明示的に C<$#> を設定する必要があります。
+(記憶法: # は数値記号です。)
 
 =begin original
 
@@ -842,7 +842,7 @@ Use of C<$#> is deprecated.
 
 =end original
 
-C<$#> �ϸŤ���ΤʤΤǻȤ�ʤ��褦�ˤ��Ƥ���������
+C<$#> は古いものなので使わないようにしてください。
 
 =item format_page_number HANDLE EXPR
 
@@ -858,9 +858,9 @@ Used with formats.
 
 =end original
 
-���λ��������򤵤�Ƥ�����ϥ���ͥ�Ρ����λ����ǤΥڡ����ֹ档
-�ե����ޥåȤ��Ѥ����ޤ���
-(����ˡ: % �ϡ�B<nroff> �ǤΥڡ����ֹ�Ǥ���)
+その時点で選択されている出力チャネルの、その時点でのページ番号。
+フォーマットで用いられます。
+(記憶法: % は、B<nroff> でのページ番号です。)
 
 =item format_lines_per_page HANDLE EXPR
 
@@ -877,10 +877,10 @@ Used with formats.
 
 =end original
 
-���λ��������򤵤�Ƥ�����ϥ���ͥ�Ρ����λ����Ǥ�
-�ڡ���Ĺ (������ǽ�Կ�)���ǥե���Ȥ� 60 �Ǥ���
-�ե����ޥåȤ��Ѥ����ޤ���
-(����ˡ: = �ˤ�ʣ���ο�ʿ�� (��) ���ޤޤ�ޤ���)
+その時点で選択されている出力チャネルの、その時点での
+ページ長 (印字可能行数)。デフォルトは 60 です。
+フォーマットで用いられます。
+(記憶法: = には複数の水平線 (行) が含まれます。)
 
 =item format_lines_left HANDLE EXPR
 
@@ -897,9 +897,9 @@ Used with formats.
 
 =end original
 
-���λ��������򤵤�Ƥ�����ϥ���ͥ�Ρ��ڡ����˻ĤäƤ���Կ���
-�ե����ޥåȤ��Ѥ����ޤ���
-(����ˡ: "�ڡ����Կ�" - "�����Ѥ߹Կ�")
+その時点で選択されている出力チャネルの、ページに残っている行数。
+フォーマットで用いられます。
+(記憶法: "ページ行数" - "印字済み行数")
 
 =item @LAST_MATCH_START
 
@@ -913,9 +913,9 @@ I<n>-th subpattern, or undef if the subpattern did not match.
 
 =end original
 
-$-[0] �ϺǸ�����������ޥå�����Ƭ�Υ��ե��åȤǤ���
-C<$-[>I<n>C<]> �� I<n> ���ܤΥ��֥ѥ�����˥ޥå�������ʬʸ�����
-��Ƭ�Υ��ե��åȤǤ������֥ѥ����󤬥ޥå����ʤ��ä����� undef �Ǥ���
+$-[0] は最後に成功したマッチの先頭のオフセットです。
+C<$-[>I<n>C<]> は I<n> 番目のサブパターンにマッチした部分文字列の
+先頭のオフセットです。サブパターンがマッチしなかった場合は undef です。
 
 =begin original
 
@@ -929,14 +929,14 @@ with C<@+>.
 
 =end original
 
-���ä� $_ �Υޥå��θ塢$& �� C<substr $_, $-[0], $+[0] - $-[0]> ��
-���פ��ޤ���Ʊ�ͤˡ�C<$>I<n> �ϡ�C<$-[>I<n>C<]> ���������Ƥ����
-C<substr $_, $-[>I<n>C<], $+[>I<n>C<] - $-[>I<n>C<]> �Ȱ��פ���
-$+ �� C<substr $_, $-[$#-], $+[$#-]> �Ȱ��פ��ޤ���
-C<$#-> ��ľ�������������ޥå��ǺǸ�Υޥå��������֥��롼�פ�
-õ���Τ˻Ȥ��ޤ���
-����ɽ���ǤΥ��֥��롼�פο��Ǥ��� C<$#+> ���о�Ū�Ǥ���
-C<@+> ����Ӥ��Ƥ���������
+従って $_ のマッチの後、$& は C<substr $_, $-[0], $+[0] - $-[0]> と
+一致します。同様に、C<$>I<n> は、C<$-[>I<n>C<]> が定義されていれば
+C<substr $_, $-[>I<n>C<], $+[>I<n>C<] - $-[>I<n>C<]> と一致し、
+$+ は C<substr $_, $-[$#-], $+[$#-]> と一致します。
+C<$#-> は直前に成功したマッチで最後のマッチしたサブグループを
+探すのに使えます。
+正規表現でのサブグループの数である C<$#+> と対照的です。
+C<@+> と比較してください。
 
 =begin original
 
@@ -951,15 +951,15 @@ last successful match.  Compare with the C<@+> variable.
 
 =end original
 
-��������ϸ��ߥ����ƥ��֤�ưŪ����������ǺǸ����������
-���֥ޥå�����Ƭ���֤Υ��ե��åȤ��ݻ����ޤ���
-C<$-[0]> �ϥޥå����Τ���Ƭ��ʸ����ؤΥ��ե��åȤǤ���
-��������� I<n> ���ܤ����Ǥ� I<n> ���ܤΥ��֥ޥå��ؤ�
-���ե��åȤ��ݻ����ޤ��Τǡ�C<$+[1]> �� $1 ����Ƭ�ؤ�
-���ե��åȡ�C<$+[2]> �� $2 ����Ƭ�ؤΥ��ե��åȡ��ʤɤȤʤ�ޤ���
-C<$#-> �򡢺Ǹ�����������ޥå��Ǥ����ĤΥ��֥��롼�פ�����Τ���
-���ꤹ��Τ˻Ȥ��ޤ���
-C<@+> �ѿ�����Ӥ��Ƥ���������
+この配列は現在アクティブな動的スコープ内で最後に成功した
+サブマッチの先頭位置のオフセットを保持します。
+C<$-[0]> はマッチ全体の先頭の文字列へのオフセットです。
+この配列の I<n> 番目の要素は I<n> 番目のサブマッチへの
+オフセットを保持しますので、C<$+[1]> は $1 の先頭への
+オフセット、C<$+[2]> は $2 の先頭へのオフセット、などとなります。
+C<$#-> を、最後に成功したマッチでいくつのサブグループがあるのかを
+決定するのに使えます。
+C<@+> 変数と比較してください。
 
 =begin original
 
@@ -967,7 +967,7 @@ After a match against some variable $var:
 
 =end original
 
-�����ѿ� $var �ǥޥå������塢�ʲ��Τ褦�ˤʤ�ޤ���
+ある変数 $var でマッチした後、以下のようになります。
 
 =over 5
 
@@ -987,17 +987,17 @@ After a match against some variable $var:
 
 =end original
 
-=item C<$`> �� C<substr($var, 0, $-[0])> ��Ʊ���Ǥ���
+=item C<$`> は C<substr($var, 0, $-[0])> と同じです。
 
-=item C<$&> �� C<substr($var, $-[0], $+[0] - $-[0])> ��Ʊ���Ǥ���
+=item C<$&> は C<substr($var, $-[0], $+[0] - $-[0])> と同じです。
 
-=item C<$'> �� C<substr($var, $+[0])> ��Ʊ���Ǥ���
+=item C<$'> は C<substr($var, $+[0])> と同じです。
 
-=item C<$1> �� C<substr($var, $-[1], $+[1] - $-[1])> ��Ʊ���Ǥ���
+=item C<$1> は C<substr($var, $-[1], $+[1] - $-[1])> と同じです。
 
-=item C<$2> �� C<substr($var, $-[2], $+[2] - $-[2])> ��Ʊ���Ǥ���
+=item C<$2> は C<substr($var, $-[2], $+[2] - $-[2])> と同じです。
 
-=item C<$3> �� C<substr $var, $-[3], $+[3] - $-[3])> ��Ʊ���Ǥ���
+=item C<$3> は C<substr $var, $-[3], $+[3] - $-[3])> と同じです。
 
 =back
 
@@ -1015,9 +1015,9 @@ C<$^>.)
 
 =end original
 
-���λ��������򤵤�Ƥ�����ϥ���ͥ�Ρ����λ����ǤΥե����ޥå�̾��
-�ǥե���ȤǤϡ��ե�����ϥ�ɥ��Ʊ̾�Ǥ���
-(����ˡ: C<$^> �η��)
+その時点で選択されている出力チャネルの、その時点でのフォーマット名。
+デフォルトでは、ファイルハンドルと同名です。
+(記憶法: C<$^> の兄弟。)
 
 =item format_top_name HANDLE EXPR
 
@@ -1033,10 +1033,10 @@ appended.  (Mnemonic: points to top of page.)
 
 =end original
 
-���λ��������򤵤�Ƥ�����ϥ���ͥ�Ρ����λ����Ǥ�
-�ڡ�����Ƭ�ե����ޥå�̾��
-�ǥե���ȤǤϡ��ե�����ϥ�ɥ�̾�� _TOP ��³������Ρ�
-(����ˡ: �ڡ�������Ƭ�ؤΥݥ��󥿡�)
+その時点で選択されている出力チャネルの、その時点での
+ページ先頭フォーマット名。
+デフォルトでは、ファイルハンドル名に _TOP を続けたもの。
+(記憶法: ページの先頭へのポインタ。)
 
 =item format_line_break_characters HANDLE EXPR
 
@@ -1053,10 +1053,10 @@ poetry is a part of a line.)
 
 =end original
 
-�ե����ޥåȤν�Ŷ��³�ե������ (^ �ǻϤޤ���) �ؤ�
-ʸ����ǹ�ʬ������ʸ�����硣
-�ǥե���Ȥ� S<" \n-"> �Ƕ��򤫲��Ԥθ�ǹ�ʬ�䤬��ǽ�ȤʤäƤ��ޤ���
-(����ˡ: ���Ǥϡ֥�����פϡ��Ԥΰ�����)
+フォーマットの充填継続フィールド (^ で始まるもの) への
+文字列で行分割を許す文字集合。
+デフォルトは S<" \n-"> で空白か改行の後で行分割が可能となっています。
+(記憶法: 詩では「コロン」は、行の一部。)
 
 =item format_formfeed HANDLE EXPR
 
@@ -1070,8 +1070,8 @@ What formats output as a form feed.  Default is \f.
 
 =end original
 
-�ե����ޥåȽ��Ϥǡ����ڡ����Τ���˽��Ϥ�����Ρ�
-�ǥե���Ȥ� \f��
+フォーマット出力で、改ページのために出力されるもの。
+デフォルトは \f。
 
 =item $ACCUMULATOR
 
@@ -1088,13 +1088,13 @@ L<perlfunc/formline()>.
 
 =end original
 
-format() �ԤΤ���Ρ����λ����Ǥ� write() �������졼�����͡�
-format �ˤϡ�C<$^A> �˷�̤�Ĥ���formline() �ƤӽФ����ޤޤ�ޤ���
-��ʬ�Υե����ޥåȤ�ƤӽФ�����ǡ�
-write() �� C<$^A> �����Ƥ���Ϥ��Ƥ���õ�ޤ���
-�������äơ���ʬ�� formline() ��ƤӽФ��ΤǤʤ���С�
-C<$^A> ���ͤ������뤳�ȤϤ���ޤ���
-L<perlform> �� L<perlfunc/formline()> �򻲾Ȥ��Ƥ���������
+format() 行のための、その時点での write() アキュムレータの値。
+format には、C<$^A> に結果を残す、formline() 呼び出しが含まれます。
+自分のフォーマットを呼び出した後で、
+write() は C<$^A> の内容を出力してから消去します。
+したがって、自分で formline() を呼び出すのでなければ、
+C<$^A> の値が見えることはありません。
+L<perlform> と L<perlfunc/formline()> を参照してください。
 
 =item $CHILD_ERROR
 
@@ -1113,14 +1113,14 @@ similar to B<sh> and B<ksh>.)
 
 =end original
 
-�Ǹ�� close �����ѥ��ס��Хå��������� (C<``>) ���ޥ�ɡ�
-�������� wait() �ޤ��� waitpid() �ƤӽФ���system() �黻�Ҥ��֤������ơ�������
-���Υ��ơ�������ɤ� wait() �����ƥॳ���뤬�֤���
-16 �ӥåȤΥ��ơ�����(�ޤ��Ϥ��Τ褦�˸�������)�Ǥ���
-���äƥ��֥ץ������� exit �ͤϡ��ºݤˤ� (C<<< $? >> 8 >>>)
-�ǡ�C<$? & 127> �ϡ��⤷����С����Υץ�������ߤ᤿�����ʥ�ǡ�
-C<$? & 128> �ϥ�������פ����뤫�ɤ����򼨤��ޤ���
-(����ˡ: B<sh> �� B<ksh> ��Ʊ�͡�)
+最後に close したパイプ、バッククォート (C<``>) コマンド、
+成功した wait() または waitpid() 呼び出し、system() 演算子が返したステータス。
+このステータスワードは wait() システムコールが返した
+16 ビットのステータス(またはそのように見えるもの)です。
+従ってサブプロセスの exit 値は、実際には (C<<< $? >> 8 >>>)
+で、C<$? & 127> は、もしあれば、そのプロセスを止めたシグナルで、
+C<$? & 128> はコアダンプがあるかどうかを示します。
+(記憶法: B<sh> や B<ksh> と同様。)
 
 =begin original
 
@@ -1129,8 +1129,8 @@ is returned via $? if any C<gethost*()> function fails.
 
 =end original
 
-����ˡ�C �� C<h_errno> �ѿ����б����Ƥ�����ϡ�
-C<gethost*()> �����Ԥ����Ȥ��� $? ���̤����֤���ޤ���
+さらに、C で C<h_errno> 変数に対応している場合は、
+C<gethost*()> が失敗したときに $? を通して返されます。
 
 =begin original
 
@@ -1139,8 +1139,8 @@ value of C<$?> will usually be wrong outside that handler.
 
 =end original
 
-C<SIGCHLD> �Υ����ʥ�ϥ�ɥ�����ꤷ����硢
-C<$?> ���ͤ��̾�ϥ�ɥ�γ�¦�Ǥ��������ʤ��ͤȤʤ�ޤ���
+C<SIGCHLD> のシグナルハンドラを設定した場合、
+C<$?> の値は通常ハンドラの外側では正しくない値となります。
 
 =begin original
 
@@ -1150,11 +1150,11 @@ change the exit status of your program.  For example:
 
 =end original
 
-C<END> ���֥롼�������¦�Ǥ� C<$?> �ˤ� C<exit()> ���Ϥ���褦�Ȥ��Ƥ���
-�ͤ�ޤߤޤ���
-�ץ������ν�λ���ơ��������ѹ����뤿��ˡ�C<END> ���֥롼���� ���
-C<$?> ���ѹ��Ǥ��ޤ���
-�㤨��:
+C<END> サブルーチンの内側では C<$?> には C<exit()> に渡されようとしている
+値を含みます。
+プログラムの終了ステータスを変更するために、C<END> サブルーチン 内で
+C<$?> を変更できます。
+例えば:
 
     END {
 	$? = 1 if $? == 255;  # die would make it 255
@@ -1168,9 +1168,9 @@ status.
 
 =end original
 
-VMS �Ǥϡ�C<use vmsish 'status'> ����ꤹ��ȡ�
-C<$?> ��POSIX ���ơ������򥨥ߥ�졼�Ȥ�����ΤǤϤʤ���
-�ºݤ� VMS ��λ���ơ�������ȿ�Ǥ��ޤ���
+VMS では、C<use vmsish 'status'> を指定すると、
+C<$?> はPOSIX ステータスをエミュレートしたものではなく、
+実際の VMS 終了ステータスを反映します。
 
 =begin original
 
@@ -1178,7 +1178,7 @@ Also see L<Error Indicators>.
 
 =end original
 
-L<Error Indicators> �⻲�Ȥ��Ʋ�������
+L<Error Indicators> も参照して下さい。
 
 =item $OS_ERROR
 
@@ -1200,15 +1200,15 @@ went bang?)
 
 =end original
 
-���ͤȤ��ƻȤ���ȡ����λ����� C �� C<errno> �ѿ����ͤ�
-(�̾�����ջ���ȶ���) �����ޤ���
-(����ϡ������ƥ२�顼�򼨤�����Υ��顼������줿���Ǥ�ʤ���С�
-C<$!> ���ͤ����ä˲����򼨤���ΤǤ���ȡ���äƤϤʤ�ʤ��Ȥ������ȤǤ���)
-ʸ����Ȥ��ƻȤ���ȡ��б����륷���ƥ२�顼�Υ�å�����ʸ���������ޤ���
-���Ȥ��С�C<$!> �˥��顼��ʸ������֤����ߤ����ʤ�С����뤤�ϡ�
-die() �黻�Ҥ� exit �ͤ����ꤹ�뤿��ˡ�I<errno> �����ꤹ�뤿�� 
-C<$!> ��������Ԥʤ����Ȥ���ǽ�Ǥ���
-(����ˡ: ���� bang(!) ��������)
+数値として使われると、その時点の C の C<errno> 変数の値が
+(通常の注意事項と共に) 得られます。
+(これは、システムエラーを示す特定のエラーが得られた場合でもなければ、
+C<$!> の値が、特に何かを示すものであると、頼ってはならないということです。)
+文字列として使われると、対応するシステムエラーのメッセージ文字列が得られます。
+たとえば、C<$!> にエラーの文字列を返して欲しいならば、あるいは、
+die() 演算子の exit 値を設定するために、I<errno> を設定するため 
+C<$!> へ代入を行なうことが可能です。
+(記憶法: 何が bang(!) したか。)
 
 =begin original
 
@@ -1216,7 +1216,7 @@ Also see L<Error Indicators>.
 
 =end original
 
-L<Error Indicators> �⻲�Ȥ��Ʋ�������
+L<Error Indicators> も参照して下さい。
 
 =item $EXTENDED_OS_ERROR
 
@@ -1231,10 +1231,10 @@ the same as C<$!>.
 
 =end original
 
-���ߤΥ��ڥ졼�ƥ��󥰥����ƥ���ò��������顼����Ǥ���
-���ߤΤȤ�����VMS, OS/2, Win32 (�� MacPerl) �Τߤ�
-C<$!> �Ȱۤʤ��ͤ����ޤ���
-����¾�Υץ�åȥե�����Ǥϡ�C<$^E> �Ϥ��Ĥ� C<$!> ��Ʊ���Ǥ���
+現在のオペレーティングシステムに特化したエラー情報です。
+現在のところ、VMS, OS/2, Win32 (と MacPerl) のみで
+C<$!> と異なる値をもちます。
+その他のプラットフォームでは、C<$^E> はいつも C<$!> と同じです。
 
 =begin original
 
@@ -1245,10 +1245,10 @@ important when C<$!> is set to B<EVMSERR>.
 
 =end original
 
-VMS �Ǥϡ�C<$^E> �ϺǸ�Υ����ƥ२�顼�� VMS ���ơ������ͤǤ���
-����ϡ��Ǹ�Υ����ƥ२�顼�ˤĤ��� C<$!> ���󶡤�����Τ��
-����Ū�ʾ���򼨤��ޤ���
-������ä� C<$!> �� B<EVMSERR> �˥��åȤ��줿���˽��פǤ���
+VMS では、C<$^E> は最後のシステムエラーの VMS ステータス値です。
+これは、最後のシステムエラーについて C<$!> で提供されるものより
+具体的な情報を示します。
+これは特に C<$!> が B<EVMSERR> にセットされた場合に重要です。
 
 =begin original
 
@@ -1257,8 +1257,8 @@ OS/2 API either via CRT, or directly from perl.
 
 =end original
 
-OS/2 �Ǥϡ�C<$^E> �� CRT ��ͳ���ޤ��� Perl ����ľ�ܸƤӽФ��줿
-�Ǹ�� OS/2 API �Υ��顼�����ɤ����åȤ���ޤ���
+OS/2 では、C<$^E> は CRT 経由、または Perl から直接呼び出された
+最後の OS/2 API のエラーコードがセットされます。
 
 =begin original
 
@@ -1271,13 +1271,13 @@ via C<$!>.
 
 =end original
 
-Win32 �Ǥϡ�C<$^E> �� Win32 API �ǤκǸ�Υ��顼�����Ƥ��֤�
-C<GetLastError()> Win32 �ƤӽФ�����𤵤��ǿ��Υ��顼�����
-�֤��ޤ���
-�ۤȤ�ɤ� Win32 ��ͭ�Υ����ɤϥ��顼�� C<$^E> ��ͳ���֤��ޤ���
-ANSI C �� Unix ���θƤӽФ��� C<errno> �򥻥åȤ���Τǡ�
-�ۤȤ�ɤΰܿ����Τ��� Perl �����ɤ� C<$!> ��ͳ��
-���顼����𤷤ޤ���
+Win32 では、C<$^E> は Win32 API での最後のエラーの内容を返す
+C<GetLastError()> Win32 呼び出しで報告される最新のエラー情報を
+返します。
+ほとんどの Win32 固有のコードはエラーを C<$^E> 経由で返します。
+ANSI C と Unix 風の呼び出しは C<errno> をセットするので、
+ほとんどの移植性のある Perl コードは C<$!> 経由で
+エラーを報告します。
 
 =begin original
 
@@ -1286,8 +1286,8 @@ C<$^E>, also.  (Mnemonic: Extra error explanation.)
 
 =end original
 
-C<$!> �������ǿ��줿�������ϰ���Ū�� C<$^E> �ˤ�Ŭ�Ѥ���ޤ���
-(����ˡ: �ɲä�(Extra)���顼��������)
+C<$!> の説明で触れた問題点は一般的に C<$^E> にも適用されます。
+(記憶法: 追加の(Extra)エラーの説明。)
 
 =begin original
 
@@ -1295,7 +1295,7 @@ Also see L<Error Indicators>.
 
 =end original
 
-L<Error Indicators> �⻲�Ȥ��Ʋ�������
+L<Error Indicators> も参照して下さい。
 
 =item $EVAL_ERROR
 
@@ -1310,11 +1310,11 @@ the syntax error "at"?)
 
 =end original
 
-�Ǹ�� eval() ���Ҥˤ�� Perl �ι�ʸ���顼��å������Ǥ���
-��ʸ����Ǥ���С��Ǹ�� eval() �������
-���Ϥ��졢�¹Ԥ��줿���Ȥˤʤ�ޤ� (�����¹Ԥ����黻�Ҥ���
-�̾�ΰ�̣�Ǽ��Ԥ��Ƥ��뤫�⤷��ޤ���)��
-(����ˡ: �ɤ��� ("at" where) ��ʸ���顼�����ä�����)
+最後の eval() 操作子による Perl の構文エラーメッセージです。
+空文字列であれば、最後の eval() が正常に
+解析され、実行されたことになります (が、実行した演算子が、
+通常の意味で失敗しているかもしれません)。
+(記憶法: どこで ("at" where) 構文エラーが起ったか。)
 
 =begin original
 
@@ -1324,9 +1324,9 @@ as described below.
 
 =end original
 
-�ٹ��å������Ϥ����ѿ�������ޤ���
-����������Ҥ��� C<$SIG{__WARN__}> �˥��åȤ��뤳�Ȥ�
-�ٹ���������롼���������Ǥ��ޤ���
+警告メッセージはこの変数に入りません。
+しかし、後述する C<$SIG{__WARN__}> にセットすることで
+警告を処理するルーチンを設定できます。
 
 =begin original
 
@@ -1334,7 +1334,7 @@ Also see L<Error Indicators>.
 
 =end original
 
-L<Error Indicators> �⻲�Ȥ��Ʋ�������
+L<Error Indicators> も参照して下さい。
 
 =item $PROCESS_ID
 
@@ -1350,10 +1350,10 @@ across fork() calls.  (Mnemonic: same as shells.)
 
 =end original
 
-������ץȤ�¹Ԥ��Ƥ��� Perl �Υץ������ֹ�Ǥ���
-�����ѿ��� read-only �ȹͤ���٤��Ǥ�����
-fork() �ƤӽФ��ˤ�ä��ͤ��Ѥ��ޤ���
-(����ˡ: �������Ʊ����)
+スクリプトを実行している Perl のプロセス番号です。
+この変数は read-only と考えるべきですが、
+fork() 呼び出しによって値は変わります。
+(記憶法: シェルと同じ。)
 
 =item $REAL_USER_ID
 
@@ -1368,8 +1368,8 @@ if you're running setuid.)
 
 =end original
 
-�ܥץ������μ� uid �򼨤��ޤ���
-(����ˡ: setuid �Ǽ¹���Ǥ���С������֤�����褿 uid �Ǥ���)
+本プロセスの実 uid を示します。
+(記憶法: setuid で実行中であれば、そこ「から」来た uid です。)
 
 =item $EFFECTIVE_USER_ID
 
@@ -1383,8 +1383,8 @@ The effective uid of this process.  Example:
 
 =end original
 
-�ܥץ������μ¸� uid �򼨤��ޤ���
-��:
+本プロセスの実効 uid を示します。
+例:
 
     $< = $>;		# set real to effective uid
     ($<,$>) = ($>,$<);	# swap real and effective uid
@@ -1397,9 +1397,9 @@ supporting setreuid().
 
 =end original
 
-(����ˡ: setuid �Ǽ¹���Ǥ���С������֤ء׹Ԥ� uid�Ǥ���)
-C<< $< >> �� C<< $> >> �θ򴹤ϡ�setreuid() �򥵥ݡ��Ȥ��Ƥ���
-�ޥ���ǤΤ߲�ǽ�Ǥ���
+(記憶法: setuid で実行中であれば、そこ「へ」行く uidです。)
+C<< $< >> と C<< $> >> の交換は、setreuid() をサポートしている
+マシンでのみ可能です。
 
 =item $REAL_GROUP_ID
 
@@ -1417,12 +1417,12 @@ the same as the first number.
 
 =end original
 
-�ܥץ������μ� gid �򼨤��ޤ�����Ʊ����ʣ���Υ��롼�פ�
-��°�Ǥ���ޥ���Ǥϡ���°���륰�롼�פ򥹥ڡ�����
-���ڤä��ꥹ�Ȥ������ޤ���
-�ǽ�ο��ͤϡ�getgid() ���֤�����ΤǤ���
-���θ�� getgroups() ���֤��ͤ�³����������� 1 �Ĥϡ�
-�ǽ���ͤ�Ʊ�����⤷��ޤ���
+本プロセスの実 gid を示します。　同時に複数のグループに
+所属できるマシンでは、所属するグループをスペースで
+区切ったリストが得られます。
+最初の数値は、getgid() で返されるものです。
+その後に getgroups() が返す値が続き、その中の 1 つは、
+最初の値と同じかもしれません。
 
 =begin original
 
@@ -1432,10 +1432,10 @@ back to C<$(> without being forced numeric, such as by adding zero.
 
 =end original
 
-��������C<$(> ���������줿�ͤϼºݤ� gid �����ꤵ�줿�ͤ�
-��ĤǤʤ���Фʤ�ޤ���
-���äơ� C<$(> ��Ϳ����줿�ͤϥ�����­�����Ȥˤ�ä�
-���Ͳ����뤳�Ȥʤ� C<$(> �˽��᤹�٤��ǤϤ���ޤ���
+しかし、C<$(> に代入された値は実際の gid に設定された値の
+一つでなければなりません。
+従って、 C<$(> で与えられた値はゼロを足すことによって
+数値化することなく C<$(> に書き戻すべきではありません。
 
 =begin original
 
@@ -1444,9 +1444,9 @@ group you I<left>, if you're running setgid.)
 
 =end original
 
-(����ˡ: ��̤ϡ�I<���롼�ײ�>�˻Ȥ��ޤ���
-setgid �Ǽ¹���Ǥ���С��� gid �� I<left> ������
-�Ĥޤ�Υ�줿���롼�פǤ���)
+(記憶法: 括弧は、I<グループ化>に使われます。
+setgid で実行中であれば、実 gid は I<left> した、
+つまり離れたグループです。)
 
 =item $EFFECTIVE_GROUP_ID
 
@@ -1464,12 +1464,12 @@ which may be the same as the first number.
 
 =end original
 
-�ܥץ������μ¸� gid �򼨤��ޤ���
-Ʊ����ʣ���Υ��롼�פ˽�°�Ǥ���ޥ���Ǥϡ�
-��°���륰�롼�פ򥹥ڡ����Ƕ��ڤä��ꥹ�Ȥ������ޤ���
-�ǽ�ο��ͤϡ�getegid() ���֤�����ΤǤ���
-���θ�� getgroups()���֤��ͤ�³����������� 1 �Ĥϡ�
-�ǽ���ͤ�Ʊ�����⤷��ޤ���
+本プロセスの実効 gid を示します。
+同時に複数のグループに所属できるマシンでは、
+所属するグループをスペースで区切ったリストが得られます。
+最初の数値は、getegid() で返されるものです。
+その後に getgroups()が返す値が続き、その中の 1 つは、
+最初の値と同じかもしれません。
 
 =begin original
 
@@ -1482,14 +1482,14 @@ list, say C< $) = "5 5" >.
 
 =end original
 
-Ʊ�ͤˡ�C<$)> �����������ͤϥ��ڡ����Ƕ��ڤ�줿���ͤ�
-�ꥹ�ȤǤʤ���Фʤ�ޤ���
-�ǽ�ο��ͤϼ¸� gid �����ꤷ���Ĥ�ο��ͤ�(�⤷�����) setgroups() ��
-�Ϥ���ޤ���
-setgroups() �˶��ꥹ�Ȥ��Ϥ��������ϡ�ñ�˿������¸� gid ��
-�����֤��Ƥ���������
-�Ĥޤꡢ�¸� gid �� 5 �ˤ��ơ�setgroups() �˶��ꥹ�Ȥ��Ϥ��������ϡ�
-C< $) = "5 5" > �Ȥ��Ƥ���������
+同様に、C<$)> へ代入する値はスペースで区切られた数値の
+リストでなければなりません。
+最初の数値は実効 gid を設定し、残りの数値は(もしあれば) setgroups() に
+渡されます。
+setgroups() に空リストを渡したい場合は、単に新しい実効 gid を
+繰り返してください。
+つまり、実効 gid を 5 にして、setgroups() に空リストを渡したい場合は、
+C< $) = "5 5" > としてください。
 
 =begin original
 
@@ -1498,8 +1498,8 @@ is the group that's I<right> for you, if you're running setgid.)
 
 =end original
 
-(����ˡ: ��̤ϡ�I<���롼�ײ�>�˻Ȥ��ޤ���
-setgid �Ǽ¹���Ǥ���С��¸� gid �� right �ʡ��Ĥޤ����������롼�פǤ���)
+(記憶法: 括弧は、I<グループ化>に使われます。
+setgid で実行中であれば、実効 gid は right な、つまり正しいグループです。)
 
 =begin original
 
@@ -1509,11 +1509,11 @@ and C<$)> can be swapped only on machines supporting setregid().
 
 =end original
 
-C<< $< >>, C<< $> >>, C<$(>, C<$)> �ϡ��¹Ԥ���ޥ���ǡ�
-�б����� I<set[re][ug]id()> �롼�ƥ��󤬥��ݡ��Ȥ���Ƥ���Ȥ��ˤΤ�
-�����ǽ�Ǥ���
-C<$(> �� C<$)> �θ򴹤ϡ�
-setregid() �����ݡ��Ȥ���Ƥ���ޥ���ǤΤ߲�ǽ�Ǥ���
+C<< $< >>, C<< $> >>, C<$(>, C<$)> は、実行するマシンで、
+対応する I<set[re][ug]id()> ルーティンがサポートされているときにのみ
+設定可能です。
+C<$(> と C<$)> の交換は、
+setregid() がサポートされているマシンでのみ可能です。
 
 =item $PROGRAM_NAME
 
@@ -1529,12 +1529,12 @@ program state than it is for hiding the program you're running.
 
 =end original
 
-�¹Ԥ���Ƥ���ץ�������̾���򼨤��ޤ���
-C<$0> ��������Ԥʤ����Ȥ� B<ps>) �ץ�����ब������
-�������ꥢ�����Ǥ��륷���ƥ�⤢��ޤ���
-�¹Ԥ��Ƥ���ץ������򱣤����ϡ�
-�¹���Υץ������ξ��֤�ɽ������Ȥ��ˡ��Ȥ��Ȥ褤�Ǥ��礦��
-(����ˡ: B<sh> �� B<ksh> ��Ʊ����)
+実行されているプログラムの名前を示します。
+C<$0> に代入を行なうことで B<ps>) プログラムが覗く、
+引数エリアを修正できるシステムもあります。
+実行しているプログラムを隠すよりは、
+実行中のプログラムの状態を表示するときに、使うとよいでしょう。
+(記憶法: B<sh> や B<ksh> と同じ。)
 
 =begin original
 
@@ -1545,10 +1545,10 @@ feature.
 
 =end original
 
-BSD �桼�����ؤ�����: C<$0> ���ͤ򥻥åȤ��Ƥ⡢ps(1) �ν��Ϥ���
-������ "perl" ��ʸ����ϼ�������ޤ���
-�㤨�С�C<$0> �� C<"foobar"> �����ꤹ��ȡ�C<"perl: foobar (perl)"> �Ȥ���
-��̤ˤʤ�ޤ�������ϥ��ڥ졼�ƥ��󥰥����ƥ�ε�ǽ�Ǥ���
+BSD ユーザーへの注意: C<$0> に値をセットしても、ps(1) の出力から
+完全に "perl" の文字列は取り除かれません。
+例えば、C<$0> に C<"foobar"> と設定すると、C<"perl: foobar (perl)"> という
+結果になります。これはオペレーティングシステムの機能です。
 
 =item $[
 
@@ -1562,12 +1562,12 @@ subscripting and when evaluating the index() and substr() functions.
 
 =end original
 
-����κǽ�����Ǥ䡢ʸ����κǽ��ʸ���Υ���ǥå�����
-�����ޤ���
-�ǥե���Ȥ� 0 �Ǥ���������Ū�ˤϡ�index() �ؿ���
-substr() �ؿ���ɾ������Ȥ��ˡ�Perl ��ư����� B<awk>
-(�� Fortran) �˶�Ť��뤿�ᡢ1 �����ꤹ�뤳�Ȥ�Ǥ��ޤ���
-(����ˡ: [ ��ź�����դ��λϤᡣ)
+配列の最初の要素や、文字列の最初の文字のインデックスを
+示します。
+デフォルトは 0 ですが、理論的には、index() 関数や
+substr() 関数を評価するときに、Perl の動作をより B<awk>
+(や Fortran) に近づけるため、1 に設定することもできます。
+(記憶法: [ は添え字付けの始め。)
 
 =begin original
 
@@ -1577,9 +1577,9 @@ Its use is highly discouraged.
 
 =end original
 
-Perl 5 ����� C<$[> �ؤ������ϡ�����ѥ���ؤΥǥ��쥯�ƥ��֤Ȥ��ư���졢
-¾�Υե������ư��˱ƶ���Ϳ���뤳�Ȥ��ʤ��ʤ�ޤ�����
-�����ѿ��ϤǤ�������Ȥ�ʤ��褦�ˤ��Ƥ���������
+Perl 5 からは C<$[> への代入は、コンパイラへのディレクティブとして扱われ、
+他のファイルの動作に影響を与えることがなくなりました。
+この変数はできるだけ使わないようにしてください。
 
 =item $]
 
@@ -1592,11 +1592,11 @@ of perl in the right bracket?)  Example:
 
 =end original
 
-Perl ���󥿥ץ꥿�� version + patchlevel / 1000 ���֤���ޤ���
-������ץȤκǽ�ǡ����Υ�����ץȤ�¹Ԥ��Ƥ��륤�󥿥ץ꥿�ΥС������
-Ŭ�ڤ��ϰ���ˤ��뤫��Ĵ�٤롢�Ȥ��ä����Ȥ��Ǥ��ޤ���
-(����ˡ: Perl �ΥС������ϡ��������ϰ� (right
-bracket) �ˤ��뤫��)����:
+Perl インタプリタの version + patchlevel / 1000 が返されます。
+スクリプトの最初で、そのスクリプトを実行しているインタプリタのバージョンが
+適切な範囲内にあるかを調べる、といったことができます。
+(記憶法: Perl のバージョンは、正しい範囲 (right
+bracket) にあるか。)　例:
 
     warn "No checksumming!\n" if $] < 3.019;
 
@@ -1607,9 +1607,9 @@ for a convenient way to fail if the running Perl interpreter is too old.
 
 =end original
 
-�¹Ԥ��� Perl ���󥿥ץ꥿���Ť�������˽�λ������������ˡ��
-�Ĥ��Ƥ� C<use VERSION> �� C<require VERSION> �Υɥ�����Ȥ�
-���Ȥ��Ʋ�������
+実行する Perl インタプリタが古すぎる場合に終了する便利な方法に
+ついては C<use VERSION> と C<require VERSION> のドキュメントも
+参照して下さい。
 
 =begin original
 
@@ -1620,10 +1620,10 @@ comparisons.
 
 =end original
 
-�����ѿ��ϻȤ�ʤ��褦�ˤ��Ƥ���������
-��ư������ɽ���Ͽ�����Ӥ������Τ����뤳�Ȥ�����ޤ���
-ʸ������Ӥ��Ȥ��뿷���� Perl �С�������ɽ����ˡ�Ǥ��� C<$^V> ��
-���Ȥ��Ʋ�������
+この変数は使わないようにしてください。
+浮動小数点表現は数値比較が不正確に成ることがあります。
+文字列比較が使える新しい Perl バージョンの表現方法である C<$^V> を
+参照して下さい。
 
 =item $COMPILING
 
@@ -1639,11 +1639,11 @@ C<$^C = 1> is similar to calling C<B::minus_c>.
 
 =end original
 
-B<-c> �����å��˴�Ϣ�դ���줿���ߤ��ͤǤ���
-��� B<-MO=...> �ȶ����Ѥ���졢�㤨�� AUTOLOAD ���̾���ٱ�����ɤǤ�
-�ʤ�����ѥ�����˼¹Ԥ���Ȥ��ä�������ѥ�����ο����񤤤�
-�Ѥ��뤿����Ѥ��ޤ���L<perlcc> �򻲾Ȥ��Ʋ�������
-C<$^C = 1> �����ꤹ�뤳�Ȥ� C<B::minus_c> ��ƤӽФ��ΤȻ��Ƥ��ޤ���
+B<-c> スイッチに関連付けられた現在の値です。
+主に B<-MO=...> と共に用いられ、例えば AUTOLOAD を通常の遅延ロードでは
+なくコンパイル時に実行するといった、コンパイル時の振る舞いを
+変えるために用います。L<perlcc> を参照して下さい。
+C<$^C = 1> に設定することは C<B::minus_c> を呼び出すのと似ています。
 
 =item $DEBUGGING
 
@@ -1656,8 +1656,8 @@ switch.)
 
 =end original
 
-�ǥХå��ե饰�θ��ߤ��ͤ򼨤��ޤ���
-(����ˡ: B<-D> �����å����͡�)
+デバッグフラグの現在の値を示します。
+(記憶法: B<-D> スイッチの値。)
 
 =item $SYSTEM_FD_MAX
 
@@ -1676,16 +1676,16 @@ time of the exec().
 
 =end original
 
-�����ƥब���Ѥ���ե����뵭�һҤκ����ͤ򼨤���
-�̾�� 2 �Ǥ���
-�����ƥ�ե����뵭�һҤϡ�exec() ���줿�ץ��������Ϥ���ޤ�����
-����ʹߤΥե����뵭�һҤ��Ϥ���ޤ���
-�ޤ���open() �μ¹���ϡ������ƥ�ե����뵭�һҤϡ�
-���Ȥ� open() �����Ԥ��Ƥ⡢��¸����ޤ���
-(�̾�Υե����뵭�һҤϡ�open() ���¹Ԥ�������˥�����������ޤ���)
-�ե����뵭�һҤ� close-on-exec �Υ��ơ������ϡ�exec() ���ǤϤʤ���
-�б�����ե����롢�ѥ��ץ����åȤ� open ���� C<$^F> ���ͤˤ�ä�
-�����ޤ���
+システムが使用するファイル記述子の最大値を示し、
+通常は 2 です。
+システムファイル記述子は、exec() されたプロセスに渡されますが、
+それ以降のファイル記述子は渡されません。
+また、open() の実行中は、システムファイル記述子は、
+たとえ open() が失敗しても、保存されます。
+(通常のファイル記述子は、open() が実行される前にクローズされます。)
+ファイル記述子の close-on-exec のステータスは、exec() 時ではなく、
+対応するファイル、パイプソケットの open 時の C<$^F> の値によって
+決められます。
 
 =item $^H
 
@@ -1696,8 +1696,8 @@ behavior, and contents are subject to change without notice.
 
 =end original
 
-�ٹ�: �����ѿ��ϸ�̩���������Ѥ˸��ꤵ��ޤ���
-���β���������ư�����ƤϹ��Τʤ��ѹ�������ǽ��������ޤ���
+警告: この変数は厳密に内部使用に限定されます。
+その可用性、挙動、内容は告知なく変更される可能性があります。
 
 =begin original
 
@@ -1707,9 +1707,9 @@ value when the interpreter started to compile the BLOCK.
 
 =end original
 
-�����ѿ��ˤ� Perl ���󥿥ץ꥿�Υ���ѥ�����Υҥ�Ȥ�����ޤ���
-BLOCK �Υ���ѥ��뽪λ���ˡ������ѿ����ͤ�
-���󥿥ץ꥿�� BLOCK �Υ���ѥ���򳫻Ϥ��������ͤ��ᤵ��ޤ���
+この変数には Perl インタプリタのコンパイル時のヒントが入ります。
+BLOCK のコンパイル終了時に、この変数の値は
+インタプリタが BLOCK のコンパイルを開始した時の値に戻されます。
 
 =begin original
 
@@ -1722,14 +1722,14 @@ executes within BEGIN blocks is free to change the value of $^H.
 
 =end original
 
-Perl ���쥭�����륹�����פ���ĥ֥��å���¤(eval ����ȡ�required ���줿
-�ե����롢���֥롼�������ȡ�loop ����ȡ�����դ��֥��å�)��
-�ѡ����򳫻Ϥ���Ȥ������ߤ� $^H ���ͤ���¸����ޤ�����
-�ͤ��ѹ�����ޤ���
-�֥��å��Υ���ѥ��뤬�����ȡ���¸���줿�ͤ��ᤵ��ޤ���
-�ͤ���¸�Ȳ����δ֤������ǡ�
-BEGIN �֥��å�����Ǽ¹Ԥ���륳���ɤϼ�ͳ��
-$^H ���ͤ��ѹ��Ǥ��ޤ���
+Perl がレキシカルスコープを持つブロック構造(eval の中身、required された
+ファイル、サブルーチンの中身、loop の中身、条件付きブロック)の
+パーズを開始するとき、現在の $^H の値は保存されますが、
+値は変更されません。
+ブロックのコンパイルが終わると、保存された値が戻されます。
+値の保存と回復の間の地点で、
+BEGIN ブロックの中で実行されるコードは自由に
+$^H の値を変更できます。
 
 =begin original
 
@@ -1738,8 +1738,8 @@ for instance, the C<use strict> pragma.
 
 =end original
 
-���ο����񤤤ϥ쥭�����륹�����פ������������ǻȤ��ޤ���
-��Ȥ��Ƥ� C<use strict> ������ޤ���
+この振る舞いはレキシカルスコープを持ち、その中で使えます。
+例としては C<use strict> があります。
 
 =begin original
 
@@ -1748,8 +1748,8 @@ different pragmatic flags.  Here's an example:
 
 =end original
 
-���Ƥ������Ǥ���٤��Ǥ���
-�ӥå���˰ۤʤ�ץ饰�ޥե饰�Ȥ��ƻȤ��ޤ����ʲ�����Ǥ�:
+内容は整数であるべきです。
+ビット毎に異なるプラグマフラグとして使われます。以下は例です:
 
     sub add_100 { $^H |= 0x100 }
 
@@ -1767,11 +1767,11 @@ the body of foo() is being compiled.
 
 =end original
 
-BEGIN �֥��å��μ¹���˵����뤳�Ȥ�ͤ��Ƥߤޤ���
-���λ����� BEGIN �֥��å��ϴ��˥���ѥ��뤵��Ƥ��ޤ�����
-foo() ����ȤϤޤ�����ѥ�����Ǥ���
-���ä� $^H �ο������ͤ� foo() ����Ȥ�����ѥ�����ˤΤ�
-���뤳�Ȥ�����ޤ���
+BEGIN ブロックの実行中に起こることを考えてみます。
+この時点で BEGIN ブロックは既にコンパイルされていますが、
+foo() の中身はまだコンパイル中です。
+従って $^H の新しい値は foo() の中身がコンパイル中にのみ
+見ることが出来ます。
 
 =begin original
 
@@ -1779,7 +1779,7 @@ Substitution of the above BEGIN block with:
 
 =end original
 
-�嵭�� BEGIN �֥��å���ʲ��Τ褦���ѹ������:
+上記の BEGIN ブロックを以下のように変更すると:
 
     BEGIN { require strict; strict->import('vars') }
 
@@ -1790,8 +1790,8 @@ version of the same lexical pragma:
 
 =end original
 
-�ɤΤ褦�� C<use strict 'vars'> ����������Ƥ��뤫���狼��ޤ���
-�ʲ���Ʊ���쥭������ץ饰�ޤξ���դ��ǤǤ�:
+どのように C<use strict 'vars'> が実装されているかがわかります。
+以下は同じレキシカルプラグマの条件付き版です:
 
     BEGIN { require strict; strict->import('vars') if $condition }
 
@@ -1804,8 +1804,8 @@ behavior, and contents are subject to change without notice.
 
 =end original
 
-�ٹ�: �����ѿ��ϸ�̩���������Ѥ˸��ꤵ��ޤ���
-���β���������ư�����ƤϹ��Τʤ��ѹ�������ǽ��������ޤ���
+警告: この変数は厳密に内部使用に限定されます。
+その可用性、挙動、内容は告知なく変更される可能性があります。
 
 =begin original
 
@@ -1814,8 +1814,8 @@ useful for implementation of lexically scoped pragmas.
 
 =end original
 
-%^H �ϥå���� $^H ��Ʊ���������פ�����ޤ���
-����ϥ쥭�����륹�����פ���ĥץ饰�ޤ��������Τ������Ǥ���
+%^H ハッシュは $^H と同じスコープを持ちます。
+これはレキシカルスコープを持つプラグマを実装するのに便利です。
 
 =item $INPLACE_EDIT
 
@@ -1828,9 +1828,9 @@ inplace editing.  (Mnemonic: value of B<-i> switch.)
 
 =end original
 
-�֤������Խ��γ�ĥ�Ҥ��ͤ򼨤��ޤ���
-�֤������Խ���ػߤ��뤿��ˤϡ�C<undef> �����ꤷ�ޤ���
-(����ˡ: B<-i> �����å����͡�)
+置き換え編集の拡張子の値を示します。
+置き換え編集を禁止するためには、C<undef> を設定します。
+(記憶法: B<-i> スイッチの値。)
 
 =item $^M
 
@@ -1844,11 +1844,11 @@ Then
 
 =end original
 
-�ǥե���ȤǤϡ�������­�ϥȥ�åפǤ��ʤ���̿Ū���顼�Ȥʤ�ޤ���
-���������⤷Ŭ�ڤ˹��ۤ���Ƥ���С�Perl �� C<$^M> ����Ȥ�
-die() ������ζ۵��ѥ���Ȥ��ƻȤ��ޤ���
-Perl �� -DPERL_EMERGENCY_SBRK �դ��ǥ���ѥ��뤵�졢
-Perl �� malloc ��Ȥ��Ȳ��ꤷ�ޤ��������ơ�
+デフォルトでは、メモリ不足はトラップできない致命的エラーとなります。
+しかし、もし適切に構築されていれば、Perl は C<$^M> の中身を
+die() した後の緊急用メモリとして使えます。
+Perl が -DPERL_EMERGENCY_SBRK 付きでコンパイルされ、
+Perl の malloc を使うと仮定します。そして、
 
     $^M = 'a' x (1 << 16);
 
@@ -1861,11 +1861,11 @@ feature, there is no L<English|English> long name for this variable.
 
 =end original
 
-�Ȥ���ȶ۵��Ѥ� 64K �ΥХåե��������Ƥޤ���
-���Υ��ץ�����ͭ���ˤ�����ˡ�ˤĤ��Ƥξ����
-Perl ���ۥѥå������˴ޤޤ�Ƥ��� F<INSTALL> �ե�����򻲾Ȥ��Ʋ�������
-���γ�ĥ��ǽ�򵤷ڤ˻Ȥ��ʤ��褦�ˤ��뤿��ˡ�
-�����ѿ��ˤ� L<English|English> ��Ĺ��̾���Ϥ���ޤ���
+とすると緊急用の 64K のバッファを割り当てます。
+このオプションを有効にする方法についての情報は
+Perl 配布パッケージに含まれている F<INSTALL> ファイルを参照して下さい。
+この拡張機能を気軽に使えないようにするために、
+この変数には L<English|English> の長い名前はありません。
 
 =item $OSNAME
 
@@ -1880,11 +1880,11 @@ B<-V> command-line switch documented in L<perlrun>.
 
 =end original
 
-���� Perl �����ۤ��줿���ڥ졼�ƥ��󥰥����ƥ��̾���Ǥ���
-���������ץ�������˷��ꤵ��ޤ���
-�����ͤ� C<$Config{'osname'}> ��Ʊ���Ǥ���
-L<Config> �ȡ�L<perlrun> �ǥɥ�����Ȳ�����Ƥ���
-B<-V> ���ޥ�ɥ饤�󥹥��å��⻲�Ȥ��Ʋ�������
+この Perl が構築されたオペレーティングシステムの名前です。
+これは設定プロセス中に決定されます。
+この値は C<$Config{'osname'}> と同じです。
+L<Config> と、L<perlrun> でドキュメント化されている
+B<-V> コマンドラインスイッチも参照して下さい。
 
 =item $PERLDB
 
@@ -1897,9 +1897,9 @@ various bits are subject to change, but currently indicate:
 
 =end original
 
-�ǥХå���ǽ�Τ���������ѿ��Ǥ���
-���줾��ΥӥåȤΰ�̣���Ѥ�뤫�⤷��ޤ��󤬡�
-���ߤΤȤ����ϰʲ����̤�Ǥ�:
+デバッグ機能のための内部変数です。
+それぞれのビットの意味は変わるかもしれませんが、
+現在のところは以下の通りです:
 
 =over 6
 
@@ -1911,7 +1911,7 @@ Debug subroutine enter/exit.
 
 =end original
 
-���֥롼����ν������ǥХå����ޤ���
+サブルーチンの出入りをデバッグします。
 
 =item 0x02
 
@@ -1921,7 +1921,7 @@ Line-by-line debugging.
 
 =end original
 
-����˥ǥХå����ޤ���
+行毎にデバッグします。
 
 =item 0x04
 
@@ -1931,7 +1931,7 @@ Switch off optimizations.
 
 =end original
 
-��Ŭ����Ԥ��ޤ���
+最適化を行いません。
 
 =item 0x08
 
@@ -1941,7 +1941,7 @@ Preserve more data for future interactive inspections.
 
 =end original
 
-���������Ū�ʸ����Τ���ˤ��¿���Υǡ�������¸���ޤ���
+将来の対話的な検査のためにより多くのデータを保存します。
 
 =item 0x10
 
@@ -1951,7 +1951,7 @@ Keep info about source lines on which a subroutine is defined.
 
 =end original
 
-���֥롼����������줿�������Ԥ˴ؤ��������ݻ����ޤ���
+サブルーチンが定義されたソース行に関する情報を保持します。
 
 =item 0x20
 
@@ -1961,7 +1961,7 @@ Start with single-step on.
 
 =end original
 
-���󥰥륹�ƥå׼¹Ԥǳ��Ϥ��ޤ���
+シングルステップ実行で開始します。
 
 =item 0x40
 
@@ -1971,7 +1971,7 @@ Use subroutine address instead of name when reporting.
 
 =end original
 
-�����˥��֥롼����̾�Ǥʤ����֥롼����Υ��ɥ쥹��Ȥ��ޤ���
+報告時にサブルーチン名でなくサブルーチンのアドレスを使います。
 
 =item 0x80
 
@@ -1981,7 +1981,7 @@ Report C<goto &subroutine> as well.
 
 =end original
 
-C<goto &subroutine> ��Ʊ�ͤ���𤷤ޤ���
+C<goto &subroutine> も同様に報告します。
 
 =item 0x100
 
@@ -1991,7 +1991,7 @@ Provide informative "file" names for evals based on the place they were compiled
 
 =end original
 
-eval ���Ф��ơ�����ѥ��뤵�줿���֤򸵤ˤ����֥ե������̾���󶡤��ޤ���
+eval に対して、コンパイルされた位置を元にした「ファイル」名を提供します。
 
 =item 0x200
 
@@ -2002,8 +2002,8 @@ were compiled.
 
 =end original
 
-̵̾���֥롼������Ф��ơ�
-����ѥ��뤵�줿���֤��ˤ�������̾���󶡤��ޤ���
+無名サブルーチンに対して、
+コンパイルされた位置を基にした参考名を提供します。
 
 =back
 
@@ -2014,8 +2014,8 @@ run-time only.  This is a new mechanism and the details may change.
 
 =end original
 
-����ѥ�����ˤΤ�ͭ���ʥӥåȤ⤢�ꡢ�¹Ի��ˤΤ�ͭ���ʥӥåȤ⤢��ޤ���
-����Ͽ������ᥫ�˥���Ǥ��ꡢ�ܺ٤��Ѥ�뤫�⤷��ޤ���
+コンパイル時にのみ有効なビットもあり、実行時にのみ有効なビットもあります。
+これは新しいメカニズムであり、詳細は変わるかもしれません。
 
 =item $LAST_REGEXP_CODE_RESULT
 
@@ -2028,8 +2028,8 @@ regular expression assertion (see L<perlre>).  May be written to.
 
 =end original
 
-�Ǹ���������� C<(?{ code })> ����ɽ���������Ȥ�ɾ���η�̤Ǥ�
-(L<perlre> �򻲾Ȥ��Ʋ�����)�������餯��äȽ�­���ޤ���
+最後に成功した C<(?{ code })> 正規表現アサートの評価の結果です
+(L<perlre> を参照して下さい)。おそらくもっと書き足します。
 
 =item $EXCEPTIONS_BEING_CAUGHT
 
@@ -2043,11 +2043,11 @@ $SIG{__WARN__} handlers).  True if inside an eval(), otherwise false.
 
 =end original
 
-���ߤΥ��󥿥ץ꥿�ξ��֤򼨤��ޤ���
-���ߤΥ⥸�塼��/eval �Υѡ�������λ���Ƥ��ʤ�����
-̤����Ǥ�(����� $SIG{__DIE__} �� $SIG{__WARN__} �Υϥ�ɥ��
-���������ޤ�)��
-eval() �������ǤϿ�������ʳ��Ǥϵ��Ȥʤ�ޤ���
+現在のインタプリタの状態を示します。
+現在のモジュール/eval のパーズが終了していない場合は
+未定義です(これは $SIG{__DIE__} と $SIG{__WARN__} のハンドラで
+起こり得ます)。
+eval() の内部では真、それ以外では偽となります。
 
 =item $BASETIME
 
@@ -2061,8 +2061,8 @@ and B<-C> filetests are based on this value.
 
 =end original
 
-�ץ�������¹Գ��Ϥ�������򡢵��� (1970ǯ�λϤ�) ������ÿ��Ǽ�������ΤǤ���
-�ե�����ƥ��� B<-M>��B<-A>��B<-C> ���֤�����ͤϡ������ͤ˴�Ť��Ƥ��ޤ���
+プログラムを実行開始した時刻を、紀元 (1970年の始め) からの秒数で示したものです。
+ファイルテスト B<-M>、B<-A>、B<-C> で返される値は、この値に基づいています。
 
 =item $PERL_VERSION
 
@@ -2078,11 +2078,11 @@ potentially be in Unicode range.
 
 =end original
 
-Perl ���󥿥ץ꥿�� revision, version, subversion ��
-���줾��ν�����ʸ������ʤ�ʸ�����ɽ�����ޤ���
-�Ĥޤ� Perl v5.6.0 �Ǥ� C<chr(5) . chr(6) . chr(0)> �Ȥʤꡢ
-C<$^V eq v5.6.0> �Ͽ����֤��ޤ���
-����ʸ�����ʸ���� Unicode ���ϰϤ����뤫�⤷��ʤ����Ȥ����դ��Ƥ���������
+Perl インタプリタの revision, version, subversion を
+それぞれの序数の文字からなる文字列で表現します。
+つまり Perl v5.6.0 では C<chr(5) . chr(6) . chr(0)> となり、
+C<$^V eq v5.6.0> は真を返します。
+この文字列の文字は Unicode の範囲に入るかもしれないことに注意してください。
 
 =begin original
 
@@ -2092,9 +2092,9 @@ Control.)  Example:
 
 =end original
 
-����ϥ�����ץȤ�¹Ԥ��Ƥ��� Perl ���󥿥ץ꥿�ΥС������
-�������ϰϤ����äƤ��뤫��Ĵ�٤�Τ˻Ȥ��ޤ���(����ˡ:
-^V ��С�����󥳥�ȥ�����˻Ȥ��ޤ���) ��:
+これはスクリプトを実行している Perl インタプリタのバージョンが
+正しい範囲に入っているかを調べるのに使えます。(記憶法:
+^V をバージョンコントロールに使います。) 例:
 
     warn "No \"our\" declarations!\n" if $^V and $^V lt v5.6.0;
 
@@ -2105,9 +2105,9 @@ for a convenient way to fail if the running Perl interpreter is too old.
 
 =end original
 
-�¹Ԥ��� Perl ���󥿥ץ꥿���Ť�������˽�λ������������ˡ��
-�Ĥ��Ƥ� C<use VERSION> �� C<require VERSION> �Υɥ�����Ȥ�
-���Ȥ��Ʋ�������
+実行する Perl インタプリタが古すぎる場合に終了する便利な方法に
+ついては C<use VERSION> と C<require VERSION> のドキュメントを
+参照して下さい。
 
 =begin original
 
@@ -2115,7 +2115,7 @@ See also C<$]> for an older representation of the Perl version.
 
 =end original
 
-Perl �С������θŤ�ɽ���ˤĤ��Ƥ� C<$]> �⻲�Ȥ��Ʋ�������
+Perl バージョンの古い表現については C<$]> も参照して下さい。
 
 =item $WARNING
 
@@ -2129,10 +2129,10 @@ related to the B<-w> switch.)  See also L<warnings>.
 
 =end original
 
-�ٹ𥹥��å����ͤǡ�B<-w> �����å����Ȥ��������Ū�˿��Ȥʤꡢ
-�����Ǥʤ�����ľ���ѹ���ǽ�Ǥ���
-(����ˡ: B<-w> �����å��˴ط����ޤ���)
-L<warnings> �⻲�Ȥ��Ʋ�������
+警告スイッチの値で、B<-w> スイッチが使われると内部的に真となり、
+そうでない場合は直接変更可能です。
+(記憶法: B<-w> スイッチに関係します。)
+L<warnings> も参照して下さい。
 
 =item ${^WARNING_BITS}
 
@@ -2143,8 +2143,8 @@ See the documentation of C<warnings> for more details.
 
 =end original
 
-C<use warnings> �ץ饰�ޤ�ͭ���ˤ��줿�����ߤηٹ�����å��ν���Ǥ���
-�ܺ٤ˤĤ��Ƥ� C<warnings> �Υɥ�����Ȥ򻲾Ȥ��Ʋ�������
+C<use warnings> プラグマで有効にされた、現在の警告チェックの集合です。
+詳細については C<warnings> のドキュメントを参照して下さい。
 
 =item ${^WIDE_SYSTEM_CALLS}
 
@@ -2156,9 +2156,9 @@ on the Windows platform.
 
 =end original
 
-Perl �ˤ�륷���ƥॳ����ǡ������ƥ�˥ͥ��ƥ��֤ʥ磻��ʸ�� API ��
-(�⤷�Ȥ���ʤ�)�Ȥ��褦�ˤ��륰�����Х�ե饰�Ǥ���
-����ϸ��� Windows �ץ�åȥե�����ǤΤ߼�������Ƥ��ޤ���
+Perl によるシステムコールで、システムにネイティブなワイド文字 API を
+(もし使えるなら)使うようにするグローバルフラグです。
+これは現在 Windows プラットフォームでのみ実装されています。
 
 =begin original
 
@@ -2166,7 +2166,7 @@ This can also be enabled from the command line using the C<-C> switch.
 
 =end original
 
-����ϥ��ޥ�ɥ饤��� C<-C> �����å���Ȥ����ȤǤ�ͭ���ˤʤ�ޤ���
+これはコマンドラインで C<-C> スイッチを使うことでも有効になります。
 
 =begin original
 
@@ -2176,10 +2176,10 @@ provides a user-settable default (e.g., C<$ENV{LC_CTYPE}>).
 
 =end original
 
-����ͤ�ŵ��Ū�ˤ� C<0> �ǡ������ Perl �С������ 5.6 �����Ȥ�
-�ߴ����Τ���Ǥ���
-�������������ƥब�桼���������ǽ�ʥǥե����(C<$ENV{LC_CTYPE}> �ʤ�)��
-�󶡤��Ƥ�����ϡ�Perl �ˤ�äƼ�ưŪ�� C<1> �˥��åȤ���뤳�Ȥ⤢��ޤ���
+初期値は典型的には C<0> で、これは Perl バージョン 5.6 以前との
+互換性のためです。
+しかし、システムがユーザー定義可能なデフォルト(C<$ENV{LC_CTYPE}> など)を
+提供している場合は、Perl によって自動的に C<1> にセットされることもあります。
 
 =begin original
 
@@ -2188,8 +2188,8 @@ lexical scope.  See L<bytes>.
 
 =end original
 
-C<bytes> �ץ饰�ޤϾ�˸��ߤΥ쥭�����륹�����פǤ�
-���Υե饰�θ��̤��񤭤��ޤ���L<bytes> �򻲾Ȥ��Ʋ�������
+C<bytes> プラグマは常に現在のレキシカルスコープでの
+このフラグの効果を上書きします。L<bytes> を参照して下さい。
 
 =item $EXECUTABLE_NAME
 
@@ -2202,8 +2202,8 @@ This may not be a full pathname, nor even necessarily in your path.
 
 =end original
 
-Perl �Х��ʥ꼫�Ȥ��¹Ԥ��줿����̾���� C �� argv[0] ������äƤ�����ΤǤ���
-�ե�ѥ��ǤϤʤ����⤷��ޤ��󤷡������ѥ��ˤʤ����⤷��ޤ���
+Perl バイナリ自身が実行された時の名前を C の argv[0] から持ってきたものです。
+フルパスではないかもしれませんし、検索パスにないかもしれません。
 
 =item $ARGV
 
@@ -2213,7 +2213,7 @@ contains the name of the current file when reading from <>.
 
 =end original
 
-<> �����ɹ��ߤ�ԤʤäƤ���Ȥ������λ����Υե�����̾�򼨤��ޤ���
+<> から読込みを行なっているとき、その時点のファイル名を示します。
 
 =item @ARGV
 
@@ -2226,10 +2226,10 @@ command name itself.  See C<$0> for the command name.
 
 =end original
 
-���� @ARGV �ϡ����ޥ�ɥ饤�󤫤饹����ץȤ��Ϥ�������������ޤ���
-C<$ARGV[0]> ��I<�ץ������Υ��ޥ��̾���ȤǤϤʤ�>��
-�ǽ�ΰ����Ǥ����顢C<$#ARGV> �ϰ��̤ˤϡ������θĿ� - 1 �Ȥʤ�ޤ���
-���ޥ��̾�ˤĤ��Ƥϡ�C<$0> �򻲾Ȥ��Ƥ���������
+配列 @ARGV は、コマンドラインからスクリプトに渡す引数が入れられます。
+C<$ARGV[0]> がI<プログラムのコマンド名自身ではなく>、
+最初の引数ですから、C<$#ARGV> は一般には、引数の個数 - 1 となります。
+コマンド名については、C<$0> を参照してください。
 
 =item @INC
 
@@ -2246,14 +2246,14 @@ loaded also:
 
 =end original
 
-���� @INC �ˤϡ�do EXPR��require��use �ˤ�äƥ饤�֥��ե������
-õ���Ȥ���ɾ��������Υꥹ�Ȥ�Ǽ����Ƥ��ޤ���
-������֤Ǥϡ����ޥ�ɥ饤�󥹥��å� B<-I> �ΰ�����
-�ǥե���Ȥ� Perl �饤�֥��ǥ��쥯�ȥ� (�����餯
-F</usr/local/lib/perl5>) �ȥ����ȥǥ��쥯�ȥ��ɽ�魯
-"." ���ˤĤʤ�����ΤǤ���
-�¹Ի��ˤ�����ѹ�����ɬ�פ�������ϡ�
-�ޥ����¸�Υ饤�֥����������ɤ߹��ि��� C<use lib> ��Ȥ��٤��Ǥ�:
+配列 @INC には、do EXPR、require、use によってライブラリファイルを
+探すときに評価する場所のリストが納められています。
+初期状態では、コマンドラインスイッチ B<-I> の引数と
+デフォルトの Perl ライブラリディレクトリ (おそらく
+F</usr/local/lib/perl5>) とカレントディレクトリを表わす
+"." を順につなげたものです。
+実行時にこれを変更する必要がある場合は、
+マシン依存のライブラリを正しく読み込むために C<use lib> も使うべきです:
 
     use lib '/mypath/libdir/';
     use SomeMod;
@@ -2267,8 +2267,8 @@ subroutine.  See L<perlsub>.
 
 =end original
 
-���֥롼����������Ǥϡ����� @_ �ϥ��֥롼������Ϥ��줿�ѥ�᡼���Ǥ���
-L<perlsub> �򻲾Ȥ��Ʋ�������
+サブルーチンの内部では、配列 @_ はサブルーチンに渡されたパラメータです。
+L<perlsub> を参照して下さい。
 
 =item %INC
 
@@ -2283,12 +2283,12 @@ already been included.
 
 =end original
 
-�ϥå��� %INC �ϡ�C<do>, C<require>, C<use>�黻�Ҥˤ�ä�
-���󥯥롼�ɤ��줿���ġ��Υե�����̾�򥨥�ȥ�Ȥ��ƻ��äƤ��ޤ���
-key �ϻ��ꤷ���ե�����̾(�⥸�塼��̾�ϥѥ�̾���Ѵ�����ޤ�)�ǡ�
-value �ϸ��Ĥ��ä����ȤʤäƤ��ޤ���
-C<require> �黻�Ҥϡ����ꤵ�줿�ե�����̾������
-���󥯥롼�ɤ���Ƥ��뤫�򡢤��Υϥå����Ȥä�Ĵ�٤ޤ���
+ハッシュ %INC は、C<do>, C<require>, C<use>演算子によって
+インクルードされた、個々のファイル名をエントリとして持っています。
+key は指定したファイル名(モジュール名はパス名に変換されます)で、
+value は見つかった場所となっています。
+C<require> 演算子は、指定されたファイル名が既に
+インクルードされているかを、このハッシュを使って調べます。
 
 =item %ENV
 
@@ -2302,9 +2302,9 @@ you subsequently fork() off.
 
 =end original
 
-�ϥå��� %ENV �ˤϡ����λ����δĶ��ѿ������ꤵ��Ƥ��ޤ���
-C<ENV> ���ͤ����ꤹ�뤳�Ȥǡ�
-�ʸ�� fork() �����ҥץ������δĶ��ѿ����ѹ����ޤ���
+ハッシュ %ENV には、その時点の環境変数が設定されています。
+C<ENV> に値を設定することで、
+以後に fork() した子プロセスの環境変数を変更します。
 
 =item %SIG
 
@@ -2316,7 +2316,7 @@ The hash %SIG contains signal handlers for signals.  For example:
 
 =end original
 
-�ϥå��� %SIG �ˤϥ����ʥ�Τ���Υ����ʥ�ϥ�ɥ餬�ޤޤ�Ƥ��ޤ�����:
+ハッシュ %SIG にはシグナルのためのシグナルハンドラが含まれています。例:
 
     sub handler {	# 1st argument is signal name
 	my($sig) = @_;
@@ -2339,9 +2339,9 @@ this special case.
 
 =end original
 
-C<'IGNORE'> �Ȥ����ͤ��̾�ϥ����ʥ�θ��̤�̵�뤹�뤿��˻Ȥ��ޤ�����
-C<CHLD> �����ʥ���㳰�Ǥ���
-�������̤ʾ��˴ؤ���ܺ٤� L<perlipc> �򻲾Ȥ��Ʋ�������
+C<'IGNORE'> という値は通常はシグナルの効果を無視するために使いますが、
+C<CHLD> シグナルは例外です。
+この特別な場合に関する詳細は L<perlipc> を参照して下さい。
 
 =begin original
 
@@ -2354,12 +2354,12 @@ Here are some other examples:
 
 =end original
 
-�ʲ��ˤ���¾����򼨤��ޤ�:
+以下にその他の例を示します:
 
-    $SIG{"PIPE"} = "Plumber";   # main::Plumber ���ꤷ�ޤ�(��侩)
-    $SIG{"PIPE"} = \&Plumber;   # ����ʤ�; �����Ȥ� Plumber ���ꤷ�ޤ�
-    $SIG{"PIPE"} = *Plumber;    # �������
-    $SIG{"PIPE"} = Plumber();   # ������Plumber() �ϲ����֤���??
+    $SIG{"PIPE"} = "Plumber";   # main::Plumber を仮定します(非推奨)
+    $SIG{"PIPE"} = \&Plumber;   # 問題なし; カレントの Plumber を仮定します
+    $SIG{"PIPE"} = *Plumber;    # 少々難解
+    $SIG{"PIPE"} = Plumber();   # げげ、Plumber() は何を返すの??
 
 =begin original
 
@@ -2368,8 +2368,8 @@ lest you inadvertently call it.
 
 =end original
 
-���ñ��򥷥��ʥ�ϥ�ɥ��̾���Ȥ��ƻȤ�ʤ��褦�ˤ��Ƥ���������
-�����դǸƤӽФ��Τ��򤱤뤿��Ǥ���
+裸の単語をシグナルハンドラの名前として使わないようにしてください。
+不注意で呼び出すのを避けるためです。
 
 =begin original
 
@@ -2383,15 +2383,15 @@ this:
 
 =end original
 
-�����ƥ�� sigaction() �ؿ���������ϡ�
-�����ʥ�ϥ�ɥ�Ϥ��δؿ���Ȥä����ꤵ��ޤ���
-����ˤ�ꡢ�������Τ��륷���ʥ�ϥ�ɥ�󥰤���ǽ�ˤʤ�ޤ���
-�����ƥ�� SA_RESTART �ե饰��������ϡ�
-�����ʥ�ϥ�ɥ�Ϥ����Ȥ��ޤ���
-����ˤ�ꤳ��ˤ��Ƴ����б����Ƥ��륷���ƥॳ�����
-�����ʥ뤬���夷���Ȥ����֤餺�˺Ƴ����ޤ���
-�����ʥ뤬�Ϥ����Ȥ��˥����ƥॳ��������Ǥ���������
-�ʲ��Τ褦�ˤ��Ƥ�������:
+システムに sigaction() 関数がある場合は、
+シグナルハンドラはこの関数を使って設定されます。
+これにより、信頼性のあるシグナルハンドリングが可能になります。
+システムに SA_RESTART フラグがある場合は、
+シグナルハンドラはこれを使います。
+これによりこれにより再開に対応しているシステムコールは
+シグナルが到着したときに返らずに再開します。
+シグナルが届いたときにシステムコールを中断したい場合は
+以下のようにしてください:
 
     use POSIX ':signal_h';
 
@@ -2405,7 +2405,7 @@ See L<POSIX>.
 
 =end original
 
-L<POSIX> �򻲾Ȥ��Ʋ�������
+L<POSIX> を参照して下さい。
 
 =begin original
 
@@ -2418,13 +2418,13 @@ in a variable, or turn warnings into fatal errors, like this:
 
 =end original
 
-�����������եå��� %SIG �ϥå����Ȥäƥ��åȤ���ޤ���
-�ٹ��å�������ɽ�����褦�Ȥ���Ȥ��� C<$SIG{__WARN__}> ��
-�����줿�롼���󤬸ƤӽФ���ޤ���
-�ٹ��å������Ϻǽ�ΰ����Ȥ����Ϥ���ޤ���
-__WARN__ �եå�������ȡ��̾�� STDERR �ؤηٹ�ν��ϤϹԤ��ޤ���
-�����Ȥäơ��ٹ��å��������ѿ��ˤ��줿�ꡢ
-���뤤�ϰʲ��Τ褦�ˤ��Ʒٹ����̿Ū���顼���Ѥ��������ޤ�:
+ある種の内部フックも %SIG ハッシュを使ってセットされます。
+警告メッセージを表示しようとするときに C<$SIG{__WARN__}> で
+示されたルーチンが呼び出されます。
+警告メッセージは最初の引数として渡されます。
+__WARN__ フックがあると、通常の STDERR への警告の出力は行われません。
+これを使って、警告メッセージを変数にいれたり、
+あるいは以下のようにして警告を致命的エラーに変えたり出来ます:
 
     local $SIG{__WARN__} = sub { die $_[0] };
     eval $proggie;
@@ -2441,16 +2441,16 @@ can die from a C<__DIE__> handler.  Similarly for C<__WARN__>.
 
 =end original
 
-C<$SIG{__DIE__}> �Ǽ������롼�����
-��̿Ū���㳰���ޤ����ꤲ���褦�Ȥ���Ȥ��˸ƤӽФ���ޤ���
-���顼��å������Ϻǽ�ΰ����Ȥ����Ϥ���ޤ���
-__DIE__ �եå��������ȡ�
-�㳰�����ϥեå����ʤ��ä����Τ褦�˺Ƴ�����ޤ�����
-�եå��롼�����Τ� C<goto>���롼�׽�λ��die() �ˤ�ä�
-��λ������������ޤ���
-C<__DIE__> �ϥ�ɥ�ϸƤӽФ��������Ū��̵���ˤʤ�ޤ��Τǡ�
-C<__DIE__> �ϥ�ɥ餫�� die �Ǥ��ޤ���
-C<__WARN__> ��Ʊ�ͤǤ���
+C<$SIG{__DIE__}> で示されるルーチンは
+致命的な例外がまさに投げられようとするときに呼び出されます。
+エラーメッセージは最初の引数として渡されます。
+__DIE__ フックから戻ると、
+例外処理はフックがなかったかのように再開されますが、
+フックルーチン自体が C<goto>、ループ終了、die() によって
+終了した場合を除きます。
+C<__DIE__> ハンドラは呼び出し中は明示的に無効になりますので、
+C<__DIE__> ハンドラから die できます。
+C<__WARN__> も同様です。
 
 =begin original
 
@@ -2463,13 +2463,13 @@ to exit, as was the original intent.  Any other use is deprecated.
 
 =end original
 
-��������Զ��ˤ�ꡢC<$SIG{__DIE__}> �� eval() ����Ǥ�
-�ƤӽФ���ޤ��������C<$@> ���ԤäƤ����㳰��񤭴������ꡢ
-CORE::GLOBAL::die() ���񤭤���Τ˻Ȥ�ʤ��Ǥ���������
-���δ�̯�ʹ�ư�Ͼ���Υ�꡼���ǽ��������ͽ��ʤΤǡ�
-C<$SIG{__DIE__}> ���������Ū�̤ꡢ
-�ץ�����ब��λ����Ȥ��ˤΤ߸ƤӽФ����褦�ˤʤ�ޤ���
-����¾�����Ӥ���侩�Ǥ���
+実装上の不具合により、C<$SIG{__DIE__}> は eval() の中でも
+呼び出されます。これを、C<$@> の待っている例外を書き換えたり、
+CORE::GLOBAL::die() を上書きするのに使わないでください。
+この奇妙な行動は将来のリリースで修正される予定なので、
+C<$SIG{__DIE__}> は当初の目的通り、
+プログラムが終了するときにのみ呼び出されるようになります。
+その他の用途は非推奨です。
 
 =begin original
 
@@ -2483,13 +2483,13 @@ this:
 
 =end original
 
-C<__DIE__> �� C<__WARN__> �Υϥ�ɥ�ϰ�Ĥ������������̤Ǥ���
-�ѡ����ˤ�äƥ��顼(�Ǥ��������)����𤹤뤿��˸ƤӽФ���뤳�Ȥ�����
-���ȤǤ���
-���Τ褦�ʾ�硢�ѡ������԰���ʾ��֤ˤʤäƤ��뤫�⤷��ʤ��Τǡ�
-�ϥ�ɥ餫�� Perl �����ɤ�ɾ�����褦�Ȥ���ȥ������ơ������ե�����Ȥ�
-ȯ�����뤫�⤷��ޤ���
-Perl �Υѡ�����ηٹ�䥨�顼�ϡ��ʲ��Τ褦���������դ��ư����٤��Ǥ���
+C<__DIE__> と C<__WARN__> のハンドラは一つの点で非常に特別です。
+パーザによってエラー(であろうもの)を報告するために呼び出されることがある
+ことです。
+このような場合、パーザは不安定な状態になっているかもしれないので、
+ハンドラから Perl コードを評価しようとするとセグメンテーションフォールトが
+発生するかもしれません。
+Perl のパーズ中の警告やエラーは、以下のように非常に注意して扱うべきです。
 
     require Carp if defined $^S;
     Carp::confess("Something wrong") if defined &Carp::confess;
@@ -2505,10 +2505,10 @@ not available.
 
 =end original
 
-����ܤϡ�I<�ѡ������ϥ�ɥ��ƤӽФ����ΤǤʤ����>
-Carp ���ɤ߹��ߤޤ���
-����ܤϡ�Carp ���Ȥ���ʤ�Хå��ȥ졼����ɽ������ die ���ޤ���
-�����ܤ� Carp ���Ȥ��ʤ��Ȥ��ˤΤ߼¹Ԥ���ޤ���
+一行目は、I<パーザがハンドラを呼び出したのでなければ>
+Carp を読み込みます。
+二行目は、Carp が使えるならバックとレースを表示して die します。
+三行目は Carp が使えないときにのみ実行されます。
 
 =begin original
 
@@ -2517,14 +2517,14 @@ L<warnings> for additional information.
 
 =end original
 
-�ɲäξ���ˤĤ��Ƥ� L<perlfunc/die>, L<perlfunc/warn>, L<perlfunc/eval>,
-L<warnings> �򻲾Ȥ��Ʋ�������
+追加の情報については L<perlfunc/die>, L<perlfunc/warn>, L<perlfunc/eval>,
+L<warnings> を参照して下さい。
 
 =back
 
 =head2 Error Indicators
 
-(���顼�ؼ���)
+(エラー指示子)
 
 =begin original
 
@@ -2538,13 +2538,13 @@ respectively.
 
 =end original
 
-�ѿ� C<$@>, C<$!>, C<$^E>, C<$?> �� Perl �ץ������μ¹����
-ȯ���������ۤʤ����Υ��顼������ݻ����ޤ���
-�ѿ��ϥ��顼����𤷤��������ƥ�� Perl �ץ������ȤΡֵ�Υ��
-�ν��֤��¤�Ǥ��ޤ���
-�����Ϥ��줾�졢Perl ���󥿥ץ꥿��C �饤�֥�ꡢ
-���ڥ졼�ƥ��󥰥����ƥࡢ�����ץ������ˤ�äƸ��Ф��줿
-���顼���б����Ƥ��ޤ���
+変数 C<$@>, C<$!>, C<$^E>, C<$?> は Perl プログラムの実行中に
+発生した、異なる種類のエラー情報を保持します。
+変数はエラーを報告した副システムと Perl プロセスとの「距離」
+の順番に並んでいます。
+これらはそれぞれ、Perl インタプリタ、C ライブラリ、
+オペレーティングシステム、外部プログラムによって検出された
+エラーに対応しています。
 
 =begin original
 
@@ -2553,8 +2553,8 @@ following Perl expression, which uses a single-quoted string:
 
 =end original
 
-�������ѿ��ΰ㤤�򼨤�����ˡ�
-�ʲ��Τ褦�ʥ��󥰥륯�����Ȥ��Ѥ��� Perl ����ͤ��ޤ�:
+これらの変数の違いを示すために、
+以下のようなシングルクォートを用いた Perl 式を考えます:
 
     eval q{
 	open PIPE, "/cdrom/install |";
@@ -2568,7 +2568,7 @@ After execution of this statement all 4 variables may have been set.
 
 =end original
 
-����ʸ��¹Ԥ����塢4 �Ĥ��ѿ����Ƥ����åȤ�����ǽ��������ޤ���
+この文を実行した後、4 つの変数全てがセットされる可能性があります。
 
 =begin original
 
@@ -2581,13 +2581,13 @@ though.)
 
 =end original
 
-C<$@> �� C<eval> ���줿ʸ���󤬥���ѥ��뤵��ʤ��ä��Ȥ�
-(����� C<open> �� C<close> ���������ʤ�
-�ץ��ȥ����פǥ���ݡ��Ȥ��줿�Ȥ��˵��������ޤ�)��
-�ޤ���ɾ����˼¹Ԥ��Ƥ��� Perl �����ɤ� die() �����Ȥ��˥��åȤ���ޤ���
-�����ξ��ˤ� $@ ���ͤϥ���ѥ��륨�顼���ޤ���
-C<die> �ؤΰ���(����ˤ� C<$!> �� C<$?> ���������ޤ�ޤ�!)�Ǥ���
-(��������L<Fatal> �⻲�Ȥ��Ʋ�������)
+C<$@> は C<eval> された文字列がコンパイルされなかったとき
+(これは C<open> か C<close> が正しくない
+プロトタイプでインポートされたときに起こり得ます)、
+または評価中に実行している Perl コードが die() したときにセットされます。
+これらの場合には $@ の値はコンパイルエラー、または
+C<die> への引数(これには C<$!> と C<$?> が差し挟まれます!)です。
+(しかし、L<Fatal> も参照して下さい。)
 
 =begin original
 
@@ -2598,11 +2598,11 @@ C<errno> if one of these calls fails.
 
 =end original
 
-�嵭�� eval() �����¹Ԥ��줿�塢
-open(), C<< <PIPE> >>, C<close> �� C ��󥿥���饤�֥��θƤӽФ���
-�Ѵ����졢���줫�饪�ڥ졼�ƥ��󥰥����ƥॳ������Ѵ�����ޤ���
-C<$!> �Ϥ����θƤӽФ��Τɤ줫�����Ԥ����Ȥ���
-C �饤�֥��� C<errno> ���ͤ����åȤ���ޤ���
+上記の eval() 式が実行された後、
+open(), C<< <PIPE> >>, C<close> は C ランタイムライブラリの呼び出しに
+変換され、それからオペレーティングシステムコールに変換されます。
+C<$!> はこれらの呼び出しのどれかが失敗したとき、
+C ライブラリの C<errno> の値がセットされます。
 
 =begin original
 
@@ -2613,11 +2613,11 @@ the same as C<$!>.
 
 =end original
 
-�����Ĥ��Υ��ڥ졼�ƥ��󥰥����ƥ�Ǥϡ�
-C<$^E> �ˤ��ܺ٤ʥ��顼�ؼ��Ҥ����äƤ��뤫�⤷��ޤ���
-����ξ��Ǹ����С�"CDROM tray not closed." �ʤɤǤ���
-�ɲäΥ��顼��å��������б����Ƥ��ʤ������ƥ�Ǥϡ�
-C<$^E> �� C<$!> ��Ʊ���ͤǤ���
+いくつかのオペレーティングシステムでは、
+C<$^E> により詳細なエラー指示子が入っているかもしれません。
+今回の場合で言えば、"CDROM tray not closed." などです。
+追加のエラーメッセージに対応していないシステムでは、
+C<$^E> は C<$!> と同じ値です。
 
 =begin original
 
@@ -2633,16 +2633,16 @@ on every eval() is always set on failure and cleared on success.
 
 =end original
 
-�Ǹ�ˡ�C<$?> �ϳ����ץ������ F</cdrom/install> �����Ԥ����Ȥ���
-�� 0 �˥��åȤ���뤫�⤷��ޤ���
-��̤� 8 �ӥåȤϥץ�����ब������������Υ��顼����
-(�ץ������� exit() ����)��ȿ�Ǥ��ޤ���
-���̤� 8 �ӥåȤϡ������ʥ�λ�˴�䥳������׾���ȸ��ä����ԤΥ⡼�ɤ�ȿ�Ǥ��ޤ���
-�ܺ٤ˤĤ��Ƥ� wait(2) �򻲾Ȥ��Ʋ�������
-C<$!> �� C<$^E> �ϥ��顼���������Ф��줿�Ȥ��ˤΤ����ꤵ��ޤ�����
-�ѿ� C<$?> �� C<wait> ��ѥ��פ� C<close> ���٤ˡ������ͤ��񤭤��ޤ���
-����ϡ�C<$@> �� eval() �μ¹���ˡ����顼�ʤ饻�åȤ��졢
-�����ʤ饯�ꥢ�����Ȥ���ư��Ȼ��Ƥ��ޤ���
+最後に、C<$?> は外部プログラム F</cdrom/install> が失敗したときに
+非 0 にセットされるかもしれません。
+上位の 8 ビットはプログラムが遭遇した特定のエラー状況
+(プログラムの exit() の値)を反映します。
+下位の 8 ビットは、シグナルの死亡やコアダンプ情報と言った失敗のモードを反映します。
+詳細については wait(2) を参照して下さい。
+C<$!> と C<$^E> はエラー状況が検出されたときにのみ設定されますが、
+変数 C<$?> は C<wait> やパイプの C<close> の度に、前の値を上書きします。
+これは、C<$@> が eval() の実行毎に、エラーならセットされ、
+成功ならクリアされるという動作と似ています。
 
 =begin original
 
@@ -2651,12 +2651,12 @@ and C<$?>.
 
 =end original
 
-���ܺ٤ˤĤ��Ƥϡ�C<$@>, C<$!>, C<$^E>, C<$?> ���줾���������
-���Ȥ��Ʋ�������
+より詳細については、C<$@>, C<$!>, C<$^E>, C<$?> それぞれの説明を
+参照して下さい。
 
 =head2 Technical Note on the Syntax of Variable Names
 
-(�ѿ�̾��ʸˡ�˴ؤ���ƥ��˥���Ρ���)
+(変数名の文法に関するテクニカルノート)
 
 =begin original
 
@@ -2669,13 +2669,13 @@ C<'> is taken to be a I<package qualifier>; see L<perlmod>.
 
 =end original
 
-Perl ���ѿ�̾���͡��ʷ�������ޤ���
-�̾�ѿ�̾�ϱ�ʸ���������ǻϤޤ�ʤ���Фʤ餺��
-Ǥ�դ�Ĺ��(�������¤� 251 ʸ���ޤ�)���뤳�Ȥ��Ǥ���
-��ʸ�������������������̤�ʸ����Ǥ��� C<::> �� C<'> ��ޤळ�Ȥ��Ǥ��ޤ���
-���ξ�硢�Ǹ�� C<::> �ޤ��� C<'> ������
-I<�ѥå����������> �Ȥ��ư����ޤ���
-L<perlmod> �򻲾Ȥ��Ʋ�������
+Perl の変数名は様々な形があります。
+通常、変数名は英文字か下線で始まらなければならず、
+任意の長さ(内部制限の 251 文字まで)を取ることができ、
+英文字、数字、下線、特別な文字列である C<::> と C<'> を含むことができます。
+この場合、最後の C<::> または C<'> の前は
+I<パッケージ限定子> として扱われます。
+L<perlmod> を参照して下さい。
 
 =begin original
 
@@ -2692,17 +2692,17 @@ into your program.
 
 =end original
 
-Perl ���ѿ��ϡ���������ޤ��ϰ�ʸ���ζ�����������ȥ�����ʸ����
-���⤢��ޤ���
-������̾�������� Perl �ˤ�ä����̤����ӤΤ����ͽ�󤵤�Ƥ��ޤ���
-�㤨�С����ƿ�����̾��������ɽ���ޥå��θ�θ������ȤΥǡ�����
-�ݻ����뤿����Ѥ����ޤ���
-Perl �ˤϰ�ʸ���Υ���ȥ�����ʸ����̾���Τ�������̤�ʸˡ������ޤ���
-C<^X>(�����å� C<X>)�� control-C<X> ����饯�����̣���ޤ���
-�㤨�С�C<$^W>(�ɥ뵭�� �����å� C<W>)�� control-C<W> ��ʸ����
-̾�����ĥ������ѿ��Ǥ���
-����ϥץ��������˥�ƥ��� control-C<W> �򥿥��פ�����
-�ɤ��Ǥ���
+Perl の変数は、数字の列または一文字の句読点かコントロール文字の
+場合もあります。
+これらの名前は全て Perl によって特別な用途のために予約されています。
+例えば、全て数字の名前は正規表現マッチの後の後方参照のデータを
+保持するために用いられます。
+Perl には一文字のコントロール文字の名前のための特別な文法があります。
+C<^X>(キャレット C<X>)は control-C<X> キャラクタを意味します。
+例えば、C<$^W>(ドル記号 キャレット C<W>)は control-C<W> 一文字の
+名前をもつスカラ変数です。
+これはプログラム中にリテラルな control-C<W> をタイプするより
+良いです。
 
 =begin original
 
@@ -2719,18 +2719,18 @@ used safely in programs.  C<$^_> itself, however, I<is> reserved.
 
 =end original
 
-�Ǹ�ˡ�Perl 5.6 �ο���ǽ�Ȥ��ơ�����ȥ�����ʸ��(��äȸ����Х����å�)��
-�Ϥޤ롢�ѿ�������ʤ�ʸ������ѿ�̾��Ȥ��ޤ���
-�������ѿ��� C<${^Foo}> �η��ǽ񤫤�ʤ���Фʤ�ޤ���
-��̤�ɬ�ܤǤ���
-C<${^Foo}> �ϥ���ȥ�����-C<F> �θ����� C<o> ��³��̾�������
-�������ѿ��Ǥ���
-�������ѿ��� Perl �ˤ�ä����̤����ӤΤ����ͽ�󤵤�Ƥ��ޤ�����
-C<^_> (����ȥ�����-�����ޤ��ϥ����å�-����)�ǻϤޤ��Τ��㳰�Ǥ���
-C<^_> �ǻϤޤ륳��ȥ�����ʸ��̾�� Perl �ξ���ΥС�������
-���̤ʰ�̣����Ĥ��ȤϤ���ޤ���
-���äƤ�����̾���ϥץ��������ǰ����˻��ѤǤ��ޤ���
-â����C<$^_> ���Τ�Τ� I<ͽ�󤵤�ޤ�>��
+最後に、Perl 5.6 の新機能として、コントロール文字(もっと言えばキャレット)で
+始まる、英数字からなる文字列の変数名も使えます。
+これらの変数は C<${^Foo}> の形で書かれなければなりません。
+括弧は必須です。
+C<${^Foo}> はコントロール-C<F> の後に二つ C<o> が続く名前を持つ
+スカラ変数です。
+これらの変数は Perl によって特別な用途のために予約されていますが、
+C<^_> (コントロール-下線またはキャレット-下線)で始まるものは例外です。
+C<^_> で始まるコントロール文字名は Perl の将来のバージョンで
+特別な意味を持つことはありません。
+従ってこれらの名前はプログラム中で安全に使用できます。
+但し、C<$^_> そのものは I<予約されます>。
 
 =begin original
 
@@ -2741,9 +2741,9 @@ other names are also exempt:
 
 =end original
 
-����������ȥ�����ʸ�����������ǻϤޤ� Perl �μ��̻Ҥ�
-C<package> ����θ��̤���ƨ��ơ���� C<main> �ѥå������ˤ����ΤȤ���
-�����ޤ�������˰ʲ��Τ�Τ�ƨ��ޤ�:
+数字、コントロール文字、句読点で始まる Perl の識別子は
+C<package> 宣言の効果から逃れて、常に C<main> パッケージにあるものとして
+扱われます。さらに以下のものも逃れます:
 
 	ENV		STDIN
 	INC		STDOUT
@@ -2759,12 +2759,12 @@ presently in scope.
 
 =end original
 
-�äˡ����������̤� C<${^_XYZ}> �ѿ��ϥ���������� C<package> ����˴ؤ�餺
-��� C<main> �ѥå������Ȥ��ư����ޤ���
+特に、新しい特別な C<${^_XYZ}> 変数はスコープ内の C<package> 宣言に関わらず
+常に C<main> パッケージとして扱われます。
 
 =head1 BUGS
 
-(�Х�)
+(バグ)
 
 =begin original
 
@@ -2779,15 +2779,15 @@ for more information.
 
 =end original
 
-Perl �μ����ˤ������Թ��ʻ��Τˤ�ꡢ
-C<use English> �ϥץ������������Ƥ�����ɽ���ޥå��󥰤ˤ�����
-���ʤ����ǽ�㲼������������ޤ���
-����� C<use English> �Υ��������⤫�ɤ����˴ؤ��ޤ���
-������ͳ�ˤ�ꡢ�饤�֥��� C<use English> ��Ȥ��Τ�
-�Ǥ�������򤱤Ƥ���������
-����ʤ����ˤĤ��Ƥ� CPAN �� Devel::SawAmpersand �⥸�塼��
-(http://www.perl.com/CPAN/modules/by-module/Devel/) ��
-�ɥ�����Ȥ򻲾Ȥ��Ʋ�������
+Perl の実装における不幸な事故により、
+C<use English> はプログラム中の全ての正規表現マッチングにおいて
+かなりの性能低下を引き起こします。
+これは C<use English> のスコープ内かどうかに関わりません。
+この理由により、ライブラリで C<use English> を使うのは
+できるだけ避けてください。
+さらなる情報については CPAN の Devel::SawAmpersand モジュール
+(http://www.perl.com/CPAN/modules/by-module/Devel/) の
+ドキュメントを参照して下さい。
 
 =begin original
 
@@ -2798,13 +2798,13 @@ and use an C<END{}> or CORE::GLOBAL::die override instead.
 
 =end original
 
-�㳰�ϥ�ɥ����� C<$^S> ��Ȥ����ʤɤȤϹͤ��Ƥ⤤���ޤ���
-���ߤμ����� C<$SIG{__DIE__}> �����ݤ�����󤻡����顼�����פ���ˤ��ޤ���
-���������� C<END{}> ��Ȥ�����CORE::GLOBAL::die �򥪡��С��饤�ɤ��Ƥ���������
+例外ハンドラの中で C<$^S> を使おうなどとは考えてもいけません。
+現在の実装の C<$SIG{__DIE__}> は面倒を引き寄せ、エラーの追跡を困難にします。
+これの代わりに C<END{}> を使うか、CORE::GLOBAL::die をオーバーライドしてください。
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp> (5.000)
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp> (5.000)
 Update: Kentaro Shirakata <argrath@ub32.org> (5.6.1-)
 License: GPL or Artistic
 

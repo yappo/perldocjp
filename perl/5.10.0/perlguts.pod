@@ -9,7 +9,7 @@ perlguts - Introduction to the Perl API
 
 =end original
 
-perlguts - Perl API �ξҲ�
+perlguts - Perl API の紹介
 
 =head1 DESCRIPTION
 
@@ -22,18 +22,18 @@ questions or comments to the author below.
 
 =end original
 
-���Υɥ�����ȤǤ� Perl API �λȤ���������� Perl �����δ���Ū��ư���
-�ؤ��뤤���Ф����ξ�����󶡤��褦�Ȥ��Ƥ��ޤ���
-������������󤤤�ΤǤ������ְ㤤��¿���Ȼפ��ޤ���
-�������䥳���Ȥϸ�Ҥ������Ԥ��Ф��ƹԤʤäƤ���������
+このドキュメントでは Perl API の使い方、および Perl コアの基本的な動作に
+関するいくばくかの情報を提供しようとしています。
+完璧からは程遠いものですし、間違いも多いと思います。
+疑問点やコメントは後述する著者に対して行なってください。
 
 =head1 Variables
 
-(�ѿ�)
+(変数)
 
 =head2 Datatypes
 
-(�ǡ�����)
+(データ型)
 
 =begin original
 
@@ -41,7 +41,7 @@ Perl has three typedefs that handle Perl's three main data types:
 
 =end original
 
-Perl �Ǥϡ���Ȥʤ뻰�ĤΥǡ������򰷤�����˻��Ĥη������ԤʤäƤ��ޤ�:
+Perl では、主となる三つのデータ型を扱うために三つの型定義を行なっています:
 
     SV  Scalar Value
     AV  Array Value
@@ -53,12 +53,12 @@ Each typedef has specific routines that manipulate the various data types.
 
 =end original
 
-���줾��� typedef �ˤ��͡��ʥǡ����������뤿������̤ʥ롼����
-�Ѱդ���Ƥ��ޤ���
+それぞれの typedef には様々なデータ型を操作するための特別なルーチンが
+用意されています。
 
 =head2 What is an "IV"?
 
-("IV" �äƤʤ�?)
+("IV" ってなに?)
 
 =begin original
 
@@ -68,9 +68,9 @@ Additionally, there is the UV, which is simply an unsigned IV.
 
 =end original
 
-Perl �Ǥϡ�����դ������Ǥ�ݥ��󥿤Ǥ⽽ʬ������뤳�ȤΤǤ������̤� 
-typedef �Ǥ��� IV ��Ȥ��ޤ���
-���ˡ�ñ�����ʤ��� IV �Ǥ��� UV �⤢��ޤ���
+Perl では、符号付き整数でもポインタでも十分に入れることのできる特別な 
+typedef である IV を使います。
+更に、単に符号なしの IV である UV もあります。
 
 =begin original
 
@@ -81,15 +81,15 @@ they will both be 64 bits.
 
 =end original
 
-Perl �Ϥޤ�����Ĥ��ü�� typedef �Ǥ��� I32 �� I16 ��ȤäƤ��ޤ���
-�����Ϥ��줾�졢��˺��� 32bit��16bit ��Ĺ������äƤ����ΤǤ���
-(�Ƥӡ�Ʊ�ͤ� U32 �� U16 �⤢��ޤ���)
-���������̤����Τ� 32 �ӥåȤ� 16 �ӥåȤǤ�����Cray �Ǥ�ξ���Ȥ�
-64 �ӥåȤǤ���
+Perl はまた、二つの特殊な typedef である I32 と I16 を使っています。
+これらはそれぞれ、常に最低 32bit、16bit の長さを持っているものです。
+(再び、同様に U32 と U16 もあります。)
+これらは普通は正確に 32 ビットと 16 ビットですが、Cray では両方とも
+64 ビットです。
 
 =head2 Working with SVs
 
-(SV ���Ф�����)
+(SV に対する作業)
 
 =begin original
 
@@ -99,9 +99,9 @@ value (UV), a double (NV), a string (PV), and another scalar (SV).
 
 =end original
 
-SV �ϡ�1 �ĤΥ��ޥ�ɤ����������ͤ�����ɤ��뤳�Ȥ��Ǥ��ޤ���
-�����ɤǤ����ͤη��ˤϡ����� (IV)�����ʤ����� (UV)��
-������ (NV)��ʸ���� (PV)������¾�Υ����� (SV) ������ޤ���
+SV は、1 つのコマンドで生成し、値をロードすることができます。
+ロードできる値の型には、整数 (IV)、符号なし整数 (UV)、
+倍精度 (NV)、文字列 (PV)、その他のスカラ (SV) があります。
 
 =begin original
 
@@ -109,7 +109,7 @@ The seven routines are:
 
 =end original
 
-������Ԥʤ���7 �ĤΥ롼�����:
+これらを行なう、7 つのルーチンは:
 
     SV*  newSViv(IV);
     SV*  newSVuv(UV);
@@ -127,9 +127,9 @@ any string that perl can handle.
 
 =end original
 
-C<STRLEN> �� perl ��������ɤ��ʸ����Υ�������ɽ������Τ˽�ʬ�ʤ�����
-�礭������Ĥ��Ȥ��ݾڤ���Ƥ���������(Size_t, ���̤� F<config.h> ��
-size_t �Ȥ����������Ƥ��ޤ�)��
+C<STRLEN> は perl が扱えるどんな文字列のサイズも表現するのに十分なだけの
+大きさを持つことが保証されている整数型(Size_t, 普通は F<config.h> で
+size_t として定義されています)。
 
 =begin original
 
@@ -141,12 +141,12 @@ the SV has value undef.
 
 =end original
 
-���ޤ�ʤ������Ǥ�����SV ����ä�ʣ���ʽ������ɬ�פȤ����硢
-newSV(len) �Ƕ��� SV ������Ǥ��ޤ���
-�⤷ C<len> �� 0 �ʤ顢NULL ���ζ��� SV ���֤��졢����ʤ����
-PV ���� SV �ϡ�SvPVX �ǥ��������Ǥ��� len + 1 (NUL �Τ���) �Х��Ȥ��ΰ��
-������Ƥ����֤���ޤ���
-ξ���ξ��ǡ�SV ���ͤ�̤����ͤǤ���
+あまりなさそうですが、SV がもっと複雑な初期化を必要とする場合、
+newSV(len) で空の SV も作成できます。
+もし C<len> が 0 なら、NULL 型の空の SV が返され、さもなければ
+PV 型の SV は、SvPVX でアクセスできる len + 1 (NUL のため) バイトの領域を
+割り当てられて返されます。
+両方の場合で、SV の値は未定義値です。
 
     SV *sv = newSV(0);   /* no storage allocated  */
     SV *sv = newSV(10);  /* 10 (+1) bytes of uninitialised storage allocated  */
@@ -157,7 +157,7 @@ To change the value of an I<already-existing> SV, there are eight routines:
 
 =end original
 
-I<����¸�ߤ���> ��������ͤ��ѹ����뤿��� 8 �ĤΥ롼���󤬤���ޤ�:
+I<既に存在する> スカラの値を変更するために 8 つのルーチンがあります:
 
     void  sv_setiv(SV*, IV);
     void  sv_setuv(SV*, UV);
@@ -179,12 +179,12 @@ string terminating with a NUL character.
 
 =end original
 
-�������٤�ʸ�����Ĺ���� C<sv_setpvn> �� C<newSVpv>�����뤤��
-C<newSVpv> ��Ȥäƻ��ꤹ�뤳�Ȥ�Ǥ��ޤ�����C<sv_setpv> ��Ȥä���
-C<newSVpv> ����������� 0 ����ꤹ�뤳�Ȥˤ�äơ�Perl ���Ȥ�
-ʸ�����Ĺ����׻������뤳�Ȥ�Ǥ��ޤ���
-������ Perl �ϡ�NUL ʸ���ǽ�λ���뤳�Ȥ˰�¸���Ƥ���
-C<strlen> ��Ȥä�Ĺ����׻����Ƥ���Ȥ������Ȥ����դ��Ƥ���������
+代入すべき文字列の長さを C<sv_setpvn> や C<newSVpv>、あるいは
+C<newSVpv> を使って指定することもできますし、C<sv_setpv> を使ったり
+C<newSVpv> の第二引数に 0 を指定することによって、Perl 自身に
+文字列の長さを計算させることもできます。
+ただし Perl は、NUL 文字で終了することに依存している
+C<strlen> を使って長さを計算しているということに注意してください。
 
 =begin original
 
@@ -193,8 +193,8 @@ formatted output becomes the value.
 
 =end original
 
-C<sv_setpvf> �ΰ����� C<sprintf> ��Ʊ���褦�˽������졢�񼰲����줿
-���Ϥ��ͤȤʤ�ޤ���
+C<sv_setpvf> の引数は C<sprintf> と同じように処理され、書式化された
+出力が値となります。
 
 =begin original
 
@@ -209,17 +209,17 @@ the format.
 
 =end original
 
-C<sv_vsetpvfn> �� C<vsprintf> ��Ʊ���褦�ʤ�ΤǤ�����
-���Ѱ����ꥹ�Ȥ��Ф���ݥ��󥿤�
-SV ������Υ��ɥ쥹��Ĺ���Τ����줫����ꤹ�뤳�Ȥ��Ǥ��ޤ���
-�Ǹ�ΰ����ϥ֡����ͤ�ؤ������ޤ���
-�ؿ������֤äƤ����Ȥ���
-���줬 true �Ǥ���С��ե����ޥå�ʸ����Ȥ��ƥ��������ͭ��
-���󤬻Ȥ��Ƥ���ΤǤ���ʸ��������ƤϿ��ꤹ��Ǥ��ʤ����Ȥ�
-ɽ�路�Ƥ��ޤ�(L<perlsec> �򻲾�)��
-��������˴ؤ�����󤬽��פǤʤ��Τʤ顢
-���Υݥ��󥿤� NULL �Ǥ��äƤ⤫�ޤ��ޤ���
-���δؿ��ϥե����ޥåȤ�Ĺ�����׵ᤷ�Ƥ��뤳�Ȥ����դ��Ƥ���������
+C<sv_vsetpvfn> は C<vsprintf> と同じようなものですが、
+可変引数リストに対するポインタか
+SV の配列のアドレスと長さのいずれかを指定することができます。
+最後の引数はブール値を指し示します。
+関数から返ってきたときに
+これが true であれば、フォーマット文字列としてロカール固有の
+情報が使われているのでその文字列の内容は信頼するできないことを
+表わしています(L<perlsec> を参照)。
+ロカールに関する情報が重要でないのなら、
+このポインタは NULL であってもかまいません。
+この関数はフォーマットの長さを要求していることに注意してください。
 
 =begin original
 
@@ -228,9 +228,9 @@ that have "magic".  See L<Magic Virtual Tables> later in this document.
 
 =end original
 
-C<sv_set*()> �ؿ����ϡ�magic�ɤ���äƤ����ͤ��Ф���
-�����Ф��ƽ�ʬ�˰��̲����줿��ΤǤϤ���ޤ���
-��Ҥ��� L<Magic Virtual Tables> �򻲾Ȥ��Ƥ���������
+C<sv_set*()> 関数群は“magic”を持っている値に対する
+操作に対して充分に一般化されたものではありません。
+後述する L<Magic Virtual Tables> を参照してください。
 
 =begin original
 
@@ -244,14 +244,14 @@ in an SV to a C function or system call.
 
 =end original
 
-���٤Ƥ�SV �ϡ�ɬ�ܤȸ����櫓�ǤϤ���ޤ��� NUL ����饯������
-��ü����Ƥ���٤��Ǥ���
-���ν�ü�� NUL ��̵���ä���硢��������פ�����ʸ�����
-(ʸ���� NUL �ǽ�ü����Ƥ��뤳�Ȥ���Ԥ��Ƥ���) C �ؿ��䥷���ƥॳ�����
-�Ϥ������ɤ򤪤������������������ޤ���
-Perl ���Ȥ�ŵ��Ū�ʴؿ��ϡ�������ͳ�ˤ�꽪ü�� NUL ���ɲä��ޤ���
-�����Ǥ��ä��Ȥ��Ƥ⡢���ʤ��� SV �˳�Ǽ����Ƥ���ʸ����� C �δؿ���
-�����ƥॳ������Ϥ����ˤϽ���ʬ�˵���Ĥ���٤��ʤΤǤ���
+すべてのSV は、必須と言うわけではありませんが NUL キャラクターで
+終端されているべきです。
+この終端の NUL が無かった場合、コアダンプしたり文字列を
+(文字列が NUL で終端されていることを期待している) C 関数やシステムコールに
+渡すコードをおかしくする危険があります。
+Perl 自身の典型的な関数は、この理由により終端に NUL を追加します。
+そうであったとしても、あなたが SV に格納されている文字列を C の関数や
+システムコールに渡す時には十二分に気をつけるべきなのです。
 
 =begin original
 
@@ -259,7 +259,7 @@ To access the actual value that an SV points to, you can use the macros:
 
 =end original
 
-SV ���ؤ������ºݤ��ͤ򥢥���������ˤϡ��ʲ��Υޥ�����Ȥ��ޤ�:
+SV が指し示す実際の値をアクセスするには、以下のマクロを使えます:
 
     SvIV(SV*)
     SvUV(SV*)
@@ -274,7 +274,7 @@ or string.
 
 =end original
 
-����ϼºݤΥ�����η���ưŪ�ˤ� IV �� UV �������٤�ʸ����ˤ��ޤ���
+これは実際のスカラの型を自動的にに IV や UV や倍精度や文字列にします。
 
 =begin original
 
@@ -289,18 +289,18 @@ might not be terminated by a NUL.
 
 =end original
 
-C<SvPV> �ޥ����Ǥϡ��֤����ʸ�����Ĺ���ϡ��ѿ� C<len> �˳�Ǽ����ޤ�
-(����ϥޥ����Ǥ����顢C<&len> �� I<���ʤ���> ��������)��
-�⤷�ǡ�����Ĺ���򵤤ˤ��ʤ��ΤǤ���С�C<SvPV_nolen> �ޥ�����
-�ȤäƤ���������
-���Ū�ˡ����ξ��ˤϥ������Х��ѿ� C<PL_na> �� C<SvPV> �ޥ�����
-�Ȥ��Ƥ��ޤ�����
-����������ϲ�ǽ�Ǥ�����Ψ���ɤ�����ޤ���;
-�ʤ��ʤ� C<PL_na> �ϥ���åɲ����� Perl �Ǥϥ���åɥ��������
-�ΰ�˥����������ʤ���Фʤ�ʤ�����Ǥ���
-������ξ��ˤ⡢Perl �� NUL ��ޤ�Ǥ���ʸ����� NUL ��
-��ü����Ƥ��ʤ��褦��ʸ�����ξ���򰷤����Ȥ��Ǥ���Ȥ������Ȥ�
-�Ф��Ƥ����Ƥ���������
+C<SvPV> マクロでは、返される文字列の長さは、変数 C<len> に格納されます
+(これはマクロですから、C<&len> と I<しないで> ください)。
+もしデータの長さを気にしないのであれば、C<SvPV_nolen> マクロを
+使ってください。
+歴史的に、この場合にはグローバル変数 C<PL_na> に C<SvPV> マクロが
+使われてきました。
+しかしこれは可能ですが効率は良くありません;
+なぜなら C<PL_na> はスレッド化した Perl ではスレッドローカルな
+領域にアクセスしなければならないからです。
+いずれの場合にも、Perl は NUL を含んでいる文字列と NUL で
+終端されていないような文字列の両方を扱うことができるということを
+覚えておいてください。
 
 =begin original
 
@@ -310,11 +310,11 @@ Break this sort of statement up into separate assignments:
 
 =end original
 
-Ʊ�ͤˡ�C�� C<SvPV(s, len), len)> �Ȥ��뤳�Ȥ������ǤϤʤ����Ȥ�
-˺��ʤ��Ǥ���������
-����Ϥ��ʤ��λȤ�����ѥ���ˤ�äƤϤ��ޤ������ޤ�����
-���ĤǤ⤽�����Ȥϸ¤�ʤ��ΤǤ���
-�����ǡ��������ä����ơ��ȥ��Ȥϰʲ��Τ褦��ʬ�䤷�ޤ�:
+同様に、Cで C<SvPV(s, len), len)> とすることが安全ではないことを
+忘れないでください。
+これはあなたの使うコンパイラによってはうまくいきますが、
+いつでもそうだとは限らないのです。
+そこで、こういったステートメントは以下のように分割します:
 
     SV *s;
     STRLEN len;
@@ -328,7 +328,7 @@ If you want to know if the scalar value is TRUE, you can use:
 
 =end original
 
-ñ�˥������ͤ������ɤ������Τꤿ�������ʤ�С�
+単にスカラ値が真かどうかを知りたいだけならば、
 
     SvTRUE(SV*)
 
@@ -339,8 +339,8 @@ Perl to allocate more memory for your SV, you can use the macro
 
 =end original
 
-Perl �ϡ�SV �ˤ�äȥ���������Ƥ��ߤ����Ȥ��ˤϼ�ưŪ��ʸ�����
-�礭�����Ƥ���ޤ���������˥���������Ƥ����뤳�Ȥ�ɬ�פǤ����
+Perl は、SV にもっとメモリを割り当てて欲しいときには自動的に文字列を
+大きくしてくれますが、さらにメモリを割り当てさせることが必要であれば
 
     SvGROW(SV*, STRLEN newlen)
 
@@ -354,12 +354,12 @@ C<SvGROW(sv, len + 1)>).
 
 =end original
 
-�Ȥ����ޥ������Ȥ��ޤ���
-�⤷ɬ�פʤ顢���Υޥ����� C<sv_grow>��ƤӤޤ���
-C<SvGROW> �� SV �˳�����Ƥ���������䤹�����ǡ����餹���Ȥ�
-�Ǥ��ʤ��Ȥ������Ȥȡ���ü�� NUL ��ʬ�ΥХ��Ȥ���ưŪ�˲û�����ʤ�
-(perl���Ȥ�ʸ����ؿ��� �糵 C<SvGROW(sv, len + 1)> �Ȥ��Ƥ��ޤ�)��
-�������Ȥ����դ��Ƥ���������
+というマクロが使えます。
+もし必要なら、このマクロが C<sv_grow>を呼びます。
+C<SvGROW> は SV に割り当てたメモリを増やすだけで、減らすことは
+できないということと、終端の NUL の分のバイトが自動的に加算されない
+(perl自身の文字列関数は 大概 C<SvGROW(sv, len + 1)> としています)と
+いうことに注意してください。
 
 =begin original
 
@@ -368,8 +368,8 @@ in it, you can use the following macros to check the type of SV you have.
 
 =end original
 
-�긵�ˤ��� SV �Ρ� Perl ���鸫���ǡ����μ�����Τꤿ���Ȥ��ˤϡ�
-���� SV �η�������å�����Τ�
+手元にある SV の、 Perl から見たデータの種類を知りたいときには、
+その SV の型をチェックするのに
 
     SvIOK(SV*)
     SvNOK(SV*)
@@ -382,8 +382,8 @@ the following macros:
 
 =end original
 
-SV ��Ǽ���줿ʸ����θ��ߤ�Ĺ����������������ꤷ���ꤹ��Τ�
-�ϰʲ��Υޥ������Ȥ��ޤ���
+SV に納められた文字列の現在の長さを取得したり設定したりするのに
+は以下のマクロが使えます。
 
     SvCUR(SV*)
     SvCUR_set(SV*, I32 val)
@@ -395,8 +395,8 @@ with the macro:
 
 =end original
 
-Ʊ�ͤˡ�SV �˳�Ǽ����Ƥ���ʸ����ν�ü�ؤΥݥ��󥿤�ʲ��Υޥ�����
-�Ȥä����뤳�Ȥ��Ǥ��ޤ���
+同様に、SV に格納されている文字列の終端へのポインタを以下のマクロを
+使って得ることができます。
 
     SvEND(SV*)
 
@@ -406,8 +406,8 @@ But note that these last three macros are valid only if C<SvPOK()> is true.
 
 =end original
 
-�������������� C<SvPOK()> �����ΤȤ�����ͭ�����Ȥ������Ȥ˵���
-�Ĥ��Ƥ���������
+ただし、これらは C<SvPOK()> が真のときだけ有効だということに気を
+つけてください。
 
 =begin original
 
@@ -416,8 +416,8 @@ you can use the following functions:
 
 =end original
 
-C<SV*> �˳�Ǽ����Ƥ���ʸ����������ˤʤˤ����ɲä������Ȥ��˰ʲ��Τ褦��
-�ؿ����Ȥ��ޤ���
+C<SV*> に格納されている文字列の末尾になにかを追加したいときに以下のような
+関数が使えます。
 
     void  sv_catpv(SV*, const char*);
     void  sv_catpvn(SV*, const char*, STRLEN);
@@ -438,16 +438,16 @@ to be interpreted as a string.
 
 =end original
 
-�ǽ�δؿ��� C<strlen> ��Ȥä��ɲä���ʸ�����Ĺ����׻����ޤ���
-�����ܤδؿ��Ǥϡ��ؿ�����Ѥ���ͤ�ʸ�����Ĺ������ꤷ�ޤ���
-�����ܤδؿ��Ϥ��ΰ����� C<sprintf> ���ͤ˽��������������줿��̤�
-�ɲä��ޤ���
-�����ܤδؿ��� C<vsprintf> �Τ褦��ư��ޤ���
-va_list ����������ˡ�SV ������Υ��ɥ쥹��Ĺ������ꤹ�뤳�Ȥ�
-�Ǥ��ޤ���
-�����ܤδؿ��Ϻǽ�� SV �ˤ���ʸ����������ܤ� SV �ˤ���ʸ�����
-��ĥ���ޤ���
-�ޤ������δؿ��������ܤ� SV ����Ū��ʸ����Ȥ��Ʋ�ᤷ�ޤ���
+最初の関数は C<strlen> を使って追加する文字列の長さを計算します。
+二番目の関数では、関数を使用する人が文字列の長さを指定します。
+三番目の関数はその引数を C<sprintf> の様に処理し、整形された結果を
+追加します。
+四番目の関数は C<vsprintf> のように動作します。
+va_list 引数の代わりに、SV の配列のアドレスと長さを指定することが
+できます。
+五番目の関数は最初の SV にある文字列を二番目の SV にある文字列で
+拡張します。
+また、この関数は二番目の SV を強制的に文字列として解釈します。
 
 =begin original
 
@@ -456,9 +456,9 @@ have "magic".  See L<Magic Virtual Tables> later in this document.
 
 =end original
 
-C<sv_cat*()> �ؿ����ϡ�magic�ɤ���äƤ����ͤ��Ф���
-�����Ф��ƽ�ʬ�˰��̲����줿��ΤǤϤ���ޤ���
-��Ҥ��� L<Magic Virtual Tables> �򻲾Ȥ��Ƥ���������
+C<sv_cat*()> 関数群は“magic”を持っている値に対する
+操作に対して充分に一般化されたものではありません。
+後述する L<Magic Virtual Tables> を参照してください。
 
 =begin original
 
@@ -467,7 +467,7 @@ by using the following:
 
 =end original
 
-�������ѿ���̾�����狼��С����� SV �ؤΥݥ��󥿤�
+スカラ変数の名前がわかれば、その SV へのポインタは
 
     SV*  get_sv("package::varname", FALSE);
 
@@ -477,8 +477,8 @@ This returns NULL if the variable does not exist.
 
 =end original
 
-��Ȥä����뤳�Ȥ��Ǥ��ޤ���
-�����ѿ���¸�ߤ��ʤ����ˤ� NULL ���֤���ޤ���
+を使って得ることができます。
+その変数が存在しない場合には NULL が返されます。
 
 =begin original
 
@@ -487,8 +487,8 @@ you can call:
 
 =end original
 
-�����ѿ� (�⤷����¾��Ǥ�դ� SV) �����ºݤ� B<�������Ƥ��뤫> ��
-�Τꤿ���ʤ�С�
+その変数 (もしくは他の任意の SV) が、実際に B<定義されているか> を
+知りたいならば、
 
     SvOK(SV*)
 
@@ -498,8 +498,8 @@ The scalar C<undef> value is stored in an SV instance called C<PL_sv_undef>.
 
 =end original
 
-������� C<undef> �ͤϡ�C<PL_sv_undef> �Ȥ��� SV �Υ��󥹥��󥹤�
-Ǽ����Ƥ��ޤ���
+スカラの C<undef> 値は、C<PL_sv_undef> という SV のインスタンスに
+納められています。
 
 =begin original
 
@@ -509,9 +509,9 @@ when interfacing Perl code, it'll work correctly for:
 
 =end original
 
-���Υ��ɥ쥹�ϡ�C<SV*> ��ɬ�פȤ����Ȥ����ǻ��Ѥ��뤳�Ȥ��Ǥ��ޤ���
-Ǥ�դ� sv �� C<&PL_sv_undef> ����Ӥ��褦�Ȥ��ʤ��褦�˵���Ĥ��Ƥ���������
-�㤨�С�Perl �����ɤȤΥ��󥿡��ե������ǡ��ʲ���������ư���ޤ�:
+そのアドレスは、C<SV*> が必要とされるところで使用することができます。
+任意の sv を C<&PL_sv_undef> を比較しようとしないように気をつけてください。
+例えば、Perl コードとのインターフェースで、以下は正しく動きます:
 
   foo(undef);
 
@@ -521,7 +521,7 @@ But won't work when called as:
 
 =end original
 
-���������ʲ��Τ褦�˸ƤӽФ���ư��ޤ���:
+しかし、以下のように呼び出すと動作しません:
 
   $x = undef;
   foo($x);
@@ -532,8 +532,8 @@ So to repeat always use SvOK() to check whether an sv is defined.
 
 =end original
 
-���äơ�sv ���������Ƥ��뤫������å����뤿��ˡ���󷫤��֤���
-SvOK() ��ȤäƤ���������
+従って、sv が定義されているかをチェックするために、毎回繰り返して
+SvOK() を使ってください。
 
 =begin original
 
@@ -542,9 +542,9 @@ AVs or HVs (see L<AVs, HVs and undefined values>).
 
 =end original
 
-�ޤ���AV �� HV ���ͤȤ��� C<&PL_sv_undef> ��Ȥ��Ȥ��ˤ�
-���դ��ʤ���Фʤ�ޤ��� (L<AVs, HVs and undefined values> ��
-���Ȥ��Ƥ�������)��
+また、AV や HV の値として C<&PL_sv_undef> を使うときにも
+注意しなければなりません (L<AVs, HVs and undefined values> を
+参照してください)。
 
 =begin original
 
@@ -554,9 +554,9 @@ addresses can be used whenever an C<SV*> is needed.
 
 =end original
 
-�֡����ͤο��ȵ���ɽ�魯��C<PL_sv_yes> �� C<PL_sv_no> �Ȥ����ͤ⤢��ޤ���
-C<PL_sv_undef> ��Ʊ�ͤˡ������Υ��ɥ쥹�� C<SV*> ��ɬ�פʤȤ�����
-�Ȥ����Ȥ��Ǥ��ޤ���
+ブール値の真と偽を表わす、C<PL_sv_yes> や C<PL_sv_no> という値もあります。
+C<PL_sv_undef> と同様に、これらのアドレスも C<SV*> が必要なところで
+使うことができます。
 
 =begin original
 
@@ -565,8 +565,8 @@ Take this code:
 
 =end original
 
-C<(SV *0)> �� C<&PL_sv_undef> ��Ʊ���Ǥ���ȹͤ��ơ����ޤ���ƤϤ����ޤ���
-���Τ褦�ʥ����ɤ򸫤Ƥ�������:
+C<(SV *0)> と C<&PL_sv_undef> が同じであると考えて、だまされてはいけません。
+次のようなコードを見てください:
 
     SV* sv = (SV*) 0;
     if (I-am-to-return-a-real-value) {
@@ -584,11 +584,11 @@ first line and all will be well.
 
 =end original
 
-���Υ����ɤϡ����ͤ��֤��ʤ���Фʤ�ʤ��Ȥ��ˤϡ�(�ͤȤ��� 42 ��
-����) ������ SV ���֤����Ȥ�������ʤ��� undef ���֤����Ȥ��ޤ���
-�Ǥ������ɤ����ιԤǥʥ�ݥ��󥿤��֤��ơ��������ȥХ����졼�����
-�����뤫�������������ʷ�̤ˤʤäƤ��ޤ��ޤ���
-�ǽ�ιԤ� 0 �� C<&PL_sv_undef> ���Ѥ���С����٤Ƥ����ޤ������ޤ���
+このコードは、実値を返さなければならないときには、(値として 42 を
+持つ) 新しい SV を返そうとし、さもなくば undef を返そうとします。
+ですが、どこかの行でナルポインタを返して、セグメントバイオレーションが
+起こるか、何かおかしな結果になってしまいます。
+最初の行の 0 を C<&PL_sv_undef> に変えれば、すべてがうまくいきます。
 
 =begin original
 
@@ -597,13 +597,13 @@ call is not necessary (see L<Reference Counts and Mortality>).
 
 =end original
 
-�������� SV ��������뤿��ˤϡ�C<SvREFCNT_dec(SV*)> ��ƤӤޤ���
-���̤ϡ����θƤӽФ���ɬ�פ���ޤ���
-L<Reference Counts and Mortality> �򻲾Ȥ��Ƥ���������
+生成した SV を解放するためには、C<SvREFCNT_dec(SV*)> を呼びます。
+普通は、この呼び出しは必要ありません。
+L<Reference Counts and Mortality> を参照してください。
 
 =head2 Offsets
 
-(���ե��å�)
+(オフセット)
 
 =begin original
 
@@ -649,7 +649,7 @@ This is best demonstrated by example:
 
 =end original
 
-�������ˤ����ɤμ±�Ǥ�:
+これは例による最良の実演です:
 
   % ./perl -Ilib -MDevel::Peek -le '$a="12345"; $a=~s/.//; Dump($a)'
   SV = PVIV(0x8128450) at 0x81340f0
@@ -702,7 +702,7 @@ play when freeing the array. See C<av_shift> in F<av.c>.
 
 =head2 What's Really Stored in an SV?
 
-(SV �˼ºݤ˳�Ǽ����Ƥ����Τϲ��Ǥ���?)
+(SV に実際に格納されているものは何ですか?)
 
 =begin original
 
@@ -714,12 +714,12 @@ integer/double to string.
 
 =end original
 
-��ʬ���ݻ����Ƥ��륹����η�����ꤹ���̾����ˡ�ϡ��ޥ��� C<Sv*OK> ��
-�Ȥ���ΤǤ�����
-������Ͽ��ͤˤ�ʸ����ˤ�ʤ����ޤ����顢���̡�
-�����Υޥ����Ϥ��Ĥ⿿���֤��ޤ���
-������ C<Sv*V> �ޥ�����Ƥ֤��Ȥǡ�
-ʸ���󤫤�����/�����١�����/�����٤���ʸ����ؤ��Ѵ���Ԥʤ��ޤ���
+自分で保持しているスカラの型を決定する通常の方法は、マクロ C<Sv*OK> を
+使うものでした。
+スカラは数値にも文字列にもなり得ますから、普通、
+これらのマクロはいつも真を返します。
+そして C<Sv*V> マクロを呼ぶことで、
+文字列から整数/倍精度、整数/倍精度から文字列への変換を行ないます。
 
 =begin original
 
@@ -728,8 +728,8 @@ pointer in an SV, you can use the following three macros instead:
 
 =end original
 
-�⤷�������� SV �ˤ���Τ��������������٤���ʸ����ݥ��󥿤���
-�Τꤿ���ΤǤ���С�
+もし、本当に SV にあるのが整数か、倍精度か、文字列ポインタかを
+知りたいのであれば、
 
     SvIOKp(SV*)
     SvNOKp(SV*)
@@ -742,9 +742,9 @@ stored in your SV.  The "p" stands for private.
 
 =end original
 
-�Ȥ����ޥ���������˻Ȥ����Ȥ��Ǥ��ޤ���
-�����Υޥ����ϡ��ºݤ� SV �����äƤ����Τ��������������٤���
-ʸ����ݥ��󥿤��򶵤��Ƥ���ޤ���
+というマクロを代わりに使うことができます。
+これらのマクロは、実際に SV に入っているものが整数か、倍精度か、
+文字列ポインタかを教えてくれます。
 
 =begin original
 
@@ -773,11 +773,11 @@ In general, though, it's best to use the C<Sv*V> macros.
 
 =end original
 
-����������Ū�ˤϡ�C<Sv*V> �ޥ�����Ȥ������ˤ��������ɤ��Ǥ��礦��
+しかし一般的には、C<Sv*V> マクロを使うだけにした方が良いでしょう。
 
 =head2 Working with AVs
 
-(AV ���Ф�����)
+(AV に対する作業)
 
 =begin original
 
@@ -786,8 +786,8 @@ empty AV:
 
 =end original
 
-AV �����������ͤ����ꤹ��Τˤϡ���Ĥ���ˡ������ޤ���
-�ǽ����ˡ�ϡ�ñ�˶��� AV �����ΤǤ�:
+AV を生成して値を設定するのには、二つの方法があります。
+最初の方法は、単に空の AV を作るものです:
 
     AV*  newAV();
 
@@ -797,7 +797,7 @@ The second method both creates the AV and initially populates it with SVs:
 
 =end original
 
-�դ��Ĥ����ˡ�ϡ�AV ������������ǡ�����ͤȤ��� SV ���ͤ�����ޤ�:
+ふたつめの方法は、AV を生成した上で、初期値として SV の値を入れます:
 
     AV*  av_make(I32 num, SV **ptr);
 
@@ -808,8 +808,8 @@ AV has been created, the SVs can be destroyed, if so desired.
 
 =end original
 
-�����ܤΰ����� num �Ĥ� SV* �������ؤ��Ƥ��ޤ���
-AV ����������Ƥ��ޤ��С�SV ��(�����˾��Τʤ�)�˴����뤳�Ȥ��Ǥ��ޤ���
+二番目の引数は num 個の SV* の配列を指しています。
+AV が生成されてしまえば、SV は(それを望むのなら)破棄することができます。
 
 =begin original
 
@@ -817,7 +817,7 @@ Once the AV has been created, the following operations are possible on AVs:
 
 =end original
 
-���ä��� AV �����������ȡ�AV ���Ф��ơ�
+いったん AV が生成されると、AV に対して、
 
     void  av_push(AV*, SV*);
     SV*   av_pop(AV*);
@@ -833,11 +833,11 @@ to these new elements.
 
 =end original
 
-�Ȥ��ä����Ԥ��ޤ���
-�����ϡ�C<av_unshift> ������Ƥϡ��������ߤα黻�Ǥ��礦��
-C<av_unshift> �ϡ��������Ƭ�� C<num> �Ĥ� C<undef> �ͤ����Ǥ��դ��ä��ޤ���
-���θ�ǡ�(��Ҥ���) C<av_store> ��Ȥäƿ��������Ǥ��ͤ�
-�������ʤ���Фʤ�ޤ���
+といった操作が行えます。
+これらは、C<av_unshift> を除いては、お馴染みの演算でしょう。
+C<av_unshift> は、配列の先頭に C<num> 個の C<undef> 値の要素を付け加えます。
+その後で、(後述する) C<av_store> を使って新しい要素に値を
+代入しなければなりません。
 
 =begin original
 
@@ -845,7 +845,7 @@ Here are some other functions:
 
 =end original
 
-¾�ˤ⤤���Ĥ��ؿ�������ޤ�:
+他にもいくつか関数があります:
 
     I32   av_len(AV*);
     SV**  av_fetch(AV*, I32 key, I32 lval);
@@ -866,18 +866,18 @@ return value.
 
 =end original
 
-�ؿ� C<av_len> ������ˤ�����ǹ�̤�ź������(���礦�� Perl �� $#array ��
-Ʊ���褦��)�֤��ޤ���
-�⤷���󤬶��Ǥ���С�-1 ���֤��ޤ���
-�ؿ� C<av_fetch> ��ź���� C<key> �ΰ��֤ˤ����ͤ��֤��ޤ�����C<lval> ��
-�󥼥��Ǥ���С�C<av_fetch> �Ϥ��ΰ��֤� undef ���Ǽ���褦�Ȥ��ޤ���
-�ؿ� C<av_store> ��ź���� C<key> �ΰ��֤��� C<val> ���Ǽ����C<val> ��
-���ȥ�����Ȥ򥤥󥯥���Ȥ��ޤ���
-���äơ��ƤӽФ�¦�Ϥ��ο����񤤤����դ����н褷��C<av_store> ��
-NULL ���֤������ˤϡ����꡼�꡼�����ɤ�����˻��ȥ�����Ȥ�
-�ǥ�����Ȥ�Ԥ�ɬ�פ�����Ǥ��礦��
-C<av_fetch> �� C<av_store> ��ξ���Ȥ⤬��������ͤȤ���
-C<SV*> �ǤϤʤ���C<SV**> ���֤��Ȥ������Ȥ����դ��Ƥ���������
+関数 C<av_len> は配列における最高位の添え字を(ちょうど Perl の $#array と
+同じように)返します。
+もし配列が空であれば、-1 を返します。
+関数 C<av_fetch> は添え字 C<key> の位置にある値を返しますが、C<lval> が
+非ゼロであれば、C<av_fetch> はその位置に undef を格納しようとします。
+関数 C<av_store> は添え字 C<key> の位置に値 C<val> を格納し、C<val> の
+参照カウントをインクリメントしません。
+従って、呼び出し側はこの振る舞いに注意して対処し、C<av_store> が
+NULL を返した場合には、メモリーリークを防ぐために参照カウントの
+デクリメントを行う必要があるでしょう。
+C<av_fetch> と C<av_store> の両方ともがその戻り値として
+C<SV*> ではなく、C<SV**> を返すということに注意してください。
 
     void  av_clear(AV*);
     void  av_undef(AV*);
@@ -894,11 +894,11 @@ then nothing is done.
 
 =end original
 
-�ؿ� C<av_clear> �ϡ����� AV* �ˤ��뤹�٤Ƥ����Ǥ������ޤ�����
-���󼫿Ȥκ���ϹԤ��ޤ���
-�ؿ� C<av_undef> ������ˤ��뤹�٤Ƥ����Ǥ˲ä������󼫿Ȥκ����Ԥ��ޤ���
-�ؿ� C<av_extend>  ������� C<key+1> ���Ǥ�����ĥ���ޤ���
-C<key+1> ������Τ��λ����Ǥ�Ĺ�����û����С�����Ԥʤ��ޤ���
+関数 C<av_clear> は、配列 AV* にあるすべての要素を削除しますが、
+配列自身の削除は行いません。
+関数 C<av_undef> は配列にあるすべての要素に加え、配列自身の削除も行います。
+関数 C<av_extend>  は配列を C<key+1> 要素だけ拡張します。
+C<key+1> が配列のその時点での長さより短ければ、何も行なわれません。
 
 =begin original
 
@@ -907,8 +907,8 @@ by using the following:
 
 =end original
 
-�����ѿ���̾�����狼�äƤ���ΤǤ���С����Τ褦�ˤ��Ƥ��������
-�б����� AV �ؤΥݥ��󥿤����뤳�Ȥ��Ǥ��ޤ���
+配列変数の名前がわかっているのであれば、次のようにしてその配列に
+対応する AV へのポインタを得ることができます。
 
     AV*  get_av("package::varname", FALSE);
 
@@ -918,7 +918,7 @@ This returns NULL if the variable does not exist.
 
 =end original
 
-������ѿ���¸�ߤ��Ƥ��ʤ����ˤ� NULL ���֤��ޤ���
+これは変数が存在していない場合には NULL を返します。
 
 =begin original
 
@@ -927,12 +927,12 @@ information on how to use the array access functions on tied arrays.
 
 =end original
 
-tie ���줿����ˤ��������󥢥������ؿ��λȤ����ˤĤ��Ƥξܺ٤�
-L<Understanding the Magic of Tied Hashes and Arrays> �򻲾Ȥ��Ƥ���������
+tie された配列における配列アクセス関数の使い方についての詳細は
+L<Understanding the Magic of Tied Hashes and Arrays> を参照してください。
 
 =head2 Working with HVs
 
-(HV ���Ф�����)
+(HV に対する作業)
 
 =begin original
 
@@ -940,7 +940,7 @@ To create an HV, you use the following routine:
 
 =end original
 
-HV ����������ˤϡ�
+HV を生成するには、
 
     HV*  newHV();
 
@@ -950,8 +950,8 @@ Once the HV has been created, the following operations are possible on HVs:
 
 =end original
 
-�Ȥ����롼�����Ȥ��ޤ���
-���ä��� HV ������������ HV ���Ф��ơ�
+というルーチンを使います。
+いったん HV が生成されると HV に対して、
 
     SV**  hv_store(HV*, const char* key, U32 klen, SV* val, U32 hash);
     SV**  hv_fetch(HV*, const char* key, U32 klen, I32 lval);
@@ -969,18 +969,18 @@ key and C<hv_fetch> will return as if the value had already existed.
 
 =end original
 
-�Ȥ������Ԥ��ޤ���
-���� C<klen> �ϡ��Ϥ���� key ��Ĺ���Ǥ�
-(Perl �˥�����Ĺ����׻������뤿��ˡ�C<klen>> ���ͤȤ��� 0 ���Ϥ����Ȥ�
-�Ǥ��ʤ��Ȥ������Ȥ����դ��Ƥ�������)��
-���� C<val> �ϡ����ꤵ��륹����ؤ� SV �ݥ��󥿤����졢hash �ϡ�
-���餫����׻������ϥå����� (C<hv_store> �˷׻���������ˤϡ�
-����) �Ǥ���
-���� C<lval> �ǡ����Υե��å����¤ϥ��ȥ����ΰ����Ǥ��뤫�ɤ�����
-�����ޤ���
-���ȥ����Ǥ���С�������undefind value ��Ϳ����줿
-������ȼ�ä� HV ���ɲä��졢C<hv_fetch> �Ϥ����ͤ�����
-¸�ߤ��Ƥ������Τ褦�˥꥿���󤷤ޤ���
+という操作が行えます。
+引数 C<klen> は、渡される key の長さです
+(Perl にキーの長さを計算させるために、C<klen>> の値として 0 を渡すことは
+できないということに注意してください)。
+引数 C<val> は、設定されるスカラへの SV ポインタを入れ、hash は、
+あらかじめ計算したハッシュ値 (C<hv_store> に計算させる場合には、
+ゼロ) です。
+引数 C<lval> で、このフェッチ操作が実はストア操作の一部であるかどうかを
+示します。
+ストア操作であれば、新たなundefind value が与えられた
+キーを伴って HV に追加され、C<hv_fetch> はその値が既に
+存在していたかのようにリターンします。
 
 =begin original
 
@@ -991,11 +991,11 @@ not NULL before dereferencing it.
 
 =end original
 
-C<hv_store> �� C<hv_fetch> �ϡ�C<SV**> ���֤���Τǡ�C<SV*> �ǤϤʤ����Ȥ�
-���դ��Ƥ���������
-�������ͤ򥢥���������ˤϡ��ޤ�����ͤλ��ȳ���(dereference)�򤹤�
-ɬ�פ�����ޤ���
-�����������������ֵ��ͤ� NULL �Ǥʤ����Ȥ��ǧ���٤��Ǥ���
+C<hv_store> や C<hv_fetch> は、C<SV**> を返すもので、C<SV*> ではないことに
+注意してください。
+スカラ値をアクセスするには、まず戻り値の参照外し(dereference)をする
+必要があります。
+しかし、その前に返却値が NULL でないことを確認すべきです。
 
 =begin original
 
@@ -1003,8 +1003,8 @@ These two functions check if a hash table entry exists, and deletes it.
 
 =end original
 
-�ϥå���ơ��֥�Υ���ȥ꤬¸�ߤ��뤫������å����������Ԥ�
-�ؿ�������ޤ���
+ハッシュテーブルのエントリが存在するかをチェックし、削除を行う
+関数があります。
 
     bool  hv_exists(HV*, const char* key, U32 klen);
     SV*   hv_delete(HV*, const char* key, U32 klen, I32 flags);
@@ -1016,8 +1016,8 @@ create and return a mortal copy of the deleted value.
 
 =end original
 
-C<flag> �� C<G_DISCARD> �ե饰���ޤޤ�Ƥ��ʤ���С�C<hv_delete> ��
-������줿�ͤδ�ȯ���Υ��ԡ�(mortal copy)����������������֤��ޤ���
+C<flag> に C<G_DISCARD> フラグが含まれていなければ、C<hv_delete> は
+削除された値の揮発性のコピー(mortal copy)を生成し、それを返します。
 
 =begin original
 
@@ -1025,7 +1025,7 @@ And more miscellaneous functions:
 
 =end original
 
-������͡��ʴؿ�������ޤ�:
+さらに様々な関数があります:
 
     void   hv_clear(HV*);
     void   hv_undef(HV*);
@@ -1038,9 +1038,9 @@ both the entries and the hash table itself.
 
 =end original
 
-������ AV ��������褦�ʴؿ���Ʊ�͡�C<hv_clear> �ϥϥå���ơ��֥�ˤ���
-���٤ƤΥ���ȥ꡼�������ޤ����ϥå���ơ��֥뼫�ȤϺ�����ޤ���
-C<hv_undef> �ϥ���ȥ꡼�ȥϥå���ơ��֥뼫�Ȥ�ξ���������ޤ���
+引数に AV を取る似たような関数と同様、C<hv_clear> はハッシュテーブルにある
+すべてのエントリーを削除しますがハッシュテーブル自身は削除しません。
+C<hv_undef> はエントリーとハッシュテーブル自身の両方を削除します。
 
 =begin original
 
@@ -1052,13 +1052,13 @@ specified below.
 
 =end original
 
-Perl �ϼºݤΥǡ����� HE �� typedef ���줿��¤�ΤΥ�󥯥ꥹ�Ȥ�Ȥä�
-�ݻ����Ƥ��ޤ���
-�����ϼºݤΥ������ͤΥݥ���(����˲ä��ƴ����Τ����
-����äȤ������)���ݻ����Ƥ��ޤ���
-������ʸ����ؤΥݥ��󥿤Ǥ��ꡢ�ͤ� C<SV*> �Ǥ���
-�������ʤ��顢���� C<HE*> ����ƤС��ºݤΥ������ͤȤ�������뤿��ˤ�
-�ʲ��˵󤲤�褦�ʥ롼�����Ȥ��ޤ���
+Perl は実際のデータを HE と typedef された構造体のリンクリストを使って
+保持しています。
+これらは実際のキーと値のポインタ(それに加えて管理のための
+ちょっとしたもの)を保持しています。
+キーは文字列へのポインタであり、値は C<SV*> です。
+しかしながら、一度 C<HE*> を持てば、実際のキーと値とを取得するためには
+以下に挙げるようなルーチンを使います。
 
 =begin original
 
@@ -1082,20 +1082,20 @@ Perl �ϼºݤΥǡ����� HE �� typedef ���줿��¤�ΤΥ�󥯥ꥹ�Ȥ�Ȥä�
 =end original
 
     I32    hv_iterinit(HV*);
-            /* �ϥå���ơ��֥�򤿤ɤ뤿��γ���������� */
+            /* ハッシュテーブルをたどるための開始点を準備 */
     HE*    hv_iternext(HV*);
-            /* ���Υ���ȥ꡼��������ơ���������ξ������Ĺ�¤
-               �ΤؤΥݥ��󥿤��֤� */
+            /* 次のエントリーを取得して、キーと値両方を持つ構造
+               体へのポインタを返す */
     char*  hv_iterkey(HE* entry, I32* retlen);
-            /* HE ��¤�Τ��饭��������������Υ���ʸ�����Ĺ����
-               �֤� */
+            /* HE 構造体からキーを取得し、そのキー文字列の長さを
+               返す */
     SV*    hv_iterval(HV*, HE* entry);
-            /* HE ��¤�Τ��ͤ��Ф��� SV �ݥ��󥿤��֤� */
+            /* HE 構造体の値に対する SV ポインタを返す */
     SV*    hv_iternextsv(HV*, char** key, I32* retlen);
-            /* ���������ʥ롼����ϡ�hv_iternext��hv_iterkey��
-                hv_iterval���Ȥ߹�碌����ΤǤ���
-                ����key��retlen�ϡ������Ȥ���Ĺ����ɽ�魯����ͤǤ���
-                �ؿ�������ͤ�SV* ���֤���ޤ���*/
+            /* この便利なルーチンは、hv_iternext、hv_iterkey、
+                hv_itervalを組み合わせたものです。
+                引数keyとretlenは、キーとその長さを表わす戻り値です。
+                関数の戻り値はSV* で返されます。*/
 
 =begin original
 
@@ -1104,7 +1104,7 @@ by using the following:
 
 =end original
 
-�����ѿ���̾�����狼��ΤǤ���С�
+配列変数の名前がわかるのであれば、
 
     HV*  get_hv("package::varname", FALSE);
 
@@ -1114,8 +1114,8 @@ This returns NULL if the variable does not exist.
 
 =end original
 
-��Ȥ��С������ѿ��� HV �ؤΥݥ��󥿤������ޤ���
-�����ѿ���¸�ߤ��ʤ����ˤ� NULL ���֤��ޤ���
+を使えば、その変数の HV へのポインタが得られます。
+その変数が存在しない場合には NULL を返します。
 
 =begin original
 
@@ -1123,8 +1123,8 @@ The hash algorithm is defined in the C<PERL_HASH(hash, key, klen)> macro:
 
 =end original
 
-�ϥå��奢�르�ꥺ��� C<PERL_HASH(hash, key, klen)> �Ȥ����ޥ�����
-�������Ƥ��ޤ���
+ハッシュアルゴリズムは C<PERL_HASH(hash, key, klen)> というマクロで
+定義されています。
 
     hash = 0;
     while (klen--)
@@ -1138,8 +1138,8 @@ lower bits in the resulting hash value.
 
 =end original
 
-�Ǹ�Υ��ƥåפϡ���̤Ȥʤ�ϥå����ͤ���̥ӥåȤ�ʬ������ɤ��뤿���
-�С������ 5.6 ���ɲä���ޤ�����
+最後のステップは、結果となるハッシュ値の低位ビットの分散を改良するために
+バージョン 5.6 で追加されました。
 
 =begin original
 
@@ -1148,13 +1148,13 @@ information on how to use the hash access functions on tied hashes.
 
 =end original
 
-tie ���줿�ϥå�����Ф���ϥå��奢�������ؿ��λȤ�����
-�ؤ���ܺ٤ϡ�L<Understanding the Magic of Tied Hashes and Arrays> ��
-���Ȥ��Ƥ���������
+tie されたハッシュに対するハッシュアクセス関数の使い方に
+関する詳細は、L<Understanding the Magic of Tied Hashes and Arrays> を
+参照してください。
 
 =head2 Hash API Extensions
 
-(�ϥå��� API ��ĥ)
+(ハッシュ API 拡張)
 
 =begin original
 
@@ -1162,7 +1162,7 @@ Beginning with version 5.004, the following functions are also supported:
 
 =end original
 
-�С������ 5.004 ���顢�ʲ��δؿ������ݡ��Ȥ���ޤ�����
+バージョン 5.004 から、以下の関数がサポートされました。
 
     HE*     hv_fetch_ent  (HV* tb, SV* key, I32 lval, U32 hash);
     HE*     hv_store_ent  (HV* tb, SV* key, SV* val, U32 hash);
@@ -1181,10 +1181,10 @@ you to stringify the keys (unlike the previous set of functions).
 
 =end original
 
-�����δؿ������ϥå��幽¤�򰷤��������ƥ󥷥��ε��Ҥ�ñ��ˤ���
-C<SV*> ����������ˤȤ뤳�Ȥ����դ��Ƥ���������
-�����δؿ��Ϥޤ���C<SV*> ������(��˵󤲤��ؿ����Ȥϰۤʤ�)
-ʸ���󲽤��뤳�Ȥʤ��� C<tie> �ؿ����Ϥ����Ȥ�����Ƥ��ޤ���
+これらの関数が、ハッシュ構造を扱うエクステンションの記述を単純にする
+C<SV*> キーを引数にとることに注意してください。
+これらの関数はまた、C<SV*> キーを(先に挙げた関数群とは異なり)
+文字列化することなしに C<tie> 関数に渡すことを許しています。
 
 =begin original
 
@@ -1195,10 +1195,10 @@ descriptions.
 
 =end original
 
-�����δؿ��Ϥޤ����ϥå��奨��ȥ꡼���� (C<HE*>) ���֤���������դ��ơ�
-����Ψ�ɤ����Ѥ��ޤ�(�����ʸ������Ф���ϥå����ֹ��
-���׻����ʤ���ɬ�פϤʤ�����Ǥ�)��
-�ܤ����� L<perlapi> �򻲾Ȥ��Ƥ���������
+これらの関数はまた、ハッシュエントリー全体 (C<HE*>) を返したり受け付けて、
+より効率良く使用します(特定の文字列に対するハッシュ番号は
+毎回計算しなおす必要はないからです)。
+詳しくは L<perlapi> を参照してください。
 
 =begin original
 
@@ -1209,11 +1209,11 @@ L<perlapi> for detailed descriptions of these macros.
 
 =end original
 
-�ʲ��˵󤲤�ޥ����ϡ��ϥå��奨��ȥ꡼�����Ƥ˥�����������Τ�
-��˻Ȥ�ʤ���Фʤ�ʤ���ΤǤ���
-�����Υޥ����Ϥ��ΰ��������ٰʾ�ɾ�������ǽ��������Τǡ��ޥ�����
-�Ф��������ñ����ѿ��Ǥʤ���Фʤ�ʤ��Ȥ������Ȥ����դ��Ƥ���������
-�����Υޥ����˴ؤ���ܺ٤� L<perlapi> �򻲾Ȥ��Ƥ���������
+以下に挙げるマクロは、ハッシュエントリーの内容にアクセスするのに
+常に使わなければならないものです。
+これらのマクロはその引数を二度以上評価する可能性があるので、マクロに
+対する引数は単純な変数でなければならないということに注意してください。
+これらのマクロに関する詳細は L<perlapi> を参照してください。
 
     HePV(HE* he, STRLEN len)
     HeVAL(HE* he)
@@ -1229,8 +1229,8 @@ dealing with keys that are not C<SV*>s:
 
 =end original
 
-���٥�ޥ���������������Ƥ��ޤ����������� C<SV*> �ǤϤʤ�������
-�����Ȥ��ˤΤ߻Ȥ�ʤ���Фʤ�ʤ���ΤǤ���
+低レベルマクロが二つ定義されていますが、これらは C<SV*> ではないキーを
+扱うときにのみ使わなければならないものです。
 
     HeKEY(HE* he)
     HeKLEN(HE* he)
@@ -1244,16 +1244,16 @@ decrement the reference count of C<val> to avoid a memory leak.
 
 =end original
 
-C<hv_store> �� C<hv_store_ent> ��ξ���Ȥ⤬��C<val> �˳�Ǽ����Ƥ���
-���ȥ�����ȤΥ��󥯥���Ȥ򤷤ʤ��Ȥ������Ȥ����դ��Ƥ���������
-����ϸƤӽФ�¦����Ǥ�Ǥ���
-�����δؿ��� NULL ���֤�����硢
-�ƤӽФ�¦�ϥ��꡼�꡼�����ɤ�����ˡ�C<val> �λ��ȥ�����Ȥ�
-�ǥ�����Ȥ�Ԥ�ɬ�פ����̤ˤϤ���Ǥ��礦��
+C<hv_store> と C<hv_store_ent> の両方ともが、C<val> に格納されている
+参照カウントのインクリメントをしないということに注意してください。
+それは呼び出し側の責任です。
+これらの関数が NULL を返した場合、
+呼び出し側はメモリーリークを防ぐために、C<val> の参照カウントの
+デクリメントを行う必要が一般にはあるでしょう。
 
 =head2 AVs, HVs and undefined values
 
-(AV, HV ��̤�����)
+(AV, HV と未定義値)
 
 =begin original
 
@@ -1263,9 +1263,9 @@ used to using C<&PL_sv_undef> if you need an undefined SV.
 
 =end original
 
-AV �� HV ��̤����ͤ��ݴɤ��ʤ���Фʤ�ʤ����Ȥ⤢��ޤ���
-��������������Ǥ�������ι������Τˤʤ�ޤ���
-�ʤ��ʤ顢̤����� SV ��ɬ�פʤ顢C<&PL_sv_undef> ��Ȥ����Ȥˤʤ뤫��Ǥ���
+AV や HV に未定義値を保管しなければならないこともあります。
+これは珍しい場合ですが、手の込んだものになります。
+なぜなら、未定義の SV が必要なら、C<&PL_sv_undef> を使うことになるからです。
 
 =begin original
 
@@ -1273,7 +1273,7 @@ For example, intuition tells you that this XS code:
 
 =end original
 
-�㤨�С�ľ���ǤϤ��� XS �����ɤ�:
+例えば、直感ではこの XS コードは:
 
     AV *av = newAV();
     av_store( av, 0, &PL_sv_undef );
@@ -1284,7 +1284,7 @@ is equivalent to this Perl code:
 
 =end original
 
-�ʲ��� Perl �����ɤ������Ǥ�:
+以下の Perl コードと等価です:
 
     my @av;
     $av[0] = undef;
@@ -1298,11 +1298,11 @@ false for the array generated by the XS code.
 
 =end original
 
-��ǰ�ʤ��顢���������������ޤ���
-AV �ϡ��������Ǥ��ޤ����������Ƥ��ʤ����Ȥ򼨤�����ΰ��Ȥ���
-C<&PL_sv_undef> ��Ȥ��ޤ���
-���äơ���Ҥ� Perl �����ɤ� C<exists $av[0]> �Ͽ��Ǥ�����
-XS �����ɤˤ�ä��������줿����Ǥϵ��Ǥ���
+残念ながら、これは正しくありません。
+AV は、配列要素がまだ初期化されていないことを示すための印として
+C<&PL_sv_undef> を使います。
+従って、上述の Perl コードは C<exists $av[0]> は真ですが、
+XS コードによって生成された配列では偽です。
 
 =begin original
 
@@ -1310,7 +1310,7 @@ Other problems can occur when storing C<&PL_sv_undef> in HVs:
 
 =end original
 
-HV �� C<&PL_sv_undef> ���ݴɤ�����ˤ��̤����꤬�����ꤨ�ޤ�:
+HV に C<&PL_sv_undef> を保管する時にも別の問題が起こりえます:
 
     hv_store( hv, "key", 3, &PL_sv_undef, 0 );
 
@@ -1321,8 +1321,8 @@ the value of C<key>, you'll get the following error:
 
 =end original
 
-�ºݤ���� C<undef> �ͤ���ޤ�����C<key> ���ͤ��ѹ����褦�Ȥ���ȡ�
-�ʲ��Τ褦�ʥ��顼���Фޤ�:
+実際これは C<undef> 値を作りますが、C<key> の値を変更しようとすると、
+以下のようなエラーが出ます:
 
     Modification of non-creatable hash value attempted
 
@@ -1387,7 +1387,7 @@ new undefined value using the C<newSV> function, for example:
 
 =head2 References
 
-(��ե����)
+(リファレンス)
 
 =begin original
 
@@ -1396,8 +1396,8 @@ References are a special type of scalar that point to other data types
 
 =end original
 
-��ե���󥹤ϡ�(��ե���󥹤�ޤ�) ¾�Υ����鷿��ؤ����̤�
-�����鷿�Ǥ���
+リファレンスは、(リファレンスを含む) 他のスカラ型を指す特別な
+スカラ型です。
 
 =begin original
 
@@ -1405,7 +1405,7 @@ To create a reference, use either of the following functions:
 
 =end original
 
-��ե���󥹤���������ˤϡ�
+リファレンスを生成するには、
 
     SV* newRV_inc((SV*) thing);
     SV* newRV_noinc((SV*) thing);
@@ -1419,11 +1419,11 @@ reasons, C<newRV> is a synonym for C<newRV_inc>.
 
 =end original
 
-C<thing> �ˤϡ�C<SV*>, C<AV*>, C<HV*> �Τ����줫���֤����Ȥ��Ǥ��ޤ���
-�������Ĥδؿ��ϡ�C<newRV_inc> �� C<thing> �λ��ȥ�����Ȥ�
-���󥯥���Ȥ��뤬 C<newRV_noinc> �ϥ��󥯥���Ȥ��ʤ��Ȥ�������
-������Ʊ��Ǥ���
-���Ū����ͳ�ˤ�ꡢC<newRV> �� C<newRV_inc> ��Ʊ����ȤʤäƤ��ޤ���
+C<thing> には、C<SV*>, C<AV*>, C<HV*> のいずれかを置くことができます。
+これら二つの関数は、C<newRV_inc> が C<thing> の参照カウントを
+インクリメントするが C<newRV_noinc> はインクリメントしないという点を
+除き、同一です。
+歴史的な理由により、C<newRV> は C<newRV_inc> の同義語となっています。
 
 =begin original
 
@@ -1432,8 +1432,8 @@ the reference:
 
 =end original
 
-��ե���󥹤��Ǥ���С��ʲ��Υޥ�����Ȥäƥ�ե���󥹤λ��ȳ���
-(dereference)���Ǥ��ޤ���
+リファレンスができれば、以下のマクロを使ってリファレンスの参照外し
+(dereference)ができます。
 
     SvRV(SV*)
 
@@ -1444,8 +1444,8 @@ C<AV*> or C<HV*>, if required.
 
 =end original
 
-�Ȥ����ޥ������Ȥ����Ȥ��Ǥ����֤��줿 C<SV*> �� C<AV*> �� C<HV*> ��
-���㥹�Ȥ��ơ�Ŭ�ڤʥ롼�����Ƥ֤��Ȥˤʤ�ޤ���
+というマクロが使うことができ、返された C<SV*> を C<AV*> か C<HV*> に
+キャストして、適切なルーチンを呼ぶことになります。
 
 =begin original
 
@@ -1453,8 +1453,8 @@ To determine if an SV is a reference, you can use the following macro:
 
 =end original
 
-SV ����ե���󥹤Ǥ��뤫�ɤ������ǧ���뤿��ˡ�
-�ʲ��Υޥ�����Ȥ����Ȥ��Ǥ��ޤ���
+SV がリファレンスであるかどうかを確認するために、
+以下のマクロを使うことができます。
 
     SvROK(SV*)
 
@@ -1465,8 +1465,8 @@ macro and then check the return value.
 
 =end original
 
-��ե���󥹤����Ȥ��Ƥ��뷿�򸫤Ĥ��뤿��ˡ��ʲ��Υޥ�����
-�Ȥ���������ͤ�����å����ޤ���
+リファレンスが参照している型を見つけるために、以下のマクロを
+使いその戻り値をチェックします。
 
     SvTYPE(SvRV(SV*))
 
@@ -1476,7 +1476,7 @@ The most useful types that will be returned are:
 
 =end original
 
-����ͤȤ����֤���뷿��ͭ�פʤ�Τϰʲ����̤�Ǥ���
+戻り値として返される型で有益なものは以下の通りです。
 
 =begin original
 
@@ -1492,14 +1492,14 @@ The most useful types that will be returned are:
 
 =end original
 
-    SVt_IV    ������
-    SVt_NV    ������
-    SVt_PV    ������
-    SVt_RV    ������
-    SVt_PVAV  ����
-    SVt_PVHV  �ϥå���
+    SVt_IV    スカラ
+    SVt_NV    スカラ
+    SVt_PV    スカラ
+    SVt_RV    スカラ
+    SVt_PVAV  配列
+    SVt_PVHV  ハッシュ
     SVt_PVCV  Code
-    SVt_PVGV  ������ (possible a file handle)
+    SVt_PVGV  グロブ (possible a file handle)
     SVt_PVMG  Blessed or Magical Scalar
 (TBT)
 
@@ -1509,11 +1509,11 @@ The most useful types that will be returned are:
 
 =end original
 
-    �ܤ����ϥإå����ե����� sv.h�򻲾Ȥ��Ƥ���������
+    詳しくはヘッダーファイル sv.hを参照してください。
 
 =head2 Blessed References and Class Objects
 
-(Bless ���줿��ե���󥹤ȥ��饹���֥�������)
+(Bless されたリファレンスとクラスオブジェクト)
 
 =begin original
 
@@ -1524,12 +1524,12 @@ to access the various methods in the class.
 
 =end original
 
-��ե���󥹤ϥ��֥������Ȼظ��ץ�����ߥ󥰤򥵥ݡ��Ȥ��뤿��ˤ�
-�Ȥ��ޤ���
-perl �Υ��֥������Ȼظ��Ѹ�Ǥϡ����֥������ȤȤϥѥå�����
-(�⤷���ϥ��饹)�� bless ���줿ñ��ʥ�ե���󥹤Ǥ���
-���� bless �����С��ץ�����ޡ��Ϥ��Υ�ե���󥹤򥯥饹�ˤ������͡���
-�᥽�åɤ˥����������뤿��˻Ȥ����Ȥ��Ǥ��ޤ���
+リファレンスはオブジェクト指向プログラミングをサポートするためにも
+使われます。
+perl のオブジェクト指向用語では、オブジェクトとはパッケージ
+(もしくはクラス)に bless された単純なリファレンスです。
+一度 bless されれば、プログラマーはそのリファレンスをクラスにおける様々な
+メソッドにアクセスするために使うことができます。
 
 =begin original
 
@@ -1537,7 +1537,7 @@ A reference can be blessed into a package with the following function:
 
 =end original
 
-�ʲ��δؿ���Ȥäơ���ե���󥹤�ѥå������� bless ���뤳�Ȥ��Ǥ��ޤ���
+以下の関数を使って、リファレンスをパッケージに bless することができます。
 
     SV* sv_bless(SV* sv, HV* stash);
 
@@ -1549,10 +1549,10 @@ L<Stashes and Globs> for information on converting class names into stashes.
 
 =end original
 
-���� C<sv> �ϥ�ե�����ͤǤʤ���Фʤ�ޤ���
-���� C<stash> �ϥ�ե���󥹤�°���륯�饹����ꤷ�ޤ���
-���饹̾��stash�ؤ��Ѵ��ˤĤ��Ƥξܺ٤� L<Stashes and Globs> ��
-���Ȥ��Ƥ���������
+引数 C<sv> はリファレンス値でなければなりません。
+引数 C<stash> はリファレンスが属するクラスを指定します。
+クラス名のstashへの変換についての詳細は L<Stashes and Globs> を
+参照してください。
 
 =begin original
 
@@ -1570,10 +1570,10 @@ class.  SV is returned.
 
 =end original
 
-�ޤ�¸�ߤ��Ƥ��ʤ���С�rv ���ե���󥹤˥��åץ��졼�ɤ��ޤ���
-rv ���ؤ���������ο����� SV ���������ޤ���
-C<classname> ���ʥ�Ǥʤ���С�SV �ϻ��ꤵ�줿���饹�� bless ���졢
-SV ���֤���ޤ���
+まだ存在していなければ、rv をリファレンスにアップグレードします。
+rv が指し示すための新たな SV を生成します。
+C<classname> がナルでなければ、SV は指定されたクラスに bless され、
+SV が返されます。
 
 	SV* newSVrv(SV* rv, const char* classname);
 
@@ -1584,8 +1584,8 @@ if C<classname> is non-null.
 
 =end original
 
-���������ʤ������������ټ¿��� C<rv> �����Ȥ��Ƥ��� SV �إ��ԡ����ޤ���
-SV �� C<classname> ���ʥ�Ǥʤ����bless����ޤ���
+整数、符号なし整数、倍精度実数を C<rv> が参照している SV へコピーします。
+SV は C<classname> がナルでなければblessされます。
 
 	SV* sv_setref_iv(SV* rv, const char* classname, IV iv);
 	SV* sv_setref_uv(SV* rv, const char* classname, UV uv);
@@ -1598,9 +1598,9 @@ reference is rv.  SV is blessed if C<classname> is non-null.
 
 =end original
 
-�ݥ�����(B<���ɥ쥹�Ǥ��äơ�ʸ����ǤϤ���ޤ���!>)�� rv ��
-���Ȥ��Ƥ���SV�إ��ԡ����ޤ���
-SV �� C<classname> ���ʥ�Ǥʤ���� bless ����ޤ���
+ポインタ値(B<アドレスであって、文字列ではありません!>)を rv が
+参照しているSVへコピーします。
+SV は C<classname> がナルでなければ bless されます。
 
 	SV* sv_setref_pv(SV* rv, const char* classname, PV iv);
 
@@ -1611,9 +1611,9 @@ Perl calculate the string length.  SV is blessed if C<classname> is non-null.
 
 =end original
 
-ʸ����� C<rv> �����Ȥ��Ƥ��� SV �إ��ԡ����ޤ���
-length �� 0 �����ꤹ��ȡ�Perl ��ʸ�����Ĺ����׻����ޤ���
-SV �� C<classname> ���ʥ�Ǥʤ���� bless ����ޤ���
+文字列を C<rv> が参照している SV へコピーします。
+length に 0 を設定すると、Perl が文字列の長さを計算します。
+SV は C<classname> がナルでなければ bless されます。
 
 	SV* sv_setref_pvn(SV* rv, const char* classname, PV iv, STRLEN length);
 
@@ -1624,8 +1624,8 @@ check inheritance relationships.
 
 =end original
 
-SV ������Υ��饹�� bless ����Ƥ��뤫�ɤ����򸡺����ޤ���
-����ϷѾ��δط��Υ����å��Ϥ��ޤ���
+SV が特定のクラスに bless されているかどうかを検査します。
+これは継承の関係のチェックはしません。
 
 	int  sv_isa(SV* sv, const char* name);
 
@@ -1635,7 +1635,7 @@ Tests whether the SV is a reference to a blessed object.
 
 =end original
 
-SV �� bless ���줿���֥������ȤΥ�ե���󥹤Ǥ��뤫�ɤ����򸡺����ޤ���
+SV が bless されたオブジェクトのリファレンスであるかどうかを検査します。
 
 	int  sv_isobject(SV* sv);
 
@@ -1647,10 +1647,10 @@ is the function implementing the C<UNIVERSAL::isa> functionality.
 
 =end original
 
-SV ������Υ��饹��������������Τ��ɤ����򸡺����ޤ���
-SV �� bless ���줿���֥������ȤΥ�ե���󥹤Ǥ⡢
-���饹̾���ݻ����Ƥ���ʸ����Ǥ��äƤ⤫�ޤ��ޤ���
-����� C<UNIVERSAL::isa> �ε�ǽ��������Ƥ���ؿ��Ǥ���
+SV が特定のクラスから派生したものがどうかを検査します。
+SV は bless されたオブジェクトのリファレンスでも、
+クラス名を保持している文字列であってもかまいません。
+これは C<UNIVERSAL::isa> の機能を実装している関数です。
 
 	bool sv_derived_from(SV* sv, const char* name);
 
@@ -1661,14 +1661,14 @@ to write:
 
 =end original
 
-��������Υ��饹���������֥������Ȥ������ä����ɤ�����������ˤϡ�
-�ʲ��Τ褦�˽�ɬ�פ�����ޤ���
+ある特定のクラスの派生オブジェクトを受け取ったかどうか検査するには、
+以下のように書く必要があります。
 
 	if (sv_isobject(sv) && sv_derived_from(sv, class)) { ... }
 
 =head2 Creating New Variables
 
-(�������ѿ��κ���)
+(新しい変数の作成)
 
 =begin original
 
@@ -1677,9 +1677,9 @@ your Perl script, use the following routines, depending on the variable type.
 
 =end original
 
-undef �Ȥ����ͤ���Ĥ��ʤ��� Perl ������ץȤ��饢�������Ǥ��뿷����
-Perl ���ѿ�����������ˤϡ��ʲ��˼����롼������ѿ��η��˱�����
-�Ȥ��ޤ���
+undef という値を持つあなたの Perl スクリプトからアクセスできる新たな
+Perl の変数を生成するには、以下に示すルーチンを変数の型に応じて
+使います。
 
     SV*  get_sv("package::varname", TRUE);
     AV*  get_av("package::varname", TRUE);
@@ -1692,9 +1692,9 @@ be set, using the routines appropriate to the data type.
 
 =end original
 
-�����ܤΥѥ�᡼���Ȥ��� TRUE ��ȤäƤ���Ȥ������Ȥ����դ��Ƥ���������
-�������ѿ��Ϥ����ǥǡ��������Ф���Ŭ�ڤʥ롼�����Ȥ����Ȥ�
-���ꤹ�뤳�Ȥ��Ǥ��ޤ���
+二番目のパラメータとして TRUE を使っているということに注意してください。
+新しい変数はここでデータ型に対する適切なルーチンを使うことで
+設定することができます。
 
 =begin original
 
@@ -1703,8 +1703,8 @@ C<TRUE> argument to enable certain extra features.  Those bits are:
 
 =end original
 
-C<TRUE> �����ȥӥå��¤��äơ����Ĥ����ɲõ�ǽ��ͭ���Ȥ���褦��
-��ĤΥޥ���������ޤ���
+C<TRUE> 引数とビット和を取って、幾つかの追加機能を有効とするような
+二つのマクロがあります。
 
 =over
 
@@ -1716,7 +1716,7 @@ Marks the variable as multiply defined, thus preventing the:
 
 =end original
 
-�ѿ���¿����� (multiply defined) �Ǥ���Ȱ����դ�:
+変数に多重定義 (multiply defined) であると印を付け:
 
   Name <varname> used only once: possible typo
 
@@ -1726,7 +1726,7 @@ warning.
 
 =end original
 
-�ٹ���ɤ��ޤ���
+警告を防ぎます。
 
 =item GV_ADDWARN
 
@@ -1736,7 +1736,7 @@ Issues the warning:
 
 =end original
 
-�ʲ��ηٹ��:
+以下の警告を:
 
   Had to create <varname> unexpectedly
 
@@ -1746,7 +1746,7 @@ if the variable did not exist before the function was called.
 
 =end original
 
-�ѿ��������δؿ��θƤӽФ�������¸�ߤ��Ƥʤ��ä�����ȯ�������ޤ���
+変数が、その関数の呼び出し以前に存在してなかった場合に発生させます。
 
 =back
 
@@ -1757,12 +1757,12 @@ package.
 
 =end original
 
-�ѥå�����̾����ꤷ�ʤ��ä���硢�ѿ��ϥ����ȥѥå�������
-��������ޤ���
+パッケージ名を指定しなかった場合、変数はカレントパッケージで
+生成されます。
 
 =head2 Reference Counts and Mortality
 
-(���ȥ�����Ȥȴ�ȯ��)
+(参照カウントと揮発性)
 
 =begin original
 
@@ -1773,13 +1773,13 @@ then it will be destroyed and its memory made available for reuse.
 
 =end original
 
-Perl �ϻ��ȥ�����ȶ�ư(reference count-driven)�Υ��١������쥯�����
-��������Ѥ��Ƥ��ޤ���
-SV��AV��������HV(�ʲ� xV �Ⱦ�ά���ޤ�)
-�Ϥ��ΰ����򻲾ȥ������ 1 ����Ϥ�ޤ���
-xV �λ��ȥ�����Ȥ�0�ޤ��������硢���Υ�ե���󥹤��˴�����ơ�
-���줬�ȤäƤ��������
-�����ѤǤ���褦�ˤ���ޤ���
+Perl は参照カウント駆動(reference count-driven)のガベージコレクション
+機構を使用しています。
+SV、AV、そしてHV(以下 xV と省略します)
+はその一生を参照カウント 1 から始めます。
+xV の参照カウントが0まで落ちた場合、そのリファレンスは破棄されて、
+それが使っていたメモリは
+再利用できるようにされます。
 
 =begin original
 
@@ -1790,11 +1790,11 @@ manipulated with the following macros:
 
 =end original
 
-����ϡ�Perl ��٥�ˤ����Ƥϡ��ѿ��� undef �����Ȥ���ե���󥹤�
-�ݻ����Ƥ���Ǹ���ѿ����ѹ����줿�Ȥ���񤭤����Ȥ������Ȥ��ʤ��¤��
-������ޤ���
-����������Ū�ˤϡ����ȥ�����Ȥϰʲ��˵󤲤�ޥ�����Ȥä�
-���뤳�Ȥ��Ǥ��ޤ���
+これは、Perl レベルにおいては、変数が undef されるとかリファレンスを
+保持している最後の変数が変更されたとか上書きされるということがない限りは
+起こりません。
+しかし内部的には、参照カウントは以下に挙げるマクロを使って
+操作することができます。
 
     int SvREFCNT(SV* sv);
     SV* SvREFCNT_inc(SV* sv);
@@ -1810,11 +1810,11 @@ you want, use C<newRV_noinc> instead.
 
 =end original
 
-���ΰ����λ��ȥ�����Ȥ������̤δؿ�����Ĥ���ޤ���
-C<newRV_inc> �Ȥ����ؿ�������Ǥ���
-����ϻ��ꤵ�줿�����λ��Ȥ��������ơ����������ѤȤ��ư�����
-���ȥ�����Ȥ򥤥󥯥���Ȥ��ޤ���
-�⤷���������Ѥ�����Ǥ���С�C<newRV_noinc> ������˻ȤäƤ���������
+その引数の参照カウントを操作する別の関数が一つあります。
+C<newRV_inc> という関数がそれです。
+これは指定された引数の参照を生成して、その副作用として引数の
+参照カウントをインクリメントします。
+もしこの副作用が邪魔であれば、C<newRV_noinc> を代わりに使ってください。
 
 =begin original
 
@@ -1831,18 +1831,18 @@ terminates.  This is a memory leak.
 
 =end original
 
-���Ȥ��С�XSUB �ؿ������ե���󥹤��֤������Ȼפä��Ȥ��ޤ��礦��
-XSUB �롼�������ǡ�����ͤȤ��ƻ��ȥ������ 1 ����� SV ���������ޤ���
-���줫�麣�������� SV ������ˤ��� C<newRV_inc> ��ƤӤޤ���
-����Ͽ����� SV �Ȥ��Ƥλ��Ȥ��֤��ޤ�����C<newRV_inc> �˰����Ȥ����Ϥ���
-SV �λ��ȥ�����Ȥ� 2 �˥��󥯥���Ȥ���ޤ���
-������ XSUB �롼���󤫤餽�Υ�ե���󥹤�����ͤȤ����֤���SV �Τ��Ȥ�
-˺��ޤ��礦��
-����ɤ� Perl ��˺��Ƥޤ���! 
-����ͤ��֤��줿��ե���󥹤��˴����줿�Ȥ��ˤϤ��Ĥ⡢������ SV ��
-���ȥ�����Ȥ� 1 �ؤȸ�����졢�����Ʋ����⤪����ޤ���
-���� SV �ϡ�Perl ���Ȥ���λ����ޤǤϤ���˥�����������ʤ�μ��ʤ�
-����������֤���ˤʤ�ޤ���
+たとえば、XSUB 関数からリファレンスを返したいと思ったとしましょう。
+XSUB ルーチンの中で、初期値として参照カウント 1 を持つ SV を生成します。
+それから今作成した SV を引数にして C<newRV_inc> を呼びます。
+これは新たな SV としての参照を返しますが、C<newRV_inc> に引数として渡した
+SV の参照カウントは 2 にインクリメントされます。
+ここで XSUB ルーチンからそのリファレンスを戻り値として返し、SV のことは
+忘れましょう。
+けれども Perl は忘れてません! 
+戻り値で返されたリファレンスが破棄されたときにはいつも、元々の SV の
+参照カウントが 1 へと減じられ、そして何事もおこりません。
+その SV は、Perl 自身が終了するまではそれにアクセスするなんの手段も
+持たずに中ぶらりんになります。
 
 =begin original
 
@@ -1853,11 +1853,11 @@ stopping any memory leak.
 
 =end original
 
-�����Ǥ����������ϡ�C<newRV_inc> �ǤϤʤ� C<newRV_noinc> ��
-�Ȥ��Ȥ������ȤǤ���
-����ˤ�äơ��Ǹ�Υ�ե���󥹤��˴����줿�Ȥ���
-SV �Υ�ե���󥹥�����Ȥ�0�ȤʤäƤ��� SV ���˴�����ơ����꡼
-�꡼���򿩤��ߤ�ޤ���
+ここでの正しい手順は、C<newRV_inc> ではなく C<newRV_noinc> を
+使うということです。
+これによって、最後のリファレンスが破棄されたときに
+SV のリファレンスカウントは0となってその SV が破棄されて、メモリー
+リークを食い止めます。
 
 =begin original
 
@@ -1872,18 +1872,18 @@ See L<perlcall> and L<perlxs> for more details on these macros.
 
 =end original
 
-xVs���˴�����Τ������褦�������ʴؿ������Ĥ�����ޤ���
-�����δؿ��� �ȴ�ȯ����(mortality)�Υ��󥻥ץȤ�Ƴ�����ޤ���
-�����ȯ����xV�Ϥ��λ��ȥ�����Ȥ�ǥ�����Ȥ���褦�˥ޡ������ޤ�����
-�ºݤˤϡȤ���äȸ��(a short time later)�ޤǥǥ�����Ȥ�
-�Ԥʤ��ޤ���
-����Ū�ˤϡ��Ȥ���äȸ�ɤȤϡ�XSUB �ؿ��θƤӽФ��Τ褦��
-Perl �ΰ�Ĥ�ʸ�Ǥ���
-��ȯ���� xV �����äƤ��뻲�ȥ�����Ȥ�
-�ǥ�����Ȥ�Ԥ������ߥ󥰤η������ĤΥޥ�����SAVETMPS ��
-FREETMPS �˰�¸���Ƥ��ޤ���
-�������ĤΥޥ����ˤĤ��Ƥ�������
-L<perlcall> �� L<perlxs> �򻲾Ȥ��Ƥ���������
+xVsを破棄するのを助けるような便利な関数が幾つかあります。
+これらの関数は “揮発性”(mortality)のコンセプトを導入します。
+ある揮発性のxVはその参照カウントをデクリメントするようにマークしますが、
+実際には“ちょっと後”(a short time later)までデクリメントが
+行なわれません。
+一般的には、“ちょっと後”とは、XSUB 関数の呼び出しのような
+Perl の一つの文です。
+揮発性の xV が持っている参照カウントの
+デクリメントを行うタイミングの決定は二つのマクロ、SAVETMPS と
+FREETMPS に依存しています。
+これら二つのマクロについての説明は
+L<perlcall> と L<perlxs> を参照してください。
 
 =begin original
 
@@ -1893,9 +1893,9 @@ later be decremented twice.
 
 =end original
 
-��Mortalization�ɤϤ��줫�顢C<SvREFCNT_dec> �˷��긢��Ѥͤޤ���
-�������������ѿ������ٴ�ȯŪ�ˤ�����硢���λ��ȥ�����Ȥϸ��
-���٥ǥ�����Ȥ���ޤ���
+“Mortalization”はそれから、C<SvREFCNT_dec> に決定権を委ねます。
+しかし、ある変数を二度揮発的にした場合、その参照カウントは後で
+二度デクリメントされます。
 
 =begin original
 
@@ -1920,7 +1920,7 @@ To create a mortal variable, use the functions:
 
 =end original
 
-��ȯ�����ѿ�����������ˤϡ��ʲ��δؿ���Ȥ��ޤ�:
+揮発性の変数を生成するには、以下の関数を使います:
 
     SV*  sv_newmortal()
     SV*  sv_2mortal(SV*)
@@ -1936,12 +1936,12 @@ via C<sv_setpv>, C<sv_setiv>, etc. :
 
 =end original
 
-�ǽ�Τ�Τ�(�ͤΤʤ�)��ȯ���� SV �����������դ��Ĥ�
-�ϴ��ˤ��� SV ���ȯ���� SV ���Ѵ����ޤ�(�����ơ����Τ����
-C<SvREFCNT_dec> ��ƤӽФ����٤餻�ޤ�)��
-���Ĥ�ϡ�����¸�ߤ��� SV �δ�ȯ���Υ��ԡ����������ޤ���
-C<sv_newmortal> ���ͤΤʤ������� SV ����Τǡ����̤�
-C<sv_setpv>, C<sv_setiv> �ʤɤ�Ȥäƺ��ʤ���Фʤ�ޤ���:
+最初のものは(値のない)揮発性の SV を生成し、ふたつめ
+は既にある SV を揮発性の SV に変換します(そして、このために
+C<SvREFCNT_dec> を呼び出しを遅らせます)。
+三つめは、既に存在する SV の揮発性のコピーを生成します。
+C<sv_newmortal> は値のない新しい SV を作るので、普通は
+C<sv_setpv>, C<sv_setiv> などを使って作らなければなりません:
 
     SV *tmp = sv_newmortal();
     sv_setiv(tmp, an_integer);
@@ -1952,7 +1952,7 @@ As that is multiple C statements it is quite common so see this idiom instead:
 
 =end original
 
-����� C ��ʣ��ʸ�ʤΤǡ�����ˤ��δ���ˡ���ȤƤ����Ū�Ǥ�:
+これは C の複数文なので、代わりにこの慣用法がとても一般的です:
 
     SV *tmp = sv_2mortal(newSViv(an_integer));
 
@@ -1970,9 +1970,9 @@ making a C<sv_mortalcopy> is safer.
 
 =end original
 
-��ȯ�����ѿ�����������������äƤϽ�ʬ���դ��٤��Ǥ���
-�⤷��Ʊ���ѿ���ʣ�祳��ƥ����Ȥ���Ǵ�ȯ���ˤ����ꡢ�����ѿ���ʣ����
-��ȯ���ˤ��Ƥ��ޤä��ꤹ��Ф������ʼ��Τ������뤫�⤷��ޤ���
+揮発性の変数を生成するに当たっては十分注意すべきです。
+もし、同じ変数を複合コンテキストの中で揮発性にしたり、ある変数を複数回
+揮発性にしてしまったりすればおかしな自体が起こるかもしれません。
 Thinking of "Mortalization"
 as deferred C<SvREFCNT_dec> should help to minimize such problems.
 For example if you are passing an SV which you I<know> has high enough REFCNT
@@ -1989,13 +1989,13 @@ C<sv_2mortal> or C<sv_mortalcopy> routines.
 
 =end original
 
-��ȯ���Υ롼����ϡ�ñ�� SV �Τ�������ǤϤ���ޤ���
-AV �� HV �⡢C<sv_2mortal> �� C<sv_mortalcopy> �롼����ˡ����ɥ쥹��
-(C<SV*> �˥��㥹�Ȥ���) �Ϥ����Ȥǡ���ȯ���ˤ��뤳�Ȥ��Ǥ��ޤ���
+揮発性のルーチンは、単に SV のためだけではありません。
+AV や HV も、C<sv_2mortal> や C<sv_mortalcopy> ルーチンに、アドレスを
+(C<SV*> にキャストして) 渡すことで、揮発性にすることができます。
 
 =head2 Stashes and Globs
 
-(�����å���ȥ�����)
+(スタッシュとグロブ)
 
 =begin original
 
@@ -2008,13 +2008,13 @@ including (but not limited to) the following:
 
 =end original
 
-�����å���("stash")�Ȥϡ��ѥå��������������줿���Ƥ��ѿ���
-���äƤ���ϥå���Τ��ȤǤ���
-�ϥå���ơ��֥�ˤ��뤽�줾��� key �ϡ�(Ʊ��̾���Τ��٤Ƥΰۤʤ뷿��
-���֥������ȤǶ�ͭ�����) ����ܥ�̾�ǡ��ϥå���ơ��֥�θġ���
-�ͤϡ�(�������Х��ͤΤ����) GV �ȸƤФ�ޤ���
-GV �ˤϡ��ʲ��Τ�Τ�ޤ� (�����˸¤�ޤ���)������̾�����͡���
-���֥������ȤؤΥ�ե���󥹤����������뤳�Ȥˤʤ�ޤ���
+スタッシュ("stash")とは、パッケージ内で定義された全ての変数が
+入っているハッシュのことです。
+ハッシュテーブルにあるそれぞれの key は、(同じ名前のすべての異なる型の
+オブジェクトで共有される) シンボル名で、ハッシュテーブルの個々の
+値は、(グローバル値のための) GV と呼ばれます。
+GV には、以下のものを含む (これらに限りませんが)、その名前の様々な
+オブジェクトへのリファレンスが次々に入ることになります。
 
     Scalar Value
     Array Value
@@ -2033,14 +2033,14 @@ in the stash C<Baz::> in C<Bar::>'s stash.
 
 =end original
 
-C<main> �ѥå������ˤ��륢���ƥ���ݻ����� C<PL_defstash> �ȸƤФ��
-�����å��夬����ޤ���
-¾�Υѥå������ˤ��륢���ƥ��������뤿��
-�ˤϡ��ѥå�����̾�ˡ�::�ɤ��ղä��ޤ���
-C<Foo> �Ȥ����ѥå������ˤ��륢���ƥ�� C<Foo::> �Ȥ���
-PL_defstash ����ˤ���ޤ���
-�ѥå����� C<Bar::Baz> �ˤ��륢���ƥ�� C<Bar::> �Υ����å�������
-C<Baz::> �Υ����å������ˤ���ޤ���
+C<main> パッケージにあるアイテムを保持する C<PL_defstash> と呼ばれる
+スタッシュがあります。
+他のパッケージにあるアイテムを取得するため
+には、パッケージ名に“::”を付加します。
+C<Foo> というパッケージにあるアイテムは C<Foo::> という
+PL_defstash の中にあります。
+パッケージ C<Bar::Baz> にあるアイテムは C<Bar::> のスタッシュの中の
+C<Baz::> のスタッシュの中にあります。
 
 =begin original
 
@@ -2048,7 +2048,7 @@ To get the stash pointer for a particular package, use the function:
 
 =end original
 
-����Υѥå������� HV �ݥ��󥿤�����ˤϡ��ʲ��δؿ����Ȥ��ޤ�:
+特定のパッケージの HV ポインタの入手には、以下の関数が使えます:
 
     HV*  gv_stashpv(const char* name, I32 flags)
     HV*  gv_stashsv(SV*, I32 flags)
@@ -2061,11 +2061,11 @@ C<HV*>.  The C<flags> flag will create a new package if it is set to GV_ADD.
 
 =end original
 
-�ǽ�δؿ�������ƥ��ʸ�����Ȥꡢ�����ܤ� SV �����줿ʸ�����Ȥ��ޤ���
-stash ��ñ�ʤ�ϥå���ʤΤǡ�C<HV*> ��������Ȥ������Ȥ�
-˺��ʤ��Ǥ���������
-C<flag> �ե饰��
-GV_ADD �˥��åȤ���Ƥ�����ˤϿ����ʥѥå��������������ޤ���
+最初の関数が、リテラル文字列をとり、二番目が SV に入れた文字列を使います。
+stash は単なるハッシュなので、C<HV*> を受け取るということを
+忘れないでください。
+C<flag> フラグが
+GV_ADD にセットされている場合には新たなパッケージを生成します。
 
 =begin original
 
@@ -2076,11 +2076,11 @@ language itself.
 
 =end original
 
-C<gv_stash*v> ���׵᤹�� name �ϥ���ܥ�ơ��֥��������褦�Ȥ���
-�ѥå�������̾���Ǥ���
-�ǥե���ȤΥѥå������ϡ�C<main> �Ȥ�����ΤǤ���
-¿�Ť˥ͥ��Ȥ����ѥå������Ǥ���С�Perl �Ǥξ���Ʊ�ͤˡ�
-C<::> �Ƕ��ڤä� C<gv_stash*v> ��̾�����Ϥ��Τ���������ˡ�Ǥ���
+C<gv_stash*v> が要求する name はシンボルテーブルを手に入れようとする
+パッケージの名前です。
+デフォルトのパッケージは、C<main> というものです。
+多重にネストしたパッケージであれば、Perl での場合と同様に、
+C<::> で区切って C<gv_stash*v> に名前を渡すのが正しい方法です。
 
 =begin original
 
@@ -2089,8 +2089,8 @@ out the stash pointer by using:
 
 =end original
 
-���뤤�ϡ��⤷ bless ���줿��ե���󥹤Ǥ��� SV ������С�
-�ʲ��Τ褦�ˤ��Ƥ�ȤäƤ⥹���å���ݥ��󥿤�õ�����Ȥ��Ǥ�:
+あるいは、もし bless されたリファレンスである SV があれば、
+以下のようにしてを使ってもスタッシュポインタを探すことができ:
 
     HV*  SvSTASH(SvRV(SV*));
 
@@ -2100,7 +2100,7 @@ then use the following to get the package name itself:
 
 =end original
 
-�ѥå�����̾���Ȥϡ��ʲ��Τ褦�ˤ��������ޤ�:
+パッケージ名自身は、以下のようにして得られます:
 
     char*  HvNAME(HV* stash);
 
@@ -2111,7 +2111,7 @@ function:
 
 =end original
 
-Perl ������ץȤ� bless ���줿�ͤ��֤�ɬ�פ�����С��ʲ��δؿ����Ȥ��ޤ�:
+Perl スクリプトへ bless された値を返す必要があれば、以下の関数が使えます:
 
     SV*  sv_bless(SV*, HV* stash)
 
@@ -2123,8 +2123,8 @@ as any other SV.
 
 =end original
 
-�ǽ�ΰ��� C<SV*> �ϥ�ե���󥹤ǡ������ܤΰ����������å���Ǥ���
-�֤��줿 C<SV*> �ϡ�¾�� SV ��Ʊ�ͤ˻Ȥ����Ȥ��Ǥ��ޤ���
+最初の引数 C<SV*> はリファレンスで、二番目の引数がスタッシュです。
+返された C<SV*> は、他の SV と同様に使うことができます。
 
 =begin original
 
@@ -2132,12 +2132,12 @@ For more information on references and blessings, consult L<perlref>.
 
 =end original
 
-��ե���󥹤� bless �ˤĤ��ƤΤ��ܤ�������� L<perlref> ��
-���Ȥ��Ƥ���������
+リファレンスと bless についてのより詳しい情報は L<perlref> を
+参照してください。
 
 =head2 Double-Typed SVs
 
-(��ŷ� SV)
+(二重型 SV)
 
 =begin original
 
@@ -2147,10 +2147,10 @@ actual scalar data from the stored type into the requested type.
 
 =end original
 
-�������ѿ����̾�����������١��ݥ��󥿡���ե���󥹤Τ�����
-�����줫 ��Ĥη���Ȥ�ޤ���
-Perl �ϼºݤΥǡ������Ф��ơ����Ѥ���Ƥ��뷿�����׵ᤵ��Ƥ��뷿�ء�
-��ưŪ���Ѵ���Ԥʤ��ޤ���
+スカラ変数は通常、整数、倍精度、ポインタ、リファレンスのうちの
+いずれか 一つの型をとります。
+Perl は実際のデータに対して、蓄積されている型から要求されている型へ、
+自動的に変換を行ないます。
 
 =begin original
 
@@ -2160,9 +2160,9 @@ or its string equivalent from either C<strerror> or C<sys_errlist[]>.
 
 =end original
 
-�����Υ������ѿ��ϡ�ʣ���η��Υ�����ǡ�������Ĥ褦�ˤʤäƤ��ޤ���
-���Ȥ����ѿ� C<$!> �ϡ�C<errno> �ο��ͤȤ��Ƥ��ͤȡ�
-C<strerror> �� C<sys_errlist[]> ���������Τ�Ʊ�ͤ�ʸ�������äƤ��ޤ���
+ある種のスカラ変数は、複数の型のスカラデータを持つようになっています。
+たとえば変数 C<$!> は、C<errno> の数値としての値と、
+C<strerror> や C<sys_errlist[]> から得たのと同値な文字列を持っています。
 
 =begin original
 
@@ -2173,12 +2173,12 @@ four macros to set the flags are:
 
 =end original
 
-SV ��ʣ���Υǡ����ͤ������褦�ˤ���ˤϡ���ĤΤ��Ȥ�
-���ʤ��ƤϤʤ�ޤ���
-�����鷿���̤��ɲä��뤿��� C<sv_set*v> �롼�������Ѥ��뤳�ȡ�
-���줫�顢�ե饰�����ꤷ�� Perl ��ʣ���Υǡ�����
-���äƤ��뤳�Ȥ��Τ餻�뤳�ȤǤ���
-�ե饰�����ꤹ�뤿��λͤĤΥޥ����ϰʲ��Τ�ΤǤ�:
+SV に複数のデータ値を入れるようにするには、二つのことを
+しなくてはなりません。
+スカラ型を別に追加するために C<sv_set*v> ルーチンを使用すること。
+それから、フラグを設定して Perl に複数のデータを
+持っていることを知らせることです。
+フラグを設定するための四つのマクロは以下のものです:
 
 	SvIOK_on
 	SvNOK_on
@@ -2194,10 +2194,10 @@ all the rest.
 
 =end original
 
-���Ѥ���ޥ����ϡ��ǽ�ˤɤ� C<sv_set*v> �롼�����Ƥ֤Τ���
-�ؤ�äƤ��ޤ���
-����ϡ�C<sv_set*v> �롼����Ϥ��٤�����Υǡ������ΥӥåȤ�����
-���ꤷ�ơ�¾�򥯥ꥢ���Ƥ��ޤ�����Ǥ���
+使用するマクロは、最初にどの C<sv_set*v> ルーチンを呼ぶのかに
+関わってきます。
+これは、C<sv_set*v> ルーチンはすべて特定のデータ型のビットだけを
+設定して、他をクリアしてしまうからです。
 
 =begin original
 
@@ -2207,8 +2207,8 @@ following code:
 
 =end original
 
-���Ȥ��С�"dberror" �Ȥ��������� Perl �ѿ����äơ����顼�ͤ���ͤ�
-��å�����ʸ����ǻ��Ĥ褦�ˤ���ˤϡ��ʲ��Τ褦�˽񤭤ޤ�:
+たとえば、"dberror" という新しい Perl 変数を作って、エラー値を数値と
+メッセージ文字列で持つようにするには、以下のように書きます:
 
     extern int  dberror;
     extern char *dberror_list;
@@ -2225,12 +2225,12 @@ macro C<SvPOK_on> would need to be called instead of C<SvIOK_on>.
 
 =end original
 
-C<sv_setiv> �� C<sv_setpv> �ν�����դǤ��ä���硢C<SvIOK_on> �ޥ�����
-����� C<SvPOK_on> �ޥ�����ƤФʤ���Фʤ�ޤ���
+C<sv_setiv> と C<sv_setpv> の順序が逆であった場合、C<SvIOK_on> マクロの
+代わりに C<SvPOK_on> マクロを呼ばなければなりません。
 
 =head2 Magic Variables
 
-(�ޥ��å��ѿ�)
+(マジック変数)
 
 =begin original
 
@@ -2251,10 +2251,10 @@ linked list of C<struct magic>'s, typedef'ed to C<MAGIC>.
 
 =end original
 
-���٤Ƥ� SV �� magical���Ĥޤꡢ�̾�� SV �����äƤ��ʤ��褦���ü��
-°������Ĥ褦�ˤ��뤳�Ȥ��Ǥ��ޤ���
-������°���� C<MAGIC> �Ȥ��� typedef ����Ƥ��� C<struct magic> ��
-��󥯥ꥹ�Ȥˤ��� SV ��¤�Τ˳�Ǽ����ޤ���
+すべての SV は magical、つまり、通常の SV が持っていないような特殊な
+属性を持つようにすることができます。
+これらの属性は C<MAGIC> として typedef されている C<struct magic> の
+リンクリストにある SV 構造体に格納されます。
 
     struct magic {
         MAGIC*      mg_moremagic;
@@ -2273,12 +2273,12 @@ Note this is current as of patchlevel 0, and could change at any time.
 
 =end original
 
-����ϡ��ѥå���٥�0�λ����ǤΤ�ΤǤ���
-�ѹ�������ǽ��������ޤ���
+これは、パッチレベル0の時点でのものです。
+変更される可能性があります。
 
 =head2 Assigning Magic
 
-(�ޥ��å�������)
+(マジックの代入)
 
 =begin original
 
@@ -2286,7 +2286,7 @@ Perl adds magic to an SV using the sv_magic function:
 
 =end original
 
-Perl �� sv_magic �ؿ���Ȥä� SV �˥ޥ��å����ɲä��ޤ���
+Perl は sv_magic 関数を使った SV にマジックを追加します。
 
     void sv_magic(SV* sv, SV* obj, int how, const char* name, I32 namlen);
 
@@ -2297,7 +2297,7 @@ feature.
 
 =end original
 
-���� C<sv> �ϡ������˥ޥ��å���ǽ��������� SV �ؤΥݥ��󥿤Ǥ���
+引数 C<sv> は、新たにマジック機能を獲得する SV へのポインタです。
 
 =begin original
 
@@ -2310,13 +2310,13 @@ SV.
 
 =end original
 
-C<sv> ���ޤ� magical �Ǥʤ���С�Perl �� C<sv> �� C<SVt_PVMG> ���Ѵ�
-���뤿��� C<SvUPGRADE> ��Ȥ��ޤ���
-Perl �Ϥ��줫�顢�ޥ��å���ǽ�Υ�󥯥ꥹ�Ȥ���Ƭ�ˤ�����ɲä��ޤ���
-������¸�ߤ��Ƥ���Ʊ�������פΥޥ��å��Ϻ������ޤ���
-����ϥ����С��饤�ɤ��뤳�Ȥ��Ǥ���
-ʣ����Ʊ�����Υޥ��å��Υ��󥹥��󥹤��Ĥ� SV ��
-����դ��뤳�Ȥ��Ǥ���Ȥ������Ȥ����դ��Ƥ���������
+C<sv> がまだ magical でなければ、Perl は C<sv> を C<SVt_PVMG> に変換
+するために C<SvUPGRADE> を使います。
+Perl はそれから、マジック機能のリンクリストの先頭にそれを追加します。
+以前に存在していた同じタイプのマジックは削除されます。
+これはオーバーライドすることができ、
+複数の同じ型のマジックのインスタンスを一つの SV に
+結び付けることができるということに注意してください。
 
 =begin original
 
@@ -2330,10 +2330,10 @@ to contain an C<SV*> and is stored as-is with its REFCNT incremented.
 
 =end original
 
-���� C<name> �� C<namlen> �Ϥ���ʸ����� magic �Ȥ����դ��뤿���
-�Ȥ��ޤ���
-ŵ��Ū�ˤ��ѿ���̾���Ǥ���
-C<namlen> �� C<mg_len> �ե�����ɤ˳�Ǽ���졢C<name> ���̥�ʤ顢
+引数 C<name> と C<namlen> はある文字列と magic とを結び付けるために
+使われます。
+典型的には変数の名前です。
+C<namlen> は C<mg_len> フィールドに格納され、C<name> がヌルなら、
 then either a C<savepvn> copy of
 C<name> or C<name> itself is stored in the C<mg_ptr> field, depending on
 whether C<namlen> is greater than zero or equal to zero respectively.  As a
@@ -2354,9 +2354,9 @@ referring to 'U' magic rather than C<PERL_MAGIC_uvar> for example.
 
 =end original
 
-�ؿ� sv_magic �� C<how> �򡢤��餫�����������Ƥ���
-�ޥ��å����ۥơ��֥�("Magic Virtual Table") �Τɤ��
-C<mg_virtual> �ե�����ɤ����ꤹ�뤫����ꤹ��Τ˻Ȥ��ޤ���
+関数 sv_magic は C<how> を、あらかじめ定義されている
+マジック仮想テーブル("Magic Virtual Table") のどれを
+C<mg_virtual> フィールドに設定するかを決定するのに使います。
 See the L<Magic Virtual Tables> section below.  The C<how> argument is also
 stored in the C<mg_type> field. The value of C<how> should be chosen
 from the set of macros C<PERL_MAGIC_foo> found in F<perl.h>. Note that before
@@ -2375,12 +2375,12 @@ then C<obj> is merely stored, without the reference count being incremented.
 
 =end original
 
-���� C<obj> �� C<MAGIC> ��¤�Τ� C<mg_obj> �ե�����ɤ˳�Ǽ����ޤ���
-���줬 C<sv> ������Ʊ���Ǥʤ��ä���硢C<obj> �λ��ȥ�����Ȥ�
-���󥯥���Ȥ���ޤ���
-Ʊ���Ǥ��ä���硢�⤷���ϰ��� C<how> ��
-C<PERL_MAGIC_arylen> ���ʥ�ݥ��󥿤Ǥ��ä����ˤϡ�C<obj> ��
-���ȥ�����ȤΥ��󥯥���Ȥ򤵤��뤳�Ȥʤ���Ǽ����ޤ���
+引数 C<obj> は C<MAGIC> 構造体の C<mg_obj> フィールドに格納されます。
+これが C<sv> 引数と同じでなかった場合、C<obj> の参照カウントは
+インクリメントされます。
+同じであった場合、もしくは引数 C<how> が
+C<PERL_MAGIC_arylen> かナルポインタであった場合には、C<obj> は
+参照カウントのインクリメントをさせることなく格納されます。
 
 =begin original
 
@@ -2389,8 +2389,8 @@ to an SV.
 
 =end original
 
-SV �˥ޥ��å����ɲä��롢���������ˡ�ˤĤ��Ƥ� L<perlapi> ��
-C<sv_magicext> �⻲�Ȥ��Ƥ���������
+SV にマジックを追加する、より柔軟な方法については L<perlapi> の
+C<sv_magicext> も参照してください。
 
 =begin original
 
@@ -2398,7 +2398,7 @@ There is also a function to add magic to an C<HV>:
 
 =end original
 
-Ʊ�ͤ� C<HV> �˥ޥ��å����ղä���ؿ�������ޤ���
+同様に C<HV> にマジックを付加する関数があります。
 
     void hv_magic(HV *hv, GV *gv, int how);
 
@@ -2408,7 +2408,7 @@ This simply calls C<sv_magic> and coerces the C<gv> argument into an C<SV>.
 
 =end original
 
-�����ñ��� C<sv_magic> ��ƤӽФ������� C<gv> ����Ū�� C<SV> �ˤ��ޤ���
+これは単純に C<sv_magic> を呼び出し、引数 C<gv> を強制的に C<SV> にします。
 
 =begin original
 
@@ -2416,7 +2416,7 @@ To remove the magic from an SV, call the function sv_unmagic:
 
 =end original
 
-SV ����ޥ��å���������ˤϡ�sv_unmagic �Ȥ����ؿ���ƤӽФ��ޤ���
+SV からマジックを取り除くには、sv_unmagic という関数を呼び出します。
 
     void sv_unmagic(SV *sv, int type);
 
@@ -2427,12 +2427,12 @@ was initially made magical.
 
 =end original
 
-���� C<type> �ϡ�C<SV> �� magical �ˤ��줿�Ȥ��� C<how> ���ͤ�Ʊ����
-�ʤ�褦�ˤ��٤��Ǥ���
+引数 C<type> は、C<SV> が magical にされたときの C<how> の値と同じに
+なるようにすべきです。
 
 =head2 Magic Virtual Tables
 
-(�ޥ��å����ۥơ��֥�)
+(マジック仮想テーブル)
 
 =begin original
 
@@ -2443,10 +2443,10 @@ applied to that variable.
 
 =end original
 
-C<MAGIC> ��¤�Τ� C<mg_virtual> �ե�����ɤ� C<MGVTBL> �ؤΥݥ��󥿤ǡ�
-����ϴؿ��ݥ��󥿤ι�¤�ΤǤ��ꡢ�ޤ��б������ѿ����Ф���
-Ŭ�Ѥ�����ǽ���Τ��뤵�ޤ��ޤ����򰷤������
-�֥ޥ��å����ۥơ��֥��("Magic Virtual Table") ���̣���Ƥ��ޤ���
+C<MAGIC> 構造体の C<mg_virtual> フィールドは C<MGVTBL> へのポインタで、
+これは関数ポインタの構造体であり、また対応する変数に対して
+適用される可能性のあるさまざまな操作を扱うための
+「マジック仮想テーブル」("Magic Virtual Table") を意味しています。
 
 =begin original
 
@@ -2455,8 +2455,8 @@ routine types:
 
 =end original
 
-C<MGVTBL> �ϡ��ʲ��˵󤲤� 5 ����(���뤤�ϻ��� 8 ����)��
-�ݥ��󥿤���äƤ��ޤ���
+C<MGVTBL> は、以下に挙げる 5 種類(あるいは時々 8 種類)の
+ポインタを持っています。
 
     int  (*svt_get)(SV* sv, MAGIC* mg);
     int  (*svt_set)(SV* sv, MAGIC* mg);
@@ -2478,10 +2478,10 @@ actions depending on which function is being called.
 
 =end original
 
-���� MGVTBL �� F<perl.h> ����ǥ���ѥ���������ꤵ�졢���� 19 �η�
-(�����С������ɹ��ߤ� 21)������ޤ���
-�����ΰۤʤä���¤�Τϡ��ؿ����ƤӽФ��줿�Ȥ��˰�¸����
-�ɲ�ư���Ԥ��褦���͡��ʥ롼����ؤΥݥ��󥿤��ݻ����Ƥ��ޤ���
+この MGVTBL は F<perl.h> の中でコンパイル時に設定され、現在 19 の型
+(オーバーロード込みで 21)があります。
+これらの異なった構造体は、関数が呼び出されたときに依存して
+追加動作を行うような様々なルーチンへのポインタを保持しています。
 
 =begin original
 
@@ -2495,13 +2495,13 @@ actions depending on which function is being called.
 
 =end original
 
-     �ؿ��ݥ���     ���ο�����
+     関数ポインタ     その振る舞い
     ----------------    ------------
-    svt_get             SV ���ͤ��������줿���˲�����Ԥ���
-    svt_set             SV ���ͤ�����������ǲ�����Ԥ���
-    svt_len             SV ��Ĺ������𤹤롣
-    svt_clear		SV ��ɽ�路�Ƥ����Τ�򥯥ꥢ���롣
-    svt_free            SV �˷���դ����Ƥ��ΰ��������롣
+    svt_get             SV の値が取得された前に何かを行う。
+    svt_set             SV に値を代入した後で何かを行う。
+    svt_len             SV の長さを報告する。
+    svt_clear		SV が表わしているものををクリアする。
+    svt_free            SV に結び付けられてい領域を解放する。
 
 =begin original
 
@@ -2523,8 +2523,8 @@ to an C<mg_type> of C<PERL_MAGIC_sv>) contains:
 
 =end original
 
-���Ȥ��С�C<vtbl_sv> (C<PERL_MAGIC_sv> �� C<mg_type> ���б����ޤ�)��
-�ƤФ�� MGVTBL ��¤�Τ����Ƥϰʲ����ͤˤʤäƤ��ޤ���
+たとえば、C<vtbl_sv> (C<PERL_MAGIC_sv> の C<mg_type> に対応します)と
+呼ばれる MGVTBL 構造体の内容は以下の様になっています。
 
     { magic_get, magic_set, magic_len, 0, 0 }
 
@@ -2538,10 +2538,10 @@ the Perl API, and may not be exported by the Perl library.
 
 =end original
 
-�������äơ����� SV �� magical �Ǥ���ȷ��ꤵ��Ƥ��η���
-C<PERL_MAGIC_sv> �Ǥ��ä��Ȥ������¹Ԥ��줿�ʤ�С�C<magic_get> ��
-�ƤӽФ���ޤ���
-magical �����Ф���롼����Ϥ��٤ơ�C<magic_> �ǻϤޤ�ޤ���
+したがって、ある SV が magical であると決定されてその型が
+C<PERL_MAGIC_sv> であったとき、操作が実行されたならば、C<magic_get> が
+呼び出されます。
+magical 型に対するルーチンはすべて、C<magic_> で始まります。
 NOTE: the magic routines are not considered part of
 the Perl API, and may not be exported by the Perl library.
 (TBT)
@@ -2571,7 +2571,7 @@ The current kinds of Magic Virtual Tables are:
 
 =end original
 
-�������Ǥ�Magic Virtual Tables �μ���ϰʲ����̤�Ǥ���
+現時点でのMagic Virtual Tables の種類は以下の通りです。
 
 =begin original
 
@@ -2628,51 +2628,51 @@ The current kinds of Magic Virtual Tables are:
     mg_type
     (old-style char and macro)   MGVTBL          Type of magic
     --------------------------   ------          -------------
-    \0 PERL_MAGIC_sv             vtbl_sv         �ü쥹�����ѿ�
-    A  PERL_MAGIC_overload       vtbl_amagic     %OVERLOAD �ϥå���
-    a  PERL_MAGIC_overload_elem  vtbl_amagicelem %OVERLOAD �ϥå�������
-    c  PERL_MAGIC_overload_table (none)          �����å���Υ����С�������
-                                                 �ơ��֥�(AMT) ���ݻ�
-    B  PERL_MAGIC_bm             vtbl_bm         Boyer-Moore (��®ʸ���󸡺�)
-    D  PERL_MAGIC_regdata        vtbl_regdata    ����ɽ���ޥå��󥰰��֥ǡ���
-                                                 (@+ �� @- ���ѿ�)
-    d  PERL_MAGIC_regdatum       vtbl_regdatum   ����ɽ���ޥå��󥰰��֥ǡ���
-                                                 ����
-    E  PERL_MAGIC_env            vtbl_env        %ENV �ϥå���
-    e  PERL_MAGIC_envelem        vtbl_envelem    %ENV �ϥå�������
-    f  PERL_MAGIC_fm             vtbl_fm         �ե������(�֥���ѥ���Ѥߡ�
-                                                 �ե����ޥå�)
-    g  PERL_MAGIC_regex_global   vtbl_mglob      m//g �Υ������å� / study() ����ʸ����
-    H  PERL_MAGIC_hints          vtbl_sig        %^H �ϥå���
-    h  PERL_MAGIC_hintselem      vtbl_hintselem  %^H �ϥå�������
-    I  PERL_MAGIC_isa            vtbl_isa        @ISA ����
-    i  PERL_MAGIC_isaelem        vtbl_isaelem    @ISA ��������
-    k  PERL_MAGIC_nkeys          vtbl_nkeys      scalar(keys()) ������
-    L  PERL_MAGIC_dbfile         (none)          �ǥХå��� %_<filename
-    l  PERL_MAGIC_dbline         vtbl_dbline     �ǥХå��� %_<filename ����
-    o  PERL_MAGIC_collxfrm       vtbl_collxfrm   ��������ȹ��Ѵ�
-    P  PERL_MAGIC_tied           vtbl_pack       tie ���줿�����ϥå���
-    p  PERL_MAGIC_tiedelem       vtbl_packelem   tie ���줿�����ϥå��������
-    q  PERL_MAGIC_tiedscalar     vtbl_packelem   tie ���줿�������ϥ�ɥ�
-    r  PERL_MAGIC_qr             vtbl_qr         ��������ѥ��뤵�줿 qr// ����ɽ��
-    S  PERL_MAGIC_sig            vtbl_sig        %SIG �ϥå���
-    s  PERL_MAGIC_sigelem        vtbl_sigelem    %SIG �ϥå�������
-    t  PERL_MAGIC_taint          vtbl_taint      ������
-    U  PERL_MAGIC_uvar           vtbl_uvar       �������ƥ󥷥��ǻ��Ѳ�ǽ
-    v  PERL_MAGIC_vec            vtbl_vec        vec() ������
-    V  PERL_MAGIC_vstring        (none)          v-ʸ���󥹥���
-    w  PERL_MAGIC_utf8           vtbl_utf8       UTF-8 Ĺ��+���ե��åȥ���å���
-    x  PERL_MAGIC_substr         vtbl_substr     substr() ������
-    y  PERL_MAGIC_defelem        vtbl_defelem    �Ƥ� "foreach" ȿ����
-                                                 �ѿ� / ���ޡ��Ȱ���
-                                                 ��ưͭ����
-    #  PERL_MAGIC_arylen         vtbl_arylen     �����Ĺ�� ($#ary)
-    .  PERL_MAGIC_pos            vtbl_pos        pos() ������
-    <  PERL_MAGIC_backref        vtbl_backref    �夤��ե���󥹤ؤθ����ݥ���
-    ~  PERL_MAGIC_ext            (none)          �������ƥ󥷥��ǻ��Ѳ�ǽ
-    :  PERL_MAGIC_symtab         (none)          ����ܥ�ơ��֥�Ȥ��ƻȤ���ϥå���
-    %  PERL_MAGIC_rhash          (none)          ���¥ϥå���Ȥ��ƻȤ���ϥå���
-    @  PERL_MAGIC_arylen_p       vtbl_arylen_p   @a ���� $#a �ؤΥݥ���
+    \0 PERL_MAGIC_sv             vtbl_sv         特殊スカラ変数
+    A  PERL_MAGIC_overload       vtbl_amagic     %OVERLOAD ハッシュ
+    a  PERL_MAGIC_overload_elem  vtbl_amagicelem %OVERLOAD ハッシュ要素
+    c  PERL_MAGIC_overload_table (none)          スタッシュのオーバーロード
+                                                 テーブル(AMT) を保持
+    B  PERL_MAGIC_bm             vtbl_bm         Boyer-Moore (高速文字列検索)
+    D  PERL_MAGIC_regdata        vtbl_regdata    正規表現マッチング位置データ
+                                                 (@+ と @- の変数)
+    d  PERL_MAGIC_regdatum       vtbl_regdatum   正規表現マッチング位置データ
+                                                 要素
+    E  PERL_MAGIC_env            vtbl_env        %ENV ハッシュ
+    e  PERL_MAGIC_envelem        vtbl_envelem    %ENV ハッシュ要素
+    f  PERL_MAGIC_fm             vtbl_fm         フォーム行(「コンパイル済み」
+                                                 フォーマット)
+    g  PERL_MAGIC_regex_global   vtbl_mglob      m//g のターゲット / study() した文字列
+    H  PERL_MAGIC_hints          vtbl_sig        %^H ハッシュ
+    h  PERL_MAGIC_hintselem      vtbl_hintselem  %^H ハッシュ要素
+    I  PERL_MAGIC_isa            vtbl_isa        @ISA 配列
+    i  PERL_MAGIC_isaelem        vtbl_isaelem    @ISA 配列要素
+    k  PERL_MAGIC_nkeys          vtbl_nkeys      scalar(keys()) 左辺値
+    L  PERL_MAGIC_dbfile         (none)          デバッガの %_<filename
+    l  PERL_MAGIC_dbline         vtbl_dbline     デバッガの %_<filename 要素
+    o  PERL_MAGIC_collxfrm       vtbl_collxfrm   ロケール照合変換
+    P  PERL_MAGIC_tied           vtbl_pack       tie された配列やハッシュ
+    p  PERL_MAGIC_tiedelem       vtbl_packelem   tie された配列やハッシュの要素
+    q  PERL_MAGIC_tiedscalar     vtbl_packelem   tie されたスカラやハンドル
+    r  PERL_MAGIC_qr             vtbl_qr         事前コンパイルされた qr// 正規表現
+    S  PERL_MAGIC_sig            vtbl_sig        %SIG ハッシュ
+    s  PERL_MAGIC_sigelem        vtbl_sigelem    %SIG ハッシュ要素
+    t  PERL_MAGIC_taint          vtbl_taint      汚染性
+    U  PERL_MAGIC_uvar           vtbl_uvar       エクステンションで使用可能
+    v  PERL_MAGIC_vec            vtbl_vec        vec() 左辺値
+    V  PERL_MAGIC_vstring        (none)          v-文字列スカラ
+    w  PERL_MAGIC_utf8           vtbl_utf8       UTF-8 長さ+オフセットキャッシュ
+    x  PERL_MAGIC_substr         vtbl_substr     substr() 左辺値
+    y  PERL_MAGIC_defelem        vtbl_defelem    影の "foreach" 反復子
+                                                 変数 / スマート引数
+                                                 自動有効化
+    #  PERL_MAGIC_arylen         vtbl_arylen     配列の長さ ($#ary)
+    .  PERL_MAGIC_pos            vtbl_pos        pos() 左辺値
+    <  PERL_MAGIC_backref        vtbl_backref    弱いリファレンスへの後方ポインタ
+    ~  PERL_MAGIC_ext            (none)          エクステンションで使用可能
+    :  PERL_MAGIC_symtab         (none)          シンボルテーブルとして使われるハッシュ
+    %  PERL_MAGIC_rhash          (none)          制限ハッシュとして使われるハッシュ
+    @  PERL_MAGIC_arylen_p       vtbl_arylen_p   @a から $#a へのポインタ
 
 =begin original
 
@@ -2684,11 +2684,11 @@ relationship.  However, 'v' and 'V' (vec and v-string) are in no way related.
 
 =end original
 
-�ơ��֥������ʸ����ʸ����ξ����¸�ߤ��Ƥ�����硢��ʸ����ŵ��Ū�ˤ�ʣ�緿
-(�ꥹ�Ȥ⤷���ϥϥå���)�μ����ɽ�魯�Τ˻Ȥ�졢��ʸ���Ϥ���ʣ�緿��
-���Ǥ�ɽ�魯�Τ˻Ȥ��ޤ���
-���������ɤˤϤ�����ʸ����ʸ���δط���ȤäƤ����Τ⤢��ޤ���
-��������'v' �� 'V' (�٥����� v-ʸ����) �������ط�������ޤ���
+テーブル中で大文字小文字の両方が存在していた場合、大文字は典型的には複合型
+(リストもしくはハッシュ)の種類を表わすのに使われ、小文字はその複合型の
+要素を表わすのに使われます。
+内部コードにはこの大文字小文字の関係を使っているものもあります。
+しかし、'v' と 'V' (ベクタと v-文字列) は全く関係がありません。
 
 =begin original
 
@@ -2701,14 +2701,14 @@ there is no way for normal perl code to corrupt this private information
 
 =end original
 
-magic type C<PERL_MAGIC_ext> �� C<PERL_MAGIC_uvar> ��
-�������ƥ󥷥�󤫤�Ȥ�졢Perl���Ȥ���ϻȤ��ʤ��褦�����̤�
-�������Ƥ��ޤ���
-�������ƥ󥷥��� ~ magic ��
-�ץ饤�١��Ⱦ�����ѿ�(ŵ��Ū�ʥ��֥�������)�ˡƥ����å���(attach)
-���뤿��˻Ȥ����Ȥ��Ǥ��ޤ���
-����ϡ��̾�� perl �����ɤ�(�ϥå��奪�֥������Ȥ����Ǥ�Ȥ��ΤȤϰ�ä�)
-���Υץ饤�١��Ⱦ����������줬�ʤ��ΤǤȤƤ������Ǥ���
+magic type C<PERL_MAGIC_ext> と C<PERL_MAGIC_uvar> は
+エクステンションから使われ、Perl自身からは使われないように特別に
+定義されています。
+エクステンションは ~ magic を
+プライベート情報を変数(典型的なオブジェクト)に‘アタッチ’(attach)
+するために使うことができます。
+これは、通常の perl コードが(ハッシュオブジェクトの要素を使うのとは違って)
+そのプライベート情報を壊す恐れがないのでとても便利です。
 
 =begin original
 
@@ -2763,7 +2763,7 @@ Attaching C<PERL_MAGIC_uvar> to arrays is permissible but has no effect.
 
 =end original
 
-C<PERL_MAGIC_uvar> �������ź�դ���Τϲ�ǽ�Ǥ��������ΰ�̣�⤢��ޤ���
+C<PERL_MAGIC_uvar> を配列に添付するのは可能ですが、何の意味もありません。
 
 =begin original
 
@@ -2799,15 +2799,15 @@ For C<PERL_MAGIC_ext> magic, it may also be appropriate to add an I32
 
 =end original
 
-ʣ���Υ������ƥ󥷥�� 
-C<PERL_MAGIC_ext> �� C<PERL_MAGIC_uvar> magic ��Ȥ���ǽ��������Τ�
-�������ƥ󥷥�󤬤���򰷤��ˤϵ���Ĥ��뤳�Ȥ����פǤ��뤳�Ȥ�
-���դ��Ƥ���������
-ŵ��Ū�ˤϡ�����ϥ��֥������Ȥ򥨥����ƥ󥷥�󤬰�����褦��Ʊ�����饹��
-bless ����Ȥ��ˤΤ߻Ȥ��ޤ���
-C<PERL_MAGIC_ext> magic �Ǥϡ�
-����Ϥޤ����ץ饤�١��Ȥʥǡ����ΰ����Ƭ�ˤ����Ƥ��������å����뤿���
-I32 �ƥ����ͥ��㡼��(signature)���ղä���Τ�Ŭ�ڤʤ�ΤǤ���
+複数のエクステンションが 
+C<PERL_MAGIC_ext> や C<PERL_MAGIC_uvar> magic を使う可能性があるので
+エクステンションがそれを扱うには気をつけることが重要であることに
+注意してください。
+典型的には、これはオブジェクトをエクステンションが扱えるように同じクラスに
+bless するときにのみ使います。
+C<PERL_MAGIC_ext> magic では、
+これはまた、プライベートなデータ領域の先頭においてそれをチェックするために
+I32 ‘シグネチャー’(signature)を付加するのに適切なものです。
 
 =begin original
 
@@ -2825,27 +2825,27 @@ since their implementation handles 'get' magic.
 
 =end original
 
-C<sv_set*()> �� C<sv_cat*()> �Ȥ��ä��ؿ�����
-���Υ������åȤ��Ф��� magic ��'���åȤ��ʤ�'�Ȥ������Ȥˤ�
-���դ��Ƥ���������
-magic �򥻥åȤ���ˤϡ��桼������
-C<svSETMAGIC> �ޥ�����ƤӽФ�����Ǥ����δؿ���ƤӽФ�����
-���뤤�� C<sv_set*_mg()> ��
-C<sv_cat*_mg()> �β��줫�δؿ���Ȥ�ʤ���Фʤ�ޤ���
-Ʊ�ͤ� generic �� C �����ɤϡ����줬
-magic �򰷤äƤ��ʤ��褦�ʴؿ���������줿
-SV ��ȤäƤ���ΤǤ���С�magic ��'get'���뤿��� C<SvGETMAGIC> ��
-�ƤӽФ��Ƥ��ʤ���Фʤ�ޤ���
-�����δؿ��ˤĤ��Ƥ�L<perlapi>�򻲾Ȥ��Ƥ���������
-���󤲤�ȡ�C<sv_cat*()> �ؿ�����
-�ƤӽФ����̾� C<SvSETMAGIC()> ��³���Ƥ���ɬ�פ�����ޤ�����
-C<SvGETMAGIC> ����Ԥ��Ƥ���ɬ�פϤ���ޤ���
-�ʤ��ʤ顢
-���μ����ˤ����� magic �� 'get' ����褦�ˤʤäƤ��뤫��Ǥ���
+C<sv_set*()> と C<sv_cat*()> といった関数群は
+そのターゲットに対して magic を'セットしない'ということにも
+注意してください。
+magic をセットするには、ユーザーが
+C<svSETMAGIC> マクロを呼び出した後でこれらの関数を呼び出すか、
+あるいは C<sv_set*_mg()> か
+C<sv_cat*_mg()> の何れかの関数を使わなければなりません。
+同様に generic な C コードは、それが
+magic を扱っていないような関数から得られた
+SV を使っているのであれば、magic を'get'するために C<SvGETMAGIC> を
+呼び出してやらなければなりません。
+これらの関数についてはL<perlapi>を参照してください。
+例を挙げると、C<sv_cat*()> 関数群の
+呼び出しは通常 C<SvSETMAGIC()> が続いている必要がありますが、
+C<SvGETMAGIC> が先行している必要はありません。
+なぜなら、
+その実装において magic を 'get' するようになっているからです。
 
 =head2 Finding Magic
 
-(�ޥ��å��򸫤Ĥ�����)
+(マジックを見つけだす)
 
     MAGIC* mg_find(SV*, int type); /* Finds the magic pointer of that type */
 
@@ -2857,10 +2857,10 @@ if the SV is not of type SVt_PVMG, Perl may core dump.
 
 =end original
 
-���Υ롼����� SV �˳�Ǽ����Ƥ��� C<MAGIC> ��¤�ΤؤΥݥ��󥿤�
-�֤��ޤ���
-SV �� magical feature ����äƤ��ʤ���С�C<NULL> ���֤��졢
-SV �� Svt_PVMG �η��Ǥʤ����Perl�ϥ�������פ��뤫�⤷��ޤ���
+このルーチンは SV に格納されている C<MAGIC> 構造体へのポインタを
+返します。
+SV が magical feature を持っていなければ、C<NULL> が返され、
+SV が Svt_PVMG の型でなければPerlはコアダンプするかもしれません。
 
     int mg_copy(SV* sv, SV* nsv, const char* key, STRLEN klen);
 
@@ -2872,13 +2872,13 @@ the mg_type field is changed to be the lowercase letter.
 
 =end original
 
-���Υ롼����� C<sv >�����äƤ��� magic �η��򸡺����ޤ���
-���� mg_type �ե�����ɤ���ʸ���Ǥ���С�mg_obj �� C<nsv> �˥��ԡ�����ޤ�����
-mg_type �ե�����ɤϾ�ʸ�����ѹ�����ޤ���
+このルーチンは C<sv >が持っている magic の型を検査します。
+その mg_type フィールドが大文字であれば、mg_obj が C<nsv> にコピーされますが、
+mg_type フィールドは小文字に変更されます。
 
 =head2 Understanding the Magic of Tied Hashes and Arrays
 
-(tie ���줿�ϥå��������� magic �����򤹤�)
+(tie されたハッシュと配列の magic を理解する)
 
 =begin original
 
@@ -2887,8 +2887,8 @@ magic type.
 
 =end original
 
-tie ���줿�ϥå��������� magic type 
-C<PERL_MAGIC_tied> �� magical beast �Ǥ���
+tie されたハッシュと配列は magic type 
+C<PERL_MAGIC_tied> の magical beast です。
 
 =begin original
 
@@ -2901,13 +2901,13 @@ aware that the behavior may change in the future, umm, without warning.
 
 =end original
 
-�ٹ�: ��꡼�� 5.004 �ʹߡ������ϥå�����Ф��륢������
-�ؿ����������Ȥ����ϡ����Ĥ��������������򤷤Ƥ��뤳�Ȥ��׵ᤷ�Ƥ��ޤ���
-�������Ĥ����������ϼºݤˤ� API �ˤ�����Х��Ȥ���
-�ߤʤ�����ΤǤ��äơ�����Υ�꡼���ˤ����ƤϽ�������ޤ���
-�ޤ����������� [MAYCHANGE] �Ȥ����֥饱�åȤǰϤޤ�Ƥ��ޤ���
-���Υ��������ˤ������򤢤ʤ����ºݤ˻Ȥ����Ȥ����ΤǤ���С�
-���褽���Ϸٹ�ʤ����Ѥ���ǽ�������뤳�Ȥ����դ��Ƥ���������
+警告: リリース 5.004 以降、配列やハッシュに対するアクセス
+関数の正しい使い方は、幾つかの注意点を理解していることを要求しています。
+これら幾つかの注意点は実際には API におけるバグとして
+みなされるものであって、将来のリリースにおいては修正されます。
+また、注意点は [MAYCHANGE] というブラケットで囲まれています。
+このセクションにある情報をあなたが実際に使おうというのであれば、
+将来それらは警告なしに変わる可能性があることに注意してください。
 
 =begin original
 
@@ -2924,19 +2924,19 @@ to do this.
 
 =end original
 
-perl��tie�ؿ��ϡ������ѿ��� GET��SET ���Ȥ��ä��͡��ʥ᥽�åɤ�������Ƥ���
-���֥������ȤȤ����դ����ΤǤ���
-XSUB ���� perl �� tie �ؿ���������Ư���򤵤���ˤϡ�
-����äȤ������ޥ��ʥ��򤷤ʤ���Фʤ�ޤ���
-�ʲ����㤬ɬ�פʥ��ƥåפǤ���
-�ޤ��ǽ�˥ϥå�����ꡢ���줫��
-tie �᥽�åɤ�������륯�饹�� bless ���������ܤΥϥå������ޤ���
-�Ǹ����ĤΥϥå���� tie ������������������ tie ���줿�ϥå�����Ф���
-��ե���󥹤��֤��ޤ���
-�ʲ�����Ǥ� MyTie ���饹����� TIEHASH ��ƤӽФ��Ƥ��ʤ��Ȥ������Ȥ�
-���դ��Ƥ���������
-���η�˴ؤ���ܺ٤� L<Calling Perl Routines from within C Programs> ��
-���Ȥ��Ƥ���������
+perlのtie関数は、ある変数と GET、SET 等といった様々なメソッドを実装している
+オブジェクトとを結び付けるものです。
+XSUB から perl の tie 関数と等価な働きをさせるには、
+ちょっとしたオマジナイをしなければなりません。
+以下の例が必要なステップです。
+まず最初にハッシュを作り、それから
+tie メソッドを実装するクラスに bless した二番目のハッシュを作ります。
+最後に二つのハッシュを tie し、新たに生成した tie されたハッシュに対する
+リファレンスを返します。
+以下の例では MyTie クラスの中で TIEHASH を呼び出していないということに
+注意してください。
+この件に関する詳細は L<Calling Perl Routines from within C Programs> を
+参照してください。
 
     SV*
     mytie()
@@ -2968,16 +2968,16 @@ leak. [/MAYCHANGE]
 
 =end original
 
-tie ���줿����������Ϳ����줿�Ȥ��� C<av_store> �ؿ��ϡ�ñ�������
-magic �� C<mg_copy> ��Ȥäơ�stored�ɤ����褦���ͤ򥳥ԡ���������Ǥ���
-���δؿ��ϡ������ͤ��ºݤˤ�����˳�Ǽ����ɬ�פΤʤ���ΤǤ��뤳�Ȥ�
-���� NULL ���֤���ǽ��������ޤ���
+tie された配列を引数に与えられたときの C<av_store> 関数は、単に配列の
+magic を C<mg_copy> を使って“stored”されるように値をコピーするだけです。
+この関数は、その値が実際には配列に格納する必要のないものであることを
+示す NULL を返す可能性があります。
 [MAYCHANGE]
-tie ���줿������Ф��� C<av_store> ��ƤӽФ����塢�ƤӽФ�¦�� TIEARRAY
-���֥������Ȥ��Ф��� Perl ��٥�Ρ�STORE�ɥ᥽�åɤ�ư���뤿���
-C<av_store> ��ƤӽФ����Ȥ��̾��ɬ�פȤʤ�ޤ���
-C<av_store> �� NULL ���֤����ʤ�С����꡼�꡼�����ɤ������
-C<SvREFCNT_dec(val)> ��ƤӽФ����Ȥ�ɬ�פȤʤ�ޤ���
+tie された配列に対して C<av_store> を呼び出した後、呼び出し側は TIEARRAY
+オブジェクトに対して Perl レベルの“STORE”メソッドを起動するために
+C<av_store> を呼び出すことが通常は必要となります。
+C<av_store> が NULL を返したならば、メモリーリークを防ぐために
+C<SvREFCNT_dec(val)> を呼び出すことが必要となります。
 [/MAYCHANGE] 
 
 =begin original
@@ -2987,8 +2987,8 @@ C<hv_store> and C<hv_store_ent> functions as well.
 
 =end original
 
-��Υѥ饰��դ������ϡ�tie ���줿�ϥå���˥�����������Τ˻��Ѥ���
-C<hv_store> �� C<hv_store_ent> �ˤĤ��Ƥ�Ʊ�ͤǤ���
+先のパラグラフの説明は、tie されたハッシュにアクセスするのに使用する
+C<hv_store> と C<hv_store_ent> についても同様です。
 
 =begin original
 
@@ -3004,16 +3004,16 @@ method on the TIE object. [/MAYCHANGE]
 
 =end original
 
-C<av_fetch> �ȡ��б�����ϥå���ؿ� C<hv_fetch> ����� C<hv_fetch_ent> ��
-C<mg_copy> ��Ȥäƽ�������Ԥʤ��Ƥ���̤����δ�ȯ�ͤ��֤��ޤ���
-�֤��줿�ͤϡ����Ǥ˴�ȯŪ�Ǥ��뤫�Τ褦�˲�������ɬ�פΤʤ���ΤǤ���
+C<av_fetch> と、対応するハッシュ関数 C<hv_fetch> および C<hv_fetch_ent> は
+C<mg_copy> を使って初期化が行なわれている未定義の揮発値を返します。
+返された値は、すでに揮発的であるかのように解放する必要のないものです。
 [MAYCHANGE]
-��������TIE ���֥������Ȥ��б����� perl ��٥��
-"FETCH" �᥽�åɤ�¹Ԥ���ˤϡ��֤��줿�����ͤ��Ф���
-C<mg_get()> ��ƤӽФ�ɬ�פ�����Ǥ��礦��
-Ʊ�ͤˡ�TIE ���֥������Ȥ��Ф����STORE�ɥ᥽�åɤε�ư�Ǥ���
-C<sv_setsv> ��Ȥä�Ŭ�ڤ��ͤ�����������ǡ��֤��줿�ͤ��Ф���
-C<mg_set()> ��ƤӽФ����Ȥ��Ǥ��ޤ���
+しかし、TIE オブジェクトに対応した perl レベルの
+"FETCH" メソッドを実行するには、返されたその値に対して
+C<mg_get()> を呼び出す必要があるでしょう。
+同様に、TIE オブジェクトに対する“STORE”メソッドの起動である
+C<sv_setsv> を使って適切な値を代入した後で、返された値に対して
+C<mg_set()> を呼び出すことができます。
 [/MAYCHANGE]
 
 =begin original
@@ -3030,12 +3030,12 @@ and hashes.
 =end original
 
 [MAYCHANGE]
-����������С������ϥå����ե��å������ꥹ�ȥ�����ؿ��ϡ�
-tie����Ƥ��������ϥå�����Ф�����ˤϼºݤ��ͤ�ե��å�������
-���ȥ������ꤹ��櫓�ǤϤʤ��Ȥ������ȤǤ���
-�����δؿ���
-�ȥ��ȥ��ɤ��줿��ȥե��å��ɤ��줿�ͤ��Ф��� magic ���ղä��뤿��ˡ�
-ñ�� C<mg_copy> ��ƤӽФ������Ǥ���
+言い換えれば、配列やハッシュをフェッチしたりストアする関数は、
+tieされている配列やハッシュに対する場合には実際に値をフェッチしたり
+ストアしたりするわけではないということです。
+それらの関数は
+“ストア”されたり“フェッチ”された値に対して magic を付加するために、
+単に C<mg_copy> を呼び出すだけです。
 
 =begin original
 
@@ -3048,12 +3048,12 @@ types in future versions.
 
 =end original
 
-����(�С������ 5.004)���ϥå����������Ф��륢�������ؿ��λ��Ѥ���
-�ݤˤϡ��桼���������̾�Ρɥϥå��������ʤΤ������뤤�Ϥ��줬
-tie ���줿��ΤǤ���Τ��򵤤�Ĥ��뤳�Ȥ��׵ᤵ��Ƥ��ޤ���
-����ΥС������Ǥϡ�����API��tie���줿�ǡ������Ф��륢��������
-�̾�Υǡ������Ф��륢����������Ʃ��Ū�ˤ��뤿����ѹ�����뤫��
-����ޤ���
+現在(バージョン 5.004)、ハッシュや配列に対するアクセス関数の使用する
+際には、ユーザーが“通常の”ハッシュや配列なのか、あるいはそれが
+tie されたものであるのかを気をつけることが要求されています。
+将来のバージョンでは、このAPIはtieされたデータに対するアクセスと
+通常のデータに対するアクセスをより透過的にするために変更されるかも
+しれません。
 [/MAYCHANGE]
 
 =begin original
@@ -3069,19 +3069,19 @@ will not be insignificant.
 
 =end original
 
-TIEARRAY �� TIEHASH �Ȥ��ä����󥿡��ե�������������Ū��
-�ϥå���/����ʸ��Ȥ������ perl �᥽�åɤ�ư�򤹤뤿���ñ�ʤ�
-�Ⱥ����ɤǤ��뤳�Ȥ��ɤ����򤷤����ȤǤ��礦��
-�����ΡȺ����ɤλ��Ѥϴ��餫�Υ����С��إå�(�̾FETCH/STORE ���
-��������Ĥ���ͤĤ�;ʬ�ʥ��ڥ����ɡ�����˲ä��ƥ᥽�åɤ�
-��ư���뤿���ɬ�פʤ��٤Ƥδ�ȯ���ѿ�������)�򾷤��ޤ���
-���Υ����С��إåɤ� TIE �᥽�åɼ��Ȥ����ä��ꤷ����ΤǤ���С��ۤ�
-Ʊ���ʤ��餤�����ʤ�ΤǤ�������ޤ��󤬡��ۤ�ξ���ʸ��Ĺ�������Ǥ�
-�����С��إåɤ�̵��Ǥ��ʤ���Τˤʤ�ޤ���
+TIEARRAY や TIEHASH といったインターフェースが、統一的な
+ハッシュ/配列構文を使うための perl メソッドを起動をするための単なる
+“砂糖”であることを良く理解したことでしょう。
+これらの“砂糖”の使用は幾らかのオーバーヘッド(通常、FETCH/STORE 操作
+当たり二つから四つの余分なオペコード、それに加えてメソッドを
+起動するために必要なすべての揮発性変数の生成)を招きます。
+このオーバーヘッドは TIE メソッド自身がしっかりしたものであれば、ほぼ
+同等なくらい小さなものでしかありませんが、ほんの少し文が長いだけでも
+オーバーヘッドは無視できないものになります。
 
 =head2 Localizing changes
 
-(�ѹ���ɽ경����)
+(変更を局所化する)
 
 =begin original
 
@@ -3089,7 +3089,7 @@ Perl has a very handy construction
 
 =end original
 
-Perl �ˤ����������ʹ�¤������ޤ���
+Perl には非常に便利な構造があります。
 
   {
     local $var = 2;
@@ -3102,7 +3102,7 @@ This construction is I<approximately> equivalent to
 
 =end original
 
-���ι�¤�ϰʲ��Τ�Τ� B<�ۤ�> Ʊ���Ǥ�
+この構造は以下のものと B<ほぼ> 同じです
 
   {
     my $oldvar = $var;
@@ -3120,11 +3120,11 @@ more efficient as well.
 
 =end original
 
-ξ�ԤκǤ��礭�ʰ㤤�ϡ��ǽ�Τ�Τ�
-C<goto>��C<return>��C<die>/C<eval> �ʤ�
-�ɤΤ褦�˥֥��å�����æ�Ф��褦�Ȥ⡢
-$var �θ������ͤ���������Ȥ������ȤǤ���
-��Ψ�Ȥ��ä��̤Ǥ��礭�ʰ㤤�Ϥ���ޤ���
+両者の最も大きな違いは、最初のものが
+C<goto>、C<return>、C<die>/C<eval> など
+どのようにブロックから脱出しようとも、
+$var の元々の値を復帰するということです。
+効率といった面では大きな違いはありません。
 
 =begin original
 
@@ -3142,23 +3142,23 @@ an C<ENTER>/C<LEAVE> pair.
 
 =end original
 
-Perl API ���̤��� C ����Ʊ�ͤν�����Ԥ���ˡ�⤢��ޤ���
-I<�����֥��å�>(pseudo-block)�������������Υ֥��å��κǸ�Ǽ�ưŪ��
-��������褦�ʴ��Ĥ����ѹ���Ԥ��ޤ���
-�֥��å�����ȴ����Τ�
-�ۤ�ȴ���뤿��λؼ������äƤ��ɤ�������ɽ�Ū��æ��
-(die() ��Ȥä����)�Ǥ⤫�ޤ��ޤ���
-�֥��å��˻������ι�¤�� C<ENTER>/C<LEAVE> �ޥ����Υڥ��ˤ�ä�
-��������ޤ�(L<perlcall/"Returning a Scalar"> ��
-���Ȥ��Ƥ�������)��
-���Τ褦�ʹ�¤�ǤϤʤˤ����פʶɽ경���줿
-�������Τ�������̤ʤ�Τ���������ꡢ���뤤��
-����¸�ߤ��Ƥ�����(Perl �Υ��֥롼����/�֥��å���«�����줿��ΤȤ���
-���뤤�ϲ����������ѿ��Υڥ�)��Ȥ����Ȥ��ǽ�Ǥ�
-(�����ܤΥ������Ǥϡ��ɽ경���뤿��Υ����С��إåɤϤۤȤ��
-̵��Ǥ����ΤǤ�)��
-���٤Ƥ� XSUB �ϼ�ưŪ�� C<ENTER>/C<LEAVE> ��
-�ڥ��ˤ�äưϤޤ�Ƥ���Ȥ������Ȥ����դ��Ƥ���������
+Perl API を通して C から同様の処理を行う方法もあります。
+I<擬似ブロック>(pseudo-block)を生成し、そのブロックの最後で自動的に
+復帰するような幾つかの変更を行います。
+ブロックから抜けるのは
+陽に抜けるための指示があっても良いし、非局所的な脱出
+(die() を使ったもの)でもかまいません。
+ブロックに似たこの構造は C<ENTER>/C<LEAVE> マクロのペアによって
+生成されます(L<perlcall/"Returning a Scalar"> を
+参照してください)。
+このような構造ではなにか重要な局所化された
+タスクのための特別なものを作成したり、あるいは
+既に存在しているもの(Perl のサブルーチン/ブロックに束縛されたものとか、
+あるいは解放する一時変数のペア)を使うことも可能です
+(二番目のケースでは、局所化するためのオーバーヘッドはほとんど
+無視できるものです)。
+すべての XSUB は自動的に C<ENTER>/C<LEAVE> の
+ペアによって囲まれているということに注意してください。
 
 =begin original
 
@@ -3166,7 +3166,7 @@ Inside such a I<pseudo-block> the following service is available:
 
 =end original
 
-���Τ褦�� I<�����֥��å�> ����Ǥϰʲ��Υ����ӥ������Ѳ�ǽ�Ǥ�:
+このような I<擬似ブロック> の中では以下のサービスが利用可能です:
 
 =over 4
 
@@ -3185,8 +3185,8 @@ C<i> at the end of enclosing I<pseudo-block>.
 
 =end original
 
-�����Υޥ����Ϥ����Ϥ� B<�����֥��å�> �ˤ�����
-�����ѿ� C<i> ���ͤ�ꥹ�ȥ�����褦�ˤ��ޤ���
+これらのマクロはそれを囲む B<擬似ブロック> において
+整数変数 C<i> の値をリストアするようにします。
 
 =item C<SAVESPTR(s)>
 
@@ -3201,10 +3201,10 @@ and back.
 
 =end original
 
-�����Υޥ����ϡ��ݥ���C<s>�⤷���� C<p> ���ͤ�
-�ꥹ�ȥ����ޤ���
-C<s> �� C<SV*> ���Ф��뷿�Ѵ���Ǥ���ݥ��󥿤Ǥʤ���Фʤ�ޤ���
-C<p> �� C<char*> �ؤη��Ѵ�����ǽ�Ǥ���٤���ΤǤ���
+これらのマクロは、ポインタC<s>もしくは C<p> の値を
+リストアします。
+C<s> は C<SV*> に対する型変換をできるポインタでなければなりません。
+C<p> は C<char*> への型変換が可能であるべきものです。
 
 =item C<SAVEFREESV(SV *sv)>
 
@@ -3219,12 +3219,12 @@ lifetimes can be wildly different.
 
 =end original
 
-B<�����֥��å�> �ν�ü�ˤ����� C<sv> �λ��ȥ�����Ȥ�
-�ǥ�����Ȥ���ޤ���
-�����
+B<擬似ブロック> の終端において C<sv> の参照カウントは
+デクリメントされます。
+これは
 in that it is also a
 mechanism for doing a delayed C<SvREFCNT_dec>
-C<sv_2motral> �˻�����ΤǤ���
+C<sv_2motral> に似たものです。
 However, while C<sv_2mortal>
 extends the lifetime of C<sv> until the beginning of the next statement,
 C<SAVEFREESV> extends it until the end of the enclosing scope.  These
@@ -3237,7 +3237,7 @@ Also compare C<SAVEMORTALIZESV>.
 
 =end original
 
-�ޤ���C<SAVEMORTALIZESV> ����Ӥ��ޤ���
+また、C<SAVEMORTALIZESV> を比較します。
 
 =item C<SAVEMORTALIZESV(SV *sv)>
 
@@ -3264,7 +3264,7 @@ The C<OP *> is op_free()ed at the end of I<pseudo-block>.
 
 =end original
 
-C<OP *> �� B<�����֥��å�> �ν�ü�ˤ����� op_free() ����ޤ���
+C<OP *> は B<擬似ブロック> の終端において op_free() されます。
 
 =item C<SAVEFREEPV(p)>
 
@@ -3275,8 +3275,8 @@ end of I<pseudo-block>.
 
 =end original
 
-C<p> �ˤ�äƻؤ�������Ƥ�����꡼�β��� B<�����֥��å�> �ν�ü��
-Safefree() ����ޤ���
+C<p> によって指し示されているメモリーの塊は B<擬似ブロック> の終端で
+Safefree() されます。
 
 =item C<SAVECLEARSV(SV *sv)>
 
@@ -3287,9 +3287,9 @@ the end of I<pseudo-block>.
 
 =end original
 
-B<�����֥��å�> �ν�ü�ˤ����ơ�
-C<sv> ���б����Ƥ���
-�����ȤΥ�����å��ѥåɤˤ����륹���åȤ򥯥ꥢ���ޤ���
+B<擬似ブロック> の終端において、
+C<sv> に対応している
+カレントのスクラッチパッドにおけるスロットをクリアします。
 
 =item C<SAVEDELETE(HV *hv, char *key, I32 length)>
 
@@ -3302,10 +3302,10 @@ this:
 
 =end original
 
-B<�����֥��å�> �ν�ü�� C<hv> �ˤ��륭�� C<key> �Ϻ������ޤ���
-C<key> �ˤ�äƻؤ�������Ƥ���ʸ����� Safefree() ����ޤ���
-short-lived storage�ˤ��� I<key> ����äƤ����Τ����ä����ˤ�
-�ʲ��Τ褦�ˤ����б�����ʸ���󤬺Ƴ�����Ƥ���ޤ���
+B<擬似ブロック> の終端で C<hv> にあるキー C<key> は削除されます。
+C<key> によって指し示されている文字列は Safefree() されます。
+short-lived storageにある I<key> を持っているものがあった場合には
+以下のようにして対応する文字列が再割り当てされます。
 
   SAVEDELETE(PL_defstash, savepv(tmpbuf), strlen(tmpbuf));
 
@@ -3318,8 +3318,8 @@ only argument C<p>.
 
 =end original
 
-B<�����֥��å�> �ν�ü�ˤ����ƴؿ� C<f> ���ƤӽФ���ޤ���
-���δؿ� C<f> �� C<p> �Τߤ�����˼��ޤ���
+B<擬似ブロック> の終端において関数 C<f> が呼び出されます。
+この関数 C<f> は C<p> のみを引数に取ります。
 
 =item C<SAVEDESTRUCTOR_X(DESTRUCTORFUNC_t f, void *p)>
 
@@ -3343,8 +3343,8 @@ at the end of I<pseudo-block>.
 
 =end original
 
-B<�����֥��å�> �ν�ü�ˤ�����Perl�����������å�(C<SP>)�Υ�����
-���ե��åȤ��ꥹ�ȥ�����ޤ���
+B<擬似ブロック> の終端においてPerlの内部スタック(C<SP>)のカレント
+オフセットがリストアされます。
 
 =back
 
@@ -3357,11 +3357,11 @@ function takes C<int *>.
 
 =end original
 
-�ʲ��� API �ꥹ�Ȥϡ��ѹ���ǽ�ʥǡ�����ؤ������ݥ���
-(C �Υݥ��󥿤���Perl Ū�� C<GV *> �Τ����줫)
-��ɬ�פȤ���ؿ����Ǥ���
-���Ҥ� C<int> ������˼��ޥ����˻��ơ�
-C<int *> ������˼��ؿ�������ޤ���
+以下の API リストは、変更可能なデータを指し示すポインタ
+(C のポインタか、Perl 的な C<GV *> のいずれか)
+を必要とする関数群です。
+前述の C<int> を引数に取るマクロに似て、
+C<int *> を引数に取る関数があります。
 
 =over 4
 
@@ -3373,7 +3373,7 @@ Equivalent to Perl code C<local $gv>.
 
 =end original
 
-Perl ������ C<local $gv> �������Ǥ���
+Perl コード C<local $gv> と等価です。
 
 =item C<AV* save_ary(GV *gv)>
 
@@ -3385,7 +3385,7 @@ Similar to C<save_scalar>, but localize C<@gv> and C<%gv>.
 
 =end original
 
-C<save_scalar> �˻��Ƥ��ޤ�����C<@gv> �� C<%gv> �ζɽ경��Ԥ��ޤ���
+C<save_scalar> に似ていますが、C<@gv> と C<%gv> の局所化を行います。
 
 =item C<void save_item(SV *item)>
 
@@ -3398,8 +3398,8 @@ magic is affected.
 
 =end original
 
-C<SV> �Υ����Ȥ��ͤ�ʣ�����������Ȥ� C<ENTER>/C<LEAVE>
-B<�����֥��å�> ��ȴ����Ȥ��� C<SV> ����¸�����ͤ��������ޤ���
+C<SV> のカレントの値を複製し、カレントの C<ENTER>/C<LEAVE>
+B<擬似ブロック> を抜けるときに C<SV> の保存した値を復帰します。
 It doesn't handle magic. Use C<save_scalar> if
 magic is affected.
 (TBT)
@@ -3413,8 +3413,8 @@ C<sarg> of C<SV*> of length C<maxsarg>.
 
 =end original
 
-ʣ���ΰ�����Ĺ�� C<maxarg> �� C<SV*> ������ C<sarg> �Ȥ��Ƽ��
-C<save_item> ��ʣ�����ͤ���Хꥨ�������Ǥ���
+複数の引数を長さ C<maxarg> の C<SV*> の配列 C<sarg> として取る
+C<save_item> の複数の値を取るバリエーションです。
 
 =item C<SV* save_svref(SV **sptr)>
 
@@ -3424,7 +3424,7 @@ Similar to C<save_scalar>, but will reinstate an C<SV *>.
 
 =end original
 
-C<save_scalar> �˻��Ƥ��ޤ�����C<SV *> ��������Ԥ��ޤ���
+C<save_scalar> に似ていますが、C<SV *> の復帰を行います。
 
 =item C<void save_aptr(AV **aptr)>
 
@@ -3436,7 +3436,7 @@ Similar to C<save_svref>, but localize C<AV *> and C<HV *>.
 
 =end original
 
-C<save_svref> �˻��Ƥ��ޤ�����C<AV *> �� C<HV *> �ζɽ경��Ԥ��ޤ���
+C<save_svref> に似ていますが、C<AV *> と C<HV *> の局所化を行います。
 
 =back
 
@@ -3448,16 +3448,16 @@ the containing scope should take a look there too.
 
 =end original
 
-C<Alias> �⥸�塼��� B<�ƤӽФ�¦�Υ�������> ��Ǥδ��ܷ��ζɽ경��
-�������ޤ���
-�������פ���ä������ζɽ경�˶�̣�Τ���ͤ�
-�����˲������뤫�⸫�Ƥ����������ɤ��Ǥ��礦��
+C<Alias> モジュールは B<呼び出し側のスコープ> 中での基本型の局所化を
+実装します。
+スコープを持った何かの局所化に興味のある人は
+そこに何があるかも見ておいた方が良いでしょう。
 
 =head1 Subroutines
 
 =head2 XSUBs and the Argument Stack
 
-(XSUB �Ȱ��������å�)
+(XSUB と引数スタック)
 
 =begin original
 
@@ -3467,10 +3467,10 @@ program, and a way to map from the Perl data structures to a C equivalent.
 
 =end original
 
-XSUB �λ��Ȥߤϡ�Perl �ץ�����ब C �Υ��֥롼�����
-�����������뤿���ñ�����ˡ�Ǥ���
-XSUB �ˤϡ�Perl �ץ�����फ��ΰ���������륹���å��ȡ�Perl �Υǡ���
-��¤�� C �������ʤ�Τ˥ޥåԥ󥰤�����ˡ���Ѱդ��Ƥ��ޤ���
+XSUB の仕組みは、Perl プログラムが C のサブルーチンを
+アクセスするための単純な方法です。
+XSUB には、Perl プログラムからの引数を入れるスタックと、Perl のデータ
+構造を C の等価なものにマッピングする方法を用意しています。
 
 =begin original
 
@@ -3481,12 +3481,12 @@ an C<SV*> is used.
 
 =end original
 
-�����å������� C<ST(n)> �Ȥ����ޥ�����Ȥäƥ��������Ǥ��ޤ���
-����ϡ�C<n> ���ܤΥ����å��������֤���ΤǤ���
-���� 0 �ϡ�Perl ��
-���֥롼����ƤӽФ����Ϥ��줿�ǽ�ΰ����Ǥ���
-�����ΰ����� 
-C<SV*> �ǡ�C<SV*> ���Ȥ���Ȥ����Ǥ���Фɤ��Ǥ�Ȥ����Ȥ��Ǥ��ޤ���
+スタック引数は C<ST(n)> というマクロを使ってアクセスできます。
+これは、C<n> 番目のスタック引数を返すものです。
+引数 0 は、Perl の
+サブルーチン呼び出しで渡された最初の引数です。
+これらの引数は 
+C<SV*> で、C<SV*> が使われるところであればどこでも使うことができます。
 
 =begin original
 
@@ -3498,12 +3498,12 @@ two, the local time zone's standard and summer time abbreviations.
 
 =end original
 
-�ۤȤ�ɤξ��ˤϡ�C �롼���󤫤�ν��Ϥ� RETVAL �ǥ��쥯�ƥ���
-��OUTPUT �ǥ��쥯�ƥ��֤�Ȥäư������Ȥ��Ǥ��ޤ���
-�����������������å��Υ��ڡ��������٤Ƥ��ֵ��ͤ򰷤��Τ˽�ʬ��
-�ʤ��ʤ��礬����ޤ���
-��Ȥ��Ƥϡ�������Ȥ�ʤ��ǥ�������ʥ����ॾ����Ȳƻ��֤ξ�ά����
-��Ĥ��ֵ��ͤ��֤���POSIX �� tzname() �θƤӽФ�������ޤ���
+ほとんどの場合には、C ルーチンからの出力は RETVAL ディレクティブ
+とOUTPUT ディレクティブを使って扱うことができます。
+しかし、引数スタックのスペースがすべての返却値を扱うのに十分で
+なくなる場合があります。
+例としては、引数をとらないでローカルなタイムゾーンと夏時間の省略形の
+二つの返却値を返す、POSIX の tzname() の呼び出しがあります。
 
 =begin original
 
@@ -3512,7 +3512,7 @@ extended using the macro:
 
 =end original
 
-���Τ褦�ʾ����򰷤�����ˤϡ�PPCODE �ǥ��쥯�ƥ��֤�Ȥ��������
+このような状況を扱うためには、PPCODE ディレクティブを使い、さらに
 
     EXTEND(SP, num);
 
@@ -3523,9 +3523,9 @@ and C<num> is the number of elements the stack should be extended by.
 
 =end original
 
-�Ȥ����ޥ�����Ȥäƥ����å����ĥ���ޤ���
-������ C<SP> �ϥ����å��ݥ��󥿤ǡ�C<num> �ϥ����å����ĥ���٤�
-���Ǥο��Ǥ���
+というマクロを使ってスタックを拡張します。
+ここで C<SP> はスタックポインタで、C<num> はスタックを拡張すべき
+要素の数です。
 
 =begin original
 
@@ -3535,8 +3535,8 @@ L</Reference Counts and Mortality>):
 
 =end original
 
-�����å���˾�����ݤ����顢C<PUSHs> �ޥ�����Ȥä�
-�ͤ򥹥��å��إץå��夷�ޤ���
+スタック上に場所を確保したら、C<PUSHs> マクロを使って
+値をスタックへプッシュします。
 The pushed values will often need to be "mortal" (See
 L</Reference Counts and Mortality>):
 (TBT)
@@ -3553,8 +3553,8 @@ as in:
 
 =end original
 
-����ǡ�C<tzname> ��Ƥ� Perl �ץ������Ǥϡ���Ĥ��ͤ�
-�ʲ��Τ褦�������Ǥ��ޤ���
+これで、C<tzname> を呼ぶ Perl プログラムでは、二つの値は
+以下のように代入できます。
 
     ($standard_abbrev, $summer_abbrev) = POSIX::tzname;
 
@@ -3565,8 +3565,8 @@ to use the macro:
 
 =end original
 
-�����å����ͤ��Ѥࡢ�̤� (�����餯�Ϥ���ñ��) ��ˡ�ϡ�
-�ʲ��Υޥ�����Ȥ����ȤǤ���
+スタックに値を積む、別の (おそらくはより簡単な) 方法は、
+以下のマクロを使うことです。
 
     XPUSHs(SV*)
 
@@ -3577,8 +3577,8 @@ do not need to call C<EXTEND> to extend the stack.
 
 =end original
 
-������Υޥ����ϡ�ɬ�פʤ�м�ưŪ�˥����å���Ĵ�����Ƥ���ޤ���
-���Τ��ᡢC<EXTEND> �򥹥��å����ĥ���뤿��˸Ƥ�ɬ�פϤ���ޤ���
+こちらのマクロは、必要ならば自動的にスタックを調整してくれます。
+このため、C<EXTEND> をスタックを拡張するために呼ぶ必要はありません。
 
 =begin original
 
@@ -3601,11 +3601,11 @@ For more information, consult L<perlxs> and L<perlxstut>.
 
 =end original
 
-���ܤ�������ϡ�L<perlxs> �� L<perlxstut> �򻲾Ȥ��Ƥ���������
+より詳しい情報は、L<perlxs> と L<perlxstut> を参照してください。
 
 =head2 Calling Perl Routines from within C Programs
 
-(C�ץ�����फ���Perl�롼����θƤӽФ�)
+(CプログラムからのPerlルーチンの呼び出し)
 
 =begin original
 
@@ -3614,9 +3614,9 @@ within a C program.  These four are:
 
 =end original
 
-C �ץ�����फ�� Perl ���֥롼�����ƤӽФ�����˻��Ѥ��뤳�ȤΤǤ���
-�롼���� �ͤĤ���ޤ���
-���λͤĤ�:
+C プログラムから Perl サブルーチンを呼び出すために使用することのできる
+ルーチンが 四つあります。
+その四つは:
 
     I32  call_sv(SV*, I32);
     I32  call_pv(const char*, I32);
@@ -3634,14 +3634,14 @@ trapped, and how to treat return values.
 
 =end original
 
-�Ǥ�褯�Ȥ���Ϥ��Τ�Τϡ�C<call_sv> �Ǥ���
-���� C<SV*> �ˤϸƤӽФ���� Perl ���֥롼�����̾����������
-���֥롼����ؤΥ�ե���󥹤��ޤޤ�ޤ���
-�����ܤΰ����ˤϡ����Υ��֥롼���󤬸ƤӽФ��줿����ƥ����Ȥ����椹��
-�ե饰���֤���ޤ���
-����ϥ��֥롼����˰������Ϥ��줿���Ϥ���Ƥ��ʤ��������顼��
-�ɤΤ褦�˥ȥ�åפ��٤��ʤΤ����ɤΤ褦������ͤ��֤��Τ���
-���椹���ΤǤ���
+最もよく使われるはずのものは、C<call_sv> です。
+引数 C<SV*> には呼び出される Perl サブルーチンの名前か、その
+サブルーチンへのリファレンスが含まれます。
+二番目の引数には、そのサブルーチンが呼び出されたコンテキストを制御する
+フラグが置かれます。
+これはサブルーチンに引数が渡されたか渡されていないか、エラーを
+どのようにトラップすべきなのか、どのように戻り値を返すのかを
+制御するものです。
 
 =begin original
 
@@ -3650,8 +3650,8 @@ on the Perl stack.
 
 =end original
 
-�ͤĤΥ롼����Ϥ�����⡢���֥롼���� Perl �����å�����֤���
-�����ο����֤��ޤ���
+四つのルーチンはいずれも、サブルーチンが Perl スタック上に返した
+引数の数を返します。
 
 =begin original
 
@@ -3674,9 +3674,9 @@ functions:
 
 =end original
 
-�����Υ롼�����Ȥ��Ȥ��ˤ�(C<call_argv> �������)���ץ�����ޤ�
-Perl �����å������ʤ��ƤϤʤ�ޤ���
-�ʲ��Υޥ����ȴؿ����Ѱդ���Ƥ��ޤ�:
+これらのルーチンを使うときには(C<call_argv> を除いて)、プログラマが
+Perl スタックを操作しなくてはなりません。
+以下のマクロと関数が用意されています:
 
     dSP
     SP
@@ -3697,8 +3697,8 @@ consult L<perlcall>.
 
 =end original
 
-C ���� Perl ��ƤӽФ���«���ȤˤĤ��Ƥξܤ������Ҥ�
-L<perlcall> �򻲾Ȥ��Ƥ���������
+C から Perl を呼び出す約束ごとについての詳しい記述は
+L<perlcall> を参照してください。
 
 =head2 Memory Allocation
 
@@ -3713,10 +3713,10 @@ used within perl.
 
 =end original
 
-Perl API �ؿ��ȶ��˻Ȥ��褦�����ƤΥ��꡼�Ϥ��Υ���������
-��������Ƥ���ޥ�����Ȥäư����٤��Ǥ���
-�ޥ����ϼºݤ� malloc ��
-�����ȡ�perl �ǻȤ��Ƥ����ΤȤκ���Ʃ��Ū�ˤ��ޤ���
+Perl API 関数と共に使うような全てのメモリーはこのセクションで
+説明されているマクロを使って扱うべきです。
+マクロは実際の malloc の
+実装と、perl で使われているものとの差を透過的にします。
 
 =begin original
 
@@ -3727,12 +3727,12 @@ platforms, it may cause spurious malloc or free errors.
 
 =end original
 
-Perl �Ȱ������ۤ���Ƥ��ơ����ʤ��������Ȥ����Ȥ�侩����Ƥ���
-malloc ���Ѽ�Ǥ���
-������͡����礭����̤����դ��Υ��꡼��ס��뤷�Ƥ�����
-����᤯����դ��׵�˱����褦�Ȥ����ΤǤ���
-�������ʤ�������Υץ�åȥե�����Ǥϡ��������ˡ��malloc���顼��
-free���顼�������������ǽ��������ޤ���
+Perl と一緒に配布されていて、あなたがこれを使うことを推奨されている
+malloc の変種です。
+これは様々な大きさの未割り付けのメモリーをプールしておき、
+より早く割り付け要求に応えようとするものです。
+しかしながら一部のプラットフォームでは、これは不法なmallocエラーや
+freeエラーを引き起こす可能性があります。
 
 =begin original
 
@@ -3740,7 +3740,7 @@ The following three macros are used to initially allocate memory :
 
 =end original
 
-����黰�ĤΥޥ����ϥ��꡼�γ���դ��Τ���˻Ȥ��ޤ�:
+これら三つのマクロはメモリーの割り付けのために使われます:
 
     Newx(pointer, number, type);
     Newxc(pointer, number, type, cast);
@@ -3753,8 +3753,8 @@ point to the newly allocated memory.
 
 =end original
 
-1 ���ܤΰ��� C<pointer> �ϡ������˥��꡼�����դ������ѿ���
-̾���ˤ��ޤ���
+1 番目の引数 C<pointer> は、新たにメモリーを割り付けられる変数の
+名前にします。
 
 =begin original
 
@@ -3766,11 +3766,11 @@ argument.
 
 =end original
 
-3 ���ܤ� 4 ���ܤΰ��� C<number> �� C<type> �ϡ����ꤵ�줿��¤�Τ�
-�ɤ��������դ���Τ�����ꤷ�ޤ���
-���� C<type> �� C<sizeof> ���Ϥ���ޤ���
-C<Newxc>���Ф���Ǹ�ΰ��� C<cast>�ϡ����� C<pointer> ��
-���� C<type> �Ȱۤʤ�Ȥ��˻Ȥ��٤���ΤǤ���
+3 番目と 4 番目の引数 C<number> と C<type> は、指定された構造体を
+どれだけ割り付けるのかを指定します。
+引数 C<type> は C<sizeof> に渡されます。
+C<Newxc>に対する最後の引数 C<cast>は、引数 C<pointer> が
+引数 C<type> と異なるときに使うべきものです。
 
 =begin original
 
@@ -3779,8 +3779,8 @@ to zero out all the newly allocated memory.
 
 =end original
 
-C<Newx> �� C<Newxc> �ȤϰۤʤꡢC<Newxz> �ϳ���դ������꡼�Τ��٤Ƥ�
-���������뤿��� C<memzero> ��ƤӽФ��ޤ���
+C<Newx> や C<Newxc> とは異なり、C<Newxz> は割り付けたメモリーのすべてを
+ゼロで埋めるために C<memzero> を呼び出します。
 
 =head3 Reallocation
 
@@ -3797,11 +3797,11 @@ match those of C<New> and C<Newc> with the exception of not needing the
 
 =end original
 
-�嵭�λ��ĤΥޥ����ϡ����꡼�ΥХåե������������ѹ�������⤦
-�Ȥ�ʤ��ʤä����꡼�ΰ��������뤿��˻Ȥ��ޤ���
-C<Renew> ��
-C<Renewc> �ΰ����ϡ�����ˡ�Υ��å����ɰ�����ɬ�פʤ��Ȥ������Ȥ�
-�������줾�� C<New> �� C<Renewc> �˰��פ��ޤ���
+上記の三つのマクロは、メモリーのバッファーサイズを変更したりもう
+使わなくなったメモリー領域を解放するために使われます。
+C<Renew> と
+C<Renewc> の引数は、“魔法のクッキー”引数が必要ないということを
+除きそれぞれ C<New> と C<Renewc> に一致します。
 
 =head3 Moving
 
@@ -3819,13 +3819,13 @@ function).
 
 =end original
 
-���λ��ĤΥޥ����ϡ����줾�����դ������꡼�ΰ���Ф����ư��
-ʣ�̡�����������Ȥ��ä����Ȥ˻Ȥ��ޤ���
-C<source> �� C<dest> �Ȥ��������ϡ�ž������ž����γ������Ϥؤ�
-�ݥ��󥿤Ǥ���
-Perl �ϡ�
-��¤�� C<type> ���礭�� (C<sizeof> �ؿ���Ȥ��ޤ�)�Υ��󥹥��󥹤�
-C<number> ��ʬ��������ư��ʣ�̡���������Ԥ��ޤ���
+この三つのマクロは、それぞれ割り付けたメモリー領域に対する移動、
+複写、ゼロで埋めるといったことに使われます。
+C<source> と C<dest> という引数は、転送元と転送先の開始番地への
+ポインタです。
+Perl は、
+構造体 C<type> の大きさ (C<sizeof> 関数を使います)のインスタンスの
+C<number> 個分だけ、移動、複写、ゼロ埋めを行います。
 
 =head2 PerlIO
 
@@ -3841,13 +3841,13 @@ is being used.
 
 =end original
 
-�ǿ���꡼���� Perl �γ�ȯ�Ǥϡ�Perl �Ρ��̾�Ρ�ɸ�������ϥ饤�֥���
-��¸���Ƥ�����ʬ����������Ȥȡ�Perl ���̤�ɸ�������Ϥμ�����
-�Ȥ���褦�ˤ��뤳�Ȥ���ߤ��ޤ�����
-����ˤ��ɬ��Ū�ˡ�Perl �ȶ��˥���ѥ��뤵�줿ɸ�������Ϥμ�����
-�ƤӽФ��褦�ʿ���������ؤ�����ޤ�����
-���٤Ƥ� XSUB �ϡ����Ǥ� PerlIO ����ؤδؿ���Ȥ��٤��ǡ�
-����ޤǻȤäƤ���ɸ�������Ϥ˴ؤ��ƤΤ��٤Ƥβ���Ϥ��٤��ǤϤ���ޤ���
+最新リリースの Perl の開発では、Perl の“通常の”標準入出力ライブラリに
+依存している部分を取り除くことと、Perl で別の標準入出力の実装が
+使えるようにすることが試みられました。
+これにより必然的に、Perl と共にコンパイルされた標準入出力の実装を
+呼び出すような新しい抽象層が作られました。
+すべての XSUB は、今では PerlIO 抽象層の関数を使うべきで、
+これまで使っていた標準入出力に関してのすべての仮定はすべきではありません。
 
 =begin original
 
@@ -3855,11 +3855,11 @@ For a complete description of the PerlIO abstraction, consult L<perlapio>.
 
 =end original
 
-PerlIO ��ݲ��˴ؤ���ܤ������Ҥ�  L<perlapio> �򻲾Ȥ��Ƥ���������
+PerlIO 抽象化に関する詳しい記述は  L<perlapio> を参照してください。
 
 =head2 Putting a C value on Perl stack
 
-(C �Ǥ��ͤ� Perl �����å��������)
+(C での値を Perl スタックに入れる)
 
 =begin original
 
@@ -3871,12 +3871,12 @@ not constantly freed/created.
 
 =end original
 
-��������Υ��ڥ�����(���������Ū�� perl �����å��ޥ���Ǥδ���Ū��
-���Ǥ�)�� SV �򥹥��å����֤��ޤ���
-�������ʤ��顢SV ���Ф����Ŭ���Τ褦�ʤ�Τ�(�̾��)���
-�Ԥʤ���櫓�ǤϤ���ޤ���
-���ڥ����ɤϲ������줿�ꡢ��������뤳�ȤΤʤ����̤˳�����Ƥ�줿
-SVs (I<target>s) ������Ѥ��ޤ���
+たくさんのオペコード(これは内部的な perl スタックマシンでの基本的な
+操作です)が SV をスタックに置きます。
+しかしながら、SV に対する最適化のようなものは(通常は)毎回
+行なわれるわけではありません。
+オペコードは解放されたり、生成されることのない特別に割り当てられた
+SVs (I<target>s) を再利用します。
 
 =begin original
 
@@ -3887,10 +3887,10 @@ corresponding parts of its I<target> and puts the I<target> on stack.
 
 =end original
 
-���줾��� targets �ϡ����٤�����������(����������Ҥ���
-L<Scratchpads and recursion> �򻲾ȤΤ���)�����ڥ����ɤ������å���
-�����͡������ټ¿��͡�ʸ����Ȥ��ä���Τ��֤����Ȥ�ɬ�פȤ���Ȥ��ˡ�
-�����å��� I<target> ���֤��ޤ���
+それぞれの targets は、一度だけ生成して(ただし、後述する
+L<Scratchpads and recursion> を参照のこと)、オペコードがスタックに
+整数値、倍精度実数値、文字列といったものを置くことを必要とするときに、
+スタックに I<target> を置きます。
 
 =begin original
 
@@ -3900,9 +3900,9 @@ others, which use it via C<(X)PUSH[iunp]>.
 
 =end original
 
-����target�򥹥��å����֤�����Υޥ����� C<PUSHTARG> �Ǥ���
-���Υޥ����ϡ�¾��¿���Υޥ����� C<(X)PUSH[iunp]> ���̤��ƴ���Ū��
-�ȤäƤ���Τ�Ʊ�ͤˡ����Ĥ��Υ��ڥ����ɤ�ľ�ܻȤ��Ƥ��ޤ���
+このtargetをスタックに置くためのマクロが C<PUSHTARG> です。
+このマクロは、他の多くのマクロが C<(X)PUSH[iunp]> を通じて間接的に
+使っているのと同様に、幾つかのオペコードで直接使われています。
 
 =begin original
 
@@ -3992,7 +3992,7 @@ and C<dXSTARG>.
 
 =head2 Scratchpads
 
-(������å��ѥå�)
+(スクラッチパッド)
 
 =begin original
 
@@ -4005,14 +4005,14 @@ unit.
 
 =end original
 
-�ĤäƤ��뵿��ϡ����ڥ����ɤ��Ф��� I<target>s �Ǥ��� SV �򤤤�
-��������Τ��Ȥ������ȤǤ��礦��
-���������ϡ������ȥ�˥å� -- ���֥롼����⤷����(���֥롼�����
-��¦�ˤ���ʸ�Τ���Υ��ڥ����ɤΤ����)�ե����� -- ��
-����ѥ��뤵�줿�Ȥ��Ǥ���
-���δ֡����̤�̵̾������������ޤ���
-����ϥ����ȥ�˥åȤΤ���Υ�����å��ѥå� (scrachpad) ��
-�ƤФ���ΤǤ���
+残っている疑問は、オペコードに対する I<target>s である SV をいつ
+生成するのかということでしょう。
+その答えは、カレントユニット -- サブルーチンもしくは(サブルーチンの
+外側にある文のためのオペコードのための)ファイル -- が
+コンパイルされたときです。
+この間、特別な無名配列が生成されます。
+これはカレントユニットのためのスクラッチパッド (scrachpad) と
+呼ばれるものです。
 
 =begin original
 
@@ -4023,13 +4023,13 @@ I<target>s have C<SVs_PADTMP> set.
 
 =end original
 
-������å��ѥåɤϥ����ȥ�˥åȤΤ���Υ쥭������䥪�ڥ����ɤ�
-����� target �Ǥ��� SV ���ݻ����ޤ���
-SV �����륹����å��ѥåɤ�
-SV �Υե饰�򸫤뤳�Ȥˤ�äƿ�¬���뤳�Ȥ��Ǥ��ޤ���
-�쥭������Ǥ�
-C<SVs_PADMY> ����Ƥ��ơ�I<target>s �Ǥ� C<SVs_PADTMP> ��
-���åȤ���Ƥ��ޤ���
+スクラッチパッドはカレントユニットのためのレキシカルやオペコードの
+ための target である SV を保持します。
+SV があるスクラッチパッドを、
+SV のフラグを見ることによって推測することができます。
+レキシカルでは
+C<SVs_PADMY> されていて、I<target>s では C<SVs_PADTMP> が
+セットされています。
 
 =begin original
 
@@ -4039,14 +4039,14 @@ would not conflict with the expected life of the temporary.
 
 =end original
 
-���ڥ����ɤ� I<target>s �δ֤��б��ϰ��а�ǤϤ���ޤ���
-�����˥åȤ������� (compile tree)�ˤ���ۤʤ륪�ڥ����ɤϡ�
-���줬����ѿ��� expected life �Ⱦ��ͤ��Ƥ��ʤ����Ʊ�� target ��Ȥ����Ȥ�
-�Ǥ��ޤ���
+オペコードと I<target>s の間の対応は一対一ではありません。
+あるユニットの翻訳木 (compile tree)にある異なるオペコードは、
+これが一時変数の expected life と衝突していなければ同じ target を使うことが
+できます。
 
 =head2 Scratchpads and recursion
 
-(������å��ѥåɤȺƵ�)
+(スクラッチパッドと再帰)
 
 =begin original
 
@@ -4057,12 +4057,12 @@ we need an extra level of indirection?
 
 =end original
 
-����ѥ��뤵�줿��˥åȤ�������å��ѥå� AV�ؤΥݥ��󥿤�
-�ݻ����Ƥ���Ȥ������Ȥϡ�100% �����Τ��ȤǤϤ���ޤ���
-�ºݤϡ�
-(����ͤǤ�)�����Ǥ� AV �ؤΥݥ��󥿤��ݻ����Ƥ��ơ��������Ǥ�
-������å��ѥå� AV �ʤΤǤ���
-�ʤ�����������;�פʴ��ܥ�٥��ɬ�פȤ��Ƥ���ΤǤ��礦?
+コンパイルされたユニットがスクラッチパッド AVへのポインタを
+保持しているということは、100% 本当のことではありません。
+実際は、
+(初期値では)一要素の AV へのポインタを保持していて、この要素が
+スクラッチパッド AV なのです。
+なぜ、こういう余計な間接レベルを必要としているのでしょう?
 
 =begin original
 
@@ -4075,13 +4075,13 @@ scratchpads. (I<And> the lexicals should be separate anyway!)
 
 =end original
 
-���������� B<�Ƶ�> �ȡ������餯 B<����å�> �Ǥ���
-�������Ĥ�Ʊ�����֥롼������Ф����̡��μ¹ԥݥ��󥿤�
-�������褦�Ȥ��뤫�⤷��ޤ���
-�ҥ��֥롼����(�ƤӽФ��ҥ��֥롼�����
-ʤ�äƤ����̿�����)�ƥ��֥롼����ΰ���ѿ����񤭤��Ƥ��ޤ�ʤ��褦�ˡ�
-�ƤȻҤǤϡ��ۤʤ륹����å��ѥåɤ���Ĥ褦�ˤ��٤��Ǥ�
-(B<����>���쥭�������ʬ���Ƥ����٤��ʤΤǤ�!)��
+その答えは B<再帰> と、おそらく B<スレッド> です。
+これら二つは同じサブルーチンに対する別々の実行ポインタを
+生成しようとするかもしれません。
+子サブルーチンが(呼び出す子サブルーチンを
+覆っている寿命を持つ)親サブルーチンの一時変数を上書きしてしまわないように、
+親と子では、異なるスクラッチパッドを持つようにすべきです
+(B<かつ>、レキシカルは分けておくべきなのです!)。
 
 =begin original
 
@@ -4092,12 +4092,12 @@ if it is, new scratchpad is created and pushed into the array.
 
 =end original
 
-�ƥ��֥롼����ϡ�������å��ѥåɤ�(Ĺ���� 1 ��)�����ȼ�ä���������ޤ���
-���֥롼������Ф���ƥ���ȥ꡼�Ϥ��λ����ǤκƵ��ο�����
-���������Ĺ�������礭���ʤ����Ȥ�����å����ޤ���
-�����ơ�
-�⤷�����Ǥ���С������ʥ�����å��ѥåɤ��������������ؤ�
-�ץå��夵��ޤ���
+各サブルーチンは、スクラッチパッドの(長さが 1 の)配列を伴って生成されます。
+サブルーチンに対する各エントリーはその時点での再帰の深さが
+この配列の長さよりも大きくないことをチェックします。
+そして、
+もしそうであれば、新たなスクラッチパッドが生成されて配列へと
+プッシュされます。
 
 =begin original
 
@@ -4106,16 +4106,16 @@ marked with correct flags.
 
 =end original
 
-���Υ�����å��ѥåɤˤ��� I<target>s �� C<undef> �Ǥ����������Ϥ��Ǥ�
-�������ե饰�ˤ�äƥޡ�������Ƥ��ޤ���
+このスクラッチパッドにある I<target>s は C<undef> ですが、これらはすでに
+正しいフラグによってマークされています。
 
 =head1 Compiled code
 
-(����ѥ��뤵�줿������)
+(コンパイルされたコード)
 
 =head2 Code tree
 
-(��������)
+(コード木)
 
 =begin original
 
@@ -4124,8 +4124,8 @@ Perl. Start with a simple example:
 
 =end original
 
-�����ǡ�Perl �ˤ�ä��Ѵ����줿�ץ������������������������ޤ��礦��
-��ñ���㤫��Ϥ�ޤ���
+ここで、Perl によって変換されたプログラムの内部形式を説明しましょう。
+簡単な例から始めます。
 
   $a = $b + $c;
 
@@ -4135,7 +4135,7 @@ This is converted to a tree similar to this one:
 
 =end original
 
-����ϼ��Τ褦���ڹ�¤���Ѵ�����ޤ�(�ºݤˤϤ�ä�ʣ���Ǥ�)��
+これは次のような木構造へ変換されます(実際にはもっと複雑です)。
 
              assign-to
            /           \
@@ -4153,11 +4153,11 @@ example above it looks like:
 
 =end original
 
-�����ڹ�¤�ϡ�Perl �����ʤ��Υץ���������Ϥ����������
-ȿ�Ǥ��Ƥ��ޤ������¹Ԥν���ˤĤ��Ƥ�ȿ�Ǥ��Ƥ��ޤ���
-�Ρ��ɤμ¹Խ����ɽ�魯�ڹ�¤�ΥΡ��ɤ�é�����Ȥ����̤�
-"����å�"(thread)������ޤ���
-��δ�ñ����Ǥϡ����Τ褦�ˤʤ�ޤ���
+この木構造は、Perl があなたのプログラムを解析したやり方を
+反映していますが、実行の順序については反映していません。
+ノードの実行順序を表わす木構造のノードを辿ろうとする別の
+"スレッド"(thread)があります。
+先の簡単な例では、次のようになります。
 
      $b ---> $c ---> + ---> $a ---> assign-to
 
@@ -4170,14 +4170,14 @@ is the same as in our example.
 
 =end original
 
-��������C<$a = $b + $c> ���Ф���ºݤβ����ڤϤ���Ȱۤʤ�ޤ���
-�����ΥΡ��ɤ�B<��Ŭ��>����Ƥ��ޤ���
-���η�̤Ȥ��ơ��ºݤ��ڹ�¤���䤿����ñ��������¿���ΥΡ��ɤ�
-���äƤ����Ȥ��Ƥ⡢���μ¹Խ����Ʊ���ˤʤ�ޤ���
+しかし、C<$a = $b + $c> に対する実際の解析木はこれと異なります。
+一部のノードがB<最適化>されています。
+その結果として、実際の木構造が私たちの単純な例よりも多くのノードを
+持っていたとしても、その実行順序は同じになります。
 
 =head2 Examining the tree
 
-(�ڤ򸡺�����)
+(木を検査する)
 
 =begin original
 
@@ -4189,10 +4189,10 @@ this:
 
 =end original
 
-perl��ǥХå��Ѥ˥���ѥ��뤷��(�̾�� C<Configure> �Υ��ޥ�ɥ饤���
-C<-DDEBUGGING> ��ȤäƹԤ��ޤ�)��硢Perl �Υ��ޥ�ɥ饤���
-C<-Dx> ����ꤹ�뤳�Ȥˤ�äƲ����ڤ򸡺����뤳�Ȥ��Ǥ��ޤ���
-���ν��ϤϥΡ�����˿��Ԥ��ꡢC<$b+$c> �ϰʲ��Τ褦�ˤʤ�ޤ���
+perlをデバッグ用にコンパイルした(通常は C<Configure> のコマンドラインで
+C<-DDEBUGGING> を使って行います)場合、Perl のコマンドラインで
+C<-Dx> を指定することによって解析木を検査することができます。
+その出力はノード毎に数行を取り、C<$b+$c> は以下のようになります。
 
     5           TYPE = add  ===> 6
                 TARG = 1
@@ -4227,11 +4227,11 @@ of indentation, thus this listing corresponds to the tree:
 
 =end original
 
-�����ڤˤϸޤĤΥΡ���(C<TYPE> ��ˤҤȤ�)�����äơ����Τ�����
-���Ĥ�������Ŭ������ʤ���ΤǤ�(��¦�˿����Τ�����)��
-Ϳ����줿�Ρ��ɤΤ������ˤ���Ҷ���Ʊ����٥�Υ���ǥ�Ȥˤ���C<{}>��
-�ڥ����б����ޤ���
-�������äơ����Υꥹ�Ȥϰʲ����ڤ��б����ޤ���
+この木には五つのノード(C<TYPE> 毎にひとつ)があって、そのうちの
+三つだけが最適化されないものです(左側に数字のあるもの)。
+与えられたノードのすぐ下にある子供は同じレベルのインデントにあるC<{}>の
+ペアに対応します。
+したがって、このリストは以下の木に対応します。
 
                    add
                  /     \
@@ -4247,10 +4247,10 @@ C<gvsv gvsv add whatever>.
 
 =end original
 
-�¹Խ���� C<===E<gt>> �ޡ����ˤ�ä�ɽ�蘆��ޤ����顢C<3 4 5 6>
-(�Ρ��� C<6>�ϡ���ˤ���ꥹ�Ȥˤϴޤޤ�ޤ���)�Ȥʤ�ޤ���
-�Ĥޤꡢ
-C<gvsv gvsv add whatever> �Ȥ������Ȥˤʤ�ޤ���
+実行順序は C<===E<gt>> マークによって表わされますから、C<3 4 5 6>
+(ノード C<6>は、上にあるリストには含まれません)となります。
+つまり、
+C<gvsv gvsv add whatever> ということになります。
 
 =begin original
 
@@ -4338,10 +4338,10 @@ the first pass of perl compilation.
 
 =end original
 
-�����ڹ�¤�ϡ�I<yacc> �� perl �ץ��������ɤ߹���Ǥ��ι�¤����Ϥ���
-����֤˥���ѥ���ˤ�ä���������ޤ���
-yacc �ϥܥȥॢ�åפ�ư���Τǡ�perl �ˤ�륳��ѥ���κǽ�Υѥ���
-�Ԥʤ��ޤ���
+この木構造は、I<yacc> が perl プログラムを読み込んでその構造を解析して
+いる間にコンパイラによって生成されます。
+yacc はボトムアップで動作するので、perl によるコンパイルの最初のパスで
+行なわれます。
 
 =begin original
 
@@ -4353,12 +4353,12 @@ forget to run C<make regen_headers> if you modify this file).
 
 =end original
 
-perl ��ȯ�ԤˤȤäƶ�̣�����Τϡ����Υѥ��ǹԤʤ��뤤���Ĥ���
-��Ŭ���Ǥ��礦��
-����ϡ�"check routines" �Ȥ�ƤФ���Ŭ���Ǥ���
-�Ρ���̾���б���������å��롼����Ȥδ֤��б��� F<opcode.pl> ��
-���Ҥ���Ƥ��ޤ�(���Υե���������������ˤϡ�C<make regen_headers> ��
-�¹Ԥ��뤳�Ȥ�˺��ʤ��Ǥ�������)��
+perl 開発者にとって興味深いのは、このパスで行なわれるいくつかの
+最適化でしょう。
+これは、"check routines" とも呼ばれる最適化です。
+ノード名と対応するチェックルーチンとの間の対応は F<opcode.pl> に
+記述されています(このファイルを修正した場合には、C<make regen_headers> を
+実行することを忘れないでください)。
 
 =begin original
 
@@ -4370,12 +4370,12 @@ new nodes above/below it.
 
 =end original
 
-�����å��롼����ϡ��Ρ��ɤ��¹Խ������åɤ�����ƴ�����
-���ۤ��줿�Ȥ��˸ƤӽФ���ޤ���
-���λ����Ǥϡ����ۤ��줿�Ρ��ɤ��Ф���
-back-line ��¸�ߤ��ʤ��Τǡ��ȥåץ�٥�Ρ��ɤ��Ф��ơ������ʥΡ��ɤ�
-����������Ρ��ɤ���������ꤹ�뤳�Ȥ�ޤ�ơ��ۤȤ�ɤ�����
-�Ԥ����Ȥ��Ǥ��ޤ���
+チェックルーチンは、ノードが実行順序スレッドを除いて完全に
+構築されたときに呼び出されます。
+この時点では、構築されたノードに対する
+back-line が存在しないので、トップレベルノードに対して、新たなノードを
+生成したりノードを解放したりすることを含めて、ほとんどの操作を
+行うことができます。
 
 =begin original
 
@@ -4385,8 +4385,8 @@ its argument).
 
 =end original
 
-���Υ����å��롼������ڤ��������٤��Ρ��ɤ��֤��ޤ�(�ȥåץ�٥��
-�Ρ��ɤ��ѹ�����Ƥ��ʤ���С������å��롼����Ϥ��ΰ������֤��ޤ�)��
+このチェックルーチンは木に挿入すべきノードを返します(トップレベルの
+ノードが変更されていなければ、チェックルーチンはその引数を返します)。
 
 =begin original
 
@@ -4396,13 +4396,13 @@ called from F<perly.y>).
 
 =end original
 
-����ˤ�ꡢ�����å��롼����� C<ck_*> �Τ褦��̾��������ޤ���
-�������̾掠�֥롼���� C<new*OP> (�⤷���� C<convert>)����
-�ƤӽФ���ޤ�(�����Υ��֥롼����� F<perly.y> ����ƤӽФ���ޤ�)��
+規約により、チェックルーチンは C<ck_*> のような名前を持ちます。
+これらは通常サブルーチン C<new*OP> (もしくは C<convert>)から
+呼び出されます(これらのサブルーチンは F<perly.y> から呼び出されます)。
 
 =head2 Compile pass 1a: constant folding
 
-(����ѥ���ѥ�1a: ����ξ��߹���)
+(コンパイルパス1a: 定数の畳み込み)
 
 =begin original
 
@@ -4414,11 +4414,11 @@ substituted instead.  The subtree is deleted.
 
 =end original
 
-�����å��롼���󤬸ƤӽФ��줿ľ��ˡ��֤��줿�Ρ��ɤϥ���ѥ����
-�¹ԤΤ���Υ����å����Ԥʤ��ޤ���
-�⤷�����Ǥ����(�ͤ�����Ǥ����Ƚ�ꤵ�줿)�����ΥΡ��ɤ�¨�¤�
-�¹Ԥ���ơ�������͡ɤ�
-�б�������ʬ�ڤ� B<���> �Ρ��ɤ��ִ����졢��ʬ�ڤ��������ޤ���
+チェックルーチンが呼び出された直後に、返されたノードはコンパイル時
+実行のためのチェックが行なわれます。
+もしそうであれば(値が定数であると判定された)、そのノードは即座に
+実行されて、“戻り値”に
+対応する部分木は B<定数> ノードで置換され、部分木が削除されます。
 
 =begin original
 
@@ -4427,12 +4427,12 @@ created.
 
 =end original
 
-����ξ��߹���(constant folding)��Ư���ʤ���С��¹Խ������åɤ�
-��������ޤ���
+定数の畳み込み(constant folding)が働かなければ、実行順序スレッドが
+生成されます。
 
 =head2 Compile pass 2: context propagation
 
-(����ѥ���ѥ�2: ����ƥ���������)
+(コンパイルパス2: コンテキスト伝播)
 
 =begin original
 
@@ -4444,13 +4444,13 @@ to bottom: a node's context determines the context for its children.
 
 =end original
 
-�����ڤΰ���ʬ�Υ���ƥ����Ȥ��狼�äƤ���Ȥ���������ڤ���ü��
-���Ť��ޤ���
-���ΤȤ�������ƥ����Ȥ�(�¹Ի�����ƥ����Ȥ������ǤϤʤ�)
-̵���������͡������顢�ꥹ�ȡ������ͤθ޼�����ͤ�
-���Ĥ��Ȥ��Ǥ��ޤ���
-�ѥ� 1 �Ȥ��о�Ū�ˡ����Υѥ��Ǥϥȥåפ�����ü�ؤȽ������ʤߤޤ���
-����Ρ��ɤΥ���ƥ����Ȥϡ����β��ˤ�����ʬ�Υ���ƥ����Ȥ���ꤷ�ޤ���
+解析木の一部分のコンテキストがわかっているとき、それは木の末端へ
+伝播します。
+このとき、コンテキストは(実行時コンテキストの二種類ではなく)
+無効、真偽値、スカラ、リスト、左辺値の五種類の値を
+持つことができます。
+パス 1 とは対照的に、このパスではトップから末端へと処理が進みます。
+あるノードのコンテキストは、その下にある部分のコンテキストを決定します。
 
 =begin original
 
@@ -4462,16 +4462,16 @@ of free()ing (i.e. their type is changed to OP_NULL).
 
 =end original
 
-����ƥ����Ȥ˰�¸������Ŭ���Ϥ��ΤȤ��˹Ԥʤ��ޤ���
-����ư��Ǥϲ����ڤ�(�ȥ���åɡɥݥ��󥿤��̤���)�������Ȥ�
-�ޤ�Ǥ���Τǡ��Ρ��ɤ򤳤λ��� free() ���뤳�ȤϤǤ��ޤ���
-���Υ��ơ����ǥΡ��ɤ��Ŭ������Τ��������ˡ��оݤȤʤ�Ρ��ɤ�
-free() ����뤫���� null() ����ޤ�(�Ĥޤꡢ���ΥΡ��ɤη��� OP_NULL ��
-�Ѥ�����Ȥ�������)��
+コンテキストに依存した最適化はこのときに行なわれます。
+この動作では解析木が(“スレッド”ポインタを通じて)後方参照を
+含んでいるので、ノードをこの時に free() することはできません。
+このステージでノードを最適化するのを許すために、対象となるノードは
+free() されるかわりに null() されます(つまり、そのノードの型が OP_NULL に
+変えられるということ)。
 
 =head2 Compile pass 3: peephole optimization
 
-(����ѥ���ѥ�3: �������Ŭ��)
+(コンパイルパス3: 覗き穴最適化)
 
 =begin original
 
@@ -4484,12 +4484,12 @@ are subject to the same restrictions as in the pass 2.
 
 =end original
 
-���֥롼����(�⤷���� C<eval> ���ե�����)���Ф�������ڤ��������줿��ǡ�
-���Υ����ɤ��Ф����ɲåѥ����¹Ԥ���ޤ���
-���Υѥ��ϥȥåץ�����Ǥ�ܥȥॢ�åפǤ�ʤ���(�����Ф���
-compillcation ��ȼ�ä�)�¹Խ���Ǥ���
-�����κ�Ŭ���ϥ��֥롼���� peep() �ǹԤʤ��ޤ���
-���Υ��ơ����ǹԤʤ����Ŭ���ϥѥ� 2 �ǤΤ�Τ�Ʊ�����¤˽����ޤ���
+サブルーチン(もしくは C<eval> かファイル)に対する解析木が生成された後で、
+そのコードに対する追加パスが実行されます。
+このパスはトップダウンでもボトムアップでもなく、(条件に対する
+compillcation を伴った)実行順序です。
+これらの最適化はサブルーチン peep() で行なわれます。
+このステージで行なわれる最適化はパス 2 でのものと同じ制限に従います。
 
 =head2 Pluggable runops
 
@@ -5493,7 +5493,7 @@ This function isn't exported out of the Perl core.
 
 =end original
 
-���δؿ��� Perl �����γ�¦�إ������ݡ��Ȥ���ޤ���
+この関数は Perl コアの外側へエクスポートされません。
 
 =item m
 
@@ -5503,7 +5503,7 @@ This is implemented as a macro.
 
 =end original
 
-����ϥޥ����Ȥ��Ƽ�������Ƥ��ޤ���
+これはマクロとして実装されています。
 
 =item X
 
@@ -5513,7 +5513,7 @@ This function is explicitly exported.
 
 =end original
 
-���δؿ�������Ū�˥������ݡ��Ȥ���ޤ���
+この関数は明示的にエクスポートされます。
 
 =item E
 
@@ -5523,7 +5523,7 @@ This function is visible to extensions included in the Perl core.
 
 =end original
 
-���δؿ��� Perl �����˴ޤޤ�륨�����ƥ󥷥�󤫤鸫���ޤ���
+この関数は Perl コアに含まれるエクステンションから見えます。
 
 =item b
 
@@ -5644,7 +5644,7 @@ For example:
 
 =end original
 
-�㤨��:
+例えば:
 
         IV  iv = ...;
         SV *sv = INT2PTR(SV*, iv);
@@ -5655,7 +5655,7 @@ and
 
 =end original
 
-�����
+および
 
         AV *av = ...;
         UV  uv = PTR2UV(av);
@@ -5781,7 +5781,7 @@ Perl core.
 
 =head2 Backwards compatibility
 
-(�����ߴ���)
+(後方互換性)
 
 =begin original
 
@@ -5832,11 +5832,11 @@ For details, see C<perldoc ppport.h>.
 
 =end original
 
-�ܺ٤ˤĤ��Ƥϡ�C<perldoc ppport.h> �򻲾Ȥ��Ƥ���������
+詳細については、C<perldoc ppport.h> を参照してください。
 
 =head1 Unicode Support
 
-(Unicode �б�)
+(Unicode 対応)
 
 =begin original
 
@@ -5853,7 +5853,7 @@ write does not corrupt Unicode data.
 
 =head2 What B<is> Unicode, anyway?
 
-(�Ȥ����ǡ�Unicode �ä� B<��> ?)
+(ところで、Unicode って B<何> ?)
 
 =begin original
 
@@ -5916,7 +5916,7 @@ about Unicode and Perl's Unicode model in L<perlunicode>.
 
 =head2 How can I recognise a UTF-8 string?
 
-(UTF-8 ʸ�����ǧ������ˤ�?)
+(UTF-8 文字列を認識するには?)
 
 =begin original
 
@@ -6257,7 +6257,7 @@ in a single byte.
 
 =head2 Is there anything else I need to know?
 
-(¾���ΤäƤ����٤����Ȥ�?)
+(他に知っておくべきことは?)
 
 =begin original
 
@@ -6265,8 +6265,8 @@ Not really. Just remember these things:
 
 =end original
 
-�ºݤˤϤ���ޤ���
-ñ�˰ʲ��Τ��Ȥ�Ф��Ƥ����Ƥ�������:
+実際にはありません。
+単に以下のことを覚えておいてください:
 
 =over 3
 

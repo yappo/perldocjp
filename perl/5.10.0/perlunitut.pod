@@ -9,7 +9,7 @@ perlunitut - Perl Unicode Tutorial
 
 =end original
 
-perlunitut - Perl �ˤ����� Unicode �Υ��塼�ȥꥢ��
+perlunitut - Perl における Unicode のチュートリアル
 
 =head1 DESCRIPTION
 
@@ -23,12 +23,12 @@ it right.
 
 =end original
 
-ʸ�����ñ������Ф������Ͻ����ޤ�����
-�Ƕ�Υץ������Ǥ��Ѥ�ä���������ȤΤĤ���ʸ���䡢�桼���Υޡ�����
-�褦�ʤ�Τ��̿������ɬ�פ����뤳�Ȥ���Ω���Ƥ��ޤ���
-����ϡ��ץ�����ޤϿ�������̣��ɬ�פǤ��뤳�Ȥ��̣���Ƥ��ޤ���
-Unicode �б����եȥ�������ץ�����ह��Τϴ�ñ�Ǥ�����������������Ԥ��ˤ�
-������ɬ�פǤ���
+文字列を単に放り出す日々は終わりました。
+最近のプログラムでは変わったアクセントのついた文字や、ユーロのマークの
+ようなものを通信出来る必要があることが確立しています。
+これは、プログラマは新しい意味が必要であることを意味しています。
+Unicode 対応ソフトウェアをプログラムするのは簡単ですが、それを正しく行うには
+訓練が必要です。
 
 =begin original
 
@@ -38,9 +38,9 @@ minutes.
 
 =end original
 
-ʸ������ȥƥ����ȥ��󥳡��ǥ��󥰤˴ؤ��Ƥϳؤ֤٤����Ȥ��������󤢤�ޤ���
-�����餯��������Ƥ�ؤ֤Τ˴ݰ�����Ȥ��Τ����ɤǤ��������ܤϿ�ʬ��
-�ؤ٤ޤ���
+文字集合とテキストエンコーディングに関しては学ぶべきことがたくさんあります。
+おそらくこれら全てを学ぶのに丸一日を使うのが最良ですが、基本は数分で
+学べます。
 
 =begin original
 
@@ -54,15 +54,15 @@ L<http://joelonsoftware.com/articles/Unicode.html>.
 
 =end original
 
-��������������Ķ���ܤǤϤ���ޤ���
-���ʤ������Ǥ˥Х��Ȥ�ʸ���ΰ㤤���ΤäƤ��ơ��͡���ʸ�������
-���󥳡��ǥ��󥰤����뤳�Ȥ򼫳Ф��Ƥ���(����˼�������Ƥ���!)��
-���ʤ��Υץ�����ब����������Ū�ˤ���ɬ�פ����롢�Ȳ��ꤷ�Ƥ��ޤ���
-��������ɤ�ʪ�� Joel Spolsky �ˤ��
+しかし、これらは超基本ではありません。
+あなたがすでにバイトと文字の違いを知っていて、様々な文字集合と
+エンコーディングがあることを自覚していて(さらに受け入れていて!)、
+あなたのプログラムがこれらを明示的にする必要がある、と仮定しています。
+お勧めの読み物は Joel Spolsky による
 "The Absolute
 Minimum Every Software Developer Absolutely, Positively Must Know About Unicode
 and Character Sets (No Excuses!)" 
-L<http://joelonsoftware.com/articles/Unicode.html> �Ǥ���
+L<http://joelonsoftware.com/articles/Unicode.html> です。
 
 =begin original
 
@@ -72,13 +72,13 @@ most projects, this information will probably suffice.
 
 =end original
 
-���Υ��塼�ȥꥢ��Ϥɤ��餫�Ȥ�������Ω�����Ѹ��ȤäƤ��ޤ�����Perl ��
-�󶡤��Ƥ���˭�٤�ʸ����˴ؤ��뵡ǽ�Τ������ꤵ�줿�����Τߤ򰷤äƤ��ޤ���
-�ۤȤ�ɤΥץ��������ȤˤȤäƤϡ������餯���ξ���ǽ�ʬ�Ǥ��� 
+このチュートリアルはどちらかといえば独立した用語を使っていますし、Perl が
+提供している豊富な文字列に関する機能のうち限定された見方のみを扱っています。
+ほとんどのプロジェクトにとっては、おそらくこの情報で十分です。 
 
 =head2 Definitions
 
-(���)
+(定義)
 
 =begin original
 
@@ -88,10 +88,10 @@ may have found on the web, but that's mostly because many sources are wrong.
 
 =end original
 
-�ޤ��������Ĥ��Τ��Ȥ�Ϥä��ꤵ���뤳�Ȥ����פǤ���
-����Ϥ��Υ��塼�ȥꥢ��ǺǤ���פ���ʬ�Ǥ���
-���ιͤ����Ϥ��ʤ��� web �Ǹ��Ĥ�������¾�ξ����̷�⤹�뤫�⤷��ޤ��󤬡�
-�ۤȤ�ɤξ�硢����� web �Ǹ��Ĥ�������������ְ�äƤ��뤿��Ǥ���
+まず、いくつかのことをはっきりさせることが重要です。
+これはこのチュートリアルで最も重要な部分です。
+この考え方はあなたが web で見つけたその他の情報と矛盾するかもしれませんが、
+ほとんどの場合、それは web で見つけた情報の方が間違っているためです。
 
 =begin original
 
@@ -99,7 +99,7 @@ You may have to re-read this entire section a few times...
 
 =end original
 
-���Υ�����������Τ򲿲��ɤ�ľ��ɬ�פ����뤫�⤷��ޤ����
+このセクション全体を何回か読み直す必要があるかもしれません…
 
 =head3 Unicode
 
@@ -110,8 +110,8 @@ value of a character is called a B<code point>.
 
 =end original
 
-B<Unicode> �����̤�ʸ����ɽ���Ǥ���ʸ������Ǥ���
-ʸ���ν����� B<�����ɥݥ����> �ȸƤФ�ޤ���
+B<Unicode> は大量の文字を表現できる文字集合です。
+文字の序数は B<コードポイント> と呼ばれます。
 
 =begin original
 
@@ -121,10 +121,10 @@ to make these accessible.
 
 =end original
 
-�����ɥݥ���Ȥ����������̤ˤ���ޤ���������ԥ塼���ϥХ���ñ�̤�
-ư���Ƥ��ơ��Х��Ȥ� 256 ������ͤΤߤ�����ޤ���
-Unicode �Ϥ�äȤ��������ʸ������äƤ���Τǡ������˥��������Ǥ���褦��
-��ˡ��ɬ�פǤ���
+コードポイントは本当に大量にありますが、コンピュータはバイト単位で
+動いていて、バイトは 256 種類の値のみを持ちます。
+Unicode はもっとたくさんの文字を持っているので、これらにアクセスできるような
+手法が必要です。
 
 =begin original
 
@@ -134,10 +134,10 @@ store a single code point, or simply: character.
 
 =end original
 
-Unicode �Ϥ����Ĥ��ζ��礹�륨�󥳡��ǥ��󥰤�Ȥäƥ��󥳡��ɤ���Ƥ��ơ�
-UTF-8 ����äȤ�褯�Ȥ��Ƥ��ޤ���
-Unicode �Υ��󥳡��ǥ��󥰤Ǥϡ�ʣ���ΰ���³���Х�������ĤΥ����ɥݥ����
-(���뤤��ñ��ˡ�ʸ����)���ݴɤ���Τ˻Ȥ��ޤ���
+Unicode はいくつかの競合するエンコーディングを使ってエンコードされていて、
+UTF-8 がもっともよく使われています。
+Unicode のエンコーディングでは、複数の引き続くバイト列を一つのコードポイント
+(あるいは単純に「文字」)を保管するのに使います。
 
 =head3 UTF-8
 
@@ -149,10 +149,10 @@ the world has standardized on UTF-8.
 
 =end original
 
-B<UTF-8> �� Unicode �Υ��󥳡��ǥ��󥰤Ǥ���
-¿���ο͡��� Unicode �� UTF-8 ��Ʊ�����ȹͤ��Ƥ��ޤ������㤤�ޤ���
-Unicode �Υ��󥳡��ǥ��󥰤ˤ�¾�ˤ⤢��ޤ����������ΤۤȤ�ɤǤ�ɸ��Ȥ���
-UTF-8 ���Ȥ��Ƥ��ޤ���
+B<UTF-8> は Unicode のエンコーディングです。
+多くの人々は Unicode と UTF-8 は同じだと考えていますが、違います。
+Unicode のエンコーディングには他にもありますが、世界のほとんどでは標準として
+UTF-8 が使われています。
 
 =begin original
 
@@ -163,16 +163,16 @@ us, so we don't have to worry about this.
 
 =end original
 
-UTF-8 �Ϻǽ�� 128 �Υ����ɥݥ����(0..127) �� ASCII ��Ʊ�ͤ˰����ޤ���
-ʸ����� 1 �Х��Ȥ���������ޤ���
-����¾��ʸ���ϡ�ʣ���ʻ��Ȥߤ�Ȥä� 2 �ޤ��Ϥ���ʾ� (���� 6)�ΥХ��Ȥ�
-�Ȥ��ޤ���
-������Perl �����κ�Ȥ򤹤�Τǡ��䤿��������ˤĤ��ƿ��ۤ���ɬ�פ�
-����ޤ���
+UTF-8 は最初の 128 のコードポイント(0..127) を ASCII と同様に扱います。
+文字毎に 1 バイトしかかかりません。
+その他の文字は、複雑な仕組みを使って 2 またはそれ以上 (最大 6)のバイトを
+使います。
+幸い、Perl がその作業をするので、私たちがそれについて心配する必要は
+ありません。
 
 =head3 Text strings (character strings)
 
-(�ƥ�����ʸ����(ʸ����ʸ����))
+(テキスト文字列(文字の文字列))
 
 =begin original
 
@@ -182,9 +182,9 @@ character.
 
 =end original
 
-B<�ƥ�����ʸ����>���ޤ��� B<ʸ����ʸ����> ��ʸ������ʤ�ޤ���
-�Х�����Ϥ����Ǥ�̵��̣�ǡ����󥳡��ǥ��󥰤�����ޤ���
-��ʸ����ñ��ʸ���Ǥ���
+B<テキスト文字列>、または B<文字の文字列> は文字からなります。
+バイト列はここでは無意味で、エンコーディングがあります。
+各文字は単に文字です。
 
 =begin original
 
@@ -193,8 +193,8 @@ string is a Unicode string.
 
 =end original
 
-�ƥ�����ʸ����� B<Unicode ʸ����> �Ȥ�ƤФ�ޤ�; �ʤ��ʤ顢Perl �Ǥ�
-�ƥ�����ʸ����� Unicode ʸ���������Ǥ���
+テキスト文字列は B<Unicode 文字列> とも呼ばれます; なぜなら、Perl では
+テキスト文字列は Unicode 文字列だからです。
 
 =begin original
 
@@ -202,7 +202,7 @@ On a text string, you would do things like:
 
 =end original
 
-�ƥ�����ʸ����Ǥϡ��ʲ��Τ褦�ˤ��ޤ���
+テキスト文字列では、以下のようにします。
 
     $text =~ s/foo/bar/;
     if ($string =~ /^\d+$/) { ... }
@@ -216,11 +216,11 @@ point.
 
 =end original
 
-ʸ������ (C<ord>, C<chr>) ���б����� Unicode �����ɥݥ���ȤǤ���
+文字の値 (C<ord>, C<chr>) は対応する Unicode コードポイントです。
 
 =head3 Binary strings (byte strings)
 
-(�Х��ʥ�ʸ����(�Х���ʸ����))
+(バイナリ文字列(バイト文字列))
 
 =begin original
 
@@ -230,10 +230,10 @@ outside of your current Perl process) is done in binary.
 
 =end original
 
-B<�Х��ʥ�ʸ����>���ޤ��� B<�Х���ʸ����> �ϥХ����󤫤�ʤ�ޤ���
-�����Ǥϡ�ʸ���Ϥʤ���ñ�˥Х��Ȥ���������ޤ���
-��¦������(���ߤ� Perl �ץ������γ�¦�Τ�������) �Ȥ��̿��ϥХ��ʥ��
-�Ԥ��ޤ���
+B<バイナリ文字列>、または B<バイト文字列> はバイト列からなります。
+ここでは、文字はなく、単にバイトだけがあります。
+外側の世界(現在の Perl プロセスの外側のあらゆるもの) との通信はバイナリで
+行われます。
 
 =begin original
 
@@ -241,7 +241,7 @@ On a binary string, you would do things like:
 
 =end original
 
-�Х��ʥ�ʸ����Ǥϡ��ʲ��Τ褦�ˤ��ޤ�:
+バイナリ文字列では、以下のようにします:
 
     my (@length_content) = unpack "(V/a)*", $binary;
     $binary =~ s/\x00\x0F/\xFF\xF0/;  # for the brave :)
@@ -250,7 +250,7 @@ On a binary string, you would do things like:
 
 =head3 Encoding
 
-(���󥳡���)
+(エンコード)
 
 =begin original
 
@@ -262,15 +262,15 @@ conversion.
 
 =end original
 
-B<���󥳡���> �� I<�ƥ�����> ���� I<�Х��ʥ�> �ؤ��Ѵ��Ǥ���
-���󥳡��ɤ���ˤϡ�C<iso-8859-1> �� C<UTF-8> �Τ褦�ʡ����󥳡������
-���󥳡��ǥ��󥰤�ɬ�פǤ���
-C<iso-8859> ("latin") �Τ褦�ʰ����Υ��󥳡��ǥ��󥰤ϡ�Unicode ɸ���
-�������б����Ƥ��ޤ���; ɽ���Ǥ��ʤ�ʸ�����Ѵ����˼����ޤ���
+B<エンコード> は I<テキスト> から I<バイナリ> への変換です。
+エンコードするには、C<iso-8859-1> や C<UTF-8> のような、エンコード先の
+エンコーディングが必要です。
+C<iso-8859> ("latin") のような一部のエンコーディングは、Unicode 標準に
+完全に対応していません; 表現できない文字は変換時に失われます。
 
 =head3 Decoding
 
-(�ǥ�����)
+(デコード)
 
 =begin original
 
@@ -281,15 +281,15 @@ text string.
 
 =end original
 
-B<�ǥ�����> �� I<�Х��ʥ�> ���� I<�ƥ�����> �ؤ��Ѵ��Ǥ���
-�ǥ����ɤ���ˤϡ����󥳡��ɻ��˻Ȥ�줿���󥳡��ǥ��󥰤��������ΤäƤ���
-ɬ�פ�����ޤ���
-�����Ƥ��⤽�⡢����ϥǥ����ɲ�ǽ�Ǥ���ɬ�פ�����ޤ���
-PNG ���᡼����ƥ�����ʸ����˥ǥ����ɤ��Ƥ�ۤȤ�ɰ�̣�Ϥʤ��Ǥ���
+B<デコード> は I<バイナリ> から I<テキスト> への変換です。
+デコードするには、エンコード時に使われたエンコーディングが何かを知っている
+必要があります。
+そしてそもそも、それはデコード可能である必要があります。
+PNG イメージをテキスト文字列にデコードしてもほとんど意味はないです。
 
 =head3 Internal format
 
-(��������)
+(内部形式)
 
 =begin original
 
@@ -299,10 +299,10 @@ In fact, text strings are never in any other format!
 
 =end original
 
-Perl �ˤ� B<��������> �ȸƤФ�롢�ƥ�����ʸ��������˳�Ǽ�Ǥ���褦��
-���󥳡��ɤ�Ԥ�����˻Ȥ����󥳡��ǥ��󥰤�����ޤ���
-���ƤΥƥ�����ʸ����Ϥ������������ˤʤ�ޤ���
-�ºݡ��ƥ�����ʸ����¾�η����ˤʤ뤳�ȤϷ褷�Ƥʤ��ΤǤ�!
+Perl には B<内部形式> と呼ばれる、テキスト文字列をメモリに格納できるように
+エンコードを行うために使うエンコーディングがあります。
+全てのテキスト文字列はこの内部形式になります。
+実際、テキスト文字列が他の形式になることは決してないのです!
 
 =begin original
 
@@ -311,12 +311,12 @@ automatically done when you decode or encode.
 
 =end original
 
-���η������ɤΤ褦�ʤ�ΤǤ��뤫�򵤤ˤ���ɬ�פϤʤ��Ϥ��Ǥ�; �ʤ��ʤ�
-�Ѵ��ϥǥ����ɤ䥨�󥳡��ɤκݤ˼�ưŪ�˹Ԥ��뤫��Ǥ���
+この形式がどのようなものであるかを気にする必要はないはずです; なぜなら
+変換はデコードやエンコードの際に自動的に行われるからです。
 
 =head2 Your new toolkit
 
-(�������ġ��륭�å�)
+(新しいツールキット)
 
 =begin original
 
@@ -324,7 +324,7 @@ Add to your standard heading the following line:
 
 =end original
 
-���ʤ���ɸ��إå��˰ʲ��ιԤ��ɲä��ޤ�:
+あなたの標準ヘッダに以下の行を追加します:
 
     use Encode qw(encode decode);
 
@@ -334,13 +334,13 @@ Or, if you're lazy, just:
 
 =end original
 
-���뤤�ϡ����ʤ����դ��Ԥʤ顢ñ�˰ʲ��Τ褦�ˤ��ޤ�:
+あるいは、あなたが怠け者なら、単に以下のようにします:
 
     use Encode;
 
 =head2 I/O flow (the actual 5 minute tutorial)
 
-(I/O ��ή��(�ºݤ� 5 ʬ�֥��塼�ȥꥢ��))
+(I/O の流れ(実際の 5 分間チュートリアル))
 
 =begin original
 
@@ -348,7 +348,7 @@ The typical input/output flow of a program is:
 
 =end original
 
-ŵ��Ū�ʥץ������������Ϥ�ή��ϰʲ��Τ�ΤǤ�:
+典型的なプログラムの入出力の流れは以下のものです:
 
 =begin original
 
@@ -358,9 +358,9 @@ The typical input/output flow of a program is:
 
 =end original
 
-    1. �������ƥǥ����ɤ���
-    2. ��������
-    3. ���󥳡��ɤ��ƽ��Ϥ���
+    1. 受信してデコードする
+    2. 処理する
+    3. エンコードして出力する
 
 =begin original
 
@@ -369,9 +369,9 @@ it to a text string, of course. But in all other cases, you should decode it.
 
 =end original
 
-�⤷���Ϥ��Х��ʥ�ǡ��Х��ʥ�Τޤޤˤ��Ƥ���ɬ�פ�����ʤ顢�����
-�ƥ�����ʸ����˥ǥ����ɤ���٤��ǤϤ���ޤ���
-������������ʳ������Ƥξ��Ǥϡ��ǥ����ɤ���٤��Ǥ���
+もし入力がバイナリで、バイナリのままにしておく必要があるなら、これを
+テキスト文字列にデコードするべきではありません。
+しかし、それ以外の全ての場合では、デコードするべきです。
 
 =begin original
 
@@ -380,9 +380,9 @@ you get to choose, it's a good idea to standardize on UTF-8.
 
 =end original
 
-�⤷�ǡ������ɤΤ褦�˥��󥳡��ɤ��줿��ʬ����ʤ��ʤ顢�ǥ����ɤˤ�
-������������ޤ���
-�⤷���ʤ������򤹤�Τʤ顢UTF-8 ��ɸ�ಽ����ΤϤ����ͤ��Ǥ���
+もしデータがどのようにエンコードされたか分からないなら、デコードには
+信頼性がありません。
+もしあなたが選択するのなら、UTF-8 に標準化するのはいい考えです。
 
     my $foo   = decode('UTF-8', get 'http://example.com/');
     my $bar   = decode('ISO-8859-1', readline STDIN);
@@ -396,9 +396,9 @@ C<substr>, or C<length>.
 
 =end original
 
-�����Ϻ��ޤ��̤�˹Ԥ��ޤ���
-ͣ��ΰ㤤�ϡ��Х��ȤǤϤʤ�ʸ����Ȥ����ȤǤ���
-����� C<substr> �� C<length> �Τ褦�ʤ�Τ�Ȥ��Ȥ��ˤȤƤ������Ǥ���
+処理は今まで通りに行います。
+唯一の違いは、バイトではなく文字を使うことです。
+これは C<substr> や C<length> のようなものを使うときにとても便利です。
 
 =begin original
 
@@ -410,12 +410,12 @@ exactly how many bytes it will be in the destination string.
 
 =end original
 
-�ƥ�����ʸ����ˤϥХ�����Ϥʤ��Ȥ������Ȥ򼫳Ф��뤳�ȤϽ��פǤ���
-�������Perl ��ʸ����������ݴɤ��뤿�������������Ȥ��ޤ�����
-�����̵�뤷�Ƥ���������
-�⤷�Х��ȿ��򰷤��褦�ʲ����򤹤�ɬ�פ�����ʤ顢�����餯������ʬ��
-���ƥå� 3 �Ρ�ʸ����򥨥󥳡��ɤ���ľ��˰ܤ��Τ����ɤǤ���
-��������Ū��ʸ���󤬲��Х��Ȥˤʤ�Τ������Τ�ʬ����ޤ���
+テキスト文字列にはバイト列はないということを自覚することは重要です。
+もちろん、Perl は文字列をメモリに保管するために内部形式を使いますが、
+これは無視してください。
+もしバイト数を扱うような何かをする必要があるなら、おそらくその部分を
+ステップ 3 の、文字列をエンコードした直後に移すのが最良です。
+そこで目的の文字列が何バイトになるのかが正確に分かります。
 
 =begin original
 
@@ -423,8 +423,8 @@ The syntax for encoding text strings to binary strings is as simple as decoding:
 
 =end original
 
-�ƥ�����ʸ�����Х��ʥ�ʸ����ˤ��뤿���ʸˡ�ϥǥ����ɻ���Ʊ�����餤
-ñ��Ǥ�:
+テキスト文字列をバイナリ文字列にするための文法はデコード時と同じぐらい
+単純です:
 
     $body = encode('UTF-8', $body);
 
@@ -437,11 +437,11 @@ characters is no longer known, because characters only exist in text strings.
 
 =end original
 
-�⤷ʸ����ΥХ��ȿ���ɬ�פʤ顢��������򤹤���ɤΥ����ߥ󥰤Ǥ���
-�ʤ��ʤ� C<$body> �ϥХ���ʸ����ʤΤǡ�C<length> ��ʸ�����ǤϤʤ���
-�Х��ȿ����֤��ޤ���
-ʸ���Ȥ�����Τϥƥ�����ʸ����ǤΤ�¸�ߤ���Τǡ���Ϥ�ʸ�����Ȥ�����Τ�
-�狼��ʤ��ʤäƤ��ޤ���
+もし文字列のバイト数が必要なら、今がそれをする最良のタイミングです。
+なぜなら C<$body> はバイト文字列なので、C<length> は文字数ではなく、
+バイト数を返します。
+文字というものはテキスト文字列でのみ存在するので、もはや文字数というものは
+わからなくなっています。
 
     my $byte_count = length $body;
 
@@ -456,20 +456,20 @@ known.
 
 =end original
 
-�����Ƥ⤷���ʤ��λȤäƤ���ץ��ȥ��뤬�����ʤ����Ȥä����󥳡��ǥ��󥰤�
-������������ˡ���б����Ƥ���ʤ顢���ε�ǽ��ȤäƼ���¦������Ƥ�����
-��������!
-�㤨�С�E-mail �� HTTP �� MIME �إå����б����Ƥ���Τǡ�
-C<Content-Type> �إå����Ȥ��ޤ���
-I<�Х���> ���򼨤������ C<Content-Length> �⤢��Τǡ��⤷�Х��ȿ���
-�狼�äƤ���ʤ顢�����Ĥ���ΤϾ���ɤ��ͤ��Ǥ���
+そしてもしあなたの使っているプロトコルが、あなたが使ったエンコーディングを
+相手に伝える方法に対応しているなら、その機能を使って受信側を助けてあげて
+ください!
+例えば、E-mail と HTTP は MIME ヘッダに対応しているので、
+C<Content-Type> ヘッダが使えます。
+I<バイト> 数を示すための C<Content-Length> もあるので、もしバイト数が
+わかっているなら、これをつけるのは常に良い考えです。
 
     "Content-Type: text/plain; charset=UTF-8",
     "Content-Length: $byte_count"
 
 =head1 SUMMARY
 
-(�ޤȤ�)
+(まとめ)
 
 =begin original
 
@@ -478,8 +478,8 @@ data.)
 
 =end original
 
-(���äƤ���Τ��ƥ����ȥǡ����ʤ�)������ä�������Ƥ� decode ���ơ�
-����Ф�������Ƥ� encode ���ޤ��礦��
+(扱っているのがテキストデータなら)受け取ったもの全てを decode して、
+送り出すもの全てを encode しましょう。
 
 =head1 Q and A (or FAQ)
 
@@ -489,11 +489,11 @@ After reading this document, you ought to read L<perlunifaq> too.
 
 =end original
 
-����ʸ����ɤ���塢L<perlunifaq> ���ɤ�٤��Ǥ���
+この文書を読んだ後、L<perlunifaq> も読むべきです。
 
 =head1 ACKNOWLEDGEMENTS
 
-(�ռ�)
+(謝辞)
 
 Thanks to Johan Vromans from Squirrel Consultancy. His UTF-8 rants during the
 Amsterdam Perl Mongers meetings got me interested and determined to find out
@@ -512,7 +512,7 @@ Gray.
 
 =head1 AUTHOR
 
-(����)
+(著者)
 
 Juerd Waalboer <#####@juerd.nl>
 

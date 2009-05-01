@@ -12,7 +12,7 @@ perlmodlib - constructing new Perl modules and finding existing ones
 
 =end original
 
-perlmodlib - ¿·¤¿¤Ê Perl ¥â¥¸¥å¡¼¥ë¤òºî¤Ã¤¿¤ê¡¢´û¤Ë¤¢¤ë¤â¤Î¤ò¸¡º÷¤¹¤ë
+perlmodlib - æ–°ãŸãª Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œã£ãŸã‚Šã€æ—¢ã«ã‚ã‚‹ã‚‚ã®ã‚’æ¤œç´¢ã™ã‚‹
 
 =head1 THE PERL MODULE LIBRARY
 
@@ -34,27 +34,27 @@ but it's just a mechanical process and therefore far from bulletproof.
 
 =end original
 
-Perl¤ÎÇÛÉÛ¥Ñ¥Ã¥±¡¼¥¸¤Ë¤Ï¡¢¤¿¤¯¤µ¤ó¤Î¥â¥¸¥å¡¼¥ë¤¬´Ş¤Ş¤ì¤Æ¤¤¤Ş¤¹¡£
-¤½¤Î¤è¤¦¤Ê¥â¥¸¥å¡¼¥ë¤Ï¸å¤ÇÀâÌÀ¤·¤Ş¤¹¤¬¡¢
-¤½¤Î¥Õ¥¡¥¤¥ëÌ¾¤Î½ªÃ¼¤ÏÁ´¤Æ F<.pm> ¤Ë¤Ê¤Ã¤Æ¤¤¤Ş¤¹¡£
-¥³¥ó¥Ñ¥¤¥ë¤µ¤ì¤¿¥é¥¤¥Ö¥é¥ê¥Õ¥¡¥¤¥ë(ÉáÄÌ¤Ï F<.so> ¤Ç½ª¤ï¤Ã¤Æ¤¤¤Ş¤¹) ¤ä
-autoload ¤µ¤ì¤ë¤Ù¤­¥â¥¸¥å¡¼¥ë¤Î¾®¤µ¤¤ÃÇÊÒ (F<.al> ¤Ç½ª¤ï¤Ã¤Æ¤¤¤Ş¤¹) ¤ò
-È¯¸«¤¹¤ë¤«¤â¤·¤ì¤Ş¤»¤ó; ¤³¤ì¤é¤Ï¥¤¥ó¥¹¥È¡¼¥ë½èÍı¤Ë¤è¤Ã¤Æ¼«Æ°Åª¤Ë
-À¸À®¤µ¤ì¤Ş¤¹¡£
-Æ±ÍÍ¤Ë¡¢F<.pl> ¤ä F<.ph> ¤Ç½ª¤ï¤Ã¤Æ¤¤¤ë¤â¤Î¤ò
-¥é¥¤¥Ö¥é¥ê¥Ç¥£¥ì¥¯¥È¥ê¤ÇÈ¯¸«¤¹¤ë¤«¤â¤·¤ì¤Ş¤»¤ó¡£
-¤³¤ì¤é¤Î¥Õ¥¡¥¤¥ë¤Ï¸Å¤¤¥é¥¤¥Ö¥é¥ê¤Ç¡¢¤³¤ì¤ò»È¤¦¸Å¤¤¥×¥í¥°¥é¥à¤Ïº£¤Ç¤â
-¼Â¹Ô²ÄÇ½¤Ç¤¹¡£
-F<.pl> ¥Õ¥¡¥¤¥ë¤Ï¡¢ºÇ½ªÅª¤Ë¤ÏÉ¸½à¥â¥¸¥å¡¼¥ë¤Ø¤ÈÊÑ´¹¤µ¤ì¡¢
-B<h2ph> ¤Ë¤è¤Ã¤ÆºîÀ®¤µ¤ì¤¿ F<.ph> ¥Õ¥¡¥¤¥ë¤Ï B<h2xs> ¤Ë¤è¤Ã¤Æ
-ºîÀ®¤µ¤ì¤¿³ÈÄ¥¥â¥¸¥å¡¼¥ë¤Î¤è¤¦¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦(´ö¤Ä¤«¤Î F<.ph> ¤ÎÃÍ¤Ï´û¤Ë
-POSIX, Errno, Fcntl ¥â¥¸¥å¡¼¥ë¤òÄÌ¤¸¤ÆÆş¼ê²ÄÇ½¤Ç¤¹)¡£
-ÇÛÉÛ¥Ñ¥Ã¥±¡¼¥¸¤Ë¤¢¤ë¥Õ¥¡¥¤¥ë B<pl2pm> ¤Ï¤¢¤Ê¤¿¤ÎÊÑ´¹ºî¶È¤ò½õ¤±¤Æ¤¯¤ì¤ë¤«¤â
-¤·¤ì¤Ş¤»¤ó¤¬¡¢¤³¤ì¤Ïµ¡³£Åª¤Ë½èÍı¤¹¤ë¤â¤Î¤Ç´°Á´¤Ê¤â¤Î¤Ë¤ÏÄø±ó¤¤¤â¤Î¤Ç¤¹¡£
+Perlã®é…å¸ƒãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«ã¯ã€ãŸãã•ã‚“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚
+ãã®ã‚ˆã†ãªãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯å¾Œã§èª¬æ˜ã—ã¾ã™ãŒã€
+ãã®ãƒ•ã‚¡ã‚¤ãƒ«åã®çµ‚ç«¯ã¯å…¨ã¦ F<.pm> ã«ãªã£ã¦ã„ã¾ã™ã€‚
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã•ã‚ŒãŸãƒ©ã‚¤ãƒ–ãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«(æ™®é€šã¯ F<.so> ã§çµ‚ã‚ã£ã¦ã„ã¾ã™) ã‚„
+autoload ã•ã‚Œã‚‹ã¹ããƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å°ã•ã„æ–­ç‰‡ (F<.al> ã§çµ‚ã‚ã£ã¦ã„ã¾ã™) ã‚’
+ç™ºè¦‹ã™ã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“; ã“ã‚Œã‚‰ã¯ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«å‡¦ç†ã«ã‚ˆã£ã¦è‡ªå‹•çš„ã«
+ç”Ÿæˆã•ã‚Œã¾ã™ã€‚
+åŒæ§˜ã«ã€F<.pl> ã‚„ F<.ph> ã§çµ‚ã‚ã£ã¦ã„ã‚‹ã‚‚ã®ã‚’
+ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ç™ºè¦‹ã™ã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
+ã“ã‚Œã‚‰ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯å¤ã„ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã€ã“ã‚Œã‚’ä½¿ã†å¤ã„ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ä»Šã§ã‚‚
+å®Ÿè¡Œå¯èƒ½ã§ã™ã€‚
+F<.pl> ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€æœ€çµ‚çš„ã«ã¯æ¨™æº–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¸ã¨å¤‰æ›ã•ã‚Œã€
+B<h2ph> ã«ã‚ˆã£ã¦ä½œæˆã•ã‚ŒãŸ F<.ph> ãƒ•ã‚¡ã‚¤ãƒ«ã¯ B<h2xs> ã«ã‚ˆã£ã¦
+ä½œæˆã•ã‚ŒãŸæ‹¡å¼µãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚ˆã†ã«ãªã‚‹ã§ã—ã‚‡ã†(å¹¾ã¤ã‹ã® F<.ph> ã®å€¤ã¯æ—¢ã«
+POSIX, Errno, Fcntl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é€šã˜ã¦å…¥æ‰‹å¯èƒ½ã§ã™)ã€‚
+é…å¸ƒãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«ã‚ã‚‹ãƒ•ã‚¡ã‚¤ãƒ« B<pl2pm> ã¯ã‚ãªãŸã®å¤‰æ›ä½œæ¥­ã‚’åŠ©ã‘ã¦ãã‚Œã‚‹ã‹ã‚‚
+ã—ã‚Œã¾ã›ã‚“ãŒã€ã“ã‚Œã¯æ©Ÿæ¢°çš„ã«å‡¦ç†ã™ã‚‹ã‚‚ã®ã§å®Œå…¨ãªã‚‚ã®ã«ã¯ç¨‹é ã„ã‚‚ã®ã§ã™ã€‚
 
 =head2 Pragmatic Modules
 
-(¥×¥é¥°¥Ş¥â¥¸¥å¡¼¥ë)
+(ãƒ—ãƒ©ã‚°ãƒãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)
 
 =begin original
 
@@ -66,11 +66,11 @@ by saying:
 
 =end original
 
-¤³¤ì¤Ï¤¢¤Ê¤¿¤Î¥×¥í¥°¥é¥à¤Î¥³¥ó¥Ñ¥¤¥ë¤Ë±Æ¶Á¤òµÚ¤Ü¤¹¥³¥ó¥Ñ¥¤¥é»Ø¼¨»Ò
-(¥×¥é¥°¥Ş¥¿)¤Î¤è¤¦¤ËÆ°ºî¤·¤Ş¤¹¡£
-¤³¤Î¤¿¤á¡¢ÄÌ¾ï¤Ï C<use> ¤â¤·¤¯¤Ï C<no> ¤È°ì½ï¤Ë»È¤ï¤ì¤¿¤È¤­¤Ë¤À¤±Æ¯¤­¤Ş¤¹¡£
-¤³¤ì¤é¤Î¤Û¤È¤ó¤É¤Ï¥ì¥­¥·¥«¥ë¤Ê¥¹¥³¡¼¥×¤Ê¤Î¤Ç¡¢ÆâÂ¦¤Î¥Ö¥í¥Ã¥¯¤Ç¤Ï
-°Ê²¼¤Î¤è¤¦¤Ë¤·¤Æ¼è¤ê¾Ã¤¹¤³¤È¤¬¤Ç¤­¤Ş¤¹:
+ã“ã‚Œã¯ã‚ãªãŸã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å½±éŸ¿ã‚’åŠã¼ã™ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©æŒ‡ç¤ºå­
+(ãƒ—ãƒ©ã‚°ãƒã‚¿)ã®ã‚ˆã†ã«å‹•ä½œã—ã¾ã™ã€‚
+ã“ã®ãŸã‚ã€é€šå¸¸ã¯ C<use> ã‚‚ã—ãã¯ C<no> ã¨ä¸€ç·’ã«ä½¿ã‚ã‚ŒãŸã¨ãã«ã ã‘åƒãã¾ã™ã€‚
+ã“ã‚Œã‚‰ã®ã»ã¨ã‚“ã©ã¯ãƒ¬ã‚­ã‚·ã‚«ãƒ«ãªã‚¹ã‚³ãƒ¼ãƒ—ãªã®ã§ã€å†…å´ã®ãƒ–ãƒ­ãƒƒã‚¯ã§ã¯
+ä»¥ä¸‹ã®ã‚ˆã†ã«ã—ã¦å–ã‚Šæ¶ˆã™ã“ã¨ãŒã§ãã¾ã™:
 
     no integer;
     no strict 'refs';
@@ -82,7 +82,7 @@ which lasts until the end of that BLOCK.
 
 =end original
 
-¤³¤ì¤Ï BLOCK ¤Î½ªÃ¼¤Ş¤ÇÍ­¸ú¤Ç¤¹¡£
+ã“ã‚Œã¯ BLOCK ã®çµ‚ç«¯ã¾ã§æœ‰åŠ¹ã§ã™ã€‚
 
 =begin original
 
@@ -96,13 +96,13 @@ vars> or C<no subs>.
 
 =end original
 
-¤¤¤¯¤Ä¤«¤Î¥×¥é¥°¥Ş¤Ï¥ì¥­¥·¥«¥ë¥¹¥³¡¼¥×¤ò»ı¤Á¤Ş¤¹ -- 
-Åµ·¿Åª¤Ë¤Ï C<$^H> ¥Ò¥ó¥ÈÊÑ¿ô¤Ë±Æ¶Á¤òÍ¿¤¨¤Ş¤¹¡£
-¤½¤ÎÂ¾¤Î¤â¤Î¤Ï¡¢C<use vars> ¤ä C<use subs> ¤Î¤è¤¦¤Ë¡¢Âå¤ï¤ê¤Ë¸½ºß¤Î
-¥Ñ¥Ã¥±¡¼¥¸¤Ë±Æ¶Á¤òÍ¿¤¨¤Ş¤¹; ¤³¤ì¤Ë¤è¤Ã¤Æ¡¢Ã±¤Ë°ì¤Ä¤Î¥Ö¥í¥Ã¥¯¤Ç¤Ï¤Ê¤¯
-ÆÃÄê¤Î I<¥Õ¥¡¥¤¥ë> ¤ÎÃæ¤ËÊÑ¿ô¤ä¥µ¥Ö¥ë¡¼¥Á¥ó¤ò»öÁ°Àë¸À¤Ç¤­¤Ş¤¹¡£
-¤³¤Î¤è¤¦¤ÊÀë¸À¤Ï¡¢¥Õ¥¡¥¤¥ëÁ´ÂÎ¤ËÀë¸À¤·¤¿¤¤¾ì¹ç¤Ë¸ú²ÌÅª¤Ç¤¹¡£
-¤³¤ì¤Ï C<no vars> ¤ä C<no subs> ¤ÇÅ±²ó¤Ç¤­¤Ş¤»¤ó¡£
+ã„ãã¤ã‹ã®ãƒ—ãƒ©ã‚°ãƒã¯ãƒ¬ã‚­ã‚·ã‚«ãƒ«ã‚¹ã‚³ãƒ¼ãƒ—ã‚’æŒã¡ã¾ã™ -- 
+å…¸å‹çš„ã«ã¯ C<$^H> ãƒ’ãƒ³ãƒˆå¤‰æ•°ã«å½±éŸ¿ã‚’ä¸ãˆã¾ã™ã€‚
+ãã®ä»–ã®ã‚‚ã®ã¯ã€C<use vars> ã‚„ C<use subs> ã®ã‚ˆã†ã«ã€ä»£ã‚ã‚Šã«ç¾åœ¨ã®
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«å½±éŸ¿ã‚’ä¸ãˆã¾ã™; ã“ã‚Œã«ã‚ˆã£ã¦ã€å˜ã«ä¸€ã¤ã®ãƒ–ãƒ­ãƒƒã‚¯ã§ã¯ãªã
+ç‰¹å®šã® I<ãƒ•ã‚¡ã‚¤ãƒ«> ã®ä¸­ã«å¤‰æ•°ã‚„ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã‚’äº‹å‰å®£è¨€ã§ãã¾ã™ã€‚
+ã“ã®ã‚ˆã†ãªå®£è¨€ã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«å…¨ä½“ã«å®£è¨€ã—ãŸã„å ´åˆã«åŠ¹æœçš„ã§ã™ã€‚
+ã“ã‚Œã¯ C<no vars> ã‚„ C<no subs> ã§æ’¤å›ã§ãã¾ã›ã‚“ã€‚
 
 =begin original
 
@@ -110,7 +110,7 @@ The following pragmas are defined (and have their own documentation).
 
 =end original
 
-°Ê²¼¤Î¥×¥é¥°¥Ş¤¬ÄêµÁ¤µ¤ì¤Æ¤¤¤Ş¤¹(¤½¤·¤ÆÆÈ¼«¤Î¥É¥­¥å¥á¥ó¥È¤¬¤¢¤ê¤Ş¤¹)¡£
+ä»¥ä¸‹ã®ãƒ—ãƒ©ã‚°ãƒãŒå®šç¾©ã•ã‚Œã¦ã„ã¾ã™(ãã—ã¦ç‹¬è‡ªã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãŒã‚ã‚Šã¾ã™)ã€‚
 
 =over 12
 
@@ -122,7 +122,7 @@ Get/set subroutine or variable attributes
 
 =end original
 
-¥µ¥Ö¥ë¡¼¥Á¥ó¤äÊÑ¿ô¤ÎÂ°À­¤ò¼èÆÀ¡¦ÀßÄê¤¹¤ë
+ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã‚„å¤‰æ•°ã®å±æ€§ã‚’å–å¾—ãƒ»è¨­å®šã™ã‚‹
 
 =item attrs
 
@@ -132,7 +132,7 @@ Set/get attributes of a subroutine (deprecated)
 
 =end original
 
-¥µ¥Ö¥ë¡¼¥Á¥ó¤ÎÂ°À­¤ò¤ò¼èÆÀ¡¦ÀßÄê¤¹¤ë(¸Å¤¤¤â¤Î)
+ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®å±æ€§ã‚’ã‚’å–å¾—ãƒ»è¨­å®šã™ã‚‹(å¤ã„ã‚‚ã®)
 
 =item autouse
 
@@ -142,7 +142,7 @@ Postpone load of modules until a function is used
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤ÎÆÉ¤ß¹ş¤ß¤ò¡¢´Ø¿ô¤¬»È¤ï¤ì¤ë¤Ş¤Ç±ä´ü¤¹¤ë
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®èª­ã¿è¾¼ã¿ã‚’ã€é–¢æ•°ãŒä½¿ã‚ã‚Œã‚‹ã¾ã§å»¶æœŸã™ã‚‹
 
 =item base
 
@@ -152,7 +152,7 @@ Establish an ISA relationship with base classes at compile time
 
 =end original
 
-¥³¥ó¥Ñ¥¤¥ë»ş¤Ë´ğÄì¥¯¥é¥¹¤ò»È¤Ã¤Æ IS-A ´Ø·¸¤ò¹½ÃÛ¤¹¤ë
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’ä½¿ã£ã¦ IS-A é–¢ä¿‚ã‚’æ§‹ç¯‰ã™ã‚‹
 
 =item bigint
 
@@ -162,7 +162,7 @@ Transparent BigInteger support for Perl
 
 =end original
 
-Perl ¤Î¤¿¤á¤ÎÆ©²áÅª¤Ê BigInteger ¥µ¥İ¡¼¥È
+Perl ã®ãŸã‚ã®é€éçš„ãª BigInteger ã‚µãƒãƒ¼ãƒˆ
 
 =item bignum
 
@@ -172,7 +172,7 @@ Transparent BigNumber support for Perl
 
 =end original
 
-Perl ¤Î¤¿¤á¤ÎÆ©²áÅª¤Ê BigNumber ¥µ¥İ¡¼¥È
+Perl ã®ãŸã‚ã®é€éçš„ãª BigNumber ã‚µãƒãƒ¼ãƒˆ
 
 =item bigrat
 
@@ -182,7 +182,7 @@ Transparent BigNumber/BigRational support for Perl
 
 =end original
 
-Perl ¤Î¤¿¤á¤ÎÆ©²áÅª¤Ê BigNumber/BigRational ¥µ¥İ¡¼¥È
+Perl ã®ãŸã‚ã®é€éçš„ãª BigNumber/BigRational ã‚µãƒãƒ¼ãƒˆ
 
 =item blib
 
@@ -192,7 +192,7 @@ Use MakeMaker's uninstalled version of a package
 
 =end original
 
-MakeMaker ¤Î¡¢¥Ñ¥Ã¥±¡¼¥¸¤Î¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤Ê¤¤¥Ğ¡¼¥¸¥ç¥ó¤ò»È¤¦
+MakeMaker ã®ã€ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ãªã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’ä½¿ã†
 
 =item bytes
 
@@ -202,7 +202,7 @@ Force byte semantics rather than character semantics
 
 =end original
 
-Ê¸»úÃ±°Ì¤Ç¤Ï¤Ê¤¯¥Ğ¥¤¥ÈÃ±°Ì¤Ç¤¢¤ë¤³¤È¤ò¶¯À©¤¹¤ë
+æ–‡å­—å˜ä½ã§ã¯ãªããƒã‚¤ãƒˆå˜ä½ã§ã‚ã‚‹ã“ã¨ã‚’å¼·åˆ¶ã™ã‚‹
 
 =item charnames
 
@@ -212,7 +212,7 @@ Define character names for C<\N{named}> string literal escapes
 
 =end original
 
-C<\N{named}> Ê¸»ú¥ê¥Æ¥é¥ë¥¨¥¹¥±¡¼¥×¤Î¤¿¤á¤ÎÊ¸»úÌ¾¤òÄêµÁ¤¹¤ë
+C<\N{named}> æ–‡å­—ãƒªãƒ†ãƒ©ãƒ«ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã®ãŸã‚ã®æ–‡å­—åã‚’å®šç¾©ã™ã‚‹
 
 =item constant
 
@@ -222,7 +222,7 @@ Declare constants
 
 =end original
 
-Äê¿ô¤òÀë¸À¤¹¤ë
+å®šæ•°ã‚’å®£è¨€ã™ã‚‹
 
 =item diagnostics
 
@@ -232,7 +232,7 @@ Produce verbose warning diagnostics
 
 =end original
 
-¾éÄ¹¤Ê·Ù¹ğ¸¡ºº¤ò½ĞÎÏ¤¹¤ë
+å†—é•·ãªè­¦å‘Šæ¤œæŸ»ã‚’å‡ºåŠ›ã™ã‚‹
 
 =item encoding
 
@@ -242,7 +242,7 @@ Allows you to write your script in non-ascii or non-utf8
 
 =end original
 
-Èó ascii ¤ä Èó utf8 ¤Ç¥¹¥¯¥ê¥×¥È¤ò½ñ¤±¤ë¤è¤¦¤Ë¤¹¤ë
+é ascii ã‚„ é utf8 ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æ›¸ã‘ã‚‹ã‚ˆã†ã«ã™ã‚‹
 
 =item encoding::warnings
 
@@ -252,7 +252,7 @@ Warn on implicit encoding conversions
 
 =end original
 
-°ÅÌÛ¤Î¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°ÊÑ´¹¤ò·Ù¹ğ¤¹¤ë
+æš—é»™ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°å¤‰æ›ã‚’è­¦å‘Šã™ã‚‹
 
 =item feature
 
@@ -262,7 +262,7 @@ Enable new syntactic features
 
 =end original
 
-¿·¤·¤¤¹½Ê¸µ¡Ç½¤òÍ­¸ú¤Ë¤¹¤ë
+æ–°ã—ã„æ§‹æ–‡æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 
 =item fields
 
@@ -272,7 +272,7 @@ Compile-time class fields
 
 =end original
 
-¥³¥ó¥Ñ¥¤¥ë»ş¤Î¥¯¥é¥¹¥Õ¥£¡¼¥ë¥É
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
 
 =item filetest
 
@@ -282,7 +282,7 @@ Control the filetest permission operators
 
 =end original
 
-¥Õ¥¡¥¤¥ë¥Æ¥¹¥È¥Ñ¡¼¥ß¥Ã¥·¥ç¥ó±é»»»Ò¤òÀ©¸æ¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒ†ã‚¹ãƒˆãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³æ¼”ç®—å­ã‚’åˆ¶å¾¡ã™ã‚‹
 
 =item if
 
@@ -292,7 +292,7 @@ C<use> a Perl module if a condition holds
 
 =end original
 
-¾ò·ï¤òËş¤¿¤·¤¿»ş¤Ë¤À¤± Perl ¥â¥¸¥å¡¼¥ë¤ò C<use> ¤¹¤ë
+æ¡ä»¶ã‚’æº€ãŸã—ãŸæ™‚ã«ã ã‘ Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ C<use> ã™ã‚‹
 
 =item integer
 
@@ -302,7 +302,7 @@ Use integer arithmetic instead of floating point
 
 =end original
 
-¿ôÃÍ±é»»¤ò¡¢ÉâÆ°¾®¿ôÅÀ¿ô¤Ç¤Ï¤Ê¤¯À°¿ô¤Ç¹Ô¤¦
+æ•°å€¤æ¼”ç®—ã‚’ã€æµ®å‹•å°æ•°ç‚¹æ•°ã§ã¯ãªãæ•´æ•°ã§è¡Œã†
 
 =item less
 
@@ -312,7 +312,7 @@ Request less of something
 
 =end original
 
-¤è¤ê¾¯¤Ê¤¤²¿¤«¤òÍ×µá¤¹¤ë
+ã‚ˆã‚Šå°‘ãªã„ä½•ã‹ã‚’è¦æ±‚ã™ã‚‹
 
 =item lib
 
@@ -322,7 +322,7 @@ Manipulate @INC at compile time
 
 =end original
 
-¥³¥ó¥Ñ¥¤¥ë»ş¤Ë @INC ¤òÁàºî¤¹¤ë
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã« @INC ã‚’æ“ä½œã™ã‚‹
 
 =item locale
 
@@ -332,7 +332,7 @@ Use and avoid POSIX locales for built-in operations
 
 =end original
 
-ÁÈ¤ß¹ş¤ß±é»»¤ËÂĞ¤·¤Æ¤Î POSIX ¥í¥±¡¼¥ë¤ò»È¤Ã¤¿¤ê¡¢Ìµ»ë¤·¤¿¤ê¤¹¤ë
+çµ„ã¿è¾¼ã¿æ¼”ç®—ã«å¯¾ã—ã¦ã® POSIX ãƒ­ã‚±ãƒ¼ãƒ«ã‚’ä½¿ã£ãŸã‚Šã€ç„¡è¦–ã—ãŸã‚Šã™ã‚‹
 
 =item mro
 
@@ -342,7 +342,7 @@ Method Resolution Order
 
 =end original
 
-¥á¥½¥Ã¥É²ò·è½ç½ø
+ãƒ¡ã‚½ãƒƒãƒ‰è§£æ±ºé †åº
 
 =item open
 
@@ -352,7 +352,7 @@ Set default PerlIO layers for input and output
 
 =end original
 
-Æş½ĞÎÏ¤Î¤¿¤á¤Î¥Ç¥Õ¥©¥ë¥È PerlIO ÁØ¤ò¥»¥Ã¥È¤¹¤ë
+å…¥å‡ºåŠ›ã®ãŸã‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ PerlIO å±¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 
 =item ops
 
@@ -362,7 +362,7 @@ Restrict unsafe operations when compiling
 
 =end original
 
-¥³¥ó¥Ñ¥¤¥ë»ş¤Ë¡¢°ÂÁ´¤Ç¤Ê¤¤Áàºî¤òÀ©¸Â¤¹¤ë
+ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«ã€å®‰å…¨ã§ãªã„æ“ä½œã‚’åˆ¶é™ã™ã‚‹
 
 =item overload
 
@@ -372,7 +372,7 @@ Package for overloading Perl operations
 
 =end original
 
-Perl ±é»»¤ò¥ª¡¼¥Ğ¡¼¥í¡¼¥É¤¹¤ë¥Ñ¥Ã¥±¡¼¥¸
+Perl æ¼”ç®—ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 
 =item re
 
@@ -382,7 +382,7 @@ Alter regular expression behaviour
 
 =end original
 
-Àµµ¬É½¸½¤ÎÆ°ºî¤òÊÑ¹¹¤¹¤ë
+æ­£è¦è¡¨ç¾ã®å‹•ä½œã‚’å¤‰æ›´ã™ã‚‹
 
 =item sigtrap
 
@@ -392,7 +392,7 @@ Enable simple signal handling
 
 =end original
 
-Ã±½ã¤Ê¥·¥°¥Ê¥ë¥Ï¥ó¥É¥ê¥ó¥°¤òÍ­¸ú¤Ë¤¹¤ë
+å˜ç´”ãªã‚·ã‚°ãƒŠãƒ«ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 
 =item sort
 
@@ -402,7 +402,7 @@ Control sort() behaviour
 
 =end original
 
-sort() ¤Î¿¶¤ëÉñ¤¤¤òÀ©¸æ¤¹¤ë
+sort() ã®æŒ¯ã‚‹èˆã„ã‚’åˆ¶å¾¡ã™ã‚‹
 
 =item strict
 
@@ -412,7 +412,7 @@ Restrict unsafe constructs
 
 =end original
 
-°ÂÁ´¤Ç¤Ê¤¤¥³¥ó¥¹¥È¥é¥¯¥È¤òÀ©¸Â¤¹¤ë
+å®‰å…¨ã§ãªã„ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ãƒˆã‚’åˆ¶é™ã™ã‚‹
 
 =item subs
 
@@ -422,7 +422,7 @@ Predeclare sub names
 
 =end original
 
-¥µ¥Ö¥ë¡¼¥Á¥ó¤ÎÌ¾Á°¤òÀè¹ÔÀë¸À¤¹¤ë
+ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®åå‰ã‚’å…ˆè¡Œå®£è¨€ã™ã‚‹
 
 =item threads
 
@@ -432,7 +432,7 @@ Perl interpreter-based threads
 
 =end original
 
-Perl ¤Î¥¤¥ó¥¿¥×¥ê¥¿¥Ù¡¼¥¹¤Î¥¹¥ì¥Ã¥É
+Perl ã®ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ãƒ™ãƒ¼ã‚¹ã®ã‚¹ãƒ¬ãƒƒãƒ‰
 
 =item threads::shared
 
@@ -442,7 +442,7 @@ Perl extension for sharing data structures between threads
 
 =end original
 
-¥¹¥ì¥Ã¥É´Ö¤Ç¥Ç¡¼¥¿¹½Â¤¤ò¶¦Í­¤¹¤ë Perl ³ÈÄ¥
+ã‚¹ãƒ¬ãƒƒãƒ‰é–“ã§ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã‚’å…±æœ‰ã™ã‚‹ Perl æ‹¡å¼µ
 
 =item utf8
 
@@ -452,7 +452,7 @@ Enable/disable UTF-8 (or UTF-EBCDIC) in source code
 
 =end original
 
-¥½¡¼¥¹¥³¡¼¥É¤Ç¤Î UTF-8 (¤Ş¤¿¤Ï UTF-EBCDIC) ¤òÍ­¸ú/Ìµ¸ú¤Ë¤¹¤ë
+ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã§ã® UTF-8 (ã¾ãŸã¯ UTF-EBCDIC) ã‚’æœ‰åŠ¹/ç„¡åŠ¹ã«ã™ã‚‹
 
 =item vars
 
@@ -462,7 +462,7 @@ Predeclare global variable names (obsolete)
 
 =end original
 
-Âç°èÊÑ¿ôÌ¾¤òÀè¹ÔÀë¸À¤¹¤ë(¸Å¤¤¤â¤Î)
+å¤§åŸŸå¤‰æ•°åã‚’å…ˆè¡Œå®£è¨€ã™ã‚‹(å¤ã„ã‚‚ã®)
 
 =item version
 
@@ -472,7 +472,7 @@ Perl extension for Version Objects
 
 =end original
 
-¥Ğ¡¼¥¸¥ç¥ó¥ª¥Ö¥¸¥§¥¯¥È¤Î¤¿¤á¤Î Perl ¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó
+ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãŸã‚ã® Perl ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³
 
 =item vmsish
 
@@ -482,7 +482,7 @@ Control VMS-specific language features
 
 =end original
 
-VMS¸ÇÍ­¤Î¸À¸ì»ÅÍÍ¤òÀ©¸æ¤¹¤ë
+VMSå›ºæœ‰ã®è¨€èªä»•æ§˜ã‚’åˆ¶å¾¡ã™ã‚‹
 
 =item warnings
 
@@ -492,7 +492,7 @@ Control optional warnings
 
 =end original
 
-ÄÉ²Ã¤Î·Ù¹ğ¤òÀ©¸æ¤¹¤ë
+è¿½åŠ ã®è­¦å‘Šã‚’åˆ¶å¾¡ã™ã‚‹
 
 =item warnings::register
 
@@ -502,13 +502,13 @@ Warnings import function
 
 =end original
 
-¥¤¥ó¥İ¡¼¥È´Ø¿ô¤Î·Ù¹ğ
+ã‚¤ãƒ³ãƒãƒ¼ãƒˆé–¢æ•°ã®è­¦å‘Š
 
 =back
 
 =head2 Standard Modules
 
-(É¸½à¥â¥¸¥å¡¼¥ë)
+(æ¨™æº–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)
 
 =begin original
 
@@ -518,10 +518,10 @@ Exporter module.  See their own documentation for details.
 
 =end original
 
-É¸½à¤Ç¥Ğ¥ó¥É¥ë¤µ¤ì¤Æ¤¤¤ëÌ¾Á°¶õ´Ö¤Î±øÀ÷¤ò¹ÍÎ¸¤¹¤ëÎÉ¤¯ÄêµÁ¤µ¤ì¤¿¥Ş¥Ê¡¼¤Ë
-´ğ¤Å¤¤¤¿¿¶¤ëÉñ¤¤¤ò´üÂÔ¤µ¤ì¤ë¥â¥¸¥å¡¼¥ë¤Ç¤¹¡£
-¤³¤ì¤Ï Exporter ¥â¥¸¥å¡¼¥ë¤ò»È¤Ã¤Æ¤¤¤ë¤«¤é¤Ç¤¹¡£
-¾ÜºÙ¤Ë¤Ä¤¤¤Æ¤Ï¤½¤ì¤¾¤ì¤Î¥É¥­¥å¥á¥ó¥È¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+æ¨™æº–ã§ãƒãƒ³ãƒ‰ãƒ«ã•ã‚Œã¦ã„ã‚‹åå‰ç©ºé–“ã®æ±šæŸ“ã‚’è€ƒæ…®ã™ã‚‹è‰¯ãå®šç¾©ã•ã‚ŒãŸãƒãƒŠãƒ¼ã«
+åŸºã¥ã„ãŸæŒ¯ã‚‹èˆã„ã‚’æœŸå¾…ã•ã‚Œã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚
+ã“ã‚Œã¯ Exporter ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½¿ã£ã¦ã„ã‚‹ã‹ã‚‰ã§ã™ã€‚
+è©³ç´°ã«ã¤ã„ã¦ã¯ãã‚Œãã‚Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -531,10 +531,10 @@ don't have the gdbm library.
 
 =end original
 
-°Ê²¼¤Ë¥ê¥¹¥È¤µ¤ì¤¿¥â¥¸¥å¡¼¥ë¤¬Á´¤Æ¤Ï¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤Ê¤¤²ÄÇ½À­¤¬
-¤¢¤ê¤Ş¤¹¡£
-Îã¤¨¤Ğ¡¢GDBM_File ¥â¥¸¥å¡¼¥ë¤Ï gdbm ¥é¥¤¥Ö¥é¥ê¤¬¤Ê¤±¤ì¤Ğ
-¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Ş¤»¤ó¡£
+ä»¥ä¸‹ã«ãƒªã‚¹ãƒˆã•ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå…¨ã¦ã¯ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ãªã„å¯èƒ½æ€§ãŒ
+ã‚ã‚Šã¾ã™ã€‚
+ä¾‹ãˆã°ã€GDBM_File ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ gdbm ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒãªã‘ã‚Œã°
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¾ã›ã‚“ã€‚
 
 =over 12
 
@@ -546,7 +546,7 @@ Provide framework for multiple DBMs
 
 =end original
 
-Ê£¿ô¤ÎDBM¤ËÂĞ¤¹¤ë¥Õ¥ì¡¼¥à¥ï¡¼¥¯¤òÄó¶¡¤¹¤ë
+è¤‡æ•°ã®DBMã«å¯¾ã™ã‚‹ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’æä¾›ã™ã‚‹
 
 =item Archive::Extract
 
@@ -556,7 +556,7 @@ A generic archive extracting mechanism
 
 =end original
 
-ÈÆÍÑ¥¢¡¼¥«¥¤¥ÖÅ¸³«µ¡¹½
+æ±ç”¨ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–å±•é–‹æ©Ÿæ§‹
 
 =item Archive::Tar
 
@@ -566,7 +566,7 @@ Module for manipulations of tar archives
 
 =end original
 
-tar ¥¢¡¼¥«¥¤¥Ö¤ÎÁàºî¤Î¤¿¤á¤Î¥â¥¸¥å¡¼¥ë
+tar ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã®æ“ä½œã®ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Archive::Tar::File
 
@@ -576,7 +576,7 @@ A subclass for in-memory extracted file from Archive::Tar
 
 =end original
 
-Archive::Tar ¤«¤é¡¢¥á¥â¥ê¤ÎÃæ¤Ë¥Õ¥¡¥¤¥ë¤òÅ¸³«¤¹¤ëÇÉÀ¸¥¯¥é¥¹
+Archive::Tar ã‹ã‚‰ã€ãƒ¡ãƒ¢ãƒªã®ä¸­ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å±•é–‹ã™ã‚‹æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item Attribute::Handlers
 
@@ -586,7 +586,7 @@ Simpler definition of attribute handlers
 
 =end original
 
-Â°À­¥Ï¥ó¥É¥é¤Î¤è¤êÃ±½ã¤ÊÄêµÁ
+å±æ€§ãƒãƒ³ãƒ‰ãƒ©ã®ã‚ˆã‚Šå˜ç´”ãªå®šç¾©
 
 =item AutoLoader
 
@@ -596,7 +596,7 @@ Load subroutines only on demand
 
 =end original
 
-Í×µá¤µ¤ì¤¿¥µ¥Ö¥ë¡¼¥Á¥ó¤Î¤ß¤ò¥í¡¼¥É¤¹¤ë
+è¦æ±‚ã•ã‚ŒãŸã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®ã¿ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 
 =item AutoSplit
 
@@ -606,7 +606,7 @@ Split a package for autoloading
 
 =end original
 
-autoloading¤Î¤¿¤á¤Ë¥Ñ¥Ã¥±¡¼¥¸¤òÊ¬³ä¤¹¤ë
+autoloadingã®ãŸã‚ã«ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’åˆ†å‰²ã™ã‚‹
 
 =item B
 
@@ -616,7 +616,7 @@ The Perl Compiler
 
 =end original
 
-Perl ¥³¥ó¥Ñ¥¤¥é
+Perl ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©
 
 =item B::Concise
 
@@ -626,7 +626,7 @@ Walk Perl syntax tree, printing concise info about ops
 
 =end original
 
-Perl ¤Î¹½Ê¸ÌÚ¤òÃ©¤ê¡¢±é»»»Ò¤Ë´Ø¤¹¤ë´Ê·é¤Ê¾ğÊó¤òÉ½¼¨¤¹¤ë
+Perl ã®æ§‹æ–‡æœ¨ã‚’è¾¿ã‚Šã€æ¼”ç®—å­ã«é–¢ã™ã‚‹ç°¡æ½”ãªæƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹
 
 =item B::Debug
 
@@ -636,7 +636,7 @@ Walk Perl syntax tree, printing debug info about ops
 
 =end original
 
-Perl ¤Î¹½Ê¸ÌÚ¤òÃ©¤ê¡¢±é»»»Ò¤Ë´Ø¤¹¤ë¥Ç¥Ğ¥Ã¥°¾ğÊó¤òÉ½¼¨¤¹¤ë
+Perl ã®æ§‹æ–‡æœ¨ã‚’è¾¿ã‚Šã€æ¼”ç®—å­ã«é–¢ã™ã‚‹ãƒ‡ãƒãƒƒã‚°æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹
 
 =item B::Deparse
 
@@ -646,7 +646,7 @@ Perl compiler backend to produce perl code
 
 =end original
 
-perl ¥³¡¼¥É¤ò½ĞÎÏ¤¹¤ë¤¿¤á¤Î Perl ¥³¥ó¥Ñ¥¤¥é¤Î¥Ğ¥Ã¥¯¥¨¥ó¥É
+perl ã‚³ãƒ¼ãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹ãŸã‚ã® Perl ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã®ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰
 
 =item B::Lint
 
@@ -656,7 +656,7 @@ Perl lint
 
 =end original
 
-Perl ¤Î lint
+Perl ã® lint
 
 =item B::Showlex
 
@@ -666,7 +666,7 @@ Show lexical variables used in functions or files
 
 =end original
 
-´Ø¿ô¤ä¥Õ¥¡¥¤¥ë¤Ç»È¤ï¤ì¤Æ¤¤¤ë¥ì¥­¥·¥«¥ëÊÑ¿ô¤òÉ½¼¨¤¹¤ë
+é–¢æ•°ã‚„ãƒ•ã‚¡ã‚¤ãƒ«ã§ä½¿ã‚ã‚Œã¦ã„ã‚‹ãƒ¬ã‚­ã‚·ã‚«ãƒ«å¤‰æ•°ã‚’è¡¨ç¤ºã™ã‚‹
 
 =item B::Terse
 
@@ -676,7 +676,7 @@ Walk Perl syntax tree, printing terse info about ops
 
 =end original
 
-Perl ¹½Ê¸ÌÚ¤òÃ©¤Ã¤Æ¡¢±é»»»Ò¤Ë´Ø¤¹¤ë´Ê·é¤ÊÀâÌÀ¤òÉ½¼¨¤¹¤ë
+Perl æ§‹æ–‡æœ¨ã‚’è¾¿ã£ã¦ã€æ¼”ç®—å­ã«é–¢ã™ã‚‹ç°¡æ½”ãªèª¬æ˜ã‚’è¡¨ç¤ºã™ã‚‹
 
 =item B::Xref
 
@@ -686,7 +686,7 @@ Generates cross reference reports for Perl programs
 
 =end original
 
-Perl ¥×¥í¥°¥é¥à¤Î¤¿¤á¤Î¥¯¥í¥¹¥ê¥Õ¥¡¥ì¥ó¥¹¥ì¥İ¡¼¥È¤òÀ¸À®¤¹¤ë
+Perl ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãŸã‚ã®ã‚¯ãƒ­ã‚¹ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ãƒ¬ãƒãƒ¼ãƒˆã‚’ç”Ÿæˆã™ã‚‹
 
 =item Benchmark
 
@@ -696,7 +696,7 @@ Benchmark running times of Perl code
 
 =end original
 
-Perl ¥³¡¼¥É¤Î¼Â¹Ô»ş´Ö¤Î¥Ù¥ó¥Á¥Ş¡¼¥¯
+Perl ã‚³ãƒ¼ãƒ‰ã®å®Ÿè¡Œæ™‚é–“ã®ãƒ™ãƒ³ãƒãƒãƒ¼ã‚¯
 
 =item CGI
 
@@ -706,7 +706,7 @@ Simple Common Gateway Interface Class
 
 =end original
 
-¥·¥ó¥×¥ë¤Ê Common Gateway Interface ¥¯¥é¥¹
+ã‚·ãƒ³ãƒ—ãƒ«ãª Common Gateway Interface ã‚¯ãƒ©ã‚¹
 
 =item CGI::Apache
 
@@ -716,7 +716,7 @@ Backward compatibility module for CGI.pm
 
 =end original
 
-CGI.pm ¤Î¤¿¤á¤Î²áµî¸ß´¹À­¥â¥¸¥å¡¼¥ë
+CGI.pm ã®ãŸã‚ã®éå»äº’æ›æ€§ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item CGI::Carp
 
@@ -726,7 +726,7 @@ CGI routines for writing to the HTTPD (or other) error log
 
 =end original
 
-HTTPD(¤Ş¤¿¤Ï¤½¤ÎÂ¾¤Î)¥¨¥é¡¼¥í¥°¤ò½ñ¤¯¤¿¤á¤Î CGI ¥ë¡¼¥Á¥ó
+HTTPD(ã¾ãŸã¯ãã®ä»–ã®)ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°ã‚’æ›¸ããŸã‚ã® CGI ãƒ«ãƒ¼ãƒãƒ³
 
 =item CGI::Cookie
 
@@ -736,7 +736,7 @@ Interface to Netscape Cookies
 
 =end original
 
-Netscape Cookies ¤Ø¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Netscape Cookies ã¸ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item CGI::Fast
 
@@ -746,7 +746,7 @@ CGI Interface for Fast CGI
 
 =end original
 
-Fast CGI ¤Î¤¿¤á¤Î CGI ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Fast CGI ã®ãŸã‚ã® CGI ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item CGI::Pretty
 
@@ -756,7 +756,7 @@ Module to produce nicely formatted HTML code
 
 =end original
 
-¤¤¤¤´¶¤¸¤Ë¥Õ¥©¡¼¥Ş¥Ã¥È¤µ¤ì¤¿ HTML ¥³¡¼¥É¤òÀ¸À®¤¹¤ë¥â¥¸¥å¡¼¥ë
+ã„ã„æ„Ÿã˜ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸ HTML ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item CGI::Push
 
@@ -766,7 +766,7 @@ Simple Interface to Server Push
 
 =end original
 
-¥µ¡¼¥Ğ¡¼¥×¥Ã¥·¥å¤Î¤¿¤á¤Î¥·¥ó¥×¥ë¤Ê¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ã‚µãƒ¼ãƒãƒ¼ãƒ—ãƒƒã‚·ãƒ¥ã®ãŸã‚ã®ã‚·ãƒ³ãƒ—ãƒ«ãªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item CGI::Switch
 
@@ -776,7 +776,7 @@ Backward compatibility module for defunct CGI::Switch
 
 =end original
 
-º£¤Ï¤Ê¤­ CGI::Switch ¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤Î²áµî¸ß´¹À­¥â¥¸¥å¡¼¥ë
+ä»Šã¯ãªã CGI::Switch ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã®éå»äº’æ›æ€§ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item CGI::Util
 
@@ -786,7 +786,7 @@ Internal utilities used by CGI module
 
 =end original
 
-CGI ¥â¥¸¥å¡¼¥ë¤Ç»È¤ï¤ì¤ëÆâÉô¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+CGI ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ä½¿ã‚ã‚Œã‚‹å†…éƒ¨ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item CORE
 
@@ -796,7 +796,7 @@ Pseudo-namespace for Perl's core routines
 
 =end original
 
-Perl ¤Î¥³¥¢¥ë¡¼¥Á¥ó¤Î¤¿¤á¤Îµ¼»÷Ì¾Á°¶õ´Ö
+Perl ã®ã‚³ã‚¢ãƒ«ãƒ¼ãƒãƒ³ã®ãŸã‚ã®æ“¬ä¼¼åå‰ç©ºé–“
 
 =item CPAN
 
@@ -806,7 +806,7 @@ Query, download and build perl modules from CPAN sites
 
 =end original
 
-CPAN ¥µ¥¤¥È¤«¤é perl ¥â¥¸¥å¡¼¥ë¤òÌä¤¤¹ç¤ï¤»¡¢¥À¥¦¥ó¥í¡¼¥É¡¢¥Ó¥ë¥É¤¹¤ë
+CPAN ã‚µã‚¤ãƒˆã‹ã‚‰ perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€ãƒ“ãƒ«ãƒ‰ã™ã‚‹
 
 =item CPAN::API::HOWTO
 
@@ -816,7 +816,7 @@ A recipe book for programming with CPAN.pm
 
 =end original
 
-CPAN.pm ¤Ç¥×¥í¥°¥é¥ß¥ó¥°¤¹¤ë¤¿¤á¤Î¥ì¥·¥Ô¥Ö¥Ã¥¯
+CPAN.pm ã§ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ã™ã‚‹ãŸã‚ã®ãƒ¬ã‚·ãƒ”ãƒ–ãƒƒã‚¯
 
 =item CPAN::FirstTime
 
@@ -826,7 +826,7 @@ Utility for CPAN::Config file Initialization
 
 =end original
 
-CPAN::Config ¥Õ¥¡¥¤¥ë½é´ü²½¤Î¤¿¤á¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+CPAN::Config ãƒ•ã‚¡ã‚¤ãƒ«åˆæœŸåŒ–ã®ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item CPAN::Kwalify
 
@@ -836,7 +836,7 @@ Interface between CPAN.pm and Kwalify.pm
 
 =end original
 
-CPAN.pm ¤È Kwalify.pm ¤Î´Ö¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+CPAN.pm ã¨ Kwalify.pm ã®é–“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item CPAN::Nox
 
@@ -846,7 +846,7 @@ Wrapper around CPAN.pm without using any XS module
 
 =end original
 
-XS ¥â¥¸¥å¡¼¥ë¤ò»È¤ï¤Ê¤¤ CPAN.pm ¤Î¥é¥Ã¥Ñ
+XS ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½¿ã‚ãªã„ CPAN.pm ã®ãƒ©ãƒƒãƒ‘
 
 =item CPAN::Version
 
@@ -856,7 +856,7 @@ Utility functions to compare CPAN versions
 
 =end original
 
-CPAN ¥Ğ¡¼¥¸¥ç¥ó¤òÈæ³Ó¤¹¤ë¤¿¤á¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£´Ø¿ô
+CPAN ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’æ¯”è¼ƒã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£é–¢æ•°
 
 =item CPANPLUS
 
@@ -866,7 +866,7 @@ API & CLI access to the CPAN mirrors
 
 =end original
 
-CPAN ¥ß¥é¡¼¤Ø¤Î API ¤È CLI ¥¢¥¯¥»¥¹
+CPAN ãƒŸãƒ©ãƒ¼ã¸ã® API ã¨ CLI ã‚¢ã‚¯ã‚»ã‚¹
 
 =item CPANPLUS::Dist::Base
 
@@ -876,7 +876,7 @@ Base class for custom distribution classes
 
 =end original
 
-¥«¥¹¥¿¥àÇÛÉÛ¥¯¥é¥¹¤Î´ğÄì¥¯¥é¥¹
+ã‚«ã‚¹ã‚¿ãƒ é…å¸ƒã‚¯ãƒ©ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item CPANPLUS::Dist::Sample
 
@@ -886,7 +886,7 @@ Sample code to create your own Dist::* plugin
 
 =end original
 
-¼«¿È¤Î Dist::* ¥×¥é¥°¥¤¥ó¤òºîÀ®¤¹¤ë¤¿¤á¤Î¥µ¥ó¥×¥ë¥³¡¼¥É
+è‡ªèº«ã® Dist::* ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰
 
 =item CPANPLUS::Shell::Classic
 
@@ -896,7 +896,7 @@ CPAN.pm emulation for CPANPLUS
 
 =end original
 
-CPANPLUS ¤Ë¤è¤ë CPAN.pm ¥¨¥ß¥å¥ì¡¼¥·¥ç¥ó
+CPANPLUS ã«ã‚ˆã‚‹ CPAN.pm ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 
 =item CPANPLUS::Shell::Default::Plugins::HOWTO
 
@@ -906,7 +906,7 @@ Documentation on how to write your own plugins
 
 =end original
 
-¼«¿È¤Î¥×¥é¥°¥¤¥ó¤Î½ñ¤­Êı¤Î¥É¥­¥å¥á¥ó¥È
+è‡ªèº«ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®æ›¸ãæ–¹ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
 
 =item Carp
 
@@ -916,7 +916,7 @@ Warn of errors (from perspective of caller)
 
 =end original
 
-¥¨¥é¡¼¤Î·Ù¹ğ(¸Æ¤Ó½Ğ¤·Â¦¤Î»ëÅÀ¤«¤é)
+ã‚¨ãƒ©ãƒ¼ã®è­¦å‘Š(å‘¼ã³å‡ºã—å´ã®è¦–ç‚¹ã‹ã‚‰)
 
 =item Carp::Heavy
 
@@ -926,7 +926,7 @@ Heavy machinery, no user serviceable parts inside
 
 =end original
 
-½Åµ¡¤Ç¤¢¤ê¡¢ÆâÉô¤Ë¥æ¡¼¥¶¡¼¤¬»È¤¨¤ëÉôÊ¬¤Ï¤Ê¤¤
+é‡æ©Ÿã§ã‚ã‚Šã€å†…éƒ¨ã«ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒä½¿ãˆã‚‹éƒ¨åˆ†ã¯ãªã„
 
 =item Class::ISA
 
@@ -936,7 +936,7 @@ Report the search path for a class's ISA tree
 
 =end original
 
-¥¯¥é¥¹¤Î ISA ÌÚ¤Î¸¡º÷¥Ñ¥¹¤òÊó¹ğ¤¹¤ë
+ã‚¯ãƒ©ã‚¹ã® ISA æœ¨ã®æ¤œç´¢ãƒ‘ã‚¹ã‚’å ±å‘Šã™ã‚‹
 
 =item Class::Struct
 
@@ -946,7 +946,7 @@ Declare struct-like datatypes as Perl classes
 
 =end original
 
-¹½Â¤ÂÎ¤Ë»÷¤¿¥Ç¡¼¥¿·¿¤ò Perl ¥¯¥é¥¹¤È¤·¤ÆÀë¸À¤¹¤ë
+æ§‹é€ ä½“ã«ä¼¼ãŸãƒ‡ãƒ¼ã‚¿å‹ã‚’ Perl ã‚¯ãƒ©ã‚¹ã¨ã—ã¦å®£è¨€ã™ã‚‹
 
 =item Compress::Raw::Zlib
 
@@ -956,7 +956,7 @@ Low-Level Interface to zlib compression library
 
 =end original
 
-zlib °µ½Ì¥é¥¤¥Ö¥é¥ê¤Ø¤ÎÄã¥ì¥Ù¥ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+zlib åœ§ç¸®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¸ã®ä½ãƒ¬ãƒ™ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Compress::Zlib
 
@@ -966,7 +966,7 @@ Interface to zlib compression library
 
 =end original
 
-zlib °µ½Ì¥é¥¤¥Ö¥é¥ê¤Ø¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+zlib åœ§ç¸®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¸ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Config
 
@@ -976,7 +976,7 @@ Access Perl configuration information
 
 =end original
 
-Perl¤Î¥³¥ó¥Õ¥£¥°¥ì¡¼¥·¥ç¥ó¾ğÊó¤Ë¥¢¥¯¥»¥¹¤¹¤ë
+Perlã®ã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹
 
 =item Cwd
 
@@ -986,7 +986,7 @@ Get pathname of current working directory
 
 =end original
 
-¥«¥ì¥ó¥È¤Îºî¶È¥Ç¥£¥ì¥¯¥È¥ê¤Î¥Ñ¥¹Ì¾¤ò¼èÆÀ¤¹¤ë
+ã‚«ãƒ¬ãƒ³ãƒˆã®ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹åã‚’å–å¾—ã™ã‚‹
 
 =item DB
 
@@ -996,7 +996,7 @@ Programmatic interface to the Perl debugging API
 
 =end original
 
-Perl ¥Ç¥Ğ¥Ã¥° API ¤Ø¤Î¥×¥í¥°¥é¥à²ÄÇ½¤Ê¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ãƒ‡ãƒãƒƒã‚° API ã¸ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ å¯èƒ½ãªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item DBM_Filter
 
@@ -1006,7 +1006,7 @@ Filter DBM keys/values
 
 =end original
 
-¥Õ¥£¥ë¥¿ DBM ¥­¡¼/ÃÍ
+ãƒ•ã‚£ãƒ«ã‚¿ DBM ã‚­ãƒ¼/å€¤
 
 =item DBM_Filter::compress
 
@@ -1016,7 +1016,7 @@ Filter for DBM_Filter
 
 =end original
 
-DBM_Filter ¤Î¤¿¤á¤Î¥Õ¥£¥ë¥¿
+DBM_Filter ã®ãŸã‚ã®ãƒ•ã‚£ãƒ«ã‚¿
 
 =item DBM_Filter::encode
 
@@ -1026,7 +1026,7 @@ Filter for DBM_Filter
 
 =end original
 
-DBM_Filter ¤Î¤¿¤á¤Î¥Õ¥£¥ë¥¿
+DBM_Filter ã®ãŸã‚ã®ãƒ•ã‚£ãƒ«ã‚¿
 
 =item DBM_Filter::int32
 
@@ -1036,7 +1036,7 @@ Filter for DBM_Filter
 
 =end original
 
-DBM_Filter ¤Î¤¿¤á¤Î¥Õ¥£¥ë¥¿
+DBM_Filter ã®ãŸã‚ã®ãƒ•ã‚£ãƒ«ã‚¿
 
 =item DBM_Filter::null
 
@@ -1046,7 +1046,7 @@ Filter for DBM_Filter
 
 =end original
 
-DBM_Filter ¤Î¤¿¤á¤Î¥Õ¥£¥ë¥¿
+DBM_Filter ã®ãŸã‚ã®ãƒ•ã‚£ãƒ«ã‚¿
 
 =item DBM_Filter::utf8
 
@@ -1056,7 +1056,7 @@ Filter for DBM_Filter
 
 =end original
 
-DBM_Filter ¤Î¤¿¤á¤Î¥Õ¥£¥ë¥¿
+DBM_Filter ã®ãŸã‚ã®ãƒ•ã‚£ãƒ«ã‚¿
 
 =item DB_File
 
@@ -1066,7 +1066,7 @@ Perl5 access to Berkeley DB version 1.x
 
 =end original
 
-Berkeley DB ¥Ğ¡¼¥¸¥ç¥ó 1.x ¤ËÂĞ¤¹¤ë Perl5 ¥¢¥¯¥»¥¹
+Berkeley DB ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 1.x ã«å¯¾ã™ã‚‹ Perl5 ã‚¢ã‚¯ã‚»ã‚¹
 
 =item Data::Dumper
 
@@ -1076,7 +1076,7 @@ Stringified perl data structures, suitable for both printing and C<eval>
 
 =end original
 
-É½¼¨¤È C<eval> ¤ËÅ¬¤·¤¿Ê¸»úÎó²½ perl ¥Ç¡¼¥¿¹½Â¤
+è¡¨ç¤ºã¨ C<eval> ã«é©ã—ãŸæ–‡å­—åˆ—åŒ– perl ãƒ‡ãƒ¼ã‚¿æ§‹é€ 
 
 =item Devel::DProf
 
@@ -1086,7 +1086,7 @@ A Perl code profiler
 
 =end original
 
-Perl ¥³¡¼¥É¥×¥í¥Õ¥¡¥¤¥é
+Perl ã‚³ãƒ¼ãƒ‰ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ©
 
 =item Devel::InnerPackage
 
@@ -1096,7 +1096,7 @@ Find all the inner packages of a package
 
 =end original
 
-¤¢¤ë¥Ñ¥Ã¥±¡¼¥¸¤Î¡¢Á´¤Æ¤ÎÆâÉô¥Ñ¥Ã¥±¡¼¥¸¤ò¸«¤Ä¤±¤ë
+ã‚ã‚‹ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ã€å…¨ã¦ã®å†…éƒ¨ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’è¦‹ã¤ã‘ã‚‹
 
 =item Devel::Peek
 
@@ -1106,7 +1106,7 @@ A data debugging tool for the XS programmer
 
 =end original
 
-XS ¥×¥í¥°¥é¥Ş¤Î¤¿¤á¤Î¥Ç¡¼¥¿¥Ç¥Ğ¥Ã¥°¥Ä¡¼¥ë
+XS ãƒ—ãƒ­ã‚°ãƒ©ãƒã®ãŸã‚ã®ãƒ‡ãƒ¼ã‚¿ãƒ‡ãƒãƒƒã‚°ãƒ„ãƒ¼ãƒ«
 
 =item Devel::SelfStubber
 
@@ -1116,7 +1116,7 @@ Generate stubs for a SelfLoading module
 
 =end original
 
-SelfLoading ¥â¥¸¥å¡¼¥ë¤ËÂĞ¤¹¤ë¥¹¥¿¥Ö¤òÀ¸À®¤¹¤ë
+SelfLoading ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å¯¾ã™ã‚‹ã‚¹ã‚¿ãƒ–ã‚’ç”Ÿæˆã™ã‚‹
 
 =item Digest
 
@@ -1126,7 +1126,7 @@ Modules that calculate message digests
 
 =end original
 
-¥á¥Ã¥»¡¼¥¸¥À¥¤¥¸¥§¥¹¥È¤ò·×»»¤¹¤ë¥â¥¸¥å¡¼¥ë
+ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ€ã‚¤ã‚¸ã‚§ã‚¹ãƒˆã‚’è¨ˆç®—ã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Digest::MD5
 
@@ -1136,7 +1136,7 @@ Perl interface to the MD5 Algorithm
 
 =end original
 
-MD5 ¥¢¥ë¥´¥ê¥º¥à¤Ø¤Î Perl ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+MD5 ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã¸ã® Perl ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Digest::SHA
 
@@ -1146,7 +1146,7 @@ Perl extension for SHA-1/224/256/384/512
 
 =end original
 
-SHA-1/224/256/384/512 ¤Î¤¿¤á¤Î Perl ¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó
+SHA-1/224/256/384/512 ã®ãŸã‚ã® Perl ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³
 
 =item Digest::base
 
@@ -1156,7 +1156,7 @@ Digest base class
 
 =end original
 
-Digest ´ğÄì¥¯¥é¥¹
+Digest åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item Digest::file
 
@@ -1166,7 +1166,7 @@ Calculate digests of files
 
 =end original
 
-¥Õ¥¡¥¤¥ë¤Î¥À¥¤¥¸¥§¥¹¥È¤ò·×»»¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ€ã‚¤ã‚¸ã‚§ã‚¹ãƒˆã‚’è¨ˆç®—ã™ã‚‹
 
 =item DirHandle
 
@@ -1176,7 +1176,7 @@ Supply object methods for directory handles
 
 =end original
 
-¥Ç¥£¥ì¥¯¥È¥ê¥Ï¥ó¥É¥ëÍÑ¤Î¥ª¥Ö¥¸¥§¥¯¥È¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒãƒ³ãƒ‰ãƒ«ç”¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item Dumpvalue
 
@@ -1186,7 +1186,7 @@ Provides screen dump of Perl data.
 
 =end original
 
-Perl ¥Ç¡¼¥¿¤Î¥¹¥¯¥ê¡¼¥ó¥À¥ó¥×¤òÄó¶¡¤¹¤ë
+Perl ãƒ‡ãƒ¼ã‚¿ã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ãƒ€ãƒ³ãƒ—ã‚’æä¾›ã™ã‚‹
 
 =item DynaLoader
 
@@ -1196,7 +1196,7 @@ Dynamically load C libraries into Perl code
 
 =end original
 
-C¤Î¥é¥¤¥Ö¥é¥ê¤òÆ°Åª¤ËPerl¥×¥í¥°¥é¥à¤Ë¥í¡¼¥É¤¹¤ë
+Cã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’å‹•çš„ã«Perlãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 
 =item Encode
 
@@ -1206,7 +1206,7 @@ Character encodings
 
 =end original
 
-Ê¸»ú¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::Alias
 
@@ -1216,7 +1216,7 @@ Alias definitions to encodings
 
 =end original
 
-¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°¤Ø¤ÎÊÌÌ¾ÄêµÁ
+ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã¸ã®åˆ¥åå®šç¾©
 
 =item Encode::Byte
 
@@ -1226,7 +1226,7 @@ Single Byte Encodings
 
 =end original
 
-Ã±°ì¥Ğ¥¤¥È¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+å˜ä¸€ãƒã‚¤ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::CJKConstants
 
@@ -1236,7 +1236,7 @@ Internally used by Encode::??::ISO_2022_*
 
 =end original
 
-Encode::??::ISO_2022_* ¤Ë¤è¤Ã¤ÆÆâÉô¤Ç»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë
+Encode::??::ISO_2022_* ã«ã‚ˆã£ã¦å†…éƒ¨ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹
 
 =item Encode::CN
 
@@ -1246,7 +1246,7 @@ China-based Chinese Encodings
 
 =end original
 
-Ãæ¹ñ¤Ç¤ÎÃæ¹ñ¸ì¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+ä¸­å›½ã§ã®ä¸­å›½èªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::CN::HZ
 
@@ -1256,7 +1256,7 @@ Internally used by Encode::CN
 
 =end original
 
-Encode::CN ¤Ë¤è¤Ã¤ÆÆâÉô¤Ç»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë
+Encode::CN ã«ã‚ˆã£ã¦å†…éƒ¨ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹
 
 =item Encode::Config
 
@@ -1266,7 +1266,7 @@ Internally used by Encode
 
 =end original
 
-Encode ¤Ë¤è¤Ã¤ÆÆâÉô¤Ç»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë
+Encode ã«ã‚ˆã£ã¦å†…éƒ¨ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹
 
 =item Encode::EBCDIC
 
@@ -1276,7 +1276,7 @@ EBCDIC Encodings
 
 =end original
 
-EBCDIC ¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+EBCDIC ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::Encoder
 
@@ -1286,7 +1286,7 @@ Object Oriented Encoder
 
 =end original
 
-¥ª¥Ö¥¸¥§¥¯¥È»Ø¸ş¤Î¥¨¥ó¥³¡¼¥À
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ€
 
 =item Encode::Encoding
 
@@ -1296,7 +1296,7 @@ Encode Implementation Base Class
 
 =end original
 
-Encode ¼ÂÁõ´ğÄì¥¯¥é¥¹
+Encode å®Ÿè£…åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item Encode::GSM0338
 
@@ -1306,7 +1306,7 @@ ESTI GSM 03.38 Encoding
 
 =end original
 
-ESTI GSM 03.38 ¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+ESTI GSM 03.38 ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::Guess
 
@@ -1316,7 +1316,7 @@ Guesses encoding from data
 
 =end original
 
-¥Ç¡¼¥¿¤«¤é¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°¤ò¿äÂ¬¤¹¤ë
+ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’æ¨æ¸¬ã™ã‚‹
 
 =item Encode::JP
 
@@ -1326,7 +1326,7 @@ Japanese Encodings
 
 =end original
 
-ÆüËÜ¸ì¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+æ—¥æœ¬èªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::JP::H2Z
 
@@ -1336,7 +1336,7 @@ Internally used by Encode::JP::2022_JP*
 
 =end original
 
-Encode::JP::2022_JP* ¤Ë¤è¤Ã¤ÆÆâÉô¤Ç»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë
+Encode::JP::2022_JP* ã«ã‚ˆã£ã¦å†…éƒ¨ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹
 
 =item Encode::JP::JIS7
 
@@ -1346,7 +1346,7 @@ Internally used by Encode::JP
 
 =end original
 
-Encode::JP ¤Ë¤è¤Ã¤ÆÆâÉô¤Ç»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë
+Encode::JP ã«ã‚ˆã£ã¦å†…éƒ¨ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹
 
 =item Encode::KR
 
@@ -1356,7 +1356,7 @@ Korean Encodings
 
 =end original
 
-´Ú¹ñ¸ì¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+éŸ“å›½èªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::KR::2022_KR
 
@@ -1366,7 +1366,7 @@ Internally used by Encode::KR
 
 =end original
 
-Encode::KR ¤Ë¤è¤Ã¤ÆÆâÉô¤Ç»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë
+Encode::KR ã«ã‚ˆã£ã¦å†…éƒ¨ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹
 
 =item Encode::MIME::Header
 
@@ -1376,7 +1376,7 @@ MIME 'B' and 'Q' header encoding
 
 =end original
 
-MIME 'B' ¥Ø¥Ã¥À¤È MIME 'Q' ¥Ø¥Ã¥À¤Î¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+MIME 'B' ãƒ˜ãƒƒãƒ€ã¨ MIME 'Q' ãƒ˜ãƒƒãƒ€ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::MIME::Name
 
@@ -1386,7 +1386,7 @@ Internally used by Encode
 
 =end original
 
-Encode ¤ÇÆâÉôÅª¤Ë»È¤ï¤ì¤ë
+Encode ã§å†…éƒ¨çš„ã«ä½¿ã‚ã‚Œã‚‹
 
 =item Encode::PerlIO
 
@@ -1396,7 +1396,7 @@ A detailed document on Encode and PerlIO
 
 =end original
 
-Encode ¤È PerlIO ¤Î¾ÜºÙ¥É¥­¥å¥á¥ó¥È
+Encode ã¨ PerlIO ã®è©³ç´°ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
 
 =item Encode::Supported
 
@@ -1406,7 +1406,7 @@ Encodings supported by Encode
 
 =end original
 
-Encode ¤ÇÂĞ±ş¤·¤Æ¤¤¤ë¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+Encode ã§å¯¾å¿œã—ã¦ã„ã‚‹ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::Symbol
 
@@ -1416,7 +1416,7 @@ Symbol Encodings
 
 =end original
 
-¥·¥ó¥Ü¥ë¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+ã‚·ãƒ³ãƒœãƒ«ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::TW
 
@@ -1426,7 +1426,7 @@ Taiwan-based Chinese Encodings
 
 =end original
 
-ÂæÏÑ¤Ç¤ÎÃæ¹ñ¸ì¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+å°æ¹¾ã§ã®ä¸­å›½èªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item Encode::Unicode
 
@@ -1436,7 +1436,7 @@ Various Unicode Transformation Formats
 
 =end original
 
-ÍÍ¡¹¤Ê Unicode ÊÑ´¹·Á¼°
+æ§˜ã€…ãª Unicode å¤‰æ›å½¢å¼
 
 =item Encode::Unicode::UTF7
 
@@ -1446,7 +1446,7 @@ UTF-7 encoding
 
 =end original
 
-UTF-7 ¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
+UTF-7 ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 
 =item English
 
@@ -1456,7 +1456,7 @@ Use nice English (or awk) names for ugly punctuation variables
 
 =end original
 
-ÆÉ¤ß¤Ë¤¯¤¤¶çÆÉÅÀÊÑ¿ô¤ËÂĞ¤·¤ÆÆÉ¤ß¤ä¤¹¤¤±Ñ¸ì(¤â¤·¤¯¤Ï awk)¤ÎÌ¾Á°¤ò»È¤¦
+èª­ã¿ã«ãã„å¥èª­ç‚¹å¤‰æ•°ã«å¯¾ã—ã¦èª­ã¿ã‚„ã™ã„è‹±èª(ã‚‚ã—ãã¯ awk)ã®åå‰ã‚’ä½¿ã†
 
 =item Env
 
@@ -1466,7 +1466,7 @@ Perl module that imports environment variables as scalars or arrays
 
 =end original
 
-´Ä¶­ÊÑ¿ô¤ò¥¹¥«¥éÊÑ¿ô¤Ş¤¿¤ÏÇÛÎóÊÑ¿ô¤È¤·¤Æ¥¤¥ó¥İ¡¼¥È¤¹¤ë Perl ¥â¥¸¥å¡¼¥ë
+ç’°å¢ƒå¤‰æ•°ã‚’ã‚¹ã‚«ãƒ©å¤‰æ•°ã¾ãŸã¯é…åˆ—å¤‰æ•°ã¨ã—ã¦ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹ Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Errno
 
@@ -1476,7 +1476,7 @@ System errno constants
 
 =end original
 
-¥·¥¹¥Æ¥à¤Î errno Äê¿ô
+ã‚·ã‚¹ãƒ†ãƒ ã® errno å®šæ•°
 
 =item Exporter
 
@@ -1486,7 +1486,7 @@ Implements default import method for modules
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤Î¥Ç¥Õ¥©¥ë¥È import ¥á¥½¥Ã¥É¤ò¼ÂÁõ¤¹¤ë
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ import ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã™ã‚‹
 
 =item Exporter::Heavy
 
@@ -1496,7 +1496,7 @@ Exporter guts
 
 =end original
 
-Exporter ¤ÎÃæ¿È
+Exporter ã®ä¸­èº«
 
 =item ExtUtils::CBuilder
 
@@ -1506,7 +1506,7 @@ Compile and link C code for Perl modules
 
 =end original
 
-Perl ¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤Ë C ¥³¡¼¥É¤ò¥³¥ó¥Ñ¥¤¥ë¡¦¥ê¥ó¥¯¤¹¤ë
+Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã« C ã‚³ãƒ¼ãƒ‰ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ãƒ»ãƒªãƒ³ã‚¯ã™ã‚‹
 
 =item ExtUtils::CBuilder::Platform::Windows
 
@@ -1516,7 +1516,7 @@ Builder class for Windows platforms
 
 =end original
 
-Windows ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+Windows ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::Command
 
@@ -1526,7 +1526,7 @@ Utilities to replace common UNIX commands in Makefiles etc.
 
 =end original
 
-Makefile ¤Ê¤É¤ÎÃæ¤Î°ìÈÌÅª¤Ê UNIX ¥³¥Ş¥ó¥É¤òÃÖ¤­´¹¤¨¤ë¤¿¤á¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+Makefile ãªã©ã®ä¸­ã®ä¸€èˆ¬çš„ãª UNIX ã‚³ãƒãƒ³ãƒ‰ã‚’ç½®ãæ›ãˆã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item ExtUtils::Command::MM
 
@@ -1536,7 +1536,7 @@ Commands for the MM's to use in Makefiles
 
 =end original
 
-Makefile ¤ÎÃæ¤Ç»È¤¦¤¿¤á¤Î MM ¤Î¥³¥Ş¥ó¥É
+Makefile ã®ä¸­ã§ä½¿ã†ãŸã‚ã® MM ã®ã‚³ãƒãƒ³ãƒ‰
 
 =item ExtUtils::Constant
 
@@ -1546,7 +1546,7 @@ Generate XS code to import C header constants
 
 =end original
 
-C ¥Ø¥Ã¥ÀÄê¿ô¤ò¥¤¥ó¥İ¡¼¥È¤¹¤ë¤¿¤á¤Î XS ¥³¡¼¥É¤òÀ¸À®¤¹¤ë
+C ãƒ˜ãƒƒãƒ€å®šæ•°ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹ãŸã‚ã® XS ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹
 
 =item ExtUtils::Constant::Base
 
@@ -1556,7 +1556,7 @@ Base class for ExtUtils::Constant objects
 
 =end original
 
-ExtUtils::Constant ¥ª¥Ö¥¸¥§¥¯¥È¤Î¤¿¤á¤Î´ğÄì¥¯¥é¥¹
+ExtUtils::Constant ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::Constant::Utils
 
@@ -1566,7 +1566,7 @@ Helper functions for ExtUtils::Constant
 
 =end original
 
-ExtUtils::Constant ¤Î¤¿¤á¤Î¥Ø¥ë¥Ñ¡¼´Ø¿ô
+ExtUtils::Constant ã®ãŸã‚ã®ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°
 
 =item ExtUtils::Constant::XS
 
@@ -1576,7 +1576,7 @@ Base class for ExtUtils::Constant objects
 
 =end original
 
-ExtUtils::Constant ¥ª¥Ö¥¸¥§¥¯¥È¤Î¤¿¤á¤Î´ğÄì¥¯¥é¥¹
+ExtUtils::Constant ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::Embed
 
@@ -1586,7 +1586,7 @@ Utilities for embedding Perl in C/C++ applications
 
 =end original
 
-C¤äC++¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤ËPerl¤òÁÈ¤ß¹ş¤à¤¿¤á¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+Cã‚„C++ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«Perlã‚’çµ„ã¿è¾¼ã‚€ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item ExtUtils::Install
 
@@ -1596,7 +1596,7 @@ Install files from here to there
 
 =end original
 
-¤³¤Á¤é¤«¤é¤¢¤Á¤é¤Ë¥Õ¥¡¥¤¥ë¤ò¥¤¥ó¥¹¥È¡¼¥ë¤¹¤ë
+ã“ã¡ã‚‰ã‹ã‚‰ã‚ã¡ã‚‰ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
 
 =item ExtUtils::Installed
 
@@ -1606,7 +1606,7 @@ Inventory management of installed modules
 
 =end original
 
-¥¤¥ó¥¹¥È¡¼¥ë¤·¤¿¥â¥¸¥å¡¼¥ë¤ÎÌÜÏ¿´ÉÍı
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ç›®éŒ²ç®¡ç†
 
 =item ExtUtils::Liblist
 
@@ -1616,7 +1616,7 @@ Determine libraries to use and how to use them
 
 =end original
 
-¥é¥¤¥Ö¥é¥ê¤ò»È¤¦¤¿¤á¤Ë»ÈÍÑ¤¹¤ë¥é¥¤¥Ö¥é¥ê¤ò·èÄê¤¹¤ë
+ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã†ãŸã‚ã«ä½¿ç”¨ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’æ±ºå®šã™ã‚‹
 
 =item ExtUtils::MM
 
@@ -1626,7 +1626,7 @@ OS adjusted ExtUtils::MakeMaker subclass
 
 =end original
 
-OS ¤Ë¤è¤Ã¤ÆÄ´À°¤·¤¿ ExtUtils::MakeMaker ¤ÎÇÉÀ¸¥¯¥é¥¹
+OS ã«ã‚ˆã£ã¦èª¿æ•´ã—ãŸ ExtUtils::MakeMaker ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MM_AIX
 
@@ -1636,7 +1636,7 @@ AIX specific subclass of ExtUtils::MM_Unix
 
 =end original
 
-AIX ¸ÇÍ­¤Î ExtUtils::MM_Unix ¤ÎÇÉÀ¸¥¯¥é¥¹
+AIX å›ºæœ‰ã® ExtUtils::MM_Unix ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MM_Any
 
@@ -1646,7 +1646,7 @@ Platform-agnostic MM methods
 
 =end original
 
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤¬Ê¬¤«¤é¤Ê¤¤¾ì¹ç¤Î MM ¥á¥½¥Ã¥É
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ãŒåˆ†ã‹ã‚‰ãªã„å ´åˆã® MM ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_BeOS
 
@@ -1656,7 +1656,7 @@ Methods to override UN*X behaviour in ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ç¤Î UN*X ¤Î¿¶¤ëÉñ¤¤¤ò¾å½ñ¤­¤¹¤ë¥á¥½¥Ã¥É
+ExtUtils::MakeMaker ã§ã® UN*X ã®æŒ¯ã‚‹èˆã„ã‚’ä¸Šæ›¸ãã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_Cygwin
 
@@ -1666,7 +1666,7 @@ Methods to override UN*X behaviour in ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ç¤Î UN*X ¤Î¿¶¤ëÉñ¤¤¤ò¾å½ñ¤­¤¹¤ë¥á¥½¥Ã¥É
+ExtUtils::MakeMaker ã§ã® UN*X ã®æŒ¯ã‚‹èˆã„ã‚’ä¸Šæ›¸ãã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_DOS
 
@@ -1676,7 +1676,7 @@ DOS specific subclass of ExtUtils::MM_Unix
 
 =end original
 
-DOS ¸ÇÍ­¤Î ExtUtils::MM_Unix ¤ÎÇÉÀ¸¥¯¥é¥¹
+DOS å›ºæœ‰ã® ExtUtils::MM_Unix ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MM_MacOS
 
@@ -1686,7 +1686,7 @@ Once produced Makefiles for MacOS Classic
 
 =end original
 
-MacOS Classic ¤Î¤¿¤á¤Ë°ìÅÙÀ¸À®¤µ¤ì¤¿ Makefile
+MacOS Classic ã®ãŸã‚ã«ä¸€åº¦ç”Ÿæˆã•ã‚ŒãŸ Makefile
 
 =item ExtUtils::MM_NW5
 
@@ -1696,7 +1696,7 @@ Methods to override UN*X behaviour in ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ç¤Î UN*X ¤Î¿¶¤ëÉñ¤¤¤ò¾å½ñ¤­¤¹¤ë¥á¥½¥Ã¥É
+ExtUtils::MakeMaker ã§ã® UN*X ã®æŒ¯ã‚‹èˆã„ã‚’ä¸Šæ›¸ãã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_OS2
 
@@ -1706,7 +1706,7 @@ Methods to override UN*X behaviour in ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ç¤Î UN*X ¤Î¿¶¤ëÉñ¤¤¤ò¾å½ñ¤­¤¹¤ë¥á¥½¥Ã¥É
+ExtUtils::MakeMaker ã§ã® UN*X ã®æŒ¯ã‚‹èˆã„ã‚’ä¸Šæ›¸ãã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_QNX
 
@@ -1716,7 +1716,7 @@ QNX specific subclass of ExtUtils::MM_Unix
 
 =end original
 
-QNX ¸ÇÍ­¤Î ExtUtils::MM_Unix ¤ÎÇÉÀ¸¥¯¥é¥¹
+QNX å›ºæœ‰ã® ExtUtils::MM_Unix ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MM_UWIN
 
@@ -1726,7 +1726,7 @@ U/WIN specific subclass of ExtUtils::MM_Unix
 
 =end original
 
-U/WIN ¸ÇÍ­¤Î ExtUtils::MM_Unix ¤ÎÇÉÀ¸¥¯¥é¥¹
+U/WIN å›ºæœ‰ã® ExtUtils::MM_Unix ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MM_Unix
 
@@ -1736,7 +1736,7 @@ Methods used by ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ë¤è¤Ã¤Æ»ÈÍÑ¤µ¤ì¤ë¥á¥½¥Ã¥É·²
+ExtUtils::MakeMaker ã«ã‚ˆã£ã¦ä½¿ç”¨ã•ã‚Œã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ç¾¤
 
 =item ExtUtils::MM_VMS
 
@@ -1746,7 +1746,7 @@ Methods to override UN*X behaviour in ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ç¤Î UN*X ¤Î¿¶¤ëÉñ¤¤¤ò¾å½ñ¤­¤¹¤ë¥á¥½¥Ã¥É
+ExtUtils::MakeMaker ã§ã® UN*X ã®æŒ¯ã‚‹èˆã„ã‚’ä¸Šæ›¸ãã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_VOS
 
@@ -1756,7 +1756,7 @@ VOS specific subclass of ExtUtils::MM_Unix
 
 =end original
 
-VOS ¸ÇÍ­¤Î ExtUtils::MM_Unix ¤ÎÇÉÀ¸¥¯¥é¥¹
+VOS å›ºæœ‰ã® ExtUtils::MM_Unix ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MM_Win32
 
@@ -1766,7 +1766,7 @@ Methods to override UN*X behaviour in ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤Ç¤Î UN*X ¤Î¿¶¤ëÉñ¤¤¤ò¾å½ñ¤­¤¹¤ë¥á¥½¥Ã¥É
+ExtUtils::MakeMaker ã§ã® UN*X ã®æŒ¯ã‚‹èˆã„ã‚’ä¸Šæ›¸ãã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MM_Win95
 
@@ -1776,7 +1776,7 @@ Method to customize MakeMaker for Win9X
 
 =end original
 
-Win9X ¤Î¤¿¤á¤Ë MakeMaker ¤ò¥«¥¹¥¿¥Ş¥¤¥º¤¹¤ë¥á¥½¥Ã¥É
+Win9X ã®ãŸã‚ã« MakeMaker ã‚’ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item ExtUtils::MY
 
@@ -1786,7 +1786,7 @@ ExtUtils::MakeMaker subclass for customization
 
 =end original
 
-¥«¥¹¥¿¥Ş¥¤¥º¤Î¤¿¤á¤Î ExtUtils::MakeMaker ¤ÎÇÉÀ¸¥¯¥é¥¹
+ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã®ãŸã‚ã® ExtUtils::MakeMaker ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item ExtUtils::MakeMaker
 
@@ -1796,7 +1796,7 @@ Create a module Makefile
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Î Makefile ¤òÀ¸À®¤¹¤ë
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã® Makefile ã‚’ç”Ÿæˆã™ã‚‹
 
 =item ExtUtils::MakeMaker::Config
 
@@ -1806,7 +1806,7 @@ Wrapper around Config.pm
 
 =end original
 
-Config.pm ¤Î¥é¥Ã¥Ñ¡¼
+Config.pm ã®ãƒ©ãƒƒãƒ‘ãƒ¼
 
 =item ExtUtils::MakeMaker::FAQ
 
@@ -1816,7 +1816,7 @@ Frequently Asked Questions About MakeMaker
 
 =end original
 
-MakeMaker ¤Ë´Ø¤¹¤ë¤è¤¯¤¢¤ë¼ÁÌä¤È¤½¤ÎÅú¤¨
+MakeMaker ã«é–¢ã™ã‚‹ã‚ˆãã‚ã‚‹è³ªå•ã¨ãã®ç­”ãˆ
 
 =item ExtUtils::MakeMaker::Tutorial
 
@@ -1826,7 +1826,7 @@ Writing a module with MakeMaker
 
 =end original
 
-MakeMaker ¤Ç¥â¥¸¥å¡¼¥ë¤ò½ñ¤¯
+MakeMaker ã§ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ›¸ã
 
 =item ExtUtils::MakeMaker::bytes
 
@@ -1836,7 +1836,7 @@ Version-agnostic bytes.pm
 
 =end original
 
-¥Ğ¡¼¥¸¥ç¥ó¤¬Ê¬¤«¤é¤Ê¤¤¤È¤­¤Î bytes.pm
+ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒåˆ†ã‹ã‚‰ãªã„ã¨ãã® bytes.pm
 
 =item ExtUtils::MakeMaker::vmsish
 
@@ -1846,7 +1846,7 @@ Platform-agnostic vmsish.pm
 
 =end original
 
-¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤¬Ê¬¤«¤é¤Ê¤¤¤È¤­¤Î vmsish.pm
+ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ãŒåˆ†ã‹ã‚‰ãªã„ã¨ãã® vmsish.pm
 
 =item ExtUtils::Manifest
 
@@ -1856,7 +1856,7 @@ Utilities to write and check a MANIFEST file
 
 =end original
 
-MANIFEST ¥Õ¥¡¥¤¥ë¤ò½ñ¤­½Ğ¤·¤¿¤ê¥Á¥§¥Ã¥¯¤·¤¿¤ê¤¹¤ë¤¿¤á¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+MANIFEST ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãå‡ºã—ãŸã‚Šãƒã‚§ãƒƒã‚¯ã—ãŸã‚Šã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item ExtUtils::Mkbootstrap
 
@@ -1866,7 +1866,7 @@ Make a bootstrap file for use by DynaLoader
 
 =end original
 
-DyaLoader¤Ë¤è¤Ã¤Æ»ÈÍÑ¤µ¤ì¤ë¥Ö¡¼¥È¥¹¥È¥é¥Ã¥×¥Õ¥¡¥¤¥ë¤òºîÀ®¤¹¤ë
+DyaLoaderã«ã‚ˆã£ã¦ä½¿ç”¨ã•ã‚Œã‚‹ãƒ–ãƒ¼ãƒˆã‚¹ãƒˆãƒ©ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹
 
 =item ExtUtils::Mksymlists
 
@@ -1876,7 +1876,7 @@ Write linker options files for dynamic extension
 
 =end original
 
-Æ°Åª³ÈÄ¥¤Î¤¿¤á¤Î¥ê¥ó¥«¡¼¥ª¥×¥·¥ç¥ó¥Õ¥¡¥¤¥ë¤ò½ñ¤­½Ğ¤¹
+å‹•çš„æ‹¡å¼µã®ãŸã‚ã®ãƒªãƒ³ã‚«ãƒ¼ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãå‡ºã™
 
 =item ExtUtils::ParseXS
 
@@ -1886,7 +1886,7 @@ Converts Perl XS code into C code
 
 =end original
 
-Perl XS ¥³¡¼¥É¤ò C ¥³¡¼¥É¤ËÊÑ´¹¤¹¤ë
+Perl XS ã‚³ãƒ¼ãƒ‰ã‚’ C ã‚³ãƒ¼ãƒ‰ã«å¤‰æ›ã™ã‚‹
 
 =item ExtUtils::Packlist
 
@@ -1896,7 +1896,7 @@ Manage .packlist files
 
 =end original
 
-.packlist ¥Õ¥¡¥¤¥ë¤ò´ÉÍı¤¹¤ë
+.packlist ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç®¡ç†ã™ã‚‹
 
 =item ExtUtils::testlib
 
@@ -1906,7 +1906,7 @@ Add blib/* directories to @INC
 
 =end original
 
-@INC ¤Ë blib/* ¥Ç¥£¥ì¥¯¥È¥ê¤òÄÉ²Ã¤¹¤ë
+@INC ã« blib/* ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¿½åŠ ã™ã‚‹
 
 =item Fatal
 
@@ -1916,7 +1916,7 @@ Replace functions with equivalents which succeed or die
 
 =end original
 
-À®¸ù¤·¤Ê¤±¤ì¤Ğ die ¤¹¤ëÅù²Á¤Ê´Ø¿ô¤ËÃÖ¤­´¹¤¨¤ë
+æˆåŠŸã—ãªã‘ã‚Œã° die ã™ã‚‹ç­‰ä¾¡ãªé–¢æ•°ã«ç½®ãæ›ãˆã‚‹
 
 =item Fcntl
 
@@ -1926,7 +1926,7 @@ Load the C Fcntl.h defines
 
 =end original
 
-C ¤Î Fcntl.h ¤ÎÄêµÁ¤ò¥í¡¼¥É¤¹¤ë
+C ã® Fcntl.h ã®å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 
 =item File::Basename
 
@@ -1936,7 +1936,7 @@ Parse file paths into directory, filename and suffix.
 
 =end original
 
-¥Õ¥¡¥¤¥ë¥Ñ¥¹¤ò¥Ç¥£¥ì¥¯¥È¥ê¡¢¥Õ¥¡¥¤¥ëÌ¾¡¢³ÈÄ¥»Ò¤Ë¥Ñ¡¼¥¹¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€ãƒ•ã‚¡ã‚¤ãƒ«åã€æ‹¡å¼µå­ã«ãƒ‘ãƒ¼ã‚¹ã™ã‚‹
 
 =item File::CheckTree
 
@@ -1946,7 +1946,7 @@ Run many filetest checks on a tree
 
 =end original
 
-ÌÚ¤ËÂĞ¤·¤ÆÂ¿¤¯¤Î¥Õ¥¡¥¤¥ë¸¡ºº¤ò¼Â¹Ô¤¹¤ë
+æœ¨ã«å¯¾ã—ã¦å¤šãã®ãƒ•ã‚¡ã‚¤ãƒ«æ¤œæŸ»ã‚’å®Ÿè¡Œã™ã‚‹
 
 =item File::Compare
 
@@ -1956,7 +1956,7 @@ Compare files or filehandles
 
 =end original
 
-¥Õ¥¡¥¤¥ë¤ä¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤òÈæ³Ó¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ã‚„ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’æ¯”è¼ƒã™ã‚‹
 
 =item File::Copy
 
@@ -1966,7 +1966,7 @@ Copy files or filehandles
 
 =end original
 
-¥Õ¥¡¥¤¥ë¤ä¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤òÊ£¼Ì¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ã‚„ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’è¤‡å†™ã™ã‚‹
 
 =item File::Fetch
 
@@ -1976,7 +1976,7 @@ A generic file fetching mechanism
 
 =end original
 
-°ìÈÌÅª¤Ê¥Õ¥¡¥¤¥ë¥Õ¥§¥Ã¥Áµ¡¹½
+ä¸€èˆ¬çš„ãªãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚§ãƒƒãƒæ©Ÿæ§‹
 
 =item File::DosGlob
 
@@ -1986,7 +1986,7 @@ DOS like globbing and then some
 
 =end original
 
-DOS É÷¥°¥í¥Ö
+DOS é¢¨ã‚°ãƒ­ãƒ–
 
 =item File::Find
 
@@ -1996,7 +1996,7 @@ Traverse a directory tree.
 
 =end original
 
-¥Ç¥£¥ì¥¯¥È¥ê¥Ä¥ê¡¼¤òÃ©¤ë
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ„ãƒªãƒ¼ã‚’è¾¿ã‚‹
 
 =item File::Glob
 
@@ -2006,7 +2006,7 @@ Perl extension for BSD glob routine
 
 =end original
 
-BSD ¥°¥í¥Ö¥ë¡¼¥Á¥ó¤Î¤¿¤á¤Î Perl ¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó
+BSD ã‚°ãƒ­ãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®ãŸã‚ã® Perl ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³
 
 =item File::GlobMapper
 
@@ -2016,7 +2016,7 @@ Extend File Glob to Allow Input and Output Files
 
 =end original
 
-Æş½ĞÎÏ¥Õ¥¡¥¤¥ë¤òµö²Ä¤¹¤ë¤è¤¦¤Ë¥Õ¥¡¥¤¥ë¥°¥í¥Ö¤ò³ÈÄ¥¤¹¤ë
+å…¥å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨±å¯ã™ã‚‹ã‚ˆã†ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚°ãƒ­ãƒ–ã‚’æ‹¡å¼µã™ã‚‹
 
 =item File::Path
 
@@ -2026,7 +2026,7 @@ Create or remove directory trees
 
 =end original
 
-¥Ç¥£¥ì¥¯¥È¥ê¥Ä¥ê¡¼¤òÀ¸À®¡¦ºï½ü¤¹¤ë
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ„ãƒªãƒ¼ã‚’ç”Ÿæˆãƒ»å‰Šé™¤ã™ã‚‹
 
 =item File::Spec
 
@@ -2036,7 +2036,7 @@ Portably perform operations on file names
 
 =end original
 
-¥Õ¥¡¥¤¥ëÌ¾¤Ë´Ø¤·¤Æ°Ü¿¢À­¤¢¤ëÁàºî¤òÄó¶¡¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«åã«é–¢ã—ã¦ç§»æ¤æ€§ã‚ã‚‹æ“ä½œã‚’æä¾›ã™ã‚‹
 
 =item File::Spec::Cygwin
 
@@ -2046,7 +2046,7 @@ Methods for Cygwin file specs
 
 =end original
 
-Cygwin file specs ¤Î¤¿¤á¤Î¥á¥½¥Ã¥É
+Cygwin file specs ã®ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item File::Spec::Epoc
 
@@ -2056,7 +2056,7 @@ Methods for Epoc file specs
 
 =end original
 
-Epoc file specs ¤Î¤¿¤á¤Î¥á¥½¥Ã¥É
+Epoc file specs ã®ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item File::Spec::Functions
 
@@ -2066,7 +2066,7 @@ Portably perform operations on file names
 
 =end original
 
-¥Õ¥¡¥¤¥ëÌ¾¤Ë´Ø¤·¤Æ°Ü¿¢À­¤¢¤ëÁàºî¤òÄó¶¡¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«åã«é–¢ã—ã¦ç§»æ¤æ€§ã‚ã‚‹æ“ä½œã‚’æä¾›ã™ã‚‹
 
 =item File::Spec::Mac
 
@@ -2076,7 +2076,7 @@ File::Spec for Mac OS (Classic)
 
 =end original
 
-Mac OS (Classic) ¤Î¤¿¤á¤Î File::Spec
+Mac OS (Classic) ã®ãŸã‚ã® File::Spec
 
 =item File::Spec::OS2
 
@@ -2086,7 +2086,7 @@ Methods for OS/2 file specs
 
 =end original
 
-OS/2 file specs ¤Î¤¿¤á¤Î¥á¥½¥Ã¥É
+OS/2 file specs ã®ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item File::Spec::Unix
 
@@ -2096,7 +2096,7 @@ File::Spec for Unix, base for other File::Spec modules
 
 =end original
 
-¤½¤ÎÂ¾¤Î File::Spec ¥â¥¸¥å¡¼¥ë¤Î´ğÁÃ¤È¤Ê¤ë¡¢Unix ¤Î¤¿¤á¤Î File::Spec
+ãã®ä»–ã® File::Spec ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åŸºç¤ã¨ãªã‚‹ã€Unix ã®ãŸã‚ã® File::Spec
 
 =item File::Spec::VMS
 
@@ -2106,7 +2106,7 @@ Methods for VMS file specs
 
 =end original
 
-VMS file specs ¤Î¤¿¤á¤Î¥á¥½¥Ã¥É
+VMS file specs ã®ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item File::Spec::Win32
 
@@ -2116,7 +2116,7 @@ Methods for Win32 file specs
 
 =end original
 
-Win32 file specs ¤Î¤¿¤á¤Î¥á¥½¥Ã¥É
+Win32 file specs ã®ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰
 
 =item File::Temp
 
@@ -2126,7 +2126,7 @@ Return name and handle of a temporary file safely
 
 =end original
 
-°ì»ş¥Õ¥¡¥¤¥ë¤ÎÌ¾Á°¤È¥Ï¥ó¥É¥ë¤ò°ÂÁ´¤ËÊÖ¤¹
+ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰ã¨ãƒãƒ³ãƒ‰ãƒ«ã‚’å®‰å…¨ã«è¿”ã™
 
 =item File::stat
 
@@ -2136,7 +2136,7 @@ By-name interface to Perl's built-in stat() functions
 
 =end original
 
-Ì¾Á°¤Ë¤è¤ë Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô stat() ¤ËÂĞ¤¹¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+åå‰ã«ã‚ˆã‚‹ Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° stat() ã«å¯¾ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item FileCache
 
@@ -2146,7 +2146,7 @@ Keep more files open than the system permits
 
 =end original
 
-¥·¥¹¥Æ¥à¤ÎÀ©¸Â¤è¤ê¤âÂ¿¤¯¤Î¥Õ¥¡¥¤¥ë¤ò³«¤¯
+ã‚·ã‚¹ãƒ†ãƒ ã®åˆ¶é™ã‚ˆã‚Šã‚‚å¤šãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
 
 =item FileHandle
 
@@ -2156,7 +2156,7 @@ Supply object methods for filehandles
 
 =end original
 
-¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item Filter::Simple
 
@@ -2166,7 +2166,7 @@ Simplified source filtering
 
 =end original
 
-Ã±½ã²½¤·¤¿¥½¡¼¥¹¥Õ¥£¥ë¥¿¥ê¥ó¥°
+å˜ç´”åŒ–ã—ãŸã‚½ãƒ¼ã‚¹ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
 
 =item Filter::Util::Call
 
@@ -2176,7 +2176,7 @@ Perl Source Filter Utility Module
 
 =end original
 
-Perl ¥½¡¼¥¹¥Õ¥£¥ë¥¿¥æ¡¼¥Æ¥£¥ê¥Æ¥£¥â¥¸¥å¡¼¥ë
+Perl ã‚½ãƒ¼ã‚¹ãƒ•ã‚£ãƒ«ã‚¿ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item FindBin
 
@@ -2186,7 +2186,7 @@ Locate directory of original perl script
 
 =end original
 
-¥ª¥ê¥¸¥Ê¥ë¤Î Perl ¥¹¥¯¥ê¥×¥È¤Î¥Ç¥£¥ì¥¯¥È¥ê°ÌÃÖ¤òÆÃÄê¤¹¤ë
+ã‚ªãƒªã‚¸ãƒŠãƒ«ã® Perl ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä½ç½®ã‚’ç‰¹å®šã™ã‚‹
 
 =item GDBM_File
 
@@ -2196,7 +2196,7 @@ Perl5 access to the gdbm library.
 
 =end original
 
-gdbm ¥é¥¤¥Ö¥é¥ê¤ËÂĞ¤¹¤ë Perl5 ¥¢¥¯¥»¥¹
+gdbm ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«å¯¾ã™ã‚‹ Perl5 ã‚¢ã‚¯ã‚»ã‚¹
 
 =item Getopt::Long
 
@@ -2206,7 +2206,7 @@ Extended processing of command line options
 
 =end original
 
-³ÈÄ¥¤µ¤ì¤¿¥³¥Ş¥ó¥É¥é¥¤¥ó¥ª¥×¥·¥ç¥ó¤Î½èÍı
+æ‹¡å¼µã•ã‚ŒãŸã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®å‡¦ç†
 
 =item Getopt::Std
 
@@ -2216,7 +2216,7 @@ Process single-character switches with switch clustering
 
 =end original
 
-¤Ş¤È¤Ş¤Ã¤¿¥¹¥¤¥Ã¥Á¤Î¤¢¤ë°ìÊ¸»ú¥¹¥¤¥Ã¥Á¤Î½èÍı
+ã¾ã¨ã¾ã£ãŸã‚¹ã‚¤ãƒƒãƒã®ã‚ã‚‹ä¸€æ–‡å­—ã‚¹ã‚¤ãƒƒãƒã®å‡¦ç†
 
 =item Hash::Util
 
@@ -2226,7 +2226,7 @@ A selection of general-utility hash subroutines
 
 =end original
 
-°ìÈÌÅª¤Ê¥æ¡¼¥Æ¥£¥ê¥Æ¥£¥Ï¥Ã¥·¥å¥µ¥Ö¥ë¡¼¥Á¥ó¤ÎÁª½¸
+ä¸€èˆ¬çš„ãªãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒãƒƒã‚·ãƒ¥ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®é¸é›†
 
 =item Hash::Util::FieldHash
 
@@ -2236,7 +2236,7 @@ Support for Inside-Out Classes
 
 =end original
 
-Inside-Out ¥¯¥é¥¹¤Î¥µ¥İ¡¼¥È
+Inside-Out ã‚¯ãƒ©ã‚¹ã®ã‚µãƒãƒ¼ãƒˆ
 
 =item I18N::Collate
 
@@ -2246,7 +2246,7 @@ Compare 8-bit scalar data according to the current locale
 
 =end original
 
-8 ¥Ó¥Ã¥È¤Î¥¹¥«¥é¥Ç¡¼¥¿¤ò¡¢¥«¥ì¥ó¥È¤Î¥í¥±¡¼¥ë¤Ë½¾¤Ã¤ÆÈæ³Ó¤¹¤ë
+8 ãƒ“ãƒƒãƒˆã®ã‚¹ã‚«ãƒ©ãƒ‡ãƒ¼ã‚¿ã‚’ã€ã‚«ãƒ¬ãƒ³ãƒˆã®ãƒ­ã‚±ãƒ¼ãƒ«ã«å¾“ã£ã¦æ¯”è¼ƒã™ã‚‹
 
 =item I18N::LangTags
 
@@ -2256,7 +2256,7 @@ Functions for dealing with RFC3066-style language tags
 
 =end original
 
-RFC3066-·Á¼°¤Î¸À¸ì¥¿¥°¤ò°·¤¦¤¿¤á¤Î´Ø¿ô
+RFC3066-å½¢å¼ã®è¨€èªã‚¿ã‚°ã‚’æ‰±ã†ãŸã‚ã®é–¢æ•°
 
 =item I18N::LangTags::Detect
 
@@ -2266,7 +2266,7 @@ Detect the user's language preferences
 
 =end original
 
-¥æ¡¼¥¶¡¼¤Î¸À¸ì¥×¥ê¥Õ¥¡¥ì¥ó¥¹¤ò¸¡½Ğ¤¹¤ë
+ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®è¨€èªãƒ—ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‚’æ¤œå‡ºã™ã‚‹
 
 =item I18N::LangTags::List
 
@@ -2276,7 +2276,7 @@ Tags and names for human languages
 
 =end original
 
-¼«Á³¸À¸ì¤Î¤¿¤á¤Î¥¿¥°¤ÈÌ¾Á°
+è‡ªç„¶è¨€èªã®ãŸã‚ã®ã‚¿ã‚°ã¨åå‰
 
 =item I18N::Langinfo
 
@@ -2286,7 +2286,7 @@ Query locale information
 
 =end original
 
-¥í¥±¡¼¥ë¾ğÊó¤òÌä¤¤¹ç¤ï¤»¤ë
+ãƒ­ã‚±ãƒ¼ãƒ«æƒ…å ±ã‚’å•ã„åˆã‚ã›ã‚‹
 
 =item IO
 
@@ -2296,7 +2296,7 @@ Load various IO modules
 
 =end original
 
-ÍÍ¡¹¤Ê IO ¥â¥¸¥å¡¼¥ë¤ò¥í¡¼¥É¤¹¤ë
+æ§˜ã€…ãª IO ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 
 =item IO::Compress::Base
 
@@ -2306,7 +2306,7 @@ Base Class for IO::Compress modules
 
 =end original
 
-IO::Compress ¥â¥¸¥å¡¼¥ë¤Î´ğÄì¥¯¥é¥¹
+IO::Compress ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item IO::Compress::Deflate
 
@@ -2316,7 +2316,7 @@ Write RFC 1950 files/buffers
 
 =end original
 
-RFC 1950 ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤ò½ñ¤¯
+RFC 1950 ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’æ›¸ã
 
 =item IO::Compress::Gzip
 
@@ -2326,7 +2326,7 @@ Write RFC 1952 files/buffers
 
 =end original
 
-RFC 1952 ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤ò½ñ¤¯
+RFC 1952 ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’æ›¸ã
 
 =item IO::Compress::RawDeflate
 
@@ -2336,7 +2336,7 @@ Write RFC 1951 files/buffers
 
 =end original
 
-RFC 1951 ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤ò½ñ¤¯
+RFC 1951 ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’æ›¸ã
 
 =item IO::Compress::Zip
 
@@ -2346,7 +2346,7 @@ Write zip files/buffers
 
 =end original
 
-zip ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤ò½ñ¤¯
+zip ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’æ›¸ã
 
 =item IO::Dir
 
@@ -2356,7 +2356,7 @@ Supply object methods for directory handles
 
 =end original
 
-¥Ç¥£¥ì¥¯¥È¥ê¥Ï¥ó¥É¥ë¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒãƒ³ãƒ‰ãƒ«ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item IO::File
 
@@ -2366,7 +2366,7 @@ Supply object methods for filehandles
 
 =end original
 
-¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item IO::Handle
 
@@ -2376,7 +2376,7 @@ Supply object methods for I/O handles
 
 =end original
 
-I/O ¥Ï¥ó¥É¥ë¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+I/O ãƒãƒ³ãƒ‰ãƒ«ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item IO::Pipe
 
@@ -2386,7 +2386,7 @@ Supply object methods for pipes
 
 =end original
 
-¥Ñ¥¤¥×¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+ãƒ‘ã‚¤ãƒ—ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item IO::Poll
 
@@ -2396,7 +2396,7 @@ Object interface to system poll call
 
 =end original
 
-¥·¥¹¥Æ¥à¥İ¡¼¥ê¥ó¥°¸Æ¤Ó½Ğ¤·¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ã‚·ã‚¹ãƒ†ãƒ ãƒãƒ¼ãƒªãƒ³ã‚°å‘¼ã³å‡ºã—ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item IO::Seekable
 
@@ -2406,7 +2406,7 @@ Supply seek based methods for I/O objects
 
 =end original
 
-I/O ¥ª¥Ö¥¸¥§¥¯¥È¤Î¤¿¤á¤Î seek ¥Ù¡¼¥¹¤Î¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë
+I/O ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãŸã‚ã® seek ãƒ™ãƒ¼ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹
 
 =item IO::Select
 
@@ -2416,7 +2416,7 @@ OO interface to the select system call
 
 =end original
 
-select ¥·¥¹¥Æ¥à¥³¡¼¥ë¤ËÂĞ¤¹¤ë OO ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+select ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒ¼ãƒ«ã«å¯¾ã™ã‚‹ OO ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item IO::Socket
 
@@ -2426,7 +2426,7 @@ Object interface to socket communications
 
 =end original
 
-¥½¥±¥Ã¥ÈÄÌ¿®¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ã‚½ã‚±ãƒƒãƒˆé€šä¿¡ã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item IO::Socket::INET
 
@@ -2436,7 +2436,7 @@ Object interface for AF_INET domain sockets
 
 =end original
 
-AF_INET ¥É¥á¥¤¥ó¥½¥±¥Ã¥È¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+AF_INET ãƒ‰ãƒ¡ã‚¤ãƒ³ã‚½ã‚±ãƒƒãƒˆã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item IO::Socket::UNIX
 
@@ -2446,7 +2446,7 @@ Object interface for AF_UNIX domain sockets
 
 =end original
 
-AF_UNIX ¥É¥á¥¤¥ó¥½¥±¥Ã¥È¤Î¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+AF_UNIX ãƒ‰ãƒ¡ã‚¤ãƒ³ã‚½ã‚±ãƒƒãƒˆã®ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item IO::Uncompress::AnyInflate
 
@@ -2456,7 +2456,7 @@ Uncompress zlib-based (zip, gzip) file/buffer
 
 =end original
 
-zlib ¥Ù¡¼¥¹¤Î (zip, gzip) ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤òÅ¸³«¤¹¤ë
+zlib ãƒ™ãƒ¼ã‚¹ã® (zip, gzip) ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’å±•é–‹ã™ã‚‹
 
 =item IO::Uncompress::AnyUncompress
 
@@ -2466,7 +2466,7 @@ Uncompress gzip, zip, bzip2 or lzop file/buffer
 
 =end original
 
-gzip, zip, bzip2, lzop ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤òÅ¸³«¤¹¤ë
+gzip, zip, bzip2, lzop ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’å±•é–‹ã™ã‚‹
 
 =item IO::Uncompress::Base
 
@@ -2476,7 +2476,7 @@ Base Class for IO::Uncompress modules
 
 =end original
 
-IO::Uncompress ¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤Î´ğÄì¥¯¥é¥¹
+IO::Uncompress ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item IO::Uncompress::Gunzip
 
@@ -2486,7 +2486,7 @@ Read RFC 1952 files/buffers
 
 =end original
 
-RFC 1952 ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤òÆÉ¤ß¹ş¤à
+RFC 1952 ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’èª­ã¿è¾¼ã‚€
 
 =item IO::Uncompress::Inflate
 
@@ -2496,7 +2496,7 @@ Read RFC 1950 files/buffers
 
 =end original
 
-RFC 1950 ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤òÆÉ¤ß¹ş¤à
+RFC 1950 ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’èª­ã¿è¾¼ã‚€
 
 =item IO::Uncompress::RawInflate
 
@@ -2506,7 +2506,7 @@ Read RFC 1951 files/buffers
 
 =end original
 
-RFC 1951 ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤òÆÉ¤ß¹ş¤à
+RFC 1951 ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’èª­ã¿è¾¼ã‚€
 
 =item IO::Uncompress::Unzip
 
@@ -2516,7 +2516,7 @@ Read zip files/buffers
 
 =end original
 
-zip ¥Õ¥¡¥¤¥ë/¥Ğ¥Ã¥Õ¥¡¤òÆÉ¤ß¹ş¤à
+zip ãƒ•ã‚¡ã‚¤ãƒ«/ãƒãƒƒãƒ•ã‚¡ã‚’èª­ã¿è¾¼ã‚€
 
 =item IO::Zlib
 
@@ -2526,7 +2526,7 @@ IO:: style interface to L<Compress::Zlib>
 
 =end original
 
-L<Compress::Zlib> ¤Ø¤Î IO:: É÷¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+L<Compress::Zlib> ã¸ã® IO:: é¢¨ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item IPC::Cmd
 
@@ -2536,7 +2536,7 @@ Finding and running system commands made easy
 
 =end original
 
-¥·¥¹¥Æ¥à¥³¥Ş¥ó¥É¤Î¸¡º÷¤È¼Â¹Ô¤ò´ÊÃ±¤Ë¤¹¤ë
+ã‚·ã‚¹ãƒ†ãƒ ã‚³ãƒãƒ³ãƒ‰ã®æ¤œç´¢ã¨å®Ÿè¡Œã‚’ç°¡å˜ã«ã™ã‚‹
 
 =item IPC::Open2
 
@@ -2546,7 +2546,7 @@ Open a process for both reading and writing
 
 =end original
 
-ÆÉ¤ß¹ş¤ß¤È½ñ¤­¹ş¤ß¤ÎÎ¾Êı¤Î¤¿¤á¤Ë¥×¥í¥»¥¹¤ò³«¤¯
+èª­ã¿è¾¼ã¿ã¨æ›¸ãè¾¼ã¿ã®ä¸¡æ–¹ã®ãŸã‚ã«ãƒ—ãƒ­ã‚»ã‚¹ã‚’é–‹ã
 
 =item IPC::Open3
 
@@ -2556,7 +2556,7 @@ Open a process for reading, writing, and error handling
 
 =end original
 
-ÆÉ¤ß¹ş¤ß¡¢½ñ¤­¹ş¤ß¡¢¥¨¥é¡¼½èÍı¤Î¤¿¤á¤Ë¥×¥í¥»¥¹¤ò³«¤¯
+èª­ã¿è¾¼ã¿ã€æ›¸ãè¾¼ã¿ã€ã‚¨ãƒ©ãƒ¼å‡¦ç†ã®ãŸã‚ã«ãƒ—ãƒ­ã‚»ã‚¹ã‚’é–‹ã
 
 =item IPC::SysV
 
@@ -2566,7 +2566,7 @@ SysV IPC constants
 
 =end original
 
-SysV IPC Äê¿ô
+SysV IPC å®šæ•°
 
 =item IPC::SysV::Msg
 
@@ -2576,7 +2576,7 @@ SysV Msg IPC object class
 
 =end original
 
-SysV Msg IPC ¥ª¥Ö¥¸¥§¥¯¥È¥¯¥é¥¹
+SysV Msg IPC ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¯ãƒ©ã‚¹
 
 =item IPC::SysV::Semaphore
 
@@ -2586,7 +2586,7 @@ SysV Semaphore IPC object class
 
 =end original
 
-SysV Semaphore IPC ¥ª¥Ö¥¸¥§¥¯¥È¥¯¥é¥¹
+SysV Semaphore IPC ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¯ãƒ©ã‚¹
 
 =item List::Util
 
@@ -2596,7 +2596,7 @@ A selection of general-utility list subroutines
 
 =end original
 
-°ìÈÌÅª¤Ê¥æ¡¼¥Æ¥£¥ê¥Æ¥£¥ê¥¹¥È¥µ¥Ö¥ë¡¼¥Á¥ó¤ÎÁª½¸
+ä¸€èˆ¬çš„ãªãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒªã‚¹ãƒˆã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®é¸é›†
 
 =item Locale::Constants
 
@@ -2606,7 +2606,7 @@ Constants for Locale codes
 
 =end original
 
-¥í¥±¡¼¥ë¥³¡¼¥ÉÄê¿ô
+ãƒ­ã‚±ãƒ¼ãƒ«ã‚³ãƒ¼ãƒ‰å®šæ•°
 
 =item Locale::Country
 
@@ -2616,7 +2616,7 @@ ISO codes for country identification (ISO 3166)
 
 =end original
 
-¹ñ¼±ÊÌ¤Î¤¿¤á¤Î ISO ¥³¡¼¥É (ISO 3166)
+å›½è­˜åˆ¥ã®ãŸã‚ã® ISO ã‚³ãƒ¼ãƒ‰ (ISO 3166)
 
 =item Locale::Currency
 
@@ -2626,7 +2626,7 @@ ISO three letter codes for currency identification (ISO 4217)
 
 =end original
 
-ÄÌ²ß¼±ÊÌ¤Î¤¿¤á¤Î 3 Ê¸»ú ISO ¥³¡¼¥É(ISO 4217)
+é€šè²¨è­˜åˆ¥ã®ãŸã‚ã® 3 æ–‡å­— ISO ã‚³ãƒ¼ãƒ‰(ISO 4217)
 
 =item Locale::Language
 
@@ -2636,7 +2636,7 @@ ISO two letter codes for language identification (ISO 639)
 
 =end original
 
-¸À¸ì¼±ÊÌ¤Î¤¿¤á¤Î 2 Ê¸»ú ISO ¥³¡¼¥É(ISO 639)
+è¨€èªè­˜åˆ¥ã®ãŸã‚ã® 2 æ–‡å­— ISO ã‚³ãƒ¼ãƒ‰(ISO 639)
 
 =item Locale::Maketext
 
@@ -2646,7 +2646,7 @@ Framework for localization
 
 =end original
 
-ÃÏ°è²½¤Î¤¿¤á¤Î¥Õ¥ì¡¼¥à¥ï¡¼¥¯
+åœ°åŸŸåŒ–ã®ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯
 
 =item Locale::Maketext::Simple
 
@@ -2656,7 +2656,7 @@ Simple interface to Locale::Maketext::Lexicon
 
 =end original
 
-Locale::Maketext::Lexicon ¤Ø¤ÎÃ±½ã¤Ê¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Locale::Maketext::Lexicon ã¸ã®å˜ç´”ãªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Locale::Maketext::TPJ13
 
@@ -2666,7 +2666,7 @@ Article about software localization
 
 =end original
 
-¥½¥Õ¥È¥¦¥§¥¢ÃÏ°è²½¤Ë´Ø¤¹¤ëµ­»ö
+ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢åœ°åŸŸåŒ–ã«é–¢ã™ã‚‹è¨˜äº‹
 
 =item Locale::Script
 
@@ -2676,7 +2676,7 @@ ISO codes for script identification (ISO 15924)
 
 =end original
 
-Ê¸»úÂÎ·Ï¼±ÊÌ¤Î¤¿¤á¤Î ISO ¥³¡¼¥É (ISO 15924)
+æ–‡å­—ä½“ç³»è­˜åˆ¥ã®ãŸã‚ã® ISO ã‚³ãƒ¼ãƒ‰ (ISO 15924)
 
 =item Log::Message
 
@@ -2686,7 +2686,7 @@ A generic message storing mechanism;
 
 =end original
 
-ÈÆÍÑ¥á¥Ã¥»¡¼¥¸Êİ´Éµ¡¹½
+æ±ç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä¿ç®¡æ©Ÿæ§‹
 
 =item Log::Message::Config
 
@@ -2696,7 +2696,7 @@ Configuration options for Log::Message
 
 =end original
 
-Log::Message ¤Î¥ª¥×¥·¥ç¥ó¤òÀßÄê¤¹¤ë
+Log::Message ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹
 
 =item Log::Message::Handlers
 
@@ -2706,7 +2706,7 @@ Message handlers for Log::Message
 
 =end original
 
-Log::Message ¤Î¥á¥Ã¥»¡¼¥¸¥Ï¥ó¥É¥é
+Log::Message ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ³ãƒ‰ãƒ©
 
 =item Log::Message::Item
 
@@ -2716,7 +2716,7 @@ Message objects for Log::Message
 
 =end original
 
-Log::Message ¤Î¥á¥Ã¥»¡¼¥¸¥ª¥Ö¥¸¥§¥¯¥È
+Log::Message ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 =item MIME::Base64
 
@@ -2726,7 +2726,7 @@ Encoding and decoding of base64 strings
 
 =end original
 
-base64 Ê¸»úÎó¤Î¥¨¥ó¥³¡¼¥É¤È¥Ç¥³¡¼¥É
+base64 æ–‡å­—åˆ—ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã¨ãƒ‡ã‚³ãƒ¼ãƒ‰
 
 =item MIME::QuotedPrint
 
@@ -2736,7 +2736,7 @@ Encoding and decoding of quoted-printable strings
 
 =end original
 
-quoted-printable Ê¸»úÎó¤Î¥¨¥ó¥³¡¼¥É¤È¥Ç¥³¡¼¥É
+quoted-printable æ–‡å­—åˆ—ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã¨ãƒ‡ã‚³ãƒ¼ãƒ‰
 
 =item Math::BigFloat
 
@@ -2746,7 +2746,7 @@ Arbitrary size floating point math package
 
 =end original
 
-Â¿ÇÜÄ¹¼Â¿ô¤Î¿ô³Ø¥Ñ¥Ã¥±¡¼¥¸
+å¤šå€é•·å®Ÿæ•°ã®æ•°å­¦ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 
 =item Math::BigInt
 
@@ -2756,7 +2756,7 @@ Arbitrary size integer/float math package
 
 =end original
 
-Â¿ÇÜÄ¹À°¿ô/ÉâÆ°¾®¿ôÅÀ¿ô¤Î¿ô³Ø¥Ñ¥Ã¥±¡¼¥¸
+å¤šå€é•·æ•´æ•°/æµ®å‹•å°æ•°ç‚¹æ•°ã®æ•°å­¦ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 
 =item Math::BigInt::Calc
 
@@ -2766,7 +2766,7 @@ Pure Perl module to support Math::BigInt
 
 =end original
 
-Math::BigInt ¤ËÂĞ±ş¤¹¤ë Pure Perl ¥â¥¸¥å¡¼¥ë
+Math::BigInt ã«å¯¾å¿œã™ã‚‹ Pure Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Math::BigInt::CalcEmu
 
@@ -2776,7 +2776,7 @@ Emulate low-level math with BigInt code
 
 =end original
 
-BigInt ¥³¡¼¥É¤ÎÄã¥ì¥Ù¥ë·×»»¤ò¥¨¥ß¥å¥ì¡¼¥È¤¹¤ë
+BigInt ã‚³ãƒ¼ãƒ‰ã®ä½ãƒ¬ãƒ™ãƒ«è¨ˆç®—ã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã™ã‚‹
 
 =item Math::BigInt::FastCalc
 
@@ -2786,7 +2786,7 @@ Math::BigInt::Calc with some XS for more speed
 
 =end original
 
-¹âÂ®²½¤Î¤¿¤á¤Ë XS ¤Ë¤·¤¿ Math::BigInt::Calc
+é«˜é€ŸåŒ–ã®ãŸã‚ã« XS ã«ã—ãŸ Math::BigInt::Calc
 
 =item Math::BigRat
 
@@ -2796,7 +2796,7 @@ Arbitrary big rational numbers
 
 =end original
 
-Ç¤°Õ·å¤ÎÍ­Íı¿ô
+ä»»æ„æ¡ã®æœ‰ç†æ•°
 
 =item Math::Complex
 
@@ -2806,7 +2806,7 @@ Complex numbers and associated mathematical functions
 
 =end original
 
-Ê£ÁÇ¿ô¤È¤½¤ì¤Ë´ØÏ¢¤¹¤ë¿ô³ØÅª¤Ê´Ø¿ô
+è¤‡ç´ æ•°ã¨ãã‚Œã«é–¢é€£ã™ã‚‹æ•°å­¦çš„ãªé–¢æ•°
 
 =item Math::Trig
 
@@ -2816,7 +2816,7 @@ Trigonometric functions
 
 =end original
 
-»°³Ñ´Ø¿ô
+ä¸‰è§’é–¢æ•°
 
 =item Memoize
 
@@ -2826,7 +2826,7 @@ Make functions faster by trading space for time
 
 =end original
 
-¥á¥â¥ê¤òµ¾À·¤Ë¤·¤Æ´Ø¿ô¤ò¹âÂ®²½¤¹¤ë
+ãƒ¡ãƒ¢ãƒªã‚’çŠ ç‰²ã«ã—ã¦é–¢æ•°ã‚’é«˜é€ŸåŒ–ã™ã‚‹
 
 =item Memoize::AnyDBM_File
 
@@ -2836,7 +2836,7 @@ Glue to provide EXISTS for AnyDBM_File for Storable use
 
 =end original
 
-Storable ¤Ç¤Î»ÈÍÑ¤Î¤¿¤á¤Ë AnyDBM_File ¤Ë EXISTS ¤òÄó¶¡¤¹¤ë¤¿¤á¤Î¸Ò
+Storable ã§ã®ä½¿ç”¨ã®ãŸã‚ã« AnyDBM_File ã« EXISTS ã‚’æä¾›ã™ã‚‹ãŸã‚ã®ç³Š
 
 =item Memoize::Expire
 
@@ -2846,7 +2846,7 @@ Plug-in module for automatic expiration of memoized values
 
 =end original
 
-µ­²±¤·¤¿ÃÍ¤Î¼«Æ°Åª¤ÊÇË´ş¤Î¤¿¤á¤Î¥×¥é¥°¥¤¥ó¥â¥¸¥å¡¼¥ë
+è¨˜æ†¶ã—ãŸå€¤ã®è‡ªå‹•çš„ãªç ´æ£„ã®ãŸã‚ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Memoize::ExpireFile
 
@@ -2856,7 +2856,7 @@ Test for Memoize expiration semantics
 
 =end original
 
-Memoize ¤ÎÇË´şÆ°ºî¤Î¤¿¤á¤Î¥Æ¥¹¥È
+Memoize ã®ç ´æ£„å‹•ä½œã®ãŸã‚ã®ãƒ†ã‚¹ãƒˆ
 
 =item Memoize::ExpireTest
 
@@ -2866,7 +2866,7 @@ Test for Memoize expiration semantics
 
 =end original
 
-Memoize ¤ÎÇË´şÆ°ºî¤Î¤¿¤á¤Î¥Æ¥¹¥È
+Memoize ã®ç ´æ£„å‹•ä½œã®ãŸã‚ã®ãƒ†ã‚¹ãƒˆ
 
 =item Memoize::NDBM_File
 
@@ -2876,7 +2876,7 @@ Glue to provide EXISTS for NDBM_File for Storable use
 
 =end original
 
-Storable ¤Ç¤Î»ÈÍÑ¤Î¤¿¤á¤Ë NDBM_File ¤Ë EXISTS ¤òÄó¶¡¤¹¤ë¤¿¤á¤Î¸Ò
+Storable ã§ã®ä½¿ç”¨ã®ãŸã‚ã« NDBM_File ã« EXISTS ã‚’æä¾›ã™ã‚‹ãŸã‚ã®ç³Š
 
 =item Memoize::SDBM_File
 
@@ -2886,7 +2886,7 @@ Glue to provide EXISTS for SDBM_File for Storable use
 
 =end original
 
-Storable ¤Ç¤Î»ÈÍÑ¤Î¤¿¤á¤Ë SDBM_File ¤Ë EXISTS ¤òÄó¶¡¤¹¤ë¤¿¤á¤Î¸Ò
+Storable ã§ã®ä½¿ç”¨ã®ãŸã‚ã« SDBM_File ã« EXISTS ã‚’æä¾›ã™ã‚‹ãŸã‚ã®ç³Š
 
 =item Memoize::Storable
 
@@ -2896,7 +2896,7 @@ Store Memoized data in Storable database
 
 =end original
 
-µ­²±¤·¤¿¥Ç¡¼¥¿¤ò Storable ¥Ç¡¼¥¿¥Ù¡¼¥¹¤ËÊİ´É¤¹¤ë
+è¨˜æ†¶ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’ Storable ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä¿ç®¡ã™ã‚‹
 
 =item Module::Build
 
@@ -2906,7 +2906,7 @@ Build and install Perl modules
 
 =end original
 
-Perl ¥â¥¸¥å¡¼¥ë¤Î¥Ó¥ë¥É¤È¥¤¥ó¥¹¥È¡¼¥ë
+Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ“ãƒ«ãƒ‰ã¨ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 
 =item Module::Build::API
 
@@ -2916,7 +2916,7 @@ API Reference for Module Authors
 
 =end original
 
-¥â¥¸¥å¡¼¥ëºî¼Ô¤Î¤¿¤á¤Î API ¥ê¥Õ¥¡¥ì¥ó¥¹
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œè€…ã®ãŸã‚ã® API ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹
 
 =item Module::Build::Authoring
 
@@ -2926,7 +2926,7 @@ Authoring Module::Build modules
 
 =end original
 
-Module::Build ¥â¥¸¥å¡¼¥ë¤ò½ñ¤¯
+Module::Build ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ›¸ã
 
 =item Module::Build::Base
 
@@ -2936,7 +2936,7 @@ Default methods for Module::Build
 
 =end original
 
-Module::Build ¤Î¥Ç¥Õ¥©¥ë¥È¥á¥½¥Ã¥É
+Module::Build ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¡ã‚½ãƒƒãƒ‰
 
 =item Module::Build::Compat
 
@@ -2946,7 +2946,7 @@ Compatibility with ExtUtils::MakeMaker
 
 =end original
 
-ExtUtils::MakeMaker ¤È¤Î¸ß´¹À­
+ExtUtils::MakeMaker ã¨ã®äº’æ›æ€§
 
 =item Module::Build::ConfigData
 
@@ -2956,7 +2956,7 @@ Configuration for Module::Build
 
 =end original
 
-Module::Build ¤ÎÀßÄê
+Module::Build ã®è¨­å®š
 
 =item Module::Build::Cookbook
 
@@ -2966,7 +2966,7 @@ Examples of Module::Build Usage
 
 =end original
 
-Module::Build ¤Î»ÈÍÑË¡¤ÎÎã
+Module::Build ã®ä½¿ç”¨æ³•ã®ä¾‹
 
 =item Module::Build::ModuleInfo
 
@@ -2976,7 +2976,7 @@ Gather package and POD information from a perl module files
 
 =end original
 
-perl ¥â¥¸¥å¡¼¥ë¥Õ¥¡¥¤¥ë¤«¤é¥Ñ¥Ã¥±¡¼¥¸¤È POD ¤Î¾ğÊó¤ò½¸¤á¤ë
+perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã¨ POD ã®æƒ…å ±ã‚’é›†ã‚ã‚‹
 
 =item Module::Build::Notes
 
@@ -2986,7 +2986,7 @@ Configuration for $module_name
 
 =end original
 
-$module_name ¤ÎÀßÄê
+$module_name ã®è¨­å®š
 
 =item Module::Build::PPMMaker
 
@@ -2996,7 +2996,7 @@ Perl Package Manager file creation
 
 =end original
 
-Perl Package Manager ¥Õ¥¡¥¤¥ëºîÀ®
+Perl Package Manager ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆ
 
 =item Module::Build::Platform::Amiga
 
@@ -3006,7 +3006,7 @@ Builder class for Amiga platforms
 
 =end original
 
-Amiga ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+Amiga ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::Default
 
@@ -3016,7 +3016,7 @@ Stub class for unknown platforms
 
 =end original
 
-ÉÔÌÀ¤Ê¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤ÎÇÉÀ¸¥¯¥é¥¹
+ä¸æ˜ãªãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::EBCDIC
 
@@ -3026,7 +3026,7 @@ Builder class for EBCDIC platforms
 
 =end original
 
-EBCDIC ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+EBCDIC ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::MPEiX
 
@@ -3036,7 +3036,7 @@ Builder class for MPEiX platforms
 
 =end original
 
-MPEiX ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+MPEiX ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::MacOS
 
@@ -3046,7 +3046,7 @@ Builder class for MacOS platforms
 
 =end original
 
-MacOS ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+MacOS ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::RiscOS
 
@@ -3056,7 +3056,7 @@ Builder class for RiscOS platforms
 
 =end original
 
-RiscOS ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+RiscOS ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::Unix
 
@@ -3066,7 +3066,7 @@ Builder class for Unix platforms
 
 =end original
 
-Unix ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+Unix ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::VMS
 
@@ -3076,7 +3076,7 @@ Builder class for VMS platforms
 
 =end original
 
-VMS ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+VMS ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::VOS
 
@@ -3086,7 +3086,7 @@ Builder class for VOS platforms
 
 =end original
 
-VOS ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+VOS ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::Windows
 
@@ -3096,7 +3096,7 @@ Builder class for Windows platforms
 
 =end original
 
-Windows ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+Windows ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::aix
 
@@ -3106,7 +3106,7 @@ Builder class for AIX platform
 
 =end original
 
-AIX ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+AIX ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::cygwin
 
@@ -3116,7 +3116,7 @@ Builder class for Cygwin platform
 
 =end original
 
-Cygwin ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+Cygwin ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::darwin
 
@@ -3126,7 +3126,7 @@ Builder class for Mac OS X platform
 
 =end original
 
-Mac OS X ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+Mac OS X ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::Platform::os2
 
@@ -3136,7 +3136,7 @@ Builder class for OS/2 platform
 
 =end original
 
-OS/2 ¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Î¤¿¤á¤Î¥Ó¥ë¥À¡¼¥¯¥é¥¹
+OS/2 ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãŸã‚ã®ãƒ“ãƒ«ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Module::Build::YAML
 
@@ -3146,7 +3146,7 @@ Provides just enough YAML support so that Module::Build works even if YAML.pm is
 
 =end original
 
-YAML.pm ¤¬¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤Ê¤¯¤Æ¤â Module::Build ¤¬Æ°ºî¤¹¤ë¤À¤±¤Î YAML ¥µ¥İ¡¼¥È¤òÄó¶¡¤¹¤ë
+YAML.pm ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ãªãã¦ã‚‚ Module::Build ãŒå‹•ä½œã™ã‚‹ã ã‘ã® YAML ã‚µãƒãƒ¼ãƒˆã‚’æä¾›ã™ã‚‹
 
 =item Module::CoreList
 
@@ -3156,7 +3156,7 @@ What modules shipped with versions of perl
 
 =end original
 
-¥Ğ¡¼¥¸¥ç¥óÊÌ¤Ë¡¢perl ¤È¶¦¤ËÇÛÉÛ¤µ¤ì¤Æ¤¤¤ë¥â¥¸¥å¡¼¥ë¤Î°ìÍ÷
+ãƒãƒ¼ã‚¸ãƒ§ãƒ³åˆ¥ã«ã€perl ã¨å…±ã«é…å¸ƒã•ã‚Œã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¸€è¦§
 
 =item Module::Load
 
@@ -3166,7 +3166,7 @@ Runtime require of both modules and files
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤È¥Õ¥¡¥¤¥ë¤ÎÎ¾Êı¤ÇÉ¬Í×¤È¤¹¤ë¥é¥ó¥¿¥¤¥à
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸¡æ–¹ã§å¿…è¦ã¨ã™ã‚‹ãƒ©ãƒ³ã‚¿ã‚¤ãƒ 
 
 =item Module::Load::Conditional
 
@@ -3176,7 +3176,7 @@ Looking up module information / loading at runtime
 
 =end original
 
-¼Â¹Ô»ş¤Ë¥â¥¸¥å¡¼¥ë¾ğÊó¤Î¸¡º÷¤ÈÆÉ¤ß¹ş¤ß¤ò¹Ô¤¦
+å®Ÿè¡Œæ™‚ã«ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«æƒ…å ±ã®æ¤œç´¢ã¨èª­ã¿è¾¼ã¿ã‚’è¡Œã†
 
 =item Module::Loaded
 
@@ -3186,7 +3186,7 @@ Mark modules as loaded or unloaded
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤òÆÉ¤ß¹ş¤ßºÑ¤ß¤Ş¤¿¤ÏÌ¤ÆÉ¤ß¹ş¤ß¤È¥Ş¡¼¥¯¤¹¤ë
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’èª­ã¿è¾¼ã¿æ¸ˆã¿ã¾ãŸã¯æœªèª­ã¿è¾¼ã¿ã¨ãƒãƒ¼ã‚¯ã™ã‚‹
 
 =item Module::Pluggable
 
@@ -3196,7 +3196,7 @@ Automatically give your module the ability to have plugins
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Ë¥×¥é¥°¥¤¥ó¤ò»ı¤ÄÇ½ÎÏ¤ò¼«Æ°Åª¤ËÍ¿¤¨¤ë
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’æŒã¤èƒ½åŠ›ã‚’è‡ªå‹•çš„ã«ä¸ãˆã‚‹
 
 =item Module::Pluggable::Object
 
@@ -3206,7 +3206,7 @@ Automatically give your module the ability to have plugins
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Ë¥×¥é¥°¥¤¥ó¤ò»ı¤ÄÇ½ÎÏ¤ò¼«Æ°Åª¤ËÍ¿¤¨¤ë
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’æŒã¤èƒ½åŠ›ã‚’è‡ªå‹•çš„ã«ä¸ãˆã‚‹
 
 =item NDBM_File
 
@@ -3216,7 +3216,7 @@ Tied access to ndbm files
 
 =end original
 
-ndbm ¥Õ¥¡¥¤¥ë¤ËÂĞ¤¹¤ë tie ¤µ¤ì¤¿¥¢¥¯¥»¥¹
+ndbm ãƒ•ã‚¡ã‚¤ãƒ«ã«å¯¾ã™ã‚‹ tie ã•ã‚ŒãŸã‚¢ã‚¯ã‚»ã‚¹
 
 =item NEXT
 
@@ -3226,7 +3226,7 @@ Provide a pseudo-class NEXT (et al) that allows method redispatch
 
 =end original
 
-¥á¥½¥Ã¥É¤ÎºÆÈ¯¹Ô(redispatch)¤ò²ÄÇ½¤Ë¤¹¤ëµ¼»÷¥¯¥é¥¹ NEXT(¤Ê¤É)¤òÄó¶¡¤¹¤ë
+ãƒ¡ã‚½ãƒƒãƒ‰ã®å†ç™ºè¡Œ(redispatch)ã‚’å¯èƒ½ã«ã™ã‚‹æ“¬ä¼¼ã‚¯ãƒ©ã‚¹ NEXT(ãªã©)ã‚’æä¾›ã™ã‚‹
 
 =item Net::Cmd
 
@@ -3236,7 +3236,7 @@ Network Command class (as used by FTP, SMTP etc)
 
 =end original
 
-(FTP, SMTP ¤Ê¤É¤Ç»È¤ï¤ì¤ë) ¥Í¥Ã¥È¥ï¡¼¥¯¥³¥Ş¥ó¥É¥¯¥é¥¹
+(FTP, SMTP ãªã©ã§ä½¿ã‚ã‚Œã‚‹) ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚³ãƒãƒ³ãƒ‰ã‚¯ãƒ©ã‚¹
 
 =item Net::Config
 
@@ -3246,7 +3246,7 @@ Local configuration data for libnet
 
 =end original
 
-libnet ¤Î¤¿¤á¤Î¥í¡¼¥«¥ëÀßÄê
+libnet ã®ãŸã‚ã®ãƒ­ãƒ¼ã‚«ãƒ«è¨­å®š
 
 =item Net::Domain
 
@@ -3256,7 +3256,7 @@ Attempt to evaluate the current host's internet name and domain
 
 =end original
 
-¸½ºß¤Î¥Û¥¹¥È¤Î¥¤¥ó¥¿¡¼¥Í¥Ã¥ÈÌ¾¤È¥É¥á¥¤¥ó¤òÉ¾²Á¤·¤è¤¦¤È¤¹¤ë
+ç¾åœ¨ã®ãƒ›ã‚¹ãƒˆã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒƒãƒˆåã¨ãƒ‰ãƒ¡ã‚¤ãƒ³ã‚’è©•ä¾¡ã—ã‚ˆã†ã¨ã™ã‚‹
 
 =item Net::FTP
 
@@ -3266,7 +3266,7 @@ FTP Client class
 
 =end original
 
-FTP ¥¯¥é¥¤¥¢¥ó¥È¥¯¥é¥¹
+FTP ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¯ãƒ©ã‚¹
 
 =item Net::NNTP
 
@@ -3276,7 +3276,7 @@ NNTP Client class
 
 =end original
 
-NNTP ¥¯¥é¥¤¥¢¥ó¥È¥¯¥é¥¹
+NNTP ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¯ãƒ©ã‚¹
 
 =item Net::Netrc
 
@@ -3286,7 +3286,7 @@ OO interface to users netrc file
 
 =end original
 
-¥æ¡¼¥¶¡¼¤Î netrc ¥Õ¥¡¥¤¥ë¤Ø¤Î OO ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ãƒ¦ãƒ¼ã‚¶ãƒ¼ã® netrc ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã® OO ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Net::POP3
 
@@ -3296,7 +3296,7 @@ Post Office Protocol 3 Client class (RFC1939)
 
 =end original
 
-Post Office Protocol 3 (RFC1939) ¥¯¥é¥¤¥¢¥ó¥È¥¯¥é¥¹
+Post Office Protocol 3 (RFC1939) ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¯ãƒ©ã‚¹
 
 =item Net::Ping
 
@@ -3306,7 +3306,7 @@ Check a remote host for reachability
 
 =end original
 
-¥ê¥â¡¼¥È¥Û¥¹¥È¤Ø¤ÎÅşÃ£À­¤ò¥Á¥§¥Ã¥¯¤¹¤ë
+ãƒªãƒ¢ãƒ¼ãƒˆãƒ›ã‚¹ãƒˆã¸ã®åˆ°é”æ€§ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 
 =item Net::SMTP
 
@@ -3316,7 +3316,7 @@ Simple Mail Transfer Protocol Client
 
 =end original
 
-Simple Mail Transfer Protocol ¥¯¥é¥¤¥¢¥ó¥È
+Simple Mail Transfer Protocol ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ
 
 =item Net::Time
 
@@ -3326,7 +3326,7 @@ Time and daytime network client interface
 
 =end original
 
-time ¤È daytime ¤Î¥Í¥Ã¥È¥ï¡¼¥¯¥¯¥é¥¤¥¢¥ó¥È¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+time ã¨ daytime ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Net::hostent
 
@@ -3336,7 +3336,7 @@ By-name interface to Perl's built-in gethost*() functions
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô gethost*() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° gethost*() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Net::libnetFAQ
 
@@ -3346,7 +3346,7 @@ Libnet Frequently Asked Questions
 
 =end original
 
-libnet ¤Î¤è¤¯¤¢¤ë¼ÁÌä¤ÈÅú¤¨
+libnet ã®ã‚ˆãã‚ã‚‹è³ªå•ã¨ç­”ãˆ
 
 =item Net::netent
 
@@ -3356,8 +3356,8 @@ By-name interface to Perl's built-in getnet*() functions
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô getnet*() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° getnet*() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Net::protoent
 
@@ -3367,8 +3367,8 @@ By-name interface to Perl's built-in getproto*() functions
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô getproto*() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° getproto*() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Net::servent
 
@@ -3378,8 +3378,8 @@ By-name interface to Perl's built-in getserv*() functions
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô getserv*() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° getserv*() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item O
 
@@ -3389,7 +3389,7 @@ Generic interface to Perl Compiler backends
 
 =end original
 
-Perl ¥³¥ó¥Ñ¥¤¥é¥Ğ¥Ã¥¯¥¨¥ó¥É¤Ø¤Î°ìÈÌÅª¤Ê¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰ã¸ã®ä¸€èˆ¬çš„ãªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item ODBM_File
 
@@ -3399,7 +3399,7 @@ Tied access to odbm files
 
 =end original
 
-odbm ¥Õ¥¡¥¤¥ë¤Ø¤Î tie ¤µ¤ì¤¿¥¢¥¯¥»¥¹
+odbm ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã® tie ã•ã‚ŒãŸã‚¢ã‚¯ã‚»ã‚¹
 
 =item Opcode
 
@@ -3409,8 +3409,8 @@ Disable named opcodes when compiling perl code
 
 =end original
 
-Perl ¥×¥í¥°¥é¥à¤Î¥³¥ó¥Ñ¥¤¥ë»ş¤Ë
-Ì¾Á°¤ÎÉÕ¤¤¤¿¥ª¥Ú¥³¡¼¥É¤ò¶Ø»ß¤¹¤ë
+Perl ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«
+åå‰ã®ä»˜ã„ãŸã‚ªãƒšã‚³ãƒ¼ãƒ‰ã‚’ç¦æ­¢ã™ã‚‹
 
 =item POSIX
 
@@ -3420,7 +3420,7 @@ Perl interface to IEEE Std 1003.1
 
 =end original
 
-IEEE Standard 1003.1 ¤ËÂĞ¤¹¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+IEEE Standard 1003.1 ã«å¯¾ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Package::Constants
 
@@ -3430,7 +3430,7 @@ List all constants declared in a package
 
 =end original
 
-¥Ñ¥Ã¥±¡¼¥¸¤ÇÀë¸À¤µ¤ì¤Æ¤¤¤ëÁ´¤Æ¤ÎÄê¿ô¤ò¥ê¥¹¥È¤¹¤ë
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã§å®£è¨€ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®å®šæ•°ã‚’ãƒªã‚¹ãƒˆã™ã‚‹
 
 =item Params::Check
 
@@ -3440,7 +3440,7 @@ A generic input parsing/checking mechanism.
 
 =end original
 
-ÈÆÍÑÆşÎÏ¥Ñ¡¼¥¹/¥Á¥§¥Ã¥¯µ¡¹½
+æ±ç”¨å…¥åŠ›ãƒ‘ãƒ¼ã‚¹/ãƒã‚§ãƒƒã‚¯æ©Ÿæ§‹
 
 =item PerlIO
 
@@ -3450,7 +3450,7 @@ On demand loader for PerlIO layers and root of PerlIO::* name space
 
 =end original
 
-PerlIO ÁØ¤Î¥ª¥ó¥Ç¥Ş¥ó¥É¤ÊÆÉ¤ß¹ş¤ß¤È¡¢PerlIO::* Ì¾Á°¶õ´Ö¤Î¥ë¡¼¥È
+PerlIO å±¤ã®ã‚ªãƒ³ãƒ‡ãƒãƒ³ãƒ‰ãªèª­ã¿è¾¼ã¿ã¨ã€PerlIO::* åå‰ç©ºé–“ã®ãƒ«ãƒ¼ãƒˆ
 
 =item PerlIO::encoding
 
@@ -3460,7 +3460,7 @@ Encoding layer
 
 =end original
 
-encoding ÁØ
+encoding å±¤
 
 =item PerlIO::scalar
 
@@ -3470,7 +3470,7 @@ In-memory IO, scalar IO
 
 =end original
 
-¥¤¥ó¥á¥â¥ê IO ¤È¥¹¥«¥é IO
+ã‚¤ãƒ³ãƒ¡ãƒ¢ãƒª IO ã¨ã‚¹ã‚«ãƒ© IO
 
 =item PerlIO::via
 
@@ -3480,7 +3480,7 @@ Helper class for PerlIO layers implemented in perl
 
 =end original
 
-perl ¤Ç¼ÂÁõ¤µ¤ì¤Æ¤¤¤ë PerlIO ÁØ¤Î¥Ø¥ë¥Ñ¡¼¥¯¥é¥¹
+perl ã§å®Ÿè£…ã•ã‚Œã¦ã„ã‚‹ PerlIO å±¤ã®ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item PerlIO::via::QuotedPrint
 
@@ -3490,7 +3490,7 @@ PerlIO layer for quoted-printable strings
 
 =end original
 
-quoted-printable Ê¸»úÎó¤Î¤¿¤á¤Î PerlIO ÁØ
+quoted-printable æ–‡å­—åˆ—ã®ãŸã‚ã® PerlIO å±¤
 
 =item Pod::Checker
 
@@ -3500,7 +3500,7 @@ Check pod documents for syntax errors
 
 =end original
 
-POD ¥É¥­¥å¥á¥ó¥È¤ÎÊ¸Ë¡¥¨¥é¡¼¤ò¥Á¥§¥Ã¥¯¤¹¤ë
+POD ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®æ–‡æ³•ã‚¨ãƒ©ãƒ¼ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 
 =item Pod::Escapes
 
@@ -3514,7 +3514,7 @@ Find POD documents in directory trees
 
 =end original
 
-¥Ç¥£¥ì¥¯¥È¥ê¥Ä¥ê¡¼¤«¤é POD ¥É¥­¥å¥á¥ó¥È¤ò¸«¤Ä¤±¤ë
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ„ãƒªãƒ¼ã‹ã‚‰ POD ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’è¦‹ã¤ã‘ã‚‹
 
 =item Pod::Functions
 
@@ -3524,7 +3524,7 @@ Group Perl's functions a la perlfunc.pod
 
 =end original
 
-Perl ¤Î´Ø¿ô¤ò perlfunc.pod É÷¤Ë½¸¤á¤ë
+Perl ã®é–¢æ•°ã‚’ perlfunc.pod é¢¨ã«é›†ã‚ã‚‹
 
 =item Pod::Html
 
@@ -3534,7 +3534,7 @@ Module to convert pod files to HTML
 
 =end original
 
-POD ¥Õ¥¡¥¤¥ë¤ò HTML ¤ËÊÑ´¹¤¹¤ë¥â¥¸¥å¡¼¥ë
+POD ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ HTML ã«å¤‰æ›ã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Pod::InputObjects
 
@@ -3544,7 +3544,7 @@ Objects representing POD input paragraphs, commands, etc.
 
 =end original
 
-POD ÆşÎÏÃÊÍî¡¢¥³¥Ş¥ó¥É¤Ê¤É¤òÉ½¸½¤¹¤ë¥ª¥Ö¥¸¥§¥¯¥È
+POD å…¥åŠ›æ®µè½ã€ã‚³ãƒãƒ³ãƒ‰ãªã©ã‚’è¡¨ç¾ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 =item Pod::LaTeX
 
@@ -3554,7 +3554,7 @@ Convert Pod data to formatted Latex
 
 =end original
 
-POD ¥Ç¡¼¥¿¤ò¥Õ¥©¡¼¥Ş¥Ã¥È¤µ¤ì¤¿ Latex ¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸ Latex ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Man
 
@@ -3564,7 +3564,7 @@ Convert POD data to formatted *roff input
 
 =end original
 
-POD ¥Ç¡¼¥¿¤ò¥Õ¥©¡¼¥Ş¥Ã¥È¤µ¤ì¤¿ *roff ÆşÎÏ¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸ *roff å…¥åŠ›ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::ParseLink
 
@@ -3574,7 +3574,7 @@ Parse an LE<lt>E<gt> formatting code in POD text
 
 =end original
 
-POD ¥Æ¥­¥¹¥ÈÃæ¤Î LE<lt>E<gt> ¥Õ¥©¡¼¥Ş¥Ã¥È¥³¡¼¥É¤ò¥Ñ¡¼¥¹¤¹¤ë
+POD ãƒ†ã‚­ã‚¹ãƒˆä¸­ã® LE<lt>E<gt> ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ¼ãƒ‰ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹
 
 =item Pod::ParseUtils
 
@@ -3584,7 +3584,7 @@ Helpers for POD parsing and conversion
 
 =end original
 
-POD ¤Î¥Ñ¡¼¥¹¤ÈÊÑ´¹¤Î¤¿¤á¤Î¥Ø¥ë¥Ñ¡¼¥¯¥é¥¹
+POD ã®ãƒ‘ãƒ¼ã‚¹ã¨å¤‰æ›ã®ãŸã‚ã®ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹
 
 =item Pod::Parser
 
@@ -3594,7 +3594,7 @@ Base class for creating POD filters and translators
 
 =end original
 
-POD ¥Õ¥£¥ë¥¿¤ÈÊÑ´¹´ï¤ò¤òºîÀ®¤¹¤ë¤¿¤á¤Î´ğÄì¥¯¥é¥¹
+POD ãƒ•ã‚£ãƒ«ã‚¿ã¨å¤‰æ›å™¨ã‚’ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item Pod::Perldoc::ToChecker
 
@@ -3604,7 +3604,7 @@ Let Perldoc check Pod for errors
 
 =end original
 
-Perldoc ¤Ë Pod ¤Î¥¨¥é¡¼¤ò¥Á¥§¥Ã¥¯¤µ¤»¤ë
+Perldoc ã« Pod ã®ã‚¨ãƒ©ãƒ¼ã‚’ãƒã‚§ãƒƒã‚¯ã•ã›ã‚‹
 
 =item Pod::Perldoc::ToMan
 
@@ -3614,7 +3614,7 @@ Let Perldoc render Pod as man pages
 
 =end original
 
-Perldoc ¤Ë POD ¤ò man ¥Ú¡¼¥¸¤È¤·¤ÆÉ½¸½¤µ¤»¤ë
+Perldoc ã« POD ã‚’ man ãƒšãƒ¼ã‚¸ã¨ã—ã¦è¡¨ç¾ã•ã›ã‚‹
 
 =item Pod::Perldoc::ToNroff
 
@@ -3624,7 +3624,7 @@ Let Perldoc convert Pod to nroff
 
 =end original
 
-Perldoc ¤Ë POD ¤ò nroff ¤ËÊÑ´¹¤µ¤»¤ë
+Perldoc ã« POD ã‚’ nroff ã«å¤‰æ›ã•ã›ã‚‹
 
 =item Pod::Perldoc::ToPod
 
@@ -3634,7 +3634,7 @@ Let Perldoc render Pod as ... Pod!
 
 =end original
 
-Perldoc ¤Ë POD ¤ò¡ÄPOD¤È¤·¤ÆÉ½¸½¤µ¤»¤ë!
+Perldoc ã« POD ã‚’â€¦PODã¨ã—ã¦è¡¨ç¾ã•ã›ã‚‹!
 
 =item Pod::Perldoc::ToRtf
 
@@ -3644,7 +3644,7 @@ Let Perldoc render Pod as RTF
 
 =end original
 
-Perldoc ¤Ë POD ¤ò RTF ¤È¤·¤ÆÉ½¸½¤µ¤»¤ë
+Perldoc ã« POD ã‚’ RTF ã¨ã—ã¦è¡¨ç¾ã•ã›ã‚‹
 
 =item Pod::Perldoc::ToText
 
@@ -3654,7 +3654,7 @@ Let Perldoc render Pod as plaintext
 
 =end original
 
-Perldoc ¤Ë POD ¤ò¥×¥ì¡¼¥ó¥Æ¥­¥¹¥È¤È¤·¤ÆÉ½¸½¤µ¤»¤ë
+Perldoc ã« POD ã‚’ãƒ—ãƒ¬ãƒ¼ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¨ã—ã¦è¡¨ç¾ã•ã›ã‚‹
 
 =item Pod::Perldoc::ToTk
 
@@ -3664,7 +3664,7 @@ Let Perldoc use Tk::Pod to render Pod
 
 =end original
 
-Perldoc ¤Ë¡¢POD ¤ÎÉ½¸½¤Ë Tk::Pod ¤ò»È¤¦¤è¤¦¤Ë¤µ¤»¤ë
+Perldoc ã«ã€POD ã®è¡¨ç¾ã« Tk::Pod ã‚’ä½¿ã†ã‚ˆã†ã«ã•ã›ã‚‹
 
 =item Pod::Perldoc::ToXml
 
@@ -3674,7 +3674,7 @@ Let Perldoc render Pod as XML
 
 =end original
 
-Perldoc ¤Ë POD ¤ò XML ¤È¤·¤ÆÉ½¸½¤µ¤»¤ë
+Perldoc ã« POD ã‚’ XML ã¨ã—ã¦è¡¨ç¾ã•ã›ã‚‹
 
 =item Pod::PlainText
 
@@ -3684,7 +3684,7 @@ Convert POD data to formatted ASCII text
 
 =end original
 
-POD ¥Ç¡¼¥¿¤ò¥Õ¥©¡¼¥Ş¥Ã¥È¤µ¤ì¤¿ ASCII ¥Æ¥­¥¹¥È¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸ ASCII ãƒ†ã‚­ã‚¹ãƒˆã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Plainer
 
@@ -3694,7 +3694,7 @@ Perl extension for converting Pod to old style Pod.
 
 =end original
 
-POD ¤ò¸Å¤¤·Á¼°¤Î POD ¤ËÊÑ´¹¤¹¤ë¤¿¤á¤Î Perl ¥¨¥¯¥¹¥Æ¥ó¥·¥ç¥ó
+POD ã‚’å¤ã„å½¢å¼ã® POD ã«å¤‰æ›ã™ã‚‹ãŸã‚ã® Perl ã‚¨ã‚¯ã‚¹ãƒ†ãƒ³ã‚·ãƒ§ãƒ³
 
 =item Pod::Select
 
@@ -3704,7 +3704,7 @@ Extract selected sections of POD from input
 
 =end original
 
-ÆşÎÏ¤«¤é POD ¤ÎÁªÂò¤·¤¿¾Ï¤òÃê½Ğ¤¹¤ë
+å…¥åŠ›ã‹ã‚‰ POD ã®é¸æŠã—ãŸç« ã‚’æŠ½å‡ºã™ã‚‹
 
 =item Pod::Simple
 
@@ -3714,7 +3714,7 @@ Framework for parsing Pod
 
 =end original
 
-POD ¤ò¥Ñ¡¼¥¹¤¹¤ë¤¿¤á¤Î¥Õ¥ì¡¼¥à¥ï¡¼¥¯
+POD ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯
 
 =item Pod::Simple::Checker
 
@@ -3724,7 +3724,7 @@ Check the Pod syntax of a document
 
 =end original
 
-¥É¥­¥å¥á¥ó¥È¤Î POD Ê¸Ë¡¤ò¥Á¥§¥Ã¥¯¤¹¤ë
+ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã® POD æ–‡æ³•ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 
 =item Pod::Simple::Debug
 
@@ -3734,7 +3734,7 @@ Put Pod::Simple into trace/debug mode
 
 =end original
 
-Pod::Simple ¤ò¥È¥ì¡¼¥¹/¥Ç¥Ğ¥Ã¥°¥â¡¼¥É¤Ë¤¹¤ë
+Pod::Simple ã‚’ãƒˆãƒ¬ãƒ¼ã‚¹/ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã«ã™ã‚‹
 
 =item Pod::Simple::DumpAsText
 
@@ -3744,7 +3744,7 @@ Dump Pod-parsing events as text
 
 =end original
 
-POD ¥Ñ¡¼¥¹»ş¤Î¥¤¥Ù¥ó¥È¤ò¥Æ¥­¥¹¥È¤È¤·¤Æ¥À¥ó¥×¤¹¤ë
+POD ãƒ‘ãƒ¼ã‚¹æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’ãƒ†ã‚­ã‚¹ãƒˆã¨ã—ã¦ãƒ€ãƒ³ãƒ—ã™ã‚‹
 
 =item Pod::Simple::DumpAsXML
 
@@ -3754,7 +3754,7 @@ Turn Pod into XML
 
 =end original
 
-POD ¤ò XML ¤ËÊÑ´¹¤¹¤ë
+POD ã‚’ XML ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Simple::HTML
 
@@ -3764,7 +3764,7 @@ Convert Pod to HTML
 
 =end original
 
-POD ¤ò HTML ¤ËÊÑ´¹¤¹¤ë
+POD ã‚’ HTML ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Simple::HTMLBatch
 
@@ -3774,7 +3774,7 @@ Convert several Pod files to several HTML files
 
 =end original
 
-Ê£¿ô¤ÎPOD ¥Õ¥¡¥¤¥ë¤òÊ£¿ô¤Î HTML ¥Õ¥¡¥¤¥ë¤ËÊÑ´¹¤¹¤ë
+è¤‡æ•°ã®POD ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡æ•°ã® HTML ãƒ•ã‚¡ã‚¤ãƒ«ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Simple::LinkSection
 
@@ -3784,7 +3784,7 @@ Represent "section" attributes of L codes
 
 =end original
 
-L ¥³¡¼¥É¤Î "section" Â°À­¤ÎÉ½¸½
+L ã‚³ãƒ¼ãƒ‰ã® "section" å±æ€§ã®è¡¨ç¾
 
 =item Pod::Simple::Methody
 
@@ -3794,7 +3794,7 @@ Turn Pod::Simple events into method calls
 
 =end original
 
-Pod::Simple ¥¤¥Ù¥ó¥È¤ò¥á¥½¥Ã¥É¸Æ¤Ó½Ğ¤·¤ËÊÑ´¹¤¹¤ë
+Pod::Simple ã‚¤ãƒ™ãƒ³ãƒˆã‚’ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Simple::PullParser
 
@@ -3804,7 +3804,7 @@ A pull-parser interface to parsing Pod
 
 =end original
 
-POD ¤ò¥Ñ¡¼¥¹¤¹¤ë¤¿¤á¤Î¥×¥ë¥Ñ¡¼¥µ¡¼¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+POD ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ«ãƒ‘ãƒ¼ã‚µãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Pod::Simple::PullParserEndToken
 
@@ -3814,7 +3814,7 @@ End-tokens from Pod::Simple::PullParser
 
 =end original
 
-Pod::Simple::PullParser ¤«¤é¤Î End ¥È¡¼¥¯¥ó
+Pod::Simple::PullParser ã‹ã‚‰ã® End ãƒˆãƒ¼ã‚¯ãƒ³
 
 =item Pod::Simple::PullParserStartToken
 
@@ -3824,7 +3824,7 @@ Start-tokens from Pod::Simple::PullParser
 
 =end original
 
-Pod::Simple::PullParser ¤«¤é¤Î Start ¥È¡¼¥¯¥ó
+Pod::Simple::PullParser ã‹ã‚‰ã® Start ãƒˆãƒ¼ã‚¯ãƒ³
 
 =item Pod::Simple::PullParserTextToken
 
@@ -3834,7 +3834,7 @@ Text-tokens from Pod::Simple::PullParser
 
 =end original
 
-Pod::Simple::PullParser ¤«¤é¤Î Text ¥È¡¼¥¯¥ó
+Pod::Simple::PullParser ã‹ã‚‰ã® Text ãƒˆãƒ¼ã‚¯ãƒ³
 
 =item Pod::Simple::PullParserToken
 
@@ -3844,7 +3844,7 @@ Tokens from Pod::Simple::PullParser
 
 =end original
 
-Pod::Simple::PullParser ¤«¤é¤Î¥È¡¼¥¯¥ó
+Pod::Simple::PullParser ã‹ã‚‰ã®ãƒˆãƒ¼ã‚¯ãƒ³
 
 =item Pod::Simple::RTF
 
@@ -3854,7 +3854,7 @@ Format Pod as RTF
 
 =end original
 
-POD ¤ò RTF ¤È¤·¤ÆÀ°·Á¤¹¤ë
+POD ã‚’ RTF ã¨ã—ã¦æ•´å½¢ã™ã‚‹
 
 =item Pod::Simple::Search
 
@@ -3864,7 +3864,7 @@ Find POD documents in directory trees
 
 =end original
 
-¥Ç¥£¥ì¥¯¥È¥ê¥Ä¥ê¡¼¤«¤é POD ¥É¥­¥å¥á¥ó¥È¤ò¸¡º÷¤¹¤ë
+ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ„ãƒªãƒ¼ã‹ã‚‰ POD ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ¤œç´¢ã™ã‚‹
 
 =item Pod::Simple::SimpleTree
 
@@ -3874,7 +3874,7 @@ Parse Pod into a simple parse tree
 
 =end original
 
-POD ¤òÃ±½ã¤Ê¥Ñ¡¼¥¹¥Ä¥ê¡¼¤Ë¥Ñ¡¼¥¹¤¹¤ë
+POD ã‚’å˜ç´”ãªãƒ‘ãƒ¼ã‚¹ãƒ„ãƒªãƒ¼ã«ãƒ‘ãƒ¼ã‚¹ã™ã‚‹
 
 =item Pod::Simple::Subclassing
 
@@ -3884,7 +3884,7 @@ Write a formatter as a Pod::Simple subclass
 
 =end original
 
-Pod::Simple ¤ÎÇÉÀ¸¥¯¥é¥¹¤È¤·¤Æ¥Õ¥©¡¼¥Ş¥Ã¥¿¡¼¤ò½ñ¤¯
+Pod::Simple ã®æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ã¨ã—ã¦ãƒ•ã‚©ãƒ¼ãƒãƒƒã‚¿ãƒ¼ã‚’æ›¸ã
 
 =item Pod::Simple::Text
 
@@ -3894,7 +3894,7 @@ Format Pod as plaintext
 
 =end original
 
-POD ¤ò¥×¥ì¡¼¥ó¥Æ¥­¥¹¥È¤È¤·¤ÆÀ°·Á¤¹¤ë
+POD ã‚’ãƒ—ãƒ¬ãƒ¼ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¨ã—ã¦æ•´å½¢ã™ã‚‹
 
 =item Pod::Simple::TextContent
 
@@ -3904,7 +3904,7 @@ Get the text content of Pod
 
 =end original
 
-POD ¤Î¥Æ¥­¥¹¥È¥³¥ó¥Æ¥ó¥Ä¤òÆÀ¤ë
+POD ã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’å¾—ã‚‹
 
 =item Pod::Simple::XMLOutStream
 
@@ -3914,7 +3914,7 @@ Turn Pod into XML
 
 =end original
 
-POD ¤ò XML ¤ËÊÑ´¹¤¹¤ë
+POD ã‚’ XML ã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Text
 
@@ -3924,7 +3924,7 @@ Convert POD data to formatted ASCII text
 
 =end original
 
-POD ¥Ç¡¼¥¿¤òÀ°·Á¤µ¤ì¤¿ ASCII ¥Æ¥­¥¹¥È¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’æ•´å½¢ã•ã‚ŒãŸ ASCII ãƒ†ã‚­ã‚¹ãƒˆã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Text::Color
 
@@ -3934,7 +3934,7 @@ Convert POD data to formatted color ASCII text
 
 =end original
 
-POD ¥Ç¡¼¥¿¤òÀ°·Á¤µ¤ì¤¿¿§ÉÕ¤­ ASCII ¥Æ¥­¥¹¥È¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’æ•´å½¢ã•ã‚ŒãŸè‰²ä»˜ã ASCII ãƒ†ã‚­ã‚¹ãƒˆã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Text::Overstrike
 
@@ -3944,7 +3944,7 @@ Convert POD data to formatted overstrike text
 
 =end original
 
-POD ¥Ç¡¼¥¿¤òÀ°·Á¤µ¤ì¤¿½Å¤ÍÂÇ¤Á¥Æ¥­¥¹¥È¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’æ•´å½¢ã•ã‚ŒãŸé‡ã­æ‰“ã¡ãƒ†ã‚­ã‚¹ãƒˆã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Text::Termcap
 
@@ -3954,7 +3954,7 @@ Convert POD data to ASCII text with format escapes
 
 =end original
 
-POD ¥Ç¡¼¥¿¤òÀ°·Á¤µ¤ì¤¿¥¨¥¹¥±¡¼¥×¤Ä¤­¤Î ASCII ¥Æ¥­¥¹¥È¤ËÊÑ´¹¤¹¤ë
+POD ãƒ‡ãƒ¼ã‚¿ã‚’æ•´å½¢ã•ã‚ŒãŸã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¤ãã® ASCII ãƒ†ã‚­ã‚¹ãƒˆã«å¤‰æ›ã™ã‚‹
 
 =item Pod::Usage
 
@@ -3964,7 +3964,7 @@ Print a usage message from embedded pod documentation
 
 =end original
 
-ÁÈ¤ß¹ş¤ß¤Î POD ¥É¥­¥å¥á¥ó¥È¤«¤é»ÈÍÑË¡¤òÉ½¼¨¤¹¤ë
+çµ„ã¿è¾¼ã¿ã® POD ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‹ã‚‰ä½¿ç”¨æ³•ã‚’è¡¨ç¤ºã™ã‚‹
 
 =item SDBM_File
 
@@ -3974,7 +3974,7 @@ Tied access to sdbm files
 
 =end original
 
-sdbm ¥Õ¥¡¥¤¥ë¤ËÂĞ¤¹¤ë tie ¤µ¤ì¤¿¥¢¥¯¥»¥¹
+sdbm ãƒ•ã‚¡ã‚¤ãƒ«ã«å¯¾ã™ã‚‹ tie ã•ã‚ŒãŸã‚¢ã‚¯ã‚»ã‚¹
 
 =item Safe
 
@@ -3984,7 +3984,7 @@ Compile and execute code in restricted compartments
 
 =end original
 
-À©¸Â¤µ¤ì¤¿ÎÎ°è¤Ç¥×¥í¥°¥é¥à¤Î¥³¥ó¥Ñ¥¤¥ë¤È¼Â¹Ô¤ò¹Ô¤¦
+åˆ¶é™ã•ã‚ŒãŸé ˜åŸŸã§ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã¨å®Ÿè¡Œã‚’è¡Œã†
 
 =item Scalar::Util
 
@@ -3994,7 +3994,7 @@ A selection of general-utility scalar subroutines
 
 =end original
 
-ÈÆÍÑ¥æ¡¼¥Æ¥£¥ê¥Æ¥£¥¹¥«¥é¥µ¥Ö¥ë¡¼¥Á¥ó¤ÎÁª½¸
+æ±ç”¨ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¹ã‚«ãƒ©ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã®é¸é›†
 
 =item Search::Dict
 
@@ -4004,7 +4004,7 @@ Search for key in dictionary file
 
 =end original
 
-¼­½ñ¥Õ¥¡¥¤¥ë¤Ë¤¢¤ë¥­¡¼¤ò¸¡º÷¤¹¤ë
+è¾æ›¸ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚ã‚‹ã‚­ãƒ¼ã‚’æ¤œç´¢ã™ã‚‹
 
 =item SelectSaver
 
@@ -4014,7 +4014,7 @@ Save and restore selected file handle
 
 =end original
 
-ÁªÂò¤µ¤ì¤¿¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤ÎÊİÂ¸¤ÈÉüµ¢¤ò¹Ô¤¦
+é¸æŠã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã®ä¿å­˜ã¨å¾©å¸°ã‚’è¡Œã†
 
 =item SelfLoader
 
@@ -4024,7 +4024,7 @@ Load functions only on demand
 
 =end original
 
-É¬Í×¤Ê´Ø¿ô¤Î¤ß¤ò¥í¡¼¥É¤¹¤ë
+å¿…è¦ãªé–¢æ•°ã®ã¿ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 
 =item Shell
 
@@ -4034,7 +4034,7 @@ Run shell commands transparently within perl
 
 =end original
 
-Perl ¤ÎÃæ¤«¤éÆ©²áÅª¤Ë¥·¥§¥ë¥³¥Ş¥ó¥É¤ò¼Â¹Ô¤¹¤ë
+Perl ã®ä¸­ã‹ã‚‰é€éçš„ã«ã‚·ã‚§ãƒ«ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹
 
 =item Socket
 
@@ -4044,8 +4044,8 @@ Load the C socket.h defines and structure manipulators
 
 =end original
 
-C¤Î socket.h ¤Ë¤¢¤ëÄêµÁ¤È¹½Â¤ÂÎÁàºî»Ò(structure manipulators)¤ò
-¥í¡¼¥É¤¹¤ë
+Cã® socket.h ã«ã‚ã‚‹å®šç¾©ã¨æ§‹é€ ä½“æ“ä½œå­(structure manipulators)ã‚’
+ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 
 =item Storable
 
@@ -4055,7 +4055,7 @@ Persistence for Perl data structures
 
 =end original
 
-Perl ¥Ç¡¼¥¿¹½Â¤¤Î±ÊÂ³²½
+Perl ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã®æ°¸ç¶šåŒ–
 
 =item Switch
 
@@ -4065,7 +4065,7 @@ A switch statement for Perl
 
 =end original
 
-Perl ¤Î¤¿¤á¤Î switch Ê¸
+Perl ã®ãŸã‚ã® switch æ–‡
 
 =item Symbol
 
@@ -4075,7 +4075,7 @@ Manipulate Perl symbols and their names
 
 =end original
 
-Perl¤Î¥·¥ó¥Ü¥ë¤È¤½¤ÎÌ¾Á°¤òÁàºî¤¹¤ë
+Perlã®ã‚·ãƒ³ãƒœãƒ«ã¨ãã®åå‰ã‚’æ“ä½œã™ã‚‹
 
 =item Sys::Hostname
 
@@ -4085,7 +4085,7 @@ Try every conceivable way to get hostname
 
 =end original
 
-¥Û¥¹¥ÈÌ¾¤ò¼èÆÀ¤¹¤ë¹Í¤¨¤é¤ì¤ë¤¹¤Ù¤Æ¤ÎÊıË¡¤ò»î¹Ô¤¹¤ë
+ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹è€ƒãˆã‚‰ã‚Œã‚‹ã™ã¹ã¦ã®æ–¹æ³•ã‚’è©¦è¡Œã™ã‚‹
 
 =item Sys::Syslog
 
@@ -4095,7 +4095,7 @@ Perl interface to the UNIX syslog(3) calls
 
 =end original
 
-UNIX ¤Î syslog(3) ¥³¡¼¥ë¤ËÂĞ¤¹¤ë Perl ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+UNIX ã® syslog(3) ã‚³ãƒ¼ãƒ«ã«å¯¾ã™ã‚‹ Perl ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Sys::Syslog::win32::Win32
 
@@ -4105,7 +4105,7 @@ Win32 support for Sys::Syslog
 
 =end original
 
-Sys::Syslog ¤Î Win32 ÂĞ±ş
+Sys::Syslog ã® Win32 å¯¾å¿œ
 
 =item Term::ANSIColor
 
@@ -4115,7 +4115,7 @@ Color screen output using ANSI escape sequences
 
 =end original
 
-ANSI ¥¨¥¹¥±¡¼¥×¥·¡¼¥±¥ó¥¹¤ò»È¤Ã¤¿¿§ÉÕ¤­²èÌÌ½ĞÎÏ
+ANSI ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚’ä½¿ã£ãŸè‰²ä»˜ãç”»é¢å‡ºåŠ›
 
 =item Term::Cap
 
@@ -4125,7 +4125,7 @@ Perl termcap interface
 
 =end original
 
-Perl ¤Î termcap ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã® termcap ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Term::Complete
 
@@ -4135,7 +4135,7 @@ Perl word completion module
 
 =end original
 
-¸ì¤ÎÊä´°¥â¥¸¥å¡¼¥ë
+èªã®è£œå®Œãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item Term::ReadLine
 
@@ -4145,7 +4145,7 @@ Perl interface to various C<readline> packages.
 
 =end original
 
-ÍÍ¡¹¤Ê C<readline> ¥Ñ¥Ã¥±¡¼¥¸¤ËÂĞ¤¹¤ë Perl ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+æ§˜ã€…ãª C<readline> ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ Perl ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Term::UI
 
@@ -4155,7 +4155,7 @@ Term::ReadLine UI made easy
 
 =end original
 
-Term::ReadLine UI ¤ò´ÊÃ±¤Ë¤¹¤ë
+Term::ReadLine UI ã‚’ç°¡å˜ã«ã™ã‚‹
 
 =item Test
 
@@ -4165,7 +4165,7 @@ Provides a simple framework for writing test scripts
 
 =end original
 
-¥Æ¥¹¥È¥¹¥¯¥ê¥×¥È¤ò½ñ¤¯¤¿¤á¤ÎÃ±½ã¤Ê¥Õ¥ì¡¼¥à¥ï¡¼¥¯¤òÄó¶¡¤¹¤ë
+ãƒ†ã‚¹ãƒˆã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æ›¸ããŸã‚ã®å˜ç´”ãªãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’æä¾›ã™ã‚‹
 
 =item Test::Builder
 
@@ -4175,7 +4175,7 @@ Backend for building test libraries
 
 =end original
 
-¥Æ¥¹¥È¥é¥¤¥Ö¥é¥ê¤ò¥Ó¥ë¥É¤¹¤ë¤¿¤á¤Î¥Ğ¥Ã¥¯¥¨¥ó¥É
+ãƒ†ã‚¹ãƒˆãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ãƒ“ãƒ«ãƒ‰ã™ã‚‹ãŸã‚ã®ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰
 
 =item Test::Builder::Module
 
@@ -4185,7 +4185,7 @@ Base class for test modules
 
 =end original
 
-¥Æ¥¹¥È¥â¥¸¥å¡¼¥ë¤Î´ğÄì¥¯¥é¥¹
+ãƒ†ã‚¹ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item Test::Builder::Tester
 
@@ -4195,7 +4195,7 @@ Test testsuites that have been built with
 
 =end original
 
-¥Ó¥ë¥É¤µ¤ì¤¿¥Æ¥¹¥È¥¹¥¤¡¼¥È¤ò¥Æ¥¹¥È¤¹¤ë
+ãƒ“ãƒ«ãƒ‰ã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚¹ã‚¤ãƒ¼ãƒˆã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹
 
 =item Test::Builder::Tester::Color
 
@@ -4205,7 +4205,7 @@ Turn on colour in Test::Builder::Tester
 
 =end original
 
-Test::Builder::Tester ¤ò¿§ÉÕ¤­¤Ë¤¹¤ë
+Test::Builder::Tester ã‚’è‰²ä»˜ãã«ã™ã‚‹
 
 =item Test::Harness
 
@@ -4215,7 +4215,7 @@ Run Perl standard test scripts with statistics
 
 =end original
 
-Perl ¤ÎÉ¸½à¥Æ¥¹¥È¥¹¥¯¥ê¥×¥È¤òÅı·×¤ò¼è¤ê¤Ê¤¬¤é¼Â¹Ô¤¹¤ë
+Perl ã®æ¨™æº–ãƒ†ã‚¹ãƒˆã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’çµ±è¨ˆã‚’å–ã‚ŠãªãŒã‚‰å®Ÿè¡Œã™ã‚‹
 
 =item Test::Harness::Assert
 
@@ -4225,7 +4225,7 @@ Simple assert
 
 =end original
 
-Ã±½ã¤Ê¥¢¥µ¡¼¥È
+å˜ç´”ãªã‚¢ã‚µãƒ¼ãƒˆ
 
 =item Test::Harness::Iterator
 
@@ -4235,7 +4235,7 @@ Internal Test::Harness Iterator
 
 =end original
 
-Test::Harness ¤ÎÆâÉôÈ¿Éü»Ò
+Test::Harness ã®å†…éƒ¨åå¾©å­
 
 =item Test::Harness::Point
 
@@ -4245,7 +4245,7 @@ Object for tracking a single test point
 
 =end original
 
-¤Ò¤È¤Ä¤Î¥Æ¥¹¥È¥İ¥¤¥ó¥È¤òÄÉÀ×¤¹¤ë¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È
+ã²ã¨ã¤ã®ãƒ†ã‚¹ãƒˆãƒã‚¤ãƒ³ãƒˆã‚’è¿½è·¡ã™ã‚‹ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 =item Test::Harness::Results
 
@@ -4255,7 +4255,7 @@ Object for tracking results from a single test file
 
 =end original
 
-Ã±°ì¤Î¥Æ¥¹¥È¥Õ¥¡¥¤¥ë¤Î·ë²Ì¤òÄÉÀ×¤¹¤ë¤¿¤á¤Î¥ª¥Ö¥¸¥§¥¯¥È
+å˜ä¸€ã®ãƒ†ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®çµæœã‚’è¿½è·¡ã™ã‚‹ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 =item Test::Harness::Straps
 
@@ -4265,7 +4265,7 @@ Detailed analysis of test results
 
 =end original
 
-¥Æ¥¹¥È·ë²Ì¤Î¾ÜºÙ¤ÊÊ¬ÀÏ
+ãƒ†ã‚¹ãƒˆçµæœã®è©³ç´°ãªåˆ†æ
 
 =item Test::Harness::TAP
 
@@ -4275,7 +4275,7 @@ Documentation for the TAP format
 
 =end original
 
-TAP ¥Õ¥©¡¼¥Ş¥Ã¥È¤Î¥É¥­¥å¥á¥ó¥È
+TAP ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
 
 =item Test::Harness::Util
 
@@ -4285,7 +4285,7 @@ Utility functions for Test::Harness::*
 
 =end original
 
-Test::Harness::* ¤Î¤¿¤á¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£´Ø¿ô
+Test::Harness::* ã®ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£é–¢æ•°
 
 =item Test::More
 
@@ -4295,7 +4295,7 @@ Yet another framework for writing test scripts
 
 =end original
 
-¥Æ¥¹¥È¥¹¥¯¥ê¥×¥È¤ò½ñ¤¯¤¿¤á¤Î¤â¤¦°ì¤Ä¤Î¥Õ¥ì¡¼¥à¥ï¡¼¥¯
+ãƒ†ã‚¹ãƒˆã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æ›¸ããŸã‚ã®ã‚‚ã†ä¸€ã¤ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯
 
 =item Test::Simple
 
@@ -4305,7 +4305,7 @@ Basic utilities for writing tests.
 
 =end original
 
-¥Æ¥¹¥È¤ò½ñ¤¯¤¿¤á¤Î´ğËÜÅª¤Ê¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+ãƒ†ã‚¹ãƒˆã‚’æ›¸ããŸã‚ã®åŸºæœ¬çš„ãªãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item Test::Tutorial
 
@@ -4315,7 +4315,7 @@ A tutorial about writing really basic tests
 
 =end original
 
-ËÜÅö¤Ë´ğËÜÅª¤Ê¥Æ¥¹¥È¤ò½ñ¤¯¤¿¤á¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë
+æœ¬å½“ã«åŸºæœ¬çš„ãªãƒ†ã‚¹ãƒˆã‚’æ›¸ããŸã‚ã®ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 
 =item Text::Abbrev
 
@@ -4325,7 +4325,7 @@ Create an abbreviation table from a list
 
 =end original
 
-¥ê¥¹¥È¤«¤éÎ¬¸ì¥Æ¡¼¥Ö¥ë¤òºîÀ®¤·¤Ş¤¹
+ãƒªã‚¹ãƒˆã‹ã‚‰ç•¥èªãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ã¾ã™
 
 =item Text::Balanced
 
@@ -4335,7 +4335,7 @@ Extract delimited text sequences from strings.
 
 =end original
 
-Ê¸»úÎó¤«¤é¥Ç¥ê¥ß¥¿¤Ç¶èÀÚ¤é¤ì¤¿¥Æ¥­¥¹¥ÈÎó¤òÃê½Ğ¤¹¤ë
+æ–‡å­—åˆ—ã‹ã‚‰ãƒ‡ãƒªãƒŸã‚¿ã§åŒºåˆ‡ã‚‰ã‚ŒãŸãƒ†ã‚­ã‚¹ãƒˆåˆ—ã‚’æŠ½å‡ºã™ã‚‹
 
 =item Text::ParseWords
 
@@ -4345,7 +4345,7 @@ Parse text into an array of tokens or array of arrays
 
 =end original
 
-¥Æ¥­¥¹¥È¤ò²òÀÏ¤·¤Æ¥È¡¼¥¯¥ó¤ÎÇÛÎó¤äÇÛÎó¤ÎÇÛÎó¤Ë¤·¤Ş¤¹
+ãƒ†ã‚­ã‚¹ãƒˆã‚’è§£æã—ã¦ãƒˆãƒ¼ã‚¯ãƒ³ã®é…åˆ—ã‚„é…åˆ—ã®é…åˆ—ã«ã—ã¾ã™
 
 =item Text::Soundex
 
@@ -4355,7 +4355,7 @@ Implementation of the soundex algorithm.
 
 =end original
 
-soundex ¥¢¥ë¥´¥ê¥º¥à¤Î¼ÂÁõ
+soundex ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã®å®Ÿè£…
 
 =item Text::Tabs
 
@@ -4365,7 +4365,7 @@ Expand and unexpand tabs per the unix expand(1) and unexpand(1)
 
 =end original
 
-UNIX ¤Î expand(1) ¤ä unexpand(1) ¤Î¤è¤¦¤Ë¥¿¥Ö¤ÎÅ¸³«¤ä¥¿¥Ö¤Ø¤ÎÃÖ´¹¤ò¹Ô¤¦
+UNIX ã® expand(1) ã‚„ unexpand(1) ã®ã‚ˆã†ã«ã‚¿ãƒ–ã®å±•é–‹ã‚„ã‚¿ãƒ–ã¸ã®ç½®æ›ã‚’è¡Œã†
 
 =item Text::Wrap
 
@@ -4375,7 +4375,7 @@ Line wrapping to form simple paragraphs
 
 =end original
 
-Ã±½ã¤Ê¥Ñ¥é¥°¥é¥Õ¤ËÂĞ¤¹¤ë¹Ô¥é¥Ã¥Ô¥ó¥°
+å˜ç´”ãªãƒ‘ãƒ©ã‚°ãƒ©ãƒ•ã«å¯¾ã™ã‚‹è¡Œãƒ©ãƒƒãƒ”ãƒ³ã‚°
 
 =item Thread
 
@@ -4385,7 +4385,7 @@ Manipulate threads in Perl (for old code only)
 
 =end original
 
-Perl ¤Î¥¹¥ì¥Ã¥É¤òÁàºî¤¹¤ë (¸Å¤¤¥³¡¼¥ÉÀìÍÑ)
+Perl ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’æ“ä½œã™ã‚‹ (å¤ã„ã‚³ãƒ¼ãƒ‰å°‚ç”¨)
 
 =item Thread::Queue
 
@@ -4395,7 +4395,7 @@ Thread-safe queues
 
 =end original
 
-¥¹¥ì¥Ã¥É¥»¡¼¥Õ¤Ê¥­¥å¡¼
+ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ãªã‚­ãƒ¥ãƒ¼
 
 =item Thread::Semaphore
 
@@ -4405,7 +4405,7 @@ Thread-safe semaphores
 
 =end original
 
-¥¹¥ì¥Ã¥É¥»¡¼¥Õ¤Ê¥»¥Ş¥Õ¥©
+ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ãªã‚»ãƒãƒ•ã‚©
 
 =item Tie::Array
 
@@ -4415,7 +4415,7 @@ Base class for tied arrays
 
 =end original
 
-tie ¤µ¤ì¤¿ÇÛÎó¤Î¤¿¤á¤Î´ğÄì¥¯¥é¥¹
+tie ã•ã‚ŒãŸé…åˆ—ã®ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item Tie::File
 
@@ -4425,7 +4425,7 @@ Access the lines of a disk file via a Perl array
 
 =end original
 
-¥Ç¥£¥¹¥¯¤Î¥Õ¥¡¥¤¥ë¤Î¹Ô¤Ë Perl ¤ÎÇÛÎó·ĞÍ³¤Ç¥¢¥¯¥»¥¹¤¹¤ë
+ãƒ‡ã‚£ã‚¹ã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®è¡Œã« Perl ã®é…åˆ—çµŒç”±ã§ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹
 
 =item Tie::Handle
 
@@ -4435,7 +4435,7 @@ Base class definitions for tied handles
 
 =end original
 
-tie ¤µ¤ì¤¿¥Ï¥ó¥É¥ë¤Î¤¿¤á¤Î¥Ù¡¼¥¹¥¯¥é¥¹¤ÎÄêµÁ
+tie ã•ã‚ŒãŸãƒãƒ³ãƒ‰ãƒ«ã®ãŸã‚ã®ãƒ™ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹ã®å®šç¾©
 
 =item Tie::Hash
 
@@ -4445,7 +4445,7 @@ Base class definitions for tied hashes
 
 =end original
 
-tie ¤µ¤ì¤¿¥Ï¥Ã¥·¥å¤Î¤¿¤á¤Î¥Ù¡¼¥¹¥¯¥é¥¹
+tie ã•ã‚ŒãŸãƒãƒƒã‚·ãƒ¥ã®ãŸã‚ã®ãƒ™ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹
 
 =item Tie::Hash::NamedCapture
 
@@ -4455,7 +4455,7 @@ Named regexp capture buffers
 
 =end original
 
-Ì¾Á°ÉÕ¤­Àµµ¬É½¸½ÊáÂª¥Ğ¥Ã¥Õ¥¡
+åå‰ä»˜ãæ­£è¦è¡¨ç¾æ•æ‰ãƒãƒƒãƒ•ã‚¡
 
 =item Tie::Memoize
 
@@ -4465,7 +4465,7 @@ Add data to hash when needed
 
 =end original
 
-É¬Í×¤Ê¤È¤­¤Ë¥Ï¥Ã¥·¥å¤Ë¥Ç¡¼¥¿¤òÄÉ²Ã¤¹¤ë
+å¿…è¦ãªã¨ãã«ãƒãƒƒã‚·ãƒ¥ã«ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹
 
 =item Tie::RefHash
 
@@ -4475,7 +4475,7 @@ Use references as hash keys
 
 =end original
 
-¥Ï¥Ã¥·¥å¥­¡¼¤È¤·¤Æ¥ê¥Õ¥¡¥ì¥ó¥¹¤ò»È¤¦
+ãƒãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã¨ã—ã¦ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‚’ä½¿ã†
 
 =item Tie::Scalar
 
@@ -4485,7 +4485,7 @@ Base class definitions for tied scalars
 
 =end original
 
-tie ¤µ¤ì¤¿¥¹¥«¥é¤Î¤¿¤á¤Î´ğÄì¥¯¥é¥¹¤ÎÄêµÁ
+tie ã•ã‚ŒãŸã‚¹ã‚«ãƒ©ã®ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã®å®šç¾©
 
 =item Tie::SubstrHash
 
@@ -4495,7 +4495,7 @@ Fixed-table-size, fixed-key-length hashing
 
 =end original
 
-¥Æ¡¼¥Ö¥ë¥µ¥¤¥º¸ÇÄê¡¢¥­¡¼Ä¹¸ÇÄê¤Î¥Ï¥Ã¥·¥ó¥°
+ãƒ†ãƒ¼ãƒ–ãƒ«ã‚µã‚¤ã‚ºå›ºå®šã€ã‚­ãƒ¼é•·å›ºå®šã®ãƒãƒƒã‚·ãƒ³ã‚°
 
 =item Time::HiRes
 
@@ -4505,7 +4505,7 @@ High resolution alarm, sleep, gettimeofday, interval timers
 
 =end original
 
-¹âÀºÅÙ¤Î alarm, sleep, gettimeofday, ÆâÉô¥¿¥¤¥Ş¡¼
+é«˜ç²¾åº¦ã® alarm, sleep, gettimeofday, å†…éƒ¨ã‚¿ã‚¤ãƒãƒ¼
 
 =item Time::Local
 
@@ -4515,7 +4515,7 @@ Efficiently compute time from local and GMT time
 
 =end original
 
-local ¤È GMT »ş¹ï¤«¤é¤Î¸úÎ¨ÎÉ¤¤·×»»
+local ã¨ GMT æ™‚åˆ»ã‹ã‚‰ã®åŠ¹ç‡è‰¯ã„è¨ˆç®—
 
 =item Time::Piece
 
@@ -4525,7 +4525,7 @@ Object Oriented time objects
 
 =end original
 
-¥ª¥Ö¥¸¥§¥¯¥È»Ø¸ş¤Î»ş¹ï¥ª¥Ö¥¸¥§¥¯¥È
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘ã®æ™‚åˆ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 =item Time::Piece::Seconds
 
@@ -4535,7 +4535,7 @@ A simple API to convert seconds to other date values
 
 =end original
 
-ÉÃ¿ô¤òÂ¾¤ÎÆüÉÕÃÍ¤ËÊÑ´¹¤¹¤ëÃ±½ã¤Ê API
+ç§’æ•°ã‚’ä»–ã®æ—¥ä»˜å€¤ã«å¤‰æ›ã™ã‚‹å˜ç´”ãª API
 
 =item Time::gmtime
 
@@ -4545,7 +4545,7 @@ By-name interface to Perl's built-in gmtime() function
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô gmtime() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° gmtime() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Time::localtime
 
@@ -4555,7 +4555,7 @@ By-name interface to Perl's built-in localtime() function
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô localtime() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° localtime() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Time::tm
 
@@ -4565,7 +4565,7 @@ Internal object used by Time::gmtime and Time::localtime
 
 =end original
 
-Time::gmtime ¤ä Time::localtime ¤Ë¤è¤Ã¤Æ»È¤ï¤ì¤ëÆâÉôÅª¤Ê¥ª¥Ö¥¸¥§¥¯¥È
+Time::gmtime ã‚„ Time::localtime ã«ã‚ˆã£ã¦ä½¿ã‚ã‚Œã‚‹å†…éƒ¨çš„ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 =item UNIVERSAL
 
@@ -4575,7 +4575,7 @@ Base class for ALL classes (blessed references)
 
 =end original
 
-¤¹¤Ù¤Æ¤Î¥¯¥é¥¹(bless ¤µ¤ì¤¿¥ê¥Õ¥¡¥ì¥ó¥¹)¤Î¤¿¤á¤Î´ğÄì¥¯¥é¥¹
+ã™ã¹ã¦ã®ã‚¯ãƒ©ã‚¹(bless ã•ã‚ŒãŸãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹)ã®ãŸã‚ã®åŸºåº•ã‚¯ãƒ©ã‚¹
 
 =item Unicode::Collate
 
@@ -4585,7 +4585,7 @@ Unicode Collation Algorithm
 
 =end original
 
-Unicode ¾È¹ç¥¢¥ë¥´¥ê¥º¥à
+Unicode ç…§åˆã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ 
 
 =item Unicode::Normalize
 
@@ -4595,7 +4595,7 @@ Unicode Normalization Forms
 
 =end original
 
-Unicode Àµµ¬²½·Á¼°
+Unicode æ­£è¦åŒ–å½¢å¼
 
 =item Unicode::UCD
 
@@ -4605,7 +4605,7 @@ Unicode character database
 
 =end original
 
-Unicode Ê¸»ú¥Ç¡¼¥¿¥Ù¡¼¥¹
+Unicode æ–‡å­—ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹
 
 =item User::grent
 
@@ -4615,7 +4615,7 @@ By-name interface to Perl's built-in getgr*() functions
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô getgr*() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° getgr*() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item User::pwent
 
@@ -4625,7 +4625,7 @@ By-name interface to Perl's built-in getpw*() functions
 
 =end original
 
-Perl ¤ÎÁÈ¤ß¹ş¤ß´Ø¿ô getpw*() ¤ËÂĞ¤¹¤ëÌ¾Á°¤Ë¤è¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Perl ã®çµ„ã¿è¾¼ã¿é–¢æ•° getpw*() ã«å¯¾ã™ã‚‹åå‰ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Win32
 
@@ -4635,7 +4635,7 @@ Interfaces to some Win32 API Functions
 
 =end original
 
-Win32 API ´Ø¿ô¤Ø¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+Win32 API é–¢æ•°ã¸ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item Win32API::File
 
@@ -4645,7 +4645,7 @@ Low-level access to Win32 system API calls for files/dirs.
 
 =end original
 
-¥Õ¥¡¥¤¥ë/¥Ç¥£¥ì¥¯¥È¥ê¤Î¤¿¤á¤Î Win32 ¥·¥¹¥Æ¥à API ¤Ø¤ÎÄã¥ì¥Ù¥ë¥¢¥¯¥»¥¹
+ãƒ•ã‚¡ã‚¤ãƒ«/ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãŸã‚ã® Win32 ã‚·ã‚¹ãƒ†ãƒ  API ã¸ã®ä½ãƒ¬ãƒ™ãƒ«ã‚¢ã‚¯ã‚»ã‚¹
 
 =item Win32CORE
 
@@ -4655,7 +4655,7 @@ Win32 CORE function stubs
 
 =end original
 
-Win32 CORE ´Ø¿ô¤Î¥¹¥¿¥Ö
+Win32 CORE é–¢æ•°ã®ã‚¹ã‚¿ãƒ–
 
 =item XS::APItest
 
@@ -4665,7 +4665,7 @@ Test the perl C API
 
 =end original
 
-perl C API ¤ò¥Æ¥¹¥È¤¹¤ë
+perl C API ã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹
 
 =item XS::Typemap
 
@@ -4675,7 +4675,7 @@ Module to test the XS typemaps distributed with perl
 
 =end original
 
-perl ¤È¶¦¤ËÇÛÉÛ¤µ¤ì¤Æ¤¤¤ë XS typemaps ¤ò¥Æ¥¹¥È¤¹¤ë¥â¥¸¥å¡¼¥ë
+perl ã¨å…±ã«é…å¸ƒã•ã‚Œã¦ã„ã‚‹ XS typemaps ã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =item XSLoader
 
@@ -4685,7 +4685,7 @@ Dynamically load C libraries into Perl code
 
 =end original
 
-C ¥é¥¤¥Ö¥é¥ê¤ò Perl ¥³¡¼¥É¤ËÆ°Åª¤ËÆÉ¤ß¹ş¤à
+C ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ Perl ã‚³ãƒ¼ãƒ‰ã«å‹•çš„ã«èª­ã¿è¾¼ã‚€
 
 =back
 
@@ -4698,11 +4698,11 @@ double quotes should be used instead of single quotes).
 
 =end original
 
-¤¢¤Ê¤¿¤Î»È¤Ã¤Æ¤¤¤ë¥·¥¹¥Æ¥à¤Ç¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤ë¥É¥­¥å¥á¥ó¥È¤Î
-¤Ê¤¤¤â¤Î¤äÉ¸½à¥ê¥ê¡¼¥¹¤Ë¤Ï¤Ê¤¤¤â¤Î¤ò´Ş¤á¤¿ I<¤¹¤Ù¤Æ¤Î> ¥â¥¸¥å¡¼¥ë¤ò
-¸«¤Ä¤±½Ğ¤¹¤¿¤á¤Ë¤Ï¡¢°Ê²¼¤Î¥³¥Ş¥ó¥É¤ò»È¤Ã¤Æ¤¯¤À¤µ¤¤
-(¥Ç¥Õ¥©¥ë¥È¤Î win32 ¤Î¥·¥§¥ë¤Ç¤Ï¡¢¥·¥ó¥°¥ë¥¯¥©¡¼¥È¤ÎÂå¤ï¤ê¤Ë
-¥À¥Ö¥ë¥¯¥©¡¼¥È¤ò»È¤¦¤Ù¤­¤Ç¤¹)¡£
+ã‚ãªãŸã®ä½¿ã£ã¦ã„ã‚‹ã‚·ã‚¹ãƒ†ãƒ ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®
+ãªã„ã‚‚ã®ã‚„æ¨™æº–ãƒªãƒªãƒ¼ã‚¹ã«ã¯ãªã„ã‚‚ã®ã‚’å«ã‚ãŸ I<ã™ã¹ã¦ã®> ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’
+è¦‹ã¤ã‘å‡ºã™ãŸã‚ã«ã¯ã€ä»¥ä¸‹ã®ã‚³ãƒãƒ³ãƒ‰ã‚’ä½¿ã£ã¦ãã ã•ã„
+(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã® win32 ã®ã‚·ã‚§ãƒ«ã§ã¯ã€ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã®ä»£ã‚ã‚Šã«
+ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã‚’ä½¿ã†ã¹ãã§ã™)ã€‚
 
     % perl -MFile::Find=find -MFile::Spec::Functions -Tlwe \
       'find { wanted => sub { print canonpath $_ if /\.pm\z/ },
@@ -4721,16 +4721,16 @@ system B<man> command, you might try the B<perldoc> program.
 
 =end original
 
-(¤³¤³¤Ç¤Î -T ¤Ï @INC ¤ËÆş¤Ã¤Æ¤¤¤ë°ìÍ÷¤«¤é '.' ¤ò¼è¤ê½ü¤¯¤¿¤á¤Ç¤¹¡£)
-¤³¤ì¤é¤Ï¤¹¤Ù¤ÆÆÈ¼«¤Î¥É¥­¥å¥á¥ó¥È¤ò¥¤¥ó¥¹¥È¡¼¥ë¤·¤Æ¡¢¥·¥¹¥Æ¥à¤Î man(1)
-¤³¤Ş¤ó¤É¤Ç¥¢¥¯¥»¥¹²ÄÇ½¤Ê¤Ï¤º¤Ç¤¹¡£
-¤â¤· B<find> ¥×¥í¥°¥é¥à¤¬¤Ê¤¤¤Ê¤é¡¢Âå¤ï¤ê¤Ë perl ¤Ç¼Â¹Ô¤Ç¤­¤ë Perl ¥³¡¼¥É¤ò
-À¸À®¤¹¤ë Perl ¤Î B<find2perl> ¥×¥í¥°¥é¥à¤¬»È¤¨¤Ş¤¹¡£
-¤â¤· B<man> ¥×¥í¥°¥é¥à¤Ï¤¢¤ë¤±¤ì¤É¤â¥â¥¸¥å¡¼¥ë¤¬¸«¤Ä¤«¤é¤Ê¤¤¾ì¹ç¤Ï¡¢
-manpath ¤ò½¤Àµ¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£
-¾ÜºÙ¤Ë¤Ä¤¤¤Æ¤Ï L<perl> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
-¤â¤·¥·¥¹¥Æ¥à¤Î B<man> ¥³¥Ş¥ó¥É¤¬¤Ê¤¤¤Ê¤é¡¢B<perldoc> ¥×¥í¥°¥é¥à¤ò
-»î¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤¡£
+(ã“ã“ã§ã® -T ã¯ @INC ã«å…¥ã£ã¦ã„ã‚‹ä¸€è¦§ã‹ã‚‰ '.' ã‚’å–ã‚Šé™¤ããŸã‚ã§ã™ã€‚)
+ã“ã‚Œã‚‰ã¯ã™ã¹ã¦ç‹¬è‡ªã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ã€ã‚·ã‚¹ãƒ†ãƒ ã® man(1)
+ã“ã¾ã‚“ã©ã§ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªã¯ãšã§ã™ã€‚
+ã‚‚ã— B<find> ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãªã„ãªã‚‰ã€ä»£ã‚ã‚Šã« perl ã§å®Ÿè¡Œã§ãã‚‹ Perl ã‚³ãƒ¼ãƒ‰ã‚’
+ç”Ÿæˆã™ã‚‹ Perl ã® B<find2perl> ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒä½¿ãˆã¾ã™ã€‚
+ã‚‚ã— B<man> ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ã‚ã‚‹ã‘ã‚Œã©ã‚‚ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€
+manpath ã‚’ä¿®æ­£ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+è©³ç´°ã«ã¤ã„ã¦ã¯ L<perl> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+ã‚‚ã—ã‚·ã‚¹ãƒ†ãƒ ã® B<man> ã‚³ãƒãƒ³ãƒ‰ãŒãªã„ãªã‚‰ã€B<perldoc> ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’
+è©¦ã—ã¦ã¿ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -4741,14 +4741,14 @@ install process.)
 
 =end original
 
-¤µ¤é¤Ë¡¢ C<perldoc perllocal> ¤È¤¤¤¦¥³¥Ş¥ó¥É¤Ç(ÉÔ´°Á´¤«¤â¤·¤ì¤Ş¤»¤ó¤¬)
-ÄÉ²Ã¤Ç¥·¥¹¥Æ¥à¤Ë¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤¿¥â¥¸¥å¡¼¥ë¤Î°ìÍ÷¤¬É½¼¨¤µ¤ì¤Ş¤¹¡£
-(perllocal.pod ¥Õ¥¡¥¤¥ë¤ÏÉ¸½à¤Î MakeMaker ¤Ë¤è¤ë¥¤¥ó¥¹¥È¡¼¥ë½èÍı¤Ç
-¹¹¿·¤µ¤ì¤Ş¤¹¡£)
+ã•ã‚‰ã«ã€ C<perldoc perllocal> ã¨ã„ã†ã‚³ãƒãƒ³ãƒ‰ã§(ä¸å®Œå…¨ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ãŒ)
+è¿½åŠ ã§ã‚·ã‚¹ãƒ†ãƒ ã«ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¸€è¦§ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
+(perllocal.pod ãƒ•ã‚¡ã‚¤ãƒ«ã¯æ¨™æº–ã® MakeMaker ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«å‡¦ç†ã§
+æ›´æ–°ã•ã‚Œã¾ã™ã€‚)
 
 =head2 Extension Modules
 
-(³ÈÄ¥¥â¥¸¥å¡¼¥ë)
+(æ‹¡å¼µãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)
 
 =begin original
 
@@ -4759,11 +4759,11 @@ include Socket, Fcntl, and POSIX.
 
 =end original
 
-³ÈÄ¥¥â¥¸¥å¡¼¥ë¤Ï C(¤â¤·¤¯¤Ï Perl ¤È C ¤Îº®¹ç)¤Ç½ñ¤«¤ì¤Ş¤¹¡£
-¤³¤ì¤é¤ÏÉáÄÌ¤ÏÉ¬Í×¤Ë¤Ê¤Ã¤¿¤È¤­¤ËÆ°Åª¤Ë Perl ¤Ø¥í¡¼¥É¤µ¤ì¤Ş¤¹¤¬¡¢
-ÀÅÅª¤Ë¥ê¥ó¥¯¤µ¤ì¤ë¾ì¹ç¤â¤¢¤ê¤Ş¤¹¡£
-¥µ¥İ¡¼¥È¤µ¤ì¤Æ¤¤¤ë³ÈÄ¥¥â¥¸¥å¡¼¥ë¤Ë¤Ï
-Socket, Fcntl, POSIX ¤¬¤¢¤ê¤Ş¤¹¡£
+æ‹¡å¼µãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ C(ã‚‚ã—ãã¯ Perl ã¨ C ã®æ··åˆ)ã§æ›¸ã‹ã‚Œã¾ã™ã€‚
+ã“ã‚Œã‚‰ã¯æ™®é€šã¯å¿…è¦ã«ãªã£ãŸã¨ãã«å‹•çš„ã« Perl ã¸ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã™ãŒã€
+é™çš„ã«ãƒªãƒ³ã‚¯ã•ã‚Œã‚‹å ´åˆã‚‚ã‚ã‚Šã¾ã™ã€‚
+ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹æ‹¡å¼µãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«ã¯
+Socket, Fcntl, POSIX ãŒã‚ã‚Šã¾ã™ã€‚
 
 =begin original
 
@@ -4776,13 +4776,13 @@ like Alta Vista or Google.
 
 =end original
 
-Â¿¤¯¤ÎÎÉ¤¯ÃÎ¤é¤ì¤¿ C ³ÈÄ¥¥â¥¸¥å¡¼¥ë¤Ï¡¢¤½¤Î¥µ¥¤¥º¤Ç¤¢¤ë¤È¤«
-´øÈ¯À­¡¢¤¢¤ë¤¤¤ÏÃ±½ã¤Ë½½Ê¬¤Ê¥Æ¥¹¥È¤ò¤¹¤ë»ş´Ö¤¬¤Ê¤«¤Ã¤¿¤È¤«
-Perl ¤¬¥Ù¡¼¥¿¥Æ¥¹¥È¤µ¤ì¤Æ¤¤¤ë¥×¥é¥Ã¥È¥Õ¥©¡¼¥à¤Ç¥³¥ó¥Õ¥£¥°¥ì¡¼¥·¥ç¥ó¤¹¤ë
-»ş´Ö¤¬Ìµ¤«¤Ã¤¿¤¿¤á¤Ë¥Ğ¥ó¥É¥ë¤µ¤ì¤Æ¤¤¤Ş¤»¤ó(¾¯¤Ê¤¯¤È¤â´°Á´¤Ë¤Ï)¡£
-¤³¤¦¤¤¤Ã¤¿¥â¥¸¥å¡¼¥ë¤Ï¡¢CPAN (¸å½Ò¤·¤Ş¤¹) ¤ä¡¢
-Alta Vista ¤ä Google ¤È¤¤¤Ã¤¿¥¦¥§¥Ö¸¡º÷¥¨¥ó¥¸¥ó¤ò»È¤Ã¤ÆÃµ¤¹¤³¤È¤ò
-¤ª´«¤á¤·¤Ş¤¹¡£
+å¤šãã®è‰¯ãçŸ¥ã‚‰ã‚ŒãŸ C æ‹¡å¼µãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ã€ãã®ã‚µã‚¤ã‚ºã§ã‚ã‚‹ã¨ã‹
+æ®ç™ºæ€§ã€ã‚ã‚‹ã„ã¯å˜ç´”ã«ååˆ†ãªãƒ†ã‚¹ãƒˆã‚’ã™ã‚‹æ™‚é–“ãŒãªã‹ã£ãŸã¨ã‹
+Perl ãŒãƒ™ãƒ¼ã‚¿ãƒ†ã‚¹ãƒˆã•ã‚Œã¦ã„ã‚‹ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‹
+æ™‚é–“ãŒç„¡ã‹ã£ãŸãŸã‚ã«ãƒãƒ³ãƒ‰ãƒ«ã•ã‚Œã¦ã„ã¾ã›ã‚“(å°‘ãªãã¨ã‚‚å®Œå…¨ã«ã¯)ã€‚
+ã“ã†ã„ã£ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ã€CPAN (å¾Œè¿°ã—ã¾ã™) ã‚„ã€
+Alta Vista ã‚„ Google ã¨ã„ã£ãŸã‚¦ã‚§ãƒ–æ¤œç´¢ã‚¨ãƒ³ã‚¸ãƒ³ã‚’ä½¿ã£ã¦æ¢ã™ã“ã¨ã‚’
+ãŠå‹§ã‚ã—ã¾ã™ã€‚
 
 =head1 CPAN
 
@@ -4796,11 +4796,11 @@ CPAN can be found at http://www.cpan.org/
 
 =end original
 
-CPAN ¤Ï Perl ¤Ë´Ø¤¹¤ëÅı¹çÅª¤ÊÊİ´É¥Í¥Ã¥È¥ï¡¼¥¯¤ò°ÕÌ£¤·¤Æ¤¤¤Ş¤¹;
-¤³¤ì¤Ï¡¢À¤³¦Ãæ¤ËÊ£À½¤µ¤ì¤Æ¤¤¤ë Perl ¤Ë´Ø¤¹¤ë»öÊÁ¤Î¥°¥í¡¼¥Ğ¥ë¤Ê
-¥³¥ì¥¯¥·¥ç¥ó¤Ç¡¢¥É¥­¥å¥á¥ó¥È¡¢¥¹¥¿¥¤¥ë¥¬¥¤¥É¡¢æ«¤Èµ»¡¢Èó Unix ¥·¥¹¥Æ¥à¤Ø¤Î
-°Ü¿£¤È¤½¤Î¤¿¤á¤Î°ì»şÅª¤Ê¥Ğ¥¤¥Ê¥êÇÛÉÛ¤Ê¤É¤ò´Ş¤ß¤Ş¤¹¡£
-CPAN ¤Î¸¡º÷¥¨¥ó¥¸¥ó¤Ï http://www.cpan.org/ ¤Ë¤¢¤ê¤Ş¤¹¡£
+CPAN ã¯ Perl ã«é–¢ã™ã‚‹çµ±åˆçš„ãªä¿ç®¡ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚’æ„å‘³ã—ã¦ã„ã¾ã™;
+ã“ã‚Œã¯ã€ä¸–ç•Œä¸­ã«è¤‡è£½ã•ã‚Œã¦ã„ã‚‹ Perl ã«é–¢ã™ã‚‹äº‹æŸ„ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«ãª
+ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã§ã€ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã€ã‚¹ã‚¿ã‚¤ãƒ«ã‚¬ã‚¤ãƒ‰ã€ç½ ã¨æŠ€ã€é Unix ã‚·ã‚¹ãƒ†ãƒ ã¸ã®
+ç§»æ®–ã¨ãã®ãŸã‚ã®ä¸€æ™‚çš„ãªãƒã‚¤ãƒŠãƒªé…å¸ƒãªã©ã‚’å«ã¿ã¾ã™ã€‚
+CPAN ã®æ¤œç´¢ã‚¨ãƒ³ã‚¸ãƒ³ã¯ http://www.cpan.org/ ã«ã‚ã‚Šã¾ã™ã€‚
 
 =begin original
 
@@ -4810,10 +4810,10 @@ modules are:
 
 =end original
 
-¤â¤Ã¤È¤â½ÅÍ×¤Ê¤³¤È¤Ï¡¢CPAN ¤Ë¤ÏÇÛÉÛ¥Ñ¥Ã¥±¡¼¥¸¤Ë¤Ï
-¥Ğ¥ó¥É¥ë¤µ¤ì¤Æ¤¤¤Ê¤¤¤¿¤¯¤µ¤ó¤Î¥â¥¸¥å¡¼¥ë¤â´Ş¤Ş¤ì¤Æ¤¤¤Ş¤¹;
-¤½¤ÎÃæ¤Ë¤Ï¥Ó¥ë¥É¤Ë C ¥³¥ó¥Ñ¥¤¥é¤¬É¬Í×¤Ê¤â¤Î¤â¤¢¤ê¤Ş¤¹¡£
-°Ê²¼¤Ëµó¤²¤ë¤Î¤Ï¡¢¥â¥¸¥å¡¼¥ë¤ÎÂç¤Ş¤«¤ÊÊ¬Îà¤Ç¤¹¡£
+ã‚‚ã£ã¨ã‚‚é‡è¦ãªã“ã¨ã¯ã€CPAN ã«ã¯é…å¸ƒãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«ã¯
+ãƒãƒ³ãƒ‰ãƒ«ã•ã‚Œã¦ã„ãªã„ãŸãã•ã‚“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚‚å«ã¾ã‚Œã¦ã„ã¾ã™;
+ãã®ä¸­ã«ã¯ãƒ“ãƒ«ãƒ‰ã« C ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãŒå¿…è¦ãªã‚‚ã®ã‚‚ã‚ã‚Šã¾ã™ã€‚
+ä»¥ä¸‹ã«æŒ™ã’ã‚‹ã®ã¯ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å¤§ã¾ã‹ãªåˆ†é¡ã§ã™ã€‚
 
 =over
 
@@ -4825,7 +4825,7 @@ Language Extensions and Documentation Tools
 
 =end original
 
-¸À¸ì³ÈÄ¥¤È¡¢¥É¥­¥å¥á¥ó¥È¥Ä¡¼¥ë
+è¨€èªæ‹¡å¼µã¨ã€ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ„ãƒ¼ãƒ«
 
 =item *
 
@@ -4835,7 +4835,7 @@ Development Support
 
 =end original
 
-³«È¯¥µ¥İ¡¼¥È
+é–‹ç™ºã‚µãƒãƒ¼ãƒˆ
 
 =item *
 
@@ -4845,7 +4845,7 @@ Operating System Interfaces
 
 =end original
 
-¥ª¥Ú¥ì¡¼¥Æ¥£¥ó¥°¥·¥¹¥Æ¥à¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ã‚ªãƒšãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚·ã‚¹ãƒ†ãƒ ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item *
 
@@ -4855,7 +4855,7 @@ Networking, Device Control (modems) and InterProcess Communication
 
 =end original
 
-¥Í¥Ã¥È¥ï¡¼¥¯¡¢¥Ç¥Ğ¥¤¥¹À©¸æ(¥â¥Ç¥à)¡¢¥×¥í¥»¥¹´ÖÄÌ¿®
+ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã€ãƒ‡ãƒã‚¤ã‚¹åˆ¶å¾¡(ãƒ¢ãƒ‡ãƒ )ã€ãƒ—ãƒ­ã‚»ã‚¹é–“é€šä¿¡
 
 =item *
 
@@ -4865,7 +4865,7 @@ Data Types and Data Type Utilities
 
 =end original
 
-¥Ç¡¼¥¿·¿¤È¡¢¥Ç¡¼¥¿·¿¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+ãƒ‡ãƒ¼ã‚¿å‹ã¨ã€ãƒ‡ãƒ¼ã‚¿å‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item *
 
@@ -4875,7 +4875,7 @@ Database Interfaces
 
 =end original
 
-¥Ç¡¼¥¿¥Ù¡¼¥¹¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item *
 
@@ -4885,7 +4885,7 @@ User Interfaces
 
 =end original
 
-¥æ¡¼¥¶¡¼¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item *
 
@@ -4895,8 +4895,8 @@ Interfaces to / Emulations of Other Programming Languages
 
 =end original
 
-Â¾¤Î¥×¥í¥°¥é¥ß¥ó¥°¸À¸ì¤Î¥¨¥ß¥å¥ì¡¼¥·¥ç¥ó¤ä
-Â¾¤Î¥×¥í¥°¥é¥ß¥ó¥°¸À¸ì¤ËÂĞ¤¹¤ë¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
+ä»–ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°è¨€èªã®ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚„
+ä»–ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°è¨€èªã«å¯¾ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
 =item *
 
@@ -4906,8 +4906,8 @@ File Names, File Systems and File Locking (see also File Handles)
 
 =end original
 
-¥Õ¥¡¥¤¥ëÌ¾¡¢¥Õ¥¡¥¤¥ë¥·¥¹¥Æ¥à¡¢¥Õ¥¡¥¤¥ë¤Î¥í¥Ã¥­¥ó¥°(¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤â
-»²¾È¤·¤Æ¤¯¤À¤µ¤¤)
+ãƒ•ã‚¡ã‚¤ãƒ«åã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒƒã‚­ãƒ³ã‚°(ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚‚
+å‚ç…§ã—ã¦ãã ã•ã„)
 
 =item *
 
@@ -4917,7 +4917,7 @@ String Processing, Language Text Processing, Parsing, and Searching
 
 =end original
 
-Ê¸»úÎó½èÍı¡¢¸À¸ì¥Æ¥­¥¹¥È(Language Text)¤Î½èÍı¡¢²òÀÏ¡¢¸¡º÷
+æ–‡å­—åˆ—å‡¦ç†ã€è¨€èªãƒ†ã‚­ã‚¹ãƒˆ(Language Text)ã®å‡¦ç†ã€è§£æã€æ¤œç´¢
 
 =item *
 
@@ -4927,7 +4927,7 @@ Option, Argument, Parameter, and Configuration File Processing
 
 =end original
 
-¥ª¥×¥·¥ç¥ó¡¢°ú¿ô¡¢¥Ñ¥é¥á¡¼¥¿¡¢¥Õ¥¡¥¤¥ë½èÍı¤Î¥³¥ó¥Õ¥£¥°¥ì¡¼¥·¥ç¥ó
+ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã€å¼•æ•°ã€ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã€ãƒ•ã‚¡ã‚¤ãƒ«å‡¦ç†ã®ã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 
 =item *
 
@@ -4937,7 +4937,7 @@ Internationalization and Locale
 
 =end original
 
-¹ñºİ²½ÂĞ±ş¤È¥í¥±¡¼¥ë
+å›½éš›åŒ–å¯¾å¿œã¨ãƒ­ã‚±ãƒ¼ãƒ«
 
 =item *
 
@@ -4947,7 +4947,7 @@ Authentication, Security, and Encryption
 
 =end original
 
-Ç§¾Ú¡¢¥»¥­¥å¥ê¥Æ¥£¡¢°Å¹æ²½
+èªè¨¼ã€ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ã€æš—å·åŒ–
 
 =item *
 
@@ -4967,7 +4967,7 @@ Server and Daemon Utilities
 
 =end original
 
-¥µ¡¼¥Ğ¡¼¤ä¥Ç¡¼¥â¥ó¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+ã‚µãƒ¼ãƒãƒ¼ã‚„ãƒ‡ãƒ¼ãƒ¢ãƒ³ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item *
 
@@ -4977,7 +4977,7 @@ Archiving and Compression
 
 =end original
 
-¥¢¡¼¥«¥¤¥Ö¤È°µ½Ì
+ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã¨åœ§ç¸®
 
 =item *
 
@@ -4987,7 +4987,7 @@ Images, Pixmap and Bitmap Manipulation, Drawing, and Graphing
 
 =end original
 
-¥¤¥á¡¼¥¸¡¢Pixmap¡¢¥Ó¥Ã¥È¥Ş¥Ã¥×¤ÎÁàºî¡¢ÉÁ²è
+ã‚¤ãƒ¡ãƒ¼ã‚¸ã€Pixmapã€ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®æ“ä½œã€æç”»
 
 =item *
 
@@ -4997,7 +4997,7 @@ Mail and Usenet News
 
 =end original
 
-¥á¥¤¥ë¤È Usenet ¥Ë¥å¡¼¥¹
+ãƒ¡ã‚¤ãƒ«ã¨ Usenet ãƒ‹ãƒ¥ãƒ¼ã‚¹
 
 =item *
 
@@ -5007,7 +5007,7 @@ Control Flow Utilities (callbacks and exceptions etc)
 
 =end original
 
-À©¸æ¥Õ¥í¡¼¥æ¡¼¥Æ¥£¥ê¥Æ¥£(¥³¡¼¥ë¥Ğ¥Ã¥¯¤äÎã³°¤Ê¤É)
+åˆ¶å¾¡ãƒ•ãƒ­ãƒ¼ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£(ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚„ä¾‹å¤–ãªã©)
 
 =item *
 
@@ -5017,7 +5017,7 @@ File Handle and Input/Output Stream Utilities
 
 =end original
 
-¥Õ¥¡¥¤¥ë¥Ï¥ó¥É¥ë¤äÆş½ĞÎÏ¥¹¥È¥ê¡¼¥à¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚„å…¥å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 
 =item *
 
@@ -5027,7 +5027,7 @@ Miscellaneous Modules
 
 =end original
 
-¤½¤ÎÂ¾¤Î¥â¥¸¥å¡¼¥ë
+ãã®ä»–ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
 
 =back
 
@@ -5038,8 +5038,8 @@ Please note that the sorting order is alphabetical on fields:
 
 =end original
 
-ÅĞÏ¿¤µ¤ì¤Æ¤¤¤ë CPAN ¥µ¥¤¥È¤Ë¤Ï°Ê²¼¤Ëµó¤²¤ë¤â¤Î¤¬¤¢¤ê¤Ş¤¹¡£
-¥½¡¼¥È½ç¤Ï¥Õ¥£¡¼¥ë¥ÉËè¤Ë¥¢¥ë¥Õ¥¡¥Ù¥Ã¥È½ç¤Ç¤¢¤ë¤³¤È¤ËÃí°Õ¤·¤Æ¤¯¤À¤µ¤¤:
+ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ CPAN ã‚µã‚¤ãƒˆã«ã¯ä»¥ä¸‹ã«æŒ™ã’ã‚‹ã‚‚ã®ãŒã‚ã‚Šã¾ã™ã€‚
+ã‚½ãƒ¼ãƒˆé †ã¯ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰æ¯ã«ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆé †ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„:
 
  Continent
    |
@@ -5058,8 +5058,8 @@ European and the South American sites.
 
 =end original
 
-½¾¤Ã¤Æ¡¢ËÌ¥¢¥á¥ê¥«¥µ¡¼¥Ğ¤Ï¥è¡¼¥í¥Ã¥Ñ¤ÈÆî¥¢¥á¥ê¥«¤Î¥µ¥¤¥È¤Î´Ö¤Ë
-¥ê¥¹¥È¤µ¤ì¤Æ¤·¤Ş¤Ã¤Æ¤¤¤Ş¤¹¡£
+å¾“ã£ã¦ã€åŒ—ã‚¢ãƒ¡ãƒªã‚«ã‚µãƒ¼ãƒã¯ãƒ¨ãƒ¼ãƒ­ãƒƒãƒ‘ã¨å—ã‚¢ãƒ¡ãƒªã‚«ã®ã‚µã‚¤ãƒˆã®é–“ã«
+ãƒªã‚¹ãƒˆã•ã‚Œã¦ã—ã¾ã£ã¦ã„ã¾ã™ã€‚
 
 =begin original
 
@@ -5067,11 +5067,11 @@ You should try to choose one close to you.
 
 =end original
 
-¤³¤ÎÃæ¤«¤éºÇ¤â¶á¤¤¤â¤Î¤òÁª¤Ö¤Î¤¬ÎÉ¤¤¤Ç¤·¤ç¤¦¡£
+ã“ã®ä¸­ã‹ã‚‰æœ€ã‚‚è¿‘ã„ã‚‚ã®ã‚’é¸ã¶ã®ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚
 
 =head2 Africa
 
-(¥¢¥Õ¥ê¥«)
+(ã‚¢ãƒ•ãƒªã‚«)
 
 =over 4
 
@@ -5087,7 +5087,7 @@ You should try to choose one close to you.
 
 =head2 Asia
 
-(¥¢¥¸¥¢)
+(ã‚¢ã‚¸ã‚¢)
 
 =over 4
 
@@ -5173,7 +5173,7 @@ You should try to choose one close to you.
 
 =head2 Central America
 
-(Ãæ±û¥¢¥á¥ê¥«)
+(ä¸­å¤®ã‚¢ãƒ¡ãƒªã‚«)
 
 =over 4
 
@@ -5186,7 +5186,7 @@ You should try to choose one close to you.
 
 =head2 Europe
 
-(¥è¡¼¥í¥Ã¥Ñ)
+(ãƒ¨ãƒ¼ãƒ­ãƒƒãƒ‘)
 
 =over 4
 
@@ -5459,7 +5459,7 @@ You should try to choose one close to you.
 
 =head2 North America
 
-(ËÌ¥¢¥á¥ê¥«)
+(åŒ—ã‚¢ãƒ¡ãƒªã‚«)
 
 =over 4
 
@@ -5669,7 +5669,7 @@ You should try to choose one close to you.
 
 =head2 Oceania
 
-(¥ª¥»¥¢¥Ë¥¢)
+(ã‚ªã‚»ã‚¢ãƒ‹ã‚¢)
 
 =over 4
 
@@ -5694,7 +5694,7 @@ You should try to choose one close to you.
 
 =head2 South America
 
-(Æî¥¢¥á¥ê¥«)
+(å—ã‚¢ãƒ¡ãƒªã‚«)
 
 =over 4
 
@@ -5720,7 +5720,7 @@ You should try to choose one close to you.
 
 =head2 RSYNC Mirrors
 
-(RSYNC ¥ß¥é¡¼)
+(RSYNC ãƒŸãƒ©ãƒ¼)
 
                       www.linux.org.ar::cpan
                       theoryx5.uwinnipeg.ca::CPAN
@@ -5769,13 +5769,13 @@ see http://www.cpan.org/SITES or ftp://www.cpan.org/SITES .
 
 =end original
 
-ºÇ¿·¤Î CPAN ¥µ¥¤¥È¥ê¥¹¥È¤Ï¡¢
-http://www.cpan.org/SITES ¤ä ftp://www.cpan.org/SITES ¤ò
-»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+æœ€æ–°ã® CPAN ã‚µã‚¤ãƒˆãƒªã‚¹ãƒˆã¯ã€
+http://www.cpan.org/SITES ã‚„ ftp://www.cpan.org/SITES ã‚’
+å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =head1 Modules: Creation, Use, and Abuse
 
-(¥â¥¸¥å¡¼¥ë: ºîÀ®¡¢»ÈÍÑ¡¢ÍôÍÑ)
+(ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«: ä½œæˆã€ä½¿ç”¨ã€æ¿«ç”¨)
 
 =begin original
 
@@ -5784,9 +5784,9 @@ file, available at your nearest CPAN site.)
 
 =end original
 
-(°Ê²¼¤Î¥»¥¯¥·¥ç¥ó¤Ï¡¢Tim Bunce ¤Î¥â¥¸¥å¡¼¥ë¥Õ¥¡¥¤¥ë¤«¤é¤½¤Î¤Ş¤Ş
-¼Ú¤ê¤Æ¤­¤¿¤â¤Î¤Ç¤¹¡£
-¤³¤Î¥â¥¸¥å¡¼¥ë¥Õ¥¡¥¤¥ë¤ÏÄ¾¶á¤Î CPAN ¥µ¥¤¥È¤ÇÆş¼ê²ÄÇ½¤Ç¤¹¡£)
+(ä»¥ä¸‹ã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã¯ã€Tim Bunce ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãã®ã¾ã¾
+å€Ÿã‚Šã¦ããŸã‚‚ã®ã§ã™ã€‚
+ã“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã¯ç›´è¿‘ã® CPAN ã‚µã‚¤ãƒˆã§å…¥æ‰‹å¯èƒ½ã§ã™ã€‚)
 
 =begin original
 
@@ -5799,13 +5799,13 @@ or a reference to something (for "virtual" methods).
 
 =end original
 
-Perl ¤Ï¥Ñ¥Ã¥±¡¼¥¸¤ò»È¤Ã¤¿¥¯¥é¥¹¤ò¼ÂÁõ¤·¤Æ¤¤¤Ş¤¹¤¬¡¢¥Ñ¥Ã¥±¡¼¥¸¤ÎÂ¸ºß¤¬
-¥¯¥é¥¹¤ÎÂ¸ºß¤ò°ÕÌ£¤¹¤ë¤È¤¤¤¦¤³¤È¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó¡£
-¥Ñ¥Ã¥±¡¼¥¸¤È¤ÏÃ±¤Ê¤ëÌ¾Á°¶õ´Ö¤Ç¤¹¡£
-¥¯¥é¥¹¤Ï¥á¥½¥Ã¥É¤È¤·¤Æ»È¤¦¤³¤È¤Î¤Ç¤­¤ë¥µ¥Ö¥ë¡¼¥Á¥ó¤ò»ı¤Ã¤Æ¤¤¤ë
-¥Ñ¥Ã¥±¡¼¥¸¤Ç¤¹¡£
-¥á¥½¥Ã¥É¤È¤Ï¡¢¤½¤ÎºÇ½é¤Î°ú¿ô¤È¤·¤Æ¥Ñ¥Ã¥±¡¼¥¸¤ÎÌ¾Á°("static" ¥á¥½¥Ã¥É¤Î¾ì¹ç)¤«
-²¿¤«¤Î¥ê¥Õ¥¡¥ì¥ó¥¹("virtual"¥á¥½¥Ã¥É¤Î¾ì¹ç)¤ò¤È¤ë¥µ¥Ö¥ë¡¼¥Á¥ó¤Ç¤¹¡£
+Perl ã¯ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’ä½¿ã£ãŸã‚¯ãƒ©ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã¾ã™ãŒã€ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®å­˜åœ¨ãŒ
+ã‚¯ãƒ©ã‚¹ã®å­˜åœ¨ã‚’æ„å‘³ã™ã‚‹ã¨ã„ã†ã“ã¨ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã¨ã¯å˜ãªã‚‹åå‰ç©ºé–“ã§ã™ã€‚
+ã‚¯ãƒ©ã‚¹ã¯ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ä½¿ã†ã“ã¨ã®ã§ãã‚‹ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã‚’æŒã£ã¦ã„ã‚‹
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã§ã™ã€‚
+ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã¯ã€ãã®æœ€åˆã®å¼•æ•°ã¨ã—ã¦ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®åå‰("static" ãƒ¡ã‚½ãƒƒãƒ‰ã®å ´åˆ)ã‹
+ä½•ã‹ã®ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹("virtual"ãƒ¡ã‚½ãƒƒãƒ‰ã®å ´åˆ)ã‚’ã¨ã‚‹ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³ã§ã™ã€‚
 
 =begin original
 
@@ -5821,21 +5821,21 @@ the AUTOLOAD mechanism.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤È¤Ï¡¢(µ¬Â§¤Ç¤Ï) ¥Õ¥¡¥¤¥ë¤ÈÆ±¤¸(¤¿¤À¤·.pm¤Ï¤Ê¤¤)Ì¾Á°¤Î
-¥¯¥é¥¹¤È¡¢¤½¤ì¤Ë²Ã¤¨¤Æ export ¤µ¤ì¤¿¥·¥ó¥Ü¥ë¤ò¥Õ¥§¥Ã¥Á¤¹¤ë¤¿¤á¤Ë
-¸Æ¤Ó½Ğ¤¹¤³¤È¤¬¤Ç¤­¤ë¤è¤¦¤Ê¥¯¥é¥¹¤Ë¤¢¤ëimport ¥á¥½¥Ã¥É¤òÄó¶¡¤¹¤ë¤â¤Î¤Ç¤¹¡£
-¤³¤Î¥â¥¸¥å¡¼¥ë¤Ï C ¤ä C++ ¥ª¥Ö¥¸¥§¥¯¥È¤«¤éÆ°Åª¤Ë¥í¡¼¥É¤µ¤ì¤ë
-¥á¥½¥Ã¥É¤ò¼ÂÁõ¤¹¤ë¤³¤È¤â¤Ç¤­¤Ş¤¹¤¬¡¢¥â¥¸¥å¡¼¥ë¤Î¥æ¡¼¥¶¡¼¤ËÂĞ¤·¤Æ
-Áí¹çÅª¤Ë¤ÏÆ©²á¤Ç¤¢¤ë¤Ù¤­¤Ç¤¹¡£
-Æ±ÍÍ¤Ë¡¢¥â¥¸¥å¡¼¥ë¤Ï¥ª¥ó¥Ç¥Ş¥ó¥É¤Ç¥µ¥Ö¥ë¡¼¥Á¥óÄêµÁ¤ò slurp ¤¹¤ë¤è¤¦¤Ê
-AUTOLOAD ´Ø¿ô¤ò¥»¥Ã¥È¥¢¥Ã¥×¤¹¤ë¤³¤È¤â¤Ç¤­¤Ş¤¹¤¬¡¢¤³¤ì¤â¤Ş¤¿Æ©²á¤Ç¤¢¤ë¤Ù¤­¤Ç¤¹¡£
-F<.pm> ¥Õ¥¡¥¤¥ë¤À¤±¤¬Â¸ºß¤¹¤ë¤³¤È¤òÍ×µá¤µ¤ì¤Ş¤¹¡£
-AUTOLOAD µ¡¹½¤Ë´Ø¤¹¤ë¾ÜºÙ¤Ï L<perlsub>, L<perltoot>, L<AutoLoader> ¤ò
-»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ã¯ã€(è¦å‰‡ã§ã¯) ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜(ãŸã ã—.pmã¯ãªã„)åå‰ã®
+ã‚¯ãƒ©ã‚¹ã¨ã€ãã‚Œã«åŠ ãˆã¦ export ã•ã‚ŒãŸã‚·ãƒ³ãƒœãƒ«ã‚’ãƒ•ã‚§ãƒƒãƒã™ã‚‹ãŸã‚ã«
+å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ãªã‚¯ãƒ©ã‚¹ã«ã‚ã‚‹import ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹ã‚‚ã®ã§ã™ã€‚
+ã“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ C ã‚„ C++ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰å‹•çš„ã«ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹
+ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ãŒã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã«å¯¾ã—ã¦
+ç·åˆçš„ã«ã¯é€éã§ã‚ã‚‹ã¹ãã§ã™ã€‚
+åŒæ§˜ã«ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ã‚ªãƒ³ãƒ‡ãƒãƒ³ãƒ‰ã§ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³å®šç¾©ã‚’ slurp ã™ã‚‹ã‚ˆã†ãª
+AUTOLOAD é–¢æ•°ã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ãŒã€ã“ã‚Œã‚‚ã¾ãŸé€éã§ã‚ã‚‹ã¹ãã§ã™ã€‚
+F<.pm> ãƒ•ã‚¡ã‚¤ãƒ«ã ã‘ãŒå­˜åœ¨ã™ã‚‹ã“ã¨ã‚’è¦æ±‚ã•ã‚Œã¾ã™ã€‚
+AUTOLOAD æ©Ÿæ§‹ã«é–¢ã™ã‚‹è©³ç´°ã¯ L<perlsub>, L<perltoot>, L<AutoLoader> ã‚’
+å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =head2 Guidelines for Module Creation
 
-(¥â¥¸¥å¡¼¥ëºîÀ®¤Î¥¬¥¤¥É¥é¥¤¥ó)
+(ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆã®ã‚¬ã‚¤ãƒ‰ãƒ©ã‚¤ãƒ³)
 
 =over 4
 
@@ -5847,7 +5847,7 @@ Do similar modules already exist in some form?
 
 =end original
 
-»÷¤¿¤è¤¦¤Ê¥â¥¸¥å¡¼¥ë¤¬´û¤Ë¤¢¤ê¤Ş¤»¤ó¤«?
+ä¼¼ãŸã‚ˆã†ãªãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæ—¢ã«ã‚ã‚Šã¾ã›ã‚“ã‹?
 
 =begin original
 
@@ -5860,12 +5860,12 @@ with command line options.
 
 =end original
 
-¤â¤·¤¢¤ì¤Ğ¡¢¤½¤Î¥â¥¸¥å¡¼¥ëÁ´ÂÎ¤ò»È¤¦¤«¡¢¿·¤¿¤Ê¥¯¥é¥¹¤ËÊØÍø¤Êµ¡Ç½¤ò
-·Ñ¾µ¤·¤Æ¡¢ºÆÍøÍÑ¤¹¤ë¤³¤È¤ò»î¤ß¤Æ¤¯¤À¤µ¤¤¡£
-¤â¤·¤½¤ì¤¬¸½¼ÂÅª¤Ç¤Ê¤¤¤Î¤Ê¤é¡¢¥â¥¸¥å¡¼¥ë¤Î³ÈÄ¥¤ä¤¹¤Ç¤Ë¤¢¤ë¥â¥¸¥å¡¼¥ë¤Î
-µ¡Ç½¤Î³ÈÄ¥¤ò¡¢¥â¥¸¥å¡¼¥ë¤Îºî¼Ô¤È°ì½ï¤Ë¹Ô¤¦¤³¤È¤ò»î¤ß¤Æ¤¯¤À¤µ¤¤¡£
-´°Á´¤ÊÎã¤Ï¡¢perl4 ¤Ë¤¢¤ë¥³¥Ş¥ó¥É¥é¥¤¥ó¥ª¥×¥·¥ç¥ó¤ò¼è¤ê°·¤¦¤¿¤á¤Î
-¥Ñ¥Ã¥±¡¼¥¸¤Ç¤¹¡£
+ã‚‚ã—ã‚ã‚Œã°ã€ãã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å…¨ä½“ã‚’ä½¿ã†ã‹ã€æ–°ãŸãªã‚¯ãƒ©ã‚¹ã«ä¾¿åˆ©ãªæ©Ÿèƒ½ã‚’
+ç¶™æ‰¿ã—ã¦ã€å†åˆ©ç”¨ã™ã‚‹ã“ã¨ã‚’è©¦ã¿ã¦ãã ã•ã„ã€‚
+ã‚‚ã—ãã‚ŒãŒç¾å®Ÿçš„ã§ãªã„ã®ãªã‚‰ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ‹¡å¼µã‚„ã™ã§ã«ã‚ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®
+æ©Ÿèƒ½ã®æ‹¡å¼µã‚’ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œè€…ã¨ä¸€ç·’ã«è¡Œã†ã“ã¨ã‚’è©¦ã¿ã¦ãã ã•ã„ã€‚
+å®Œå…¨ãªä¾‹ã¯ã€perl4 ã«ã‚ã‚‹ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’å–ã‚Šæ‰±ã†ãŸã‚ã®
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã§ã™ã€‚
 
 =begin original
 
@@ -5876,10 +5876,10 @@ scheme as the original author.
 
 =end original
 
-¤â¤·¤¢¤Ê¤¿¤¬´û¤ËÂ¸ºß¤·¤Æ¤¤¤ë¥â¥¸¥å¡¼¥ë¤Î¥»¥Ã¥È¤ò³ÈÄ¥¤¹¤ë¥â¥¸¥å¡¼¥ë¤ò
-½ñ¤³¤¦¤È¸À¤¦¤Î¤Ç¤¢¤ì¤Ğ¡¢¥Ñ¥Ã¥±¡¼¥¸¤Îºî¼Ô¤ÈÄ´À°¤·¤Æ¤¯¤À¤µ¤¤¡£
-¤¢¤Ê¤¿¤¬¸µ¤Îºî¼Ô¤ÈÆ±ÍÍ¤ÎÌ¿Ì¾µ¬Â§¤ä¥â¥¸¥å¡¼¥ëÁê¸ßºîÍÑµ¬Â§¤Ë½¾¤¦¤Î¤Ê¤é¤Ğ¡¢
-¤½¤ì¤¬½õ¤±¤Ë¤Ê¤ê¤Ş¤¹¡£
+ã‚‚ã—ã‚ãªãŸãŒæ—¢ã«å­˜åœ¨ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚»ãƒƒãƒˆã‚’æ‹¡å¼µã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’
+æ›¸ã“ã†ã¨è¨€ã†ã®ã§ã‚ã‚Œã°ã€ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ä½œè€…ã¨èª¿æ•´ã—ã¦ãã ã•ã„ã€‚
+ã‚ãªãŸãŒå…ƒã®ä½œè€…ã¨åŒæ§˜ã®å‘½åè¦å‰‡ã‚„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ç›¸äº’ä½œç”¨è¦å‰‡ã«å¾“ã†ã®ãªã‚‰ã°ã€
+ãã‚ŒãŒåŠ©ã‘ã«ãªã‚Šã¾ã™ã€‚
 
 =item  *
 
@@ -5889,8 +5889,8 @@ Try to design the new module to be easy to extend and reuse.
 
 =end original
 
-¿·¤·¤¤¥â¥¸¥å¡¼¥ë¤ò¡¢³ÈÄ¥¤äºÆÍøÍÑ¤·¤ä¤¹¤¤¤è¤¦¤Ë¥Ç¥¶¥¤¥ó¤¹¤ë¤³¤È¤ò
-»î¤ß¤Æ¤¯¤À¤µ¤¤¡£
+æ–°ã—ã„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€æ‹¡å¼µã‚„å†åˆ©ç”¨ã—ã‚„ã™ã„ã‚ˆã†ã«ãƒ‡ã‚¶ã‚¤ãƒ³ã™ã‚‹ã“ã¨ã‚’
+è©¦ã¿ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -5900,9 +5900,9 @@ of code that need less warnings.
 
 =end original
 
-C<use warnings;> (¤Ş¤¿¤Ï C<use warnings qw(...);>) ¤ò»î¤ß¤Æ¤¯¤À¤µ¤¤¡£
-¤¿¤¯¤µ¤ó¤Î·Ù¹ğ¤¬¤¤¤é¤Ê¤¤¥³¡¼¥É¥Ö¥í¥Ã¥¯¤ËÂĞ¤·¤Æ¤Ï
-C<no warnings qw(...);> ¤òÄÉ²Ã¤Ç¤­¤ë¤³¤È¤âËº¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤¡£
+C<use warnings;> (ã¾ãŸã¯ C<use warnings qw(...);>) ã‚’è©¦ã¿ã¦ãã ã•ã„ã€‚
+ãŸãã•ã‚“ã®è­¦å‘ŠãŒã„ã‚‰ãªã„ã‚³ãƒ¼ãƒ‰ãƒ–ãƒ­ãƒƒã‚¯ã«å¯¾ã—ã¦ã¯
+C<no warnings qw(...);> ã‚’è¿½åŠ ã§ãã‚‹ã“ã¨ã‚‚å¿˜ã‚Œãªã„ã§ãã ã•ã„ã€‚
 
 =begin original
 
@@ -5912,9 +5912,9 @@ e.g.,:
 
 =end original
 
-bless ¤µ¤ì¤¿¥ê¥Õ¥¡¥ì¥ó¥¹¤ò»È¤¤¤Ş¤·¤ç¤¦¡£
-¥³¥ó¥¹¥È¥é¥¯¥¿¤ÎÂè°ì°ú¿ô¤È¤·¤ÆÅÏ¤µ¤ì¤¿¥¯¥é¥¹Ì¾¤Ë bless ¤¹¤ë¤¿¤á¤Ë¡¢
-Æó°ú¿ô¤ò¤È¤ë bless ¤ò»È¤¤¤Ş¤·¤ç¤¦¡£
+bless ã•ã‚ŒãŸãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
+ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®ç¬¬ä¸€å¼•æ•°ã¨ã—ã¦æ¸¡ã•ã‚ŒãŸã‚¯ãƒ©ã‚¹åã« bless ã™ã‚‹ãŸã‚ã«ã€
+äºŒå¼•æ•°ã‚’ã¨ã‚‹ bless ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 
  sub new {
      my $class = shift;
@@ -5928,8 +5928,8 @@ or a virtual method.
 
 =end original
 
-¤¢¤ë¤¤¤Ï¡¢ÀÅÅª¥á¥½¥Ã¥É¤È²¾ÁÛ¥á¥½¥Ã¥É¤Î¤¤¤º¤ì¤È¤·¤Æ¤â»È¤¤¤¿¤¤¤Î¤Ç
-¤¢¤ì¤Ğ¤³¤¦¤·¤Ş¤·¤ç¤¦¡£
+ã‚ã‚‹ã„ã¯ã€é™çš„ãƒ¡ã‚½ãƒƒãƒ‰ã¨ä»®æƒ³ãƒ¡ã‚½ãƒƒãƒ‰ã®ã„ãšã‚Œã¨ã—ã¦ã‚‚ä½¿ã„ãŸã„ã®ã§
+ã‚ã‚Œã°ã“ã†ã—ã¾ã—ã‚‡ã†ã€‚
 
  sub new {
      my $self  = shift;
@@ -5946,11 +5946,11 @@ Inherit methods from other modules if appropriate.
 
 =end original
 
-¥ê¥Õ¥¡¥ì¥ó¥¹¤È¤·¤ÆÇÛÎó¤òÅÏ¤¹¤Î¤Ç¡¢¤è¤êÂ¿¤¯¤Î¥Ñ¥é¥á¡¼¥¿¤ò¸å¤ÇÄÉ²Ã¤¹¤ë¤³¤È¤¬
-²ÄÇ½¤Ç¤¹(¤½¤·¤Æ¤³¤Î¤ä¤êÊı¤Ï¹âÂ®¤Ç¤â¤¢¤ê¤Ş¤¹)¡£
-´Ø¿ô¤òÅ¬ÀÚ¤Ê¥á¥½¥Ã¥É¤Ø¤ÈÊÑ´¹¤·¤Ş¤¹¡£
-Âç¤­¤Ê¥á¥½¥Ã¥É¤ò¾®¤µ¤¯¡¢¤è¤ê½ÀÆğ¤Ê¤â¤Î¤ËÊ¬³ä¤·¤Ş¤¹¡£
-Å¬ÀÚ¤Ç¤¢¤ì¤Ğ¡¢Â¾¤Î¥â¥¸¥å¡¼¥ë¤«¤é¥á¥½¥Ã¥É¤ò·Ñ¾µ¤·¤Ş¤¹¡£
+ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã¨ã—ã¦é…åˆ—ã‚’æ¸¡ã™ã®ã§ã€ã‚ˆã‚Šå¤šãã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å¾Œã§è¿½åŠ ã™ã‚‹ã“ã¨ãŒ
+å¯èƒ½ã§ã™(ãã—ã¦ã“ã®ã‚„ã‚Šæ–¹ã¯é«˜é€Ÿã§ã‚‚ã‚ã‚Šã¾ã™)ã€‚
+é–¢æ•°ã‚’é©åˆ‡ãªãƒ¡ã‚½ãƒƒãƒ‰ã¸ã¨å¤‰æ›ã—ã¾ã™ã€‚
+å¤§ããªãƒ¡ã‚½ãƒƒãƒ‰ã‚’å°ã•ãã€ã‚ˆã‚ŠæŸ”è»Ÿãªã‚‚ã®ã«åˆ†å‰²ã—ã¾ã™ã€‚
+é©åˆ‡ã§ã‚ã‚Œã°ã€ä»–ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‹ã‚‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç¶™æ‰¿ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -5961,10 +5961,10 @@ class names as far as possible.
 
 =end original
 
-C<die "Invalid" unless ref $ref eq 'FOO'> ¤Î¤è¤¦¤Ê¥¯¥é¥¹Ì¾¤Î¸¡ºº¤Ï
-¤·¤Ê¤¤¤è¤¦¤Ë¤·¤Ş¤·¤ç¤¦¡£
-°ìÈÌÅª¤Ë¡¢¤Û¤È¤ó¤É²¿¤Î¾ã³²¤â¤Ê¤·¤Ë C<eq 'FOO'> ¤ÎÉôÊ¬¤òºï½ü¤Ç¤­¤Ş¤¹¡£
-¥¯¥é¥¹Ì¾¤òÄ¾ÀÜÉ½µ­¤¹¤ë¤³¤È¤Ï¤Ç¤­¤ë¸Â¤êÈò¤±¤ë¤è¤¦¤Ë¤·¤Ş¤·¤ç¤¦¡£
+C<die "Invalid" unless ref $ref eq 'FOO'> ã®ã‚ˆã†ãªã‚¯ãƒ©ã‚¹åã®æ¤œæŸ»ã¯
+ã—ãªã„ã‚ˆã†ã«ã—ã¾ã—ã‚‡ã†ã€‚
+ä¸€èˆ¬çš„ã«ã€ã»ã¨ã‚“ã©ä½•ã®éšœå®³ã‚‚ãªã—ã« C<eq 'FOO'> ã®éƒ¨åˆ†ã‚’å‰Šé™¤ã§ãã¾ã™ã€‚
+ã‚¯ãƒ©ã‚¹åã‚’ç›´æ¥è¡¨è¨˜ã™ã‚‹ã“ã¨ã¯ã§ãã‚‹é™ã‚Šé¿ã‘ã‚‹ã‚ˆã†ã«ã—ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -5973,9 +5973,9 @@ C<< $r->func() >> would work (see L<perlbot> for more details).
 
 =end original
 
-C<@ISA=qw(... Class ...)> ¤ä C<< $r->func() >> ¤¬»È¤¨¤ë¤È¤³¤í¤Ç¤Ï
-C<< $r->Class::func() >> ¤ò»È¤¦¤Î¤ÏÈò¤±¤Ş¤·¤ç¤¦
-(¾Ü¤·¤¯¤Ï L<perlbot> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤)¡£
+C<@ISA=qw(... Class ...)> ã‚„ C<< $r->func() >> ãŒä½¿ãˆã‚‹ã¨ã“ã‚ã§ã¯
+C<< $r->Class::func() >> ã‚’ä½¿ã†ã®ã¯é¿ã‘ã¾ã—ã‚‡ã†
+(è©³ã—ãã¯ L<perlbot> ã‚’å‚ç…§ã—ã¦ãã ã•ã„)ã€‚
 
 =begin original
 
@@ -5985,10 +5985,10 @@ the module after __END__ either using AutoSplit or by saying:
 
 =end original
 
-¼«Æ° split ¤ò»È¤¦¤³¤È¤Ï¤¢¤Ş¤ê¤Ê¤¯¡¢¿·¤¿¤ËÄÉ²Ã¤·¤¿´Ø¿ô¤¬¤½¤ì¤ò»È¤ï¤Ê¤¤
-¥×¥í¥°¥é¥à¤ËÉéÃ´¤ò³İ¤±¤ë¤³¤È¤Ï¤¢¤ê¤Ş¤»¤ó¡£
-¥â¥¸¥å¡¼¥ë¤Î __END__ ¤Î¸å¤Ë¥Æ¥¹¥È´Ø¿ô¤òÄÉ²Ã¤·¤Æ AutoSplit ¤ò»È¤¦¤«
-°Ê²¼¤Î¤è¤¦¤Ë¤·¤Ş¤¹:
+è‡ªå‹• split ã‚’ä½¿ã†ã“ã¨ã¯ã‚ã¾ã‚Šãªãã€æ–°ãŸã«è¿½åŠ ã—ãŸé–¢æ•°ãŒãã‚Œã‚’ä½¿ã‚ãªã„
+ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«è² æ‹…ã‚’æ›ã‘ã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã® __END__ ã®å¾Œã«ãƒ†ã‚¹ãƒˆé–¢æ•°ã‚’è¿½åŠ ã—ã¦ AutoSplit ã‚’ä½¿ã†ã‹
+ä»¥ä¸‹ã®ã‚ˆã†ã«ã—ã¾ã™:
 
  eval join('',<main::DATA>) || die $@ unless caller();
 
@@ -6002,13 +6002,13 @@ into: C<< $obj = SUBCLASS->new(); >> ?
 
 =end original
 
-¤¢¤Ê¤¿¤Î¥â¥¸¥å¡¼¥ë¤Ï 'empty subclass' ¥Æ¥¹¥È¤òÄÌ²á¤·¤Ş¤¹¤«?
-C<@SUBCLASS::ISA = qw(YOURCLASS);> ¤È¤¤¤Ã¤¿¤³¤È¤ò¤·¤Æ¤¤¤ë¤Î¤Ê¤é¡¢
-¤¢¤Ê¤¿¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï YOURCLASS ¤ÈÁ´¤¯Æ±¤¸ÊıË¡¤Ç SUBCLASS ¤ò
-»È¤¨¤ë¤è¤¦¤Ë¤¹¤Ù¤­¤Ç¤¹¡£
-¤¿¤È¤¨¤Ğ¡¢C<< $obj = YOURCLASS->new(); >> ¤ò
-C<< $obj = SUBCLASS->new(); >> ¤Ø¤ÈÊÑ¹¹¤·¤Æ¤â¤¢¤Ê¤¿¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï
-Æ°ºî¤·¤Ş¤¹¤«?
+ã‚ãªãŸã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ 'empty subclass' ãƒ†ã‚¹ãƒˆã‚’é€šéã—ã¾ã™ã‹?
+C<@SUBCLASS::ISA = qw(YOURCLASS);> ã¨ã„ã£ãŸã“ã¨ã‚’ã—ã¦ã„ã‚‹ã®ãªã‚‰ã€
+ã‚ãªãŸã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯ YOURCLASS ã¨å…¨ãåŒã˜æ–¹æ³•ã§ SUBCLASS ã‚’
+ä½¿ãˆã‚‹ã‚ˆã†ã«ã™ã¹ãã§ã™ã€‚
+ãŸã¨ãˆã°ã€C<< $obj = YOURCLASS->new(); >> ã‚’
+C<< $obj = SUBCLASS->new(); >> ã¸ã¨å¤‰æ›´ã—ã¦ã‚‚ã‚ãªãŸã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯
+å‹•ä½œã—ã¾ã™ã‹?
 
 =begin original
 
@@ -6018,10 +6018,10 @@ information in objects.
 
 =end original
 
-¥Ñ¥Ã¥±¡¼¥¸Ãæ¤Ç¤Ê¤ó¤é¤«¤Î¥¹¥Æ¡¼¥È¾ğÊó¤òÊİ»ı¤·¤Ä¤Å¤±¤ë¤³¤È¤ÏÈò¤±¤Ş¤·¤ç¤¦¡£
-¤Ê¤¼¤Ê¤é¡¢¤½¤ì¤Ë¤è¤Ã¤Æ¤¢¤Ê¤¿¤Î¥Ñ¥Ã¥±¡¼¥¸¤òÂ¾¤ÎÊ£¿ô¤Î¥Ñ¥Ã¥±¡¼¥¸¤¬
-»È¤¦¤³¤È¤¬Æñ¤·¤¯¤Ê¤ë¤«¤é¤Ç¤¹¡£
-¥¹¥Æ¡¼¥È¾ğÊó¤Ï¥ª¥Ö¥¸¥§¥¯¥È¤ËÃÖ¤¯¤è¤¦¤Ë¤·¤Ş¤·¤ç¤¦¡£
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ä¸­ã§ãªã‚“ã‚‰ã‹ã®ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±ã‚’ä¿æŒã—ã¤ã¥ã‘ã‚‹ã“ã¨ã¯é¿ã‘ã¾ã—ã‚‡ã†ã€‚
+ãªãœãªã‚‰ã€ãã‚Œã«ã‚ˆã£ã¦ã‚ãªãŸã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’ä»–ã®è¤‡æ•°ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãŒ
+ä½¿ã†ã“ã¨ãŒé›£ã—ããªã‚‹ã‹ã‚‰ã§ã™ã€‚
+ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±ã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç½®ãã‚ˆã†ã«ã—ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6029,7 +6029,7 @@ Always use B<-w>.
 
 =end original
 
-¤¤¤Ä¤Ç¤â B<-w> ¤ò»È¤¤¤Ş¤·¤ç¤¦¡£
+ã„ã¤ã§ã‚‚ B<-w> ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6039,9 +6039,9 @@ of code that need less strictness.
 
 =end original
 
-C<use strict;> (¤â¤·¤¯¤Ï C<use strict qw(...);>) ¤ò»î¤·¤Ş¤·¤ç¤¦¡£
-¸·Ì©¤µ¤¬Í¾¤êÉ¬Í×¤Ç¤Ê¤¤ÆÈÎ©¤·¤¿¥Ö¥í¥Ã¥¯¤Ë¤Ï C<no strict qw(...);> ¤ò
-ÉÕ²Ã¤Ç¤­¤ë¤È¤¤¤¦¤³¤È¤òËº¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤¡£
+C<use strict;> (ã‚‚ã—ãã¯ C<use strict qw(...);>) ã‚’è©¦ã—ã¾ã—ã‚‡ã†ã€‚
+å³å¯†ã•ãŒä½™ã‚Šå¿…è¦ã§ãªã„ç‹¬ç«‹ã—ãŸãƒ–ãƒ­ãƒƒã‚¯ã«ã¯ C<no strict qw(...);> ã‚’
+ä»˜åŠ ã§ãã‚‹ã¨ã„ã†ã“ã¨ã‚’å¿˜ã‚Œãªã„ã§ãã ã•ã„ã€‚
 
 =begin original
 
@@ -6049,7 +6049,7 @@ Always use B<-w>.
 
 =end original
 
-¤¤¤Ä¤Ç¤â B<-w> ¤ò»È¤¤¤Ş¤·¤ç¤¦¡£
+ã„ã¤ã§ã‚‚ B<-w> ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6057,7 +6057,7 @@ Follow the guidelines in the perlstyle(1) manual.
 
 =end original
 
-¥Ş¥Ë¥å¥¢¥ë¥Ú¡¼¥¸ perlstyle(1) ¤Ë¤¢¤ë¥¬¥¤¥É¥é¥¤¥ó¤Ë½¾¤Ã¤Æ²¼¤µ¤¤¡£
+ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãƒšãƒ¼ã‚¸ perlstyle(1) ã«ã‚ã‚‹ã‚¬ã‚¤ãƒ‰ãƒ©ã‚¤ãƒ³ã«å¾“ã£ã¦ä¸‹ã•ã„ã€‚
 
 =begin original
 
@@ -6065,7 +6065,7 @@ Always use B<-w>.
 
 =end original
 
-¤¤¤Ä¤Ç¤â B<-w> ¤ò»È¤¤¤Ş¤·¤ç¤¦¡£
+ã„ã¤ã§ã‚‚ B<-w> ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 
 =item  *
 
@@ -6075,7 +6075,7 @@ Some simple style guidelines
 
 =end original
 
-´ö¤Ä¤«¤ÎÃ±½ã¤Ê¥¹¥¿¥¤¥ë¥¬¥¤¥É¥é¥¤¥ó
+å¹¾ã¤ã‹ã®å˜ç´”ãªã‚¹ã‚¿ã‚¤ãƒ«ã‚¬ã‚¤ãƒ‰ãƒ©ã‚¤ãƒ³
 
 =begin original
 
@@ -6083,8 +6083,8 @@ The perlstyle manual supplied with Perl has many helpful points.
 
 =end original
 
-Perl ¤È°ì½ï¤ËÄó¶¡¤µ¤ì¤Æ¤¤¤ë perlstyle ¥Ş¥Ë¥å¥¢¥ë¤Ë¤Ï¡¢Â¿¤¯¤Î½õ¤±¤Ë
-¤Ê¤ë¤³¤È¤¬½ñ¤«¤ì¤Æ¤¤¤Ş¤¹¡£
+Perl ã¨ä¸€ç·’ã«æä¾›ã•ã‚Œã¦ã„ã‚‹ perlstyle ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã«ã¯ã€å¤šãã®åŠ©ã‘ã«
+ãªã‚‹ã“ã¨ãŒæ›¸ã‹ã‚Œã¦ã„ã¾ã™ã€‚
 
 =begin original
 
@@ -6095,12 +6095,12 @@ seem to be widely used by experienced developers:
 
 =end original
 
-¥³¡¼¥Ç¥£¥ó¥°¥¹¥¿¥¤¥ë¤È¤Ï¡¢¸Ä¡¹¿Í¤Î¹¥¤ß¤ÎÌäÂê¤Ç¤¹¡£
-Â¿¤¯¤Î¿Í¡¹¤Ï¼«Ê¬¼«¿È¤Î¥¹¥¿¥¤¥ë¤ò¡¢¼«Ê¬¼«¿È¤Ç¥×¥í¥°¥é¥à¤ò½ñ¤¤¤¿¤ê
-ÎÉ¤¯½ñ¤«¤ì¤Æ¤¤¤ë¥×¥í¥°¥é¥à¤òÊİ¼é¤¹¤ë¤³¤È¤òÄÌ¤¸¤Æ³Ø¤Ó¡¢²¿Ç¯¤â¤«¤±¤Æ
-²şÎÉ¤·¤Æ¤¤¤Ş¤¹¡£
-°Ê²¼¤Ë·Ğ¸³¤òÀÑ¤ó¤À³«È¯¼Ô¤Ë¤è¤Ã¤Æ¹­¤¯»È¤ï¤ì¤Æ¤¤¤ëÄó°Æ¤Î½¸¤Ş¤ê¤ò
-¼¨¤·¤Ş¤¹¡£
+ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚¹ã‚¿ã‚¤ãƒ«ã¨ã¯ã€å€‹ã€…äººã®å¥½ã¿ã®å•é¡Œã§ã™ã€‚
+å¤šãã®äººã€…ã¯è‡ªåˆ†è‡ªèº«ã®ã‚¹ã‚¿ã‚¤ãƒ«ã‚’ã€è‡ªåˆ†è‡ªèº«ã§ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’æ›¸ã„ãŸã‚Š
+è‰¯ãæ›¸ã‹ã‚Œã¦ã„ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ä¿å®ˆã™ã‚‹ã“ã¨ã‚’é€šã˜ã¦å­¦ã³ã€ä½•å¹´ã‚‚ã‹ã‘ã¦
+æ”¹è‰¯ã—ã¦ã„ã¾ã™ã€‚
+ä»¥ä¸‹ã«çµŒé¨“ã‚’ç©ã‚“ã é–‹ç™ºè€…ã«ã‚ˆã£ã¦åºƒãä½¿ã‚ã‚Œã¦ã„ã‚‹ææ¡ˆã®é›†ã¾ã‚Šã‚’
+ç¤ºã—ã¾ã™ã€‚
 
 =begin original
 
@@ -6111,11 +6111,11 @@ consistently with VAR_NAMES_LIKE_THIS.
 
 =end original
 
-¸ì¤ò¶èÀÚ¤ë¤Î¤Ë¥¢¥ó¥À¡¼¥¹¥³¥¢¤ò»È¤¤¤Ş¤·¤ç¤¦¡£
-°ìÈÌÅª¤Ë¸À¤Ã¤Æ $var_names_like_this ¤Ï $VarNamesLikeThis ¤è¤ê¤âÆÉ¤ß¤ä¤¹¤¯¡¢
-ÆÃ¤Ë±Ñ¸ì¤òÊì¹ñ¸ì¤Ë¤·¤Æ¤¤¤Ê¤¤¿Í¤Ë¤È¤Ã¤Æ¤Ï¤½¤¦¤Ç¤¹¡£
-¤³¤ì¤Ï¤Ş¤¿¡¢VAR_NAMES_LIKE_THIS ¤Î¤è¤¦¤Ë°ì´Ó¤·¤Æµ¡Ç½¤¹¤ë
-Ã±½ã¤Ê¥ë¡¼¥ë¤Ç¤â¤¢¤ê¤Ş¤¹¡£
+èªã‚’åŒºåˆ‡ã‚‹ã®ã«ã‚¢ãƒ³ãƒ€ãƒ¼ã‚¹ã‚³ã‚¢ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
+ä¸€èˆ¬çš„ã«è¨€ã£ã¦ $var_names_like_this ã¯ $VarNamesLikeThis ã‚ˆã‚Šã‚‚èª­ã¿ã‚„ã™ãã€
+ç‰¹ã«è‹±èªã‚’æ¯å›½èªã«ã—ã¦ã„ãªã„äººã«ã¨ã£ã¦ã¯ãã†ã§ã™ã€‚
+ã“ã‚Œã¯ã¾ãŸã€VAR_NAMES_LIKE_THIS ã®ã‚ˆã†ã«ä¸€è²«ã—ã¦æ©Ÿèƒ½ã™ã‚‹
+å˜ç´”ãªãƒ«ãƒ¼ãƒ«ã§ã‚‚ã‚ã‚Šã¾ã™ã€‚
 
 =begin original
 
@@ -6126,11 +6126,11 @@ use mixed case with no underscores (need to be short and portable).
 
 =end original
 
-¥Ñ¥Ã¥±¡¼¥¸¤ä¥â¥¸¥å¡¼¥ë¤ÎÌ¾Á°¤Ï¤³¤Îµ¬Â§¤ÎÎã³°¤Ç¤¹¡£
-Perl ¤ÏÈó¸ø¼°¤Ë¤Ç¤¹¤¬¡¢¾®Ê¸»ú¤À¤±¤«¤é¤Ê¤ë¥â¥¸¥å¡¼¥ëÌ¾¤ò integer ¤ä
-strict ¤Î¤è¤¦¤Ê¡Ö¥×¥é¥°¥Ş¡×¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤ËÍ½Ìó¤·¤Æ¤¤¤Ş¤¹¡£
-¤½¤Î¤Û¤«¤Î¥â¥¸¥å¡¼¥ë¤ÏÂçÊ¸»ú¤Ç»Ï¤Ş¤Ã¤Æ¡¢¥¢¥ó¥À¡¼¥¹¥³¥¢¤ò»È¤ï¤Ê¤¤Âç¾®Ê¸»ú¤Î
-ÊÂ¤Ó¤ò»È¤¤¤Ş¤¹(Ã»¤¯¡¢²ÄÈÂÀ­¤¬¤¢¤ë¤è¤¦¤Ë¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹)¡£
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰ã¯ã“ã®è¦å‰‡ã®ä¾‹å¤–ã§ã™ã€‚
+Perl ã¯éå…¬å¼ã«ã§ã™ãŒã€å°æ–‡å­—ã ã‘ã‹ã‚‰ãªã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã‚’ integer ã‚„
+strict ã®ã‚ˆã†ãªã€Œãƒ—ãƒ©ã‚°ãƒã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã«äºˆç´„ã—ã¦ã„ã¾ã™ã€‚
+ãã®ã»ã‹ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯å¤§æ–‡å­—ã§å§‹ã¾ã£ã¦ã€ã‚¢ãƒ³ãƒ€ãƒ¼ã‚¹ã‚³ã‚¢ã‚’ä½¿ã‚ãªã„å¤§å°æ–‡å­—ã®
+ä¸¦ã³ã‚’ä½¿ã„ã¾ã™(çŸ­ãã€å¯æ¬æ€§ãŒã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™)ã€‚
 
 =begin original
 
@@ -6139,9 +6139,9 @@ or nature of a variable. For example:
 
 =end original
 
-Âç¾®Ê¸»ú¤Î¶èÊÌ¤ò¡¢ÊÑ¿ô¤ÎÀ­¼Á¤À¤È¤«¥¹¥³¡¼¥×¤ò¼¨¤¹¤¿¤á¤ËÊØÍø¤Ë»È¤¨¤ë¤³¤È¤Ë
-µ¤¤¬¤Ä¤¤¤¿¤«¤â¤·¤ì¤Ş¤»¤ó¡£
-Îã¤¨¤Ğ:
+å¤§å°æ–‡å­—ã®åŒºåˆ¥ã‚’ã€å¤‰æ•°ã®æ€§è³ªã ã¨ã‹ã‚¹ã‚³ãƒ¼ãƒ—ã‚’ç¤ºã™ãŸã‚ã«ä¾¿åˆ©ã«ä½¿ãˆã‚‹ã“ã¨ã«
+æ°—ãŒã¤ã„ãŸã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
+ä¾‹ãˆã°:
 
 =begin original
 
@@ -6151,9 +6151,9 @@ or nature of a variable. For example:
 
 =end original
 
- $ALL_CAPS_HERE   Äê¿ô¤Î¤ß(Perl ¤ÎÊÑ¿ô¤È¤Ö¤Ä¤«¤é¤Ê¤¤¤«Ãí°Õ)
- $Some_Caps_Here  ¥Ñ¥Ã¥±¡¼¥¸¤òÄÌ¤¸¤Æ¤Î¥°¥í¡¼¥Ğ¥ë/¥¹¥¿¥Æ¥£¥Ã¥¯
- $no_caps_here    my() ¤ä local() ¤ÇÀë¸À¤µ¤ì¤¿´Ø¿ô¥¹¥³¡¼¥×¤ÎÊÑ¿ô
+ $ALL_CAPS_HERE   å®šæ•°ã®ã¿(Perl ã®å¤‰æ•°ã¨ã¶ã¤ã‹ã‚‰ãªã„ã‹æ³¨æ„)
+ $Some_Caps_Here  ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’é€šã˜ã¦ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«/ã‚¹ã‚¿ãƒ†ã‚£ãƒƒã‚¯
+ $no_caps_here    my() ã‚„ local() ã§å®£è¨€ã•ã‚ŒãŸé–¢æ•°ã‚¹ã‚³ãƒ¼ãƒ—ã®å¤‰æ•°
 
 =begin original
 
@@ -6162,8 +6162,8 @@ e.g., C<< $obj->as_string() >>.
 
 =end original
 
-´Ø¿ôÌ¾¤ä¥á¥½¥Ã¥ÉÌ¾¤Ï C<< $obj->as_string() >> ¤Î¤è¤¦¤Ë¤¹¤Ù¤Æ¾®Ê¸»ú¤Ë
-¤¹¤ë¤³¤È¤¬ºÇÁ±¤Ç¤·¤ç¤¦¡£
+é–¢æ•°åã‚„ãƒ¡ã‚½ãƒƒãƒ‰åã¯ C<< $obj->as_string() >> ã®ã‚ˆã†ã«ã™ã¹ã¦å°æ–‡å­—ã«
+ã™ã‚‹ã“ã¨ãŒæœ€å–„ã§ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6172,9 +6172,9 @@ function should not be used outside the package that defined it.
 
 =end original
 
-ÀèÆ¬¤Î¥¢¥ó¥À¡¼¥¹¥³¥¢¤ò¡¢ÊÑ¿ô¤ä´Ø¿ô¤ò¤½¤ì¤¬ÄêµÁ¤µ¤ì¤Æ¤¤¤ë¥Ñ¥Ã¥±¡¼¥¸¤Î
-³°Â¦¤Ç¤Ï»È¤¦¤Ù¤­¤Ç¤Ï¤Ê¤¤¤È¤¤¤¦¤³¤È¤ò¼¨¤¹¤¿¤á¤Ë
-»È¤¦¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
+å…ˆé ­ã®ã‚¢ãƒ³ãƒ€ãƒ¼ã‚¹ã‚³ã‚¢ã‚’ã€å¤‰æ•°ã‚„é–¢æ•°ã‚’ãã‚ŒãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®
+å¤–å´ã§ã¯ä½¿ã†ã¹ãã§ã¯ãªã„ã¨ã„ã†ã“ã¨ã‚’ç¤ºã™ãŸã‚ã«
+ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ã€‚
 
 =item  *
 
@@ -6184,7 +6184,7 @@ Select what to export.
 
 =end original
 
-¥¨¥¯¥¹¥İ¡¼¥È¤¹¤ë¤â¤Î¤òÁª¤Ó¤Ş¤·¤ç¤¦¡£
+ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã™ã‚‹ã‚‚ã®ã‚’é¸ã³ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6192,7 +6192,7 @@ Do NOT export method names!
 
 =end original
 
-¥á¥½¥Ã¥ÉÌ¾¤ò¥¨¥¯¥¹¥İ¡¼¥È¤·¤Æ¤Ï B<¤¤¤±¤Ş¤»¤ó>!
+ãƒ¡ã‚½ãƒƒãƒ‰åã‚’ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã—ã¦ã¯ B<ã„ã‘ã¾ã›ã‚“>!
 
 =begin original
 
@@ -6200,8 +6200,8 @@ Do NOT export anything else by default without a good reason!
 
 =end original
 
-¤Á¤ã¤ó¤È¤·¤¿ÍıÍ³¤Ê¤·¤Ë¡¢²¿¤«¤ò¥Ç¥Õ¥©¥ë¥È¤Ç¥¨¥¯¥¹¥İ¡¼¥È¤¹¤ë¤è¤¦¤Ê
-¤³¤È¤Ï¤·¤Æ¤Ï B<¤¤¤±¤Ş¤»¤ó>!
+ã¡ã‚ƒã‚“ã¨ã—ãŸç†ç”±ãªã—ã«ã€ä½•ã‹ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã™ã‚‹ã‚ˆã†ãª
+ã“ã¨ã¯ã—ã¦ã¯ B<ã„ã‘ã¾ã›ã‚“>!
 
 =begin original
 
@@ -6211,10 +6211,10 @@ short or common names to reduce the risk of name clashes.
 
 =end original
 
-¥¨¥¯¥¹¥İ¡¼¥È¤Ï¥â¥¸¥å¡¼¥ë¤Î¥æ¡¼¥¶¡¼¤ÎÌ¾Á°¶õ´Ö¤ò±øÀ÷¤·¤Ş¤¹¡£
-¥¨¥¯¥¹¥İ¡¼¥È¤·¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¤Î¤Ç¤¢¤ì¤Ğ¡¢@EXPORT ¤è¤ê¤Ï
-¤à¤·¤í @EXPORT_OK ¤ò»È¤¤¡¢Ã»¤¤Ì¾Á°¤ä°ìÈÌÅª¤ÊÌ¾Á°¤¬¤Ö¤Ä¤«¤ë¥ê¥¹¥¯¤ò
-·Ú¸º¤·¤Ş¤¹¡£
+ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã¯ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®åå‰ç©ºé–“ã‚’æ±šæŸ“ã—ã¾ã™ã€‚
+ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã®ã§ã‚ã‚Œã°ã€@EXPORT ã‚ˆã‚Šã¯
+ã‚€ã—ã‚ @EXPORT_OK ã‚’ä½¿ã„ã€çŸ­ã„åå‰ã‚„ä¸€èˆ¬çš„ãªåå‰ãŒã¶ã¤ã‹ã‚‹ãƒªã‚¹ã‚¯ã‚’
+è»½æ¸›ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -6225,12 +6225,12 @@ indicate informally that they are 'internal' and not for public use.
 
 =end original
 
-°ìÈÌÅª¤Ë¤Ï¡¢¥¨¥¯¥¹¥İ¡¼¥È¤µ¤ì¤Æ¤¤¤Ê¤¤¤â¤Î¤â¥â¥¸¥å¡¼¥ë¤Î³°Â¦¤«¤é
-¥¢¥¯¥»¥¹¤¹¤ë¤³¤È¤¬ ModuleName::item_name (¤â¤·¤¯¤Ï
-C<< $blessed_ref->method >>) ¹½Ê¸¤ò»È¤¦¤³¤È¤Ç²ÄÇ½¤Ç¤¹¡£
-´·Îã¤Ë¤è¤ê¡¢¤¢¤Ê¤¿¤ÏÌ¾Á°¤ÎÀèÆ¬¤Ë¤¢¤ë¥¢¥ó¥À¡¼¥¹¥³¥¢¤ò¤½¤ÎÌ¾Á°¤¬
-¡ÖÆâÉôÅª¡×¤Ê¤â¤Î¤Ç¤¢¤Ã¤Æ¡¢¥Ñ¥Ö¥ê¥Ã¥¯¤ÊÍÑÅÓ¤Î¤¿¤á¤Î¤â¤Î¤Ç¤Ï¤Ê¤¤¤³¤È¤ò
-Èó¸ø¼°¤Ë¼¨¤¹¤Î¤Ë»È¤¨¤Ş¤¹¡£
+ä¸€èˆ¬çš„ã«ã¯ã€ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ã‚‚ã®ã‚‚ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å¤–å´ã‹ã‚‰
+ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã“ã¨ãŒ ModuleName::item_name (ã‚‚ã—ãã¯
+C<< $blessed_ref->method >>) æ§‹æ–‡ã‚’ä½¿ã†ã“ã¨ã§å¯èƒ½ã§ã™ã€‚
+æ…£ä¾‹ã«ã‚ˆã‚Šã€ã‚ãªãŸã¯åå‰ã®å…ˆé ­ã«ã‚ã‚‹ã‚¢ãƒ³ãƒ€ãƒ¼ã‚¹ã‚³ã‚¢ã‚’ãã®åå‰ãŒ
+ã€Œå†…éƒ¨çš„ã€ãªã‚‚ã®ã§ã‚ã£ã¦ã€ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãªç”¨é€”ã®ãŸã‚ã®ã‚‚ã®ã§ã¯ãªã„ã“ã¨ã‚’
+éå…¬å¼ã«ç¤ºã™ã®ã«ä½¿ãˆã¾ã™ã€‚
 
 =begin original
 
@@ -6241,11 +6241,11 @@ table.)
 
 =end original
 
-(¥×¥é¥¤¥Ù¡¼¥È¤Ê´Ø¿ô¤Ï C<my $subref = sub { ... };  &$subref;> ¤Î
-¤è¤¦¤Ë¤·¤ÆÆÀ¤ë¤³¤È¤¬¼Âºİ¤Ë¤Ï²ÄÇ½¤Ç¤¹¡£
-¤·¤«¤·¡¢¥á¥½¥Ã¥É¤È¤·¤ÆÄ¾ÀÜ¸Æ¤Ó½Ğ¤¹ÊıË¡¤Ï¤¢¤ê¤Ş¤»¤ó¡£
-¤Ê¤¼¤Ê¤é¡¢¥á¥½¥Ã¥É¤Ï¥·¥ó¥Ü¥ë¥Æ¡¼¥Ö¥ë¤ÎÃæ¤ÇÌ¾Á°¤ò
-»ı¤Ã¤Æ¤¤¤Ê¤±¤ì¤Ğ¤Ê¤é¤Ê¤¤¤«¤é¤Ç¤¹¡£)
+(ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãªé–¢æ•°ã¯ C<my $subref = sub { ... };  &$subref;> ã®
+ã‚ˆã†ã«ã—ã¦å¾—ã‚‹ã“ã¨ãŒå®Ÿéš›ã«ã¯å¯èƒ½ã§ã™ã€‚
+ã—ã‹ã—ã€ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ç›´æ¥å‘¼ã³å‡ºã™æ–¹æ³•ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+ãªãœãªã‚‰ã€ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚·ãƒ³ãƒœãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä¸­ã§åå‰ã‚’
+æŒã£ã¦ã„ãªã‘ã‚Œã°ãªã‚‰ãªã„ã‹ã‚‰ã§ã™ã€‚)
 
 =begin original
 
@@ -6255,10 +6255,10 @@ then export nothing. If it's just a collection of functions then
 
 =end original
 
-°ìÈÌÅª¤Êµ¬Â§¤È¤·¤Æ¡¢¥â¥¸¥å¡¼¥ë¤¬¥ª¥Ö¥¸¥§¥¯¥È»Ø¸ş¤Ç¤¢¤í¤¦¤È¤¹¤ë¤Ê¤é¡¢
-¤Ê¤Ë¤â¥¨¥¯¥¹¥İ¡¼¥È¤·¤Ş¤»¤ó¡£
-¥â¥¸¥å¡¼¥ë¤¬Ã±¤Ë´Ø¿ô¤Î½¸¹ç¤Ç¤¢¤ë¤Ê¤é¡¢·Ù¹ğÉÕ¤­¤Ç @EXPORT ¤ò
-»È¤¦¤Î¤Ç¤Ï¤Ê¤¯¡¢¤¹¤Ù¤Æ @EXPORT_OK ¤ò»È¤¤¤Ş¤¹¡£
+ä¸€èˆ¬çš„ãªè¦å‰‡ã¨ã—ã¦ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘ã§ã‚ã‚ã†ã¨ã™ã‚‹ãªã‚‰ã€
+ãªã«ã‚‚ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå˜ã«é–¢æ•°ã®é›†åˆã§ã‚ã‚‹ãªã‚‰ã€è­¦å‘Šä»˜ãã§ @EXPORT ã‚’
+ä½¿ã†ã®ã§ã¯ãªãã€ã™ã¹ã¦ @EXPORT_OK ã‚’ä½¿ã„ã¾ã™ã€‚
 
 =item  *
 
@@ -6268,7 +6268,7 @@ Select a name for the module.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤ÎÌ¾Á°¤òÁªÂò¤·¤Ş¤·¤ç¤¦¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã®åå‰ã‚’é¸æŠã—ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6282,16 +6282,16 @@ Module names should begin with a capital letter.
 
 =end original
 
-¤³¤ÎÌ¾Á°¤Ï¡¢²ÄÇ½¤Ê¸Â¤êÀâÌÀÅª¤Ç¡¢¸·Ì©¤Ê¡¢´°Á´¤Ê¤â¤Î¤Ç¤¢¤ë¤Ù¤­¤Ç¤¹¡£
-Û£Ëæ¤µ¤Î¥ê¥¹¥¯¤òÈò¤±¤Ş¤·¤ç¤¦¡£
-¾ï¤ËÆó¤Ä°Ê¾å¤ÎÃ±¸ì¤ò»È¤¦¤³¤È¤ò¹Í¤¨¤Ş¤·¤ç¤¦¡£
-°ìÈÌÅª¤Ë¤Ï¡¢Ì¾Á°¤Ï¤½¤Î¥â¥¸¥å¡¼¥ë¤¬¤É¤Î¤è¤¦¤Ë¤·¤Æ¤¤¤ë¤«¤Ç¤Ï¤Ê¤¯¡¢
-²¿¤ò¤·¤Æ¤¤¤ë¤«¤È¤¤¤¦ÆÃÀ­¤òÈ¿±Ç¤·¤¿¤â¤Î¤Ç¤¢¤ë¤Ù¤­¤Ç¤¹¡£
-¥Í¥¹¥È¤·¤¿¥â¥¸¥å¡¼¥ë¤ò¡¢¥°¥ë¡¼¥×¤ËÈó¸ø¼°¤ÊÌ¾Á°¤òÉÕ¤±¤¿¤ê¥â¥¸¥å¡¼¥ë¤ò
-Ê¬Îà¤¹¤ë¤¿¤á¤Ë»È¤Ã¤Æ¤¯¤À¤µ¤¤¡£
-¥Í¥¹¥È¤·¤¿Ì¾Á°¤ò»ı¤¿¤Ê¤¤¥â¥¸¥å¡¼¥ë¤Ï¡¢¤½¤Î¤¿¤á¤Î¤­¤Á¤ó¤È¤·¤¿
-ÍıÍ³¤ò»ı¤Ä¤Ù¤­¤Ç¤¹¡£
-¥â¥¸¥å¡¼¥ëÌ¾¤ÏÂçÊ¸»ú¤Ç»Ï¤Ş¤ë¤Ù¤­¤Ç¤¹¡£
+ã“ã®åå‰ã¯ã€å¯èƒ½ãªé™ã‚Šèª¬æ˜çš„ã§ã€å³å¯†ãªã€å®Œå…¨ãªã‚‚ã®ã§ã‚ã‚‹ã¹ãã§ã™ã€‚
+æ›–æ˜§ã•ã®ãƒªã‚¹ã‚¯ã‚’é¿ã‘ã¾ã—ã‚‡ã†ã€‚
+å¸¸ã«äºŒã¤ä»¥ä¸Šã®å˜èªã‚’ä½¿ã†ã“ã¨ã‚’è€ƒãˆã¾ã—ã‚‡ã†ã€‚
+ä¸€èˆ¬çš„ã«ã¯ã€åå‰ã¯ãã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã©ã®ã‚ˆã†ã«ã—ã¦ã„ã‚‹ã‹ã§ã¯ãªãã€
+ä½•ã‚’ã—ã¦ã„ã‚‹ã‹ã¨ã„ã†ç‰¹æ€§ã‚’åæ˜ ã—ãŸã‚‚ã®ã§ã‚ã‚‹ã¹ãã§ã™ã€‚
+ãƒã‚¹ãƒˆã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€ã‚°ãƒ«ãƒ¼ãƒ—ã«éå…¬å¼ãªåå‰ã‚’ä»˜ã‘ãŸã‚Šãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’
+åˆ†é¡ã™ã‚‹ãŸã‚ã«ä½¿ã£ã¦ãã ã•ã„ã€‚
+ãƒã‚¹ãƒˆã—ãŸåå‰ã‚’æŒãŸãªã„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ã€ãã®ãŸã‚ã®ãã¡ã‚“ã¨ã—ãŸ
+ç†ç”±ã‚’æŒã¤ã¹ãã§ã™ã€‚
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã¯å¤§æ–‡å­—ã§å§‹ã¾ã‚‹ã¹ãã§ã™ã€‚
 
 =begin original
 
@@ -6302,12 +6302,12 @@ If in any doubt ask for suggestions in comp.lang.perl.misc.
 
 =end original
 
-Sort ¤È¸Æ¤Ğ¤ì¤ë 57 ¤Î¥â¥¸¥å¡¼¥ë¤ò¤¹¤Ù¤Æ»ı¤Ä¤³¤È¤Ï¡¢´ÊÃ±¤Ê¤³¤È¤Ç¤Ï
-¤¢¤ê¤Ş¤»¤ó(Sort::Quick ¤È¸Æ¤Ğ¤ì¤ë 23 ¤Ë¤Ä¤¤¤Æ¤Î¤ß¹Í¤¨¤ë¤³¤È¤¬
-¤è¤êÁÛÁü¤·¤ä¤¹¤¤¤Ç¤·¤ç¤¦ :-)¡£
-Ã¯¤«¤¬¤¢¤Ê¤¿¤Î¥â¥¸¥å¡¼¥ë¤òÂ¾¤ÎÂ¿¤¯¤Î¥â¥¸¥å¡¼¥ë¤È°ì½ï¤Ë
-¥¤¥ó¥¹¥È¡¼¥ë¤¹¤ë¤³¤È¤òÁÛÁü¤·¤Æ¤¯¤À¤µ¤¤¡£
-¤Ê¤Ë¤«µ¿Ìä¤¬¤¢¤ì¤Ğ comp.lang.perl.misc ¤ÇÄó°Æ¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤¡£
+Sort ã¨å‘¼ã°ã‚Œã‚‹ 57 ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã™ã¹ã¦æŒã¤ã“ã¨ã¯ã€ç°¡å˜ãªã“ã¨ã§ã¯
+ã‚ã‚Šã¾ã›ã‚“(Sort::Quick ã¨å‘¼ã°ã‚Œã‚‹ 23 ã«ã¤ã„ã¦ã®ã¿è€ƒãˆã‚‹ã“ã¨ãŒ
+ã‚ˆã‚Šæƒ³åƒã—ã‚„ã™ã„ã§ã—ã‚‡ã† :-)ã€‚
+èª°ã‹ãŒã‚ãªãŸã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä»–ã®å¤šãã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ä¸€ç·’ã«
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ã“ã¨ã‚’æƒ³åƒã—ã¦ãã ã•ã„ã€‚
+ãªã«ã‹ç–‘å•ãŒã‚ã‚Œã° comp.lang.perl.misc ã§ææ¡ˆã—ã¦ã¿ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -6318,11 +6318,11 @@ Xyz::Model etc. Use the modules in this list as a naming guide.
 
 =end original
 
-´ØÏ¢¤·¤¿¥â¥¸¥å¡¼¥ë/¥¯¥é¥¹¤Î°ìÂ·¤¨¤ò³«È¯¤¹¤ë¤Î¤Ç¤¢¤ì¤Ğ¡¢¤½¤ì¤ÏÌ¾Á°¶õ´Ö¤ò
-ÇË²õ¤¹¤ë¤³¤È¤òËÉ¤°¤è¤¦¤Ê°ìÈÌÅª¤Ê¥×¥ê¥Õ¥£¥Ã¥¯¥¹¤ò»ı¤Ä¥Í¥¹¥È¤·¤¿
-¥¯¥é¥¹¤ò»È¤¦¤è¤¤Îı½¬¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦¡£
-¤¿¤È¤¨¤Ğ Xyz::Control, Xyz::View, Xyz::Model ¤È¤¤¤Ã¤¿¤â¤Î¤Ç¤¹¡£
-Ì¿Ì¾¥¬¥¤¥É¤È¤·¤Æ¤³¤Î¥ê¥¹¥È¤Ë¤¢¤ë¥â¥¸¥å¡¼¥ë¤ò»È¤Ã¤Æ¤¯¤À¤µ¤¤¡£
+é–¢é€£ã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«/ã‚¯ãƒ©ã‚¹ã®ä¸€æƒãˆã‚’é–‹ç™ºã™ã‚‹ã®ã§ã‚ã‚Œã°ã€ãã‚Œã¯åå‰ç©ºé–“ã‚’
+ç ´å£Šã™ã‚‹ã“ã¨ã‚’é˜²ãã‚ˆã†ãªä¸€èˆ¬çš„ãªãƒ—ãƒªãƒ•ã‚£ãƒƒã‚¯ã‚¹ã‚’æŒã¤ãƒã‚¹ãƒˆã—ãŸ
+ã‚¯ãƒ©ã‚¹ã‚’ä½¿ã†ã‚ˆã„ç·´ç¿’ã«ãªã‚‹ã§ã—ã‚‡ã†ã€‚
+ãŸã¨ãˆã° Xyz::Control, Xyz::View, Xyz::Model ã¨ã„ã£ãŸã‚‚ã®ã§ã™ã€‚
+å‘½åã‚¬ã‚¤ãƒ‰ã¨ã—ã¦ã“ã®ãƒªã‚¹ãƒˆã«ã‚ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -6332,8 +6332,8 @@ those modules.
 
 =end original
 
-¤¢¤ë½¸¹ç¤Ë¿·¤·¤¤¥â¥¸¥å¡¼¥ë¤òÄÉ²Ã¤¹¤ë¤Î¤Ê¤é¡¢¸µ¤Îºî¼Ô¤ÎÉ¸½à¤Ë½¾¤Ã¤¿
-¥â¥¸¥å¡¼¥ë¤Î¥Í¡¼¥ß¥ó¥°¤ä¥á¥½¥Ã¥É¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤ò»È¤Ã¤Æ¤¯¤À¤µ¤¤¡£
+ã‚ã‚‹é›†åˆã«æ–°ã—ã„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã®ãªã‚‰ã€å…ƒã®ä½œè€…ã®æ¨™æº–ã«å¾“ã£ãŸ
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒãƒ¼ãƒŸãƒ³ã‚°ã‚„ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -6345,11 +6345,11 @@ using a category name that includes an underscore like Foo_Corp::*.
 
 =end original
 
-¤â¤·¥×¥é¥¤¥Ù¡¼¥È¤ÊÆâÉô¤ä¥×¥í¥¸¥§¥¯¥È¸ÇÍ­¤ÎÍÑÅÓ¤Î¤¿¤á¤Ë³«È¯Ãæ¤Î¥â¥¸¥å¡¼¥ë¤¬
-·è¤·¤Æ¸ø³«¤µ¤ì¤ë¤³¤È¤¬¤Ê¤¤¤Ê¤é¡¢¾­Íè¤Î¸ø³«¥â¥¸¥å¡¼¥ë¤ÈÌ¾Á°¤¬
-¾×ÆÍ¤·¤Ê¤¤¤³¤È¤ò³Î¼Â¤Ë¤·¤Æ¤¯¤À¤µ¤¤¡£
-¤³¤ì¤Ï¡¢Í½ÌóºÑ¤ß¤Î Local::* ¥«¥Æ¥´¥ê¤ò»È¤¦¤«¡¢ Foo_Corp::* ¤Î¤è¤¦¤Ë
-Ì¾Á°¤Ë¤·¤¿Àï¤ò´Ş¤á¤ë¤³¤È¤Ç¹Ô¤¨¤Ş¤¹¡£
+ã‚‚ã—ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãªå†…éƒ¨ã‚„ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå›ºæœ‰ã®ç”¨é€”ã®ãŸã‚ã«é–‹ç™ºä¸­ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒ
+æ±ºã—ã¦å…¬é–‹ã•ã‚Œã‚‹ã“ã¨ãŒãªã„ãªã‚‰ã€å°†æ¥ã®å…¬é–‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨åå‰ãŒ
+è¡çªã—ãªã„ã“ã¨ã‚’ç¢ºå®Ÿã«ã—ã¦ãã ã•ã„ã€‚
+ã“ã‚Œã¯ã€äºˆç´„æ¸ˆã¿ã® Local::* ã‚«ãƒ†ã‚´ãƒªã‚’ä½¿ã†ã‹ã€ Foo_Corp::* ã®ã‚ˆã†ã«
+åå‰ã«ã—ãŸæˆ¦ã‚’å«ã‚ã‚‹ã“ã¨ã§è¡Œãˆã¾ã™ã€‚
 
 =begin original
 
@@ -6359,11 +6359,11 @@ unique in the first 8 characters. Nested modules make this easier.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Î³Æ¥³¥ó¥İ¡¼¥Í¥ó¥È¤ò²ÄÈÂÀ­¤¢¤ë¤â¤Î¤Ë¤¹¤ë¤¿¤á¤Ë¡¢Ì¾Á°¤Ï
-11 Ê¸»ú°Ê²¼¤ËÀ©¸Â¤¹¤Ù¤­¤Ç¤·¤ç¤¦¡£
-MS-DOS ¾å¤Ç»È¤ï¤ì¤ë²ÄÇ½À­¤Î¤¢¤ë¤â¤Î¤Ç¤¢¤ì¤Ğ¡¢³Æ¥³¥ó¥İ¡¼¥Í¥ó¥È¤¬
-ºÇ½é¤Î 8 Ê¸»ú¤Ç¶èÊÌ¤Ç¤­¤ë¤è¤¦¤Ë¤·¤Æ¤¯¤À¤µ¤¤¡£
-¥Í¥¹¥È¥â¥¸¥å¡¼¥ë¤Ï¤³¤ì¤ò´ÊÃ±¤Ë¤·¤Æ¤¯¤ì¤Ş¤¹¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å¯æ¬æ€§ã‚ã‚‹ã‚‚ã®ã«ã™ã‚‹ãŸã‚ã«ã€åå‰ã¯
+11 æ–‡å­—ä»¥ä¸‹ã«åˆ¶é™ã™ã¹ãã§ã—ã‚‡ã†ã€‚
+MS-DOS ä¸Šã§ä½¿ã‚ã‚Œã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹ã‚‚ã®ã§ã‚ã‚Œã°ã€å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒ
+æœ€åˆã® 8 æ–‡å­—ã§åŒºåˆ¥ã§ãã‚‹ã‚ˆã†ã«ã—ã¦ãã ã•ã„ã€‚
+ãƒã‚¹ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯ã“ã‚Œã‚’ç°¡å˜ã«ã—ã¦ãã‚Œã¾ã™ã€‚
 
 =item  *
 
@@ -6373,7 +6373,7 @@ Have you got it right?
 
 =end original
 
-Àµ¤·¤¯¤ä¤ê¤Ş¤·¤¿¤«?
+æ­£ã—ãã‚„ã‚Šã¾ã—ãŸã‹?
 
 =begin original
 
@@ -6383,10 +6383,10 @@ you picked the most appropriate name? Do you have any questions?
 
 =end original
 
-¤¢¤Ê¤¿¤¬Àµ¤·¤¤È½ÃÇ¤ò¤·¤¿¤È¡¢¤É¤Î¤è¤¦¤ËÃÎ¤ê¤Ş¤¹¤«?
-¸å¤ÇÌäÂê¤ò°ú¤­µ¯¤³¤¹¤è¤¦¤Ê¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¥Ç¥¶¥¤¥ó¤ò¼è¤ê½ü¤­¤Ş¤·¤¿¤«?
-ºÇ¤âÅ¬ÀÚ¤ÊÌ¾Á°¤òÁªÂò¤·¤Ş¤·¤¿¤«?
-¤Ê¤Ë¤«¼ÁÌä¤Ï¤¢¤ê¤Ş¤»¤ó¤«?
+ã‚ãªãŸãŒæ­£ã—ã„åˆ¤æ–­ã‚’ã—ãŸã¨ã€ã©ã®ã‚ˆã†ã«çŸ¥ã‚Šã¾ã™ã‹?
+å¾Œã§å•é¡Œã‚’å¼•ãèµ·ã“ã™ã‚ˆã†ãªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãƒ‡ã‚¶ã‚¤ãƒ³ã‚’å–ã‚Šé™¤ãã¾ã—ãŸã‹?
+æœ€ã‚‚é©åˆ‡ãªåå‰ã‚’é¸æŠã—ã¾ã—ãŸã‹?
+ãªã«ã‹è³ªå•ã¯ã‚ã‚Šã¾ã›ã‚“ã‹?
 
 =begin original
 
@@ -6396,10 +6396,10 @@ all the people who develop modules and it's the best place to ask.
 
 =end original
 
-³Î¼Â¤ËÃÎ¤ëÊıË¡¡¢¤½¤·¤ÆÂ¿¤¯¤Î½õ¤±¤Ë¤Ê¤ëÄó°Æ¤ò¤È¤ê¤¢¤²¤ëºÇÁ±¤ÎÊıË¡¤È¤Ï¡¢
-¤½¤ÎÊıË¡¤òÃÎ¤Ã¤Æ¤¤¤ë¿Í¤Ë¿Ö¤¯¤È¤¤¤¦¤³¤È¤Ç¤¹¡£
-comp.lang.perl.misc ¤Ï¥â¥¸¥å¡¼¥ë¤ò³«È¯¤·¤¿¿ÍÁ´¤Æ¤¬ÆÉ¤ó¤Ç¤¤¤Æ¡¢
-¿Ò¤Í¤ë¾ì½ê¤Ë¤ÏºÇ¤âÎÉ¤¤¾ì½ê¤Ç¤¹¡£
+ç¢ºå®Ÿã«çŸ¥ã‚‹æ–¹æ³•ã€ãã—ã¦å¤šãã®åŠ©ã‘ã«ãªã‚‹ææ¡ˆã‚’ã¨ã‚Šã‚ã’ã‚‹æœ€å–„ã®æ–¹æ³•ã¨ã¯ã€
+ãã®æ–¹æ³•ã‚’çŸ¥ã£ã¦ã„ã‚‹äººã«è¨Šãã¨ã„ã†ã“ã¨ã§ã™ã€‚
+comp.lang.perl.misc ã¯ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹ç™ºã—ãŸäººå…¨ã¦ãŒèª­ã‚“ã§ã„ã¦ã€
+å°‹ã­ã‚‹å ´æ‰€ã«ã¯æœ€ã‚‚è‰¯ã„å ´æ‰€ã§ã™ã€‚
 
 =begin original
 
@@ -6410,11 +6410,11 @@ by busy people - generally the very people you want to read it!)
 
 =end original
 
-¤¢¤Ê¤¿¤¬¤¹¤ëÉ¬Í×¤¬¤¢¤ë¤Î¤Ï¡¢¥â¥¸¥å¡¼¥ë¤Î¼êÃ»¤ÊÍ×Ìó¡¢¤½¤ÎÌÜÅª¤È
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤òÅê¹Æ¤¹¤ë¤³¤È¤Ç¤¹¡£
-¼ç¤Ê¥á¥½¥Ã¥É¤Î¤½¤ì¤¾¤ì¤Ë¤Ä¤¤¤ÆÆó¡¢»°¹Ô¤¢¤ì¤Ğ½½Ê¬¤Ç¤·¤ç¤¦
-(¤¢¤Ê¤¿¤¬¥â¥¸¥å¡¼¥ëÁ´ÂÎ¤òÅê¹Æ¤·¤¿¤é¡¢Ë»¤·¤¤¿Í - ¤Ä¤Ş¤ê¤¢¤Ê¤¿¤¬
-°ìÈÖÆÉ¤ó¤ÇÍß¤·¤¤¿ÍÃ£¤ÏÌµ»ë¤·¤Æ¤·¤Ş¤¦¤«¤â¤·¤ì¤Ş¤»¤ó!)
+ã‚ãªãŸãŒã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã®ã¯ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ‰‹çŸ­ãªè¦ç´„ã€ãã®ç›®çš„ã¨
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æŠ•ç¨¿ã™ã‚‹ã“ã¨ã§ã™ã€‚
+ä¸»ãªãƒ¡ã‚½ãƒƒãƒ‰ã®ãã‚Œãã‚Œã«ã¤ã„ã¦äºŒã€ä¸‰è¡Œã‚ã‚Œã°ååˆ†ã§ã—ã‚‡ã†
+(ã‚ãªãŸãŒãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å…¨ä½“ã‚’æŠ•ç¨¿ã—ãŸã‚‰ã€å¿™ã—ã„äºº - ã¤ã¾ã‚Šã‚ãªãŸãŒ
+ä¸€ç•ªèª­ã‚“ã§æ¬²ã—ã„äººé”ã¯ç„¡è¦–ã—ã¦ã—ã¾ã†ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“!)
 
 =begin original
 
@@ -6424,10 +6424,10 @@ others to help you, they may be able to complete it for you!
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤¬¤¤¤Ä´°À®¤¹¤ë¤«¸À¤¨¤Ê¤¯¤Æ¤âÅê¹Æ¤¹¤ë¤³¤È¤ò
-¶²¤¬¤ë¤³¤È¤Ï¤¢¤ê¤Ş¤»¤ó¡£
-¥á¥Ã¥»¡¼¥¸¤ÎÃæ¤Ç¤½¤¦¸À¤¨¤ĞÎÉ¤¤¤Î¤Ç¤¹¡£
-Ã¯¤«¤¬¤¢¤Ê¤¿¤ò½õ¤±¤Æ¡¢´°À®¤Ç¤­¤ë¤è¤¦¤Ë¤·¤Æ¤¯¤ì¤ë¤«¤â¤·¤ì¤Ê¤¤¤Î¤Ç¤¹!
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã„ã¤å®Œæˆã™ã‚‹ã‹è¨€ãˆãªãã¦ã‚‚æŠ•ç¨¿ã™ã‚‹ã“ã¨ã‚’
+æãŒã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä¸­ã§ãã†è¨€ãˆã°è‰¯ã„ã®ã§ã™ã€‚
+èª°ã‹ãŒã‚ãªãŸã‚’åŠ©ã‘ã¦ã€å®Œæˆã§ãã‚‹ã‚ˆã†ã«ã—ã¦ãã‚Œã‚‹ã‹ã‚‚ã—ã‚Œãªã„ã®ã§ã™!
 
 =item  *
 
@@ -6437,7 +6437,7 @@ README and other Additional Files.
 
 =end original
 
-README ¤È¤½¤ÎÂ¾¤ÎÉÕ²ÃÅª¤Ê¥Õ¥¡¥¤¥ë¡£
+README ã¨ãã®ä»–ã®ä»˜åŠ çš„ãªãƒ•ã‚¡ã‚¤ãƒ«ã€‚
 
 =begin original
 
@@ -6448,11 +6448,11 @@ documentation please at least provide a README file containing:
 
 =end original
 
-¥½¥Õ¥È¥¦¥§¥¢¤Î³«È¯¼Ô¤Ï¡¢ÄÌ¾ï¼«Ê¬¤¬ºî¤Ã¤¿¥½¥Õ¥È¥¦¥§¥¢¤Î´°Á´¤Ê
-¥É¥­¥å¥á¥ó¥È¤òºîÀ®¤·¤Ş¤¹¡£
-¤·¤«¤·¡¢À¤³¦¤¬¤¢¤Ê¤¿¤Î¥½¥Õ¥È¥¦¥§¥¢¤¹¤°¤Ë¤Ç¤âÉ¬Í×¤Ë¤·¤Æ¡¢¥É¥­¥å¥á¥ó¥È¤ò
-ºîÀ®¤¹¤ë¤Î¤Ë½½Ê¬¤Ê»ş´Ö¤¬Ìµ¤«¤Ã¤¿¤È¤·¤Æ¤â¡¢ºÇÄã¸Â README ¥Õ¥¡¥¤¥ë¤ò
-´Ş¤á¤ë¤è¤¦¤Ë¤·¤Æ¤¯¤À¤µ¤¤¡£
+ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®é–‹ç™ºè€…ã¯ã€é€šå¸¸è‡ªåˆ†ãŒä½œã£ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®å®Œå…¨ãª
+ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
+ã—ã‹ã—ã€ä¸–ç•ŒãŒã‚ãªãŸã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã™ãã«ã§ã‚‚å¿…è¦ã«ã—ã¦ã€ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’
+ä½œæˆã™ã‚‹ã®ã«ååˆ†ãªæ™‚é–“ãŒç„¡ã‹ã£ãŸã¨ã—ã¦ã‚‚ã€æœ€ä½é™ README ãƒ•ã‚¡ã‚¤ãƒ«ã‚’
+å«ã‚ã‚‹ã‚ˆã†ã«ã—ã¦ãã ã•ã„ã€‚
 
 =over 10
 
@@ -6464,7 +6464,7 @@ A description of the module/package/extension etc.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë/¥Ñ¥Ã¥±¡¼¥¸/³ÈÄ¥¤Ê¤É¤Îµ­½Ò¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«/ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸/æ‹¡å¼µãªã©ã®è¨˜è¿°ã€‚
 
 =item *
 
@@ -6474,7 +6474,7 @@ A copyright notice - see below.
 
 =end original
 
-Ãøºî¸¢É½µ­ - ¸å½Ò¤·¤Ş¤¹¡£
+è‘—ä½œæ¨©è¡¨è¨˜ - å¾Œè¿°ã—ã¾ã™ã€‚
 
 =item *
 
@@ -6484,7 +6484,7 @@ Prerequisites - what else you may need to have.
 
 =end original
 
-Á°Äó¾ò·ï - É¬Í×¤Ë¤Ê¤ë¤è¤¦¤Ê¤³¤È¡¢¤â¤Î¡£
+å‰ææ¡ä»¶ - å¿…è¦ã«ãªã‚‹ã‚ˆã†ãªã“ã¨ã€ã‚‚ã®ã€‚
 
 =item *
 
@@ -6494,7 +6494,7 @@ How to build it - possible changes to Makefile.PL etc.
 
 =end original
 
-¥Ó¥ë¥É¤ÎÊıË¡ - ²ÄÇ½¤Ê Makefile.PL ¤Ê¤É¤ÎÊÑ¹¹¡£
+ãƒ“ãƒ«ãƒ‰ã®æ–¹æ³• - å¯èƒ½ãª Makefile.PL ãªã©ã®å¤‰æ›´ã€‚
 
 =item *
 
@@ -6504,7 +6504,7 @@ How to install it.
 
 =end original
 
-¥¤¥ó¥¹¥È¡¼¥ë¤Î»ÅÊı¡£
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã®ä»•æ–¹ã€‚
 
 =item *
 
@@ -6514,7 +6514,7 @@ Recent changes in this release, especially incompatibilities
 
 =end original
 
-º£²ó¤Î¥ê¥ê¡¼¥¹¤Ç¤¢¤Ã¤¿ÊÑ¹¹ÅÀ¡¢ÆÃ¤ËÈó¸ß´¹¤Ê¤â¤Î
+ä»Šå›ã®ãƒªãƒªãƒ¼ã‚¹ã§ã‚ã£ãŸå¤‰æ›´ç‚¹ã€ç‰¹ã«éäº’æ›ãªã‚‚ã®
 
 =item *
 
@@ -6524,7 +6524,7 @@ Changes / enhancements you plan to make in the future.
 
 =end original
 
-¤¢¤Ê¤¿¤¬¾­Íè¤Ë¸ş¤±¤Æ¹Í¤¨¤Æ¤¤¤ëÊÑ¹¹¤ä³ÈÄ¥¡£
+ã‚ãªãŸãŒå°†æ¥ã«å‘ã‘ã¦è€ƒãˆã¦ã„ã‚‹å¤‰æ›´ã‚„æ‹¡å¼µã€‚
 
 =back
 
@@ -6536,8 +6536,8 @@ Copying, ToDo etc.
 
 =end original
 
-README ¥Õ¥¡¥¤¥ë¤¬Èó¾ï¤ËÂç¤­¤¯¤Ê¤ê¤½¤¦¤Ê¤é¡¢¤½¤ì¤ò INSTALL, Copying,
-ToDo ¤Ê¤É¤Î¥»¥¯¥·¥ç¥ó¤´¤È¤Î¥Õ¥¡¥¤¥ë¤ËÊ¬³ä¤·¤¿¤¤¤È¹Í¤¨¤ë¤«¤â¤·¤ì¤Ş¤»¤ó¡£
+README ãƒ•ã‚¡ã‚¤ãƒ«ãŒéå¸¸ã«å¤§ãããªã‚Šãã†ãªã‚‰ã€ãã‚Œã‚’ INSTALL, Copying,
+ToDo ãªã©ã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã”ã¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†å‰²ã—ãŸã„ã¨è€ƒãˆã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
 
 =over 4
 
@@ -6549,7 +6549,7 @@ Adding a Copyright Notice.
 
 =end original
 
-Ãøºî¸¢É½µ­¤ÎÄÉ²Ã¡£
+è‘—ä½œæ¨©è¡¨è¨˜ã®è¿½åŠ ã€‚
 
 =begin original
 
@@ -6559,9 +6559,9 @@ a declaration of how others may copy/use/modify your work.
 
 =end original
 
-¤¢¤Ê¤¿¤ÎÀ®²Ì¤Ë¤É¤Î¤è¤¦¤Ë¥é¥¤¥»¥ó¥¹¤òÁªÂò¤¹¤ë¤«¤Ï¸Ä¿ÍÅª¤Ê·èÄê»ö¹à¤Ç¤¹¡£
-°ìÈÌÅª¤Ê»ÅÁÈ¤ß¤Ï¡¢¤¢¤Ê¤¿¤ÎÃøºî¸¢¤òÉ½ÌÀ¤·¡¢¤¢¤Ê¤¿¤ÎÀ®²Ì¤ò¤É¤Î¤è¤¦¤Ë
-Â¾¿Í¤¬¥³¥Ô¡¼¤·¤¿¤ê¡¢»È¤Ã¤¿¤ê¡¢ÊÑ¹¹¤·¤¿¤ê¤Ç¤­¤ë¤«¤òÀë¸À¤¹¤ë¤â¤Î¤Ç¤¹¡£
+ã‚ãªãŸã®æˆæœã«ã©ã®ã‚ˆã†ã«ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã‚’é¸æŠã™ã‚‹ã‹ã¯å€‹äººçš„ãªæ±ºå®šäº‹é …ã§ã™ã€‚
+ä¸€èˆ¬çš„ãªä»•çµ„ã¿ã¯ã€ã‚ãªãŸã®è‘—ä½œæ¨©ã‚’è¡¨æ˜ã—ã€ã‚ãªãŸã®æˆæœã‚’ã©ã®ã‚ˆã†ã«
+ä»–äººãŒã‚³ãƒ”ãƒ¼ã—ãŸã‚Šã€ä½¿ã£ãŸã‚Šã€å¤‰æ›´ã—ãŸã‚Šã§ãã‚‹ã‹ã‚’å®£è¨€ã™ã‚‹ã‚‚ã®ã§ã™ã€‚
 
 =begin original
 
@@ -6572,10 +6572,10 @@ just using the GNU GPL.
 
 =end original
 
-¤¿¤È¤¨¤Ğ Perl ¤Ç¤Ï¡¢Æó¼ïÎà¤Î¥é¥¤¥»¥ó¥¹¤òÄó¶¡¤·¤Æ¤¤¤Ş¤¹: GNU GPL ¤È
-Artistic Licence (README¡¢Copying¡¢Artistic ¤È¤¤¤Ã¤¿¥Õ¥¡¥¤¥ë¤ä
-L<perlgpl> ¤È L<perlartistic> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤)¤¬¤½¤ì¤Ç¤¹¡£
-Larry ¤ÏÃ±¤Ë GNU GPL ¤À¤±¤ò»È¤ï¤Ê¤¤¤Á¤ã¤ó¤È¤·¤¿ÍıÍ³¤ò»ı¤Ã¤Æ¤¤¤Ş¤¹¡£
+ãŸã¨ãˆã° Perl ã§ã¯ã€äºŒç¨®é¡ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã‚’æä¾›ã—ã¦ã„ã¾ã™: GNU GPL ã¨
+Artistic Licence (READMEã€Copyingã€Artistic ã¨ã„ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚„
+L<perlgpl> ã¨ L<perlartistic> ã‚’å‚ç…§ã—ã¦ãã ã•ã„)ãŒãã‚Œã§ã™ã€‚
+Larry ã¯å˜ã« GNU GPL ã ã‘ã‚’ä½¿ã‚ãªã„ã¡ã‚ƒã‚“ã¨ã—ãŸç†ç”±ã‚’æŒã£ã¦ã„ã¾ã™ã€‚
 
 =begin original
 
@@ -6584,8 +6584,8 @@ Perl community at large is to state something simply like:
 
 =end original
 
-Larry ¤ä Perl¡¢Perl ¥³¥ß¥å¥Ë¥Æ¥£¤ËÂĞ¤¹¤ëÂº½Å¤ò³°¤·¤Æ¤Î»ä¤Î¸Ä¿ÍÅª¤Ê
-¤ª´«¤á¤Ï¡¢°Ê²¼¤ÎÍÍ¤ÊÃ±½ã¤ÊÊ¸¾Ï¤Ç¤¹¡£
+Larry ã‚„ Perlã€Perl ã‚³ãƒŸãƒ¥ãƒ‹ãƒ†ã‚£ã«å¯¾ã™ã‚‹å°Šé‡ã‚’å¤–ã—ã¦ã®ç§ã®å€‹äººçš„ãª
+ãŠå‹§ã‚ã¯ã€ä»¥ä¸‹ã®æ§˜ãªå˜ç´”ãªæ–‡ç« ã§ã™ã€‚
 
  Copyright (c) 1995 Your Name. All rights reserved.
  This program is free software; you can redistribute it and/or
@@ -6599,9 +6599,9 @@ Remember to include the other words in addition to the Copyright.
 
 =end original
 
-¤³¤ÎÊ¸¸À¤¬¾¯¤Ê¤¯¤È¤â README ¥Õ¥¡¥¤¥ë¤Ë¤Ê¤±¤ì¤Ğ¤Ê¤ê¤Ş¤»¤ó¡£
-¤³¤ì¤ò¡¢Copying ¤È¤¤¤¦¥Õ¥¡¥¤¥ë¤ä¥½¡¼¥¹¥Õ¥¡¥¤¥ë¤Ë´Ş¤á¤ë¤³¤È¤â¤Ç¤­¤Ş¤¹¡£
-Ãøºî¸¢¤ËÉÕ¤±²Ã¤¨¤ëÂ¾¤Î¸ÀÍÕ¤òËº¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤¡£
+ã“ã®æ–‡è¨€ãŒå°‘ãªãã¨ã‚‚ README ãƒ•ã‚¡ã‚¤ãƒ«ã«ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
+ã“ã‚Œã‚’ã€Copying ã¨ã„ã†ãƒ•ã‚¡ã‚¤ãƒ«ã‚„ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã«å«ã‚ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
+è‘—ä½œæ¨©ã«ä»˜ã‘åŠ ãˆã‚‹ä»–ã®è¨€è‘‰ã‚’å¿˜ã‚Œãªã„ã§ãã ã•ã„ã€‚
 
 =item  *
 
@@ -6611,7 +6611,7 @@ Give the module a version/issue/release number.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Ë version/issue/release ÈÖ¹æ¤òÉÕ¤±¤ë¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã« version/issue/release ç•ªå·ã‚’ä»˜ã‘ã‚‹ã€‚
 
 =begin original
 
@@ -6624,13 +6624,13 @@ See L<Exporter> for details.
 
 =end original
 
-Exporter ¤ä MakeMaker ¥â¥¸¥å¡¼¥ë¤ËÂĞ¤¹¤ë´°Á´¤Ê¸ß´¹À­¤ò»ı¤Ä¤¿¤á¤Ë¡¢
-¤¢¤Ê¤¿¤Ï¼«Ê¬¤Î¥â¥¸¥å¡¼¥ë¤Î¥Ğ¡¼¥¸¥ç¥óÈÖ¹æ¤ò¡¢my ¤Ç¤Ï¤Ê¤¤¥Ñ¥Ã¥±¡¼¥¸ÊÑ¿ô
-$VERSION ¤Ë³ÊÇ¼¤¹¤Ù¤­¤Ç¤¹¡£
-¤³¤ì¤Ï¾®¿ôÅÀ¤Î¸å¤Ë¾¯¤Ê¤¯¤È¤âÆó·å¤Î¿ô»ú¤ò»ı¤Ã¤¿ÉâÆ°¾®¿ôÅÀ¤Ç
-¤¢¤ë¤Ù¤­¤â¤Î¤Ç¤¹(Îã: C<$VERSION = "0.01">)¡£
-"1.3.2" ¤È¤¤¤¦·Á¼°¤Î¥Ğ¡¼¥¸¥ç¥ó¤Ï»È¤Ã¤Æ¤Ï¤¤¤±¤Ş¤»¤ó¡£
-¾Ü¤·¤¯¤Ï¡¢L<Exporter> ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+Exporter ã‚„ MakeMaker ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å¯¾ã™ã‚‹å®Œå…¨ãªäº’æ›æ€§ã‚’æŒã¤ãŸã‚ã«ã€
+ã‚ãªãŸã¯è‡ªåˆ†ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã‚’ã€my ã§ã¯ãªã„ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸å¤‰æ•°
+$VERSION ã«æ ¼ç´ã™ã¹ãã§ã™ã€‚
+ã“ã‚Œã¯å°æ•°ç‚¹ã®å¾Œã«å°‘ãªãã¨ã‚‚äºŒæ¡ã®æ•°å­—ã‚’æŒã£ãŸæµ®å‹•å°æ•°ç‚¹ã§
+ã‚ã‚‹ã¹ãã‚‚ã®ã§ã™(ä¾‹: C<$VERSION = "0.01">)ã€‚
+"1.3.2" ã¨ã„ã†å½¢å¼ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ä½¿ã£ã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚
+è©³ã—ãã¯ã€L<Exporter> ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -6641,10 +6641,10 @@ See perldoc ExtUtils::MakeMaker.pm for details.
 
 =end original
 
-ÈÖ¹æ¤ò¼èÆÀ¤¹¤ë¤¿¤á¤Î´Ø¿ô¤ä¥á¥½¥Ã¥É¤òÄÉ²Ã¤¹¤ë¤Î¤¬ÎÉ¤¤¤Ç¤·¤ç¤¦¡£
-¤³¤ÎÈÖ¹æ¤ò¡¢¥¢¥Ê¥¦¥ó¥¹¤È¥â¥¸¥å¡¼¥ë¤ò¥ê¥ê¡¼¥¹¤¹¤ë¤È¤­¤Î¥¢¡¼¥«¥¤¥Ö
-¥Õ¥¡¥¤¥ëÌ¾ (ModuleName-1.02.tar.Z) ¤Ë»È¤¤¤Ş¤¹¡£
-¾Ü¤·¤¯¤Ï ExtUtils::MakeMaker.pm ¤ò»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡£
+ç•ªå·ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®é–¢æ•°ã‚„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã®ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚
+ã“ã®ç•ªå·ã‚’ã€ã‚¢ãƒŠã‚¦ãƒ³ã‚¹ã¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒªãƒªãƒ¼ã‚¹ã™ã‚‹ã¨ãã®ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–
+ãƒ•ã‚¡ã‚¤ãƒ«å (ModuleName-1.02.tar.Z) ã«ä½¿ã„ã¾ã™ã€‚
+è©³ã—ãã¯ ExtUtils::MakeMaker.pm ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
 =item  *
 
@@ -6654,7 +6654,7 @@ How to release and distribute a module.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤Î¥ê¥ê¡¼¥¹¤ÈÇÛÉÛ¤Î»ÅÊı¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒªãƒªãƒ¼ã‚¹ã¨é…å¸ƒã®ä»•æ–¹ã€‚
 
 =begin original
 
@@ -6665,10 +6665,10 @@ distribution.
 
 =end original
 
-¤¢¤Ê¤¿¤Îºî¤Ã¤¿¥â¥¸¥å¡¼¥ë¤¬»È¤¨¤ë¤È¤¤¤¦¤³¤È¤Î¥¢¥Ê¥¦¥ó¥¹(¥â¥¸¥å¡¼¥ë¤¬
-¾®¤µ¤±¤ì¤Ğ¥â¥¸¥å¡¼¥ë¤½¤ì¼«¿È)¤ò Usenet ¥Ë¥å¡¼¥º¥°¥ë¡¼¥×¤Î 
-comp.lang.perl.announce ¤ËÅê¹Æ¤¹¤ë¤³¤È¤ÏÎÉ¤¤¹Í¤¨¤Ç¤¹¡£
-¤³¤ì¤Ï¡¢¾¯¤Ê¤¯¤È¤â¹­¤¤ÈÏ°Ï¤ËÅÏ¤ëÇÛÉÛ¤òÊİ¾Ú¤¹¤ë¤Ç¤·¤ç¤¦¡£
+ã‚ãªãŸã®ä½œã£ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒä½¿ãˆã‚‹ã¨ã„ã†ã“ã¨ã®ã‚¢ãƒŠã‚¦ãƒ³ã‚¹(ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒ
+å°ã•ã‘ã‚Œã°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãã‚Œè‡ªèº«)ã‚’ Usenet ãƒ‹ãƒ¥ãƒ¼ã‚ºã‚°ãƒ«ãƒ¼ãƒ—ã® 
+comp.lang.perl.announce ã«æŠ•ç¨¿ã™ã‚‹ã“ã¨ã¯è‰¯ã„è€ƒãˆã§ã™ã€‚
+ã“ã‚Œã¯ã€å°‘ãªãã¨ã‚‚åºƒã„ç¯„å›²ã«æ¸¡ã‚‹é…å¸ƒã‚’ä¿è¨¼ã™ã‚‹ã§ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6677,8 +6677,8 @@ include details of its location in your announcement.
 
 =end original
 
-²ÄÇ½¤Ç¤¢¤ì¤Ğ¡¢¥â¥¸¥å¡¼¥ë¤ò CPAN ¤ËÅĞÏ¿¤·¤Ş¤·¤ç¤¦¡£
-¤½¤Î¾ì½ê¤Î¾ÜºÙ¤ò¤¢¤Ê¤¿¤Î¥¢¥Ê¥¦¥ó¥¹¤Ë´Ş¤á¤ë¤Ù¤­¤Ç¤·¤ç¤¦¡£
+å¯èƒ½ã§ã‚ã‚Œã°ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ CPAN ã«ç™»éŒ²ã—ã¾ã—ã‚‡ã†ã€‚
+ãã®å ´æ‰€ã®è©³ç´°ã‚’ã‚ãªãŸã®ã‚¢ãƒŠã‚¦ãƒ³ã‚¹ã«å«ã‚ã‚‹ã¹ãã§ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6693,15 +6693,15 @@ location.
 
 =end original
 
-ftp ¥¢¡¼¥«¥¤¥Ö¤Ë¤Ä¤¤¤ÆÃí°Õ¤¹¤Ù¤­´ö¤Ä¤«¤Î¤³¤È: ¥Ğ¡¼¥¸¥ç¥óÈÖ¹æ¤ò´Ş¤ó¤À
-Ä¹¤¤ÀâÌÀÅª¤ÊÌ¾Á°¤ò»È¤Ã¤Æ¤¯¤À¤µ¤¤¡£
-¤Û¤È¤ó¤É¤Î incoming ¥Ç¥£¥ì¥¯¥È¥ê¤Ï readable/listable ¤Ë¤Ê¤Ã¤Æ¤Ï¤¤¤Ê¤¤¤Î¤Ç¡¢
-¤¢¤Ê¤¿¤Ï¥¢¥Ã¥×¥í¡¼¥É¤·¤¿¸å¤Ç¤½¤Î¥Õ¥¡¥¤¥ë¤ò¸«¤ë¤³¤È¤¬¤Ç¤­¤Ê¤¤¤Ç¤·¤ç¤¦¡£
-¥¢¥Ã¥×¥í¡¼¥É¤·¤¿¤é¡¢¤Ç¤­¤ë¤À¤±Áá¤¯ email ¤Ë¤è¤ëÄÌÃÎ¤òÁ÷¤ë¤³¤È¤ò
-Ëº¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤¡£
-¤½¤¦¤·¤Ê¤±¤ì¤Ğ¤¢¤Ê¤¿¤Î¥Õ¥¡¥¤¥ë¤Ï¼«Æ°Åª¤Ëºï½ü¤µ¤ì¤Æ¤·¤Ş¤¦¤«¤â¤·¤ì¤Ş¤»¤ó¡£
-¥Õ¥¡¥¤¥ë¤Î¾ì½ê¤ò¥¢¥Ê¥¦¥ó¥¹¤¹¤ëÁ°¤Ë¡¢¤¢¤Ê¤¿¤Î¥Õ¥¡¥¤¥ë¤¬
-½èÍı¤µ¤ì¤¿¤ê¥Á¥§¥Ã¥¯¤µ¤ì¤ë¤Î¤Ë»ş´Ö¤¬³İ¤«¤ë¤³¤È¤ò¹ÍÎ¸¤·¤Æ¤¯¤À¤µ¤¤¡£
+ftp ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã«ã¤ã„ã¦æ³¨æ„ã™ã¹ãå¹¾ã¤ã‹ã®ã“ã¨: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã‚’å«ã‚“ã 
+é•·ã„èª¬æ˜çš„ãªåå‰ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚
+ã»ã¨ã‚“ã©ã® incoming ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ readable/listable ã«ãªã£ã¦ã¯ã„ãªã„ã®ã§ã€
+ã‚ãªãŸã¯ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã§ãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¦‹ã‚‹ã“ã¨ãŒã§ããªã„ã§ã—ã‚‡ã†ã€‚
+ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚‰ã€ã§ãã‚‹ã ã‘æ—©ã email ã«ã‚ˆã‚‹é€šçŸ¥ã‚’é€ã‚‹ã“ã¨ã‚’
+å¿˜ã‚Œãªã„ã§ãã ã•ã„ã€‚
+ãã†ã—ãªã‘ã‚Œã°ã‚ãªãŸã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯è‡ªå‹•çš„ã«å‰Šé™¤ã•ã‚Œã¦ã—ã¾ã†ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
+ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´æ‰€ã‚’ã‚¢ãƒŠã‚¦ãƒ³ã‚¹ã™ã‚‹å‰ã«ã€ã‚ãªãŸã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒ
+å‡¦ç†ã•ã‚ŒãŸã‚Šãƒã‚§ãƒƒã‚¯ã•ã‚Œã‚‹ã®ã«æ™‚é–“ãŒæ›ã‹ã‚‹ã“ã¨ã‚’è€ƒæ…®ã—ã¦ãã ã•ã„ã€‚
 
 =begin original
 
@@ -6709,7 +6709,7 @@ FTP Archives for Perl Modules:
 
 =end original
 
-Perl ¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤Î FTP ¥¢¡¼¥«¥¤¥Ö:
+Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã® FTP ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–:
 
 =begin original
 
@@ -6717,7 +6717,7 @@ Follow the instructions and links on:
 
 =end original
 
-¼ê½ç¤Ë½¾¤Ã¤Æ°Ê²¼¤Ø¥ê¥ó¥¯¤·¤Ş¤¹:
+æ‰‹é †ã«å¾“ã£ã¦ä»¥ä¸‹ã¸ãƒªãƒ³ã‚¯ã—ã¾ã™:
 
    http://www.cpan.org/modules/00modlist.long.html
    http://www.cpan.org/modules/04pause.html
@@ -6728,7 +6728,7 @@ or upload to one of these sites:
 
 =end original
 
-¤¢¤ë¤¤¤Ï°Ê²¼¤Î¥µ¥¤¥È¤Î¤¤¤º¤ì¤«¤Ë¥¢¥Ã¥×¥í¡¼¥É¤·¤Ş¤¹:
+ã‚ã‚‹ã„ã¯ä»¥ä¸‹ã®ã‚µã‚¤ãƒˆã®ã„ãšã‚Œã‹ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™:
 
    https://pause.kbx.de/pause/
    http://pause.perl.org/pause/
@@ -6739,7 +6739,7 @@ and notify <modules@perl.org>.
 
 =end original
 
-¤½¤·¤Æ <modules@perl.org> ¤ËÄÌÃÎ¤·¤Ş¤¹¡£
+ãã—ã¦ <modules@perl.org> ã«é€šçŸ¥ã—ã¾ã™ã€‚
 
 =begin original
 
@@ -6749,9 +6749,9 @@ CPAN!
 
 =end original
 
-WWW ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤ò»È¤¦¤³¤È¤Ë¤è¤Ã¤Æ¡¢¤¢¤Ê¤¿¤Î¥â¥¸¥å¡¼¥ë¤ò¤¢¤Ê¤¿¤Î
-ftp ¥µ¥¤¥È¤ä WWW ¥µ¥¤¥È¤«¤é CPAN ¤Î¤¢¤Ê¤¿¤Î¥Ç¥£¥ì¥¯¥È¥ê¤Ø
-¥ß¥é¡¼¥ê¥ó¥°¤Ç¤­¤ë¤«¥¢¥Ã¥×¥í¡¼¥É¥µ¡¼¥Ğ¡¼¤Ë¿Ò¤Í¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹!
+WWW ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã†ã“ã¨ã«ã‚ˆã£ã¦ã€ã‚ãªãŸã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚ãªãŸã®
+ftp ã‚µã‚¤ãƒˆã‚„ WWW ã‚µã‚¤ãƒˆã‹ã‚‰ CPAN ã®ã‚ãªãŸã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¸
+ãƒŸãƒ©ãƒ¼ãƒªãƒ³ã‚°ã§ãã‚‹ã‹ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã‚µãƒ¼ãƒãƒ¼ã«å°‹ã­ã‚‹ã“ã¨ãŒã§ãã¾ã™!
 
 =begin original
 
@@ -6759,8 +6759,8 @@ Please remember to send me an updated entry for the Module list!
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¥ê¥¹¥È¤Î¹¹¿·¤µ¤ì¤¿¥¨¥ó¥È¥ê¡¼¤ò»ä¤ËÃÎ¤é¤»¤ë¤³¤È¤ò
-Ëº¤ì¤Ê¤¤¤Ç¤¯¤À¤µ¤¤!
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆã®æ›´æ–°ã•ã‚ŒãŸã‚¨ãƒ³ãƒˆãƒªãƒ¼ã‚’ç§ã«çŸ¥ã‚‰ã›ã‚‹ã“ã¨ã‚’
+å¿˜ã‚Œãªã„ã§ãã ã•ã„!
 
 =item  *
 
@@ -6770,7 +6770,7 @@ Take care when changing a released module.
 
 =end original
 
-¥ê¥ê¡¼¥¹¤µ¤ì¤¿¥â¥¸¥å¡¼¥ë¤òÊÑ¹¹¤¹¤ë¤È¤­¤Ë¤ÏÃí°Õ¤¹¤ë¤³¤È¡£
+ãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¤‰æ›´ã™ã‚‹ã¨ãã«ã¯æ³¨æ„ã™ã‚‹ã“ã¨ã€‚
 
 =begin original
 
@@ -6780,10 +6780,10 @@ old behavior if people rely on it.  Document incompatible changes.
 
 =end original
 
-¾ï¤Ë°ÊÁ°¤Ë¥ê¥ê¡¼¥¹¤·¤¿¥Ğ¡¼¥¸¥ç¥ó¤È¤Î¸ß´¹À­¤òÊİ¤Ä¤è¤¦¤ËÅØÎÏ¤¹¤ë¤³¤È¡£
-¤¢¤ë¤¤¤Ï¡¢¥æ¡¼¥¶¡¼¤¬¸Å¤¤¿¶¤ëÉñ¤¤¤ËÍê¤Ã¤Æ¤¤¤ë¤Î¤Ç¤¢¤ì¤Ğ¡¢
-¤½¤¦¤¤¤Ã¤¿¿¶¤ëÉñ¤¤¤ò¹Ô¤¦¤è¤¦¤Êµ¡¹½¤òÄÉ²Ã¤¹¤ë¤³¤È¡£
-Èó¸ß´¹¤Ê½¤Àµ¤ò¥É¥­¥å¥á¥ó¥È²½¤¹¤ë¤³¤È¡£
+å¸¸ã«ä»¥å‰ã«ãƒªãƒªãƒ¼ã‚¹ã—ãŸãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¨ã®äº’æ›æ€§ã‚’ä¿ã¤ã‚ˆã†ã«åŠªåŠ›ã™ã‚‹ã“ã¨ã€‚
+ã‚ã‚‹ã„ã¯ã€ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒå¤ã„æŒ¯ã‚‹èˆã„ã«é ¼ã£ã¦ã„ã‚‹ã®ã§ã‚ã‚Œã°ã€
+ãã†ã„ã£ãŸæŒ¯ã‚‹èˆã„ã‚’è¡Œã†ã‚ˆã†ãªæ©Ÿæ§‹ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã€‚
+éäº’æ›ãªä¿®æ­£ã‚’ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆåŒ–ã™ã‚‹ã“ã¨ã€‚
 
 =back
 
@@ -6791,7 +6791,7 @@ old behavior if people rely on it.  Document incompatible changes.
 
 =head2 Guidelines for Converting Perl 4 Library Scripts into Modules
 
-(Perl4 ¤Î¥é¥¤¥Ö¥é¥ê¥¹¥¯¥ê¥×¥È¤ò¥â¥¸¥å¡¼¥ë¤ËÊÑ´¹¤¹¤ë¥¬¥¤¥É¥é¥¤¥ó)
+(Perl4 ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å¤‰æ›ã™ã‚‹ã‚¬ã‚¤ãƒ‰ãƒ©ã‚¤ãƒ³)
 
 =over 4
 
@@ -6803,7 +6803,7 @@ There is no requirement to convert anything.
 
 =end original
 
-¤¹¤Ù¤Æ¤òÊÑ´¹¤¹¤ëÉ¬Í×¤Ï¤¢¤ê¤Ş¤»¤ó¡£
+ã™ã¹ã¦ã‚’å¤‰æ›ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 
 =begin original
 
@@ -6814,11 +6814,11 @@ there is no need to convert a .pl file into a Module for just that.
 
 =end original
 
-¤â¤·ÉÔ¶ñ¹ç¤¬¤Ê¤¤¤Î¤Ê¤é¡¢½¤Àµ¤·¤Æ¤Ï¤¤¤±¤Ş¤»¤ó!
-Perl 4 ¤Î¥é¥¤¥Ö¥é¥ê¤Ë¤¢¤Ã¤¿¥¹¥¯¥ê¥×¥È¤ÏÌäÂê¤Ê¤·¤ËÆ°ºî¤¹¤ë¤Ï¤º¤Ê¤Î¤Ç¤¹¡£
-´ö¤Ä¤«¤Î¤Á¤ç¤Ã¤È¤·¤¿ÊÑ¹¹(¥À¥Ö¥ë¥¯¥©¡¼¥Æ¡¼¥·¥ç¥ó¤Ë°Ï¤Ş¤ì¤¿Ê¸»úÎóÃæ¤Î¡¢
-ÇÛÎó¤ò¼¨¤¹¤â¤Î¤Ç¤Ï¤Ê¤¤ @ ¤ò¥¨¥¹¥±¡¼¥×¤¹¤ë¤È¤«)¤ò¹Ô¤¦É¬Í×¤¬¤¢¤ë¤«¤â
-¤·¤ì¤Ş¤»¤ó¤¬¡¢.pl ¥Õ¥¡¥¤¥ë¤ò¥â¥¸¥å¡¼¥ë¤Ø¤ÈÊÑ´¹¤¹¤ëÉ¬Í×À­¤Ï¤¢¤ê¤Ş¤»¤ó¡£
+ã‚‚ã—ä¸å…·åˆãŒãªã„ã®ãªã‚‰ã€ä¿®æ­£ã—ã¦ã¯ã„ã‘ã¾ã›ã‚“!
+Perl 4 ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«ã‚ã£ãŸã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯å•é¡Œãªã—ã«å‹•ä½œã™ã‚‹ã¯ãšãªã®ã§ã™ã€‚
+å¹¾ã¤ã‹ã®ã¡ã‚‡ã£ã¨ã—ãŸå¤‰æ›´(ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ä¸­ã®ã€
+é…åˆ—ã‚’ç¤ºã™ã‚‚ã®ã§ã¯ãªã„ @ ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã¨ã‹)ã‚’è¡Œã†å¿…è¦ãŒã‚ã‚‹ã‹ã‚‚
+ã—ã‚Œã¾ã›ã‚“ãŒã€.pl ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¸ã¨å¤‰æ›ã™ã‚‹å¿…è¦æ€§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 
 =item  *
 
@@ -6828,7 +6828,7 @@ Consider the implications.
 
 =end original
 
-Ï¢·È¤ò¹ÍÎ¸¤·¤Ş¤·¤ç¤¦¡£
+é€£æºã‚’è€ƒæ…®ã—ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6838,11 +6838,11 @@ it worth it unless you plan to make other changes at the same time?
 
 =end original
 
-¤½¤Î¥¹¥¯¥ê¥×¥È¤ò»È¤Ã¤Æ¤¤¤ë Perl ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Î¤¹¤Ù¤Æ¤Ï¡¢
-¥¹¥¯¥ê¥×¥È¤¬¥â¥¸¥å¡¼¥ë¤Ø¤ÈÊÑ¹¹¤µ¤ì¤¿¤Ê¤é¤Ğ¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤âÊÑ¹¹¤¹¤ë
-É¬Í×¤¬¤¢¤ë¤Ç¤·¤ç¤¦¡£
-Â¾¤ÎÊÑ¹¹¤òÆ±»ş¤Ë¹Ô¤¦¤³¤È¤ò¤¢¤Ê¤¿¤¬¹Í¤¨¤Æ¤¤¤Ê¤¤¤Î¤Ê¤é¡¢
-¤½¤ì¤Ï²ÁÃÍ¤¢¤ë¤³¤È¤Ç¤·¤ç¤¦¤«?
+ãã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ä½¿ã£ã¦ã„ã‚‹ Perl ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã™ã¹ã¦ã¯ã€
+ã‚¹ã‚¯ãƒªãƒ—ãƒˆãŒãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¸ã¨å¤‰æ›´ã•ã‚ŒãŸãªã‚‰ã°ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚‚å¤‰æ›´ã™ã‚‹
+å¿…è¦ãŒã‚ã‚‹ã§ã—ã‚‡ã†ã€‚
+ä»–ã®å¤‰æ›´ã‚’åŒæ™‚ã«è¡Œã†ã“ã¨ã‚’ã‚ãªãŸãŒè€ƒãˆã¦ã„ãªã„ã®ãªã‚‰ã€
+ãã‚Œã¯ä¾¡å€¤ã‚ã‚‹ã“ã¨ã§ã—ã‚‡ã†ã‹?
 
 =item  *
 
@@ -6852,7 +6852,7 @@ Make the most of the opportunity.
 
 =end original
 
-Â¿¤¯¤Îµ¡²ñ¤òÆÀ¤è¤¦¡£
+å¤šãã®æ©Ÿä¼šã‚’å¾—ã‚ˆã†ã€‚
 
 =begin original
 
@@ -6862,10 +6862,10 @@ creation above include many of the issues you should consider.
 
 =end original
 
-¥¹¥¯¥ê¥×¥È¤ò¥â¥¸¥å¡¼¥ë¤ËÊÑ´¹¤·¤è¤¦¤È¤¤¤¦¤Î¤Ç¤¢¤ì¤Ğ¡¢¤¢¤Ê¤¿¤Ï¤½¤ì¤ò
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤ÎºÆ¥Ç¥¶¥¤¥ó¤Îµ¡²ñ¤È¤·¤Æ»È¤¦¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
-¾å½Ò¤·¤¿ Guidelines for Module Creation ¤Ë¤Ï¤¢¤Ê¤¿¤¬¹ÍÎ¸¤¹¤Ù¤­»öÊÁ¤Î
-Â¿¤¯¤¬´Ş¤Ş¤ì¤Æ¤¤¤Ş¤¹¡£
+ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å¤‰æ›ã—ã‚ˆã†ã¨ã„ã†ã®ã§ã‚ã‚Œã°ã€ã‚ãªãŸã¯ãã‚Œã‚’
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å†ãƒ‡ã‚¶ã‚¤ãƒ³ã®æ©Ÿä¼šã¨ã—ã¦ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ã€‚
+ä¸Šè¿°ã—ãŸ Guidelines for Module Creation ã«ã¯ã‚ãªãŸãŒè€ƒæ…®ã™ã¹ãäº‹æŸ„ã®
+å¤šããŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚
 
 =item  *
 
@@ -6875,7 +6875,7 @@ The pl2pm utility will get you started.
 
 =end original
 
-¤Ş¤º pl2pm ¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤«¤é»Ï¤á¤Ş¤·¤ç¤¦¡£
+ã¾ãš pl2pm ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‹ã‚‰å§‹ã‚ã¾ã—ã‚‡ã†ã€‚
 
 =begin original
 
@@ -6884,9 +6884,9 @@ corresponding *.pm files. The pl2pm utilities does the following:
 
 =end original
 
-¤³¤Î¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤Ï *.pl ¥Õ¥¡¥¤¥ë(°ú¿ô¤È¤·¤ÆÍ¿¤¨¤Ş¤¹)¤òÆÉ¤ß¹ş¤ß¡¢
-¤½¤ì¤ËÂĞ±ş¤¹¤ë *.pm ¥Õ¥¡¥¤¥ë¤ò½ĞÎÏ¤·¤Ş¤¹¡£
-pl2pm ¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤Ï°Ê²¼¤Î¤³¤È¤ò¹Ô¤¤¤Ş¤¹¡£
+ã“ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã¯ *.pl ãƒ•ã‚¡ã‚¤ãƒ«(å¼•æ•°ã¨ã—ã¦ä¸ãˆã¾ã™)ã‚’èª­ã¿è¾¼ã¿ã€
+ãã‚Œã«å¯¾å¿œã™ã‚‹ *.pm ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‡ºåŠ›ã—ã¾ã™ã€‚
+pl2pm ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã¯ä»¥ä¸‹ã®ã“ã¨ã‚’è¡Œã„ã¾ã™ã€‚
 
 =over 10
 
@@ -6898,7 +6898,7 @@ Adds the standard Module prologue lines
 
 =end original
 
-É¸½àÅª¤Ê¥â¥¸¥å¡¼¥ë¥×¥í¥í¡¼¥°¹Ô¤ÎÉÕ²Ã
+æ¨™æº–çš„ãªãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ—ãƒ­ãƒ­ãƒ¼ã‚°è¡Œã®ä»˜åŠ 
 
 =item *
 
@@ -6908,7 +6908,7 @@ Converts package specifiers from ' to ::
 
 =end original
 
-¥Ñ¥Ã¥±¡¼¥¸»ØÄê»Ò¤Î ' ¤«¤é :: ¤Ø¤ÎÊÑ¹¹
+ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸æŒ‡å®šå­ã® ' ã‹ã‚‰ :: ã¸ã®å¤‰æ›´
 
 =item *
 
@@ -6918,7 +6918,7 @@ Converts die(...) to croak(...)
 
 =end original
 
-die(...) ¤«¤é croak() ¤Ø¤ÎÊÑ¹¹
+die(...) ã‹ã‚‰ croak() ã¸ã®å¤‰æ›´
 
 =item *
 
@@ -6928,7 +6928,7 @@ Several other minor changes
 
 =end original
 
-´ö¤Ä¤«¤Î¤Á¤ç¤Ã¤È¤·¤¿ÊÑ¹¹
+å¹¾ã¤ã‹ã®ã¡ã‚‡ã£ã¨ã—ãŸå¤‰æ›´
 
 =back
 
@@ -6940,17 +6940,17 @@ Don't delete the original .pl file till the new .pm one works!
 
 =end original
 
-pl2pm ¤Îµ¡³£Åª¤Ê½èÍı¤Ï´°Á´¤Ç¤Ï¤¢¤ê¤Ş¤»¤ó¡£
-ÊÑ´¹¤µ¤ì¤¿¥³¡¼¥É¤Ï¡¢ÆÃ¤Ë¥Ñ¥Ã¥±¡¼¥¸Ê¸¤Ë¤Ä¤¤¤Æ¤è¤¯¥Á¥§¥Ã¥¯¤·¤Æ¤ª¤¯É¬Í×¤¬
-¤¢¤ë¤Ç¤·¤ç¤¦¡£
-¿·¤·¤¤ .pm ¤¬¤­¤Á¤ó¤ÈÆ°¤¯¤è¤¦¤Ë¤Ê¤ë¤Ş¤Ç¤Ï¡¢¸µ¤Î .pl ¥Õ¥¡¥¤¥ë¤ò
-ºï½ü¤·¤Æ¤Ï¤¤¤±¤Ş¤»¤ó!
+pl2pm ã®æ©Ÿæ¢°çš„ãªå‡¦ç†ã¯å®Œå…¨ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+å¤‰æ›ã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ã¯ã€ç‰¹ã«ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸æ–‡ã«ã¤ã„ã¦ã‚ˆããƒã‚§ãƒƒã‚¯ã—ã¦ãŠãå¿…è¦ãŒ
+ã‚ã‚‹ã§ã—ã‚‡ã†ã€‚
+æ–°ã—ã„ .pm ãŒãã¡ã‚“ã¨å‹•ãã‚ˆã†ã«ãªã‚‹ã¾ã§ã¯ã€å…ƒã® .pl ãƒ•ã‚¡ã‚¤ãƒ«ã‚’
+å‰Šé™¤ã—ã¦ã¯ã„ã‘ã¾ã›ã‚“!
 
 =back
 
 =head2 Guidelines for Reusing Application Code
 
-(¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¥×¥í¥°¥é¥à¤ÎºÆÍøÍÑ¤Î¤¿¤á¤Î¥¬¥¤¥É¥é¥¤¥ó)
+(ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å†åˆ©ç”¨ã®ãŸã‚ã®ã‚¬ã‚¤ãƒ‰ãƒ©ã‚¤ãƒ³)
 
 =over 4
 
@@ -6962,8 +6962,8 @@ Complete applications rarely belong in the Perl Module Library.
 
 =end original
 
-´°Á´¤Ê¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï¤Û¤È¤ó¤É Perl ¥â¥¸¥å¡¼¥ë¥é¥¤¥Ö¥é¥ê¤Ë
-Â°¤·¤Æ¤¤¤Ş¤»¤ó¡£
+å®Œå…¨ãªã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯ã»ã¨ã‚“ã© Perl ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«
+å±ã—ã¦ã„ã¾ã›ã‚“ã€‚
 
 =item  *
 
@@ -6973,8 +6973,8 @@ Many applications contain some Perl code that could be reused.
 
 =end original
 
-Â¿¤¯¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï´ö¤Ä¤«¤ÎºÆÍøÍÑ²ÄÇ½¤Ê Perl ¥³¡¼¥É¤ò
-´Ş¤ó¤Ç¤¤¤Ş¤¹¡£
+å¤šãã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯å¹¾ã¤ã‹ã®å†åˆ©ç”¨å¯èƒ½ãª Perl ã‚³ãƒ¼ãƒ‰ã‚’
+å«ã‚“ã§ã„ã¾ã™ã€‚
 
 =begin original
 
@@ -6983,8 +6983,8 @@ to reuse.
 
 =end original
 
-À¤³¦¤òµß¤¦¤³¤È¤Ë¶¨ÎÏ¤·¤Ş¤·¤ç¤¦!
-¤¢¤Ê¤¿¤Î¥×¥í¥°¥é¥à¤òºÆÍøÍÑ¤¬´ÊÃ±¤Ê¤è¤¦¤Ë¤¹¤ë·Á¼°¤Ç¶¦Í­¤·¤Ş¤·¤ç¤¦¡£
+ä¸–ç•Œã‚’æ•‘ã†ã“ã¨ã«å”åŠ›ã—ã¾ã—ã‚‡ã†!
+ã‚ãªãŸã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’å†åˆ©ç”¨ãŒç°¡å˜ãªã‚ˆã†ã«ã™ã‚‹å½¢å¼ã§å…±æœ‰ã—ã¾ã—ã‚‡ã†ã€‚
 
 =item  *
 
@@ -6994,7 +6994,7 @@ Break-out the reusable code into one or more separate module files.
 
 =end original
 
-ºÆÍøÍÑ²ÄÇ½¤Ê¥×¥í¥°¥é¥à¤òÆÈÎ©¤·¤¿¥â¥¸¥å¡¼¥ë¥Õ¥¡¥¤¥ë¤ËÊ¬¤±¤Ş¤¹¡£
+å†åˆ©ç”¨å¯èƒ½ãªãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ç‹¬ç«‹ã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†ã‘ã¾ã™ã€‚
 
 =item  *
 
@@ -7004,7 +7004,7 @@ Take the opportunity to reconsider and redesign the interfaces.
 
 =end original
 
-¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹¤ÎºÆ¸¡Æ¤¤ÈºÆÀß·×¤Îµ¡²ñ¤ò»ı¤Á¤Ş¤·¤ç¤¦¡£
+ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å†æ¤œè¨ã¨å†è¨­è¨ˆã®æ©Ÿä¼šã‚’æŒã¡ã¾ã—ã‚‡ã†ã€‚
 
 =item  *
 
@@ -7014,8 +7014,8 @@ In some cases the 'application' can then be reduced to a small
 
 =end original
 
-°ìÉô¤Î¡È¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¡É¤Ï¡¢
-ºÆÍøÍÑ²ÄÇ½¤Ê¥â¥¸¥å¡¼¥ë¤Î¥È¥Ã¥×¤Ë¤¢¤ë
+ä¸€éƒ¨ã®â€œã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³â€ã¯ã€
+å†åˆ©ç”¨å¯èƒ½ãªãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒˆãƒƒãƒ—ã«ã‚ã‚‹
 
 =begin original
 
@@ -7024,8 +7024,8 @@ the application could invoked as:
 
 =end original
 
-¾®¤µ¤Ê¥³¡¼¥ÉÊÒ¤Ë½Ì¾®¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤¹¡£
-¤³¤Î¾ì¹ç¡¢¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï°Ê²¼¤ÎÍÍ¤Ëµ¯Æ°¤¹¤ë¤³¤È¤¬²ÄÇ½¤Ç¤¹¡£
+å°ã•ãªã‚³ãƒ¼ãƒ‰ç‰‡ã«ç¸®å°ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
+ã“ã®å ´åˆã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®æ§˜ã«èµ·å‹•ã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚
 
      % perl -e 'use Module::Name; method(@ARGV)' ...
 
@@ -7035,7 +7035,7 @@ or
 
 =end original
 
-¤¢¤ë¤¤¤Ï
+ã‚ã‚‹ã„ã¯
 
      % perl -mModule::Name ...    (in perl5.002 or higher)
 
@@ -7043,7 +7043,7 @@ or
 
 =head1 NOTE
 
-(Ãí°Õ)
+(æ³¨æ„)
 
 =begin original
 
@@ -7055,13 +7055,13 @@ because it has a shotgun.
 
 =end original
 
-C++¡¢Ada¡¢Modula-17 ¤È¤¤¤Ã¤¿Â¾¤Î¸À¸ì¤Î¤è¤¦¤Ë¥â¥¸¥å¡¼¥ë¤Î°ìÉôÊ¬¤ò
-private ¤Ë¤¹¤ë¤È¤«¡¢public ¤Ë¤¹¤ë¤È¤¤¤Ã¤¿¤³¤È¤ò Perl ¤Ï
-¶¯À©¤¹¤ë¤è¤¦¤Ê¤³¤È¤Ï¤¢¤ê¤Ş¤»¤ó¡£
-Perl ¤Ï¥×¥é¥¤¥Ğ¥·¡¼¤ò¶¯À©¤¹¤ë¤³¤È¤ËÌ´Ãæ¤Ë¤Ê¤ë¤³¤È¤Ï¤·¤Ş¤»¤ó¡£
-¤¢¤Ê¤¿¤¬¥ê¥Ó¥ó¥°¥ë¡¼¥à¤Î³°¤ËÎ±¤Ş¤Ã¤Æ¤¤¤ë¤Î¤Ï¤¢¤Ê¤¿¤¬
-¾·ÂÔ¤µ¤ì¤Æ¤¤¤Ê¤¤¤«¤é¤Ç¡¢
-¥·¥ç¥Ã¥È¥¬¥ó¤ò»ı¤Ã¤Æ¤¤¤ë¤«¤é¤Ç¤Ï¤Ê¤¤¤«¤é¤Ç¤¹¡£
+C++ã€Adaã€Modula-17 ã¨ã„ã£ãŸä»–ã®è¨€èªã®ã‚ˆã†ã«ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¸€éƒ¨åˆ†ã‚’
+private ã«ã™ã‚‹ã¨ã‹ã€public ã«ã™ã‚‹ã¨ã„ã£ãŸã“ã¨ã‚’ Perl ã¯
+å¼·åˆ¶ã™ã‚‹ã‚ˆã†ãªã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+Perl ã¯ãƒ—ãƒ©ã‚¤ãƒã‚·ãƒ¼ã‚’å¼·åˆ¶ã™ã‚‹ã“ã¨ã«å¤¢ä¸­ã«ãªã‚‹ã“ã¨ã¯ã—ã¾ã›ã‚“ã€‚
+ã‚ãªãŸãŒãƒªãƒ“ãƒ³ã‚°ãƒ«ãƒ¼ãƒ ã®å¤–ã«ç•™ã¾ã£ã¦ã„ã‚‹ã®ã¯ã‚ãªãŸãŒ
+æ‹›å¾…ã•ã‚Œã¦ã„ãªã„ã‹ã‚‰ã§ã€
+ã‚·ãƒ§ãƒƒãƒˆã‚¬ãƒ³ã‚’æŒã£ã¦ã„ã‚‹ã‹ã‚‰ã§ã¯ãªã„ã‹ã‚‰ã§ã™ã€‚
 
 =begin original
 
@@ -7074,15 +7074,15 @@ you're redefining the world and willing to take the consequences.
 
 =end original
 
-¥â¥¸¥å¡¼¥ë¤È¤½¤Î¥æ¡¼¥¶¡¼¤ÏÉÔÊ¸Î§¤Î°ìÉô¤È¤·¤Æ¡¢·ÀÌó¤ò¸ò¤ï¤·¤Æ¤¤¤Ş¤¹¡£
-¤½¤·¤Æ¡¢¤½¤Î°ìÉô¤Ï¡Ö½ñ¤«¤ì¤Æ¡×¤¤¤Ş¤¹¡£
-ÉÔÊ¸Î§·ÀÌó¤Î°ìÉô¤È¤·¤Æ¤Ï¡¢¥â¥¸¥å¡¼¥ë¤¬¡¢°Ñ¾ù¤µ¤ì¤Æ¤¤¤Ê¤¤Ì¾Á°¶õ´Ö¤ò
-±øÀ÷¤·¤Ê¤¤¤³¤È¤Ç¤¹¡£
-¥â¥¸¥å¡¼¥ë¤Î¤¿¤á¤Ë½ñ¤«¤ì¤¿·ÀÌó(¥É¥­¥å¥á¥ó¥È)¤Ï¡¢°Û¤Ê¤ëµ¬Ìó¤ò
-ºî¤ë¤³¤È¤¬²ÄÇ½¤Ç¤¹¡£
-¤·¤«¤·¤½¤Î¸å¡¢¤¢¤Ê¤¿¤¬À¤³¦¤òºÆÄêµÁ (redefining the world) ¤¹¤ë
-C<use RedefineTheWorld> ¤ò»È¤Ã¤¿¤È¤­¤Ë¤½¤ì¤Ë¤è¤Ã¤Æµ¯¤³¤ë·ë²Ì¤ò
-µı¼õ¤¹¤ë¤³¤È¤òÃÎ¤ë¤³¤È¤Ë¤Ê¤ë¤Ç¤·¤ç¤¦¡£
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ãã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¯ä¸æ–‡å¾‹ã®ä¸€éƒ¨ã¨ã—ã¦ã€å¥‘ç´„ã‚’äº¤ã‚ã—ã¦ã„ã¾ã™ã€‚
+ãã—ã¦ã€ãã®ä¸€éƒ¨ã¯ã€Œæ›¸ã‹ã‚Œã¦ã€ã„ã¾ã™ã€‚
+ä¸æ–‡å¾‹å¥‘ç´„ã®ä¸€éƒ¨ã¨ã—ã¦ã¯ã€ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã€å§”è­²ã•ã‚Œã¦ã„ãªã„åå‰ç©ºé–“ã‚’
+æ±šæŸ“ã—ãªã„ã“ã¨ã§ã™ã€‚
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãŸã‚ã«æ›¸ã‹ã‚ŒãŸå¥‘ç´„(ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ)ã¯ã€ç•°ãªã‚‹è¦ç´„ã‚’
+ä½œã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚
+ã—ã‹ã—ãã®å¾Œã€ã‚ãªãŸãŒä¸–ç•Œã‚’å†å®šç¾© (redefining the world) ã™ã‚‹
+C<use RedefineTheWorld> ã‚’ä½¿ã£ãŸã¨ãã«ãã‚Œã«ã‚ˆã£ã¦èµ·ã“ã‚‹çµæœã‚’
+äº«å—ã™ã‚‹ã“ã¨ã‚’çŸ¥ã‚‹ã“ã¨ã«ãªã‚‹ã§ã—ã‚‡ã†ã€‚
 
 =begin meta
 

@@ -9,7 +9,7 @@ perlreref - Perl Regular Expressions Reference
 
 =end original
 
-perlreref - Perl ������ɽ���Υ�ե����
+perlreref - Perl の正規表現のリファレンス
 
 =head1 DESCRIPTION
 
@@ -21,13 +21,13 @@ as the L</"SEE ALSO"> section in this document.
 
 =end original
 
-�ܥɥ�����Ȥϡ�Perl ������ɽ���Υ����å���ե���󥹤Ǥ���
-�����ʾ���ϡ�L<perlre> �� L<perlop>���ޤ����ܥɥ�����Ȥ�
-L</"SEE ALSO"> ���������򻲾Ȥ��Ƥ���������
+本ドキュメントは、Perl の正規表現のクイックリファレンスです。
+完全な情報は、L<perlre> と L<perlop>、また、本ドキュメントの
+L</"SEE ALSO"> セクションを参照してください。
 
 =head2 OPERATORS
 
-(�黻��)
+(演算子)
 
 =begin original
 
@@ -36,8 +36,8 @@ In its absence, $_ is used.
 
 =end original
 
-C<=~> ������ɽ����Ŭ�Ѥ�����ѿ�����ꤷ�ޤ���
-��ά���줿���ˤϡ�$_ ���Ȥ��ޤ���
+C<=~> は正規表現が適用される変数を決定します。
+省略された場合には、$_ が使われます。
 
     $var =~ /foo/;
 
@@ -49,8 +49,8 @@ false if the match succeeds, and true if it fails.
 
 =end original
 
-C<!~> ������ɽ����Ŭ�Ѥ�����ѿ�����ꤷ���ޥå��η�̤�ȿž���ޤ�;
-�ޥå�����������е����֤������Ԥ���п����֤��ޤ���
+C<!~> は正規表現が適用される変数を決定し、マッチの結果を反転します;
+マッチが成功すれば偽を返し、失敗すれば真を返します。
 
     $var !~ /foo/;
 
@@ -61,8 +61,8 @@ applying the given options.
 
 =end original
 
-C<m/pattern/msixpogc> �ѥ�����ޥå��Τ����ʸ����򸡺�����
-Ϳ����줿���ץ�����Ŭ�Ѥ��ޤ���
+C<m/pattern/msixpogc> パターンマッチのために文字列を検索し、
+与えられたオプションを適用します。
 
 =begin original
 
@@ -78,15 +78,15 @@ C<m/pattern/msixpogc> �ѥ�����ޥå��Τ����ʸ����򸡺�����
 
 =end original
 
-    m  ʣ���ԥ⡼�� - ^ �� $ ������Ū�ʹԤ˥ޥå����ޤ�
-    s  ñ�ԤȤ��ƥޥå� - . �� \n �˥ޥå����ޤ�
-    i  �羮ʸ���ΰ㤤��̵�뤷�ޤ�
-    x  �ɤߤ䤹���γ�ĥ - ����䥳���Ȥ�ͳ���֤��ޤ�
-    p  �ޥå�����ʸ����Υ��ԡ�����¸���� -
-       ${^PREMATCH}, ${^MATCH}, ${^POSTMATCH} ���������ޤ���
-    o  �ѥ��������٤�������ѥ��뤷�ޤ�
-    g  �������Х� - �ޥå������Τ��٤�
-    c  /g ��ȤäƤ���Ȥ��˥ޥå��˼��Ԥ��Ƥ� pos ��ꥻ�åȤ��ޤ���
+    m  複数行モード - ^ と $ が内部的な行にマッチします
+    s  単行としてマッチ - . が \n にマッチします
+    i  大小文字の違いを無視します
+    x  読みやすさの拡張 - 空白やコメントを自由に置けます
+    p  マッチした文字列のコピーを保存する -
+       ${^PREMATCH}, ${^MATCH}, ${^POSTMATCH} が定義されます。
+    o  パターンを一度だけコンパイルします
+    g  グローバル - マッチするものすべて
+    c  /g を使っているときにマッチに失敗しても pos をリセットしません
 
 =begin original
 
@@ -97,10 +97,10 @@ if the delimiter is '/'.
 
 =end original
 
-'pattern' ����ʸ����ʤ顢�Ǹ�˥ޥå��󥰤� I<��������>
-����ɽ�����Ȥ��ޤ���
-���α黻�ҤȤ����³����Τ���ˡ�ǡ�'/' �ʳ��Υǥ�ߥ���Ȥ��ޤ���
-�ǥ�ߥ��� '/' �ξ��� C<m> �Ͼ�ά�Ǥ��ޤ���
+'pattern' が空文字列なら、最後にマッチングに I<成功した>
+正規表現が使われます。
+この演算子とそれに続くものの療法で、'/' 以外のデリミタも使えます。
+デリミタが '/' の場合は C<m> は省略できます。
 
 =begin original
 
@@ -110,9 +110,9 @@ within the regex.
 
 =end original
 
-C<qr/pattern/msixpo> �ϡ�����ɽ�����ѿ�������뤫����˲󤻤�褦��
-���ޤ���
-C<m//> ��Ʊ�������Ҥ��Ȥ��ơ�����ɽ�����ݴɤ���ޤ���
+C<qr/pattern/msixpo> は、正規表現を変数に入れるか、順に回せるように
+します。
+C<m//> と同じ修飾子が使えて、正規表現に保管されます。
 
 =begin original
 
@@ -122,9 +122,9 @@ with one addition:
 
 =end original
 
-C<s/pattern/replacement/msixpogce> �ϡ�'pattern' �ǥޥå�������Τ�
-'replacement' ���֤������ޤ���
-C<m//> ��Ʊ�������Ҥ��Ȥ��ơ�����˰���ɲä���ޤ�:
+C<s/pattern/replacement/msixpogce> は、'pattern' でマッチしたものを
+'replacement' で置き換えます。
+C<m//> と同じ修飾子が使えて、さらに一つ追加されます:
 
 =begin original
 
@@ -132,7 +132,7 @@ C<m//> ��Ʊ�������Ҥ��Ȥ��ơ�����˰���ɲä���ޤ�:
 
 =end original
 
-    e  'replacement' �򼰤Ȥ���ɾ�����ޤ�
+    e  'replacement' を式として評価します
 
 =begin original
 
@@ -141,9 +141,9 @@ as a double quoted string unless a single-quote (C<'>) is the delimiter.
 
 =end original
 
-'e' ��ʣ�������Ǥ��ޤ���
-'replacement' �ϡ��ǥ�ߥ��Ȥ��ƥ��󥰥륯������ (C<'>) ���Ȥ�줿����
-�����ơ����֥륯�����Ȥ��줿ʸ����Ȥ��Ʋ�ᤵ��ޤ���
+'e' は複数回指定できます。
+'replacement' は、デリミタとしてシングルクォート (C<'>) が使われた場合を
+除いて、ダブルクォートされた文字列として解釈されます。
 
 =begin original
 
@@ -152,9 +152,9 @@ delimiters can be used.  Must be reset with reset().
 
 =end original
 
-C<?pattern?> �� C<m/pattern/> �˻��Ƥ��ޤ��������٤����ޥå����ޤ���
-�ǥ�ߥ����ѹ��Ǥ��ޤ���
-reset() �ǥꥻ�åȤ��ʤ���Фʤ�ޤ���
+C<?pattern?> は C<m/pattern/> に似ていますが、一度だけマッチします。
+デリミタは変更できません。
+reset() でリセットしなければなりません。
 
 =head2 SYNTAX
 
@@ -182,29 +182,29 @@ reset() �ǥꥻ�åȤ��ʤ���Фʤ�ޤ���
 
 =end original
 
-   \       ľ���ʸ���򥨥������פ��ޤ�
-   .       ���Ԥ����Ǥ�դΰ�ʸ���˥ޥå����ޤ� (/s ���Ȥ��Ƥ��ʤ����)
-   ^       ʸ����(/m ���Ȥ��Ƥ�����Ϲ�)����Ƭ�˥ޥå����ޤ�
-   $       ʸ����(/m ���Ȥ��Ƥ�����Ϲ�)�������˥ޥå����ޤ�
-   *       ��Ԥ������ǤΥ�����ʾ�η����֤��˥ޥå����ޤ�
-   +       ��Ԥ������Ǥΰ��ʾ�η����֤��˥ޥå����ޤ�
-   ?       ��Ԥ������ǤΥ�����ޤ��ϰ��νи��˥ޥå����ޤ�
-   {...}   ��Ԥ������Ǥη����֤����ϰϤ���ꤷ�ޤ�
-   [...]   �֥饱�åȤ���¦�ˤ���ʸ���Τ����줫�˥ޥå����ޤ�
-   (...)   $1, $2... �Τ������ʬ����ɽ���򥰥롼�ײ�������ª���ޤ�
-   (?:...) ��ʬ����ɽ������ª���뤳�Ȥʤ����롼�ײ����ޤ� (���饹����)
-   |       ���������줫�ˤ�����ʬ����ɽ���˥ޥå����ޤ�
-   \1, \2, \3  ...          N ���ܤΥ��롼�פΥƥ����Ȥ˥ޥå����ޤ�
-   \g1 or \g{1}, \g2 ...    N ���ܤΥ��롼�פΥƥ����Ȥ˥ޥå����ޤ�
-   \g-1 or \g{-1}, \g-2 ... N �����Υ��롼�פΥƥ����Ȥ˥ޥå����ޤ�
-   \g{name}     ̾���Ĥ���������
-   \k<name>     ̾���Ĥ���������
-   \k'name'     ̾���Ĥ���������
-   (?P=name)    ̾���Ĥ��������� (python ��ʸˡ)
+   \       直後の文字をエスケープします
+   .       改行を除く任意の一文字にマッチします (/s が使われていない場合)
+   ^       文字列(/m が使われている場合は行)の先頭にマッチします
+   $       文字列(/m が使われている場合は行)の末尾にマッチします
+   *       先行する要素のゼロ回以上の繰り返しにマッチします
+   +       先行する要素の一回以上の繰り返しにマッチします
+   ?       先行する要素のゼロ回または一回の出現にマッチします
+   {...}   先行する要素の繰り返しの範囲を指定します
+   [...]   ブラケットの内側にある文字のいずれかにマッチします
+   (...)   $1, $2... のために部分正規表現をグループ化して捕捉します
+   (?:...) 部分正規表現を捕捉することなくグループ化します (クラスター)
+   |       左右いずれかにある部分正規表現にマッチします
+   \1, \2, \3  ...          N 番目のグループのテキストにマッチします
+   \g1 or \g{1}, \g2 ...    N 番目のグループのテキストにマッチします
+   \g-1 or \g{-1}, \g-2 ... N 個前のグループのテキストにマッチします
+   \g{name}     名前つき後方参照
+   \k<name>     名前つき後方参照
+   \k'name'     名前つき後方参照
+   (?P=name)    名前つき後方参照 (python の文法)
 
 =head2 ESCAPE SEQUENCES
 
-(���������ץ�������)
+(エスケープシーケンス)
 
 =begin original
 
@@ -212,7 +212,7 @@ These work as in normal strings.
 
 =end original
 
-�������̾��ʸ����Ȥ���Ư���ޤ���
+これらは通常の文字列として働きます。
 
 =begin original
 
@@ -230,17 +230,17 @@ These work as in normal strings.
 
 =end original
 
-   \a       ���顼�� (�ӡ���)
-   \e       ����������
-   \f       ���ڡ���
-   \n       ����
-   \r       �����å��꥿����
-   \t       ����
-   \037     Ǥ�դ� 8 �� ASCII ��
-   \x7f     Ǥ�դ� 16 �� ASCII ��
-   \x{263a} �磻�� 16 ����
+   \a       アラーム (ビープ)
+   \e       エスケープ
+   \f       改ページ
+   \n       改行
+   \r       キャリッジリターン
+   \t       タブ
+   \037     任意の 8 進 ASCII 値
+   \x7f     任意の 16 進 ASCII 値
+   \x{263a} ワイド 16 進値
    \cx      Control-x
-   \N{name} ̾���Ĥ�ʸ��
+   \N{name} 名前つき文字
 
 =begin original
 
@@ -253,12 +253,12 @@ These work as in normal strings.
 
 =end original
 
-   \l  ����ʸ����ʸ���ˤ��ޤ�
-   \u  ����ʸ���򥿥��ȥ�ʸ���ˤ��ޤ�
-   \L  \E �ޤǾ�ʸ���ˤ��ޤ�
-   \U  \E �ޤ���ʸ���ˤ��ޤ�
-   \Q  \E �ޤǥѥ�����Υ᥿ʸ����̵���ˤ��ޤ�
-   \E  ������λ���ޤ�
+   \l  次の文字を小文字にします
+   \u  次の文字をタイトル文字にします
+   \L  \E まで小文字にします
+   \U  \E まで大文字にします
+   \Q  \E までパターンのメタ文字を無効にします
+   \E  修正を終了します
 
 =begin original
 
@@ -266,7 +266,7 @@ For Titlecase, see L</Titlecase>.
 
 =end original
 
-�����ȥ�ʸ���ˤˤĤ��Ƥ� L</Titlecase> �򻲾Ȥ��Ƥ���������
+タイトル文字にについては L</Titlecase> を参照してください。
 
 =begin original
 
@@ -274,7 +274,7 @@ This one works differently from normal strings:
 
 =end original
 
-���� 1 �Ĥ��̾��ʸ����Ȥϰۤʤä�Ư���򤷤ޤ�:
+この 1 つは通常の文字列とは異なった働きをします:
 
 =begin original
 
@@ -282,11 +282,11 @@ This one works differently from normal strings:
 
 =end original
 
-   \b  ʸ�����饹����ʳ��Ǥϡ�ɽ���Ǥ��äƥХå����ڡ����ǤϤ���ޤ���
+   \b  文字クラスの中以外では、表明であってバックスペースではありません
 
 =head2 CHARACTER CLASSES
 
-(ʸ�����饹)
+(文字クラス)
 
 =begin original
 
@@ -297,10 +297,10 @@ This one works differently from normal strings:
 
 =end original
 
-   [amy]    'a', 'm', 'y' �Τ����줫�˥ޥå�
-   [f-j]    ���å���ϡ��ϰϡפ���ꤷ�ޤ�
-   [f-j-]   ���������פ���뤫���ǽ餫�Ǹ�ˤ�����å���ϡ֥��å���פ��̣���ޤ�
-   [^f-j]   �����åȤϡ֤����ʳ��˥ޥå��פ򼨤��ޤ�
+   [amy]    'a', 'm', 'y' のいずれかにマッチ
+   [f-j]    ダッシュは「範囲」を指定します
+   [f-j-]   エスケープされるか、最初か最後にあるダッシュは「ダッシュ」を意味します
+   [^f-j]   キャレットは「これら以外にマッチ」を示します
 
 =begin original
 
@@ -310,9 +310,9 @@ and L<perlunicode> for details.
 
 =end original
 
-�ʲ��Υ������󥹤�ʸ�����饹��Ǥ⤽��ʳ��Ǥ�ư��ޤ���
-�ǽ�� 6 �Ĥϥ�������αƶ�����������Ƥ� Unicode �αƶ�������ޤ���
-�ܺ٤ˤĤ��Ƥ� L<perllocale> �� L<perlunicode> �򻲾Ȥ��Ƥ���������
+以下のシーケンスは文字クラス内でもそれ以外でも動作します。
+最初の 6 つはロケールの影響を受け、全ては Unicode の影響を受けます。
+詳細については L<perllocale> と L<perlunicode> を参照してください。
 
 =begin original
 
@@ -330,17 +330,17 @@ and L<perlunicode> for details.
 
 =end original
 
-   \d      ����
-   \D      �����
-   \w      ñ��ʸ��
-   \W      ��ñ��ʸ��
-   \s      ����ʸ��
-   \S      �����ʸ��
-   \h      ��ʿ����ʸ��
-   \H      ���ʿ����ʸ��
-   \v      ��ľ����ʸ��
-   \V      ���ľ����ʸ��
-   \R      ����Ū�ʲ���                (?>\v|\x0D\x0A)
+   \d      数値
+   \D      非数値
+   \w      単語文字
+   \W      非単語文字
+   \s      空白文字
+   \S      非空白文字
+   \h      水平空白文字
+   \H      非水平空白文字
+   \v      垂直空白文字
+   \V      非垂直空白文字
+   \R      一般的な改行                (?>\v|\x0D\x0A)
 
 =begin original
 
@@ -353,12 +353,12 @@ and L<perlunicode> for details.
 
 =end original
 
-   \C      1 �Х��Ȥ˥ޥå����� (Unicode �Ǥϡ�'.' ��ʸ���˥ޥå�����)
-   \pP     P ��̾���� (Unicode) �ץ��ѥƥ�
-   \p{...} Ĺ��̾���� Unicode �ץ��ѥƥ��˥ޥå�����
-   \PP     �� P �˥ޥå�����
-   \P{...} Ĺ��̾���� Unicode �ץ��ѥƥ����ʤ���Τ˥ޥå�����
-   \X      ��ĥ���줿 Unicode �η��ʸ�����¤Ӥ˥ޥå�����
+   \C      1 バイトにマッチする (Unicode では、'.' は文字にマッチする)
+   \pP     P の名前の (Unicode) プロパティ
+   \p{...} 長い名前の Unicode プロパティにマッチする
+   \PP     非 P にマッチする
+   \P{...} 長い名前の Unicode プロパティがないものにマッチする
+   \X      拡張された Unicode の結合文字の並びにマッチする
 
 =begin original
 
@@ -366,7 +366,7 @@ POSIX character classes and their Unicode and Perl equivalents:
 
 =end original
 
-POSIX ʸ�����饹�ȡ�������Ф��� Unicode �� Perl ������ʪ��:
+POSIX 文字クラスと、それに対する Unicode と Perl の相当物は:
 
 =begin original
 
@@ -388,21 +388,21 @@ POSIX ʸ�����饹�ȡ�������Ф��� Unicode �� Perl ������ʪ��:
 
 =end original
 
-   alnum   IsAlnum              �ѿ���
-   alpha   IsAlpha              �ѻ�
-   ascii   IsASCII              Ǥ�դ� ASCII ʸ��
-   blank   IsSpace  [ \t]       ��ʿ���� (GNU ��ĥ)
-   cntrl   IsCntrl              ����ʸ��
-   digit   IsDigit  \d          ����
-   graph   IsGraph              �ѿ����ȶ�����
-   lower   IsLower              ��ʸ�� (��������� Unicode �αƶ�������ޤ�)
-   print   IsPrint              �ѿ����ȶ������ȶ���
-   punct   IsPunct              ������
-   space   IsSpace  [\s\ck]     ����
-           IsSpacePerl   \s     Perl �ζ�������
-   upper   IsUpper              ��ʸ�� (��������� Unicode �αƶ�������ޤ�)
-   word    IsWord   \w          �ѿ����� _ (Perl ��ĥ)
-   xdigit  IsXDigit [0-9A-Fa-f] 16 �ʿ�
+   alnum   IsAlnum              英数字
+   alpha   IsAlpha              英字
+   ascii   IsASCII              任意の ASCII 文字
+   blank   IsSpace  [ \t]       水平空白 (GNU 拡張)
+   cntrl   IsCntrl              制御文字
+   digit   IsDigit  \d          数字
+   graph   IsGraph              英数字と句読点
+   lower   IsLower              小文字 (ロケールと Unicode の影響を受けます)
+   print   IsPrint              英数字と句読点と空白
+   punct   IsPunct              句読点
+   space   IsSpace  [\s\ck]     空白
+           IsSpacePerl   \s     Perl の空白の定義
+   upper   IsUpper              大文字 (ロケールと Unicode の影響を受けます)
+   word    IsWord   \w          英数字と _ (Perl 拡張)
+   xdigit  IsXDigit [0-9A-Fa-f] 16 進数
 
 =begin original
 
@@ -410,7 +410,7 @@ Within a character class:
 
 =end original
 
-ʸ�����饹����Ǥ�:
+文字クラスの中では:
 
 =begin original
 
@@ -420,13 +420,13 @@ Within a character class:
 
 =end original
 
-    POSIX         ����Ū      Unicode
+    POSIX         伝統的      Unicode
     [:digit:]       \d        \p{IsDigit}
     [:^digit:]      \D        \P{IsDigit}
 
 =head2 ANCHORS
 
-(���󥫡�)
+(アンカー)
 
 =begin original
 
@@ -434,7 +434,7 @@ All are zero-width assertions.
 
 =end original
 
-���٤ƥ�������ɽ���Ǥ���
+すべてゼロ幅の表明です。
 
 =begin original
 
@@ -449,14 +449,14 @@ All are zero-width assertions.
 
 =end original
 
-   ^  ʸ����(/m �����ꤵ��Ƥ�����ˤϹ�)����Ƭ�˥ޥå����ޤ�
-   $  ʸ����(/m �����ꤵ��Ƥ�����ˤϹ�)�ν�ü�⤷���ϲ��Ԥ����˥ޥå����ޤ�
-   \b ñ�춭��(\w �� ��W �δ�)�˥ޥå����ޤ�
-   \B ñ�춭���ʳ�(\w �� \w �δ֤� \W �� \W �δ�)�˥ޥå����ޤ�
-   \A ʸ�������Ƭ(/m �ˤϱƶ�����ޤ���)�˥ޥå����ޤ�
-   \Z ʸ���������(��ά��ǽ�ʲ��Ԥ���)�˥ޥå����ޤ�
-   \z ʸ����������������˥ޥå����ޤ�
-   \G ����� m//g �Υޥå��������������˥ޥå����ޤ�
+   ^  文字列(/m が指定されている場合には行)の先頭にマッチします
+   $  文字列(/m が指定されている場合には行)の終端もしくは改行の前にマッチします
+   \b 単語境界(\w と ￥W の間)にマッチします
+   \B 単語境界以外(\w と \w の間か \W と \W の間)にマッチします
+   \A 文字列の先頭(/m には影響されません)にマッチします
+   \Z 文字列の末尾(省略可能な改行の前)にマッチします
+   \z 文字列の本当の末尾にマッチします
+   \G 前回の m//g のマッチした場所の末尾にマッチします
 
 =begin original
 
@@ -464,11 +464,11 @@ All are zero-width assertions.
 
 =end original
 
-   \K \K �κ�¦�����Ƥ���¸����; ����� $& �ˤϴޤޤ�ʤ�
+   \K \K の左側の内容を保存する; これは $& には含まれない
 
 =head2 QUANTIFIERS
 
-(�̻����)
+(量指定子)
 
 =begin original
 
@@ -476,7 +476,7 @@ Quantifiers are greedy by default -- match the B<longest> leftmost.
 
 =end original
 
-�̻���Ҥϥǥե���ȤǤ����ߤǤ� -- ���ֺ����� B<����Ĺ��> �ޥå����ޤ���
+量指定子はデフォルトでは貪欲です -- 一番左から B<一番長く> マッチします。
 
 =begin original
 
@@ -492,14 +492,14 @@ Quantifiers are greedy by default -- match the B<longest> leftmost.
 
 =end original
 
-   ����    �Ǿ�    ��ͭ��     �ϰ�
+   最大    最小    所有格     範囲
    ------- ------- ---------- -------------
-   {n,m}   {n,m}?  {n,m}+     ���� n ��m �����и�
-   {n,}    {n,}?   {n,}+      ���� n ��и�
-   {n}     {n}?    {n}+       ���Τ� n ��и�
-   *       *?      *+         0 ��ʾ� ({0,} ��Ʊ��)
-   +       +?      ++         1 ��ʾ� ({1,} ��Ʊ��)
-   ?       ??      ?+         0 ��ޤ��� 1 �� ({0,1} ��Ʊ��)
+   {n,m}   {n,m}?  {n,m}+     最低 n 回、m 回以内出現
+   {n,}    {n,}?   {n,}+      最低 n 回出現
+   {n}     {n}?    {n}+       正確に n 回出現
+   *       *?      *+         0 回以上 ({0,} と同じ)
+   +       +?      ++         1 回以上 ({1,} と同じ)
+   ?       ??      ?+         0 回または 1 回 ({0,1} と同じ)
 
 =begin original
 
@@ -509,9 +509,9 @@ into, even if that causes the whole match to fail.
 
 =end original
 
-(Perl 5.10 ��Ƴ�����줿) ��ͭ�ʤϥХå��ȥ�å����������ޤ�:
-��ͭ���̻���Ҥ��դ����ѥ�����ǥޥå�������硢�Хå��ȥ�å��Ϥ��ޤ���;
-���Ȥ�����ˤ�äƥޥå����Τ����Ԥ��뤳�ȤˤʤäƤ�Ǥ���
+(Perl 5.10 で導入された) 所有格はバックトラックを抑制します:
+所有格量指定子が付いたパターンでマッチした場合、バックトラックはしません;
+たとえこれによってマッチ全体が失敗することになってもです。
 
 =begin original
 
@@ -519,11 +519,11 @@ There is no quantifier {,n} -- that gets understood as a literal string.
 
 =end original
 
-{,n} �Ȥ����̻���ҤϤ���ޤ��� -- ����ϥ�ƥ���ʸ����Ȥ��ư����ޤ���
+{,n} という量指定子はありません -- これはリテラルな文字列として扱われます。
 
 =head2 EXTENDED CONSTRUCTS
 
-(��ĥ��¤)
+(拡張構造)
 
 =begin original
 
@@ -559,39 +559,39 @@ There is no quantifier {,n} -- that gets understood as a literal string.
 
 =end original
 
-   (?#text)          ������
-   (?:...)           ��ʬ����ɽ������ª���뤳�Ȥʤ����롼�ײ����ޤ� (���饹����)
-   (?imxs-imsx:...)  ���ץ�����ͭ��/̵���ˤ��� (m// �����ҤΤ�Τ�Ʊ��)
-   (?=...)           �������ι������ɤ�ɽ��
-   (?!...)           ���������������ɤ�ɽ��
-   (?<=...)          �������ι�����ɤ�ɽ��
-   (?<!...)          ��������������ɤ�ɽ��
-   (?>...)           ���褦��¤�ޥå������Хå��ȥ�å����ʤ�
-   (?|...)           ʬ���Υꥻ�å�
-   (?<name>...)      ̾���դ���ª
-   (?'name'...)      ̾���դ���ª
-   (?P<name>...)     ̾���դ���ª (python ʸˡ)
-   (?{ code })       �����ߥ����ɡ� ����ͤ� $^R �˳�Ǽ����ޤ�
-   (??{ code })      ưŪ����ɽ��������ͤ�����ɽ���Ȥ��ư����ޤ�
-   (?N)              ���֥ѥ������ֹ� N �˺Ƶ�����
-   (?-N), (?+N)      N ����/��Υ��֥ѥ�����˺Ƶ�����
-   (?R), (?0)        �ѥ��������Τ���Ƭ�˺Ƶ�����
-   (?&name)          ̾���դ����֥ѥ�����˺Ƶ�����
-   (?P>name)         ̾���դ����֥ѥ�����˺Ƶ����� (python ʸˡ)
+   (?#text)          コメント
+   (?:...)           部分正規表現を捕捉することなくグループ化します (クラスター)
+   (?imxs-imsx:...)  オプションを有効/無効にする (m// 修飾子のものと同じ)
+   (?=...)           ゼロ幅の肯定先読み表明
+   (?!...)           ゼロ幅の否定先読み表明
+   (?<=...)          ゼロ幅の肯定後読み表明
+   (?<!...)          ゼロ幅の否定後読み表明
+   (?>...)           出来うる限りマッチし、バックトラックしない
+   (?|...)           分岐のリセット
+   (?<name>...)      名前付き捕捉
+   (?'name'...)      名前付き捕捉
+   (?P<name>...)     名前付き捕捉 (python 文法)
+   (?{ code })       埋め込みコード。 戻り値は $^R に格納されます
+   (??{ code })      動的正規表現。戻り値は正規表現として扱われます
+   (?N)              サブパターン番号 N に再帰する
+   (?-N), (?+N)      N 個前/後のサブパターンに再帰する
+   (?R), (?0)        パターン全体の先頭に再帰する
+   (?&name)          名前付きサブパターンに再帰する
+   (?P>name)         名前付きサブパターンに再帰する (python 文法)
    (?(cond)yes|no)
-   (?(cond)yes)      ��Ｐ; "cond" �ǻ���Ǥ���Τ�:
-                     (N)       ���֥ѥ����� N �������˥ޥå�����
-                     (<name>)  ̾���դ����֥롼���󤬲����˥ޥå�����
-                     ('name')  ̾���դ����֥롼���󤬲����˥ޥå�����
-                     (?{code}) �����ɾ��
-                     (R)       �Ƶ������鿿
-                     (RN)      N ���ܤΥ��֥ѥ�����˺Ƶ������鿿
-                     (R&name)  ̾���դ����֥ѥ�����˺Ƶ������鿿
-                     (DEFINE)  ��˵�; �ѥ�����ʤ��ϵ�����ʤ�
+   (?(cond)yes)      条件式; "cond" で指定できるのは:
+                     (N)       サブパターン N が何かにマッチした
+                     (<name>)  名前付きサブルーチンが何かにマッチした
+                     ('name')  名前付きサブルーチンが何かにマッチした
+                     (?{code}) コード条件
+                     (R)       再帰したら真
+                     (RN)      N 番目のサブパターンに再帰したら真
+                     (R&name)  名前付きサブパターンに再帰したら真
+                     (DEFINE)  常に偽; パターンなしは許されない
 
 =head2 VARIABLES
 
-(�ѿ�)
+(変数)
 
 =begin original
 
@@ -599,7 +599,7 @@ There is no quantifier {,n} -- that gets understood as a literal string.
 
 =end original
 
-   $_    �黻�Ҥ����Ѥ���ǥե���Ȥ��ѿ�
+   $_    演算子が使用するデフォルトの変数
 
 =begin original
 
@@ -609,9 +609,9 @@ There is no quantifier {,n} -- that gets understood as a literal string.
 
 =end original
 
-   $`    �ޥå�����ʸ�������Ԥ�����ʬ
-   $&    �ޥå�����ʸ��������
-   $'    �ޥå�����ʸ����˸�³������ʬ
+   $`    マッチした文字列に先行する部分
+   $&    マッチした文字列全体
+   $'    マッチした文字列に後続する部分
 
 =begin original
 
@@ -621,9 +621,9 @@ There is no quantifier {,n} -- that gets understood as a literal string.
 
 =end original
 
-   ${^PREMATCH}   �ޥå�����ʸ�������Ԥ�����ʬ
-   ${^MATCH}      �ޥå�����ʸ��������
-   ${^POSTMATCH}  �ޥå�����ʸ����˸�³������ʬ
+   ${^PREMATCH}   マッチした文字列に先行する部分
+   ${^MATCH}      マッチした文字列全体
+   ${^POSTMATCH}  マッチした文字列に後続する部分
 
 =begin original
 
@@ -637,14 +637,14 @@ specify the C</p> (preserve) modifier on your regular expression.
 
 =end original
 
-C<$`>, C<$&>, C<$'> �Τ����줫��Ȥ��ȡ��ץ��������� B<���Ƥ�> ����ɽ����
-®�٤��㲼���ޤ���
-®���㲼������������ʤ���������ɽ���Τ���ˤϡ�L<perlvar> �� C<@-> ��
-Ĵ�٤ƤߤƤ���������
-�ޤ���L<Devel::SawAmpersand> �⻲�Ȥ��Ƥ���������
-Perl 5.10 ���顢�������ѿ��Ǥ��� C<${^PREMATCH}>, C<${^MATCH}>,
-C<${^POSTMATCH}> ��Ȥ��ޤ���������餬��������ˤϡ�����ɽ����
-C</p> (��¸(preserve)) �����Ҥ�Ĥ���ɬ�פ�����ޤ���
+C<$`>, C<$&>, C<$'> のいずれかを使うと、プログラム中の B<全ての> 正規表現の
+速度が低下します。
+速度低下を引き起こさない、等価な表現のためには、L<perlvar> の C<@-> を
+調べてみてください。
+また、L<Devel::SawAmpersand> も参照してください。
+Perl 5.10 から、等価な変数である C<${^PREMATCH}>, C<${^MATCH}>,
+C<${^POSTMATCH}> も使えますが、これらが定義されるには、正規表現に
+C</p> (保存(preserve)) 修飾子をつける必要があります。
 
 =begin original
 
@@ -659,14 +659,14 @@ C</p> (��¸(preserve)) �����Ҥ�Ĥ���ɬ�פ�����ޤ���
 
 =end original
 
-   $1, $2 ...  X ���ܤ���ª���줿�����ݻ����ޤ�
-   $+    �Ǹ�ˤ��ä��ǰϤޤ줿�ѥ�����ޥå�
-   $^N   �Ǥ�᤯���Ĥ�����ª���ݻ����ޤ�
-   $^R   �Ǹ�� (?{...}) ���η�̤��ݻ����ޤ�
-   @-    ���롼�פ���Ƭ����Υ��ե��å�; $-[0] �ϥޥå����Τ���Ƭ�Ǥ�
-   @+    ���롼�פ���������Υ��ե��å�; $+[0] �ϥޥå����Τ������Ǥ�
-   %+    ̾���դ���ª�Хåե�
-   %-    �����ե���󥹤Ȥ��Ƥ�̾���դ���ª�Хåե�
+   $1, $2 ...  X 番目の捕捉された式を保持します
+   $+    最後にかっこで囲まれたパターンマッチ
+   $^N   最も近くに閉じた捕捉を保持します
+   $^R   最後の (?{...}) 式の結果を保持します
+   @-    グループの先頭からのオフセット; $-[0] はマッチ全体の先頭です
+   @+    グループの末尾からのオフセット; $+[0] はマッチ全体の末尾です
+   %+    名前付き捕捉バッファ
+   %-    配列リファレンスとしての名前付き捕捉バッファ
 
 =begin original
 
@@ -674,11 +674,11 @@ Captured groups are numbered according to their I<opening> paren.
 
 =end original
 
-��ª�������롼�פ� I<����> ���ä��ν��֤��ֹ��դ�����ޤ���
+捕捉したグループは I<開き> かっこの順番で番号付けされます。
 
 =head2 FUNCTIONS
 
-(�ؿ�)
+(関数)
 
 =begin original
 
@@ -689,10 +689,10 @@ Captured groups are numbered according to their I<opening> paren.
 
 =end original
 
-   lc          ʸ�����ʸ���ˤ��ޤ�
-   lcfirst     ʸ����κǽ��ʸ����ʸ���ˤ��ޤ�
-   uc          ʸ�������ʸ���ˤ��ޤ�
-   ucfirst     ʸ����κǽ��ʸ���� Titlecase �ˤ��ޤ�
+   lc          文字列を小文字にします
+   lcfirst     文字列の最初の文字を小文字にします
+   uc          文字列を大文字にします
+   ucfirst     文字列の最初の文字を Titlecase にします
 
 =begin original
 
@@ -703,10 +703,10 @@ Captured groups are numbered according to their I<opening> paren.
 
 =end original
 
-   pos         �����ȤΥޥå����֤��֤��������ꤷ���ꤷ�ޤ�
-   quotemeta   �᥿ʸ���򥯥����Ȥ��ޤ�
-   reset       ?pattern? �ξ��֤�ꥻ�åȤ��ޤ�
-   study       �ޥå��󥰤κ�Ŭ���Τ����ʸ�����Ĵ�٤ޤ�
+   pos         カレントのマッチ位置を返したり設定したりします
+   quotemeta   メタ文字をクォートします
+   reset       ?pattern? の状態をリセットします
+   study       マッチングの最適化のために文字列を調べます
 
 =begin original
 
@@ -714,7 +714,7 @@ Captured groups are numbered according to their I<opening> paren.
 
 =end original
 
-   split       ʸ�����ʬ�䤹�뤿�������ɽ����Ȥ��ޤ�
+   split       文字列を分割するために正規表現を使います
 
 =begin original
 
@@ -723,17 +723,17 @@ C<\U>, and C<\u>.  For Titlecase, see L</Titlecase>.
 
 =end original
 
-�����κǽ�� 4 �Ĥϡ����������ץ������� C<\L>, C<\l>, C<\U>, C<\u> ��
-���Ƥ��ޤ���
-�����ȥ�ʸ���ˤĤ��Ƥϡ�L</Titlecase> �򻲾Ȥ��Ƥ���������
+これらの最初の 4 つは、エスケープシーケンス C<\L>, C<\l>, C<\U>, C<\u> と
+似ています。
+タイトル文字については、L</Titlecase> を参照してください。
 
 =head2 TERMINOLOGY
 
-(�Ѹ�)
+(用語)
 
 =head3 Titlecase
 
-(�����ȥ�ʸ��)
+(タイトル文字)
 
 =begin original
 
@@ -742,8 +742,8 @@ certain characters like the German "sharp s" there is a difference.
 
 =end original
 
-Unicode �γ�ǰ�ǡ��ۤȤ�ɤξ�����ʸ����Ʊ���Ǥ������ɥ��ĸ��
-"sharp s" �Τ褦�������ʸ���ˤĤ��Ƥϰۤʤ�ޤ���
+Unicode の概念で、ほとんどの場合は大文字と同じですが、ドイツ語の
+"sharp s" のような特定の文字については異なります。
 
 =head1 AUTHOR
 
@@ -763,7 +763,7 @@ L<perlretut> for a tutorial on regular expressions.
 
 =end original
 
-����ɽ���Υ��塼�ȥꥢ��Ǥ��� L<perlretut>��
+正規表現のチュートリアルである L<perlretut>。
 
 =item *
 
@@ -773,7 +773,7 @@ L<perlrequick> for a rapid tutorial.
 
 =end original
 
-��ü���ᤤ���塼�ȥꥢ��Ǥ��� L<perlrequick>��
+手っ取り早いチュートリアルである L<perlrequick>。
 
 =item *
 
@@ -783,7 +783,7 @@ L<perlre> for more details.
 
 =end original
 
-����ʤ�ܺ٤Ǥ��� L<perlre>��
+さらなる詳細である L<perlre>。
 
 =item *
 
@@ -793,7 +793,7 @@ L<perlvar> for details on the variables.
 
 =end original
 
-�ѿ��˴ؤ���ܺ٤Ǥ��� L<perlvar>��
+変数に関する詳細である L<perlvar>。
 
 =item *
 
@@ -803,7 +803,7 @@ L<perlop> for details on the operators.
 
 =end original
 
-�黻�Ҥξܺ٤Ǥ��� L<perlop>��
+演算子の詳細である L<perlop>。
 
 =item *
 
@@ -813,7 +813,7 @@ L<perlfunc> for details on the functions.
 
 =end original
 
-�ؿ��ξܺ٤Ǥ��� L<perlfunc>��
+関数の詳細である L<perlfunc>。
 
 =item *
 
@@ -823,7 +823,7 @@ L<perlfaq6> for FAQs on regular expressions.
 
 =end original
 
-����ɽ���˴ؤ��� FAQ �Ǥ��� L<perlfaq6>��
+正規表現に関する FAQ である L<perlfaq6>。
 
 =item *
 
@@ -833,7 +833,7 @@ L<perlrebackslash> for a reference on backslash sequences.
 
 =end original
 
-�Хå�����å��奷������ �λ��ͻ����Ǥ��� L<perlrebackslash>��
+バックスラッシュシーケンス の参考資料である L<perlrebackslash>。
 
 =item *
 
@@ -843,7 +843,7 @@ L<perlrecharclass> for a reference on character classes.
 
 =end original
 
-ʸ�����饹�λ��ͻ����Ǥ��� L<perlrecharclass>��
+文字クラスの参考資料である L<perlrecharclass>。
 
 =item *
 
@@ -854,7 +854,7 @@ debugging.
 
 =end original
 
-�����񤤤��ѹ��ȥǥХå�������Τ���� L<re> �⥸�塼�롣
+振る舞いの変更とデバッグの補助のための L<re> モジュール。
 
 =item *
 
@@ -869,8 +869,8 @@ for details on regexes and internationalisation.
 
 =end original
 
-����ɽ�����ݲ��˴ؤ���ܺ٤Ǥ��� L<perluniintro>, L<perlunicode>,
-L<charnames>, L<perllocale>��
+正規表現や国際化に関する詳細である L<perluniintro>, L<perlunicode>,
+L<charnames>, L<perllocale>。
 
 =item *
 
@@ -882,10 +882,10 @@ reference on the topic.
 
 =end original
 
-��������˴ؤ��봰�����طʤȻ��ͻ����Ǥ���
-Jeffrey Friedl �ˤ����� I<Mastering Regular Expressions>
-(O'Reilly������ǡ� ISBN 1556592-257-3)��
-���ܸ��Ǥϡ־��� ����ɽ����ISBN4-87311-130-7 (�����ǤΤ��)��
+この話題に関する完全な背景と参考資料である
+Jeffrey Friedl による書籍 I<Mastering Regular Expressions>
+(O'Reillyから出版。 ISBN 1556592-257-3)。
+日本語版は「詳説 正規表現」ISBN4-87311-130-7 (第二版のもの)。
 
 =back
 

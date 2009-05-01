@@ -8,7 +8,7 @@ perl585delta - what is new for perl v5.8.5
 
 =end original
 
-perl585delta - perl v5.8.5 �Ǥ��ѹ���
+perl585delta - perl v5.8.5 での変更点
 
 =head1 DESCRIPTION
 
@@ -19,11 +19,11 @@ the 5.8.5 release.
 
 =end original
 
-���Υɥ�����Ȥ� 5.8.4 ��꡼���� 5.8.5 ��꡼�����ѹ����򵭽Ҥ��Ƥ��ޤ���
+このドキュメントは 5.8.4 リリースと 5.8.5 リリースの変更点を記述しています。
 
 =head1 Incompatible Changes
 
-(�ߴ����Τʤ��ѹ�)
+(互換性のない変更)
 
 =begin original
 
@@ -31,11 +31,11 @@ There are no changes incompatible with 5.8.4.
 
 =end original
 
-5.8.4 �ȸߴ����Τʤ��ѹ��Ϥ���ޤ���
+5.8.4 と互換性のない変更はありません。
 
 =head1 Core Enhancements
 
-(Core �γ�ĥ)
+(Core の拡張)
 
 =begin original
 
@@ -46,14 +46,14 @@ classes.
 
 =end original
 
-Perl ������ɽ�����󥸥�ϡ���Ĥ� Unicode ʸ�����饹�� intersection ��
-�ޥå��󥰤��б����ޤ�����
-�ޤ����桼�������ʸ�����饹���椫��¾�Υ桼�������ʸ�����饹��
-���ȤǤ���褦�ˤʤ�ޤ�����
+Perl の正規表現エンジンは、二つの Unicode 文字クラスの intersection の
+マッチングに対応しました。
+また、ユーザー定義文字クラスの中から他のユーザー定義文字クラスを
+参照できるようになりました。
 
 =head1 Modules and Pragmata
 
-(�⥸�塼��ȥץ饰��)
+(モジュールとプラグマ)
 
 =over 4
 
@@ -66,9 +66,9 @@ be anomaly free - it will always print out line number information.
 
 =end original
 
-Carp �� Safe �Ȥ��ޤ�ư���褦�˲��ɤ���ޤ�����
-Carp �Υ�å����������㳰���ʤ��ʤ�ޤ��� - 
-��˹��ֹ���󤬽��Ϥ���ޤ���
+Carp は Safe とうまく動くように改良されました。
+Carp のメッセージから例外がなくなりました - 
+常に行番号情報が出力されます。
 
 =item *
 
@@ -78,7 +78,7 @@ CGI upgraded to version 3.05
 
 =end original
 
-CGI �ϥС������ 3.05 �˹�������ޤ�����
+CGI はバージョン 3.05 に更新されました。
 
 =item *
 
@@ -88,7 +88,7 @@ charnames now avoids clobbering $_
 
 =end original
 
-charnames �� $_ ���񤭤��ʤ��ʤ�ޤ�����
+charnames は $_ を上書きしなくなりました。
 
 =item *
 
@@ -98,7 +98,7 @@ Digest upgraded to version 1.08
 
 =end original
 
-Digest �ϥС������ 1.08 �˹�������ޤ�����
+Digest はバージョン 1.08 に更新されました。
 
 =item *
 
@@ -108,7 +108,7 @@ Encode upgraded to version 2.01
 
 =end original
 
-Encode �ϥС������ 2.01 �˹�������ޤ�����
+Encode はバージョン 2.01 に更新されました。
 
 =item *
 
@@ -118,7 +118,7 @@ FileCache upgraded to version 1.04
 
 =end original
 
-FileCache �ϥС������ 1.04 �˹�������ޤ�����
+FileCache はバージョン 1.04 に更新されました。
 
 =item *
 
@@ -128,7 +128,7 @@ libnet upgraded to version 1.19
 
 =end original
 
-libnet �ϥС������ 1.19 �˹�������ޤ�����
+libnet はバージョン 1.19 に更新されました。
 
 =item *
 
@@ -138,7 +138,7 @@ Pod::Parser upgraded to version 1.28
 
 =end original
 
-Pod::Parser �ϥС������ 1.28 �˹�������ޤ�����
+Pod::Parser はバージョン 1.28 に更新されました。
 
 =item *
 
@@ -148,7 +148,7 @@ Pod::Perldoc upgraded to version 3.13
 
 =end original
 
-Pod::Perldoc �ϥС������ 3.13 �˹�������ޤ�����
+Pod::Perldoc はバージョン 3.13 に更新されました。
 
 =item *
 
@@ -158,7 +158,7 @@ Pod::LaTeX upgraded to version 0.57
 
 =end original
 
-Pod::LaTeX �ϥС������ 0.57 �˹�������ޤ�����
+Pod::LaTeX はバージョン 0.57 に更新されました。
 
 =item *
 
@@ -168,7 +168,7 @@ Safe now works properly with Carp
 
 =end original
 
-Safe �� Carp ��Ʊ���ˤ��ޤ�ư���褦�ˤʤ�ޤ�����
+Safe は Carp と同時にうまく動くようになりました。
 
 =item *
 
@@ -178,7 +178,7 @@ Scalar-List-Utils upgraded to version 1.14
 
 =end original
 
-Scalar-List-Utils �ϥС������ 1.14 �˹�������ޤ�����
+Scalar-List-Utils はバージョン 1.14 に更新されました。
 
 =item *
 
@@ -189,8 +189,8 @@ auto-quoting of command arguments can now be disabled.
 
 =end original
 
-Shell �Υɥ�����Ȥ���ľ���졢
-���Ū�ʥ��ޥ�ɰ�������ʬŪ�ʼ�ư�������Ȥ�̵��������ޤ�����
+Shell のドキュメントが書き直され、
+歴史的なコマンド引数の部分的な自動クォートは無効化されました。
 
 =item *
 
@@ -200,7 +200,7 @@ Test upgraded to version 1.25
 
 =end original
 
-Test �ϥС������ 1.25 �˹�������ޤ�����
+Test はバージョン 1.25 に更新されました。
 
 =item *
 
@@ -210,7 +210,7 @@ Test::Harness upgraded to version 2.42
 
 =end original
 
-Test::Harness �ϥС������ 2.42 �˹�������ޤ�����
+Test::Harness はバージョン 2.42 に更新されました。
 
 =item *
 
@@ -220,7 +220,7 @@ Time::Local upgraded to version 1.10
 
 =end original
 
-Time::Local �ϥС������ 1.10 �˹�������ޤ�����
+Time::Local はバージョン 1.10 に更新されました。
 
 =item *
 
@@ -230,7 +230,7 @@ Unicode::Collate upgraded to version 0.40
 
 =end original
 
-Unicode::Collate �ϥС������ 0.40 �˹�������ޤ�����
+Unicode::Collate はバージョン 0.40 に更新されました。
 
 =item *
 
@@ -240,17 +240,17 @@ Unicode::Normalize upgraded to version 0.30
 
 =end original
 
-Unicode::Normalize �ϥС������ 0.30 �˹�������ޤ�����
+Unicode::Normalize はバージョン 0.30 に更新されました。
 
 =back
 
 =head1 Utility Changes
 
-(�ġ�����ѹ�)
+(ツールの変更)
 
 =head2 Perl's debugger
 
-(Perl �ǥХå�)
+(Perl デバッガ)
 
 =begin original
 
@@ -259,8 +259,8 @@ all bar the last command from a saved command history.
 
 =end original
 
-�ǥХå��ϵ������Υ��ƥå׼¹Ԥ򥨥ߥ�졼�Ȥ���褦�ˤʤ�ޤ�����
-����ϺƵ�ư���ơ���¸���줿���ޥ����������ƺƼ¹Ԥ��뤳�ȤǼ¸����Ƥ��ޤ���
+デバッガは逆方向のステップ実行をエミュレートするようになりました。
+これは再起動して、保存されたコマンド履歴を全て再実行することで実現しています。
 
 =head2 h2ph
 
@@ -274,15 +274,15 @@ documentation, I<you may need to dicker with the files produced>.
 
 =end original
 
-F<h2ph> ���������¤��줿���ǤϤ���ޤ��� C ����饤��ؿ������򤹤�褦��
-�ʤ�ޤ��� -- ����Ū�ˡ�����饤��ؿ��� CPP �ޥ����Τ褦�˸����ޤ���
-����Ϻǿ��Ǥ� glibc �Υإå��Τ����Ĥ��򰷤���褦��Ƴ������ޤ�����
-ɸ��ηٹ�ϰ����Ȥ���Ŭ�Ѥ���ޤ�; F<h2ph> �Υɥ�����Ȥ�
-�������Ȥ��뤿��ˤϡ�I<�������줿�ե�����Ȥ��Ȥꤹ��ɬ�פ����뤫�⤷��ޤ���>
+F<h2ph> は非常に制限された形ではありますが C インライン関数を理解するように
+なりました -- 基本的に、インライン関数は CPP マクロのように見えます。
+これは最新版の glibc のヘッダのいくつかを扱えるように導入されました。
+標準の警告は依然として適用されます; F<h2ph> のドキュメントを
+クォートするためには、I<生成されたファイルとやりとりする必要があるかもしれません。>
 
 =head1 Installation and Configuration Improvements
 
-(���󥹥ȡ��������β���)
+(インストールと設定の改良)
 
 =begin original
 
@@ -290,11 +290,11 @@ Perl 5.8.5 should build cleanly from source on LynxOS.
 
 =end original
 
-Perl 5.8.5 �� LynxOS �ǥ��������餭�줤�˥ӥ�ɤǤ���Ϥ��Ǥ���
+Perl 5.8.5 は LynxOS でソースからきれいにビルドできるはずです。
 
 =head1 Selected Bug Fixes
 
-(�Х�������ȴ��)
+(バグ修正の抜粋)
 
 =over 4
 
@@ -307,8 +307,8 @@ in code such as
 
 =end original
 
-5.8.4 ��Ƴ�����줿�Ȥ߹��ߤΥ����Ⱥ�Ŭ���ˤϥХ�������ޤ�����
-�㤨�С��ʲ��Τ褦�ʥ����ɤǤ�:
+5.8.4 で導入された組み込みのソート最適化にはバグがありました。
+例えば、以下のようなコードでは:
 
     @a = sort ($b, @a)
 
@@ -318,7 +318,7 @@ the result would omit the value $b. This is now fixed.
 
 =end original
 
-��̤� $b ���ͤ��ޤޤ�ʤ����Ȥ�����ޤ�������Ͻ�������ޤ�����
+結果に $b の値が含まれないことがあります。これは修正されました。
 
 =item *
 
@@ -329,8 +329,8 @@ spurious warnings. This has been fixed.
 
 =end original
 
-5.8.4 ��Ƴ�����줿�����פ������˴ؤ����Ŭ���Ǥ�
-���ä��ٹ𤬽Ф뤳�Ȥ�����ޤ���������Ͻ�������ޤ�����
+5.8.4 で導入された、不要な代入に関する最適化では
+誤った警告が出ることがありました。これは修正されました。
 
 =item *
 
@@ -341,8 +341,8 @@ scripts of either endianness.
 
 =end original
 
-Perl �ϡ� BOM �դ��� BOM �ʤ��� UTF-16(ξ���Υ���ǥ�����Τ��)��
-������ץȤ�������Ƚ�ꤷ���ɤ߹���褦�ˤʤä��Ϥ��Ǥ��� 
+Perl は、 BOM 付きと BOM なしの UTF-16(両方のエンディアンのもの)の
+スクリプトを正しく判定して読み込むようになったはずです。 
 
 =item *
 
@@ -353,9 +353,9 @@ cause warnings at interpreter destruction time. The known bug is now fixed.
 
 =end original
 
-���ե���󥹤�������ο���������åɤκ����ˤϥХ������ꡢ
-���Ф��Х��󥿥ץ꥿���˲����˷ٹ��Ф��Ƥ��ޤ�����
-���δ��Τ�����Ͻ�������ޤ�����
+弱リファレンスがある場合の新しいスレッドの作成にはバグがあり、
+しばしばインタプリタの破壊時に警告を出していました。
+この既知の問題は修正されました。
 
 =item *
 
@@ -366,8 +366,8 @@ been fixed.
 
 =end original
 
-Unicode ʸ����� C<substr> ������Ȥ��Τ����Ĥ�����Ω���ʤ��Х���
-��������ޤ�����
+Unicode 文字列を C<substr> で操作するときのいくつかの目立たないバグが
+修正されました。
 
 =item *
 
@@ -380,9 +380,9 @@ consistent with Unix shells' globbing behaviour.
 
 =end original
 
-�����ϡ�Perl �Υե����륰���ִؿ��������ץ󤹤븢�¤Τʤ��ǥ��쥯�ȥ��
-�в񤦤�ľ�����֤�Τǡ���̥ꥹ�Ȥ�ͽ�곰���ڤ�ͤ���Ƥ��ޤ�����
-����Ͻ������졢Unix ������Υ����֤ο����񤤤Ȱ������������ˤʤ�ޤ�����
+以前は、Perl のファイルグロブ関数がオープンする権限のないディレクトリに
+出会うと直ちに返るので、結果リストが予定外に切り詰められていました。
+これは修正され、Unix シェルのグロブの振る舞いと一貫性がある形になりました。
 
 =item *
 
@@ -394,9 +394,9 @@ been fixed.
 
 =end original
 
-����åɤκ������֤ϼ¹�����礭���ۤʤäƤ��ޤ�����
-����ϥ���åɤ򥯥����󲽤���롼����Υϥå��奢�르�ꥺ�ब
-�ϼ���ä�����Ǥ���������Ͻ�������ޤ�����
+スレッドの作成時間は実行毎に大きく異なっていました。
+これはスレッドをクローン化するルーチンのハッシュアルゴリズムが
+貧弱だったからですが、これは修正されました。
 
 =item *
 
@@ -408,16 +408,16 @@ thread creation fails instead of crashing perl.
 
 =end original
 
-i����åɼ����������Ǥ� OS ��٥�Υ���åɺ��������Ԥ������ɤ�����
-�����å����Ƥ��ޤ���Ǥ�����
-����åɺ����˼��Ԥ������� perl �򥯥�å��夵���뤳�ȤϤʤ��ʤꡢ
-threads->create() �� C<undef> ���֤��褦�ˤʤ�ޤ�����
+iスレッド実装の内部では OS レベルのスレッド作成が失敗したかどうかを
+チェックしていませんでした。
+スレッド作成に失敗した場合も perl をクラッシュさせることはなくなり、
+threads->create() が C<undef> を返すようになりました。
 
 =back
 
 =head1 New or Changed Diagnostics
 
-(���������ޤ����ѹ����줿���ǥ�å�����)
+(新しい、または変更された診断メッセージ)
 
 =over 4
 
@@ -429,7 +429,7 @@ Perl -V has several improvements
 
 =end original
 
-Perl -V �Ϥ����Ĥ��β��ɤ��Ԥ��ޤ���:
+Perl -V はいくつかの改良が行われました:
 
 =over 4
 
@@ -442,8 +442,8 @@ or other characters that used to confuse it.
 
 =end original
 
-�Ȥ߹��ߥ����ɤ����Ҥ䤽��¾�κ��𤵤���ʸ�����ޤޤ줿
-��������ѥå�̾�����������Ϥ��ޤ���
+組み込みコードの断片やその他の混乱させる文字が含まれた
+ローカルパッチ名を正しく出力します。
 
 =item * 
 
@@ -453,7 +453,7 @@ arguments to -V that look like regexps will give multiple lines of output.
 
 =end original
 
--V �ΰ���������ɽ���Τ褦�˸������硢ʣ���Ԥν��Ϥ��Фޤ���
+-V の引数が正規表現のように見える場合、複数行の出力が出ます。
 
 =item *
 
@@ -464,8 +464,8 @@ embedding of queries into shell commands.
 
 =end original
 
-�����˥������Ĥ��뤳�Ȥǲ��Ԥ� ';' ��üʸ�������������Τǡ�
-�䤤��碌�򥷥��륳�ޥ�ɤ������ळ�Ȥ�����ޤ���
+末尾にコロンをつけることで改行と ';' 終端文字が抑制されるので、
+問い合わせをシェルコマンドに埋め込むことが出来ます。
 
 =item *
 
@@ -476,8 +476,8 @@ any name.
 
 =end original
 
-��Ƭ�˥������Ĥ��뤳�ȤǷ�̤� 'name=' ����ʬ�����������Τǡ�
-������̾���˳�����Ƥ��ޤ���
+先頭にコロンをつけることで結果の 'name=' の部分が取り除かれるので、
+好きな名前に割り当てられます。
 
 =back
 
@@ -490,8 +490,8 @@ suggesting that the user use the C<-S> flag:
 
 =end original
 
-perl �����ꤵ�줿������ץȤ򸫤Ĥ����ʤ��ä���硢
-C<-S> �ե饰��Ȥ��褦�˼��������å�������2 ���ܤ˽��Ϥ���ޤ���
+perl が指定されたスクリプトを見つけられなかった場合、
+C<-S> フラグを使うように示唆するメッセージが2 行目に出力されます。
 
     $ perl5.8.5 missing.pl
     Can't open perl script "missing.pl": No such file or directory.
@@ -501,7 +501,7 @@ C<-S> �ե饰��Ȥ��褦�˼��������å�������2 ���ܤ˽��Ϥ���ޤ���
 
 =head1 Changed Internals
 
-(�������ѹ�)
+(内部の変更)
 
 =begin original
 
@@ -513,15 +513,15 @@ lib/unicore has changed.
 
 =end original
 
-����ɽ�����󥸥󤬻Ȥ� Unicode ʸ�����饹�ե�����ϡ�
-���ޤǤ�ͽ������������ۤ��Ƥ��ޤ�������
-�ӥ�ɻ��� Unicode consortium �ǡ����ե����뤫���������褦�ˤʤ�ޤ�����
-����ˤ�갵�̤��� Perl ���������������֤��� 200K �������ʤ�ޤ�����
-�����ѤȤ��ơ� lib/unicore ��Υե��������֤��ѹ��ˤʤ�ޤ�����
+正規表現エンジンが使う Unicode 文字クラスファイルは、
+今までは予め作成して配布していましたが、
+ビルド時に Unicode consortium データファイルから作成するようになりました。
+これにより圧縮した Perl ソースアーカイブは約 200K 小さくなりました。
+副作用として、 lib/unicore 内のファイル配置が変更になりました。
 
 =head1 Known Problems
 
-(���Τ�����)
+(既知の問題)
 
 =begin original
 
@@ -530,12 +530,12 @@ tests, and can take several minutes to run even on a fast machine.
 
 =end original
 
-��ԥƥ��� F<t/uni/class.t> �Ϥ��ʤ�¿���Υƥ��Ȥ�Ԥ��褦�ˤʤä��Τǡ�
-®���ޥ���Ǥ��ʬ�ݤ��뤳�Ȥ�����ޤ���
+退行テスト F<t/uni/class.t> はかなり多くのテストを行うようになったので、
+速いマシンでも数分掛かることがあります。
 
 =head1 Platform Specific Problems
 
-(�ץ�åȥե������ͭ������)
+(プラットフォーム固有の問題)
 
 =begin original
 
@@ -543,7 +543,7 @@ This release is known not to build on Windows 95.
 
 =end original
 
-���Υ�꡼���� Windows 95 �Ǥϥӥ�ɤǤ��ʤ����Ȥ�ʬ���äƤ��ޤ���
+このリリースは Windows 95 ではビルドできないことが分かっています。
 
 =head1 Reporting Bugs
 
@@ -556,10 +556,10 @@ information at http://www.perl.org, the Perl Home Page.
 
 =end original
 
-�⤷�Х��Ȼפ����Τ����Ĥ��ä��顢 comp.lang.perl.misc �˥塼�����롼�פ�
-�Ƕ���Ƥ��줿������ http://bugs.perl.org �ˤ��� perl �Х��ǡ����١�����
-��ǧ���Ƥ���������
-Perl �ۡ���ڡ�����http://www.perl.org �ˤ���󤬤���ޤ���
+もしバグと思われるものが見つかったら、 comp.lang.perl.misc ニュースグループに
+最近投稿された記事や http://bugs.perl.org にある perl バグデータベースを
+確認してください。
+Perl ホームページ、http://www.perl.org にも情報があります。
 
 =begin original
 
@@ -572,13 +572,13 @@ the Perl 5 bugs at http://bugs.perl.org/
 
 =end original
 
-�⤷�ޤ���𤵤�Ƥ��ʤ��Х����ȳο������顢���Υ�꡼���˴ޤޤ�Ƥ���
-perlbug �ץ��������¹Ԥ��Ƥ���������
-�Х��κƸ�������ץȤ�ʬ��������������ͭ���ʥ����ɤ��ڤ�Ĥ�뤳�Ȥ�
-�ռ����Ƥ����������Х���ݡ��Ȥ� perl -V �ν��ϤȰ���
-perlbug@perl.org ������� Perl porting ������ˤ�äƲ��Ϥ���ޤ���
-Perl 5 �ΥХ��ˤĤ��Ƥ� http://bugs.perl.org/ �Ǳ����ڤ�
-�������뤳�Ȥ��Ǥ��ޤ���
+もしまだ報告されていないバグだと確信したら、そのリリースに含まれている
+perlbug プログラムをを実行してください。
+バグの再現スクリプトを十分小さく、しかし有効なコードに切りつめることを
+意識してください。バグレポートは perl -V の出力と一緒に
+perlbug@perl.org に送られ Perl porting チームによって解析されます。
+Perl 5 のバグについては http://bugs.perl.org/ で閲覧及び
+検索することができます。
 
 =head1 SEE ALSO
 
@@ -588,7 +588,7 @@ The F<Changes> file for exhaustive details on what changed.
 
 =end original
 
-F<Changes> �ե�������ѹ����δ����ʾܺ٤�����ޤ���
+F<Changes> ファイルに変更点の完全な詳細があります。
 
 =begin original
 
@@ -596,7 +596,7 @@ The F<INSTALL> file for how to build Perl.
 
 =end original
 
-F<INSTALL> �ե������ Perl �Υӥ����ˡ������ޤ���
+F<INSTALL> ファイルに Perl のビルド方法があります。
 
 =begin original
 
@@ -604,7 +604,7 @@ The F<README> file for general stuff.
 
 =end original
 
-F<README> �ե�����˰���Ū�ʤ��Ȥ�����ޤ���
+F<README> ファイルに一般的なことがあります。
 
 =begin original
 
@@ -612,7 +612,7 @@ The F<Artistic> and F<Copying> files for copyright information.
 
 =end original
 
-F<Artistic> �ڤ� F<Copying> �ե������������󤬤���ޤ���
+F<Artistic> 及び F<Copying> ファイルに著作権情報があります。
 
 =begin meta
 

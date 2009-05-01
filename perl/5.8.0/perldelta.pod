@@ -9,7 +9,7 @@ perldelta - what is new for perl v5.8.0
 
 =end original
 
-perldelta - perl v5.8.0�Ǥ��ѹ���
+perldelta - perl v5.8.0での変更点
 
 =head1 DESCRIPTION
 
@@ -20,7 +20,7 @@ the 5.8.0 release.
 
 =end original
 
-���Υɥ�����Ȥ� 5.6.0 ��꡼���� 5.8.0 ��꡼�����ѹ����򵭽Ҥ��Ƥ��ޤ���
+このドキュメントは 5.6.0 リリースと 5.8.0 リリースの変更点を記述しています。
 
 =begin original
 
@@ -30,9 +30,9 @@ coordinated (while 5.8.0 was still called 5.7.something).
 
 =end original
 
-5.8.0 �˴ޤޤ��Х��ե��å�����¿���ϡ�5.6.1 �Ȥ������ƥʥ󥹥�꡼���ˤ�
-���˴ޤޤ�Ƥ��ޤ����������2�ĤΥ�꡼���ϡ���5.8.0 ���ޤ� 5.7.���֤�
-�ƤФ�Ƥ������ˤϡ�̩�ܤ˶�Ĵ���Ƥ�������Ǥ���
+5.8.0 に含まれるバグフィックスの多くは、5.6.1 というメンテナンスリリースにも
+既に含まれていました。これら2つのリリースは、（5.8.0 がまだ 5.7.何番と
+呼ばれていた頃には）密接に協調していたためです。
 
 =begin original
 
@@ -42,9 +42,9 @@ those are marked C<[561+]>.
 
 =end original
 
-5.6.1 �����礵�줿�ѹ����ˤϡ�C<[561]> �Ȥ��������դ��Ƥ���ޤ���������
-�ѹ�������ˤ� 5.6.1 �Υ�꡼����ˤ���˳�ȯ���ʤ����Τ�¿���ΤǤ�����
-�������ä��ѹ����ˤ� C<[561+]> �Ȥ��������դ��Ƥ����ޤ�����
+5.6.1 に統合された変更点には、C<[561]> という印を付けてあります。これらの
+変更点の中には 5.6.1 のリリース後にさらに開発が進んだものも多いのですが、
+そういった変更点には C<[561+]> という印を付けておきました。
 
 =begin original
 
@@ -53,12 +53,12 @@ You can see the list of changes in the 5.6.1 release (both from the
 
 =end original
 
-5.6.1 �˴ޤޤ���ѹ��������ˤĤ��Ƥϡ�(5.005_03 ������ѹ��⡢5.6.0 �����
-�ѹ���ޤ��) L<perl561delta> �˽񤤤Ƥ���ޤ���
+5.6.1 に含まれる変更点一覧については、(5.005_03 からの変更も、5.6.0 からの
+変更も含めて) L<perl561delta> に書いてあります。
 
 =head1 Highlights In 5.8.0
 
-(5.8.0 �ˤ�����������)
+(5.8.0 における注目点)
 
 =over 4
 
@@ -70,7 +70,7 @@ Better Unicode support
 
 =end original
 
-Unicode���ݡ��Ȥζ���
+Unicodeサポートの強化
 
 =item *
 
@@ -80,7 +80,7 @@ New IO Implementation
 
 =end original
 
-������ IO �μ���
+新しい IO の実装
 
 =item *
 
@@ -90,7 +90,7 @@ New Thread Implementation
 
 =end original
 
-����������åɤμ���
+新しいスレッドの実装
 
 =item *
 
@@ -100,7 +100,7 @@ Better Numeric Accuracy
 
 =end original
 
-�������٤θ���
+数値精度の向上
 
 =item *
 
@@ -110,7 +110,7 @@ Safe Signals
 
 =end original
 
-�����ʥ����ʥ�
+安全なシグナル
 
 =item *
 
@@ -120,7 +120,7 @@ Many New Modules
 
 =end original
 
-¿���ο������⥸�塼��
+多くの新しいモジュール
 
 =item *
 
@@ -130,17 +130,17 @@ More Extensive Regression Testing
 
 =end original
 
-����˹��ϰϤʲ󵢥ƥ���
+さらに広範囲な回帰テスト
 
 =back
 
 =head1 Incompatible Changes
 
-(�ߴ����Τʤ��ѹ�)
+(互換性のない変更)
 
 =head2 Binary Incompatibility
 
-(�Х��ʥ���ߴ�)
+(バイナリ非互換)
 
 =begin original
 
@@ -148,7 +148,7 @@ B<Perl 5.8 is not binary compatible with earlier releases of Perl.>
 
 =end original
 
-B<Perl 5.8 �Ȱ�����꡼�����줿 Perl �ΥХ��ʥ�ˤϸߴ���������ޤ���>
+B<Perl 5.8 と以前リリースされた Perl のバイナリには互換性がありません。>
 
 =begin original
 
@@ -156,7 +156,7 @@ B<You have to recompile your XS modules.>
 
 =end original
 
-B<XS �⥸�塼��Ϻƥ���ѥ��뤷�ʤ���Ф����ޤ���>
+B<XS モジュールは再コンパイルしなければいけません。>
 
 =begin original
 
@@ -164,7 +164,7 @@ B<XS �⥸�塼��Ϻƥ���ѥ��뤷�ʤ���Ф����ޤ���>
 
 =end original
 
-(�ԥ奢 Perl �Υ⥸�塼���ư���Ǥ��礦��)
+(ピュア Perl のモジュールは動作するでしょう。)
 
 =begin original
 
@@ -176,10 +176,10 @@ about that.
 
 =end original
 
-�ߴ������ʤ��ʤä������ͳ�� PerlIO �ȸƤֿ����� IO �������ƥ�����Τ���Ǥ���
-Perl 5.8 �ο�������ǽ��¿���� PerlIO ����Ѥ��Ƥ���Τǡ�PerlIO �ϥǥե���Ȥ�
-�Ȥ߹��ޤ�ޤ�������������С���ǰ�Ǥ��� XS �Υ����ɤ�ޤ�Ǥ���⥸�塼���
-�ƥ���ѥ��뤷�ʤ���Фʤ�ޤ���
+互換性がなくなった主な理由は PerlIO と呼ぶ新しい IO アーキテクチャのためです。
+Perl 5.8 の新しい機能の多くが PerlIO を使用しているので、PerlIO はデフォルトで
+組み込まれます。言い換えれば、残念ですが XS のコードを含んでいるモジュールは
+再コンパイルしなければなりません。
 
 =begin original
 
@@ -190,10 +190,10 @@ authors, however: PerlIO has been designed as a drop-in replacement
 
 =end original
 
-PerlIO ��ռ����ʤ� XS �⥸�塼��ϡ������꡼������� Perl �Ǵ����˥��ݡ���
-����ʤ��ʤ��ǽ��������ޤ��������� PerlIO �� stdio ���󥿡��ե�������
-(�����������ɥ�٥��)�����ؤ���褦���߷פ���Ƥ���Τǡ��⥸�塼���Ԥ�
-���٤���ô�������뤳�ȤϤʤ��Ǥ��礦��
+PerlIO を意識しない XS モジュールは、将来リリースされる Perl で完全にサポート
+されなくなる可能性があります。しかし PerlIO は stdio インターフェイスを
+(ソースコードレベルで)差し替えるように設計されているので、モジュール作者へ
+過度に負担がかかることはないでしょう。
 
 =begin original
 
@@ -202,12 +202,12 @@ we decided to break binary compatibility, please read on.
 
 =end original
 
-�ץ�åȥե�����ˤ�äƤϥХ��ʥ�θߴ�����̵������¾����ͳ������Τ�
-�ɤ߿ʤ�Ƥ���������
+プラットフォームによってはバイナリの互換性を無くした他の理由があるので
+読み進めてください。
 
 =head2 64-bit platforms and malloc
 
-(64 �ӥåȥץ�åȥե������ malloc)
+(64 ビットプラットフォームと malloc)
 
 =begin original
 
@@ -222,19 +222,19 @@ MIPS, PPC, and Sparc.
 
 =end original
 
-�⤷�ݥ��󥿤� 64 �ӥå����Ǥ���С�Perl �� malloc ���Ȥ��뤳�Ȥ�
-�⤦�ʤ��Ǥ��礦���ʤ��ʤ餽��� 8 �Х��ȤΥݥ��󥿤ǤϾ�꤯ư���ʤ�����Ǥ���
-�ޤ����̾綠�Τ褦�ʥץ�åȥե�����Ǥϡ������ƥ�� malloc �Ϥ��Τ褦��
-�礭�ʥ����ǥ�ˤ����� Perl �� malloc ����ä��ɤ���Ŭ�����ʤ���Ƥ��ޤ���
-PDL �Τ褦�ʥ���ϥ󥰥꡼�� Perl ���ץꥱ����������ˤ� Perl �� malloc �Ǥ�
-��꤯ư���ʤ���Τ⤢��ޤ����Ǹ�ˡ�Perl �ʳ��Υ��ץꥱ�������
-(�㤨�� mod_perl)�ϥ����ƥ�� malloc �򹥤෹��������ޤ���
-���Τ褦�ʥץ�åȥե�����ˤ� Alpha, 64-bit HPPA, MIPS, PPC, Sparc �ʤɤ�
-����ޤ���
+もしポインタが 64 ビット幅であれば、Perl の malloc が使われることは
+もうないでしょう。なぜならそれは 8 バイトのポインタでは上手く動かないからです。
+また、通常そのようなプラットフォームでは、システムの malloc はそのような
+大きなメモリモデルにおいて Perl の malloc よりもっと良い最適化がなされています。
+PDL のようなメモリハングリーな Perl アプリケーションの中には Perl の malloc では
+上手く動かないものもあります。最後に、Perl 以外のアプリケーション
+(例えば mod_perl)はシステムの malloc を好む傾向があります。
+そのようなプラットフォームには Alpha, 64-bit HPPA, MIPS, PPC, Sparc などが
+あります。
 
 =head2 AIX Dynaloading
 
-(AIX�Υ����ʥߥå������ǥ���)
+(AIXのダイナミックローディング)
 
 =begin original
 
@@ -246,16 +246,16 @@ applications like mod_perl which are using the AIX native interface.
 
 =end original
 
-AIX ��꡼�� 4.3 �ޤ��Ϥ���ʹߤˤ����� AIX �Υ����ʥߥå������ǥ��󥰤�
-�����Υ��ߥ�졼�Ȥ��줿���󥿡��ե������ǤϤʤ� AIX �Υͥ��ƥ��� dlopen
-���󥿡��ե�������Ȥ��褦�ˤʤ�ޤ����������ѹ��Ϥ����餯����ѥ��뤵�줿
-�⥸�塼��θ����ߴ������˲�����Ǥ��礦�������ѹ��ϡ�AIX �Υͥ��ƥ���
-���󥿡��ե�������ȤäƤ��� mod_perl �Τ褦��¾�Υ��ץꥱ�������ˡ�
-Perl ���꽾�碌�뤿��ˤʤ���ޤ�����
+AIX リリース 4.3 またはそれ以降において AIX のダイナミックローディングは
+以前のエミュレートされたインターフェースではなく AIX のネイティブ dlopen
+インターフェースを使うようになりました。この変更はおそらくコンパイルされた
+モジュールの後方互換性を破壊するでしょう。この変更は、AIX のネイティブ
+インターフェースを使っている mod_perl のような他のアプリケーションに、
+Perl をより従わせるためになされました。
 
 =head2 Attributes for C<my> variables now handled at run-time
 
-(�¹Ի��˥ϥ�ɥ�󥰤��� C<my> �ѿ���°��)
+(実行時にハンドリングする C<my> 変数の属性)
 
 =begin original
 
@@ -268,16 +268,16 @@ doesn't work with the Attribute::Handlers module (as of version 0.76).
 
 =end original
 
-C<my EXPR : ATTRS> ��ʸ�ϼ¹Ի����ѿ���°����Ŭ�Ѥ���褦�ˤʤ�ޤ�����
-(���֥롼���󤪤�� C<our> �ѿ��Ϥ��ޤ�����ѥ������°����Ŭ�Ѥ����ޤ�)
-���ܤ����� L<attributes> �򻲾Ȥ��Ƥ�����������������������ä�C<tie>
-���󥿡��ե������ˤȤä��ѿ���°������Ω�����ޤ�������Ͻ���Υ�꡼���Ǥ�
-��­���Ƥ������ȤǤ������������ޥ�ƥ������� Attribute::Handlers �⥸�塼��
-(�ΥС������ 0.76)�Ǥ�ư���ʤ����Ȥ����դ��Ƥ���������
+C<my EXPR : ATTRS> 構文は実行時に変数の属性を適用するようになりました。
+(サブルーチンおよび C<our> 変数はいまだコンパイル時に属性を適用させます)
+より詳しくは L<attributes> を参照してください。しかし、これは特にC<tie>
+インターフェースにとって変数の属性を役立たせます。それは初期のリリースでは
+不足していたことです。新しいセマンティクスは Attribute::Handlers モジュール
+(のバージョン 0.76)では動かないことに注意してください。
 
 =head2 Socket Extension Dynamic in VMS
 
-(VMS �Ǥ�ưŪ Socket ��ĥ)
+(VMS での動的 Socket 拡張)
 
 =begin original
 
@@ -288,14 +288,14 @@ Perl in such configurations.
 
 =end original
 
-Socket ��ĥ����Ū���Ȥ߹��ޤ�Ƥ���ΤǤϤʤ�ưŪ�˥����ɤ����褦��
-�ʤ�ޤ���������ϸŤ� VMS �� TCP/IP �����å��Ǥ�����ˤʤ뤫�⤷��ޤ���
-�ʤ�ʤ����⤷��ޤ���
-Perl �򤽤Τ褦�ʴĶ��ǥƥ��Ȥ��뤳�Ȥ��Ǥ��ʤ��ä��Τ�ʬ����ʤ��ΤǤ���
+Socket 拡張は静的に組み込まれているのではなく動的にロードされるように
+なりました。これは古い VMS の TCP/IP スタックでは問題になるかもしれませんし
+ならないかもしれません。
+Perl をそのような環境でテストすることができなかったので分からないのです。
 
 =head2 IEEE-format Floating Point Default on OpenVMS Alpha
 
-(OpenVMS Alpha �Ǥ� IEEE �ե����ޥåȤ���ư������)
+(OpenVMS Alpha での IEEE フォーマットの浮動小数点)
 
 =begin original
 
@@ -306,15 +306,15 @@ a configuration option.  The default on VAX (D_FLOAT) has not changed.
 
 =end original
 
-Perl �� IEEE �ե����ޥå�(T_FLOAT)�� OpenVMS Alpha �ǤΥǥե���Ȥ�������
-��ư�������ե����ޥåȤȤ��ƻȤ��褦�ˤʤ�ޤ��������������Ū�˳���
-�饤�֥����¸�ǡ����ΥХ��ʥ�ߴ������˲����ޤ���G_FLOAT �Ϥ��ޤ������
-���ץ����Ȥ������Ѳ�ǽ�Ǥ���VAX (D_FLOAT)�ǤΥǥե���Ȥ�
-�ѹ�����Ƥ��ޤ���
+Perl は IEEE フォーマット(T_FLOAT)を OpenVMS Alpha でのデフォルトの内部の
+浮動小数点フォーマットとして使うようになりました。これは潜在的に外部
+ライブラリや既存データのバイナリ互換性を破壊します。G_FLOAT はいまだ設定の
+オプションとして利用可能です。VAX (D_FLOAT)でのデフォルトは
+変更されていません。
 
 =head2 New Unicode Semantics (no more C<use utf8>, almost)
 
-(������ Unicode ��ǽ (��Ϥ�ۤȤ�ɤξ�� C<use utf8> ������))
+(新しい Unicode 機能 (もはやほとんどの場合 C<use utf8> は不要))
 
 =begin original
 
@@ -324,9 +324,9 @@ in that lexical scope.
 
 =end original
 
-������ Perl 5.6 �Ǥ� Unicode ��Ȥ������ "use utf8" �Ȥ���ȡ�
-(ʸ����Ϣ��Τ褦��)���Ϥ��Υ쥭�����륹��������Ǥ�
-Unicode �б��Ȥʤ�ޤ�����
+以前の Perl 5.6 では Unicode を使うために "use utf8" とすると、
+(文字列連結のような)操作はそのレキシカルスコープ内では
+Unicode 対応となりました。
 
 =begin original
 
@@ -341,15 +341,15 @@ be illegal in UTF-8.)
 
 =end original
 
-��������ؤʥ��󥿡��ե������Ǥ��뤳�Ȥ��狼��ޤ����Τǡ�
-Perl 5.8 �Ǥ� Unicode ��ǥ�ϴ������ѹ�����ޤ���:
-"Unicodeness" �ϥǡ������Τ˷���դ���졢"use utf8" �ϤۤȤ�ɤξ���
-�������פˤʤ�ޤ�����
-�Ĥä�ͣ���"use utf8"�λȤ�ƻ�ϡ�Perl ������ץȼ��Ȥ� Unicode ��
-UTF-8 ���󥳡��ǥ��󥰤ǽ񤫤�Ƥ���Ȥ��Ǥ���
-(���Ǥ�¿���� Perl ������ץȤ����ޤ��ޤ� 8 �ӥå�ʸ�����åȤ�Ȥä�
-�񤫤�Ƥ��ꡢ������ UTF-8 �Ǥ������Ȥʤ�Τǡ�UTF-8 �ϥǥե���Ȥˤ�
-�ʤäƤ��ޤ���)
+これは不便なインターフェースであることがわかりましたので、
+Perl 5.8 では Unicode モデルは完全に変更されました:
+"Unicodeness" はデータ自体に結び付けられ、"use utf8" はほとんどの場合に
+全く不要になりました。
+残った唯一の"use utf8"の使い道は、Perl スクリプト自身が Unicode の
+UTF-8 エンコーディングで書かれているときです。
+(すでに多くの Perl スクリプトがさまざまな 8 ビット文字セットを使って
+書かれており、これらは UTF-8 では不正となるので、UTF-8 はデフォルトには
+なっていません。)
 
 =begin original
 
@@ -358,12 +358,12 @@ and L<utf8> for the current use of the utf8 pragma.
 
 =end original
 
-���ߤΥ�ǥ�ˤĤ��Ƥ� L<perluniintro> ��
-���ߤ� utf8 �ץ饰�ޤλȤ����ˤĤ��Ƥ� L<utf8> �򻲾Ȥ��Ƥ���������
+現在のモデルについては L<perluniintro> を、
+現在の utf8 プラグマの使い方については L<utf8> を参照してください。
 
 =head2 New Unicode Properties
 
-(������Unicode�ץ��ѥƥ�)
+(新しいUnicodeプロパティ)
 
 =begin original
 
@@ -375,11 +375,11 @@ on the Unicode numbering.
 
 =end original
 
-Unicode I<������ץ�> �������˥��ݡ��Ȥ���ޤ�����������ץȤȤ����Τϡ�
-Unicode I<�֥��å�> �Τ褦�ʤ�ΤǤ������������̤Τ�ΤǤ���
-������ץȤȥ֥��å��ΰ㤤�ϡ�������ץȤ�ñ��θ���ޤ��ϰ췲�θ���ˤ��
-���Ѥ���륰��դǤ���Τ��Ф��ơ��֥��å��Ȥ����Τ� Unicode ���ֹ��դ���
-��Ť�(�⡹)256 ʸ���ο͹�Ū�ʥ��롼�ԥ󥰤Ǥ����ʤ��Ȥ������ȤǤ���
+Unicode I<スクリプト> が新たにサポートされました。スクリプトというのは、
+Unicode I<ブロック> のようなものですが、それより上位のものです。
+スクリプトとブロックの違いは、スクリプトが単一の言語または一群の言語により
+使用されるグリフであるのに対して、ブロックというのは Unicode の番号付けに
+基づく(高々)256 文字の人工的なグルーピングでしかないということです。
 
 =begin original
 
@@ -390,10 +390,10 @@ punctuation or digits (since they are not solely C<Latin>).
 
 =end original
 
-����Ū�ˤϥ�����ץȤΤۤ������¿����ʸ����ޤߤޤ��������������
-�����Ǥ������ǤϤ���ޤ����㤨�С�C<Latin>������ץȤ����Ƥ� Latin
-ʸ���Ȥ���������ȯ�������դ���ʸ����ޤߤޤ��������������ʶ������������
-�ޤߤޤ���(������C<Latin>������°����櫓�ǤϤʤ��Τ�)��
+一般的にはスクリプトのほうがより多くの文字を含みますが、あらゆる場合に
+そうである訳ではありません。例えば、C<Latin>スクリプトは全ての Latin
+文字といろいろな発音記号付きの文字を含みますが、いろいろな句読点や数字は
+含みません(それらはC<Latin>だけに属するわけではないので)。
 
 =begin original
 
@@ -404,10 +404,10 @@ See L<perlunicode> for details, and more additions.
 
 =end original
 
-¾�ˤ⤤���Ĥ��Υץ��ѥƥ����������˥��ݡ��Ȥ���ޤ�����C<\p{L&}>,
+他にもいくつかのプロパティが、新たにサポートされました。C<\p{L&}>,
 C<\p{Any}> C<\p{Assigned}>, C<\p{Unassigned}>, C<\p{Blank}> [561],
-C<\p{SpacePerl}> [561] �ʤɤǤ� (������� C<\P{...}> ��)��
-�ܤ����ϡ�L<perlunicode> �򻲾Ȥ��Ƥ���������
+C<\p{SpacePerl}> [561] などです (もちろん C<\P{...}> も)。
+詳しくは、L<perlunicode> を参照してください。
 
 =begin original
 
@@ -421,18 +421,18 @@ to be safe, it's probably best to always use the C<In>).
 
 =end original
 
-C<\p{...}> �� C<\P{...}> �ȶ��˻Ȥ���̾�����դ���ץ�ե��å���
-C<In> �� C<Is> �ϡ��ۤȤ�ɤξ���ά�Ǥ��뤳�Ȥˤʤ�ޤ�����ͣ����㳰�ϡ�
-�֥��å�̾��������ץ�̾�ȶ��礹����Ǥ������ξ��ˤϡ�
-Unicode �֥��å�̾�˥ץ�ե��å��� C<In> ���դ��ƶ��̤��ʤ���Фʤ�ޤ���
-�㤨�С�C<\p{Tibetan}>�ϥ�����ץȤ򻲾Ȥ��ޤ�����
-C<\p{InTibetan}>�ϥ֥��å��򻲾Ȥ��ޤ���̾���ζ��礬�ʤ����ˤϡ�
-�֥��å�̾��C<In>�Ͼ�ά�Ǥ��ޤ�(�㡧C<\p{BraillePatterns}>)���������Τ���ˤϡ�
-���Ĥ�C<In>��Ȥ��Τ����֤��ɤ��Ǥ��礦��
+C<\p{...}> や C<\P{...}> と共に使われる名前に付けるプレフィックス
+C<In> と C<Is> は、ほとんどの場合省略できることになりました。唯一の例外は、
+ブロック名がスクリプト名と競合する場合です。その場合には、
+Unicode ブロック名にプレフィックス C<In> を付けて区別しなければなりません。
+例えば、C<\p{Tibetan}>はスクリプトを参照しますが、
+C<\p{InTibetan}>はブロックを参照します。名前の競合がない場合には、
+ブロック名のC<In>は省略できます(例：C<\p{BraillePatterns}>)が、安全のためには、
+いつもC<In>を使うのがたぶん良いでしょう。
 
 =head2 REF(...) Instead Of SCALAR(...)
 
-(SCALAR(...)�Τ�����REF(...))
+(SCALAR(...)のかわりにREF(...))
 
 =begin original
 
@@ -442,13 +442,13 @@ value of ref().
 
 =end original
 
-��ե���󥹤ؤΥ�ե���󥹤ϡ�ref() ���֤��ͤ����Ӥ�����Τˤ��뤿��ˡ�
-"SCALAR(0x81485ec)"�Τ�����"REF(0x81485ec)"�Τ褦��ʸ����
-�����褦�ˤʤ�ޤ�����
+リファレンスへのリファレンスは、ref() の返り値をより一貫したものにするために、
+"SCALAR(0x81485ec)"のかわりに"REF(0x81485ec)"のように文字列化
+されるようになりました。
 
 =head2 pack/unpack D/F recycled
 
-(pack/unpack �� D/F �������)
+(pack/unpack の D/F を再利用)
 
 =begin original
 
@@ -459,10 +459,10 @@ to be aliases for d/f, but you never knew that.)
 
 =end original
 
-ʸ�񲽤���Ƥ��ʤ��ä� pack/unpack �Υƥ�ץ졼�Ȥ�ʸ�� D/F �Ϥ��褤���Ӥ�
-����˺����Ѥ���ޤ��������ߤ�����long double(�⤷�ץ�åȥե�����ˤ�ä�
-���ݡ��Ȥ���Ƥ����)�� NV (Perl ��������ư��������)���̣���ޤ���
-(�����ϰ����� d/f ����̾�Ǥ���������������Τ�ʤ��ä��Ǥ��礦��)
+文書化されていなかった pack/unpack のテンプレートの文字 D/F はよりよい用途の
+ために再利用されました。現在これらはlong double(もしプラットフォームによって
+サポートされていれば)と NV (Perl の内部浮動小数点型)を意味します。
+(これらは以前は d/f の別名でしたが、皆さんは知らなかったでしょう。)
 
 =head2 glob() now returns filenames in alphabetical order
 
@@ -475,15 +475,15 @@ natively, ASCII or EBCDIC, unless GLOB_ALPHASORT is specified.) [561]
 
 =end original
 
-glob() (���뤤��<...>)����������ե�����̾�Υꥹ�Ȥϡ�csh �˽��ä�
-�ǥե���Ȥǥ���ե��٥åȽ�˥����Ȥ����褦�ˤʤ�ޤ���(���������ʬ��
-UNIX �ץ�åȥե�����ǰ����˵����ä����ȤǤ�)��(bsd_glob() �ϡ�
-GLOB_ALPHASORT �����ꤵ��ʤ���С����ޤ��ץ�åȥե������¸�� ASCII ��
-�ޤ��� EBCDIC ��ǥ����Ȥ��ޤ���) [561]
+glob() (あるいは<...>)から得られるファイル名のリストは、csh に従って
+デフォルトでアルファベット順にソートされるようになりました(これは大部分の
+UNIX プラットフォームで以前に起こったことです)。(bsd_glob() は、
+GLOB_ALPHASORT が指定されなければ、いまだプラットフォーム依存で ASCII 順
+または EBCDIC 順でソートします。) [561]
 
 =head2 Deprecations
 
-(��侩����)
+(非推奨事項)
 
 =over 4
 
@@ -496,8 +496,8 @@ it to make some sense, it is forbidden.
 
 =end original
 
-bless(REF, REF) �ΰ�̣�������ƤʤΤǡ�ï�����ʤ�餫�ΰ�̣��ʤ����Ȥ�
-��������ޤǤ϶ػߤȤ��ޤ���
+bless(REF, REF) の意味は不明瞭なので、誰かがなんらかの意味をなすことを
+証明するまでは禁止とします。
 
 =item *
 
@@ -508,8 +508,8 @@ to escape the laboratory has been decommissioned.
 
 =end original
 
-�¸�������ƨ��뤳�Ȥ��褷�Ƶ�����ʤ��ä��Ϥ����Ѥ줿 chat2 �饤�֥�꤬
-Ǥ̳��򤫤�ޤ�����
+実験室から逃れることが決して許されなかったはずの廃れた chat2 ライブラリが
+任務を解かれました。
 
 =item *
 
@@ -522,10 +522,10 @@ is deprecated.
 
 =end original
 
-����Ū�� chdir() ������� chdir("") �� chdir(undef) ��Ȥ����Ȥˤ�
-���䤬����ޤ�������(chdir(some_function()) ��ͤ��ƤߤƤ�������)����
-���� chdir() ���ޤ餺��ۡ���ǥ��쥯�ȥ��
-��ư���Ƥ��ޤ����⤷��ޤ���Τǡ����ο����񤤤���侩�Ȥʤ�ޤ�����
+明示的な chdir() の代わりに chdir("") や chdir(undef) を使うことには
+疑問があります。失敗(chdir(some_function()) を考えてみてください)した
+場合に chdir() が図らずもホームディレクトリに
+移動してしまうかもしれませんので、この振る舞いは非推奨となりました。
 
 =item *
 
@@ -538,10 +538,10 @@ releases the behaviour of an unqualified C<dump()> call may change.
 
 =end original
 
-�Ȥ߹��ߴؿ� dump() �ϻ����ή��ˤ������ä���Ⱦ��ͭ������������
-��ޤ�������������פδؿ�������Ū�� C<CORE::dump()> ��ƤӽФ����Ȥ�
-��ǽ�ˤʤäƤ�Ĥ뤳�ȤǤ��礦��������Υ�꡼���Ǥ�̵���� C<dump()> ��
-�ƤӽФ����ݡ����Τդ�ޤ����ѹ�����뤫���Τ�ޤ���
+組み込み関数 dump() は時代の流れにしたがって大半の有用性が失われて
+来ました。コアダンプの関数は明示的に C<CORE::dump()> を呼び出すことが
+可能になっても残ることでしょうが、将来のリリースでは無条件に C<dump()> を
+呼び出した際、そのふるまいが変更されるかも知れません。
 
 =item *
 
@@ -554,9 +554,9 @@ maintained.
 
 =end original
 
-eg/ �ǥ��쥯�ȥ�����äƤ���Ĥޤ�ʤ���Ϻ������ޤ��������⤷�������
-��Ƥ��뤳�Ȥϴ��ޤ��ޤ�������Ȥʤ��������ϥɥ�����Ȥ��񤫤�뤳�ȡ�
-�ڤӥƥ��Ȥ���뤳�Ȥ�(�������ڤʤ��ȤǤ���)�ݼ餬ɬ�פ��ȸ������ȤǤ���
+eg/ ディレクトリに入っているつまらない例は削除されました。おもしろい例を
+提案することは歓迎しますが、主となる問題は例はドキュメントが書かれること、
+及びテストされることと(一番大切なことですが)保守が必要だと言うことです。
 
 =item *
 
@@ -568,9 +568,9 @@ any C<\w> character.
 
 =end original
 
-(����)���������ץ������� \8 �� \9 �ϥ��ץ���ʥ�ηٹ�("Unrecognized
-escape passed through") ��Ϳ����褦�ˤʤ�ޤ������ɤ� C<\w> ʸ����
-\-escape ����ɬ�פϤ���ޤ���
+(偽の)エスケープシーケンス \8 と \9 はオプショナルの警告("Unrecognized
+escape passed through") を与えるようになりました。どの C<\w> 文字も
+\-escape する必要はありません。
 
 =item *
 
@@ -580,8 +580,8 @@ The *glob{FILEHANDLE} is deprecated, use *glob{IO} instead.
 
 =end original
 
-*glob{FILEHANDLE} ����侩�Ȥʤ�ޤ�����
-����� *glob{IO} ��ȤäƤ���������
+*glob{FILEHANDLE} は非推奨となりました。
+代わりに *glob{IO} を使ってください。
 
 =item *
 
@@ -594,10 +594,10 @@ disallow all but fully qualified variables, C<use strict;> instead.
 
 =end original
 
-C<package;> ��ʸ(�����Τʤ� C<package>)����侩�ˤʤ�ޤ�����
-���Υ��ޥ�ƥ����������ƤǤʤ������μ����Ϥ�������ƤǤϤ���ޤ���Ǥ�����
-�⤷������ħ���������ѿ�̾�Ǥʤ���Τ����Ƶ����ʤ������
-�ȤäƤ���ΤǤ���С������� C<use strict;> ��ȤäƤ���������
+C<package;> 構文(引数のない C<package>)は非推奨になりました。
+そのセマンティクスは明瞭でなく、その実装はさらに明瞭ではありませんでした。
+もしこの特徴を完全修飾変数名でないものを全て許さないために
+使っているのであれば、かわりに C<use strict;> を使ってください。
 
 =item *
 
@@ -610,10 +610,10 @@ since it, in a way, falsely promised that the features could be used.
 
 =end original
 
-��������Ƥ��ʤ� POSIX ����ɽ���ε�ǽ[[.cc.]]��[[=c=]]�ϡ����ޤ�
-ǧ������ޤ�����̿Ū���顼��Ф��褦�ˤʤ�ޤ������ǥե���Ȥ�̵�뤷
-�׵᤬����зٹ��Ф��Ȥ���������ư��ϡ������̣�ǤϤ��ε�ǽ��
-�Ȥ��Ƥ����ȸ��äƻפ碌�Ƥ������ᡢ���ޤ���������ΤǤ�����
+実装されていない POSIX 正規表現の機能[[.cc.]]と[[=c=]]は、いまだ
+認識されますが致命的エラーを出すようになりました。デフォルトで無視し
+要求があれば警告を出すという以前の動作は、ある意味ではその機能が
+使えていたと誤って思わせていたため、歓迎しがたいものでした。
 
 =item *
 
@@ -625,10 +625,10 @@ source code level, this shouldn't be that drastic a change.
 
 =end original
 
-PerlIO ��ռ����ʤ� XS �⥸�塼��ϡ������꡼������� Perl �Ǵ����˥��ݡ���
-����ʤ��ʤ��ǽ��������ޤ���PerlIO �ϥ����������ɥ�٥�Ǥ� stdio ��
-����äȤ����֤������Ǥ����ʤ��Τǡ�����Ϥ���ۤ����Ѥ��ѹ��ˤ�
-�ʤ�ʤ��Ϥ��Ǥ���
+PerlIO を意識しない XS モジュールは、将来リリースされる Perl で完全にサポート
+されなくなる可能性があります。PerlIO はソースコードレベルでは stdio の
+ちょっとした置き換えでしかないので、これはそれほど大変な変更には
+ならないはずです。
 
 =item *
 
@@ -647,16 +647,16 @@ which would modify byte stream.
 
 =end original
 
-�����ΥС������� perl �䡢�饯���� III �Ǥ�
-C<:raw> "discipline" �� C<:crlf> �εդǤ��뤳�Ȥ�ż����Ƥ��ޤ���
-��Ϥ䴰���˥Х��ʥ�ˤ���ˤ� "crlf ��" �򥪥դˤ�������Ǥ��Խ�ʬ�Ǥ���
-PerlIO C<:raw> �� (���뤤�ϥ饯���ܤθŤ��Ѹ�Ǥ� "discipline") ��
-������ binmode(FH) �������Ȥʤ�ޤ��� - ��������ƤΥХ��Ȥ�
-���ڤ��Ѵ��ʤ��ˤ��Τޤ��̲ᤵ���뤿���ɬ�פʤ��Ȥ򤹤��ΤȤ���
-�������ޤ�����
-�äˡ�binmode(FH) - ������ C<:raw> �� - �ϥХ��ȥ��ȥ꡼���
-�ѹ����� CRLF �� UTF-8 �Ѵ��䤽��¾���� (�Ĥޤ� :encoding()) ��
-���դˤ��ޤ���
+以前のバージョンの perl や、ラクダ本 III では
+C<:raw> "discipline" は C<:crlf> の逆であることを暗示しています。
+もはや完全にバイナリにするには "crlf 化" をオフにするだけでは不十分です。
+PerlIO C<:raw> 層 (あるいはラクダ本の古い用語では "discipline") が
+公式に binmode(FH) と等価となりました - これは全てのバイトを
+一切の変換なしにそのまま通過させるために必要なことをするものとして
+定義されました。
+特に、binmode(FH) - そして C<:raw> も - はバイトストリームを
+変更する CRLF と UTF-8 変換やその他の層 (つまり :encoding()) を
+オフにします。
 
 =item *
 
@@ -675,15 +675,15 @@ L<Class::PseudoHash> from CPAN.
 
 =end original
 
-���ߤ� pseudo-hashes �Υ桼���˸��������(�������Ƭ���ǤΤ������ʻȤ���)�ϡ�
-Perl 5.8.0 ������侩�ˤʤꡢPerl 5.10.0 �Ǽ������졢���ε�ǽ�ϰ�ä�
-���Ǽ��������Ǥ��礦�����ߤΥ��󥿡��ե������Ϥ��ʤ꽹�������Ǥʤ���
-���ߤμ����Ǥ��̾�������ϥå���λ��Ѥ����ʤ���Ω�ä��٤��ʤä�
-���ޤ��ޤ���C<fields> �ץ饰�ޤΥ��󥿡��ե����������Ѳ�ǽ�ʤޤ޻Ĥ�
-�Ǥ��礦��I<restricted hashes> �Υ��󥿡��ե����������ѤΥ��󥿡��ե�����
-(L<Hash::Util> �򻲾Ȥ��Ƥ�������)�ˤʤ�ȹͤ����Ƥ��ޤ����⤷��¸��
-�ץ�����ब����ˤ�������˰�¸���Ƥ���ΤǤ���С�CPAN ��
-L<Class::PseudoHash> ��Ȥ����Ȥ��θ���Ƥ���������
+現在の pseudo-hashes のユーザに見える実装(配列の先頭要素のおかしな使い方)は、
+Perl 5.8.0 から非推奨になり、Perl 5.10.0 で取り除かれ、その機能は違った
+形で実装されるでしょう。現在のインターフェースはかなり醜いだけでなく、
+現在の実装では通常の配列やハッシュの使用がかなり目立って遅くなって
+しまいます。C<fields> プラグマのインターフェースは利用可能なまま残る
+でしょう。I<restricted hashes> のインターフェースは代用のインターフェース
+(L<Hash::Util> を参照してください)になると考えられています。もし既存の
+プログラムが根底にある実装に依存しているのであれば、CPAN の
+L<Class::PseudoHash> を使うことを考慮してください。
 
 =item *
 
@@ -693,7 +693,7 @@ The syntaxes C<< @a->[...] >> and  C<< %h->{...} >> have now been deprecated.
 
 =end original
 
-��ʸ C<< @a->[...] >> �� C<< %h->{...} >> ����侩�ˤʤ�ޤ�����
+構文 C<< @a->[...] >> と C<< %h->{...} >> は非推奨になりました。
 
 =item *
 
@@ -705,9 +705,9 @@ to be removed in a future release.
 
 =end original
 
-��ǯ�λ�ߤθ塢suidperl �������˰����Ǥ���ȸ��ʤ��ˤ�ʣ���ˤʤꤹ����
-����ȹͤ����Ƥ��ޤ���
-�����餯 suidperl �ε�ǽ�Ͼ���Υ�꡼���Ǽ��������Ǥ��礦��
+数年の試みの後、suidperl は本当に安全であると見なすには複雑になりすぎて
+いると考えられています。
+おそらく suidperl の機能は将来のリリースで取り除かれるでしょう。
 
 =item *
 
@@ -720,9 +720,9 @@ L<perlthrtut>).
 
 =end original
 
-5.005 �Υ���åɥ�ǥ�(�⥸�塼�� C<Thread>)����侩�ȤʤꡢPerl 5.10 ��
-���������ͽ��Ǥ����ޥ������åɲ����줿�����ɤϿ�����i����åɥ�ǥ��
-�ܤ�٤��Ǥ�(L<threads>, L<threads::shared>, L<perlthrtut> �򻲾Ȥ��Ƥ�������)��
+5.005 のスレッドモデル(モジュール C<Thread>)は非推奨となり、Perl 5.10 で
+取り除かれる予定です。マルチスレッド化されたコードは新しいiスレッドモデルに
+移るべきです(L<threads>, L<threads::shared>, L<perlthrtut> を参照してください)。
 
 =item *
 
@@ -733,8 +733,8 @@ operators (EQ, NE, LT, LE, GE, GT) have now been removed.
 
 =end original
 
-Ĺ������侩�Ǥ��ä�ʸ������ӱ黻�Ҥ���ʸ������̾(EQ, NE, LT, LE, GE,
-GT)����������ޤ�����
+長い間非推奨であった文字列比較演算子の大文字の別名(EQ, NE, LT, LE, GE,
+GT)が取り除かれました。
 
 =item *
 
@@ -746,11 +746,11 @@ functionality, see pack('U0', ...) and pack('C0', ...). [561]
 
 =end original
 
-tr///C �� tr///U �ε�ǽ����������ޤ������⤦���٤ȻȤ���褦�ˤ�
-�ʤ�ʤ��Ǥ��礦�����󥿡��ե��������ְ�äƤ��ޤ�����
-����ˤĤ��ƤϿ���������ޤ���
-Ʊ���褦�ʵ�ǽ�Ȥ��Ƥϡ�pack('U0', ...)�� pack('C0', ...) ��
-���Ȥ��Ƥ���������[561]
+tr///C と tr///U の機能が取り除かれました。もう二度と使えるようには
+ならないでしょう。インターフェースが間違っていました。
+これについては申し訳ありません。
+同じような機能としては、pack('U0', ...)と pack('C0', ...) を
+参照してください。[561]
 
 =item *
 
@@ -764,10 +764,10 @@ release.
 
 =end original
 
-������ Perl ��"sub foo (@bar)"��"sub foo (@)"��Ʊ���˰��äƤ��ޤ�����
-�ץ��ȥ����פ������ʹ�ʸ�ˤĤ��ƥ���ѥ�����ˤ��褯�����å�����褦��
-�ʤ�ޤ��������ץ���ʥ�ηٹ�("Illegal character in prototype...")��
-�Ф���ޤ���������Υ�꡼���Ǥ���̿Ū���顼�˾夬�뤫�⤷��ޤ���
+以前の Perl は"sub foo (@bar)"を"sub foo (@)"と同等に扱っていました。
+プロトタイプは不正な構文についてコンパイル時によりよくチェックするように
+なりました。オプショナルの警告("Illegal character in prototype...")が
+出されますが、将来のリリースでは致命的エラーに上がるかもしれません。
 
 =item *
 
@@ -778,8 +778,8 @@ tainted data and in some future release they will produce fatal errors.
 
 =end original
 
-C<exec LIST> �� C<system LIST> �����ϡ�����Υ�꡼���Ǥϱ������줿
-�ǡ������Ф�����̿Ū���顼��Ф��褦�ˤʤ�Ǥ��礦��
+C<exec LIST> と C<system LIST> の操作は、将来のリリースでは汚染された
+データに対して致命的エラーを出すようになるでしょう。
 
 =item *
 
@@ -791,20 +791,20 @@ behaviour. See L<"Localising Tied Arrays and Hashes Is Broken">.
 
 =end original
 
-tie ���줿�����ϥå���� local ������Ȥ��θ��ߤ�ư��ϴְ�äƤ��ꡢ
-����Υ�꡼���ˤ������ѹ������Ǥ��礦�����äƸ��ߤ�ư���
-���ʤ��Ǥ���������
-L<"Localising Tied Arrays and Hashes Is Broken"> �򻲾Ȥ��Ƥ���������
+tie された配列やハッシュを local 化するときの現在の動作は間違っており、
+将来のリリースにおいて変更されるでしょう。従って現在の動作を
+頼らないでください。
+L<"Localising Tied Arrays and Hashes Is Broken"> を参照してください。
 
 =back
 
 =head1 Core Enhancements
 
-(�����γ�ĥ)
+(コアの拡張)
 
 =head2 Unicode Overhaul
 
-(Unicode �Υ����С��ۡ���)
+(Unicode のオーバーホール)
 
 =begin original
 
@@ -816,11 +816,11 @@ and L<perlunicode> for details.
 
 =end original
 
-Unicode ������Ū�� Perl 5.6.0(���뤤�� 5.6.1 ����)���⤵��˻Ȥ���褦��
-�ʤä��Ϥ��Ǥ���Unicode �ϥϥå��奭����˻Ȥ��뤳�Ȥ���ǽ�ǡ�����ɽ���Ǥ�
-Unicode��tr/// �Ǥ� Unicode��I/O �Ǥ� Unicode ��ư���褦�ˤʤä��Ϥ��Ǥ���
-����ˤĤ��Ƥ� L<perluniintro> �򡢾ܺ٤ˤĤ��Ƥ� L<perluniintro> ��
-���Ȥ��Ƥ���������
+Unicode は全体的に Perl 5.6.0(あるいは 5.6.1 さえ)よりもさらに使えるように
+なったはずです。Unicode はハッシュキー中に使われることが可能で、正規表現での
+Unicode、tr/// での Unicode、I/O での Unicode は動作するようになったはずです。
+入門については L<perluniintro> を、詳細については L<perluniintro> を
+参照してください。
 
 =over 4
 
@@ -834,10 +834,10 @@ to Unicode 3.2.0.  For more information, see http://www.unicode.org/ .
 
 =end original
 
-Perl ����°���� Unicode Character Database �� Unicode 3.2.0 ��
-���åץ��졼�ɤ���ޤ�����
-����ʤ�����ߤ������� http://www.unicode.org/ �򻲾Ȥ��Ƥ���������
-[561+] (5.6.1 �Ǥ� UCD 3.0.1 �Ǥ�����)
+Perl に付属する Unicode Character Database は Unicode 3.2.0 に
+アップグレードされました。
+さらなる情報が欲しい場合は http://www.unicode.org/ を参照してください。
+[561+] (5.6.1 では UCD 3.0.1 でした。)
 
 =item *
 
@@ -850,10 +850,10 @@ considerations, is the Unihan database.
 
 =end original
 
-Unicode �β��������ĥ���뤳�Ȥ˶�̣�����볫ȯ�ԤΤ����:
-���Ƥ� UCD �ե����������ʬ�� Perl �Υǥ����ȥ�ӥ塼�����Υ��֥ǥ��쥯�ȥ�
-F<lib/unicore> �˴ޤޤ�Ƥ��ޤ������ڡ����λ���Ǿ�ά���Ƥ��ޤä���Τ����
-��äȤ���ɮ���٤��� Unihan database �Ǥ���
+Unicode の可用性を拡張することに興味がある開発者のために:
+全ての UCD ファイルの大部分が Perl のディストリビューションのサブディレクトリ
+F<lib/unicore> に含まれています。スペースの事情で省略してしまったものの中で
+もっとも特筆すべきは Unihan database です。
 
 =item *
 
@@ -867,11 +867,11 @@ tabulator character, whereas C<\s> doesn't.)
 
 =end original
 
-�ץ��ѥƥ��� \p{Blank} �� \p{SpacePerl} ���ɲä���Ƥ��ޤ���
-"Blank"�� C �� isblank() �˻��Ƥ��ޤ�����"horizontal whitespace"
-(���ڡ���ʸ���Ǥ��äơ����ԤǤϤʤ�)�ǡ�"SpacePerl" �� C<\s> ����������
-Unicode �Ǥ�(��ľ����ʸ�����ޤޤ�Ƥ���Τ� \p{Space} �ǤϤ���ޤ���
-���� C<\s> �ǤϿ�ľ���֤��ޤޤ�Ƥ��ʤ��ΤǤ���)
+プロパティー \p{Blank} と \p{SpacePerl} が追加されています。
+"Blank"は C の isblank() に似ていますが、"horizontal whitespace"
+(スペース文字であって、改行ではない)で、"SpacePerl" は C<\s> に相当する
+Unicode です(垂直タブ文字が含まれているので \p{Space} ではありません、
+一方 C<\s> では垂直タブが含まれていないのです。)
 
 =begin original
 
@@ -880,14 +880,14 @@ information on changes with Unicode properties.
 
 =end original
 
-��ˤ��Υɥ�����Ȥ� Unicode �ץ��ѥƥ����˴ؤ����ѹ������ɲþ���ˤ���
-"������ Unicode �ץ��ѥƥ���"�򻲾Ȥ��Ƥ���������
+先にこのドキュメントの Unicode プロパティーに関する変更点の追加情報にある
+"新しい Unicode プロパティー"を参照してください。
 
 =back
 
 =head2 PerlIO is Now The Default
 
-(PerlIO��ɸ���)
+(PerlIOが標準に)
 
 =over 4
 
@@ -902,10 +902,10 @@ form of open:
 
 =end original
 
-�����ƥ��"stdio"�ǤϤʤ� PerlIO �� IO �Υǥե���Ȥˤʤ�ޤ�����
-PerlIO ��"��"�ˤ�äƥե�����ϥ�ɥ�ο����񤤤�
-"����"���뤳�Ȥ��ǽ�ˤ��ޤ�����
-�ؤ� 3 �Ĥΰ����η����� open ������˻���Ǥ��ޤ�:
+システムの"stdio"ではなく PerlIO が IO のデフォルトになりました。
+PerlIO は"層"によってファイルハンドルの振る舞いを
+"強制"することを可能にしました。
+層は 3 つの引数の形式で open する時に指定できます:
 
    open($fh,'>:crlf :utf8', $path) || ...
 
@@ -915,8 +915,8 @@ or on already opened handles via extended C<binmode>:
 
 =end original
 
-�⤷���ϳ�ĥ���줿 C<binmode> ��Ȥ���
-���˳�����Ƥ���ϥ�ɥ���ؤ����Ǥ��ޤ���
+もしくは拡張された C<binmode> を使い、
+既に開かれているハンドルに層を指定できます。
 
    binmode($fh,':encoding(iso-8859-7)');
 
@@ -930,12 +930,12 @@ platform supports it (mostly UNIXes).
 
 =end original
 
-��¢���Ƥ��ؤϡ�unix(���٥�Ǥ� read/write)��
-stdio (������ Perl ��Ʊ��)��perlio (�ܿ����Τ�����Ǥ˥Хåե��դ� stdio ��
-�Ƽ����������)��crlf (Win32 �Ǥ� CRLF <=> "\n" �Ѵ���
-¾�Υץ�åȥե�����Ǥ����ѤǤ���)������ޤ���
-(����ʬ�� UNIX �ʤ�)�ץ�åȥե����ब���ݡ��Ȥ��Ƥ����
-mmap �ؤ����ѤǤ��ޤ���
+内蔵してる層は、unix(低レベルでの read/write)、
+stdio (以前の Perl と同じ)、perlio (移植性のある形でにバッファ付き stdio を
+再実装したもの)、crlf (Win32 での CRLF <=> "\n" 変換。
+他のプラットフォームでも利用できる)があります。
+(大部分の UNIX など)プラットフォームがサポートしていれば
+mmap 層が使用できます。
 
 =begin original
 
@@ -943,7 +943,7 @@ Layers to be applied by default may be specified via the 'open' pragma.
 
 =end original
 
-�ǥե���Ȥ�Ŭ�Ѥ�����ؤ� 'open'�ץ饰�ޤǻ���Ǥ��ޤ���
+デフォルトで適用される層は 'open'プラグマで指定できます。
 
 =begin original
 
@@ -952,8 +952,8 @@ of PerlIO on your architecture name.
 
 =end original
 
-�������ƥ����㤴�Ȥ� PerlIO �˴ؤ���ƶ��ˤĤ���
-L</"Installation and Configuration Improvements"> �򻲾Ȥ��Ƥ���������
+アーキテクチャごとの PerlIO に関する影響について
+L</"Installation and Configuration Improvements"> を参照してください。
 
 =item *
 
@@ -964,8 +964,8 @@ for pipes.  For example:
 
 =end original
 
-�⤷�ץ�åȥե����ब fork() �򥵥ݡ��Ȥ��Ƥ���С��ѥ��פ��Ф��ƥꥹ��
-������ C<open> ��Ȥ����Ȥ��Ǥ��ޤ����㤨��:
+もしプラットフォームが fork() をサポートしていれば、パイプに対してリスト
+形式の C<open> を使うことができます。例えば:
 
     open KID_PS, "-|", "ps", "aux" or die $!;
 
@@ -977,9 +977,9 @@ C<KID_PS> filehandle.  See L<perlipc>.
 
 =end original
 
-����� ps(1) ���ޥ�ɤ�(open() ���Ф��ư����� 3 �Ĥ���¿���Τǡ��������
-��ư���뤳�Ȥʤ���)fork ��������ɸ����Ϥ� C<KID_PS> �ե�����ϥ�ɥ��
-�̤����ɤ߽Ф��ޤ���L<perlipc> �򻲾Ȥ��Ƥ���������
+これは ps(1) コマンドを(open() に対して引数が 3 つよりも多いので、シェルを
+起動することなしに)fork し、その標準出力を C<KID_PS> ファイルハンドルを
+通して読み出します。L<perlipc> を参照してください。
 
 =item *
 
@@ -990,9 +990,9 @@ File handles can be marked as accepting Perl's internal encoding of Unicode
 
 =end original
 
-������ ":utf8" ��Ȥ����Ȥǡ� Unicode �� Perl �� �������󥳡��ǥ���
-(�ץ�åȥե�����ˤ�ä� UTF-8 �� UTF-EBCDIC) ��
-��������뤳�ȼ�������ե�����ϥ�ɥ�ˤĤ��뤳�Ȥ��Ǥ��ޤ�:
+擬似層 ":utf8" を使うことで、 Unicode の Perl の 内部エンコーディング
+(プラットフォームによって UTF-8 か UTF-EBCDIC) を
+受け入れること示す印をファイルハンドルにつけることができます:
 
    open($fh,">:utf8","Uni.txt");
 
@@ -1007,12 +1007,12 @@ for more information about UTF-8.
 
 =end original
 
-EBCDIC �桼�����ؤ�����: ���ʤ����������Τ� UTF-8 �ǤϤʤ�
-UTF-EBCDIC �ʤΤǡ������ؤ�̾�� ":utf8" �Ȥ����Τϴְ�ä�̿̾�Ǥ���
-����ʤ����ˤĤ��Ƥ� L<perlunicode>, L<utf8>,
-http://www.unicode.org/unicode/reports/tr16/ �򻲾Ȥ��Ƥ���������
-����Υ�꡼���ǤϤ���̾�����Ѥ�뤫�⤷��ޤ���
-UTF-8 �˴ؤ��뤵��ʤ����ˤĤ��Ƥ� L<perluniintro> �򻲾Ȥ��Ƥ���������
+EBCDIC ユーザーへの注意: あなたが受け取るのは UTF-8 ではなく
+UTF-EBCDIC なので、擬似層の名前 ":utf8" というのは間違った命名です。
+さらなる情報については L<perlunicode>, L<utf8>,
+http://www.unicode.org/unicode/reports/tr16/ を参照してください。
+将来のリリースではこの名前は変わるかもしれません。
+UTF-8 に関するさらなる情報については L<perluniintro> を参照してください。
 
 =item *
 
@@ -1027,12 +1027,12 @@ PerlIO, but that's the default.)
 
 =end original
 
-�⤷�Ķ��ѿ�(LC_ALL, LC_CTYPE, LANG, LANGUAGE)�� UTF-8 ��Ȥ������äƤ���褦��
-������(�������ѿ��Τ����줫�� C</utf-?8/i> �˥ޥå�����)�ʤ�С�
-�ϥ�ɥ� STDIN, STDOUT, STDERR ����ӥǥե���Ȥ� open ��(L<open> ��
-���Ȥ��Ƥ�������)�� UTF-8 �˥ޡ�������ޤ���(���ε�ǽ�ϡ�Unicode �� I/O ��
-��ӤĤ���¾�ο���ǽ��Ʊ���褦�ˡ�PerlIO ��ȤäƤ�����ˤΤ�Ư���ޤ�����
-���������줬�ǥե���ȤǤ���)
+もし環境変数(LC_ALL, LC_CTYPE, LANG, LANGUAGE)が UTF-8 を使いたがっているように
+見える(それらの変数のいずれかが C</utf-?8/i> にマッチする)ならば、
+ハンドル STDIN, STDOUT, STDERR およびデフォルトの open 層(L<open> を
+参照してください)は UTF-8 にマークされます。(この機能は、Unicode と I/O を
+結びつける他の新機能と同じように、PerlIO を使っている場合にのみ働きますが、
+しかしそれがデフォルトです。)
 
 =begin original
 
@@ -1043,10 +1043,10 @@ any old eight-bit data is not legal UTF-8.
 
 =end original
 
-���� Perl �ʹߤ����������Ƥ� UTF-8 ���Ȳ��ꤹ�뤳�Ȥ����դ��Ƥ���������
-�㤨�С��⤷�����Ǥʤ����ϥϥ�ɥ뤬����С�Perl �Ϥ����餯������
-���ϥǡ����ˤĤ���"Malformed UTF-8 ..."�Ȥ����褦����ʿ������Ф��ޤ���
-�ʤ��ʤ������ 8 �ӥåȤΥǡ��������� UTF-8 ���������Ƥ��ʤ�����Ǥ���
+この Perl 以降は本当に全てを UTF-8 だと仮定することに注意してください。
+例えば、もしそうでない入力ハンドルがあれば、Perl はおそらくすぐに
+入力データについて"Malformed UTF-8 ..."というように不平を言い出します。
+なぜなら以前の 8 ビットのデータは全て UTF-8 を満たしていないからです。
 
 =begin original
 
@@ -1058,12 +1058,12 @@ can just use C<binmode(FH)> (nice for pre-5.8.0 backward compatibility).
 
 =end original
 
-�����ɺ�Ԥ��Ф�������:���桼���� UTF-8 ��ǥե���ȤΥ��󥳡��ǥ��󥰤�
-���ƻȤ���褦�ˤ��������������ɤˤϤ��ޤ�(�㤨�в����� zip �ե�����Τ褦��)
-8 �ӥåȤ� I/O ���ȥ꡼�ब�����硢open() �� binmode() ���Ф�������Ū��
-C<:bytes> (L<perlfunc/open> �� L<perlfunc/binmode> �򻲾Ȥ��Ƥ�������)��
-�Ĥ��뤫�����뤤��ñ�� C<binmode(FH)> ��Ȥ����Ȥ��Ǥ��ޤ� (5.8.0 ������
-�����ߴ����ˤȤä��ɤ��Ǥ��礦)��
+コード作者に対する注意:　ユーザが UTF-8 をデフォルトのエンコーディングと
+して使えるようにしたいが、コードにはいまだ(例えば画像や zip ファイルのような)
+8 ビットの I/O ストリームがある場合、open() や binmode() に対して明示的に
+C<:bytes> (L<perlfunc/open> と L<perlfunc/binmode> を参照してください)を
+つけるか、あるいは単に C<binmode(FH)> を使うことができます (5.8.0 以前の
+後方互換性にとって良いでしょう)。
 
 =item *
 
@@ -1074,8 +1074,8 @@ Unicode form on read/write via the ":encoding()" layer.
 
 =end original
 
-�ե�����ϥ�ɥ���ɤ߽񤭤κ�":encoding()"�ط�ͳ�� Perl ������Ū��
-Unicode �����ˡ����뤤������Ū�� Unicode ���������Ѵ����뤳�Ȥ���ǽ�Ǥ���
+ファイルハンドルは読み書きの際":encoding()"層経由で Perl の内部的な
+Unicode 形式に、あるいは内部的な Unicode 形式から変換することが可能です。
 
 =item *
 
@@ -1085,8 +1085,8 @@ File handles can be opened to "in memory" files held in Perl scalars via:
 
 =end original
 
-�ե�����ϥ�ɥ�� Perl �Υ����顼���ݻ�����Ƥ���"������"�ե������
-�Ф��Ƴ������Ȥ��Ǥ��ޤ���
+ファイルハンドルを Perl のスカラーに保持されている"メモリ内"ファイルに
+対して開くことができます。
 
    open($fh,'>', \$variable) || ...
 
@@ -1099,8 +1099,8 @@ Anonymous temporary files are available without need to
 
 =end original
 
-̵̾�ƥ�ݥ��ե����뤬 'use FileHandle' ��¾�Υ⥸�塼���Ȥ�ɬ�פʤ���
-���Ѳ�ǽ�Ǥ���
+無名テンポラリファイルが 'use FileHandle' や他のモジュールを使う必要なしに
+利用可能です。
 
    open($fh,"+>", undef) || ...
 
@@ -1110,13 +1110,13 @@ That is a literal undef, not an undefined value.
 
 =end original
 
-��������Τ� undef �ǡ�̤������ͤǤϤ���ޤ���
+これは正確に undef で、未定義の値ではありません。
 
 =back
 
 =head2 ithreads
 
-(i����å�)
+(iスレッド)
 
 =begin original
 
@@ -1129,11 +1129,11 @@ L<perlthrtut>.
 
 =end original
 
-Arthur Bergman �ˤ�롢�ޥ������åɤΤ����
-���������󥿥ץ꥿����å�(ά���� "i����å�") ������
-�Ť� "5.005 ����å�" �����֤��������ޤ�����
-i����åɥ�ǥ�Ǥϥ���åɴ֤Ƕ�ͭ�������ƤΥǡ���������Ū�Ǥ���
-L<threads>, L<threads::shared>, L<perlthrtut> �򻲾Ȥ��Ƥ���������
+Arthur Bergman による、マルチスレッドのための
+新しいインタプリタスレッド(略して "iスレッド") 実装が
+古い "5.005 スレッド" から置き換えられました。
+iスレッドモデルではスレッド間で共有する全てのデータは明示的です。
+L<threads>, L<threads::shared>, L<perlthrtut> を参照してください。
 
 =begin original
 
@@ -1142,12 +1142,12 @@ any necessary and detectable reentrant libc interfaces.
 
 =end original
 
-i����åɼ����ΰ����Ȥ��ơ�Perl ��ɬ�פǸ��в�ǽ��
-������ǽ libc ���󥿡��ե���������Ѥ��ޤ���
+iスレッド実装の一部として、Perl は必要で検出可能な
+再入可能 libc インターフェースも使用します。
 
 =head2 Restricted Hashes
 
-(���¥ϥå���)
+(制限ハッシュ)
 
 =begin original
 
@@ -1158,15 +1158,15 @@ No new syntax is involved: the Hash::Util module is the interface.
 
 =end original
 
-���¥ϥå���ϻ��Ѥ��륭���򤢤뽸������¤���
-����˴ޤޤ�ʤ��������ɲä򤹤뤳�Ȥ��ɤ��ޤ���
-����ˤ��줾��Υ������Ф��ƺ�����ͤ��ѹ������¤��뤳�Ȥ��Ǥ��ޤ���
-Hash::Util �⥸�塼�뤬���Υ��󥿡��ե������ˤʤꡢ
-��������ʸ��ʣ���ˤϤʤ�ޤ���
+制限ハッシュは使用するキーをある集合に制限し、
+集合に含まれないキーを追加をすることを防ぎます。
+さらにそれぞれのキーに対して削除や値の変更を制限することができます。
+Hash::Util モジュールがそのインターフェイスになり、
+新しい構文は複雑にはなりません。
 
 =head2 Safe Signals
 
-(�����ʥ����ʥ�)
+(安全なシグナル)
 
 =begin original
 
@@ -1176,9 +1176,9 @@ signals until it's safe (between opcodes).
 
 =end original
 
-�����ʥ뤬�Թ�ΰ������ˤ�ä����� Perl ���������֤����Ѥ���Ƥ��ޤ���
-�������ǰ����� Perl �ϲ���䤹����ΤǤ��������������ߤ� Perl �ϰ����ˤʤ�ޤ�
-(between opcodes)�����ʥ�ΰ����������Ф��褦�ˤʤ�ޤ�����
+シグナルが都合の悪い時にやって来ると Perl の内部状態が改変されてしまうと
+いう点で以前の Perl は壊れやすいものでした。しかし現在の Perl は安全になるまで
+(between opcodes)シグナルの扱いを引き延ばすようになりました。
 
 =begin original
 
@@ -1193,18 +1193,18 @@ out from potentially blocking operations should still work, though.
 
 =end original
 
-�����ѹ��ϡ������ʥ뤬 Perl �򤿤��������Ǥ����ʤ��ʤä����ᡢ�ä��٤�
-�����Ѥ���äƤ��뤫�⤷��ޤ��󡣸��ߤ� Perl �ϡ��ǽ���㤨��(sort() �Τ褦��)
-��������(I/O ���Τ褦��)�������� 1 �Ĵ�λ���뤳�Ȥˤ�äƺ��ԤäƤ���
-���Ȥ򽪤�餻�����θ�ˤΤ�(�����Ƽ������򳫻Ϥ�������)������ä�
-�����ʥ��Ĵ�٤ޤ������ߤ���ɬ�����˽���餻����Τ��������֤�
-���Ѥ�̵���ʤ�ޤ������������ʥ뤬���̤�ȯ�����뤿��ˤϤ��¿���λ��֤�
-�����뤫�⤷��ޤ��󡣤����� potentially blocking operations �����æ�Ф�
-���Ǥ�Ư���Ϥ��Ǥ���
+この変更は、シグナルが Perl をただちに中断させなくなったため、驚くべき
+副作用を持っているかもしれません。現在の Perl は、最初に例えば(sort() のような)
+内部操作や(I/O 操作のような)外部操作を 1 つ完了することによって今行っている
+ことを終わらせ、その後にのみ(そして次の操作を開始する前に)受け取った
+シグナルを調べます。現在の操作が必ず初めに終わらせられるので内部状態の
+改変は無くなりましたが、シグナルが効果を発揮するためにはより多くの時間が
+かかるかもしれません。しかし potentially blocking operations からの脱出は
+今でも働くはずです。
 
 =head2 Understanding of Numbers
 
-(�����β��)
+(数字の解釈)
 
 =begin original
 
@@ -1216,11 +1216,11 @@ deficiencies.  This results hopefully in more accurate numbers.
 
 =end original
 
-Perl �ο���(�����ڤ���ư��������ξ��)�β������̤˴ؤ�������Ū��¿����
-�������ʤ���ޤ�����¿���Υ����ƥ�ˤ����� C<strtoul()> �� C<atof()> �Τ褦��
-������ѡ�������ɸ��δؿ����Х��������Ƥ���褦�˸�����Τǡ�Perl ��
-�����η�٤��н褹��褦���ؤ�ޤ���
-��꤯�����п�����������Τˤʤ�Ǥ��礦��
+Perl の数字(整数及び浮動小数点の両方)の解釈の方面に関して全体的に多くの
+修正がなされました。多くのシステムにおいて C<strtoul()> や C<atof()> のような
+数字をパースする標準の関数がバグを抱えているように見えるので、Perl は
+それらの欠陥に対処するように努めます。
+上手くいけば数字がより正確になるでしょう。
 
 =begin original
 
@@ -1233,15 +1233,15 @@ in its math.)
 
 =end original
 
-Perl �ϡ������Ѵ�����ܷ׻�(+ - * /)�ˤ����ơ��⤷�����������ʤ������Ū��
-�����ͤ�Ȥ��褦���ؤᡢ����ˡ�����Ū�������Ȥ��Ƶ������줿��̤�
-�ݻ�����褦���ؤ��褦�ˤʤ�ޤ����������ѹ��ˤ�ꡢ�鷺����®���ʤ�
-���Ȥ��褯�����ꡢ��ˤ�������ξ��ʤ��׻���ˡ�ˤʤ�ޤ���
-(Perl �ϰ����Ͼ�˷׻����ˤ���ư����������ͥ�褷�Ƥ��ޤ�����)
+Perl は、数の変換や基本計算(+ - * /)において、もし引数が整数ならば内部的に
+整数値を使うように努め、さらに、内部的に整数として記憶された結果を
+保持するように努めるようになりました。この変更により、わずかに速くなる
+ことがよく起こり、常により桁落ちの少ない計算方法になります。
+(Perl は以前は常に計算時には浮動小数点数を優先していました。)
 
 =head2 Arrays now always interpolate into double-quoted strings [561]
 
-(�������Ű�����ǰϤޤ줿ʸ����ˤ����ƾ��Ÿ�������褦�� [561])
+(配列は二重引用符で囲まれた文字列において常に展開されるように [561])
 
 =begin original
 
@@ -1253,11 +1253,11 @@ In versions 5.000 through 5.003, the error was
 
 =end original
 
-��Ű�����ǰϤޤ줿ʸ����ˤ����ơ��ɤ�ʤ��Ȥ�������Ȥ��Ƥ⡢�����
-Ÿ�������褦�ˤʤ�ޤ�����Perl 5 �ν���ΥС������Ǥϡ�ʸ����
-����ѥ��뤵�������ˤ������󤬸���Ƥ���Ф���ʸ����ˤ��������Ÿ������
-�⤷����Ƥ��ʤ������̿Ū�ʥ���ѥ�������顼��ȯ��������Ȥ���ư���
-���Ƥ��ޤ������С������ 5.000 ���� 5.003 �Ǥϡ����Υ��顼��
+二重引用符で囲まれた文字列において、どんなことが起こるとしても、配列は
+展開されるようになりました。Perl 5 の初期のバージョンでは、文字列が
+コンパイルされる以前にその配列が現れていればその文字列にその配列を展開し、
+もし現れていなければ致命的なコンパイル時エラーを発生させるという動作を
+していました。バージョン 5.000 から 5.003 では、そのエラーは
 
         Literal @example now requires backslash
 
@@ -1267,8 +1267,8 @@ In versions 5.004_01 through 5.6.0, the error was
 
 =end original
 
-(��ƥ�� @example �ϥХå�����å��夬ɬ�פˤʤ�ޤ���) �Ǥ�����
-�С������ 5.004_01 ���� 5.6.0 �Ǥϡ����Υ��顼��
+(リテラル @example はバックスラッシュが必要になりました) でした。
+バージョン 5.004_01 から 5.6.0 では、そのエラーは
 
         In string, @example now must be written as \@example
 
@@ -1281,10 +1281,10 @@ literal C<$> sign.
 
 =end original
 
-(ʸ������Ǥϡ�@example �� \@example �Ƚ񤫤ʤ���Фʤ�ʤ��ʤ�ޤ���) ��
-����������ϡ���ƥ��ε��� C<$> ���ߤ������ C<"Give me back my \$5"> ��
-ɬ���񤤤Ƥ���褦�ˡ���ƥ��ε��� C<@> ���ߤ������
-C<"fred\@example.com"> �Ƚ��ʤ�͡��˿Ȥ��դ������뤿��Τ�ΤǤ�����
+(文字列内では、@example は \@example と書かなければならなくなりました) で
+した。これは、リテラルの記号 C<$> が欲しければ C<"Give me back my \$5"> と
+必ず書いているように、リテラルの記号 C<@> が欲しければ
+C<"fred\@example.com"> と書く癖を人々に身に付けさせるためのものでした。
 
 =begin original
 
@@ -1295,10 +1295,10 @@ already.  The fatal error has been downgraded to an optional warning:
 
 =end original
 
-5.6.1 ����ϡ�C<@> ���椬��Ű�����ǰϤޤ줿ʸ������ˤ���ȡ���������
-���Ǥ˻Ȥ��Ƥ��뤫�������Ƥ��뤫�ɤ����˴ط��ʤ������������
-Ÿ�����뤳�Ȥ� I<ɬ��> ��ߤޤ�����̿Ū���顼�ϥ��ץ���ʥ�ηٹ��
-�ʲ�������ޤ���:
+5.6.1 からは、C<@> 記号が二重引用符で囲まれた文字列内にあると、その配列が
+すでに使われているか宣言されているかどうかに関係なく、その配列を
+展開することを I<必ず> 試みます。致命的エラーはオプショナルの警告に
+格下げされました:
 
         Possible unintended interpolation of @example in string
 
@@ -1311,14 +1311,14 @@ about the history here.
 
 =end original
 
-(�տޤ��ʤ���ǽ���Τ���ʸ������Ǥ� @example ��Ÿ��)
-����ϡ��⤷ C<@> �˥Хå�����å�����դ��ʤ���� C<"fred@example.com"> ��
-C<fred.com> ���Ѥ��������Ȥ����ٹ�Ǥ������ηаޤˤĤ��Ƥξܺ٤�
-http://www.plover.com/~mjd/perl/at-error.html �򻲾Ȥ��Ƥ���������
+(意図しない可能性のある文字列内での @example の展開)
+これは、もし C<@> にバックスラッシュを付けなければ C<"fred@example.com"> は
+C<fred.com> に変わるだろうという警告です。この経緯についての詳細は
+http://www.plover.com/~mjd/perl/at-error.html を参照してください。
 
 =head2 Miscellaneous Changes
 
-(����¾���ѹ���)
+(その他の変更点)
 
 =over 4
 
@@ -1331,9 +1331,9 @@ to AUTOLOAD subroutines and you can assign to the AUTOLOAD return value.
 
 =end original
 
-AUTOLOAD �Ϻ����ͤˤʤ��褦�ˤʤ�ޤ�����
-�Ĥޤ� AUTOLOAD ���֥롼����� :lvalue °�����ɲä����ꡢ
-AUTOLOAD �֤��ͤ������Ƥ�������褦�ˤʤ�ޤ�����
+AUTOLOAD は左辺値になれるようになりました。
+つまり AUTOLOAD サブルーチンに :lvalue 属性を追加したり、
+AUTOLOAD 返り値を割り当てたり出来るようになりました。
 
 =item *
 
@@ -1347,12 +1347,12 @@ but now it is correctly sizeof(IV) bytes long, (12345678 or 87654321).
 
 =end original
 
-$Config{byteorder}(�� config.h �ˤ������б����� BYTEORDER)��
-sizeof(long) �� 4 �� sizeof(IV) �� 8 �Υץ�åȥե�����Ǥ�
-�ְ�äƤ��ޤ������Х��ȥ��������� sizeof(long) �Х���Ĺ�����Ǥ���
-(1234 �� 4321)���������� sizeof(IV) �Х���Ĺ�ˤʤ�ޤ���
-(112345678 �� 87654321)��
-(����� Windows �ץ�åȥե�����ˤϱƶ���Ϳ���ޤ���)
+$Config{byteorder}(と config.h における対応する BYTEORDER)は
+sizeof(long) が 4 で sizeof(IV) が 8 のプラットフォームでは
+間違っていました。バイトオーダーは sizeof(long) バイト長だけでした
+(1234 か 4321)が、正しく sizeof(IV) バイト長になりました
+(112345678 か 87654321)。
+(これは Windows プラットフォームには影響を与えません。)
 
 =begin original
 
@@ -1362,9 +1362,9 @@ for more than one binary platform, and when cross-compiling.
 
 =end original
 
-�ޤ���$Config{byteorder} ��ưŪ�˻��Ф����褦�ˤʤ�ޤ���--
-����ˤ�ꡢʣ���ΥХ��ʥ�ץ�åȥե������ޤ�¹ԥ��᡼���Ǥ���
-"fat binaries"�䥯��������ѥ�����ˤ��趯�ˤʤ�ޤ�����
+また、$Config{byteorder} は動的に算出されるようになりました--
+これにより、複数のバイナリプラットフォームを含む実行イメージである
+"fat binaries"やクロスコンパイル時により頑強になりました。
 
 =item *
 
@@ -1375,8 +1375,8 @@ in multiple arguments.)
 
 =end original
 
-C<perl -d:Module=arg,arg,arg> �����Ѳ�ǽ�ˤʤ�ޤ�����
-(������ʣ���ΰ������Ϥ����Ȥ��Ǥ��ޤ���Ǥ�����)
+C<perl -d:Module=arg,arg,arg> が使用可能になりました。
+(以前は複数の引数を渡すことができませんでした。)
 
 =item *
 
@@ -1389,11 +1389,11 @@ C<do format()> you must write C<do &format()>.
 
 =end original
 
-C<do> �θ�����ñ�줬³����硢����ñ��ϥ�����ɤǤϤʤ����Ȥ�
-�ݾڤ����褦�ˤʤ�ޤ���(����� C<do q(foo.pl)> �� C<q> �Ȥ���
-̾���Υ��֥롼�����ƤӽФ����Ȥ���Х����ɤ�����Ǥ�)��
-�ĤޤꡢC<do format()> �ǤϤʤ� C<do &format()> �Ƚ񤫤ʤ���Фʤ�ʤ�
-���Ȥ��̣���ޤ���
+C<do> の後に裸の単語が続く場合、この単語はキーワードではないことが
+保証されるようになりました(これは C<do q(foo.pl)> が C<q> という
+名前のサブルーチンを呼び出そうとするバグを防ぐためです)。
+つまり、C<do format()> ではなく C<do &format()> と書かなければならない
+ことを意味します。
 
 =item *
 
@@ -1409,14 +1409,14 @@ removed/changed in future releases.)
 
 =end original
 
-�Ȥ߹��ߤ� dump() �ϸ��ߥ��ץ���ʥ�ʷٹ�Ǥ���
-C<dump() better written as��CORE::dump()>��Ф��褦�ˤʤ�ޤ�����
-����ϥǥե���Ȥ�C<dump(...)>�ˤ���Τϥ桼�����ˤ�ä�
-������줿(��ǽ���Τ���) C<sub dump> �Ȥ��ƤǤϤʤ�
-core ��Ф������Ǥ����Ȥ߹��ߤ� dump() �Ȥ��Ʋ�褵���ȸ�����̣�Ǥ���
-���Ԥ�ƤӽФ�����ˤ� C<&dump(...)> �Ȥ��Ʋ�������
-(dump() �Ȥ����������Τ���侩�Ȥ���Ƥ��ޤ��Τǡ�����Υ�꡼����������
-��ǽ�ʸ¤�õ�ѹ�����褦�ˤ��Ʋ�������)
+組み込みの dump() は現在オプショナルな警告である
+C<dump() better written as　CORE::dump()>を出すようになりました。
+それはデフォルトのC<dump(...)>によるものはユーザーによって
+定義された(可能性のある) C<sub dump> としてではなく
+core を出して中断する組み込みの dump() として解決されると言う意味です。
+前者を呼び出すためには C<&dump(...)> として下さい。
+(dump() という形式全体が非推奨とされていますので、将来のリリースに備えて
+可能な限り消去・変更するようにして下さい。)
 
 =item *
 
@@ -1429,10 +1429,10 @@ replacements to override these builtins.
 
 =end original
 
-chomp() �ڤ� chop() �ϥ����С��饤�ɲ�ǽ�ˤʤ�ޤ������������ʤ��顢
-�ץ��ȥ�����(C<prototype("CORE::chomp")> �ˤ�ä�Ϳ��������)��
-̤����ǡ���ͳ�Ϥ����ɽ�����뤳�Ȥ��Բ�ǽ�ǡ��Ȥ߹��ޤ�Ƥ����Τ�
-�����С��饤�ɤ���ʳ�����ˡ��������̵��������ȸ������Ȥ����դ��Ʋ�������
+chomp() 及び chop() はオーバーライド可能になりました。しかしながら、
+プロトタイプ(C<prototype("CORE::chomp")> によって与えられるもの)が
+未定義で、理由はそれを表現することは不可能で、組み込まれているものを
+オーバーライドする以外の方法が本当に無いからだと言うことに注意して下さい。
 
 =item *
 
@@ -1446,11 +1446,11 @@ L<perlembed>.
 
 =end original
 
-END �֥��å��� BEGIN �֥��å��� exit/die ���Ƥ�¹Ԥ����褦�ˤʤ�ޤ�����
-�����Ǥϡ�END �֥��å��μ¹Ԥ� PL_exit_flags & PERL_EXIT_DESTRUCT_END ��
-���椵���褦�ˤʤ�ޤ���������ˤ�ä��Ȥ߹��� Perl �Ǥ�
-�����������񤤤�ͭ���ˤʤ�ޤ�������� 5.10 �Ǥϥǥե���Ȥˤʤ�ͽ��Ǥ���
-L<perlembed> �򻲾Ȥ��Ƥ���������
+END ブロックは BEGIN ブロックで exit/die しても実行されるようになりました。
+内部では、END ブロックの実行は PL_exit_flags & PERL_EXIT_DESTRUCT_END で
+制御されるようになりました。これによって組み込み Perl での
+新しい振る舞いが有効になります。これは 5.10 ではデフォルトになる予定です。
+L<perlembed> を参照してください。
 
 =item *
 
@@ -1460,7 +1460,7 @@ Formats now support zero-padded decimal fields.
 
 =end original
 
-�ե����ޥåȤϥ�����ᤵ�줿���ͥե�����ɤ��б����ޤ�����
+フォーマットはゼロ埋めされた数値フィールドに対応しました。
 
 =item *
 
@@ -1473,10 +1473,10 @@ More details are in L</"Performance Enhancements">.
 
 =end original
 
-"���٤��ǤϤʤ�"�ΤǤ�����Perl �Υϥå��奭���ν���˰�¸���������ɤ�
-�񤯤��Ȥ���ǽ�Ǥ���(Data::Dumper ���ԤäƤ��ޤ�)��
-������"������"���르�ꥺ��Ǥϰ�ä��ϥå��奭���ν���ˤʤ�ޤ���
-���ܤ����� L</"Performance Enhancements"> �ˤ���ޤ���
+"すべきではない"のですが、Perl のハッシュキーの順序に依存したコードを
+書くことが可能でした(Data::Dumper が行っています)。
+新しい"一期一会"アルゴリズムでは違ったハッシュキーの順序になります。
+より詳しくは L</"Performance Enhancements"> にあります。
 
 =item *
 
@@ -1487,8 +1487,8 @@ In future releases this may become a fatal error.
 
 =end original
 
-lstat(FILEHANDLE) �Ȥ������ϰ�̣�������ʤ��ΤǷٹ��Ф��褦�ˤʤ�ޤ�����
-����Υ�꡼���Ǥ���̿Ū���顼�ˤʤ뤫�⤷��ޤ���
+lstat(FILEHANDLE) という操作は意味を成さないので警告を出すようになりました。
+将来のリリースでは致命的エラーになるかもしれません。
 
 =item *
 
@@ -1499,8 +1499,8 @@ caused File::Glob to be loaded for the first time, have been fixed. [561]
 
 =end original
 
-glob() ���ǽ�� File::Glob ������ɤ������װ��Ȥʤ�Ȥ��������ǡ�
-���ä���ʸ���顼����������뤳�Ȥ���������ޤ�����[561]
+glob() が最初に File::Glob をロードさせる要因となるという状況で、
+誤った構文エラーが生成されることが修正されました。[561]
 
 =item *
 
@@ -1511,9 +1511,9 @@ the lvalue subroutine feature still remains experimental.  [561+]
 
 =end original
 
-�����ͤΥ��֥롼���󤬥ꥹ�ȥ���ƥ����Ȥ� C<undef> ���֤����Ȥ�
-�����褦�ˤʤ�ޤ������������������ͥ��֥롼����ǽ��
-̤���¸�Ū�Ǥ���[561+}
+左辺値のサブルーチンがリストコンテキストで C<undef> を返すことが
+出来るようになりました。しかし、左辺値サブルーチン機能は
+未だ実験的です。[561+}
 
 =item *
 
@@ -1524,8 +1524,8 @@ restored (Perl had it earlier but it became lost in later releases.)
 
 =end original
 
-����줿�ٹ�"Can't declare ... dereference in my"�����褷�Ƥ��ޤ���
-(����� Perl �Ϥ��ηٹ��Ф��ޤ��������θ�Υ�꡼���Ǥϼ����Ƥ��ޤ�����)
+失われた警告"Can't declare ... dereference in my"が復活しています。
+(初期の Perl はその警告を出しますが、その後のリリースでは失われていました。)
 
 =item *
 
@@ -1536,8 +1536,8 @@ C<$^N>, which contains the most-recently closed group (submatch).
 
 =end original
 
-���������̤�����ɽ���ѿ���Ƴ������ޤ���:
-C<$^N> �ˤϤ�äȤ�Ƕ���Ĥ������롼��(��ʬ�ޥå�)�����Ƥ�����ޤ���
+新しい特別な正規表現変数が導入されました:
+C<$^N> にはもっとも最近の閉じたグループ(部分マッチ)の内容が入ります。
 
 =item *
 
@@ -1549,9 +1549,9 @@ C<import>. [561]
 
 =end original
 
-C<no Module;> �ϥ⥸�塼�뤬 unimport() �᥽�åɤ���äƤ��ʤ��ݤǤ⥨�顼��
-ȯ�������ޤ��󡣤���� C<use> �ο����񤤤� C<import> ����Ӥ���
-������Ƥ��뤫��Ǥ���[561]
+C<no Module;> はモジュールが unimport() メソッドを持っていない際でもエラーを
+発生させません。これは C<use> の振る舞いが C<import> と比較して
+類似しているからです。[561]
 
 =item *
 
@@ -1562,8 +1562,8 @@ is a NaN.  Previously the behaviour was unspecified.
 
 =end original
 
-������Ӥ���黻�ҤǤɤ��餫�Υ��ڥ��ɤ� NaN �ξ�� C<undef> ���֤��褦��
-�ʤ�ޤ����������Ϥ��ο����񤤤�����Ǥ�����
+数を比較する演算子でどちらかのオペランドが NaN の場合 C<undef> を返すように
+なりました。以前はその振る舞いが不定でした。
 
 =item *
 
@@ -1575,9 +1575,9 @@ see L<perlfunc/our>.
 
 =end original
 
-C<our> ��ʣ���Υ��󥿥ץ꥿�֤ǤɤΤ褦�˥������Х��ѿ�����ͭ����뤫��
-�ƶ���ڤܤ��¸�Ū�ǥ��ץ���ʥ��°�� C<unique> �������ǽ�ˤʤ�ޤ�����
-L<perlfunc/our> �򻲾Ȥ��Ƥ���������
+C<our> は複数のインタプリタ間でどのようにグローバル変数が共有されるかに
+影響を及ぼす実験的でオプショナルな属性 C<unique> を設定可能になりました。
+L<perlfunc/our> を参照してください。
 
 =item *
 
@@ -1588,7 +1588,7 @@ pop(), push(), shift(), splice(), unshift(). [561]
 
 =end original
 
-���˵󤲤��Ȥ߹��ߴؿ��ϥ����С��饤�ɲ�ǽ�ˤʤ�ޤ���: each(), keys(),
+次に挙げる組み込み関数はオーバーライド可能になりました: each(), keys(),
 pop(), push(), shift(), splice(), unshift() [561]
 
 =item *
@@ -1600,8 +1600,8 @@ apply repetition/count modifiers on the groups.
 
 =end original
 
-C<pack() / unpack()> �ϥƥ�ץ졼��ʸ���� C<()> �ǤޤȤ�ơ�
-���롼�פ��Ф��Ʒ����֤�/������Ƚ����Ҥ�Ŭ�ѤǤ���褦�ˤʤ�ޤ�����
+C<pack() / unpack()> はテンプレート文字を C<()> でまとめて、
+グループに対して繰り返し/カウント修飾子を適用できるようになりました。
 
 =item *
 
@@ -1613,10 +1613,10 @@ The template letters are C<j>, C<J>, C<F>, and C<D>.
 
 =end original
 
-C<pack() / unpack()> �� Perl �������ͥ����פǤ��� IV, UV, NV ��
-�����Ǥ���褦�ˤʤ�ޤ������ץ�åȥե����ब���ݡ��Ȥ��Ƥ����
-long double ������Ǥ��ޤ���
-�ƥ�ץ졼��ʸ���Ϥ��줾�� C<j>, C<J>, C<F>, C<D> �Ǥ���
+C<pack() / unpack()> は Perl 内部数値タイプである IV, UV, NV を
+処理できるようになりました。プラットフォームがサポートしていれば
+long double も処理できます。
+テンプレート文字はそれぞれ C<j>, C<J>, C<F>, C<D> です。
 
 =item *
 
@@ -1626,8 +1626,8 @@ C<pack('U0a*', ...)> can now be used to force a string to UTF8.
 
 =end original
 
-C<pack('U0a*', ...)> ��ʸ����� UTF-8 �˶������뤿��˻Ȥ���褦��
-�ʤ�ޤ�����
+C<pack('U0a*', ...)> は文字列を UTF-8 に強制するために使えるように
+なりました。
 
 =item *
 
@@ -1637,7 +1637,7 @@ my __PACKAGE__ $obj now works. [561]
 
 =end original
 
-my __PACKAGE__ $obj ��ư���褦�ˤʤ�ޤ�����[561]
+my __PACKAGE__ $obj が動作するようになりました。[561]
 
 =item *
 
@@ -1649,8 +1649,8 @@ returns the number of slept seconds.
 
 =end original
 
-sleep �����ÿ����֤� CORE::sleep() �Ȥϵդˡ�POSIX::sleep() ��
-(POSIX ��ɸ��Ǥ�������褦��)I<sleep ���ʤ��ä�>�ÿ����֤��褦�ˤʤ�ޤ�����
+sleep した秒数を返す CORE::sleep() とは逆に、POSIX::sleep() は
+(POSIX が標準でそうするように)I<sleep しなかった>秒数を返すようになりました。
 
 =item *
 
@@ -1661,8 +1661,8 @@ C<%\d+\$> and C<*\d+\$> syntaxes.  For example
 
 =end original
 
-printf() �� sprintf() �� C<%\d+\$> �� C<*\d+\$> �ȸ�����ʸ���Ѥ��뤳�Ȥˤ�ä�
-�ѥ�᡼�����¤��ؤ����Ǥ���褦�ˤʤ�ޤ������㤨�С�
+printf() と sprintf() は C<%\d+\$> と C<*\d+\$> と言う構文を用いることによって
+パラメータの並べ替えができるようになりました。例えば、
 
     print "%2\$s %1\$s\n", "foo", "bar";
 
@@ -1674,8 +1674,8 @@ of the parameters can vary.
 
 =end original
 
-��"bar foo\n"��ɽ�����ޤ������η����Ϲ�ݲ����줿���եȥ�������񤯺ݤ�
-�����Ȥʤꡢ����Ū�ˤϥѥ�᡼�����¤Ӥ��Ѳ������뤳�Ȥ��Ǥ��ޤ���
+は"bar foo\n"を表示します。この形式は国際化されたソフトウェアを書く際の
+助けとなり、一般的にはパラメータの並びを変化させることができます。
 
 =item *
 
@@ -1685,7 +1685,7 @@ The (\&) prototype now works properly. [561]
 
 =end original
 
-�ץ��ȥ�����(\&)��Ŭ�ڤ�Ư���褦�ˤʤ�ޤ�����
+プロトタイプ(\&)が適切に働くようになりました。
 
 =item *
 
@@ -1696,8 +1696,8 @@ prototype(\[$@%&]) is now available to implicitly create references
 
 =end original
 
-�ץ��ȥ�����(\[$@%&])�ϰ��ۤ˥�ե���󥹤�������뤳�Ȥ���ǽ�ˤʤ�ޤ���
-(tie() �Υ��󥿡��ե������򥨥ߥ�졼�Ȥ��������������Ǥ�)��
+プロトタイプ(\[$@%&])は暗黙にリファレンスを作成することが可能になりました
+(tie() のインターフェースをエミュレートしたい場合に便利です)。
 
 =item *
 
@@ -1711,12 +1711,12 @@ This is not a substitute for -T.>
 
 =end original
 
-���������ޥ�ɥ饤�󥪥ץ����Ǥ��� C<-t> �����Ѳ�ǽ�ˤʤ�ޤ�����
-����� C<-T>�� ����äȤ�����ʬ�ǡ�������ȿ����Ƕ�����λ
-����������˥쥭������ٹ��ȯ�������ޤ���
-B<����ϸŤ��쥬�����ʥ��ץꥱ�������Υ����ɤ�����ˤ����
-���Ū�ʥǥХå�����Τ�������ΤǤ��뤳�Ȥ��̣��������Ǥ���
--T ������ˤϤʤ�ޤ���>
+新しいコマンドラインオプションである C<-t> が使用可能になりました。
+これは C<-T>の ちょっとした弟分で、汚染違反の嵐で強制終了
+させる代わりにレキシカル警告を発生させます。
+B<これは古いレガシーなアプリケーションのコードを安全にする間
+一時的なデバッグするのを助けるものであることを意味するだけです。
+-T の代わりにはなりません。>
 
 =item *
 
@@ -1731,14 +1731,14 @@ become fatal errors so consider starting laundering now.
 
 =end original
 
-�����˴ؤ��뤽��¾�Υ˥塼���Ȥ��Ƥϡ�
-C<exec LIST> �� C<system LIST> �ϴ���������ȹͤ��뤳�Ȥ�
-�ʤ�ޤ���(C<exec @ARGV> ��ͤ��ƤߤƤ�������: ������ץ�������
-����������ǵ�ư�Ǥ��ޤ�)�������ƥ쥭������ٹ𲽤Ǥ�
-���Τ褦�ʷ��Ϸٹ��ȯ�������ޤ���
-���������ݾڤ��뤿��˰��������տ�����������٤��Ǥ���
-����Υ�꡼���Ǥ� Perl �Ϥ��Τ褦�ʷ�������̿Ū���顼�Ȥʤ�Τǡ�
-���Τ�����������Ƥ���Ƥ���������
+汚染に関するその他のニュースとしては、
+C<exec LIST> と C<system LIST> は危険すぎると考えることに
+なりました(C<exec @ARGV> を考えてみてください: あらゆるプログラムを
+あらゆる引数で起動できます)。そしてレキシカル警告化では
+このような形は警告を発生させます。
+正当性を保証するために引数を注意深く洗浄するべきです。
+将来のリリースでは Perl はこのような形式は致命的エラーとなるので、
+今のうちに洗浄を検討してください。
 
 =item *
 
@@ -1749,9 +1749,9 @@ methods (either own or inherited).
 
 =end original
 
-tie ���줿�ϥå���Υ��󥿡��ե������� EXISTS �� DELETE �᥽�åɤ�
-���äƤ��뤳�Ȥ��׵ᤵ���褦�ˤʤ�ޤ���(���켫�Ȥ��Ѿ�������оݤ�
-�ɤ��餫���Ǥ�)��
+tie されたハッシュのインターフェースは EXISTS と DELETE メソッドを
+持っていることが要求されるようになりました(それ自身か継承される対象の
+どちらかがです)。
 
 =item *
 
@@ -1762,7 +1762,7 @@ modify its target.
 
 =end original
 
-tr/// ��ñ��ʸ�������������ξ�硢�������åȤ��ѹ����ޤ���
+tr/// が単に文字を数えるだけの場合、ターゲットを変更しません。
 
 =item *
 
@@ -1773,8 +1773,8 @@ for details. [561]
 
 =end original
 
-untie() �� UNTIE() �եå���¸�ߤ���С������ƤӽФ��褦�ˤʤ�ޤ�����
-�ܺ٤� L<perltie> �򻲾Ȥ��Ƥ���������
+untie() は UNTIE() フックが存在すれば、それを呼び出すようになりました。
+詳細は L<perltie> を参照してください。
 
 =item *
 
@@ -1785,8 +1785,8 @@ file timestamps to the current time.
 
 =end original
 
-L<utime> �ϥե�����Υ����ॹ����פ򸽺ߤλ�����ѹ����뤿���
-C<utime undef, undef, @files> �򥵥ݡ��Ȥ���褦�ˤʤ�ޤ�����
+L<utime> はファイルのタイムスタンプを現在の時刻に変更するために
+C<utime undef, undef, @files> をサポートするようになりました。
 
 =item *
 
@@ -1798,9 +1798,9 @@ simply B<between digits>.
 
 =end original
 
-����Υ������������(��������С�)�˴ؤ���Υ롼��ϴ��¤���
-����ץ�ˤʤ�ޤ���: ñ��� B<�����δ�> �Ǥ����
-���������������ޤ�Ǥ⹽���ޤ���
+定数のアンダースコア(アンダーバー)に関するのルールは緩和され
+シンプルになりました: 単純に B<数字の間> であれば
+アンダースコアを含んでも構いません。
 
 =item *
 
@@ -1812,11 +1812,11 @@ where possible $^X is now set by asking the operating system.
 
 =end original
 
-$^X �ϡ�C �� argv[0](�ե�ѥ�̾���ޤޤ�Ƥ��ʤ����⤷��ޤ���)��
-��¸����ΤǤϤʤ������ڥ졼�ƥ��󥰥����ƥ���䤤��碌�뤳�Ȥ�
-���ꤹ��褦�ˤʤ�ޤ�����
-(Linux �Ǥ� F</proc/self/exe>��FreeBSD �Ǥ� F</proc/curproc/file> ��
-�ɤ߹��ߤޤ���)
+$^X は、C の argv[0](フルパス名が含まれていないかもしれません)に
+依存するのではなく、オペレーティングシステムに問い合わせることで
+設定するようになりました。
+(Linux では F</proc/self/exe>、FreeBSD では F</proc/curproc/file> を
+読み込みます。)
 
 =item *
 
@@ -1826,7 +1826,7 @@ A new variable, C<${^TAINT}>, indicates whether taint mode is enabled.
 
 =end original
 
-�������ѿ�, C<${^TAINT}>�ϱ��������å��⡼�ɤ�ͭ�����ɤ����򼨤��ޤ���
+新しい変数, C<${^TAINT}>は汚染チェックモードが有効かどうかを示します。
 
 =item *
 
@@ -1837,8 +1837,8 @@ the <FILEHANDLE> angle bracket operator.
 
 =end original
 
-�ӥ�ȥ���� readline() �������С��饤�ɲ�ǽ�ˤʤꡢ<FILEHANDLE>�Ȥ��ä�
-�ѳ�̤α黻�Ҥ�Ʊ���˥����С��饤�ɤ��ޤ���
+ビルトインの readline() がオーバーライド可能になり、<FILEHANDLE>といった
+角括弧の演算子も同時にオーバーライドします。
 
 =item *
 
@@ -1849,8 +1849,8 @@ The command-line options -s and -F are now recognized on the shebang
 
 =end original
 
-���ޥ�ɥ饤�󥪥ץ����Ǥ��� -s �� -F �� shebang(#!) �Ԥ�ǧ������
-�褦�ˤʤ�ޤ�����
+コマンドラインオプションである -s と -F は shebang(#!) 行を認識する
+ようになりました。
 
 =item *
 
@@ -1861,8 +1861,8 @@ elicits a new warning: C<Use of /c modifier is meaningless without /g>.
 
 =end original
 
-C</c> �ޥå������Ҥ� C</g> ��Ȥ鷺�˻Ȥä���硢�ٹ��ȯ�������ޤ�:
-C<Use of /c modifier is meaningless without /g>��
+C</c> マッチ修飾子を C</g> を使わずに使った場合、警告を発生させます:
+C<Use of /c modifier is meaningless without /g>。
 
 =begin original
 
@@ -1871,8 +1871,8 @@ C<Use of /c modifier is meaningless in s///>.
 
 =end original
 
-C</c> ���ִ����Ѥ�����硢C</g> �ȶ��˻ȤäƤ�
-C<Use of /c modifier is meaningless in s///> ��ȯ�������ޤ���
+C</c> を置換で用いた場合、C</g> と共に使っても
+C<Use of /c modifier is meaningless in s///> を発生させます。
 
 =begin original
 
@@ -1881,8 +1881,8 @@ in split>.
 
 =end original
 
-C</g> �� C<split> �ǻ��Ѥ����
-C<Use of /g modifier is meaningless in split> ��ȯ�������ޤ���
+C</g> を C<split> で使用すると
+C<Use of /g modifier is meaningless in split> を発生させます。
 
 =item *
 
@@ -1898,13 +1898,13 @@ context of the new thread, so all modifications are made in the new area.
 
 =end original
 
-C<CLONE> �ü쥵�֥롼�����ɲä���ޤ�����
-i����åɤǤϡ�����������åɤ��������줿�Ȥ��� Perl �ǡ�����
-ʣ������ޤ������� Perl �ǡ����ϼ�ưŪ�ˤ�ʣ������ޤ���
-C<CLONE> �ǡ��� Perl �ǡ�����ʣ���Ȥ��ä�ɬ�פʽ�����Ԥ����Ȥ��Ǥ��ޤ���
-C<CLONE> �ϥѥå�������������줿��Ѿ����줿�ꤹ����˰��ټ¹Ԥ���ޤ���
-����������åɤΥ���ƥ����Ȥ���ƤӽФ����Τǡ�
-���Ƥ��ѹ��Ͽ��������ꥢ�ǹԤ��ޤ���
+C<CLONE> 特殊サブルーチンが追加されました。
+iスレッドでは、新しいスレッドが作成されたときに Perl データが
+複製されますが、非 Perl データは自動的には複製されません。
+C<CLONE> で、非 Perl データの複製といった必要な処理を行うことができます。
+C<CLONE> はパッケージが定義されたり継承されたりする毎に一度実行されます。
+新しいスレッドのコンテキストから呼び出されるので、
+全ての変更は新しいエリアで行われます。
 
 =begin original
 
@@ -1912,17 +1912,17 @@ See L<perlmod>
 
 =end original
 
-L<perlmod> �򻲾Ȥ��Ƥ���������
+L<perlmod> を参照してください。
 
 =back
 
 =head1 Modules and Pragmata
 
-(�⥸�塼��ȥץ饰��)
+(モジュールとプラグマ)
 
 =head2 New Modules and Pragmata
 
-(�������⥸�塼��ȥץ饰��)
+(新しいモジュールとプラグマ)
 
 =over 4
 
@@ -1935,8 +1935,8 @@ by Arthur Bergman, allows a class to define attribute handlers.
 
 =end original
 
-Damian Conway �������������� Arthur Bergman �ˤ�ä��ݼ餵��Ƥ���
-C<Attribute::Handlers> �ϡ�°���ϥ�ɥ������Ǥ��ޤ���
+Damian Conway が作成し、現在 Arthur Bergman によって保守されている
+C<Attribute::Handlers> は、属性ハンドラを定義できます。
 
 =begin original
 
@@ -1954,9 +1954,9 @@ C<Attribute::Handlers> �ϡ�°���ϥ�ɥ������Ǥ��ޤ���
     use Attribute::Handlers;
     sub Wolf :ATTR(SCALAR) { print "howl!\n" }
 
-    # ���θ塢����package��MyPack��Ȥ������뤤�ϷѾ������...
+    # その後、あるpackageでMyPackを使う、あるいは継承すると...
 
-    my MyPack $Fluffy : Wolf; # °���ϥ�ɥ�Wolf���ƤӽФ���ޤ�
+    my MyPack $Fluffy : Wolf; # 属性ハンドラWolfが呼び出されます
 
 =begin original
 
@@ -1967,10 +1967,10 @@ See L<Attribute::Handlers>.
 
 =end original
 
-�ѿ��ȥ롼�����ξ���Ȥ�°���ϥ�ɥ����Ĥ��Ȥ���ǽ�Ǥ����ϥ�ɥ��
-���뷿(SCALAR, ARRAY, HASH, CODE �Τ����줫)����ͭ�Ǥ��뤫�����뤤��
-�ޤ��ˤ��Υ���ѥ���ե�����(BEGIN, CHECK, INIT, END �Τ����줫����ͭ�Ǥ���
-��ǽ��������ޤ���L<Attribute::Handlers> �򻲾Ȥ��Ƥ���������
+変数とルーチンの両方とも属性ハンドラを持つことが可能です。ハンドラは
+ある型(SCALAR, ARRAY, HASH, CODE のいずれか)に特有であるか、あるいは
+まさにそのコンパイルフェーズ(BEGIN, CHECK, INIT, END のいずれかに特有である
+可能性があります。L<Attribute::Handlers> を参照してください。
 
 =item *
 
@@ -1982,10 +1982,10 @@ The output is highly customisable.  See L<B::Concise>. [561+]
 
 =end original
 
-Stephen McCamant �ˤ�� C<B::Concise> �� Perl ʸˡ�ĥ꡼��
-�Ϥ��⤤�ơ����˴ؤ����ñ�ʾ����ɽ�����뤿���
-����������ѥ���Хå�����ɤǤ���
-���ϤϹ��٤˥������ಽ��ǽ�Ǥ���L<B::Concise> �򻲾Ȥ��Ƥ���������[561+]
+Stephen McCamant による C<B::Concise> は Perl 文法ツリーを
+渡り歩いて、操作に関する簡単な情報を表示するための
+新しいコンパイラバックエンドです。
+出力は高度にカスタム化可能です。L<B::Concise> を参照してください。[561+]
 
 =item *
 
@@ -1997,9 +1997,9 @@ and Math::BigRat backends).
 
 =end original
 
-Tels �ˤ�뿷���� bignum, bigint, bigrat �ץ饰�ޤ�
-(the Math::BigInt, Math::BigFloat, Math::BigRat ��
-�Хå�����ɤǻȤ����Ȥˤ�ä�)Ʃ��Ū�� bignum ���ݡ��Ȥ�������Ƥ��ޤ���
+Tels による新しい bignum, bigint, bigrat プラグマは
+(the Math::BigInt, Math::BigFloat, Math::BigRat を
+バックエンドで使うことによって)透過的な bignum サポートを実装しています。
 
 =item *
 
@@ -2010,9 +2010,9 @@ path for a class's ISA tree.  See L<Class::ISA>.
 
 =end original
 
-Sean Bruke �ˤ�� C<Class::ISA> �ϡ����饹�� ISA �ĥ꡼�Υ������ѥ���
-��ݡ��Ȥ��뤿��Υ⥸�塼��Ǥ���
-L<Class::ISA> �򻲾Ȥ��Ƥ���������
+Sean Bruke による C<Class::ISA> は、クラスの ISA ツリーのサーチパスを
+レポートするためのモジュールです。
+L<Class::ISA> を参照してください。
 
 =item *
 
@@ -2024,9 +2024,9 @@ but if not possible, the familiar Perl implementation is used.
 
 =end original
 
-C<Cwd> ��ʬΥ�������ʤ���Ĥ褦�ˤʤ�ޤ���; ��ǽ�Ǥ���� XS ��ĥ
-���Ȥ��(����Ϥ���®�ǡ��������ǡ����趯�Ǥ��뤳�Ȥ����ԤǤ��ޤ�)��
-�Բ�ǽ�Ǥ���С�����Ƥ���� Perl �μ������Ȥ��ޤ���
+C<Cwd> は分離した性格を持つようになりました; 可能であれば XS 拡張
+が使われ(これはより高速で、より安全で、より頑強であることが期待できます)、
+不可能であれば、慣れ親しんだ Perl の実装が使われます。
 
 =item *
 
@@ -2039,12 +2039,12 @@ versions of Perl.  See L<Devel::PPPort>.
 
 =end original
 
-Kenneth Albanowski �ˤ�äƺ������졢
-���ߤ� Paul Marquess �ˤ�ä��ݼ餵��Ƥ���
-C<Devel::PPPort> ���ɲä���ޤ�����
-���Υ⥸�塼��ϰۤʤ�С������֤Ǥ� XS �⥸�塼��ˤ�����
-�ܿ�������夵���뤿��� C<h2xs> �ˤ�ä�ͥ��Ū�˻��Ѥ���ޤ���
-L<Devel::PPPort> �򻲾Ȥ��Ƥ���������
+Kenneth Albanowski によって作成され、
+現在は Paul Marquess によって保守されている
+C<Devel::PPPort> が追加されました。
+このモジュールは異なるバージョン間での XS モジュールにおける
+移植性を向上させるために C<h2xs> によって優先的に使用されます。
+L<Devel::PPPort> を参照してください。
 
 =item *
 
@@ -2055,9 +2055,9 @@ Gisle Aas, has been added.  See L<Digest>.
 
 =end original
 
-Gisle Aas �ˤ�롢������������(�����å�����)��׻����뤿���
-�ե���ȥ���ɤΥ⥸�塼��Ǥ��� C<Digest> ���ɲä���ޤ�����
-L<Digest> �򻲾Ȥ��Ƥ���������
+Gisle Aas による、ダイジェスト(チェックサム)を計算するための
+フロントエンドのモジュールである C<Digest> が追加されました。
+L<Digest> を参照してください。
 
 =item *
 
@@ -2068,9 +2068,9 @@ RFC 1321, from Gisle Aas, has been added.  See L<Digest::MD5>.
 
 =end original
 
-Gisle Aas �ˤ�롢RFC 1321 �˽��ä� MD5 ������������(�����å�����)��
-���Ф�Ԥ� C<Digest::MD5> ���ɲä���ޤ�����
-L<Digest::MD5> �򻲾Ȥ��Ƥ���������
+Gisle Aas による、RFC 1321 に従って MD5 ダイジェスト(チェックサム)の
+算出を行う C<Digest::MD5> が追加されました。
+L<Digest::MD5> を参照してください。
 
     use Digest::MD5 'md5_hex';
 
@@ -2085,8 +2085,8 @@ included since its further use is discouraged.
 
 =end original
 
-����: ���ߴ����Τ���� C<MD5> �⥸�塼��Ϥ�����
-�Ȥ��븫���ߤ��ʤ��ʤä�����տ�Ū�˴ޤޤ�Ƥ��ޤ���
+注意: 過去互換性のための C<MD5> モジュールはこの先
+使われる見込みがなくなったため意図的に含まれていません。
 
 =begin original
 
@@ -2094,7 +2094,7 @@ See also L<PerlIO::via::QuotedPrint>.
 
 =end original
 
-L<PerlIO::via::QuotedPrint> �⻲�Ȥ��Ƥ���������
+L<PerlIO::via::QuotedPrint> も参照してください。
 
 =item *
 
@@ -2112,16 +2112,16 @@ which Encode will use if available).  See L<Encode>.
 
 =end original
 
-Nick Ing-Simmons �ˤ�äƺ������졢���� Dan Kogai �ˤ�ä��ݼ餵��Ƥ���
-C<Encode> �ϰۤʤ�ʸ�����󥳡��ǥ��󥰴֤��Ѵ�����
-�������󶡤��ޤ���Unicode, ISO-8859-1, ASCII �Υ��ݡ��Ȥ�
-����ѥ�����˥⥸�塼����˴ޤޤ�ޤ���¾�Τ����Ĥ��Υ��󥳡��ǥ���
-(ISO-8859, CP*/Win*, Mac, KOI8-R, 3 �̤�� EBCDIC, ����, ���ܸ�,
-�����ƴڹ�쥨�󥳡��ǥ��󥰤Τ褦�ʰ����Τ��)�ϴޤޤ�Ƥ���
-�¹Ի��˥����ɲ�ǽ�Ǥ���(���ڡ�����ͤ��ơ�
-�����礭������Υ��󥳡��ǥ��󥰤��ȼ��� CPAN �⥸�塼��Ǥ���
-Encode::HanExtra �Ȥ��Ƴ�Υ����Ƥ��ꡢEncode �����Ѳ�ǽ��
-������Ѥ���Ǥ��礦)��L<Encode> �򻲾Ȥ��Ƥ���������
+Nick Ing-Simmons によって作成され、現在 Dan Kogai によって保守されている
+C<Encode> は異なる文字エンコーディング間を変換する
+機構を提供します。Unicode, ISO-8859-1, ASCII のサポートは
+コンパイル時にモジュール内に含まれます。他のいくつかのエンコーディング
+(ISO-8859, CP*/Win*, Mac, KOI8-R, 3 通りの EBCDIC, 中国語, 日本語,
+そして韓国語エンコーディングのような一部のもの)は含まれており
+実行時にロード可能です。(スペースを考えて、
+一番大きい中国語のエンコーディングは独自の CPAN モジュールである
+Encode::HanExtra として隔離されており、Encode は利用可能な
+場合利用するでしょう)。L<Encode> を参照してください。
 
 =begin original
 
@@ -2130,8 +2130,8 @@ Any encoding supported by Encode module is also available to the
 
 =end original
 
-Encode �⥸�塼��ˤ�äƥ��ݡ��Ȥ��줿�����ʤ륨�󥳡��ǥ��󥰤�
-PerlIO �����Ѥ���Ƥ�����":encoding()"�ؤ����Ѳ�ǽ�Ǥ���
+Encode モジュールによってサポートされたいかなるエンコーディングも
+PerlIO が使用されている場合":encoding()"層が使用可能です。
 
 =item *
 
@@ -2143,9 +2143,9 @@ Michael Schwern.)  See L<Hash::Util>.
 
 =end original
 
-C<Hash::Util> �Ͽ����� I<���¥ϥå���> �ؤΥ��󥿡��ե������Ǥ���
-(Jeffrey Friedl, Nick Ing-Simmons, Michael Schwern �ˤ���ΤǤ���)
-L<Hash::Util> �򻲾Ȥ��Ƥ���������
+C<Hash::Util> は新しい I<制限ハッシュ> へのインターフェースです。
+(Jeffrey Friedl, Nick Ing-Simmons, Michael Schwern によるものです。)
+L<Hash::Util> を参照してください。
 
 =item *
 
@@ -2156,8 +2156,8 @@ See L<I18N::Langinfo>.
 
 =end original
 
-C<I18N::Langinfo> �ϥ������������䤤��碌�˻Ȥ��ޤ���
-L<I18N::Langinfo> �򻲾Ȥ��Ƥ���������
+C<I18N::Langinfo> はロケール情報の問い合わせに使えます。
+L<I18N::Langinfo> を参照してください。
 
 =item *
 
@@ -2168,8 +2168,8 @@ RFC3066-style language tags.  See L<I18N::LangTags>.
 
 =end original
 
-C<I18N::LangTags> �� Sean Bruke �ˤ���Τǡ�RFC3066 ���������
-���쥿���򰷤�����δؿ�������ޤ���L<I18N::LangTags> �򻲾Ȥ��Ƥ���������
+C<I18N::LangTags> は Sean Bruke によるもので、RFC3066 スタイルの
+言語タグを扱うための関数を持ちます。L<I18N::LangTags> を参照してください。
 
 =item *
 
@@ -2181,10 +2181,10 @@ See L<ExtUtils::Constant>.
 
 =end original
 
-Nicholas Clark �ˤ�� C<ExtUtils::Constant> ��
-��ĥ��񤯿ͤˤȤäƤο������ġ���ǡ�����ݡ��� C �إå������
-XS �����ɤ��������ޤ���
-L<ExtUtils::Constant> �򻲾Ȥ��Ƥ���������
+Nicholas Clark による C<ExtUtils::Constant> は
+拡張を書く人にとっての新しいツールで、インポート C ヘッダ定数の
+XS コードを生成します。
+L<ExtUtils::Constant> を参照してください。
 
 =item *
 
@@ -2195,9 +2195,9 @@ Filter::Util::Call.  See L<Filter::Simple>.
 
 =end original
 
-C<Filter::Simple> �� Damian Conway �ˤ���Τǡ��ե���ȥ���ɤ�
-Filter::Util::Call ���ñ�˰�����褦�ˤ�����ΤǤ���
-L<Filter::Simple> �򻲾Ȥ��Ƥ���������
+C<Filter::Simple> は Damian Conway によるもので、フロントエンドで
+Filter::Util::Call を簡単に扱えるようにしたものです。
+L<Filter::Simple> を参照してください。
 
 =begin original
 
@@ -2226,7 +2226,7 @@ L<Filter::Simple> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-    # MyFilter.pm���:
+    # MyFilter.pm内で:
 
     package MyFilter;
 
@@ -2238,16 +2238,16 @@ L<Filter::Simple> �򻲾Ȥ��Ƥ���������
 
     1;
 
-    # �桼�����Υ��������:
+    # ユーザーのコード内で:
 
     use MyFilter qr/red/ => 'green';
 
-    print "red\n";   # ���Υ����ɤϥե��륿����������졢"green\n"����Ϥ��ޤ�
-    print "bored\n"; # ���Υ����ɤϥե��륿����������졢"bogreen\n"����Ϥ��ޤ�
+    print "red\n";   # このコードはフィルターがかけられ、"green\n"を出力します
+    print "bored\n"; # このコードはフィルターがかけられ、"bogreen\n"を出力します
 
     no MyFilter;
 
-    print "red\n";   # ���Υ����ɤϥե��륿����������줺��"red\n"����Ϥ��ޤ�
+    print "red\n";   # このコードはフィルターがかけられず、"red\n"を出力します
 
 =item *
 
@@ -2259,9 +2259,9 @@ and directories in an easy, portable, and secure way.  See L<File::Temp>.
 
 =end original
 
-C<File::Temp> �� Tim Jenness �ˤ���Τǡ���ñ���İܿ���������
-�����奢����ˡ�ǥƥ�ݥ��ե�����ڤӥǥ��쥯�ȥ���뤳�Ȥ��ǽ�ˤ��ޤ���
-L<File::Temp> �򻲾Ȥ��Ƥ���������
+C<File::Temp> は Tim Jenness によるもので、簡単かつ移殖性があり
+セキュアな方法でテンポラリファイル及びディレクトリを作ることを可能にします。
+L<File::Temp> を参照してください。
 
 =item *
 
@@ -2273,10 +2273,10 @@ frontend Filter::Simple is to be preferred.  See L<Filter::Util::Call>.
 
 =end original
 
-C<Filter::Util::Call> �� Paul Marquess �ˤ���Τǡ�I<source filters> ��
-Perl �ǽ񤯤���Υե졼�������󶡤��ޤ�������ξ��ˤ�
-�ե���ȥ���ɤ� Filter::Simple ��Ȥ���ˡ�����ޤ�ޤ���
-<Filter::Util::Call> �򻲾Ȥ��Ƥ���������
+C<Filter::Util::Call> は Paul Marquess によるもので、I<source filters> を
+Perl で書くためのフレームワークを提供します。大抵の場合には
+フロントエンドの Filter::Simple を使う方法が好まれます。
+<Filter::Util::Call> を参照してください。
 
 =item *
 
@@ -2287,8 +2287,8 @@ of modules.
 
 =end original
 
-C<if> �� Ilya Zakharevich �ˤ���Τǡ��⥸�塼��ξ���դ�
-���󥯥롼�ɤ�¸����뤿��ο������ץ饰�ޤǤ���
+C<if> は Ilya Zakharevich によるもので、モジュールの条件付き
+インクルードを実現するための新しいプラグマです。
 
 =item *
 
@@ -2301,10 +2301,10 @@ and L<Net::Time>.
 
 =end original
 
-L<libnet> �� Graham Barr �ˤ���Τǡ��ͥåȥ���ץ�����ߥ󥰴�Ϣ��
-Perl5 �⥸�塼��򽸤᤿��ΤǤ���
-L<Net::FTP>, L<Net::NNTP>, L<Net::Ping>(libnet �ΰ����Ǥ�
-����ޤ��󤬡���Ϣ���Ƥ��ޤ�), L<Net::POP3>, L<Net::SMTP> �򻲾Ȥ��Ƥ���������
+L<libnet> は Graham Barr によるもので、ネットワークプログラミング関連の
+Perl5 モジュールを集めたものです。
+L<Net::FTP>, L<Net::NNTP>, L<Net::Ping>(libnet の一部では
+ありませんが、関連しています), L<Net::POP3>, L<Net::SMTP> を参照してください。
 
 =begin original
 
@@ -2313,8 +2313,8 @@ to configure it.
 
 =end original
 
-Perl �Υ��󥹥ȡ���Ǥ� libnet �����ꤵ��ޤ���;
-���ꤹ�뤿��ˤ� F<libnetcfg> ��ȤäƲ�������
+Perl のインストールでは libnet は設定されません;
+設定するためには F<libnetcfg> を使って下さい。
 
 =item *
 
@@ -2326,10 +2326,10 @@ See L<List::Util>.
 
 =end original
 
-C<List::Util> �� Graham Barr�ˤ���Τǡ�sum(), min(), first(),
-shuffle() �ʤɤΤ褦�ʥꥹ�Ȥ˴ؤ������Ū�ʥ桼�ƥ���ƥ����֥롼����
-���ޤä���ΤǤ���
-L<List::Util> �򻲾Ȥ��Ƥ���������
+C<List::Util> は Graham Barrによるもので、sum(), min(), first(),
+shuffle() などのようなリストに関する一般的なユーティリティサブルーチンが
+集まったものです。
+L<List::Util> を参照してください。
 
 =item *
 
@@ -2342,10 +2342,10 @@ as "fr" for France, "usd" for US Dollar, and "ja" for Japanese.
 
 =end original
 
-Neil Bowers �ˤ�� C<Locale::Constants>, C<Locale::Country>, C<Locale::Currency>
-C<Locale::Language>, L<Locale::Script> ���ɲä���ޤ�����
-�ե�󥹤� "fr"������ꥫ�ɥ�� "usd"�����ܤ� "ja" �Ȥ��ä���
-���ޤ��ޤʥ�������ɸ��Υ����ɤ��󶡤��ޤ���
+Neil Bowers による C<Locale::Constants>, C<Locale::Country>, C<Locale::Currency>
+C<Locale::Language>, L<Locale::Script> が追加されました。
+フランスは "fr"、アメリカドルは "usd"、日本は "ja" といった、
+さまざまなロケール標準のコードを提供します。
 
     use Locale::Country;
 
@@ -2360,7 +2360,7 @@ and L<Locale::Language>.
 =end original
 
 L<Locale::Constants>, L<Locale::Country>, L<Locale::Currency>,
-L<Locale::Language> �򻲾Ȥ��Ƥ���������
+L<Locale::Language> を参照してください。
 
 =item *
 
@@ -2373,10 +2373,10 @@ Journal #13, and republished here with kind permission.
 
 =end original
 
-Sean Burke �ˤ�� C<Locale::Maketext> �ϥ������饤���ե졼�����Ǥ���
-L<Locale::Maketext> �� L<Locale::Maketext::TPJ13> �򻲾Ȥ��Ƥ���������
-��Ԥϥ��եȥ������������饤���˴ؤ��뵭���ǡ�
-The Perl Journal #13 �˷Ǻܤ��졢�����θ��˺����ۤ���Ƥ��ޤ���
+Sean Burke による C<Locale::Maketext> はローカライズフレームワークです。
+L<Locale::Maketext> と L<Locale::Maketext::TPJ13> を参照してください。
+後者はソフトウェアローカライズに関する記事で、
+The Perl Journal #13 に掲載され、許諾の元に再配布されています。
 
 =item *
 
@@ -2387,9 +2387,9 @@ Math::BigFloat, from Tels.  See L<Math::BigRat>.
 
 =end original
 
-Tels ����� C<Math::BigRat> �� Math::BigInt �ڤ� Math::BigFloat �ȻȤ���
-�����ͭ�����򰷤�����Υ⥸�塼��Ǥ���
-L<Math::BigRat> �򻲾Ȥ��Ƥ���������
+Tels からの C<Math::BigRat> は Math::BigInt 及び Math::BigFloat と使う、
+巨大な有理数を扱うためのモジュールです。
+L<Math::BigRat> を参照してください。
 
 =item *
 
@@ -2400,9 +2400,9 @@ from Mark-Jason Dominus.  See L<Memoize>.
 
 =end original
 
-C<Memoize> �� Mark-Jason Dominus �ˤ���Τǡ�
-��������®�٤ΰ��������ˤ��ƴؿ���®�����ޤ���
-L<Memoize> �򻲾Ȥ��Ƥ���������
+C<Memoize> は Mark-Jason Dominus によるもので、
+サイズを速度の引き換えにして関数を速くします。
+L<Memoize> を参照してください。
 
 =item *
 
@@ -2414,9 +2414,9 @@ Extensions)>.
 
 =end original
 
-C<MIME::Base64> �� Gisle Aas �ˤ���Τǡ�
-RFC 2045 - I<MIME (Multipurpose Internet Mail Extensions)> �˽��ä�
-base64 ���󥳡��ɤ��ǽ�ˤ��ޤ���
+C<MIME::Base64> は Gisle Aas によるもので、
+RFC 2045 - I<MIME (Multipurpose Internet Mail Extensions)> に従って
+base64 エンコードを可能にします。
 
     use MIME::Base64;
 
@@ -2432,7 +2432,7 @@ See L<MIME::Base64>.
 
 =end original
 
-L<MIME::Base64> �򻲾Ȥ��Ƥ���������
+L<MIME::Base64> を参照してください。
 
 =item *
 
@@ -2444,10 +2444,10 @@ in quoted-printable encoding, as defined in RFC 2045 - I<MIME
 
 =end original
 
-C<MIME:QuotedPrint> �� Gisle Aas �ˤ���Τǡ�
-RFC 2045 - I<MIME(Multipurpose Internet Mail Extensions)> ��
-�������Ƥ��� quoted-printable encoding �ǥǡ����򥨥󥳡��ɤ��뤳�Ȥ�
-��ǽ�ˤ��ޤ���
+C<MIME:QuotedPrint> は Gisle Aas によるもので、
+RFC 2045 - I<MIME(Multipurpose Internet Mail Extensions)> で
+定義されている quoted-printable encoding でデータをエンコードすることを
+可能にします。
 
     use MIME::QuotedPrint;
 
@@ -2462,7 +2462,7 @@ See also L<PerlIO::via::QuotedPrint>.
 
 =end original
 
-<PerlIO::via::QuotedPrint> ��ʻ���ƻ��Ȥ��Ƥ���������
+<PerlIO::via::QuotedPrint> も併せて参照してください。
 
 =item *
 
@@ -2473,8 +2473,8 @@ See L<NEXT>.
 
 =end original
 
-C<NEXT> �� Damian Conway �ˤ���Τǡ��᥽�åɤκƥǥ����ѥå���
-����ε������饹�Ǥ���L<NEXT> �򻲾Ȥ��Ƥ���������
+C<NEXT> は Damian Conway によるもので、メソッドの再ディスパッチの
+ための擬似クラスです。L<NEXT> を参照してください。
 
 =item *
 
@@ -2485,8 +2485,8 @@ for open().
 
 =end original
 
-C<open> �� open() �Τ���Υǥե���Ȥ� I/O �ؤ򥻥åȤ��뤿���
-�������ץ饰�ޤǤ���
+C<open> は open() のためのデフォルトの I/O 層をセットするための
+新しいプラグマです。
 
 =item *
 
@@ -2499,11 +2499,11 @@ include PerlIO::Array and PerlIO::Code.  See L<PerlIO::scalar>.
 
 =end original
 
-C<PerlIO::scalar> �� Nick Ing-Simmons �ˤ���Τǡ�
-"�������" �� Perl ������Τ���ξ�Ҥ��� IO �������󶡤��ޤ���
-����Ϥޤ��������֥� PerlIO �ؤ���ȤʤäƤ��ޤ���
-����¾�ξ���β�ǽ���Ȥ��Ƥ� PerlIO::Array �� PerlIO::Code ������ޤ���
-L<PerlIO::scalar> �򻲾Ȥ��Ƥ���������
+C<PerlIO::scalar> は Nick Ing-Simmons によるもので、
+"インメモリ" な Perl スカラのための上述した IO 実装を提供します。
+これはまたローダブル PerlIO 層の例となっています。
+その他の将来の可能性としては PerlIO::Array と PerlIO::Code があります。
+L<PerlIO::scalar> を参照してください。
 
 =item *
 
@@ -2515,9 +2515,9 @@ in Perl code).
 
 =end original
 
-C<PerlIO::via> �� Nick Ing-Simmons �ˤ���Τ� PerlIO �ؤȤ���
-�����񤤡�(ŵ��Ū�ˤ� Perl �����ɤǼ������줿) ���饹���󶡤����
-PerlIO �ؤε�ǽ���åפ��ޤ���
+C<PerlIO::via> は Nick Ing-Simmons によるもので PerlIO 層として
+振る舞い、(典型的には Perl コードで実装された) クラスで提供される
+PerlIO 層の機能をラップします。
 
 =item *
 
@@ -2528,8 +2528,8 @@ of a C<PerlIO::via> class:
 
 =end original
 
-C<PerlIO::via::QuotedPrint> �� Elizabeth Mattijsen �ˤ���Τǡ�
-C<PerlIO::via> ���饹�ΰ���Ǥ�:
+C<PerlIO::via::QuotedPrint> は Elizabeth Mattijsen によるもので、
+C<PerlIO::via> クラスの一例です:
 
     use PerlIO::via::QuotedPrint;
     open($fh,">:via(QuotedPrint)",$path);
@@ -2541,8 +2541,8 @@ Quoted-Printable.  See L<PerlIO::via> and L<PerlIO::via::QuotedPrint>.
 
 =end original
 
-����ϼ�ưŪ�� C<$fh> �ؤ����Ƥν��Ϥ� Quoted-Printable �˥���С��Ȥ��ޤ���
-L<PerlIO::via> �ڤ� L<PerlIO::via::QuotedPrint> �򻲾Ȥ��Ƥ���������
+これは自動的に C<$fh> への全ての出力を Quoted-Printable にコンバートします。
+L<PerlIO::via> 及び L<PerlIO::via::QuotedPrint> を参照してください。
 
 =item *
 
@@ -2554,8 +2554,8 @@ perlpodspec.
 
 =end original
 
-Russ Allbery �ˤ�롢������ podpodspec ��ǵ��Ҥ���Ƥ��� LZ<><> ��󥯤�
-�ѡ������뤿��� C<Pod::ParseLink> ���ɲä���ޤ�����
+Russ Allbery による、新しい podpodspec 内で記述されている LZ<><> リンクを
+パースするための C<Pod::ParseLink> が追加されました。
 
 =item *
 
@@ -2567,9 +2567,9 @@ See L<Pod::Text::Overstrike>. [561+]
 
 =end original
 
-Joe Smith �ˤ�� C<Pod::Text::Overstrike> ���ɲä���ޤ�����
-POD �ǡ�����ե����ޥåȤ��줿 overstrike ʸ�Ϥ˥���С��Ȥ��ޤ���
-L<Pod::Text::Overstrike> �򻲾Ȥ��Ƥ���������[561+]
+Joe Smith による C<Pod::Text::Overstrike> が追加されました。
+POD データをフォーマットされた overstrike 文章にコンバートします。
+L<Pod::Text::Overstrike> を参照してください。[561+]
 
 =item *
 
@@ -2580,9 +2580,9 @@ such as blessed(), reftype(), and tainted().  See L<Scalar::Util>.
 
 =end original
 
-C<Scalar::Util> �� blessed(), reftype(), tainted() �Τ褦�ʡ�
-����Ū�˻Ȥ��륹���顼���֥롼��������꽸�᤿��ΤǤ���
-L<Scalar::Util> �򻲾Ȥ��Ƥ���������
+C<Scalar::Util> は blessed(), reftype(), tainted() のような、
+一般的に使われるスカラーサブルーチンを選り集めたものです。
+L<Scalar::Util> を参照してください。
 
 =item *
 
@@ -2592,7 +2592,7 @@ C<sort> is a new pragma for controlling the behaviour of sort().
 
 =end original
 
-C<sort> �� sort() �ο����񤤤����椹�뿷�����ץ饰�ޤǤ���
+C<sort> は sort() の振る舞いを制御する新しいプラグマです。
 
 =item *
 
@@ -2609,16 +2609,16 @@ restricted hashes.  See L<Storable>.
 
 =end original
 
-C<Storable> �� Perl �ǡ������®�ǥ���ѥ��ȤʥХ��ʥ�ե����ޥåȤ�
-�ե��������¸�ڤӥե����뤫���ɤ߹��ळ�Ȥǡ�
-Perl �ǡ�����¤�˱�³����Ϳ���ޤ���
-Storable �� Perl �ǡ�����¤��ľ�󲽤���Τǡ�
-����ˤ�äƿ�������Ū�ʥǡ�����¤�򥳥ԡ����뤳�Ȥ�����ޤ���
-Storable �� Raphael Manfredi ���������ޤ�������
-���ߤ� Abhijit Menon-Sen �ˤ�ä��ݼ餵��Ƥ��ޤ���
-Storable �� ��Ĥο������ϥå��嵡ǽ�Ǥ��� Unicode ������
-���¥ϥå�������򤹤�褦�˳�ĥ����ޤ�����
-L<Storable> �򻲾Ȥ��Ƥ���������
+C<Storable> は Perl データを高速でコンパクトなバイナリフォーマットで
+ファイルに保存及びファイルから読み込むことで、
+Perl データ構造に永続性を与えます。
+Storable が Perl データ構造を直列化するので、
+これによって深い階層的なデータ構造をコピーすることが出来ます。
+Storable は Raphael Manfredi が作成しましたが、
+現在は Abhijit Menon-Sen によって保守されています。
+Storable は 二つの新しいハッシュ機能である Unicode キーと
+制限ハッシュを理解するように拡張されました。
+L<Storable> を参照してください。
 
 =item *
 
@@ -2628,7 +2628,7 @@ C<Switch>, by Damian Conway, has been added.  Just by saying
 
 =end original
 
-Damian Conway �ˤ�� C<Switch> ���ɲä���ޤ�����ñ��:
+Damian Conway による C<Switch> が追加されました。単に:
 
     use Switch;
 
@@ -2638,7 +2638,7 @@ you have C<switch> and C<case> available in Perl.
 
 =end original
 
-��������뤳�Ȥˤ�ä� C<switch> �� C<case> �� Perl �����Ѳ�ǽ�ˤʤ�ޤ���
+と宣言することによって C<switch> と C<case> が Perl で利用可能になります。
 
     use Switch;
 
@@ -2662,7 +2662,7 @@ See L<Switch>.
 
 =end original
 
-L<Switch> �򻲾Ȥ��Ƥ���������
+L<Switch> を参照してください。
 
 =item *
 
@@ -2673,9 +2673,9 @@ test scripts, more extensive than Test::Simple.  See L<Test::More>.
 
 =end original
 
-Michael Schwern �ˤ�� C<Test::More> �� �ƥ��ȥ�����ץȤ�񤯤����
-�ե졼�����ΰ��ǡ�Test::Simple ����ĥ����Ƥ��ޤ���
-L<Test::More> �򻲾Ȥ��Ƥ���������
+Michael Schwern による C<Test::More> は テストスクリプトを書くための
+フレームワークの一種で、Test::Simple より拡張されています。
+L<Test::More> を参照してください。
 
 =item *
 
@@ -2686,8 +2686,8 @@ tests.   See L<Test::Simple>.
 
 =end original
 
-C<Test::Simple> �� Michael Schwern �ˤ��ƥ��Ȥ�񤯤���δ��äȤʤ�
-�桼�ƥ���ƥ��Ǥ���L<Test::Simple> �򻲾Ȥ��Ƥ���������
+C<Test::Simple> は Michael Schwern によるテストを書くための基礎となる
+ユーティリティです。L<Test::Simple> を参照してください。
 
 =item *
 
@@ -2698,8 +2698,8 @@ delimited text sequences from strings.
 
 =end original
 
-ʸ���󤫤���ڤ�줿��Ϣ�Υƥ����Ȥ�Ÿ�����뤿��Ρ�
-Damian Conway �ˤ�� C<Text::Balanced> ���ɲä���ޤ�����
+文字列から区切られた一連のテキストを展開するための、
+Damian Conway による C<Text::Balanced> が追加されました。
 
     use Text::Balanced 'extract_delimited';
 
@@ -2711,7 +2711,7 @@ $a will be "'never say never'", $b will be ', he never said'.
 
 =end original
 
-$a ��"'never say never'"�ˤʤꡢ $b ��', he never said'�ˤʤ�Ǥ��礦��
+$a は"'never say never'"になり、 $b は', he never said'になるでしょう。
 
 =begin original
 
@@ -2723,11 +2723,11 @@ parsing algorithms.  See L<Text::Balanced>.
 
 =end original
 
-extract_delimited() �˲ä��ơ�extract_quotelike(), extract_variable(),
+extract_delimited() に加えて、extract_quotelike(), extract_variable(),
 extract_tagged(), extract_multople(), gen_delimited_pat(),
-gen_extract_tagged() ��¸�ߤ��ޤ��������ˤ�äơ�
-���ȯŸ�����ѡ����Υ��르�ꥺ���������뤳�Ȥ���ǽ�ˤʤ�ޤ���
-L<Text::Balanced> �򻲾Ȥ��Ƥ���������
+gen_extract_tagged() も存在します。これらによって、
+より発展したパースのアルゴリズムを実装することが可能になります。
+L<Text::Balanced> を参照してください。
 
 =item *
 
@@ -2741,12 +2741,12 @@ L<threads::shared>, and L<perlthrtut>.
 
 =end original
 
-Arthur Bergman �ˤ�� C<threads>�ϡ����󥿥ץ꥿����åɤؤ�
-���󥿡��ե������Ǥ������󥿥ץ꥿����å�(i����å�)�� Perl5.6 ��Ƴ�����줿
-����������åɥ�ǥ�Ǥ�������ĥ��ǽ��񤯿ͤ��Ф�������������
-���󥿡��ե������Τߤ������ѤǤ��ޤ���Ǥ���
-(�ޤ���Win32 �� Perl �Ǥ� C<fork()> �Υ��ߥ�졼�����Τ���Τ�ΤǤ���)��
-L<threads>, L<threads::shared>, L<perlthrtut> �򻲾Ȥ��Ƥ���������
+Arthur Bergman による C<threads>は、インタプリタスレッドへの
+インターフェースです。インタプリタスレッド(iスレッド)は Perl5.6 で導入された
+新しいスレッドモデルでしたが拡張機能を書く人に対して内部形式の
+インターフェースのみしか利用できませんでした
+(また、Win32 の Perl では C<fork()> のエミュレーションのためのものでした)。
+L<threads>, L<threads::shared>, L<perlthrtut> を参照してください。
 
 =item *
 
@@ -2757,9 +2757,9 @@ interpreter threads.  See L<threads::shared>.
 
 =end original
 
-C<threads::shared> �� Artur Bergman �ˤ���ΤǤ��������󥿥ץ꥿����åɤ�
-�ǡ�����ͭ���뤳�Ȥ��ǽ�ˤ��ޤ���
-L<threads::shared>�򻲾Ȥ��Ƥ���������
+C<threads::shared> は Artur Bergman によるものですが、インタプリタスレッドで
+データを共有することを可能にします。
+L<threads::shared>を参照してください。
 
 =item *
 
@@ -2770,9 +2770,9 @@ lines of a file.  See L<Tie::File>.
 
 =end original
 
-C<Tie::File> �� Mark-Jason Dominus �ˤ���Τǡ�
-Perl �������ե�����ιԤȴ�Ϣ�դ��ޤ���
-L<Tie::File> �򻲾Ȥ��Ƥ���������
+C<Tie::File> は Mark-Jason Dominus によるもので、
+Perl の配列をファイルの行と関連付けます。
+L<Tie::File> を参照してください。
 
 =item *
 
@@ -2783,9 +2783,9 @@ See L<Tie::Memoize>.
 
 =end original
 
-C<Tie::Memoize> �� Ilya Zakharevich �ˤ���Τǡ�
-����ǥޥ�ɤ��ɤ߹��ޤ��ϥå�����󶡤��ޤ���
-L<Tie::Memoize> �򻲾Ȥ��Ƥ���������
+C<Tie::Memoize> は Ilya Zakharevich によるもので、
+オンデマンドで読み込まれるハッシュを提供します。
+L<Tie::Memoize> を参照してください。
 
 =item *
 
@@ -2797,10 +2797,10 @@ within Tie::RefHash.  See L<Tie::RefHash>.
 
 =end original
 
-C<Tie::RefHash::Nestable> �� Edward Avis �ˤ���Τǡ��ϥå����
-��ե���󥹤��Ǽ���뤳�Ȥ��ǽ�ˤ��ޤ�(ɸ��� Tie::RefHash �Ȥ�
-�ۤʤ��ΤǤ�)���ܥ⥸�塼��� Tie::Refhash �˴ޤޤ�Ƥ��ޤ���
-L<Tie::RefHash> �򻲾Ȥ��Ƥ���������
+C<Tie::RefHash::Nestable> は Edward Avis によるもので、ハッシュの
+リファレンスを格納することを可能にします(標準の Tie::RefHash とは
+異なるものです)。本モジュールは Tie::Refhash に含まれています。
+L<Tie::RefHash> を参照してください。
 
 =item *
 
@@ -2811,9 +2811,9 @@ timing (ualarm, usleep, and gettimeofday).  See L<Time::HiRes>.
 
 =end original
 
-C<Time::HiRes> �� Douglas E. Wegcheid �ˤ���Τǡ������٤�
-�������(ualarm, usleep, gettimeofday)���󶡤��ޤ���
-L<Time::HiRes> �򻲾Ȥ��Ƥ���������
+C<Time::HiRes> は Douglas E. Wegcheid によるもので、高精度の
+時間操作(ualarm, usleep, gettimeofday)を提供します。
+L<Time::HiRes> を参照してください。
 
 =item *
 
@@ -2824,9 +2824,9 @@ Database.  See L<Unicode::UCD>.
 
 =end original
 
-C<Unicode::UCD> �� Unicode ʸ���Υǡ����١����ؤΥ����꡼��
-���󥿡��ե��������󶡤��ޤ���
-L<Unicode::UCD> �򻲾Ȥ��Ƥ���������
+C<Unicode::UCD> は Unicode 文字のデータベースへのクエリーの
+インターフェースを提供します。
+L<Unicode::UCD> を参照してください。
 
 =item *
 
@@ -2838,9 +2838,9 @@ See L<Unicode::Collate>.
 
 =end original
 
-C<Unicode::Collate> �� SADAHIRO Tomoyuki �ˤ���Τǡ�Unicode ʸ�����
-�����Ȥ��뤿��� UCA(Unicode Collation Algorithm) �μ����Ǥ���
-L<Unicode::Collate> �򻲾Ȥ��Ƥ���������
+C<Unicode::Collate> は SADAHIRO Tomoyuki によるもので、Unicode 文字列を
+ソートするための UCA(Unicode Collation Algorithm) の実装です。
+L<Unicode::Collate> を参照してください。
 
 =item *
 
@@ -2851,9 +2851,9 @@ Unicode normalization forms.  See L<Unicode::Normalize>.
 
 =end original
 
-C<Unicode::Normalize> �� SADAHIRO Tomoyuki �ˤ���Τǡ�
-���ޤ��ޤ� Unicode ����������ˡ��������Ƥ��ޤ���
-L<Unicode::Normalize> �򻲾Ȥ��Ƥ���������
+C<Unicode::Normalize> は SADAHIRO Tomoyuki によるもので、
+さまざまな Unicode の正規化方法を実装しています。
+L<Unicode::Normalize> を参照してください。
 
 =item *
 
@@ -2865,9 +2865,9 @@ basic data types from XS.
 
 =end original
 
-C<XS::APItest> �� Tim Jenness �ˤ���Τǡ�XS API ��ؤ֤���Υƥ��ȳ�ĥ�Ǥ���
-���ߤΤȤ��� C<printf()> �Τߤ��ƥ��Ȥ���Ƥ��ޤ�:
-XS ���餵�ޤ��ޤʴ��ܥǡ�������Ϥ�����ˡ�Ǥ���
+C<XS::APItest> は Tim Jenness によるもので、XS API を学ぶためのテスト拡張です。
+現在のところ C<printf()> のみがテストされています:
+XS からさまざまな基本データを出力する方法です。
 
 =item *
 
@@ -2879,16 +2879,16 @@ for extension writers.
 
 =end original
 
-C<XS::Typemap> �� Tim Jenness �ˤ���Τ� XS �����ץޥåפ�
-�ؤ֤���Υƥ��ȳ�ĥ�Ǥ���
-���⥤�󥹥ȡ��뤵��ޤ��󤬡������ɤϳ�ĥ��񤯿͡��ˤȤäƤ�
-�ؤֲ��ͤΤ����ΤǤ���
+C<XS::Typemap> は Tim Jenness によるもので XS タイプマップを
+学ぶためのテスト拡張です。
+何もインストールされませんが、コードは拡張を書く人々にとっては
+学ぶ価値のあるものです。
 
 =back
 
 =head2 Updated And Improved Modules and Pragmata
 
-(�����ޤ��ϲ������줿�⥸�塼��ȥץ饰��)
+(更新または改善されたモジュールとプラグマ)
 
 =over 4
 
@@ -2904,8 +2904,8 @@ Term::ANSIColor, Test, Text-Tabs+Wrap.
 
 =end original
 
-�ʲ�����Ω���ƥ��ݡ��Ȥ���Ƥ���⥸�塼�뤬
-CPAN ����ǿ��ΥС������˹�������ޤ���:
+以下の独立してサポートされているモジュールが
+CPAN から最新のバージョンに更新されました:
 CGI, CPAN, DB_File, File::Spec, File::Temp,
 Getopt::Long, Math::BigFloat, Math::BigInt, the podlators bundle
 (Pod::Man, Pod::Text), Pod::LaTeX [561+], Pod::Parser, Storable,
@@ -2919,7 +2919,7 @@ attributes::reftype() now works on tied arguments.
 
 =end original
 
-attributes::reftype() �� tie ���줿������ư���褦�ˤʤ�ޤ�����
+attributes::reftype() は tie された引数で動作するようになりました。
 
 =item *
 
@@ -2929,8 +2929,8 @@ AutoLoader can now be disabled with C<no AutoLoader;>.
 
 =end original
 
-AutoLoader �� C<no AutoLoader;> �ˤ�ä�̵���ˤ��뤳�Ȥ�
-��ǽ�ˤʤ�ޤ�����
+AutoLoader は C<no AutoLoader;> によって無効にすることが
+可能になりました。
 
 =item *
 
@@ -2943,10 +2943,10 @@ out.
 
 =end original
 
-B::Deparse �� Robin Houston �ˤ�ä��礭����ĥ����ޤ�����
-�ۤȤ�����ƤΥƥ��ȥ������Ȥ�եѡ����Ǥ���褦�ˤʤ�ޤ���
-(�ƥ��Ȥ���������ޤޤǤ�)��
-���������� make �������åȤ� "test.deparse" �Ǥ���
+B::Deparse は Robin Houston によって大きく拡張されました。
+ほとんど全てのテストスイートを逆パースできるようになりました
+(テストは成功するままです)。
+これを試すための make ターゲットは "test.deparse" です。
 
 =item *
 
@@ -2958,9 +2958,9 @@ are reported independently of @ISA, by Ben Tilly.
 
 =end original
 
-Carp �Ϥ��褤���󥿡��ե������ɥ�����Ȥ��դ���
-@ISA ����Ω���ƥ��顼���ɤ�����𤵤�뤫���ɲä����椹�뤿���
-@CARP_NOT ���󥿡��ե������� Ben Tilly �ˤ�ä��ɲä���ޤ�����
+Carp はよりよいインターフェースドキュメントが付き、
+@ISA と独立してエラーがどこで報告されるかを追加で制御するための
+@CARP_NOT インターフェースが Ben Tilly によって追加されました。
 
 =item *
 
@@ -2970,7 +2970,7 @@ Class::Struct can now define the classes in compile time.
 
 =end original
 
-Class::Struct �ϥ���ѥ�����˥��饹������Ǥ���褦�ˤʤ�ޤ�����
+Class::Struct はコンパイル時にクラスを定義できるようになりました。
 
 =item *
 
@@ -2981,8 +2981,8 @@ is called with an array/hash element as the B<sole> argument.
 
 =end original
 
-Class::Struct �ϥ��������� B<ñ���> ����/�ϥå�������Ǥΰ�����ȼ�äơ�
-�ƤӽФ��줿��硢��������/�ϥå�������Ǥ������Ƥޤ���
+Class::Struct はアクセサが B<単一で> 配列/ハッシュの要素の引数を伴って、
+呼び出された場合、その配列/ハッシュの要素を割り当てます。
 
 =item *
 
@@ -2992,7 +2992,7 @@ The return value of Cwd::fastcwd() is now tainted.
 
 =end original
 
-Cwd::fastcwd() ���֤��ͤϱ��������褦�ˤʤ�ޤ�����
+Cwd::fastcwd() の返り値は汚染されるようになりました。
 
 =item *
 
@@ -3002,7 +3002,7 @@ Data::Dumper now has an option to sort hashes.
 
 =end original
 
-Data::Dumper �ˤϥϥå���򥽡��Ȥ��륪�ץ���󤬤Ĥ��ޤ�����
+Data::Dumper にはハッシュをソートするオプションがつきました。
 
 =item *
 
@@ -3013,8 +3013,8 @@ using B::Deparse.
 
 =end original
 
-Data::Dumper �ˤ� B::Deparse ��Ȥä������ɥ�ե���󥹤����פ���
-���ץ�����դ��ޤ�����
+Data::Dumper には B::Deparse を使ったコードリファレンスをダンプする
+オプションが付きました。
 
 =item *
 
@@ -3025,8 +3025,8 @@ other improvements.
 
 =end original
 
-DB_File �Ͽ������С������� Berkeley DB ���б�����
-���ޤ��ޤʲ��ɤ�Ԥ��ޤ�����
+DB_File は新しいバージョンの Berkeley DB に対応し、
+さまざまな改良も行われました。
 
 =item *
 
@@ -3038,9 +3038,9 @@ compiled with debugging).
 
 =end original
 
-Devel::Peek �� Perl �Υ�������Τ���Υ��󥿡��ե�������
-�ɲä���ޤ���(����� perl �� malloc ��ȤäƤ��ơ�
-�ǥХå��⡼�ɤǥ���ѥ��뤵��Ƥ���Ȥ��ˤΤ�ư��ޤ�)��
+Devel::Peek に Perl のメモリ状況のためのインターフェースが
+追加されました(これは perl の malloc を使っていて、
+デバッグモードでコンパイルされているときにのみ動作します)。
 
 =item *
 
@@ -3051,8 +3051,8 @@ hit by saying
 
 =end original
 
-English �⥸�塼��ϰʲ��Τ褦�˽񤯤��Ȥ���ǽ�˱ƶ���
-Ϳ�����˻Ȥ����Ȥ��Ǥ���褦�ˤʤ�ޤ�����
+English モジュールは以下のように書くことで性能に影響を
+与えずに使うことができるようになりました。
 
 	use English '-no_match_vars';
 
@@ -3064,9 +3064,9 @@ C<@LAST_MATCH_END> English aliases for C<@-> and C<@+>.
 
 =end original
 
-(�����������Τ��� C<$`>, C<$&>, or C<$'> ��Ȥ�ʤ����Ȥ��ꤷ�Ƥ��ޤ���)
-�ޤ���C<@-> �� C<@+> ����̾�Ȥ��� C<@LAST_MATCH_START> ��
-C<@LAST_MATCH_END> ��Ƴ������ޤ�����
+(もちろん、問題のある C<$`>, C<$&>, or C<$'> を使わないことを仮定しています。)
+また、C<@-> と C<@+> の別名として C<@LAST_MATCH_START> と
+C<@LAST_MATCH_END> が導入されました。
 
 =item *
 
@@ -3079,9 +3079,9 @@ enjoy the fixes.
 
 =end original
 
-ExtUtils::MakeMaker �������˥��꡼�󥢥åפ��졢��������ޤ�����
-��ĥ���줿�С������� Perl �ΰ����Υ�꡼���ˤ�Хå��ݡ��Ȥ��졢
-CPAN ����Ͽ���줿�Τǡ������Υ�꡼���Ǥ⽤��������Ǥ��ޤ���
+ExtUtils::MakeMaker は大幅にクリーンアップされ、修正されました。
+拡張されたバージョンは Perl の以前のリリースにもバックポートされ、
+CPAN に登録されたので、以前のリリースでも修正を享受できます。
 
 =item *
 
@@ -3094,11 +3094,11 @@ for more details.
 
 =end original
 
-Makefile.PL �ˤ����� WriteMakefile() �ΰ����ϰ���������տ�����
-���Τʥ����å���Ԥ��褦�ˤʤ�ޤ�����
-����ϥ⥸�塼�뤬���󥹥ȡ��뤵���Ȥ�
-�����ʷٹ��ȯ�������뤳�ȤǤ��礦��
-����ʤ�ܺ٤� L<ExtUtils::MakeMaker> �򻲾Ȥ��Ƥ���������
+Makefile.PL における WriteMakefile() の引数は以前より注意深く、
+正確なチェックを行うようになりました。
+これはモジュールがインストールされるとき
+新たな警告を発生させることでしょう。
+さらなる詳細は L<ExtUtils::MakeMaker> を参照してください。
 
 =item *
 
@@ -3109,8 +3109,8 @@ leads to better portability.
 
 =end original
 
-ExtUtils::MakeMaker �ϡ��ܿ�������ޤ�褦�������� File::Spec ��
-�Ȥ��褦�ˤʤ�ޤ�����
+ExtUtils::MakeMaker は、移植性が高まるように内部で File::Spec を
+使うようになりました。
 
 =item *
 
@@ -3122,10 +3122,10 @@ This means that they will be more robust and hopefully faster.
 
 =end original
 
-Fnctl, Socket, Sys::Syslog �� Nicholas Clark �ˤ�ä�
-��������������η�³Ū�ʥǥ����ѥå������������Ѥ��뤿���ľ����ޤ���
-(L<ExtUtils::Constant> �򻲾Ȥ��Ƥ�������)��
-����Ϥ�궯�Ϥǹ�®�������Ԥ���뤳�Ȥ��̣���ޤ���
+Fnctl, Socket, Sys::Syslog は Nicholas Clark によって
+新しいスタイルの継続的なディスパッチセクションを用いるため書き直されました
+(L<ExtUtils::Constant> を参照してください)。
+これはより強力で高速化が期待されることを意味します。
 
 =item *
 
@@ -3135,8 +3135,8 @@ File::Find now chdir()s correctly when chasing symbolic links. [561]
 
 =end original
 
-File::Find �Υ���ܥ�å���󥯤����פκݤ� chdir() ��ư�
-���Τˤʤ�ޤ�����[561]
+File::Find のシンボリックリンクの追跡の際の chdir() の動作が
+正確になりました。[561]
 
 =item *
 
@@ -3148,11 +3148,11 @@ correctly changes directories when chasing symbolic links.  Callbacks
 
 =end original
 
-File::Find �Ͻ�������˥�����Хå�����Ĥ褦�ˤʤ�ޤ�����
-�ޤ�������ܥ�å���󥯤��ɤ��Ȥ����������ǥ��쥯�ȥ��
-�ѹ�����褦�ˤʤ�ޤ�����
-"return;" �ǤϤʤ� "next;" �ǽ�λ����(�Ե��ΰ���) ������Хå���
-ư���褦�ˤʤ�ޤ�����
+File::Find は処理前後にコールバックを持つようになりました。
+また、シンボリックリンクを追うときに正しくディレクトリを
+変更するようになりました。
+"return;" ではなく "next;" で終了する(行儀の悪い) コールバックも
+動作するようになりました。
 
 =item *
 
@@ -3163,7 +3163,7 @@ more portable.
 
 =end original
 
-File::Find�ϡʺƤӡ˺�����ǽ�ˤʤ�ޤ��������ܿ������⤯�ʤäƤ��ޤ���
+File::Findは（再び）再入可能になりました。より移植性が高くなっています。
 
 =item *
 
@@ -3174,8 +3174,8 @@ You can enable/disable them with C<use/no warnings 'File::Find';>.
 
 =end original
 
-File::Find �ˤ��ٹ�ϼ��ȤΥ��ƥ���˽����褦�ˤʤ�ޤ�����
-C<use/no warnings 'File::Find';> �ˤ�äƥ���/���դǤ��ޤ���
+File::Find による警告は自身のカテゴリに従うようになりました。
+C<use/no warnings 'File::Find';> によってオン/オフできます。
 
 =item *
 
@@ -3187,9 +3187,9 @@ name is still available for compatibility, but is deprecated. [561]
 
 =end original
 
-�Ȥ߹��ߤ� glob() ��̾������ʣ���Ƥ��ޤ����ᡢFile::Glob::glob() ��
-File::Glob::bsd_glob() ��̾�����ѹ�����ޤ������Ť��ۤ���̾����
-�ߴ������ݤĤ���ˤޤ����Ѳ�ǽ�Ǥ�������侩�Ǥ���[561]
+組み込みの glob() と名前が重複してしまうため、File::Glob::glob() は
+File::Glob::bsd_glob() に名前を変更されました。古いほうの名前は
+互換性を保つためにまだ利用可能ですが、非推奨です。[561]
 
 =item *
 
@@ -3200,8 +3200,8 @@ the returned list of filenames.
 
 =end original
 
-File::Glob �ϡ��֤����ե�����̾�Υꥹ�ȤΥ����������¤��뤿���
-C<GLOB_LIMIT> ������б����ޤ�����
+File::Glob は、返されるファイル名のリストのサイズを制限するための
+C<GLOB_LIMIT> 定数に対応しました。
 
 =item *
 
@@ -3211,7 +3211,7 @@ IPC::Open3 now allows the use of numeric file descriptors.
 
 =end original
 
-IPC::Open3 �ǿ��ͤΥե����뵭�һҤ��Ȥ���褦�ˤʤ�ޤ�����
+IPC::Open3 で数値のファイル記述子が使えるようになりました。
 
 =item *
 
@@ -3223,9 +3223,9 @@ as a sockatmark() function.
 
 =end original
 
-IO::Socket �� atmark() �᥽�åɤ��ɲä��졢�����åȤ� out-of-band �ޡ�����
-���֤ˤ�����˿����֤��ޤ���
-���Υ᥽�åɤ� sockatmark() �ؿ��Ȥ��ƥ������ݡ��Ȥ���ޤ���
+IO::Socket に atmark() メソッドが追加され、ソケットが out-of-band マークの
+位置にある場合に真を返します。
+このメソッドは sockatmark() 関数としてエクスポートされます。
 
 =item *
 
@@ -3236,9 +3236,9 @@ was not known.  It now correctly uses the supplied port number as is. [561]
 
 =end original
 
-IO::Socket::INET �ϥ����ӥ�̾�������ʾ�硢����Υݡ��Ȥ򳫤��Τ�
-���Ԥ��Ƥ��ޤ�����
-Ϳ����줿�ݡ����ֹ椽�Τޤޤ�Ȥ��褦�˽�������ޤ�����[561]
+IO::Socket::INET はサービス名が不明な場合、特定のポートを開くのに
+失敗していました。
+与えられたポート番号そのままを使うように修正されました。[561]
 
 =item *
 
@@ -3250,9 +3250,9 @@ For clarity, you may want to prefer ReuseAddr.
 
 =end original
 
-IO::Socket::INET ��(�ץ�åȥե����ब�б����Ƥ����) ReusePort ���ץ�����
-�б����ޤ�����Reuse ���ץ����� ReuseAddr �Ȥ��������ꥢ��������ޤ���
-���β��Τ���ˡ�ReuseAddr ������Ȥ������Ȼפ����⤷��ޤ���
+IO::Socket::INET が(プラットフォームが対応していれば) ReusePort オプションに
+対応しました。Reuse オプションは ReuseAddr というエイリアスを持ちます。
+明確化のために、ReuseAddr の方を使いたいと思うかもしれません。
 
 =item *
 
@@ -3263,8 +3263,8 @@ IO::Socket::INET now supports a value of zero for C<LocalPort>
 
 =end original
 
-IO::Socket::INET �� C<LocalPort> �˥��������Ǥ���褦�ˤʤ�ޤ���
-(���̤���ϥ��ڥ졼�ƥ��󥰥����ƥब�ͤ���ꤹ�뤳�Ȥ��̣���ޤ�)��
+IO::Socket::INET は C<LocalPort> にゼロを指定できるようになりました
+(普通これはオペレーティングシステムが値を決定することを意味します)。
 
 =item *
 
@@ -3275,8 +3275,8 @@ with 'no lib' now works.
 
 =end original
 
-'use lib' �� @INC ������Ʊ���褦��ư���褦�ˤʤ�ޤ�����
-'no lib' �ǥǥ��쥯�ȥ�����Ǥ���褦�ˤʤ�ޤ�����
+'use lib' は @INC と全く同じように動作するようになりました。
+'no lib' でディレクトリを削除できるようになりました。
 
 =item *
 
@@ -3288,9 +3288,9 @@ libraries such as GMP and PARI as their backends.
 
 =end original
 
-Math::BigFloat �� Math::BigInt �� Tels �ˤ�äƴ����˽�ľ����ޤ�����
-�礭����®�����졢�Хå�����ɤȤ��� GMP �� PARI �Τ褦��
-���ޤ��ޤ� bignum �饤�֥����б����ޤ�����
+Math::BigFloat と Math::BigInt は Tels によって完全に書き直されました。
+大きく高速化され、バックエンドとして GMP や PARI のような
+さまざまな bignum ライブラリに対応しました。
 =item *
 
 =begin original
@@ -3299,7 +3299,7 @@ Math::Complex handles inf, NaN etc., better.
 
 =end original
 
-Math::Complex �� inf, NaN �ʤɤ���褯�����褦�ˤʤ�ޤ�����
+Math::Complex は inf, NaN などをよりよく扱うようになりました。
 
 =item *
 
@@ -3315,14 +3315,14 @@ CPAN.
 
 =end original
 
-Net::Ping �� Rob Brown �ˤ�äƤ��ʤ��ĥ����ޤ���:
-�ޥ���ۡ��ߥ󥰤��б�����Win32 �ε�ǽ���������졢
-���ַ�¬��ǽ(TIme::HiRes ��Ȥä������ٷ�¬�ˤ��б����Ƥ��ޤ�)��
-�ɲä���ޤ�����
-�ޤ������� ping �桼�ƥ���ƥ���Ȥäƽ��Ϥ�ѡ������롢
-Net::Ping::External �⥸�塼��ˤ�äơֳ����ץץ��ȥ����
-�б����ޤ�����
-Net::Ping::External �� CPAN �������ǽ�Ǥ���
+Net::Ping は Rob Brown によってかなり拡張されました:
+マルチホーミングに対応し、Win32 の機能が改善され、
+時間計測機能(TIme::HiRes を使った高精度計測にも対応しています)が
+追加されました。
+また、外部 ping ユーティリティを使って出力をパースする、
+Net::Ping::External モジュールによって「外部」プロトコルに
+対応しました。
+Net::Ping::External は CPAN で入手可能です。
 
 =begin original
 
@@ -3335,12 +3335,12 @@ suite to enable all the Net::Ping tests.
 
 =end original
 
-Net::Ping �Υƥ��Ȥΰ����� Perl �ǥ����ȥ�ӥ塼������
-�¹Ԥ���Ȥ���̵���ˤʤäƤ��뤳�Ȥ����դ��Ƥ���������
-����ϡ�localhost ��ͭ���� echo �ݡ��ȡ������ʥ��󥿡��ͥå���³����
-Ʊ��Ū�ʥե�������������Ȥ��ä��������Ǥ��ʤ�����Ǥ���
-Perl �ƥ��ȥ������Ȥ�¹Ԥ������˴Ķ��ѿ� PERL_TEST_Net_Ping �� "1" ��
-���ꤹ�뤳�Ȥ� Net::Ping �����ƤΥƥ��Ȥ�ͭ���ˤʤ�ޤ���
+Net::Ping のテストの一部は Perl ディストリビューションで
+実行するときに無効になっていることに注意してください。
+これは、localhost の有効な echo ポート、完全なインターネット接続性、
+同情的なファイアウォールといった情報を仮定できないためです。
+Perl テストスイートを実行する前に環境変数 PERL_TEST_Net_Ping を "1" に
+設定することで Net::Ping の全てのテストが有効になります。
 
 =item *
 
@@ -3352,9 +3352,9 @@ handlers, installing new handlers was not atomic.
 
 =end original
 
-POSIX::sigaction() �Ϥ�����Ǵ趯�ˤʤ�ޤ�����
-�����ɥ�ե���󥹡�'DEFAULT', 'IGNORE' �Υϥ�ɥ�䡢
-���ȥߥå��Ǥʤ��������ϥ�ɥ������Ǥ��ޤ���
+POSIX::sigaction() はより柔軟で頑強になりました。
+コードリファレンス、'DEFAULT', 'IGNORE' のハンドラや、
+アトミックでない新しいハンドラを設定できます。
 
 =item *
 
@@ -3365,8 +3365,8 @@ use/require work.
 
 =end original
 
-Safe �Ǥϡ�use/require ��ư���褦�� C<%INC> �� Safe ����ѡ��ȥ��Ȥ�
-��Ǥϥ������벽����ޤ���
+Safe では、use/require が動くように C<%INC> は Safe コンパートメントの
+中ではローカル化されます。
 
 =item *
 
@@ -3378,10 +3378,10 @@ has been added.
 
 =end original
 
-DOS ���ץ�åȥե�����Ǥ� SDBM_File �ˤ����ơ�
-"��"�Τ���ե�������б����Ƥ��ʤ�����˥����Τ����Ĥ���
-�����Ƥ��ޤ�����
-��������β�������ɲä���ޤ�����
+DOS 風プラットフォームでの SDBM_File において、
+"穴"のあるファイルに対応していないためにキーのいくつかが
+失われていました。
+この問題の回避策が追加されました。
 
 =item *
 
@@ -3392,8 +3392,8 @@ lines being searched.
 
 =end original
 
-Search::Dict �ˤ����ơ��������줿�ԤΤ���Υץ�ץ������եå���
-�ɲä���ޤ�����
+Search::Dict において、検索された行のためのプリプロセスフックが
+追加されました。
 
 =item *
 
@@ -3403,7 +3403,7 @@ The Shell module now has an OO interface.
 
 =end original
 
-Shell �⥸�塼��� OO ���󥿡��ե��������ɲä���ޤ�����
+Shell モジュールに OO インターフェースが追加されました。
 
 =item *
 
@@ -3415,8 +3415,8 @@ is successfully logged.
 
 =end original
 
-Sys::Syslog �ˤ����ơ���å������Υ����󥰤���������ޤ�
-������³��Ԥ��Ȥ����ե����륪���С��������ɲä���ޤ�����
+Sys::Syslog において、メッセージのロギングに成功するまで
+次の接続を行うというフェイルオーバー機構が追加されました。
 
 =item *
 
@@ -3426,7 +3426,7 @@ The Test module has been significantly enhanced.
 
 =end original
 
-Test �⥸�塼��������˳�ĥ����ޤ�����
+Test モジュールは大幅に拡張されました。
 
 =item *
 
@@ -3438,9 +3438,9 @@ localtime() are supposed to be inverses of each other.
 
 =end original
 
-Time::Local::timelocal() �Ϥ�Ϥ侮�����ä򰷤��ޤ���
-������ͳ�ϡ�localtime() ���б����Ƥ��ʤ��Ȥ������Ȥȡ�
-timelocal() �� localtime() �ϸߤ����оΤǤ�������ꤵ��뤫��Ǥ���
+Time::Local::timelocal() はもはや小数の秒を扱いません。
+この理由は、localtime() が対応していないということと、
+timelocal() と localtime() は互いに対称であると想定されるからです。
 
 =item *
 
@@ -3451,8 +3451,8 @@ The vars pragma now supports declaring fully qualified variables.
 
 =end original
 
-vars �ץ饰�ޤϴ��������ѿ���������б����ޤ�����
-(C<our()> ���б��������б���ͽ��⤢��ޤ���)
+vars プラグマは完全修飾変数の宣言に対応しました。
+(C<our()> は対応せず、対応の予定もありません。)
 
 =item *
 
@@ -3465,15 +3465,15 @@ has been implemented.
 
 =end original
 
-C<utf8::> ̾�����֤�(�ץ饰�ޤΤ褦��) Perl ������ Unicode ɽ���ؤ�
-���٥륢���������󶡤��뤵�ޤ��ޤ� Perl ����ƤӽФ���ؿ����󶡤��ޤ���
-���ߤΤȤ��� length() �Τߤ���������Ƥ��ޤ���
+C<utf8::> 名前空間は(プラグマのように) Perl の内部 Unicode 表現への
+低レベルアクセスを提供するさまざまな Perl から呼び出せる関数を提供します。
+現在のところ length() のみが実装されています。
 
 =back
 
 =head1 Utility Changes
 
-(�ġ�����ѹ�)
+(ツールの変更)
 
 =over 4
 
@@ -3486,8 +3486,8 @@ Emacs perl mode (emacs/cperl-mode.el) has been updated to version
 
 =end original
 
-Emacs perl mode (emacs/cperl-mode.el) �ϥС������ 4.31 ��
-��������ޤ�����
+Emacs perl mode (emacs/cperl-mode.el) はバージョン 4.31 に
+更新されました。
 
 =item *
 
@@ -3497,7 +3497,7 @@ F<emacs/e2ctags.pl> is now much faster.
 
 =end original
 
-F<emacs/e2ctags.pl> ���ڤ���®���ʤ�ޤ�����
+F<emacs/e2ctags.pl> は遥かに速くなりました。
 
 =item *
 
@@ -3508,8 +3508,8 @@ Encode module.
 
 =end original
 
-C<enc2xs> �� Encode �⥸�塼����ȼ��Υ��󥳡��ǥ��󥰤��ɲä��뤿���
-�ġ���Ǥ���
+C<enc2xs> は Encode モジュールに独自のエンコーディングを追加するための
+ツールです。
 
 =item *
 
@@ -3519,7 +3519,7 @@ C<h2ph> now supports C trigraphs.
 
 =end original
 
-C<h2ph> �� C �ȥ饤����դ��б����ޤ�����
+C<h2ph> は C トライグラフに対応しました。
 
 =item *
 
@@ -3529,7 +3529,7 @@ C<h2xs> now produces a template README.
 
 =end original
 
-C<h2xs> �� README �Υƥ�ץ졼�Ȥ���������褦�ˤʤ�ޤ�����
+C<h2xs> は README のテンプレートを生成するようになりました。
 
 =item *
 
@@ -3540,8 +3540,8 @@ different versions of Perl.
 
 =end original
 
-C<h2xs> �� Perl �ΰۤʤ�С������δ֤Ǥΰܿ�������뤿���
-C<Devel::PPPort> ��Ȥ��褦�ˤʤ�ޤ�����
+C<h2xs> は Perl の異なるバージョンの間での移植性を高めるために
+C<Devel::PPPort> を使うようになりました。
 
 =item *
 
@@ -3559,15 +3559,15 @@ easy).  L<h2xs> now also supports C trigraphs.
 
 =end original
 
-C<h2xs> �Ͽ����� L<ExtUtils::Constant|ExtUtils::Constant> �⥸�塼���
-�Ȥ��褦�ˤʤä��Τǡ������������뿷�����������줿��ĥ�˱ƶ���Ϳ���ޤ���
-�����������ɤϤ��������(����������⤦��Ĥ��������Ƭ���ȤʤäƤ���褦��
-��Ĥ�����������硢����ܤ������ B<�褷��> �������ޤ���)��
-���������ʤ�(�Ť������ɤ���������ˤ���ư����������ȤäƤ��ޤ�������
-��������ˤ�������Ȥ��褦�ˤʤ�ޤ���)��
-����®���ʤ�ޤ����Τǡ����Ǥˤ����ĥ�����ɤ���������뤳�Ȥ��θ����٤�
-���⤷��ޤ���(�������������ޤϴ�ñ�˺������Ǥ��ޤ�)��
-L<h2xs> �� C �ȥ饤����դˤ��б����ޤ�����
+C<h2xs> は新しい L<ExtUtils::Constant|ExtUtils::Constant> モジュールを
+使うようになったので、定数を定義する新しく作成された拡張に影響を与えます。
+新しいコードはより正しく(ある定数がもう一つの定数の接頭辞となっているような
+二つの定数がある場合、一つ目の定数は B<決して> 定義されません)、
+誤差が少なく(古いコードは整数定数にも浮動小数点数を使っていましたが、
+整数定数には整数を使うようになりました)、
+少し速くなりましたので、すでにある拡張コードを再生成することを考慮するべき
+かもしれません(新しいスキーマは簡単に再生成できます)。
+L<h2xs> は C トライグラフにも対応しました。
 
 =item *
 
@@ -3577,7 +3577,7 @@ C<libnetcfg> has been added to configure libnet.
 
 =end original
 
-libnet �����ꤹ�뤿��� C<libnetcfg> ���ɲä���ޤ�����
+libnet を設定するために C<libnetcfg> が追加されました。
 
 =item *
 
@@ -3588,8 +3588,8 @@ perl.org, not perl.com.
 
 =end original
 
-C<perlbug> �Ϥ��趯�ˤʤ�ޤ�����
-�ޤ���perl.com �ǤϤʤ� perl.org �˥Х���ݡ��Ȥ��������ޤ���
+C<perlbug> はより頑強になりました。
+また、perl.com ではなく perl.org にバグレポートを送信します。
 
 =item *
 
@@ -3603,10 +3603,10 @@ unsupported.> [561]
 
 =end original
 
-C<perlcc> �Ͻ�ľ���졢�桼�������󥿡��ե�����(�Ĥޤꥳ�ޥ�ɥ饤��)��
-��� UNIX C ����ѥ���Ǥ��� cc �ȶᤤ��Τˤʤ�ޤ�����
-(perlbc �ġ���Ϻ������ޤ���������� C<perlcc -B> ��ȤäƤ���������)
-B<perlcc �Ϥ��ޤ����˼¸�Ū��̤���ݡ��ȤǤ��뤳�Ȥ����դ��Ƥ���������> [561]
+C<perlcc> は書き直され、ユーザーインターフェース(つまりコマンドライン)は
+より UNIX C コンパイラである cc と近いものになりました。
+(perlbc ツールは削除されました。代わりに C<perlcc -B> を使ってください。)
+B<perlcc はいまだ非常に実験的で未サポートであることに注意してください。> [561]
 
 =item *
 
@@ -3617,8 +3617,8 @@ for running any time after installing Perl.
 
 =end original
 
-C<perlivp> �� Perl ���󥹥ȡ����ˤ��ĤǤ�Ȥ���
-���������󥹥ȡ��븡�ڼ��桼�ƥ���ƥ��Ǥ���
+C<perlivp> は Perl インストール後にいつでも使える
+新しいインストール検証手順ユーティリティです。
 
 =item *
 
@@ -3629,8 +3629,8 @@ C<iconv>, demonstrating the new Encode module.
 
 =end original
 
-C<piconv> ��ʸ���Ѵ��桼�ƥ���ƥ� C<iconv> �μ����ǡ�
-������ Encode �⥸�塼��Υǥ��ѤǤ���
+C<piconv> は文字変換ユーティリティ C<iconv> の実装で、
+新しい Encode モジュールのデモ用です。
 
 =item *
 
@@ -3640,7 +3640,7 @@ C<pod2html> now allows specifying a cache directory.
 
 =end original
 
-C<pod2html> �ϥ���å���ǥ��쥯�ȥ�����Ǥ���褦�ˤʤ�ޤ�����
+C<pod2html> はキャッシュディレクトリを指定できるようになりました。
 
 =item *
 
@@ -3650,7 +3650,7 @@ C<pod2html> now produces XHTML 1.0.
 
 =end original
 
-C<pod2html> �� XHTML 1.0 �������Ǥ���褦�ˤʤ�ޤ�����
+C<pod2html> は XHTML 1.0 を生成できるようになりました。
 
 =item *
 
@@ -3661,8 +3661,8 @@ C<pod2html> now understands POD written using different line endings
 
 =end original
 
-C<pod2html> �ϰۤʤ���ԥ�����(PC ���� CRLF �� UNIX ���� LF ��
-MacClassic ���� CR)�ǽ񤫤줿 POD �����򤹤�褦�ˤʤ�ޤ�����
+C<pod2html> は異なる改行コード(PC 風の CRLF と UNIX 風の LF と
+MacClassic 風の CR)で書かれた POD を理解するようになりました。
 
 =item *
 
@@ -3674,9 +3674,9 @@ using the C<psed> utility.)
 
 =end original
 
-C<s2p> �ϴ����� Perl �ǽ�ľ����ޤ�����
-(����ϼºݤΤȤ��� sed �� Perl �ˤ�봰���ʼ����Ǥ�:
-C<psed> �桼�ƥ���ƥ���Ȥ����Ȥ� sed �ε�ǽ��Ȥ����Ȥ��Ǥ��ޤ���)
+C<s2p> は完全に Perl で書き直されました。
+(これは実際のところ sed の Perl による完全な実装です:
+C<psed> ユーティリティを使うことで sed の機能を使うことができます。)
 
 =item *
 
@@ -3687,8 +3687,8 @@ files. [561]
 
 =end original
 
-C<xsubpp> �� *.xs ���Ȥ߹��ޤ줿 POD �ɥ�����Ȥ����򤹤�褦��
-�ʤ�ޤ�����
+C<xsubpp> は *.xs に組み込まれた POD ドキュメントを理解するように
+なりました。
 
 =item *
 
@@ -3698,13 +3698,13 @@ C<xsubpp> now supports the OUT keyword.
 
 =end original
 
-C<xsubpp> �� OUT ������ɤ��б����ޤ�����
+C<xsubpp> は OUT キーワードに対応しました。
 
 =back
 
 =head1 New Documentation
 
-(�������ɥ������)
+(新しいドキュメント)
 
 =over 4
 
@@ -3717,7 +3717,7 @@ perl56delta details the changes between the 5.005 release and the
 
 =end original
 
-perl56delta �ϥ�꡼�� 5.005 �� 5.6.0 �ΰ㤤�˴ؤ���ܺ٤Ǥ���
+perl56delta はリリース 5.005 と 5.6.0 の違いに関する詳細です。
 
 =item *
 
@@ -3729,8 +3729,8 @@ hackers.) [561+]
 
 =end original
 
-prtlclib ��ɸ�� C �饤�֥��ؿ��������֤������ˤĤ��ƤΥɥ�����ȤǤ���
-(��ĥ��񤯿ͤ� Perl �����Υϥå����ˤΤ߶�̣�������ΤǤ���)[561+]
+prtlclib は標準 C ライブラリ関数の内部置き換えについてのドキュメントです。
+(拡張を書く人と Perl コアのハッカーにのみ興味があるものです。)[561+]
 
 =item *
 
@@ -3740,7 +3740,7 @@ perldebtut is a Perl debugging tutorial. [561+]
 
 =end original
 
-perldebtut �� Perl �ǥХå��Υ��塼�ȥꥢ��Ǥ���[561+]
+perldebtut は Perl デバッグのチュートリアルです。[561+]
 
 =item *
 
@@ -3751,8 +3751,8 @@ platforms. [561+]
 
 =end original
 
-perlebcdic �� Perl �� EBCDIC �ץ�åȥե������ư��������
-��θ����٤����Ȥ򵭽Ҥ��Ƥ��ޤ���[561+]
+perlebcdic は Perl を EBCDIC プラットフォームで動作させる場合に
+考慮するべきことを記述しています。[561+]
 
 =item *
 
@@ -3762,7 +3762,7 @@ perlintro is a gentle introduction to Perl.
 
 =end original
 
-perlintro �� Perl �β��䤫�������Ǥ���
+perlintro は Perl の穏やかな説明です。
 
 =item *
 
@@ -3772,7 +3772,7 @@ perliol documents the internals of PerlIO with layers.
 
 =end original
 
-perliol �� PerlIO ���ؤ������ˤĤ��Ƶ��Ҥ��Ƥ��ޤ���
+perliol は PerlIO と層の内部について記述しています。
 
 =item *
 
@@ -3782,7 +3782,7 @@ perlmodstyle is a style guide for writing modules.
 
 =end original
 
-perlmodstyle �ϥ⥸�塼���񤯤Ȥ��Υ������륬���ɤǤ���
+perlmodstyle はモジュールを書くときのスタイルガイドです。
 
 =item *
 
@@ -3792,8 +3792,8 @@ perlnewmod tells about writing and submitting a new module. [561+]
 
 =end original
 
-perlnewmod �Ͽ������⥸�塼���񤤤ơ���Ͽ������ˡ��
-���Ҥ��Ƥ��ޤ���[561+]
+perlnewmod は新しいモジュールを書いて、登録する方法を
+記述しています。[561+]
 
 =item *
 
@@ -3803,7 +3803,7 @@ perlpacktut is a pack() tutorial.
 
 =end original
 
-perlpacktut �� pack() �Υ��塼�ȥꥢ��Ǥ���
+perlpacktut は pack() のチュートリアルです。
 
 =item *
 
@@ -3814,8 +3814,8 @@ practices gathered over the years.
 
 =end original
 
-perlpod �Ϥ�����Τˤ��뤿��ȡ���ǯ�ˤ��ϤäƹԤ��Ƥ���
-�٥��ȥץ饯�ƥ�����Ͽ���뤿��˽�ľ����ޤ�����
+perlpod はより明確にするためと、何年にも渡って行われてきた
+ベストプラクティスを記録するために書き直されました。
 
 =item *
 
@@ -3827,8 +3827,8 @@ people writing in pod.
 
 =end original
 
-perlpodspec �� pod �ե����ޥåȤ˴ؤ�����ե����ޥ�ʻ��ͽ�ǡ�
-��� pod ��񤯿ͤǤϤʤ���pod ���ץꥱ��������񤯿ͤΤ���Τ�ΤǤ���
+perlpodspec は pod フォーマットに関するよりフォーマルな仕様書で、
+主に pod を書く人ではなく、pod アプリケーションを書く人のためのものです。
 
 =item *
 
@@ -3838,7 +3838,7 @@ perlretut is a regular expression tutorial. [561+]
 
 =end original
 
-perlretut ������ɽ���Υ��塼�ȥꥢ��Ǥ���[561+]
+perlretut は正規表現のチュートリアルです。[561+]
 
 =item *
 
@@ -3849,8 +3849,8 @@ Yes, much quicker than perlretut. [561]
 
 =end original
 
-perlrequick ������ɽ���Υ����å��������ȥ����ɤǤ���
-�ºݡ�perlretut ����ڤ������᤯�Ϥ���ޤ���[561]
+perlrequick は正規表現のクイックスタートガイドです。
+実際、perlretut より遥かに素早く始められます。[561]
 
 =item *
 
@@ -3860,7 +3860,7 @@ perltodo has been updated.
 
 =end original
 
-perltodo �Ϲ�������ޤ�����
+perltodo は更新されました。
 
 =item *
 
@@ -3871,9 +3871,9 @@ with perltoot in filesystems restricted to "8.3" names).
 
 =end original
 
-perltootc �� perltooc ��̾�����Ѥ��ޤ���
-(�ե�����̾��"8.3"�����¤���Ƥ���ե����륷���ƥ�� perltoot ��
-���礷�ʤ�����Ǥ�)��
+perltootc は perltooc に名前が変わりました
+(ファイル名が"8.3"に制限されているファイルシステムで perltoot と
+競合しないためです)。
 
 =item *
 
@@ -3885,8 +3885,8 @@ information)
 
 =end original
 
-perluniintro �� Perl �� Unicode ��Ȥ�����������Ǥ���
-(perlunicode �Ϥ��ܺ٤ʥ�ե���󥹤��طʾ���Ǥ�)
+perluniintro は Perl で Unicode を使うための説明です。
+(perlunicode はより詳細なリファレンスと背景情報です)
 
 =item *
 
@@ -3897,8 +3897,8 @@ distribution. [561+]
 
 =end original
 
-perlutil �� Perl �ǥ����ȥ�ӥ塼�����ȶ������ۤ���Ƥ���
-���ޥ�ɥ饤��桼�ƥ���ƥ��������Ǥ���[561+]
+perlutil は Perl ディストリビューションと共に配布されている
+コマンドラインユーティリティの説明です。[561+]
 
 =back
 
@@ -3910,9 +3910,9 @@ as perlI<platform>:
 
 =end original
 
-�ʲ��Υץ�åȥե������ͭ�Υɥ�����Ȥ����Ѳ�ǽ�Ǥ���
-���󥹥ȡ������� README.I<platform>�����󥹥ȡ�����
-perlI<platform> �Ȥ���̾���Ǥ���
+以下のプラットフォーム固有のドキュメントが利用可能です。
+インストール前は README.I<platform>、インストール後は
+perlI<platform> という名前です。
 
     perlaix perlamiga perlapollo perlbeos perlbs2000
     perlce perlcygwin perldgux perldos perlepoc perlfreebsd perlhpux
@@ -3928,9 +3928,9 @@ Perl on the said platform.
 
 =end original
 
-�����Υɥ�����Ȥ��̾�ʲ��Τ褦�����Ƥξܺ٤���������Ƥ��ޤ�:
-���ꡢ�ӥ�ɡ��ƥ��ȡ����󥹥ȡ��롢���Υץ�åȥե������ Perl ��
-ư�����Ȥ��˴ط��������ơ�
+これらのドキュメントは通常以下のような内容の詳細がが記されています:
+設定、ビルド、テスト、インストール、そのプラットフォームで Perl を
+動かすときに関係する内容。
 
 =begin original
 
@@ -3942,11 +3942,11 @@ will get installed as
 
 =end original
 
-�쥢������ Perl �桼�����ϼ��Ȥθ���Ƿޤ����뤳�Ȥˤʤ�ޤ���:
-README.jp (���ܸ�), README.ko (�ڹ��), README.cn (��������),
-README.tw (��������) ���̾�� pod �Ȥ��ƽ񤫤�Ƥ��ޤ�����
-���줾�� EUC-JP, EUC-KR, EUC-CN, Big5 �ǥ��󥳡��ɤ���Ƥ��ޤ���
-�����ϰʲ���̾���ǥ��󥹥ȡ��뤵��ޤ���
+東アジアの Perl ユーザーは自身の言語で迎えられることになりました:
+README.jp (日本語), README.ko (韓国語), README.cn (簡体中国語),
+README.tw (繁体中国語) は通常の pod として書かれていますが、
+それぞれ EUC-JP, EUC-KR, EUC-CN, Big5 でエンコードされています。
+これらは以下の名前でインストールされます。
 
    perljp perlko perlcn perltw
 
@@ -3961,8 +3961,8 @@ confusion with the Perl POSIX module.
 
 =end original
 
-POSIX-BC �ץ�åȥե�����Υɥ�����Ȥ� "BS2000" �ȸƤФ�ޤ���
-Perl POSIX �⥸�塼��Ⱥ��𤷤ʤ�����Ǥ���
+POSIX-BC プラットフォームのドキュメントは "BS2000" と呼ばれます。
+Perl POSIX モジュールと混乱しないためです。
 
 =item *
 
@@ -3974,15 +3974,15 @@ documentation on 8.3-restricted filesystems.
 
 =end original
 
-WinCE �ץ�åȥե�����Υɥ�����Ȥ� perlce (�����������ɥ��åȤǤ�
-README.ce) �Ȥ���̾���Ǥ���
-8.3 ���¤Υե����륷���ƥ�� perlwin32 �ɥ�����ȤȺ��𤷤ʤ�����Ǥ���
+WinCE プラットフォームのドキュメントは perlce (ソースコードキットでは
+README.ce) という名前です。
+8.3 制限のファイルシステムで perlwin32 ドキュメントと混乱しないためです。
 
 =back
 
 =head1 Performance Enhancements
 
-(��ǽ�θ���)
+(性能の向上)
 
 =over 4
 
@@ -3996,9 +3996,9 @@ common scenarios. [561]
 
 =end original
 
-map() ������������̤Υꥹ�Ȥ����Υꥹ�Ȥ����礭���Ȥ���
-��Ū���٤��ʤ뤳�Ȥ�����ޤ�����
-���Υѥե����ޥ󥹤�����Ū�ʾ��̤ˤ����Ʋ�������ޤ�����[561]
+map() は生成した結果のリストが元のリストよりも大きいときに
+病的に遅くなることがありました。
+そのパフォーマンスが一般的な場面において改善されました。[561]
 
 =item *
 
@@ -4010,9 +4010,9 @@ releases. [561]
 
 =end original
 
-sort() �ϡ�sort �ؿ����Ȥ� sort() ��Ƥ֤��Ȥ��Ǥ���Ȥ�����̣�ǡ�
-�����˺�����ǽ�Ǥ���
-����ϰ����Υ�꡼���Ǥϳμ¤ˤ�ư��ޤ���Ǥ�����[561]
+sort() は、sort 関数自身が sort() を呼ぶことができるという意味で、
+完全に再入可能です。
+それは以前のリリースでは確実には動作しませんでした。[561]
 
 =item *
 
@@ -4030,15 +4030,15 @@ were before the sort).  See the C<sort> pragma for information.
 
 =end original
 
-sort() �Ϻ��ޤǤϥ����å������ȤǤ�����������˥ޡ��������Ȥ�
-�Ȥ��褦�ˤʤ�ޤ��������˾������ꥹ�ȤǤϥ����Ȼ��֤�����
-�٤��ʤ�ޤ���������Ū�ˤϾ��ʤ��Ȥ� 20% �Ϲ�®�������Ϥ��Ǥ���
-�ɲä������Ȥ��ƤϺǰ��ξ��� sort() �ο����񤤤���������ޤ�
-(����ԥ塼���ʳؤ�ɽ���Ǥϡ������å������ȤǤϺǰ��ξ���
-�¹Ի��� Theta(N**2) �����äƤ�����Τ� O(N log N) �ˤʤ�ޤ�)��
-������ sort() �ϰ��ꤷ����Τˤʤ�ޤ�
-(�Ĥޤ�Ʊ��������������Ǥϥ���������Ʊ������ˤʤ�ޤ�)��
-�ܤ����� C<sort> �ץ饰�ޤ򻲾Ȥ��Ƥ���������
+sort() は今まではクイックソートでしたが、代わりにマージソートを
+使うようになりました。非常に小さいリストではソート時間が少し
+遅くなりますが、一般的には少なくとも 20% は高速化されるはずです。
+追加の利点としては最悪の場合の sort() の振る舞いが改善されます
+(コンピュータ科学の表現では、クイックソートでは最悪の場合に
+実行時に Theta(N**2) かかっていたものが O(N log N) になります)。
+そして sort() は安定したものになります
+(つまり同じキーを持つ要素はソート前と同じ順序になります)。
+詳しくは C<sort> プラグマを参照してください。
 
 =begin original
 
@@ -4047,7 +4047,7 @@ slice of Pi.
 
 =end original
 
-�ܺ٤�Ƥ���뤿�������: �߼�Ψ�ΰ�����ʬ���󶡤������Ȳ��ꤷ�ޤ���
+詳細を検討するための想定: 円周率の一部を自分で提供したいと仮定します。
 
     @digits = ( 3,1,4,1,5,9 );
 
@@ -4061,12 +4061,12 @@ digits ahead of the odd ones, then what will
 
 =end original
 
-���ͤο��ͥ����Ȥ�ͽ���̤� (1,1,3,4,5,9) �Ȥʤ�ޤ���
-�ɤ���� C<1> ���ǽ�����Τ��Ϥ狼��ˤ����Ǥ���
-�ʤ��ʤ������� C<1> �Ϥ⤦�����Ȥ��ʤ��ɤ����Ƥ��뤫��Ǥ���
-���Τ��Ȥ������Ĥޤ�ʤ����Ȥȹͤ��뤫�⤷��ޤ��󤷡�
-��������ʤ��Ȥȹͤ��뤫�⤷��ޤ���
-���������⤷�������������ˤ������ưʲ��Τ褦�˽񤤤��Ȥ��ޤ�:
+数値の数値ソートは予想通り (1,1,3,4,5,9) となります。
+どちらの C<1> が最初に来るのかはわかりにくいです。
+なぜなら片方の C<1> はもう片方とかなり良く似ているからです。
+このことは全くつまらないことと考えるかもしれませんし、
+何か深遠なことと考えるかもしれません。
+しかし、もし偶数を奇数の前にしたくて以下のように書いたとします:
 
     sort { ($a % 2) <=> ($b % 2) } @digits;
 
@@ -4084,18 +4084,18 @@ worst case behavior.  If you run
 
 =end original
 
-��̤�?ͣ��ζ����Ǥ��� C<4> ���ǽ����ޤ���
-����������Ӥ��������Ʊ���ˤʤ����ϤˤĤ��Ƥ�?
-Perl 5.6 �����Ǽ�������Ƥ��������å������ȥ��르�ꥺ��Ǥϡ�
-Ʊ���ξ��ν���ϥ����Ȥ˰Ѥͤ��ޤ���
-���äơ��߼�Ψ�ο��ͤ��ɲä���ˤĤ�ơ�
-�����Ȥ��줿�����ȴ���ν�����Ѥ��ޤ���
-�ޤ�����ʬ��¿�����α߼�Ψ�ξ��ϡ�Perl 5.8 �Υ����å�������
-���르�ꥺ��ϡ�Ʊ�����ϤΥ����Ȥ�Ƽ¹Ԥ������Ǥ�
-Ʊ����̤ˤϤʤ�ޤ���
-������������ϡ������å������Ȥκǰ��ξ��ο����񤤤�
-���˻Ĥ�ޤ���
-�ʲ���¹Ԥ����:
+結果は?唯一の偶数である C<4> が最初に来ます。
+しかし、比較すると全て同じになる奇数はについては?
+Perl 5.6 以前で実装されていたクイックソートアルゴリズムでは、
+同点の場合の順序はソートに委ねられます。
+従って、円周率の数値を追加するにつれて、
+ソートされた偶数と奇数の順序は変わります。
+また、十分に多い数の円周率の場合は、Perl 5.8 のクイックソート
+アルゴリズムは、同じ入力のソートを再実行した場合でも
+同じ結果にはなりません。
+これの正当化は、クイックソートの最悪の場合の振る舞いと
+共に残ります。
+以下を実行すると:
 
    sort { $a <=> $b } ( 1 .. $N , 1 .. $N );
 
@@ -4115,19 +4115,19 @@ broken in different ways.
 
 =end original
 
-(��ĤΥ����Ȥ��줿����� sort ��Ȥäƥޡ�����������
-���ꤷ�ޤ�)��$N ���ͤ� 2 �ܤˤ�����硢�����å������Ȥ˳ݤ�����֤�
-2 �ܤǤϤʤ��� I<4 ��> �ˤʤ�ޤ���
-�����å������Ȥμ¹Ի��֤Ϻǰ��ξ��� N**2 �������뤳�Ȥˤʤ뤿�ᡢ
-I<4 �ܤ�> �����񤤤ȸƤФ졢������̾�λ��ѤΥѥ�����Ǥ�ȯ�������ޤ���
-����Ͼ���������ξ������դ���ɬ�פϤ���ޤ��󤬡�
-�礭������ξ��� I<���դ���ɬ�פ�����ޤ�>��
-�����Ƥ��ʤ��ϲ�ɴ�����Ǥ⤢��褦������Υ����Ȥ������ޤ�
-Ĺ�����Ǥ��ʤ����⤷��ޤ���
-����ǡ�5.8 �Υ����å������Ȥ��礭������ξ��� 4 �ܤο����񤤤���
-��뤿��ˤϥ�������������򤫤������ޤ���
-����������ϡ��⤷Ʊ���礭�������⤦���٥����Ȥ���ȡ�
-Ʊ���ξ��ε�ư�Ͽ�������ˡ���Ѥ�뤳�Ȥ��̣���ޤ���
+(二つのソートされた配列を sort を使ってマージしたいと
+仮定します)、$N の値を 2 倍にした場合、クイックソートに掛かる時間は
+2 倍ではなく、 I<4 倍> になります。
+クイックソートの実行時間は最悪の場合で N**2 で増えることになるため、
+I<4 倍の> 振る舞いと呼ばれ、これは通常の使用のパターンでも発生しえます。
+これは小さい配列の場合は注意する必要はありませんが、
+大きい配列の場合は I<注意する必要があります>。
+そしてあなたは何百万要素もあるような配列のソートが終わるまで
+長生きできないかもしれません。
+それで、5.8 のクイックソートは大きな配列の場合は 4 倍の振る舞いから
+守るためにはソート前に配列をかき混ぜます。
+しかしこれは、もし同じ大きな配列をもう一度ソートすると、
+同点の場合の挙動は色々は方法で変わることを意味します。
 
 =begin original
 
@@ -4138,11 +4138,11 @@ the original order of appearance in the input array.  So
 
 =end original
 
-Ʊ���λ���ͥ���̤�ͽ¬�Բ�ǽ�Ǥ��뤳�Ȥȡ�
-�ǰ��ξ��� 4 �ܤο����񤤤򤹤�Τǡ�
-�����å������Ȥϰ��ꤷ���ޡ��������Ȥ� I<�ۤȤ��> �������֤��������ޤ�����
-I<���ꤷ��> �Ȥϡ�Ʊ���ξ�����������Ǥνи��礬��¸�����Ȥ������ȤǤ���
-���ä�:
+同点の時の優先順位が予測不可能であることと、
+最悪の場合に 4 倍の振る舞いをするので、
+クイックソートは安定したマージソートに I<ほとんど> 完全に置き換えられました。
+I<安定した> とは、同点の場合は入力配列での出現順が保存されるということです。
+従って:
 
     sort { ($a % 2) <=> ($b % 2) } (3,1,4,1,5,9);
 
@@ -4165,20 +4165,20 @@ benefits from the increased memory speed.
 
 =end original
 
-�Ǥ� (4,3,1,1,5,9) �Ȥ�����̤��ݾڤ���ޤ���
-�����ȴ�������ϤǸ��줿��˽��Ϥˤ⸽��ޤ���
-�ޡ��������ȤϺǰ��ξ��Ǥ������ͤǤ��� O(N log N) �ο����񤤤򼨤��ޤ���
-�����������ˤ⡢�����å������Ȥ� 4 �ܤˤʤ�褦�ʾ����äˤ褤��ǽ��
-�����ޤ�: (1..$N, 1..$N) �Υ����Ȥ� O(N) ���֤Ǥ���
-�����������å������Ȥϡ����������Ϥȥץ�åȥե�����Ǥ�
-�ޡ��������Ȥ��®���Ȥ�����ͳ�ǺǸ�νִ֤˵߽Ф���ޤ�����
-�㤨�С������ȴ���ν��֤� I<���ˤ��ʤ�> �ΤǤ���С�
-�����å������Ȥ� O(N) ���֤Ǽ¹Ԥ���ޤ�;
-����ϰۤʤä����������Ǥ򲿲�⥽���Ȥ���ˤϤ褤��ΤǤ���
-�����å������Ȥ�ʬ��������ά�����Ū���������ȤƤ��ᤤ����å������
-�ץ�åȥե�����Ǥ褯ư���ޤ���
-�ǽ�Ū������ϥ���å���˼��ޤ륵������ʬ�䤵�졢
-����ˤ�����®�ٹ���β��ä�������ޤ���
+では (4,3,1,1,5,9) という結果が保証されます。
+偶数と奇数は入力で現れた順に出力にも現れます。
+マージソートは最悪の場合でも理想値である O(N log N) の振る舞いを示します。
+そして皮肉にも、クイックソートで 4 倍になるような場合に特によい性能を
+示します: (1..$N, 1..$N) のソートは O(N) 時間です。
+しかしクイックソートは、ある種の入力とプラットフォームでは
+マージソートより速いという理由で最後の瞬間に救出されました。
+例えば、偶数と奇数の順番を I<気にしない> のであれば、
+クイックソートは O(N) 時間で実行されます;
+これは異なった少しの要素を何回もソートするにはよいものです。
+クイックソートの分割統治戦略は比較的小さいがとても早いキャッシュをもつ
+プラットフォームでよく動きます。
+最終的に問題はキャッシュに収まるサイズに分割され、
+それによりメモリ速度工場の恩恵を受けられます。
 
 =begin original
 
@@ -4192,15 +4192,15 @@ exist, but they wouldn't have arrived in time to save quicksort.
 
 =end original
 
-�����å������Ȥϡ������Ȥ���������椹�� sort �ץ饰�ޤμ����ˤ�ä�
-�߽Ф���ޤ����� B<stable> ���ץ饰�ޤϥ��르�ꥺ��˴ؤ�餺
-���ꤷ�������񤤤������ޤ���
-B<_quicksort> �� B<_mergesort> ���ץ饰�ޤ���ߤ��������
-���򤹤�Ӥäݤ���ˡ�Ǥ���
-��Ƭ�� C<_> �ϡ��������ץ饰�ޤ� 5.8 �ʹߤޤ������Ĥ�ʤ����⤷��ʤ�
-���Ȥ򼨤��Ƥ��ޤ���
-���������򤹤뤿��Τ��Ŭ�ڤʵ���������ޤ�����
-�����å������Ȥε߽Фˤϴ֤˹礤�ޤ���Ǥ�����
+クイックソートは、ソートの様相を制御する sort プラグマの実装によって
+救出されました。 B<stable> 副プラグマはアルゴリズムに関わらず
+安定した振る舞いを強制します。
+B<_quicksort> と B<_mergesort> 副プラグマは内在する実装を
+選択する荒っぽい方法です。
+先頭の C<_> は、この副プラグマが 5.8 以降まで生き残らないかもしれない
+ことを示しています。
+実装を選択するためのより適切な機構がありますが、
+クイックソートの救出には間に合いませんでした。
 
 =item *
 
@@ -4217,14 +4217,14 @@ change has not affected the overall speed of Perl.
 
 =end original
 
-�ϥå���� Bob Jenkins ��"������"�ϥå��奭�����르�ꥺ��
-( http://burtleburtle.net/bob/hash/doobs.html )��Ȥ��褦�ˤʤ�ޤ�����
-���Υ��르�ꥺ��Ͻ�ʬ�˹�®�ǡ��Ť��ϥå��奢�르�ꥺ��
-(Chris Torek �ˤ�äƽ񤫤졢��� Ilya Zakharevich ���ѹ����줿���)���
-�ͤγȻ����褤�Ǥ���
-���Υ��르�ꥺ��ˤ�����Ƥ� 3 ʸ���ΰ�����ǽ�� ASCII ʸ���ˤ�륭����
-�ϥå����ͤ� DIEHARD ��������ƥ��Ȥ�ۤȤ���̲᤹���ΤǤ���
-perlbench �ˤ��С������ѹ��� Perl ���Τ�®�٤˱ƶ���Ϳ���ޤ���
+ハッシュは Bob Jenkins の"一期一会"ハッシュキーアルゴリズム
+( http://burtleburtle.net/bob/hash/doobs.html )を使うようになりました。
+このアルゴリズムは十分に高速で、古いハッシュアルゴリズム
+(Chris Torek によって書かれ、後に Ilya Zakharevich に変更されたもの)より
+値の拡散がよいです。
+このアルゴリズムによる全ての 3 文字の印字可能な ASCII 文字によるキーの
+ハッシュ値は DIEHARD 乱数生成テストをほとんど通過するものです。
+perlbench によれば、この変更は Perl 全体の速度に影響を与えません。
 
 =item *
 
@@ -4234,17 +4234,17 @@ unshift() should now be noticeably faster.
 
 =end original
 
-unshift() ����Ω�Ĥۤ�®���ʤä��Ϥ��Ǥ���
+unshift() は目立つほど速くなったはずです。
 
 =back
 
 =head1 Installation and Configuration Improvements
 
-(���󥹥ȡ��������β�����)
+(インストールと設定の改善点)
 
 =head2 Generic Improvements
 
-(����Ū�ʲ�����)
+(全般的な改善点)
 
 =over 4
 
@@ -4257,8 +4257,8 @@ integers even on non-64-bit platforms.
 
 =end original
 
-INSTALL �� �� 64-bit �ץ�åȥե������ Perl �� 64-bit ������Ȥ��褦��
-���ꤹ����ˡ���������ɲä���ޤ�����
+INSTALL に 非 64-bit プラットフォームで Perl を 64-bit 整数を使うように
+設定する方法の説明が追加されました。
 
 =item *
 
@@ -4273,14 +4273,14 @@ specify prefix, siteprefix, and vendorprefix explicitly.
 
 =end original
 
-Policy.sh �Υݥꥷ�����ѹ�����ޤ���: Policy.sh �ե������
-�����Ѥ���(INSTALL �򻲾Ȥ��Ƥ�������)��
-Configure -Dprefix=/foo/bar ��Ȥ���
-�Ť� Policy �� $prefix eq $siteprefix and $prefix eq $vendorprefix ��
-��硢��������Ƥ���������Ƭ���Ǥ��� /foo/bar ���ѹ�����ޤ���
-(������ $prefix �Τߤ��ѹ�����Ƥ��ޤ�����)
-���ο����������񤤤򹥤ޤʤ����ϡ�prefix, siteprefix, vendorperfix ��
-����Ū�˻��ꤷ�Ƥ���������
+Policy.sh のポリシーが変更されました: Policy.sh ファイルを
+再利用して(INSTALL を参照してください)、
+Configure -Dprefix=/foo/bar を使い、
+古い Policy で $prefix eq $siteprefix and $prefix eq $vendorprefix の
+場合、これら全てが新しい接頭辞である /foo/bar に変更されます。
+(以前は $prefix のみが変更されていました。)
+この新しい振る舞いを好まない場合は、prefix, siteprefix, vendorperfix を
+明示的に指定してください。
 
 =item *
 
@@ -4292,10 +4292,10 @@ own library directories.
 
 =end original
 
-Perl �饤�֥����ɲäΰ��֤���ꤹ�뤿��� otherlibdirs ��
-���Ѳ�ǽ�ˤʤ�ޤ�����
-Perl ���ȤΥ饤�֥��ǥ��쥯�ȥ��Ȥ鷺�˥٥�������ɥ���� 
-���󥹥ȡ��뤹�뤿��ʤɤ˻Ȥ��ޤ���
+Perl ライブラリの追加の位置を指定するための otherlibdirs が
+利用可能になりました。
+Perl 自身のライブラリディレクトリを使わずにベンダーアドオンを 
+インストールするためなどに使えます。
 
 =item *
 
@@ -4308,10 +4308,10 @@ to be the case and 'cc' does not seem to be the GNU C compiler
 
 =end original
 
-¿���Υץ�åȥե�����ǡ��٥�������󶡤��� 'cc' �� Perl ��
-�ӥ�ɤ���ˤϵ�ǽ���㤹���ޤ�(����Ū�ˡ�'cc' �� ANSI C �ǤϤ���ޤ���)��
-���ξ��ˤ�����ȹͤ���졢'cc' �� GNU C ����ѥ���Ǥʤ��褦��
-��硢����� 'gcc' ��Ȥ�����˼�ưŪ�˸������ޤ���
+多くのプラットフォームで、ベンダーが提供する 'cc' は Perl を
+ビルドするには機能が低すぎます(基本的に、'cc' は ANSI C ではありません)。
+この場合にあたると考えられ、'cc' が GNU C コンパイラでないような
+場合、代わりに 'gcc' を使うために自動的に検索します。
 
 =item *
 
@@ -4324,10 +4324,10 @@ warning that there may be trouble ahead.
 
 =end original
 
-gcc �ϥӥ�ɤ�������򤱤뤿��˥��ڥ졼����󥷥��ƥ�Υ�꡼����
-�ɤ�������ɬ�פ�����ޤ����¹Ԥ���Ƥ��륪�ڥ졼�ƥ��󥰥����ƥ��
-�㤦�Ķ��� gcc ������ѥ��뤵��Ƥ���Τ� Configure ��ȯ��������硢
-���꤬���뤫�⤷��ʤ����Ȥ����Τ˷ٹ�Ȥ��ƽ��Ϥ��ޤ���
+gcc はビルドの問題を避けるためにオペレーションシステムのリリースを
+追いかける必要があります。実行されているオペレーティングシステムと
+違う環境で gcc がコンパイルされているのを Configure が発見した場合、
+問題があるかもしれないことを明確に警告として出力します。
 
 =item *
 
@@ -4339,8 +4339,8 @@ modules in @INC.
 
 =end original
 
-Perl 5.8 �ϰ����ΥС������ȥХ��ʥ�ߴ���������ޤ���Τǡ�
-@INC �� 5.005 �⥸�塼���ޤ�뤳�Ȥ���Ƥ��ʤ��ʤ�ޤ�����
+Perl 5.8 は以前のバージョンとバイナリ互換性がありませんので、
+@INC に 5.005 モジュールを含めることを提案しなくなりました。
 
 =item *
 
@@ -4350,7 +4350,7 @@ Configure C<-S> can now run non-interactively. [561]
 
 =end original
 
-Configure C<-S> ��������Ū�˼¹ԤǤ���褦�ˤʤ�ޤ�����[561]
+Configure C<-S> は非対話的に実行できるようになりました。[561]
 
 =item *
 
@@ -4361,8 +4361,8 @@ to obsolescence. [561]
 
 =end original
 
-Configure �� pdp11-������������ǥ�ϸŤ���ΤˤʤäƤ��ޤ��Τ�
-��������ޤ�����
+Configure の pdp11-スタイルメモリモデルは古いものになっていますので
+取り除かれました。
 
 =item *
 
@@ -4372,7 +4372,7 @@ configure.gnu now works with options with whitespace in them.
 
 =end original
 
-configure.gnu �ϥ��ץ����˶������äƤ��Ƥ�ư���褦�ˤʤ�ޤ�����
+configure.gnu はオプションに空白が入っていても動作するようになりました。
 
 =item *
 
@@ -4382,7 +4382,7 @@ installperl now outputs everything to STDERR.
 
 =end original
 
-installperl �Ͻ��Ϥ����� STDERR �˹Ԥ��褦�ˤʤ�ޤ�����
+installperl は出力を全て STDERR に行うようになりました。
 
 =item *
 
@@ -4395,12 +4395,12 @@ line option -Uuseperlio), you will get "-stdio" appended.
 
 =end original
 
-PerlIO ���ۤȤ�ɤΥץ�åȥե�����ǥǥե���Ȥˤʤä��Τǡ�
-"-perlio" �� $Config{archname} ($^O �Ȥ��Ƥ��Τ��ޤ�) ��
-�ɲä���ʤ��ʤ�ޤ�����
-����ˡ�����Ū�� perlio ��Ȥ�ʤ����Ȥ����򤷤�
-(Configure ���ޥ�ɥ饤�󥪥ץ���� -Uuseperlio)��硢
-"-stdio"���ɲä���ޤ���
+PerlIO がほとんどのプラットフォームでデフォルトになったので、
+"-perlio" は $Config{archname} ($^O としても知られます) に
+追加されなくなりました。
+代わりに、明示的に perlio を使わないことを選択した
+(Configure コマンドラインオプション -Uuseperlio)場合、
+"-stdio"が追加されます。
 
 =item *
 
@@ -4412,10 +4412,10 @@ pointers are 64 bits wide.  (To be exact, the use64bitall is ignored.)
 
 =end original
 
-�������ƥ�����̾�˴ؤ��뤽��¾���ѹ��Ȥ��Ƥϡ�
-"-64all"(-Duse64bitall �ޤ��� "maximally 64-bit") ��
-�ݥ��󥿤� 64 �ӥå�Ĺ �ξ��ˤΤ��ɲä���ޤ���
-(���Τˤϡ�use64bitall ��̵�뤵��ޤ���)
+アーキテクチャ名に関するその他の変更としては、
+"-64all"(-Duse64bitall または "maximally 64-bit") は
+ポインタが 64 ビット長 の場合にのみ追加されます。
+(正確には、use64bitall が無視されます。)
 
 =item *
 
@@ -4427,8 +4427,8 @@ parameter C<-Dafsroot=/some/where/else>.
 
 =end original
 
-AFS ���󥹥ȡ���ǡ�Configure �ǥѥ�᡼�� C<-Dafsroot=/some/where/else> ��
-�Ȥ����Ȥǡ�AFS �Υ롼�Ȥ�ǥե���Ȥ� F</afs> �ʳ������ꤹ�뤳�Ȥ��Ǥ��ޤ���
+AFS インストールで、Configure でパラメータ C<-Dafsroot=/some/where/else> を
+使うことで、AFS のルートをデフォルトの F</afs> 以外に設定することができます。
 
 =item *
 
@@ -4440,10 +4440,10 @@ to Perl's default search path (@INC); see INSTALL for information.
 
 =end original
 
-�ۤȤ���Τ��Ƥ��ʤ����������Ǥ��� APPLLIB_EXP �ɥɥ�����Ȥ�
-��������ޤ���������ϥ����ȸ�ͭ�Υǥ��쥯�ȥ�� Perl ��
-�ǥե���ȸ����ѥ� (@INC) ���ɲä��뤿��˻Ȥ��ޤ���
-����ˤĤ��Ƥ� INSTALL �򻲾Ȥ��Ƥ���������
+ほとんど知られていない設定時定義である APPLLIB_EXP どドキュメントが
+作成されました。これはサイト固有のディレクトリを Perl の
+デフォルト検索パス (@INC) に追加するために使えます。
+情報については INSTALL を参照してください。
 
 =item *
 
@@ -4457,11 +4457,11 @@ DB_VERSION_PATCH_CFG> from C.
 
 =end original
 
-Perl (�Ȥ����餯�� DB_File ��ĥ)���ӥ�ɤ��줿�Ȥ��˻Ȥ�줿
-Berkeley DB �ΥС�����󤬡�Perl �����
-C<@Config{qw(db_version_major db_version_minor db_version_patch)}> �ǡ�
-C ����� C<DB_VERSION_MAJOR_CFG DB_VERSION_MINOR_CFG DB_VERSION_PATCH_CFG> ��
-������褦�ˤʤ�ޤ�����
+Perl (とおそらくは DB_File 拡張)がビルドされたときに使われた
+Berkeley DB のバージョンが、Perl からは
+C<@Config{qw(db_version_major db_version_minor db_version_patch)}> で、
+C からは C<DB_VERSION_MAJOR_CFG DB_VERSION_MINOR_CFG DB_VERSION_PATCH_CFG> で
+得られるようになりました。
 
 =item *
 
@@ -4472,8 +4472,8 @@ has been documented in INSTALL.
 
 =end original
 
-DB, NDBM, ODBM �Τ���� Berkeley DB3 ��ߴ����⡼�ɤǥӥ�ɤ�����ˡ��
-INSTALL �˵��Ҥ���ޤ�����
+DB, NDBM, ODBM のために Berkeley DB3 を互換性モードでビルドする方法が
+INSTALL に記述されました。
 
 =item *
 
@@ -4486,11 +4486,11 @@ more details.
 
 =end original
 
-(�ͥåȥ����ͳ����CD-ROM �Τ褦�ʥ������륳�ԡ��ˤ�ä�) CPAN ��
-���������Ǥ����硢-Dextras=... ���ץ�����Ȥä�
-Perl �ȶ��˥ӥ�ɤ���ӥ��󥹥ȡ��뤹���ɲäΥ⥸�塼��� Configure ��
-���ꤹ�뤳�Ȥ�����ޤ���
-����ʤ�ܺ٤ˤĤ��Ƥ� INSTALL �򻲾Ȥ��Ƥ���������
+(ネットワーク経由か、CD-ROM のようなローカルコピーによって) CPAN に
+アクセスできる場合、-Dextras=... オプションを使って
+Perl と共にビルドおよびインストールする追加のモジュールを Configure に
+指定することが出来ます。
+さらなる詳細については INSTALL を参照してください。
 
 =item *
 
@@ -4503,11 +4503,11 @@ for site-wide changes).
 
 =end original
 
-config.over ���ɲä��ơ���������񤭥ե�����Ǥ��� config.arch ��
-���Ѳ�ǽ�ˤʤ�ޤ�����
-���Υե�����ϥҥ�ȥե������񤯿ͤ�
-(config.over �������ȤǤ��ѹ��Τ���ˤ���ΤȰ�ä�)
-�������ƥ�����Ǥ��ѹ��򰷤����Ȥ����ꤷ�Ƥ��ޤ���
+config.over に追加して、新しい上書きファイルである config.arch が
+利用可能になりました。
+このファイルはヒントファイルを書く人が
+(config.over がサイトでの変更のためにあるのと違って)
+アーキテクチャでの変更を扱うことを想定しています。
 
 =item *
 
@@ -4518,9 +4518,9 @@ of the source directory by
 
 =end original
 
-�ե����륷���ƥब����ܥ�å���󥯤��б����Ƥ����硢
-�ʲ��Τ褦�ˤ��� Perl �򥽡����ǥ��쥯�ȥ�γ�¦�ǥӥ�ɤ��뤳�Ȥ�
-�Ǥ��ޤ�:
+ファイルシステムがシンボリックリンクに対応している場合、
+以下のようにして Perl をソースディレクトリの外側でビルドすることが
+できます:
 
 	mkdir /tmp/perl/build/directory
 	cd /tmp/perl/build/directory
@@ -4534,10 +4534,10 @@ unaffected.  After Configure has finished, you can just say
 
 =end original
 
-����� /tmp/perl/build/directory �� /path/to/perl/source �ˤ���
-�ե������ؤ�����ܥ�å���󥯤Υĥ꡼��������ޤ���
-���Υե�����ˤϱƶ��Ϥ���ޤ���
-Configure ����λ�����塢ñ�˰ʲ��Τ褦�ˤ��뤳�Ȥ�:
+これは /tmp/perl/build/directory に /path/to/perl/source にある
+ファイルを指すシンボリックリンクのツリーを作成します。
+元のファイルには影響はありません。
+Configure が終了した後、単に以下のようにすることで:
 
 	make all test
 
@@ -4548,8 +4548,8 @@ and Perl will be built and tested, all in /tmp/perl/build/directory.
 
 =end original
 
-���� /tmp/perl/build/directory �ǥ��쥯�ȥ���Ǥ� Perl ��
-�ӥ�ɡ��ƥ��Ȥ���ޤ���[561]
+全て /tmp/perl/build/directory ディレクトリ内でで Perl が
+ビルド、テストされます。[561]
 
 =item *
 
@@ -4560,9 +4560,9 @@ and debugging have been added; see L<perlhack>.
 
 =end original
 
-Perl ��ȯ�ԤΤ���ˡ��ץ��ե�����󥰤�ǥХå��Τ����
-������ make �Υ������åȤ��ɲä���ޤ���;
-L<perlhack> �򻲾Ȥ��Ƥ���������
+Perl 開発者のために、プロファイリングやデバッグのための
+新しい make のターゲットが追加されました;
+L<perlhack> を参照してください。
 
 =over 8
 
@@ -4576,10 +4576,10 @@ generating a gprofiled Perl executable.
 
 =end original
 
-Perl �Υץ��ե�����󥰤� �Ԥ� F<gprof> �ġ���λȤ�����
-L<perlhack> �˵��Ҥ���ޤ�����
-gprofile �����줿 Perl �¹ԥե�������������뤿���
-"perl.gprof" �Ȥ��� make �������åȤ�����ޤ���
+Perl のプロファイリングを 行う F<gprof> ツールの使い方が
+L<perlhack> に記述されました。
+gprofile 化された Perl 実行ファイルを生成するための
+"perl.gprof" という make ターゲットがあります。
 
 =item *
 
@@ -4591,8 +4591,8 @@ L<perlhack>.
 
 =end original
 
-GCC 3 �������硢�ϰϲ��ϤΤ���� gcov �����줿 Perl �¹ԥե������
-�������뤿��� "perl.gcov"�Ȥ��� make �������åȤ�����ޤ���
+GCC 3 がある場合、範囲解析のための gcov 化された Perl 実行ファイルを
+生成するための "perl.gcov"という make ターゲットがあります。
 
 =item *
 
@@ -4604,10 +4604,10 @@ Third Degree.
 
 =end original
 
-IRIX �� Tru64 �ץ�åȥե�����ξ��ϡ�
-�������ץ��ե������/�ǥХå��󥰥��ץ�����ɲä���ޤ�����
-pixie �� Third Degree �˴ؤ��뤵��ʤ����ˤĤ��Ƥ� L<perlhack> ��
-���Ȥ��Ƥ���������
+IRIX か Tru64 プラットフォームの場合は、
+新しいプロファイリング/デバッギングオプションが追加されました。
+pixie と Third Degree に関するさらなる情報については L<perlhack> を
+参照してください。
 
 =back
 
@@ -4620,8 +4620,8 @@ been added to INSTALL.
 
 =end original
 
-�Ǿ��� Perl ���󥹥ȡ�����ۤ��뤿��Υ����ɥ饤��
-INSTALL ���ɲä���ޤ�����
+最小の Perl インストールを構築するためのガイドラインが
+INSTALL に追加されました。
 
 =item *
 
@@ -4633,9 +4633,9 @@ Thread extension requires being Configured with C<-Duse5005threads>).
 
 =end original
 
-Thread ��ĥ�� i ����åɤδ�Ǥ�(C<Configure -Duseithreads>)
-�ӥ�ɤ���ʤ��ʤ�ޤ������Ȥˤ���ư��ʤ�����Ǥ�
-(Thread ��ĥ�� Configure �� C<-Duse5005threads> ����ꤹ��ɬ�פ�����ޤ�)��
+Thread 拡張は i スレッドの基では(C<Configure -Duseithreads>)
+ビルドされなくなりました。とにかく動作しないからです
+(Thread 拡張は Configure に C<-Duse5005threads> を指定する必要があります)。
 
 =begin original
 
@@ -4645,9 +4645,9 @@ new ithreads model.>
 
 =end original
 
-B<5.005 �Υ���åɤ��󥵥ݡ��Ȥǡ���侩�Ǥ��뤳�Ȥ����դ��Ƥ�������:
-�Ť�����åɤ�Ȥä������ɤϿ����� i ����åɥ�ǥ��
-�ܤ�٤��Ǥ�.>
+B<5.005 のスレッドは非サポートで、非推奨であることに注意してください:
+古いスレッドを使ったコードは新しい i スレッドモデルに
+移るべきです.>
 
 =item *
 
@@ -4660,10 +4660,10 @@ now resort to the slower sprintf.
 
 =end original
 
-��ư��������ʸ���󲽤��뤿��� Gconvert �ޥ��� ($Config{d_Gconvert}) ��
-�Ѵ��� sprintf %.*g �롼���Ȥ����Ȥ˴ؤ��Ƥ�ꤦ�뤵���ʤ�ޤ�����
-gcvt ��Ȥ��Ƥ����ץ�åȥե�����Ǥ⡢����٤� sprintf ��Ȥ����Ȥ�
-�ʤ��Τ⤢��ޤ���
+浮動小数点を文字列化するための Gconvert マクロ ($Config{d_Gconvert}) は
+変換に sprintf %.*g ルールを使うことに関してよりうるさくなりました。
+gcvt を使えていたプラットフォームでも、より遅い sprintf を使うことに
+なるものもあります。
 
 =item *
 
@@ -4674,7 +4674,7 @@ of perl by saying
 
 =end original
 
-perl ���ü��(�ǥХå��ʤ�)��ǽ���դ��뤿��ΰʲ��Τ褦�˻��ꤹ��:
+perl に特殊な(デバッグなど)機能を付けるための以下のように指定する:
 
 	make LIBPERL=libperld.a
 
@@ -4684,13 +4684,13 @@ has been removed. Use -DDEBUGGING instead.
 
 =end original
 
-�Ť��᥽�åɤϼ�������ޤ���������� -DDEBUGGING ��ȤäƤ���������
+古いメソッドは取り除かれました。代わりに -DDEBUGGING を使ってください。
 
 =back
 
 =head2 New Or Improved Platforms
 
-(���������⤷���ϲ������줿�ץ�åȥե�����)
+(新しい、もしくは改善されたプラットフォーム)
 
 =begin original
 
@@ -4699,8 +4699,8 @@ see L<perlport/"Supported Platforms">.
 
 =end original
 
-Perl ���б����Ƥ���Ȥ狼�äƤ���ץ�åȥե�����ΰ����ˤĤ��Ƥϡ�
-L<perlport/"Supported Platforms"> �򻲾Ȥ��Ƥ���������
+Perl に対応しているとわかっているプラットフォームの一覧については、
+L<perlport/"Supported Platforms"> を参照してください。
 
 =over 4
 
@@ -4712,7 +4712,7 @@ AIX dynamic loading should be now better supported.
 
 =end original
 
-AIX ��ưŪ�����ǥ��󥰤Ϥ��褯�б�����褦�ˤʤ�ޤ�����
+AIX の動的ローディングはよりよく対応するようになりました。
 
 =item *
 
@@ -4723,9 +4723,9 @@ long doubles support in AIX should be better now.  See L<perlaix>.
 
 =end original
 
-AIX �� gcc������åɡ�64-bit ���˴ؤ��Ƥ��褯ư���褦�ˤʤ�ޤ�����
-�ޤ� AIX �Ǥ� long double ���б����������ޤ�����
-L<perlaix> �򻲾Ȥ��Ƥ���������
+AIX は gcc、スレッド、64-bit 化に関してよりよく動くようになりました。
+また AIX での long double の対応も改善されました。
+L<perlaix> を参照してください。
 
 =item *
 
@@ -4735,7 +4735,7 @@ AtheOS ( http://www.atheos.cx/ ) is a new platform.
 
 =end original
 
-AtheOS ( http://www.atheos.cx/ ) �Ͽ������ץ�åȥե�����Ǥ���
+AtheOS ( http://www.atheos.cx/ ) は新しいプラットフォームです。
 
 =item *
 
@@ -4745,7 +4745,7 @@ BeOS has been reclaimed.
 
 =end original
 
-BeOS �ǺƤ�ư���褦�ˤʤ�ޤ�����
+BeOS で再び動作するようになりました。
 
 =item *
 
@@ -4756,8 +4756,8 @@ See L<perldgux>.
 
 =end original
 
-DG/UX �ץ�åȥե������ 5.005-��������Υ���åɤ��б����ޤ�����
-L<perldgux> �򻲾Ȥ��Ƥ���������
+DG/UX プラットフォームで 5.005-スタイルのスレッドに対応しました。
+L<perldgux> を参照してください。
 
 =item *
 
@@ -4768,8 +4768,8 @@ near osvers 4.5.2.
 
 =end original
 
-DYNIX/ptx �ץ�åȥե�����(dynixptx �Ȥ��Ƥ��Τ��ޤ�) ��
-OS �С������ 4.5.2 �����꤫���б�����ޤ�����
+DYNIX/ptx プラットフォーム(dynixptx としても知られます) は
+OS バージョン 4.5.2 あたりから対応されました。
 
 =item *
 
@@ -4783,12 +4783,12 @@ L<perlbs2000> (for POSIX-BC), and L<perlvmesa> for more information.
 
 =end original
 
-EBCDIC �ץ�åȥե����� (z/OS (OS/390 �Ȥ��Ƥ��Τ��ޤ�), POSIX-BC, VM/ESA)
-�����褷�ޤ�����¿���Υƥ��ȥ������ȥƥ��Ȥ�̤���˼��Ԥ���
-Unicode �� EBCDIC �ζ�¸�����ä����褷���櫓�ǤϤ���ޤ��󤬡�
-������ Perl 5.6 �κ�����ڤ��˲������ޤ�����
-����ʤ����ˤĤ��Ƥ� L<perlos390>, L<perlbs2000> (POSIX-BC), L<perlvmesa> ��
-���Ȥ��Ƥ���������
+EBCDIC プラットフォーム (z/OS (OS/390 としても知られます), POSIX-BC, VM/ESA)
+が復活しました。多くのテストスイートテストは未だに失敗し、
+Unicode と EBCDIC の共存がすっかり解決したわけではありませんが、
+状況は Perl 5.6 の頃より遥かに改善しました。
+さらなる情報については L<perlos390>, L<perlbs2000> (POSIX-BC), L<perlvmesa> を
+参照してください。
 
 =item *
 
@@ -4800,11 +4800,11 @@ need a thread library package installed. See README.hpux. [561]
 
 =end original
 
--Duseithreads �ޤ��� -Duse5005threads �դ��� perl �Υӥ�ɤ�
-HP-UX 10.20 �����Ǥ�ư���褦�ˤʤ�ޤ���(������10.30 �ʹߤǤΤ�
-ư��Ƥ��ޤ���)��
-����åɥ饤�֥��ѥå������Υ��󥹥ȡ��뤬ɬ�פǤ���
-README.hpux �򻲾Ȥ��Ƥ���������[561]
+-Duseithreads または -Duse5005threads 付きの perl のビルドは
+HP-UX 10.20 以前でも動作するようになりました(以前は10.30 以降でのみ
+動作していました)。
+スレッドライブラリパッケージのインストールが必要です。
+README.hpux を参照してください。[561]
 
 =item *
 
@@ -4817,9 +4817,9 @@ source code bases of standard Perl and MacPerl have been synchronised)
 
 =end original
 
-Mac OS Classic �ϥᥤ�󥹥ȥ꡼�ॽ�����ѥå��������б����뤳�Ȥ�
-�ʤ�ޤ���(perl 5.004 ����� MacPerl �����������Ѳ�ǽ�Ǥ�����
-ɸ��� Perl �� MacPerl �Υ����������ɥ١�����Ʊ�����Ƥ��ޤ�)��[561]
+Mac OS Classic はメインストリームソースパッケージで対応することに
+なりました(perl 5.004 からの MacPerl ももちろん利用可能ですが、
+標準の Perl と MacPerl のソースコードベースは同期しています)。[561]
 
 =item *
 
@@ -4831,9 +4831,9 @@ process.)
 
 =end original
 
-Mac OS X(Darwin)�Ǥϡ�HFS+ �ե����륷���ƥ�Ǥ� Perl ��ӥ�ɤǤ���褦��
-�ʤ�ޤ�����
-(��ʸ����ʸ����̵�뤹��Τ� Perl �ӥ�ɥץ��������𤵤��Ƥ��ޤ�����)
+Mac OS X(Darwin)では、HFS+ ファイルシステムでも Perl をビルドできるように
+なりました。
+(大文字小文字を無視するので Perl ビルドプロセスを混乱させていました。)
 
 =item *
 
@@ -4843,7 +4843,7 @@ NCR MP-RAS is now supported. [561]
 
 =end original
 
-NCR MP-RAS ���б����ޤ�����[561]
+NCR MP-RAS に対応しました。[561]
 
 =item *
 
@@ -4854,8 +4854,8 @@ specific ones) have been merged back to the main distribution.
 
 =end original
 
-���Ƥ� NetBSD ��ͭ�Υѥå�(���󥹥ȡ����ͭ�Υѥå�������ޤ�)��
-�ᥤ��ǥ����ȥ�ӥ塼�����˥ޡ�������ޤ�����
+全ての NetBSD 固有のパッチ(インストール固有のパッチを除きます)が
+メインディストリビューションにマージされました。
 
 =item *
 
@@ -4865,8 +4865,8 @@ NetWare from Novell is now supported.  See L<perlnetware>.
 
 =end original
 
-Novell �� NetWare ���б����ޤ�����
-L<perlnetware> �򻲾Ȥ��Ƥ���������
+Novell の NetWare に対応しました。
+L<perlnetware> を参照してください。
 
 =item *
 
@@ -4876,7 +4876,7 @@ NonStop-UX is now supported. [561]
 
 =end original
 
-NonStop-UX ���б����ޤ�����[561]
+NonStop-UX に対応しました。[561]
 
 =item *
 
@@ -4886,7 +4886,7 @@ NEC SUPER-UX is now supported.
 
 =end original
 
-NEC SUPER-UX ���б����ޤ�����
+NEC SUPER-UX に対応しました。
 
 =item *
 
@@ -4897,8 +4897,8 @@ specific ones) have been merged back to the main distribution.
 
 =end original
 
-���Ƥ� OpenBSD ��ͭ�Υѥå�(���󥹥ȡ����ͭ�Υѥå�������ޤ�)��
-�ᥤ��ǥ����ȥ�ӥ塼�����˥ޡ�������ޤ�����
+全ての OpenBSD 固有のパッチ(インストール固有のパッチを除きます)が
+メインディストリビューションにマージされました。
 
 =item *
 
@@ -4913,14 +4913,14 @@ possible non-preemptability of the underlying thread implementation.
 
 =end original
 
-Perl �� GNU pth �桼������٥륹��åɥѥå�����
-( http://www.gnu.org/software/pth/pth.html ) �ǥƥ��Ȥ���ޤ�����
-Perl �����ƤΥ���åɥƥ��Ȥ�ư��ޤ�������
-�ƥ��Ȥˤ����Ĥ��� yield() ���ɲä���ɬ�פ�����ޤ�����
-���Τ��ᡢpth (�Ȥ���¾�Υ桼������٥륹��åɼ���) ��
-Perl i����åɤ�"ư���"�ȹͤ��館���ޤ�����
-����åɼ�������ߤ���Υ�ץꥨ��ץƥ������β�ǽ���ˤĤ���
-��θ���Ƥ���������
+Perl は GNU pth ユーザーレベルスレッドパッケージ
+( http://www.gnu.org/software/pth/pth.html ) でテストされました。
+Perl の全てのスレッドテストは動作しましたが、
+テストにいくつかの yield() を追加する必要がありました。
+そのため、pth (とその他のユーザーレベルスレッド実装) は
+Perl iスレッドで"動作する"と考えらえられますが、
+スレッド実装に内在するノンプリエンプティブ性の可能性について
+考慮してください。
 
 =item *
 
@@ -4933,10 +4933,10 @@ available.  See L<perlvos>. [561+]
 
 =end original
 
-Stratus VOS �� Perl �Υͥ��ƥ��֥ӥ�ɼ�ˡ (Configure) ���б�����ޤ�����
-���줬 VOS �� Perl ��ӥ�ɤ�����ο侩������ˡ�Ǥ���
-miniperl ��ӥ�ɤ���Ť���ˡ��ޤ����Ѳ�ǽ�Ǥ���
-L<perlvos> �򻲾Ȥ��Ƥ���������[561+]
+Stratus VOS は Perl のネイティブビルド手法 (Configure) で対応されました。
+これが VOS で Perl をビルドする場合の推奨される手法です。
+miniperl をビルドする古い手法もまだ利用可能です。
+L<perlvos> を参照してください。[561+]
 
 =item *
 
@@ -4946,7 +4946,7 @@ The Amdahl UTS UNIX mainframe platform is now supported. [561]
 
 =end original
 
-Amdahl UTS UNIX �ᥤ��ե졼��ץ�åȥե�������б����ޤ�����[561]
+Amdahl UTS UNIX メインフレームプラットフォームに対応しました。[561]
 
 =item *
 
@@ -4956,7 +4956,7 @@ WinCE is now supported.  See L<perlce>.
 
 =end original
 
-WinCE ���б����ޤ�����L<perlce> �򻲾Ȥ��Ƥ���������
+WinCE に対応しました。L<perlce> を参照してください。
 
 =item *
 
@@ -4968,16 +4968,16 @@ however, you must specify -Dusedl in the arguments of Configure. [561]
 
 =end original
 
-z/OS (������ OS/360 �Ȥ����Τ�졢�������� MVS OE �Ȥ����Τ��Ƥ��ޤ���)��
-ưŪ�����ǥ��󥰤��б����ޤ�����
-����ϥǥե���ȤǤ����򤵤�ޤ���Τǡ�Configure �ΰ����Ȥ���
--Dusedl ����ꤹ��ɬ�פ�����ޤ���[561]
+z/OS (以前は OS/360 として知られ、その前は MVS OE として知られていました)は
+動的ローディングに対応しました。
+これはデフォルトでは選択されませんので、Configure の引数として
+-Dusedl を指定する必要があります。[561]
 
 =back
 
 =head1 Selected Bug Fixes
 
-(�Х�������ȴ��)
+(バグ修正の抜粋)
 
 =begin original
 
@@ -4987,8 +4987,8 @@ a bit. [561]
 
 =end original
 
-¿���Υ���꡼����̤���������ؤΥ�����������������ޤ�����
-�ǽ��פʤ�ΤȤ��Ƥϡ�̵̾ subs �����ʤ����꡼�����Ƥ��ޤ�����[561]
+多くのメモリリークと未初期化メモリへのアクセスが修正されました。
+最重要なものとしては、無名 subs がかなりメモリリークしていました。[561]
 
 =over 4
 
@@ -5000,7 +5000,7 @@ The autouse pragma didn't work for Multi::Part::Function::Names.
 
 =end original
 
-autouse �ץ饰�ޤ� Multi::Part::Function::Names ��ư��Ƥ��ޤ���Ǥ�����
+autouse プラグマは Multi::Part::Function::Names で動作していませんでした。
 
 =item *
 
@@ -5013,10 +5013,10 @@ been removed from the symbol table.
 
 =end original
 
-caller() �Ϥ����ξ����Ǥϥ�������פ�����������Ƥ��ޤ�����
-Cart �ϻ�����������αƶ�������Ƥ��ޤ�����
-�äˡ�caller() �ϥ���ܥ�ơ��֥뤫�������줿���֥롼����Ǥ�
-���֥롼����̾�Ȥ��� C<(unknown)> ���֤��褦�ˤʤ�ޤ�����
+caller() はある種の状況ではコアダンプを引き起こしていました。
+Cart は時々この問題の影響を受けていました。
+特に、caller() はシンボルテーブルから削除されたサブルーチンでは
+サブルーチン名として C<(unknown)> を返すようになりました。
 
 =item *
 
@@ -5027,9 +5027,9 @@ reverse order.  This has been reversed to be in the right order. [561]
 
 =end original
 
-chop(@list) ��ꥹ�ȥ���ƥ����ȤǻȤ��ȡ�
-�ս�� chop ����ʸ������֤��Ƥ��ޤ�����
-�����������������ᤵ��ޤ�����[561]
+chop(@list) をリストコンテキストで使うと、
+逆順で chop した文字列を返していました。
+これは正しい順序に戻されました。[561]
 
 =item *
 
@@ -5041,9 +5041,9 @@ which needs them. [561]
 
 =end original
 
-Configure �� Perl �Х��ʥ��ӥ�ɤ���Ȥ��� DBM �饤�֥��
-(dbm, gdbm, db, ndbm) ��ޤ�ʤ��褦�ˤʤ�ޤ�����
-ͣ����㳰�Ϥ���餬ɬ�פ� SunOS 4.x �Ǥ���[561]
+Configure は Perl バイナリをビルドするときに DBM ライブラリ
+(dbm, gdbm, db, ndbm) を含めないようになりました。
+唯一の例外はこれらが必要な SunOS 4.x です。[561]
 
 =item *
 
@@ -5058,14 +5058,14 @@ Perl consistently handles such strings as zero in numeric contexts.
 
 =end original
 
-"0x23" �Ȥ��ä���10 �ʤǤϤʤ�����ʸ��������ο����񤤤�
-�ץ�åȥե������¸�Ǥ���: 35 �Ȥ��ư����ץ�åȥե�����⤢��С�
-0 �Ȥ��ư����ץ�åȥե�����⤢�ꡢ
-�������Ȥ��ư����ץ�åȥե�����⤢��ޤ���(ʹ���ʤ��ǲ�����)��
-����ϡ�Perl ��ʸ�������ͤ��Ѵ�������̤�̤����ΤȤ���
-���ڥ졼����󥷥��ƥ�Υ饤�֥���ȤäƤ�������Ǥ�:
-Perl �ϰ�Ӥ��ƿ��ͥ���ƥ����ȤǤϤ�����ʸ����򥼥��Ȥ���
-�����褦�ˤʤ�ޤ�����
+"0x23" といった、10 進ではない数値文字列定数の振る舞いは
+プラットフォーム依存でした: 35 として扱うプラットフォームもあれば、
+0 として扱うプラットフォームもあり、
+小数点として扱うプラットフォームもありました(聞かないで下さい)。
+これは、Perl は文字列を数値に変換した結果が未定義のときに
+オペレーションシステムのライブラリを使っていたからです:
+Perl は一貫して数値コンテキストではこれらの文字列をゼロとして
+扱うようになりました。
 
 =item *
 
@@ -5078,12 +5078,12 @@ now goes correctly to the socket if RemotePort is set. [561]
 
 =end original
 
-�����Ĥ��ΥǥХå��ν���: ��λ�����ɤϥ�����ץȤν�λ�����ɤ�
-ȿ�Ǥ���褦�ˤʤ�ޤ���; ��� C<"0"> ��������������褦�ˤʤ�ޤ���;
-C<d> ���ޥ�ɤϹ��ֹ������å�����褦�ˤʤ�ޤ���;
-C<$.> �ϲ���ʤ��ʤ�ޤ���;
-RemotePort �����åȤ��줿��硢�ǥХå������Ƥν��Ϥ�
-�����������åȤ˸������褦�ˤʤ�ޤ�����[561]
+いくつかのデバッガの修正: 終了コードはスクリプトの終了コードを
+反映するようになりました; 条件 C<"0"> を正しく扱えるようになりました;
+C<d> コマンドは行番号をチェックするようになりました;
+C<$.> は壊れなくなりました;
+RemotePort がセットされた場合、デバッガの全ての出力が
+正しくソケットに向かうようになりました。[561]
 
 =item *
 
@@ -5095,10 +5095,10 @@ also added to test the changes, and as a placeholder for further tests.
 
 =end original
 
-�ǥХå� (perl5db.pl) �� (CommandSet=580) ���̤���
-����Ӥ������ޥ�ɥ��󥿡��ե���������Ĥ褦�˽�������ޤ�����
-�����ѹ���ƥ��Ȥ��뤿��ȡ�����Υƥ��ȤΥץ졼���ۥ���Ȥ���
-perl5db.t ���ɲä���ޤ�����
+デバッガ (perl5db.pl) は (CommandSet=580) を通して
+より一貫したコマンドインターフェースを持つように修正されました。
+この変更をテストするためと、将来のテストのプレースホルダとして
+perl5db.t が追加されました。
 
 =begin original
 
@@ -5106,7 +5106,7 @@ See L<perldebug>.
 
 =end original
 
-L<perldebug> �򻲾Ȥ��Ƥ���������
+L<perldebug> を参照してください。
 
 =item *
 
@@ -5119,10 +5119,10 @@ depth of at most I<N> levels.
 
 =end original
 
-�ǥХå��ˡ��ͥ��Ȥ�����¤�����פ�����κ���ο��������椹�뤿���
-C<dumpDepth> ���ץ�����ɲä���ޤ�����
-C<x> ���ޥ�ɤϳ�ĥ���졢C<x N EXPR> �Ȥ����
-I<EXPR> ���ͤ���� I<N> ��٥�ο����ޤǥ���׽��Ϥ��ޤ���
+デバッガに、ネストした構造をダンプする場合の最大の深さを制御するための
+C<dumpDepth> オプションが追加されました。
+C<x> コマンドは拡張され、C<x N EXPR> とすると
+I<EXPR> の値を最大 I<N> レベルの深さまでダンプ出力します。
 
 =item *
 
@@ -5133,8 +5133,8 @@ module PadWalker installed.
 
 =end original
 
-�ǥХå��ϡ�CPAN �⥸�塼��Ǥ��� PadWalker �����󥹥ȡ��뤵��Ƥ����
-�쥭�������ѿ���ɽ���Ǥ���褦�ˤʤ�ޤ�����
+デバッガは、CPAN モジュールである PadWalker がインストールされていると
+レキシカル変数を表示できるようになりました。
 
 =item *
 
@@ -5144,7 +5144,7 @@ The order of DESTROYs has been made more predictable.
 
 =end original
 
-DESTROY �ν���Ϥ��ͽ¬��ǽ�ˤʤ�ޤ�����
+DESTROY の順序はより予測可能になりました。
 
 =item *
 
@@ -5156,9 +5156,9 @@ This has been corrected. [561]
 
 =end original
 
-Perl 5.6.0 �Ǥϥ⥸�塼�����Ū�� perl �˥ӥ�ɤ�����硢
-dl_error() �κ�����˴ؤ��뵶�ηٹ����Ϥ��뤳�Ȥ�����ޤ�����
-����Ͻ�������ޤ�����[561]
+Perl 5.6.0 ではモジュールを静的に perl にビルドした場合、
+dl_error() の再定義に関する偽の警告を出力することがありました。
+これは修正されました。[561]
 
 =item *
 
@@ -5168,7 +5168,7 @@ L<dprofpp> -R didn't work.
 
 =end original
 
-L<dprofpp> -R ��ư��ޤ���Ǥ�����
+L<dprofpp> -R は動作しませんでした。
 
 =item *
 
@@ -5178,7 +5178,7 @@ C<*foo{FORMAT}> now works.
 
 =end original
 
-C<*foo{FORMAT}> ��ư���褦�ˤʤ�ޤ�����
+C<*foo{FORMAT}> が動作するようになりました。
 
 =item *
 
@@ -5188,7 +5188,7 @@ Infinity is now recognized as a number.
 
 =end original
 
-̵�¤���Ȥ���ǧ������褦�ˤʤ�ޤ�����
+無限を数として認識するようになりました。
 
 =item *
 
@@ -5199,8 +5199,8 @@ the Tk extension with 5.6.0.) [561]
 
 =end original
 
-UNIVERSAL::isa ���������᥽�åɤ򥭥�å��夹��褦�ˤʤ�ޤ�����
-(���줬 5.6.0 �� Tk ��ĥ������Ƥ��ޤ�����)[561]
+UNIVERSAL::isa は正しくメソッドをキャッシュするようになりました。
+(これが 5.6.0 の Tk 拡張を壊していました。)[561]
 
 =item *
 
@@ -5212,9 +5212,9 @@ were not already referenced in the top level of the eval""ed code.
 
 =end original
 
-�쥭�����뤽�� 1: eval "" �γ�¦�Υ쥭�����뤬
-�ޤ��ȥåץ�٥�� eval "" �������ɤ��黲�Ȥ���Ƥ��ʤ���硢
-eval "" �����Υ��֥롼�����������������褵��Ƥ��ޤ���Ǥ�����
+レキシカルその 1: eval "" の外側のレキシカルが
+まだトップレベルの eval "" 化コードから参照されていない場合、
+eval "" 内部のサブルーチン定義で正しく解決されていませんでした。
 
 =item *
 
@@ -5225,8 +5225,8 @@ were declared before the lexicals.
 
 =end original
 
-�쥭�����뤬���ե����륹�����פ��顢�쥭�����뤬������������
-���֥롼����˥꡼�����Ƥ��ޤ�����
+レキシカルが、ファイルスコープから、レキシカルが定義される前の
+サブルーチンにリークしていました。
 
 =item *
 
@@ -5237,8 +5237,8 @@ and into C<eval "...">.
 
 =end original
 
-�쥭������ηٹ𤬥������פ� C<eval "..."> �δ֤�������
-���Ť���褦�ˤʤ�ޤ�����
+レキシカルの警告がスコープと C<eval "..."> の間で正しく
+伝播するようになりました。
 
 =item *
 
@@ -5249,8 +5249,8 @@ corrected. [561]
 
 =end original
 
-C<use warnings qw(FATAL all)> �������ɤ����ư��Ƥ��ޤ���Ǥ�����
-����Ͻ�������ޤ�����[561]
+C<use warnings qw(FATAL all)> は狙いどおりに動作していませんでした。
+これは修正されました。[561]
 
 =item *
 
@@ -5261,8 +5261,8 @@ isn't using lexical warnings. [561]
 
 =end original
 
-warnings::enabled() �ϸƤӽФ�¦���쥭������ٹ��ȤäƤ��ʤ�����
-$^W �ξ��֤���������𤹤�褦�ˤʤ�ޤ�����[561]
+warnings::enabled() は呼び出し側がレキシカル警告を使っていない場合に
+$^W の状態を正しく報告するようになりました。[561]
 
 =item *
 
@@ -5272,7 +5272,7 @@ Line renumbering with eval and C<#line> now works. [561]
 
 =end original
 
-eval �� C<#line> �Ǥι��ֹ�ο���ľ����ư���褦�ˤʤ�ޤ�����[561]
+eval と C<#line> での行番号の振り直しが動作するようになりました。[561]
 
 =item *
 
@@ -5282,7 +5282,7 @@ Fixed numerous memory leaks, especially in eval "".
 
 =end original
 
-¿���Υ���꡼�����ä� eval "" �ǤΥ���꡼������������ޤ�����
+多くのメモリリーク、特に eval "" でのメモリリークが修正されました。
 
 =item *
 
@@ -5292,7 +5292,7 @@ Localised tied variables no longer leak memory
 
 =end original
 
-tie �����ѿ���������벽���Ƥ����꡼�����ʤ��ʤ�ޤ�����
+tie した変数をローカル化してもメモリリークしなくなりました。
 
     use Tie::Hash;
     tie my %tied_hash => 'Tie::StdHash';
@@ -5312,9 +5312,9 @@ exist, if they didn't before they were localised.
 
 =end original
 
-�������벽�����ϥå������� (�� %ENV)�ϡ�
-���줬��Ȥ�ȥ������벽����Ƥ��ʤ��ä�����
-¸�ߤ��ʤ��褦����������벽�����褦�ˤʤ�ޤ�����
+ローカル化したハッシュ要素 (と %ENV)は、
+それがもともとローカル化されていなかった場合は
+存在しないように非ローカル化されるようになりました。
 
     use Tie::Hash;
     tie my %tied_hash => 'Tie::StdHash';
@@ -5335,9 +5335,9 @@ the EXISTS and DELETE methods.
 
 =end original
 
-���ν����������ѤȤ��ơ�tie ���줿�ϥå��奤�󥿡��ե�������
-EXISTS �� DELETE �Υ᥽�åɤ���� B<���ʤ���Фʤ�ʤ�> ���Ȥ�
-�ʤ�ޤ�����
+この修正の副作用として、tie されたハッシュインターフェースは
+EXISTS と DELETE のメソッドを定義 B<しなければならない> ことに
+なりました。
 
 =item *
 
@@ -5348,8 +5348,8 @@ as mandated by POSIX.
 
 =end original
 
-mkdir() �� POSIX ���׵ᤵ��Ƥ���褦�ˡ��ǥ��쥯�ȥ�̾��
-�����Υ���å����̵�뤹��褦�ˤʤ�ޤ�����
+mkdir() は POSIX で要求されているように、ディレクトリ名の
+末尾のスラッシュを無視するようになりました。
 
 =item *
 
@@ -5362,11 +5362,11 @@ fixed the modfl() bug.
 
 =end original
 
-glibc ����ˤ� modfl() ������Ƥ���С�����󤬤���ޤ���
-����� C<-Duselongdouble> �ǥӥ�ɤ����Ȥ��˱ƶ�������ޤ���
-���ΥС������� Perl �Ϥ�������򸡽Ф����������Ȥ�ޤ���
-glibc 2.2.2 ��꡼���� modfl() �Х�����������Ƥ����
-�狼�äƤ��ޤ���
+glibc の中には modfl() が壊れているバージョンがあります。
+これは C<-Duselongdouble> でビルドしたときに影響を受けます。
+このバージョンの Perl はこの問題を検出し、回避策をとります。
+glibc 2.2.2 リリースは modfl() バグが修正されていると
+わかっています。
 
 =item *
 
@@ -5377,9 +5377,9 @@ return 27406, instead of 27047). [561]
 
 =end original
 
-���ʤ����ξ�;��ư���褦�ˤʤ�ޤ���
-(4063328477 % 65535 �� 27406 ���֤��Ƥ��ޤ�������27047 ��
-�֤��褦�ˤʤ�ޤ���)��[561]
+符号なし数の剰余が動作するようになりました
+(4063328477 % 65535 は 27406 を返していましたが、27047 を
+返すようになりました)。[561]
 
 =item *
 
@@ -5390,9 +5390,9 @@ more compatible with 5.005.  Infinity is now recognised as a number. [561]
 
 =end original
 
-5.6.0 �ǤΤ����Ĥ��� "not a number" �ٹ�� 5.005 �Ȥθߴ�����
-���뤿��˽����ޤ�����
-̵�¤Ͽ��ͤȤ���ǧ�������褦�ˤʤ�ޤ�����[561]
+5.6.0 でのいくつかの "not a number" 警告は 5.005 との互換性を
+高めるために除去されました。
+無限は数値として認識されるようになりました。[561]
 
 =item *
 
@@ -5403,8 +5403,8 @@ properly in certain circumstances. [561]
 
 =end original
 
-�����Ѵ�������ξ����Ǥ�ʸ�����ͤ��ѹ���������
-ǧ���Ǥ��Ƥ��ޤ���Ǥ�����[561]
+数値変換は特定の状況では文字列値の変更を正しく
+認識できていませんでした。[561]
 
 =item *
 
@@ -5414,7 +5414,7 @@ Attributes (such as :shared) didn't work with our().
 
 =end original
 
-(:shared �Τ褦��) °���� our() ��ư��Ƥ��ޤ���Ǥ�����
+(:shared のような) 属性が our() で動作していませんでした。
 
 =item *
 
@@ -5425,8 +5425,8 @@ warnings. [561]
 
 =end original
 
-our() �ѿ���;ʬ�� "Variable will not stay shared" �ٹ��
-�Ф��ʤ��ʤ�ޤ�����[561]
+our() 変数で余分な "Variable will not stay shared" 警告を
+出さなくなりました。[561]
 
 =item *
 
@@ -5438,9 +5438,9 @@ The problem has been corrected. [561]
 
 =end original
 
-�¤����ĤΥ֥��å���Ʊ��̾�����������Ƥ���
-"our" �ѿ�������Ȥ����ѿ����Ф���;ʬ��"�����"�ٹ𤬽ФƤ��ޤ�����
-����Ͻ�������ޤ�����[561]
+並んだ二つのブロックで同じ名前で宣言されている
+"our" 変数があるとこの変数に対する余分な"再定義"警告が出ていました。
+問題は修正されました。[561]
 
 =item *
 
@@ -5450,7 +5450,7 @@ pack "Z" now correctly terminates the string with "\0".
 
 =end original
 
-pack "Z" ��������ʸ����� "\0" �ǽ�ü����褦�ˤʤ�ޤ�����
+pack "Z" は正しく文字列を "\0" で終端するようになりました。
 
 =item *
 
@@ -5461,9 +5461,9 @@ Fix password routines which in some shadow password platforms
 
 =end original
 
-����ɥ��ѥ���ɤ�ȤäƤ���ץ�åȥե�����Τ����Ĥ�
-(HP-UX �ʤ�)�ˤ����� getpwent() ���̤Υ���ȥ���֤��Ƥ���
-�ѥ���ɥ롼���󤬽�������ޤ�����
+シャドウパスワードを使っているプラットフォームのいくつか
+(HP-UX など)において getpwent() が別のエントリを返していた
+パスワードルーチンが修正されました。
 
 =item *
 
@@ -5474,8 +5474,8 @@ to Perl) didn't work for more than a single group of options. [561]
 
 =end original
 
-(Perl �˥��ޥ�ɥ饤��������Ϥ������) PERL5OPT �Ķ��ѿ���
-ʣ�����ȤΥ��ץ������Ϥ��Ƥ��ޤ���Ǥ�����[561]
+(Perl にコマンドライン引数を渡すための) PERL5OPT 環境変数が
+複数の組のオプションを渡せていませんでした。[561]
 
 =item *
 
@@ -5485,7 +5485,7 @@ PERL5OPT with embedded spaces didn't work.
 
 =end original
 
-PERL5OPT ���Ȥ߹��߶��֤Ǥ�ư��Ƥ��ޤ���Ǥ�����
+PERL5OPT が組み込み空間では動作していませんでした。
 
 =item *
 
@@ -5495,7 +5495,7 @@ printf() no longer resets the numeric locale to "C".
 
 =end original
 
-printf() �Ͽ��ͥ�������� "C" �˥ꥻ�åȤ��ʤ��ʤ�ޤ�����
+printf() は数値ロケールを "C" にリセットしなくなりました。
 
 =item *
 
@@ -5506,8 +5506,8 @@ characters, not four. [561]
 
 =end original
 
-C<qw(a\\b)> �������� C<'a\\b'> �ȥѡ��������褦�ˤʤ�ޤ���:
-����� 4 ʸ���ǤϤʤ� 3 ʸ���Ǥ���[561]
+C<qw(a\\b)> は正しく C<'a\\b'> とパースされるようになりました:
+これは 4 文字ではなく 3 文字です。[561]
 
 =item *
 
@@ -5518,8 +5518,8 @@ versions.  This is now handled correctly. [561]
 
 =end original
 
-�����ΥС������Ǥ� s///ge ����Ǥ� pos() ���������ͤ�
-�֤��Ƥ��ޤ���Ǥ�����������������褦�ˤʤ�ޤ�����[561]
+以前のバージョンでは s///ge の中では pos() が正しい値を
+返していませんでした。正しく扱えるようになりました。[561]
 
 =item *
 
@@ -5530,9 +5530,9 @@ without the q L ll prefixes (assuming you are on a quad-capable platform).
 
 =end original
 
-(64 bit �����б��Υץ�åȥե�����Ǥ�)
-printf/sprintf �ˤ����ơ�q L ll ��Ƭ����Ĥ��ʤ��Ƥ�
-64 bit ������ɽ���Ǥ���褦�ˤʤ�ޤ�����
+(64 bit 整数対応のプラットフォームでは)
+printf/sprintf において、q L ll 接頭辞をつけなくても
+64 bit 整数を表示できるようになりました。
 
 =item *
 
@@ -5542,7 +5542,7 @@ Regular expressions on references and overloaded scalars now work. [561+]
 
 =end original
 
-��ե���󥹤ȥ����С������ɤ��줿����ɽ����ư���褦�ˤʤ�ޤ�����[561+]
+リファレンスとオーバーロードされた正規表現が動作するようになりました。[561+]
 
 =item *
 
@@ -5553,8 +5553,8 @@ concatenation be invoked too many times.
 
 =end original
 
-�����ͥޥ��å� (GMAGIC) �ϡ�ʸ����Ϣ��ʤɤ�¿���ξ���
-¿���ƤӽФ���᤮�Ƥ��ޤ�����
+右辺値マジック (GMAGIC) は、文字列連結などの多くの場合に
+多く呼び出され過ぎていました。
 
 =item *
 
@@ -5564,8 +5564,8 @@ scalar() now forces scalar context even when used in void context.
 
 =end original
 
-scalar() ��̵������ƥ����ȤǻȤ��Ƥ⥹���饳��ƥ����Ȥ�
-��������褦�ˤʤ�ޤ�����
+scalar() は無効コンテキストで使われてもスカラコンテキストを
+強制するようになりました。
 
 =item *
 
@@ -5575,7 +5575,7 @@ SOCKS support is now much more robust.
 
 =end original
 
-SOCKS �б����ڤ��˴趯�ˤʤ�ޤ�����
+SOCKS 対応は遥かに頑強になりました。
 
 =item *
 
@@ -5588,10 +5588,10 @@ to be sorted are always provided list context. [561]
 
 =end original
 
-sort() �ΰ����������� wantarray ����ƥ����Ȥǥ���ѥ��뤵���褦��
-�ʤ�ޤ���(�ޤ餺�� sort() ���ȤΥ���ƥ����Ȥ�Ȥ��褦�ˤʤäƤ��ޤ���)��
-��ӥ֥��å��ϥ����饳��ƥ����ȤǼ¹Ԥ��졢
-�����Ȥ��������Ͼ�˥ꥹ�ȥ���ƥ����Ȥ��󶡤���ޤ���[561]
+sort() の引数は正しい wantarray コンテキストでコンパイルされるように
+なりました(図らずも sort() 自身のコンテキストを使うようになっていました)。
+比較ブロックはスカラコンテキストで実行され、
+ソートされる引数は常にリストコンテキストで提供されます。[561]
 
 =item *
 
@@ -5604,9 +5604,9 @@ class C<[[:blank:]]> which stands for horizontal whitespace
 
 =end original
 
-POSIX ʸ�����饹 C<[[:space:]]> ��(��ä��˻Ȥ��ʤ�)��ľ����ʸ����
-�ޤ�褦���ѹ�����ޤ�������ʿ����(���ߤΤȤ���������ȥ���)�򼨤�
-������ POSIX ��ʸ�����饹�Ǥ��� C<[[:blank:]]> ���ɲä���ޤ�����
+POSIX 文字クラス C<[[:space:]]> に(めったに使われない)垂直タブ文字を
+含むように変更されました。水平空白(現在のところ、空白とタブ)を示す
+新しい POSIX 風文字クラスである C<[[:blank:]]> が追加されました。
 
 =item *
 
@@ -5618,9 +5618,9 @@ behaviour consistent with that of string interpolation. [561]
 
 =end original
 
-sprintf() �α������줿���ο����񤤤�����Ū�ʤ�Τˤʤ�ޤ�����
-��ư�������ե����ޥåȤη�̤Ϥ�Ϥ�������줺��
-ʸ������Ѵ��ξ��Ȱ�����Τ��뿶���񤤤򤹤�褦�ˤʤ�ޤ�����[561]
+sprintf() の汚染された場合の振る舞いが合理的なものになりました。
+浮動小数点フォーマットの結果はもはや汚染されず、
+文字列の変換の場合と一貫性のある振る舞いをするようになりました。[561]
 
 =item *
 
@@ -5631,7 +5631,7 @@ values) have been fixed.
 
 =end original
 
-(�ϥå�����ͤΤ褦��)������Τʤ����������Ť���������ޤ�����
+(ハッシュの値のような)一貫性のない汚染の伝播が修正されました。
 
 =item *
 
@@ -5642,8 +5642,8 @@ of simple pattern matches.  These are now handled better. [561]
 
 =end original
 
-Perl 5.6.0 �� RE ���󥸥�Ͽޤ餺�⤢����ñ��ʥѥ�����ޥå���
-���Ū�ˤʤäƤ��ޤ����������Ϥ��褯������褦�ˤʤ�ޤ�����[561]
+Perl 5.6.0 の RE エンジンは図らずもある種の単純なパターンマッチで
+悲観的になっていました。これらはよりよく扱われるようになりました。[561]
 
 =item *
 
@@ -5654,8 +5654,8 @@ or via C<-Dr>) now looks better. [561]
 
 =end original
 
-(C<use re 'debug'> �� C<-Dr> ���ˤ�餺)����ɽ���ǥХå����Ϥ�
-���褯������褦�ˤʤ�ޤ�����[561]
+(C<use re 'debug'> か C<-Dr> かによらず)正規表現デバッグ出力は
+よりよく見えるようになりました。[561]
 
 =item *
 
@@ -5666,8 +5666,8 @@ bug has been fixed. [561]
 
 =end original
 
-C<"a\nxb\n" =~ /(?!\A)x/m> �Τ褦��ʣ���ԥޥå����Զ�礬����ޤ�����
-���ΥХ��Ͻ�������ޤ�����[561]
+C<"a\nxb\n" =~ /(?!\A)x/m> のような複数行マッチに不具合がありました。
+このバグは修正されました。[561]
 
 =item *
 
@@ -5678,8 +5678,8 @@ is now avoided. [561]
 
 =end original
 
-$& ��Ȥ��Ⱦ����ˤ�äƤϥ�������פ�������������Ȥ�����ޤ�����
-����Ͻ�������ޤ�����[561]
+$& を使うと状況によってはコアダンプを引き起こすことがありました。
+これは修正されました。[561]
 
 =item *
 
@@ -5691,9 +5691,9 @@ data lying around in them. [561]
 
 =end original
 
-����ɽ������館����ʬ�ޥå���($1, $2, ...)�ϡ��ޥå��󥰤�
-���Ԥ����Ȥ����ְ�ä��ǡ��������äƤ��ޤ�������
-����Ӥ��ƥꥻ�åȤ����褦�ˤʤ�ޤ�����[561]
+正規表現が捕らえた部分マッチング($1, $2, ...)は、マッチングが
+失敗したとき、間違ったデータが入っていましたが、
+より一貫してリセットされるようになりました。[561]
 
 =item *
 
@@ -5705,9 +5705,9 @@ corrected. [561]
 
 =end original
 
-"slurp" �⡼�ɤǥ����ץ󤷤��ե�������Ф��� readline() ����
-�����ξ����Ǥ�;ʬ�� "" (����) ���֤����Ȥ�����ޤ�����
-����Ͻ�������ޤ�����[561]
+"slurp" モードでオープンしたファイルに対する readline() が、
+ある種の状況では余分の "" (空行) を返すことがありました。
+これは修正されました。[561]
 
 =item *
 
@@ -5719,9 +5719,9 @@ again now. [561]
 
 =end original
 
-(C<${$num}> �Ǥ�) L<perlvar> �˵��Ҥ��줿�ü��ѿ���
-����ܥ�å���ե���󥹤μ�ư���������ޤ餺��̵���ˤʤäƤ��ޤ�����
-����ϺƤ�ư���褦�ˤʤ�ޤ�����[561]
+(C<${$num}> での) L<perlvar> に記述された特殊変数の
+シンボリックリファレンスの自動活性化が図らずも無効になっていました。
+これは再び動作するようになりました。[561]
 
 =item *
 
@@ -5731,7 +5731,7 @@ Sys::Syslog ignored the C<LOG_AUTH> constant.
 
 =end original
 
-Sys::Syslog �� C<LOG_AUTH> �����̵�뤷�Ƥ��ޤ�����
+Sys::Syslog は C<LOG_AUTH> 定数を無視していました。
 
 =item *
 
@@ -5742,8 +5742,8 @@ in multiple threads simultaneously are now thread-safe.
 
 =end original
 
-�ޥ������åɤǤ�Ʊ���� $AUTOLOAD, sort(), lock() ����ӥ��֥ץ�������
-��ư��ԤäƤ⥹��åɥ����դˤʤ�ޤ�����
+マルチスレッドでの同時に $AUTOLOAD, sort(), lock() およびサブプロセスの
+起動を行ってもスレッドセーフになりました。
 
 =item *
 
@@ -5753,7 +5753,7 @@ Tie::Array's SPLICE method was broken.
 
 =end original
 
-Tie::Array �� SPLICE �᥽�åɤϲ���Ƥ��ޤ�����
+Tie::Array の SPLICE メソッドは壊れていました。
 
 =item *
 
@@ -5763,8 +5763,8 @@ Allow a read-only string on the left-hand side of a non-modifying tr///.
 
 =end original
 
-��������ʤ� tr/// �κ�¦���ɤ߹�������ʸ������֤����Ȥ�
-�Ǥ���褦�ˤʤ�ޤ�����
+修正されない tr/// の左側に読み込み専用文字列を置くことが
+できるようになりました。
 
 =item *
 
@@ -5775,8 +5775,8 @@ correctly pass to it.
 
 =end original
 
-C<STDERR> �� tie �����Ȥ���C<warn> �� C<die> �ˤ��ٹ�
-�������Ϥ����褦�ˤʤ�ޤ�����
+C<STDERR> を tie したとき、C<warn> と C<die> による警告が
+正しく渡されるようになりました。
 
 =item *
 
@@ -5786,7 +5786,7 @@ Several Unicode fixes.
 
 =end original
 
-�����Ĥ��� Unicode �ط��ν������Ԥ��ޤ�����
+いくつかの Unicode 関係の修正が行われました。
 
 =over 8
 
@@ -5800,10 +5800,10 @@ UTF-16 and UCS-2 encoded Perl files should now be read correctly.
 
 =end original
 
-Perl �ե�����(������ץȡ��⥸�塼��) �� BOM(byte order marks) ��
-�ϤޤäƤ��Ƥ�Ʃ��Ū�˥����åפ���褦�ˤʤ�ޤ�����
-UTF-16 �� UCS-2 �ǥ��󥳡��ɤ��줿 Perl �ե������������
-�ɤ߹����褦�ʤ�ޤ�����
+Perl ファイル(スクリプト、モジュール) が BOM(byte order marks) で
+始まっていても透過的にスキップするようになりました。
+UTF-16 と UCS-2 でエンコードされた Perl ファイルも正しく
+読み込めるようなりました。
 
 =item *
 
@@ -5813,7 +5813,7 @@ The character tables have been updated to Unicode 3.2.0.
 
 =end original
 
-ʸ���ơ��֥�� Unicode 3.2.0 �˹�������ޤ�����
+文字テーブルは Unicode 3.2.0 に更新されました。
 
 =item *
 
@@ -5826,10 +5826,10 @@ as UTF-8.)
 
 =end original
 
-utf8 �ǡ�������Ӥϡ��� utf8 �ǡ����� utf8 �˼�ưŪ�˥��åץ��졼��
-���Ƥ��ޤ���Ǥ�����(������㤨�� I/O ����Υǡ����� Unicode �ǡ�����
-������Ȥ�������ˤʤ�ޤ�: ���Ϥϼ�ưŪ�� UTF-8 �Ȥ��ƥ��󥳡���
-����Ƥ��뤫�⤷��ޤ���)
+utf8 データの比較は、非 utf8 データを utf8 に自動的にアップグレード
+していませんでした。(これは例えば I/O からのデータと Unicode データを
+混ぜるときに問題になります: 出力は自動的に UTF-8 としてエンコード
+されているかもしれません。)
 
 =item *
 
@@ -5840,8 +5840,8 @@ surrogates, now also generates an optional warning.
 
 =end original
 
-U+FFFE, �� UTF-16 ���������ȤΤ褦�ʡ������� Unicode �����ɥݥ���Ȥ�
-�����˥��ץ����ηٹ����Ϥ���褦�ˤʤ�ޤ�����
+U+FFFE, や UTF-16 サロゲートのような、不正な Unicode コードポイントの
+生成にオプションの警告を出力するようになりました。
 
 =item *
 
@@ -5851,8 +5851,8 @@ C<IsAlnum>, C<IsAlpha>, and C<IsWord> now match titlecase.
 
 =end original
 
-C<IsAlnum>, C<IsAlpha>, and C<IsWord> ��titlecase �˥ޥå�����褦��
-�ʤ�ޤ�����
+C<IsAlnum>, C<IsAlpha>, and C<IsWord> がtitlecase にマッチするように
+なりました。
 
 =item *
 
@@ -5864,9 +5864,9 @@ substitution with C<s///>, single-quoted UTF8, should now work.
 
 =end original
 
-�ѿ��Ѵ���C<eq>, C<substr>, C<reverse>, C<quotemeta>, C<x> �黻�ҡ�
-C<s///> �ˤ���Ѵ������󥰥륯�����Ȥ��줿 UTF-8 ��ͳ�Ǥ�
-C<.> �黻�Ҥˤ��Ϣ�뤬ư���褦�ˤʤ�ޤ�����
+変数変換、C<eq>, C<substr>, C<reverse>, C<quotemeta>, C<x> 演算子、
+C<s///> による変換、シングルクオートされた UTF-8 経由での
+C<.> 演算子による連結が動作するようになりました。
 
 =item *
 
@@ -5877,8 +5877,8 @@ functionality has been removed (but see pack('U0', ...)).
 
 =end original
 
-C<tr///> �黻�Ҥ�ư���褦�ˤʤ�ޤ�����
-C<tr///CU> �ε�ǽ�ϼ�������ޤ���(pack('U0', ...) �򻲾Ȥ��Ƥ�������)��
+C<tr///> 演算子が動作するようになりました。
+C<tr///CU> の機能は取り除かれました(pack('U0', ...) を参照してください)。
 
 =item *
 
@@ -5888,7 +5888,7 @@ C<eval "v200"> now works.
 
 =end original
 
-C<eval "v200"> ��ư���褦�ˤʤ�ޤ�����
+C<eval "v200"> が動作するようになりました。
 
 =item *
 
@@ -5899,8 +5899,8 @@ This has been corrected. [561]
 
 =end original
 
-Perl 5.6.0 �� m/\x{ab}/ ��ְ�äƲ�ᤷ���ְ�ä��ٹ��Ф��Ƥ��ޤ�����
-����Ͻ�������ޤ�����[561]
+Perl 5.6.0 は m/\x{ab}/ を間違って解釈し、間違った警告を出していました。
+これは修正されました。[561]
 
 =item *
 
@@ -5910,7 +5910,7 @@ Zero entries were missing from the Unicode classes such as C<IsDigit>.
 
 =end original
 
-C<IsDigit> �Τ褦�� Unicode ���饹�˥�������ȥ꤬����ޤ���Ǥ�����
+C<IsDigit> のような Unicode クラスにゼロエントリがありませんでした。
 
 =back
 
@@ -5923,8 +5923,8 @@ unsignedness, causing bogus results in arithmetic operations. [561]
 
 =end original
 
-�礭�����ʤ���(2**31 �ʾ�) �������ʤ��Ǥ���Ȥ�������
-�����Ƥ��ޤ������ͱ黻�ҤǤ������ʷ�̤�������������Ȥ�����ޤ�����[561]
+大きな符号なし数(2**31 以上) が、符号なしであるという情報が
+失われてしまい、数値演算子でおかしな結果を引き起こすことがありました。[561]
 
 =item *
 
@@ -5936,15 +5936,15 @@ fixed.
 
 =end original
 
-Perl �ѡ����ϥ��������Ϥȥޥ륳��Ϣ�����Ϥ�ξ����Ȥä�
-���ȥ쥹�ƥ��Ȥ������ȯ�����줿�����Ĥ��Υ���å���ȥϥ󥰥��åפ�
-��������ޤ�����
+Perl パーサはランダム入力とマルコフ連鎖入力の両方を使った
+ストレステストを受け、発見されたいくつかのクラッシュとハングアップが
+修正されました。
 
 =back
 
 =head2 Platform Specific Changes and Fixes
 
-(�ץ�åȥե������ͭ���ѹ��Ƚ�����)
+(プラットフォーム固有の変更と修正点)
 
 =over 4
 
@@ -5958,7 +5958,7 @@ Perl now works on post-4.0 BSD/OSes.
 
 =end original
 
-Perl �� 4.0 �ʹߤ� BSD/OS �Ǥ�ư���褦�ˤʤ�ޤ�����
+Perl は 4.0 以降の BSD/OS でも動作するようになりました。
 
 =item *
 
@@ -5970,8 +5970,8 @@ Setting C<$0> now works (as much as possible; see L<perlvar> for details).
 
 =end original
 
-C<$0> ��ư���褦�ˤʤ�ޤ���(�Ǥ��������; �ܺ٤ˤĤ��Ƥ�
-L<perlvar>�򻲾Ȥ��Ƥ�������)��
+C<$0> が動作するようになりました(できるだけは; 詳細については
+L<perlvar>を参照してください)。
 
 =item *
 
@@ -5983,7 +5983,7 @@ Numerous updates; currently synchronised with Cygwin 1.3.10.
 
 =end original
 
-���̤ι������Ԥ��ޤ���; ���ߤΤȤ��� Cygwin 1.3.10 ��Ʊ�����Ƥ��ޤ���
+大量の更新が行われました; 現在のところ Cygwin 1.3.10 と同期しています。
 
 =item *
 
@@ -5993,7 +5993,7 @@ Previously DYNIX/ptx had problems in its Configure probe for non-blocking I/O.
 
 =end original
 
-������ DYNIX/ptx �� Configure �ˤ�� ��֥��å� I/O �θ��Ф����꤬����ޤ�����
+以前は DYNIX/ptx は Configure による 非ブロック I/O の検出に問題がありました。
 
 =item *
 
@@ -6005,7 +6005,7 @@ EPOC now better supported.  See README.epoc. [561]
 
 =end original
 
-EPOC �б�����������ޤ����� README.epoc �򻲾Ȥ��Ƥ����ä�����[561]
+EPOC 対応が改善されました。 README.epoc を参照してくだっさい。[561]
 
 =item *
 
@@ -6017,7 +6017,7 @@ Perl now works on post-3.0 FreeBSDs.
 
 =end original
 
-3.0 �ʹߤ� FreeBSD �Ǥ�ư���褦�ˤʤ�ޤ�����
+3.0 以降の FreeBSD でも動作するようになりました。
 
 =item *
 
@@ -6030,9 +6030,9 @@ now uses HP-UX malloc instead of Perl malloc.
 
 =end original
 
-README.hpux ����������ޤ���; C<Configure -Duse64bitall> ��
-ư���褦�ˤʤ�ޤ���; Perl malloc �ǤϤʤ� HP-UX malloc ��
-�Ȥ��褦�ˤʤ�ޤ�����
+README.hpux が更新されました; C<Configure -Duse64bitall> が
+動作するようになりました; Perl malloc ではなく HP-UX malloc を
+使うようになりました。
 
 =item *
 
@@ -6045,9 +6045,9 @@ of 32-bit and 64-bit libraries (a doomed attempt) made much harder.
 
 =end original
 
-���̤Υ���ѥ���ե饰�ȥҥ�Ȥ���ĥ����ޤ���;
-�ޤ餺�� 32-bit �� 64-bit �Υ饤�֥�꤬�����äƤ���(����Ū�ʻ�ߤǤ�)�Τ�
-��궯�Ǥˤʤ�ޤ�����
+大量のコンパイルフラグとヒントが拡張されました;
+図らずも 32-bit と 64-bit のライブラリが混ざっていた(破滅的な試みです)のが
+より強固になりました。
 
 =item *
 
@@ -6063,7 +6063,7 @@ Long doubles should now work (see INSTALL). [561]
 
 =end original
 
-long double ��ư���褦�ˤʤ�ޤ��� (INSTALL �򻲾Ȥ��Ƥ�������)��[561]
+long double が動作するようになりました (INSTALL を参照してください)。[561]
 
 =item *
 
@@ -6075,8 +6075,8 @@ getsockname().
 
 =end original
 
-Linux �Ǥ� accept(), recvfrom() (Perl �Ǥ�: recv()), getpeername(),
-getsockname() ��Ȥ��Ȥ��� sockaddrlen �˴ؤ������꤬����ޤ�����
+Linux では accept(), recvfrom() (Perl での: recv()), getpeername(),
+getsockname() を使うときに sockaddrlen に関する問題がありました。
 
 =back
 
@@ -6093,10 +6093,10 @@ for details.
 
 =end original
 
-ɸ�� Perl �ǥ����ȥ�ӥ塼������ Mac OS Classic �Ǥ�
-����ѥ���� Metrowerks ��ȯ�Ķ������äơ�
-Mac ��ͭ�Υġ��륭�åȤ��ʤ��Ƥ�Ԥ���褦�ˤʤ�ޤ�����
-�ܺ٤� maclperl �᡼��󥰥ꥹ�Ȥ��ܿ����Ƥ���������
+標準 Perl ディストリビューションの Mac OS Classic での
+コンパイルは Metrowerks 開発環境があって、
+Mac 固有のツールキットがなくても行えるようになりました。
+詳細は maclperl メーリングリストに接触してください。
 
 =item *
 
@@ -6108,8 +6108,8 @@ MPE/iX update after Perl 5.6.0.  See README.mpeix. [561]
 
 =end original
 
-MPE/iX �� Perl 5.6.0 ���鹹������ޤ�����README.mpeix ��
-���Ȥ��Ƥ���������[561]
+MPE/iX は Perl 5.6.0 から更新されました。README.mpeix を
+参照してください。[561]
 
 =item *
 
@@ -6121,9 +6121,9 @@ and Configure with -Duseithreads.
 
 =end original
 
-NetBSD/threads: GNU pth �򥤥󥹥ȡ���(�ѥå��������쥯����󤫤餫
-http://www.gnu.org/software/pth/ )���ơ�
-Configure �� -Duseithreads ����ꤷ�Ƥ���������
+NetBSD/threads: GNU pth をインストール(パッケージコレクションからか
+http://www.gnu.org/software/pth/ )して、
+Configure に -Duseithreads を指定してください。
 =item *
 
 NetBSD/sparc
@@ -6134,7 +6134,7 @@ Perl now works on NetBSD/sparc.
 
 =end original
 
-Perl �� NetBSD/sparc ��ư���褦�ˤʤ�ޤ�����
+Perl は NetBSD/sparc で動作するようになりました。
 
 =item *
 
@@ -6146,7 +6146,7 @@ Now works with usethreads (see INSTALL). [561]
 
 =end original
 
-usethreads ��ư���褦�ˤʤ�ޤ��� (INSTALL �򻲾Ȥ��Ƥ�������)��[561]
+usethreads で動作するようになりました (INSTALL を参照してください)。[561]
 
 =item *
 
@@ -6158,7 +6158,7 @@ Solaris
 
 =end original
 
-Sun Workshop ����ѥ����Ȥä� 64-bit ����ư���褦�ˤʤ�ޤ�����
+Sun Workshop コンパイラを使った 64-bit 化が動作するようになりました。
 
 =item *
 
@@ -6173,10 +6173,10 @@ to -infinity.
 
 =end original
 
-�ͥ��ƥ��֥ӥ�ɥ᥽�åɤǤϺ��� VOS ��꡼�� 14.5.0 ��
-GNU C++/GNU Tools 2.0.1 �ʹߤ�ɬ�פǤ���
-Perl �� pack �ؿ��ϥ����С��ե��������ͤ� +infinity �ˡ�
-��������ե��������ͤ� -infinity �˳�����Ƥ�褦�ˤʤ�ޤ�����
+ネイティブビルドメソッドでは最低 VOS リリース 14.5.0 と
+GNU C++/GNU Tools 2.0.1 以降が必要です。
+Perl の pack 関数はオーバーフローした値を +infinity に、
+アンダーフローした値を -infinity に割り当てるようになりました。
 
 =item *
 
@@ -6191,11 +6191,11 @@ gcc 2.95.2.
 
 =end original
 
-���ڥ졼�ƥ��󥰥����ƥ�С������ʸ���� $Config{osvers} ��
-��Ͽ�����褦�ˤʤ�ޤ�����
-gcc �ǥ���ѥ���Ǥ���褦�ˤʤ�ޤ��� (����������Ū�˶ػߤ���Ƥ��ޤ���)��
-�Х��ä������ɤ����Ϥ����Τ� gcc �ǤΥ���ѥ����
-���Ȥ� gcc 2.95.2 �Ǥ�̤��������ޤ���
+オペレーティングシステムバージョン文字が $Config{osvers} に
+記録されるようになりました。
+gcc でコンパイルできるようになりました (以前は明示的に禁止されていました)。
+バグったコードが出力されるので gcc でのコンパイルは
+たとえ gcc 2.95.2 でも未だ薦められません。
 
 =item *
 
@@ -6210,11 +6210,11 @@ only 46 bit integers for speed.
 
 =end original
 
-�ӥ�ɻ��䤽�θ�˥�������פ�����������Ƥ���
-���ޤ��ޤʥ��饤��������������ޤ���;
-�¹Ի��α黻���顼�� die ���ʤ��ʤ�ޤ���;
-������ 4 �Х������� (64 bits) ��Ȥ��褦�ˤʤ�ޤ�����
-������®�٤Τ���� 46 bit ������ȤäƤ��ޤ�����
+ビルド時やその後にコアダンプを引き起こしていた
+さまざまなアライメント問題を修正しました;
+実行時の演算エラーで die しなくなりました;
+完全な 4 バイト整数 (64 bits) を使うようになりました。
+以前は速度のために 46 bit だけを使っていました。
 
 =item *
 
@@ -6227,9 +6227,9 @@ Default on OpenVMS Alpha"> for important changes not otherwise listed here.
 
 =end original
 
-�����˾夲���Ƥ��ʤ����פ��ѹ��ˤĤ��Ƥ�
-L</"Socket Extension Dynamic in VMS"> �� L</"IEEE-format Floating Point
-Default on OpenVMS Alpha"> �򻲾Ȥ��Ƥ���������
+ここに上げられていない重要な変更については
+L</"Socket Extension Dynamic in VMS"> と L</"IEEE-format Floating Point
+Default on OpenVMS Alpha"> を参照してください。
 
 =begin original
 
@@ -6238,9 +6238,9 @@ chdir() now works better despite a CRT bug; now works with MULTIPLICITY
 
 =end original
 
-chdir() �� CRT �Х��ˤ�ؤ�餺���褯ư���褦�ˤʤ�ޤ���;
-MULTIPLICITY ��ư���褦�ˤʤ�ޤ���(INSTALL �򻲾Ȥ��Ƥ�������);
-Perl �� malloc ��ư���褦�ˤʤ�ޤ�����
+chdir() は CRT バグにも関わらずよりよく動作するようになりました;
+MULTIPLICITY で動作するようになりました(INSTALL を参照してください);
+Perl の malloc で動作するようになりました。
 
 =begin original
 
@@ -6249,9 +6249,9 @@ unimplemented.  It now works as documented.
 
 =end original
 
-C<keys> �� C<values> �ˤ�� C<%ENV> ���Ǥα����ϰ�����
-��������Ƥ��ޤ���Ǥ�����
-���ߤϥɥ�������̤��ư���褦�ˤʤ�ޤ�����
+C<keys> や C<values> による C<%ENV> 要素の汚染は以前は
+実装されていませんでした。
+現在はドキュメント通りに動作するようになりました。
 
 =begin original
 
@@ -6261,9 +6261,9 @@ the system.
 
 =end original
 
-C<waitpid> ���ߥ�졼����󤬲��ɤ���ޤ�����
-(�������줿)�ǰ��ΥХ��� pid �� -1 ����ꤹ���
-�����ƥ�����ƤΥץ������Υ磻��ɥ����ɸ���������������Ƥ������ȤǤ�����
+C<waitpid> エミュレーションが改良されました。
+(修正された)最悪のバグは pid に -1 を指定すると
+システムの全てのプロセスのワイルドカード検索を引き起こしていたことでした。
 
 =begin original
 
@@ -6272,8 +6272,8 @@ to 7.0.
 
 =end original
 
-POSIX-��������Υ����ʥ�� VMS �С������ 7.0 ������
-�Ϥ뤫�ˤ褯���ߥ�졼�Ȥ����褦�ˤʤ�ޤ�����
+POSIX-スタイルのシグナルは VMS バージョン 7.0 以前で
+はるかによくエミュレートされるようになりました。
 
 =begin original
 
@@ -6282,8 +6282,8 @@ functionality and better error handling. [561]
 
 =end original
 
-C<system> �ؿ��ȥХå��������ȱ黻�Ҥ�
-��ǽ�������������顼��������褯�ʤ�ޤ�����[561]
+C<system> 関数とバッククォート演算子は
+機能が改善し、エラー処理もよりよくなりました。[561]
 
 =begin original
 
@@ -6294,11 +6294,11 @@ available on VMS v6.0 and later.
 
 =end original
 
-�ե����륢�������ƥ��Ȥϥ桼�����Υǥե���ȸ��¤ǤϤʤ�
-���ߤΥץ������θ��¤ǹԤ���褦�ˤʤ�ޤ�����
-����ˤ�ꡢ��������𤵤�륢�������ȼºݤΥ���������
-���������礬�����Ƥ��ޤ�����
-���β��ɤ� VMS v6.0 �ʹߤǤΤ����Ѳ�ǽ�Ǥ���
+ファイルアクセステストはユーザーのデフォルト権限ではなく
+現在のプロセスの権限で行われるようになりました。
+これにより、以前は報告されるアクセスと実際のアクセスに
+時々不整合が起きていました。
+この改良は VMS v6.0 以降でのみ利用可能です。
 
 =begin original
 
@@ -6309,11 +6309,11 @@ call C<kill> from within a signal handler.
 
 =end original
 
-�Ť� VMS �����ƥ� (7.0 ����) �� C<kill> ��ñ�˶���Ū�˽�λ������ΤǤϤʤ�
-�����ʥ�����뤳�Ȥ��Ǥ���褦�ˤʤ롢
-C<sys$sigprc> ���Ȥ��������� C<kill> ����������ޤ�����
-���μ�����ꡢ�Ƕ�Υ����ƥ�ǥ����ʥ�ϥ�ɥ�����
-C<kill> ��Ȥ���褦�ˤ�ʤ�ޤ�����
+古い VMS システム (7.0 以前) で C<kill> を単に強制的に終了させるのではなく
+シグナルを送ることができるようになる、
+C<sys$sigprc> を基とした新しい C<kill> が実装されました。
+この実装より、最近のシステムでシグナルハンドラの中で
+C<kill> を使えるようにもなりました。
 
 =begin original
 
@@ -6322,8 +6322,8 @@ imitation of SHOW LOGICAL and other OpenVMS facilities.
 
 =end original
 
-�����֤����������̾�Ѵ� �� SHOW LOGICAL �Ȥ���¾�� OpenVMS ��ǽ��
-���¤ˤ�ꡢ10 ����Ѵ������¤����褦�ˤʤ�ޤ�����
+繰り返しされる論理名変換 は SHOW LOGICAL とその他の OpenVMS 機能の
+制限により、10 回の変換に制限されるようになりました。
 
 =item *
 
@@ -6341,9 +6341,9 @@ crashes.
 
 =end original
 
-�����ʥ�ΰ��������褯ư���褦�ˤʤ�ޤ�����
-Windows �Υ�å������롼�פ�ȤäƼ������줿���ᡢ
-������ʥ���å��夬ȯ�����ˤ����ʤ�ޤ�����
+シグナルの扱いがよりよく動作するようになりました。
+Windows のメッセージループを使って実装されたため、
+ランダムなクラッシュが発生しにくくなりました。
 
 =item *
 
@@ -6354,9 +6354,9 @@ esoteric bugs and caveats.  See L<perlfork> for details. [561+]
 
 =end original
 
-fork() ���ߥ�졼�����Ϥ��趯�ˤʤ�ޤ�������
-̤���ˤ����Ĥ����ʥХ��ȷ���������ޤ���
-�ܺ٤ˤĤ��Ƥ� L<perlfork> �򻲾Ȥ��Ƥ���������[561+]
+fork() エミュレーションはより頑強になりましたが、
+未だにいくつか難解なバグと欠点があります。
+詳細については L<perlfork> を参照してください。[561+]
 
 =item *
 
@@ -6366,8 +6366,8 @@ A failed (pseudo)fork now returns undef and sets errno to EAGAIN. [561]
 
 =end original
 
-(����)fork �˼��Ԥ���ȡ�undef ���֤���errno �� EAGAIN ��
-���åȤ���褦�ˤʤ�ޤ�����[561]
+(擬似)fork に失敗すると、undef を返し、errno に EAGAIN を
+セットするようになりました。[561]
 
 =item *
 
@@ -6377,7 +6377,7 @@ The following modules now work on Windows:
 
 =end original
 
-�ʲ��Υ⥸�塼�뤬 Windows ��ư���褦�ˤʤ�ޤ�����
+以下のモジュールが Windows で動作するようになりました。
 
     ExtUtils::Embed         [561]
     IO::Pipe
@@ -6393,8 +6393,8 @@ per-process.
 
 =end original
 
-IO::File::new_tmpfile() �Ϥ�Ϥ�ץ�������� 32767 ��ε�ư������
-����ʤ��ʤ�ޤ�����
+IO::File::new_tmpfile() はもはやプロセス毎に 32767 回の起動に制限
+されなくなりました。
 
 =item *
 
@@ -6404,7 +6404,7 @@ Better chdir() return value for a non-existent directory.
 
 =end original
 
-¸�ߤ��ʤ��ǥ��쥯�ȥ�ؤ� chdir() ���֤��ͤ���������ޤ�����
+存在しないディレクトリへの chdir() の返り値が改善されました。
 
 =item *
 
@@ -6414,8 +6414,8 @@ Compiling perl using the 64-bit Platform SDK tools is now supported.
 
 =end original
 
-64-bit �ץ�åȥե����� SDK ��Ȥä� Perl �Υ���ѥ����
-�б����ޤ�����
+64-bit プラットフォーム SDK を使った Perl のコンパイルに
+対応しました。
 
 =item *
 
@@ -6427,9 +6427,9 @@ details.
 
 =end original
 
-�Ȥ߹��ߤ� Win32::SetChildShowWindow() �����ҥץ������ˤ�ä�
-�������줿������ɥ��βĻ��������椹�뤿������Ѳ�ǽ�ˤʤ�ޤ�����
-�ܺ٤ˤĤ��Ƥ� L<Win32> �򻲾Ȥ��Ƥ���������
+組み込みの Win32::SetChildShowWindow() が、子プロセスによって
+作成されたウィンドウの可視性を制御するために利用可能になりました。
+詳細については L<Win32> を参照してください。
 
 =item *
 
@@ -6440,8 +6440,8 @@ supported via C<waitpid($pid, &POSIX::WNOHANG)>.
 
 =end original
 
-�ҥץ�����(�ޤ��� �����ץ�����)�Τ������֥��å��������Ȥ�
-C<waitpid($pid, &POSIX::WNOHANG)> ���б�����ޤ�����
+子プロセス(または 擬似プロセス)のための非ブロックウェイトが
+C<waitpid($pid, &POSIX::WNOHANG)> で対応されました。
 
 =item *
 
@@ -6455,12 +6455,12 @@ Windows C<cmd> shell specific quoting in perl programs.
 
 =end original
 
-system() ��ʣ���ΰ�����Ϳ�����Ȥ��ο����񤤤�����Ū�ˤʤ�ޤ�����
-�������Ȥ���Ƥ��ʤ������϶�����ݻ����뤿��˼�ưŪ�˥������Ȥ��졢
-����������Ƥζ������¸����ޤ���
-���β��ɤˤ�ꡢWindows �� C<cmd> �������ͭ�Υ������Ȥ�
-perl �ץ������Ǥ���ɬ�פ��ʤ��ʤ�Τǡ�
-system(@args) �ΰܿ������������ޤ���
+system() に複数の引数を与えたときの振る舞いが合理的になりました。
+クォートされていない引数は空白を保持するために自動的にクォートされ、
+引数内の全ての空白は保存されます。
+この改良により、Windows の C<cmd> シェル固有のクォートを
+perl プログラムでする必要がなくなるので、
+system(@args) の移植性が改善します。
 
 =begin original
 
@@ -6473,13 +6473,13 @@ C<system("c:/Program Files/MyApp/foo.exe", @args)> correctly.
 
 =end original
 
-�����ΥХ��äݤ������񤤤˰�¸����������ץȤ���Ϥ�������
-ư��ʤ��ʤ뤳�Ȥ����դ��Ƥ���������
-�㤨�С�C<system("nmake /nologo", @args)> �ϡ�
-�ե����� C<nmake /nologo> ��¹Ԥ��褦�Ȥ��ơ��ե����뤬���Ĥ���ʤ��Τ�
-���Ԥ��ޤ���
-������perl �� C<system("c:/Program Files/MyApp/foo.exe", @args)> �Ȥ��ä�
-�����ɤ��������¹ԤǤ���褦�ˤʤ�ޤ���
+以前のバグっぽい振る舞いに依存したスクリプトがもはや正しく
+動作しなくなることに注意してください。
+例えば、C<system("nmake /nologo", @args)> は、
+ファイル C<nmake /nologo> を実行しようとして、ファイルが見つからないので
+失敗します。
+一方、perl は C<system("c:/Program Files/MyApp/foo.exe", @args)> といった
+コードを正しく実行できるようになります。
 
 =item *
 
@@ -6491,10 +6491,10 @@ now show up when compiling XS code.
 
 =end original
 
-perl �Υإå��ե������ Microsoft Visual C++ ����ѥ��餫���
-���̤ηٹ���������ʤ��ʤ�ޤ�����
-����ˤ�� XS �����ɤ򥳥�ѥ��뤹��Ȥ����ɲäηٹ�
-���Ϥ���뤫�⤷��ޤ���
+perl のヘッダファイルは Microsoft Visual C++ コンパイラからの
+共通の警告を抑制しなくなりました。
+これにより XS コードをコンパイルするときに追加の警告が
+出力されるかもしれません。
 
 =item *
 
@@ -6506,9 +6506,9 @@ generated by the other supported compilers (GCC and Visual C++). [561]
 
 =end original
 
-Borland C++ v5.5 �Υ���ѥ����ȤäƤ� Perl �Υӥ�ɤ��б����ޤ�����
-���������������줿�Х��ʥ�Ϥ���¾���б�����ѥ���(GCC �� Visual C++)��
-����������Τȸߴ���������ޤ���[561]
+Borland C++ v5.5 のコンパイラを使っての Perl のビルドに対応しました。
+しかし、作成されたバイナリはその他の対応コンパイラ(GCC と Visual C++)で
+作成したものと互換性がありません。[561]
 
 =item *
 
@@ -6519,8 +6519,8 @@ Duping socket handles with open(F, ">&MYSOCK") now works under Windows 9x.
 
 =end original
 
-open(F, ">&MYSOCK") �ǤΥ����åȥϥ�ɥ��ʣ����
-Windows 9x ��ư���褦�ˤʤ�ޤ�����[561]
+open(F, ">&MYSOCK") でのソケットハンドルの複製が
+Windows 9x で動作するようになりました。[561]
 
 =item *
 
@@ -6531,8 +6531,8 @@ processes. [561]
 
 =end original
 
-%ENV �Υ����ȥǥ��쥯�ȥ�Υ���ȥ꤬�ҥץ����������������Ť���褦��
-�ʤ�ޤ�����[561]
+%ENV のカレントディレクトリのエントリが子プロセスに正しく伝播するように
+なりました。[561]
 
 =item *
 
@@ -6542,7 +6542,7 @@ New %ENV entries now propagate to subprocesses. [561]
 
 =end original
 
-������ %env ����ȥ꤬���֥ץ����������Ť���褦�ˤʤ�ޤ�����[561]
+新しい %env エントリがサブプロセスに伝播するようになりました。[561]
 
 =item *
 
@@ -6553,9 +6553,9 @@ Other bugs in chdir() and Cwd::cwd() have also been fixed. [561]
 
 =end original
 
-�ɥ饤�֤Υ롼�ȤǤϡ�Win32::GetCwd() �� C: �ǤϤʤ������� C:\ ��
-�֤��褦�ˤʤ�ޤ�����chdir() �� Cwd::cwd() �Τ���¾�ΥХ���
-��������ޤ�����[561]
+ドライブのルートでは、Win32::GetCwd() は C: ではなく正しく C:\ を
+返すようになりました。chdir() と Cwd::cwd() のその他のバグも
+修正されました。[561]
 
 =item *
 
@@ -6566,8 +6566,8 @@ The makefiles now default to the features enabled in ActiveState ActivePerl
 
 =end original
 
-ActiveState ActivePerl (ͭ̾�� Win32 �Х��ʥ�ǥ����ȥ�ӥ塼�����)
-��ͭ���ˤʤä���ǽ�� makefile �ǥǥե���Ȥˤʤ�ޤ�����[561]
+ActiveState ActivePerl (有名な Win32 バイナリディストリビューション)
+で有効になった機能が makefile でデフォルトになりました。[561]
 
 =item *
 
@@ -6578,8 +6578,8 @@ c:\perl\lib\pod\html
 
 =end original
 
-HTML �ե������ c:\perl\lib\pod\html �ǤϤʤ� c:\perl\html ��
-���󥹥ȡ��뤵���褦�ˤʤ�ޤ�����
+HTML ファイルは c:\perl\lib\pod\html ではなく c:\perl\html に
+インストールされるようになりました。
 
 =item *
 
@@ -6589,7 +6589,7 @@ REG_EXPAND_SZ keys are now allowed in registry settings used by perl. [561]
 
 =end original
 
-REG_EXPAND_SZ ������ perl �ǻȤ���쥸���ȥ������ͭ���ˤʤ�ޤ�����[561]
+REG_EXPAND_SZ キーが perl で使われるレジストリ設定で有効になりました。[561]
 
 =item *
 
@@ -6599,7 +6599,7 @@ Can now send() from all threads, not just the first one. [561]
 
 =end original
 
-send() ��������åɤκǽ�ǤϤʤ������ƤΥ���åɤ���Ȥ���褦�ˤʤ�ޤ�����
+send() が、スレッドの最初ではなく、全てのスレッドから使えるようになりました。
 
 =item *
 
@@ -6609,7 +6609,7 @@ ExtUtils::MakeMaker now uses $ENV{LIB} to search for libraries. [561]
 
 =end original
 
-ExtUtils::MakeMaker ���饤�֥��θ����� $ENV{LIB} ��Ȥ��褦�ˤʤ�ޤ�����
+ExtUtils::MakeMaker がライブラリの検索に $ENV{LIB} を使うようになりました。
 
 =item *
 
@@ -6620,9 +6620,9 @@ concurrently. (Still 16M per thread.) [561]
 
 =end original
 
-����å���˳��ݤ��륹���å��̤����ʤ��ʤä��Τǡ�
-���¿���Υ���åɤ�Ʊ���˼¹ԤǤ���褦�ˤʤ�ޤ�����
-(̤������å������� 16M �Ǥ���)[561]
+スレッド毎に確保するスタック量が少なくなったので、
+より多くのスレッドを同時に実行できるようになりました。
+(未だスレッド当たり 16M です。)[561]
 
 =item *
 
@@ -6633,9 +6633,9 @@ C<< File::Spec->tmpdir() >> now prefers C:/temp over /tmp
 
 =end original
 
-C<< File::Spec->tmpdir() >> �� /tmp �ǤϤʤ� C:/temp ��
-�֤��褦�ˤʤ�ޤ���(perl �������ӥ��Ȥ��Ƽ¹Ԥ����Ȥ���
-���褯ư��ޤ�)��
+C<< File::Spec->tmpdir() >> が /tmp ではなく C:/temp を
+返すようになりました(perl がサービスとして実行されるときに
+よりよく動作します)。
 
 =item *
 
@@ -6645,7 +6645,7 @@ Better UNC path handling under ithreads. [561]
 
 =end original
 
-i����åɤǤ� UNC �ѥ��ΰ�������������ޤ�����[561]
+iスレッドでの UNC パスの扱いが改善されました。[561]
 
 =item *
 
@@ -6656,8 +6656,8 @@ under Windows 9x. [561]
 
 =end original
 
-wait(), waitpid(), �ե������Ȥ� Windows 9x ����������λ�����ɤ�
-�֤��褦�ˤʤ�ޤ�����
+wait(), waitpid(), 逆クォートが Windows 9x で正しい終了コードを
+返すようになりました。
 
 =item *
 
@@ -6667,7 +6667,7 @@ A socket handle leak in accept() has been fixed. [561]
 
 =end original
 
-accept() �Υ����åȥϥ�ɥ�꡼������������ޤ�����[561]
+accept() のソケットハンドルリークが修正されました。[561]
 
 =back
 
@@ -6675,7 +6675,7 @@ accept() �Υ����åȥϥ�ɥ�꡼������������ޤ�����[561]
 
 =head1 New or Changed Diagnostics
 
-(���������⤷�����ѹ����줿���ǥ�å�����)
+(新しい、もしくは変更された診断メッセージ)
 
 =begin original
 
@@ -6683,7 +6683,7 @@ Please see L<perldiag> for more details.
 
 =end original
 
-����ʤ�ܺ٤ˤĤ��Ƥ� L<perldiag> �򻲾Ȥ��Ƥ���������
+さらなる詳細については L<perldiag> を参照してください。
 
 =over 4
 
@@ -6696,8 +6696,8 @@ gives a warning.
 
 =end original
 
-ʸ���Ѵ��黻�ҤǤ� (a-z-9 �Τ褦��) �����Ƥ��ϰϻ����
-�ٹ��Ф��褦�ˤʤ�ޤ�����
+文字変換演算子での (a-z-9 のような) 不明瞭な範囲指定は
+警告を出すようになりました。
 
 =item *
 
@@ -6709,10 +6709,10 @@ Say chdir() if you really mean that.
 
 =end original
 
-chdir("") �� chdir(undef) ����侩�ηٹ��Ф��褦�ˤʤ�ޤ�����
-�ۡ���ǥ��쥯�ȥ�ؤΰտ�Ū�Ǥʤ��ǥ��쥯�ȥ��ѹ���
-�����뤳�Ȥ����뤫��Ǥ���
-�����˰�̣���Ƥ��뤳�Ȥ򤹤�ˤ� chdir() �Ȥ��Ƥ���������
+chdir("") と chdir(undef) は非推奨の警告を出すようになりました。
+ホームディレクトリへの意図的でないディレクトリ変更が
+起きることがあるからです。
+本当に意味していることをするには chdir() としてください。
 
 =item *
 
@@ -6725,11 +6725,11 @@ respectively.
 
 =end original
 
-2 �Ĥο������ǥХå����ץ�����ɲä���ޤ���:
-Perl ��ǥХå���ǽ�Ĥ��ǥ���ѥ��뤷����硢
-�ȡ����󲽤�ȥ졼������ -DT [561] ���ץ�����
-�ѿ���ɽ������Ȥ��˥�ե���󥹥�����Ȥ�ɽ������
--DR ���ץ�����ɲä���ޤ���
+2 つの新しいデバッグオプションが追加されました:
+Perl をデバッグ機能つきでコンパイルした場合、
+トークン化をトレースする -DT [561] オプションと
+変数を表示するときにリファレンスカウントを表示する
+-DR オプションが追加されます。
 
 =item *
 
@@ -6741,9 +6741,9 @@ right.
 
 =end original
 
-�쥭������ٹ�Υ��ƥ���Ǥ��� "deprecated" �Ϥ�Ϥ� "syntax" ���ƥ����
-���֥��ƥ���ǤϤʤ��ʤ�ޤ�����
-�ȥåץ�٥�Υ��ƥ���Ȥʤ�ޤ�����
+レキシカル警告のカテゴリである "deprecated" はもはや "syntax" カテゴリの
+サブカテゴリではなくなりました。
+トップレベルのカテゴリとなりました。
 
 =item *
 
@@ -6754,8 +6754,8 @@ use explicit CORE::dump() if that's what really is meant.
 
 =end original
 
-�����Τʤ� dump() �������ˤ��줬��̣���Ƥ��뤳�Ȥʤ�
-����Ū�� CORE::dump() ��Ȥ��褦����Ƥ���ٹ��Ф��ޤ���
+修飾のない dump() は本当にそれが意味していることなら
+明示的に CORE::dump() を使うように提案する警告を出します。
 
 =item *
 
@@ -6766,8 +6766,8 @@ C<\9>, and C<\_>.  There is no need to escape any of the C<\w> characters.
 
 =end original
 
-"Unrecognized escape" �ٹ� C<\8>, C<\9>, C<\_> ��ޤ�褦�˳�ĥ����ޤ�����
-C<\w> ʸ���򥨥������פ���ɬ�פϤ���ޤ���
+"Unrecognized escape" 警告が C<\8>, C<\9>, C<\_> を含むように拡張されました。
+C<\w> 文字をエスケープする必要はありません。
 
 =item *
 
@@ -6780,10 +6780,10 @@ marked by a C<E<lt>-- HERE> marker.
 
 =end original
 
-���Ƥ�����ɽ������ѥ��륨�顼��å�������
-������򤷤䤹���ʤ�ޤ�����
-���顼��å������� regex �˼��Ԥ������˽��Ϥ����褦�ˤʤꡢ
-���Ԥ�����꤬���Τ� C<E<lt>-- HERE> �ޡ������Ǽ������褦�ˤʤ�ޤ�����
+全ての正規表現コンパイルエラーメッセージは
+より理解しやすくなりました。
+エラーメッセージは regex に失敗する前に出力されるようになり、
+失敗した場所が明確に C<E<lt>-- HERE> マーカーで示されるようになりました。
 
 =item *
 
@@ -6795,10 +6795,10 @@ on a yet unopened or on an already closed filehandle (or socket).
 
 =end original
 
-binmode() �� close() �Τ褦�ʤ��ޤ��ޤ� I/O (�ȥ����å�) �ؿ��ϡ�
-�ޤ������ץ󤵤�Ƥ��ʤ������˥�����������Ƥ���ե�����ϥ�ɥ�
-(�ޤ��ϥ����å�)���Ф���������Ū�˻Ȥ�줿���ˡ�
-����Ӥ����ٹ��Ф��褦�ˤʤ�ޤ�����
+binmode() や close() のようなさまざまな I/O (とソケット) 関数は、
+まだオープンされていないか既にクローズされているファイルハンドル
+(またはソケット)に対して非論理的に使われた場合に、
+より一貫した警告を出すようになりました。
 
 =item *
 
@@ -6809,8 +6809,8 @@ thing to do.)
 
 =end original
 
-�ե�����ϥ�ɥ���Ф��� lstat() �Ϸٹ��Ф��褦�ˤʤ�ޤ�����
-(����Ϥ��Ƥ��̣�Τʤ����ȤǤ�)��
+ファイルハンドルに対する lstat() は警告を出すようになりました。
+(これはしても意味のないことです)。
 
 =item *
 
@@ -6820,8 +6820,8 @@ The C<-M> and C<-m> options now warn if you didn't supply the module name.
 
 =end original
 
-C<-M> �� C<-m> �Υ��ץ����ϥ⥸�塼��̾�����ꤵ��ʤ��ä��Ȥ���
-�ٹ��Ф��褦�ˤʤ�ޤ�����
+C<-M> と C<-m> のオプションはモジュール名が指定されなかったときに
+警告を出すようになりました。
 
 =item *
 
@@ -6832,9 +6832,9 @@ the name and but not defining a $VERSION will cause a fatal failure.
 
 =end original
 
-C<use> ��ɬ�׺���С���������ꤷ����硢
-̾�������פ��뤱��ɤ� $VERSION ���������Ƥ��ʤ��⥸�塼���
-��̿Ū���顼�Ȥʤ�ޤ���
+C<use> に必要最低バージョンを指定した場合、
+名前が一致するけれども $VERSION が定義されていないモジュールは
+致命的エラーとなります。
 
 =item *
 
@@ -6844,8 +6844,8 @@ Using negative offset for vec() in lvalue context is now a warnable offense.
 
 =end original
 
-�����ͥ���ƥ����Ȥ� vec() ������Υ��ե��åȤ���ꤹ�뤳�Ȥ�
-�ٹ��ȯ�������ޤ���
+左辺値コンテキストで vec() に負数のオフセットを指定することは
+警告を発生させます。
 
 =item *
 
@@ -6855,7 +6855,7 @@ Odd number of arguments to oveload::constant now elicits a warning.
 
 =end original
 
-overload::constant ��Ⱦü�ʿ��ΰ�����Ϳ����ȷٹ��Ф��褦�ˤʤ�ޤ�����
+overload::constant に半端な数の引数を与えると警告を出すようになりました。
 
 =item *
 
@@ -6865,7 +6865,7 @@ Odd number of elements to in anonymous hash now elicits a warning.
 
 =end original
 
-̵̾�ϥå����Ⱦü�ʿ��ΰ�����Ϳ����ȷٹ��Ф��褦�ˤʤ�ޤ�����
+無名ハッシュに半端な数の引数を与えると警告を出すようになりました。
 
 =item *
 
@@ -6877,9 +6877,9 @@ for example C<STDIN> instead of C<main::STDIN>.
 
 =end original
 
-���ޤ��ޤ� "opened only for", "on closed", "never opened" �ٹ�Ǥϡ�
-C<main> �ѥå�������ǥե�����ϥ�ɥ�� C<main::> ��Ĥ��ʤ��ʤ�ޤ�����
-�㤨�� C<main::STDIN> �ǤϤʤ� C<STDIN> �Ȥʤ�ޤ���
+さまざまな "opened only for", "on closed", "never opened" 警告では、
+C<main> パッケージ内でファイルハンドルに C<main::> をつけなくなりました。
+例えば C<main::STDIN> ではなく C<STDIN> となります。
 
 =item *
 
@@ -6890,8 +6890,8 @@ get warnings for example if you have used non-prototype characters.
 
 =end original
 
-���֥롼����Υץ��ȥ����פϤ�꿵�Ť˥����å����졢
-�ץ��ȥ����פǤʤ�ʸ����Ȥ��ʤɤ���ȷٹ𤬽Фޤ���
+サブルーチンのプロトタイプはより慎重にチェックされ、
+プロトタイプでない文字を使うなどすると警告が出ます。
 
 =item *
 
@@ -6902,8 +6902,8 @@ is made, a warning is given.
 
 =end original
 
-(bless ����Ƥ��ʤ�)��ե���󥹤�����Υ���ǥå����Ȥ��ƻȤ����Ȥ����
-�ٹ𤬽Фޤ���
+(bless されていない)リファレンスを配列のインデックスとして使おうとすると
+警告が出ます。
 
 =item *
 
@@ -6915,9 +6915,9 @@ code.
 
 =end original
 
-C<push @a;> �� C<unshift @a;> (push ������ unshift �����ꤹ���ͤ��ʤ�)
-�Ϸٹ𤬽Ф�褦�ˤʤ�ޤ�����
-�������������� eval ���줿�����ɤ�����ˤʤ뤫�⤷��ޤ���
+C<push @a;> と C<unshift @a;> (push したり unshift したりする値がない)
+は警告が出るようになりました。
+これは生成されて eval されたコードで問題になるかもしれません。
 
 =item *
 
@@ -6929,10 +6929,10 @@ for the C<"c"> format and a number less than -128 or more than 127.
 
 =end original
 
-L<perlfunc/pack> �ǡ�C<"C"> �ե����ޥåȤ� 0 ��꾮�����ͤ�
-255 ����礭���ͤ���ꤷ�褦�Ȥ���ȥ��ץ����ηٹ𤬽Фޤ���
-C<"c"> �ե����ޥåȤ� -128 ��꾮�����ͤ� 127 ����礭���ͤ�
-���ꤷ�褦�Ȥ�������Ʊ�ͤǤ���
+L<perlfunc/pack> で、C<"C"> フォーマットに 0 より小さい値や
+255 より大きい値を指定しようとするとオプションの警告が出ます。
+C<"c"> フォーマットに -128 より小さい値や 127 より大きい値を
+指定しようとした場合も同様です。
 
 =item *
 
@@ -6942,7 +6942,7 @@ pack C<P> format now demands an explicit size.
 
 =end original
 
-pack �� C<P> �ե����ޥåȤ�����Ū�ʥ��������׵᤹��褦�ˤʤ�ޤ�����
+pack の C<P> フォーマットは明示的なサイズを要求するようになりました。
 
 =item *
 
@@ -6952,7 +6952,7 @@ unpack C<w> now warns of unterminated compressed integers.
 
 =end original
 
-unpack �� C<w> �Ͻ�ü���Ƥ��ʤ����̤��줿�����ηٹ��Ф��褦�ˤʤ�ޤ�����
+unpack の C<w> は終端していない圧縮された整数の警告を出すようになりました。
 
 =item *
 
@@ -6962,7 +6962,7 @@ Warnings relating to the use of PerlIO have been added.
 
 =end original
 
-PerlIO �λ��Ѥ˴�Ϣ����ٹ��ɲä���ޤ�����
+PerlIO の使用に関連する警告が追加されました。
 
 =item *
 
@@ -6974,9 +6974,9 @@ otherwise.
 
 =end original
 
-C<(?o)> �Τ褦�ʤ����Ĥ�������ɽ�������Ҥϡ�
-����ɽ�����Τ�Ŭ�Ѥ������ˤΤ߰�̣������ޤ���
-�����Ǥʤ���硢���ץ����ηٹ𤬽Фޤ���
+C<(?o)> のようないくつかの正規表現修飾子は、
+正規表現全体に適用される場合にのみ意味を持ちます。
+そうでない場合、オプションの警告が出ます。
 
 =item *
 
@@ -6987,8 +6987,8 @@ use it will tell that.
 
 =end original
 
-����Ĺ������ɤ�(lookbehind) �Ϥޤ���������Ƥ��ޤ���Τǡ�
-����򤷤褦�Ȥ���Ȥ����Τ餻�ޤ���
+可変長の戻り読み(lookbehind) はまだ実装されていませんので、
+これをしようとするとそう知らせます。
 
 =item *
 
@@ -6999,8 +6999,8 @@ has been deprecated for a while.  Now you will get an optional warning.
 
 =end original
 
-�����ϥå�����ե���󥹤Ȥ��ƻȤ�����(C<< %foo->{bar} >>)��
-���Ф餯�δ���侩�ȤʤäƤ��ޤ������ץ����ηٹ��Ф��褦�ˤʤ�ޤ�����
+配列やハッシュをリファレンスとして使うこと(C<< %foo->{bar} >>)は
+しばらくの間非推奨となっています。オプションの警告を出すようになりました。
 
 =item *
 
@@ -7011,7 +7011,7 @@ have been added.
 
 =end original
 
-���������¥ϥå��嵡ǽ�˴�Ϣ����ٹ��ɲä���ޤ�����
+新しい制限ハッシュ機能に関連する警告が追加されました。
 
 =item *
 
@@ -7022,8 +7022,8 @@ will happen even at an attempt to do so.
 
 =end original
 
-����ȥϥå���μ��� tie �ϥ��ݡ��ȳ��Ǥ��ꡢ
-�������褦�Ȥ������̿Ū���顼�Ȥʤ�ޤ���
+配列とハッシュの自己 tie はサポート外であり、
+そうしようとすると致命的エラーとなります。
 
 =item *
 
@@ -7034,8 +7034,8 @@ This didn't do anything useful, as the sort was not performed.
 
 =end original
 
-C<sort> �򥹥��饳��ƥ����ȤǻȤ��ȥ��ץ����ηٹ��Ф��褦�ˤʤ�ޤ�����
-����ϡ������Ȥ��Ԥ��ʤ��Τ������Ȥ�ƻ������ޤ���
+C<sort> をスカラコンテキストで使うとオプションの警告を出すようになりました。
+これは、ソートが行われないので全く使い道がありません。
 
 =item *
 
@@ -7045,7 +7045,7 @@ Using the /g modifier in split() is meaningless and will cause a warning.
 
 =end original
 
-split() �� /g �����Ҥ�Ȥ��Τϰ�̣���ʤ��ΤǷٹ𤬽Фޤ���
+split() で /g 修飾子を使うのは意味がないので警告が出ます。
 
 =item *
 
@@ -7055,7 +7055,7 @@ Using splice() past the end of an array now causes a warning.
 
 =end original
 
-splice() ������ν�����᤮�ƻȤ��ȷٹ𤬽Ф�褦�ˤʤ�ޤ�����
+splice() を配列の終わりを過ぎて使うと警告が出るようになりました。
 
 =item *
 
@@ -7066,9 +7066,9 @@ ad doestrying to use UTF-16 surrogates (which are unimplemented).
 
 =end original
 
-������ Unicode ���󥳡��ǥ���(UTF-8 �� UTF-16) �ϡ�
-(�ޤ���������Ƥ��ʤ�) UTF-16 ���������Ȥ�Ȥ����Ȥ���
-¿���ηٹ������������ޤ���
+不正な Unicode エンコーディング(UTF-8 と UTF-16) は、
+(まだ実装されていない) UTF-16 サロゲートを使おうとして
+多くの警告を引き起こします。
 
 =item *
 
@@ -7080,8 +7080,8 @@ warnings.
 
 =end original
 
-I/O ���ȥ꡼��ǥ��ȥ꡼��Υ��󥳡��ǥ��󥰤� (open() �� binmode()��Ȥä�)
-���ꤻ���� Unicode ��Ȥ����Ȥ���� "Wide character" �ٹ𤬽Фޤ���
+I/O ストリームでストリームのエンコーディングを (open() か binmode()を使って)
+指定せずに Unicode を使おうとすると "Wide character" 警告が出ます。
 
 =item *
 
@@ -7091,7 +7091,7 @@ Use of v-strings in use/require causes a (backward) portability warning.
 
 =end original
 
-use/require �� v-strings ��Ȥ���(���)�ߴ����ٹ𤬽Фޤ���
+use/require で v-strings を使うと(過去)互換性警告が出ます。
 
 =item *
 
@@ -7102,13 +7102,13 @@ have been added.
 
 =end original
 
-���󥿥ץ꥿����åɤȤ��ζ�ͭ�ǡ����λ��Ѥ˴�Ϣ����ٹ��ɲä���ޤ�����
+インタプリタスレッドとその共有データの使用に関連する警告が追加されました。
 
 =back
 
 =head1 Changed Internals
 
-(�������ѹ���)
+(内部の変更点)
 
 =over 4
 
@@ -7120,7 +7120,7 @@ PerlIO is now the default.
 
 =end original
 
-PerlIO ���ǥե���Ȥˤʤ�ޤ�����
+PerlIO がデフォルトになりました。
 
 =item *
 
@@ -7131,7 +7131,7 @@ internal API.
 
 =end original
 
-perlapi.pod (perlguts �����) ������ API �ε��Ҥ��ߤƤ��ޤ���
+perlapi.pod (perlguts の仲間) で内部 API の記述を試みています。
 
 =item *
 
@@ -7146,13 +7146,13 @@ For careful hackers only.
 
 =end original
 
-microperl �ȸƤФ�롢�����˺Ǿ��¤� perl ��ӥ�ɤǤ���褦�ˤʤ�ޤ�����
-microperl �Υӥ�ɤˤ� Configure �μ¹Ԥ������פǤ�;
-C<make -f Makefile.micro> �Ȥ�������Ǥ���
-����: microperl ��¿���β�����֤��Ƥ��ޤ���������ˤ�
-�����������Τ⤢��ޤ�;��̤Ȥ��Ƽ¹ԥե����뤬����å��夷���ꡢ
-����ʤ�����Ի׵Ĥʷ����������ʤ������񤤤򤷤��ꤹ�뤫�⤷��ޤ���
-���Ťʥϥå������ѤǤ���
+microperl と呼ばれる、本当に最小限の perl をビルドできるようになりました。
+microperl のビルドには Configure の実行すら不要です;
+C<make -f Makefile.micro> とするだけです。
+注意: microperl は多くの仮定を置いています。その中には
+大胆すぎるものもあります;結果として実行ファイルがクラッシュしたり、
+さもなければ不思議な形で正しくない振る舞いをしたりするかもしれません。
+慎重なハッカー専用です。
 
 =item *
 
@@ -7166,9 +7166,9 @@ APIs see L<perlapi>.
 =end original
 
 rsignal(), whichsig(), do_join(), op_clear, op_null,
-ptr_table_clear(), ptr_table_free(), sv_setref_uv() �ȡ�
-�����Ĥ��� UTF-8 ���󥿡��ե����������� API ���ɲä���ޤ�����
-���Ѳ�ǽ�� API �δ����ʰ����ˤĤ��Ƥ� L<perlapi> �򻲾Ȥ��Ƥ���������
+ptr_table_clear(), ptr_table_free(), sv_setref_uv() と、
+いくつかの UTF-8 インターフェースが公式 API に追加されました。
+利用可能な API の完全な一覧については L<perlapi> を参照してください。
 
 =item *
 
@@ -7178,8 +7178,8 @@ Made possible to propagate customised exceptions via croak()ing.
 
 =end original
 
-�������ޥ��������㳰�� croak() ���뤳�Ȥ����Ť����뤳�Ȥ�
-�Ǥ���褦�ˤʤ�ޤ�����
+カスタマイズした例外を croak() することで伝播させることが
+できるようになりました。
 
 =item *
 
@@ -7190,8 +7190,8 @@ built-in attributes.)
 
 =end original
 
-xsubs �� subs �Τ褦��°������Ƥ�褦�ˤʤ�ޤ�����
-(���������ʤ��Ȥ��Ȥ߹���°���ϡ�)
+xsubs は subs のように属性を持てるようになりました。
+(ええ、少なくとも組み込み属性は。)
 
 =item *
 
@@ -7202,8 +7202,8 @@ a no-op) and the latter replaced with dSP.
 
 =end original
 
-dTHR �� djSP �ϸŤ���ΤȤʤ�ޤ���; ���Ԥϼ�������
-(�ʤ��ʤ餳��ϲ���Ԥ�ʤ�����Ǥ�) ��Ԥ� dSP ���֤��������ޤ�����
+dTHR と djSP は古いものとなりました; 前者は取り除かれ
+(なぜならこれは何も行わないからです) 後者は dSP で置き換えられました。
 
 =item *
 
@@ -7213,7 +7213,7 @@ PERL_OBJECT has been completely removed.
 
 =end original
 
-PERL_OBJECT �ϴ����˼�������ޤ�����
+PERL_OBJECT は完全に取り除かれました。
 
 =item *
 
@@ -7225,8 +7225,8 @@ and maintainability.
 
 =end original
 
-MAGIC ��� (�Ĥޤ� C<'P'>) �ϥ����������ɤβ�������
-�ݼ�������뤿��˥ޥ�����(�Ĥޤ� C<PERL_MAGIC_TIED>)����ޤ�����
+MAGIC 定数 (つまり C<'P'>) はソースコードの可読性と
+保守性を高めるためにマクロ化(つまり C<PERL_MAGIC_TIED>)されました。
 
 =item *
 
@@ -7240,12 +7240,12 @@ complete information.
 
 =end original
 
-����ɽ������ѥ����
-����ѥ��뤵�줿�Х��ȥ����ɤ��б����븵������ɽ����ʸˡŪ���Ǥ�
-���̤���Ρ��ɤι�¤���ݼ餹��褦�ˤʤ�ޤ�����
-���ξ���� C<struct regexp> �ο����� C<offsets> ���Ф�
-��Ͽ����ޤ���
-��괰���ʾ���ˤĤ��Ƥ� L<perldebguts> �򻲾Ȥ��Ƥ���������
+正規表現コンパイラは
+コンパイルされたバイトコードと対応する元の正規表現の文法的要素を
+識別するノードの構造を保守するようになりました。
+この情報は C<struct regexp> の新しい C<offsets> メンバに
+記録されます。
+より完全な情報については L<perldebguts> を参照してください。
 
 =item *
 
@@ -7258,10 +7258,10 @@ are being worked on.
 
 =end original
 
-C �����ɤ��ڤ��ˤ褯 C<gcc -Wall> ���꡼��ˤʤ�ޤ�����
-�ץ�åȥե�����ˤ�äƤϤ����Ĥ��ηٹ�̤���ĤäƤ���Τǡ�
-gcc ��Ȥäƥ���ѥ��뤹�뤳�Ȥǵ��路�������˴ؤ���ٹ�򸫤뤳�Ȥ��Ǥ��ޤ���
-�ٹ���б���Ǥ���
+C コードは遥かによく C<gcc -Wall> クリーンになりました。
+プラットフォームによってはいくつかの警告が未だ残っているので、
+gcc を使ってコンパイルすることで疑わしい慣習に関する警告を見ることができます。
+警告は対応中です。
 
 work on
 =item *
@@ -7272,7 +7272,7 @@ F<perly.c>, F<sv.c>, and F<sv.h> have now been extensively commented.
 
 =end original
 
-F<perly.c>, F<sv.c>, F<sv.h> �ˤϹ��ϰϤ˥����Ȥ��դ����ޤ�����
+F<perly.c>, F<sv.c>, F<sv.h> には広範囲にコメントが付けられました。
 
 =item *
 
@@ -7283,8 +7283,8 @@ to F<Porting/repository.pod>.
 
 =end original
 
-Perl ��������ݥ��ȥ�λȤ����˴ؤ���ɥ�����Ȥ�
-F<Porting/repository.pod> �Ȥ����ɲä���ޤ�����
+Perl ソースレポジトリの使い方に関するドキュメントが
+F<Porting/repository.pod> として追加されました。
 
 =item *
 
@@ -7294,13 +7294,13 @@ There are now several profiling make targets.
 
 =end original
 
-�ץ��ե�����󥰤Τ���� make �������åȤ������Ĥ��ɲä���ޤ�����
+プロファイリングのための make ターゲットがいくつか追加されました。
 
 =back
 
 =head1 Security Vulnerability Closed [561]
 
-(�������줿�ȼ���[561])
+(修正された脆弱性[561])
 
 =begin original
 
@@ -7310,9 +7310,9 @@ earlier than the maintenance branch 5.6)
 
 =end original
 
-(����ϴ��� 5.7.0 �ǽ�������Ƥ��ޤ����������Ƿ����֤��ޤ���)
-(5.7.0 �� 5.6.1 �����˽ФƤ��ޤ�: 5.7 ��ȯ�֥�����
-5.6 ���ƥʥ󥹥֥��������˥�꡼������Ƥ��ޤ�)
+(これは既に 5.7.0 で修正されていますが、ここで繰り返します。)
+(5.7.0 は 5.6.1 より先に出ています: 5.7 開発ブランチは
+5.6 メンテナンスブランチより先にリリースされています)
 
 =begin original
 
@@ -7326,16 +7326,16 @@ for more information.
 
 =end original
 
-���ץ����Ǥ��� suidperl ����ݡ��ͥ�Ȥ�����Ū�ʥ������ƥ��ȼ�����
-2000 ǯ 8 ���ȯ������ޤ�����
-suidperl �ϥǥե���ȤǤϥӥ�ɡ����󥹥ȡ��뤵��ޤ���
-2001 ǯ 11 ��ޤǤ��Τ��Ƥ���ͣ����ȼ�ʥץ�åȥե������
-Linux �ǡ��ۤȤ�����Ƥ� Linux �ǥ����ȥ�ӥ塼������ޤߤޤ���
-CERT �Ȥ��ޤ��ޤʥ٥�����ȥǥ����ȥ�ӥ塼�����Ϥ���
-�ȼ�����ٹ𤷤Ƥ��ޤ���
-����ʤ����ˤĤ��Ƥ� 
-http://www.cpan.org/src/5.0/sperl-2000-08-05/sperl-2000-08-05.txt ��
-���Ȥ��Ƥ���������
+オプションである suidperl コンポーネントの潜在的なセキュリティ脆弱性が
+2000 年 8 月に発見されました。
+suidperl はデフォルトではビルド・インストールされません。
+2001 年 11 月までに知られている唯一の脆弱なプラットフォームは
+Linux で、ほとんど全ての Linux ディストリビューションを含みます。
+CERT とさまざまなベンダーとディストリビューターはこの
+脆弱性を警告しています。
+さらなる情報については 
+http://www.cpan.org/src/5.0/sperl-2000-08-05/sperl-2000-08-05.txt を
+参照してください。
 
 =begin original
 
@@ -7349,13 +7349,13 @@ suidperl is not installed, you are safe.
 
 =end original
 
-����� Perl �� �������ƥ��������𤹤뤿��˳����ץ������Ǥ���
-/bin/mail ��Ȥ����Ȥ��뤳�ȤǤ���
-Linux �ץ�åȥե�����Ǥ� /bin/main �ץ������Υɥ�����Ȳ�����Ƥ��ʤ�
-��ǽ�� suidperl �ȷ�ӤĤ��� root ������ؤΥ���������Ϳ����
-��̤Ȥ��ƹ������𤹤�����˥������ƥ��˽���ʶ��Ҥ�Ϳ���ޤ���
-/bin/mail ���ʤ�����'safe setuid scripts' ��ȤäƤ��뤫��
-suidperl �����󥹥ȡ��뤵��Ƥ��ʤ���С������Ǥ���
+問題は Perl が セキュリティ攻撃を報告するために外部プログラムである
+/bin/mail を使おうとすることです。
+Linux プラットフォームでは /bin/main プログラムのドキュメント化されていない
+機能が suidperl と結びつくと root シェルへのアクセスを与え、
+結果として攻撃を報告する代わりにセキュリティに重大な脅威を与えます。
+/bin/mail がないか、'safe setuid scripts' を使っているか、
+suidperl がインストールされていなければ、安全です。
 
 =begin original
 
@@ -7371,19 +7371,19 @@ such as sudo ( see http://www.courtesan.com/sudo/ ).
 
 =end original
 
-�������ǽ�� Perl 5.8.0 (����� 5.6.1 ���ƥʥ󥹥�꡼����
-���Ƥ� Perl 5.7 ��꡼��)�Ǥϴ����˼�������ޤ����Τǡ�
-�����ȼ����Ϥ⤦¸�ߤ��ޤ���
-����������ǰ�ʤ��餵��ʤ륻�����ƥ��ȼ����Ͼ�ˤ������ޤ���
-suidperl ��ǽ�Ϥ����餯 Perl 5.10 �Ǽ�������ޤ���
-�ɤ���ˤ��Ƥ⡢suidperl �ϲ����Ԥ�졢�ʤ� sudo 
-( http://www.courtesan.com/sudo/ �򻲾Ȥ��Ƥ�������)�Τ褦�ʤ���¾��
-����塼�����ǤϤʤ� suidperl ��Ȥ��Τ����������򤷤Ƥ���
-�������ƥ�������Ȥ������Ȥ��٤��Ǥ���
+攻撃報告機能は Perl 5.8.0 (および 5.6.1 メンテナンスリリースと
+全ての Perl 5.7 リリース)では完全に取り除かれましたので、
+この脆弱性はもう存在しません。
+しかし、残念ながらさらなるセキュリティ脆弱性は常にあり得ます。
+suidperl 機能はおそらく Perl 5.10 で取り除かれます。
+どちらにしても、suidperl は何が行われ、なぜ sudo 
+( http://www.courtesan.com/sudo/ を参照してください)のようなその他の
+ソリューションではなく suidperl を使うのかを完全に理解している
+セキュリティの専門家だけが使うべきです。
 
 =head1 New Tests
 
-(�������ƥ���)
+(新しいテスト)
 
 =begin original
 
@@ -7397,14 +7397,14 @@ is now more thoroughly tested.
 
 =end original
 
-�����Ĥ��ο������ƥ��Ȥ��ɲä���ޤ������ä� F<lib> �� F<ext>
-���֥��������Τ���Τ�ΤǤ���
-���ߤ��褽 69000 �ĤΥƥ���(700 �ۤɤΥƥ��ȥ�����ץȤ�
-�Ȼ����Ƥ��ޤ�)�ȡ���ԥƥ���(5.6.1 �� 258 �ƥ��ȥ�����ץȤ� 11700 �ƥ��Ȥ�
-����ޤ�)������ޤ���
-���Τʿ��ϥץ�åȥե������ Perl ������ˤ��ޤ���
-¿���ο������ƥ��ȤϤ�����󿷤����⥸�塼��Τ���Τ�ΤǤ�����
-����Ū�� Perl �⹹�ʤ�ƥ��Ȥ�����Ƥ��ޤ���
+いくつかの新しいテストが追加されました。特に F<lib> と F<ext>
+サブセクションのためのものです。
+現在およそ 69000 個のテスト(700 ほどのテストスクリプトに
+拡散しています)と、退行テスト(5.6.1 は 258 テストスクリプトに 11700 テストが
+あります)があります。
+正確な数はプラットフォームと Perl の設定によります。
+多くの新しいテストはもちろん新しいモジュールのためのものですが、
+一般的な Perl も更なるテストを受けています。
 
 =begin original
 
@@ -7416,9 +7416,9 @@ fast machine you can hope to finish the suite in about 6-8 minutes
 
 =end original
 
-�ƥ��Ȥο���¿���Τǡ���ԥƥ��Ȥ�ͽ�ۤ�꤫�ʤ���֤�������ޤ�:
-perl 5.6 �� 4-5 ��Ĺ�����֤�������ޤ���
-������®���ޥ���ǤΤ�(�ɻ��׻��֤�) 6-8 ʬ�ǽ�λ����˾�ߤ�����ޤ���
+テストの数が多いので、退行テストは予想よりかなり時間がかかります:
+perl 5.6 の 4-5 倍長い時間がかかります。
+本当に速いマシンでのみ(壁時計時間で) 6-8 分で終了する望みがあります。
 
 =begin original
 
@@ -7428,17 +7428,17 @@ to be closer to the library/extension they are testing.)
 
 =end original
 
-�ƥ��Ȥϰ����� Perl �Ȱ㤦���֤���𤷤ޤ���
-(����� t/lib �ʲ��Υƥ��ȥ�����ץȤ��ƥ��Ȥ���饤�֥��/��ĥ��
-���ᤤ���֤˰�ư��������Ǥ���)
+テストは以前の Perl と違う順番で報告します。
+(これは t/lib 以下のテストスクリプトがテストするライブラリ/拡張に
+より近い位置に移動したからです。)
 
 =head1 Known Problems
 
-(���Τ�����)
+(既知の問題)
 
 =head2 The Compiler Suite Is Still Very Experimental
 
-(����ѥ��饹�����Ȥ�̤�����˼¸�Ū�Ǥ�)
+(コンパイラスイートは未だ非常に実験的です)
 
 =begin original
 
@@ -7447,12 +7447,12 @@ highly experimental.  Use in production environments is discouraged.
 
 =end original
 
-����ѥ��饹�����ȤϾ��������ɤ���ΤˤʤäƤ��ޤ�����
-���˼¸�Ū�ʤޤޤǤ������ʴĶ��˻Ȥ����Ȥ�������ޤ���
+コンパイラスイートは少しずつ良いものになっていますが、
+非常に実験的なままです。製品環境に使うことは薦められません。
 
 =head2 Localising Tied Arrays and Hashes Is Broken
 
-(tie ���줿�����ϥå���� local ��������˲�����ޤ�)
+(tie された配列やハッシュを local 化すると破壊されます)
 
     local %tied_array;
 
@@ -7466,12 +7466,12 @@ change will break existing code that relies on the current
 
 =end original
 
-�Ƚ񤤤Ƥ⤦�ޤ�Ư���������Τ褦��ư��ˤʤ뤳�ȤǤ��礦:
-�Ť��ͤ���������������ޤ���
-����Ͼ���Υ�꡼���Ǥ��ѹ������Ǥ��礦�����桹�ϸ��ߤΤȤ����ɤο�����
-���ޥ�ƥ����������ΤǤ��뤫�򸫽Ф��Ƥ��ޤ��󡣤ɤΤ褦�ʾ��Ǥ⡢
-�ѹ������ߤ�(�ְ�ä������)���ޥ�ƥ������˰�¸�����¸�Υ����ɤ�
-�˲����ޤ�����äơ��̾�ϤȤˤ��������ʤ뤳�Ȥ���򤷤Ƥ���������
+と書いてもうまく働かず、次のような動作になることでしょう:
+古い値が正しく復元されません。
+これは将来のリリースでは変更されるでしょうが、我々は現在のところどの新しい
+セマンティクスが正確であるかを見出していません。どのような場合でも、
+変更が現在の(間違った定義の)セマンティクスに依存する既存のコードを
+破壊します。よって、通常はとにかくこうなることを回避してください。
 
 =head2 Building Extensions Can Fail Because Of Largefiles
 
@@ -7493,25 +7493,25 @@ all this is platform-dependent.
 
 =end original
 
-mod_perl �Τ褦�ʳ�ĥ�� `largefiles' ���꤬����Ȥ����Τ�졢
-Perl 5.6.0 ���顢�ե����륪�ե��åȤ�ǥե���� 64 bit Ĺ�ˤ���
-�ѹ����б����ޤ�����
-�⥸�塼�뤬��������ѥ���Ǥ��ʤ��ä��ꡢ����ѥ���Ǥ��Ƥ�
-ư��ʤ��ä��ꤷ�ޤ���
-���ߤΤȤ�������������Τ褤���ˡ�Ϥ���ޤ��󤬡�
-Configure �� %Config �ϥå������ largefile �Ѥ�
-ccflags, ldflags, libswanted, libs ���󶡤���褦�ˤʤ�
-(�㤨�� $Config{ccflags_nolargefiles})������Τ����ĥ��
-largefile �����������ꤷ�褦�Ȥ��뤳�Ȥ��Ǥ��ޤ���
-����ϳΤ��ˤ��줤�ʲ��ˡ�ǤϤʤ������β��ˡ���������ޤ������ʤ�
-���⤢��ޤ���
-�ͤ����뼺�Ԥΰ�Ĥϡ��ե����륪�ե��åȤ˴ؤ���
-�ۤʤ�ͤ���������ƤΥХ��ʥ��ߤ��˥�󥯤Ǥ��Ƥ��ޤ�
-(�ޤ��ϡ���󥯤Ǥ���Ȥ��ˤ��줬�褤�ͤ����ȹͤ��Ƥ��ޤ�)���ȤǤ���
+mod_perl のような拡張は `largefiles' 問題があるとして知られ、
+Perl 5.6.0 から、ファイルオフセットをデフォルト 64 bit 長にする
+変更が対応しました。
+モジュールが全くコンパイルできなかったり、コンパイルできても
+動作しなかったりします。
+現在のところ、この問題のよい解決法はありませんが、
+Configure は %Config ハッシュに非 largefile 用の
+ccflags, ldflags, libswanted, libs を提供するようになり
+(例えば $Config{ccflags_nolargefiles})、問題のある拡張は
+largefile 化せずに設定しようとすることができます。
+これは確かにきれいな解決法ではなく、この解決法が全くうまくいかない
+場合もあります。
+考えられる失敗の一つは、ファイルオフセットに関して
+異なる考えを持つ全てのバイナリを互いにリンクできてしまう
+(または、リンクできるときにそれがよい考えだと考えてしまう)ことです。
 
 =head2 Modifying $_ Inside for(..)
 
-(for(..) �����Ǥ� $_ ���ѹ�)
+(for(..) 内部での $_ の変更)
 
    for (1..5) { $_++ }
 
@@ -7523,13 +7523,13 @@ correct behaviour by replacing the 1..5 with 1, 2, 3, 4, 5.
 
 =end original
 
-���줬�ٹ�ʤ���ư��ޤ�����������٤��ǤϤ���ޤ���
-(�롼����κ��������ǤΤߤ��ѹ���ǽ�Ǥ���٤��Ǥ���)
-1..5 �� 1, 2, 3, 4, 5 ���֤�������������������񤤤򸫤뤳�Ȥ�����ޤ���
+これが警告なしに動作します。そうあるべきではありません。
+(ループ中の左辺値要素のみが変更可能であるべきです。)
+1..5 を 1, 2, 3, 4, 5 に置き換えると正しい振る舞いを見ることが出来ます。
 
 =head2 mod_perl 1.26 Doesn't Build With Threaded Perl
 
-(mod_perl 1.26 �ǥ���åɲ� Perl ���ӥ�ɤǤ��ޤ���)
+(mod_perl 1.26 でスレッド化 Perl がビルドできません)
 
 =begin original
 
@@ -7537,11 +7537,11 @@ Use mod_perl 1.27 or higher.
 
 =end original
 
-mod_perl 1.27 �ʹߤ�ȤäƤ���������
+mod_perl 1.27 以降を使ってください。
 
 =head2 lib/ftmp-security tests warn 'system possibly insecure'
 
-(lib/ftmp-security �ƥ��Ȥ� 'system possibly insecure' �ٹ𤬽Фޤ�)
+(lib/ftmp-security テストで 'system possibly insecure' 警告が出ます)
 
 =begin original
 
@@ -7549,11 +7549,11 @@ Don't panic.  Read the 'make test' section of INSTALL instead.
 
 =end original
 
-����Ƥ�ʡ�INSTALL �� 'make test' �ι��ܤ��ɤ�Ǥ���������
+あわてるな。INSTALL の 'make test' の項目を読んでください。
 
 =head2 libwww-perl (LWP) fails base/date #51
 
-(libwww-perl (LWP) �� base/date #51 �Ǽ��Ԥ��ޤ�)
+(libwww-perl (LWP) が base/date #51 で失敗します)
 
 =begin original
 
@@ -7561,11 +7561,11 @@ Use libwww-perl 5.65 or later.
 
 =end original
 
-libwww-perl 5.65 �ʹߤ�ȤäƤ���������
+libwww-perl 5.65 以降を使ってください。
 
 =head2 PDL failing some tests
 
-(PDL �Ǥ����Ĥ��Υƥ��Ȥ����Ԥ��ޤ�)
+(PDL でいくつかのテストが失敗します)
 
 =begin original
 
@@ -7573,7 +7573,7 @@ Use PDL 2.3.4 or later.
 
 =end original
 
-PDL 2.3.4 �ʹߤ�ȤäƤ���������
+PDL 2.3.4 以降を使ってください。
 
 =head2 Perl_get_sv
 
@@ -7589,13 +7589,13 @@ directories.
 
 =end original
 
-'Undefined symbol "Perl_get_sv"' �� "can't resolve symbol 'Perl_get_sv'" ��
-���ä����顼���Ф뤫�⤷��ޤ���(����ܥ�� "Perl_sv_2pv" �ξ��⤢��ޤ�)��
-����Ϥ����餯�Ť� Perl �ζ�ͭ�饤�֥��(�������ȥ�󥯤���Ƥ����ĥ)��
-Perl 5.8.0 �¹ԥե�����ȶ��˻Ȥ����Ȥ��Ƥ��뤳�Ȥ��̣���Ƥ��ޤ���
-������ Perl �Ϥ��Τ褦�ʥ��֥롼�����ȤäƤ��ޤ�������
-���ߤϻȤäƤ��ޤ��󡣶�ͭ�饤�֥��ѥ���Ĵ�٤ơ�
-���Υǥ��쥯�ȥ�ˤ��� Perl �ζ�ͭ�饤�֥�������å����Ƥ���������
+'Undefined symbol "Perl_get_sv"' や "can't resolve symbol 'Perl_get_sv'" と
+言ったエラーが出るかもしれません(シンボルは "Perl_sv_2pv" の場合もあります)。
+これはおそらく古い Perl の共有ライブラリ(かこれらとリンクされている拡張)を
+Perl 5.8.0 実行ファイルと共に使おうとしていることを意味しています。
+以前の Perl はこのようなサブルーチンを使っていましたが、
+現在は使っていません。共有ライブラリパスを調べて、
+そのディレクトリにある Perl の共有ライブラリをチェックしてください。
 
 =begin original
 
@@ -7605,13 +7605,13 @@ example and how to deal with it.
 
 =end original
 
-��������� Perl 5.8.0 �Υ��󥹥ȡ��뤬�Դ����ʾ��ˤⵯ����ޤ���
-������ȡ��ɤ��������ˤĤ��Ƥ� L</"Mac OS X dyld undefined symbols"> ��
-���Ȥ��Ƥ���������
+この問題は Perl 5.8.0 のインストールが不完全な場合にも起こります。
+この例と、どう扱うかについては L</"Mac OS X dyld undefined symbols"> を
+参照してください。
 
 =head2 Self-tying Problems
 
-(���� tie ����)
+(自己 tie 問題)
 
 =begin original
 
@@ -7622,10 +7622,10 @@ forbidden for now (you will get a fatal error even from an attempt).
 
 =end original
 
-����ȥϥå���μ��� tie �Ͽ����ƽ������ˤ�����ʬ�Ǥ��������ʤ�ޤ���
-�͡����������ʷ��(�Ǥ�¿���Τϥ�������פǤ�)�ˤ��餤�餹��Τ�
-�򤱤뤿��ˡ�����϶ػߤ���뤳�Ȥˤʤ�ޤ���(��ߤ������
-��̿Ū���顼�ˤʤ�ޤ�)��
+配列とハッシュの自己 tie は深くて修正しにくい部分でおかしくなります。
+人々がおかしな結果(最も多いのはコアダンプです)にいらいらするのを
+避けるために、これは禁止されることになりました(試みるだけで
+致命的エラーになります)。
 
 =begin original
 
@@ -7636,10 +7636,10 @@ behaviour may be fixed at a later date.
 
 =end original
 
-glob �μ��� tie ���ѹ��ϺƵ�Ū��ե���󥹤�����������ޤ�
-(����: L<perlobj/"Two-Phased Garbage Collection">)��
-���� tie ���줿 glob ���˲����뤿��ˤ�����Ū�� untie ����ɬ�פ�����ޤ���
-���ο����񤤤Ͼ����ѹ�����뤫�⤷��ޤ���
+glob の自己 tie の変更は再帰的リファレンスを引き起こします
+(参照: L<perlobj/"Two-Phased Garbage Collection">)。
+自己 tie された glob を破壊するためには明示的に untie する必要があります。
+この振る舞いは将来変更されるかもしれません。
 
 =begin original
 
@@ -7647,7 +7647,7 @@ Self-tying of scalars and IO thingies works.
 
 =end original
 
-������� IO �μ��� tie ��ư��ޤ���
+スカラと IO の自己 tie は動作します。
 
 =head2 ext/threads/t/libc
 
@@ -7659,14 +7659,14 @@ find out whether it is threadsafe.  See L<perlthrtut> for more information.
 
 =end original
 
-���Υƥ��Ȥ����Ԥ����硢libc(C �饤�֥��)������åɥ����դǤʤ����Ȥ�
-�����Ƥ��ޤ������Υƥ��Ȥϥ���åɥ����դ��ɤ����򸡽Ф��뤿���
-localtime() ������˥��ȥ쥹�ƥ��Ȥ򤫤��ޤ���
-����ʤ����ˤĤ��Ƥ� L<perlthrtut> �򻲾Ȥ��Ƥ���������
+このテストが失敗する場合、libc(C ライブラリ)がスレッドセーフでないことを
+示しています。このテストはスレッドセーフかどうかを検出するために
+localtime() コールにストレステストをかけます。
+さらなる情報については L<perlthrtut> を参照してください。
 
 =head2 Failure of Thread (5.005-style) tests
 
-(Thread (5.005-��������) �ƥ��Ȥμ���)
+(Thread (5.005-スタイル) テストの失敗)
 
 =begin original
 
@@ -7676,10 +7676,10 @@ to be removed.  You should migrate your code to ithreads.>
 
 =end original
 
-B<5.005��������ǤΥ���å�������侩����ˤʤꡢ
-�Ū�ǤۤȤ�ɥ��ݡ��ȳ��Ȥʤä��ȸ������Ȥ�
-�Ф��Ƥ����Ʋ�������5.10�Ǥϡ���������ͽ��Ǥ���
-ithread �˰ܹԤ��٤��Ǥ���>
+B<5.005スタイルでのスレッド操作は非推奨事項になり、
+試験的でほとんどサポート外となったと言うことを
+覚えておいて下さい。5.10では、削除される予定です。
+ithread に移行すべきです。>
 
 =begin original
 
@@ -7689,9 +7689,9 @@ the 5.005 threading implementation. These are not new failures--Perl
 
 =end original
 
-�ʲ��Υƥ��Ȥ� 5.005 �Υ���å����μ¹Ԥˤ����뺬��Ū������η�̼��Ԥ���
-���Ȥ��狼�äƤ��ޤ��������Ͽ��������Ի���ǤϤ���ޤ���--Perl5.005_0x �Ǥ�
-Ʊ���Х�����äƤ����ΤǤ������ƥ��Ȥ���ʤ��ä��ΤǤ���
+以下のテストは 5.005 のスレッド操作の実行における根本的な問題の結果失敗する
+ことがわかっています。これらは新しい失敗事例ではありません--Perl5.005_0x でも
+同じバグを持っていたのですが、テストされなかったのです。
 
  ../ext/B/t/xref.t                    255 65280    14   12  85.71%  3-14
  ../ext/List/Util/t/first.t           255 65280     7    4  57.14%  2 5-7
@@ -7717,15 +7717,15 @@ being regular expression engine's state.)
 
 =end original
 
-5.005 ��������Υ���åɤϺ���Ū����ʬ����þ���Ƥ����
-���ʤ���Ƥ��뤿�ᡢ�����μ��Ԥ���������븫���ߤ������Ǥ���
-(����Ū�˵����뤳�ȤȤ��Ƥϡ�
-̷�⤷������åɤ��������Х�˶�ͭ���줿���֤������ǽ����
-����ޤ�����Ĥ��ɤ���Ȥ��Ƥ�����ɽ�����󥸥�ξ��֤Ǥ���)
+5.005 スタイルのスレッドは根本的な部分が破綻していると
+見なされているため、これらの失敗が修正される見込みは薄いです。
+(基本的に起こることとしては、
+矛盾したスレッドがグローバルに共有された状態を壊す可能性が
+あります。一つの良い例としては正規表現エンジンの状態です。)
 
 =head2 Timing problems
 
-(�����ߥ󥰤�����)
+(タイミングの問題)
 
 =begin original
 
@@ -7734,8 +7734,8 @@ problems, for example if the system is heavily loaded.
 
 =end original
 
-�ʹߤΥƥ��Ȥϥ����ߥ󥰤�����ˤ�ä���³Ū�˼��Ԥ��뤫���Τ�ޤ���
-�㤨�Х����ƥ���礭����٤������äƤ�����Ǥ���
+以降のテストはタイミングの問題によって断続的に失敗するかも知れません。
+例えばシステムに大きな負荷がかかっている時です。
 
     t/op/alarm.t
     ext/Time/HiRes/HiRes.t
@@ -7749,13 +7749,13 @@ In case of failure please try running them manually, for example
 
 =end original
 
-���Ԥ�����ϼ��Ȥǵ�ư����褦�ˤ��Ʋ��������㤨��:
+失敗する場合は手作業で起動するようにして下さい。例えば:
 
     ./perl -Ilib ext/Time/HiRes/HiRes.t
 
 =head2 Tied/Magical Array/Hash Elements Do Not Autovivify
 
-(tied/magical ����/�ϥå������Ǥϼ�ư����������ޤ���)
+(tied/magical 配列/ハッシュ要素は自動活性化されません)
 
 =begin original
 
@@ -7768,16 +7768,16 @@ a tied/magical array/hash.
 
 =end original
 
-���̤�������Ф��� C<$foo = \$bar[1]> �Ȥ���ȡ�
-(������¸�ߤ��Ƥ��ʤ��ä��Ȥ���) C<$bar[1]> �ˤ� C<undef> ��������Ƥ��ޤ���
-����������ư�������Τ褦�� tied/magical �����ϥå���ξ���
-���Τ褦�ˤϤʤ�ޤ��󡣸��ߤΤȤ�����ե���󥹤κ�������ޤ�����ˡ��
-�ʤ�����Ǥ���Ʊ������� tied/magical ����/�ϥå����¸�ߤ��ʤ�
-����ǥå���/�������ڤ�����ˤ�ƶ���Ϳ���ޤ���
+普通の配列に対して C<$foo = \$bar[1]> とすると、
+(以前に存在していなかったとして) C<$bar[1]> には C<undef> が割り当てられます。
+しかし、自動活性化のような tied/magical 配列やハッシュの場合は
+このようにはなりません。現在のところリファレンスの作成を捕まえる方法が
+ないためです。同じ問題は tied/magical 配列/ハッシュで存在しない
+インデックス/キーを切り取る場合にも影響を与えます。
 
 =head2 Unicode in package/class and subroutine names does not work
 
-(package/class�ȥ��֥롼����̾�����Unicode�ϻȤ��ޤ���)
+(package/classとサブルーチン名の中でUnicodeは使えません)
 
 =begin original
 
@@ -7788,10 +7788,10 @@ Unicode for the said purposes is unsupported.
 
 =end original
 
-����̾��Ĥ���ݤ� Unicode ���Ѥ��뤳�Ȥϲ�ǽ�Ǥ�����package/class ����
-���֥롼�����̾���˴ؤ��Ƥ��Բ�ǽ�Ǥ���������Ф������¤�¸�ߤ���Τ�
-Perl5.8.0 ����Ǥ������տ�Ū�ȸ�������ष����ȯŪ�ʤ�ΤǤ���ȸ����ޤ�;
-�Ĥޤꡢ����ޤǤ˽Ҥ٤���Ū�Ǥ� Unicode �λ��Ѥ˴ؤ��Ƥϥ��ݡ��Ȥ���ޤ���
+識別名をつける際に Unicode を用いることは可能ですが、package/class 又は
+サブルーチンの名前に関しては不可能です。これに対する制限が存在するのは
+Perl5.8.0 からですが、意図的と言うよりもむしろ偶発的なものであると言えます;
+つまり、これまでに述べた目的での Unicode の使用に関してはサポートされません。
 
 =begin original
 
@@ -7803,15 +7803,15 @@ portable answers.
 
 =end original
 
-�����Դ���������ͳ�ΰ�ĤȤ��Ƥϡ�����ΰܿ���(�������ˤ����Ƥ�)��
-̵���ʤäƤ��ޤ�����Ǥ�: �ѥå������ȥ��֥롼�����̾���ϥե������
-�ǥ��쥯�ȥ��̾�����б�������ɬ�פ����뤿�ᡢ�ե����륷���ƥ�� Unicode ǽ�Ϥ�
-���פȤʤ�ޤ��������ơ��Թ��ʤ��Ȥ˰ܿ�����Ż뤷�������ȸ�����Τ�
-¸�ߤ��ʤ��ΤǤ���
+この不完全性の理由の一つとしては、本来の移植性(現時点においての)が
+無くなってしまうからです: パッケージとサブルーチンの名前はファイルと
+ディレクトリの名前と対応させる必要があるため、ファイルシステムの Unicode 能力が
+重要となります。そして、不幸なことに移植性を重視した答えと言うものは
+存在しないのです。
 
 =head1 Platform Specific Problems
 
-(�ץ�åȥե������ͭ������)
+(プラットフォーム固有の問題)
 
 =head2 AIX
 
@@ -7828,10 +7828,10 @@ GNU make.
 
 =end original
 
-AIX �ͥ��ƥ��֤� make ���ޥ�ɤ�ȤäƤ����硢
-ñ��"make"�Ȥ���ΤǤϤʤ���"make all"�Ȥ��Ƥ���������
-���ԤΤ褦�ˤ���ȡ��ְ�ä�"make install"���¹Ԥ���뤳�Ȥ�����ޤ���
-���뤤�ϡ�GNU make ��Ȥ������褤���⤷��ޤ���
+AIX ネイティブの make コマンドを使っている場合、
+単に"make"とするのではなく、"make all"としてください。
+前者のようにすると、間違って"make install"が実行されることがあります。
+あるいは、GNU make を使う方がよいかもしれません。
 
 =item *
 
@@ -7847,13 +7847,13 @@ therefore in AIX 4.2 Perl is not linked against libC_r.
 
 =end original
 
-AIX 4.2 �Ǥϡ�statics ��Ȥ� C++ �ؿ���Ȥ� Perl ��ĥ��
-statics �����������ʤ���������꤬�����뤫�⤷��ޤ���
-��꿷���� AIX �Ǥϡ���������� Perl �� libC_r �饤�֥���
-��󥯤��뤳�Ȥǲ�褵��ޤ�������ǰ�ʤ��� AIX 4.2 �Ǥ�
-���Υ饤�֥��ϻ��֤˴ؤ��뤵�ޤ��ޤʴؿ�(time() �� gettimeofday() �ʤ�)��
-�ְ�ä��ͤ��֤��Ȥ��������ΤʥХ������뤿�ᡢAIX 4.2 �Ǥ�
-Perl �� libC_r ���󥯤��Ƥ��ޤ���
+AIX 4.2 では、statics を使う C++ 関数を使う Perl 拡張は
+statics が初期化されないために問題が起きるかもしれません。
+より新しい AIX では、この問題は Perl に libC_r ライブラリを
+リンクすることで解決されますが、残念ながら AIX 4.2 では
+このライブラリは時間に関するさまざまな関数(time() や gettimeofday() など)で
+間違った値を返すという不明確なバグがあるため、AIX 4.2 では
+Perl は libC_r をリンクしていません。
 
 =item *
 
@@ -7870,13 +7870,13 @@ you the vac version.  See README.aix.
 
 =end original
 
-AIX C ����ѥ��� vac �С������ 5.0.0.0 �ϥХ��ä������ɤ���Ϥ���
-"make test"�ΰ����Ȥ��Ƽ¹Ԥ���Ȥ����Ĥ��Υƥ��Ȥ˼��Ԥ��뤳�Ȥ�
-����ޤ��������Ԥ����ƥ��Ȥ��ư�Ǽ¹Ԥ�����������ޤ���
-���ʤ��Ȥ� vac �С������ 5.0.1.0 �˥��åץ��졼�ɤ��뤳�Ȥ򤪴��ᤷ�ޤ���
-����� Perl ������������ѥ���Ǥ��뤳�Ȥ��狼�äƤ��ޤ���
-"lslpp -L|grep vac.C" �Ȥ���� vac �ΥС������ɽ������ޤ���
-README.aix �򻲾Ȥ��Ƥ���������
+AIX C コンパイラ vac バージョン 5.0.0.0 はバグったコードを出力し、
+"make test"の一部として実行するといくつかのテストに失敗することが
+ありますが、失敗したテストを手動で実行すると成功します。
+少なくとも vac バージョン 5.0.1.0 にアップグレードすることをお勧めします。
+これは Perl を正しくコンパイルできることがわかっています。
+"lslpp -L|grep vac.C" とすると vac のバージョンが表示されます。
+README.aix を参照してください。
 
 =item *
 
@@ -7886,8 +7886,8 @@ If building threaded Perl, you may get compilation warning from pp_sys.c:
 
 =end original
 
-����åɲ� Perl ��ӥ�ɤ���ȡ�pp_sys.c �ǥ���ѥ���ٹ�
-�Ф뤫�⤷��ޤ���
+スレッド化 Perl をビルドすると、pp_sys.c でコンパイル警告が
+出るかもしれません。
 
   "pp_sys.c", line 4651.39: 1506-280 (W) Function argument assignment between types "unsigned char*" and "const void*" is not allowed.
 
@@ -7898,8 +7898,8 @@ having slightly different types for their first argument.
 
 =end original
 
-�����̵���Ǥ�; ����� getnetbyaddr() �� getnetbyaddr_r() ����������
-���������㤦�����ȯ�����ޤ���
+これは無害です; これは getnetbyaddr() と getnetbyaddr_r() の第一引数の
+型が少し違うために発生します。
 
 =back
 
@@ -7916,13 +7916,13 @@ use the bundled C compiler.)
 
 =end original
 
-Linux/alpha �� *BSD/Alpha �� op/pack, op/pat, op/regexp, ext/Storable ��
-�����줫�Υƥ��Ȥ����Ԥ�����硢�����餯 gcc �򥢥åץ��졼�ɤ���
-�����ߥ󥰤Ǥ���2.95.3 ������ gcc �����餫�˽�ʬ�褤��ΤǤ���Ȥϸ�������
-gcc 3.1 �Ϥ�äȤ褤��ΤǤ���(RedHat Linux/alpha �� gcc 3.1 �ξ���
-�������𤵤�Ƥ��ޤ��󤬡�Linux 2.4.18 �� gcc 2.95.4 �ξ��Ǥ�
-��𤵤�Ƥ��ޤ���)(Tru64 �Ǥϡ��Х�ɥ뤵��Ƥ��� C ����ѥ����Ȥä��ۤ���
-�褤�Ǥ���)
+Linux/alpha か *BSD/Alpha で op/pack, op/pat, op/regexp, ext/Storable の
+いずれかのテストが失敗した場合、おそらく gcc をアップグレードする
+タイミングです。2.95.3 以前の gcc は明らかに十分よいものであるとは言えず、
+gcc 3.1 はもっとよいものです。(RedHat Linux/alpha で gcc 3.1 の場合は
+問題は報告されていませんが、Linux 2.4.18 で gcc 2.95.4 の場合では
+報告されています。)(Tru64 では、バンドルされている C コンパイラを使ったほうが
+よいです。)
 
 =head2 AmigaOS
 
@@ -7935,11 +7935,11 @@ development release).
 
 =end original
 
-Perl 5.8.0 �� AmigaOS �Ǥϥӥ�ɤǤ��ޤ���
-i����åɤΤɤ��������꤬ȯ�����Ƥ��ơ�����������褹�뤿���
-Amiga ������Ȥ����Ĥ����ʤ��ΤǤ���
-Perl 5.6.1 ��̤�� Amiga OS ��ư��ޤ�
-(5.7.2 ��ȯ��꡼����ư��ޤ�)��
+Perl 5.8.0 は AmigaOS ではビルドできません。
+iスレッドのどこかで問題が発生していて、この問題を解決するための
+Amiga の専門家が見つけられないのです。
+Perl 5.6.1 は未だ Amiga OS で動作します
+(5.7.2 開発リリースも動作します)。
 
 =head2 BeOS
 
@@ -7949,7 +7949,7 @@ The following tests fail on 5.8.0 Perl in BeOS Personal 5.03:
 
 =end original
 
-BeOS Personal 5.03 �Ǥ� Perl 5.8.0 �ΰʲ��Υƥ��Ȥϼ��Ԥ��ޤ���
+BeOS Personal 5.03 では Perl 5.8.0 の以下のテストは失敗します。
 
  t/op/lfs............................FAILED at test 17
  t/op/magic..........................FAILED at test 24
@@ -7964,7 +7964,7 @@ See L<perlbeos> (README.beos) for more details.
 
 =end original
 
-����ʤ�ܺ٤ˤĤ��Ƥ� L<perlbeos> (README.beos) �򻲾Ȥ��Ƥ���������
+さらなる詳細については L<perlbeos> (README.beos) を参照してください。
 
 =head2 Cygwin "unable to remap"
 
@@ -7977,9 +7977,9 @@ detailed in here: http://sources.redhat.com/ml/cygwin/2001-12/msg00894.html
 
 =end original
 
-�㤨�� Cygwin �Ѥ� Tk ��ĥ��ӥ�ɤ���Ȥ���"unable to remap" �Ȥ���
-���顼���Ф뤫�⤷��ޤ���
-����� Cygwin �δ��Τ�����ǡ�������ˡ�ϰʲ��˾ܺ٤�����ޤ�:
+例えば Cygwin 用の Tk 拡張をビルドするとき、"unable to remap" という
+エラーが出るかもしれません。
+これは Cygwin の既知の問題で、回避方法は以下に詳細があります:
 http://sources.redhat.com/ml/cygwin/2001-12/msg00894.html
 
 =head2 Cygwin ndbm tests fail on FAT
@@ -7993,11 +7993,11 @@ failures are expected:
 
 =end original
 
-FAT �ե����륷���ƥ�� NDBM_File ��ӥ�ɤϤǤ��ޤ�����
-���󥹥ȡ���(�ȥƥ���)�ϤǤ��ޤ���
-NTFS �ǤΥ��󥹥ȡ���(�ȥӥ��)�Ϥ��ޤ������ޤ���
-FAT �ǤΥ��󥹥ȡ���(�ȥӥ��)��ƥ��Ȥ��褦�Ȥ���ȡ��ʲ���
-���Ԥ���𤵤��Ϥ��Ǥ�:
+FAT ファイルシステムで NDBM_File をビルドはできますが、
+インストール(とテスト)はできません。
+NTFS でのインストール(とビルド)はうまくいきます。
+FAT でのインストール(とビルド)をテストしようとすると、以下の
+失敗が報告されるはずです:
 
  ../ext/NDBM_File/ndbm.t       13  3328    71   59  83.10%  1-2 4 16-71
  ../ext/ODBM_File/odbm.t      255 65280    ??   ??       %  ??
@@ -8012,7 +8012,7 @@ NDBM_File fails and ODBM_File just coredumps.
 
 =end original
 
-NDBM_File �ϼ��Ԥ���ODBM_File ��ñ�˥�������פ��ޤ���
+NDBM_File は失敗し、ODBM_File は単にコアダンプします。
 
 =head2 DJGPP Failures
 
@@ -8033,9 +8033,9 @@ limitations (and maybe bugs) of dosemu:
 
 =end original
 
-5.8.0 ����󥰥ե�����͡����б��ǥͥ��ƥ��֤˥ӥ�ɤ����Ȥ���
-�嵭�μ��Ԥ������뤳�Ȥ��狼�äƤ��ޤ�����dosemu �Ǽ¹Ԥ�����硢
-dosemu ������(�Ȥ����餯�ϥХ�)�ˤ�äƤ���˰ʲ��Τ�Τ����Ԥ��ޤ���
+5.8.0 をロングファイルネーム対応でネイティブにビルドしたときに
+上記の失敗が起こることがわかっていますが、dosemu で実行した場合、
+dosemu の制限(とおそらくはバグ)によってさらに以下のものが失敗します。
 
  t/comp/cpp...........................FAILED at test 3
  t/op/inccode.........................(crash)
@@ -8048,9 +8048,9 @@ prefer native builds and long filenames.
 
 =end original
 
-����� lib/ExtUtils test �Τ����Ĥ��ȡ����󥰥ե�����͡����б��ʤ�
-������ư�� Encode/t/Aliases.t �ο�ɴ�Υƥ��Ȥ����Ԥ��ޤ���
-���äơ����󥰥ե�����͡����դ��ǥͥ��ƥ��֥ӥ�ɤ������������Ǥ��礦��
+さらに lib/ExtUtils test のいくつかと、ロングファイルネーム対応なら
+正しく動く Encode/t/Aliases.t の数百のテストが失敗します。
+従って、ロングファイルネーム付きでネイティブビルドした方がいいでしょう。
 
 =head2 FreeBSD built with ithreads coredumps reading large directories
 
@@ -8061,9 +8061,9 @@ FreeBSD 4.6 (see L<perlfreebsd> (README.freebsd)).
 
 =end original
 
-����� FreeBSD 4.5 �� readdir_r() �˴ؤ�����Τ�����ǡ�
-FreeBSD 4.6 �ǽ�������Ƥ��ޤ�
-(L<perlfreebsd> (README.freebsd) �򻲾Ȥ��Ƥ�������)��
+これは FreeBSD 4.5 の readdir_r() に関する既知の問題で、
+FreeBSD 4.6 で修正されています
+(L<perlfreebsd> (README.freebsd) を参照してください)。
 
 =head2 FreeBSD Failing locale Test 117 For ISO 8859-15 Locales
 
@@ -8078,10 +8078,10 @@ the latest FreeBSD releases.
 
 =end original
 
-ISO 8859-15 ��������� FreeBSD �� locale test 117 �Ǽ��Ԥ��ޤ���
-����� ʸ�� \xFF (ʸ�ᵭ���դ��� y) �� \xBE (ʸ�ᵭ���դ��� Y) ��
-��ʸ����ʸ����̵�뤷�ƤΥޥå��ΤȤ��������������ʤ����Ȥ������Ǥ���
-��������Ϻǿ��� FreeBSD ��꡼���ǤϽ�������Ƥ���褦�Ǥ���
+ISO 8859-15 ロケールは FreeBSD の locale test 117 で失敗します。
+これは 文字 \xFF (文節記号付きの y) と \xBE (文節記号付きの Y) が
+大文字小文字を無視してのマッチのときに正しく振舞わないことが原因です。
+この問題は最新の FreeBSD リリースでは修正されているようです。
 ( http://www.freebsd.org/cgi/query-pr.cgi?pr=34308 )
 
 =head2 IRIX fails ext/List/Util/t/shuffle.t or Digest::MD5
@@ -8095,11 +8095,11 @@ no failures have been seen on the said test on any other platform.
 
 =end original
 
-IRIX �� MIPSpro 7.3.1.2m �� 7.3.1.3m �Υ���ѥ����Ȥä���硢
-List::Util �Υƥ��ȤǤ��� ext/List/Util/t/shuffle.t �� core ����Ϥ���
-���Ԥ��ޤ���gcc �ǥ���ѥ��뤷������ core ����Ϥ�����
-����¾�Υץ�åȥե�����Ǥ��Τ褦�˼��Ԥ����Ȥ����ä�ʹ���ޤ���Τǡ�
-����ѥ���Υ��顼�Τ褦�Ǥ���
+IRIX で MIPSpro 7.3.1.2m か 7.3.1.3m のコンパイラを使った場合、
+List::Util のテストである ext/List/Util/t/shuffle.t が core を出力して
+失敗します。gcc でコンパイルした場合は core を出力せず、
+その他のプラットフォームでこのように失敗したという話を聞きませんので、
+コンパイラのエラーのようです。
 
 =begin original
 
@@ -8108,8 +8108,8 @@ known to fail with "*** Termination code 139 (bu21)".
 
 =end original
 
-Ʊ�ͤˡ�Digest::MD5 ��ĥ��ӥ�ɤ���Ȥ���
-"*** Termination code 139 (bu21)" ��ɽ�����Ƽ��Ԥ��뤳�Ȥ��狼�äƤ��ޤ���
+同様に、Digest::MD5 拡張をビルドするときに
+"*** Termination code 139 (bu21)" と表示して失敗することがわかっています。
 
 =begin original
 
@@ -8117,7 +8117,7 @@ The cure is to drop optimization level (Configure -Doptimize=-O2).
 
 =end original
 
-������ˡ�Ϻ�Ŭ����٥����Ȥ����ȤǤ�(Configure -Doptimize=-O2)��
+回避方法は最適化レベルを落とすことです(Configure -Doptimize=-O2)。
 
 =head2 HP-UX lib/posix Subtest 9 Fails When LP64-Configured
 
@@ -8130,9 +8130,9 @@ subtest 9 failed.
 
 =end original
 
-perl �� -Duse64bitall �դ������ꤵ�줿��硢lib/posix �� subtest 10 ��
-������ subtest 9 ��������������𤵤�뤿�ᡢ�ƥ��ȥϡ��ͥ���
-���𤷤� subtest 9 �����Ԥ����ȹͤ��Ƥ��ޤ��ޤ���
+perl が -Duse64bitall 付きで設定された場合、lib/posix の subtest 10 の
+成功が subtest 9 の成功の前に報告されるため、テストハーネスが
+混乱して subtest 9 が失敗したと考えてしまいます。
 
 =head2 Linux with glibc 2.2.5 fails t/op/int subtest #6 with -Duse64bitint
 
@@ -8143,7 +8143,7 @@ This is a known bug in the glibc 2.2.5 with long long integers.
 
 =end original
 
-����� glibc 2.2.5 �� long long int �δ��ΤΥХ��Ǥ���
+これは glibc 2.2.5 の long long int の既知のバグです。
 ( http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=65612 )
 
 =head2 Linux With Sfio Fails op/misc Test 48
@@ -8154,7 +8154,7 @@ No known fix.
 
 =end original
 
-�狼�äƤ��뽤����ˡ�Ϥ���ޤ���
+わかっている修正方法はありません。
 
 =head2 Mac OS X
 
@@ -8166,9 +8166,9 @@ warnings about the broken locales of Mac OS X.
 
 =end original
 
-Mac OS X �β��줿��������˴ؤ������̤ηٹ���򤱤뤿��ˡ�
-"make test" �������˴Ķ��ѿ� LC_ALL �� "C" �˥��åȤ���
-(setenv LC_ALL C) ���Ȥ�˺��ʤ��ǲ�������
+Mac OS X の壊れたロケールに関する大量の警告を避けるために、
+"make test" する前に環境変数 LC_ALL を "C" にセットする
+(setenv LC_ALL C) ことを忘れないで下さい。
 
 =begin original
 
@@ -8177,8 +8177,8 @@ buggy (old) implementations of Berkeley DB included in Mac OS X:
 
 =end original
 
-�ʲ��Υƥ��Ȥ� Mac OS X �˴ޤޤ�Ƥ��� Berkeley DB �μ�����
-�Х��äƤ���(�Ť�)����˼��Ԥ��뤳�Ȥ��狼�äƤ��ޤ���
+以下のテストは Mac OS X に含まれている Berkeley DB の実装が
+バグっている(古い)ために失敗することがわかっています。
 
  Failed Test                 Stat Wstat Total Fail  Failed  List of Failed
  -------------------------------------------------------------------------
@@ -8193,9 +8193,9 @@ supporting inode change time.
 
 =end original
 
-UFS �ѡ��ƥ������ǥӥ�ɤ�����硢¿ʬ t/op/stat.t subtest #9 ��
-���Ԥ���Ǥ��礦������� Darwin �� UPF �� inode �ѹ������
-�б����Ƥ��ʤ�����Ǥ���
+UFS パーティションでビルドした場合、多分 t/op/stat.t subtest #9 も
+失敗するでしょう。これは Darwin の UPF が inode 変更時刻に
+対応していないからです。
 
 =begin original
 
@@ -8205,9 +8205,9 @@ are lost).
 
 =end original
 
-�ޤ� ext/POSIX/t/posix.t subtest #10 �����Ԥ��ޤ�����
-����� Perl ����Ǥ�ǤϤʤ� Apple ����Ǥ(�֥��å����줿�����ʥ뤬
-������)�ʤΤǡ������åפ���褦�ˤʤ�ޤ�����
+また ext/POSIX/t/posix.t subtest #10 が失敗しますが、
+これは Perl の責任ではなく Apple の責任(ブロックされたシグナルが
+失われる)なので、スキップするようになりました。
 
 =begin original
 
@@ -8218,9 +8218,9 @@ threadunsafe.)
 
 =end original
 
-i����å��դ��� Configure ������硢ext/threads/t/libc.t �����Ԥ��ޤ���
-����� Perl ����Ǥ�ǤϤ���ޤ���-- Mac OS X �� libc �ϥ���åɥ����դǤ�
-����ޤ���(���Υƥ��Ȥ� localtime() ������åɥ����դ��ɤ�����ƥ��Ȥ��ޤ���)
+iスレッド付きで Configure した場合、ext/threads/t/libc.t が失敗します。
+これも Perl の責任ではありません-- Mac OS X の libc はスレッドセーフでは
+ありません(このテストは localtime() がスレッドセーフかどうかをテストします。)
 
 =head2 Mac OS X dyld undefined symbols
 
@@ -8231,8 +8231,8 @@ symbols, for example
 
 =end original
 
-Perl 5.8.0 �򥤥󥹥ȡ��뤷���塢�ʲ��Τ褦��̤�������ܥ��
-�ٹ𤬽Ф���:
+Perl 5.8.0 をインストールした後、以下のような未定義シンボルの
+警告が出る場合:
 
     dyld: perl Undefined symbols
     _perl_sv_2pv
@@ -8248,12 +8248,12 @@ shared library out of the way like this:
 
 =end original
 
-�����餯�Ť� Perl 5.8.0 �����ΥС������(���뤤�Ϥ��ΰ���)��
-/Library/Perl �˥��󥹥ȡ��뤵��Ƥ��ޤ�(̤�������ܥ��
-5.8.0 ������ Perl �ǻȤ��Ƥ��ޤ�)��
-�ʤ��� "make install" �λ��˴����� /Library/Perl �ʲ��Υե������
-��񤭤Ǥ��ʤ��Ȥ�������褦�Ǥ����Ť� Perl ��ͭ�饤�֥���ʲ��Τ褦�ˤ���
-�������Ȥ�����ޤ�:
+おそらく古い Perl 5.8.0 以前のバージョン(あるいはその一部)が
+/Library/Perl にインストールされています(未定義シンボルは
+5.8.0 以前の Perl で使われています)。
+なぜか "make install" の時に完全に /Library/Perl 以下のファイルを
+上書きできないときがあるようです。古い Perl 共有ライブラリを以下のようにして
+外すことが出来ます:
 
     cd /Library/Perl/darwin/CORE
     mv libperl.dylib libperlold.dylib
@@ -8267,11 +8267,11 @@ files from beneath /Library/Perl, and again "make install"-ing.
 
 =end original
 
-���줫��⤦���� "make install" ���Ƥ���������
-������ˡ�� /usr/local/bin/perl ��ȤäƤ�����ϴ������˲�Ū�Ǥ��뤳�Ȥ�
-���դ��Ƥ���������
-�⤷����Ǥ����ʤ顢/Library/Perl �ʲ������Ƥ� .bundle �ե������
-������ơ��⤦���� "make install" ����ɬ�פ�����ޤ���
+それからもう一度 "make install" してください。
+この方法は /usr/local/bin/perl を使っている場合は完全に破壊的であることに
+注意してください。
+もしこれでもだめなら、/Library/Perl 以下の全ての .bundle ファイルを
+削除して、もう一度 "make install" する必要があります。
 
 =head2 OS/2 Test Failures
 
@@ -8282,9 +8282,9 @@ only the failures are shown, not the full error messages):
 
 =end original
 
-�ʲ��Υƥ��Ȥ� SUPER-UX �Ǽ��Ԥ��뤳�Ȥ��狼�äƤ��ޤ�
-(���β����Ƥ����ȡ����顼��å��������ΤǤϤʤ����Ԥ��뤳�ȤΤߤ�
-�����Ƥ��ޤ�):
+以下のテストは SUPER-UX で失敗することがわかっています
+(明確化しておくと、エラーメッセージ全体ではなく失敗することのみを
+記しています):
 
  ../lib/ExtUtils/t/Mkbootstrap.t    1   256    18    1   5.56%  8
  ../lib/ExtUtils/t/Packlist.t       1   256    34    1   2.94%  17
@@ -8302,10 +8302,10 @@ Examples include any platform using sfio, and Compaq/Tandem's NonStop-UX.
 
 =end original
 
-op/sprintf �ƥ��� 91, 129, 130 �ϥץ�åȥե�����ˤ�äƤ�
-���Ԥ��뤳�Ȥ��狼�äƤ��ޤ���
-��Ȥ��Ƥϡ�sfio ��Ȥ�������ץ�åȥե����प��ӡ�
-Compaq/Tandem �� NonStop-UX �Ǥ���
+op/sprintf テスト 91, 129, 130 はプラットフォームによっては
+失敗することがわかっています。
+例としては、sfio を使うあらゆるプラットフォームおよび、
+Compaq/Tandem の NonStop-UX です。
 
 =begin original
 
@@ -8314,9 +8314,9 @@ incorrectly produces C<0.000000e+0> instead of C<0.000000e+00>.
 
 =end original
 
-Test 91 �� QNX6 (nto) �Ǽ��Ԥ��뤳�Ȥ��狼�äƤ��ޤ���
-��ͳ�� C<sprintf '%e',0> �� C<0.000000e+00> �ǤϤʤ���
-���ä� C<0.000000e+0> ���������뤫��Ǥ���
+Test 91 は QNX6 (nto) で失敗することがわかっています。
+理由は C<sprintf '%e',0> が C<0.000000e+00> ではなく、
+誤って C<0.000000e+0> を生成するからです。
 
 =begin original
 
@@ -8328,12 +8328,12 @@ they produce "0" and "-0".)
 
 =end original
 
-�ƥ��� 129 �� 130 �ˤĤ��ơ����Ԥ���ץ�åȥե������
-ANSI C ɸ�� (���Τ˸����� ANSI X3.159 1989 �� 134 �ڡ��� ��
-�饤�� 19ff) �˽��äƤ��ޤ���
-(����� printf �ե����ޥå� "%.0f" ��Ȥä� 0.6 �� -0.6 ��
-�ե����ޥåȤ����Ȥ��� "1" �� "-1" �ʳ��β������������Ƥ��ޤ�;
-��äȤ��ɤ�������ϡ�"0" �� "-0" ���������Ƥ��ޤ���)
+テスト 129 と 130 について、失敗するプラットフォームは
+ANSI C 標準 (正確に言うと ANSI X3.159 1989 の 134 ページ の
+ライン 19ff) に従っていません。
+(これは printf フォーマット "%.0f" を使って 0.6 と -0.6 を
+フォーマットしたときに "1" と "-1" 以外の何かを生成しています;
+もっとも良くある場合は、"0" と "-0" を生成しています。)
 
 =head2 Solaris 2.5
 
@@ -8345,9 +8345,9 @@ The suggested cure is to upgrade your Solaris.
 
 =end original
 
-̤���� Solaris 2.5(�ޤ���̾�� SunOS 5.5)��ȤäƤ����硢
-lib/locale.t ��(core dump ��)�ƥ��Ȥ����Ԥ��뤫�⤷��ޤ���
-��������б����� Solaris �򥢥åץ��졼�ɤ��뤳�ȤǤ���
+未だに Solaris 2.5(またの名を SunOS 5.5)を使っている場合、
+lib/locale.t で(core dump の)テストが失敗するかもしれません。
+お勧めの対応策は Solaris をアップグレードすることです。
 
 =head2 Solaris x86 Fails Tests With -Duse64bitint
 
@@ -8358,8 +8358,8 @@ configured to use 64 bit integers:
 
 =end original
 
-Perl �� 64 bit ������Ȥ��褦�����ꤷ����硢
-�ʲ��Υƥ��Ȥ� Solaris x86 �Ǽ��Ԥ��뤳�Ȥ��狼�äƤ��ޤ�:
+Perl を 64 bit 整数を使うように設定した場合、
+以下のテストが Solaris x86 で失敗することがわかっています:
 
  ext/Data/Dumper/t/dumper.............FAILED at test 268
  ext/Devel/Peek/Peek..................FAILED at test 7
@@ -8372,7 +8372,7 @@ The following tests are known to fail on SUPER-UX:
 
 =end original
 
-�ʲ��Υƥ��Ȥ� SUPER-UX �Ǽ��Ԥ��뤳�Ȥ��狼�äƤ��ޤ�:
+以下のテストは SUPER-UX で失敗することがわかっています:
 
  op/64bitint...........................FAILED tests 29-30, 32-33, 35-36
  op/arith..............................FAILED tests 128-130
@@ -8395,15 +8395,15 @@ failures.  Most of the rest point at problems with SysV IPC.
 
 =end original
 
-op/pack �μ��� ("Cannot compress negative numbers at op/pack.t line 126") ��
-����Ǥ����ޤ���褷�Ƥ��ޤ���
-���ꤤ���Ĥ��� C ����ѥ�������ΰ����ˤ���Τǡ�
-64bitint, arith, pow �Ǽ��Ԥ��ޤ���
-�Ĥ������ΤۤȤ�ɤ� SysV IPC ������Ǥ���
+op/pack の失敗 ("Cannot compress negative numbers at op/pack.t line 126") は
+重大ですがまだ解決していません。
+問題いくつかは C コンパイラの符号の扱いによるもので、
+64bitint, arith, pow で失敗します。
+残りの問題のほとんどは SysV IPC の問題です。
 
 =head2 Term::ReadKey not working on Win32
 
-(Term::ReadKey �� Win32 ��ư���ʤ�)
+(Term::ReadKey が Win32 で動かない)
 
 =begin original
 
@@ -8411,7 +8411,7 @@ Use Term::ReadKey 2.20 or later.
 
 =end original
 
-Term::ReadKey 2.20 �ʹߤ�ȤäƤ���������
+Term::ReadKey 2.20 以降を使ってください。
 
 =head2 UNICOS/mk
 
@@ -8425,7 +8425,7 @@ During Configure, the test
 
 =end original
 
-Configure ������ǡ��ʲ��Υƥ���:
+Configure の途中で、以下のテスト:
 
     Guessing which symbols your C compiler and preprocessor define...
 
@@ -8435,7 +8435,7 @@ will probably fail with error messages like
 
 =end original
 
-���ʲ��Τ褦�ʥ�å�������Ф��Ƽ��Ԥ��뤫�⤷��ޤ���:
+が以下のようなメッセージを出して失敗するかもしれません:
 
     CC-20 cc: ERROR File = try.c, Line = 3
       The identifier "bad" is undefined.
@@ -8458,15 +8458,15 @@ Luckily, these days the need for h2ph is rare.
 
 =end original
 
-����� UNICOS/mk �� awk �桼�ƥ���ƥ��ΥХ��ˤ���ΤǤ���
-���Υ��顼��̵�뤹�뤳�Ȥ�Ǥ��ޤ������㴳�����꤬����ޤ�:
-C �إå��� Perl �饤�֥����Ѵ�����
-h2ph �桼�ƥ���ƥ� (L<h2ph> �򻲾Ȥ��Ƥ�������)  ��
-���ä����ˤϼ������ʤ����ȤǤ���
-���Υġ���ϼ�� C �ץ�ץ����å� cpp �ǻȤ��Ƥ��������
-Perl ���饢�������Ǥ���褦�ˤ��뤿��˻Ȥ��ޤ���
-�嵭�Υ��顼�ˤ�ꡢ�Ѵ����줿�إå��ΰ����������ʤ��ʤ�ޤ���
-�����ʤ��Ȥˡ��Ƕ�� h2ph ��ɬ�פˤʤ뤳�ȤϤޤ�Ǥ���
+これは UNICOS/mk の awk ユーティリティのバグによるものです。
+このエラーを無視することもできますが、若干の問題があります:
+C ヘッダを Perl ライブラリに変換する
+h2ph ユーティリティ (L<h2ph> を参照してください)  の
+恩恵を完全には受けられないことです。
+このツールは主に C プリプロセッサ cpp で使われている定数を
+Perl からアクセスできるようにするために使われます。
+上記のエラーにより、変換されたヘッダの一部が見えなくなります。
+幸いなことに、最近は h2ph が必要になることはまれです。
 
 =item *
 
@@ -8480,13 +8480,13 @@ return only three values, not four.
 
 =end original
 
-Perl �򥤥󥿥ץ꥿����å�(i����å�)�դ��ǥӥ�ɤ�����硢
+Perl をインタプリタスレッド(iスレッド)付きでビルドした場合、
 
-getgrent(), getgrnam(), and getgrgid() �ؿ��ϥ��롼�פΥ��Ф�
-�ꥹ�Ȥ��֤����Ȥ��Ǥ��ޤ���
-����� UNICOS/mk �Υޥ������åɵ�ǽ�ΥХ��ˤ���ΤǤ���
-�Ĥޤꡢ�����δؿ��ϥꥹ�ȥ���ƥ����ȤǤ� 4 �ĤǤϤʤ� 3 �Ĥ���
-�ͤ��֤��ʤ��Ȥ������ȤǤ���
+getgrent(), getgrnam(), and getgrgid() 関数はグループのメンバの
+リストを返すことができません。
+これは UNICOS/mk のマルチスレッド機能のバグによるものです。
+つまり、これらの関数はリストコンテキストでは 4 つではなく 3 つしか
+値を返さないということです。
 
 =back
 
@@ -8498,8 +8498,8 @@ There are a few known test failures, see L<perluts> (README.uts).
 
 =end original
 
-�����Ĥ��Υƥ��Ȥ����Ԥ��뤳�Ȥ��狼�äƤ��ޤ���
-L<perluts> (README.uts)�򻲾Ȥ��Ƥ���������
+いくつかのテストが失敗することがわかっています。
+L<perluts> (README.uts)を参照してください。
 
 =head2 VOS (Stratus)
 
@@ -8511,9 +8511,9 @@ pass or result in TODO (ignored) failures.
 
 =end original
 
-Perl �� VOS Release 14.5.0 �� GNU C++/GNU Tools 2.0.1 �ǥͥ��ƥ��֤�
-�ӥ�ɥץ�������Ȥäƥӥ�ɤ��줿��硢���ƤΥƥ��Ȥ��̲᤹�뤫��
-TODO (̵��) ���Ԥη�̤Ȥʤ�ޤ���
+Perl が VOS Release 14.5.0 と GNU C++/GNU Tools 2.0.1 でネイティブな
+ビルドプロセスを使ってビルドされた場合、全てのテストは通過するか、
+TODO (無視) 失敗の結果となります。
 
 
 =head2 VMS
@@ -8526,9 +8526,9 @@ needing further debugging and/or porting work.
 
 =end original
 
-�ǥե��������Ǥϥƥ��ȼ��Ԥ����Ϥʤ��Ϥ��Ǥ�����
-���ʤ�ǥХå���ܿ���Ȥ�ɬ�פ�ʬ��򼨤������¿���Υƥ��Ȥ�
-TODO �˥ޡ�������Ƥ��ޤ���
+デフォルト設定ではテスト失敗の報告はないはずですが、
+更なるデバッグや移殖作業が必要な分野を示すために多くのテストが
+TODO にマークされています。
 
 =head2 Win32
 
@@ -8539,8 +8539,8 @@ some output may appear twice.
 
 =end original
 
-�ޥ�� CPU �ޥ���Ǥϡ�I/O �Хåե���󥰤����꤬����ޤ�:
-���Ϥ�ʣ���Ф��礬����ޤ���
+マルチ CPU マシンでは、I/O バッファリングに問題があります:
+出力が複数出る場合があります。
 
 =head2 XML::Parser not working
 
@@ -8550,7 +8550,7 @@ Use XML::Parser 2.31 or later.
 
 =end original
 
-XML::Parser 2.31 �ʹߤ�ȤäƤ���������
+XML::Parser 2.31 以降を使ってください。
 
 =head2 z/OS (OS/390)
 
@@ -8562,9 +8562,9 @@ tests have been added.
 
 =end original
 
-z/OS �Ǥ�¿���Υƥ��ȤǼ��Ԥ��ޤ������ºݤΤȤ��������� 5.6.0 ���
-�礭���������Ƥ��ޤ�; �����ñ��¿���Υ⥸�塼��ȥƥ��Ȥ�
-�ɲä��줿����Ǥ���
+z/OS では多くのテストで失敗しますが、実際のところ状況は 5.6.0 より
+大きく改善しています; これは単に多くのモジュールとテストが
+追加されたからです。
 
  Failed Test                   Stat Wstat Total Fail  Failed  List of Failed
  ---------------------------------------------------------------------------
@@ -8594,18 +8594,18 @@ that seems to be working reasonably well.)
 
 =end original
 
-dumper.t �� downgrade.t �μ��Ԥϥƥ��Ȥ�������꤬����ޤ���
-���� io_unix �� sprintf �μ��Ԥ� USS (UDP �����åȤ� printf �ե����ޥå�) ��
-���꤬����ޤ���
-pat, tr, fold �μ��Ԥ� EBCDIC (pat �� fold �ξ��� EBCDIC �� Unicode ��
-�Ȥ߹�碌) �������Ρ��������ä� Perl ������Ǥ���
-Constant �� Embed �Ϥ����餯�ƥ��Ȥ�������꤬����ޤ�
-(����� Perl ����ĥ��ӥ�ɤǤ���ǽ�Ϥ�ƥ��Ȥ����Τǡ�
-��ʬ��������ư���褦�ˤߤ��뤫��Ǥ�)��
+dumper.t と downgrade.t の失敗はテストの中に問題があります。
+一方 io_unix と sprintf の失敗は USS (UDP ソケットと printf フォーマット) に
+問題があります。
+pat, tr, fold の失敗は EBCDIC (pat と fold の場合は EBCDIC と Unicode の
+組み合わせ) が原因の、正真正銘の Perl の問題です。
+Constant と Embed はおそらくテストの中に問題があります
+(これは Perl が拡張をビルドできる能力をテストするもので、
+十分に正しく動くようにみえるからです)。
 
 =head2 Unicode Support on EBCDIC Still Spotty
 
-(EBCDIC �Ǥ� Unicode �б��Ϥޤ���餬����ޤ�)
+(EBCDIC での Unicode 対応はまだむらがあります)
 
 =begin original
 
@@ -8616,16 +8616,16 @@ C<pP> are testing for Unicode code points, not knowing about EBCDIC.
 
 =end original
 
-EBCDIC �ץ�åȥե�����Ǥ� Unicode �б��ϡ��ۤȤ�ɤ�ư��ޤ�����
-�ޤ�������������ޤ���
-���Τ褦���������ΰ�Ĥϡ������ɥݥ���� 256 ̤����
-C<\p{}> �� C<\P{}> ����ɽ������Ǥ�;
-C<pP> �� Unicode �����ɥݥ���ȤˤĤ��ƥƥ��Ȥ��졢
-EBCDIC �ˤĤ��Ƥ��Τ�ޤ���
+EBCDIC プラットフォームでの Unicode 対応は、ほとんどは動作しますが、
+まだ問題点があります。
+このような問題点の一つは、コードポイント 256 未満の
+C<\p{}> と C<\P{}> 正規表現定数です;
+C<pP> は Unicode コードポイントについてテストされ、
+EBCDIC については知りません。
 
 =head2 Seen In Perl 5.7 But Gone Now
 
-(Perl 5.7�ˤϤ��ä�������̵���ʤäƤ��ޤä����)
+(Perl 5.7にはあったが現在無くなってしまったもの)
 
 =begin original
 
@@ -8636,9 +8636,9 @@ from the CPAN.
 
 =end original
 
-C<Time::Pieace>(������C<Time::Object>�Ȥ����Τ��Ƥ��ޤ���)��
-�����⥸�塼��Ȥ��ƽ�ʬ�ʲ��ͤ���äƤ���ȴ������ʤ��ä�����
-�������ޤ���������Ǥ�ʤ������ʥ⥸�塼��Ǥ��Τǡ�CPAN���������ǽ�Ǥ���
+C<Time::Pieace>(以前はC<Time::Object>として知られていました)は
+コアモジュールとして十分な価値を持っていると感じられなかったため
+削除されました。それでもなお便利なモジュールですので、CPANから入手可能です。
 
 =begin original
 
@@ -8650,10 +8650,10 @@ development release).
 
 =end original
 
-Perl 5.8�Ǥϡ���ǰ�ʤ��麣�Ϥ⤦AmigaOS�Ǥϥӥ�ɤ���Ƥ��ޤ���;��ȯ��
-���ǤϤ���������ˤ��Ƶ�����ޤ�����¿����Amiga�γ�ȯ�Ԥ���ʤ��ʤäư���
-�桹��5.8.0�Τ���ν�����ƥ��Ȥ��֤˹礤�ޤ���Ǥ�����Perl 5.6.1�Ϥޤ�
-AmigaOS���ư��ޤ�(��ȯ�ǤǤ���5.7.2�ϥ�꡼������Ƥ��ޤ���)��
+Perl 5.8では、残念ながら今はもうAmigaOSではビルドされていません;開発の
+中断はある時偶然にして起こりました。多くのAmigaの開発者が居なくなって以来
+我々は5.8.0のための修正やテストが間に合いませんでした。Perl 5.6.1はまだ
+AmigaOS上で動作します(開発版である5.7.2はリリースされていますが)。
 
 =begin original
 
@@ -8665,10 +8665,10 @@ C<PerlIO::via::QuotedPrint>.
 
 =end original
 
-C<PerlIO::Scalar>��C<PerlIO::Via>(��ʸ�����Ȥ��Ƥ���)��5.8.0��
-C<PerlIO::scalar>��C<PerlIO::via>(���ƾ�ʸ��)�˲�̾����ޤ�����
-��§�Ȥ��ƥ�����IO�ؤ����ƾ�ʸ����̾���Ǥ���"�ץ饰����"�Ǥ�
-�̾�C<PerlIO::via::QuatedPrint>�Τ褦��̾����Ĥ����ޤ���
+C<PerlIO::Scalar>とC<PerlIO::Via>(大文字が使われている)は5.8.0で
+C<PerlIO::scalar>とC<PerlIO::via>(全て小文字)に改名されました。
+原則としてコアのIO層は全て小文字の名前です。"プラグイン"では
+通常C<PerlIO::via::QuatedPrint>のような名前をつけられます。
 
 =begin original
 
@@ -8680,12 +8680,12 @@ more pragma-like, they affect compile-time, so they stay lowercase).
 
 =end original
 
-C<threads::shared::queue> �� C<threads::shared::semaphore> ��
-5.8.0 ��ľ���� C<Thread::Queue> �� C<Thread::Semaphore> ��̾����
-�Ѥ��ޤ����������ͳ�ϡ�����åɥ⥸�塼����̾��̿̾ˡ�Ǥ���
-C<Thread::>�˽��碌�뤿��Ǥ�
-(C<threads> �� C<threads::shared> �Ϥ��ץ饰�ޤäݤ�������ѥ������
-�ƶ���Ϳ���뤿�ᡢ��ʸ���ΤޤޤǤ�)��
+C<threads::shared::queue> と C<threads::shared::semaphore> は
+5.8.0 の直前に C<Thread::Queue> と C<Thread::Semaphore> に名前が
+変わりました。主な理由は、スレッドモジュールを通常の命名法である
+C<Thread::>に従わせるためです
+(C<threads> と C<threads::shared> はよりプラグマっぽく、コンパイル時に
+影響を与えるため、小文字のままです)。
 
 =head1 Reporting Bugs
 
@@ -8698,10 +8698,10 @@ information at http://www.perl.com/ , the Perl Home Page.
 
 =end original
 
-�⤷�Х��Ȼפ����Τ����Ĥ��ä��顢 comp.lang.perl.misc �˥塼�����롼�פ�
-�Ƕ���Ƥ��줿������ http://bugs.perl.org �ˤ��� perl �Х��ǡ����١�����
-��ǧ���Ƥ���������
-Perl �ۡ���ڡ�����http://www.perl.com �ˤ���󤬤���ޤ���
+もしバグと思われるものが見つかったら、 comp.lang.perl.misc ニュースグループに
+最近投稿された記事や http://bugs.perl.org にある perl バグデータベースを
+確認してください。
+Perl ホームページ、http://www.perl.com にも情報があります。
 
 =begin original
 
@@ -8713,11 +8713,11 @@ analysed by the Perl porting team.
 
 =end original
 
-�⤷�ޤ���𤵤�Ƥ��ʤ��Х����ȳο������顢���Υ�꡼���˴ޤޤ�Ƥ���
-perlbug �ץ��������¹Ԥ��Ƥ���������
-�Х��κƸ�������ץȤ�ʬ��������������ͭ���ʥ����ɤ��ڤ�Ĥ�뤳�Ȥ�
-�ռ����Ƥ����������Х���ݡ��Ȥ� perl -V �ν��ϤȰ���
-perlbug@perl.org ������� Perl porting ������ˤ�äƲ��Ϥ���ޤ���
+もしまだ報告されていないバグだと確信したら、そのリリースに含まれている
+perlbug プログラムをを実行してください。
+バグの再現スクリプトを十分小さく、しかし有効なコードに切りつめることを
+意識してください。バグレポートは perl -V の出力と一緒に
+perlbug@perl.org に送られ Perl porting チームによって解析されます。
 
 =head1 SEE ALSO
 
@@ -8727,7 +8727,7 @@ The F<Changes> file for exhaustive details on what changed.
 
 =end original
 
-F<Changes> �ե�������ѹ����δ����ʾܺ٤�����ޤ���
+F<Changes> ファイルに変更点の完全な詳細があります。
 
 =begin original
 
@@ -8735,7 +8735,7 @@ The F<INSTALL> file for how to build Perl.
 
 =end original
 
-F<INSTALL> �ե������ Perl �Υӥ����ˡ������ޤ���
+F<INSTALL> ファイルに Perl のビルド方法があります。
 
 =begin original
 
@@ -8743,7 +8743,7 @@ The F<README> file for general stuff.
 
 =end original
 
-F<README> �ե�����˰���Ū�ʤ��Ȥ�����ޤ���
+F<README> ファイルに一般的なことがあります。
 
 =begin original
 
@@ -8751,7 +8751,7 @@ The F<Artistic> and F<Copying> files for copyright information.
 
 =end original
 
-F<Artistic> �ڤ� F<Copying> �ե������������󤬤���ޤ���
+F<Artistic> 及び F<Copying> ファイルに著作権情報があります。
 
 =head1 HISTORY
 
@@ -8761,7 +8761,7 @@ Written by Jarkko Hietaniemi <F<jhi@iki.fi>>.
 
 =end original
 
-Jarkko Hietaniemi <F<jhi@iki.fi>> �ˤ�äƽ񤫤�ޤ�����
+Jarkko Hietaniemi <F<jhi@iki.fi>> によって書かれました。
 
 =begin meta
 

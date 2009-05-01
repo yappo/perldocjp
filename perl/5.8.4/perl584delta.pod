@@ -8,7 +8,7 @@ perl584delta - what is new for perl v5.8.4
 
 =end original
 
-perl584delta - perl v5.8.4 �Ǥ��ѹ���
+perl584delta - perl v5.8.4 での変更点
 
 =head1 DESCRIPTION
 
@@ -19,11 +19,11 @@ the 5.8.4 release.
 
 =end original
 
-���Υɥ�����Ȥ� 5.8.3 ��꡼���� 5.8.4 ��꡼�����ѹ����򵭽Ҥ��Ƥ��ޤ���
+このドキュメントは 5.8.3 リリースと 5.8.4 リリースの変更点を記述しています。
 
 =head1 Incompatible Changes
 
-(�ߴ����Τʤ��ѹ�)
+(互換性のない変更)
 
 =begin original
 
@@ -35,11 +35,11 @@ release into production.
 
 =end original
 
-¿���κ٤����Х�����������ޤ����������δְ�ä������񤤤˶����ˤ�
-��¸���Ƥ���������ץȤϤ���齤�����ߴ����Τʤ��ѹ���
-�ͤ��뤫�⤷��ޤ���:-)�����Υ�꡼�������ʤ��Ȥ���������ˡ�
-�Х��������ƶ���Ϳ���ʤ����Ȥ��ǧ���뤿��˽�ʬ�ʼ�������ƥ��Ȥ�
-���뤳�Ȥ򤪴��ᤷ�ޤ���
+多くの細かいバグが修正されました。以前の間違った振る舞いに偶然にも
+依存していたスクリプトはこれら修正が互換性のない変更と
+考えるかもしれません:-)。このリリースを製品に組み入れる前に、
+バグ修正が影響を与えないことを確認するために十分な受け入れテストを
+することをお勧めします。
 
 =begin original
 
@@ -50,10 +50,10 @@ detailed parsing of Carp output.
 
 =end original
 
-Carp �ο��ǽ��Ϥ��鷺�����ѹ����졢�����δ֤Υ���ޤθ�˥��ڡ�����
-�ɲä���ޤ���������ˤ�� web �֥饦���Τ褦�ʥġ��뤬��ư�ޤ��֤���
-�Ԥ��Τ��ȤƤ��ưפˤʤ�ޤ�������Carp �ν��Ϥ�ܺ٤˥ѡ������뼫ư�ġ����
-���𤵤��뤫�⤷��ޤ���
+Carp の診断出力がわずかに変更され、引数の間のカンマの後にスペースが
+追加されました。これにより web ブラウザのようなツールが自動折り返しを
+行うのがとても容易になりましたが、Carp の出力を詳細にパースする自動ツールを
+混乱させるかもしれません。
 
 =begin original
 
@@ -64,14 +64,14 @@ modules such as Devel::Peek.
 
 =end original
 
-��������׽��Ϥϲ��ɤ��졢���Ԥ�Хå����ڡ����ȸ��ä�ɽ���Ǥ��ʤ�ʸ����
-8 �ʿ�ɽ���ǤϤʤ� C<\x> ɽ���ˤʤ�ޤ�����
-����� Devel::Peek �Ȥ��ä��⥸�塼��ν��Ϥ�ѡ��������ϴ�Ǥʤ�
-�ġ�����𤵤��뤫�⤷��ޤ���
+内部ダンプ出力は改良され、改行やバックスペースと言った表示できない文字は
+8 進数表記ではなく C<\x> 表記になりました。
+これは Devel::Peek といったモジュールの出力をパースする堅牢でない
+ツールを混乱させるかもしれません。
 
 =head1 Core Enhancements
 
-(Core �γ�ĥ)
+(Core の拡張)
 
 =head2 Malloc wrapping
 
@@ -88,14 +88,14 @@ platforms.
 
 =end original
 
-�۾���礭�ʥ���֥��å�����ݤ��褦�Ȥ���Τ򸡽Ф���褦��
-�ӥ�ɤǤ���褦�ˤʤ�ޤ����������Ϥ��Τ褦�ʳ��ݤϥ������׻�����
-�������夢�դ줷�ƴְ�ä�������Ƥ�����������ޤ�����
-����� perl �򥯥�å��夵��������Ū�ˤϡ֥����å��˲��׹�������ѤǤ��ޤ�����
-��åԥ󥰤Υǥե���Ȥϡ����줬ư�����ΤäƤ���ץ�åȥե�����
-(AIX �ΤۤȤ�ɤ�����, BSDi, Darwin, DEC OSF/1, FreeBSD, HP/UX, GNU Linux, 
-OpenBSD, Solaris, VMS, �ۤȤ�ɤ� Win32 ����ѥ���)�Ǥ�ͭ����
-����ʳ��Υץ�åȥե�����Ǥϥǥե���ȤǤ�̵���ˤʤäƤ��ޤ���
+異常に大きなメモリブロックを確保しようとするのを検出するように
+ビルドできるようになりました。以前はこのような確保はサイズ計算時に
+整数が桁あふれして間違った割り当てを引き起こしました。
+これは perl をクラッシュさせ、理論的には「スタック破壊」攻撃に利用できました。
+ラッピングのデフォルトは、これが動作すると知っているプラットフォーム
+(AIX のほとんどの設定, BSDi, Darwin, DEC OSF/1, FreeBSD, HP/UX, GNU Linux, 
+OpenBSD, Solaris, VMS, ほとんどの Win32 コンパイラ)では有効、
+それ以外のプラットフォームではデフォルトでは無効になっています。
 
 =head2 Unicode Character Database 4.0.1
 
@@ -106,8 +106,8 @@ been updated to 4.0.1 from 4.0.0.
 
 =end original
 
-Perl 5.8 �˴ޤޤ�Ƥ��� Unicode Character Database �� 4.0.0 ���� 4.0.1 ��
-��������ޤ�����
+Perl 5.8 に含まれている Unicode Character Database は 4.0.0 から 4.0.1 に
+更新されました。
 
 =head2 suidperl less insecure
 
@@ -125,16 +125,16 @@ be completely transparent.
 
 =end original
 
-Paul Szabo �� C<suidperl> ����Ϥ����Τ��Ƥ����ȼ���������������
-�ѥå������Ƥޤ��������ߤΤȤ��� C<suidperl> ���Τ��Ƥ����ȼ�����
-����ޤ��󤬡����ηи���������ȡ����줬���ä�³�������Ϥ���ޤ���
-��Ϥ� set uid ���줿 perl ��ľ�ܵ�ư���뤳�ȤϤʤ���
-#!/usr/bin/suidperl ��ư���륹����ץȤβ��ߴ�����ݻ����뤿���
-ͣ��� set uid ���줿�Х��ʥ�� C<sperl5.8.>I<n> �Ǥ�
-���Υ�꡼���Ǥ�(C<sperl5.8.4>)��
-C<suidperl> �� C<perl> �Υϡ��ɥ�󥯤Ȥ��ƥ��󥹥ȡ��뤵��ޤ�;
-C<suidperl> �� C<perl> ��ξ���Ȥ� set uid ���줿�Х��ʥ�Ǥ���
-C<sperl5.8.4>��ư���ޤ������äƤ����ѹ��ϴ�����Ʃ��ΤϤ��Ǥ���
+Paul Szabo は C<suidperl> を解析し、知られている脆弱性を取り除くための
+パッチを当てました。現在のところ C<suidperl> に知られている脆弱性は
+ありませんが、過去の経験から言うと、これがずっと続く自信はありません。
+もはや set uid された perl を直接起動することはなく、
+#!/usr/bin/suidperl を起動するスクリプトの過去互換性を維持するための
+唯一の set uid されたバイナリは C<sperl5.8.>I<n> です
+このリリースでは(C<sperl5.8.4>)。
+C<suidperl> は C<perl> のハードリンクとしてインストールされます;
+C<suidperl> と C<perl> は両方とも set uid されたバイナリである
+C<sperl5.8.4>を起動します。従ってこの変更は完全に透過のはずです。
 
 =begin original
 
@@ -144,8 +144,8 @@ C<suidperl>.
 
 =end original
 
-�������ץ��������ȤΤ���ˤϡ�C<suidperl> ���ष����C<sudo>�Τ褦�����Ѥ�
-ñ����Ū�Υ������ƥ��ġ����Ȥ����Ȥ򥳥� perl ������϶�������ޤ���
+新しいプロジェクトのためには、C<suidperl> よりむしろ、C<sudo>のような専用で
+単一目的のセキュリティツールを使うことをコア perl チームは強く勧めます。
 
 =head2 format
 
@@ -156,12 +156,12 @@ L<perlform>
 
 =end original
 
-�Х������˲ä��ơ�C<format> �ε�ǽ����ĥ����ޤ�����
-L<perlform> �򻲾Ȥ��Ʋ�������
+バグ修正に加えて、C<format> の機能が拡張されました。
+L<perlform> を参照して下さい。
 
 =head1 Modules and Pragmata
 
-(�⥸�塼��ȥץ饰��)
+(モジュールとプラグマ)
 
 =begin original
 
@@ -173,15 +173,15 @@ updated on CPAN.
 
 =end original
 
-�����⥸�塼��ȥɥ�����ȤǤ� C</tmp> ��(��)���Ѥ���������ޤ�����
-Perl ���������Ω���� CPAN ��ξ����¸�ߤ���⥸�塼��
-("dual-life modules")�ǤϤޤ��������ѹ���Ŭ�Ѥ���Ƥ��ޤ���
-�ѹ��� CPAN �Υ⥸�塼�뤬�������줿�����Ǿ���ΰ����ǥ�꡼���� perl ��
-���礵��ޤ���
+コアモジュールとドキュメントでの C</tmp> の(誤)使用は整理されました。
+Perl コア内と独立した CPAN と両方に存在するモジュール
+("dual-life modules")ではまだこれらの変更は適用されていません。
+変更は CPAN のモジュールが更新された時点で将来の安定版リリースの perl に
+統合されます。
 
 =head2 Updated modules
 
-(�������줿�⥸�塼��)
+(更新されたモジュール)
 
 =over 4
 
@@ -229,7 +229,7 @@ There is experimental support for Linux abstract Unix domain sockets.
 
 =end original
 
-Linux ��� Unix �ɥᥤ�󥽥��åȤ˼¸�Ū���б����ޤ�����
+Linux 抽象 Unix ドメインソケットに実験的に対応しました。
 
 =item Storable
 
@@ -241,7 +241,7 @@ Synced with its CPAN version 2.10
 
 =end original
 
-CPAN �С������ 2.10 ��Ʊ�����ޤ�����
+CPAN バージョン 2.10 と同期しました。
 
 =item Sys::Syslog
 
@@ -252,8 +252,8 @@ in addition to strings.
 
 =end original
 
-C<syslog()> �ϥե�����ƥ�̾��ͥ���٤λ���ˡ�ʸ����˲ä��ƿ��������
-���Ѳ�ǽ�ˤʤ�ޤ�����
+C<syslog()> はファシリティ名と優先度の指定に、文字列に加えて数値定数も
+使用可能になりました。
 
 =item Term::ANSIColor
 
@@ -269,7 +269,7 @@ Win32.pm/Win32.xs has moved from the libwin32 module to core Perl
 
 =end original
 
-Win32.pm/Win32.xs �� libwin32 �⥸�塼�뤫�饳�� Perl �˰�ư���ޤ�����
+Win32.pm/Win32.xs は libwin32 モジュールからコア Perl に移動しました。
 
 =item base
 
@@ -283,7 +283,7 @@ Detached threads are now also supported on Windows.
 
 =end original
 
-detach ���줿����åɤ� Windows �Ǥ��б�����ޤ�����
+detach されたスレッドが Windows でも対応されました。
 
 =item utf8
 
@@ -291,7 +291,7 @@ detach ���줿����åɤ� Windows �Ǥ��б�����ޤ�����
 
 =head1 Performance Enhancements
 
-(��ǽ�θ���)
+(性能の向上)
 
 =over 4
 
@@ -303,8 +303,8 @@ Accelerated Unicode case mappings (C</i>, C<lc>, C<uc>, etc).
 
 =end original
 
-Unicode ��ʸ��/��ʸ���ޥåԥ�(C</i>, C<lc>, C<uc>�ʤ�)��
-��®������ޤ�����
+Unicode 大文字/小文字マッピング(C</i>, C<lc>, C<uc>など)が
+高速化されました。
 
 =item *
 
@@ -314,7 +314,7 @@ In place sort optimised (eg C<@a = sort @a>)
 
 =end original
 
-���ξ�ǤΥ����� (C<@a = sort @a>)����Ŭ������ޤ�����
+その場でのソート (C<@a = sort @a>)が最適化されました。
 
 =item *
 
@@ -324,7 +324,7 @@ Unnecessary assignment optimised away in
 
 =end original
 
-�ʲ��Τ褦�����פʳ�����Ƥ���Ŭ��(����)�����褦�ˤʤ�ޤ�����
+以下のような不要な割り当てが最適化(除去)されるようになりました。
 
   my $s = undef;
   my @a = ();
@@ -338,13 +338,13 @@ Optimised C<map> in scalar context
 
 =end original
 
-�����饳��ƥ����ȤǤ� C<map> ����Ŭ������ޤ�����
+スカラコンテキストでの C<map> が最適化されました。
 
 =back
 
 =head1 Utility Changes
 
-(�ġ�����ѹ�)
+(ツールの変更)
 
 =begin original
 
@@ -353,13 +353,13 @@ sourcing later, and can display the parent inheritance tree of a given class.
 
 =end original
 
-Perl �ǥХå� (F<lib/perl5db.pl>) �ϸ�����Ѥ��뤿������ƤΥǥХå����ޥ�ɤ�
-��¸�Ǥ���褦�ˤʤꡢ�ޤ�Ϳ����줿���饹�οƷѾ��ڤ�ɽ���Ǥ���褦��
-�ʤ�ޤ�����
+Perl デバッガ (F<lib/perl5db.pl>) は後で利用するために全てのデバッガコマンドを
+保存できるようになり、また与えられたクラスの親継承木を表示できるように
+なりました。
 
 =head1 Installation and Configuration Improvements
 
-(���󥹥ȡ��������β���)
+(インストールと設定の改良)
 
 =begin original
 
@@ -369,9 +369,9 @@ USE_LARGE_FILES enabled.
 
 =end original
 
-VMS �� Windows �ǤΥӥ�ɥץ������Ϥ����Ĥ��٤������ɤ��Ԥ��ޤ�����
-Windows Borland C ����ѥ���ǡ�PerlIO �� USE_LARGE_FILES ��ͭ���ˤ���
-����ѥ���Ǥ���褦�ˤʤ�ޤ�����
+VMS と Windows でのビルドプロセスはいくつか細かい改良が行われました。
+Windows Borland C コンパイラで、PerlIO と USE_LARGE_FILES を有効にして
+コンパイルできるようになりました。
 
 =begin original
 
@@ -385,13 +385,13 @@ should check directly with O'Reilly beforehand.
 
 =end original
 
-Windows �� C<perl.exe> �ϡ֥饯���ץ��������������Ĥ褦�ˤʤ�ޤ�����
-Perl �˴ؤ��ƥ饯����Ȥ����Ȥ� O'Reilly and Associates Inc. �ξ�ɸ�Ǥ��ꡢ
-���ε��Ĥδ�˻���(�����������ۡ���������� Windows �¹ԥե������
-����ѥ��롢���μ¹ԥե�����Υ�������Ǥλ���)���Ƥ��ޤ���
-perl �μ¹ԥե�����Υ�������Ȥ��ưʳ��Τ��Υ饯���λ��ѤˤĤ��Ƥ�
-�ޤޤ�Ƥ��ʤ��Τǡ����Υ�������� I<����> perl �Х��ʥ������ۤ������ͤ�
-ͽ�� O'Reilly ��ľ�ܳ�ǧ����٤��Ǥ���
+Windows の C<perl.exe> は「ラクダ」ロゴアイコンを持つようになりました。
+Perl に関してラクダを使うことは O'Reilly and Associates Inc. の商標であり、
+その許可の基に使用(ソースの配布、そこからの Windows 実行ファイルの
+コンパイル、その実行ファイルのローカルでの使用)しています。
+perl の実行ファイルのアイコンとして以外のこのラクダの使用については
+含まれていないので、このアイコンと I<共に> perl バイナリを再配布したい人は
+予め O'Reilly に直接確認するべきです。
 
 =begin original
 
@@ -399,11 +399,11 @@ Perl should build cleanly on Stratus VOS once more.
 
 =end original
 
-Perl �� Stratus VOS �Ǥ⤦���٥��꡼��˥ӥ�ɤǤ���٤��Ǥ���
+Perl は Stratus VOS でもう一度クリーンにビルドできるべきです。
 
 =head1 Selected Bug Fixes
 
-(�Х�������ȴ��)
+(バグ修正の抜粋)
 
 =begin original
 
@@ -413,10 +413,10 @@ when C<use bytes;> is in scope.
 
 =end original
 
-���¿���� utf8 �Х�����������ޤ������ä� 
-C<chomp>, C<chop>, C<send>, C<syswrite> �� utf8 �ǡ����Ȥ���ߺ��Ѥ�
-��������ޤ�����C<use bytes;>����������Ǥ�ʸ��Ϣ�뤬������
-Ư���褦�ˤʤ�ޤ�����
+より多くの utf8 バグが修正されました。特に 
+C<chomp>, C<chop>, C<send>, C<syswrite> と utf8 データとの相互作用が
+修正されました。C<use bytes;>スコープ内での文字連結が正しく
+働くようになりました。
 
 =begin original
 
@@ -425,7 +425,7 @@ Code such as
 
 =end original
 
-�ץ饰�ޤ�����ɽ���� (?{...}) ��¤��������������Ť���褦�ˤʤ�ޤ�����
+プラグマが正規表現の (?{...}) 構造の中に正しく伝播するようになりました。
 
    my $x = qr{ ... (??{ $x }) ... };
 
@@ -436,8 +436,8 @@ has always referred to C<$::x>)
 
 =end original
 
-�Τ褦�ʥ����ɤ� use strict �δĶ��Ǥ�(������)���Ԥ��ޤ�
-(������ C<$x> �Ͼ�� C<$::x> �Ȥ��ư����뤫��Ǥ�)��
+のようなコードは use strict の環境では(正しく)失敗します
+(内部の C<$x> は常に C<$::x> として扱われるからです)。
 
 =begin original
 
@@ -446,9 +446,9 @@ optimised-away boolean expression such as C<5 || print;>
 
 =end original
 
-��̵������ƥ����ȤǤ�����׷ٹ�� C<5 || print;> �Τ褦�ʡ�
-��Ŭ���ˤ�äƽ����뿿����ɽ���Ǥ�����˴ؤ��Ƥ�
-���������褦�ˤʤ�ޤ�����
+「無効コンテキストでの定数」警告は C<5 || print;> のような、
+最適化によって除去される真偽値表現での定数に関しては
+抑制されるようになりました。
 
 =begin original
 
@@ -457,13 +457,13 @@ attached to a terminal, and perl is running as root. Now fixed.
 
 =end original
 
-�ߥ��ˤ�ꡢC<perl -i> �� C<fchmod(stdin)> �Ǥ���褦�ˤʤäƤ��ޤ�����
-�����ɸ�����Ϥ�ü������³���졢perl �� root �Ǽ¹Ԥ���Ƥ���Ȥ���
-���������Ǥ�������������Ͻ�������ޤ�����
+ミスにより、C<perl -i> が C<fchmod(stdin)> できるようになっていました。
+これは標準入力が端末に接続され、perl が root で実行されているときに
+重大な問題でした。この問題は修正されました。
 
 =head1 New or Changed Diagnostics
 
-(���������ޤ����ѹ����줿���ǥ�å�����)
+(新しい、または変更された診断メッセージ)
 
 =begin original
 
@@ -472,12 +472,12 @@ made clearer, as described in L</Incompatible Changes>
 
 =end original
 
-C<Carp> �� C<Devel::Peek> ���Ѥ����Ƥ����������ǥ롼�����
-L</Incompatible Changes> �ǵ��Ҥ���Ƥ���褦�ˤ�����Τˤʤ�ޤ�����
+C<Carp> と C<Devel::Peek> で用いられている内部診断ルーチンは
+L</Incompatible Changes> で記述されているようにより明確になりました。
 
 =head1 Changed Internals
 
-(�������ѹ�)
+(内部の変更)
 
 =begin original
 
@@ -487,13 +487,13 @@ but this should not be visible to user code.
 
 =end original
 
-�ϥå��������ɽ���˴ؤ��뤤���Ĥ��ΥХ�����������ޤ�����
-���¥ϥå���Ȥ��Υץ졼���ۥ���Ͼ����ۤʤ륿���ߥ󥰤ǳ�����Ƶڤ�
-�������ޤ���������ϥ桼���������ɤ���ϸ����ʤ��Ϥ��Ǥ���
+ハッシュの内部表現に関するいくつかのバグが修正されました。
+制限ハッシュとそのプレースホルダは少し異なるタイミングで割り当て及び
+削除されますが、これはユーザーコードからは見えないはずです。
 
 =head1 Future Directions
 
-(�����������)
+(将来の方向性)
 
 =begin original
 
@@ -502,12 +502,12 @@ Code freeze for the next maintenance release (5.8.5) will be on 30th June
 
 =end original
 
-���Υ��ƥʥ󥹥�꡼��(5.8.5)�� 2004 ǯ 6 �� 30 ���˥����ɥե꡼�����졢
-7 ����ܤޤǤ˥�꡼�������ͽ��Ǥ���
+次のメンテナンスリリース(5.8.5)は 2004 年 6 月 30 日にコードフリーズされ、
+7 月中旬までにリリースされる予定です。
 
 =head1 Platform Specific Problems
 
-(�ץ�åȥե������ͭ������)
+(プラットフォーム固有の問題)
 
 =begin original
 
@@ -515,7 +515,7 @@ This release is known not to build on Windows 95.
 
 =end original
 
-���Υ�꡼���� Windows 95 �Ǥϥӥ�ɤǤ��ʤ����Ȥ��狼�äƤ��ޤ���
+このリリースは Windows 95 ではビルドできないことがわかっています。
 
 =head1 Reporting Bugs
 
@@ -528,10 +528,10 @@ information at http://www.perl.org, the Perl Home Page.
 
 =end original
 
-�⤷�Х��Ȼפ����Τ����Ĥ��ä��顢 comp.lang.perl.misc �˥塼�����롼�פ�
-�Ƕ���Ƥ��줿������ http://bugs.perl.org �ˤ��� perl �Х��ǡ����١�����
-��ǧ���Ƥ���������
-Perl �ۡ���ڡ�����http://www.perl.org �ˤ���󤬤���ޤ���
+もしバグと思われるものが見つかったら、 comp.lang.perl.misc ニュースグループに
+最近投稿された記事や http://bugs.perl.org にある perl バグデータベースを
+確認してください。
+Perl ホームページ、http://www.perl.org にも情報があります。
 
 =begin original
 
@@ -544,13 +544,13 @@ the Perl 5 bugs at http://bugs.perl.org/
 
 =end original
 
-�⤷�ޤ���𤵤�Ƥ��ʤ��Х����ȳο������顢���Υ�꡼���˴ޤޤ�Ƥ���
-perlbug �ץ��������¹Ԥ��Ƥ���������
-�Х��κƸ�������ץȤ�ʬ��������������ͭ���ʥ����ɤ��ڤ�Ĥ�뤳�Ȥ�
-�ռ����Ƥ����������Х���ݡ��Ȥ� perl -V �ν��ϤȰ���
-perlbug@perl.org ������� Perl porting ������ˤ�äƲ��Ϥ���ޤ���
-Perl 5 �ΥХ��ˤĤ��Ƥ� http://bugs.perl.org/ �Ǳ����ڤ�
-�������뤳�Ȥ��Ǥ��ޤ���
+もしまだ報告されていないバグだと確信したら、そのリリースに含まれている
+perlbug プログラムをを実行してください。
+バグの再現スクリプトを十分小さく、しかし有効なコードに切りつめることを
+意識してください。バグレポートは perl -V の出力と一緒に
+perlbug@perl.org に送られ Perl porting チームによって解析されます。
+Perl 5 のバグについては http://bugs.perl.org/ で閲覧及び
+検索することができます。
 
 =head1 SEE ALSO
 
@@ -560,7 +560,7 @@ The F<Changes> file for exhaustive details on what changed.
 
 =end original
 
-F<Changes> �ե�������ѹ����δ����ʾܺ٤�����ޤ���
+F<Changes> ファイルに変更点の完全な詳細があります。
 
 =begin original
 
@@ -568,7 +568,7 @@ The F<INSTALL> file for how to build Perl.
 
 =end original
 
-F<INSTALL> �ե������ Perl �Υӥ����ˡ������ޤ���
+F<INSTALL> ファイルに Perl のビルド方法があります。
 
 =begin original
 
@@ -576,7 +576,7 @@ The F<README> file for general stuff.
 
 =end original
 
-F<README> �ե�����˰���Ū�ʤ��Ȥ�����ޤ���
+F<README> ファイルに一般的なことがあります。
 
 =begin original
 
@@ -584,7 +584,7 @@ The F<Artistic> and F<Copying> files for copyright information.
 
 =end original
 
-F<Artistic> �ڤ� F<Copying> �ե������������󤬤���ޤ���
+F<Artistic> 及び F<Copying> ファイルに著作権情報があります。
 
 =begin meta
 

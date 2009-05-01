@@ -8,7 +8,7 @@ perlrun - how to execute the Perl interpreter
 
 =end original
 
-perlrun - Perl ���󥿥ץ꥿�ε�ư��ˡ
+perlrun - Perl インタプリタの起動方法
 
 =head1 SYNOPSIS
 
@@ -36,12 +36,12 @@ places:
 
 =end original
 
-Perl �ץ�������¹Ԥ������̤���ˡ�ϡ�ľ�ܼ¹ԤǤ�����ˤ��뤫��
-���ޥ�ɥ饤��ΰ����Ȥ��ƥ������ե������̾�����Ϥ����ȤǤ���
-(����Ū�� Perl �Ķ��⤢��ޤ� -- �ɤΤ褦�ˤ��뤫�ξܺ٤ˤĤ��Ƥ�
-L<perldebug> �򻲾Ȥ��Ʋ�������)
-�¹Ԥˤ����äơ�Perl �ϻ��ꤵ�줿�ץ�������ʲ��˼�������
-õ���ޤ�:
+Perl プログラムを実行する普通の方法は、直接実行できる形にするか、
+コマンドラインの引数としてソースファイルの名前を渡すことです。
+(対話的な Perl 環境もあります -- どのようにするかの詳細については
+L<perldebug> を参照して下さい。)
+実行にあたって、Perl は指定されたプログラムを以下に示す場所で
+探します:
 
 =over 4
 
@@ -53,7 +53,7 @@ Specified line by line via B<-e> switches on the command line.
 
 =end original
 
-���ޥ�ɥ饤���� -e �����å��ǻ��ꤵ�줿�ԡ�
+コマンドライン上で -e スイッチで指定された行。
 
 =item 2.
 
@@ -65,9 +65,9 @@ way. See L<Location of Perl>.)
 
 =end original
 
-���ޥ�ɥ饤���Ǻǽ�Υե�����̾�Ȥ��Ƽ����줿�ե�������档
-(#! ��ˡ�򥵥ݡ��Ȥ��Ƥ��륷���ƥ�Ǥϡ����Τ褦�ˤ���
-���󥿥ץ꥿��ƤӽФ��ޤ���L<Location of Perl> �򻲾Ȥ��Ʋ�������)
+コマンドライン上で最初のファイル名として示されたファイルの中。
+(#! 記法をサポートしているシステムでは、このようにして
+インタプリタを呼び出します。L<Location of Perl> を参照して下さい。)
 
 =item 3.
 
@@ -79,10 +79,10 @@ must explicitly specify a "-" for the program name.
 
 =end original
 
-ɸ�����Ϥ�����ۤ��Ϥ���롣
-�ե�����̾�򼨤�������̵�����ˤΤߤ��ޤ������ޤ���
-STDIN �����ɤ߹���ץ������˰������Ϥ��ˤϡ�
-�ץ������̾�Ȥ�������Ū�� "-" ����ꤷ�ʤ��ƤϤʤ�ޤ���
+標準入力から暗黙に渡される。
+ファイル名を示す引数が無い場合にのみうまくいきます。
+STDIN から読み込むプログラムに引数を渡すには、
+プログラム名として明示的に "-" を指定しなくてはなりません、
 
 =back
 
@@ -97,13 +97,13 @@ of the program using the C<__END__> token.)
 
 =end original
 
-2 ���ܡ�3 ���ܤ���ˡ�Ǥϡ�B<-x> �����å�����ꤷ����������ơ�
-Perl �����ϥե������ǽ餫����Ϥ��Ϥ�ޤ�����B<-x> �����å���
-���ꤷ�����ˤϡ��ޤ����ǽ�� #! �� "perl" �Ȥ���ʸ�����
-�ޤ�Ԥ�õ��������������Ϥ�Ϥ�ޤ���
-����ϡ��礭�ʥƥ����Ȥ˥ץ�������������ǡ��¹Ԥ���褦�ʤȤ��������Ǥ���
-(���ξ�硢�ץ������ν����ϡ��ȡ����� C<__END__> ��Ȥä�
-�����Ȥ褤�Ǥ��礦��)
+2 番目、3 番目の方法では、B<-x> スイッチを指定した場合を除いて、
+Perl は入力ファイルを最初から解析し始めます。　B<-x> スイッチを
+指定した場合には、まず、最初に #! と "perl" という文字列を
+含む行を探し、そこから解析を始めます。
+これは、大きなテキストにプログラムを埋め込んで、実行するようなときに便利です。
+(この場合、プログラムの終わりは、トークン C<__END__> を使って
+示すとよいでしょう。)
 
 =begin original
 
@@ -115,12 +115,12 @@ invoked, even if B<-x> was used to find the beginning of the program.
 
 =end original
 
-#! ��ޤ�ԤΥ����å���ɬ�����Ϥ����褦�ˤʤ�ޤ�����
-�Ĥޤꡢ#! �ιԤǰ�������Ĥ���������ʤ������뤤��
-��äȰ�����#! �ιԤ�ǧ������ʤ��Ȥ��ä������ƥ�Ǳ��Ѥ��Ƥ���
-���ˤ⡢B<-x> �ǥץ������γ��ϰ��֤򸫤Ĥ�������
-�ޤᡢ�ɤΤ褦�� Perl ����ư���줿���ˤ�餺����Ӥ���
-�����å���ư�����ԤǤ���褦�ˤʤäƤ��ޤ���
+#! を含む行のスイッチが必ず解析されるようになりました。
+つまり、#! の行で引数が一つしか許されない、あるいは
+もっと悪く、#! の行が認識されないといったシステムで運用している
+場合にも、B<-x> でプログラムの開始位置を見つけた場合を
+含め、どのように Perl が起動されたかによらず、一貫した
+スイッチの動作を期待できるようになっています。
 
 =begin original
 
@@ -137,19 +137,19 @@ could also cause odd results.
 
 =end original
 
-���Ū�ʥ��ڥ졼�ƥ��󥰥����ƥ����ˤ�
-�����ͥ�ˤ�� #! �Ԥβ�᤬�����顼�ʤ��� 32 ʸ����
-�Ǥ��ڤ��Ƥ��ޤ���Τ�����ޤ��Τǡ����륹���å��ϥ��ޥ�ɥ饤���
-�Ϥ��졢���륹���å����Ϥ���ʤ��Ȥ��ä����Ȥ�������ޤ���
-���դ��ʤ��ȡ�ʸ����³���ʤ� "-" �������Ϥ����Ȥ��ä����Ȥ�
-���������ޤ���
-���٤ƤΥ����å������μ¤� 32 ʸ������������������Τɤ��餫��
-�ʤ�褦�ˤ��������ȤǤ��礦��
-¿���Υ����å��ϡ�;ʬ�˽�������Ƥ����ꤢ��ޤ��󤬡�
-�����ʥ����å�������� "-" �����äƤ������ˤϡ�
-�ץ�����������ˡ�ɸ�����Ϥ� Perl ��
-�¹Ԥ����뤳�ȤˤʤäƤ��ޤ��ޤ���
-B<-I> �����å�������Ⱦü�ˤʤä����ˤ⤪�����ʷ�̤Ȥʤ����ޤ���
+歴史的なオペレーティングシステムの中には
+カーネルによる #! 行の解釈が、エラーなしに 32 文字で
+打ち切られてしまうものがありますので、あるスイッチはコマンドラインに
+渡され、あるスイッチは渡されないといったことが起こります。
+注意しないと、文字が続かない "-" だけが渡されるといったことも
+起こり得ます。
+すべてのスイッチが、確実に 32 文字境界の前か後ろかのどちらかに
+なるようにしたいことでしょう。
+多くのスイッチは、余分に処理されても問題ありませんが、
+完全なスイッチの代わりに "-" が入っていた場合には、
+プログラムの代わりに、標準入力を Perl に
+実行させることになってしまいます。
+B<-I> スイッチが中途半端になった場合にもおかしな結果となり得ます。
 
 =begin original
 
@@ -160,10 +160,10 @@ B<-0>I<digits> by C<BEGIN{ $/ = "\0digits"; }>.
 
 =end original
 
-2 ��¹Ԥ���뤳�Ȥ����դ���ɬ�פΤ��륹���å��⤢��ޤ���
-�㤨�� B<-l> �� B<-0> ���Ȥ߹�碌�Ǥ���
-(��ǽ�ʤ�) ξ���Υ����å��� 32 ʸ�������θ���ˤ����褦�ˤ��뤫��
-B<-0>I<digits> �� C<BEGIN{ $/ = "\0digits"; }> ���֤������Ƥ���������
+2 回実行されることに注意する必要のあるスイッチもあります。
+例えば B<-l> と B<-0> の組み合わせです。
+(可能なら) 両方のスイッチが 32 文字境界の後ろにいくようにするか、
+B<-0>I<digits> を C<BEGIN{ $/ = "\0digits"; }> で置き換えてください。
 
 =begin original
 
@@ -173,8 +173,8 @@ if you were so inclined, say
 
 =end original
 
-#! �����å��β��Ϥϡ������ "perl" �������줿���֤���Ϥޤ�ޤ���
-�Ȥ�櫓 "-*" �� "- " �Ȥ���ʸ�����¤Ӥ�̵�뤵��ޤ��Τǡ�
+#! スイッチの解析は、行内で "perl" が示された位置から始まります。
+とりわけ "-*" と "- " という文字の並びは無視されますので、
 
     #!/bin/sh -- # -*- perl -*- -p
     eval 'exec perl -wS $0 ${1+"$@"}'
@@ -186,7 +186,7 @@ to let Perl see the B<-p> switch.
 
 =end original
 
-�Τ褦�˽񤱤С�Perl �� B<-p> �����å����Ϥ����Ȥ��Ǥ��ޤ���
+のように書けば、Perl に B<-p> スイッチを渡すことができます。
 
 =begin original
 
@@ -194,7 +194,7 @@ A similar trick involves the B<env> program, if you have it.
 
 =end original
 
-�����褦�ʥȥ�å���(���äƤ����) B<env> �ץ������Ǥ�Ȥ��ޤ���
+似たようなトリックは(持っていれば) B<env> プログラムでも使えます。
 
     #!/usr/bin/env perl
 
@@ -207,10 +207,10 @@ that directly in the #! line's path.
 
 =end original
 
-������ Perl ���󥿥ץ꥿�����Хѥ���Ȥäơ�
-�桼������ PATH �Ǻǽ�ˤ��ä��С�������Ȥ��ޤ���
-�⤷����ΥС������� Perl���㤨�� perl5.005_57 ���Ȥ������ʤ顢
-#! �ԤΥѥ���ľ�ܽ񤯤٤��Ǥ���
+上の例は Perl インタプリタに相対パスを使って、
+ユーザーの PATH で最初にあったバージョンを使います。
+もし特定のバージョンの Perl、例えば perl5.005_57 が使いたいなら、
+#! 行のパスに直接書くべきです。
 
 =begin original
 
@@ -222,12 +222,12 @@ dispatch the program to the correct interpreter for them.
 
 =end original
 
-#! �Ԥ� "perl" �Ȥ����줬�ޤޤ�Ƥ��ʤ���С�#! �θ�˻��ꤵ�줿
-�ץ�����ब Perl ���󥿥ץ꥿������˼¹Ԥ���ޤ���
-����Ͼ����Ѥ�äƤ��ޤ�����#! ���Ԥʤ��ʤ��ޥ����ȤäƤ������ˤ�
-ͭ���Ǥ��礦��
-�ץ��������Ф��ƻȤäƤ��� SHELL �� F</usr/bin/perl> ���ȸ��äƤ����С�
-Perl �����������󥿥ץ꥿��ư���Ƥ���뤫��Ǥ���
+#! 行に "perl" という語が含まれていなければ、#! の後に指定された
+プログラムが Perl インタプリタの代わりに実行されます。
+これは少し変わっていますが、#! が行なえないマシンを使っている方には
+有効でしょう。
+プログラムに対して使っている SHELL が F</usr/bin/perl> だと言っておけば、
+Perl が正しいインタプリタを起動してくれるからです。
 
 =begin original
 
@@ -238,11 +238,11 @@ which might run part-way through before finding a syntax error.)
 
 =end original
 
-�ץ������ξ�꤬����Ǥ����ʤ顢Perl �ϥץ���������Τ�����������
-����ѥ��뤷�Ϥ�ޤ���
-����ѥ��륨�顼�����Ĥ��ä����ˤϡ��ץ������μ¹ԤϹԤʤ��ޤ���
-(����ϡ���ʸ���顼��������ˤ⡢����ޤǼ¹Ԥ�����ǽ���Τ��롢
-ŵ��Ū�ʥ�����Υ�����ץȤȰۤʤ����Ǥ���)
+プログラムの場所が特定できたなら、Perl はプログラム全体を内部形式に
+コンパイルし始めます。
+コンパイルエラーが見つかった時には、プログラムの実行は行なわれません。
+(これは、構文エラーがある場合にも、途中まで実行される可能性のある、
+典型的なシェルのスクリプトと異なる点です。)
 
 =begin original
 
@@ -252,14 +252,14 @@ C<exit(0)> is provided to indicate successful completion.
 
 =end original
 
-�ץ�����ब��ʸŪ����������С��¹Ԥ���뤳�Ȥˤʤ�ޤ���
-�ץ�����ब��exit() �黻�Ҥˤ� die() �黻�Ҥˤ�������ʤ���
-�Ǹ�ޤ���ã����ȡ�����˴�λ�������Ȥ򼨤�����ˡ����ۤ�
-C<exit(0)> ���Ԥʤ��ޤ���
+プログラムが構文的に正しければ、実行されることになります。
+プログラムが、exit() 演算子にも die() 演算子にも当たらないで
+最後まで到達すると、正常に完了したことを示すために、暗黙の
+C<exit(0)> が行なわれます。
 
 =head2 #! and quoting on non-Unix systems
 
-(�� Unix �����ƥ�Ǥ� #! �ȥ�������)
+(非 Unix システムでの #! とクォート)
 
 =begin original
 
@@ -267,7 +267,7 @@ Unix's #! technique can be simulated on other systems:
 
 =end original
 
-Unix �� #! �Υƥ��˥å���¾�Υ����ƥ�Ǥ⥷�ߥ�졼�Ȥ���Ƥ��ޤ���
+Unix の #! のテクニックは他のシステムでもシミュレートされています。
 
 =over 4
 
@@ -284,12 +284,12 @@ as the first line in C<*.cmd> file (B<-S> due to a bug in cmd.exe's
 
 =end original
 
-C<*.cmd> �ե�����κǽ�ιԤ�
+C<*.cmd> ファイルの最初の行に
 
     extproc perl -S -your_switches
 
-�Ƚ񤤤Ƥ������� (B<-S> �� cmd.exe �� `extproc' �ΰ�����
-�Х�������������ޤ�)��
+と書いてください (B<-S> は cmd.exe の `extproc' の扱いの
+バグを引き起こします)。
 
 =item MS-DOS
 
@@ -301,10 +301,10 @@ distribution for more information).
 
 =end original
 
-�ץ�������¹Ԥ���Хå��ե�������äơ�
-C<ALTERNATIVE_SHEBANG> �ǥ����ɲ����Ƥ�������
-(����ʤ����ˤĤ��Ƥϥ��������ۥѥå������� F<dosish.h> �ե������
-���Ȥ��Ʋ�����)��
+プログラムを実行するバッチファイルを作って、
+C<ALTERNATIVE_SHEBANG> でコード化してください
+(さらなる情報についてはソース配布パッケージの F<dosish.h> ファイルを
+参照して下さい)。
 
 =item Win95/NT
 
@@ -319,13 +319,13 @@ Perl program and a Perl library file.
 
 =end original
 
-Win95/NT �ǤΥ��󥹥ȡ���ˤ����ơ�ActiveState �� Perl �ѥ��󥹥ȡ��顼��
-�Ȥä����ϡ���ĥ�� F<.pl> �� Perl ���󥿥ץ꥿�˴�Ϣ�դ���褦
-�쥸���ȥ���ѹ����ޤ���
-¾����ˡ�� Perl �򥤥󥹥ȡ��뤷�����(���������鹽�ۤ�������ޤߤޤ�)��
-�쥸���ȥ��ʬ���ѹ�����ɬ�פ�����ޤ���
-����ϼ¹Բ�ǽ�� Perl �ץ������� Perl �饤�֥��ե�����Ȥ�
-�㤤���ʤ��ʤäƤ��ޤ����Ȥ����դ��Ƥ���������
+Win95/NT でのインストールにおいて、ActiveState の Perl 用インストーラーを
+使った場合は、拡張子 F<.pl> を Perl インタプリタに関連付けるよう
+レジストリを変更します。
+他の方法で Perl をインストールした場合(ソースから構築した場合を含みます)、
+レジストリを自分で変更する必要があります。
+これは実行可能な Perl プログラムと Perl ライブラリファイルとの
+違いがなくなってしまうことに注意してください。
 
 =item Macintosh
 
@@ -336,8 +336,8 @@ Type, so that double-clicking them will invoke the perl application.
 
 =end original
 
-Macintosh perl �ץ�������Ŭ�ڤ� Creator �� Type ����äƤ���Τǡ�
-���֥륯��å������ Perl ���ץꥱ��������ư�Ǥ��ޤ���
+Macintosh perl プログラムは適切な Creator と Type を持っているので、
+ダブルクリックすれば Perl アプリケーションを起動できます。
 
 =item VMS
 
@@ -355,16 +355,16 @@ via F<DCL$PATH> by just using the name of the program).
 
 =end original
 
-�ץ���������Ƭ�ˡ�
+プログラムの先頭に、
 
     $ perl -mysw 'f$env("procedure")' 'p1' 'p2' 'p3' 'p4' 'p5' 'p6' 'p7' 'p8' !
     $ exit++ + ++$status != 0 and $exit = $status = undef;
 
-�Ƚ񤤤Ƥ��������������� B<-mysw> �� Perl ���Ϥ�����
-���ޥ�ɥ饤�󥹥��å��Ǥ�������� C<perl program> �Ȥ���ľ��
-�ץ�������ư�Ǥ��ޤ�����
-C<@program> �Ȥ���(���뤤�� F<DCL$PATH> ��ͳ�ǥץ������̾��Ȥä�)
-DSL ��³���Ȥ��Ƶ�ư�Ǥ��ޤ���
+と書いてください。ここで B<-mysw> は Perl に渡したい
+コマンドラインスイッチです。これで C<perl program> として直接
+プログラムを起動できますし、
+C<@program> として(あるいは F<DCL$PATH> 経由でプログラム名を使って)
+DSL 手続きとして起動できます。
 
 =begin original
 
@@ -373,8 +373,8 @@ you if you say C<perl "-V:startperl">.
 
 =end original
 
-���η�ޤ�ʸ��ϳФ���ˤϾ���Ĺ�����ޤ�����
-C<perl "-V:startperl"> �Ȥ���� Perl �������ɽ�����Ƥ���ޤ���
+この決まり文句は覚えるには少々長すぎますが、
+C<perl "-V:startperl"> とすれば Perl がこれを表示してくれます。
 
 =back
 
@@ -388,12 +388,12 @@ one-liners (see B<-e> below).
 
 =end original
 
-�� Unix �����ƥ�Υ��ޥ�ɥ��󥿥ץ꥿�ϥ������Ȥ˴ؤ���
-Unix ������Ȱۤʤä��ͤ����򤷤Ƥ��ޤ���
-���Ȥ��Υ��ޥ�ɥ��󥿥ץ꥿�Υ��ڥ���륭��饯���ˤĤ���
-(C<*>, C<\>, C<"> �ϰ���Ū�Ǥ�)��������
-��Ԥǵ�ư���뤿���(��Ҥ��� B<-e> �򻲾Ȥ��Ʋ�����)�����
-���ڥ���륭��饯�����ݸ����ˡ�ˤĤ��Ƴؤ�ɬ�פ�����Ǥ��礦��
+非 Unix システムのコマンドインタプリタはクォートに関して
+Unix シェルと異なった考え方をしています。
+お使いのコマンドインタプリタのスペシャルキャラクタについて
+(C<*>, C<\>, C<"> は一般的です)、そして
+一行で起動するために(後述する B<-e> を参照して下さい)空白や
+スペシャルキャラクタを保護する方法について学ぶ必要があるでしょう。
 
 =begin original
 
@@ -403,10 +403,10 @@ have to change a single % to a %%.
 
 =end original
 
-�����ƥ�ˤ�äƤϥ��󥰥륯�����Ȥ���֥륯�����Ȥ��ѹ�����ɬ�פ�
-���뤫�⤷��ޤ��󡣤����� Unix �� Plan9 �Υ����ƥ�Ǥ�
-I<���ƤϤ����ޤ���>��
-�ޤ���ñ�Τ� % �� %% ���ѹ�����ɬ�פ����뤫�⤷��ޤ���
+システムによってはシングルクォートをダブルクォートに変更する必要が
+あるかもしれません。しかし Unix や Plan9 のシステムでは
+I<してはいけません>。
+また、単体の % を %% に変更する必要があるかもしれません。
 
 =begin original
 
@@ -414,7 +414,7 @@ For example:
 
 =end original
 
-�㤨��:
+例えば:
 
     # Unix
     perl -e 'print "Hello world\n"'
@@ -437,9 +437,9 @@ the command shell, this would probably work better:
 
 =end original
 
-����ϡ������Ϥɤ�⿮�������ʤ����ȤǤ���
-����ϥ��ޥ�ɤ˰�¸�����ɤ��ư���ʤ����⤷��ޤ���
-B<4DOS> �����ޥ�ɥ�����ʤ顢�����餯���褯ư���ޤ�:
+問題は、これらはどれも信頼性がないことです。
+これはコマンドに依存し、どれも動かないかもしれません。
+B<4DOS> がコマンドシェルなら、おそらくよりよく動きます:
 
     perl -e "print <Ctrl-x>"Hello world\n<Ctrl-x>""
 
@@ -451,9 +451,9 @@ quoting rules.
 
 =end original
 
-Windows NT �� B<CMD.EXE> ��ï�⸫�Ƥ��ʤ��֤�¿����ɸ�� Unix ��ǽ��
-�������Ǥ��ޤ������������ȤΥ롼��˴ؤ��Ƥ�
-�ɥ�����Ȥ�õ���ƤߤƤ���������
+Windows NT の B<CMD.EXE> は誰も見ていない間に多くの標準 Unix 機能が
+入り込んでいますが、クォートのルールに関しては
+ドキュメントを探してみてください。
 
 =begin original
 
@@ -464,11 +464,11 @@ characters as control characters.
 
 =end original
 
-Macintosh �Ǥϡ��ȤäƤ���Ķ��˰�¸���ޤ���
-MacPerl shell �� MPW �ϥ������ȴط����б��˴ؤ���
-���ʤ� Unix ������Ȼ��Ƥ��ޤ���
-��������Macintosh ���� ASCII ʸ���򥳥�ȥ�����ʸ���Ȥ���
-��ͳ�˻Ȥ����Ȥ��Ǥ��ޤ���
+Macintosh では、使っている環境に依存します。
+MacPerl shell や MPW はクォート関係の対応に関して
+かなり Unix シェルと似ています。
+しかし、Macintosh の非 ASCII 文字をコントロール文字として
+自由に使うことができます。
 
 =begin original
 
@@ -476,12 +476,12 @@ There is no general solution to all of this.  It's just a mess.
 
 =end original
 
-�����դ�Τ��Ȥ˴ؤ������Ū�ʲ����ˡ�Ϥ���ޤ���
-�ޤä��������㤰����Ǥ���
+この辺りのことに関する一般的な解決方法はありません。
+まったくぐちゃぐちゃです。
 
 =head2 Location of Perl
 
-(Perl �ΰ���)
+(Perl の位置)
 
 =begin original
 
@@ -495,14 +495,14 @@ obvious and convenient place.
 
 =end original
 
-���������Τ褦��ʹ�����뤫�⤷��ޤ��󤬡�
-Perl �ϥ桼��������ñ��ȯ���Ǥ�����ˤΤ�ͭ�ѤǤ���
-��ǽ�ʤ顢F</usr/bin/perl> �� F</usr/local/bin/perl> ��ξ����
-�ºݤΥХ��ʥ�ؤΥ���ܥ�å���󥯤��֤��Ȥ����ΤϤ褤�ͤ��Ǥ���
-�⤷���줬̵���ʤ顢�����ƥ�����Ԥ� Perl ��
-�տ魯��桼�ƥ���ƥ� (�ؤΥ���ܥ�å����) ��
-ŵ��Ū�˥桼������ PATH �Ǹ��դ���ǥ��쥯�ȥ꤫��
-����¾�����餫�������ʾ����֤��٤��Ǥ���
+当たり前のように聞こえるかもしれませんが、
+Perl はユーザーが簡単に発見できる場合にのみ有用です。
+可能なら、F</usr/bin/perl> と F</usr/local/bin/perl> の両方に
+実際のバイナリへのシンボリックリンクを置くというのはよい考えです。
+もしこれが無理なら、システム管理者は Perl と
+付随するユーティリティ (へのシンボリックリンク) を、
+典型的にユーザーの PATH で見付かるディレクトリか、
+その他の明らかで便利な場所に置くべきです。
 
 =begin original
 
@@ -512,9 +512,9 @@ advised to use a specific path if you care about a specific version.
 
 =end original
 
-���Υɥ�����ȤǤϡ�C<#!/usr/bin/perl> �ȥץ���������Ƭ�˽񤱤�
-�����ƥ�����ƤΥ᥽�åɤ��¹ԤǤ����ΤȤ��Ƥ��ޤ���
-����ΥС�������Ȥ��������ϡ�����Υѥ���Ȥ���:
+このドキュメントでは、C<#!/usr/bin/perl> とプログラムの先頭に書けば
+システムの全てのメソッドが実行できるものとしています。
+特定のバージョンを使いたい場合は、特定のパスを使うか:
 
     #!/usr/local/bin/perl5.00554
 
@@ -525,14 +525,14 @@ like this at the top of your program:
 
 =end original
 
-���뤤��ñ�˺���¤ΥС���������ꤷ�����ϡ�
-�ʲ��Τ褦�ʹԤ�ץ���������Ƭ���֤��Ƥ�������:
+あるいは単に最低限のバージョンを指定した場合は、
+以下のような行をプログラムの先頭に置いてください:
 
     use 5.005_54;
 
 =head2 Command Switches
 
-(���ޥ�ɥ����å�)
+(コマンドスイッチ)
 
 =begin original
 
@@ -541,9 +541,9 @@ clustered with the following switch, if any.
 
 =end original
 
-���Ƥ�ɸ�ॳ�ޥ�ɤ�Ʊ�ͤˡ�
-1 ʸ���Υ����å��ϡ�����³�������å�������С�����ȤĤʤ���
-���Ȥ��Ǥ��ޤ���
+全ての標準コマンドと同様に、
+1 文字のスイッチは、次に続くスイッチがあれば、それとつなげる
+ことができます。
 
     #!/usr/bin/perl -spi.orig	# same as -s -p -i.orig
 
@@ -553,7 +553,7 @@ Switches include:
 
 =end original
 
-�����å�����:
+スイッチ一覧:
 
 =over 5
 
@@ -569,11 +569,11 @@ can say this:
 
 =end original
 
-���ϥ쥳���ɥ��ѥ졼�� (C<$/>) �� 8 �ʿ��Ǽ����ޤ���
-digits ����ꤷ�ʤ��ȡ��̥�ʸ�������ѥ졼���ˤʤ�ޤ���
-¾�Υ����å��������֤��Ƥ⤫�ޤ��ޤ��󤷡�digits �Τ��Ȥ�
-�Ĥʤ��Ƥ⤫�ޤ��ޤ���
-���Ȥ��С��ե�����̾��̥�ʸ���Ƕ��ڤä�ɽ���Ǥ��� find �������:
+入力レコードセパレータ (C<$/>) を 8 進数で示します。
+digits を指定しないと、ヌル文字がセパレータになります。
+他のスイッチを前に置いてもかまいませんし、digits のあとに
+つなげてもかまいません。
+たとえば、ファイル名をヌル文字で区切って表示できる find があれば:
 
     find . -name '*.orig' -print0 | perl -n0e unlink
 
@@ -585,9 +585,9 @@ legal character with that value.
 
 =end original
 
-00 �Ȥ������̤��ͤϡ�Perl �˥ѥ饰��ե⡼�ɤǡ��ե�������ɤޤ��ޤ���
-0777 �Ȥ����ͤϡ���������ʸ�����ʤ����ᡢ
-Perl �˥ե��������Τ��ɤޤ��뤳�Ȥˤʤ�ޤ���
+00 という特別な値は、Perl にパラグラフモードで、ファイルを読ませます。
+0777 という値は、該当する文字がないため、
+Perl にファイル全体を読ませることになります。
 
 =item B<-a>
 
@@ -599,9 +599,9 @@ implicit while loop produced by the B<-n> or B<-p>.
 
 =end original
 
-B<-n> �� B<-p> �Ȥ��ä�����Ѥ���ȡ���ư split �⡼�ɤˤʤ�ޤ���
-B<-n> �� B<-p> �Ǻ������ۤΥ롼����κǽ��ʸ�Ȥ��ơ�
-���� @F �ؤΰ��ۤ� split ���ޥ�ɤ��¹Ԥ���ޤ���
+B<-n> や B<-p> といっしょに用いると、自動 split モードになります。
+B<-n> や B<-p> で作られる暗黙のループ内の最初の文として、
+配列 @F への暗黙の split コマンドが実行されます。
 
     perl -ane 'print pop(@F), "\n";'
 
@@ -611,7 +611,7 @@ is equivalent to
 
 =end original
 
-�ϰʲ��Τ�Τ������Ǥ���
+は以下のものと等価です。
 
     while (<>) {
 	@F = split(' ');
@@ -624,7 +624,7 @@ An alternate delimiter may be specified using B<-F>.
 
 =end original
 
-B<-F> ��Ȥäƶ���ʸ�����ѹ����뤳�Ȥ��Ǥ��ޤ���
+B<-F> を使って区切文字を変更することができます。
 
 =item B<-C>
 
@@ -636,9 +636,9 @@ this switch.  See L<perlvar/"${^WIDE_SYSTEM_CALLS}">.
 
 =end original
 
-Perl ���������åȥ����ƥ�Υ磻��ʸ�� API ��Ȥ��褦�˻ؼ����ޤ���
-�ޥ��å��ѿ� C<${^WIDE_SYSTEM_CALLS}> �˥����å��ξ��֤�ȿ�Ǥ���ޤ���
-L<perlvar/"${^WIDE_SYSTEM_CALLS}"> �򻲾Ȥ��Ʋ�������
+Perl がターゲットシステムのワイド文字 API を使うように指示します。
+マジック変数 C<${^WIDE_SYSTEM_CALLS}> にスイッチの状態が反映されます。
+L<perlvar/"${^WIDE_SYSTEM_CALLS}"> を参照して下さい。
 
 =begin original
 
@@ -646,7 +646,7 @@ This feature is currently only implemented on the Win32 platform.
 
 =end original
 
-���ε�ǽ�ϸ��ߤΤȤ��� Win32 �����ƥ�ˤΤ߼�������Ƥ��ޤ���
+この機能は現在のところ Win32 システムにのみ実装されています。
 
 =item B<-c>
 
@@ -660,11 +660,11 @@ be skipped.
 
 =end original
 
-Perl �˥�����ץȤι�ʸ�Υ����å���Ԥʤ碌���¹Ԥ�����
-��λ����褦�ˤ��ޤ���
-�ºݤˤϡ�C<BEGIN>, C<CHECK>, C<use> �֥��å��� I<�¹Ԥ��ޤ�>��
-�����ϥץ������μ¹Ԥγ�¦�ˤ����Τȹͤ����뤫��Ǥ���
-C<INIT> �� C<END> �֥��å��ϥ����åפ���ޤ���
+Perl にスクリプトの構文のチェックを行なわせ、実行せずに
+終了するようにします。
+実際には、C<BEGIN>, C<CHECK>, C<use> ブロックは I<実行します>。
+これらはプログラムの実行の外側にあるものと考えられるからです。
+C<INIT> と C<END> ブロックはスキップされます。
 
 =item B<-d>
 
@@ -674,8 +674,8 @@ runs the program under the Perl debugger.  See L<perldebug>.
 
 =end original
 
-Perl �ǥХå��β��ǥץ�������¹Ԥ��ޤ���
-L<perldebug> �򻲾Ȥ��Ƥ���������
+Perl デバッガの下でプログラムを実行します。
+L<perldebug> を参照してください。
 
 =item B<-d:>I<foo[=bar,baz]>
 
@@ -691,15 +691,15 @@ See L<perldebug>.
 
 =end original
 
-Devel::foo �Ȥ��ƥ��󥹥ȡ��뤵��� �ǥХå����ץ��ե�����󥰡�
-�ȥ졼���⥸�塼������沼�ǥץ�������¹Ԥ��ޤ���
-�ĤޤꡢB<-d:DProf> �� Devel::DProf �ץ��ե������Ȥä�
-�ץ�������¹Ԥ��ޤ���
-B<-M> �ե饰�ȶ��˻Ȥ��ȡ����ץ�����
-Devel::foo �ѥå��������Ϥ��졢Devel::foo::import �롼�����
-��ᤵ��ޤ���
-���ץ����򥳥�޶��ڤ�Υꥹ�Ȥˤ���Ȥ��� C<=> ��ʸ����
-���³���ʤ���Фʤ�ޤ���L<perldebug> �򻲾Ȥ��Ʋ�������
+Devel::foo としてインストールされる デバッグ・プロファイリング・
+トレースモジュールの制御下でプログラムを実行します。
+つまり、B<-d:DProf> は Devel::DProf プロファイラを使って
+プログラムを実行します。
+B<-M> フラグと共に使うと、オプションは
+Devel::foo パッケージに渡され、Devel::foo::import ルーチンで
+解釈されます。
+オプションをコンマ区切りのリストにするときは C<=> の文字の
+後に続けなければなりません。L<perldebug> を参照して下さい。
 
 =item B<-D>I<letters>
 
@@ -716,16 +716,16 @@ equivalent to B<-Dtls>):
 
 =end original
 
-�ǥХå��ե饰�����ꤷ�ޤ���
-������ץȤ��ɤΤ褦�˼¹Ԥ���뤫�򸫤�ˤϡ�
-B<-Dtls> ��ȤäƤ���������
-(����ϡ��ǥХå���ǽ����������
-����ѥ��뤷���Ȥ��ˤ���Ư���ޤ���)
-����¾�����Ω���ͤȤ��Ƥϡ�����ѥ��뤵�줿��ʸ�ĥ꡼��ɽ�����롢
-B<-Dx> ���������ޤ���
-B<-Dr> �ϡ�����ѥ��뤷������ɽ����ɽ�����ޤ���
-ʸ���Υꥹ�Ȥ�����˿�������ꤹ�뤳�Ȥ�Ǥ��ޤ�
-(���Ȥ��С�B<-D14> �� B<-Dtls> �������Ǥ�):
+デバッグフラグを設定します。
+スクリプトがどのように実行されるかを見るには、
+B<-Dtls> を使ってください。
+(これは、デバッグ機能を盛り込んで
+コンパイルしたときにだけ働きます。)
+この他に役に立つ値としては、コンパイルされた構文ツリーを表示する、
+B<-Dx> があげられます。
+B<-Dr> は、コンパイルした正規表現を表示します。
+文字のリストの代わりに数字を指定することもできます
+(たとえば、B<-D14> は B<-Dtls> と等価です):
 
 =begin original
 
@@ -750,24 +750,24 @@ B<-Dr> �ϡ�����ѥ��뤷������ɽ����ɽ�����ޤ���
 
 =end original
 
-        1  p  �ȡ����󲽤ȹ�ʸ����
-        2  s  �����å���ɽ��
-        4  l  ����ƥ�����(�롼��)�����å��ν���
-        8  t  �¹ԤΥȥ졼��
-       16  o  �᥽�åɤȥ����С������ɤβ��
-       32  c  ʸ����/�����Ѵ�
-       64  P  -P �Τ���Υץ�ץ����å����ޥ�ɤ�ɽ�����������ե��������Ͼ���
-      128  m  ��������
-      256  f  �ե����ޥåȤν���
-      512  r  ����ɽ���β��Ϥȼ¸�
-     1024  x  ��ʸ�ȥ꡼�Υ����
-     2048  u  ���������å�
-     4096  L  ����꡼�� (Perl �Υ���ѥ������ -DLEAKTEST �����ꤵ��Ƥ���ɬ�פ�����)
-     8192  H  �ϥå���Υ���� -- values() �β����
-    16384  X  ������å��ѥåɤ�����
-    32768  D  ���õ�
-    65536  S  ����å�Ʊ��
-   131072  T  �ȡ�����
+        1  p  トークン化と構文解析
+        2  s  スタックの表示
+        4  l  コンテキスト(ループ)スタックの処理
+        8  t  実行のトレース
+       16  o  メソッドとオーバーロードの解決
+       32  c  文字列/数値変換
+       64  P  -P のためのプリプロセッサコマンドの表示、ソースファイル入力状態
+      128  m  メモリ配置
+      256  f  フォーマットの処理
+      512  r  正規表現の解析と実効
+     1024  x  構文トリーのダンプ
+     2048  u  汚染チェック
+     4096  L  メモリリーク (Perl のコンパイル時に -DLEAKTEST が指定されている必要がある)
+     8192  H  ハッシュのダンプ -- values() の横取り
+    16384  X  スクラッチパッドの配置
+    32768  D  全消去
+    65536  S  スレッド同期
+   131072  T  トークン化
 
 =begin original
 
@@ -778,12 +778,12 @@ option when C<Configure> asks you about optimizer/debugger flags.
 
 =end original
 
-���������ƤΥե饰�� Perl �¹ԥե�����򥳥�ѥ��뤹��Ȥ���
-B<-DDEBUGGING> �����ꤵ��Ƥ���ɬ�פ�����ޤ���
-�������뤿��ˤɤ�����Ф������ˤĤ��Ƥ� Perl �Υ��������ۥѥå�������
-F<INSTALL> �ե�����򻲾Ȥ��Ʋ�������
-���Υե饰�� C<Configure> ����Ŭ��/�ǥХå��ե饰��Ҥͤ��Ȥ���
-B<-g> ���ץ������ߤǻ��ꤹ��м�ưŪ�˥��åȤ���ޤ���
+これらの全てのフラグは Perl 実行ファイルをコンパイルするときに
+B<-DDEBUGGING> が指定されている必要があります。
+そうするためにどうすればいいかについては Perl のソース配布パッケージの
+F<INSTALL> ファイルを参照して下さい。
+このフラグは C<Configure> が最適化/デバッガフラグを尋ねたときに
+B<-g> オプション込みで指定すれば自動的にセットされます。
 
 =begin original
 
@@ -793,9 +793,9 @@ you can't use Perl's B<-D> switch.  Instead do this
 
 =end original
 
-�����륹����ץȤˤ����� C<sh -x> �Τ褦�ˡ�
-ñ�˺��¹Ԥ��Ƥ��� Perl �Υ����ɤ�ɽ�����������ϡ�
-Perl �� B<-D> �����å��ϻȤ��ޤ�������˰ʲ��Τ褦�ˤ��Ƥ�������:
+シェルスクリプトにおける C<sh -x> のように、
+単に今実行している Perl のコードを表示したい場合は、
+Perl の B<-D> スイッチは使えません。代わりに以下のようにしてください:
 
   # Bourne shell syntax
   $ PERLDB_OPTS="NonStop=1 AutoTrace=1 frame=2" perl -dS program
@@ -809,7 +809,7 @@ See L<perldebug> for details and variations.
 
 =end original
 
-�ܺ٤ȥХꥨ�������ˤĤ��Ƥ� L<perldebug> �򻲾Ȥ��Ʋ�������
+詳細とバリエーションについては L<perldebug> を参照して下さい。
 
 =item B<-e> I<commandline>
 
@@ -822,11 +822,11 @@ to use semicolons where you would in a normal program.
 
 =end original
 
-1 �ԤΥץ���������ꤹ��Τ˻��Ѥ��ޤ���
-B<-e> �����ꤵ���� Perl �ϰ����Υꥹ�Ȥ���ϥե�����̾��õ���ޤ���
-ʣ���� -e ���ޥ�ɤǡ�ʣ���ԤΥ�����ץȤ������뤳�Ȥ��Ǥ��ޤ���
-�̾�Υץ������ǥ��ߥ�������֤��Ȥ����ˤϡ����ߥ������Ȥ����Ȥ�
-�����դ��Ƥ���������
+1 行のプログラムを指定するのに使用します。
+B<-e> が指定されると Perl は引数のリストからはファイル名を探しません。
+複数の -e コマンドで、複数行のスクリプトを構成することができます。
+通常のプログラムでセミコロンを置くところには、セミコロンを使うことに
+気を付けてください。
 
 =item B<-F>I<pattern>
 
@@ -838,9 +838,9 @@ put in single quotes.
 
 =end original
 
-B<-a> ��ͭ���ʤȤ��ˡ�split ��Ԥʤ�����ɽ������ꤷ�ޤ���
-�ѥ������ C<//>, C<"">, C<''> �ǰϤफ��
-���󥰥륯�����Ȥ���˽񤭤ޤ���
+B<-a> も有効なときに、split を行なう正規表現を指定します。
+パターンは C<//>, C<"">, C<''> で囲むか、
+シングルクォートの中に書きます。
 
 =item B<-h>
 
@@ -850,7 +850,7 @@ prints a summary of the options.
 
 =end original
 
-���ץ����ΰ�����ɽ�����ޤ���
+オプションの一覧を表示します。
 
 =item B<-i>[I<extension>]
 
@@ -865,12 +865,12 @@ rules:
 
 =end original
 
-C<E<lt>E<gt>> �ι�ʸ�ǽ������줿�ե�������֤������뤿��γ�ĥ�Ҥ�
-���ꤷ�ޤ���
-����ϡ����ϥե�������͡��ष������̾���ǽ��ϥե������ open ����
-print() ʸ�Υǥե���ȤȤ��Ƥ��ν��ϥե������ select ���뤳�ȤǹԤʤ��ޤ���
-extension �����ꤵ���ȡ��Τ����ƤΥХå����åפ�Ԥʤ�
-�ե�����̾�γ�ĥ�ҤȤ��ơ����Υե�����̾���դ��ä����ޤ���
+C<E<lt>E<gt>> の構文で処理されたファイルを置き換えるための拡張子を
+指定します。
+これは、入力ファイルをリネームし、元の名前で出力ファイルを open し、
+print() 文のデフォルトとしてその出力ファイルを select することで行ないます。
+extension が指定されると、昔の内容のバックアップを行なう
+ファイル名の拡張子として、元のファイル名に付け加えられます。
 
 =begin original
 
@@ -879,8 +879,8 @@ overwritten.
 
 =end original
 
-extension �����ꤵ��ʤ��ȡ��Хå����åפ��餺��
-���ߤΥե����뤬��񤭤���ޤ���
+extension が指定されないと、バックアップを作らず、
+現在のファイルが上書きされます。
 
 =begin original
 
@@ -892,11 +892,11 @@ as:
 
 =end original
 
-extension �� C<*> ���ޤޤ�Ƥ��ʤ���硢���ߤΥե�����̾��������
-�����ҤȤ����դ��ä����ޤ���
-extension �˰�İʾ�� C<*> ��ʸ���������硢
-���줾��� C<*> �ϸ��ߤΥե�����̾���֤��������ޤ���
-Perl Ū�˽񤯤ȡ��ʲ��Τ褦�ˤʤ�ޤ�:
+extension に C<*> が含まれていない場合、現在のファイル名の末尾に
+接尾子として付け加えられます。
+extension に一つ以上の C<*> の文字がある場合、
+それぞれの C<*> は現在のファイル名で置き換えられます。
+Perl 的に書くと、以下のようになります:
 
     ($backup = $extension) =~ s/\*/$file_name/g;
 
@@ -907,8 +907,8 @@ addition to) a suffix:
 
 =end original
 
-�ʲ��Τ褦�ˤ���ȡ�(�����Ҥ�����ˡ����뤤�������Ҥ˲ä���)
-�Хå����åץե��������Ƭ�Ҥ�Ĥ��뤳�Ȥ��Ǥ��ޤ���
+以下のようにすると、(接尾子の代わりに、あるいは接尾子に加えて)
+バックアップファイルに接頭子をつけることができます。
 
     $ perl -pi 'orig_*' -e 's/bar/baz/' fileA	# backup to 'orig_fileA'
 
@@ -919,8 +919,8 @@ directory (provided the directory already exists):
 
 =end original
 
-���Υե�����ΥХå����åץ��ԡ���(���ˤ���)¾�Υǥ��쥯�ȥ�˺�뤳�Ȥ�
-�Ǥ��ޤ�:
+元のファイルのバックアップコピーを(既にある)他のディレクトリに作ることも
+できます:
 
     $ perl -pi 'old/*.orig' -e 's/bar/baz/' fileA # backup to 'old/fileA.orig'
 
@@ -930,7 +930,7 @@ These sets of one-liners are equivalent:
 
 =end original
 
-�ʲ��ΰ�ԥ�����ץȤ����������Ǥ�:
+以下の一行スクリプトは全て等価です:
 
     $ perl -pi -e 's/bar/baz/' fileA		# overwrite current file
     $ perl -pi '*' -e 's/bar/baz/' fileA	# overwrite current file
@@ -944,7 +944,7 @@ From the shell, saying
 
 =end original
 
-�����뤫��ʲ��Τ褦�˵�ư�����:
+シェルから以下のように起動すると:
 
     $ perl -p -i.orig -e "s/foo/bar/; ... "
 
@@ -954,7 +954,7 @@ is the same as using the program:
 
 =end original
 
-�ץ������ǰʲ��Τ褦�ˤ���Τ�Ʊ����:
+プログラムで以下のようにするのと同じで:
 
     #!/usr/bin/perl -pi.orig
     s/foo/bar/;
@@ -965,7 +965,7 @@ which is equivalent to
 
 =end original
 
-�ʲ��Ȥۤ������Ǥ�:
+以下とほぼ等価です:
 
     #!/usr/bin/perl
     $extension = '.orig';
@@ -998,10 +998,10 @@ output filehandle after the loop.
 
 =end original
 
-�㤦�Τϡ�B<-i> �η����������ĥե�����̾���Ѥ�ä������Τ뤿��ˡ�
-$ARGV �� $oldargv ����Ӥ���ɬ�פ��ʤ����ȤǤ���
-�������ʤ��顢���򤹤�ե�����ϥ�ɥ�Ȥ��� ARGVOUT �ϻ��Ѥ��ޤ���
-�롼�פΤ��Ȥϡ�STDOUT ���ǥե���ȤΥե�����ϥ�ɥ�Ȥ��ƺ����ꤵ��ޤ���
+違うのは、B<-i> の形式が、いつファイル名が変わったかを知るために、
+$ARGV と $oldargv を比較する必要がないことです。
+しかしながら、選択するファイルハンドルとして ARGVOUT は使用します。
+ループのあとは、STDOUT がデフォルトのファイルハンドルとして再設定されます。
 
 =begin original
 
@@ -1010,9 +1010,9 @@ is actually changed.  So this is just a fancy way to copy files:
 
 =end original
 
-��Ҥ��̤ꡢPerl �ϥХå����åץե������ºݤ˽��Ϥ��ѹ����줿��
-�ɤ����˴ؤ�餺�������ޤ������äơ��ʲ��ϥե�����򥳥ԡ�����
-�Ѥ�ä���ˡ�Ȥʤ�ޤ�:
+上述の通り、Perl はバックアップファイルを実際に出力が変更されたか
+どうかに関わらず作成します。従って、以下はファイルをコピーする
+変わった方法となります:
 
     $ perl -p -i '/some/file/path/*' -e 1 file1 file2 file3...
 or
@@ -1026,10 +1026,10 @@ file, in case you want to append to each file, or reset line numbering
 
 =end original
 
-�ġ��Υե�����ν����˲������դ��ä������Ȥ��䡢���ֹ��
-�ꥻ�åȤ������褦�ʾ��ˡ��ġ������ϥե�����ν������Τ뤿��ˡ�
-��̤�̵�� C<eof> ��Ȥ����Ȥ��Ǥ��ޤ���
-(L<perlfunc/eof> ����򻲾Ȥ��Ƥ���������)
+個々のファイルの終わりに何かを付け加えたいときや、行番号を
+リセットしたいような場合に、個々の入力ファイルの終わりを知るために、
+括弧の無い C<eof> を使うことができます。
+(L<perlfunc/eof> の例を参照してください。)
 
 =begin original
 
@@ -1039,9 +1039,9 @@ with the next one (if it exists).
 
 =end original
 
-Ϳ����줿�ե�������Ф��ơ�Perl �����ꤵ�줿��ĥ�ҤǥХå����åץե������
-���ʤ���硢���Υե�����ϥ����åפ����
-(�⤷�����)���Υե�����˰ܤäƷ�³���ޤ���
+与えられたファイルに対して、Perl が指定された拡張子でバックアップファイルを
+作れない場合、そのファイルはスキップされて
+(もしあれば)次のファイルに移って継続します。
 
 =begin original
 
@@ -1050,9 +1050,9 @@ see L<perlfaq5/Why does Perl let me delete read-only files?  Why does -i clobber
 
 =end original
 
-�ե�����Υѡ��ߥå����� B<-i> �˴ؤ�������ˤĤ��Ƥϡ�
-L<perlfaq5/Why does Perl let me delete read-only files?  Why does -i clobber protected files?  Isn't this a bug in Perl?> ��
-���Ȥ��Ʋ�������
+ファイルのパーミッションと B<-i> に関する議論については、
+L<perlfaq5/Why does Perl let me delete read-only files?  Why does -i clobber protected files?  Isn't this a bug in Perl?> を
+参照して下さい。
 
 =begin original
 
@@ -1061,8 +1061,8 @@ files.
 
 =end original
 
-B<-i> �ϡ��ǥ��쥯�ȥ���ä��ꡢ�ե�����γ�ĥ�Ҥ�����������
-�Ǥ��ޤ���
+B<-i> は、ディレクトリを作ったり、ファイルの拡張子を取り除いたりは
+できません。
 
 =begin original
 
@@ -1071,9 +1071,9 @@ folks use it for their backup files:
 
 =end original
 
-Perl �� C<~> ��Ÿ�����ޤ���
-����ϥХå����åץե������ʲ��Τ褦�ˤ��ƺ��͡��Τ���ˤ�
-�褤���ȤǤ���
+Perl は C<~> を展開しません。
+これはバックアップファイルを以下のようにして作る人々のためには
+よいことです。
 
     $ perl -pi~ -e 's/foo/bar/' file1 file2 file3...
 
@@ -1086,10 +1086,10 @@ proceeds from STDIN to STDOUT as might be expected.
 
 =end original
 
-�Ǹ�ˡ�B<-i> �����å��ϡ����ޥ�ɥ饤��ǥե����뤬���ꤵ��ʤ��Ƥ�
-�¹Ԥ�˸���ޤ��󡣤��ξ�硢�Хå����åץե�����Ϻ������줺
-(������󡢸��Υե����뤬����Ǥ��ޤ���)��
-ͽ���̤ꡢSTDIN ���� STDOUT �˽������Ԥ��ޤ���
+最後に、B<-i> スイッチは、コマンドラインでファイルが指定されなくても
+実行を妨げません。この場合、バックアップファイルは作成されず
+(もちろん、元のファイルが決定できません)、
+予想通り、STDIN から STDOUT に処理が行われます。
 
 =item B<-I>I<directory>
 
@@ -1102,10 +1102,10 @@ searches /usr/include and /usr/lib/perl.
 
 =end original
 
-B<-I> �ǻ��ꤵ�줿�ǥ��쥯�ȥ�ϥ⥸�塼��θ����ѥ�(C<@INC>)��
-�ä���졢�ޤ� C �ץ�ץ����å��˥��󥯥롼�ɥե������õ�����򼨤��ޤ���
-C �ץ�ץ����å��� B<-P> �ǵ�ư����ޤ���
-�ǥե���ȤǤ� /usr/include �� /usr/lib/perl ��õ���ޤ���
+B<-I> で指定されたディレクトリはモジュールの検索パス(C<@INC>)に
+加えられ、また C プリプロセッサにインクルードファイルを探す場所を示します。
+C プリプロセッサは B<-P> で起動されます。
+デフォルトでは /usr/include と /usr/lib/perl を探します。
 
 =item B<-l>[I<octnum>]
 
@@ -1121,15 +1121,15 @@ C<$/>.  For instance, to trim lines to 80 columns:
 
 =end original
 
-��ư�ι���������Ԥʤ��褦�ˤ��ޤ���
-����ˤϡ�2 �Ĥ���Ω������ǽ������ޤ���
-1 �Ĥˤϡ�B<-n> �� B<-p> ��Ȥä��Ȥ��ˡ�
-��ưŪ��C<$/>(���ϥ쥳���ɥ��ѥ졼��)�� chomp ���ޤ���
-2 �Ĥ�� octnum �� C<$\>(���ϥ쥳���ɥ��ѥ졼��) ����������
-print ʸ�ǥ��ѥ졼�����ɲäǤ���褦�ˤ��ޤ���
-octnum ����ꤷ�ʤ��ä����ˤϡ����λ����� C<$/> ���ͤ�
-C<$\> �����ꤷ�ޤ���
-���Ȥ��С��Ԥ� 80 �������ڤ�ͤ��ˤϰʲ��Τ褦�ˤ��ޤ�:
+自動の行末処理を行なうようにします。
+これには、2 つの独立した機能があります。
+1 つには、B<-n> や B<-p> を使ったときに、
+自動的にC<$/>(入力レコードセパレータ)を chomp します。
+2 つめに octnum を C<$\>(出力レコードセパレータ) に代入し、
+print 文でセパレータを追加できるようにします。
+octnum を指定しなかった場合には、その時点の C<$/> の値を
+C<$\> に設定します。
+たとえば、行を 80 カラムに切り詰めるには以下のようにします:
 
     perl -lpe 'substr($_, 80) = ""'
 
@@ -1141,10 +1141,10 @@ separator if the B<-l> switch is followed by a B<-0> switch:
 
 =end original
 
-C<$\ = $/> �Ȥ��������ϡ�B<-l> �����å������������Ȥ���
-�¹Ԥ����Ȥ��˹Ԥʤ��ޤ��Τǡ�B<-l> �����å��θ��
-B<-0> �����å����֤��褦�ˤ���С����ϥ쥳���ɥ��ѥ졼����
-���ϥ쥳���ɥ��ѥ졼���Ȱ㤦�褦�ˤ�Ǥ��ޤ�:
+C<$\ = $/> という代入は、B<-l> スイッチが処理されるときに
+実行されるときに行なわれますので、B<-l> スイッチの後に
+B<-0> スイッチを置くようにすれば、入力レコードセパレータを、
+出力レコードセパレータと違うようにもできます:
 
     gnufind / -print0 | perl -ln0e 'print "found $_" if -p'
 
@@ -1154,8 +1154,8 @@ This sets C<$\> to newline and then sets C<$/> to the null character.
 
 =end original
 
-����Ϥޤ���C<$\> �˲��� (C<$/> �Υǥե������) �����ꤷ��
-���줫�� C<$/> �˥̥�ʸ�������ꤷ�ޤ���
+これはまず、C<$\> に改行 (C<$/> のデフォルト値) を設定し、
+それから C<$/> にヌル文字を設定します。
 
 =item B<-m>[B<->]I<module>
 
@@ -1172,8 +1172,8 @@ program.
 
 =end original
 
-B<-m>I<module> �ϥץ������μ¹����� C<use> I<module> C<();> ��
-�¹Ԥ��ޤ���
+B<-m>I<module> はプログラムの実行前に C<use> I<module> C<();> を
+実行します。
 
 =begin original
 
@@ -1183,9 +1183,9 @@ e.g., C<'-Mmodule qw(foo bar)'>.
 
 =end original
 
-B<-M>I<module> �ϥץ������μ¹����� C<use> I<module> C<;> ��
-�¹Ԥ��ޤ����⥸�塼��̾�θ�����ɲäΥ����ɤ�ä��뤿���
-�������Ȥ�Ȥ����Ȥ�Ǥ��ޤ����Ĥޤ� C<'-Mmodule qw(foo bar)'> �ʤɤǤ���
+B<-M>I<module> はプログラムの実行前に C<use> I<module> C<;> を
+実行します。モジュール名の後ろに追加のコードを加えるために
+クォートを使うこともできます。つまり C<'-Mmodule qw(foo bar)'> などです。
 
 =begin original
 
@@ -1194,8 +1194,8 @@ then the 'use' is replaced with 'no'.
 
 =end original
 
-B<-M> �ޤ��� B<-m> �θ�κǽ��ʸ�������å���(C<->)�ξ�硢
-'use' ������� 'no' ���Ȥ��ޤ���
+B<-M> または B<-m> の後の最初の文字がダッシュ(C<->)の場合、
+'use' の代わりに 'no' が使われます。
 
 =begin original
 
@@ -1208,13 +1208,13 @@ removes the distinction between B<-m> and B<-M>.
 
 =end original
 
-�������Ȥ߹��ߤ�ʸˡŪ���奬���Ȥ��ơ�
-C<'-Mmodule qw(foo bar)'> �������
-B<-mmodule=foo,bar> �ޤ��� B<-Mmodule=foo,bar> �Ƚ񤯤��Ȥ��Ǥ��ޤ���
-����ǡ�����ݡ��Ȥ��륷��ܥ�˥������Ȥ�Ȥ�ʤ��Ƥ�褤�褦�ˤʤ�ޤ���
-B<-Mmodule=foo,bar> �����������ºݤΥ����ɤ�
-C<use module split(/,/,q{foo,bar})> �Ǥ���
-C<=> �η��� B<-m> �� B<-M> �δ֤ΰ㤤����������Ȥ����դ��Ƥ���������
+小さい組み込みの文法的シュガーとして、
+C<'-Mmodule qw(foo bar)'> の代わりに
+B<-mmodule=foo,bar> または B<-Mmodule=foo,bar> と書くことができます。
+これで、インポートするシンボルにクォートを使わなくてもよいようになります。
+B<-Mmodule=foo,bar> で生成される実際のコードは
+C<use module split(/,/,q{foo,bar})> です。
+C<=> の形は B<-m> と B<-M> の間の違いを取り除くことに注意してください。
 
 =item B<-n>
 
@@ -1226,10 +1226,10 @@ B<awk>:
 
 =end original
 
-�ʲ��Τ褦�ʥ롼�פ����ºݤΥץ������β��ˤ��뤫�Τ褦��
-Perl �˻ؼ����ޤ���
-B<sed -n> �� B<awk> �Τ褦�˥ե�����̾������Ƿ����֤���
-�Ԥʤ����Ȥˤʤ�ޤ�:
+以下のようなループが、実際のプログラムの回りにあるかのように
+Perl に指示します。
+B<sed -n> や B<awk> のようにファイル名引数上で繰り返しを
+行なうことになります:
 
   LINE:
     while (<>) {
@@ -1244,10 +1244,10 @@ some reason, Perl warns you about it and moves on to the next file.
 
 =end original
 
-�ǥե���ȤǤϡ��ƹԤ���������뤳�ȤϤ���ޤ���
-�ƹԤΰ�����Ԥʤ��ˤ� B<-p> �򻲾Ȥ��Ƥ���������
-�����ǻ��ꤵ�줿�ե����뤬�ʤ�餫����ͳ�ǥ����ץ�Ǥ��ʤ��ä���硢
-Perl �Ϸٹ��Ф��Ƽ��Υե�����˰ܤ�ޤ���
+デフォルトでは、各行が印字されることはありません。
+各行の印字を行なうには B<-p> を参照してください。
+引数で指定されたファイルがなんらかの理由でオープンできなかった場合、
+Perl は警告を出して次のファイルに移ります。
 
 =begin original
 
@@ -1255,8 +1255,8 @@ Here is an efficient way to delete all files older than a week:
 
 =end original
 
-�ʲ��ˤ�����Τϡ�1 ���ְʾ夿�ä��ե�������ΨŪ��
-��������ΤǤ�:
+以下にあげるのは、1 週間以上たったファイルを効率的に
+削除するものです:
 
     find . -mtime +7 -print | perl -nle unlink
 
@@ -1269,10 +1269,10 @@ you
 
 =end original
 
-����ϡ��ե�����̾�����Ĥ��뤴�Ȥ˥ץ�������ư���ʤ��ƺѤߤޤ��Τǡ�
-B<find> �� B<-exec> �����å���Ȥ�����®���ʤ�ޤ���
-����ϥѥ�̾�˲��ԥ����ɤ�����Ȥ��ޤ������ʤ��Х��αƶ�������ޤ��Τǡ�
-B<-O> ����˽������Ȥǽ����Ǥ��ޤ���
+これは、ファイル名が見つかるごとにプロセスを起動しなくて済みますので、
+B<find> の B<-exec> スイッチを使うよりも速くなります。
+これはパス名に改行コードがあるとうまく扱えないバグの影響を受けますので、
+B<-O> の例に従うことで修正できます。
 
 =begin original
 
@@ -1281,9 +1281,9 @@ the implicit program loop, just as in B<awk>.
 
 =end original
 
-B<awk> ��Ʊ���褦�ˡ����ۤ˼¹Ԥ����ץ������롼�פ������
-�¹Ԥ���륳���ɤ���ꤹ�뤿��ˡ�C<BEGIN> �֥��å���
-C<END> �֥��å���Ȥ����Ȥ��Ǥ��ޤ���
+B<awk> と同じように、暗黙に実行されるプログラムループの前後に
+実行されるコードを指定するために、C<BEGIN> ブロックと
+C<END> ブロックを使うことができます。
 
 =item B<-p>
 
@@ -1294,9 +1294,9 @@ makes it iterate over filename arguments somewhat like B<sed>:
 
 =end original
 
-�ʲ��Τ褦�ʥ롼�פ����ºݤΥץ������β��ˤ��뤫�Τ褦��
-Perl �˻ؼ����ޤ���
-B<sed> �Τ褦�˥ե�����̾������Ƿ����֤���Ԥʤ����Ȥˤʤ�ޤ�:
+以下のようなループが、実際のプログラムの回りにあるかのように
+Perl に指示します。
+B<sed> のようにファイル名引数上で繰り返しを行なうことになります:
 
 
   LINE:
@@ -1316,12 +1316,12 @@ overrides a B<-n> switch.
 
 =end original
 
-�����ǻ��ꤵ�줿�ե����뤬���餫����ͳ�ǥ����ץ�Ǥ��ʤ���硢
-Perl �Ϸٹ��Ф������Υե�����˰ܤ�ޤ���
-�ƹԤϡ���ưŪ�˰�������뤳�Ȥˤʤ�ޤ���
-������Υ��顼����̿Ū�Ȥߤʤ���ޤ���
-��������������ˤϡ�B<-n> �����å���ȤäƤ���������
-B<-p> �� B<-n> �����å���̵���ˤ��ޤ���
+引数で指定されたファイルが何らかの理由でオープンできない場合、
+Perl は警告を出し、次のファイルに移ります。
+各行は、自動的に印字されることになります。
+印字中のエラーは致命的とみなされます。
+印字を抑制するには、B<-n> スイッチを使ってください。
+B<-p> は B<-n> スイッチを無効にします。
 
 =begin original
 
@@ -1330,9 +1330,9 @@ the implicit loop, just as in B<awk>.
 
 =end original
 
-B<awk> ��Ʊ���褦�ˡ����ۤ˼¹Ԥ����롼�פ������
-�¹Ԥ���륳���ɤ���ꤹ�뤿��ˡ�C<BEGIN> �֥��å���
-C<END> �֥��å���Ȥ����Ȥ��Ǥ��ޤ���
+B<awk> と同じように、暗黙に実行されるループの前後に
+実行されるコードを指定するために、C<BEGIN> ブロックと
+C<END> ブロックを使うことができます。
 
 =item B<-P>
 
@@ -1348,14 +1348,14 @@ This will cause problems with common Perl constructs like
 
 =end original
 
-Perl �ˤ�륳��ѥ����Ԥʤ����ˡ�������ץȤ� C �ץ�ץ����å���
-������褦�ˤ��ޤ���
-�����Ȥ� cpp �Υǥ��쥯�ƥ��֤� # �ǻϤޤ�ޤ����顢�����Ȥκǽ��
-C �ץ�ץ����å���ǧ�����Ƥ��ޤ� C<"if">, C<"else">, C<"define">�Ȥ��ä�
-ñ��ǻϤ��٤��ǤϤ���ޤ���
-�ޤ���C �ץ����å����Τꤹ���Ƥ���ץ�åȥե�����⤢��ޤ���
-C++ ��������� C<"//"> �Ȥ����ֹ����ޤǤΥ����ȡפ��ΤäƤ�����Ǥ���
-���ξ�硢�ʲ��Τ褦���ɤ����� Perl �ι�¤�����꤬���������ޤ�:
+Perl によるコンパイルを行なう前に、スクリプトを C プリプロセッサに
+かけるようにします。
+コメントも cpp のディレクティブも # で始まりますから、コメントの最初を
+C プリプロセッサが認識してしまう C<"if">, C<"else">, C<"define">といった
+単語で始めるべきではありません。
+また、C プロセッサが知りすぎているプラットフォームもあります。
+C++ スタイルの C<"//"> という「行末までのコメント」を知っている場合です。
+この場合、以下のような良くある Perl の構造で問題が起こり得ます:
 
     s/foo//;
 
@@ -1365,7 +1365,7 @@ because after -P this will became illegal code
 
 =end original
 
--P �θ���Ȱʲ��Τ褦�������ʥ����ɤˤʤäƤ��ޤ�����Ǥ���
+-P の後だと以下のような不正なコードになってしまうからです。
 
     s/foo
 
@@ -1376,8 +1376,8 @@ like for example C<"!">:
 
 =end original
 
-������ˡ�ϡ�C<"/"> �ʳ��Υ������ȥ��ѥ졼����Ȥ����ȤǤ���
-C<"!"> ��Ȥä���򼨤��ޤ�:
+回避方法は、C<"/"> 以外のクォートセパレータを使うことです。
+C<"!"> を使った例を示します:
 
     s!foo!!;
 
@@ -1395,16 +1395,16 @@ if it is invoked with B<-xyz=abc>.
 
 =end original
 
-���ޥ�ɥ饤���Υץ������̾�θ夫�顢�ե�����̾����
-(�ޤ��ϰ��� B<-->) �����ޤǤΥ����å��Τ���Ρ�����Ū�ʲ��Ϥ�
-�Ԥʤ���褦�ˤ��ޤ���
-����ϡ���ĤΥ��å��夬���ˤĤ������å�(B<--help> �ʤ�)��
-�Ȥ��뤳�Ȥ򼨤��ޤ���
-�����Ǹ��Ĥ��ä������å��ϡ�
-@ARGV ����������졢�б����� Perl �ץ��������ѿ���
-���ꤵ��ޤ������ʲ��Υץ������ϡ�B<-xyz> �Ȥ��������å���
-�դ��Ƽ¹Ԥ��줿���ˤ�����"1" ��ɽ������
-B<-xyz=abc> �ȵ�ư���줿���� "abc" ��ɽ�����ޤ���
+コマンドライン上のプログラム名の後から、ファイル名引数
+(または引数 B<-->) の前までのスイッチのための、原始的な解析を
+行なえるようにします。
+これは、二つのダッシュが前につくスイッチ(B<--help> など)も
+使えることを示します。
+ここで見つかったスイッチは、
+@ARGV から取り除かれ、対応する Perl プログラムの変数に
+設定されます。　以下のプログラムは、B<-xyz> というスイッチを
+付けて実行された時にだけ、"1" と表示し、
+B<-xyz=abc> と起動された時に "abc" と表示します。
 
     #!/usr/bin/perl -s
     if ($xyz) { print "$xyz\n" }
@@ -1416,8 +1416,8 @@ with C<strict refs>.
 
 =end original
 
-B<--help> ���ѿ� ${-help} ���������Τǡ�C<strict refs> ���������ʤ�
-���Ȥ����դ��Ƥ���������
+B<--help> は変数 ${-help} を作成するので、C<strict refs> を満たさない
+ことに注意してください。
 
 =item B<-S>
 
@@ -1428,8 +1428,8 @@ program (unless the name of the program contains directory separators).
 
 =end original
 
-Perl ���ץ�������õ���Ȥ��˴Ķ��ѿ� PATH �򻲾Ȥ���褦�ˤ��ޤ�
-(�ץ������̾���ǥ��쥯�ȥꥻ�ѥ졼����ޤ�Ȥ�������ޤ�)��
+Perl がプログラムを探すときに環境変数 PATH を参照するようにします
+(プログラム名がディレクトリセパレータを含むときを除きます)。
 
 =begin original
 
@@ -1442,14 +1442,14 @@ on, using the -Dp switch to Perl shows how the search progresses.
 
 =end original
 
-�ץ�åȥե�����ˤ�äƤϡ�Perl �ϥե������õ���Ȥ��˳�ĥ�Ҥ�
-�ɲä��ޤ���
-�㤨�� Win32 �ץ�åȥե�����Ǥϡ�
-�����Υե�����̾�Ǹ��������Ԥ�����硢".bat" �� ".cmd" �γ�ĥ�Ҥ�
-�ɲä���ޤ���â�����ˤ��Τ褦�ʳ�ĥ�Ҥ��Ĥ��Ƥ��ʤ��������Ǥ���
-Perl �� DEBUGGING ��ͭ���ˤ��ƥ���ѥ��뤵��Ƥ�����硢
--Dp �����å���Ȥ����ȤǤɤΤ褦�˸������Ԥ��Ƥ��뤫��
-ɽ�������뤳�Ȥ��Ǥ��ޤ���
+プラットフォームによっては、Perl はファイルを探すときに拡張子を
+追加します。
+例えば Win32 プラットフォームでは、
+元々のファイル名で検索が失敗した場合、".bat" と ".cmd" の拡張子が
+追加されます。但し既にそのような拡張子がついていない場合だけです。
+Perl が DEBUGGING を有効にしてコンパイルされていた場合、
+-Dp スイッチを使うことでどのように検索が行われているかを
+表示させることができます。
 
 =begin original
 
@@ -1459,9 +1459,9 @@ have a shell compatible with Bourne shell:
 
 =end original
 
-����ϡ�#! �򥵥ݡ��Ȥ��Ƥ��ʤ��ץ�åȥե�����ǡ�#! ��
-���¹Ԥ򥨥ߥ�졼�Ȥ��뤿��˻Ȥ��ޤ���
-������� Bourne shell �ߴ��Υ���������¿���Υץ�åȥե������ư���ޤ�:
+これは、#! をサポートしていないプラットフォームで、#! に
+よる実行をエミュレートするために使います。
+この例は Bourne shell 互換のシェルを持つ多くのプラットフォームで動きます:
 
     #!/usr/bin/perl
     eval 'exec /usr/bin/perl -wS $0 ${1+"$@"}'
@@ -1486,23 +1486,23 @@ will work under any of B<csh>, B<sh>, or Perl, such as the following:
 
 =end original
 
-�����ƥ�ϡ��ǽ�ιԤ�̵�뤷���ץ������� F</bin/sh> ���Ϥ���
-F</bin/sh> �� Perl �ץ������򥷥���ץ������Ȥ��Ƽ¹Ԥ��褦�Ȥ��ޤ���
-������� 2 ���ܤ��̾�Υ����륳�ޥ�ɤȤ��Ƽ¹Ԥ���Perl ���󥿥ץ꥿��
-��ư���뤳�Ȥˤʤ�ޤ���
-$0 �˥ե�ѥ�̾�����äƤ���Ȥϸ¤�ʤ������ƥ��
-����ޤ��Τǡ�-S �� Perl ��ɬ�פ˱����ƥץ�������õ���褦�˻ؼ����ޤ���
-Perl ���ץ������򸫤Ĥ���ȡ������ιԤβ��Ϥ�Ϥ�ޤ�����
-$running_under_some_shell �����ˤʤ뤳�Ȥ��ʤ����ᡢ
-̵�뤹�뤳�Ȥˤʤ�ޤ���
-�ץ�����ब csh �ǲ�ᤵ�����ˤϡ�
-���Ȥ��ե�����̾��������ޤ줿���ڡ����ʤɤ򰷤����Ȥ��Ǥ��ʤ��Ƥ�
-C<${1+"$@"}> �� C<$*> ���֤�������ɬ�פ����뤫�⤷��ޤ���
-csh �ǤϤʤ���sh ��ư����褦�ˡ������Ĥ��Υ����ƥ�Ǥϡ�#! �ιԤ�
-Perl ��̵�뤹�뤳�ȤˤʤäƤ��롢����������ιԤ��֤�������ɬ�פ�
-���뤫�⤷��ޤ���
-�������ä����椬�����ʤ������ƥ�Ǥϡ�B<csh> �Ǥ� B<sh> �Ǥ�
-Perl �Ǥ�Ȥ��롢��꤯�ɤ���ˡ��Ȥ����Ȥ�ɬ�פǤ�:
+システムは、最初の行を無視し、プログラムを F</bin/sh> に渡し、
+F</bin/sh> は Perl プログラムをシェルプログラムとして実行しようとします。
+シェルは 2 行目を通常のシェルコマンドとして実行し、Perl インタプリタを
+起動することになります。
+$0 にフルパス名が入っているとは限らないシステムも
+ありますので、-S が Perl に必要に応じてプログラムを探すように指示します。
+Perl がプログラムを見つけると、これらの行の解析を始めますが、
+$running_under_some_shell が真になることがないため、
+無視することになります。
+プログラムが csh で解釈される場合には、
+たとえファイル名内に埋め込まれたスペースなどを扱うことができなくても
+C<${1+"$@"}> を C<$*> で置き換える必要があるかもしれません。
+csh ではなく、sh を起動するように、いくつかのシステムでは、#! の行を
+Perl も無視することになっている、コロンだけの行で置き換える必要が
+あるかもしれません。
+そういった制御が効かないシステムでは、B<csh> でも B<sh> でも
+Perl でも使える、回りくどい方法を使うことが必要です:
 
 	eval '(exit $?0)' && eval 'exec perl -wS $0 ${1+"$@"}'
 	& eval 'exec /usr/bin/perl -wS $0 $argv:q'
@@ -1517,10 +1517,10 @@ for the file with those extensions added, one by one.
 
 =end original
 
-�ե�����̾�˥ǥ��쥯�ȥꥻ�ѥ졼�����ޤޤ�Ƥ������
-(�Ĥޤ����Хѥ��ޤ������Хѥ����ä����)�������Ƥ��Υե����뤬
-�ʤ��ä���硢�ե������ĥ�Ҥ��ɲä���ץ�åȥե�����Ǥ�
-�ҤȤĤ��ĳ�ĥ�Ҥ��ɲä��ơ��ե������õ���ޤ���
+ファイル名にディレクトリセパレータが含まれていた場合
+(つまり絶対パスまたは相対パスだった場合)、そしてそのファイルが
+なかった場合、ファイル拡張子を追加するプラットフォームでは
+ひとつずつ拡張子を追加して、ファイルを探します。
 
 =begin original
 
@@ -1531,11 +1531,11 @@ program will be searched for strictly on the PATH.
 
 =end original
 
-DOS ���Υץ�åȥե�����Ǥϡ��ץ������˥ǥ��쥯�ȥꥻ�ѥ졼����
-�ޤޤ�Ƥ��ʤ��ä���硢PATH ��õ�����˺ǽ�˥����ȥǥ��쥯�ȥ��
-õ���ޤ���
-Unix �ץ�åȥե�����Ǥϡ��ץ������ϸ�̩�� PATH ����Τ�
-õ����ޤ���
+DOS 風のプラットフォームでは、プログラムにディレクトリセパレータが
+含まれていなかった場合、PATH を探す前に最初にカレントディレクトリを
+探します。
+Unix プラットフォームでは、プログラムは厳密に PATH からのみ
+探されます。
 
 =item B<-T>
 
@@ -1553,17 +1553,17 @@ that construct.
 
 =end original
 
-�ֱ����ץ����å��򥪥�ˤ��ơ��ƥ��ȤǤ���褦�ˤ��ޤ���
-�̾���Υ����å��� setuid �� setgid �Υ�����ץȤ�¹Ԥ���Ȥ��ˤ�����
-�Ԥʤ��ޤ���
-CGI �ץ������䥤�󥿡��ͥåȥ����С��� Perl �ǽ񤯤Ȥ��Τ褦�ˡ�
-���ѤǤ���Ȥϸ¤�ʤ��ͤ�ư�����褦�ʥץ������Ǥ�
-���������Ū��ͭ���ˤ���ΤϤ����ͤ��Ǥ���
-�ܺ٤ˤĤ��Ƥ� L<perlsec> �򻲾Ȥ��Ƥ���������
-�������ƥ������ͳ���顢���Υ��ץ����� Perl �ˤ��ʤ�
-�᤯�Ϥ��ʤ��������ޤ���
-������̾拾�ޥ�ɥ饤��κǽ�����ˤĤ��뤫��
-#! ��¤���б����륷���ƥ�ǤϤ����˽񤯤��Ǥ���
+「汚染」チェックをオンにして、テストできるようにします。
+通常、このチェックは setuid や setgid のスクリプトを実行するときにだけ、
+行なわれます。
+CGI プログラムやインターネットサーバーを Perl で書くときのように、
+信用できるとは限らない人が動かすようなプログラムでは
+これを明示的に有効にするのはいい考えです。
+詳細については L<perlsec> を参照してください。
+セキュリティ上の理由から、このオプションは Perl にかなり
+早く渡さなければ成りません。
+これは通常コマンドラインの最初の方につけるか、
+#! 構造に対応するシステムではここに書くかです。
 
 =item B<-u>
 
@@ -1581,18 +1581,18 @@ specific and may not be available for a specific port of Perl.
 
 =end original
 
-���θŤ������å��ϥץ������Υ���ѥ���塢
-��������פ�Ԥʤ��褦�ˤ��ޤ���
-����Ū�ˤϡ����Υ�������פ���äƤ���(Perl �����ۤǤ��󶡤���Ƥ��ޤ���)
-B<undump> �ץ�������Ȥäơ��¹ԥե�������Ѵ����뤳�Ȥ��Ǥ��ޤ���
-�����¿���ǥ��������̤򿩤��ޤ��� (�¹ԥե������ sprit ���뤳�Ȥ�
-�����ϸ���ޤ�)���¹Գ��Ϥ�®�����뤳�Ȥ��Ǥ��ޤ���
-(���餷�Ƥ⡢"hello world" �μ¹ԥե�����ϡ���Υޥ���� 200K ����
-�ʤ�ޤ���)
-����פ���������ʬŪ�˥ץ�������¹Ԥ��Ƥ����������ˤϡ�
-���Υ����å�������� dump() �黻�Ҥ�ȤäƤ���������
-����:B<undump> ���¹ԤǤ���Τ�����δĶ����Ǥ�����
-���줬�Ȥ��ʤ��ܿ��С������� Perl �⤢��Ǥ��礦��
+この古いスイッチはプログラムのコンパイル後、
+コアダンプを行なうようにします。
+理論的には、このコアダンプを持ってきて(Perl の配布では提供されていませんが)
+B<undump> プログラムを使って、実行ファイルに変換することができます。
+これは多少ディスク容量を食いますが (実行ファイルを sprit することで
+少しは減ります)、実行開始を速くすることができます。
+(減らしても、"hello world" の実行ファイルは、私のマシンで 200K 程に
+なります。)
+ダンプする前に部分的にプログラムを実行しておきたい場合には、
+このスイッチの代わりに dump() 演算子を使ってください。
+注意:B<undump> が実行できるのは特定の環境下ですし、
+これが使えない移植バージョンの Perl もあるでしょう。
 
 =begin original
 
@@ -1602,9 +1602,9 @@ for details.
 
 =end original
 
-���Υ����å��ϥ���ѥ���ΥХå�����ɤȤʤ뿷���� Perl ������
-�����ͥ졼���ε�ǽ���֤��������Ƥ��ޤ���
-�ܺ٤ˤĤ��Ƥ� L<B> �� L<B::Bytecode> �򻲾Ȥ��Ʋ�������
+このスイッチはコンパイラのバックエンドとなる新しい Perl コード
+ジェネレータの機能に置き換えられています。
+詳細については L<B> と L<B::Bytecode> を参照して下さい。
 
 =item B<-U>
 
@@ -1619,14 +1619,14 @@ taint-check warnings.
 
 =end original
 
-Perl �˰����Ǥʤ�������Ĥ��ޤ���
-���ߤΤȤ������ְ����Ǥʤ������ˤϡ�
-�����ѡ��桼���Ȥ��Ƽ¹���˥ǥ��쥯�ȥ�������뤳�Ȥȡ�
-��̿Ū�ʱ��������å���ٹ���ؤ��ơ�
-setuid �ץ�������¹Ԥ��뤳�ȤǤ���
-B<-w> �����å�(���뤤�� C<$^W> �ѿ�)��
-���������å��ηٹ𤬼ºݤ� I<���������> �����
-���Υ��ץ����ȶ��˻Ȥ��ʤ���Фʤ�ޤ���
+Perl に安全でない操作を許可します。
+現在のところ、「安全でない」操作には、
+スーパーユーザとして実行中にディレクトリを削除することと、
+致命的な汚染チェックを警告に替えて、
+setuid プログラムを実行することです。
+B<-w> スイッチ(あるいは C<$^W> 変数)は
+汚染チェックの警告が実際に I<生成される> ために
+このオプションと共に使われなければなりません。
 
 =item B<-v>
 
@@ -1636,7 +1636,7 @@ prints the version and patchlevel of your perl executable.
 
 =end original
 
-Perl �¹ԥե�����ΥС������ȥѥå���٥��ɽ�����ޤ���
+Perl 実行ファイルのバージョンとパッチレベルを表示します。
 
 =item B<-V>
 
@@ -1647,7 +1647,7 @@ values of @INC.
 
 =end original
 
-Perl �μ�������ͤ� @INC �θ��ߤ��ͤ�ɽ�����ޤ���
+Perl の主な設定値と @INC の現在の値を表示します。
 
 =item B<-V:>I<name>
 
@@ -1658,7 +1658,7 @@ For example,
 
 =end original
 
-���ꤵ�줿�����ѿ����ͤ� STDOUT ��ɽ�����ޤ����㤨��:
+指定された設定変数の値を STDOUT に表示します。例えば:
 
     $ perl -V:man.dir
 
@@ -1669,8 +1669,8 @@ be set to in order to access the Perl documentation.
 
 =end original
 
-�� MANPATH �Ķ��ѿ��� Perl �Υɥ�����Ȥ˥�����������Ȥ���
-�ɤΤ褦�˥��åȤ����٤����ˤĤ��ƶ��Ϥʼ꤬�����Ϳ���ޤ���
+は MANPATH 環境変数が Perl のドキュメントにアクセスするときに
+どのようにセットされるべきかについて強力な手がかりを与えます。
 
 =item B<-w>
 
@@ -1686,13 +1686,13 @@ recurse more than 100 deep, and innumerable other things.
 
 =end original
 
-1 �٤����Ȥ��ʤ��ѿ�̾�����ꤵ������˻Ȥ��Ƥ����ѿ���
-���֥롼�ƥ���κ������̤����Υե�����ϥ�ɥ�λ��Ȥ䡢
-read-only �ǥ����ץ󤷤��ե�����ϥ�ɥ�ؤν񤭹��ߡ�
-���ͤ˸����ʤ��ͤ���ͤȤ��ƻȤä���硢�����
-������Ǥ��뤫�Τ褦�˻Ȥä���硢
-100 �ʳ��ʾ�Υ��֥롼�ƥ���κƵ���
-����¾��������ε��路�����˷ٹ��Ф��ޤ���
+1 度しか使われない変数名、設定される前に使われている変数、
+サブルーティンの再定義、未定義のファイルハンドルの参照や、
+read-only でオープンしたファイルハンドルへの書き込み、
+数値に見えない値を数値として使った場合、配列を
+スカラであるかのように使った場合、
+100 段階以上のサブルーティンの再帰、
+その他たくさんの疑わしい事に警告を出します。
 
 =begin original
 
@@ -1705,13 +1705,13 @@ of warnings; see L<warnings> or L<perllexwarn>.
 
 =end original
 
-���Υ����å��ϼºݤˤ������� C<$^W> �ѿ���ͭ���ˤ�������Ǥ���
-C<__WARN__> �եå���Ȥä�����ηٹ��̵���ˤ�����
-��̿Ū���顼�ˤ�����Ǥ��ޤ���
-����ˤĤ��Ƥ� L<perlvar> �� L<perlfunc/warn> �򻲾Ȥ��Ʋ�������
-L<perldiag> �� L<perltrap> �⻲�Ȥ��Ʋ�������
-�⤷�ٹ�Υ��饹���Τ��������ʤ顢������γ�٤κ٤���
-�ٹ�ǽ�⤢��ޤ���L<warnings> �� L<perllexwarn> �򻲾Ȥ��Ʋ�������
+このスイッチは実際には内部の C<$^W> 変数を有効にするだけです。
+C<__WARN__> フックを使って特定の警告を無効にしたり
+致命的エラーにしたりできます。
+これについては L<perlvar> と L<perlfunc/warn> を参照して下さい。
+L<perldiag> と L<perltrap> も参照して下さい。
+もし警告のクラス全体を操作したいなら、新しく粒度の細かい
+警告機能もあります。L<warnings> や L<perllexwarn> を参照して下さい。
 
 =item B<-W>
 
@@ -1722,8 +1722,8 @@ See L<perllexwarn>.
 
 =end original
 
-C<no warnings> �� C<$^W> ������˴ؤ�餺���Ƥηٹ��ͭ���ˤ��ޤ���
-L<perllexwarn> �򻲾Ȥ��Ʋ�������
+C<no warnings> や C<$^W> の設定に関わらず全ての警告を有効にします。
+L<perllexwarn> を参照して下さい。
 
 =item B<-X>
 
@@ -1734,8 +1734,8 @@ See L<perllexwarn>.
 
 =end original
 
-C<use warnings> �� C<$^W> ������˴ؤ�餺���Ƥηٹ��̵���ˤ��ޤ���
-L<perllexwarn> �򻲾Ȥ��Ʋ�������
+C<use warnings> や C<$^W> の設定に関わらず全ての警告を無効にします。
+L<perllexwarn> を参照して下さい。
 
 =item B<-x> I<directory>
 
@@ -1754,24 +1754,24 @@ if desired).
 
 =end original
 
-�᡼��Τ褦���礭��̵�ط���ASCII �ƥ����ȤΤ����ޤ�����
-�ץ�����ब�����ޤ�Ƥ������ Perl �ˤĤ����ޤ���
-�ǽ�� #! �ǻϤޤꡢ"perl" �Ȥ���ʸ�����ޤ�ԤޤǤΡ�
-��Ԥ��르�ߤϼΤƤ��ޤ���
-���ιԤˤ����̣����ĥ����å���Ŭ�Ѥ���ޤ���
-directory �����ꤵ���ȡ�Perl �ϥץ������μ¹����ˡ�
-���Υǥ��쥯�ȥ�˰ܤ�ޤ���
-C<-x> �����å�����Ԥ��르�ߤν�ʬ�����椹������Ǥ���
-�ץ������θ��̵�뤹�٤����ߤ�������ˤϡ�
-C<__END__> �ǥץ�������λ����ɬ�פ�����ޤ� (���Ρ����³��
-���ߤΰ����ޤ��������ϡ�ɬ�פ˱����� DATA �ե�����ϥ�ɥ���̤��ơ�
-���Υץ������ǽ�����������Ǥ��ޤ�)��
+メールのような大きな無関係のASCII テキストのかたまりの中に
+プログラムが埋め込まれている事を Perl につたえます。
+最初の #! で始まり、"perl" という文字列を含む行までの、
+先行するゴミは捨てられます。
+その行にある意味を持つスイッチは適用されます。
+directory が指定されると、Perl はプログラムの実行前に、
+そのディレクトリに移ります。
+C<-x> スイッチは先行するゴミの処分を制御するだけです。
+プログラムの後に無視すべきゴミがある場合には、
+C<__END__> でプログラムを終了する必要があります (その、後に続く
+ゴミの一部または全部は、必要に応じて DATA ファイルハンドルを通して、
+そのプログラムで処理する事ができます)。
 
 =back
 
 =head1 ENVIRONMENT
 
-(�Ķ��ѿ�)
+(環境変数)
 
 =over 12
 
@@ -1783,7 +1783,7 @@ Used if chdir has no argument.
 
 =end original
 
-chdir �ΰ������ʤ��Ȥ��˻Ȥ��ޤ���
+chdir の引数がないときに使われます。
 
 =item LOGDIR
 
@@ -1793,7 +1793,7 @@ Used if chdir has no argument and HOME is not set.
 
 =end original
 
-chdir �ΰ������ʤ���HOME �����åȤ���Ƥ��ʤ��Ȥ��˻Ȥ��ޤ���
+chdir の引数がなく、HOME がセットされていないときに使われます。
 
 =item PATH
 
@@ -1804,8 +1804,8 @@ used.
 
 =end original
 
-���֥ץ�������¹Ԥ���Ȥ��ȡ�B<-S> �����ꤵ�줿�Ȥ��˥ץ�������
-õ���Τ˻Ȥ��ޤ���
+サブプロセスを実行するときと、B<-S> が指定されたときにプログラムを
+探すのに使われます。
 
 =item PERL5LIB
 
@@ -1819,12 +1819,12 @@ defined, PERLLIB is used.
 
 =end original
 
-Perl �Υ饤�֥��ե������õ���Ȥ���ɸ��饤�֥��ǥ��쥯�ȥ��
-�����ȥǥ��쥯�ȥ��õ������õ���ǥ��쥯�ȥ��
-��������ڤ���¤٤���ΤǤ���
-����ξ��ˤ����륢�����ƥ������¸�Υǥ��쥯�ȥ��
-�⤷����м�ưŪ���ɲä���ޤ���
-PERL5LIB ���������Ƥ��ʤ���С�PERLLIB ���Ȥ��ޤ���
+Perl のライブラリファイルを探すときに標準ライブラリディレクトリと
+カレントディレクトリを探す前に探すディレクトリを
+コロン区切りで並べたものです。
+特定の場所におけるアーキテクチャ依存のディレクトリは
+もしあれば自動的に追加されます。
+PERL5LIB が定義されていなければ、PERLLIB が使われます。
 
 =begin original
 
@@ -1834,10 +1834,10 @@ The program should instead say:
 
 =end original
 
-(�ץ�����ब setuid �ޤ��� setgid �Ǽ¹Ԥ���Ƥ��뤫��
-B<-T> �����å������ꤵ���)���������å��դ���ư��Ƥ����硢
-�ɤ���δĶ��ѿ���Ȥ��ޤ���
-����˥ץ��������ǰʲ��Τ褦�ˤ���٤��Ǥ�:
+(プログラムが setuid または setgid で実行されているか、
+B<-T> スイッチが指定されて)汚染チェック付きで動作している場合、
+どちらの環境変数も使われません。
+代わりにプログラム中で以下のようにするべきです:
 
     use lib "/my/directory";
 
@@ -1854,15 +1854,15 @@ enabled, and any subsequent options ignored.
 
 =end original
 
-���ޥ�ɥ饤�󥪥ץ����(�����å�)�Ǥ���
-�����ѿ��Υ����å������Ƥ� Perl ���ޥ�ɥ饤��ǻ��ꤵ�줿���Τ褦��
-�����ޤ���
-B<-[DIMUdmw]> ���ץ����Τߤ�ͭ���Ǥ���
-(�ץ�����ब setuid �ޤ��� setgid �Ǽ¹Ԥ���Ƥ��뤫��
-B<-T> �����å������ꤵ���)���������å��դ���ư��Ƥ����硢
-�����ѿ���̵�뤵��ޤ���
-PERL5OPT �� B<-T> �ǻϤޤäƤ����硢
-���������å���ͭ���Ȥʤꡢ�Ĥ�Υ��ץ�����̵�뤵��ޤ���
+コマンドラインオプション(スイッチ)です。
+この変数のスイッチは全ての Perl コマンドラインで指定されたかのように
+扱われます。
+B<-[DIMUdmw]> オプションのみが有効です。
+(プログラムが setuid または setgid で実行されているか、
+B<-T> スイッチが指定されて)汚染チェック付きで動作している場合、
+この変数は無視されます。
+PERL5OPT が B<-T> で始まっている場合、
+汚染チェックが有効となり、残りのオプションは無視されます。
 
 =item PERLLIB
 
@@ -1874,9 +1874,9 @@ If PERL5LIB is defined, PERLLIB is not used.
 
 =end original
 
-Perl �饤�֥���õ���Τ�ɸ��饤�֥��ȥ����ȥǥ��쥯�ȥ������
-��������ǥ��쥯�ȥ�򥳥�����ڤ���¤٤���ΤǤ���
-PERL5LIB ���������Ƥ���ȡ�PERLLIB �ϻȤ��ޤ���
+Perl ライブラリを探すのに標準ライブラリとカレントディレクトリの前に
+検索するディレクトリをコロン区切りで並べたものです。
+PERL5LIB が定義されていると、PERLLIB は使われません。
 
 =item PERL5DB
 
@@ -1886,8 +1886,8 @@ The command used to load the debugger code.  The default is:
 
 =end original
 
-�ǥХå������ɤ��ɤ߹���Τ˻Ȥ��륳�ޥ�ɤǤ���
-�ǥե���Ȥϰʲ����̤�:
+デバッガコードを読み込むのに使われるコマンドです。
+デフォルトは以下の通り:
 
 	BEGIN { require 'perl5db.pl' }
 
@@ -1903,13 +1903,13 @@ to be space-separated.  Precede any character that needs to be protected
 
 =end original
 
-"�Хå���������" ���ޥ�ɤ� system() ��¹Ԥ��뤿���
-Perl ������Ū�˻Ȥ�ʤ���Фʤ�ʤ����إ��������ꤷ�ޤ���
-�ǥե���Ȥ� WindowsNT �Ǥ� C<cmd.exe /x/c>��Windows95 �Ǥ�
-C<command.com /c> �Ǥ���
-�ͤϥ��ڡ������ڤ�ȹͤ����ޤ���
-(�����Хå�����å���Τ褦��) �ݸ��ɬ�פ�����ʸ�������ˤ�
-�Хå�����å��夬�Ĥ����ޤ���
+"バッククォート" コマンドや system() を実行するために
+Perl が内部的に使わなければならない代替シェルを指定します。
+デフォルトは WindowsNT では C<cmd.exe /x/c>、Windows95 では
+C<command.com /c> です。
+値はスペース区切りと考えられます。
+(空白やバックスラッシュのような) 保護する必要がある文字の前には
+バックスラッシュがつけられます。
 
 =begin original
 
@@ -1922,12 +1922,12 @@ look in COMSPEC to find a shell fit for interactive use).
 
 =end original
 
-COMSPEC ���ͤϥ桼�����ˤ�äƤ��ʤ��͡��ǡ��ܿ��������������������Τǡ�
-Perl �Ϥ�����Ū�� COMSPEC �ϻȤ�ʤ����Ȥ����դ��Ƥ���������
-����ˡ�Perl ������Ū�����Ӥˤϸ����ʤ�����������ѤǤ��ޤ�����
-COMSPEC �ˤ��Τ褦�ʥ��������ꤹ���¾�Υץ������
-(���̤�����Ū�����Ӥ�Ŭ�����������õ���Τ� COMSPEC ��Ȥ��ޤ�)��Ŭ�ڤ����Ѥ�
-���⤹�뤫�⤷��ޤ���
+COMSPEC の値はユーザーによってかなり様々で、移植性の問題を引き起こすので、
+Perl はこの目的に COMSPEC は使わないことに注意してください。
+さらに、Perl は対話的な用途には向かないシェルも利用できますが、
+COMSPEC にそのようなシェルを指定すると他のプログラム
+(普通は対話的な用途に適したシェルを探すのに COMSPEC を使います)の適切な利用を
+邪魔するかもしれません。
 
 =item PERL_DEBUG_MSTATS
 
@@ -1941,12 +1941,12 @@ after compilation.
 
 =end original
 
-Perl �� Perl ���ۥѥå������˴ޤޤ�� malloc �롼�����Ȥä�
-����ѥ��뤵��Ƥ�����(C<perl -V:d_mymalloc> �� 'define' �ξ��)�ˤΤ�
-ͭ���Ǥ���
-���ꤵ���ȡ��¹Ը�˥��������ɽ������ޤ���
-1 ��Ķ������ͤ����ꤵ���ȡ�����ѥ����ˤ�
-���������ɽ�����ޤ���
+Perl が Perl 配布パッケージに含まれる malloc ルーチンを使って
+コンパイルされている場合(C<perl -V:d_mymalloc> が 'define' の場合)にのみ
+有効です。
+設定されると、実行後にメモリ状況が表示されます。
+1 を超える数値が設定されると、コンパイル後にも
+メモリ状況を表示します。
 
 =item PERL_DESTRUCT_LEVEL
 
@@ -1958,9 +1958,9 @@ references.
 
 =end original
 
-Perl �μ¹ԥե����뤬 B<-DDEBUGGING> �դ��ǹ��ۤ��줿���ˤΤ�ͭ���Ǥ���
-���Υ��ץ����ϥ��֥������Ȥ䤽��¾�Υ�ե���󥹤Υ������Х��
-�ǥ��ȥ饯���ο����񤤤����椷�ޤ���
+Perl の実行ファイルが B<-DDEBUGGING> 付きで構築された場合にのみ有効です。
+このオプションはオブジェクトやその他のリファレンスのグローバルな
+デストラクタの振る舞いを制御します。
 
 =item PERL_ROOT (specific to the VMS port)
 
@@ -1974,13 +1974,13 @@ L<perlvms> and in F<README.vms> in the Perl source distribution.
 
 =end original
 
-Perl �� VMS ���Ѥ� @INC �Τ���������ǥХ�����ޤࡢ
-�Ѵ��������줿�롼�ȤȤʤ�����̾�Ǥ���
-VMS �� Perl �˱ƶ���Ϳ���뤽��¾������̾�Ȥ��Ƥ�
-PERLSHR, PERL_ENV_TABLES, SYS$TIMEZONE_DIFFERENTIAL ������ޤ�����
-�����ϥ��ץ����Ǥ����ܺ٤ˤĤ��Ƥ�
-Perl ���������ۥѥå������� L<perlvms> �� F<README.vms> ��
-��������Ƥ��ޤ���
+Perl と VMS 専用の @INC のための論理デバイスを含む、
+変換が隠されたルートとなる論理名です。
+VMS の Perl に影響を与えるその他の論理名としては
+PERLSHR, PERL_ENV_TABLES, SYS$TIMEZONE_DIFFERENTIAL がありますが、
+これらはオプションです。詳細については
+Perl ソース配布パッケージの L<perlvms> と F<README.vms> で
+議論されています。
 
 =item SYS$LOGIN (specific to the VMS port)
 
@@ -1990,7 +1990,7 @@ Used if chdir has no argument and HOME and LOGDIR are not set.
 
 =end original
 
-chdir �ΰ������ʤ���HOME �� LOGDIR �����åȤ���Ƥ��ʤ��Ȥ��˻Ȥ��ޤ���
+chdir の引数がなく、HOME と LOGDIR がセットされていないときに使われます。
 
 =back
 
@@ -2001,8 +2001,8 @@ specific to particular natural languages.  See L<perllocale>.
 
 =end original
 
-����μ����������ͭ�Υǡ����� Perl ���ɤΤ褦�˰�������
-���椹��Ķ��ѿ��⤢��ޤ���L<perllocale> �򻲾Ȥ��Ʋ�������
+特定の自然言語に特有のデータを Perl がどのように扱うかを
+制御する環境変数もあります。L<perllocale> を参照して下さい。
 
 =begin original
 
@@ -2014,12 +2014,12 @@ honest:
 
 =end original
 
-������¾�ˤϡ�
-�¹Ԥ���Ƥ���ץ�����ढ�뤤�ϥ��㥤��ɥץ���������ͭ���ˤ��ʤ��¤ꡢ
-Perl �ϴĶ��ѿ���Ȥ��ޤ���
-��������setuid ��ư���ץ������ϲ����򤹤����ˡ�
-ñ�˿͡����Ѥʵ��򵯤������ʤ������
-�ʲ��Υ����ɤ�����Ƥ����Τ��褤�Ǥ���
+これらの他には、
+実行されているプログラムあるいはチャイルドプロセスがが有効にしない限り、
+Perl は環境変数を使いません。
+しかし、setuid で動作するプログラムは何かをする前に、
+単に人々に変な気を起こさせないために
+以下のコードを入れておくのがよいです。
 
     $ENV{PATH}  = '/bin:/usr/bin';    # or whatever you need
     $ENV{SHELL} = '/bin/sh' if exists $ENV{SHELL};
@@ -2027,7 +2027,7 @@ Perl �ϴĶ��ѿ���Ȥ��ޤ���
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp>
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp>
 Update: Kentaro Shirakata <argrath@ub32.org>
 License: GPL or Artistic
 

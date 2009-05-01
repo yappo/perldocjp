@@ -9,7 +9,7 @@ overload - Package for overloading perl operations
 
 =end original
 
-overload - Perl �α黻�ҤΥ����С������ɤ�Ԥ��ѥå�����
+overload - Perl の演算子のオーバーロードを行うパッケージ
 
 =head1 SYNOPSIS
 
@@ -33,7 +33,7 @@ overload - Perl �α黻�ҤΥ����С������ɤ�Ԥ��ѥå�����
 
 =head2 Declaration of overloaded functions
 
-(�����С������ɴؿ������)
+(オーバーロード関数の宣言)
 
 =begin original
 
@@ -41,7 +41,7 @@ The compilation directive
 
 =end original
 
-����ѥ���ؼ���
+コンパイル指示子
 
     package Number;
     use overload
@@ -56,9 +56,9 @@ for the assignment form C<*=> of multiplication.
 
 =end original
 
-�Ǥϡ���ˡ�δؿ� Number::add() �ȡ֥��饹��C<Number> (���뤤�ϡ�
-���δ��쥯�饹�� 1 ��) ����ξ�ˡ���������� C<*=> �Υ᥽�å� muas() ��
-������Ƥ��ޤ���
+では、加法の関数 Number::add() と「クラス」C<Number> (あるいは、
+その基底クラスの 1 つ) の中の乗法の代入形式 C<*=> のメソッド muas() を
+宣言しています。
 
 =begin original
 
@@ -70,14 +70,14 @@ interpreted as methods, not subroutines.  Legal keys are listed below.
 
 =end original
 
-���λؼ��Ҥΰ����� (key, value) �Υڥ��Ǥ���
-���� value �Ȥ��Ƥϡ�C<&{ ... }> ����ǻ��ѤǤ����Τ�
-���٤Ƥ����Ǥ��ޤ����顢���֥롼����̾��
-���֥롼����ؤΥ�ե���󥹡�̵̾�Υ��֥롼����Ȥ��ä���Τ�
-���٤ƻȤ��ޤ���
-ʸ����Ȥ��ƻ��ꤵ�줿�ͤϥ��֥롼����ǤϤʤ���
-�᥽�åɤȤ��Ʋ�ᤵ��뤳�Ȥ����դ��Ƥ���������
-key �Ȥ���ͭ�����ͤϰʲ��˽Ҥ٤ޤ���
+この指示子の引数は (key, value) のペアです。
+この value としては、C<&{ ... }> の中で使用できるものが
+すべてを指定できますから、サブルーチン名、
+サブルーチンへのリファレンス、無名のサブルーチンといったものが
+すべて使えます。
+文字列として指定された値はサブルーチンではなく、
+メソッドとして解釈されることに注意してください。
+key として有効な値は以下に述べます。
 
 =begin original
 
@@ -91,15 +91,15 @@ operator.)
 
 =end original
 
-C<$a+$b> ��¹Ԥ���Ȥ��ˡ�$a ���ѥå����� C<Number> ���
-bless ���줿���֥������ȤؤΥ�ե���󥹤Ǥ����礫��
-$a �����Τ褦�ʥޥ��ޥ�����ʲ�ˡ���Ѱդ��Ƥ���ѥå�������
-���֥������ȤǤʤ��Ƥ⡢$b �� Number �ؤΥ�ե���󥹤Ǥ�����ˡ�
-���֥롼���� C<add> ���ƤӽФ���ޤ���
-����ϡ�C<$a+=7> �Ȥ� C<$a++> �Ȥ��ä��������奨�������Ǥ�ƤФ�ޤ���
-L<MAGIC AUTOGENERATION> ����򻲾Ȥ��Ƥ���������
-(�֥ޥ��ޥ�����פȤ������դϡ������С������ɤ��줿
-���ѱ黻�Ҥˤ�äƵ�ư�����᥽�åɤ�ؤ��Ƥ��ޤ���)
+C<$a+$b> を実行するときに、$a がパッケージ C<Number> 内に
+bless されたオブジェクトへのリファレンスである場合か、
+$a がそのようなマスマジカルな加法を用意しているパッケージの
+オブジェクトでなくても、$b が Number へのリファレンスである場合に、
+サブルーチン C<add> が呼び出されます。
+これは、C<$a+=7> とか C<$a++> といった、シチュエーションでも呼ばれます。
+L<MAGIC AUTOGENERATION> の節を参照してください。
+(「マスマジカル」という言葉は、オーバーロードされた
+算術演算子によって起動されるメソッドを指しています。)
 
 =begin original
 
@@ -109,13 +109,13 @@ all the packages which inherit from C<Number>.
 
 =end original
 
-�����С������ɤ� @ISA ���ؤˤ��Ѿ����餹��Τǡ���Ҥ������
-C<Number> ����Ѿ���������ƤΥѥå������� C<+> �� C<*=> �Υ����С������ɤ�
-�������������Ȥˤʤ�ޤ���
+オーバーロードは @ISA 階層による継承を遵守するので、上述の宣言は
+C<Number> から継承される全てのパッケージの C<+> と C<*=> のオーバーロードも
+引き起こすことになります。
 
 =head2 Calling Conventions for Binary Operations
 
-(���黻�ҤθƤӽФ�����)
+(二項演算子の呼び出し規約)
 
 =begin original
 
@@ -133,26 +133,26 @@ three different values:
 
 =end original
 
-C<use overload ...> �ؼ��Ҥǻ��ꤵ���ؿ��ϡ�
-3 �� (ͣ�����̤ʾ�礬���äơ�
-���λ��� 4 �� (L<Last Resort>����򻲾�) ) �ΰ����ǸƤӽФ���ޤ���
-�б�����黻�Ҥ������黻�ҤǤ���С��ǽ�� 2 �Ĥΰ����ϡ�
-���α黻�Ҥ� 2 �Ĥΰ����Ǥ���
-�������ʤ��顢�̾�Υ��֥������ȥ᥽�åɤθƤӽФ�����ˤ�äơ�
-�ǽ�ΰ����ϡ���ˤ��Υѥå������Υ��֥������ȤǤʤ���Фʤ�ޤ���Τǡ�
-C<7+$a> �Τ褦�ʾ��ˤϡ������ν���������ؤ����Ԥʤ��ޤ���
-����ϡ���ˡ�Υ᥽�åɤ����������ˤϡ�
-�����餯����ˤϤʤ�ʤ���ΤǤ�������ˡ�Υ᥽�åɤˤȤäƤϡ�
-���������ؤ��뤫�ݤ��ϡ����˽��������Ǥ���
-�᥽�å�¦�Ǥϡ����ΰ����������ؤ��ˤĤ��Ƥξ���� 3 �Ĥ�ΰ�����
-Ĵ�٤뤳�Ȥǡ��Τ���뤳�Ȥ��Ǥ��ޤ���
-���ΰ����ϡ�3 ������ͤ�Ȥ�ޤ�:
+C<use overload ...> 指示子で指定される関数は、
+3 つ (唯一特別な場合があって、
+その時は 4 つ (L<Last Resort>の節を参照) ) の引数で呼び出されます。
+対応する演算子が、二項演算子であれば、最初の 2 つの引数は、
+その演算子の 2 つの引数です。
+しかしながら、通常のオブジェクトメソッドの呼び出し規約によって、
+最初の引数は、常にそのパッケージのオブジェクトでなければなりませんので、
+C<7+$a> のような場合には、引数の順序の入れ替えが行なわれます。
+これは、加法のメソッドを実装する時には、
+おそらく問題にはならないものですが、減法のメソッドにとっては、
+引数を入替えるか否かは、非常に重大な問題です。
+メソッド側では、この引数の入れ替えについての情報を 3 つめの引数を
+調べることで、確かめることができます。
+この引数は、3 種類の値をとります:
 
 =over 7
 
 =item FALSE
 
-(��)
+(偽)
 
 =begin original
 
@@ -160,11 +160,11 @@ the order of arguments is as in the current operation.
 
 =end original
 
-�����ν���ϡ����ߤα黻�ҤǤΤ�Τ�Ʊ���Ǥ���
+引数の順序は、現在の演算子でのものと同じです。
 
 =item TRUE
 
-(��)
+(真)
 
 =begin original
 
@@ -172,7 +172,7 @@ the arguments are reversed.
 
 =end original
 
-�����ϡ��դˤʤäƤ��ޤ���
+引数は、逆になっています。
 
 =item C<undef>
 
@@ -185,17 +185,17 @@ L<Calling Conventions for Mutators>.
 
 =end original
 
-���ߤα黻�Ҥϡ�(C<$a+=7> �Τ褦��) ���������Τ�ΤǤ�����
-��������̤δؿ����ƤФ�ޤ���
-�����ղ�Ū�ʾ���ϡ����餫�κ�Ŭ����Ԥʤ��Ȥ���
-���ѤǤ��ޤ���
-L<Calling Conventions for Mutators> ����Ӥ��Ƥ���������
+現在の演算子は、(C<$a+=7> のような) 代入形式のものですが、
+代わりに普通の関数が呼ばれます。
+この付加的な情報は、何らかの最適化を行なうときに
+使用できます。
+L<Calling Conventions for Mutators> と比較してください。
 
 =back
 
 =head2 Calling Conventions for Unary Operations
 
-(ñ��黻�ҤθƤӽФ�����)
+(単項演算子の呼び出し規約)
 
 =begin original
 
@@ -205,14 +205,14 @@ is called with arguments C<($a,undef,'')> when $a++ is executed.
 
 =end original
 
-ñ��黻�Ҥϡ�2 ���ܤΰ����� C<undef> �����黻�ҤǤ����
-�ͤ����ޤ���
-�ĤޤꡢC<{"++"}> �򥪡��С������ɤ���ؿ��ϡ�
-$a++ ���¹Ԥ����Ȥ��ˡ�C<($a, undef, '')> �Ȥ��������ǸƤӽФ���ޤ���
+単項演算子は、2 番目の引数が C<undef> の二項演算子であると
+考えられます。
+つまり、C<{"++"}> をオーバーロードする関数は、
+$a++ が実行されるときに、C<($a, undef, '')> という引数で呼び出されます。
 
 =head2 Calling Conventions for Mutators
 
-(�ߥ塼�ơ����θƤӽФ�����)
+(ミューテータの呼び出し規約)
 
 =begin original
 
@@ -220,13 +220,13 @@ Two types of mutators have different calling conventions:
 
 =end original
 
-2 ����Υߥ塼�ơ����ϰۤʤä��ƤӽФ����������ޤ�:
+2 種類のミューテータは異なった呼び出し規約を持ちます:
 
 =over
 
 =item C<++> and C<-->
 
-(C<++> �� C<-->)
+(C<++> と C<-->)
 
 =begin original
 
@@ -236,9 +236,9 @@ number,
 
 =end original
 
-�����α黻�Ҥ��������롼����ϡ��ºݤϤ����ΰ�����
-I<�ѹ�(mutate)> ���뤳�Ȥ����ꤷ�Ƥ��ޤ���
-����ǡ�$obj �����ͤؤΥ�ե���󥹤Ȳ��ꤹ��ȡ�
+これらの演算子を実装するルーチンは、実際はこれらの引数を
+I<変更(mutate)> することを想定しています。
+それで、$obj が数値へのリファレンスと仮定すると、
 
   sub incr { my $n = $ {$_[0]}; ++$n; $_[0] = bless \$n}
 
@@ -248,7 +248,7 @@ is an appropriate implementation of overloaded C<++>.  Note that
 
 =end original
 
-�ϥ����С������ɤ��� C<++> ��Ŭ�ڤʼ����Ǥ����ʲ��Τ�Τ�
+はオーバーロードした C<++> の適切な実装です。以下のものは
 
   sub incr { ++$ {$_[0]} ; shift }
 
@@ -259,14 +259,14 @@ of postincrement a copying will be performed, see L<Copy Constructor>.)
 
 =end original
 
-�������󥯥���ȤȻ��奤�󥯥���Ȥξ��� OK �Ǥ��뤳�Ȥ�
-���դ��Ƥ���������
-���奤�󥯥���Ȥξ�硢���ԡ����¹Ԥ���ޤ���
-L<Copy Constructor> �򻲾Ȥ��Ƥ���������)
+事前インクリメントと事後インクリメントの場合は OK であることに
+注意してください。
+事後インクリメントの場合、コピーが実行されます。
+L<Copy Constructor> を参照してください。)
 
 =item C<x=> and other assignment versions
 
-(C<x=> �Ȥ���¾�������黻��)
+(C<x=> とその他の代入演算子)
 
 =begin original
 
@@ -277,9 +277,9 @@ this value.
 
 =end original
 
-�����Υ᥽�åɤˤĤ��Ʋ������̤ʤ�ΤϤ���ޤ���
-�������ͤ��ѹ����뤫�⤷��ޤ��󤷡����Τޤޤ��⤷��ޤ���
-��̤ϡ��⤷�����ͤȰ㤦�ʤ麸¦���ͤ���������뤳�Ȥˤʤ�ޤ���
+これらのメソッドについて何も特別なものはありません。
+引数の値を変更するかもしれませんし、そのままかもしれません。
+結果は、もしこの値と違うなら左側の値に代入されることになります。
 
 =begin original
 
@@ -290,11 +290,11 @@ if C<+=> is not overloaded.
 
 =end original
 
-����ϡ������С������ɤ��� C<+=> �� C<+> �Ȥ���Ʊ���᥽�åɤ�Ȥ����Ȥ�
-�����ޤ���
-����� I<������ޤ�> �����侩����ޤ���; �ʤ��ʤ� L<"Fallback"> ��
-��̣���ˤ�ä� Perl �Ϥ⤷ C<+=> �������С������ɤ���Ƥ��ʤ����
-�Ȥˤ��� C<+> ��ƤӽФ�����Ǥ���
+これは、オーバーロードした C<+=> と C<+> として同じメソッドを使うことを
+許します。
+これは I<許されます> が、推奨されません; なぜなら L<"Fallback"> の
+意味論によって Perl はもし C<+=> がオーバーロードされていなければ
+とにかく C<+> を呼び出すからです。
 
 =back
 
@@ -308,11 +308,11 @@ when traversing your structures too.
 
 =end original
 
-B<�ٹ�:> �黻�������Ǥ�¸�ߤˤ�äơ���������ƥ����ȤǸƤӽФ����
-�롼����ϼ��ʻ��ȹ�¤���뤫�⤷��ޤ���
-���ߤΤȤ�����Perl �Ͻ۴Ĥ� C<����Ū��> �˲������ޤǼ��ʻ��ȹ�¤��
-�������ޤ���
-��¤�򤿤ɤäƤ����Ȥ��ˤ�����ˤʤ뤫�⤷��ޤ���
+B<警告:> 演算の代入版の存在によって、代入コンテキストで呼び出される
+ルーチンは自己参照構造を作るかもしれません。
+現在のところ、Perl は循環が C<明示的に> 破壊されるまで自己参照構造を
+解放しません。
+構造をたどっていくときにも問題になるかもしれません。
 
 =begin original
 
@@ -320,7 +320,7 @@ Say,
 
 =end original
 
-�ʲ��Τ褦�ˤ���ȡ�
+以下のようにすると、
 
   use overload '+' => sub { bless [ \$_[0], \$_[1] ] };
 
@@ -335,13 +335,13 @@ L<Calling Conventions for Binary Operations>).
 
 =end original
 
-�ϼ���Ҥ��򾷤����Ȥˤʤ�ޤ�; �ʤ��ʤ� C<$obj += $foo> �Ȥ��������ɤǤ�
-���֥롼����� C<$obj = add($obj, $foo, undef)> ���뤤�� C<$obj = [\$obj,
-\$foo]> �Ȥ��ƸƤӽФ���뤫��Ǥ���
-�⤷���Τ褦�ʥ��֥롼�����Ȥ����Ȥ����פʺ�Ŭ���ʤ顢
-��ֺ�Ŭ�����Ǥ�����Ū�� C<+=> �򥪡��С������ɤ��뤫��
-�⤷ C<not defined $_[2]> �ʤ����Ŭ���Ǥ��ڤ��ؤ��뤳�Ȥ��Ǥ��ޤ�
-(L<Calling Conventions for Binary Operations> �򻲾Ȥ��Ƥ�������)��
+は自ら災いを招くことになります; なぜなら C<$obj += $foo> というコードでは
+サブルーチンは C<$obj = add($obj, $foo, undef)> あるいは C<$obj = [\$obj,
+\$foo]> として呼び出されるからです。
+もしこのようなサブルーチンを使うことが重要な最適化なら、
+非「最適化」版で明示的に C<+=> をオーバーロードするか、
+もし C<not defined $_[2]> なら非最適化版に切り替えることができます
+(L<Calling Conventions for Binary Operations> を参照してください)。
 
 =begin original
 
@@ -351,16 +351,16 @@ C<',' . $obj . ','> may be both optimized to
 
 =end original
 
-���Ȥ�������ץȤ� I<����Ū��> �����Ϥα黻�Ҥ�ȤäƤ��ʤ��Ƥ⡢
-���ץƥ��ޥ����ˤ�ä���������뤫�⤷��ޤ���
-�㤨�С�C<",$obj,"> �� C<',' . $obj . ','> ��ξ���Ȥ�ʲ��Τ褦��
-��Ŭ������뤫�⤷��ޤ���
+たとえスクリプトで I<明示的に> 代入系の演算子を使っていなくても、
+オプティマイザによって生成されるかもしれません。
+例えば、C<",$obj,"> や C<',' . $obj . ','> は両方とも以下のように
+最適化されるかもしれません
 
   my $tmp = ',' . $obj;    $tmp .= ',';
 
 =head2 Overloadable Operations
 
-(�����С������ɤǤ������)
+(オーバーロードできる操作)
 
 =begin original
 
@@ -368,13 +368,13 @@ The following symbols can be specified in C<use overload> directive:
 
 =end original
 
-�ʲ��Υ���ܥ뤬 C<use overload> �ؼ��Ҥǻ���Ǥ��ޤ�:
+以下のシンボルが C<use overload> 指示子で指定できます:
 
 =over 5
 
 =item * I<Arithmetic operations>
 
-(I<���ѱ黻��>)
+(I<算術演算子>)
 
     "+", "+=", "-", "-=", "*", "*=", "/", "/=", "%", "%=",
     "**", "**=", "<<", "<<=", ">>", ">>=", "x", "x=", ".", ".=",
@@ -389,13 +389,13 @@ autogenerate missing methods for unary minus or C<abs>.
 
 =end original
 
-�����α黻�ҤˤĤ��ơ����������Τ�Τ�¸�ߤ��ʤ��Ȥ��ˤϡ������
-�����������Τ�Τ��ƤФ�ޤ���
-�黻�� C<"+">, C<"-">, C<"+=">, C<"-="> ���Ф���᥽�åɤϡ�
-���󥯥���ȱ黻�Ҥ�ǥ�����ȱ黻�Ҥ�ư�������뤿���
-�ƤФ�뤳�Ȥ�����ޤ���
-�黻�� C<"-"> �ϡ�ñ��Υޥ��ʥ��� C<abs> �Υ᥽�åɤ��ʤ��Ȥ���
-��ư�������뤿��˻Ȥ��ޤ���
+これらの演算子について、代入形式のものが存在しないときには、代わりに
+非代入形式のものが呼ばれます。
+演算子 C<"+">, C<"-">, C<"+=">, C<"-="> に対するメソッドは、
+インクリメント演算子やデクリメント演算子を自動生成するために
+呼ばれることがあります。
+演算子 C<"-"> は、単項のマイナスや C<abs> のメソッドがないときに
+自動生成するために使われます。
 
 =begin original
 
@@ -405,13 +405,13 @@ substitutions.
 
 =end original
 
-�������ִ��˴ؤ���ܺ٤ˤĤ��Ƥ� L<"MAGIC AUTOGENERATION">,
+これらの置換に関する詳細については L<"MAGIC AUTOGENERATION">,
 L<"Calling Conventions for Mutators">,
-L<"Calling Conventions for Binary Operations"> �򻲾Ȥ��Ʋ�������
+L<"Calling Conventions for Binary Operations"> を参照して下さい。
 
 =item * I<Comparison operations>
 
-(I<��ӱ黻��>)
+(I<比較演算子>)
 
     "<",  "<=", ">",  ">=", "==", "!=", "<=>",
     "lt", "le", "gt", "ge", "eq", "ne", "cmp",
@@ -424,14 +424,14 @@ arrays, C<cmp> is used to compare values subject to C<use overload>.
 
 =end original
 
-����黻�Ҥ�̵�����ˤ⡢�б�����֥��ڡ������åס׷������Ȥ���ʤ�С�
-����˻Ȥ����Ȥ��Ǥ��ޤ���
-����Υ����ȤΤȤ��ˤϡ�C<use overload> �Τ�Ȥ� C<cmp> ��Ȥä��ͤ�
-��Ӥ��ޤ���
+ある演算子が無い場合にも、対応する「スペースシップ」形式が使えるならば、
+代わりに使うことができます。
+配列のソートのときには、C<use overload> のもとの C<cmp> を使って値を
+比較します。
 
 =item * I<Bit operations>
 
-(I<�ӥåȱ黻��>)
+(I<ビット演算子>)
 
     "&", "^", "|", "neg", "!", "~",
 
@@ -444,16 +444,16 @@ autogenerated using the methods for "C<bool>", or "C<\"\">", or "C<0+>".
 
 =end original
 
-"C<neg>" �ϡ�ñ��Υޥ��ʥ���ɽ�路�ޤ���
-C<neg> �Υ᥽�åɤ����ꤵ��Ƥ��ʤ��Ȥ��ˤϡ�
-�������Υ᥽�åɤ�Ȥäơ���ư��������ޤ���
-"C<!>" �Υ᥽�åɤ����ꤵ��Ƥ��ʤ��Ȥ��ˤϡ�
-"C<bool>", "C<\"\">", "C<0+>" �Τ����줫�Υ᥽�åɤ�Ȥä�
-��ư��������ޤ���
+"C<neg>" は、単項のマイナスを表わします。
+C<neg> のメソッドが指定されていないときには、
+引き算のメソッドを使って、自動生成されます。
+"C<!>" のメソッドが指定されていないときには、
+"C<bool>", "C<\"\">", "C<0+>" のいずれかのメソッドを使って
+自動生成されます。
 
 =item * I<Increment and decrement>
 
-(I<���󥯥���Ȥȥǥ������>)
+(I<インクリメントとデクリメント>)
 
     "++", "--",
 
@@ -465,12 +465,12 @@ postfix form.
 
 =end original
 
-̤����Ǥ���С�­�����Ȱ������Υ᥽�åɤ�����˻Ȥ��ޤ���
-�����α黻�Ҥϡ����֤Ȥ��Ƥ���֤Ȥ��Ƥ�Ȥ��ޤ���
+未定義であれば、足し算と引き算のメソッドが代わりに使われます。
+これらの演算子は、前置としても後置としても使われます。
 
 =item * I<Transcendental functions>
 
-(I<Ķ�۴ؿ�>)
+(I<超越関数>)
 
     "atan2", "cos", "sin", "exp", "abs", "log", "sqrt",
 
@@ -481,13 +481,13 @@ for "E<lt>" or "E<lt>=E<gt>" combined with either unary minus or subtraction.
 
 =end original
 
-C<abs> ���ʤ��Ȥ��ˤϡ�"E<lt>" �� "E<lt>=<E<gt>" �Υ᥽�åɤ�
-ñ��Υޥ��ʥ����������Υ᥽�åɤ��Ȥ߹�碌�ơ�
-��ư��������ޤ���
+C<abs> がないときには、"E<lt>" か "E<lt>=<E<gt>" のメソッドを、
+単項のマイナスか引き算のメソッドと組み合わせて、
+自動生成されます。
 
 =item * I<Boolean, string and numeric conversion>
 
-(I<�֡����Ѵ���ʸ�����Ѵ��������Ѵ�>)
+(I<ブール変換、文字列変換、数値変換>)
 
     "bool", "\"\"", "0+",
 
@@ -501,13 +501,13 @@ is overloaded too, that operation will be called again with this value.
 
 =end original
 
-��������ǥ����С������ɤ��Ƥ��ʤ���Τ����äƤ⡢�Ĥ꤬��Ĥ�
-��������Ƥ���С����������˻Ȥ����Ȥ��Ǥ��ޤ���
-C<bool> �ϡ�(C<while> �Τ褦��) �ե�������黻�Ҥ䡢
-����黻�� "C<?:>" �ǻȤ��ޤ���
-�����δؿ��ϡ�Ǥ�դ� Perl �ͤ��֤����Ȥ��Ǥ��ޤ���
-�����ͤ��б�����黻�Ҥ⥪���С������ɤ���Ƥ�����ˤϡ�
-���α黻�Ҥ����λ����ͤ�Ȥäơ����ٸƤӽФ���뤳�Ȥˤʤ�ޤ���
+これらの中でオーバーロードしていないものがあっても、残りが一つで
+も定義してあれば、それを代わりに使うことができます。
+C<bool> は、(C<while> のような) フロー制御演算子や、
+三項演算子 "C<?:>" で使われます。
+これらの関数は、任意の Perl 値を返すことができます。
+この値に対応する演算子もオーバーロードされている場合には、
+その演算子がその時の値を使って、再度呼び出されることになります。
 
 =begin original
 
@@ -518,14 +518,14 @@ C<YourPackage=HASH(0x8172b34)>.
 
 =end original
 
-���̤ʾ��Ȥ��ơ������С������ɤ����֥������ȼ��Ȥ��֤�����硢
-���줬ľ�ܻȤ��ޤ���
-���֥������Ȥ��֤������С������ɤ��줿�Ѵ��Ϥ����餯�Х��Ǥ�; �ʤ��ʤ�
-�����餯 C<YourPackage=HASH(0x8172b34)> �Τ褦�ʤ�Τ������뤫��Ǥ���
+特別な場合として、オーバーロードがオブジェクト自身を返した場合、
+これが直接使われます。
+オブジェクトを返すオーバーロードされた変換はおそらくバグです; なぜなら
+おそらく C<YourPackage=HASH(0x8172b34)> のようなものを受け取るからです。
 
 =item * I<Iteration>
 
-(I<ȿ����>)
+(I<反復子>)
 
     "<>"
 
@@ -538,14 +538,14 @@ I<globbing> syntax C<E<lt>${var}E<gt>>.
 
 =end original
 
-�����С������ɤ���ʤ��ȡ������ϥե�����ϥ�ɥ뤫�����֤��Ѵ�����ޤ�
-(ʸ���󲽤�ɬ�פ��⤷��ޤ���)��
-Ʊ�������С������ɤ� I<�ե�����ϥ�ɥ��ɤ߹���> ��ʸ C<E<lt>$varE<gt>> ��
-I<������> ��ʸ C<E<lt>${var}E<gt>> ��ξ���Ǥⵯ����ޤ���
+オーバーロードされないと、引数はファイルハンドルかグロブに変換されます
+(文字列化が必要かもしれません)。
+同じオーバーロードは I<ファイルハンドル読み込み> 構文 C<E<lt>$varE<gt>> と
+I<グロブ> 構文 C<E<lt>${var}E<gt>> の両方でも起こります。
 
 =item * I<Dereferencing>
 
-(I<�ǥ�ե����>)
+(I<デリファレンス>)
 
     '${}', '@{}', '%{}', '&{}', '*{}'.
 
@@ -557,10 +557,10 @@ of correct type, or another object with overloaded dereferencing.
 
 =end original
 
-�����С������ɤ���ʤ��ȡ������� I<���Τޤޤ�> �ǥ�ե���󥹤��졢
-���������ˤʤ�٤��Ǥ���
-�����δؿ������������Υ�ե���󥹤��������С������ɤ��줿
-�ǥ�ե���󥹤ȶ���¾�Υ��֥������Ȥ��֤����٤��Ǥ���
+オーバーロードされないと、引数は I<そのままで> デリファレンスされ、
+正しい型になるべきです。
+これらの関数は正しい型のリファレンスか、オーバーロードされた
+デリファレンスと共に他のオブジェクトが返されるべきです。
 
 =begin original
 
@@ -569,8 +569,8 @@ will be used directly (provided it is the correct type).
 
 =end original
 
-���̤ʾ��Ȥ��ơ������С������ɤ����֥������ȼ��Ȥ��֤�����硢
-(���������ʤ�)���줬ľ�ܻȤ��ޤ���
+特別な場合として、オーバーロードがオブジェクト自身を返した場合、
+(正しい型なら)これが直接使われます。
 
 =begin original
 
@@ -579,12 +579,12 @@ The dereference operators must be specified explicitly they will not be passed t
 
 =end original
 
-�ǥ�ե���󥹱黻�Ҥ� "nomethod" ���Ϥ���ʤ��褦������Ū��
-���ꤵ��ʤ���Фʤ�ޤ���
+デリファレンス演算子は "nomethod" を渡されないように明示的に
+指定されなければなりません。
 
 =item * I<Special>
 
-(I<�ü� key>)
+(I<特殊 key>)
 
     "nomethod", "fallback", "=",
 
@@ -594,7 +594,7 @@ see L<SPECIAL SYMBOLS FOR C<use overload>>.
 
 =end original
 
-L<SPECIAL SYMBOLS FOR C<use overload>> �򻲾Ȥ��Ƥ���������
+L<SPECIAL SYMBOLS FOR C<use overload>> を参照してください。
 
 =back
 
@@ -605,7 +605,7 @@ autogenerated.
 
 =end original
 
-¸�ߤ��ʤ��᥽�åɤμ�ư�����ˤĤ��Ƥ������� L<"Fallback"> �򻲾Ȥ��Ʋ�������
+存在しないメソッドの自動生成についての説明は L<"Fallback"> を参照して下さい。
 
 =begin original
 
@@ -614,8 +614,8 @@ A computer-readable form of the above table is available in the hash
 
 =end original
 
-��ҤΥơ��֥�Υ���ԥ塼�����ɷ����ϡ��ϥå��� %overload::ops ��
-���Ѳ�ǽ�Ǥ�; �ͤ϶���Ƕ��ڤ�줿̾���Υꥹ�ȤǤ�:
+上述のテーブルのコンピュータ可読形式は、ハッシュ %overload::ops で
+利用可能です; 値は空白で区切られた名前のリストです:
 
  with_assign	  => '+ - * / % ** << >> x .',
  assign		  => '+= -= *= /= %= **= <<= >>= x= .=',
@@ -633,7 +633,7 @@ A computer-readable form of the above table is available in the hash
 
 =head2 Inheritance and overloading
 
-(�Ѿ��ȥ����С�������)
+(継承とオーバーロード)
 
 =begin original
 
@@ -641,13 +641,13 @@ Inheritance interacts with overloading in two ways.
 
 =end original
 
-�Ѿ��ϥ����С������ɤ���Ĥ���ˡ�Ǵؤ��ޤ���
+継承はオーバーロードに二つの方法で関わります。
 
 =over
 
 =item Strings as values of C<use overload> directive
 
-(C<use overload> �ؼ��Ҥ��ͤȤ��Ƥ�ʸ����)
+(C<use overload> 指示子の値としての文字列)
 
 =begin original
 
@@ -655,7 +655,7 @@ If C<value> in
 
 =end original
 
-�⤷�ʲ��Ǥ� C<value> ��
+もし以下での C<value> が
 
   use overload key => value;
 
@@ -665,11 +665,11 @@ is a string, it is interpreted as a method name.
 
 =end original
 
-ʸ����ξ�硢�᥽�å�̾�Ȥ��Ʋ�ᤵ��ޤ���
+文字列の場合、メソッド名として解釈されます。
 
 =item Overloading of an operation is inherited by derived classes
 
-(���Υ����С������ɤ��������饹�ˤ�äƷѾ������)
+(操作のオーバーロードは派生クラスによって継承される)
 
 =begin original
 
@@ -681,11 +681,11 @@ rules:
 
 =end original
 
-�����С������ɤ��줿���饹���������������饹�⥪���С������ɤ���ޤ���
-�����С������ɤ��줿�᥽�åɤν�������Ƥ�����Υ����С������ɤ��줿
-�᥽�åɤη��Ǥ���
-�⤷����᥽�åɤ�ʣ��������ˤ�äƥ����С������ɤ���Ƥ���ʤ顢
-�ɤ줬�Ȥ��뤫���̾�ηѾ��롼��ˤ�äƷ��ꤵ��ޤ�:
+オーバーロードされたクラスから派生したクラスもオーバーロードされます。
+オーバーロードされたメソッドの集合は全ての祖先のオーバーロードされた
+メソッドの結合です。
+もしあるメソッドが複数の祖先によってオーバーロードされているなら、
+どれが使われるかは通常の継承ルールによって決定されます:
 
 =begin original
 
@@ -696,10 +696,10 @@ operation C<+> for an object in package C<A>.
 
 =end original
 
-�⤷ C<A> �� C<B> �� C<C> �� (���ν����) �Ѿ����Ƥ��ơ�C<B> �� C<+> ��
-C<\&D::plus_sub> �ǥ����С������ɤ���C<C> �� C<+> �� C<"plus_meth"> ��
-�����С������ɤ��Ƥ����硢�ѥå����� C<A> �ǥ��֥������ȤΤ����
-�黻 C<+> ��������뤿��ˡ����֥롼���� C<D::plus_sub> ���ƤӽФ���ޤ���
+もし C<A> が C<B> を C<C> を (この順序で) 継承していて、C<B> が C<+> を
+C<\&D::plus_sub> でオーバーロードし、C<C> が C<+> を C<"plus_meth"> で
+オーバーロードしている場合、パッケージ C<A> でオブジェクトのために
+演算 C<+> を実装するために、サブルーチン C<D::plus_sub> が呼び出されます。
 
 =back
 
@@ -712,14 +712,14 @@ ancestor is used, but this is accidental and subject to change.
 
 =end original
 
-C<fallback> �������ͤϥ��֥롼����ǤϤʤ��Τǡ����ηѾ��Ͼ�ҤΥ롼��ˤ�
-�����ޤ���
-���ߤμ����Ǥϡ��ǽ�˥����С������ɤ�������� C<fallback> ���ͤ�
-�Ȥ��ޤ���������϶����ǡ��ѹ������ͽ��Ǥ���
+C<fallback> キーの値はサブルーチンではないので、この継承は上述のルールには
+従いません。
+現在の実装では、最初にオーバーロードした祖先の C<fallback> の値が
+使われますが、これは偶然で、変更される予定です。
 
 =head1 SPECIAL SYMBOLS FOR C<use overload>
 
-(C<use overload> ���ü쥷��ܥ�)
+(C<use overload> の特殊シンボル)
 
 =begin original
 
@@ -728,11 +728,11 @@ description.
 
 =end original
 
-�����ޤǤ��������Ƥ�����Τ�¾�ˡ�3 �Ĥ� key �� Perl ��ǧ������ޤ���
+ここまでに説明してきたものの他に、3 つの key が Perl に認識されます。
 
 =head2 Last Resort
 
-(�Ǹ�μ���)
+(最後の手段)
 
 =begin original
 
@@ -746,17 +746,17 @@ the last one is used.  Say, C<1-$a> can be equivalent to
 
 =end original
 
-C<"nomethod"> �ϡ�4 �ĤΥѥ�᡼������Ĵؿ��ؤΥ�ե���󥹤�����³���ޤ���
-���줬�������Ƥ���С������С������ɤλ��Ȥߤǡ�
-���餫�α黻�Ҥ��Ф���᥽�åɤ򸫤Ĥ��뤳�Ȥ��Ǥ��ʤ��ä��Ȥ��ˡ�
-�ƤӽФ���ޤ���
-���δؿ��κǽ�� 3 �Ĥΰ����ϡ����衢
-�ƤФ��Ϥ����ä��᥽�åɤ��Ф�������Ȱ��פ���4 ���ܤΰ����ϡ�
-���Ĥ���ʤ��ä��᥽�åɤ��б����륷��ܥ�Ȥʤ�ޤ���
-�����Ĥ��Υ᥽�åɤ����Ƥ�����ˤϡ��Ǹ�Τ�Τ��Ȥ��ޤ���
-���Ȥ��С�C<1-$a> �Ǥ���С�
-C<"nomethod" =E<gt> "nomethodMethod"> ���Ȥ� C<use overload> �ؼ��Ҥ�
-���ꤵ��Ƥ����:
+C<"nomethod"> は、4 つのパラメータを持つ関数へのリファレンスが引き続きます。
+これが定義されていれば、オーバーロードの仕組みで、
+何らかの演算子に対するメソッドを見つけることができなかったときに、
+呼び出されます。
+この関数の最初の 3 つの引数は、本来、
+呼ばれるはずだったメソッドに対する引数と一致し、4 番目の引数は、
+見つからなかったメソッドに対応するシンボルとなります。
+いくつかのメソッドが試されている場合には、最後のものが使われます。
+たとえば、C<1-$a> であれば、
+C<"nomethod" =E<gt> "nomethodMethod"> の組が C<use overload> 指示子で
+指定されていれば:
 
 	&nomethodMethod($a,1,1,"-")
 
@@ -767,7 +767,7 @@ C<use overload> directive.
 
 =end original
 
-��Ʊ�ͤǤ���
+と同様です。
 
 =begin original
 
@@ -776,8 +776,8 @@ The C<"nomethod"> mechanism is I<not> used for the dereference operators
 
 =end original
 
-C<"nomethod"> �ε����� �ǥ�ե���󥹱黻�� ( ${} @{} %{} &{} *{} ) �Ǥ�
-I<���Ѥ���ޤ���>��
+C<"nomethod"> の機構は デリファレンス演算子 ( ${} @{} %{} &{} *{} ) では
+I<使用されません>。
 
 =begin original
 
@@ -787,13 +787,13 @@ unless C<"fallback"> was specified as a key in C<use overload> directive.
 
 =end original
 
-���餫�α黻�Ҥ����Ĥ��餺��C<"nomethod"> �˷���դ���줿�ؿ���ʤ�
-���ˤϡ�(C<"fallback"> �� C<use overload> �ؼ��ҤΥ����Ȥ���
-���ꤵ��Ƥ��ʤ��¤�) die() �ˤ���㳰��ȯ�����ޤ���
+何らかの演算子が見つからず、C<"nomethod"> に結び付けられた関数もない
+場合には、(C<"fallback"> が C<use overload> 指示子のキーとして
+指定されていない限り) die() による例外が発生します。
 
 =head2 Fallback
 
-(�ե�����Хå�)
+(フォールバック)
 
 =begin original
 
@@ -803,9 +803,9 @@ the value of C<"fallback">:
 
 =end original
 
-C<"fallback"> �ϡ�����α黻�Ҥ��Ф���᥽�åɤ����Ĥ���ʤ�����
-ư����ꤷ�ޤ���
-C<"fallback"> �� value �ˤ�äơ�3 �Ĥξ�礬����ޤ�:
+C<"fallback"> は、特定の演算子に対するメソッドが見つからない場合の
+動作を規定します。
+C<"fallback"> の value によって、3 つの場合があります:
 
 =over 16
 
@@ -820,14 +820,14 @@ will be raised.
 
 =end original
 
-Perl �ϡ����ؤΥ᥽�åɤ�Ȥ����Ȥ��ߤޤ�
-(L<MAGIC AUTOGENERATION> ����򻲾Ȥ��Ƥ�������)��
-��������ʤ�С�C<"nomethod"> ��ƤӽФ����Ȥ��ޤ���
-�����̵�����ˤϡ��㳰��ȯ�����뤳�Ȥˤʤ�ޤ���
+Perl は、代替のメソッドを使うことを試みます
+(L<MAGIC AUTOGENERATION> の節を参照してください)。
+それもダメならば、C<"nomethod"> を呼び出そうとします。
+これも無い場合には、例外が発生することになります。
 
 =item * TRUE
 
-(��)
+(真)
 
 =begin original
 
@@ -837,13 +837,13 @@ present.
 
 =end original
 
-C<undef> �ξ���Ʊ���Ǥ������㳰��ȯ�������ޤ���
-���ξ�硢�ۤäơ��⤷ C<use overload> ���ʤ��ä��Ȥ��ˡ�
-�ԤʤäƤǤ�����ư����ᤵ��뤳�Ȥˤʤ�ޤ���
+C<undef> の場合と同じですが、例外を発生させません。
+この場合、黙って、もし C<use overload> がなかったときに、
+行なってであろう動作に戻されることになります。
 
 =item * defined, but FALSE
 
-(����Ѥߤ����ֵ���)
+(定義済みだが「偽」)
 
 =begin original
 
@@ -852,9 +852,9 @@ C<"nomethod"> value, and if this is missing, raises an exception.
 
 =end original
 
-�ޥ��å���ư�����ϹԤʤ��ޤ���
-Perl �ϡ��ޤ� C<"nomethod"> �μ¹Ԥ��ߤơ�
-���줬�ʤ���С��㳰��ȯ�������ޤ���
+マジック自動生成は行ないません。
+Perl は、まず C<"nomethod"> の実行を試みて、
+これがなければ、例外を発生させます。
 
 =back
 
@@ -865,12 +865,12 @@ yet, see L<"Inheritance and overloading">.
 
 =end original
 
-B<����>: @ISA ��ͳ�� C<"fallback"> �Ѿ��Ϥޤ��Ԥ��ޤ���
-L<"Inheritance and overloading"> �򻲾Ȥ��Ʋ�������
+B<注意>: @ISA 経由の C<"fallback"> 継承はまだ行われません。
+L<"Inheritance and overloading"> を参照して下さい。
 
 =head2 Copy Constructor
 
-(���ԡ����󥹥ȥ饯��)
+(コピーコンストラクタ)
 
 =begin original
 
@@ -881,10 +881,10 @@ operator. This would go against Camel hair.
 
 =end original
 
-C<"="> ���ͤϡ�3 �����δؿ��ؤΥ�ե���󥹤Ǥ���
-�ĤޤꡢC<use overload> ��¾���ͤȻ��Ƥ���褦�˸����ޤ���
-������������� Perl �������黻�Ҥ򥪡��С������ɤ��ޤ���
-����ϡ֥饯������(Camel hair)�פ��й����Ƥ��ޤ���
+C<"="> の値は、3 引数の関数へのリファレンスです。
+つまり、C<use overload> の他の値と似ているように見えます。
+しかし、これは Perl の代入演算子をオーバーロードしません。
+これは「ラクダの毛(Camel hair)」に対抗しています。
 
 =begin original
 
@@ -894,8 +894,8 @@ as
 
 =end original
 
-���α黻�ϡ��ʲ��Τ褦�ʡ�¾�Υ�ե���󥹤ȥ��֥������Ȥ�ͭ����
-��ե���󥹤��Ф��ơ��ߥ塼�ơ�����Ȥ��Ȥ��˸ƤӽФ���ޤ���
+この演算は、以下のような、他のリファレンスとオブジェクトを共有する
+リファレンスに対して、ミューテータを使うときに呼び出されます。
 
 	$a=$b;
 	++$a;
@@ -912,13 +912,13 @@ a nonmutator, i.e., as in
 
 =end original
 
-�����$a ���ѹ�����$b ���ѹ����ʤ��褦�ˤ��뤿��ˡ�C<$$a> �Υ��ԡ����ꡢ
-���ο��������֥������ȤؤΥ�ե���󥹤� $a ����������ޤ���
-�������ϡ�C<++$a> �μ¹���� (���ʤ������������
-C<$$a> �� C<$$b> �˰��פ��ޤ�)���Ԥ��ޤ���
-�����C<++> �� C<'++'> �� C<'+='> (�� C<nomethod>) �Υ᥽�åɤ��̤���
-ɽ������Ƥ���Ȥ��ˤ����Ԥʤ��ޤ�����
-���α黻�Ҥ�����ߥ塼�ơ��� C<"+"> ��ȤäƵ��Ҥ���Ƥ����硢
+これを、$a を変更し、$b を変更しないようにするために、C<$$a> のコピーを作り、
+この新しいオブジェクトへのリファレンスが $a に代入されます。
+この操作は、C<++$a> の実行中に (すなわち、その前に
+C<$$a> が C<$$b> に一致します)、行われます。
+これはC<++> が C<'++'> か C<'+='> (か C<nomethod>) のメソッドを通じて
+表現されているときにだけ行なわれます。　
+この演算子が、非ミューテータ C<"+"> を使って記述されている場合、
 
 	$a=$b;
 	$a=$a+1;
@@ -930,8 +930,8 @@ appear as lvalue when the above code is executed.
 
 =end original
 
-C<$a> �� C<$$a> �ο��������ԡ��Υ�ե���󥹤ǤϤ���ޤ���
-�嵭�Υ����ɤ��¹Ԥ��줿�Ȥ��� $$a �Ϻ����ͤȤ��Ƥϸ���Ƥ��ʤ�����Ǥ���
+C<$a> は C<$$a> の新しいコピーのリファレンスではありません。
+上記のコードが実行されたときに $$a は左辺値としては現れていないからです。
 
 =begin original
 
@@ -941,15 +941,15 @@ string copy if the object is a plain scalar.
 
 =end original
 
-���ԡ����󥹥ȥ饯�����������Ĥ��Υߥ塼�ơ����μ¹����ɬ�פȤʤäơ�
-C<'='> �����ꤵ��Ƥ��ʤ��Ȥ��ˤϡ����Υ��֥������Ȥ�
-ñ�ʤ륹����Ǥ���С�ʸ���󥳥ԡ��Ȥ��Ƽ�ư��������ޤ���
+コピーコンストラクタが、いくつかのミューテータの実行中に必要となって、
+C<'='> が指定されていないときには、そのオブジェクトが
+単なるスカラであれば、文字列コピーとして自動生成されます。
 
 =over 5
 
 =item B<Example>
 
-(B<��>)
+(B<例>)
 
 =begin original
 
@@ -957,7 +957,7 @@ The actually executed code for
 
 =end original
 
-�ʲ��ε��Ҥ�
+以下の記述で
 
 	$a=$b;
         Something else which does not modify $a or $b....
@@ -969,7 +969,7 @@ may be
 
 =end original
 
-�ºݤ˼¹Ԥ���륳���ɤϰʲ��Τ褦�ˤʤ�ޤ�
+実際に実行されるコードは以下のようになります
 
 	$a=$b;
         Something else which does not modify $a or $b....
@@ -983,8 +983,8 @@ C<'='> was overloaded with C<\&clone>.
 
 =end original
 
-(�⤷ $b ���ޥ��ޥ�����ǡ�C<'++'> �� C<\&incr> �ǥ����С������ɤ���Ƥ��ơ�
-C<'='> �� C<\&clone> �ǥ����С������ɤ���Ƥ���С�)
+(もし $b がマスマジカルで、C<'++'> が C<\&incr> でオーバーロードされていて、
+C<'='> が C<\&clone> でオーバーロードされていれば。)
 
 =back
 
@@ -995,12 +995,12 @@ C<$b = $a; ++$a>.
 
 =end original
 
-Ʊ�������񤤤� C<$b = $a++> �ǰ�����������ޤ�; �����
-C<$b = $a; ++$a> ��Ʊ���Ȥ��ư����ޤ���
+同じ振る舞いは C<$b = $a++> で引き起こされます; これは
+C<$b = $a; ++$a> と同義として扱われます。
 
 =head1 MAGIC AUTOGENERATION
 
-(�ޥ��å���ư����)
+(マジック自動生成)
 
 =begin original
 
@@ -1011,16 +1011,16 @@ substitutions are possible for the following operations:
 
 =end original
 
-�黻�Ҥ��Ф���᥽�åɤ����Ĥ��餺��C<"fallback"> ��
-�ֿ��פ���̤����פǤ���С�Perl �ϡ��������Ƥ���黻�Ҥ�
-��Ȥˡ����Ĥ���ʤ��ä��黻�Ҥ�����Υ᥽�åɤ�ư�������褦�Ȼ�ߤޤ���
-�ʲ��α黻�Ҥ��Ф��ơ���ư�������إ᥽�åɤ��Ԥʤ��ޤ�:
+演算子に対するメソッドが見つからず、C<"fallback"> が
+「真」か「未定義」であれば、Perl は、定義されている演算子を
+もとに、見つからなかった演算子の代わりのメソッドを自動生成しようと試みます。
+以下の演算子に対して、自動生成代替メソッドが行なえます:
 
 =over 16
 
 =item I<Assignment forms of arithmetic operations>
 
-(I<���ѱ黻�Ҥ���������>)
+(I<算術演算子の代入形式>)
 
 =begin original
 
@@ -1029,12 +1029,12 @@ is not defined.
 
 =end original
 
-C<"+="> �᥽�åɤ��������Ƥ��ʤ��Ȥ���
-C<$a+=$b> �ϡ�C<"+"> �᥽�åɤ�Ȥ����Ȥ��Ǥ��ޤ���
+C<"+="> メソッドが定義されていないとき、
+C<$a+=$b> は、C<"+"> メソッドを使うことができます。
 
 =item I<Conversion operations>
 
-(I<�Ѵ��黻��>)
+(I<変換演算子>)
 
 =begin original
 
@@ -1043,12 +1043,12 @@ another if not all of them are defined.
 
 =end original
 
-ʸ���󡢿��͡��֡������Ѵ��ϡ����٤Ƥ��������ƤϤ��ʤ��Ȥ���
-�ߤ����̤Τ�ΤǷ׻�����ޤ���
+文字列、数値、ブール値変換は、すべてが定義されてはいないとき、
+互いに別のもので計算されます。
 
 =item I<Increment and decrement>
 
-(I<���󥯥���Ȥȥǥ������>)
+(I<インクリメントとデクリメント>)
 
 =begin original
 
@@ -1057,8 +1057,8 @@ and C<$a--> in terms of C<$a-=1> and C<$a-1>.
 
 =end original
 
-�黻 C<++$a> �ϡ�C<$a+=1> �� C<$a+1> �ǡ��黻 C<$a--> �ϡ�
-C<$a-=1> �� C<$a-1> ��ɽ�����뤳�Ȥ��Ǥ��ޤ���
+演算 C<++$a> は、C<$a+=1> か C<$a+1> で、演算 C<$a--> は、
+C<$a-=1> か C<$a-1> で表現することができます。
 
 =item C<abs($a)>
 
@@ -1068,11 +1068,11 @@ can be expressed in terms of C<$aE<lt>0> and C<-$a> (or C<0-$a>).
 
 =end original
 
-abs($a) �ϡ�C<$aE<lt>0> �� C<-$a> (�ޤ��� C<0-$a>) ��ɽ���Ǥ��ޤ���
+abs($a) は、C<$aE<lt>0> と C<-$a> (または C<0-$a>) で表現できます。
 
 =item I<Unary minus>
 
-(I<ñ��Υޥ��ʥ�>)
+(I<単項のマイナス>)
 
 =begin original
 
@@ -1080,11 +1080,11 @@ can be expressed in terms of subtraction.
 
 =end original
 
-ñ��Υޥ��ʥ��ϡ���������Ȥä�ɽ���Ǥ��ޤ���
+単項のマイナスは、引き算を使って表現できます。
 
 =item I<Negation>
 
-(I<����>)
+(I<否定>)
 
 =begin original
 
@@ -1093,12 +1093,12 @@ string or numerical conversion.
 
 =end original
 
-C<!> �� C<not> �ϥ֡������Ѵ���ʸ�����Ѵ��������Ѵ���Ȥä�
-ɽ���Ǥ��ޤ���
+C<!> と C<not> はブール値変換、文字列変換、数値変換を使って
+表現できます。
 
 =item I<Concatenation>
 
-(I<Ϣ��>)
+(I<連結>)
 
 =begin original
 
@@ -1106,11 +1106,11 @@ can be expressed in terms of string conversion.
 
 =end original
 
-Ϣ��ϡ�ʸ�����Ѵ���Ȥä�ɽ���Ǥ��ޤ���
+連結は、文字列変換を使って表現できます。
 
 =item I<Comparison operations>
 
-(I<��ӱ黻��>)
+(I<比較演算子>)
 
 =begin original
 
@@ -1119,27 +1119,27 @@ C<E<lt>=E<gt>> or C<cmp>:
 
 =end original
 
-��ӱ黻�ϡ����줾����б�����֥��ڡ������åסױ黻
-(C<E<lt>=<E<gt>> �� C<cmp>) ���Ѥ���ɽ�����뤳�Ȥ��Ǥ��ޤ�:
+比較演算は、それぞれに対応する「スペースシップ」演算
+(C<E<lt>=<E<gt>> か C<cmp>) を用いて表現することができます:
 
     <, >, <=, >=, ==, != 	in terms of <=>
     lt, gt, le, ge, eq, ne 	in terms of cmp
 
 =item I<Iterator>
 
-(I<ȿ����>)
+(I<反復子>)
 
     <>				in terms of builtin operations
 
 =item I<Dereferencing>
 
-(I<�ǥ�ե����>)
+(I<デリファレンス>)
 
     ${} @{} %{} &{} *{}		in terms of builtin operations
 
 =item I<Copy operator>
 
-(I<���ԡ��黻��>)
+(I<コピー演算子>)
 
 =begin original
 
@@ -1148,14 +1148,14 @@ value is a scalar and not a reference.
 
 =end original
 
-���ԡ��黻���ﻲ�Ȥ����ͤ�����ե���󥹤ǤϤʤ�������Ǥ���С�
-�����ͤؤ������Ȥ�������ɽ���Ǥ��ޤ���
+コピー演算は被参照した値が、リファレンスではないスカラであれば、
+その値への代入という形で表現できます。
 
 =back
 
 =head1 Losing overloading
 
-(�����С������ɤ�������Ȥ�)
+(オーバーロードが失われるとき)
 
 =begin original
 
@@ -1168,12 +1168,12 @@ other conversions).
 
 =end original
 
-��ӱ黻�Ҥ��Ф������¤ϡ����Ȥ��С�`C<cmp>' �� bless ���줿
-��ե���󥹤��֤��ʤ���Фʤ�ʤ��Ȥ��Ƥ⡢��ư�������줿�ؿ�
-`C<lt>' �ϡ�`C<cmp>' �η�̤ο��ͤ˴�Ť�ɸ��������ͤ�����
-���Ф��ޤ���
-�äˡ����ξ��ˤϡ�(�Ȥ��ˤ��̤��Ѵ���ɽ�蘆�줿)
-�����Ѵ����Ȥ��ʤ��Ȥ����ޤ���
+比較演算子に対する制限は、たとえば、`C<cmp>' が bless された
+リファレンスを返さなければならないとしても、自動生成された関数
+`C<lt>' は、`C<cmp>' の結果の数値に基づく標準の論理値だけを
+作り出します。
+特に、この場合には、(ときには別の変換で表わされた)
+数値変換が使えないといけません。
 
 =begin original
 
@@ -1182,8 +1182,8 @@ if the string conversion substitution is applied.
 
 =end original
 
-Ʊ�ͤˡ�C<.=> �黻�Ҥ� C<x=> �黻�Ҥ⡢ʸ�����Ѵ��ˤ�����ؤ�������С�
-�ޥ��ޥ�������������ʤ��ʤ�ޤ���
+同様に、C<.=> 演算子や C<x=> 演算子も、文字列変換による代替が起これば、
+マスマジカルな性質がなくなります。
 
 =begin original
 
@@ -1193,13 +1193,13 @@ operations as well.
 
 =end original
 
-�ޥ��ޥ�����ʥ��֥������Ȥ� chop() ����ȡ�ʸ����ˤʤꡢ
-�ޥ��ޥ�����������Ϥʤ��ʤ�ޤ���
-Ʊ�����Ȥϡ�¾�α黻�Ǥⵯ����ޤ���
+マスマジカルなオブジェクトを chop() すると、文字列になり、
+マスマジカルな性質はなくなります。
+同じことは、他の演算でも起こります。
 
 =head1 Run-time Overloading
 
-(�¹Ի������С�������)
+(実行時オーバーロード)
 
 =begin original
 
@@ -1208,8 +1208,8 @@ change overloading during run-time is to
 
 =end original
 
-���Ƥ� C<use> �ؼ��Ҥϥ���ѥ�����˼¹Ԥ����Τǡ��¹Ի��˥����С������ɤ�
-�ѹ�����ͣ�����ˡ�ϰʲ��Τ�ΤǤ�
+全ての C<use> 指示子はコンパイル時に実行されるので、実行時にオーバーロードを
+変更する唯一の方法は以下のものです
 
     eval 'use overload "+" => \&addmethod';
 
@@ -1219,7 +1219,7 @@ You can also use
 
 =end original
 
-�ޤ����ʲ��Τ褦�ˤ�Ǥ��ޤ�
+また、以下のようにもできます
 
     eval 'no overload "+", "--", "<="';
 
@@ -1229,11 +1229,11 @@ though the use of these constructs during run-time is questionable.
 
 =end original
 
-�������¹Ի��ˤ��Τ褦�ʹ�ʸ��Ȥ��Τ����꤬¿���Ǥ���
+しかし実行時にこのような構文を使うのは問題が多いです。
 
 =head1 Public functions
 
-(�ѥ֥�å��ؿ�)
+(パブリック関数)
 
 =begin original
 
@@ -1241,7 +1241,7 @@ Package C<overload.pm> provides the following public functions:
 
 =end original
 
-�ѥå����� C<overload.pm> �ϰʲ��Υѥ֥�å��ؿ����󶡤��ޤ�:
+パッケージ C<overload.pm> は以下のパブリック関数を提供します:
 
 =over 5
 
@@ -1253,8 +1253,8 @@ Gives string value of C<arg> as in absence of stringify overloading.
 
 =end original
 
-ʸ���󲽤Υ����С������ɤ��ʤ���ΤȤ����Ȥ��� C<arg> ��ʸ�����ͤ�
-Ϳ���ޤ���
+文字列化のオーバーロードがないものとしたときの C<arg> の文字列値を
+与えます。
 
 =item overload::Overloaded(arg)
 
@@ -1264,7 +1264,7 @@ Returns true if C<arg> is subject to overloading of some operations.
 
 =end original
 
-C<arg> �����餫�����Υ����С������ɤαƶ����ˤ���ʤ鿿���֤��ޤ���
+C<arg> が何らかの操作のオーバーロードの影響下にあるなら真を返します。
 
 =item overload::Method(obj,op)
 
@@ -1274,14 +1274,14 @@ Returns C<undef> or a reference to the method that implements C<op>.
 
 =end original
 
-C<op> ��������Ƥ���᥽�åɤؤΥ�ե���󥹡����뤤�� C<undef> ��
-�֤��ޤ���
+C<op> を実装しているメソッドへのリファレンス、あるいは C<undef> を
+返します。
 
 =back
 
 =head1 Overloading constants
 
-(����Υ����С�������)
+(定数のオーバーロード)
 
 =begin original
 
@@ -1291,9 +1291,9 @@ functions.
 
 =end original
 
-���ץꥱ�������ˤ�äƤ� Perl �ѡ���������򤤤��ꤹ�����礬����ޤ���
-���ν����� overload::constant() �ؿ��� overload::remove_constant() �ؿ���
-�Ȥäƥեå��Ǥ��ޤ���
+アプリケーションによっては Perl パーザが定数をいじりすぎる場合があります。
+この処理を overload::constant() 関数と overload::remove_constant() 関数を
+使ってフックできます。
 
 =begin original
 
@@ -1302,8 +1302,8 @@ are
 
 =end original
 
-�����δؿ��ϰ����Ȥ��ƥϥå������ޤ���
-�ϥå���Υ����Ȥ���ǧ�������Τϰʲ��Τ�ΤǤ���
+これらの関数は引数としてハッシュを取ります。
+ハッシュのキーとして認識されるのは以下のものです。
 
 =over 8
 
@@ -1315,7 +1315,7 @@ to overload integer constants,
 
 =end original
 
-��������򥪡��С������ɤ��ޤ���
+整数定数をオーバーロードします。
 
 =item float
 
@@ -1325,7 +1325,7 @@ to overload floating point constants,
 
 =end original
 
-��ư������������򥪡��С������ɤ��ޤ���
+浮動小数点数定数をオーバーロードします。
 
 =item binary
 
@@ -1335,7 +1335,7 @@ to overload octal and hexadecimal constants,
 
 =end original
 
-8 �ʤ���� 16 ������򥪡��С������ɤ��ޤ���
+8 進および 16 進定数をオーバーロードします。
 
 =item q
 
@@ -1346,8 +1346,8 @@ strings and here-documents,
 
 =end original
 
-C<q>-�������Ȥ��줿ʸ����C<qq>- ����� C<qx>-�������Ȥ��줿ʸ�����
-����ҡ��ҥ�ɥ�����Ȥ򥪡��С������ɤ��ޤ���
+C<q>-クォートされた文字列、C<qq>- および C<qx>-クォートされた文字列の
+定数片、ヒヤドキュメントをオーバーロードします。
 
 =item qr
 
@@ -1357,7 +1357,7 @@ to overload constant pieces of regular expressions.
 
 =end original
 
-����ɽ��������Ҥ򥪡��С������ɤ��ޤ���
+正規表現の定数片をオーバーロードします。
 
 =back
 
@@ -1378,17 +1378,17 @@ it is C<s> for right-hand side of C<s>-operator, and it is C<qq> otherwise.
 
 =end original
 
-�б������ͤ� 3 �Ĥΰ�������ؿ��ؤΥ�ե���󥹤ؤΥ�ե���󥹤Ǥ�:
-�ǽ�Τ�Τ������ I<���> ʸ���������2 ���ܤ� Perl �����������
-�ɤΤ褦�˲�᤹�뤫��3 ���ܤ������ɤΤ褦�˻Ȥ����Ǥ���
-���ʸ���������ʸ����ǥ�ߥ���ޤ�Ǥ��餺���Хå�����å���-�ǥ�ߥ���
-�Ȥ߹�碌�ǤΥХå�����å���Ϻ������Ƥ���(���äƥǥ�ߥ����ͤ�
-����ʸ������������ˤ�Ŭ�ڤǤϤʤ�)���Ȥ����դ��Ƥ���������
-���δؿ����֤��ͤϤ�������� Perl �ˤ�äƤɤΤ褦�˲�ᤵ��뤫�Ǥ���
-3 ���ܤΰ����ϡ������С������ɤ��줿 C<q>- �� C<qr>- ����ʳ��Ǥ�̤����͡�
-(ʸ��������ɽ�������󥰥륯�����ȥҥ�ɥ�����Ȥˤ��)
-���󥰥륯�����ȥ���ƥ����Ȥξ��� C<q>��C<tr>/C<y> �黻�Ҥΰ�����
-���� C<tr>��C<s> �黻�Ҥα�¦�ξ��� C<s>������¾�Ǥ� C<qq> �ˤʤ�ޤ���
+対応する値は 3 つの引数を取る関数へのリファレンスへのリファレンスです:
+最初のものは定数の I<初期> 文字列形式、2 番目は Perl がこの定数を
+どのように解釈するか、3 番目は定数をどのように使うかです。
+初期文字列形式は文字列デリミタを含んでおらず、バックスラッシュ-デリミタの
+組み合わせでのバックスラッシュは削除されている(従ってデリミタの値は
+この文字列を処理するには適切ではない)ことに注意してください。
+この関数の返り値はこの定数が Perl によってどのように解釈されるかです。
+3 番目の引数は、オーバーロードされた C<q>- か C<qr>- 定数以外では未定義値、
+(文字列、正規表現、シングルクォートヒヤドキュメントによる)
+シングルクォートコンテキストの場合は C<q>、C<tr>/C<y> 演算子の引数の
+場合は C<tr>、C<s> 演算子の右側の場合は C<s>、その他では C<qq> になります。
 
 =begin original
 
@@ -1399,10 +1399,10 @@ Similarly, negative numbers are considered as negations of positive constants.
 
 =end original
 
-�� C<"ab$cd,,"> ��ñ�� C<'ab' . $cd . ',,'> �Υ��硼�ȥ��åȤʤΤǡ�
-�����С����������ʸ����������ʥ����С������ɤ��줿���黻�Ҥ�
-�������Ƥ�������ꤷ�Ƥ��ơ�����ʤ�����Թ����ʷ�̤Ȥʤ�ޤ���
-Ʊ�ͤˡ����������������Ȥ��ư����ޤ���
+式 C<"ab$cd,,"> は単に C<'ab' . $cd . ',,'> のショートカットなので、
+オーバーロード定数文字列は妥当なオーバーロードされた結合演算子を
+装備していると想定していて、さもなければ不合理な結果となります。
+同様に、負数は正数の否定として扱われます。
 
 =begin original
 
@@ -1412,10 +1412,10 @@ From these methods they may be called as
 
 =end original
 
-import() �� unimport() �᥽�åɰʳ����� overload::constant() ��
-overload::remove_constant() ��ƤӽФ��ΤϤ����餯̵��̣�Ǥ��뤳�Ȥ�
-���դ��Ƥ���������
-�����Υ᥽�åɤ���ϡ��ʲ��Τ褦�ˤ��ƸƤӽФ���ޤ�
+import() と unimport() メソッド以外から overload::constant() や
+overload::remove_constant() を呼び出すのはおそらく無意味であることに
+注意してください。
+これらのメソッドからは、以下のようにして呼び出されます
 
 	sub import {
 	  shift;
@@ -1431,11 +1431,11 @@ into C<eval '...'>.
 
 =end original
 
-B<�Х�> ���ߤΤȤ���������Υ����С����������� C<eval '...'> �����Ť��ޤ���
+B<バグ> 現在のところ、定数のオーバーロード性は C<eval '...'> に伝播しません。
 
 =head1 IMPLEMENTATION
 
-(����)
+(実装)
 
 =begin original
 
@@ -1443,7 +1443,7 @@ What follows is subject to change RSN.
 
 =end original
 
-�ʲ��Ϥ������ѹ�������ǽ��������ޤ���
+以下はすぐに変更される可能性があります。
 
 =begin original
 
@@ -1457,14 +1457,14 @@ additional (fake) C<bless>ing to update the table.
 
 =end original
 
-���٤Ƥα黻�Τ���Υ᥽�åɤΥơ��֥�ϡ������ѥå�������
-����ܥ�ơ��֥���Ф���ޥ��å��Ȥ��ƥ���å��夵��ޤ���
-���Υ���å���� C<use overload>, C<no overload>, �������ؿ������
-@ISA ���ѹ��Τ����줫�ν����δ֤�̵��������ޤ���
-������������̵�����ϥѥå��������Ф��뼡�� C<bless> �ޤǤ�
-�¹Ԥ��줺�˻Ĥ���ޤ���
-�Ĥޤꡢ�����С������ɹ�¤��ưŪ���ѹ��������ʤ�С��ơ��֥��
-�������뤿��ˡ�(��̣��̵��) C<bless> ��Ԥʤ�ɬ�פ�����ޤ���
+すべての演算のためのメソッドのテーブルは、該当パッケージの
+シンボルテーブルに対するマジックとしてキャッシュされます。
+このキャッシュは C<use overload>, C<no overload>, 新しい関数定義、
+@ISA の変更のいずれかの処理の間に無効化されます。
+しかし、この無効化はパッケージに対する次の C<bless> までは
+実行されずに残されます。
+つまり、オーバーロード構造を動的に変更したいならば、テーブルを
+更新するために、(意味の無い) C<bless> を行なう必要があります。
 
 =begin original
 
@@ -1478,15 +1478,15 @@ Perl.)
 
 =end original
 
-(���٤Ƥ� SV ���Τ�Τϡ��ޥ��å����塼����äƤ��ꡢ�ޥ��å���
-���塼�Υ���ȥ�ˤʤäƤ��ޤ���
-����ˤ�äơ�1 �Ĥ��ѿ�����Ʊ����ʣ���Υޥ��å��η�����
-�ؤ뤳�Ȥ��Ǥ���ΤǤ���
-���Ȥ��С��Ķ��ѿ������ʡ�%ENV �ޥ��å��ȡֱ����ץޥ��å���
-2 �Ĥη�������٤˻��äƤ��ޤ���
-�������������С������ɤ�������Ƥ���ޥ��å��ϱ����Ƥ����Τ�
-Ŭ�Ѥ��졢����Ϥ�ä���ľ�ܻȤ����ȤϤʤ����ᡢ
-Perl ��®�٤��㲼�����ʤ��Ϥ��Ǥ���)
+(すべての SV 風のものは、マジックキューを持っており、マジックが
+キューのエントリになっています。
+これによって、1 つの変数が、同時に複数のマジックの形式に
+関ることができるのです。
+たとえば、環境変数は普段、%ENV マジックと「汚染」マジックの
+2 つの形式を一度に持っています。
+しかし、オーバーロードを実装しているマジックは隠してあるものに
+適用され、これはめったに直接使うことはないため、
+Perl の速度を低下させないはずです。)
 
 =begin original
 
@@ -1496,10 +1496,10 @@ overloading is the checking of this flag.
 
 =end original
 
-���֥������Ȥ������С������ɤ�Ȥ��ѥå�������°����ʤ�С�
-���Υ��֥������Ȥˤϡ����̤ʥե饰���Ѱդ���ޤ���
-�Ĥޤꡢ�����С������ɤ���Ƥ��ʤ����ѱ黻��Ԥʤ��Ȥ��Ρ�
-���ԡ��ɤ��Ф���ƶ��ϡ����Υե饰�Υ����å��ΤߤǤ���
+オブジェクトがオーバーロードを使うパッケージに属するならば、
+そのオブジェクトには、特別なフラグが用意されます。
+つまり、オーバーロードされていない算術演算を行なうときの、
+スピードに対する影響は、このフラグのチェックのみです。
 
 =begin original
 
@@ -1514,16 +1514,16 @@ compiled with optimization turned on.
 
 =end original
 
-�ºݡ�C<use overload> ��¸�ߤ��ʤ���С������С������ɲ�ǽ�ʱ黻��
-�Ф��륪���ХإåɤϤۤȤ��̵�����ۤȤ�ɤΥץ������ǡ�
-ǧ���Ǥ���褦�ʥѥե����ޥ����㲼�Ϥʤ��Ϥ��Ǥ���
-����ѥå������ǥ����С������ɤ��Ȥ��Ƥ⡢
-�оݤΰ����������С������ɤ�Ȥä��ѥå�������°���Ƥ��ʤ����ˤϡ�
-�����ХإåɤκǾ��¤ˤ������¤����Ϥ��٤���ޤ�����
-���路���Ȥ��ˤϡ�C<use overload> ���������̵�����ǡ�
-���ԡ��ɤΥƥ��Ȥ򤷤Ƥ���������������ޤǤΤȤ�����Perl ��
-��Ŭ������ꤷ�ƥ���ѥ�����ˤϡ������ʥ��ԡ��ɤ��㲼������
-�����äƤ��ޤ���
+実際、C<use overload> が存在しなければ、オーバーロード可能な演算に
+対するオーバヘッドはほとんど無く、ほとんどのプログラムで、
+認識できるようなパフォーマスの低下はないはずです。
+あるパッケージでオーバーロードが使われても、
+対象の引数がオーバーロードを使ったパッケージに属していない場合には、
+オーバヘッドの最小限にする最大限の努力が為されました。
+疑わしいときには、C<use overload> がある場合と無い場合で、
+スピードのテストをしてください。　これまでのところ、Perl が
+最適化を指定してコンパイル場合には、顕著なスピードの低下の報告は
+あがっていません。
 
 =begin original
 
@@ -1535,12 +1535,12 @@ overloading, and carries the cache table if the package is overloaded.
 
 =end original
 
-�����С������ɤ��Ȥ��ʤ��Ȥ��ˤϡ��ǡ������礭���ˤϱƶ����ޤ���
-����ѥå������ǥ����С������ɤ�Ȥ��Ȥ���ͣ��Υ������ڥʥ�ƥ��ϡ�
-I<���Ƥ�>�ѥå����������Υѥå������ؤ� C<bless> ����
-�ޥ��å�����뤳�ȤǤ���
-���Υޥ��å��ϥ����С������ɤ�Ȥ�ʤ��ѥå������ξ��� 3 ���Ĺ�ǡ�
-�����С������ɤ�Ȥ��ѥå������ξ��ϥ���å���ơ��֥�򱿤Ӥޤ���
+オーバーロードが使われないときには、データの大きさには影響しません。
+あるパッケージでオーバーロードを使うときの唯一のサイズペナルティは、
+I<全ての>パッケージが次のパッケージへの C<bless> 時に
+マジックを求めることです。
+このマジックはオーバーロードを使わないパッケージの場合は 3 ワード長で、
+オーバーロードを使うパッケージの場合はキャッシュテーブルを運びます。
 
 =begin original
 
@@ -1551,12 +1551,12 @@ behavior by defining your own copy constructor (see L<"Copy Constructor">).
 
 =end original
 
-C<$a=$b> �Τ褦�ʥ��ԡ��ϡ�ɽ��Ū�ʤ�ΤǤ���
-��������C<$a++> �Τ褦�ˡ�$b (�ޤ��ϡ�$a) �����Ȥ��륪�֥������Ȥؤ�
-�������̣����黻�����ˡ�1 �ؿ��٤Υ��ԡ����Ԥʤ��ޤ���
-����ư��ϡ�
-��ʬ�ǥ��ԡ����󥹥ȥ饯����������뤳�Ȥˤ�ä��ѹ����뤳�Ȥ�
-�Ǥ��ޤ� (L<"Copy Constructor">�ι�򻲾Ȥ��Ƥ�������)��
+C<$a=$b> のようなコピーは、表層的なものです。
+しかし、C<$a++> のように、$b (または、$a) が参照するオブジェクトへの
+代入を意味する演算の前に、1 層深度のコピーが行なわれます。
+この動作は、
+自分でコピーコンストラクタを定義することによって変更することが
+できます (L<"Copy Constructor">の項を参照してください)。
 
 =begin original
 
@@ -1565,12 +1565,12 @@ to be changed are constant (but this is not enforced).
 
 =end original
 
-����Ū�˥��ݡ��Ȥ���Ƥ��ʤ��᥽�åɤ��Ф�������ϡ�
-����Ǥ��뤳�Ȥ����Ԥ���ޤ� (���������Ϥ���ޤ���)��
+明示的にサポートされていないメソッドに対する引数は、
+定数であることが期待されます (が、強制はされません)。
 
 =head1 Metaphor clash
 
-(���Ȥξ���)
+(比喩の衝突)
 
 =begin original
 
@@ -1580,9 +1580,9 @@ clash.
 
 =end original
 
-�ʤ������С������ɤ��줿 C<=> �ΰ�̣��������ʤ�ľ��Ū�Ǥʤ�����
-�Ի׵Ĥ˻פ��ͤ����뤫�⤷��ޤ���
-�⤷ľ��Ū�Ǥʤ� I<�褦�˸�����> �ʤ顢���Ȥξ��ͤ˱ƶ�����Ƥ��ޤ���
+なぜオーバーロードされた C<=> の意味論がこんなに直感的でないかを
+不思議に思う人がいるかもしれません。
+もし直感的でない I<ように見える> なら、比喩の衝突に影響されています。
 
 =begin original
 
@@ -1590,7 +1590,7 @@ Here is a Perl object metaphor:
 
 =end original
 
-Perl �Υ��֥������Ȥ����ȤϤ���Ǥ�:
+Perl のオブジェクトの比喩はこれです:
 
 =begin original
 
@@ -1598,7 +1598,7 @@ I<  object is a reference to blessed data>
 
 =end original
 
-I<  ���֥������Ȥ� bless ���줿�ǡ����ؤΥ�ե����>
+I<  オブジェクトは bless されたデータへのリファレンス>
 
 =begin original
 
@@ -1606,7 +1606,7 @@ and an arithmetic metaphor:
 
 =end original
 
-�����ƻ��Ѥ����ȤϤ���Ǥ�:
+そして算術の比喩はこれです:
 
 =begin original
 
@@ -1614,7 +1614,7 @@ I<  object is a thing by itself>.
 
 =end original
 
-I<  ���֥������ȤϤ��켫�Τ���ĤΤ��>��
+I<  オブジェクトはそれ自体が一つのもの>。
 
 =begin original
 
@@ -1627,13 +1627,13 @@ that $a and $b are separate entities.
 
 =end original
 
-C<=> �򥪡��С������ɤ��� I<���> ����ϡ�$a �� $b �����֥������ȤΤȤ���
-C<$a = $b> �Ȥ��������Ϥ��������Ȥ���ϰۤʤä�ư���ż�����Ȥ���
-���¤Ǥ���
-Perl Ū�ʹͤ����ϡ�$a �� $b ����ե���󥹤��Ƥ��벿���ؤΥ�ե���󥹤�
-�ʤ뤳�Ȥ�ż����ޤ���
-����Ū�ʹͤ����ϡ�$a �� $b ���̡��μ��ΤǤ��뤳�Ȥϰݻ������ޤޡ�
-�֥��֥������ȡ�$a ���ͤϡ����֥������� $b ���ͤˤʤ뤳�Ȥ�ż����ޤ���
+C<=> をオーバーロードする I<主な> 問題は、$a と $b がオブジェクトのとき、
+C<$a = $b> という代入はこれらの比喩からは異なった動作を暗示するという
+事実です。
+Perl 的な考え方は、$a は $b がリファレンスしている何かへのリファレンスに
+なることを暗示します。
+算術的な考え方は、$a と $b が別々の実体であることは維持したまま、
+「オブジェクト」$a の値は、オブジェクト $b の値になることを暗示します。
 
 =begin original
 
@@ -1644,11 +1644,11 @@ C<$a = $b> values of $a and $b become I<indistinguishable>.
 
 =end original
 
-�ߥ塼�ơ������ʤ��ʤ顢����ϰ㤤�Ϥ���ޤ���
-Perl ���������θ塢$a �ǥ�ե���󥹤���Ƥ���ǡ������ѹ�����黻��
-$b �ǥ�ե���󥹤���Ƥ���ǡ������ѹ����ޤ���
-���¾塢C<$a = $b> �θ�Ǥ� $a �� $b ���ͤ� I<���̤��Ǥ��ʤ�> ��Τ�
-�ʤ�ޤ���
+ミューテータがないなら、これは違いはありません。
+Perl 式の代入の後、$a でリファレンスされているデータを変更する演算は
+$b でリファレンスされているデータも変更します。
+事実上、C<$a = $b> の後では $a と $b の値は I<区別ができない> ものに
+なります。
 
 =begin original
 
@@ -1662,14 +1662,14 @@ way it is done is described in L<Copy Constructor>.
 
 =end original
 
-���������ѵ�ˡ��ȤäƤ���ͤ�ï�Ǥ⡢���Ѥ����Ȥ�ɽ���Ϥ��ΤäƤ��ޤ���
-�����С������ɤϤ������Ȥ�ͭ���ˤ���Τ��񤷤�������Perl Ū����ˡ��
-����������¸��������ư��ޤ���
-2 �Ĥ�̷�⤹�����Ȥ�ͳ�˺����뤳�Ȥ��Բ�ǽ�ʤΤǡ�
-�����С������ɤ� I<���ƤΥߥ塼�ơ����������С������ɤ��줿
-����������ͳ�ǤΤ߸ƤӽФ����¤�ˤ�����> ����Ū����ˡ��
-�񤯤��Ȥ��Ǥ��ޤ���
-�����Ԥ���ˡ�� L<Copy Constructor> �˵��Ҥ���Ƥ��ޤ���
+一方、算術記法を使っている人は誰でも、算術の比喩の表現力を知っています。
+オーバーロードはこの比喩を有効にするのは難しい一方、Perl 的な方法を
+出来るだけ保存した形で動作します。
+2 つの矛盾する比喩を自由に混ぜることは不可能なので、
+オーバーロードは I<全てのミューテータがオーバーロードされた
+アクセス経由でのみ呼び出される限りにおいて> 算術的な方法で
+書くことができます。
+これを行う方法は L<Copy Constructor> に記述されています。
 
 =begin original
 
@@ -1679,9 +1679,9 @@ same value:
 
 =end original
 
-����ߥ塼�ơ����᥽�åɤ������С������ɤ��줿�ͤ�ľ��Ŭ�Ѥ�����硢
-Ʊ���ͤ��ե���󥹤��Ƥ���ۤ����ͤ� I<����Ū�˥�󥯤��ڤ�> ɬ�פ�
-���뤫�⤷��ޤ���:
+あるミューテータメソッドがオーバーロードされた値に直接適用される場合、
+同じ値をリファレンスしているほかの値と I<明示的にリンクを切る> 必要が
+あるかもしれません:
 
     $a = new Data 23;
     ...
@@ -1696,7 +1696,7 @@ Note that overloaded access makes this transparent:
 
 =end original
 
-�����С������ɤ��줿���������Ϥ����Ʃ��Ū�ˤ��뤳�Ȥ����դ��Ƥ�������:
+オーバーロードされたアクセスはこれを透過的にすることに注意してください:
 
     $a = new Data 23;
     $b = $a;		# $b is "linked" to $a
@@ -1708,7 +1708,7 @@ However, it would not make
 
 =end original
 
-���������ʲ��Τ褦�ˤ��Ƥ⡢
+しかし、以下のようにしても、
 
     $a = new Data 23;
     $a = 4;		# Now $a is a plain 4, not 'Data'
@@ -1724,14 +1724,14 @@ completeness, at least for variables which were tie()d from the start.
 
 =end original
 
-$a �Ρ֥��֥����������פ���¸����ޤ���
-��������Perl �ˤϥ��֥������Ȥؤ�������˾���̤�Τ�����ˤ�����ˡ��
-I<����ޤ�>��
-�����ñ�˥����С������ɤǤϤʤ���tie() ���륤�󥿡��ե������Ǥ�
-(L<perlfunc/tie> �򻲾Ȥ��Ƥ�������)��
-���֥������ȼ��Ȥ��֤� FETCH() �᥽�åɤȡ����֥������Ȥ��ͤ��ѹ�����
-STORE() �᥽�åɤ��ɲä��뤳�Ȥǡ����ʤ��Ȥ�ǽ餫�� tie() ����Ƥ���
-�ѿ����Ф��Ƥϡ����������Ф��ƻ��Ѥ����Ȥ�Ƹ��Ǥ��ޤ���
+$a の「オブジェクト性」は保存されません。
+しかし、Perl にはオブジェクトへの代入を望み通りのやり方にする方法が
+I<あります>。
+これは単にオーバーロードではなく、tie() するインターフェースです
+(L<perlfunc/tie> を参照してください)。
+オブジェクト自身を返す FETCH() メソッドと、オブジェクトの値を変更する
+STORE() メソッドを追加することで、少なくとも最初から tie() されている
+変数に対しては、完全性に対して算術の比喩を再現できます。
 
 =begin original
 
@@ -1739,12 +1739,12 @@ STORE() �᥽�åɤ��ɲä��뤳�Ȥǡ����ʤ��Ȥ�ǽ餫�� tie() ����Ƥ���
 
 =end original
 
-(���ΥХ��β������ɬ�פ��⤷��ʤ����Ȥ����դ��Ƥ�������; L<"BUGS"> ��
-���Ȥ��Ƥ���������)
+(このバグの回避策が必要かもしれないことに注意してください; L<"BUGS"> を
+参照してください。)
 
 =head1 Cookbook
 
-(�쥷�Խ�)
+(レシピ集)
 
 =begin original
 
@@ -1752,11 +1752,11 @@ Please add examples to what follows!
 
 =end original
 
-�ɤ�������˰���³������ɲä��Ƥ�������!
+どうかこれに引き続く例を追加してください!
 
 =head2 Two-face scalars
 
-(2 �̥�����)
+(2 面スカラ)
 
 =begin original
 
@@ -1764,7 +1764,7 @@ Put this in F<two_face.pm> in your Perl library directory:
 
 =end original
 
-����� F<two_face.pm> �Ȥ��� Perl �饤�֥��ǥ��쥯�ȥ���֤��ޤ�:
+これを F<two_face.pm> として Perl ライブラリディレクトリに置きます:
 
   package two_face;		# Scalars with separate string and
                                 # numeric values.
@@ -1779,7 +1779,7 @@ Use it as follows:
 
 =end original
 
-�ʲ��Τ褦�ˤ��ƻȤ��ޤ�:
+以下のようにして使います:
 
   require two_face;
   my $seven = new two_face ("vii", 7);
@@ -1793,15 +1793,15 @@ numeric value.)  This prints:
 
 =end original
 
-(2 ���ܤ�ʸ�����ͤȿ��ͤ�ξ������ĥ��������ޤ���)
-����ϰʲ�����Ϥ��ޤ�:
+(2 行目は文字列値と数値の両方を持つスカラを作ります。)
+これは以下を出力します:
 
   seven=vii, seven=7, eight=8
   seven contains `i'
 
 =head2 Two-face references
 
-(2 �̥�ե����)
+(2 面リファレンス)
 
 =begin original
 
@@ -1813,11 +1813,11 @@ allowing index 0 to be treated as a normal element.
 
 =end original
 
-Perl �Ȥ߹��ߤ�
-L<�����ϥå���|perlref/"Pseudo-hashes: Using an array as a hash"> ���Τ褦�ʡ�
-�����ե���󥹤ȥϥå����ե���󥹤�ξ���Ȥ��ƥ���������ǽ��
-���֥������Ȥ��ꤿ���Ȥ��ޤ���
-ź���� 0 �����̤����ǤȤ��ư����뵼���ϥå������褤��Τ���ޤ��礦��
+Perl 組み込みの
+L<擬似ハッシュ|perlref/"Pseudo-hashes: Using an array as a hash"> 型のような、
+配列リファレンスとハッシュリファレンスの両方としてアクセス可能な
+オブジェクトを作りたいとします。
+添え字 0 を普通の要素として扱える擬似ハッシュよりもよいものを作りましょう。
 
   package two_refs;
   use overload '%{}' => \&gethash, '@{}' => sub { $ {shift()} };
@@ -1855,7 +1855,7 @@ Now one can access an object using both the array and hash syntax:
 
 =end original
 
-���������ȥϥå����ξ����ʸˡ��Ȥäƥ��֥������Ȥ˥��������Ǥ��ޤ�:
+これで配列とハッシュの両方の文法を使ってオブジェクトにアクセスできます:
 
   my $bar = new two_refs 3,4,5,6;
   $bar->[2] = 11;
@@ -1872,13 +1872,13 @@ TIEHASH() method is a scalar reference.
 
 =end original
 
-������Τ����Ĥ��ν��פʵ�ǽ�����դ��Ƥ���������
-�ޤ���$bar �� I<�ºݤ�> ���ϥ������ե���󥹤ǡ�������ǥ�ե���󥹤�
-�����С������ɤ��Ƥ��ޤ���
-���äơ�ñ��(�ؿ�����ǥ����С������ɥǥ�ե���󥹤򤷤Ƥ�����ˡ�Ǥ���)
-C<$$bar> �Ȥ��뤳�Ȥǡ�I<�ºݤ�> $bar �Υ����С������ɤ���Ƥ��ʤ���Ȥ�
-���뤳�Ȥ��Ǥ��ޤ���
-Ʊ�ͤˡ�TIEHASH() �᥽�åɤ��֤���륪�֥������Ȥϥ������ե���󥹤Ǥ���
+この例のいくつかの重要な機能に注意してください。
+まず、$bar の I<実際の> 型はスカラリファレンスで、スカラデリファレンスは
+オーバーロードしていません。
+従って、単に(関数の中でオーバーロードデリファレンスをしている方法である)
+C<$$bar> とすることで、I<実際の> $bar のオーバーロードされていない中身を
+得ることができます。
+同様に、TIEHASH() メソッドで返されるオブジェクトはスカラリファレンスです。
 
 =begin original
 
@@ -1888,9 +1888,9 @@ would would lead to a memory leak.
 
 =end original
 
-2 ���ܤˡ��ϥå���ʸˡ���Ȥ��뤿�Ӥ˿����� tie ���줿�ϥå������ޤ���
-����ˤ�ꡢ����꡼����������������Ȥˤʤ��ե���󥹥롼�פ�
-��ǽ���ˤĤ��ƿ��ۤ��ʤ��Ƥ��ɤ��ʤ�ޤ���
+2 番目に、ハッシュ文法が使われるたびに新しい tie されたハッシュを作ります。
+これにより、メモリリークを引き起こすことになるリファレンスループの
+可能性について心配しなくても良くなります。
 
 =begin original
 
@@ -1902,13 +1902,13 @@ overloaded dereference operator).  Here is one possible fetching routine:
 
 =end original
 
-�����������ξ���Ͻ����Ǥ��ޤ���
-�㤨�С��ϥå��弫�ȤȤ��� I<��������Ƥ���> ���֥������Ȥؤ�
-��ե���󥹤��Ф���ϥå���Υǥ�ե���󥹤򥪡��С������ɤ�������硢
-���򤹤�ɬ�פ�����ͣ�������ϡ�(�����С������ɤ��줿
-�ǥ�ե���󥹱黻�Ҥˤ�ä��󶡤���� I<����> �ϥå���ǤϤʤ�)
-���� I<�ºݤ�> �ϥå���ˤɤ���äƥ����������뤫�Ǥ���
-����ϲ�ǽ�ʥե��å��롼����ΰ�ĤǤ�:
+これらの問題の両方は修正できます。
+例えば、ハッシュ自身として I<実装されている> オブジェクトへの
+リファレンスに対するハッシュのデリファレンスをオーバーロードしたい場合、
+回避する必要がある唯一の問題は、(オーバーロードされた
+デリファレンス演算子によって提供される I<仮想> ハッシュではなく)
+この I<実際の> ハッシュにどうやってアクセスするかです。
+これは可能なフェッチルーチンの一つです:
 
   sub access_hash {
     my ($self, $key) = (shift, shift);
@@ -1926,8 +1926,8 @@ level of indirection which allows a non-circular structure of references:
 
 =end original
 
-����������� tie ���줿�ϥå���������򤷤ʤ��褦�ˤ���ˤϡ�
-��ե���󥹤���߷��ι�¤�����������ɲäΥ�٥�δ��ܲ���Ԥ��ޤ�:
+アクセス毎に tie されたハッシュの生成をしないようにするには、
+リファレンスの非円形の構造を許すための追加のレベルの間接化を行います:
 
   package two_refs1;
   use overload '%{}' => sub { ${shift()}->[1] },
@@ -1972,11 +1972,11 @@ hash is a reference to a reference to the actual array, so
 
 =end original
 
-�����Ǥ⤷ $bar �����Τ褦�˥����С������ɤ����ȡ�C<$baz> ��
-�ºݤ�����ȥ��������ϥå���ؤΥ�ե���󥹤��ݻ����Ƥ�����֤�����ؤ�
-��ե���󥹤ؤΥ�ե���󥹤Ǥ���
-���������ϥå���ؤ� tie() �������֥������Ȥ� �ºݤ�����ؤ�
-��ե���󥹤ؤΥ�ե���󥹤ʤΤǡ�
+ここでもし $bar がこのようにオーバーロードされると、C<$baz> は
+実際の配列とアクセスハッシュへのリファレンスを保持している中間の配列への
+リファレンスへのリファレンスです。
+アクセスハッシュへの tie() したオブジェクトは 実際の配列への
+リファレンスへのリファレンスなので、
 
 =over
 
@@ -1988,7 +1988,7 @@ There are no loops of references.
 
 =end original
 
-��ե���󥹤Υ롼�פϤ���ޤ���
+リファレンスのループはありません。
 
 =item *
 
@@ -2001,16 +2001,16 @@ overloaded operations.
 
 =end original
 
-C<two_refs1> ���饹�� bless ���줿ξ���Ρ֥��֥������ȡפ�����ؤ�
-��ե���󥹤ؤΥ�ե���󥹤ʤΤǡ�I<������> �ؤΥ�ե���󥹤Ǥ���
-���äơ����������� C<$$foo-E<gt>[$ind]> �ϥ����С������ɤ��줿�黻��
-ȼ���ޤ���
+C<two_refs1> クラスに bless された両方の「オブジェクト」は配列への
+リファレンスへのリファレンスなので、I<スカラ> へのリファレンスです。
+従って、アクセサ式 C<$$foo-E<gt>[$ind]> はオーバーロードされた演算を
+伴いません。
 
 =back
 
 =head2 Symbolic calculator
 
-(����ܥ�å��׻���)
+(シンボリック計算機)
 
 =begin original
 
@@ -2018,7 +2018,7 @@ Put this in F<symbolic.pm> in your Perl library directory:
 
 =end original
 
-���� F<symbolic.pm> �򤢤ʤ��� Perl �饤�֥��ǥ��쥯�ȥ������Ƥ�������:
+この F<symbolic.pm> をあなたの Perl ライブラリディレクトリに入れてください:
 
   package symbolic;		# Primitive symbolic calculator
   use overload nomethod => \&wrap;
@@ -2041,13 +2041,13 @@ symbolic 3> contains C<['+', 2, ['n', 3]]>.
 
 =end original
 
-���Υ⥸�塼��ϡ������С������ɤ���⥸�塼��Ȥ��ƤϤ��ʤ��Ѥ�äƤ��ޤ�:
-�̾�Υ����С������ɱ黻�Ҥϲ����󶡤��������������
-L<Last Resort> �黻�� C<nomethod> ���󶡤��ޤ���
-������ǡ��б����륵�֥롼����ϥ��֥������Ȥ��Ф��ƹԤ�줿�黻��
-���ץ��벽�������֥������Ȥ��֤��ޤ�:
-C<new symbolic 3> �� C<['n', 3]> ��ޤߡ�C<2 + new symbolic 3> ��
-C<['+', 2, ['n', 3]]> ��ޤߤޤ���
+このモジュールは、オーバーロードするモジュールとしてはかなり変わっています:
+通常のオーバーロード演算子は何も提供せず、その代わりに
+L<Last Resort> 演算子 C<nomethod> を提供します。
+この例で、対応するサブルーチンはオブジェクトに対して行われた演算を
+カプセル化したオブジェクトを返します:
+C<new symbolic 3> は C<['n', 3]> を含み、C<2 + new symbolic 3> は
+C<['+', 2, ['n', 3]]> を含みます。
 
 =begin original
 
@@ -2056,8 +2056,8 @@ circumscribed octagon using the above package:
 
 =end original
 
-�ʲ��ϡ���ҤΥѥå�������ȤäƳ��� 8 �ѷ����դ�ַ׻�����ץ�����ץȤ�
-��Ǥ�:
+以下は、上述のパッケージを使って外接 8 角形の辺を「計算する」スクリプトの
+例です:
 
   require symbolic;
   my $iter = 1;			# 2**($iter+2) = 8
@@ -2075,7 +2075,7 @@ The value of $side is
 
 =end original
 
-$side ���ͤ�
+$side の値は
 
   ['/', ['-', ['sqrt', ['+', 1, ['**', ['n', 1], 2]],
 	               undef], 1], ['n', 1]]
@@ -2089,11 +2089,11 @@ C<bareStringify> B<O>ption is set, and not via C<p> command.
 
 =end original
 
-�����餷��������������ץȤ�ȤäƤ����ͤ����뤳�ȤϽ���ޤ�������
-�����ͤ� I<�Ȥ�> ñ�����ˡ�Ϥʤ����Ȥ����դ��Ƥ���������
-�ºݤ����ͤϥǥХå� (L<perldebug> �򻲾Ȥ��Ƥ�������) �Ǹ����Ǥ��ޤ�����
-C<bareStringify> ���ץ���󤬥��åȤ���Ƥ��ơ�C<p> ���ޥ��
-��ͳ�Ǥʤ��Ȥ��ΤߤǤ���
+素晴らしい小さいスクリプトを使ってこの値を得ることは出来ましたが、
+この値を I<使う> 単純な方法はないことに注意してください。
+実際この値はデバッガ (L<perldebug> を参照してください) で検査できますが、
+C<bareStringify> オプションがセットされていて、C<p> コマンド
+経由でないときのみです。
 
 =begin original
 
@@ -2104,10 +2104,10 @@ again of type C<symbolic>, which will lead to an infinite loop.
 
 =end original
 
-�⤷�����ͤ�ɽ�����褦�Ȥ���ȡ������С������ɤ��줿�黻��
-C<""> ���ƤӽФ��졢����� C<nomethod> �黻�Ҥ�ƤӽФ��ޤ���
-���α黻�Ҥη�̤Ȥ��ƺƤ�ʸ���󲽤��Ԥ��ޤ��������η�̤ϺƤ�
-C<symbolic> ���ʤΤǡ�̵�¥롼�פ�����������ޤ���
+もしこの値を表示しようとすると、オーバーロードされた演算子
+C<""> が呼び出され、これは C<nomethod> 演算子を呼び出します。
+この演算子の結果として再び文字列化が行われますが、この結果は再び
+C<symbolic> 型なので、無限ループを引き起こします。
 
 =begin original
 
@@ -2115,7 +2115,7 @@ Add a pretty-printer method to the module F<symbolic.pm>:
 
 =end original
 
-F<symbolic.pm> �⥸�塼�������ɽ���᥽�åɤ��ɲä��ޤ�:
+F<symbolic.pm> モジュールに整形表示メソッドを追加します:
 
   sub pretty {
     my ($meth, $a, $b) = @{+shift};
@@ -2132,7 +2132,7 @@ Now one can finish the script by
 
 =end original
 
-����ǥ�����ץȤ������˰ʲ��Τ褦�˽񤱤ޤ�
+これでスクリプトの末尾に以下のように書けます
 
   print "side = ", $side->pretty, "\n";
 
@@ -2149,16 +2149,16 @@ look for an overloaded operator C<"">.  Thus it is enough to use
 
 =end original
 
-�᥽�å� C<pretty> �ϥ��֥�������-ʸ�����Ѵ���Ԥ��Τǡ�
-���Υ᥽�åɤ�ȤäƱ黻�� C<""> �򥪡��С������ɤ���Τ������Ǥ���
-�����������Τ褦�ʥ᥽�åɤ������Ǥ�
-���֥������Ȥ� I<����> �Ǥ��� $a �� $b ������ɽ������ɬ�פϤ���ޤ���
-��ҤΥ��֥롼����ǡ�C<"[$meth $a $b]"> �ϡ��ʤ�餫��ʸ��������� $a �����
-$b ��Ϣ��Ǥ���
-�⤷���������Ǥ������С������ɤ�ȤäƤ���ȡ�Ϣ��黻�Ҥ�
-�����С������ɤ��줿�黻�� C<.> ��õ���ޤ�; �⤷¸�ߤ��ʤ���С�
-�����С������ɤ��줿�黻�� C<""> ��õ���ޤ���
-���äưʲ���Ȥ��н�ʬ�Ǥ�
+メソッド C<pretty> はオブジェクト-文字列変換を行うので、
+このメソッドを使って演算子 C<""> をオーバーロードするのが自然です。
+しかし、このようなメソッドの内部では
+オブジェクトの I<要素> である $a や $b を整形表示する必要はありません。
+上述のサブルーチンで、C<"[$meth $a $b]"> は、なんらかの文字列と要素 $a および
+$b の連結です。
+もしこれらの要素がオーバーロードを使っていると、連結演算子は
+オーバーロードされた演算子 C<.> を探します; もし存在しなければ、
+オーバーロードされた演算子 C<""> を探します。
+従って以下を使えば十分です
 
   use overload nomethod => \&wrap, '""' => \&str;
   sub str {
@@ -2174,7 +2174,7 @@ Now one can change the last line of the script to
 
 =end original
 
-����ǥ�����ץȤ�������ʲ��Τ褦�˽񤭴������ޤ�
+これでスクリプトの末尾を以下のように書き換えられます
 
   print "side = $side\n";
 
@@ -2184,7 +2184,7 @@ which outputs
 
 =end original
 
-�ʲ��Τ褦�˽��Ϥ���ޤ�
+以下のように出力されます
 
   side = [/ [- [sqrt [+ 1 [** [n 1 u] 2]] u] 1] [n 1 u]]
 
@@ -2195,7 +2195,7 @@ methods.
 
 =end original
 
-���������Ƥβ�ǽ�ʥ᥽�åɤ�ȤäƥǥХå����ͤ򸡺��Ǥ��ޤ���
+そして全ての可能なメソッドを使ってデバッガで値を検査できます。
 
 =begin original
 
@@ -2205,10 +2205,10 @@ type C<symbolic>, since then the loop will not terminate.
 
 =end original
 
-�ޤ����������������Ǥ�: ������ץȤΥ롼���ѿ� $cnt ��ͤ��Ƥߤޤ���
-����Ͽ��ͤǤ��ꡢ���֥������ȤǤϤ���ޤ���
-�����ͤη��� C<symbolic> �ˤϤǤ��ޤ���; �ʤ��ʤ餽������ȥ롼�פ�
-��λ���ʤ�����Ǥ���
+まだ何かがおかしいです: スクリプトのループ変数 $cnt を考えてみます。
+これは数値であり、オブジェクトではありません。
+この値の型を C<symbolic> にはできません; なぜならそうするとループが
+終了しないからです。
 
 =begin original
 
@@ -2221,12 +2221,12 @@ conversion routine.
 
 =end original
 
-�Τ��ˡ��۴Ĥ�λ�����뤿��ˡ�$cnt �ϵ��ˤʤ�ɬ�פ�����ޤ���
-�������������ɤ���������å�����黻�� C<bool> ��
-(����ϥ����С������ɤ��줿 C<""> ��ͳ��) �����С������ɤ���Ƥ��ơ�
-Ĺ��ʸ������֤��Τǡ��� C<symbolic> �Τ����륪�֥������ȤϿ��Ǥ���
-�������ۤ��뤿��ˡ����֥������Ȥ� 0 ����Ӥ�����ˡ��ɬ�פǤ���
-�ºݡ�����Ͽ����Ѵ��롼�����񤯤���ñ�Ǥ���
+確かに、循環を終了させるために、$cnt は偽になる必要があります。
+しかし、偽かどうかをチェックする演算子 C<bool> が
+(今回はオーバーロードされた C<""> 経由で) オーバーロードされていて、
+長い文字列を返すので、型 C<symbolic> のあらゆるオブジェクトは真です。
+これを乗り越えるために、オブジェクトを 0 と比較する方法が必要です。
+実際、これは数値変換ルーチンを書くより簡単です。
 
 =begin original
 
@@ -2235,8 +2235,8 @@ slightly modified str()):
 
 =end original
 
-�ʲ��Ϥ��Τ褦�ʥ롼������ɲä��� (������ str() �򾯤���������)
-F<symbolic.pm> �����ƤǤ�:
+以下はそのようなルーチンを追加した (そして str() を少し修正した)
+F<symbolic.pm> の内容です:
 
   package symbolic;		# Primitive symbolic calculator
   use overload
@@ -2283,10 +2283,10 @@ explicit recursion in num()?  (Answer is at the end of this section.)
 
 =end original
 
-���Ƥο����Ѵ��κ�Ȥ� %subr �� num() �ǹԤ��ޤ���
-�������%subr ���Դ����ǡ��ʲ�����ǻȤ���黻�ҤΤߤ�ޤ�Ǥ��ޤ���
-������ɲ����μ���Ǥ�: �ʤ� num() ������Ū�ʺƵ���ɬ�פʤΤǤ��礦?
-(�����Ϥ��ξϤκǸ�ˤ���ޤ���)
+全ての数値変換の作業は %subr と num() で行われます。
+もちろん、%subr は不完全で、以下の例で使われる演算子のみを含んでいます。
+これは追加点の質問です: なぜ num() で明示的な再帰が必要なのでしょう?
+(答えはこの章の最後にあります。)
 
 =begin original
 
@@ -2294,7 +2294,7 @@ Use this module like this:
 
 =end original
 
-���Υ⥸�塼��ϰʲ��Τ褦�ˤ��ƻȤ��ޤ�:
+このモジュールは以下のようにして使います:
 
   require symbolic;
   my $iter = new symbolic 2;	# 16-gon
@@ -2314,7 +2314,7 @@ It prints (without so many line breaks)
 
 =end original
 
-�����(��������β��Ԥ������)�ʲ��Τ�Τ�ɽ�����ޤ�
+これは(たくさんの改行を除くと)以下のものを表示します
 
   [/ [- [sqrt [+ 1 [** [/ [- [sqrt [+ 1 [** [n 1] 2]]] 1]
 			  [n 1]] 2]]] 1]
@@ -2330,10 +2330,10 @@ operations which are used in the example.
 
 =end original
 
-��ҤΥ⥸�塼��ϤȤƤ⸶��Ū�ʤ�ΤǤ���
-�ߥ塼�ơ����᥽�å� (C<++>, C<-=> and so on) ��������Ƥ��ޤ��󤷡�
-�ǥ����ץ��ԡ�(�ߥ塼�ơ������ʤ�������פǤ�!)��Ǥ��ޤ��󤷡�
-��ǻȤ����ѱ黻�����������Ƥ��ޤ���
+上述のモジュールはとても原始的なものです。
+ミューテータメソッド (C<++>, C<-=> and so on) を実装していませんし、
+ディープコピー(ミューテータがなければ不要です!)もできませんし、
+例で使う算術演算しか実装していません。
 
 =begin original
 
@@ -2342,8 +2342,8 @@ the tables of operations, and change the code which fills %subr to
 
 =end original
 
-�ۤȤ�ɤλ��ѱ黻�μ����ϴ�ñ�Ǥ�; ñ�˱黻�Υơ��֥��Ȥäơ�
-%subr �����Ƥ��륳���ɤ�ʲ��Τ褦���ѹ���������Ǥ�
+ほとんどの算術演算の実装は簡単です; 単に演算のテーブルを使って、
+%subr を埋めているコードを以下のように変更するだけです
 
   my %subr = ( 'n' => sub {$_[0]} );
   foreach my $op (split " ", $overload::ops{with_assign}) {
@@ -2368,11 +2368,11 @@ the argument, compare L<Copy Constructor>).
 
 =end original
 
-L<Calling Conventions for Mutators> �ˤ�äơ�%subr �� C<+=> ����ȥ��
-���뤳�Ȥȡ����ԡ����󥹥ȥ饯����������뤳�� (����� C<'+='> �μ�����
-�������ѹ����ʤ����Ȥ� Perl ���Τ���ˡ�Ϥʤ������ɬ�פǤ�;
-L<Copy Constructor> ����Ӥ��Ƥ�������) �Τۤ��ˡ�C<+=> �Ȥ��ο��ब
-ư��뤿���ɬ�פʤ��Ȥϲ��⤢��ޤ���
+L<Calling Conventions for Mutators> によって、%subr の C<+=> エントリを
+埋めることと、コピーコンストラクタを定義すること (これは C<'+='> の実装が
+引数を変更しないことを Perl が知る方法はないために必要です;
+L<Copy Constructor> と比較してください) のほかに、C<+=> とその親類が
+動作するために必要なことは何もありません。
 
 =begin original
 
@@ -2382,10 +2382,10 @@ deep only, so recursive copying is not needed):
 
 =end original
 
-���ԡ����󥹥ȥ饯����¹Ԥ���ˤϡ�C<use overload> �ιԤ�
-C<< '=' => \&cpy >> ���ɲä��ơ��ʲ��Υ����ɤ�񤭤ޤ�
-(���Υ����ɤϡ��ߥ塼�ơ����� 1 ��٥�ο����Τߤ��ѹ���Ԥ��Τǡ�
-�Ƶ�Ū���ԡ������פǤ��뤳�Ȥ��ꤷ�Ƥ��ޤ�):
+コピーコンストラクタを実行するには、C<use overload> の行に
+C<< '=' => \&cpy >> を追加して、以下のコードを書きます
+(このコードは、ミューテータは 1 レベルの深さのみの変更を行うので、
+再帰的コピーは不要であることを仮定しています):
 
   sub cpy {
     my $self = shift;
@@ -2400,9 +2400,9 @@ C<nomethod>, thus add
 
 =end original
 
-C<++> �� C<--> ��ư���褦�ˤ���ˤϡ��ºݤΥߥ塼�ơ�����
-ľ�ܤ��뤤�� C<nomethod> �Ǽ�������ɬ�פ�����ޤ���
-��ã��ʪ���� C<nomethod> ��³����ȷ�᤿�Τǡ��ʲ���
+C<++> と C<--> が動作するようにするには、実際のミューテータを、
+直接あるいは C<nomethod> で実装する必要があります。
+私達は物事を C<nomethod> で続けると決めたので、以下を
 
     if ($meth eq '++' or $meth eq '--') {
       @$obj = ($meth, (bless [@$obj]), 1); # Avoid circular referencen
@@ -2416,8 +2416,8 @@ implementation, one may consider
 
 =end original
 
-wrap() �κǽ�ιԤθ���ɲä��ޤ���
-����ϺǤ����Ū�ʼ����Ȥ����櫓�ǤϤʤ��Τǡ������
+wrap() の最初の行の後に追加します。
+これは最も効果的な実装というわけではないので、代わりに
 
   sub inc { $_[0] = bless ['++', shift, 1]; }
 
@@ -2427,7 +2427,7 @@ instead.
 
 =end original
 
-�Ȥ��뤳�Ȥ�ͤ��뤫�⤷��ޤ���
+とすることを考えるかもしれません。
 
 =begin original
 
@@ -2435,8 +2435,8 @@ As a final remark, note that one can fill %subr by
 
 =end original
 
-�Ǹ�ΰո��Ȥ��ơ��ʲ��Τ褦�ʤ�Τ� %subr �����뤳�Ȥ��Ǥ��뤳�Ȥ�
-���դ��Ƥ�������
+最後の意見として、以下のようなもので %subr を埋めることができることに
+注意してください
 
   my %subr = ( 'n' => sub {$_[0]} );
   foreach my $op (split " ", $overload::ops{with_assign}) {
@@ -2460,8 +2460,8 @@ are not cached, the calculator is very slow.
 
 =end original
 
-����ϡ�����Ū�ʥ���ܥ�å��׻����� 50 �Ԥ� Perl �����ɤǼ�����λ���ޤ���
-��ʬ���ο��ͤϥ���å��夵��ʤ��Τǡ��׻����ϤȤƤ��٤��Ǥ���
+これは、原始的なシンボリック計算機を 50 行の Perl コードで実装完了します。
+部分式の数値はキャッシュされないので、計算機はとても遅いです。
 
 =begin original
 
@@ -2475,13 +2475,13 @@ the argument of num().
 
 =end original
 
-���줬����������Ǥ�: str() �ξ�硢�����С������ɤ��� C<.> �黻�Ҥ�
-���Ǥ�¸�ߤ��륪���С������ɤ����黻�� C<""> �˥ե�����Хå�����Τǡ�
-����Ū�ʺƵ��򤹤�ɬ�פϤ���ޤ���
-�����С������ɤ������ѱ黻�Ҥϡ�����Ū�� C<fallback> ���׵ᤵ��ʤ��¤�
-�ե�����Хå� I<���ޤ���> ��
-���äơ�����Ū�ʺƵ��ʤ��Ǥ� num() �� C<['+', $a, $b]> �� C<$a + $b> ��
-�Ѵ����������ñ�� num() �ΰ�����ƥӥ�ɤ��ޤ���
+これが課題の答えです: str() の場合、オーバーロードした C<.> 演算子は
+すでに存在するオーバーロードした演算子 C<""> にフォールバックするので、
+明示的な再帰をする必要はありません。
+オーバーロードした算術演算子は、明示的に C<fallback> が要求されない限り
+フォールバック I<しません> 。
+従って、明示的な再帰なしでは num() は C<['+', $a, $b]> を C<$a + $b> に
+変換し、これは単に num() の引数を再ビルドします。
 
 =begin original
 
@@ -2494,17 +2494,17 @@ $a and $b happen to be of some related type, this may lead to problems.
 
 =end original
 
-�⤷�ʤ� str() �� num() ���Ѵ��Υǥե���Ȥ��ۤʤ뤫���Ի׵Ĥʤ顢
-����ܥ�å��׻�����񤯤Τ��ɤ������ñ���ä��������դ��Ƥ���������
-���δ�ñ����Ŭ�ڤʥǥե���Ȥ�����ˤ���ΤǤ���
-�⤦����ɲä�����: ����Ū�ʺƵ��ˤ�äơ�num() �� sym() ������䤹���Ǥ�:
-$a �� $b �η�������Ū�˥����å�����ɬ�פ�����ޤ���
-�⤷ $a �� $b �����ޤ��޴ط��Τ��뷿�ξ�硢�����������������������
-����ޤ���
+もしなぜ str() と num() で変換のデフォルトが異なるかが不思議なら、
+シンボリック計算機を書くのがどれだけ簡単だったかに注意してください。
+この簡単さは適切なデフォルトの選択によるものです。
+もう一つ追加の注意: 明示的な再帰によって、num() は sym() より壊れやすいです:
+$a と $b の型を明示的にチェックする必要があります。
+もし $a と $b がたまたま関係のある型の場合、これは問題を引き起こすかも
+しれません。
 
 =head2 I<Really> symbolic calculator
 
-(I<������> ����ܥ�å��ʷ׻���)
+(I<本当に> シンボリックな計算機)
 
 =begin original
 
@@ -2514,9 +2514,9 @@ until the value is I<used>.
 
 =end original
 
-�ʤ���ã����Ҥη׻����򥷥�ܥ�å��ȸƤ֤Τ�����˻פ��ͤ�
-���뤫�⤷��ޤ���
-������ͳ�ϡ������ͤμºݤη׻��Ϥ����ͤ� I<�Ȥ���> �ޤǱ������ޤ���
+なぜ私達が上述の計算機をシンボリックと呼ぶのかを疑問に思う人も
+いるかもしれません。
+その理由は、式の値の実際の計算はその値が I<使われる> まで延期されます。
 
 =begin original
 
@@ -2524,7 +2524,7 @@ To see it in action, add a method
 
 =end original
 
-�¹���˸��뤿��ˡ��ʲ��Υ᥽�åɤ�
+実行中に見るために、以下のメソッドを
 
   sub STORE {
     my $obj = shift;
@@ -2538,8 +2538,8 @@ to the package C<symbolic>.  After this change one can do
 
 =end original
 
-�ѥå����� C<symbolic> ���ɲä��ޤ���
-�����ѹ��θ塢�ʲ��Τ褦�˽����
+パッケージ C<symbolic> に追加します。
+この変更の後、以下のように出来て
 
   my $a = new symbolic 3;
   my $b = new symbolic 4;
@@ -2551,8 +2551,8 @@ and the numeric value of $c becomes 5.  However, after calling
 
 =end original
 
-$c �ο��ͤ� 5 �ˤʤ�ޤ���
-���������ʲ��θƽФ��塢
+$c の数値は 5 になります。
+しかし、以下の呼出し後、
 
   $a->STORE(12);  $b->STORE(5);
 
@@ -2563,8 +2563,8 @@ symbolic provides a I<symbolic> calculator indeed.
 
 =end original
 
-$c �ο��ͤ� 13 �ˤʤ�ޤ���
-����ǥ⥸�塼�� symbolic �Ϥޤ��� I<����ܥ�å�> �׻������󶡤��ޤ���
+$c の数値は 13 になります。
+これでモジュール symbolic はまさに I<シンボリック> 計算機を提供します。
 
 =begin original
 
@@ -2573,10 +2573,10 @@ package C<symbolic> (compare with L<Metaphor clash>).  Add methods
 
 =end original
 
-�ա��ɤ���ιӤ����å��򱣤�����ˡ��ѥå����� C<symbolic> ��
-tie() �������󥿡��ե��������󶡤��ޤ�
-(L<Metaphor clash> ����Ӥ��Ƥ�������)��
-�᥽�åɤ��ɲä��ޤ�
+フードの中の荒いエッジを隠すために、パッケージ C<symbolic> へ
+tie() したインターフェースを提供します
+(L<Metaphor clash> と比較してください)。
+メソッドを追加します
 
   sub TIESCALAR { my $pack = shift; $pack->new(@_) }
   sub FETCH { shift }
@@ -2588,8 +2588,8 @@ tie() �������󥿡��ե��������󶡤��ޤ�
 
 =end original
 
-(���ΥХ��� L<"BUGS"> �˵��Ҥ���Ƥ��ޤ�)��
-���ο��������󥿥ե������ϰʲ��Τ褦�ˤ��ƻȤ��ޤ�
+(このバグは L<"BUGS"> に記述されています)。
+この新しいインタフェースは以下のようにして使えます
 
   tie $a, 'symbolic', 3;
   tie $b, 'symbolic', 4;
@@ -2604,9 +2604,9 @@ of $c becomes 13.  To insulate the user of the module add a method
 
 =end original
 
-������ $c �ο��ͤ� 5 �Ǥ���
-C<$a = 12; $b = 5> �θ塢$c �ο��ͤ� 13 �ˤʤ�ޤ���
-�⥸�塼��Υ桼������ʬΥ���Ť���ˡ��᥽�åɤ��ɲä��ޤ�
+ここで $c の数値は 5 です。
+C<$a = 12; $b = 5> の後、$c の数値は 13 になります。
+モジュールのユーザーを分離す津ために、メソッドを追加します
 
   sub vars { my $p = shift; tie($_, $p), $_->nop foreach @_; }
 
@@ -2616,7 +2616,7 @@ Now
 
 =end original
 
-������
+ここで
 
   my ($a, $b);
   symbolic->vars($a, $b);
@@ -2635,7 +2635,7 @@ and $b.
 
 =end original
 
-�Ȥ���ȡ�$c �ο��ͤ� $a �� $b ���ͤ��ѹ��˽����ޤ���
+とすると、$c の数値は $a と $b の値の変更に従います。
 
 =head1 AUTHOR
 
@@ -2650,8 +2650,8 @@ induces diagnostic messages.
 
 =end original
 
-Perl �� B<-Do> �����å���Ʊ���Τ�Τ�ȤäƵ�ư����ȡ�
-�����С������ɤˤ�äƿ��ǥ�å�����������������ޤ���
+Perl を B<-Do> スイッチか同等のものを使って起動すると、
+オーバーロードによって診断メッセージを引き起こします。
 
 =begin original
 
@@ -2665,15 +2665,15 @@ function of module C<overload>).
 
 =end original
 
-Perl �ǥХå��� C<m> ���ޥ�� (L<perldebug> �򻲾Ȥ��Ƥ�������) ��
-�Ȥ����Ȥǡ��ɤα黻�������С������ɤ���Ƥ��뤫 (�����Ƥɤ����褬
-���Υ����С������ɤ�����������Ƥ��뤫) ��������뤳�Ȥ��Ǥ��ޤ���
-�㤨�С�C<eq> �������С������ɤ���Ƥ���ȡ��᥽�å� C<(eq> ��
-�ǥХå��ˤ�ä�ɽ������ޤ���
-�᥽�å� C<()> �� C<fallback> �������б����ޤ�
-(�ºݤ��Υ᥽�åɤ�¸�ߤϡ����Υѥå������ϥ����С������ɤ�ͭ���ˤʤäƤ��ơ�
-C<overload> �⥸�塼��� C<Overloaded> �ؿ��ǻȤ��Ƥ��뤳�Ȥ�
-�����Ƥ��ޤ�)��
+Perl デバッガの C<m> コマンド (L<perldebug> を参照してください) を
+使うことで、どの演算がオーバーロードされているか (そしてどの祖先が
+このオーバーロードを引き起こしているか) を推論することができます。
+例えば、C<eq> がオーバーロードされていると、メソッド C<(eq> が
+デバッガによって表示されます。
+メソッド C<()> は C<fallback> キーに対応します
+(実際このメソッドの存在は、このパッケージはオーバーロードが有効になっていて、
+C<overload> モジュールの C<Overloaded> 関数で使われていることを
+示しています)。
 
 =begin original
 
@@ -2681,7 +2681,7 @@ The module might issue the following warnings:
 
 =end original
 
-���Υ⥸�塼��ϰʲ��ηٹ��Ф����Ȥ�����ޤ�:
+このモジュールは以下の警告を出すことがあります:
 
 =over 4
 
@@ -2694,8 +2694,8 @@ The arguments should come in pairs.
 
 =end original
 
-(W) ����ο��ΰ����� overload::constant ��ƤӽФ��ޤ�����
-�����ϥڥ��ˤʤäƤ���ɬ�פ�����ޤ���
+(W) 奇数の数の引数で overload::constant を呼び出しました。
+引数はペアになっている必要があります。
 
 =item `%s' is not an overloadable type
 
@@ -2705,7 +2705,7 @@ The arguments should come in pairs.
 
 =end original
 
-(W) �����С������ɥѥå��������Τ�ʤ�������򥪡��С������ɤ��褦�Ȥ��ޤ�����
+(W) オーバーロードパッケージが知らない定数型をオーバーロードしようとしました。
 
 =item `%s' is not a code reference
 
@@ -2717,9 +2717,9 @@ to a subroutine.
 
 =end original
 
-(W) overload::constant �� 2 ���� (4 ���ܡ�6 ����, ...) �ΰ����ϥ�����
-��ե���󥹤Ǥ���ɬ�פ�����ޤ���
-̵̾���֥롼���󤫡����֥롼����ؤΥ�ե���󥹤Ǥ���
+(W) overload::constant の 2 番目 (4 番目、6 番目, ...) の引数はコード
+リファレンスである必要があります。
+無名サブルーチンか、サブルーチンへのリファレンスです。
 
 =back
 
@@ -2733,9 +2733,9 @@ looking like line-noise.
 
 =end original
 
-�����С������ɤ˻��Ѥ���뤿�ᡢPerl �Ǥϡ��ϥå��� %OVERLOAD �ϡ�
-�ѥå��������Ȥ����̤ʰ�̣����Ĥ��Ȥˤʤ�ޤ���
-����ܥ�ơ��֥�Ϥ��ߤΤ褦�˸�����̾���������ޤ���
+オーバーロードに使用されるため、Perl では、ハッシュ %OVERLOAD は、
+パッケージごとに特別な意味を持つことになります。
+シンボルテーブルはごみのように見える名前で埋められます。
 
 =begin original
 
@@ -2746,11 +2746,11 @@ from two overloaded packages.
 
 =end original
 
-�Ѿ�����Ū�Τ���ˡ����ƤΥ����С������ɤ��줿�ѥå�������
-(̤������⤷��ʤ�) C<fallback> ��¸�ߤ��뤫�Τ褦�˿����񤤤ޤ���
-����ϡ�����ѥå������������С������ɤ��Ƥ��ʤ�����ɤ⡢
-2 �ĤΥ����С������ɤ����ѥå�������Ѿ����Ƥ���Ȥ������ˡ�
-��̣�������̤���Ф��ޤ���
+継承の目的のために、全てのオーバーロードされたパッケージは
+(未定義かもしれない) C<fallback> が存在するかのように振る舞います。
+これは、あるパッケージがオーバーロードしていないけれども、
+2 つのオーバーロードしたパッケージを継承しているという場合に、
+興味深い効果を作り出します。
 
 =begin original
 
@@ -2759,9 +2759,9 @@ triggered or not basing on the I<previous> class of tie()d value.
 
 =end original
 
-�����С������ɤ� tie() �δط��ϲ���Ƥ��ޤ���
-�����С������ɤ� tie() ���줿�ͤ� I<������> ���饹�ˤ�ä�
-������������뤫�ɤ�������ޤ�ޤ���
+オーバーロードと tie() の関係は壊れています。
+オーバーロードは tie() された値の I<以前の> クラスによって
+引き起こされるかどうかが決まります。
 
 =begin original
 
@@ -2773,11 +2773,11 @@ coincides with the current one.
 
 =end original
 
-����ϡ������С������ɤ�¸�ߤΥ����å����᤹���ơ�tie() ��������������
-��ߤ����˹Ԥ��뤿��˵�����ޤ���
-�⤷ tie() ���줿�ͤ� FETCH() ���줿���饹���ѹ����Ƥ��ʤ��ʤ顢��ñ��
-����ˡ�� tie() ����ľ����ͤ˥����������뤳�Ȥǡ����θƤӽФ��θ�
-I<������> ���饹�ϸ��ߤΤ�Τ�Ʊ�����ޤ���
+これは、オーバーロードの存在のチェックが早すぎて、tie() したアクセスを
+試みる前に行われるために起こります。
+もし tie() された値の FETCH() されたクラスが変更していないなら、簡単な
+回避法は tie() した直後に値にアクセスすることで、この呼び出しの後
+I<以前の> クラスは現在のものと同期します。
 
 =begin original
 
@@ -2785,7 +2785,7 @@ B<Needed:> a way to fix this without a speed penalty.
 
 =end original
 
-B<ɬ��:> ®�٤˱ƶ���Ϳ���뤳�Ȥʤ��������������ˡ��
+B<必要:> 速度に影響を与えることなくこれを修正する方法。
 
 =begin original
 
@@ -2793,7 +2793,7 @@ Barewords are not covered by overloaded string constants.
 
 =end original
 
-���ñ��ϥ����С������ɤ��줿ʸ����������оݤȤʤ�ޤ���
+裸の単語はオーバーロードされた文字列定数の対象となりません。
 
 =begin original
 
@@ -2802,12 +2802,12 @@ used in places.  It would seem a total rewrite is needed.
 
 =end original
 
-���Υɥ�����ȤϺ��𤷤Ƥ��ޤ�������������
-���򤷤䤹��ʸ�Ϥ�����ޤ��������ʽ�ľ����ɬ�פǤ���
+このドキュメントは混乱しています。あちこちに
+誤解しやすい文章があります。完全な書き直しが必要です。
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp> (5.000)
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp> (5.000)
 Update: Kentaro Shirakata <argrath@ub32.org> (5.6.1-)
 License: GPL or Artistic
 

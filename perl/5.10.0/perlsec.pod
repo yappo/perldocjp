@@ -9,7 +9,7 @@ perlsec - Perl security
 
 =end original
 
-perlsec - Perl �Υ������ƥ�
+perlsec - Perl のセキュリティ
 
 =head1 DESCRIPTION
 
@@ -25,14 +25,14 @@ untrustworthy) programs to accomplish its purposes.
 
 =end original
 
-Perl�ϡ��ץ�����ब setuid �� setgid �����褦�����̤ʸ��¤��ղä����
-�¹Ԥ��줿�Ȥ��Ǥ⥻�����ƥ��ݻ����ưפˤʤ�褦���߷פ���Ƥ��ޤ���
-������ץȤΰ�Ԥ��Ȥ�¿���ִ���Ԥ����Ȥ˴�Ť��Ƥ���褦������ʬ��
-���ޥ�ɥ饤�󥷥���Ȥϰ�äơ�Perl �ϱ��줿�㳲�����ʤ��褦�ʡ�
-���������ɾ����ˡ���Ѥ��Ƥ��ޤ���
-����˲ä��� Perl �Ϥ��¿�����Ȥ߹��ߴؿ�����äƤ���Τǡ�
-������Ū��ã�����뤿���(����Ǥ��ʤ����⤷��ʤ��褦��)
-�����ץ�������Ȥ����Ȥ����ʤ��Ƥ���ΤǤ���
+Perlは、プログラムが setuid や setgid されるような特別な権限を付加されて
+実行されたときでもセキュリティ保持が容易になるように設計されています。
+スクリプトの一行ごとの多重置換を行うことに基づいているような大部分の
+コマンドラインシェルとは違って、Perl は隠れた障害が少ないような、
+より便利な評価手法を用いています。
+それに加えて Perl はより多くの組み込み関数を持っているので、
+ある目的を達成するために(信頼できないかもしれないような)
+外部プログラムを使うことが少なくてすむのです。
 
 =begin original
 
@@ -47,17 +47,17 @@ the remainder of your script.
 
 =end original
 
-Perl �ϡ����Υץ�����ब�ۤʤ�¥桼���� ID���¸��桼���� ID���¥��롼�� ID��
-�¸����롼�� ID ��ȤäƼ¹Ԥ���뤳�Ȥ򸡽Ф����Ȥ��ˡ�
-��ưŪ�� I<�����⡼��> (taint mode) �ȸƤФ�����̤ʥ������ƥ������å���
-���åȤ�ͭ���ˤ��ޤ���
-UNIX �ѡ��ߥå����ˤ����� setuid �ӥåȤϥ⡼�� 04000 �ǡ�
-setgid �ӥåȤϥ⡼�� 02000 �Ǥ���
-�����Ͻ�ʣ���ƥ��åȤ��뤳�Ȥ�Ǥ��ޤ���
-�����⡼�ɤϡ����ޥ�ɥ饤��ե饰 B<-T> ��Ȥä��ۤ�ͭ���ˤ��뤳�Ȥ�Ǥ��ޤ���
-���Υե饰�ϥ����С��ץ������Ǥ���Ȥ���
-CGI ������ץȤΤ褦�ʡ�¾��ï���ˤ��꤫��äƼ¹Ԥ����ץ�������
-�Ȥ����Ȥ� B<����> ����ޤ���
+Perl は、そのプログラムが異なる実ユーザー ID、実効ユーザー ID、実グループ ID、
+実効グループ ID を使って実行されることを検出したときに、
+自動的に I<汚染モード> (taint mode) と呼ばれる特別なセキュリティチェックの
+セットを有効にします。
+UNIX パーミッションにおける setuid ビットはモード 04000 で、
+setgid ビットはモード 02000 です。
+これらは重複してセットすることもできます。
+汚染モードは、コマンドラインフラグ B<-T> を使って陽に有効にすることもできます。
+このフラグはサーバープログラムであるとか、
+CGI スクリプトのような、他の誰かにすりかわって実行されるプログラムに
+使うことを B<強く> 勧めます。
 
 =begin original
 
@@ -71,14 +71,14 @@ program more secure than the corresponding C program.
 
 =end original
 
-���Υ⡼�ɤ�ư��Ƥ���Ȥ���Perl �������櫤ȱ��줿櫤�ξ�����н褹�뤿���
-I<��������> (taint check) �ȸƤФ�����̤ʷٲ���Ԥ��ޤ���
-�����Υ����å��δ��Ĥ��ϡ�ñ��Ǥ���
-path �ǥ��쥯�ȥ꤬¾����񤭹��߲�ǽ�Ǥʤ����Ȥ򸡺�����Ȥ��ä����Ȥ������Ǥ���
-���տ����ץ�����ޡ��Ͼ�ˤ����Τ��Ȥϥ����å����Ƥ��ޤ���
-���Τۤ��Υ����å��Ϥ������ʤ��顢���켫�Ȥˤ�äƺǤ��ɤ����ݡ��Ȥ���ޤ���
-�����ơ������Υ����å����ä� set-id ���줿 Perl �ץ�������
-�б����� C �ץ�������������ˤ���Τ˹׸�����ΤǤ���
+このモードで動作しているとき、Perl は明白な罠と隠れた罠の両方に対処するために
+I<汚染検査> (taint check) と呼ばれる特別な警戒を行います。
+これらのチェックの幾つかは、単純です。
+path ディレクトリが他から書き込み可能でないことを検査するといったことがそうです。
+注意深いプログラマーは常にこれらのことはチェックしています。
+このほかのチェックはしかしながら、言語自身によって最も良くサポートされます。
+そして、これらのチェックは特に set-id された Perl プログラムを
+対応する C プログラムよりも安全にするのに貢献するのです。
 
 =begin original
 
@@ -95,17 +95,17 @@ directories, or processes, B<with the following exceptions>:
 
 =end original
 
-��ʬ�Υץ������γ�¦�����褿�ǡ�����ץ������γ��β����˱ƶ���
-�ڤܤ�����˻Ȥ����Ȥϡ����ʤ��Ȥ⥢�����ǥ�ȤǤǤ�ʤ���С��Ǥ��ޤ���
-���٤ƤΥ��ޥ�ɥ饤��������Ķ��ѿ��������������(L<perllocale> �򻲾�)��
-���Ĥ��Υ����ƥॳ����η��(C<readdir()>, C<readlink()>, C<shmread()> ���ѿ���
-C<msgrcv()> ���֤�����å��������ѥ���ɡ�C<getpwxxx()> �ƤӽФ����֤���
-gecos �ե�����ɤȥ�����ե������)�����٤ƤΥե��������ϤȤ��ä���Τ�
-�ȱ������줿��(tainted) ���ܰ����դ����ޤ���
-�������줿�ǡ�����ľ�ܡ����ܤ���鷺���֥������ư���륳�ޥ�ɤ˻Ȥ����Ȥ⡢
-�ե������ǥ��쥯�ȥꡢ�ץ��������ѹ���ä���褦�ʥ��ޥ�ɤ�
-�Ȥ����Ȥ�Ǥ��ޤ���
-â�� B<�ʲ����㳰> ������ޤ���
+自分のプログラムの外側から来たデータをプログラムの外の何かに影響を
+及ぼすために使うことは、少なくともアクシデントででもなければ、できません。
+すべてのコマンドライン引数、環境変数、ロケール情報(L<perllocale> を参照)、
+幾つかのシステムコールの結果(C<readdir()>, C<readlink()>, C<shmread()> の変数、
+C<msgrcv()> が返したメッセージ、パスワード、C<getpwxxx()> 呼び出しが返した
+gecos フィールドとシェルフィールド)、すべてのファイル入力といったものは
+“汚染された”(tainted) と目印が付けられます。
+汚染されたデータは直接、間接を問わずサブシェルを起動するコマンドに使うことも、
+ファイルやディレクトリ、プロセスに変更を加えるようなコマンドに
+使うこともできません。
+但し B<以下の例外> があります。
 
 =over 4
 
@@ -117,7 +117,7 @@ Arguments to C<print> and C<syswrite> are B<not> checked for taintedness.
 
 =end original
 
-C<print> �� C<syswrite> �ΰ������Ф������������ B<�Ԥ��ޤ���>��
+C<print> と C<syswrite> の引数に対する汚染検査は B<行われません>。
 
 =item *
 
@@ -127,7 +127,7 @@ Symbolic methods
 
 =end original
 
-����ܥ�å��᥽�å�
+シンボリックメソッド
 
     $obj->$method(@args);
 
@@ -137,7 +137,7 @@ and symbolic sub references
 
 =end original
 
-�ȥ���ܥ�å����֥롼�����ե����
+とシンボリックサブルーチンリファレンス
 
     &{$foo}(@args);
     $foo->(@args);
@@ -152,12 +152,12 @@ in which case they are able to run arbitrary external code.
 
 =end original
 
-�ϱ������������å�����ޤ���
-����ϡ����ʤ�������ե����������ǡ����˱ƶ����줿���Ȼפ�ʤ��ʤ顢
-����ʤ뿵�Ť����׵ᤷ�ޤ���
-�����Υ���ܥ�å����ͤ����������տ������¤��ʤ��ȡ�POSIX::system �Τ褦��
-���ʤ��� Perl �����ɤ� B<��¦> �δؿ���ƤӽФ����Ȥ��ǽ�ˤ������ξ��
-Ǥ�դγ��������ɤ�¹ԤǤ���褦�ˤʤ�ޤ���
+は汚染性がチェックされません。
+これは、あなたの制御フローが外部データに影響されたいと思わないなら、
+さらなる慎重さを要求します。
+これらのシンボリックな値が何かを注意深く制限しないと、POSIX::system のような
+あなたの Perl コードの B<外側> の関数を呼び出すことを可能にし、この場合
+任意の外部コードを実行できるようになります。
 
 =item *
 
@@ -167,7 +167,7 @@ Hash keys are B<never> tainted.
 
 =end original
 
-�ϥå���Υ����� B<�褷��> ��������ޤ���
+ハッシュのキーは B<決して> 汚染されません。
 
 =back
 
@@ -180,11 +180,11 @@ of the subexpression is not itself affected by the tainted data.
 
 =end original
 
-��Ψ�����ͳ���顢Perl �ϥǡ�������������Ƥ��뤫�ɤ����ˤĤ����ݼ�Ū��
-�����򤷤ޤ���
-��������Ƥ���ǡ��������˴ޤޤ�Ƥ����硢���Ȥ��������ͼ��Ȥϱ������줿
-�ǡ����˱ƶ�������ʤ����Ǥ⡢���Ƥ�������������줿��ΤȤ���
-�����ޤ���
+効率上の理由から、Perl はデータが汚染されているかどうかについて保守的な
+見方をします。
+汚染されているデータが式に含まれている場合、たとえ副式の値自身は汚染された
+データに影響を受けない場合でも、全ての副式も汚染されたものとして
+扱います。
 
 =begin original
 
@@ -194,9 +194,9 @@ The keys of a hash are B<never> tainted.
 
 =end original
 
-�����ϳƥ������ͤ˷���դ�����Τǡ�����δ��Ĥ������Ǥ���������Ƥ��ơ�
-���Τۤ������ǤϤ����ǤϤʤ��Ȥ������Ȥ⤢�ꤨ�ޤ���
-�ϥå���Υ����� B<�褷��> ��������ޤ���
+汚染は各スカラ値に結び付けられるので、配列の幾つかの要素が汚染されていて、
+そのほかの要素はそうではないということもありえます。
+ハッシュのキーは B<決して> 汚染されません。
 
 =begin original
 
@@ -204,7 +204,7 @@ For example:
 
 =end original
 
-��򼨤��ޤ�:
+例を示します:
 
 =begin original
 
@@ -219,14 +219,14 @@ For example:
 
 =end original
 
-    $arg = shift;		# $arg �ϱ������줿
-    $hid = $arg, 'bar';		# $hid ��������줿
-    $line = <>;			# �������줿
-    $line = <STDIN>;		# �����������줿
+    $arg = shift;		# $arg は汚染された
+    $hid = $arg, 'bar';		# $hid も汚染された
+    $line = <>;			# 汚染された
+    $line = <STDIN>;		# これも汚染された
     open FOO, "/home/me/bar" or die $!;
-    $line = <FOO>;		# �ޤ���������Ƥ���
-    $path = $ENV{'PATH'};	# ��������Ƥ��뤬�������򻲾ȤΤ���
-    $data = 'abc';		# ��������Ƥ��ʤ�
+    $line = <FOO>;		# まだ汚染されている
+    $path = $ENV{'PATH'};	# 汚染されているが、下記を参照のこと
+    $data = 'abc';		# 汚染されていない
 
 =begin original
 
@@ -238,11 +238,11 @@ For example:
 
 =end original
 
-    system "echo $arg";		# �����ǤϤʤ�
-    system "/bin/echo", $arg;	# �����ǤϤʤ��ȹͤ�����
-				# (Perl �� /bin/echo �ˤĤ����Τ�ʤ�)
-    system "echo $hid";		# �����ǤϤʤ�
-    system "echo $data";	# PATH�����ꤹ��ޤǤϰ����ǤϤʤ�
+    system "echo $arg";		# 安全ではない
+    system "/bin/echo", $arg;	# 安全ではないと考えられる
+				# (Perl は /bin/echo について知らない)
+    system "echo $hid";		# 安全ではない
+    system "echo $data";	# PATHを設定するまでは安全ではない
 
 =begin original
 
@@ -250,7 +250,7 @@ For example:
 
 =end original
 
-    $path = $ENV{'PATH'};	# $path ���������줿
+    $path = $ENV{'PATH'};	# $path が汚染された
 
     $ENV{'PATH'} = '/bin:/usr/bin';
     delete @ENV{'IFS', 'CDPATH', 'ENV', 'BASH_ENV'};
@@ -262,8 +262,8 @@ For example:
 
 =end original
 
-    $path = $ENV{'PATH'};	# $path �ϱ�������Ƥ��ʤ�
-    system "echo $data";	# ����ǰ���!
+    $path = $ENV{'PATH'};	# $path は汚染されていない
+    system "echo $data";	# これで安全!
 
 =begin original
 
@@ -272,8 +272,8 @@ For example:
 
 =end original
 
-    open(FOO, "< $arg");	# OK - �ɤ߹��ߤΤߤΥե�����
-    open(FOO, "> $arg"); 	# Not OK - �񤭹��ߤ��褦�Ȥ��Ƥ���
+    open(FOO, "< $arg");	# OK - 読み込みのみのファイル
+    open(FOO, "> $arg"); 	# Not OK - 書き込みしようとしている
 
     open(FOO,"echo $arg|");	# Not OK
     open(FOO,"-|")
@@ -285,7 +285,7 @@ For example:
 
 =end original
 
-    $shout = `echo $arg`;	# �����Ǥʤ���$shout�ϱ������줿��
+    $shout = `echo $arg`;	# 安全でない。$shoutは汚染された。
 
 =begin original
 
@@ -294,8 +294,8 @@ For example:
 
 =end original
 
-    unlink $data, $arg;		# �����Ǥʤ�
-    umask $arg;			# �����Ǥʤ�
+    unlink $data, $arg;		# 安全でない
+    umask $arg;			# 安全でない
 
 =begin original
 
@@ -305,9 +305,9 @@ For example:
 
 =end original
 
-    exec "echo $arg";		# �����Ǥʤ�
-    exec "echo", $arg;		# �����Ǥʤ�
-    exec "sh", '-c', $arg;	# �ȤƤ�����ǤϤʤ�!
+    exec "echo $arg";		# 安全でない
+    exec "echo", $arg;		# 安全でない
+    exec "sh", '-c', $arg;	# とても安全ではない!
 
 =begin original
 
@@ -316,8 +316,8 @@ For example:
 
 =end original
 
-    @files = <*.c>;		# �����Ǥʤ� (readdir() �Τ褦�ʤ�Τ�Ȥ�)
-    @files = glob('*.c');	# �����Ǥʤ� (readdir() �Τ褦�ʤ�Τ�Ȥ�)
+    @files = <*.c>;		# 安全でない (readdir() のようなものを使う)
+    @files = glob('*.c');	# 安全でない (readdir() のようなものを使う)
 
     # In Perl releases older than 5.6.0 the <*.c> and glob('*.c') would
     # have used an external program to do the filename expansion; but in
@@ -331,8 +331,8 @@ For example:
 
 =end original
 
-    $bad = ($arg, 23);		# $bad �ϱ�������Ƥ��뤫��
-    $arg, `true`;		# �����Ǥʤ� (�ºݤϤ����Ǥʤ��Ƥ�)
+    $bad = ($arg, 23);		# $bad は汚染されているかも
+    $arg, `true`;		# 安全でない (実際はそうでなくても)
 
 =begin original
 
@@ -341,8 +341,8 @@ something like "Insecure dependency" or "Insecure $ENV{PATH}".
 
 =end original
 
-�����Ǥʤ����Ȥ������Ȥ���ȡ�"Insecure dependency" �� 
-"Insecure $ENV{PATH}" �Τ褦����̿Ū���顼�Ȥʤ�Ǥ��礦��
+安全でないことをやろうとすると、"Insecure dependency" や 
+"Insecure $ENV{PATH}" のような致命的エラーとなるでしょう。
 
 =begin original
 
@@ -354,7 +354,7 @@ with a ternary conditional
 
 The exception to the principle of "one tainted value taints the whole
 expression" is with the ternary conditional operator C<?:>.
-3 �����Ȥä�������
+3 項条件を使ったコード
 
     $result = $tainted_value ? "Untainted" : "Also untainted";
 
@@ -364,7 +364,7 @@ is effectively
 
 =end original
 
-�Ȥ����Τϻ��¾�
+というのは事実上
 
     if ( $tainted_value ) {
         $result = "Untainted";
@@ -378,11 +378,11 @@ it doesn't make sense for C<$result> to be tainted.
 
 =end original
 
-�ʤΤǡ�C<$result> ���������줿�ȹͤ���Τϰ�̣������ޤ���
+なので、C<$result> が汚染されたと考えるのは意味がありません。
 
 =head2 Laundering and Detecting Tainted Data
 
-(�������줿�ǡ����θ��Ф�����)
+(汚染されたデータの検出と洗浄)
 
 =begin original
 
@@ -394,11 +394,11 @@ Or you may be able to use the following C<is_tainted()> function.
 
 =end original
 
-�����ѿ����������줿�ǡ������ݻ����Ƥ��뤫�ɤ����򸡺����뤿�ᡢ�����ơ�
-"Insecure dependency" ��å������ΰ�����ˤʤ��ǽ�������뤫�ɤ�����
-�������뤿��ˡ�CPAN �ˤ��ꡢ5.8.0 ����� Perl �˴ޤޤ�Ƥ���
-Scalar::Util �⥸�塼��� C<tainted()> �ؿ���Ȥ��ޤ���
-���뤤�ϡ��ʲ��Τ褦�ʴؿ� C<is_tainted()> ��Ȥ����Ȥ��Ǥ��ޤ���
+ある変数が汚染されたデータを保持しているかどうかを検査するため、そして、
+"Insecure dependency" メッセージの引き金になる可能性があるかどうかを
+検査するために、CPAN にあり、5.8.0 からは Perl に含まれている
+Scalar::Util モジュールの C<tainted()> 関数を使えます。
+あるいは、以下のような関数 C<is_tainted()> を使うことができます。
 
     sub is_tainted {
         return ! eval { eval("#" . substr(join("", @_), 0, 0)); 1 };
@@ -415,13 +415,13 @@ same expression, the whole expression is considered tainted.
 
 =end original
 
-���δؿ��Ϥ��뼰�Τɤ����ˤ���������줿�ǡ����������Τ�������Ƥ��ޤ����Ȥ�
-���Ѥ��Ƥ��ޤ���
-����Ϥ��٤Ƥα黻�Ҥ��Ф��ơ����Τ��٤Ƥΰ�������������Ƥ��뤫�ɤ�����
-�����򤹤�ΤǸ�Ψ���ɤ��ʤ��Ǥ��礦��
-��������ˡ������μ��ˤ����Ʊ������줿�ͤ˥����������Ƽ����Τ�
-�������줿�Ȥߤʤ����褦�ʾ��ˤϡ���äȸ�Ψ���ɤ���
-�ݼ�Ū����ˡ���Ȥ��ޤ���
+この関数はある式のどこかにある汚染されたデータが式全体を汚染してしまうことを
+利用しています。
+これはすべての演算子に対して、そのすべての引数が汚染されているかどうかの
+検査をするので効率は良くないでしょう。
+その代わりに、一部の式において汚染された値にアクセスして式全体が
+汚染されたとみなされるような場合には、もっと効率が良くて
+保守的な方法が使われます。
 
 =begin original
 
@@ -439,19 +439,19 @@ characters that you never thought of.
 
 =end original
 
-�������������θ��������ݤǤ���
-���ʤ��Υǡ����α���������������Ȥ������Ȥ⤢��Ǥ��礦��
-�ͤϥϥå���Υ����Ȥ��ƻȤ����ȤǾ�������ޤ�; ����ʤ���С�
-��������������Х��ѥ����뤿��Τ�����Ĥ���ˡ�ϡ�
-�ޥå���������ɽ���Υ��֥ѥ�����򻲾Ȥ��뤳�ȤǤ���
-Perl �ϡ����ʤ��� $1��$2 �ʤɤ�Ȥä���ʬʸ����򻲾Ȥ����Ȥ��ˡ�
-���ʤ����ѥ�����򵭽Ҥ����Ȥ��˲���Ԥ��Τ����ΤäƤ����Ȳ��ꤷ�ޤ���
-�Ĥޤꡢ��������Ƥ��ʤ���Τ�«�����ʤ������������Τ�̵���ˤ���Ȥ������ȤǤ���
-����ϡ��ѿ����ʤ�餫�ΰ���ʸ������äƤ��뤫�ɤ�����
-��������Ȥ����ΤǤϤʤ����ѿ����ɤ�ʸ���Τߤ���äƤ��뤳�Ȥ�
-�����ˤ��Թ礬�ɤ��Ǥ���
-�����(���ʤ����ͤ��⤷�ʤ��褦��)����ʸ���򸫼������Ȥ����ޤ�ˤ�
-��ñ�Ǥ��뤫��Ǥ���
+しかし、汚染の検査は面倒です。
+あなたのデータの汚染を取り除くだけということもあるでしょう。
+値はハッシュのキーとして使うことで浄化されます; さもなければ、
+汚染検査機構をバイパスするためのただ一つの方法は、
+マッチした正規表現のサブパターンを参照することです。
+Perl は、あなたが $1、$2 などを使って部分文字列を参照したときに、
+あなたがパターンを記述したときに何を行うのかを知っていたと仮定します。
+つまり、汚染されていないものを束縛しないか、機構全体を無効にするということです。
+これは、変数がなんらかの悪い文字を持っているかどうかを
+検査するというのではなく、変数が良い文字のみを持っていることの
+検査には都合が良いです。
+これは(あなたが考えもしないような)悪い文字を見失うことがあまりにも
+簡単であるからです。
 
 =begin original
 
@@ -461,9 +461,9 @@ or a dot.
 
 =end original
 
-�ʲ��˼�����ϡ��ǡ����ˡȸ��(����ե��٥åȡ��������������������)��
-ʸ�����ϥ��ե󡢥��åȥޡ������ɥåȰʳ��Τ�Τ����äƤ��ʤ����Ȥ�
-���������ΤǤ���
+以下に示す例は、データに“語”(アルファベット、数字、アンダースコア)の
+文字、ハイフン、アットマーク、ドット以外のものが入っていないことを
+検査するものです。
 
     if ($data =~ /^([-\@\w.]+)$/) {
 	$data = $1; 			# $data now untainted
@@ -484,15 +484,15 @@ a child of lesser privilege.
 
 =end original
 
-����Ϥ��ʤ�����Ǥ���
-�ʤ��ʤ� C<\w+> ���̾亮����Υ᥿ʸ���ˤ�
-�ޥå����ޤ��󤷡��ɥåȤ���å���ʤɤΥ�����ˤȤä����̤ʰ�̣��
-���Ĥ褦�ʤ�Τˤ�ޥå����ʤ�����Ǥ���
-C</.+/> ��Ȥ��Τϡ�����Ϥ��٤Ƥ��̤��Ƥ��ޤ��Τ� Perl �Ϥ����
-�����å����ޤ��󤫤顢����Ū�ˤϰ����ǤϤ���ޤ���
-������������Ȥ��ˤϡ���ʬ�Υѥ�����ˤĤ��ƽ���ʬ�����դ��ͤФʤ�ޤ���
-����ɽ����Ȥä��ǡ����������ϡ����������������㤤�ø��٤λҥץ�������
-fork ���뤿�����ά��Ȥ��ޤǤϱ��줿�ǡ����α������� B<�Τ�> �ε����Ǥ���
+これはかなり安全です。
+なぜなら C<\w+> は通常シェルのメタ文字には
+マッチしませんし、ドットやダッシュなどのシェルにとって特別な意味を
+持つようなものにもマッチしないからです。
+C</.+/> を使うのは、これはすべてを通してしまうのに Perl はそれを
+チェックしませんから、理論的には安全ではありません。
+汚染を取り除くときには、自分のパターンについて十二分に注意せねばなりません。
+正規表現を使ったデータの洗浄は、先に説明したより低い特権度の子プロセスを
+fork するための戦略を使うまでは汚れたデータの汚染除去 B<のみ> の機構です。
 
 =begin original
 
@@ -506,19 +506,19 @@ block.  See L<perllocale/SECURITY> for further discussion and examples.
 
 =end original
 
-�����Ǥϡ�C<use locale> ��ͭ���Ǥ���Ȥ��ˤ� C<$data> ��
-���������Ԥ��ޤ���
-�ʤ��ʤ顢C<\w> �˥ޥå�����ʸ���ϥ�������ˤ�äƷ��ꤵ��뤫��Ǥ���
-Perl �ϡ���������Ƿ�ޤ뤳�Ȥ򡢤��줬�ץ������γ������褿�ǡ�������
-��������Ƥ���Ȥ�����ͳ�ˤ�äƿ��ѤǤ��ʤ���ΤȤߤʤ��ޤ���
-�⤷����������θ�����ץ�������񤤤Ƥ��ơ�C<\w> ��ޤ������ɽ����
-�ǡ�����������Ԥ������Ȥ����Τʤ顢�����֤��줿�Τ�Ʊ���֥��å���������ʬ��
-C<no locale>���֤��ޤ���
-L<perllocale/SECURITY> �˾ܤ����������㤬����ޤ���
+先の例では、C<use locale> が有効であるときには C<$data> の
+汚染除去を行いません。
+なぜなら、C<\w> にマッチする文字はロケールによって決定されるからです。
+Perl は、ロケールで決まることを、それがプログラムの外から来たデータから
+構成されているという理由によって信用できないものとみなします。
+もしロケールを考慮したプログラムを書いていて、C<\w> を含んだ正規表現で
+データの洗浄を行いたいというのなら、式の置かれたのと同じブロックの前の部分に
+C<no locale>を置きます。
+L<perllocale/SECURITY> に詳しい説明と例があります。
 
 =head2 Switches On the "#!" Line
 
-("#!" �ԤΥ����å�)
+("#!" 行のスイッチ)
 
 =begin original
 
@@ -533,19 +533,19 @@ Unix-like environments that support #! and setuid or setgid scripts.)
 
 =end original
 
-��ʬ�κ�ä�������ץȤ򥳥ޥ�ɤΤ褦�˻Ȥ���褦�ˤ����Ȥ��������ƥ��
-perl ���Ф��ơ�������ץȤ� #! �ιԤ��饳�ޥ�ɥ饤�󥹥��å����Ϥ��ޤ���
-Perl �ϡ�setuid(���뤤�� setgid) ���줿������ץȤ�Ϳ����줿
-���ޥ�ɥ饤�󥹥��å��� #! �Ԥˤ����Τ������˰��פ��뤫�ɤ����򸡺����ޤ���
-������ UNIX �� UNIX ���δĶ��Ǥ� #! �Ԥˤϰ�ĤΥ����å������֤��ʤ��Τǡ�
-�������ä������ƥ�Ǥ� C<-w -U> �Ȥ��ä������ǤϤʤ�
-C<-wU> �Τ褦�ˤ���ɬ�פ�����Ǥ��礦(����� #! �򥵥ݡ��Ȥ��Ƥ��ơ�
-setuid �� setgid ������ץȤ��Ȥ��� UNIX �Ķ��� UNIX �˻����Ķ��ǤΤ�
-�Ԥʤ��뤳�ȤǤ�)��
+自分の作ったスクリプトをコマンドのように使えるようにしたとき、システムは
+perl に対して、スクリプトの #! の行からコマンドラインスイッチを渡します。
+Perl は、setuid(あるいは setgid) されたスクリプトに与えられた
+コマンドラインスイッチが #! 行にあるものと本当に一致するかどうかを検査します。
+一部の UNIX や UNIX 風の環境では #! 行には一つのスイッチしか置けないので、
+そういったシステムでは C<-w -U> といった形式ではなく
+C<-wU> のようにする必要があるでしょう(これは #! をサポートしていて、
+setuid や setgid スクリプトが使える UNIX 環境や UNIX に似た環境でのみ
+行なわれることです)。
 
 =head2 Taint mode and @INC
 
-(���������⡼�ɤ� @INC)
+(汚染検査モードと @INC)
 
 =begin original
 
@@ -560,13 +560,13 @@ therefore permitted.
 
 =end original
 
-���������⡼��(C<-T>) ��ͭ���ΤȤ���"." �ǥ��쥯�ȥ�� C<@INC> ����
-�������졢�Ķ��ѿ� C<PERL5LIB> �� C<PERLLIB> �� Perl ����̵�뤵��ޤ���
-����Ǥ⡢L<perlrun> ����������Ƥ��� C<-I> ���ޥ�ɥ饤�󥪥ץ�����
-�Ȥ����Ȥǡ��ץ������γ������� C<@INC> ��Ĵ������ޤ���
-��ĤδĶ��ѿ��������Τǡ��ץ�������¹Ԥ��Ƥ���
-�桼�����Ϥ����ѿ������ꤵ��Ƥ��뤳�Ȥ˵��դ��ʤ����⤷��ʤ��Τ�
-̵�뤵��ޤ��������� C<-I> ���ץ��������Τ˸�����Τǵ��Ĥ���ޤ���
+汚染検査モード(C<-T>) が有効のとき、"." ディレクトリは C<@INC> から
+取り除かれ、環境変数 C<PERL5LIB> と C<PERLLIB> は Perl から無視されます。
+それでも、L<perlrun> で説明されている C<-I> コマンドラインオプションを
+使うことで、プログラムの外部から C<@INC> を調整出来ます。
+二つの環境変数は不明確で、プログラムを実行している
+ユーザーはこの変数が設定されていることに気付かないかもしれないので
+無視されますが、一方 C<-I> オプションは明確に見えるので許可されます。
 
 =begin original
 
@@ -575,8 +575,8 @@ the C<lib> pragma, e.g.:
 
 =end original
 
-�ץ������������뤳�Ȥʤ� C<@INC> ��������⤦��Ĥ���ˡ�ϡ�
-C<lib> �ץ饰�ޤ�Ȥ����ȤǤ����Ĥޤ�:
+プログラムを修正することなく C<@INC> を修正するもう一つの方法は、
+C<lib> プラグマを使うことです。つまり:
 
   perl -Mlib=/foo program
 
@@ -588,8 +588,8 @@ will not.
 
 =end original
 
-C<-I/foo> �ǤϤʤ� C<-Mlib=/foo> ��Ȥ������ϡ���Ԥ�������ưŪ�˽�ʣ����
-�ǥ��쥯�ȥ��ưŪ�˽���뤳�ȤǤ���
+C<-I/foo> ではなく C<-Mlib=/foo> を使う利点は、後者だけが自動的に重複した
+ディレクトリを自動的に除去することです。
 
 =begin original
 
@@ -598,14 +598,14 @@ problem will be reported:
 
 =end original
 
-�⤷�������줿ʸ���� C<@INC> ���ɲä����ȡ��ʲ������꤬��𤵤�뤳�Ȥ�
-���դ��Ƥ�������:
+もし汚染された文字列が C<@INC> に追加されると、以下の問題が報告されることに
+注意してください:
 
   Insecure dependency in require while running with -T switch
 
 =head2 Cleaning Up Your Path
 
-(�¹ԥѥ�����������)
+(実行パスを洗浄する)
 
 =begin original
 
@@ -622,19 +622,19 @@ your PATH, it makes sure you set the PATH.
 
 =end original
 
-"Insecure C<$ENV{PATH}>" ��å��������н褹�뤿��ˡ�C<$ENV{'PATH'}> ��
-���Τ��ͤ����ꤹ��ɬ�פ�����ޤ���
-������ path �˴ޤޤ�Ƥ���ƥǥ��쥯�ȥ�ϡ����Хѥ��ǡ�
-���Υǥ��쥯�ȥ�ν�ͭ�Ԥ䥰�롼�װʳ�����ν񤭹��ߤ�
-�ؤ��Ƥ��ʤ���Фʤ�ޤ���
-�¹Ԥ��褦�Ȥ��Ƥ���ե������ե�ѥ���
-�񤤤��Ȥ��Ƥ⤳�Υ�å��������Ǥ�Τǡ��Ӥä��ꤹ�뤳�Ȥ����뤫�⤷��ޤ���
-���Υ�å������ϥץ������Υե�ѥ���񤫤ʤ��ä�������Ϥ����ǤϤʤ���
-�Ķ��ѿ� PATH �����ꤷ�ʤ��ä�������Ǥʤ��ͤ�
-���ꤷ���ꤷ������˽��Ϥ����ΤǤ���
-Perl ���оݤȤʤäƤ���¹ԥե����뤬��ʬ���Ȥ�����ž�������ꡢ
-PATH �򻲾Ȥ����̤Υץ�������ư�����ꤹ�뤫�ɤ������Τ뤳�Ȥ��Ǥ��ʤ��Τǡ�
-�μ¤˼�ʬ�� PATH �����ꤹ��褦�ˤ��ޤ���
+"Insecure C<$ENV{PATH}>" メッセージに対処するために、C<$ENV{'PATH'}> に
+既知の値を設定する必要があります。
+そして path に含まれている各ディレクトリは、絶対パスで、
+そのディレクトリの所有者やグループ以外からの書き込みを
+禁じていなければなりません。
+実行しようとしているファイルをフルパスで
+書いたとしてもこのメッセージがでるので、びっくりすることがあるかもしれません。
+このメッセージはプログラムのフルパスを書かなかったから出力されるではなく、
+環境変数 PATH を設定しなかったり安全でない値を
+設定したりしたために出力されるのです。
+Perl は対象となっている実行ファイルが自分自身を方向転換したり、
+PATH を参照して別のプログラムを起動したりするかどうかを知ることができないので、
+確実に自分で PATH を設定するようにします。
 
 =begin original
 
@@ -646,12 +646,12 @@ setid and taint-checking scripts.
 
 =end original
 
-�������������������Ķ��ѿ��� PATH �����ǤϤ���ޤ���
-�����Υ�����Ǥϡ�IFS��CDPATH��ENV��BASH_ENV �Τ褦�ʴĶ��ѿ���
-�ȤäƤ��ޤ����顢Perl �Ϥ������ѿ�������Ǥ��뤫���뤤��
-���֥ץ���������ư�����Ȥ��˱�������Ƥ��ʤ����ɤ��������å����ޤ���
-setid ���Ƥ����ꡢ���������򤹤륹����ץȤ�
-�ʲ��Τ褦�ʹԤ��դ��ä������ʤ뤫����ޤ���
+この問題を引き起こす環境変数は PATH だけではありません。
+一部のシェルでは、IFS、CDPATH、ENV、BASH_ENV のような環境変数を
+使っていますから、Perl はこれらの変数がからであるかあるいは
+サブプロセスが起動したときに汚染されていないかどうかチェックします。
+setid していたり、汚染検査をするスクリプトに
+以下のような行を付け加えたくなるかしれません。
 
     delete @ENV{qw(IFS CDPATH ENV BASH_ENV)};   # Make %ENV safer
 
@@ -667,15 +667,15 @@ prevent stupid mistakes, not to remove the need for thought.
 
 =end original
 
-���Τۤ��Ρ��������줿�ͤ�ȤäƤ��뤫�ɤ��������դ�ʧ��ʤ��褦��
-���ˤ�äƥȥ�֥�˴����ޤ���ǽ���⤢��ޤ���
-�桼�������Ȥ��褦�ʥե�����̾�򰷤��ե����븡���λ��Ѥ����ʤ�Τˤ��ޤ���
-��ǽ�Ǥ���С��ե�����򥪡��ץ󤷤� B<���θ��> Ŭ�ڤ˥��ڥ����桼����
-(���롼�פ�!)���ø�����Ȥ��ޤ���
-Perl �Ϥ��ʤ����ɤ߽Ф��Τ���˱������줿�ե�����̾��Ȥäƥե������
-�����ץ󤹤뤳�Ȥ�˸���ޤ��󤫤顢���Ϥκݤˤ����դ��ޤ��礦��
-�������������ϤФ��Ф������ߥ����б����뤿��Τ�ΤǤ��äơ�
-ɬ�פʤ��Ȥ��������ΤǤϤ���ޤ���
+このほかの、汚染された値を使っているかどうかに注意を払わないような
+操作によってトラブルに巻込まれる可能性もあります。
+ユーザーが使うようなファイル名を扱うファイル検査の使用を賢明なものにします。
+可能であれば、ファイルをオープンした B<その後で> 適切にスペシャルユーザー
+(グループも!)の特権を落とします。
+Perl はあなたが読み出しのために汚染されたファイル名を使ってファイルを
+オープンすることを妨げませんから、出力の際には注意しましょう。
+汚染検査機構はばかばかしいミスに対応するためのものであって、
+必要なことを取り除くものではありません。
 
 =begin original
 
@@ -687,11 +687,11 @@ subterfuge will be required.
 
 =end original
 
-Perl �ϡ�C<system> �� C<exec> ���Ф��ƥ�����Υ磻��ɥ����ɤ�
-���뤫�⤷��ʤ��褦��ʸ����ǤϤʤ��ۤ˥ѥ�᡼���ꥹ�Ȥ��Ϥ������ˤϡ�
-�磻��ɥ����ɤ�Ÿ���Τ���˥������ƤӽФ����ꤷ�ޤ���
-��ǰ�ʤ��Ȥˡ�C<open>��C<glob>���ե������ȤȤ��ä���ΤϤ������ä��̤�
-�ƤӽФ������󶡤��Ƥ��ʤ��Τǡ����¿���Τ��ޤ�����ɬ�פȤ���ޤ���
+Perl は、C<system> や C<exec> に対してシェルのワイルドカードが
+あるかもしれないような文字列ではなく陽にパラメータリストを渡した場合には、
+ワイルドカードの展開のためにシェルを呼び出したりしません。
+残念なことに、C<open>、C<glob>、逆クォートといったものはそういった別の
+呼び出し手順を提供していないので、より多くのごまかしが必要とされます。
 
 =begin original
 
@@ -710,20 +710,20 @@ doing something it shouldn't.
 
 =end original
 
-Perl �ϡ�setuid �� setgid ���줿�ץ�����फ������˥ե������ѥ��פ�
-�����ץ󤹤���ˡ���󶡤��Ƥ��ޤ���
-�����ñ�ˡ�����Ż��򤹤뤿������¤��줿��������ä��ҥץ�������
-��������Ȥ�����ΤǤ���
-�ޤ��ǽ�ˡ��ѥ��פˤ�äƿƥץ������Ȼҥץ������Ȥ�Ҥ���ʸ��
-���̤� C<open> ��Ȥäƻҥץ������� fork ���ޤ���
-���ΤȤ����ҥץ������Ϥ��� ID ���åȤ�ꥻ�åȤ�����ˤ���¾��
-�ץ��������°����ꥻ�åȤ��ơ����ꥸ�ʥ�Ρ�
-�⤷���ϰ����ʴ��Τ��ͤؤ��ᤷ�ޤ���
-���줫���Ϥ䲿�����̤Υѡ��ߥå�������äƤ��ʤ��ҥץ�������
-C<open> �ʤɤΥ����ƥॳ�����¹Ԥ��ޤ���
-�ե������ѥ��פϿƥץ����������㤤�ø��θ��Ǽ¹Ԥ���Ƥ���
-�ҥץ������ǥ����ץ󤵤줿�Τǡ����٤��ǤϤʤ��褦�ʤ��Ȥ�
-���ޤ����Ƥ����ʤ����ȤϤǤ��ޤ���
+Perl は、setuid や setgid されたプログラムから安全にファイルやパイプを
+オープンする方法を提供しています。
+これは単に、汚れ仕事をするための制限された権利を持った子プロセスを
+生成するというものです。
+まず最初に、パイプによって親プロセスと子プロセスとを繋ぐ構文の
+特別な C<open> を使って子プロセスを fork します。
+このとき、子プロセスはその ID セットをリセットしさらにその他の
+プロセス毎の属性をリセットして、オリジナルの、
+もしくは安全な既知の値へと戻します。
+それからもはや何の特別のパーミッションも持っていない子プロセスが
+C<open> などのシステムコールを実行します。
+ファイルやパイプは親プロセスよりも低い特権の元で実行されている
+子プロセスでオープンされたので、すべきではないようなことを
+ごまかしておこなうことはできません。
 
 =begin original
 
@@ -734,11 +734,11 @@ never call the shell at all.
 
 =end original
 
-�ʲ��˼����Τϡ������˵ե������Ȥ�Ԥ���ˡ�Ǥ���
-�ɤΤ褦�ˤ��� C<exec> �ϥ����뤬Ÿ�����뤫�⤷��ʤ�ʸ�����ȼ�ä�
-�ƤӽФ���ʤ��褦�ˤʤäƤ��뤫�����ܤ��Ƥ���������
-����ϥ�����򥨥������פ�����Ū�ˤϺ�������ˡ�Ȥ����櫓�ǤϤ���ޤ���
-�����ñ�ˡ��������ƤӽФ��ʤ��Ȥ��������Ǥ���
+以下に示すのは、安全に逆クォートを行う方法です。
+どのようにして C<exec> はシェルが展開するかもしれない文字列を伴って
+呼び出されないようになっているかに注目してください。
+これはシェルをエスケープする目的には最善の方法というわけではありません。
+これは単に、シェルを呼び出さないというだけです。
 
         use English '-no_match_vars';
         die "Can't fork: $!" unless defined($pid = open(KID, "-|"));
@@ -773,8 +773,8 @@ you can use C<readdir> instead.
 
 =end original
 
-C<readdir> ������˻Ȥ����Ȥ��Ǥ���ˤ��Ƥ⡢Ʊ�ͤ���ά�� C<glob> ��
-�̤����磻��ɥ����ɤ�Ÿ���Ǥ�ͭ���Ǥ���
+C<readdir> を代わりに使うことができるにしても、同様の戦略が C<glob> を
+通じたワイルドカードの展開でも有効です。
 
 =begin original
 
@@ -786,12 +786,12 @@ programs launched on someone else's behalf, like CGI programs.
 
 =end original
 
-���������ϡ�����򤯤�Ƥ�� (give away the farm) ����Υץ�������
-���Ҥ��뤳�Ȥ�ʬ���Ȥ�Ǥ���ʤ��Ȥ������ȤǤϤʤ��ơ�
-�ǽ�Ū�ˤ����Ĥ��ä��ɤ���̤ʤˤ���Ԥ����Ȥ��Ƥ�����줫��
-���ꤹ��ɬ�פ��ʤ��Ȥ����Ȥ��˺Ǥ������ʤ�ΤǤ���
-����ϡ�set-id �ץ������䡢CGI �ץ������Τ褦��ï����
-�����Ѥ�äƵ�ư�����褦�ʥץ������������ʥ������ƥ������å��Ǥ���
+汚染検査は、農場をくれてやる (give away the farm) ためのプログラムを
+記述することを自分自身に任せないということではなくて、
+最終的にそれをつかって良からぬなにかを行おうとしているだれかを
+信頼する必要がないというときに最も便利なものです。
+これは、set-id プログラムや、CGI プログラムのように誰かに
+すり変わって起動されるようなプログラムに便利なセキュリティチェックです。
 
 =begin original
 
@@ -805,19 +805,19 @@ are trapped and namespace access is carefully controlled.
 
 =end original
 
-�������ʤ��顢������ɤ���̤ʤˤ���Ԥ����Ϥ��ʤ������ɤκ�Ԥ�
-���Ѥ��ʤ��Ȥ������ȤȤ����餫�˰㤤�ޤ���
-�����ï�������ץ������򤢤ʤ������ޤǸ������ȤΤʤ��褦�ˤ����ä�
-�֤ۤ顢�����¹Ԥ��ơפȸ��碌��褦�ʤȤ���ɬ�פʼ���ο��ѤǤ���
-���μ�ΰ������Τ���ˡ�Perl �����ۥѥå�������ɸ��Ǵޤޤ�Ƥ���
-Safe �⥸�塼�������å����ƤߤƤ���������
-���Υ⥸�塼��ϥץ�����ޡ������٤ƤΥ����ƥ�����ȥ�åפ���
-̾�����֤Υ������������տ������椵���褦��
-���̤ʻ��ڤ�(compartment)�򥻥åȥ��åפ��뤳�Ȥ�����ޤ���
+しかしながら、これは良からぬなにかを行おうはしないコードの作者を
+信用しないということとは明らかに違います。
+これは誰かが、プログラムをあなたが今まで見たことのないようにいじって
+「ほら、これを実行して」と言わせるようなときに必要な種類の信用です。
+この種の安全性のために、Perl の配布パッケージに標準で含まれている
+Safe モジュールをチェックしてみてください。
+このモジュールはプログラマーがすべてのシステム操作をトラップし、
+名前空間のアクセスが注意深く制御されるような
+特別な仕切り(compartment)をセットアップすることを許します。
 
 =head2 Security Bugs
 
-(�������ƥ��Х�)
+(セキュリティバグ)
 
 =begin original
 
@@ -831,14 +831,14 @@ changed, especially if you have symbolic links on your system.
 
 =end original
 
-������ץȤ�Ʊ�����餤��������̤ʸ��¤򥷥��ƥ��Ϳ����
-���ޤ��������������¾�ˡ�¿���� UNIX �Ǥϡ�set-id ���줿������ץȤ�
-�ܼ�Ū�˰����Ǥʤ�������ǽ餫����äƤ��ޤ���
-��������Ȥϡ������ͥ�ˤ����붥����Ǥ���
-���󥿡��ץ꥿����¹Ԥ��뤿��˥����ͥ뤬�ե�����򥪡��ץ󤹤�Τȡ�
-(set-id ���줿)���󥿡��ץ꥿������ư���ƥե�������᤹�뤿���
-���٥����ץ󤹤뤽�δ֤ˡ�����Υե����뤬�ѹ�����뤫�⤷��ޤ���
-�äˡ��ȤäƤ��륷���ƥब����ܥ�å���󥯤򥵥ݡ��Ȥ��Ƥ�����ˤϡ�
+スクリプトと同じくらい柔軟に特別な権限をシステムに与えて
+しまう類の明白な問題の他に、多くの UNIX では、set-id されたスクリプトは
+本質的に安全でない権利を最初から持っています。
+その問題とは、カーネルにおける競合条件です。
+インタープリターを実行するためにカーネルがファイルをオープンするのと、
+(set-id された)インタープリターが起動してファイルを解釈するために
+再度オープンするその間に、問題のファイルが変更されるかもしれません。
+特に、使っているシステムがシンボリックリンクをサポートしている場合には。
 
 =begin original
 
@@ -853,17 +853,17 @@ invoked for you if it's needed.
 
 =end original
 
-�����ʤ��Ȥˡ����Υ����ͥ�Ȼ��͡ɤϻ��ѶػߤˤǤ��뤳�Ȥ⤢��ޤ���
-��ǰ�ʤ��Ȥ˶ػߤˤ���ĤΤ����������ޤ���
-�����ƥ�� set-id �ӥåȤ����åȤ���Ƥ��륹����ץȤ�ñ��˶ػߤ��뤳�Ȥ�
-�Ǥ��ޤ��������ΤȤ��Ϥʤˤ�Ǥ��ޤ���
-�⤦��ġ�������ץȤ��դ���줿 set-id �ӥåȤ�ñ���
-̵�뤷�Ƥ��ޤ����Ȥ��Ǥ��ޤ���
-��Ԥξ�硢Perl ������ץȤˤ��� setuid/gid �ӥåȤ�̵�Ѥʤ�ΤǤϤʤ���
-Perl ��ǧ�������Ȥ��ˡ�Perl �� setuid �� setgid �λųݤ���
-����(emulate)���뤳�Ȥ��Ǥ��ޤ���
-���ε�ǽ�ϡ�ɬ�פȤ����Ȥ��˼�ưŪ�˵�ư����� F<suidperl> �ȸƤФ��
-���̤ʼ¹ԥե�������̤��ƹԤʤ��ޤ���
+幸運なことに、このカーネル“仕様”は使用禁止にできることもあります。
+残念なことに禁止には二つのやり方があります。
+システムは set-id ビットがセットされているスクリプトを単純に禁止することが
+できますが、このときはなにもできません。
+もう一つ、スクリプトに付けられた set-id ビットを単純に
+無視してしまうことができます。
+後者の場合、Perl スクリプトにある setuid/gid ビットが無用なものではないと
+Perl が認識したときに、Perl は setuid や setgid の仕掛けを
+模倣(emulate)することができます。
+この機能は、必要とされるときに自動的に起動される F<suidperl> と呼ばれる
+特別な実行ファイルを通じて行なわれます。
 
 =begin original
 
@@ -877,15 +877,15 @@ in C:
 
 =end original
 
-��������kernel set-id ������ץȵ�ǽ���ػߤ���Ƥ��ʤ���С�Perl ��
-���ʤ��� set-id ������ץȤϰ����ǤϤʤ��Ȥ䤫�ޤ�����ĥ���뤳�ȤǤ��礦��
-���ΤȤ������ʤ��� kernel set-id ������ץȵ�ǽ��ػߤ��뤫��
-������ץȤ� C �Υ�åѡ������Ǥ��ޤ����Τ����줫��ɬ�פǤ���
-C ��åѡ��ϡ�Perl �ץ�������ƤӽФ����Ȥ�����Ƥ�
-���⤷�ʤ��ץ������Ǥ���
-����ѥ��뤵�줿�ץ������� set-id ���줿������ץȤ˴ؤ���
-�����ͥ�ΥХ��ˤϱƶ�����ޤ���
-������ϡ�C �ǽ񤤤�ñ��ʥ�åѡ��Ǥ���
+しかし、kernel set-id スクリプト機能が禁止されていなければ、Perl は
+あなたの set-id スクリプトは安全ではないとやかましく主張することでしょう。
+このとき、あなたは kernel set-id スクリプト機能を禁止するか、
+スクリプトを C のラッパーで包んでしまうかのいずれかが必要です。
+C ラッパーは、Perl プログラムを呼び出すことを除いては
+何もしないプログラムです。
+コンパイルされたプログラムは set-id されたスクリプトに関する
+カーネルのバグには影響されません。
+次の例は、C で書いた単純なラッパーです。
 
     #define REAL_PATH "/path/to/script"
     main(ac, av)
@@ -901,8 +901,8 @@ than your script setuid or setgid.
 
 =end original
 
-���Υ�åѡ��򥳥�ѥ��뤷�Ƽ¹ԥե�����ˤ���������ץȤǤϤʤ�
-I<���μ¹ԥե�����> �� setuid ������ setgid ���ޤ���
+このラッパーをコンパイルして実行ファイルにし、スクリプトではなく
+I<この実行ファイル> を setuid したり setgid します。
 
 =begin original
 
@@ -919,20 +919,20 @@ SysVr4 and BSD 4.4 use this approach to avoid the kernel race condition.
 
 =end original
 
-��ǯ���٥�����Ϥ��Τ褦�ʥ������ƥ��Х����Ф��������������������ƥ��
-�󶡤��Ϥ���ޤ�����
-���Τ褦�ʥ����ƥ�Ǥϡ����󥿡��ץ꥿����ư���뤿��˥����ͥ��
-set-id ������ץȤ��Ϥ��줿�Ȥ��ˤ��Υѥ�̾�򤽤Τޤ޻Ȥ��ΤǤϤʤ���
-����� I</dev/fd/3> ���Ϥ��ޤ���
-����ϥ�����ץȤǤϡ����餫���ᥪ���ץ󤵤�Ƥ������̤ʥե�����Ǥ����顢
-�ٰ��ʥ�����ץȤ򤳤�����뤿��ˤĤ������ȤϤǤ��ޤ���
-�������ä������ƥ�ˤ����Ƥϡ�Perl ��
-C<-DSETUID_SCRIPTS_ARE_SECURE_NOW> ���ղä��ƥ���ѥ��뤹�٤��Ǥ��礦��
-Perl ���ۤ��� F<Configrue> �ץ������ϼ�ʬ���ȤǤ����
-���Ĥ��Ф����Ȥ���Τǡ����ʤ������̤ʲ����򤷤ʤ���Фʤ�ʤ���
-�Ȥ������ȤϤ��ꤢ�ޤ���
-SysVr4 �κǶ�Υ�꡼���ΤۤȤ�ɤ� BSD4.4 ��
-���Υ��ץ������򥫡��ͥ�ζ�������򤱤뤿��˻ȤäƤ��ޤ���
+近年、ベンダーはこのようなセキュリティバグに対する耐性を備えたシステムを
+提供しはじめました。
+そのようなシステムでは、インタープリターを起動するためにカーネルに
+set-id スクリプトが渡されたときにそのパス名をそのまま使うのではなく、
+代わりに I</dev/fd/3> を渡します。
+これはスクリプトでは、あらかじめオープンされている特別なファイルですから、
+邪悪なスクリプトをこじ入れるためにつかうことはできません。
+こういったシステムにおいては、Perl は
+C<-DSETUID_SCRIPTS_ARE_SECURE_NOW> を付加してコンパイルすべきでしょう。
+Perl を構築する F<Configrue> プログラムは自分自身でこれを
+見つけ出そうとするので、あなたが特別な何かをしなければならない、
+ということはありあません。
+SysVr4 の最近のリリースのほとんどや BSD4.4 は
+このアプローチをカーネルの競合条件を避けるために使っています。
 
 =begin original
 
@@ -941,12 +941,12 @@ introduce a security hole.
 
 =end original
 
-��꡼�� 5.6.1 ������ Perl �Ǥϡ�F<suidperl> �ˤ��ä��Х��ˤ�äơ�
-�������ƥ��ۡ��뤬�������ޤ���ǽ��������ޤ�����
+リリース 5.6.1 以前の Perl では、F<suidperl> にあったバグによって、
+セキュリティホールが持ち込まれる可能性がありました。
 
 =head2 Protecting Your Programs
 
-(���ʤ��Υץ���������)
+(あなたのプログラムを守る)
 
 =begin original
 
@@ -955,8 +955,8 @@ with varying levels of "security".
 
 =end original
 
-�����ǵ󤲤�Τϡ����ʤ��� Perl �ץ������Υ����������ɤ򤵤ޤ��ޤ�
-�ȥ������ƥ��ɤΥ�٥�Ǳ�����ˡ�Ǥ���
+ここで挙げるのは、あなたの Perl プログラムのソースコードをさまざまな
+“セキュリティ”のレベルで隠す方法です。
 
 =begin original
 
@@ -969,14 +969,14 @@ people on your local system only see your source.
 
 =end original
 
-�������ޤ��ǽ�ˤ��äƤ����ޤ����������������ɤ��ɤ߹��߸��¤�
-��Ȥ����Ȥ� B<�Ǥ��ޤ���>��
-�ʤ��ʤ顢�����������ɤϡ�����ѥ���䥤�󥿡��ץ�åȤ��뤿���
-�ɤ��褦�ˤʤäƤ��ʤ���Фʤ�ʤ�����Ǥ�(����ϡ�CGI ������ץȤΥ�������
-web �����ѼԤ��鸫�뤳�Ȥ��Ǥ��ʤ��Ȥ����ΤȤϰ㤤�ޤ�)��
-���Τ��ᡢ�ѡ��ߥå����� 0755 ��٥�ˤ��Ƥ����ʤ���Фʤ�ʤ��ΤǤ���
-����ˤ�äƤ��ʤ��Υ������륷���ƥ��Υ桼�����Ϥ��ʤ��Υ�������
-���뤳�Ȥ����ˤʤ�ޤ���
+しかしまず最初にいっておきますが、ソースコードの読み込み権限を
+落とすことは B<できません>。
+なぜなら、ソースコードは、コンパイルやインタープリットするために
+読めるようになっていなければならないからです(これは、CGI スクリプトのソースが
+web の利用者から見ることができないというのとは違います)。
+このため、パーミッションは 0755 レベルにしておかなければならないのです。
+これによってあなたのローカルシステム上のユーザーはあなたのソースを
+見ることだけになります。
 
 =begin original
 
@@ -989,14 +989,14 @@ instead of fixing them, is little security indeed.
 
 =end original
 
-�����ο�ã�Ϥ���򥻥����ƥ��������Ǥ���ȹͤ��Ƥ��ޤ���
-���ʤ��Υץ�����ब�����Ǥʤ����Ȥ�ԤäƤ��ơ�
-¾�ͤ��������ä��������ƥ��η�֤򤳤���������ˡ���Τ�ʤ����Ȥ�
-��äƤ���Τʤ顢����ϰ����ǤϤʤ��ΤǤ���
-����Ϥ���ͤ������Ǥʤ����Ȥ���򸫤Ĥ�������
-�������򸫤뤳�Ȥʤ��ˤ���򤳤������뤳�Ȥ��װ��Ȥʤ�ޤ���
-���������̤����������ƥ��ϥХ���ľ���ΤǤϤʤ��������Ȥ���٤�С�
-�������ƥ���ۤ�ξ��������������Ĥ��ޤ���
+一部の人達はこれをセキュリティ上の問題であると考えています。
+あなたのプログラムが安全でないことを行っていて、
+他人がそういったセキュリティの隙間をこじ開ける方法を知らないことに
+頼っているのなら、それは安全ではないのです。
+これはある人が安全でないことがらを見つけだし、
+ソースを見ることなしにそれをこじ開けることの要因となります。
+明快さを通したセキュリティはバグを直すのではなく隠すことに比べれば、
+セキュリティをほんの少しだけしか傷つけません。
 
 =begin original
 
@@ -1012,18 +1012,18 @@ language, not just Perl).
 
 =end original
 
-�������ե��륿��(CPAN �ˤ��� Filter::*,
+ソースフィルター(CPAN にある Filter::*,
 or Filter::Util::Call and Filter::Simple since Perl 5.8)
-���̤��ưŹ沽���褦��
-���뤳�ȤϤǤ��ޤ���������å����������ʣ�沽���뤳�Ȥϲ�ǽ�Ǥ��礦��
-������������Х��ȥ����ɥ���ѥ��顼�ȥ��󥿡��ץ꥿����Ȥ����Ȥ�
-�Ǥ��ޤ���������å����Ϥ����ե���ѥ��뤹�뤳�Ȥ��Ǥ��뤫�⤷��ޤ���
-�ͥ��ƥ��֥����ɥ���ѥ��顼��Ȥ����Ȥ��Ƥ⡢����å����Ϥ����
-�ե�����֥�Ǥ��뤫�⤷��ޤ���
-�������ä����Ȥϡ�¾�ͤ����ʤ���
-�ץ�������������褦�Ȥ��뤳�Ȥ��񤷤������ꤷ�ޤ�����
-�ץ����������Ū�˱������Ȥ�ï�ˤ�Ǥ��ʤ��ΤǤ�(���Τ��Ȥϡ�
-Perl �˸¤餺���٤Ƥθ���ˤ��ƤϤޤ�ޤ�)��
+を通して暗号化しようと
+することはできますが、クラッカーがそれを複号化することは可能でしょう。
+先に説明したバイトコードコンパイラーとインタープリターを使うことも
+できますが、クラッカーはそれを逆コンパイルすることができるかもしれません。
+ネイティブコードコンパイラーを使おうとしても、クラッカーはそれを
+逆アセンブルできるかもしれません。
+こういったことは、他人があなたの
+プログラムを手に入れようとすることを難しくしたりしますが、
+プログラムを決定的に隠すことは誰にもできないのです(このことは、
+Perl に限らずすべての言語にあてはまります)。
 
 =begin original
 
@@ -1037,15 +1037,15 @@ stand up in court.
 
 =end original
 
-¾�ͤ����ʤ��Υץ�����फ����������פˤĤ��Ƶ��ˤ��Ƥ���ΤǤ���С�
-���¤Ĥ��饤���󥹤����ʤ���ˡŪ�ʰ�����Ϳ����Ǥ��礦��
-���ʤ��Υ��եȥ������Υ饤���󥹤ˡ����ܥ��եȥ������� XYZ Corp.�ˤ�롢
-��ɽ����Ƥ��ʤ�����Ū���եȥ������Ǥ���
-���ʤ������Ѥ��뤿���
-����˥����������뤳�Ȥϵ��Ĥ���Ƥ��餺�����ɤΤ褦�ʶ���ʸ���
-�դ��Ƥ����ޤ���
-���ʤ��Υ饤���󥹤��μ¤�ͭ���ʤ�ΤȤʤ�褦�ˡ�
-�۸�Τ����̤����ۤ����ɤ��Ǥ��礦��
+他人があなたのプログラムから受ける利益について気にしているのであれば、
+制限つきライセンスがあなたに法的な安全を与えるでしょう。
+あなたのソフトウェアのライセンスに、“本ソフトウェアは XYZ Corp.による、
+公表されていない独占的ソフトウェアです。
+あなたが使用するために
+これにアクセスすることは許可されておらず云々”のような脅し文句を
+付けておきます。
+あなたのライセンスが確実に有効なものとなるように、
+弁護士と相談したほうが良いでしょう。
 
 =head2 Unicode
 
@@ -1058,15 +1058,15 @@ of Unicode"> for security implications in particular.
 
 =end original
 
-Unicode �Ͽ�������ʣ���ʵ��Ѥǡ������Υ������ƥ���櫤��ñ��
-����Ȥ��Ƥ��ޤ��ޤ���
-���פˤĤ��Ƥ� L<perluniintro> �򡢾ܺ٤ˤĤ��Ƥ� L<perlunicode> ��
-�������ä˥������ƥ������ˤĤ��Ƥ� L<perlunicode/"Security Implications
-of Unicode"> �򻲾Ȥ��Ƥ���������
+Unicode は新しくて複雑な技術で、ある種のセキュリティの罠を簡単に
+見落としてしまいます。
+概要については L<perluniintro> を、詳細については L<perlunicode> を、
+そして特にセキュリティ実装については L<perlunicode/"Security Implications
+of Unicode"> を参照してください。
 
 =head2 Algorithmic Complexity Attacks
 
-(���르�ꥺ��Ūʣ��������)
+(アルゴリズム的複雑性攻撃)
 
 =begin original
 
@@ -1077,10 +1077,10 @@ I<Denial of Service> (DoS) attacks.
 
 =end original
 
-Perl �μ����ǻȤ��Ƥ��뤢�����������르�ꥺ��ϡ�¿���λ��֤�
-���֤���񤹤�褦�����տ������򤵤줿���Ϥˤ�äƹ����ǽ�Ǥ���
-����ˤ�� I<�����ӥ�����(Denial of Service)> (DoS) ����ȸƤФ�Ƥ���
-��Τ�������������Ȥ��Ǥ��ޤ���
+Perl の実装で使われているある種の内部アルゴリズムは、多くの時間や
+空間を消費するように注意深く選択された入力によって攻撃可能です。
+これにより I<サービス拒否(Denial of Service)> (DoS) 攻撃と呼ばれている
+ものを引き起こすことができます。
 
 =over 4
 
@@ -1095,9 +1095,9 @@ into account.
 
 =end original
 
-�ϥå���ؿ� - �ϥå������Ǥ���¤٤�פ���˻Ȥ��륢�르�ꥺ���
-Perl �γ�ȯ���(��Ȥ��ƹ�®���Τ����)�����ѹ�����Ƥ��ޤ���
-Perl 5.8.1 �Ǥϥ������ƥ���¦�̤��θ����Ƥ��ޤ���
+ハッシュ関数 - ハッシュ要素を「並べる」ために使われるアルゴリズムは
+Perl の開発中に(主として高速化のために)数回変更されています。
+Perl 5.8.1 ではセキュリティの側面も考慮されています。
 
 =begin original
 
@@ -1110,12 +1110,12 @@ See L<perlrun/PERL_HASH_SEED> for more information.
 
 =end original
 
-5.8.1 ������ Perl �Ǥϡ��ϥå����������¤���������뤿��� Perl ��
-���̤λ��֤���񤹤뤳�Ȥˤʤ�褦�ʥϥå��奭���Ȥʤ�ǡ�����
-���ʤ��ñ�������Ǥ��ޤ�����
-Perl 5.8.1 �ǡ����Τ褦�ʤ褯�ʤ��ϥå��奭������������Τ����񤷤�
-���뤿��ˡ��ϥå���ؿ��ϵ�������μ�ˤ�äƥ���������¤���ޤ���
-����ʤ����ˤĤ��Ƥ� L<perlrun/PERL_HASH_SEED> �򻲾Ȥ��Ƥ���������
+5.8.1 以前の Perl では、ハッシュの内部構造が悪化するために Perl が
+大量の時間を消費することになるようなハッシュキーとなるデータを
+かなり簡単に生成できました。
+Perl 5.8.1 で、そのようなよくないハッシュキーを生成するのをより難しく
+するために、ハッシュ関数は擬似乱数の種によってランダムに攪拌されます。
+さらなる情報については L<perlrun/PERL_HASH_SEED> を参照してください。
 
 =begin original
 
@@ -1129,13 +1129,13 @@ different runs are no more identical).
 
 =end original
 
-����������¤ϥǥե���ȤǼ¹Ԥ���ޤ������⤷���餫����ͳ�ǸŤ������񤤤�
-���ߥ�졼�Ȥ��������ϡ�PERL_HASH_SEED �Ķ��ѿ��� 0 (���뤤�Ϥ���¾��
-Ǥ�դ�����) ������Ǥ��ޤ���
-�Ť������񤤤򥨥ߥ�졼�Ȥ�������ͳ�β�ǽ���ΰ�ĤȤ��Ƥϡ�������
-�����񤤤Ǥϡ�Perl �򲿲��¹Ԥ���ȥϥå��奭���ν�������ۤʤ�Τǡ�
-����ˤ�äƺ��𤹤륢�ץꥱ������󤬤��뤫��Ǥ� (�㤨�� Data::Dumper:
-2 ��¹Ԥ�����̤�Ʊ��ˤʤ�ޤ���)��
+ランダムな攪拌はデフォルトで実行されますが、もし何らかの理由で古い振る舞いを
+エミュレートしたい場合は、PERL_HASH_SEED 環境変数に 0 (あるいはその他の
+任意の整数) を設定できます。
+古い振る舞いをエミュレートしたい理由の可能性の一つとしては、新しい
+振る舞いでは、Perl を何回も実行するとハッシュキーの順序が毎回異なるので、
+これによって混乱するアプリケーションがあるからです (例えば Data::Dumper:
+2 回実行した結果が同一になりません)。
 
 =begin original
 
@@ -1146,9 +1146,9 @@ continues to be, affected by the insertion order.
 
 =end original
 
-B<Perl �ϥϥå��奭���ν���ˤĤ��Ʋ����ݾ�⤢��ޤ���> ����Perl 5 ��
-�֤Ǥ���˲��٤��ѹ�����Ƥ��ޤ���
-�ޤ����ϥå��奭���ν���ϡ����ޤǤ⤳�줫��⡢������˱ƶ�������ޤ���
+B<Perl はハッシュキーの順序について何の保障もありません> し、Perl 5 の
+間でも既に何度か変更されています。
+また、ハッシュキーの順序は、今までもこれからも、挿入順に影響を受けます。
 
 =begin original
 
@@ -1162,14 +1162,14 @@ Algorithm::FastPermute), or for any cryptographic applications.
 
 =end original
 
-�ޤ����ϥå������Ǥν���ϥ����ಽ����ޤ��������Ρֵ�������פ�
-�ʲ��Τ��Ȥ� B<�Ȥ��٤��ǤϤ���ޤ���>: �ꥹ�Ȥ�������
-����åե뤹��褦�ʥ��ץꥱ�������
-(Perl 5.8.0 ����ɸ��⥸�塼��ȤʤäƤ��� L<List::Util> ��
-List::Util::shuffle() �䡢CPAN �⥸�塼��Ǥ���
-Algorithm::Numerical::Shuffle ��ȤäƤ�������)�� ��������� 
-(CPAN �⥸�塼��Ǥ��� Algorithm::Permute �� Algorithm::FastPermute ��
-�ȤäƤ�������)��������Ź楢�ץꥱ�������
+また、ハッシュ要素の順序はランダム化されますが、この「擬似整列」は
+以下のことに B<使うべきではありません>: リストをランダムに
+シャッフルするようなアプリケーション
+(Perl 5.8.0 から標準モジュールとなっている L<List::Util> の
+List::Util::shuffle() や、CPAN モジュールである
+Algorithm::Numerical::Shuffle を使ってください)、 順列の生成 
+(CPAN モジュールである Algorithm::Permute や Algorithm::FastPermute を
+使ってください)、あらゆる暗号アプリケーション。
 
 =item *
 
@@ -1186,14 +1186,14 @@ Perl running out of memory.
 
 =end original
 
-����ɽ�� - Perl ������ɽ�����󥸥�� NFA (Non-deterministic Finite Automaton:
-�������ͭ�¥����ȥޥȥ�)�ȸƤФ졢�����¾�Τ�Τ���٤ơ��⤷����ɽ����
-ʣ������ˡ�ǥޥå��󥰤����硢���ʤ��ñ�����̤λ��֤ȶ��֤�
-���񤹤뤳�Ȥ��̣���ޤ���
-����ɽ�������տ������ۤ��뤳�ȤϽ����ˤʤ�ޤ��������ʤ�ξ�礳���
-�Խ�ʬ�Ǥ� ("Mastering Regular Expressions" �Ȥ����ܤ��ɤ�ɬ�פ�����ޤ�;
-L<perlfaq2> �򻲾Ȥ��Ƥ�������)��
-���֤���­�� Perl ��������­�ˤʤ뤳�Ȥ����餫�ˤʤ�ޤ���
+正規表現 - Perl の正規表現エンジンは NFA (Non-deterministic Finite Automaton:
+非決定性有限オートマトン)と呼ばれ、これは他のものに比べて、もし正規表現が
+複数の方法でマッチングする場合、かなり簡単に大量の時間と空間を
+消費することを意味します。
+正規表現を注意深く構築することは助けになりますが、かなりの場合これは
+不十分です ("Mastering Regular Expressions" という本を読む必要があります;
+L<perlfaq2> を参照してください)。
+空間の不足は Perl がメモリ不足になることで明らかになります。
 
 =item *
 
@@ -1208,14 +1208,14 @@ its input data, so it cannot be similarly fooled.
 
 =end original
 
-������ - 5.8.0 ������ Perl �� sort() �ؿ���������뤿��˻Ȥ��Ƥ���
-�����å������ȥ��르�ꥺ��ϡ����̤λ��֤���񤹤�褦�ʺ�ά���ȤƤ�
-��ñ�Ǥ���
-���˥����Ȥ���Ƥ���ꥹ�Ȥ�ƥ����Ȥ�����ʾ�Τ��Ȥ����פǤ���
-Perl 5.8.0 ���顢�ۤʤä������ȥ��르�ꥺ��Ǥ���ޡ��������Ȥ�
-�Ȥ��Ƥ��ޤ���
-�ޡ��������Ȥ����ϥǡ����ˤ�äƱƶ�������ʤ��Τǡ�Ʊ���褦�ʺ�ά��
-�Բ�ǽ�Ǥ���
+ソート - 5.8.0 以前の Perl で sort() 関数を実装するために使われていた
+クイックソートアルゴリズムは、大量の時間を消費するような策略がとても
+簡単です。
+既にソートされているリストを再ソートさせる以上のことは不要です。
+Perl 5.8.0 から、異なったソートアルゴリズムであるマージソートが
+使われています。
+マージソートは入力データによって影響を受けないので、同じような策略は
+不可能です。
 
 =back
 
@@ -1226,8 +1226,8 @@ and any computer science textbook on the algorithmic complexity.
 
 =end original
 
-����ʤ����ˤĤ��Ƥ� L<http://www.cs.rice.edu/~scrosby/hash/> ����ӡ�
-���르�ꥺ��Ūʣ�����˴ؤ�����󹩳ؤζ��ʽ�򻲾Ȥ��Ƥ���������
+さらなる情報については L<http://www.cs.rice.edu/~scrosby/hash/> および、
+アルゴリズム的複雑性に関する情報工学の教科書を参照してください。
 
 =head1 SEE ALSO
 
@@ -1237,7 +1237,7 @@ L<perlrun> for its description of cleaning up environment variables.
 
 =end original
 
-L<perlrun> �ˤϴĶ��ѿ�������������ˡ�����Ҥ���Ƥ��ޤ���
+L<perlrun> には環境変数を洗浄する方法が記述されています。
 
 =begin meta
 

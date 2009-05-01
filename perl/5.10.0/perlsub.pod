@@ -10,7 +10,7 @@ perlsub - Perl subroutines
 
 =end original
 
-perlsub - Perl �Υ��֥롼����
+perlsub - Perl のサブルーチン
 
 =head1 SYNOPSIS
 
@@ -21,7 +21,7 @@ X<subroutine, declaration> X<sub>
 
 =end original
 
-���֥롼������������ˤ�:
+サブルーチンを宣言するには:
 X<subroutine, declaration> X<sub>
 
 =begin original
@@ -33,10 +33,10 @@ X<subroutine, declaration> X<sub>
 
 =end original
 
-    sub NAME;			  # "���" ���
-    sub NAME(PROTO);		  #  Ʊ�塣�������ץ��ȥ������դ�
-    sub NAME : ATTRS;		  #  °���դ�
-    sub NAME(PROTO) : ATTRS;	  #  °���ȥץ��ȥ������դ�
+    sub NAME;			  # "先行" 宣言
+    sub NAME(PROTO);		  #  同上。ただしプロトタイプ付き
+    sub NAME : ATTRS;		  #  属性付き
+    sub NAME(PROTO) : ATTRS;	  #  属性とプロトタイプ付き
 
 =begin original
 
@@ -47,10 +47,10 @@ X<subroutine, declaration> X<sub>
 
 =end original
 
-    sub NAME BLOCK		  # ��������
-    sub NAME(PROTO) BLOCK	  #  Ʊ�塣�������ץ��ȥ������դ�
-    sub NAME : ATTRS BLOCK	  #  °���դ�
-    sub NAME(PROTO) : ATTRS BLOCK #  �ץ��ȥ����פ�°���դ�
+    sub NAME BLOCK		  # 宣言と定義
+    sub NAME(PROTO) BLOCK	  #  同上。ただしプロトタイプ付き
+    sub NAME : ATTRS BLOCK	  #  属性付き
+    sub NAME(PROTO) : ATTRS BLOCK #  プロトタイプと属性付き
 
 =begin original
 
@@ -59,7 +59,7 @@ X<subroutine, anonymous>
 
 =end original
 
-�¹Ի���̵̾���֥롼������������ˤ�:
+実行時に無名サブルーチンを定義するには:
 X<subroutine, anonymous>
 
 =begin original
@@ -71,10 +71,10 @@ X<subroutine, anonymous>
 
 =end original
 
-    $subref = sub BLOCK;		 # �ץ��ȥ����פʤ�
-    $subref = sub (PROTO) BLOCK;	 # �ץ��ȥ������դ�
-    $subref = sub : ATTRS BLOCK;	 # °���դ�
-    $subref = sub (PROTO) : ATTRS BLOCK; # �ץ��ȥ����פ�°���դ�
+    $subref = sub BLOCK;		 # プロトタイプなし
+    $subref = sub (PROTO) BLOCK;	 # プロトタイプ付き
+    $subref = sub : ATTRS BLOCK;	 # 属性付き
+    $subref = sub (PROTO) : ATTRS BLOCK; # プロトタイプと属性付き
 
 =begin original
 
@@ -83,7 +83,7 @@ X<import>
 
 =end original
 
-���֥롼����򥤥�ݡ��Ȥ���ˤ�:
+サブルーチンをインポートするには:
 X<import>
 
     use MODULE qw(NAME1 NAME2 NAME3);
@@ -95,7 +95,7 @@ X<subroutine, call> X<call>
 
 =end original
 
-���֥롼�����ƤӽФ��ˤ�:
+サブルーチンを呼び出すには:
 X<subroutine, call> X<call>
 
 =begin original
@@ -107,10 +107,10 @@ X<subroutine, call> X<call>
 
 =end original
 
-    NAME(LIST);	   # ���ä����դ��Ƥ���Ȥ��� & �Ͼ�ά��ǽ��
-    NAME LIST;	   # ͽ�����/����ݡ��Ȥ���Ƥ���ʤ餫�ä��Ͼ�ά��ǽ��
-    &NAME(LIST);   # �ץ��ȥ����פ���򤹤롣
-    &NAME;	   # �ƤӽФ��줿���֥롼���󤫤鸽�ߤ� @_ ��Ļ벽���롣
+    NAME(LIST);	   # かっこが付いているときは & は省略可能。
+    NAME LIST;	   # 予め宣言/インポートされているならかっこは省略可能。
+    &NAME(LIST);   # プロトタイプを回避する。
+    &NAME;	   # 呼び出されたサブルーチンから現在の @_ を可視化する。
 
 =head1 DESCRIPTION
 
@@ -125,13 +125,13 @@ its name or a CODE reference.
 
 =end original
 
-¿���θ����Ʊ�͡�Perl �ϥ桼��������Υ��֥롼������󶡤��Ƥ��ޤ���
-�����Υ��֥롼����ϡ��ᥤ��ץ������Τɤ��ˤǤ��֤����Ȥ��Ǥ���
-C<do>, C<require>, C<use> �Ȥ��ä�������ɤ�Ȥä�¾�Υե����뤫��
-�����ɤ��뤳�Ȥ��Ǥ���C<eval> ��̵̾���֥롼�����Ȥä�
-�������뤳�Ȥ�Ǥ��ޤ���
-���֥롼�����̾���䡢�����ɥ�ե���󥹤��ݻ������ѿ���Ȥä�
-����Ū�˴ؿ���ƤӽФ����Ȥ��ǽ�Ǥ���
+多くの言語と同様、Perl はユーザー定義のサブルーチンを提供しています。
+これらのサブルーチンは、メインプログラムのどこにでも置くことができ、
+C<do>, C<require>, C<use> といったキーワードを使って他のファイルから
+ロードすることができ、C<eval> や無名サブルーチンを使って
+生成することもできます。
+サブルーチンの名前や、コードリファレンスを保持する変数を使って
+間接的に関数を呼び出すことも可能です。
 
 =begin original
 
@@ -148,15 +148,15 @@ X<subroutine, parameter> X<parameter>
 
 =end original
 
-Perl �Ǥδؿ��ƤӽФ�������ͤΥ�ǥ��ñ��Ǥ������Ƥδؿ��ϰ�����
-ʿó�ǰ�ĤΥ�����Υꥹ�ȤǼ�����ꡢƱ�ͤ����Ƥδؿ��ϸƤӽФ�����
-�Ф���ʿó�ǰ�ĤΥ�����Τꥹ�Ȥ��֤��Ȥ�����ΤǤ���
-�����θƤӽФ��ꥹ�Ȥ�����ͥꥹ�Ȥˤ������Ƥ�����ȥϥå���ϡ�
-�٤���Ƥ��Υ����ǥ�ƥ��ƥ��򼺤��ޤ���
-��������������򤱤뤿��˾�˥�ե���󥹤��Ϥ����Ȥ��Ǥ��ޤ���
-�ƤӽФ��ꥹ�Ȥ�����ͥꥹ�Ȥ�ξ���Ȥ⹥���ʤ����ο��Υ������
-�ݻ����뤳�Ȥ��Ǥ��ޤ�(���Τ� return ʸ�Τʤ��ؿ��Ϥ��Ф��Х��֥롼�����
-�ƤФ�ޤ�����Perl �������Ϥ����δ֤˲��ΰ㤤�⤢��ޤ���)��
+Perl での関数呼び出しと戻り値のモデルは単純です。全ての関数は引数を、
+平坦で一つのスカラのリストで受け取り、同様に全ての関数は呼び出し元に
+対して平坦で一つのスカラのりストで返すというものです。
+これらの呼び出しリストと戻り値リストにある全ての配列とハッシュは、
+潰されてそのアイデンティティを失います。
+しかし、これを避けるために常にリファレンスで渡すことができます。
+呼び出しリストと戻り値リストの両方とも好きなだけの数のスカラを
+保持することができます(明確な return 文のない関数はしばしばサブルーチンと
+呼ばれますが、Perl の定義上はこれらの間に何の違いもありません)。
 
 =begin original
 
@@ -176,18 +176,18 @@ X<subroutine, argument> X<argument> X<@_>
 
 =end original
 
-�롼������Ϥ���뤹�٤Ƥΰ��������� C<@_> ���֤���ޤ���
-�������äơ�����ؿ�����Ĥΰ������դ��ƸƤӽФ����ʤ�С�
-���ΰ����� C<$_[0]> �� C<$_[1]> �˳�Ǽ����ޤ���
-���� C<@_> �� local ����Ǥ������������Ǥϼºݤ�
-������ѥ�᡼������̾�Ǥ���
-���Ȥ��� C<$_[0]> ���������줿��硢�б������������������ޤ�
-(�����Ǥ��ʤ����ˤϥ��顼�Ȥʤ�ޤ�)��
-�������������ϥå����(�ؿ����ƤӽФ��줿�����Ǥ�¸�ߤ��Ƥʤ�)
-���ǤǤ��ä���硢�������Ǥ�(�б�������̾��)�������줿��
-��ե���󥹤����줿�Ȥ��ˤΤߺ�������ޤ�(�����ΰ����ΥС�������
-Perl �Ǥϡ��������Ǥ��������Ԥ��褦���Ԥ��ޤ�����������Ƥ��ޤ���)��
-���� C<@_> ���Τ��Ф�����������̾���˴��������ΰ����⹹�����ޤ���
+ルーチンに渡されるすべての引数は配列 C<@_> に置かれます。
+したがって、ある関数を二つの引数を付けて呼び出したならば、
+その引数は C<$_[0]> と C<$_[1]> に格納されます。
+配列 C<@_> は local 配列ですが、その要素は実際の
+スカラパラメータの別名です。
+たとえば C<$_[0]> が更新された場合、対応する引数が更新されます
+(更新できない場合にはエラーとなります)。
+引数が、配列やハッシュの(関数が呼び出された時点では存在してない)
+要素であった場合、その要素は(対応する別名が)修正されたり
+リファレンスが取られたときにのみ作成されます(以前の一部のバージョンの
+Perl では、この要素は代入が行われようが行われまいが作成されていました)。
+配列 C<@_> 全体に対する代入は別名を破棄し、何の引数も更新しません。
 X<subroutine, argument> X<argument> X<@_>
 
 =begin original
@@ -203,13 +203,13 @@ one large indistinguishable list.
 
 =end original
 
-���֥롼���󤫤�æ�Ф��뤿��˻Ȥ�줿 C<return> ʸ��
-�Ȥ��뤳�Ȥ⤢��ޤ��������֥롼����ƤӽФ��Υ���ƥ����Ȥˤ�ä�
-Ŭ�ڤʥ���ƥ�����(�ꥹ�ȡ������顢̵��)��ɾ�����������ͤλ����
-��ά���������ǽ�Ǥ���
-�⤷��������ͤ���ꤷ�ʤ���С����֥롼����ϥꥹ�ȥ���ƥ����Ȥˤ����Ƥ�
-���ꥹ�Ȥ��֤��������饳��ƥ����Ȥˤ����Ƥ�̤����ͤ��֤���
-̵������ƥ����ȤǤϤʤˤ��֤��ޤ���
+サブルーチンから脱出するために使われた C<return> 文が
+使われることもありますし、サブルーチン呼び出しのコンテキストによって
+適切なコンテキスト(リスト、スカラ、無効)で評価される戻り値の指定を
+省略する事が可能です。
+もし何の戻り値も指定しなければ、サブルーチンはリストコンテキストにおいては
+空リストを返し、スカラコンテキストにおいては未定義値を返し、
+無効コンテキストではなにも返しません。
 
 =begin original
 
@@ -221,10 +221,10 @@ X<subroutine, return value> X<return value> X<return>
 
 =end original
 
-C<return> ���ʤ����Ǹ��ʸ�������ä���硢�����ͤ��֤���ޤ���
-�Ǹ��ʸ�� C<foreach> �� C<while> �Τ褦�ʥ롼�����湽¤���ä���硢
-�֤�����ͤ�����Ǥ���
-���Υ��֥롼����϶��ꥹ�Ȥ��֤��ޤ���
+C<return> がなく、最後の文が式だった場合、その値が返されます。
+最後の文が C<foreach> や C<while> のようなループ制御構造だった場合、
+返される値は不定です。
+空のサブルーチンは空リストを返します。
 X<subroutine, return value> X<return value> X<return>
 
 =begin original
@@ -240,13 +240,13 @@ X<formal parameter> X<parameter, formal>
 
 =end original
 
-Perl��̾���դ�����������äƤ��ޤ���
-C<my()> �ˤ����Υꥹ�Ȥ��������뤳�ȤǹԤ��ޤ���
-�ץ饤�١��ȤǤ����������줺�˻Ȥ��Ƥ����ѿ������ƥ������Х��ѿ��Ǥ���
-�ץ饤�١����ѿ��˴ؤ���ܺ٤�L<"Private Variables via my()"> ��
-L<"Temporary Values via local()"> �򻲾Ȥ��Ƥ���������
-�ѥå�������(�����餯�ϥե�����Ǥ�)ʬ�����Ƥ���ؿ��Υ��åȤΤ����
-�ݸ�줿�Ķ�����ˤ� L<perlmod/"Packages"> �򻲾Ȥ��Ƥ���������
+Perlは名前付き仮引数を持っていません。
+C<my()> にこれらのリストを代入することで行えます。
+プライベートであると宣言されずに使われている変数は全てグローバル変数です。
+プライベート変数に関する詳細はL<"Private Variables via my()"> と
+L<"Temporary Values via local()"> を参照してください。
+パッケージで(おそらくはファイルでも)分けられている関数のセットのための
+保護された環境を作るには L<perlmod/"Packages"> を参照してください。
 X<formal parameter> X<parameter, formal>
 
 =begin original
@@ -255,7 +255,7 @@ Example:
 
 =end original
 
-��:
+例:
 
     sub max {
 	my $max = shift(@_);
@@ -272,7 +272,7 @@ Example:
 
 =end original
 
-��:
+例:
 
 =begin original
 
@@ -281,7 +281,7 @@ Example:
 
 =end original
 
-    # �Ԥ��ꡢ����ǻϤޤ��³�Ԥ�Ϣ�뤷�ޤ�
+    # 行を取り、空白で始まる継続行を連結します
 
     sub get_line {
 	$thisline = $lookahead;  # global variables!
@@ -307,7 +307,7 @@ Assigning to a list of private variables to name your arguments:
 
 =end original
 
-������̾�����դ��뤿��˥ץ饤�١����ѿ��Υꥹ�Ȥ���������:
+引数に名前を付けるためにプライベート変数のリストに代入する:
 
     sub maybeset {
 	my($key, $value) = @_;
@@ -324,10 +324,10 @@ X<call-by-reference> X<call-by-value>
 
 =end original
 
-����ϡ������Ϥ������Ϥ��ˤ�����̤⤢��ޤ���
-�ʤ��ʤ顢�ͤΥ��ԡ����������Ƥ��뤫��Ǥ���
-���Τ褦�ˤ��ʤ��ΤǤ���С��ؿ��ϼ�ͳ�� C<@_> ���ͤ򤽤ξ��
-�񤭴����뤳�Ȥ��Ǥ�������Ϥ��Τޤ޸ƤӽФ�¦���ͤ��ѹ����ޤ���
+これは、参照渡しを値渡しにする効果もあります。
+なぜなら、値のコピーを代入しているからです。
+このようにしないのであれば、関数は自由に C<@_> の値をその場で
+書き換えることができ、それはそのまま呼び出し側の値を変更します。
 X<call-by-reference> X<call-by-value>
 
     upcase_in($v1, $v2);  # this changes $v1 and $v2
@@ -344,10 +344,10 @@ X<call-by-reference> X<call-by-value>
 
 =end original
 
-������󡢤��Τ������������ѹ����뤳�Ȥϵ�����ޤ���
-����������ºݤˤϥ�ƥ��Ǥ��ä����ˤ��ΰ������ѹ����褦�Ȥ���ȡ�
-(�����餯����̿Ū��)�㳰��������������뤳�Ȥˤʤ�Ǥ��礦��
-�㤨�м�����Ϥ��ޤ�Ư���ޤ���
+もちろん、このやり方で定数を変更することは許されません。
+ある引数が実際にはリテラルであった場合にその引数を変更しようとすると、
+(おそらくは致命的な)例外が引き起こされることになるでしょう。
+例えば次の例はうまく働きません。
 X<call-by-reference> X<call-by-value>
 
     upcase_in("frederick");
@@ -360,8 +360,8 @@ of changing them in place:
 
 =end original
 
-C<upcase_in()> �ؿ�������ʤ�Τˤ���ˤϡ��ѥ�᡼�����Τ�Τ�
-�񤭴�����ΤǤϤʤ����Υ��ԡ����֤��褦�˵��Ҥ���褦�ˤ��ޤ�:
+C<upcase_in()> 関数を安全なものにするには、パラメータそのものを
+書き換えるのではなくそのコピーを返すように記述するようにします:
 
     ($v3, $v4) = upcase($v1, $v2);  # this doesn't change $v1 and $v2
     sub upcase {
@@ -382,13 +382,13 @@ definition even if we fed it things like this:
 
 =end original
 
-����(�ץ��ȥ����פ��Ĥ��Ƥ��ʤ�)�ؿ�����ʬ���Ф��������Υ����餬
-�Ϥ��줿�Τ������Ϥ��줿�Τ��򵤤ˤ��Ƥ��ʤ��Ȥ������Ȥ����դ��Ƥ���������
-Perl �ϰ�Ĥε����ʿó��(�ꥹ�Ȥ���˥ꥹ�Ȥ��ޤޤ�뤳�ȤϤʤ���
-�Ȥ�������) C<@_> �ѥ�᡼���ꥹ�ȤȤ������Ƥΰ����򸫤�ΤǤ���
-����� Perl ��ñ��ʰ����Ϥ��η����Τ�����ΰ�ĤǤ���
-���� C<upcase()> �ؿ��ϡ��ʲ��Τ褦�ʸƤӽФ��򤷤����Ǥ� C<upcase()> ��
-������ѹ����뤳�Ȥʤ�������ư��ޤ�:
+この(プロトタイプがついていない)関数が自分に対して本当のスカラが
+渡されたのか配列が渡されたのかを気にしていないということに注意してください。
+Perl は一つの巨大な平坦な(リストの中にリストが含まれることはない、
+ということ) C<@_> パラメータリストとして全ての引数を見るのです。
+これは Perl の単純な引数渡しの形式のやり方の一つです。
+この C<upcase()> 関数は、以下のような呼び出しをした場合でも C<upcase()> の
+定義を変更することなく完璧に動作します:
 
     @newlist   = upcase(@list1, @list2);
     @newlist   = upcase( split /:/, $var );
@@ -399,7 +399,7 @@ Do not, however, be tempted to do this:
 
 =end original
 
-���������ʲ��Τ褦�ʸƤӽФ��������Ȥ��ƤϤ����ޤ���:
+ただし、以下のような呼び出しをやろうとしてはいけません:
 
     (@a, @b)   = upcase(@list1, @list2);
 
@@ -412,11 +412,11 @@ L<Pass by Reference> for alternatives.
 
 =end original
 
-�ؿ����Ϥ��������ꥹ�Ȥ�ʿó�ʥꥹ�ȤǤ���Τ�Ʊ�͡�����ͤΥꥹ�Ȥ�
-�ޤ�ʿó�ʥꥹ�ȤǤ���
-�Ǥ����顢�ؿ����֤������Ƥ����Ǥ� C<@a> �˳�Ǽ���졢C<@b> ��
-���ˤʤ�ޤ���
-�̤Τ�����ˤĤ��Ƥ� L</"Pass by Reference"> �򻲾Ȥ��Ƥ���������
+関数に渡される引数リストは平坦なリストであるのと同様、戻り値のリストも
+また平坦なリストです。
+ですから、関数が返した全ての要素は C<@a> に格納され、C<@b> は
+空になります。
+別のやり方については L</"Pass by Reference"> を参照してください。
 
 =begin original
 
@@ -433,17 +433,17 @@ X<&>
 
 =end original
 
-���֥롼����ϡ�����Ū�� C<&> �Ȥ����ץ�ե��å������դ��ƸƤӽФ����Ȥ�
-�Ǥ��ޤ���
-�Ƕ�� Perl �Ǥ� C<&> �Ͼ�ά��ǽ�Ǥ��ꡢ���֥롼���󤬤��餫����
-�������Ƥ�����ˤϳ�̤��ά�Ǥ��ޤ���
-defined() �� undef() �ΰ����Ȥ��ƻȤä��褦�ʡ�ñ�ʤ�̾���դ�
-���֥롼����Ǥ���Ȥ��� C<&> �� B<��ά��ǽ�ǤϤ���ޤ���>��
-C<&$subref()> �� C<&{$subref}()> �Τ褦�ʡ����֥롼�����̾����
-��ե���󥹤�Ȥä�����Ū�ʥ��֥롼��ƤӽФ���Ԥ����������Ȥ��ˤ�
-C<&> �Ͼ�ά���뤳�ȤϤǤ��ޤ���
-â��C<< $subref->() >> �ε�ˡ��������褷�ޤ���
-�ܤ����� L<perlref> �򻲾Ȥ��Ƥ���������
+サブルーチンは、明示的な C<&> というプリフィックスを付けて呼び出すことが
+できます。
+最近の Perl では C<&> は省略可能であり、サブルーチンがあらかじめ
+宣言されている場合には括弧も省略できます。
+defined() や undef() の引数として使ったような、単なる名前付き
+サブルーチンであるときの C<&> は B<省略可能ではありません>。
+C<&$subref()> や C<&{$subref}()> のような、サブルーチンの名前や
+リファレンスを使った間接的なサブルーン呼び出しを行いたいたいときにも
+C<&> は省略することはできません。
+但しC<< $subref->() >> の記法が問題を解決します。
+詳しくは L<perlref> を参照してください。
 X<&>
 
 =begin original
@@ -457,11 +457,11 @@ X<recursion>
 
 =end original
 
-���֥롼����ϺƵ�Ū�˸ƤӽФ����Ȥ�Ǥ��ޤ���
-���륵�֥롼���� C<&> �դ��ǸƤӽФ��줿�ʤ顢�����ꥹ�ȤϾ�ά��ǽ�ǡ�
-�⤷��ά���줿�ʤ顢���Υ��֥롼������Ф��� C<@_> ��������ꤵ��ޤ���:
-����˸ƤӽФ����� C<@_> ���󤬥��֥롼������Ф��ƲĻ�Ȥʤ�ޤ���
-����Ͽ������桼�������򤱤����Ȼפ�����Ū�ʥᥫ�˥���Ǥ���
+サブルーチンは再帰的に呼び出すこともできます。
+あるサブルーチンが C<&> 付きで呼び出されたなら、引数リストは省略可能で、
+もし省略されたなら、そのサブルーチンに対して C<@_> 配列は設定されません:
+代わりに呼び出し時の C<@_> 配列がサブルーチンに対して可視となります。
+これは新しいユーザーが避けたいと思う効果的なメカニズムです。
 X<recursion>
 
 =begin original
@@ -471,8 +471,8 @@ X<recursion>
 
 =end original
 
-    &foo(1,2,3);	# ���Ĥΰ������Ϥ�
-    foo(1,2,3);		# ���Ʊ��
+    &foo(1,2,3);	# 三つの引数を渡す
+    foo(1,2,3);		# 上と同じ
 
 =begin original
 
@@ -481,8 +481,8 @@ X<recursion>
 
 =end original
 
-    foo();		# ���ꥹ�Ȥ��Ϥ�
-    &foo();		# ���Ʊ��
+    foo();		# 空リストを渡す
+    &foo();		# 上と同じ
 
 =begin original
 
@@ -491,9 +491,9 @@ X<recursion>
 
 =end original
 
-    &foo;		# foo() �� foo(@_) ��Ʊ�͸��ߤΰ�������!!
-    foo;		# ���֥롼���� foo ��ͽ���������Ƥ�����˸¤�
-        		# foo() ��Ʊ�͡�����ʳ��Ǥ� "foo"
+    &foo;		# foo() は foo(@_) と同様現在の引数を取る!!
+    foo;		# サブルーチン foo が予め定義されている場合に限り
+        		# foo() と同様、それ以外では "foo"
 
 =begin original
 
@@ -505,11 +505,11 @@ X<&>
 
 =end original
 
-C<&> �����ϰ����ꥹ�Ȥ��ά��ǽ�ˤ���Ф���Ǥʤ���Ϳ����줿������
-�Ф��뤹�٤ƤΥץ��ȥ����ץ����å���̵���ˤ��ޤ���
-����ϰ����ˤ����Ū����ͳ�Ǥ��ꡢ�����ˤϤ��ʤ�����ʬ�ιԤäƤ���ư���
-�狼�äƤ���Ȥ��ˤ��ޤ����ޤ�����Ԥ���������ˡ��Ĥ��Ƥ�������Ǥ���
-��˽ФƤ��� L<Prototypes> �򻲾Ȥ��Ƥ���������
+C<&> 形式は引数リストを省略可能にするばかりでなく、与えられた引数に
+対するすべてのプロトタイプチェックも無効にします。
+これは一部には歴史的な理由であり、一部にはあなたが自分の行っている動作を
+わかっているときにうまくごまかしを行う便利な方法を残しておくためです。
+後に出てくる L<Prototypes> を参照してください。
 X<&>
 
 =begin original
@@ -523,14 +523,14 @@ C<DESTROY> plus all functions mentioned in L<perltie> and L<PerlIO::via>.
 
 =end original
 
-̾����������ʸ���Ǥ��륵�֥롼����ϡ�Perl �Υ�����ͽ�󤵤�Ƥ��ޤ���
-��������ƾ�ʸ���Τ�Τ��⥸�塼��Ǥ��뤳�Ȥ�Ʊ���Ǥ���
-��Ƭ��������ʸ���Υ��֥롼����ϡ��¹Ի��˥����ƥ༫�Ȥˤ�ä�(�̾��
-���٥�Ȥ�ȥꥬ���Ȥ���)����Ū�˸ƤӽФ���뤳�Ȥ��̣������䤫��
-����Ǥ���
-�ü�ǡ����餫��������Ƥ��뤳�Ȥ򤹤륵�֥롼����ϡ�
-C<AUTOLOAD>, C<CLONE>, C<DESTROY> �ˡ�L<perltie> �� L<PerlIO::via> ��
-��������Ƥ���ؿ����Ƥ�ä�����ΤǤ���
+名前が全て大文字であるサブルーチンは、Perl のコアで予約されています。
+これは全て小文字のものがモジュールであることと同じです。
+先頭だけが大文字のサブルーチンは、実行時にシステム自身によって(通常は
+イベントをトリガーとして)間接的に呼び出されることを意味するゆるやかな
+規約です。
+特殊で、あらかじめ決められていることをするサブルーチンは、
+C<AUTOLOAD>, C<CLONE>, C<DESTROY> に、L<perltie> と L<PerlIO::via> で
+説明されている関数全てを加えたものです。
 
 =begin original
 
@@ -541,16 +541,16 @@ explicitly.  See L<perlmod/"BEGIN, UNITCHECK, CHECK, INIT and END">
 
 =end original
 
-The C<BEGIN>, C<UNITCHECK>, C<CHECK>, C<INIT>, C<END> ���֥롼�����
-���֥롼����Ȥ��������ü쥳���ɥ֥��å��ǡ�������Ǥ��ĤΥѥå�������
-ʣ����뤳�Ȥ��Ǥ�������Ū�ˤ� B<�ƤӽФ��ޤ���> ��
-L<perlmod/"BEGIN, UNITCHECK, CHECK, INIT and END"> �򻲾Ȥ��Ƥ���������
+The C<BEGIN>, C<UNITCHECK>, C<CHECK>, C<INIT>, C<END> サブルーチンは
+サブルーチンというよりは特殊コードブロックで、その中でも一つのパッケージに
+複数作ることができ、明示的には B<呼び出せません> 。
+L<perlmod/"BEGIN, UNITCHECK, CHECK, INIT and END"> を参照してください。
 
 =head2 Private Variables via my()
 X<my> X<variable, lexical> X<lexical> X<lexical variable> X<scope, lexical>
 X<lexical scope> X<attributes, my>
 
-(my() �ˤ��ץ饤�١����ѿ�)
+(my() によるプライベート変数)
 
 =begin original
 
@@ -558,7 +558,7 @@ Synopsis:
 
 =end original
 
-����:
+概要:
 
     my $foo;	    	# declare $foo lexically local
     my (@wid, %get); 	# declare list of variables local
@@ -574,9 +574,9 @@ See L<attributes> and L<Attribute::Handlers>.
 
 =end original
 
-B<�ٹ�>: C<my> ����Ǥ�°���ꥹ�Ȥλ��ѤϤ��ޤ����ɤ�����Ǥ���
-���ߤ�ʸˡ�ȥ��󥿡��ե��������ѹ�������ǽ��������ޤ���
-L<attributes> �� L<Attribute::Handlers> �򻲾Ȥ��Ƥ���������
+B<警告>: C<my> 定義での属性リストの使用はいまだ改良の途中です。
+現在の文法とインターフェースは変更される可能性があります。
+L<attributes> と L<Attribute::Handlers> を参照してください。
 
 =begin original
 
@@ -591,15 +591,15 @@ with C<local> instead.
 
 =end original
 
-C<my> �黻�Ҥϡ������Ϥ�Ǥ���֥��å������ʸ (C<if/unless/elsif/else>)��
-�롼��(C<for/foreach/while/until/continue>)�����֥롼����C<eval>��
-���뤤�� C<do/require/use> ���줿�ե�����˥쥭��������Ĥ��������
-�ѿ���������ޤ�����İʾ�ꥹ�ȥ��åפ���Ƥ�����ˤϡ����Υꥹ�Ȥ�
-��̤Ǥ������Ƥ��ʤ���Фʤ�ޤ���
-���٤ƤΥꥹ�����Ǥ������������ͤǤʤ���Фʤ�ޤ���
-C<$/> �Τ褦���Ȥ߹����ѿ����������Ǥ� C<local> ��
-B<�ɽ경> ����ʤ���Фʤ�ʤ��Τ��Ф���
-����ե��٥åȤȿ����ˤ�뼱�̻Ҥϥ쥭������ǥޥ�����ʥ������פˤʤ�ޤ���
+C<my> 演算子は、それを囲んでいるブロック、条件文 (C<if/unless/elsif/else>)、
+ループ(C<for/foreach/while/until/continue>)、サブルーチン、C<eval>、
+あるいは C<do/require/use> されたファイルにレキシカルに閉じ込められる
+変数を定義します。二つ以上リストアップされている場合には、そのリストは
+括弧でくくられていなければなりません。
+すべてのリスト要素は正しい左辺値でなければなりません。
+C<$/> のような組み込み変数が現時点では C<local> で
+B<局所化> されなければならないのに対し、
+アルファベットと数字による識別子はレキシカルでマジカルなスコープになります。
 
 =begin original
 
@@ -612,11 +612,11 @@ X<local>
 
 =end original
 
-C<local> ʸ�ˤ�ä����������ưŪ�ѿ��ȤϰۤʤꡢC<my> ��Ȥä�
-������줿�쥭�������ѿ��Ϥ����ƤӽФ������֥롼�����ޤᡢ��¦��
-�����������ƿ����ޤ���
-��ʬ���Ȥ�Ʊ�����֥롼�����Ƥ�����Ǥ��������Ǥ���
-�ġ��θƤӽФ��Ϥ��줾��Υ��ԡ����ͭ���ޤ���
+C<local> 文によって生成される動的変数とは異なり、C<my> を使って
+宣言されたレキシカル変数はそれを呼び出したサブルーチンも含め、外側の
+世界からは秘匿されます。
+自分自身が同じサブルーチンを呼んだ場合でさえそうです。
+個々の呼び出しはそれぞれのコピーを所有します。
 X<local>
 
 =begin original
@@ -629,11 +629,11 @@ occurred at the same scope, presumably file scope.
 
 =end original
 
-���Τ��Ȥ���Ū���Ĥ��Ƥ���쥭�����륹�����פ��������Ƥ���
-C<my> �ѿ��������ʤ��ʤ�Ȥ������Ȥϰ�̣���ޤ���
-ưŪ�ѿ��������ڤ����ޤ������󤲤�ȡ��ʲ��� C<bumpx()> ��
-�쥭�������ѿ� $x �˥����������ޤ���
-�ʤ��ʤ顢C<my> �� C<sub> ��ξ����Ʊ���������פ˸���Ƥ��뤫��Ǥ���
+このことは静的に閉じているレキシカルスコープで宣言されている
+C<my> 変数が見えなくなるということは意味しません。
+動的変数だけが切り取られます。例を挙げると、以下の C<bumpx()> は
+レキシカル変数 $x にアクセスします。
+なぜなら、C<my> と C<sub> の両方が同じスコープに現れているからです。
 
     my $x = 10;
     sub bumpx { $x++ } 
@@ -647,9 +647,9 @@ X<eval, scope of>
 
 =end original
 
-�������ʤ��� C<eval()> �ϡ�C<eval()> ���Ȥ���¦�ˤ�������ˤ�äƱ�����ʤ�
-̾���μ�̿��Ʊ��Ĺ������ĥ������פΥ쥭�������ѿ��򸫤뤳�Ȥ��Ǥ��ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+しかしながら C<eval()> は、C<eval()> 自身の内側にある宣言によって隠されない
+名前の寿命と同じ長さを持つスコープのレキシカル変数を見ることができます。
+L<perlref> を参照してください。
 X<eval, scope of>
 
 =begin original
@@ -661,11 +661,11 @@ this is used to name input parameters to a subroutine.  Examples:
 
 =end original
 
-my() ���Ф���ѥ顼�᡼���ꥹ�Ȥˤϡ���˾�ߤȤ�����ѿ����������뤿���
-������Ԥ����Ȥ��Ǥ��ޤ�(�ѿ����Ф��ƽ���ͤ�Ϳ�����ʤ���С�
-�����ѿ���̤����ͤ�Ȥä���������ޤ�)��
-����Ū�ˤ��ε�ǽ�ϥ��֥롼������Ф������ϥѥ�᡼����̾�����դ��뤿���
-�Ȥ��Ƥ��ޤ������󤲤ޤ��礦:
+my() に対するパラーメータリストには、お望みとあらば変数を初期化するための
+代入を行うことができます(変数に対して初期値が与えられなければ、
+その変数は未定義値を使って生成されます)。
+一般的にこの機能はサブルーチンに対する入力パラメータに名前を付けるために
+使われています。例を挙げましょう:
 
     $arg = "fred";	  # "global" variable
     $n = cube_root(27);
@@ -687,10 +687,10 @@ change whether those variables are viewed as a scalar or an array.  So
 
 =end original
 
-C<my> �ϡ����ʤ���������Ԥ������ȹͤ��Ƥ��벿�����Ф��뽤���ҤǤ���
-�Ǥ����顢�����ꥹ�Ȥ���ˤ����ѿ����Ф���������Ԥ��Ȥ��ˤ� C<my> ��
-�������ѿ���������Ȥ��Ƹ����Ƥ���Τ�����Ȥ��Ƹ����Ƥ��뤫�Ȥ���
-���֤��Ѥ��뤳�ȤϤ���ޤ��󡣤Ǥ����顢
+C<my> は、あなたが代入を行いたいと考えている何かに対する修飾子です。
+ですから、引数リストの中にある変数に対して代入を行うときには C<my> は
+それらの変数がスカラとして見えているのか配列として見えているかという
+状態を変えることはありません。ですから、
 
     my ($foo) = <STDIN>;		# WRONG?
     my @FOO = <STDIN>;
@@ -701,7 +701,7 @@ both supply a list context to the right-hand side, while
 
 =end original
 
-������ξ���Ȥⱦ�դ��Ф��ƥꥹ�ȥ���ƥ����Ȥ�Ϳ���ޤ���������Ф���
+これらは両方とも右辺に対してリストコンテキストを与えます。それに対して
 
     my $foo = <STDIN>;
 
@@ -711,8 +711,8 @@ supplies a scalar context.  But the following declares only one variable:
 
 =end original
 
-����ϥ����饳��ƥ����Ȥ�Ϳ���ޤ������������ʲ��Τ褦�������
-�Ԥä���硢��Ĥ��ѿ�������ͭ���Ǥ�:
+これはスカラコンテキストを与えます。しかし、以下のような宣言を
+行った場合、一つの変数だけが有効です:
 
     my $foo, $bar = 1;			# WRONG
 
@@ -722,7 +722,7 @@ That has the same effect as
 
 =end original
 
-����ϰʲ��Τ褦�˽񤤤��Τ�Ʊ�����Ȥˤʤ�ޤ�
+これは以下のように書いたのと同じことになります
 
     my $foo;
     $bar = 1;
@@ -734,9 +734,9 @@ the current statement.  Thus,
 
 =end original
 
-������줿�ѿ��ϡ�����ʸ����λ����ޤǤ�Ƴ������ޤ���(�ԲĻ��
-���֤Ǥ�)��
-�������äơ�
+宣言された変数は、その文が終了するまでは導入されません(不可視の
+状態です)。
+したがって、
 
     my $x = $x;
 
@@ -747,8 +747,8 @@ the expression
 
 =end original
 
-����ϸŤ� $x ���ͤ�Ȥäƿ����� $x ����������Τ˻Ȥ����Ȥ��Ǥ��ޤ���
-������
+これは古い $x の値を使って新しい $x を初期化するのに使うことができます。
+そして
 
     my $x = 123 and $x == 123
 
@@ -758,8 +758,8 @@ is false unless the old $x happened to have the value C<123>.
 
 =end original
 
-����ϸŤ� $x ���ͤ����ޤ��� C<123> �Ǥʤ��¤ꡢ������ $x �ˤϵ���
-���ꤵ��ޤ���
+これは古い $x の値がたまたま C<123> でない限り、新しい $x には偽が
+設定されます。
 
 =begin original
 
@@ -769,10 +769,10 @@ part of that scope, too.  Thus in the loop
 
 =end original
 
-���湽ʸ�Υ쥭�����륹�����פϡ���������֥��å�����ڤ��椫�ä��ˤ�ä�
-���ʤ�«������뤳�ȤϤ���ޤ���;
-���漰��ޤ����������פΰ����Ǥ���
-�Ǥ�����ʲ��Υ롼�פǤ�
+制御構文のレキシカルスコープは、その制御ブロックを区切る中かっこによって
+厳格に束縛されることはありません;
+制御式もまた、スコープの一部です。
+ですから以下のループでは
 
     while (my $line = <>) {
         $line = lc $line;
@@ -788,9 +788,9 @@ it.  Similarly, in the conditional
 
 =end original
 
-$line �Υ������פϤ����������(C<continue>�֥��å���ޤ�)�롼�׹�¤�λĤ��
-��ʬ�ޤǳ�ĥ����ޤ����������ۤ��뤳�ȤϤ���ޤ���
-Ʊ�ͤˡ��ʲ��ξ��ʸ�Ǥ�
+$line のスコープはその宣言から(C<continue>ブロックを含む)ループ構造の残りの
+部分まで拡張されますが、それを越えることはありません。
+同様に、以下の条件文では
 
     if ((my $answer = <STDIN>) =~ /^yes$/i) {
         user_agrees();
@@ -810,11 +810,11 @@ on the scope of variables in statements with modifiers.
 
 =end original
 
-$answer �Υ������פϤ������������ʸ��
-C<elsif> �� C<else> �֥��å���ޤ�Ĥ����ʬ�ޤǳ�ĥ����ޤ�����
-�����ۤ��뤳�ȤϤ���ޤ���
-�������դ���ʸ�Ǥ��ѿ��Υ������פ˴ؤ������ˤĤ��Ƥ�
-L<perlsyn/"Simple statements"> �򻲾Ȥ��Ƥ���������
+$answer のスコープはその宣言から条件文の
+C<elsif> と C<else> ブロックを含む残りの部分まで拡張されますが、
+それを越えることはありません。
+修飾子付きの文での変数のスコープに関する情報については
+L<perlsyn/"Simple statements"> を参照してください。
 
 =begin original
 
@@ -827,12 +827,12 @@ X<foreach> X<for>
 
 =end original
 
-C<foreach> �Ϥ���ź�����ѿ����Ф��륹�����פ�ǥե���ȤǤ�
-C<local> �Τ������ưŪ�ʤ�Τˤ��Ƥ��ޤ���
-�������ʤ��顢ź�����ѿ��� C<my> �Ȥ���������ɤ����֤���Ƥ�����硢
-�ޤ��ϸ��ߤΥ������פǤ���̾�������Ǥ˥쥭������Ǥ�����ˤϡ�
-�������쥭�������ѿ�������˺���ޤ���
-�Ǥ�����ʲ��Υ롼�פǤ�:
+C<foreach> はその添え字変数に対するスコープをデフォルトでは
+C<local> のやり方で動的なものにしています。
+しかしながら、添え字変数に C<my> というキーワードが前置されていた場合、
+または現在のスコープでその名前がすでにレキシカルである場合には、
+新しいレキシカル変数が代わりに作られます。
+ですから以下のループでは:
 X<foreach> X<for>
 
     for my $i (1, 2, 3) {
@@ -847,8 +847,8 @@ X<foreach> X<for>
 
 =end original
 
-$i �Υ������פϥ롼�פν�ü�ޤǳ�ĥ����ޤ����������ۤ��뤳�ȤϤʤ��Τǡ�
-$i ���ͤ� C<some_function()> ����Ǥϻ��Ȥ��뤳�Ȥ��Ǥ��ʤ��ʤ�ޤ���
+$i のスコープはループの終端まで拡張されますが、それを越えることはないので、
+$i の値は C<some_function()> の中では参照することができなくなります。
 X<foreach> X<for>
 
 =begin original
@@ -859,10 +859,10 @@ which are always global, if you say
 
 =end original
 
-�桼�����ΰ����ˤϡ��쥭������ʥ������פ��ѿ��λ��Ѥ��夹�뤳�Ȥ�
-˾��Ǥ���ͤ⤤��Ǥ��礦��
-��˥������Х�Ǥ���ѥå������ѿ����Ф�����ۤλ��Ѥ���ª���뤳�Ȥ�
-�������ΤȤ��ơ�
+ユーザーの一部には、レキシカルなスコープの変数の使用を奨励することを
+望んでいる人もいるでしょう。
+常にグローバルであるパッケージ変数に対する暗黙の使用を捕捉することを
+助けるものとして、
 
     use strict 'vars';
 
@@ -876,14 +876,14 @@ this with C<no strict 'vars'>.
 
 =end original
 
-�Τ褦�ˤ���ȡ�����ʸ���餽���Ϥ�֥��å��ν�ü�ޤǤδ֤��ѿ��λ��Ȥϡ�
-�쥭�������ѿ����Ф��뻲�Ȥ���C<our> �ޤ��� C<use vars> �ˤ��
-���������������ʤ���д����ʥѥå�����̾�ǽ�������
-̾���Ǥʤ���Фʤ�ޤ���
-����ʳ��Τ�Τ�����ȥ���ѥ��륨�顼��ȯ�����ޤ���
-������оݤȤʤäƤ���֥��å�����¦�ˤ���֥��å���
-C<no strict 'vars'> �Ȥ����(��¦�Υ֥��å���Ǥ�)�������¤�
-���ä����Ȥ��Ǥ��ޤ���
+のようにすると、この文からそれを囲むブロックの終端までの間の変数の参照は、
+レキシカル変数に対する参照か、C<our> または C<use vars> による
+事前宣言か、さもなければ完全なパッケージ名で修飾した
+名前でなければなりません。
+それ以外のものがあるとコンパイルエラーが発生します。
+これの対象となっているブロックの内側にあるブロックで
+C<no strict 'vars'> とすると(内側のブロック中では)この制限を
+取り消すことができます。
 
 =begin original
 
@@ -897,12 +897,12 @@ example.
 
 =end original
 
-C<my> �ϥ���ѥ�����θ��̤ȼ¹Ի��θ��̤�ξ������äƤ��ޤ���
-����ѥ�����ˤ����Ƥϡ�����ѥ���Ϥ����ѿ���ǧ�����ޤ���
-����δ���Ū�ʼ������� C<use strict 'vars'> ���ۤ餻��Ȥ������ȤǤ�����
-L<perlref> �Ǿܺ٤򵭽Ҥ��Ƥ��륯��������κ����ˤ�ͭ�ѤǤ���
-�ºݤν�����ϼ¹Ի��ޤ��٤餵�졢���Τ��᤿�Ȥ��Х롼�פ��̤��٤�
-Ŭ�ڤ˼¹Ԥ����ΤǤ���
+C<my> はコンパイル時の効果と実行時の効果の両方を持っています。
+コンパイル時においては、コンパイラはその変数を認識します。
+これの基本的な実用性は C<use strict 'vars'> を黙らせるということですが、
+L<perlref> で詳細を記述しているクロージャの作成にも有用です。
+実際の初期化は実行時まで遅らされ、そのためたとえばループを通る度に
+適切に実行されるのです。
 
 =begin original
 
@@ -912,10 +912,10 @@ allowed to try to make a package variable (or other global) lexical:
 
 =end original
 
-C<my> �ˤ�ä�������줿�ѿ��ϤɤΥѥå������ΰ����Ǥ�ʤ���
-���Τ���ѥå�����̾��Ȥäƽ�������뤳�ȤϷ褷�Ƥ���ޤ���
-�äˡ��ѥå������ѿ�(�⤷���Ϥ���¾�Υ������Х���ѿ�)��
-�쥭������ˤ��褦�Ȥ��뤳�Ȥϵ�����Ƥ��ޤ���
+C<my> によって宣言された変数はどのパッケージの一部でもなく、
+そのためパッケージ名を使って修飾されることは決してありません。
+特に、パッケージ変数(もしくはその他のグローバルな変数)を
+レキシカルにしようとすることは許されていません。
 
     my $pack::var;	# ERROR!  Illegal syntax
 
@@ -927,10 +927,10 @@ lexical of the same name is also visible:
 
 =end original
 
-�ºݤΤȤ�����ưŪ�ѿ�(�ѥå������ѿ��䥰�����Х��ѿ��Ȥ���
-�Τ��Ƥ�����)�ϡ�Ʊ��̾������ä��쥭�����뤬�Ļ�ʾ��֤Ǥ��ä��Ȥ��Ƥ⡢
-C<::> ��ˡ��Ȥä�(̾����)�����ʽ�����Ԥ����Ȥˤ�ä�
-�ޤ�����������ǽ�ʤΤǤ�:
+実際のところ、動的変数(パッケージ変数やグローバル変数として
+知られているもの)は、同じ名前を持ったレキシカルが可視な状態であったとしても、
+C<::> 記法を使った(名前の)完全な修飾を行うことによって
+まだアクセス可能なのです:
 
     package main;
     local $x = 10;
@@ -943,7 +943,7 @@ That will print out C<20> and C<10>.
 
 =end original
 
-������� C<20> �� C<10> ����Ϥ��ޤ���
+この例は C<20> と C<10> を出力します。
 
 =begin original
 
@@ -958,14 +958,14 @@ an anonymous sub reference:
 
 =end original
 
-���Υե�����γ�¦���������餳�Τ褦�ʼ��̻Ҥ򱣤�����ˡ�C<my> �ѿ���
-�ե�����κǤ⳰¦�Υ������פ�������뤳�Ȥ��Ǥ��ޤ���
-����ϡ���ǰ�Ȥ��Ƥ� C �ǤΥե������٥�� static �ѿ��Ȼ��Ƥ��ޤ���
-����򥵥֥롼�������¦�ǹԤ��ˤϡ�
-����������(�쥭�����륢��������ȼ�ä�̵̾�ؿ�)��Ȥ��ޤ���
-�֥��å��ǳ�¦�Υ֥��å�����ƤӽФ����ȤΤǤ��ʤ��褦�ʥץ饤�١��Ȥ�
-���֥롼������ꤿ���ʤ顢̵̾���֥롼����Υ�ե���󥹤�
-�ݻ�����쥭�������ѿ���������뤳�Ȥ��Ǥ��ޤ�:
+このファイルの外側の世界からこのような識別子を隠すために、C<my> 変数を
+ファイルの最も外側のスコープで宣言することができます。
+これは、概念としては C でのファイルレベルの static 変数と似ています。
+これをサブルーチンの内側で行うには、
+クロージャ(レキシカルアクセスを伴った無名関数)を使います。
+ブロックで外側のブロックから呼び出すことのできないようなプライベートな
+サブルーチンを作りたいなら、無名サブルーチンのリファレンスを
+保持するレキシカル変数を宣言することができます:
 
     my $secret_version = '1.001-beta';
     my $secret_sub = sub { print $secret_version };
@@ -981,15 +981,15 @@ unqualified and unqualifiable.
 
 =end original
 
-���Υ�ե���󥹤��褷�ơ��⥸�塼�����¦�ˤ���ɤ�ʴؿ������
-�֤���뤳�Ȥ��ʤ��Τ�Ʊ�ͤˡ���¦�Υ⥸�塼��ϥ��֥롼�����
-���뤳�Ȥ��Ǥ��ޤ���
-�ʤ��ʤ顢����̾���ϤɤΥѥå������Υ���ܥ�ơ��֥�ˤ�
-¸�ߤ��Ƥ��ʤ�����Ǥ���
-C<$some_pack::secret_version> �ʤɤμ��ʤ�ȤäƸƤӽФ����Ȥ�
-B<�Ǥ��ʤ�> �Τ��Ȥ������Ȥ�פ��Ф��Ƥ���������
-�����ñ�ʤ� $secret_version �Ǥ��äơ���������뤳�ȤϤʤ�
-�������뤳�ȤϤǤ��ޤ���
+このリファレンスが決して、モジュールの内側にあるどんな関数からも
+返されることがないのと同様に、外側のモジュールはサブルーチンを
+見ることができません。
+なぜなら、その名前はどのパッケージのシンボルテーブルにも
+存在していないからです。
+C<$some_pack::secret_version> などの手段を使って呼び出すことは
+B<できない> のだということを思い出してください。
+これは単なる $secret_version であって、修飾されることはなく
+修飾することはできません。
 
 =begin original
 
@@ -1000,16 +1000,16 @@ this.
 
 =end original
 
-����������ϥ��֥������ȥ᥽�åɤȶ���ư����뤳�ȤϤǤ��ޤ���
-���ƤΥ��֥������ȥ᥽�åɤϡ�ȯ����ǽ�ʲ��餫�Υѥå�������
-����ܥ�ơ��֥��¸�ߤ��Ƥ���ɬ�פ�����ޤ���
-�������򤹤���ˡ�ˤĤ��Ƥ� L<perlref/"Function Templates"> ��
-���Ȥ��Ƥ���������
+しかしこれはオブジェクトメソッドと共に動作させることはできません。
+全てのオブジェクトメソッドは、発見可能な何らかのパッケージの
+シンボルテーブルに存在している必要があります。
+これを回避する方法については L<perlref/"Function Templates"> を
+参照してください。
 
 =head2 Persistent Private Variables
 X<state> X<state variable> X<static> X<variable, persistent> X<variable, static> X<closure>
 
-(��³Ū�ʥץ饤�١����ѿ�)
+(永続的なプライベート変数)
 
 =begin original
 
@@ -1019,14 +1019,14 @@ if you want to stay compatible with releases older than 5.10.
 
 =end original
 
-Perl 5.10 �Ǳ�³Ū�ץ饤�١����ѿ����ۤ���ˤ���Ĥ���ˡ������ޤ���
-����ܤ�ñ�� C<state> ��ǽ��Ȥ����ȤǤ���
-���뤤�ϡ�5.10 ����Ť���꡼���Ȥθߴ�����ݻ��������ʤ顢�����������
-�Ȥ����ȤǤ���
+Perl 5.10 で永続的プライベート変数を構築するには二つの方法があります。
+一つ目は単に C<state> 機能を使うことです。
+あるいは、5.10 よりも古いリリースとの互換性を維持したいなら、クロージャを
+使うことです。
 
 =head3 Persistent variables via state()
 
-(state() �ˤ���³�ѿ�)
+(state() による永続変数)
 
 =begin original
 
@@ -1037,11 +1037,11 @@ by using C<-E> on one-liners. (see L<feature>)
 
 =end original
 
-perl 5.9.4 ���顢C<my> ������� C<state> ������ɤ�Ȥä��ѿ���
-����Ǥ��ޤ���
-�������������Ư������ˤϡ�C<feature> �ץ饰�ޤ�Ȥ����������Ϻ�Ǥ�
-C<-E> ��Ȥ����Ȥ�ͽ�ᤳ�ε�ǽ��ͭ���ˤ��ʤ���Фʤ�ޤ���
-(L<feature> �򻲾Ȥ��Ƥ�������)
+perl 5.9.4 から、C<my> の代わりに C<state> キーワードを使って変数を
+宣言できます。
+しかし、これを働かせるには、C<feature> プラグマを使うか、一行野郎では
+C<-E> を使うことで予めこの機能を有効にしなければなりません。
+(L<feature> を参照してください)
 
 =begin original
 
@@ -1050,8 +1050,8 @@ each time the gimme_another() function is called:
 
 =end original
 
-�㤨�С��ʲ��Υ����ɤϥץ饤�١��Ȥʥ����󥿤��������gimme_another() �ؿ���
-�ƤӽФ���뤿�Ӥ˥����󥿤����ä����ޤ�:
+例えば、以下のコードはプライベートなカウンタを管理し、gimme_another() 関数が
+呼び出されるたびにカウンタを増加させます:
 
     use feature 'state';
     sub gimme_another { state $x; return ++$x }
@@ -1063,8 +1063,8 @@ code outside.
 
 =end original
 
-�ޤ���C<$x> �ϥ쥭������ʤΤǡ����γ�¦�� Perl �����ɤ��饢���������뤳�Ȥ�
-�Ǥ��ޤ���
+また、C<$x> はレキシカルなので、その外側の Perl コードからアクセスすることは
+できません。
 
 =begin original
 
@@ -1075,14 +1075,14 @@ behavior of this sort of assignment to non-scalar variables is undefined.
 
 =end original
 
-�ѿ�����ȷ���դ���줿�Ȥ���(C<state $x = 42> �Τ褦��)C<state> �ѿ��ؤ�
-ñ��ʥ����������ϰ����ܤ����¹Ԥ���ޤ���
-���θ�ƤӤ���ʸ��ɾ������Ƥ⡢������̵�뤵��ޤ���
-�󥹥����ѿ��ؤΤ��μ�������ο����񤤤�̤����Ǥ���
+変数宣言と結び付けられたとき、(C<state $x = 42> のような)C<state> 変数への
+単純なスカラ代入は一度目だけ実行されます。
+その後再びこの文が評価されても、代入は無視されます。
+非スカラ変数へのこの種の代入の振る舞いは未定義です。
 
 =head3 Persistent variables with closures
 
-(����������ˤ���³�ѿ�)
+(クロージャによる永続変数)
 
 =begin original
 
@@ -1093,11 +1093,11 @@ like a C auto, but with implicit garbage collection.
 
 =end original
 
-�쥭�������ѿ��Ϥ����Ϥ�֥��å���C<eval>��C<do> FILE ��°����
-�쥭������(�⤷������Ū)�������פ�°���ޤ���
-���Τ��Ȥ� C �� static ��Ʊ�ͤ�ư���Ȥ������Ȥ��̣���ޤ���
-�̾�� C �� auto ��Ʊ���褦��ư��ޤ�����
-���ۤΥ��١������쥯������ȼ�äƤ��ޤ���
+レキシカル変数はそれを囲むブロック、C<eval>、C<do> FILE に属する
+レキシカル(もしくは静的)スコープに属します。
+このことは C の static と同様に動作するということを意味しません。
+通常は C の auto と同じように動作しますが、
+暗黙のガベージコレクションを伴っています。
 
 =begin original
 
@@ -1111,15 +1111,15 @@ were done.  Automatic garbage collection takes care of this for you.
 
 =end original
 
-C �� C++ �ˤ�������������ѿ��ȤϰۤʤꡢPerl �Υ쥭�������ѿ���
-ñ�ˤ��Υ������פ���ȴ��������Ȥ�����ͳ�ǡ�ɬ������ꥵ�����뤵��ޤ���
-������äȱ�³Ū�ʤ�Τ����Υ쥭�������ѿ��˴ؤ��Ƥޤ����դ��Ƥ���С�
-�����α�ޤ�Ǥ��礦��
-����¾�Τ�Τ��쥭�������ѿ��򻲾Ȥ��Ƥ���С����Υ쥭�������ѿ���
-��������ޤ��� -- �����Ƥ�������٤��Ǥ���
-���ʤ��Ϥ����Ȥ������ޤǤϥ��������������Ȥϻפ�ʤ��Ǥ��礦����
-�Ȥ�����ä���Τ��ݻ���³�������Ȥ�פ�ʤ��Ǥ��礦��
-���ʤ��Τ���˼�ư���١������쥯����󤬤����Ԥ��ޤ���
+C や C++ におけるローカル変数とは異なり、Perl のレキシカル変数は
+単にそのスコープから抜けたからという理由で、必ずしもリサイクルされません。
+何かもっと永続的なものがそのレキシカル変数に関してまだ気付いていれば、
+それは留まるでしょう。
+何か他のものがレキシカル変数を参照していれば、そのレキシカル変数は
+解放されません -- そしてそうあるべきです。
+あなたはそれを使いおわるまではメモリを解放したいとは思わないでしょうし、
+使い終わったものを保持し続けたいとも思わないでしょう。
+あなたのために自動ガベージコレクションがこれを行います。
 
 =begin original
 
@@ -1133,15 +1133,15 @@ and put the static variable outside the function but in the block.
 
 =end original
 
-����ϤĤޤꡢ�쥭�������ѿ����Ф����ե���󥹤��֤�����
-��¸�����ꤹ�뤳�Ȥ��Ǥ���Ȥ������ȤǤ���
-���� C �� auto �ѿ����Ф���ݥ��󥿤��֤����Ȥϥ��顼�Ȥʤ�ޤ���
-�쥭�������ѿ��Ϥޤ���C �δؿ��� static ���ѿ��Υ��ߥ�졼�Ȥ�Ԥ��ޤ���
-�ʲ�����ϥ쥭�����륹�����פ���Ĥ�Ʊ���� static �ʼ�̿����Ĵؿ���
-�ץ饤�١��Ȥ��ѿ��Ǥ���
-C �� static �ѿ��Τ褦�ʤ�Τ��ꤿ���Ȥ����ΤǤ���С�
-�ؿ����Τ򤵤�˥֥��å��ǰϤ�Ǥ�ꡢstatic �ѿ���֥��å�����¦�ǡ�
-���Ĵؿ��γ�¦�ξ��ˤ����Ƥ��ޤ���
+これはつまり、レキシカル変数に対するリファレンスを返したり
+保存したりすることができるということです。
+一方 C の auto 変数に対するポインタを返すことはエラーとなります。
+レキシカル変数はまた、C の関数に static な変数のシミュレートも行います。
+以下の例はレキシカルスコープを持つと同時に static な寿命を持つ関数に
+プライベートな変数です。
+C の static 変数のようなものを作りたいというのであれば、
+関数全体をさらにブロックで囲んでやり、static 変数をブロックの内側で、
+かつ関数の外側の場所においてやります。
 
     {
 	my $secret_val = 0;
@@ -1164,13 +1164,13 @@ starts to run:
 
 =end original
 
-���δؿ��� C<require> �� C<use> ���̤����̤���Ω�����ե����뤫��
-�����ޤ줿��硢����ϤȤƤ����Ω�Ĥ��ȤǤ��礦��
-�⤷���줬���٤ƥᥤ��ץ���������ˤ���ΤǤ���С�
-�֥��å����Τ�ᥤ��ץ������������֤�����(�����餫���ޤ���������Ǥ���)
-�ץ�����ब�¹Ԥ����������˼¹Ԥ���뤳�Ȥ��ݾڤ���Ƥ���
-BEGIN �����ɥ֥��å�������֤��褦�ˤ��ơ�C<my> �����˼¹Ԥ���褦��
-�ѹ�����ɬ�פ�����Ǥ��礦:
+この関数が C<require> や C<use> を通じて別の独立したファイルから
+取り込まれた場合、これはとても役に立つことでしょう。
+もしこれがすべてメインプログラムの中にあるのであれば、
+ブロック全体をメインプログラムの前に置くか、(こちらか好ましいやり方ですが)
+プログラムが実行されるよりも前に実行されることが保証されている
+BEGIN コードブロックの中に置くようにして、C<my> を早めに実行するように
+変更する必要があるでしょう:
 
     BEGIN {
 	my $secret_val = 0;
@@ -1187,9 +1187,9 @@ C<INIT> and C<END>.
 
 =end original
 
-���̤ʥȥꥬ�������ɥ֥��å��Ǥ��� C<BEGIN>, C<CHECK>, C<INIT>, C<END> ��
-�Ĥ��Ƥ�
-L<perlmod/"BEGIN, UNITCHECK, CHECK, INIT and END"> �򻲾Ȥ��Ƥ���������
+特別なトリガーコードブロックである C<BEGIN>, C<CHECK>, C<INIT>, C<END> に
+ついては
+L<perlmod/"BEGIN, UNITCHECK, CHECK, INIT and END"> を参照してください。
 
 =begin original
 
@@ -1201,18 +1201,18 @@ to create private variables that the whole module can see.
 
 =end original
 
-�Ǥ⳰¦�Υ�������(�ե����륹������)��������줿�ΤǤ���С�
-�쥭�������ѿ��� C �Υե������ static �ʤ�Τ�Ʊ���褦�˿����񤤤ޤ���
-Ʊ���ե�����Ρ�����θ�ˤ������Ƥδؿ����黲�Ȳ�ǽ�Ǥ���ޤ�����
-���Υե�����γ�¦���黲�Ȥ��뤳�ȤϤǤ��ޤ���
-������ά�ϥ⥸�塼�����ǥ⥸�塼�����Τ��鸫����
-�ץ饤�١��Ȥ��ѿ����뤿��˻Ȥ��ޤ���
+最も外側のスコープ(ファイルスコープ)で宣言されたのであれば、
+レキシカル変数は C のファイルに static なものと同じように振る舞います。
+同じファイルの、宣言の後にある全ての関数から参照可能でありますが、
+そのファイルの外側から参照することはできません。
+この戦略はモジュールの中でモジュール全体から見える
+プライベートな変数を作るために使われます。
 
 =head2 Temporary Values via local()
 X<local> X<scope, dynamic> X<dynamic scope> X<variable, local>
 X<variable, temporary>
 
-(local() ��Ȥä����Ū����)
+(local() を使った一時的な値)
 
 =begin original
 
@@ -1224,13 +1224,13 @@ of a variable must be visible to called subroutines.
 
 =end original
 
-B<�ٹ�>: ����Ū�ˤϡ�C<local> �ǤϤʤ�C<my> ��Ȥ��٤��Ǥ���
-�ʤ��ʤ顢������Τۤ����᤯������������Ǥ���
-�����㳰�ˤϡ��������Х��
-�������ѿ�(punctuation variable)���������Х�ե�����ϥ�ɥ롢�ե����ޥåȡ�
-������ Perl �Υ���ܥ�ơ��֥뼫�Ȥ��Ф���ľ�ܤ����ޤޤ�ޤ���
-C<local> �ϤۤȤ�ɤξ�硢�ѿ��θ��ߤ��ͤ��ƤӽФ��줿���֥롼�����
-�Ф��ƲĻ�ˤ��ʤ���Фʤ�ʤ����˻Ȥ��ޤ���
+B<警告>: 一般的には、C<local> ではなくC<my> を使うべきです。
+なぜなら、そちらのほうが早く、安全だからです。
+この例外には、グローバルな
+句読点変数(punctuation variable)、グローバルファイルハンドル、フォーマット、
+そして Perl のシンボルテーブル自身に対する直接の操作が含まれます。
+C<local> はほとんどの場合、変数の現在の値が呼び出されたサブルーチンに
+対して可視にしなければならない場合に使われます。
 
 =begin original
 
@@ -1246,7 +1246,7 @@ Synopsis:
 
 =end original
 
-    # �ͤΥ������벽
+    # 値のローカル化
 
 =begin original
 
@@ -1257,10 +1257,10 @@ Synopsis:
 
 =end original
 
-    local $foo;			# $foo ��ưŪ�˥�������ˤ���
-    local (@wid, %get);		# �ѿ��Υꥹ�Ȥ��������ˤ���
-    local $foo = "flurp";	# $foo ��ưŪ�ˤ��ơ����������
-    local @oof = @bar;		# @oof ��ưŪ�ˤ��ơ����������
+    local $foo;			# $foo を動的にローカルにする
+    local (@wid, %get);		# 変数のリストをローカルにする
+    local $foo = "flurp";	# $foo を動的にして、初期化する
+    local @oof = @bar;		# @oof を動的にして、初期化する
 
 =begin original
 
@@ -1270,9 +1270,9 @@ Synopsis:
 
 =end original
 
-    local $hash{key} = "val";	# ���Υϥå��奨��ȥ�˥���������ͤ������
-    local ($cond ? $v1 : $v2);	# �����Ĥ��μ���κ����ͤϥ������벽��
-				# �б����Ƥ���
+    local $hash{key} = "val";	# このハッシュエントリにローカルな値を入れる
+    local ($cond ? $v1 : $v2);	# いくつかの種類の左辺値はローカル化に
+				# 対応している
 
 =begin original
 
@@ -1280,7 +1280,7 @@ Synopsis:
 
 =end original
 
-    # ����ܥ�Υ������벽
+    # シンボルのローカル化
 
 =begin original
 
@@ -1292,11 +1292,11 @@ Synopsis:
 
 =end original
 
-    local *FH;			# $FH, @FH, %FH, &FH ... ��������벽
-    local *merlyn = *randal;	# ������ $merlyn �ϼºݤˤ� $randal�������
-                                #        @merlyn �ϼºݤˤ� @randal���ʤ�
-    local *merlyn = 'randal';	# ��Ʊ�͡�: 'randal' �� *randal �ˤ���
-    local *merlyn = \$randal;   # ñ�� $merlyn ����̾�� @merlyn �ʤɤǤϤʤ�
+    local *FH;			# $FH, @FH, %FH, &FH ... をローカル化
+    local *merlyn = *randal;	# ここで $merlyn は実際には $randal、さらに
+                                #        @merlyn は実際には @randal、など
+    local *merlyn = 'randal';	# 「同様」: 'randal' を *randal にする
+    local *merlyn = \$randal;   # 単に $merlyn の別名で @merlyn などではない
 
 =begin original
 
@@ -1309,13 +1309,13 @@ is done with C<my>, which works more like C's auto declarations.
 
 =end original
 
-C<local> �ϡ������˼�ä����Υꥹ������ѿ���(local() ��Ϥ�)�֥��å�
-(���뤤�ϡ����֥롼����, C<eval>��C<do FILE>)�ȡ�B<���Υ֥��å����
-�ƤӽФ��줿���ƤΤ��> �˥�������ʤ�Τˤ��ޤ���
-C<local> ��ñ�˥������Х��ѿ�(��ѥå������ѿ�)�˰��Ū���ͤ�Ϳ��������Ǥ���
-�����ưŪ�������פȤ����Τ��Ƥ��ޤ���
-�쥭�����륹�����פ� C<my> ��ȤäƹԤ�졢����� C �� ��ư�ѿ�����Τ褦��
-Ư���ޤ���
+C<local> は、引数に取ったそのリスト中の変数を(local() を囲む)ブロック
+(あるいは、サブルーチン, C<eval>、C<do FILE>)と、B<そのブロック中で
+呼び出された全てのもの> にローカルなものにします。
+C<local> は単にグローバル変数(やパッケージ変数)に一時的な値を与えるだけです。
+これは動的スコープとして知られています。
+レキシカルスコープは C<my> を使って行われ、これは C の 自動変数宣言のように
+働きます。
 
 =begin original
 
@@ -1326,9 +1326,9 @@ creates new, dynamically scoped values.
 
 =end original
 
-�����Ĥ��μ���κ����ͤ�������벽�Ǥ��ޤ� : �ϥå������������Ǥȥ��饤����
-���ʸ(���η�̤���˥������벽��ǽ�ʤ��)������ܥ�å���ե���󥹡�
-ñ���ѿ��˴ؤ��Ƥϡ�����Ͽ�������ưŪ�������פ�����ͤ���ޤ���
+いくつかの種類の左辺値もローカル化できます : ハッシュと配列の要素とスライス、
+条件文(その結果が常にローカル化可能なもの)、シンボリックリファレンス。
+単純変数に関しては、これは新しく、動的スコープを持つ値を作ります。
 
 =begin original
 
@@ -1344,17 +1344,17 @@ undefined value.)
 
 =end original
 
-C<local> ���Ф�����İʾ���ѿ���ɽ����Ϳ����Τʤ�С��������ѿ��ϳ�̤�
-�����äƤ����ʤ���Фʤ�ޤ���
-���α黻�Ҥϰ����ꥹ�Ȥˤ����ѿ��Υ����Ȥ��ͤ򱣤줿�����å�����¸����
-�֥��å��䥵�֥롼����eval ����ȴ����Ȥ��ˤ����ͤ��������뤳�Ȥˤ�ä�
-ư��Ƥ��ޤ���
-����ϤĤޤꡢ�ƤӽФ��줿���֥롼���󤫤����������ѿ���
-���Ȥ��뤳�Ȥ��Ǥ��뤱��ɤ⡢�������Х�ʤ�Τ򸫤뤳�Ȥ�
-�Ǥ��ʤ��Ȥ������ȤǤ���
-�����ꥹ�Ȥˤϡ����ߤ˱����ƥꥹ����Υ��������ѿ����������뤿���
-������Ԥ����Ȥ��Ǥ��ޤ�(����������ѿ����Ф��ƽ���ͤ�
-Ϳ�����ʤ��ä����ˤϡ������ѿ���̤����ͤ�ȼ�ä���������ޤ�)��
+C<local> に対して二つ以上の変数や表現を与えるのならば、それらの変数は括弧で
+くくっておかなければなりません。
+この演算子は引数リストにある変数のカレントの値を隠れたスタックに保存し、
+ブロックやサブルーチン、eval から抜けるときにその値を復帰することによって
+動作しています。
+これはつまり、呼び出されたサブルーチンからもローカル変数を
+参照することができるけれども、グローバルなものを見ることは
+できないということです。
+引数リストには、好みに応じてリスト中のローカル変数を初期化するための
+代入を行うことができます(ある特定の変数に対して初期値が
+与えられなかった場合には、その変数は未定義値を伴って生成されます)。
 
 =begin original
 
@@ -1364,14 +1364,14 @@ variables outside the loop.
 
 =end original
 
-C<local> �ϼ¹Ի��黻�ҤʤΤǡ��롼�פ��̤��٤˼¹Ԥ���ޤ���
-���ߤ� Perl �ϥ���λ��Ѥ˴ؤ��Ʋ�������Ƥ��ޤ�����
-��̤Ȥ��ơ��롼�פγ�¦���ѿ�����������ۤ�������Ψ���ɤ��ΤǤ���
+C<local> は実行時演算子なので、ループで通る度に実行されます。
+現在の Perl はメモリの使用に関して改善されていますが、
+結果として、ループの外側で変数を宣言したほうがより効率が良いのです。
 
 =head3 Grammatical note on local()
 X<local, context>
 
-(local() ��ʸˡŪ����)
+(local() の文法的注意)
 
 =begin original
 
@@ -1381,10 +1381,10 @@ as a scalar or an array.  So
 
 =end original
 
-C<local> �Ϻ����ͤ��Ф���ñ�ʤ뽤���ҤǤ���
-�ɽ경���줿�ѿ���������Ԥä��Ȥ���C<local> �Ϥ��Υꥹ�Ȥ�������Ȥ���
-�����Ƥ���Τ�����Ȥ��Ƹ����Ƥ��뤫�Ȥ������Ȥ��Ѥ��뤳�ȤϤ���ޤ���
-�Ǥ����顢
+C<local> は左辺値に対する単なる修飾子です。
+局所化された変数に代入を行ったとき、C<local> はそのリストがスカラとして
+見えているのか配列として見えているかということを変えることはありません。
+ですから、
 
     local($foo) = <STDIN>;
     local @FOO = <STDIN>;
@@ -1395,7 +1395,7 @@ both supply a list context to the right-hand side, while
 
 =end original
 
-������ξ���Ȥ⤬���դ�ꥹ�ȥ���ƥ����Ȥˤ���Τ��Ф��ơ�
+これらの両方ともが右辺をリストコンテキストにするのに対して、
 
     local $foo = <STDIN>;
 
@@ -1405,12 +1405,12 @@ supplies a scalar context.
 
 =end original
 
-����ϥ����饳��ƥ����Ȥ�Ϳ���ޤ�.
+これはスカラコンテキストを与えます.
 
 =head3 Localization of special variables
 X<local, special variable>
 
-(�ü��ѿ��Υ������벽)
+(特殊変数のローカル化)
 
 =begin original
 
@@ -1420,10 +1420,10 @@ to this magic still work with the localized value.
 
 =end original
 
-�ü��ѿ���������벽����ȡ�����˿������ͤ�������ޤ������ü쵡ǽ��
-�ʤ��ʤ�ޤ���
-����ϡ������ü쵡ǽ�˴ط��������Ƥ������Ѥϥ������벽���줿�ͤ��Ф��Ƥ�
-Ư���Ȥ������Ȥ��̣���ޤ���
+特殊変数をローカル化すると、それに新しい値を入れられますが、特殊機能は
+なくなりません。
+これは、その特殊機能に関係する全ての副作用はローカル化された値に対しても
+働くということを意味します。
 
 =begin original
 
@@ -1431,7 +1431,7 @@ This feature allows code like this to work :
 
 =end original
 
-���ε�ǽ�ϰʲ��Τ褦�ʥ����ɤ�ư���褦�ˤ��ޤ�:
+この機能は以下のようなコードが動作するようにします:
 
     # Read the whole contents of FILE in $slurp
     { local $/ = undef; $slurp = <FILE>; }
@@ -1445,10 +1445,10 @@ magical and read-only :
 
 =end original
 
-������������Ϥ����Ĥ����ͤΥ������벽�����¤��뤳�Ȥ����դ��Ƥ�������;
-�㤨�С��ʲ���ʸ�ϡ�perl 5.9.0 ����ϡ�
-I<Modification of a read-only value attempted> �Ȥ������顼�� die ���ޤ�;
-�ʤ��ʤ� $1 �ѿ��ϥޥ�������ɤ߹������Ѥ�����Ǥ�:
+しかし、これはいくつかの値のローカル化を制限することに注意してください;
+例えば、以下の文は、perl 5.9.0 からは、
+I<Modification of a read-only value attempted> というエラーで die します;
+なぜなら $1 変数はマジカルで読み込み専用だからです:
 
     local $1 = 2;
 
@@ -1459,8 +1459,8 @@ die in perl 5.9.0 :
 
 =end original
 
-Ʊ�ͤǤ����������̣�ǤϤ�긫ʬ���ˤ����Ǥ������ʲ��Υ������Ҥ�
-perl 5.9.0 �Ǥ� die ���ޤ�:
+同様ですが、ある意味ではより見分けにくいですが、以下のコード片は
+perl 5.9.0 では die します:
 
     sub f { local $_ = "foo"; print }
     for ($1) {
@@ -1474,7 +1474,7 @@ See next section for an alternative to this situation.
 
 =end original
 
-���ξ����ؤ����ذƤˤĤ��Ƥϼ�����򻲾Ȥ��Ƥ���������
+この状況への代替案については次の節を参照してください。
 
 =begin original
 
@@ -1489,21 +1489,21 @@ X<local, tie>
 
 =end original
 
-B<�ٹ�>: tie ���줿����ȥϥå���Υ������벽�ϸ��ߤΤȤ���
-���Ҥ��줿�Ȥ����ư��ޤ���
-����� Perl �ξ���Υ�꡼���ǽ�������ޤ�;
-���̤δ֤ϡ�tie ���줿�����ϥå���Υ������벽�ˤ��ɤΤ褦��
-�����񤤤ˤ��¸���ʤ��褦�ʥ����ɤˤ��Ƥ�������
-(�ġ������ǤΥ������벽�����ꤢ��ޤ���)��
-����ʤ�ܺ٤ˤĤ��Ƥ�
-L<perl58delta/"Localising Tied Arrays and Hashes Is Broken"> ��
-���Ȥ��Ƥ���������
+B<警告>: tie された配列とハッシュのローカル化は現在のところ
+記述されたとおりに動作しません。
+これは Perl の将来のリリースで修正されます;
+当面の間は、tie された配列やハッシュのローカル化によるどのような
+振る舞いにも依存しないようなコードにしてください
+(個々の要素のローカル化は問題ありません)。
+さらなる詳細については
+L<perl58delta/"Localising Tied Arrays and Hashes Is Broken"> を
+参照してください。
 X<local, tie>
 
 =head3 Localization of globs
 X<local, glob> X<glob>
 
-(�����֤Υ������벽)
+(グロブのローカル化)
 
 =begin original
 
@@ -1511,7 +1511,7 @@ The construct
 
 =end original
 
-�ʲ��Τ褦�ʹ�¤��
+以下のような構造は
 
     local *name;
 
@@ -1523,10 +1523,10 @@ current package.  That means that all variables in its glob slot ($name,
 
 =end original
 
-���ߤΥѥå������ǥ����� C<name> �Τ���δ����˿���������ܥ�ơ��֥�
-����ȥ��������ޤ���
-����ϡ����Υ����֥����åȤ��������Ƥ��ѿ� ($name, @name, %name, &name,
-C<name> �ե�����ϥ�ɥ�) ��ưŪ�˥ꥻ�åȤ���뤳�Ȥ��̣���ޤ���
+現在のパッケージでグロブ C<name> のための完全に新しいシンボルテーブル
+エントリを作成します。
+これは、このグロブスロットに入る全ての変数 ($name, @name, %name, &name,
+C<name> ファイルハンドル) は動的にリセットされることを意味します。
 
 =begin original
 
@@ -1537,11 +1537,11 @@ separator.
 
 =end original
 
-������äˡ�
-�ǽ�Ū�ˤ������ѿ��ˤ�äƤ⤿�餵���ޥ��å��϶ɽ�Ū�ˤ�
-�����뤳�Ȥ��̣���ޤ���
-����������ȡ�C<local */> �Ȥ��Ƥ⡢���ϥ쥳���ɥ��ѥ졼����������
-�ͤˤϲ��αƶ���Ϳ���ʤ��Ȥ������ȤǤ���
+これは特に、
+最終的にこれらの変数によってもたらされるマジックは局所的には
+失われることを意味します。
+言い換えると、C<local */> としても、入力レコードセパレータの内部の
+値には何の影響も与えないということです。
 
 =begin original
 
@@ -1553,16 +1553,16 @@ with C<my $_>), which avoids completely this problem.
 
 =end original
 
-�Ȥ�櫓���⤷�ǥե���ȥ����� $_ �ο������ͤǺ�Ȥ򤷤�������ɤ⡢
-��Ҥ�����$_ ����������Ǥ����ޥ�������ͤ˴ؤ�������Ū��������򤱤����ʤ顢
-C<local $_> �ǤϤʤ� C<local *_> ��Ȥ��٤��Ǥ���
-perl 5.9.1 �ʹߡ�(C<my $_> �Ȥ��뤳�Ȥ�) �쥭������� C<$_> ��Ȥ����Ȥ�Ǥ���
-����ˤ�äƤ�����������˲���Ǥ��ޤ���
+とりわけ、もしデフォルトスカラ $_ の新しい値で作業をしたいけれども、
+上述した、$_ が以前運んでいたマジカルな値に関する潜在的な問題を避けたいなら、
+C<local $_> ではなく C<local *_> を使うべきです。
+perl 5.9.1 以降、(C<my $_> とすることで) レキシカルな C<$_> を使うこともでき、
+これによってこの問題を完全に回避できます。
 
 =head3 Localization of elements of composite types
 X<local, composite type element> X<local, array element> X<local, hash element>
 
-(ʣ�緿�����ǤΥ������벽)
+(複合型の要素のローカル化)
 
 =begin original
 
@@ -1579,17 +1579,17 @@ skipped elements with C<undef>.  For instance, if you say
 
 =end original
 
-�������Υ��С�(���Ȥ��������ϥå��������)�ζɽ경�����Ȥ���
-�ɤ��ʤ뤫���������ޤ��礦��
-���ξ�硢�������Ǥ� B<̾���ˤ�ä�> �ɽ경���Ԥ��ޤ���
-����ϤĤޤꡢC<local> �Υ������פ�����ä��Ȥ��ˡ�C<local> ��̾����
-�Ȥ��Ƥ�����������ĥϥå�������Ǥ� C<local> ��̾�����Ȥ��Ƥ���
-�������Ǥ˴ؤ�����¸����Ƥ����ͤ���������Ȥ������ȤǤ���
-C<local()> �����̤���äƤ���Ȥ����Ǥ������ä����Ǥ�������줿���
-(�㤨�Хϥå�����Ф��� delete() ��Ȥ��Ȥ�������Ф���
-C<shift()>��Ȥ�)�ˡ�C<local()> ��ͭ���ϰϤ�ȴ�����Ȥ�����
-������줿���Ǥ����褷������γ�ĥ�ȳ�ĥ����ʬ�����Ǥ��ͤ�
-C<undef> �ˤ���Ȥ������Ȥ�Ԥ��ޤ����㤨�аʲ��Τ褦�ʾ�硢
+合成型のメンバー(たとえば配列やハッシュの要素)の局所化したときに
+どうなるかを説明しましょう。
+この場合、その要素は B<名前によって> 局所化が行われます。
+これはつまり、C<local> のスコープが終わったときに、C<local> で名前が
+使われていたキーを持つハッシュの要素と C<local> で名前が使われていた
+配列要素に関して保存されていた値を復帰するということです。
+C<local()> が効果を持っているところでそういった要素が削除された場合
+(例えばハッシュに対して delete() を使うとか配列に対して
+C<shift()>を使う)に、C<local()> の有効範囲を抜けたところで
+削除された要素が復活し、配列の拡張と拡張した分の要素の値を
+C<undef> にするということを行います。例えば以下のような場合、
 
     %hash = ( 'This' => 'is', 'a' => 'test' );
     @ary  = ( 0..5 );
@@ -1615,7 +1615,7 @@ Perl will print
 
 =end original
 
-Perl �ϰʲ��Τ褦�ʽ��Ϥ򤷤ޤ���
+Perl は以下のような出力をします。
 
     6 . . .
     4 . . .
@@ -1630,13 +1630,13 @@ types is subject to change in future.
 
 =end original
 
-ʣ�緿��¸�ߤ��Ƥ��ʤ����С����Ф��� local() �ο����񤤤�
-�����ѹ������ͽ��Ǥ���
+複合型の存在していないメンバーに対する local() の振る舞いは
+将来変更される予定です。
 
 =head2 Lvalue subroutines
 X<lvalue> X<subroutine, lvalue>
 
-(�����ͥ��֥롼����)
+(左辺値サブルーチン)
 
 =begin original
 
@@ -1645,8 +1645,8 @@ implementation may change in future versions of Perl.
 
 =end original
 
-B<�ٹ�>: �����ͥ��֥롼�����̤���¸�Ū��ǽ�Ǥ��ꡢ
-����ΥС������� Perl �Ǥϼ������ѹ�����뤫�⤷��ޤ���
+B<警告>: 左辺値サブルーチンは未だ実験的機能であり、
+将来のバージョンの Perl では実装が変更されるかもしれません。
 
 =begin original
 
@@ -1655,8 +1655,8 @@ To do this, you have to declare the subroutine to return an lvalue.
 
 =end original
 
-���֥롼���󤫤顢�ѹ���ǽ���ͤ��֤����Ȥ���ǽ�Ǥ���
-�������뤿��ˤϡ����֥롼���󤬺����ͤ��֤��褦��������ʤ���Фʤ�ޤ���
+サブルーチンから、変更可能な値を返すことが可能です。
+そうするためには、サブルーチンが左辺値を返すように宣言しなければなりません。
 
     my $val;
     sub canmod : lvalue {
@@ -1678,10 +1678,10 @@ by a scalar. For example, consider:
 
 =end original
 
-���֥롼����ȡ������α�¦�Υ�����/�ꥹ�ȥ���ƥ����Ȥ�
-���֥롼����ƤӽФ�����������֤�������줿���Τ褦�ˤ���
-���ꤵ��ޤ���
-��Ȥ��ơ��ʲ���ͤ����:
+サブルーチンと、代入の右側のスカラ/リストコンテキストは
+サブルーチン呼び出しがスカラに置き換えられたかのようにして
+決定されます。
+例として、以下を考えると:
 
     data(2,3) = get_data(3,4);
 
@@ -1691,7 +1691,7 @@ Both subroutines here are called in a scalar context, while in:
 
 =end original
 
-ξ���Υ��֥롼����ϥ����饳��ƥ����ȤǸƤӽФ��졢����:
+両方のサブルーチンはスカラコンテキストで呼び出され、一方:
 
     (data(2,3)) = get_data(3,4);
 
@@ -1701,7 +1701,7 @@ and in:
 
 =end original
 
-�ڤ�:
+及び:
 
     (data(2),data(3)) = get_data(3,4);
 
@@ -1711,7 +1711,7 @@ all the subroutines are called in a list context.
 
 =end original
 
-�ˤĤ��Ƥ����ƤΥ��֥롼����ϥꥹ�ȥ���ƥ����ȤǸƤӽФ���ޤ���
+については全てのサブルーチンはリストコンテキストで呼び出されます。
 
 =over 4
 
@@ -1724,7 +1724,7 @@ circumspect.
 
 =end original
 
-����������ʤ褦�Ǥ��������Ťˤʤ�٤������Ĥ�����ͳ������ޤ���
+これは便利なようですが、慎重になるべきいくつかの理由があります。
 
 =begin original
 
@@ -1735,11 +1735,11 @@ deeply nested loop, which is sometimes a nice way out.
 
 =end original
 
-return ������ɤϻȤ��������֥롼���󥹥����פ���ȴ���������ͤ�
-�Ϥ��ʤ���Фʤ�ޤ���
-(��Ҥ���Υ����Ȥ򻲾Ȥ��Ƥ�������)��
-��������̤�����ˤʤ�ޤ��󤬡������ͥ��Ȥ����롼�פ�������Ū�� return ��
-æ�Ф���Τϡ������褤��ˡ�Ȥʤ�ޤ���������ʤ��ʤ�ޤ���
+return キーワードは使えず、サブルーチンスコープから抜ける前に値を
+渡さなければなりません。
+(上述の例のコメントを参照してください)。
+これは普通は問題になりませんが、深くネストしたループから明示的に return で
+脱出するのは、時々よい方法となりますが、出来なくなります。
 
 =begin original
 
@@ -1749,11 +1749,11 @@ subroutine never gets that chance.  Consider;
 
 =end original
 
-����ϥ��ץ��벽�˰�ȿ���Ƥ��ޤ���
-�̾�� mutator �ϡ����Ȥ��ݸ�Ƥ���°���˥��åȤ�������
-����������å��Ǥ��ޤ�����
-�����ͥ��֥롼����ˤϤ��ε���Ϥ���ޤ���
-�ʲ���ͤ��ƤߤƤ�������;
+これはカプセル化に違反しています。
+通常の mutator は、自身が保護している属性にセットする前に
+引数をチェックできますが、
+左辺値サブルーチンにはその機会はありません。
+以下を考えてみてください;
 
     my $some_array_ref = [];	# protected by mutators ??
 
@@ -1775,7 +1775,7 @@ subroutine never gets that chance.  Consider;
 =head2 Passing Symbol Table Entries (typeglobs)
 X<typeglob> X<*>
 
-(����ܥ�ơ��֥�Υ���ȥ���Ϥ�(��������))
+(シンボルテーブルのエントリを渡す(型グロブ))
 
 =begin original
 
@@ -1786,10 +1786,10 @@ mechanism is generally easier to work with.  See below.
 
 =end original
 
-B<�ٹ�>: ���Υ�����������������Ƥ�����Ȥߤϡ��Ť��С������� Perl ��
-�����ƻ����Ϥ��򥷥ߥ�졼�Ȥ��뤿���ͣ�����ˡ�Ǥ�����
-����ϸ��ߤǤ�Ȥ����Ȥ��Ǥ���ΤǤ�������������ե���󥹤λ��Ȥߤ�
-��������ñ�˹Ԥ��ޤ�����������򻲾Ȥ��Ƥ���������
+B<警告>: このセクションで説明されている仕組みは、古いバージョンの Perl に
+おいて参照渡しをシミュレートするための唯一の方法でした。
+これは現在でも使うことができるのですが、新しいリファレンスの仕組みは
+これをより簡単に行います。後の説明を参照してください。
 
 =begin original
 
@@ -1803,14 +1803,14 @@ funny prefix characters on variables and subroutines and such.
 
 =end original
 
-���֥롼�����Ϥ��줿����Υ�������ʥ��ԡ��ǤϤʤ��ƥ������Х��
-��Τ��ѹ����Ǥ���褦�ˡ����֥롼������Ф���������ͤǤϤʤ�
-�����̾�����Ϥ������ʤ뤳�Ȥ⤢��Ǥ��礦��
-perl �ˤ����Ƥϡ������ C<*foo> �Τ褦�˥������ꥹ����Ȥä�
-�Ԥ����Ȥ��Ǥ��ޤ���
-����������֤��줿�������ꥹ�����ѿ��䥵�֥롼����ʤɤ��Ф��ƻȤ���
-���֥���饯�������Ƥ˥ޥå�����磻��ɥ����ɤȤ��Ƥߤʤ����Ȥ�
-�Ǥ���Τǡ��ȷ������֡ɤȤ��Ƥ褯�Τ��Ƥ��ޤ���
+サブルーチンが渡された配列のローカルなコピーではなくてグローバルな
+ものの変更ができるように、サブルーチンに対して配列の値ではなく
+配列の名前を渡したくなることもあるでしょう。
+perl においては、これを C<*foo> のようにアスタリスクを使って
+行うことができます。
+これは前に置かれたアスタリスクが変数やサブルーチンなどに対して使われる
+前置キャラクター全てにマッチするワイルドカードとしてみなすことが
+できるので、“型グロブ”としてよく知られています。
 
 =begin original
 
@@ -1821,9 +1821,9 @@ whatever C<*> value was assigned to it.  Example:
 
 =end original
 
-�������֤�ɾ�����줿�Ȥ��ˤ���̾����������ƤΥ��֥�������(�ե�����ϥ�ɥ롢
-�ե����ޥåȡ����֥롼�����ޤޤ�ޤ�)��ɽ���������ͤ��������ޤ���
-�������Ԥ�줿�Ȥ���C<*> ������������Τ�ȿ�Ǥ���褦�ˤʤ�ޤ����㤨��:
+型グロブは評価されたときにその名前を持つ全てのオブジェクト(ファイルハンドル、
+フォーマット、サブルーチンも含まれます)を表すスカラ値を生成します。
+代入が行われたとき、C<*> は代入したものを反映するようになります。例えば:
 
     sub doubleary {
 	local(*someary) = @_;
@@ -1845,13 +1845,13 @@ an array.  It will certainly be faster to pass the typeglob (or reference).
 
 =end original
 
-������ϴ��˻����Ϥ�����Ƥ���Τǡ��ۤ� C<$_[0]> �ʤɤǻ��Ȥ���
-���ε�����Ȥ�ʤ��Ƥ⥹����������ѹ����뤳�Ȥ��Ǥ��ޤ���
-���Ƥ����Ǥ�������Ȥ����Ϥ��줿��������ǤϤ��٤�
-�ѹ����뤳�Ȥ��Ǥ��ޤ�����C<push>��C<pop>���⤷��������Υ�������
-�ѹ����뤿��ˤ� C<*> ����(�⤷����Ʊ���Υ�ե���󥹵���)��
-�Ȥ�ɬ�פ�����ޤ���
-����Ϸ�������(�⤷���ϥ�ե����)���Ϥ��Τ�μ¤˹�®�ˤ���Ǥ��礦��
+スカラは既に参照渡しされているので、陽に C<$_[0]> などで参照して
+この機構を使わなくてもスカラ引数を変更することができます。
+全ての要素がスカラとして渡された配列の要素はすべて
+変更することができますが、C<push>、C<pop>、もしくは配列のサイズを
+変更するためには C<*> 機構(もしくは同等のリファレンス機構)を
+使う必要があります。
+これは型グロブ(もしくはリファレンス)を渡すのを確実に高速にするでしょう。
 
 =begin original
 
@@ -1863,17 +1863,17 @@ L<perldata/"Typeglobs and Filehandles">.
 
 =end original
 
-������ѹ���˾�ޤʤ��Ȥ��Ƥ⡢���ε�����ñ��Υꥹ�Ȥ���ˤ���ʣ����
-�ꥹ�Ȥ��Ϥ��Τ������Ǥ���
-�ʤ��ʤ顢�̾�ϥꥹ�ȵ����Ϥ��٤Ƥ�������ͤ��礷�Ƥ��ޤ��Τ�
-��Ω�����������Ф����Ȥ��Ǥ��ʤ�����Ǥ���
-�������֤ˤĤ��Ƥϡ�
-L<perldata/"Typeglobs and Filehandles"> �⻲�Ȥ��Ƥ���������
+配列の変更を望まないとしても、この機構は単一のリストの中にある複数の
+リストを渡すのに便利です。
+なぜなら、通常はリスト機構はすべての配列の値を結合してしまうので
+独立した配列を取り出すことができないからです。
+型グロブについては、
+L<perldata/"Typeglobs and Filehandles"> も参照してください。
 
 =head2 When to Still Use local()
 X<local> X<variable, local>
 
-(���Ǥ� local() ��Ȥ��Ȥ�)
+(今でも local() を使うとき)
 
 =begin original
 
@@ -1883,9 +1883,9 @@ I<must> use C<local> instead of C<my>.
 
 =end original
 
-C<my> ������ˤ�ؤ餺�����Ǥ� C<local> �黻�Ҥ�Ȥ��٤���꤬�����ꤢ��ޤ���
-�ºݤˤϤ��λ�����ˤ����Ƥϡ�C<my> �ǤϤʤ���B<ɬ��> C<local> ��
-�Ȥ�ʤ���Фʤ�ޤ���
+C<my> があるにも関らず、今でも C<local> 演算子を使うべき場所が三ヶ所あります。
+実際にはその三ヶ所においては、C<my> ではなく、B<必ず> C<local> を
+使わなければなりません。
 
 =over 4
 
@@ -1897,7 +1897,7 @@ You need to give a global variable a temporary value, especially $_.
 
 =end original
 
-�������Х��ѿ�(�ä� C<$_>) �˴ؤ��ơ����Ū���ͤ�Ϳ�������Ȥ���
+グローバル変数(特に C<$_>) に関して、一時的な値を与えたいとき。
 
 =begin original
 
@@ -1908,10 +1908,10 @@ in C<@Fields>.
 
 =end original
 
-C<@ARGV> ��������ѿ�(punctuation variables)�Τ褦�ʥ������Х��ѿ��Ǥϡ�
-�ɽ경�Τ���� C<local()> ��Ȥ�ʤ���Фʤ�ޤ���
-�ʲ��Υ֥��å��� F</etc/motd> ���ɤ߹��ߡ����������ȤäƹԤβ���ʬ�䤷��
-���η�̤� C<@Fields> �˳�Ǽ���ޤ���
+C<@ARGV> や句読点変数(punctuation variables)のようなグローバル変数では、
+局所化のために C<local()> を使わなければなりません。
+以下のブロックは F</etc/motd> を読み込み、等価記号を使って行の塊を分割し、
+その結果を C<@Fields> に格納します。
 
     {
 	local @ARGV = ("/etc/motd");
@@ -1927,9 +1927,9 @@ to it.  Look out for implicit assignments in C<while> conditionals.
 
 =end original
 
-�ä˽��פʤΤϡ�Ǥ�դΥ롼�������� $_ ��ɽ경����������Ф���
-�������뤳�ȤǤ���
-C<while> ʸ�Ǥΰ���Ū�����������դ��Ƥ���������
+特に重要なのは、任意のルーチンの中で $_ を局所化し、それに対して
+代入することです。
+C<while> 文での暗黙的な代入に注意してください。
 
 =item 2.
 
@@ -1939,8 +1939,8 @@ You need to create a local file or directory handle or a local function.
 
 =end original
 
-��������ʥե�����ϥ�ɥ��ǥ��쥯�ȥ�ϥ�ɥ롢
-�⤷���ϥ�������ؿ����������ɬ�פ������硣
+ローカルなファイルハンドルやディレクトリハンドル、
+もしくはローカル関数を作成する必要がある場合。
 
 =begin original
 
@@ -1950,9 +1950,9 @@ table entries:
 
 =end original
 
-�ؿ��˸�ͭ�Υե�����ϥ�ɥ뤬ɬ�פʴؿ��ϡ������ʷ������֤�Ȥä�
-C<local()> ��Ȥ�ʤ���Фʤ�ޤ���
-����ˤ�äơ�����������ܥ�ơ��֥�Υ���ȥ꤬��������ޤ�:
+関数に固有のファイルハンドルが必要な関数は、完全な型グロブを使った
+C<local()> を使わなければなりません。
+これによって、新しいシンボルテーブルのエントリが作成されます:
 
     sub ioqueue {
         local  (*READER, *WRITER);    # not my!
@@ -1968,8 +1968,8 @@ entries.
 
 =end original
 
-̵̾����ܥ�ơ��֥������������ˡ�ˤĤ��Ƥϡ�Symbol �⥸�塼���
-���Ȥ��Ƥ���������
+無名シンボルテーブルを生成する方法については、Symbol モジュールを
+参照してください。
 
 =begin original
 
@@ -1979,9 +1979,9 @@ a local alias.
 
 =end original
 
-�������֤��Ф����ե���󥹤������ϥ����ꥢ������������Τǡ�
-�ʲ�����Ǥϸ���Ū�˥�������ؿ�(���뤤�Ͼ��ʤ��Ȥ�������륨���ꥢ��)��
-��������Τ˻Ȥ����Ȥ��Ǥ��ޤ���
+型グロブに対するリファレンスの代入はエイリアスを生成するので、
+以下の例では効果的にローカル関数(あるいは少なくともローカルエイリアス)を
+生成するのに使うことができます。
 
     {
         local *grow = \&shrink; # only until this block exists
@@ -1997,8 +1997,8 @@ functions by name in this way.
 
 =end original
 
-�������ä�������ǡ�̾���ˤ�äƴؿ���������ˡ�˴ؤ��Ƥξܺ٤�
-L<perlref/"Function Templates"> �򻲾Ȥ��Ƥ���������
+こういったやり方で、名前によって関数を操作する方法に関しての詳細は
+L<perlref/"Function Templates"> を参照してください。
 
 =item 3.
 
@@ -2008,7 +2008,7 @@ You want to temporarily change just one element of an array or hash.
 
 =end original
 
-�����ϥå���Τ������Ǥ�������Ū���ѹ���������硣
+配列やハッシュのある要素だけを一時的に変更したい場合。
 
 =begin original
 
@@ -2017,8 +2017,8 @@ is done on dynamics:
 
 =end original
 
-��Ĥ����Ǥ�����ɽ경���뤳�Ȥ���ǽ�Ǥ���
-�̾�Ϥ����ưŪ�˹Ԥ��ޤ���
+一つの要素だけを局所化することが可能です。
+通常はこれは動的に行われます。
 
     {
 	local $SIG{INT} = 'IGNORE';
@@ -2033,15 +2033,15 @@ this operation could on occasion misbehave.
 
 =end original
 
-������������ϥ쥭�������ѿ��Ǥ��äƤ�ư��ޤ���
-5.005 ������Τ�ΤǤϡ��������ϴְ�ä������ˤʤ��ǽ��������ޤ�����
+しかし、これはレキシカル変数であっても動作します。
+5.005 より前のものでは、この操作は間違った状況になる可能性がありました。
 
 =back
 
 =head2 Pass by Reference
 X<pass by reference> X<pass-by-reference> X<reference>
 
-(�����Ϥ�)
+(参照渡し)
 
 =begin original
 
@@ -2053,12 +2053,12 @@ This section may not make much sense to you otherwise.
 
 =end original
 
-�⤷�������ϥå������İʾ�ؿ����Ϥ������Ȥ��ؿ������֤�������
-�ͤ��Ƥ��ơ�Ʊ���ˤ��������ʾ��֤ǰ��������Ȥ����ΤǤ���С�
-����Ū�˻����Ϥ���Ȥ�ɬ�פ�����Ǥ��礦��
-�����Ԥ����ˡ�L<perlref> ����������Ƥ����ե���󥹤����򤹤�
-ɬ�פ�����ޤ���
-���Υ��������Ǥϲ������������褦�ʤ��ȤϤ��ޤ���
+もし、配列やハッシュを二つ以上関数に渡したいとか関数から返したいと
+考えていて、同時にそれらを完全な状態で扱いたいというのであれば、
+明示的に参照渡しを使う必要があるでしょう。
+これを行う前に、L<perlref> で説明されているリファレンスを理解する
+必要があります。
+このセクションでは改めて説明するようなことはしません。
 
 =begin original
 
@@ -2068,11 +2068,11 @@ of all their former last elements:
 
 =end original
 
-���Ĥ�ñ������󤲤ޤ��礦��
-�ޤ��ǽ�ˡ�����ؿ��˴��Ĥ���������Ϥ���
-���Ƥ�������Ф��� C<pop> ��Ԥäư����Ȥ��Ƽ�����ä������
-���줾��κǸ�����Ǥ���ʤ뿷�����ꥹ�Ȥ��֤��Ȥ������Ȥ�
-�ͤ��Ƥߤޤ��礦��
+幾つか単純な例を挙げましょう。
+まず最初に、ある関数に幾つかの配列を渡し、
+全ての配列に対して C<pop> を行って引数として受け取った配列の
+それぞれの最後の要素からなる新しいリストを返すということを
+考えてみましょう。
 
     @tailings = popmany ( \@a, \@b, \@c, \@d );
 
@@ -2092,8 +2092,8 @@ list of keys occurring in all the hashes passed to it:
 
 =end original
 
-�ʲ�����ϡ������Ȥ����Ϥ��줿���ƤΥϥå���ˤ��륭���Υꥹ�Ȥ�
-�֤��ؿ��Ǥ�:
+以下の例は、引数として渡された全てのハッシュにあるキーのリストを
+返す関数です:
 
     @common = inter( \%foo, \%bar, \%joe );
     sub inter {
@@ -2116,11 +2116,11 @@ a little expensive.
 
 =end original
 
-�ȤϤ�����ΤΡ�������̾�Υꥹ�Ȥ��֤�������ȤäƤ��ޤ���
-�ϥå�����Ϥ����Ȥ����ꡢ�ϥå�����֤����Ȥ���Ȳ���������ΤǤ��礦��?
-�����Ǥ��������ΰ�Ĥ�����Ȥ�������Ϣ�뤬�Ԥ��뤳�Ȥ򵤤ˤ��ʤ����
-�̾�θƤӽФ������Ʊ�����ȤǤ���
-�������������⤯�Ĥ��ޤ���
+とはいうものの、これは通常のリストを返す機構を使っています。
+ハッシュを渡そうとしたり、ハッシュを返そうとすると何が起きるのでしょうか?
+そうです、引数の一つだけを使い引数の連結が行われることを気にしなければ
+通常の呼び出し規約と同じことです。
+ただし、少々高くつきます。
 
 =begin original
 
@@ -2128,7 +2128,7 @@ Where people get into trouble is here:
 
 =end original
 
-�Τ褦�˽񤯤Τϥȥ�֥�Τ�ȤǤ���
+のように書くのはトラブルのもとです。
 
     (@a, @b) = func(@c, @d);
 or
@@ -2143,11 +2143,11 @@ as always.
 
 =end original
 
-�����ι�ʸ��ñ��ˤ��ޤ������ޤ���
-����ͤ� C<@a>�� C<%a>�����˥��åȤ���ơ�C<@b> �� C<%b> �ϥ��ꥢ����ޤ���
-����˲ä������δؿ��ϰ����Ȥ�����Ĥ�������ĤΥϥå����������ޤ���
-�������ΤϾ�� C<@_> �˳�Ǽ����Ƥ���(��Ĥΰ��������Ƥ�Ϣ�뤵�줿)��Ĥ�
-Ĺ���ꥹ�ȤʤΤǤ���
+これらの構文は単純にうまくいきません。
+戻り値は C<@a>や C<%a>だけにセットされて、C<@b> や C<%b> はクリアされます。
+それに加え、この関数は引数として二つの配列、二つのハッシュを受け取りません。
+受け取るのは常に C<@_> に格納されている(二つの引数の内容が連結された)一つの
+長いリストなのです。
 
 =begin original
 
@@ -2158,10 +2158,10 @@ in order of how many elements they have in them:
 
 =end original
 
-������ե���󥹷�ͳ�ǰ����褦���ѹ��Ǥ���ΤǤ���С������ܤϤ�����
-�ɤ�����ޤ��󤬥ץ����������ΤˤǤ��ޤ���
-�ʲ�����ϰ����Ȥ�������Υ�ե���󥹤���ļ�ꡢ������������Ǥο��ˤ�ä�
-����Ť���줿��Ĥ�������֤��ؿ��Ǥ�:
+これをリファレンス経由で扱うように変更できるのであれば、見た目はそれ程
+良くありませんがプログラムを明確にできます。
+以下の例は引数として配列のリファレンスを二つ取り、その配列の要素の数によって
+順序づけられた二つの配列を返す関数です:
 
     ($aref, $bref) = func(\@c, \@d);
     print "@$aref has more than @$bref\n";
@@ -2180,7 +2180,7 @@ It turns out that you can actually do this also:
 
 =end original
 
-����ϰʲ��Τ褦�˽񤯤��Ȥ�Ǥ��ޤ�:
+これは以下のように書くこともできます:
 
     (*a, *b) = func(\@c, \@d);
     print "@a has more than @b\n";
@@ -2202,10 +2202,10 @@ are in the symbol table.
 
 =end original
 
-������Ǥϡ�����ܥ�ơ��֥����̾�Ť��򤹤뤿��˷������֤�ȤäƤ��ޤ���
-���������������̯�ʤ�ΤǤ��ꡢC<my> �ѿ���Ȥä����ˤϤ��ޤ������ޤ���
-�ʤ��ʤ顢�������Х�ʤ��(C<local()> �ǵ���������Τ�ޤ�)������
-����ܥ�ơ��֥�ˤ��뤫��Ǥ���
+この例では、シンボルテーブルの別名づけをするために型グロブを使っています。
+しかし、これは微妙なものであり、C<my> 変数を使った場合にはうまくいきません。
+なぜなら、グローバルなもの(C<local()> で偽装したものを含む)だけが
+シンボルテーブルにあるからです。
 
 =begin original
 
@@ -2215,10 +2215,10 @@ For example:
 
 =end original
 
-�ե�����ϥ�ɥ�򰷤����Ȥ����ΤǤ���С��̾�� C<*STDOUT> �Τ褦��
-��η�������(bare typeglob)��Ȥ����Ȥ��Ǥ��ޤ������������֤�
-��ե���󥹤�ư��ޤ���
-���󤲤ޤ��礦:
+ファイルハンドルを扱おうというのであれば、通常は C<*STDOUT> のような
+裸の型グロブ(bare typeglob)を使うことができますが、型グロブの
+リファレンスも動作します。
+例を挙げましょう:
 
     splutter(\*STDOUT);
     sub splutter {
@@ -2239,9 +2239,9 @@ Notice to pass back just the bare *FH, not its reference.
 
 =end original
 
-�������ե�����ϥ�ɥ���������뤳�Ȥ�ͤ��Ƥ���ΤǤ���С�
-�ʲ��Τ褦�ˤǤ��ޤ���
-��ե���󥹤ǤϤʤ������� *FH ���Ϥ����Ȥ����դ��Ƥ���������
+新しいファイルハンドルを生成することを考えているのであれば、
+以下のようにできます。
+リファレンスではなく、生の *FH を渡すことに注意してください。
 
     sub openit {
 	my $path = shift;
@@ -2252,7 +2252,7 @@ Notice to pass back just the bare *FH, not its reference.
 =head2 Prototypes
 X<prototype> X<subroutine, prototype>
 
-(�ץ��ȥ�����)
+(プロトタイプ)
 
 =begin original
 
@@ -2261,8 +2261,8 @@ using function prototyping.  If you declare
 
 =end original
 
-Perl �ϤȤƤ�¤�줿���Υ���ѥ�������������å����б����Ƥ��ޤ���
-�ʲ��Τ褦����������:
+Perl はとても限られた形のコンパイル時引数チェックに対応しています。
+以下のように宣言すると:
 
     sub mypush (\@@)
 
@@ -2281,17 +2281,17 @@ calls like C<&{$subref}> or C<< $subref->() >>.
 
 =end original
 
-C<mypush()> �� C<push()> �����ΤȤޤä���Ʊ����������ޤ���
-�ؿ�����ϥ���ѥ�����˲Ļ�Ǥʤ���Фʤ�ޤ���
-�ץ��ȥ����פθ��̤ϡ��ؿ��� C<&> ��Ȥ�ʤ������������θƤӽФ���
-��ᤷ���Ȥ��ΤߤǤ���
-����������С��Ȥ߹��ߴؿ���Ʊ���褦�˴ؿ���ƤӽФ��С�
-������Ȥ߹��ߴؿ���Ʊ���褦�˿����񤦡��Ȥ������ȤǤ���
-�Ť������Υ��֥롼�����Ʊ���褦�˸ƤӽФ��С�����ϸŤ�������
-���֥롼�����Ʊ���褦�˿����񤤤ޤ���
-C<\&foo> �Τ褦�ʥ��֥롼����Υ�ե���󥹤� C<&{$subref}> �Τ褦��
-����Ū�ʥ��֥롼����ƤӽФ���C<< $subref->() >> �˴ؤ��Ƥϥץ��ȥ����פ�
-�ʤ�αƶ���ڤܤ��ʤ��Τǡ����ε�§���鳰��ޤ���
+C<mypush()> は C<push()> が取るのとまったく同じ引数を取ります。
+関数宣言はコンパイル時に可視でなければなりません。
+プロトタイプの効果は、関数を C<&> を使わない新しい形式の呼び出しで
+解釈したときのみです。
+言い換えれば、組み込み関数と同じように関数を呼び出せば、
+それは組み込み関数と同じように振る舞う、ということです。
+古い形式のサブルーチンと同じように呼び出せば、それは古い形式の
+サブルーチンと同じように振る舞います。
+C<\&foo> のようなサブルーチンのリファレンスや C<&{$subref}> のような
+間接的なサブルーチン呼び出し、C<< $subref->() >> に関してはプロトタイプは
+なんの影響も及ぼさないので、この規則から外れます。
 
 =begin original
 
@@ -2301,9 +2301,9 @@ the exact code called depends on inheritance.
 
 =end original
 
-�᥽�åɸƤӽФ��ϥץ��ȥ����פ�Ԥ�/�Ԥ�ʤ��ˤ��ƶ�������ޤ���
-�ʤ��ʤ����ΤʸƤӽФ������ɤϡ��Ѿ��˰�¸���Ƥ��뤿���
-����ѥ�����ˤ��Գ��������Ǥ���
+メソッド呼び出しはプロトタイプを行う/行わないによる影響を受けません。
+なぜなら正確な呼び出しコードは、継承に依存しているために
+コンパイル時には不確定だからです。
 
 =begin original
 
@@ -2314,9 +2314,9 @@ corresponding built-in.
 
 =end original
 
-�Ȥ߹��ߴؿ��Τ褦��ư��륵�֥롼����򤢤ʤ������������Τ�
-���ε�ǽ�δ���Ū����Ū�ʤΤǡ��������б������Ȥ߹��ߴؿ��Τ褦��
-��ᤵ�����Ĥ��δؿ��ץ��ȥ����פ�󤲤Ƥ����ޤ��礦��
+組み込み関数のように動作するサブルーチンをあなたに定義させるのが
+この機能の基本的な目的なので、ここで対応した組み込み関数のように
+解釈される幾つかの関数プロトタイプを挙げておきましょう。
 
 =begin original
 
@@ -2324,7 +2324,7 @@ corresponding built-in.
 
 =end original
 
-    ���			�ƤӽФ�
+    宣言			呼び出し
 
     sub mylink ($$)	     mylink $old, $new
     sub myvec ($$$)	     myvec $var, $offset, 1
@@ -2350,10 +2350,10 @@ in the subroutine call, obtained by applying C<\> to that argument.
 
 =end original
 
-�Хå�����å��夬�դ���줿�ץ��ȥ�����ʸ���ϡ��°�����
-����ʸ���ǻϤޤ��ΤǤʤ���Фʤ�ʤ����Ȥ�ɽ���ޤ���
-C<@_> �ΰ����Ȥ����Ϥ��줿�����ϡ����Υ��֥롼����ƤӽФ��ˤ�����
-Ϳ����줿�°����� C<\> ��Ŭ�Ѥ�����ե���󥹤Ȥʤ�ޤ���
+バックスラッシュが付けられたプロトタイプ文字は、実引数が
+その文字で始まるものでなければならないことを表します。
+C<@_> の一部として渡された引数は、そのサブルーチン呼び出しにおいて
+与えられた実引数に C<\> を適用したリファレンスとなります。
 
 =begin original
 
@@ -2362,7 +2362,7 @@ the C<\[]> notation:
 
 =end original
 
-C<\[]> ��ˡ��Ȥ����Ȥǡ�ʣ���ΰ�������Ʊ���˥Хå�����å������Ǥ��ޤ�:
+C<\[]> 記法を使うことで、複数の引数型を同時にバックスラッシュ指定できます:
 
     sub myref (\[$@%&*])
 
@@ -2372,7 +2372,7 @@ will allow calling myref() as
 
 =end original
 
-�Ȥ����Τϰʲ��Τ褦�� myref() ��ƤӽФ��Τ����:
+というのは以下のように myref() を呼び出すのを許し:
 
     myref $var
     myref @array
@@ -2387,8 +2387,8 @@ a scalar, an array, a hash, a code, or a glob.
 
 =end original
 
-myref() �κǽ�ΰ����� �����顢���󡢥ϥå��塢�����ɡ������֤Τ����줫�ؤ�
-��ե���󥹤Ǥ���
+myref() の最初の引数は スカラ、配列、ハッシュ、コード、グロブのいずれかへの
+リファレンスです。
 
 =begin original
 
@@ -2400,12 +2400,12 @@ argument, does not require the C<sub> keyword or a subsequent comma.
 
 =end original
 
-�Хå�����å��夬�դ����Ƥ��ʤ�ʸ�������̤ʰ�̣����äƤ��ޤ���
-�Хå�����å�����դ����Ƥ��ʤ� ���٤Ƥ� C<@> ��C<%> �ϻĤ�ΰ������Ƥ�
-��äƤ��ޤ�������˥ꥹ�ȥ���ƥ����Ȥ������ޤ���
-C<$> ��ɽ���������ϥ����饳��ƥ����Ȥ�������ޤ���
-�������Ȥ����Ϥ��줿��硢C<&> �� C<sub> ������ɤ�Ϣ³��������ޤ�
-�׵ᤷ�ʤ��褦��̵̾���֥롼������׵ᤷ�ޤ���
+バックスラッシュが付けられていない文字は特別な意味を持っています。
+バックスラッシュを付けられていない すべての C<@> とC<%> は残りの引数全てを
+取ってしまい、さらにリストコンテキストを強制します。
+C<$> で表される引数はスカラコンテキストを強制されます。
+第一引数として渡された場合、C<&> は C<sub> キーワードや連続したカンマを
+要求しないような無名サブルーチンを要求します。
 
 =begin original
 
@@ -2418,12 +2418,12 @@ follows:
 
 =end original
 
-C<*> �ϡ������åȤˤ������ñ�졢����������鼰���������֡�
-�������֤��Ф����ե���󥹤�����Ƥ��ޤ���
-�����ͤϥ��֥롼����ˤȤä�ñ��ʥ�����Ȥ��뤳�Ȥ�
-�������֤��Ф����ե���󥹤ˤ�ʤ�ޤ���
-���Τ褦�ʰ������˷������֥�ե���󥹤��Ѵ����������ϡ�
-Symbol::qualify_to_ref() ��ʲ��Τ褦�˻Ȥ��ޤ�:
+C<*> は、スロットにある裸の単語、定数、スカラ式、型グロブ、
+型グロブに対するリファレンスを許しています。
+その値はサブルーチンにとって単純なスカラとすることも
+型グロブに対するリファレンスにもなります。
+そのような引数を常に型グロブリファレンスに変換したい場合は、
+Symbol::qualify_to_ref() を以下のように使います:
 
     use Symbol 'qualify_to_ref';
 
@@ -2439,9 +2439,9 @@ It is redundant before C<@> or C<%>, which gobble up everything else.
 
 =end original
 
-���ߥ����� (C<;>) �ϡ�ɬ�ܤΰ����Ⱦ�ά��ǽ�ʰ����Ȥ�ʬ�䤷�ޤ���
-C<@> �� C<%> �����ǤϤ���Ͼ�Ĺ�Ǥ���
-����¾�Τ�Τ�ۼ����ޤ���
+セミコロン (C<;>) は、必須の引数と省略可能な引数とを分割します。
+C<@> や C<%> の前ではこれは冗長です。
+その他のものを吸収します。
 
 =begin original
 
@@ -2451,8 +2451,8 @@ used instead.
 
 =end original
 
-�ץ��ȥ����פκǸ��ʸ�������뤤�ϥ��ߥ������ľ���ˡ�C<$> �������
-C<_> ��Ȥ��ޤ�: ������Ϳ�����ʤ���硢C<$_> ������˻Ȥ��ޤ���
+プロトタイプの最後の文字、あるいはセミコロンの直前に、C<$> の代わりに
+C<_> を使えます: 引数が与えられない場合、C<$_> が代わりに使われます。
 
 =begin original
 
@@ -2464,12 +2464,12 @@ arguments, just like C<time()>.  That is, if you say
 
 =end original
 
-�����κǸ�λ��ĤΤ�Τϡ���ʸ���ϴ郎���̰�������Ȥ������Ȥ�
-���դ��Ƥ���������
-C<mygrep()> �������Υꥹ�ȱ黻�ҤȤ��Ʋ��Ϥ��졢C<myrand()> �� C<rand()> ��
-Ʊ����ñ��黻�Ҥ�ͥ���̤���ä�����ñ��黻�ҤȤ��ơ�
-������ C<mytime()> �� C<time()> ��Ʊ���ͤʰ�������ʤ���ΤȤ���
-���Ϥ���ޤ����Ĥޤꡢ
+上の例の最後の三つのものは、構文解析器が特別扱いするということに
+注意してください。
+C<mygrep()> は本当のリスト演算子として解析され、C<myrand()> は C<rand()> と
+同じく単項演算子の優先順位を持った真の単項演算子として、
+そして C<mytime()> は C<time()> と同じ様な引数を取らないものとして
+解析されます。つまり、
 
     mytime +2;
 
@@ -2480,8 +2480,8 @@ without a prototype.
 
 =end original
 
-�Ȥ���ȡ��ץ��ȥ����פʤ��ξ��˥ѡ�������� C<mytime(2)> �ǤϤʤ���
-C<mytime() + 2> �Ȥʤ�ޤ���
+とすると、プロトタイプなしの場合にパースされる C<mytime(2)> ではなく、
+C<mytime() + 2> となります。
 
 =begin original
 
@@ -2491,8 +2491,8 @@ X<&>
 
 =end original
 
-C<&> �˴ؤ��ƶ�̣�������Ȥϡ�������֤�Ȥäƿ�������ʸ��
-�����Ǥ���Ȥ������ȤǤ�:
+C<&> に関して興味深いことは、初期位置を使って新しい構文を
+生成できるということです:
 X<&>
 
     sub try (&@) {
@@ -2521,11 +2521,11 @@ is this sounding a little Lispish?  (Never mind.))))
 
 =end original
 
-����� C<��unphooey��> ����Ϥ��ޤ���(������C<@_> �βĻ����˴ؤ���
-��褷�Ƥ��ʤ����Ȥ�����ޤ���
-�������ǤϤ����̵�뤷�ޤ�(��������C<@_> ��쥭�����륹�����פˤ����
-�嵭�Υ��֥롼����ϥ��������㡼�Τ褦�˿����񤦤��Ȥ��Ǥ��ޤ�...
-(�󡼡�����äƤ��硼�ä� Lisp �äݤ�����? (���ˤ��ʤ��Ǥ�))))
+これは C<“unphooey”> を出力します。(そう、C<@_> の可視性に関して
+解決していないことがあります。
+現時点ではこれを無視します(ただし、C<@_> をレキシカルスコープにすれば
+上記のサブルーチンはクロージャーのように振る舞うことができます...
+(んー、これってちょーっと Lisp っぽいかな? (気にしないでね))))
 
 =begin original
 
@@ -2534,7 +2534,7 @@ X<grep>
 
 =end original
 
-�ʲ������ Perl �� C<grep> �黻�ҤΤκƼ����Ǥ�:
+以下の例は Perl の C<grep> 演算子のの再実装です:
 X<grep>
 
     sub mygrep (&@) {
@@ -2559,14 +2559,14 @@ encapsulated into a small pill that's easy to swallow.
 
 =end original
 
-�����οͤϡ������˱ѿ�����Ȥä��ץ��ȥ����פ򹥤फ�⤷��ޤ���
-�ѿ����ϡ�����̾���դ����������ɲä���Ȥ��Τ���˰տ�Ū�˻Ȥ鷺��
-�Ĥ��Ƥ���ΤǤ���
-�������ǤΥץ��ȥ����פε����μ����Ū�ϥ⥸�塼���Ԥ����Υ桼������
-�Ф��Ƥ���ɤ����ǥ�å��������󶡤�����褦�ˤ��뤿��Τ�ΤʤΤǤ���
-���ε�ˡ�� Perl �ץ�����ޤ��������򤷤䤹�����⥸�塼�����Ȥ�
-��������褦�ʤ��Ȥ��ɤߤŤ餯�����ꤹ�뤳�Ȥ�ʤ��� Larry �Ϲͤ��Ƥ��ޤ���
-�����λ����ϰ��߹��ߤ䤹�������ʴ����˻��Ū�˲����������ΤǤ���
+一部の人は、完全に英数字を使ったプロトタイプを好むかもしれません。
+英数字は、将来名前付き仮引数を追加するときのために意図的に使わずに
+残してあるのです。
+現時点でのプロトタイプの機構の主な目的はモジュール作者がそのユーザーに
+対してより良い診断メッセージを提供させるようにするためのものなのです。
+この記法は Perl プログラマが非常に理解しやすく、モジュールの中身に
+進入するようなことも読みづらくしたりすることもないと Larry は考えています。
+回線の雑音は飲み込みやすい小さな丸薬に視覚的に押し込められるのです。
 
 =begin original
 
@@ -2579,12 +2579,12 @@ majority of offending code is fixed.
 
 =end original
 
-�⤷�ץ��ȥ����פ˱ѿ�����Ȥ����Ȥ���ȡ����ץ����ηٹ�
-"Illegal character in prototype..." ����������ޤ���
-��ǰ�ʤ��顢���ΥС������� Perl �Ǥϡ�ͭ���ʥץ��ȥ����פ����֤���Ƥ���
-����С��ѿ�����ޤ�ץ��ȥ����פ�ǧ����Ƥ��ޤ�����
-���ηٹ�ϡ��ܾ��ʥ����ɤ�����ʬ���������줿�ʤ顢����ΥС�������
-Perl ����̿Ū���顼�˳ʾ夲����뤫�⤷��ޤ���
+もしプロトタイプに英数字を使おうとすると、オプションの警告
+"Illegal character in prototype..." が生成されます。
+残念ながら、過去のバージョンの Perl では、有効なプロトタイプが前置されてさえ
+いれば、英数字を含むプロトタイプも認められていました。
+この警告は、目障りなコードの大部分が修正されたなら、将来のバージョンの
+Perl で致命的エラーに格上げされるかもしれません。
 
 =begin original
 
@@ -2595,12 +2595,12 @@ if you decide that a function should take just one parameter, like this:
 
 =end original
 
-�������ؿ��˥ץ��ȥ����פ��դ���Τ������餯�����Ǥ��ꡢ�Ť��ؿ����Ф���
-�ץ��ȥ����פ��դ��뤳�ȤϤ褯����ޤ���
-�ʤ��ʤ顢(�ץ��ȥ����פ��դ������Ȥˤ�ä�)�ꥹ�ȥ���ƥ����Ȥ�
-�����饳��ƥ����Ȥ��ۤä��Ѥ��Ƥ��ޤ��褦�ʤ��Ȥ˴ؤ���
-�ä����դ��ʤ���Фʤ�ʤ�����Ǥ���
-���Ȥ��аʲ�����Τ褦�ʤ�����Ĥΰ�������ȷ�᤿�ؿ���ͤ��Ƥߤޤ��礦:
+新しい関数にプロトタイプを付けるのがおそらく最善であり、古い関数に対して
+プロトタイプを付けることはよくありません。
+なぜなら、(プロトタイプを付けたことによって)リストコンテキストと
+スカラコンテキストを黙って変えてしまうようなことに関して
+特に注意しなければならないからです。
+たとえば以下の例のようなただ一つの引数を取ると決めた関数を考えてみましょう:
 
     sub func ($) {
 	my $n = shift;
@@ -2614,8 +2614,8 @@ returning a list:
 
 =end original
 
-�����ơ�ï�������δؿ���ꥹ�Ȥ��֤��褦������估������Ȥ���
-�Ϥ����Ȥ����:
+そして、誰かがこの関数をリストを返すような配列や式を引数として
+渡したとすると:
 
     func(@foo);
     func( split /:/ );
@@ -2631,13 +2631,13 @@ starts scribbling on your C<@_> parameter list.  Ouch!
 
 =end original
 
-��ưŪ�� C<scalar> ������������(���ä����)�դ����ޤ���
-����ˤϤ��������Ӥä��ꤹ�뤳�Ȥˤʤ뤫�⤷��ޤ���
-����ޤǤ����Ǥ��ä��褦�ʡ����Ǥ���ä� C<@foo> ���Ϥ���뤳�ȤϤ���ޤ���
-�������ꡢC<func()> �� C<1>���Ĥޤ� C<@foo> �����Ǥο�������褦�ˤʤ�ޤ���
-������ C<split> �ϥ����饳��ƥ����ȤǸƤӽФ��졢�ѥ�᡼���ꥹ��
-C<@_> ����񤭤�Ϥ�Ƥ��ޤ��ޤ���
-����������
+自動的に C<scalar> が引数の前に(こっそりと)付けられます。
+これにはいささかびっくりすることになるかもしれません。
+これまでそうであったような、要素を持った C<@foo> が渡されることはありません。
+その代わり、C<func()> は C<1>、つまり C<@foo> の要素の数を得るようになります。
+そして C<split> はスカラコンテキストで呼び出され、パラメータリスト
+C<@_> に落書きを始めてしまいます。
+あいたた。
 
 =begin original
 
@@ -2646,13 +2646,13 @@ to make the world a better place.
 
 =end original
 
-������󤳤�Ͻ�ʬ���Ϥʤ�ΤǤ��ꡢ���������ɤ����ˤ���Ȥ�����Ū��
-�¤äƻ��Ѥ��٤���ΤǤ��礦��
+もちろんこれは十分強力なものであり、世界をより良い場所にするという目的に
+限って使用すべきものでしょう。
 
 =head2 Constant Functions
 X<constant>
 
-(����ؿ�)
+(定数関数)
 
 =begin original
 
@@ -2665,14 +2665,14 @@ F<constant.pm> for an easy way to declare most constants.)
 
 =end original
 
-C<()> �Ȥ����ץ��ȥ����פ���ä��ؿ��ϥ���饤��Ÿ��������ǽ����
-���äƤ��ޤ���
-��Ŭ����������߹��߸�η�̤���Ĥ�����������Υ�ե���󥹤�����ʤ�
-�쥭�����륹�����פΥ�����Ǥ��ä��ʤ�С����δؿ��� C<&> ��Ȥ鷺��
-�ƤӤ��줿�Ȥ��˸ƤӽФ��Τ��ξ���֤���ޤ���
-C<&> ��ȤäƸƤӽФ��줿�ؿ��Ϸ褷�ƥ���饤��Ÿ������뤳�Ȥ�
-����ޤ���(�ۤȤ�ɤ������������뤿��δ�ñ����ˡ��
-F<constant.pm> �򻲾Ȥ��Ƥ�������)��
+C<()> というプロトタイプを持った関数はインライン展開される可能性を
+持っています。
+最適化と定数畳み込み後の結果が一つの定数か、何のリファレンスも持たない
+レキシカルスコープのスカラであったならば、その関数が C<&> を使わずに
+呼びされたときに呼び出しのその場に置かれます。
+C<&> を使って呼び出された関数は決してインライン展開されることは
+ありません(ほとんどの定数を宣言するための簡単な方法は
+F<constant.pm> を参照してください)。
 
 =begin original
 
@@ -2680,7 +2680,7 @@ The following functions would all be inlined:
 
 =end original
 
-�ʲ��˵󤲤��ؿ������ƥ���饤��Ÿ�������Ǥ��礦:
+以下に挙げた関数は全てインライン展開されるでしょう:
 
 =begin original
 
@@ -2692,9 +2692,9 @@ The following functions would all be inlined:
 
 =end original
 
-    sub pi ()		{ 3.14159 }		# ���ΤǤϤʤ����ᤤ
-    sub PI ()		{ 4 * atan2 1, 1 }	# ��ǽ�ʸ¤��ɤ����
-						# �����Ƥ����Ÿ������ޤ�!
+    sub pi ()		{ 3.14159 }		# 正確ではないが近い
+    sub PI ()		{ 4 * atan2 1, 1 }	# 可能な限り良いもの
+						# そしてこれも展開されます!
     sub ST_DEV ()	{ 0 }
     sub ST_INO ()	{ 1 }
 
@@ -2715,8 +2715,8 @@ the constant folding doesn't reduce them to a single constant:
 
 =end original
 
-�ʲ��Τ�Τϥ���饤��Ÿ������ʤ����Ȥ����դ��Ƥ�������;
-�����¦�˥������פ�����Τǡ����߹��ޤ줿�������Ĥ�����˺︺�Ǥ��ޤ���:
+以下のものはインライン展開されないことに注意してください;
+より内側にスコープがあるので、畳み込まれた定数が一つの定数に削減できません:
 
     sub foo_set () { if (FLAG_MASK & FLAG_FOO) { 1 } }
 
@@ -2743,17 +2743,17 @@ inlining mechanism in some other way, such as
 
 =end original
 
-����饤��Ÿ������Τ�Ŭ�ڤǤ��ä����֥롼�������������ȶ���Ū��
-�ٹ������뤳�Ȥˤʤ�ޤ���
-(���ηٹ�򡢤��륵�֥롼����������֥롼����Ȥ���ǧ������뤫�ɤ�����
-���̤��뤿��˻Ȥ����Ȥ��Ǥ��ޤ���)
-�����˥���ѥ��뤷���ؿ��ε�ư�ˤ�äƤ��δؿ��θŤ��ͤ�Ȥ�³����Τǡ�
-���ηٹ�ϥ��ץ����ˤ���ˤϽ��礹����ȹͤ����ޤ�����
-���Υ��֥롼����������Ǥ���ɬ�פ�����Τʤ�С�C<()> �ץ��ȥ����פ�
-����(����ϸƤӽФ��Υ��ޥ�ƥ��������Ѥ��Ƥ��ޤ��Τ����դ��Ƥ�������)����
-�ʲ�����Τ褦�ˤ��ƥ���饤��Ÿ��������
-Ư�����ʤ��褦�ˤ��ƥ��֥롼���󤬥���饤��Ÿ������Ƥ��ʤ����Ȥ�
-�ݾڤ���ɬ�פ�����ޤ���
+インライン展開するのに適切であったサブルーチンを再定義すると強制的な
+警告を受けることになります。
+(この警告を、あるサブルーチンが定数サブルーチンとして認識されるかどうかを
+区別するために使うことができます。)
+以前にコンパイルした関数の起動によってこの関数の古い値を使い続けるので、
+この警告はオプションにするには重大すぎると考えられました。
+そのサブルーチンを再定義できる必要があるのならば、C<()> プロトタイプを
+やめる(これは呼び出しのセマンティクスを変えてしまうので注意してください)か、
+以下の例のようにしてインライン展開機構を
+働かせないようにしてサブルーチンがインライン展開されていないことを
+保証する必要があります。
 
     sub not_inlined () {
     	23 if $];
@@ -2762,7 +2762,7 @@ inlining mechanism in some other way, such as
 =head2 Overriding Built-in Functions
 X<built-in> X<override> X<CORE> X<CORE::GLOBAL>
 
-(�Ȥ߹��ߴؿ��Υ����С��饤��)
+(組み込み関数のオーバーライド)
 
 =begin original
 
@@ -2773,11 +2773,11 @@ on a non-Unix system.
 
 =end original
 
-¿�����Ȥ߹��ߴؿ��ϥ����С��饤�ɤ��뤳�Ȥ��Ǥ��ޤ���
-�������������Ԥ��Τϡ�����������ͳ�Ⱦ����Ȥ�����Ȥ��Τߤ�
-�¤�٤��Ǥ��礦��
-���줬�Ԥ���ŵ��Ū����ϡ��� UNIX �����ƥ�ˤ����Ʒ礱�Ƥ����Ȥ߹��ߵ�ǽ��
-���ߥ�졼�Ȥ��뤿��˥ѥå�������Ȥ����Ȥ�����Ǥ��礦��
+多くの組み込み関数はオーバーライドすることができます。
+ただし、これを行うのは、そうする理由と状況とがあるときのみに
+限るべきでしょう。
+これが行われる典型的な例は、非 UNIX システムにおいて欠けている組み込み機能を
+エミュレートするためにパッケージを使おうとする場合でしょう。
 
 =begin original
 
@@ -2788,10 +2788,10 @@ via the import syntax, and these names may then override built-in ones:
 
 =end original
 
-�����С��饤�ɤϥ���ѥ�����˥⥸�塼�뤫��Τ�̾���� import �Ǥ��ޤ�--
-�̾���������ǤϽ�ʬ�ǤϤ���ޤ���
-�������ʤ��顢C<use subs> �ץ饰�ޤ� import ��ʸ���̤�����������Ԥ���
-����ˤ�����̾�����Ȥ߹��ߤΤ�Τ򥪡��С��饤�ɤǤ���褦�ˤ��ޤ�:
+オーバーライドはコンパイル時にモジュールからのみ名前を import できます--
+通常の先行宣言では十分ではありません。
+しかしながら、C<use subs> プラグマは import 構文を通して先行宣言を行い、
+さらにそれらの名前が組み込みのものをオーバーライドできるようにします:
 
     use subs 'chdir', 'chroot', 'chmod', 'chown';
     chdir $somewhere;
@@ -2809,13 +2809,13 @@ the incorrect C<\&CORE::open> might appear to produce.
 
 =end original
 
-ۣ�椵�ʤ��Ȥ߹��ߤΤ�Τ򻲾Ȥ��뤿��ˡ����̤ʥѥå�����������
-C<CORE::> ���Ȥ߹��ߤ�̾�������֤��뤳�Ȥ��Ǥ��ޤ���
-���Ȥ��� C<CORE::open()> �Ȥ���ȡ����Ȥ������ȥѥå�������
-C<&open()> �Ȥ��ä��̤Υ��֥롼����� import ���Ƥ����Ȥ��Ƥ�
-����Ͼ���Ȥ߹��ߴؿ��� C<open()> �򻲾Ȥ��ޤ���
-������̾�δؿ��ƤӽФ��Τ褦�˸����ޤ����������ǤϤ���ޤ���:
-C<\&CORE::open> �Τ褦�ˤ��ƥ�ե���󥹤����뤳�ȤϽ���ޤ���
+曖昧さなく組み込みのものを参照するために、特別なパッケージ修飾子
+C<CORE::> を組み込みの名前に前置することができます。
+たとえば C<CORE::open()> とすると、たとえカレントパッケージが
+C<&open()> といった別のサブルーチンを import していたとしても
+これは常に組み込み関数の C<open()> を参照します。
+これは通常の関数呼び出しのように見えますが、そうではありません:
+C<\&CORE::open> のようにしてリファレンスを得ることは出来ません。
 
 =begin original
 
@@ -2828,13 +2828,13 @@ That is, they could say
 
 =end original
 
-�饤�֥��⥸�塼��ϡ�C<open> ���Ȥ� C<chdir> �Τ褦���Ȥ߹��ߤ�̾����
-�ǥե���Ȥ� C<@EXPORT> �ꥹ�Ȥΰ����Ȥ���export ���٤��ǤϤ���ޤ���
-�ʤ��ʤ顢�饤�֥���Ȥä��ͤ�̾�����֤������ͽ�����ʤ�ư���
-�Ƥӵ�������ǽ�������뤫��Ǥ���
-C<@EXPORT_OK> ��̾�����ɲä���С��桼����������̾�����ۤ˻��ꤹ���
-import ���뤳�Ȥ��Ǥ������ۤ���� import ����Ƥ��ޤ����ȤϤ���ޤ���
-�Ĥޤꡢ
+ライブラリモジュールは、C<open> だとか C<chdir> のような組み込みの名前を
+デフォルトの C<@EXPORT> リストの一部としてexport すべきではありません。
+なぜなら、ライブラリを使った人の名前空間を汚し、予期しない動作を
+呼び起こす可能性があるからです。
+C<@EXPORT_OK> に名前を追加すれば、ユーザーがその名前を陽に指定すれば
+import することができ、暗黙の内に import されてしまうことはありません。
+つまり、
 
     use Module 'open';
 
@@ -2844,8 +2844,8 @@ and it would import the C<open> override.  But if they said
 
 =end original
 
-�Ȥ���ȡ�C<open()> �� import ��Ԥ�������ˤ���Υ����С��饤�ɤ�
-�Ԥ��ޤ�����
+とすると、C<open()> の import を行い、さらにそれのオーバーライドを
+行いますが、
 
     use Module;
 
@@ -2855,7 +2855,7 @@ they would get the default imports without overrides.
 
 =end original
 
-�Ȥ������ˤϥǥե���Ȥ� import ��Ԥ��������С��饤�ɤϤ��ޤ���
+とした場合にはデフォルトの import を行い、オーバーライドはしません。
 
 =begin original
 
@@ -2869,13 +2869,13 @@ that understands regular expressions.
 
 =end original
 
-�Ȥ߹��ߤΤ�Τ��Ф��륪���С��饤�ǥ��󥰤Τ���ε�����
-����ݡ��Ȥ��׵ᤷ���ѥå����������¤���Ƥ��ޤ���
-̾�����֤˴ط��ʤ��Ȥ߹��ߤ�Ǥ�դΤ�Τ򥪡��С��饤�ɤ�������
-�ͤ����Ȥ��˻Ȥ��뤳�Ȥ⤢�������ܤ���ˡ������ޤ���
-������ü��̾������ C<CORE::GLOBAL> ���Ф��� sub ��
-����ݡ��Ȥ��뤳�Ȥˤ���ΤǤ���
-�ʲ��ˤ���äȤ�������ɽ����Ȥä� C<glob> �黻�Ҥ��֤����������󤲤ޤ���
+組み込みのものに対するオーバーライディングのための機構は
+インポートを要求したパッケージに制限されています。
+名前空間に関係なく組み込みの任意のものをオーバーライドしたいと
+考えたときに使えることもある二番目の方法があります。
+それは特殊な名前空間 C<CORE::GLOBAL> に対して sub を
+インポートすることによるものです。
+以下にちょっとした正規表現を使って C<glob> 演算子を置き換える例を挙げます。
 
     package REGlob;
     require Exporter;
@@ -2907,7 +2907,7 @@ And here's how it could be (ab)used:
 
 =end original
 
-�����ưʲ��ϰ����Ȥ���(���⤷��ʤ�)��Ǥ�:
+そして以下は悪い使い方(かもしれない)例です:
 
     #use REGlob 'GLOBAL_glob';	    # override glob() in ALL namespaces
     package Foo;
@@ -2925,13 +2925,13 @@ it must be done at all.
 
 =end original
 
-�ǽ�Υ�������ʬ���Լ����ǡ������Ǥ��餢����Ǥ���
-�������Х�� C<glob> �򥪡��С��饤�ɤ��뤳�Ȥˤ�äơ�
-������ǧ������Ƥ��ʤ��ä���⥸�塼���ͭ��̾�����֤Ȥζ�Ĵ��
-��θ�����ˡ�C<glob> ��ư� I<���Ƥ�>
-̾�����֤Ƕ���Ū�˿�����(�������˲�Ū��)��Τˤʤ�ޤ���
-�������ä����Ȥ�(���줬�����ˤ��ʤ���Ф����ʤ����ȤȤ������)
-�礤�����դ��������ǹԤ��٤���ΤǤ���
+最初のコメント部分は不自然で、危険ですらある例です。
+グローバルに C<glob> をオーバーライドすることによって、
+完全に認識されていなかったりモジュール固有の名前空間との協調を
+考慮せずに、C<glob> の動作が I<全ての>
+名前空間で強制的に新しい(そして破壊的な)ものになります。
+こういったことは(それが本当にやらなければいけないこととした上で)
+大いに注意したうえで行うべきものです。
 
 =begin original
 
@@ -2946,16 +2946,16 @@ library.
 
 =end original
 
-���Ҥ� C<REGlob> ����ϡ�perl �� C<glob> �黻�Ҥ򥪡��С��饤�ɤ���Τ�
-ɬ�פ����ƤΤ��Ȥ�������ƤϤ��ޤ���
-�Ȥ߹��ߤ� C<glob> �Ϥ��줬�����饳��ƥ����ȤǻȤ�줿�Τ�
-�ꥹ�ȥ���ƥ����ȤǻȤ�줿�Τ��ˤ�äưۤʤ�ư��򤷤ޤ�����
-��������� C<REGlob> �ǤϤ����ʤäƤ��ޤ���
-perl ���Ȥ߹��ߤΤ�Τ�¿�������Τ褦�˥���ƥ����Ȥˤ�äư㤦ư��򤷡�
-�����С��饤�ɤ����Τ򵭽Ҥ�����ˤϤ�����Ȥ����
-���ݡ��Ȥ��Ƥ��ʤ���Фʤ�ޤ���
-C<glob> �Υ����С��饤�ǥ��󥰤δ����Ǥϡ�
-ɸ��饤�֥��ˤ��� C<File::DosGlob> �μ������ٶ����Ƥ���������
+前述の C<REGlob> の例は、perl の C<glob> 演算子をオーバーライドするのに
+必要な全てのことを実装してはいません。
+組み込みの C<glob> はそれがスカラコンテキストで使われたのか
+リストコンテキストで使われたのかによって異なる動作をしますが、
+先程の例の C<REGlob> ではそうなっていません。
+perl の組み込みのものの多くがこのようにコンテキストによって違う動作をし、
+オーバーライドするものを記述する場合にはきちんとそれを
+サポートしていなければなりません。
+C<glob> のオーバーライディングの完全版は、
+標準ライブラリにある C<File::DosGlob> の実装で勉強してください。
 
 =begin original
 
@@ -2967,12 +2967,12 @@ use the C<prototype> function with an argument of C<"CORE::builtin_name">
 
 =end original
 
-�Ȥ߹��ߴؿ��򥪡��С��饤�ɤ���Ȥ��������С��饤�ɤ����ؿ���
-�Ȥ߹��ߴؿ��θ���ʸˡ(�⤷�����)�Ȱ�Ӥ��Ƥ���٤��Ǥ���
-�����Ŭ�ڤʥץ��ȥ����פ�Ȥ����Ȥ�ã���Ǥ��ޤ���
-�����С��饤�ɤǤ����Ȥ߹��ߴؿ��Υץ��ȥ����פ����뤿��ˤϡ�
-C<"CORE::builtin_name"> ��������Ȥ��� C<prototype> �ؿ���ȤäƤ�������
-(L<perlfunc/prototype> �򻲾Ȥ��Ƥ�������)��
+組み込み関数をオーバーライドするとき、オーバーライドした関数は
+組み込み関数の元の文法(もしあれば)と一貫しているべきです。
+これは適切なプロトタイプを使うことで達成できます。
+オーバーライドできる組み込み関数のプロトタイプを得るためには、
+C<"CORE::builtin_name"> を引き数として C<prototype> 関数を使ってください
+(L<perlfunc/prototype> を参照してください)。
 
 =begin original
 
@@ -2982,10 +2982,10 @@ be able to fully mimic their original syntax.
 
 =end original
 
-(C<system> �� C<chomp> �Τ褦��)ʸˡ��ץ��ȥ����פ�ɽ���Ǥ��ʤ�
-�Ȥ߹��ߴؿ������դ��Ƥ���������
-�⤷�����򥪡��С��饤�ɤ���ȡ���Ȥ�ʸˡ�����˿����뤳�Ȥ�
-�Ǥ��ޤ���
+(C<system> や C<chomp> のように)文法をプロトタイプで表現できない
+組み込み関数に注意してください。
+もしこれらをオーバーライドすると、もとの文法を完全に真似ることは
+できません。
 
 =begin original
 
@@ -2996,10 +2996,10 @@ C<do BLOCK> syntax, though).
 
 =end original
 
-�Ȥ߹��ߤ� C<do>, C<require>, C<glob> �⥪���С��饤�ɤǤ��ޤ��������̤�
-��ˡ�ˤ�äơ������θ���ʸˡ����¸���졢�����С��饤�ɤ�����ΤΤ����
-�ץ��ȥ����פ��������ɬ�פϤ���ޤ���
-(��������C<do BLOCK> ʸˡ�ϥ����С��饤�ɤǤ��ޤ���)��
+組み込みの C<do>, C<require>, C<glob> もオーバーライドできますが、特別な
+魔法によって、これらの元の文法は保存され、オーバーライドしたもののために
+プロトタイプを定義する必要はありません
+(しかし、C<do BLOCK> 文法はオーバーライドできません)。
 
 =begin original
 
@@ -3009,10 +3009,10 @@ the argument C<"Foo/Bar.pm"> in @_.  See L<perlfunc/require>.
 
 =end original
 
-C<require> �����̤��ɲäι���ˡ������ޤ�: C<require> �򥪡��С��饤�ɤ���
-��Τ� C<require Foo::Bar> �Ȥ��Ƶ�ư����ȡ��ºݤˤ� @_ �˰������Ȥ���
-C<"Foo/Bar.pm"> ��������ޤ���
-L<perlfunc/require> �򻲾Ȥ��Ƥ���������
+C<require> は特別な追加の黒魔法を持ちます: C<require> をオーバーライドした
+ものを C<require Foo::Bar> として起動すると、実際には @_ に引き数として
+C<"Foo/Bar.pm"> を受け取ります。
+L<perlfunc/require> を参照してください。
 
 =begin original
 
@@ -3021,8 +3021,8 @@ C<glob>, the C<< <*> >> glob operator is overridden as well.
 
 =end original
 
-�����ơ��������㤫�鵤�դ������⤷��ޤ��󤬡��⤷ C<glob> ��
-�����С��饤�ɤ���ȡ������ֱ黻�� C<< <*> >> �⥪���С��饤�ɤ���ޤ���
+そして、以前の例から気付いたかもしれませんが、もし C<glob> を
+オーバーライドすると、グロブ演算子 C<< <*> >> もオーバーライドされます。
 
 =begin original
 
@@ -3032,10 +3032,10 @@ C<readpipe> also overrides the operators C<``> and C<qx//>.
 
 =end original
 
-Ʊ�ͤˡ�C<readline> �ؿ��򥪡��С��饤�ɤ���� ������
-I/O �黻�ҤǤ��� C<< <FILEHANDLE> >> �⥪���С��饤�ɤ��ޤ���
-�ޤ���C<readpipe> �򥪡��С��饤�ɤ���ȡ��黻�� C<``> �� C<qx//> ��
-�����С��饤�ɤ��ޤ���
+同様に、C<readline> 関数をオーバーライドすると 等価な
+I/O 演算子である C<< <FILEHANDLE> >> もオーバーライドします。
+また、C<readpipe> をオーバーライドすると、演算子 C<``> と C<qx//> も
+オーバーライドします。
 
 =begin original
 
@@ -3043,13 +3043,13 @@ Finally, some built-ins (e.g. C<exists> or C<grep>) can't be overridden.
 
 =end original
 
-�Ǹ�ˡ������Ĥ����Ȥ߹��ߴؿ�(C<exists> �� C<grep>) ��
-�����С��饤�ɤǤ��ޤ���
+最後に、いくつかの組み込み関数(C<exists> や C<grep>) は
+オーバーライドできません。
 
 =head2 Autoloading
 X<autoloading> X<AUTOLOAD>
 
-(�����ȥ�����)
+(オートロード)
 
 =begin original
 
@@ -3069,20 +3069,20 @@ C<import> or C<unimport> method is just skipped instead.)
 
 =end original
 
-�������Ƥ��ʤ����֥롼�����ƤӽФ�����硢�̾�Ϥ���ʥ��֥롼�����
-�ʤ��Ȥ��ä����ƤΥ��顼��¨�¤�ȯ������Ǥ��礦(�᥽�åɤȤ���
-�Ȥ��Ƥ��륵�֥롼�����Ʊ�ͤˡ��᥽�åɤ����Υ��饹�Υѥå�������
-���٤Ƥδ��쥯�饹���¸�ߤ��Ƥ��ʤ��ä��Ȥ�)��
-��������C<AUTOLOAD> ���֥롼���󤬤��Υѥå�����������������Ƥ��뤫
-���Υ��֥롼����ǻȤ���ѥå�����������������Ƥ���С�
-���Υ��֥롼������Ф����Ϥ��줿�Ǥ�����������ȼ�äƤ���
-C<AUTOLOAD> ���֥롼���󤬸ƤӽФ���ޤ���
-���Υ��֥롼����δ����������줿̾���� C<AUTOLOAD> �롼�����Ʊ��
-�ѥå������Υ������Х���ѿ� $AUTOLOAD ����˸���ޤ���
-����̾�����̾�ΰ����Ȥ����Ϥ���뤳�ȤϤ���ޤ���
-�ʤ��ʤ顢���Ρ��������ʤ�Ȥ��������줬��ͳ�Ǥ���
-(�㳰�Ȥ��ơ�¸�ߤ��ʤ� C<import> �� C<unimport> �᥽�åɤؤθƤӽФ���
-ñ��̵�뤵��ޤ���)
+定義されていないサブルーチンを呼び出した場合、通常はそんなサブルーチンは
+ないといった内容のエラーが即座に発生するでしょう(メソッドとして
+使われているサブルーチンも同様に、メソッドがそのクラスのパッケージの
+すべての基底クラス中に存在していなかったとき)。
+しかし、C<AUTOLOAD> サブルーチンがそのパッケージの中で定義されているか
+元のサブルーチンで使われるパッケージの中で定義されていれば、
+元のサブルーチンに対して渡されたであろう引数を伴ってその
+C<AUTOLOAD> サブルーチンが呼び出されます。
+元のサブルーチンの完全修飾された名前は C<AUTOLOAD> ルーチンと同じ
+パッケージのグローバルな変数 $AUTOLOAD の中に現れます。
+この名前は通常の引数として渡されることはありません。
+なぜなら、その、あー、なんというかこれが理由です。
+(例外として、存在しない C<import> か C<unimport> メソッドへの呼び出しは
+単に無視されます。)
 
 =begin original
 
@@ -3097,15 +3097,15 @@ C<system> with those arguments.  All you'd do is:
 
 =end original
 
-¿���� C<AUTOLOAD> �롼����� eval() ��Ȥä��׵᥵�֥롼�����
-�Ф�������ǥ����ɤ��졢C<AUTOLOAD> �롼����Υ����å��ե졼���
-�ȥ졼���ʤ��˾ä��Ƥ��ޤ��褦�����̤ʷ����� goto() ��Ȥ����֥롼�����
-�¹Ԥ��ޤ�(�����ɸ��� C<AutoLoader> �⥸�塼��Υ������򻲾Ȥ��Ƥ�������)��
-��������C<AUTOLOAD> �롼����Ϥ��Τ褦�ʥ롼���������򤹤뤳�Ȥ�Ǥ��ơ�
-���Ĥ����������ޤ���
-���Ȥ��С��������Ƥʤ��ؿ������ä��Ȥ��ˡ����������Ȥ���
-C<system()> ��ư����褦�ˤ����ޤ���
-���ʤ���������Ȥ��Ƥ��뤳�ȤϤ����������ȤǤ�:
+多くの C<AUTOLOAD> ルーチンは eval() を使った要求サブルーチンに
+対する定義でロードされ、C<AUTOLOAD> ルーチンのスタックフレームを
+トレースなしに消してしまうような特別な形式の goto() を使うサブルーチンを
+実行します(実例は標準の C<AutoLoader> モジュールのソースを参照してください)。
+しかし、C<AUTOLOAD> ルーチンはそのようなルーチンの模倣をすることもできて、
+かつそれを定義しません。
+たとえば、定義されてない関数があったときに、それを引数として
+C<system()> を起動するようにさせます。
+あなたがやろうとしていることはこういうことです:
 
     sub AUTOLOAD {
 	my $program = $AUTOLOAD;
@@ -3123,8 +3123,8 @@ even need parentheses:
 
 =end original
 
-���Τ�����ǸƤӽФ������ؿ������������Ƥ����С���̤���
-ɬ�פǤϤʤ��ʤ�ޤ���
+このやり方で呼び出したい関数を先行宣言しておけば、括弧すら
+必要ではなくなります。
 
     use subs qw(date who ls);
     date;
@@ -3138,8 +3138,8 @@ can treat undefined subroutine calls as calls to external programs.
 
 =end original
 
-������Τ�äȴ����ʤ�Τ���ɸ��� Shell �⥸�塼��Ǥ���
-�����̤����Υ��֥롼����θƤӽФ������ץ������θƤӽФ��Ȥ��ư����ޤ���
+この例のもっと完全なものが、標準の Shell モジュールです。
+これは未定義のサブルーチンの呼び出しを外部プログラムの呼び出しとして扱います。
 
 =begin original
 
@@ -3151,17 +3151,17 @@ functions to Perl code in L<perlxs>.
 
 =end original
 
-���λųݤ��ϡ��⥸�塼���Ԥ��⥸�塼���ư�����ɲ�ǽ�ʥե������
-ʬ�䤹��Τ�����뤿��˻��Ѳ�ǽ�Ǥ���
-L<AutoLoader> �� L<AutoSplit> ����������Ƥ���
-ɸ��� AutoLoader �⥸�塼��ȡ�L<SelfLoader> ����������Ƥ���
-ɸ��� SelfLoader �⥸�塼�롢������ L<perlxs> �ˤ��� Perl �ץ�������
-C �δؿ����ɲä��뤳�Ȥ˴ؤ���ɥ�����Ȥ򻲾Ȥ��Ƥ���������
+この仕掛けは、モジュール作者がモジュールを自動ロード可能なファイルに
+分割するのを助けるために使用可能です。
+L<AutoLoader> と L<AutoSplit> で説明されている
+標準の AutoLoader モジュールと、L<SelfLoader> で説明されている
+標準の SelfLoader モジュール、そして L<perlxs> にある Perl プログラムに
+C の関数を追加することに関するドキュメントを参照してください。
 
 =head2 Subroutine Attributes
 X<attribute> X<subroutine, attribute> X<attrs>
 
-(���֥롼����°��)
+(サブルーチン属性)
 
 =begin original
 
@@ -3176,13 +3176,13 @@ a pre-declaration, and not just with a subroutine definition.
 
 =end original
 
-���֥롼�������������ˤϡ�����ȷ���դ���줿°���Υꥹ�Ȥ�
-�������뤳�Ȥ�����ޤ���
-���Τ褦��°������ä���硢���ڡ��������������ڤ�Ȥ���ʬ�䤵�졢
-C<use attributes> �����ä����Τ褦�˰����ޤ���
-°���������б����Ƥ���ܺ٤ˤĤ��Ƥ� L<attributes> �򻲾Ȥ��Ƥ���������
-�Ť� C<use attrs> �����¤Ȱ�äơ�C<sub : ATTRLIST> ��ʸˡ��
-��������Ǥ�ư������֥롼������������ǤϤ���ޤ���
+サブルーチン宣言や定義には、それと結び付けられた属性のリストを
+持たせることが出来ます。
+このような属性が合った場合、スペースかコロンを区切りとして分割され、
+C<use attributes> があったかのように扱われます。
+属性が現在対応している詳細については L<attributes> を参照してください。
+古い C<use attrs> の制限と違って、C<sub : ATTRLIST> の文法は
+前方宣言でも動作し、サブルーチン定義だけではありません。
 
 =begin original
 
@@ -3193,9 +3193,9 @@ nest properly.
 
 =end original
 
-°����ñ��ʼ��̻�̾('_' �ʳ��ζ������ʤ�)�Ǥʤ���Фʤ�ޤ���
-�ѥ�᡼���ꥹ�Ȥ��ɲä���Ȥ��ˡ����('(',')')�Υͥ��Ȥ�
-���������ɤ�������������å����ޤ���
+属性は単純な識別子名('_' 以外の句読点なし)でなければなりません。
+パラメータリストを追加するときに、括弧('(',')')のネストが
+正しいかどうかだけをチェックします。
 
 =begin original
 
@@ -3203,7 +3203,7 @@ Examples of valid syntax (even though the attributes are unknown):
 
 =end original
 
-(°�����������Ȥ��Ƥ�)�����ʸˡ����Ǥ�:
+(属性が不明だとしても)正常な文法の例です:
 
     sub fnord (&\%) : switch(10,foo(7,3))  :  expensive;
     sub plugh () : Ugly('\(") :Bad;
@@ -3215,7 +3215,7 @@ Examples of invalid syntax:
 
 =end original
 
-������ʸˡ����Ǥ�:
+不正な文法の例です:
 
     sub fnord : switch(10,foo(); # ()-string not balanced
     sub snoid : Ugly('(');	  # ()-string not balanced
@@ -3232,10 +3232,10 @@ parsed and invoked:
 
 =end original
 
-°���ꥹ�Ȥϥ��֥롼����ȷ���դ���줿�����ɤ����ʸ�����
-�ꥹ�ȤȤ����Ϥ���ޤ���
-�äˡ��嵭��ͭ����ʸˡ���������Ǥϡ��ɤΤ褦�˥ѡ����ȵ�ư��
-�Ԥ��뤫�Ȥ������ˤ����Ƥϰʲ��Τ褦�ˤʤ�ޤ�:
+属性リストはサブルーチンと結び付けられたコードに定数文字列の
+リストとして渡されます。
+特に、上記の有効な文法の第二の例では、どのようにパースと起動が
+行われるかという点においては以下のようになります:
 
     use attributes __PACKAGE__, \&plugh, q[Ugly('\(")], 'Bad';
 
@@ -3246,8 +3246,8 @@ see L<attributes> and L<Attribute::Handlers>.
 
 =end original
 
-°���ꥹ�ȤȤ������˴ؤ��뤵��ʤ�ܺ٤ˤĤ��Ƥϡ�
-L<attributes> �򻲾Ȥ��Ƥ���������
+属性リストとその操作に関するさらなる詳細については、
+L<attributes> を参照してください。
 
 =head1 SEE ALSO
 
@@ -3262,15 +3262,15 @@ See L<perltoot> to learn how to make object method calls.
 
 =end original
 
-��ե���󥹤ȥ��������㡼�ˤĤ��Ƥ� L<perlref/"Function Templates"> ��
-���Ȥ��Ƥ���������
-Perl ���� C �Υ��֥롼�����ƤӽФ����Ȥ˴ؤ����Τꤿ����С�
-L<perlxs>�򻲾Ȥ��Ƥ���������
-Perl �Υ��֥롼����� C ����ƤӽФ��������� L<perlembed> �򻲾Ȥ��Ƥ���������
-��ʬ�δؿ����̤Υե�����ǹ��ۤ��뤳�Ȥ˴ؤ��Ƥ� L<perlmod> �򻲾Ȥ��Ƥ���������
-�ɤΥ饤�֥��⥸�塼�뤬���ʤ��Υ����ƥ��ɸ��ȤʤäƤ��뤫��
-�ؤ֤���ˤ� L<perlmodlib> �򻲾Ȥ��Ƥ���������
-���֥������ȥ᥽�åɸƤӽФ��κ������ؤ֤ˤ� L<perltoot> �򻲾Ȥ��Ƥ���������
+リファレンスとクロージャーについては L<perlref/"Function Templates"> を
+参照してください。
+Perl から C のサブルーチンを呼び出すことに関して知りたければ、
+L<perlxs>を参照してください。
+Perl のサブルーチンを C から呼び出したい場合は L<perlembed> を参照してください。
+自分の関数を別のファイルで構築することに関しては L<perlmod> を参照してください。
+どのライブラリモジュールがあなたのシステムで標準となっているかを
+学ぶためには L<perlmodlib> を参照してください。
+オブジェクトメソッド呼び出しの作り方を学ぶには L<perltoot> を参照してください。
 
 =begin meta
 

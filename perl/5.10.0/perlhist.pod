@@ -9,7 +9,7 @@ perlhist - the Perl history records
 
 =end original
 
-perlhist - Perl �����Ū��Ͽ
+perlhist - Perl の歴史的記録
 
 =head1 DESCRIPTION
 
@@ -19,8 +19,8 @@ This document aims to record the Perl source code releases.
 
 =end original
 
-���Υɥ�����Ȥϡ�Perl�Υ����������ɥ�꡼����Ͽ���Ƥ������Ȥ�
-��Ū�Ȥ��Ƥ��ޤ���
+このドキュメントは、Perlのソースコードリリースを記録しておくことを
+目的としています。
 
 =head1 INTRODUCTION
 
@@ -30,7 +30,7 @@ Perl history in brief, by Larry Wall:
 
 =end original
 
-Larry Wall �ˤ���ñ�� Perl ��:
+Larry Wall による簡単な Perl 史:
 
 =begin original
 
@@ -46,16 +46,16 @@ Larry Wall �ˤ���ñ�� Perl ��:
 
 =end original
 
-    Perl 0 ���Ʊν��Perl��Ҳ𤷤ޤ�����
-    Perl 1 Perl �������˾Ҳ𤷤ޤ���;  /\(...\|...\)/ �� /(...|...)/
-           ���ѹ����ޤ��� \(Dan Faigin��̤���˻������Ƥ���ޤ��� :-\)��
-    Perl 2 Henry Spencer ������ɽ���ѥå�������Ƴ�����ޤ�����
-    Perl 3 �Х��ʥ�ǡ���(�����ߤ� null)���갷��ǽ�Ϥ�Ƴ�����ޤ�����
-    Perl 4 �ǽ�Υ饯���ܤ�Ƴ�����ۤ�Ȥˡ��ۤȤ�ɥС�������ֹ��
-           �Ѥ����Τ����ʤΤǡ������ܤǤ� 4.000 �򻲾Ȥ��뤳�Ȥ�
-           �Ǥ��ޤ�����
-    Perl 5 ����¾���ƤΤ��Ȥ򰷤������ǽ�Ϥ�Ƴ����ޤ᤿����¾������
-           ������Ƴ�����ޤ�����
+    Perl 0 私の同僚にPerlを紹介しました。
+    Perl 1 Perl を世界に紹介しました;  /\(...\|...\)/ を /(...|...)/
+           に変更しました \(Dan Faiginは未だに私を許してくれません :-\)。
+    Perl 2 Henry Spencer の正規表現パッケージを導入しました。
+    Perl 3 バイナリデータ(埋め込みの null)を取り扱う能力を導入しました。
+    Perl 4 最初のラクダ本の導入。ほんとに。ほとんどバージョン番号を
+           変えたのだけなので、この本では 4.000 を参照することが
+           できました。
+    Perl 5 その他全てのことを扱うための能力の導入を含めたその他諸々の
+           事柄を導入しました。
 
 =head1 THE KEEPERS OF THE PUMPKIN
 
@@ -73,7 +73,7 @@ Leon Brocard.
 
 =end original
 
-[Perl �Υ��������������ۤˤ��� Porting/pumpkin.pod ����]
+[Perl のソースコード配布にある Porting/pumpkin.pod から]
 
 =begin original
 
@@ -83,11 +83,11 @@ potato) but none caught on.  Then, Chip asked:
 
 =end original
 
-Chip Salzenberg �Ϥ��Τ��Ȥ˴ؤ�����Ӥ�ǧ����Ƥ��ơ���������
-��Ʊ��ȼ� David Croy �⾵�����Ƥ��ޤ���
-�䤿���ϥХȥ󡢥ȡ�����hot potato �ʤ��͡���̾����ȤäƤ��ޤ�������
-���夷����ΤϤ���ޤ���Ǥ�����
-����ʤȤ���Chip �Ϥ����Ҥͤ��ΤǤ�:
+Chip Salzenberg はこのことに関する功績を認められていて、それは彼の
+共同作業者 David Croy も承諾しています。
+私たちはバトン、トークン、hot potato など様々な名前を使っていましたが、
+定着したものはありませんでした。
+そんなとき、Chip はこう尋ねたのです:
 
 =begin original
 
@@ -95,7 +95,7 @@ Chip Salzenberg �Ϥ��Τ��Ȥ˴ؤ�����Ӥ�ǧ����Ƥ��ơ���������
 
 =end original
 
-[���ѳ���]
+[引用開始]
 
 =begin original
 
@@ -103,7 +103,7 @@ Chip Salzenberg �Ϥ��Τ��Ȥ˴ؤ�����Ӥ�ǧ����Ƥ��ơ���������
 
 =end original
 
-   ï���ѥå����ܤ���(patch pumpkin)����äƤ��?
+   誰がパッチかぼちゃ(patch pumpkin)を持ってるの?
 
 =begin original
 
@@ -115,13 +115,13 @@ No one was allowed to make backups unless they had the "backup pumpkin".
 
 =end original
 
-�����Τ����: David Croy �ϰ�������ΰ����ο���Ǥϥ����ƥ��ʣ������Τ�
-�Хå����åפΤ���Υơ��ץɥ饤�֤���Ĥ����ʤ��ä��Ȼ���ä��Ƥ��ޤ�����
-���Ϥ����ǡ֥ϥ��ƥ��פ���¾���楽�եȥ�������Ȥ�����ˡ�Ʊ����
-�Хå����åפ�¹Ԥ��뤳�Ȥ��ɤ�����Ρ֥����ƥ��׼�ˡ��ȤäƤ��ޤ���:
-���ܤ���Τ̤�����ߤǤ���
-�֥Хå����åפ��ܤ���פ���äƤ��ʤ��¤ꡢ�Хå����åפ򤹤뤳�Ȥ�
-�Ǥ��ޤ���Ǥ�����
+説明のために: David Croy は以前、彼の以前の職場ではシステムは複数あるのに
+バックアップのためのテープドライブが一つしかなかったと私に話していました。
+彼らはそこで「ハイテク」な排他制御ソフトウェアを使う代わりに、同時に
+バックアップを実行することを防ぐための「ローテク」手法を使っていました:
+かぼちゃのぬいぐるみです。
+「バックアップかぼちゃ」を持っていない限り、バックアップをすることは
+できませんでした。
 
 =begin original
 
@@ -129,7 +129,7 @@ No one was allowed to make backups unless they had the "backup pumpkin".
 
 =end original
 
-[���ѽ�λ]
+[引用終了]
 
 =begin original
 
@@ -139,9 +139,9 @@ the strings?).
 
 =end original
 
-�������Ƥ���̾�������夷�ޤ�����
-�֤��ܤ���פ���äƤ���ͤ� pumking �Ȥ� pumpkineer ��
-�ƤФ�뤳�Ȥ⤢��ޤ���
+かくしてこの名前は定着しました。
+「かぼちゃ」を持っている人は pumking とか pumpkineer と
+呼ばれることもあります。
 
 =head1 THE RECORDS
 
@@ -498,10 +498,10 @@ explained below.
 
 =end original
 
-��꡼�� 1.000 �ΤȤ����ˤ��� "core: 212  29" �Ȥ������Ҥϡ�
-core �� 29 �Υե����뤫��ʤꡢ212 �����Х��Ȥ���Ȥ������Ȥ�
-ɽ���Ƥ��ޤ���
-"core".."doc" �ˤĤ��Ƥϸ���������ޤ���
+リリース 1.000 のところにある "core: 212  29" という記述は、
+core が 29 のファイルからなり、212 キロバイトあるということを
+表しています。
+"core".."doc" については後で説明します。
 
  release        core       lib         ext        t         doc
  ======================================================================
@@ -559,10 +559,10 @@ regular files.
 
 =end original
 
-"core"..."doc" �ΰ�̣�ϡ�Perl �����ۥ����������ɤ���ǰʲ��ξ���
-���줾����פ���ե�����Ǥ���
-**�Ȥ���glob��ˡ�ϺƵ�Ū�Ǥ��뤳�Ȥ򼨤���(.)���̾�Υե�����
-(regular file)�Ǥ��뤳�Ȥ򼨤��Ƥ��ޤ���
+"core"..."doc" の意味は、Perl の配布ソースコードの中で以下の条件に
+それぞれ合致するファイルです。
+**というglob記法は再帰的であることを示し、(.)は通常のファイル
+(regular file)であることを示しています。
 
  core   *.[hcy]
  lib    lib/**/*.p[ml]
@@ -577,9 +577,9 @@ the Perl source distribution for somewhat more selected releases.
 
 =end original
 
-���ۤ��줿 Perl �Υ����������ɤ���ǡ������Ĥ��Υ�꡼���ˤĤ���
-��ǵ󤲤���ΤȤ��̤Υ��֥ǥ��쥯�ȥ��ե�����˴ؤ��뤤���Ĥ������פ�
-�ʲ��˵󤲤ޤ���
+配布された Perl のソースコードの中で、いくつかのリリースについて
+上で挙げたものとは別のサブディレクトリやファイルに関するいくつかの統計を
+以下に挙げます。
 
  ======================================================================
    Legend:  kB   #
@@ -679,12 +679,12 @@ context diff output format.
 
 =end original
 
-"diff lines kb" �ϡ����Ȥ��� 5.003_07 ���� 5.003_08 �ؤΥѥå�����˼��ȡ�
-110 �����Х���ʬ�ιԤ��ɲä��졢19 �����Х���ʬ�ιԤ�������졢
-424 �����Х���ʬ�ιԤ��ѹ����줿�Ȥ������Ȥ�ɽ���Ƥ��ޤ���
-���ιԿ����ɲäʤɤ����줿�Ԥ��Τ�Τ����������夲���Ƥ��ơ�
-(ʸ̮�Ȥ��ƺ�ʬ�˴ޤ���Ƥ���)����¾����ʬ�Ͽ������Ƥ��ޤ���
-"+ - !" �ϡ�diff(1) �� context diff ���Ϥη�����ͳ�褹���ΤǤ���
+"diff lines kb" は、たとえば 5.003_07 から 5.003_08 へのパッチを例に取ると、
+110 キロバイト分の行が追加され、19 キロバイト分の行が削除され、
+424 キロバイト分の行が変更されたということを表しています。
+この行数は追加などがされた行そのものだけが数え上げられていて、
+(文脈として差分に含められている)その他の部分は数えられていません。
+"+ - !" は、diff(1) の context diff 出力の形式に由来するものです。
 
  Pump-  Release         Date           diff lines kB
  king                                  -------------
@@ -757,11 +757,11 @@ and additions.
 
 =end original
 
-Perl �ط��Ԥγ�����Τε����˴��դ��ޤ���
-Keepers of the Pumpkin �ο͡��˲ä��ơ�Alan Champion, Mark Dominus, 
+Perl 関係者の皆さんのの記憶に感謝します。
+Keepers of the Pumpkin の人々に加えて、Alan Champion, Mark Dominus, 
 Andreas Konig, John Macdonald, Matthias Neeracher, Jeff Okamoto,
-Michael Peppler, Randal Schwartz, and Paul D. Smith ���������ɲä�
-���äƤ���ޤ�����
+Michael Peppler, Randal Schwartz, and Paul D. Smith が訂正と追加を
+送ってくれました。
 
 =cut
 

@@ -7,7 +7,7 @@ perlsyn - Perl syntax
 
 =end original
 
-perlsyn - Perl ��ʸˡ
+perlsyn - Perl の文法
 
 =head1 DESCRIPTION
 
@@ -19,9 +19,9 @@ control structures allow you to jump around within the code.
 
 =end original
 
-Perl �ץ������ϡ������ʸ���¤Ӥ��鹽�����졢�夫�鲼�ؤȼ¹Ԥ���ޤ���
-�롼�ס����֥롼���󡢤���¾�����浡���ǥ����ɤο����ʤȤ�����
-�����פǤ��ޤ���
+Perl プログラムは、宣言と文の並びから構成され、上から下へと実行されます。
+ループ、サブルーチン、その他の制御機構でコードの色々なところに
+ジャンプできます。
 
 =begin original
 
@@ -31,10 +31,10 @@ languages like Python where it is an important part of the syntax.
 
 =end original
 
-Perl �� B<��ͳ��> ����Ǥ����������ʤ褦�����������ꥤ��ǥ�Ȥ�����
-�Ǥ��ޤ���
-����ʸˡ�ν��פ����ǤǤ��� Python �Τ褦�ʸ���Ȱۤʤꡢ
-����ϤۤȤ�ɥȡ������ʬ������ܤǤ���
+Perl は B<自由書式> 言語ですが、好きなように整形したりインデントしたり
+できます。
+空白が文法の重要な要素である Python のような言語と異なり、
+空白はほとんどトークンの分割の役目です。
 
 =begin original
 
@@ -47,13 +47,13 @@ code in a style with which they are comfortable.
 
 =end original
 
-Perl ��¿����ʸˡ���Ǥ� B<��ά��ǽ> �Ǥ���
-���Ƥδؿ��򤫤ä��ǳ�ä��ꡢ���Ƥ��ѿ�����������ꤹ�뤳�Ȥ�
-�׵᤹��ΤǤϤʤ������Ф��Ф��Τ褦������Ū�����Ǥ��֤��Ƥ����ơ�
-Perl �ˤ��ʤ�����̣���Ƥ���Ȥ����򸫤Ĥ��Ф����뤳�Ȥ��Ǥ��ޤ���
-����� B<Do What I Mean> ���Τ�졢Ƭʸ�����ä� B<DWIM> �ȸƤФ�ޤ���
-����ˤ�äơ��ץ�����ޤ� B<����> �ˤǤ�����餬��Ŭ���Ȼפ����������
-�����ǥ��󥰤Ǥ���褦�ˤ��ޤ���
+Perl の多くの文法要素は B<省略可能> です。
+全ての関数をかっこで括ったり、全ての変数を宣言したりすることを
+要求するのではなく、しばしばそのような明示的な要素を置いておいて、
+Perl にあなたが意味しているところを見つけ出させることができます。
+これは B<Do What I Mean> と知られ、頭文字を取って B<DWIM> と呼ばれます。
+これによって、プログラマを B<怠惰> にでき、彼らが快適だと思うスタイルで
+コーディングできるようにします。
 
 =begin original
 
@@ -66,18 +66,18 @@ see L<perltrap> for information about how they differ.
 
 =end original
 
-Perl �ϡ�awk, sed, C, Bourne Shell, Smalltalk, Lisp, �̤ƤϱѸ�Ȥ��ä���
-¿���θ��줫�饳�󥻥ץȤ� B<ʸˡ�����> ���Ƥ��ޤ���
-¾�θ���� Perl ����ʸˡ����Ѥ��Ƥ��ޤ�; �ä�����ɽ����ĥ��Ǥ���
-���äơ�¾�θ���ǥץ�����ߥ󥰤��Ƥ����ʤ顢Perl �ˤ⸫�����Ȥ�����褦��
-��Τ�����Ǥ��礦��
-�����Ϥ��Ф���Ʊ���褦��ư��ޤ������㤦���ˤĤ��Ƥξ����
-L<perltrap> �򻲾Ȥ��Ƥ���������
+Perl は、awk, sed, C, Bourne Shell, Smalltalk, Lisp, 果ては英語といった、
+多くの言語からコンセプトと B<文法を借用> しています。
+他の言語も Perl から文法を借用しています; 特に正規表現拡張をです。
+従って、他の言語でプログラミングしていたなら、Perl にも見たことがあるような
+ものがあるでしょう。
+それらはしばしば同じように動作しますが、違う点についての情報は
+L<perltrap> を参照してください。
 
 =head2 Declarations
 X<declaration> X<undef> X<undefined> X<uninitialized>
 
-(���)
+(宣言)
 
 =begin original
 
@@ -94,18 +94,18 @@ such as:
 
 =end original
 
-Perl �������ɬ�פʤ�Τϥ�ݡ��ȥե����ޥåȤȥ��֥롼��������Ǥ�
-(���֥롼���󤹤���������פʾ��⤢��ޤ�)��
-�ѿ��ϡ�C<undef> �ʳ���������줿�ͤ����������ޤǤ�̤�����(C<undef>)��
-�ʤ�ޤ���
-���ͤȤ��ƻȤ����硢C<undef> �� C<0> �Ȥ��ư����ޤ�;
-ʸ����Ȥ��ƻȤ����硢����϶�ʸ���� C<""> �Ȥ��ư����ޤ�;
-��ե���󥹥Ȥ��ƻȤ����硢����ϲ�����������Ƥ��ʤ��Τǡ����顼�Ȥ���
-�����ޤ���
-�ٹ��ͭ���ˤ��Ƥ���ʤ顢C<undef> ��ʸ�������ͤȤ��ư������Ȥ����
-̤������ͤ��Ŧ����ޤ���
-���������̤ϡ�
-���Τ褦�ʿ����ͥ���ƥ����Ȥʤ�:
+Perl で宣言が必要なものはレポートフォーマットとサブルーチンだけです
+(サブルーチンすら宣言が不要な場合もあります)。
+変数は、C<undef> 以外の定義された値を代入されるまでは未定義値(C<undef>)と
+なります。
+数値として使われる場合、C<undef> は C<0> として扱われます;
+文字列として使われる場合、これは空文字列 C<""> として扱われます;
+リファレンストして使われる場合、これは何も代入されていないので、エラーとして
+扱われます。
+警告を有効にしているなら、C<undef> を文字列や数値として扱おうとすると
+未初期価値を指摘されます。
+ええ、普通は。
+次のような真偽値コンテキストなら:
 
     my $a;
     if ($a) {}
@@ -118,9 +118,9 @@ C<-=>, and C<.=>, that operate on undefined left values such as:
 
 =end original
 
-(����Ѥߤ��ɤ����ǤϤʤ��������ɤ������θ����Τ�)�ٹ𤫤��Ȥ�ޤ���
-̤����κ����ͤ����롢C<++>, C<-->, C<+=>, C<-=>, C<.=> �Τ褦��
-�黻�ҤǤ�:
+(定義済みかどうかではなく、真かどうかを考慮するので)警告から免れます。
+未定義の左辺値を操作する、C<++>, C<-->, C<+=>, C<-=>, C<.=> のような
+演算子でも:
 
     my $a;
     $a++;
@@ -131,7 +131,7 @@ are also always exempt from such warnings.
 
 =end original
 
-�Ȥ��뤳�ȤǤ⤽�Τ褦�ʷٹ𤫤��Ȥ�ޤ���
+とすることでもそのような警告から免れます。
 
 =begin original
 
@@ -146,14 +146,14 @@ as the my if you expect to be able to access those private variables.
 
 =end original
 
-����ϡ�ʸ���֤���Ȥ����Ǥ���Фɤ��ˤǤ��֤����Ȥ��Ǥ��ޤ�����
-����Ū��ʸ���¤Ӥϼ¹Ի��ˤϲ��θ��̤�����ޤ��� -- ����ϥ���ѥ������
-���٤Ƥθ��̤�ɽ��ޤ���
-ŵ��Ū�ʤ��٤Ƥ�����ϡ�������ץȤ���Ƭ����ü���֤���ޤ���
-�������ʤ��顢�ɽ��ѿ��� C<my()> ��Ȥäƺ������ƥ쥭������ʥ������פ�
-�ȤäƤ���ΤǤ���С��ե����ޥåȤ䥵�֥롼����������Ʊ���֥��å���
-�������פ���Ǥ��ζɽ��ѿ��˥����������뤳�Ȥ���ǽ�Ǥ���褦�ˤ��Ƥ���
-ɬ�פ�����Ǥ��礦��
+宣言は、文が置けるところであればどこにでも置くことができますが、
+基本的な文の並びは実行時には何の効果も持ちません -- 宣言はコンパイル時に
+すべての効果が表れます。
+典型的なすべての宣言は、スクリプトの先頭か終端に置かれます。
+しかしながら、局所変数を C<my()> を使って作成してレキシカルなスコープを
+使っているのであれば、フォーマットやサブルーチンの定義を、同じブロックの
+スコープの中でその局所変数にアクセスすることが可能であるようにしておく
+必要があるでしょう。
 
 =begin original
 
@@ -164,10 +164,10 @@ X<subroutine, declaration>
 
 =end original
 
-���֥롼���������ϡ��ץ������θ�Τۤ��ˤ��륵�֥롼����̾��
-�ꥹ�ȱ黻�ҤΤ褦�˻Ȥ����Ȥ�����ޤ���
-�������Ƥ��ʤ����֥롼����������C<sub name> �ȵ��Ҥ��뤳�Ȥ�
-����Ǥ���Τǡ��ʲ��Τ褦�ˤǤ��ޤ���
+サブルーチンの宣言は、プログラムの後のほうにあるサブルーチン名を
+リスト演算子のように使うことを許します。
+定義されていないサブルーチンの宣言を、C<sub name> と記述することで
+宣言できるので、以下のようにできます。
 X<subroutine, declaration>
 
     sub myname;
@@ -183,12 +183,12 @@ C<||> would work.
 
 =end original
 
-myname() �ؿ��ϡ��ꥹ�ȱ黻�ҤΤ褦��Ư���ΤǤ��ꡢñ��黻�ҤȤ��ƤǤ�
-�ʤ��Ȥ������Ȥ����դ��Ƥ���������
-�Ǥ����顢�������ä����� C<||> ������� C<or> ��Ȥ����Ȥˤ�
-���դ��Ƥ���������
-�����������֥롼����� C<sub myname ($)> �Τ褦��������Ƥ���ΤǤ���С�
-C<or> �Ǥ� C<||> �Ǥ⤦�ޤ��Ԥ��ޤ���
+myname() 関数は、リスト演算子のように働くのであり、単項演算子としてでは
+ないということに注意してください。
+ですから、こういった場合に C<||> の代わりに C<or> を使うことには
+注意してください。
+しかし、サブルーチンを C<sub myname ($)> のように宣言しているのであれば、
+C<or> でも C<||> でもうまく行きます。
 
 =begin original
 
@@ -198,10 +198,10 @@ See L<perlmod> for details on this.
 
 =end original
 
-���֥롼���������� C<require> ʸ��ȤäƵͤ���ळ�Ȥ�Ǥ��ޤ�����
-C<use> ʸ��ȤäƼ�ʬ��̾�����֤˥����ɤ����ꥤ��ݡ��Ȥ����ꤹ�뤳�Ȥ�
-�Ǥ��ޤ���
-����˴ؤ���ܺ٤� L<perlmod> �򻲾Ȥ��Ƥ���������
+サブルーチンの宣言は C<require> 文を使って詰め込むこともできますし、
+C<use> 文を使って自分の名前空間にロードしたりインポートしたりすることが
+できます。
+これに関する詳細は L<perlmod> を参照してください。
 
 =begin original
 
@@ -213,16 +213,16 @@ has both compile-time and run-time effects.
 
 =end original
 
-ʸ���¤Ӥϥ쥭�����륹�����פ���ä��ѿ��������ޤळ�Ȥ��Ǥ��ޤ�����
-�ѿ�̾������Ȥ��ڤ�Υ���졢����������̾��ʸ�Τ褦�˿����񤤡�
-���줬�̾��ʸ�Ǥ��뤫�Τ褦��ʸ���¤Ӥ��Ȥߤ��ޤ�ޤ���
-����ϡ��������ä����������ѥ�����θ��̤ȼ¹Ի��θ��̤�ξ����
-���äƤ���Ȥ������ȤǤ���
+文の並びはレキシカルスコープを持った変数の宣言を含むことができますが、
+変数名の宣言とは切り離され、その宣言は通常の文のように振る舞い、
+それが通常の文であるかのように文の並びに組みこまれます。
+これは、そういった宣言がコンパイル時の効果と実行時の効果の両方を
+持っているということです。
 
 =head2 Comments
 X<comment> X<#>
 
-(������)
+(コメント)
 
 =begin original
 
@@ -232,13 +232,13 @@ expression.
 
 =end original
 
-�����Ȥ� C<��#��> ʸ�����顢�����ޤ�³����������ʬ��̵�뤵��ޤ���
-�㳰�ϡ�ʸ���������ɽ������ˤ��� C<"#"> �Ǥ���
+コメントは C<“#”> 文字から、行末まで続き、その部分は無視されます。
+例外は、文字列や正規表現の中にある C<"#"> です。
 
 =head2 Simple Statements
 X<statement> X<semicolon> X<expression> X<;>
 
-(ñ��ʸ)
+(単純文)
 
 =begin original
 
@@ -254,20 +254,20 @@ as the last item in a statement.
 
 =end original
 
-ñ��ʸ�Ȥʤ�ͣ��μ���ϡ����������ѤΤ����ɾ������뼰�Ǥ���
-���٤Ƥ�ñ��ʸ�ϡ����줬���ߥ�������ά���뤳�ȤΤǤ���֥��å���
-�Ǹ�ˤʤ��¤��ʸ��ü���뤿��Υ��ߥ����󤬤ʤ���Фʤ�ޤ���
-(�֥��å�����԰ʾ���Ϥ���ˤϡ����ߥ�������դ��뤳�Ȥ����ᤷ�ޤ���
-�ʤ��ʤ顢�̤ιԤ��ɲä����ǽ�������뤫��Ǥ�)��
-C<eval {}> �� C<do {}> �Τ褦�ˡ��츫ʣ��ʸ�Τ褦�ˤߤ��뤱��ɤ�
-�����ǤϤʤ�(������ñ�ʤ뼰�ˤ����� TERM �Ǥ�)��Τ����äơ�
-�������ä���Τ�ʸ�κǸ�Υ����ƥ�Ȥ��ƻȤä����ˤ�����Ū�˽�ü����
-ɬ�פ�����Τ��Ȥ������Ȥ����դ��Ƥ���������
+単純文となる唯一の種類は、その副作用のために評価される式です。
+すべての単純文は、それがセミコロンを省略することのできるブロックの
+最後にない限りは文を終端するためのセミコロンがなければなりません
+(ブロックが二行以上に渡る場合には、セミコロンを付けることをお薦めします。
+なぜなら、別の行を追加する可能性があるからです)。
+C<eval {}> や C<do {}> のように、一見複合文のようにみえるけれども
+そうではない(これらは単なる式における TERM です)ものがあって、
+そういったものを文の最後のアイテムとして使った場合には明示的に終端する
+必要があるのだということに注意してください。
 
 =head2 Truth and Falsehood
 X<truth> X<falsehood> X<true> X<false> X<!> X<not> X<negation> X<0>
 
-(������)
+(真偽値)
 
 =begin original
 
@@ -279,18 +279,18 @@ is treated as 0.
 
 =end original
 
-���� 0, ʸ���� C<'0'> �� C<''>, ���ꥹ�� C<()>, C<undef> �����ƿ�����
-����ƥ����ȤǤϵ��Ȥʤ�ޤ���
-����¾�����Ƥ��ͤϿ��Ǥ���
-�����ͤ� C<!> �� C<not> �����ꤹ��ȡ��ü�ʵ����ͤ��֤��ޤ���
-�����ʸ����Ȥ���ɾ������� C<''> �Ȥ��ư����ޤ��������ͤȤ���ɾ�������
-0 �Ȥ��ư����ޤ���
+数値 0, 文字列 C<'0'> と C<''>, 空リスト C<()>, C<undef> は全て真偽値
+コンテキストでは偽となります。
+その他の全ての値は真です。
+真の値を C<!> や C<not> で否定すると、特殊な偽の値を返します。
+これを文字列として評価すると C<''> として扱われますが、数値として評価すると
+0 として扱われます。
 
 =head2 Statement Modifiers
 X<statement modifier> X<modifier> X<if> X<unless> X<while>
 X<until> X<foreach> X<for>
 
-(ʸ������)
+(文修飾子)
 
 =begin original
 
@@ -300,9 +300,9 @@ modifiers are:
 
 =end original
 
-Ǥ�դ�ñ��ʸ�ˤϡ�B<���> �ν����Ҥ�ü�Υ��ߥ������ľ��(�⤷����
-�֥��å��ν�ü��ľ��)���դ��뤳�Ȥ��Ǥ��ޤ���
-�Ȥ����ȤΤǤ��뽤���Ҥϰʲ����̤�Ǥ���
+任意の単純文には、B<一つ> の修飾子を終端のセミコロンの直前(もしくは
+ブロックの終端の直前)に付けることができます。
+使うことのできる修飾子は以下の通りです。
 
     if EXPR
     unless EXPR
@@ -317,8 +317,8 @@ Its truth or falsehood determines how the modifier will behave.
 
 =end original
 
-�����Ҥ˰���³�� C<EXPR> �ϡ־��פȤ��ƻ��Ȥ���ޤ���
-���ο����ͤ������Ҥο����񤤤���ꤷ�ޤ���
+修飾子に引き続く C<EXPR> は「条件」として参照されます。
+その真偽値が修飾子の振る舞いを決定します。
 
 =begin original
 
@@ -328,9 +328,9 @@ the condition is true (i.e., if the condition is false).
 
 =end original
 
-C<if> �� I<�⤷> ��郎���ξ��ˤΤ�ʸ��¹Ԥ��ޤ���
-C<unless> �ϵդǡ���郎�� I<�Ǥʤ��¤�> (�Ĥޤꡢ��郎���ʤ�) ʸ��
-�¹Ԥ��ޤ���
+C<if> は I<もし> 条件が真の場合にのみ文を実行します。
+C<unless> は逆で、条件が真 I<でない限り> (つまり、条件が偽なら) 文を
+実行します。
 
     print "Basset hounds got long ears" if length $ear >= 10;
     go_outside() and play() unless $is_raining;
@@ -342,9 +342,9 @@ for each item in the LIST (with C<$_> aliased to each item in turn).
 
 =end original
 
-C<foreach> �����Ҥ�ȿ���ҤǤ�:
-LIST ���ͤ��줾�����ʸ��¹Ԥ��ޤ�(�¹���� C<$_> �����줾����ͤ�
-�����ꥢ���Ȥʤ�ޤ�)��
+C<foreach> 修飾子は反復子です:
+LIST の値それぞれ毎に文を実行します(実行中は C<$_> がそれぞれの値の
+エイリアスとなります)。
 
     print "Hello $_!\n" foreach qw(world Dolly nurse);
 
@@ -356,9 +356,9 @@ condition is true (or while the condition is false):
 
 =end original
 
-C<while> �Ͼ�郎�� I<�δ�> ʸ�򷫤��֤��ޤ���
-C<until> �ϵդǡ���郎�� I<�ˤʤ�ޤ�> (�Ĥޤ��郎���δ�) ʸ��
-�����֤��ޤ�:
+C<while> は条件が真 I<の間> 文を繰り返します。
+C<until> は逆で、条件が真 I<になるまで> (つまり条件が偽の間) 文を
+繰り返します:
 
     # Both of these count from 0 to 10.
     print $i++ while $i <= 10;
@@ -374,11 +374,11 @@ evaluated.  This is so that you can write loops like:
 
 =end original
 
-������ C<while> �� C<until> �ϡ�����Ū�� "C<while> loop" �ΰ�̣��
-���äƤ��ޤ�(��郎�ǽ��ɾ�������)����C<do>-�֥��å�(�⤷���ϸ��ߤǤ�
-���Ѥ�侩����Ƥ��ʤ� C<do>-���֥롼����ʸ)��Ŭ�Ѥ����Ȥ����㳰�ǡ�
-���ΤȤ��Ͼ�郎ɾ�������������ˡ����٥֥��å����¹Ԥ���ޤ���
-���Τ��ᡢ���Τ褦�ʥ롼�פ򵭽Ҥ��뤳�Ȥ��Ǥ��ޤ���
+修飾子 C<while> と C<until> は、一般的な "C<while> loop" の意味を
+持っています(条件が最初に評価される)が、C<do>-ブロック(もしくは現在では
+使用を推奨されていない C<do>-サブルーチン文)に適用されるときは例外で、
+このときは条件が評価されるよりも前に、一度ブロックが実行されます。
+このため、次のようなループを記述することができます。
 
     do {
 	$line = <STDIN>;
@@ -396,13 +396,13 @@ X<next> X<last> X<redo>
 
 =end original
 
-L<perlfunc/do> �򻲾Ȥ��Ƥ���������
-��Ҥ���롼�פ�����ʸ�ϡ������Ҥ��롼�ץ�٥����ʤ������
-���ι�¤ʸ�Ǥ� I<ư��ʤ�> �Ȥ������Ȥˤ����դ��Ƥ���������
-�������ʤ���
-�������ä������н褹��Τ��̤Υ֥��å�����¦�����줿��(C<next> �ξ��)��
-�̤Υ֥��å��ǰϤ�(C<last> �ξ��)�Ȥ�����ˡ����˻Ȥ��ޤ���
-C<next> �Ǥ�ñ���椫�ä�����Ťˤ��ޤ�:
+L<perlfunc/do> を参照してください。
+後述するループの制御文は、修飾子がループラベルを取らないために
+この構造文では I<動作しない> ということにも注意してください。
+申し訳ない。
+こういった場合に対処するのに別のブロックを内側に入れたり(C<next> の場合)、
+別のブロックで囲む(C<last> の場合)という方法が常に使えます。
+C<next> では単に中かっこを二重にします:
 X<next> X<last> X<redo>
 
     do {{
@@ -417,7 +417,7 @@ X<last>
 
 =end original
 
-C<last> �ξ��ϡ���ä�ǰ����ˤ���ɬ�פ�����ޤ�:
+C<last> の場合は、もっと念入りにする必要があります:
 
     LOOP: { 
 	    do {
@@ -438,20 +438,20 @@ X<my>
 
 =end original
 
-B<����:> (C<my $x if ...> �Τ褦��) ��ﹽ¤��롼�׹�¤�ǽ������줿
-C<my> ʸ�ο����񤤤� B<̤���> �Ǥ���
-C<my> �ѿ����ͤ� C<undef> �����Τ�ޤ��󤷡��������������줿�ͤ���
-�Τ�ޤ��󤷡�����¾��ǡ���ʤ��ͤβ�ǽ���⤢��ޤ���
-�����ͤ˰�¸���ƤϤ����ޤ���
-perl �ξ���ΥС������Ǥϸ��ߤΥС������Ȥϲ����㤦�����Τ�ޤ���
-�����ˤ����ʤ�Τ����ޤ���
+B<注意:> (C<my $x if ...> のような) 条件構造やループ構造で修飾された
+C<my> 文の振る舞いは B<未定義> です。
+C<my> 変数の値は C<undef> かも知れませんし、以前に代入された値かも
+知れませんし、その他の如何なる値の可能性もあります。
+この値に依存してはいけません。
+perl の将来のバージョンでは現在のバージョンとは何か違うかも知れません。
+ここには厄介なものがいます。
 X<my>
 
 =head2 Compound Statements
 X<statement, compound> X<block> X<bracket, curly> X<curly bracket> X<brace>
 X<{> X<}> X<if> X<unless> X<while> X<until> X<foreach> X<for> X<continue>
 
-(ʣ��ʸ)
+(複合文)
 
 =begin original
 
@@ -462,10 +462,10 @@ is delimited by the extent of a string (in the case of an eval).
 
 =end original
 
-Perl �Ǥϡ��������פ��������褦��ʸ���¤Ӥ�֥��å��ȸƤӤޤ���
-�֥��å��Ϥ����ޤ�ե�����ˤ�ä��ϰϤ������뤳�Ȥ�����ޤ�
-(�ե����뤬 require ���줿�Ȥ������ץ���������ΤȤ��Ƥξ��)����
-ʸ�����Ÿ���ˤ�ä��ϰϤ�������(eval �ξ��)���Ȥ⤢��ޤ���
+Perl では、スコープを定義するような文の並びをブロックと呼びます。
+ブロックはそれを含むファイルによって範囲が定められることがあります
+(ファイルが require されたときか、プログラム全体としての場合)し、
+文字列の展開によって範囲が定められる(eval の場合)こともあります。
 
 =begin original
 
@@ -474,8 +474,8 @@ We will call this syntactic construct a BLOCK.
 
 =end original
 
-����������Ū�ˤϡ��֥��å����椫�ä��ˤ�ä��ϰϤ������ޤ���
-���ι�ʸŪ�ʹ�¤��֥��å��ȸƤӤޤ���
+しかし一般的には、ブロックは中かっこによって範囲が定められます。
+この構文的な構造をブロックと呼びます。
 
 =begin original
 
@@ -483,7 +483,7 @@ The following compound statements may be used to control flow:
 
 =end original
 
-�ʲ��˵󤲤�ʣ��ʸ������ե����Ȥ��ƻȤ����Ȥ��Ǥ��ޤ�:
+以下に挙げる複合文を制御フローとして使うことができます:
 
     if (EXPR) BLOCK
     if (EXPR) BLOCK else BLOCK
@@ -507,11 +507,11 @@ all do the same thing:
 
 =end original
 
-���������դ����ߤ����Τϡ�C �� Pascal �Ȥϰۤʤꡢ�֥��å�����褦��
-�������Ƥ���ʸ����ǤϤʤ��Ȥ������ȤǤ���
-�Ĥޤꡢ�椫�ä��� I<ɬ�פʤ��> �Ǥ� -- ۣ���ʸ��������ޤ���
-�椫�ä��ʤ��ξ��ʸ��Ȥ������ΤǤ���С������Ĥ��Τ����������ޤ���
-�ʲ������Ƥ�Ʊ�����ȤǤ�:
+しかし注意して欲しいのは、C や Pascal とは異なり、ブロックを取るように
+定義されていて文を取るではないということです。
+つまり、中かっこは I<必要なもの> です -- 曖昧な文が許されません。
+中かっこなしの条件文を使いたいのであれば、いくつかのやり方があります。
+以下の全ては同じことです:
 
     if (!open(FOO)) { die "Can't open $FOO: $!"; }
     die "Can't open $FOO: $!" unless open(FOO);
@@ -528,10 +528,10 @@ the sense of the test is reversed.
 
 =end original
 
-C<if> ʸ������Ǥ���
-�֥��å��Ͼ���椫�ä��Ƕ��ڤ���Τǡ�C<if> �� C<else> ���б���
-ۣ��ˤʤ�褦�ʤ��ȤϷ褷�Ƥ���ޤ���
-C<unless> �� C �� C<if> �Τ褦�˻Ȥ������ΤǤ���С�������ȿž���ޤ���
+C<if> 文は明解です。
+ブロックは常に中かっこで区切られるので、C<if> と C<else> の対応が
+曖昧になるようなことは決してありません。
+C<unless> を C の C<if> のように使いたいのであれば、検査を反転します。
 
 =begin original
 
@@ -550,17 +550,17 @@ pragma or the B<-w> flag.
 
 =end original
 
-C<while> ʸ�ϡ�������(ɾ��������̤���ʸ���� C<""> �Ǥ� C<0> �Ǥ�
-C<"0"> �Ǥ�ʤ�)�Ǥ���֡��֥��å���¹Ԥ��ޤ���
-C<until> ʸ�ϡ��������Ǥ���֡��֥��å���¹Ԥ��ޤ���
-LABEL �Ͼ�ά��ǽ�Ǥ�����������ˤϡ��������ȼ�ä����̻Ҥˤʤ�ޤ���
-LABEL �� C<next>��C<last>��C<redo> �Ȥ��ä��롼������ʸ�Υ롼�פ��ꤷ�ޤ���
-LABEL ����ά���줿��硢�롼������ʸ�Ϥ����ޤ�롼�פ���ǺǤ���¦��
-�롼�פ򻲾Ȥ��ޤ���
-����ϡ��¹Ի��� LABEL �򸡽Ф��뤿��θƤӽФ������å���ưŪ�ʸ���긡����
-�ޤळ�Ȥ��Ǥ��ޤ���
-���Τ褦�ʿ侩����ʤ������񤤤ϡ�C<use warnings> �ץ饰�ޤ� B<-w> �ե饰��
-�Ȥä����ˤϷٹ������������ޤ���
+C<while> 文は、式が真(評価した結果が空文字列 C<""> でも C<0> でも
+C<"0"> でもない)である間、ブロックを実行します。
+C<until> 文は、式が偽である間、ブロックを実行します。
+LABEL は省略可能ですが、ある場合には、コロンを伴った識別子になります。
+LABEL は C<next>、C<last>、C<redo> といったループ制御文のループを規定します。
+LABEL が省略された場合、ループ制御文はそれを含むループの中で最も内側の
+ループを参照します。
+これは、実行時に LABEL を検出するための呼び出しスタックの動的な後戻り検索を
+含むことができます。
+そのような推奨されない振る舞いは、C<use warnings> プラグマや B<-w> フラグを
+使った場合には警告を引き起こします。
 
 =begin original
 
@@ -571,16 +571,16 @@ the C<next> statement.
 
 =end original
 
-C<continue> �֥��å���¸�ߤ����硢
-��˾�郎��ɾ�������ľ���˼¹Ԥ���ޤ���
-�������äơ����Υ֥��å���롼���ѿ��Υ��󥯥���ȤΤ����
-�Ȥ����Ȥ��Ǥ��ޤ���
-����ϡ��롼�פ�C<next>ʸ���̤��Ʒ�³�����Ȥ��Ǥ�¹Ԥ���ޤ���
+C<continue> ブロックが存在する場合、
+常に条件が再評価される直前に実行されます。
+したがって、このブロックをループ変数のインクリメントのために
+使うことができます。
+これは、ループがC<next>文を通して継続されるときでも実行されます。
 
 =head2 Loop Control
 X<loop control> X<loop, control> X<next> X<last> X<redo> X<continue>
 
-(loop ����)
+(loop 制御)
 
 =begin original
 
@@ -588,7 +588,7 @@ The C<next> command starts the next iteration of the loop:
 
 =end original
 
-C<next> ���ޥ�ɤϥ롼�פμ��η����֤��򳫻Ϥ��ޤ�:
+C<next> コマンドはループの次の繰り返しを開始します:
 
     LINE: while (<STDIN>) {
 	next LINE if /^#/;	# discard comments
@@ -602,8 +602,8 @@ C<continue> block, if any, is not executed:
 
 =end original
 
-C<last> ���ޥ�ɤϥ롼�פ���¨�¤�æ�Ф��ޤ���
-C<continue> �֥��å������äƤ⡢����ϼ¹Ԥ���ޤ���:
+C<last> コマンドはループから即座に脱出します。
+C<continue> ブロックがあっても、それは実行されません:
 
     LINE: while (<STDIN>) {
 	last LINE if /^$/;	# exit when done with header
@@ -619,11 +619,11 @@ about what was just input.
 
 =end original
 
-C<redo> ���ޥ�ɤϡ����κ�ɾ���򤹤뤳�Ȥʤ��˥롼�ץ֥��å���
-�Ƽ¹Ԥ�Ԥ��ޤ���
-C<continue> �֥��å������äƤ⡢����� I<�¹Ԥ���ޤ���>��
-���Υ��ޥ�ɤ��̾�ץ��������Ф������Ϥ˴ؤ��ƥץ�����༫�Ȥ�
-���ޤ������Ȥ��ä��Ȥ��˻Ȥ��ޤ���
+C<redo> コマンドは、条件の再評価をすることなしにループブロックの
+再実行を行います。
+C<continue> ブロックがあっても、それは I<実行されません>。
+このコマンドは通常、プログラムに対する入力に関してプログラム自身を
+だましたいといったときに使われます。
 
 =begin original
 
@@ -633,10 +633,10 @@ want to skip ahead and get the next record.
 
 =end original
 
-���Ȥ��С�F</etc/termcap> �Τ褦�ʥե������������뤳�Ȥ�
-�ͤ��Ƥߤޤ��礦��
-�⤷���Ϥ��줿�Ԥι�������³�򼨤��Хå�����å���Ǥ��ä���硢��ؿʤ��
-���Υ쥳���ɤ���Ф������Ȼפ��Ǥ��礦��
+たとえば、F</etc/termcap> のようなファイルを処理することを
+考えてみましょう。
+もし入力された行の行末が継続を示すバックスラッシュであった場合、先へ進んで
+次のレコードを取り出したいと思うでしょう。
 
     while (<>) {
 	chomp;
@@ -653,7 +653,7 @@ which is Perl short-hand for the more explicitly written version:
 
 =end original
 
-����� Perl �ξ�ά��ˡ�ǡ���äȤϤä���Ƚ񤯤Ȱʲ��Τ褦�ˤʤ�ޤ�:
+これは Perl の省略記法で、もっとはっきりと書くと以下のようになります:
 
     LINE: while (defined($line = <ARGV>)) {
 	chomp($line);
@@ -673,11 +673,11 @@ or C<?pat?> one-time matches:
 
 =end original
 
-�嵭����� C<continue> �֥��å������ä��Ȥ����顢�����
-(redo �� continue �֥��å��򥹥��åפ���Τ�) ����ɽ���ˤ�ä�
-�ΤƤ�줿�Ԥ������¹Ԥ����Ȥ������Ȥ����դ��Ƥ���������
-continue �֥��å��Ϲԥ����󥿡���ꥻ�åȤ���Ȥ���
-���٤����ޥå����� C<?pat?> ��ꥻ�åȤ���Τ˻Ȥ��ޤ���
+上記の例で C<continue> ブロックがあったとしたら、それは
+(redo は continue ブロックをスキップするので) 正規表現によって
+捨てられた行だけが実行されるということに注意してください。
+continue ブロックは行カウンターをリセットするとか、
+一度だけマッチする C<?pat?> をリセットするのに使われます。
 
     # inspired by :1,$g/fred/s//WILMA/
     while (<>) {
@@ -698,8 +698,8 @@ iteration.
 
 =end original
 
-C<while> �� C<until> ���֤���������縡���ΰ�̣�ϵ�ž���ޤ�����
-�����֤����¹Ԥ���������˾�郎��������뤳�Ȥ��Ѥ�ꤢ��ޤ���
+C<while> を C<until> で置き換えた場合検査の意味は逆転しますが、
+繰り返しが実行されるより前に条件が検査されることは変わりありません。
 
 =begin original
 
@@ -708,9 +708,9 @@ they aren't loops.  You can double the braces to make them such, though.
 
 =end original
 
-�롼������ʸ�� C<if> �� C<unless> ��Ǥ�ư��ޤ���
-�ʤ��ʤ餽���ϥ롼�פǤϤʤ�����Ǥ���
-�������椫�ä�����Ťˤ��Ƥ�����н褹�뤳�ȤϤǤ��ޤ���
+ループ制御文は C<if> や C<unless> 中では動作しません。
+なぜならそこはループではないからです。
+しかし中かっこを二重にしてこれに対処することはできます。
 
     if (/pattern/) {{
 	last if /fred/;
@@ -725,8 +725,8 @@ executes once, see L<"Basic BLOCKs and Switch Statements">.
 
 =end original
 
-����ϡ��֥��å����Ȥϰ��٤����¹Ԥ����롼�פȤ���ư��뤫��Ǥ�;
-L<"Basic BLOCKs and Switch Statements"> �򻲾Ȥ��Ƥ���������
+これは、ブロック自身は一度だけ実行されるループとして動作するからです;
+L<"Basic BLOCKs and Switch Statements"> を参照してください。
 
 =begin original
 
@@ -735,14 +735,14 @@ available.   Replace any occurrence of C<if BLOCK> by C<if (do BLOCK)>.
 
 =end original
 
-Perl 4 �ǤϻȤ����ȤΤǤ��� C<while/if BLOCK BLOCK> �Ȥ��������ϡ�
-��Ϥ�Ȥ����Ȥ��Ǥ��ޤ���
-C<if BLOCK> ����ʬ�� C<if (do BLOCK)> ���֤������Ƥ���������
+Perl 4 では使うことのできた C<while/if BLOCK BLOCK> という形式は、
+もはや使うことができません。
+C<if BLOCK> の部分を C<if (do BLOCK)> で置き換えてください。
 
 =head2 For Loops
 X<for> X<foreach>
 
-(for �롼��)
+(for ループ)
 
 =begin original
 
@@ -751,9 +751,9 @@ that means that this:
 
 =end original
 
-Perl �� C ������ C<for> �롼�פϡ��б����� C<while> �롼�פ�Ʊ�ͤ�
-ư��ޤ���
-�Ĥޤꡢ�ʲ��Τ�Τ�:
+Perl の C 形式の C<for> ループは、対応する C<while> ループと同様に
+動作します。
+つまり、以下のものは:
 
     for ($i = 1; $i < 10; $i++) {
 	...
@@ -765,7 +765,7 @@ is the same as this:
 
 =end original
 
-�ʲ��Τ�Τ�Ʊ���Ǥ�:
+以下のものと同じです:
 
     $i = 1;
     while ($i < 10) {
@@ -784,9 +784,9 @@ X<my>
 
 =end original
 
-�����ʰ㤤����Ĥ���ޤ�: C<for> �ν�������� C<my> ��Ȥä��ѿ���
-������줿��硢�����ѿ��Υ쥭�����륹�����פ� C<for> �롼��
-(�롼�����Τ�������) �ȴ�����Ʊ���Ǥ���
+小さな違いが一つあります: C<for> の初期化部で C<my> を使って変数が
+宣言された場合、この変数のレキシカルスコープは C<for> ループ
+(ループ本体と制御部) と完全に同じです。
 X<my>
 
 =begin original
@@ -800,10 +800,10 @@ X<eof> X<end-of-file> X<end of file>
 
 =end original
 
-�̾�Ρ�������Ф���ź�����դ��Υ롼�פΤۤ��ˤ⡢C<for> ��¾��
-¿���ζ�̣�������ץꥱ�������Τ���˼��Ѥ��뤳�Ȥ��Ǥ��ޤ���
-�ʲ�����ϡ�����Ū�ʥե����뵭�һҤν�ü������Ū�˸������Ƥ��ޤ���
-�ץ�������ϥ󥰥��åפ����褦�˸����Ƥ��ޤ��������򤹤��ΤǤ���
+通常の、配列に対する添え字付けのループのほかにも、C<for> は他の
+多くの興味深いアプリケーションのために借用することができます。
+以下の例は、対話的なファイル記述子の終端を明示的に検査してしまうと
+プログラムをハングアップしたように見えてしまう問題を回避するものです。
 X<eof> X<end-of-file> X<end of file>
 
     $on_a_tty = -t STDIN && -t STDOUT;
@@ -821,9 +821,9 @@ X<readline> X<< <> >>
 
 =end original
 
-C<for> �롼�פξ��Ȥ��� C<readline> (�ޤ��ϱ黻�ҷ����� C<< <EXPR> >>) ��
-�Ȥ���硢�ʲ��Τ褦�˾�ά�����Ȥ��ޤ���
-���ο����񤤤� C<while> �롼�׾���Ʊ���Ǥ���
+C<for> ループの条件として C<readline> (または演算子形式の C<< <EXPR> >>) を
+使う場合、以下のように省略形が使えます。
+この振る舞いは C<while> ループ条件と同じです。
 X<readline> X<< <> >>
 
     for ( prompt(); defined( $_ = <STDIN> ); prompt() ) {
@@ -833,7 +833,7 @@ X<readline> X<< <> >>
 =head2 Foreach Loops
 X<for> X<foreach>
 
-(foreach �롼��)
+(foreach ループ)
 
 =begin original
 
@@ -850,15 +850,15 @@ X<my> X<local>
 
 =end original
 
-C<foreach> �롼�פ� �̾�Υꥹ���ͤ��Ф��Ƥη����֤���Ԥ����ѿ� VAR ��
-�ꥹ�Ȥ����Ǥ򷫤��֤����˰�Ĥ��ĥ��åȤ��ޤ���
-�ѿ������� C<my> �Ȥ���������ɤ��֤���Ƥ�����硢�����ѿ���
-�쥭�����륹�����פ�������������äƤ���ϥ롼�פ���ǤΤ߲Ļ�Ȥʤ�ޤ���
-���Υ�����ɤ��ʤ���С��ѿ��ϥ롼�פ��Ф��ƥ�������Ȥʤꡢ�롼�פ�
-ȴ������ǰ������ͤ����ټ�������ޤ���
-�ѿ��������� C<my> ��Ȥä��������Ƥ����ʤ�С��������Х�ʤ�Τ�
-����ˤ����ѿ���Ȥ��ޤ����������롼�פ˥�������ʤ�ΤȤʤ�ޤ���
-���ΰ��ۤΥ������벽�� C<foreach> ����� I<�Τ�> �����ޤ���
+C<foreach> ループは 通常のリスト値に対しての繰り返しを行い、変数 VAR に
+リストの要素を繰り返し一回に一つずつセットします。
+変数の前に C<my> というキーワードが置かれていた場合、その変数は
+レキシカルスコープを持ち、したがってそれはループの中でのみ可視となります。
+このキーワードがなければ、変数はループに対してローカルとなり、ループを
+抜けた後で以前の値が再度取得されます。
+変数が事前に C<my> を使って宣言されていたならば、グローバルなものの
+代わりにその変数を使いますが、それもループにローカルなものとなります。
+この暗黙のローカル化は C<foreach> の中で I<のみ> 起きます。
 X<my> X<local>
 
 =begin original
@@ -871,10 +871,10 @@ X<$_>
 
 =end original
 
-�ɤߤ䤹���Τ���� C<foreach> �򡢴ʷ餵�Τ���� C<for> ��Ȥ����Ȥ�
-�Ǥ��ޤ�(���뤤�� C ��������� Bourne ������˿Ƥ���Ǥ���Τʤ�
-C<for> �����������Ǥ��礦)��
-VAR ����ά���줿���ˤϡ�C<$_> ���ͤ����ꤵ��ޤ���
+読みやすさのために C<foreach> を、簡潔さのために C<for> を使うことが
+できます(あるいは C シェルよりも Bourne シェルに親しんでいるのなら
+C<for> の方が自然でしょう)。
+VAR が省略された場合には、C<$_> に値が設定されます。
 X<$_>
 
 =begin original
@@ -888,12 +888,12 @@ X<alias>
 
 =end original
 
-LIST �����Ǥ������ͤǤ��ä���硢�롼�פ���� VAR ���ѹ����뤳�Ȥˤ�ꡢ
-�б������ͤ��ѹ����뤳�Ȥ��Ǥ��ޤ���
-�դˡ�LIST �����Ǥ������ͤǤʤ����ϡ��������Ǥ������褦�Ȥ��Ƥ�
-���Ԥ��ޤ���
-����������ȡ�C<foreach> �롼�פε�Ǽ�ѿ����롼�פ��оݤȤʤäƤ���
-�ꥹ����θġ��Υ����ƥ���Ф��륨���ꥢ���ˤʤäƤ��뤫��Ǥ���
+LIST の要素が左辺値であった場合、ループの中で VAR を変更することにより、
+対応する値を変更することができます。
+逆に、LIST の要素が左辺値でない場合は、この要素を修正しようとしても
+失敗します。
+言い換えると、C<foreach> ループの帰納変数がループの対象となっている
+リスト中の個々のアイテムに対するエイリアスになっているからです。
 X<alias>
 
 =begin original
@@ -905,10 +905,10 @@ X<splice>
 
 =end original
 
-LIST �Τ����줫����ʬ������Ǥ��ä����ˡ����Ȥ��� C<splice> ��Ȥä�
-�롼�פ����ΤǤ������Ǥ��������ꤢ�뤤���ɲä����ꤹ���
-C<foreach> �����˺��𤷤Ƥ��ޤ��ޤ���
-�Ǥ����餽���������Ȥ򤷤ƤϤ����ޤ���
+LIST のいずれかの部分が配列であった場合に、たとえば C<splice> を使って
+ループの本体でその要素を削除したりあるいは追加したりすると
+C<foreach> は非常に混乱してしまいます。
+ですからそういうことをしてはいけません。
 X<splice>
 
 =begin original
@@ -918,9 +918,9 @@ special variable.   Don't do that either.
 
 =end original
 
-VAR �� tie ����Ƥ����ꤢ�뤤��¾���ü��ѿ��Ǥ��ä����ˤ�
-C<foreach> �Ϥ��ʤ��Τ⤯���ߤɤ���ˤ�ư���ʤ��Ǥ��礦��
-�����������Ȥ⤷�ƤϤ����ޤ���
+VAR が tie されていたりあるいは他の特殊変数であった場合には
+C<foreach> はあなたのもくろみどおりには動かないでしょう。
+こういうこともしてはいけません。
 
 =begin original
 
@@ -928,7 +928,7 @@ Examples:
 
 =end original
 
-��:
+例:
 
     for (@ary) { s/foo/bar/ }
 
@@ -952,8 +952,8 @@ Here's how a C programmer might code up a particular algorithm in Perl:
 
 =end original
 
-�ʲ�����ϡ�C �ץ�����ޡ��� Perl �ǤȤ��륢�르�ꥺ��򵭽Ҥ���Ȥ���
-�Ȥ��Ǥ�����������Ǥ�:
+以下の例は、C プログラマーが Perl でとあるアルゴリズムを記述するときに
+使うであろうやり方です:
 
     for (my $i = 0; $i < @ary1; $i++) {
 	for (my $j = 0; $j < @ary2; $j++) {
@@ -972,8 +972,8 @@ do it:
 
 =end original
 
-������Ф��ơ�������� Perl �ץ�����ޡ���Ʊ�����Ȥ����ä���Ȥ���
-�Ԥ�������Ǥ�:
+それに対して、次の例は Perl プログラマーが同じことをよりゆったりとして
+行うやり方です:
 
     OUTER: for my $wid (@ary1) {
     INNER:   for my $jet (@ary2) {
@@ -994,20 +994,20 @@ equivalent C<for> loop.
 
 =end original
 
-�ɤΤ��餤���줬��ñ�ˤʤä��褦�˸����ޤ���? ��������Τǡ������ǡ�
-��®�Ǥ���
-�����;�פʤ�Τ����ʤ��Τ����ΤʤΤǤ���
-����ϸ����¦�Υ롼�פȳ�¦�Υ롼�פȤδ֤˥����ɤ��ղä������Ǥ⡢
-�����ְ�äƼ¹Ԥ��뤳�Ȥ��ʤ��Τǰ����ʤΤǤ���
-C<next> ����¦�Υ롼�פ�λ����ΤǤϤʤ�����¦�Υ롼�פη����֤���
-�Ԥ��ޤ���
-�����Ƥ���ϡ�Perl �� C<foreach> ʸ�򤽤�������� C<for> �롼�פ���
-���Ф䤯�¹Ԥ���Τǹ�®�ʤΤǤ���
+どのくらいこれが簡単になったように見えますか? これは明確で、安全で、
+高速です。
+これは余計なものが少ないので明確なのです。
+これは後で内側のループと外側のループとの間にコードを付加えた場合でも、
+それを間違って実行することがないので安全なのです。
+C<next> は内側のループを終了するのではなく、外側のループの繰り返しを
+行います。
+そしてこれは、Perl は C<foreach> 文をそれと等価な C<for> ループよりも
+すばやく実行するので高速なのです。
 
 =head2 Basic BLOCKs and Switch Statements
 X<switch> X<block> X<case>
 
-(���ܥ֥��å��� switch ʸ)
+(基本ブロックと switch 文)
 
 =begin original
 
@@ -1020,13 +1020,13 @@ block is optional.
 
 =end original
 
-�֥��å����켫�Ȥ�(��٥뤬�դ��Ƥ��褦���Ĥ��Ƥʤ�������)���٤���
-�¹Ԥ����롼�פȡ�ʸˡŪ�ˤ������ʤ�ΤǤ���
-���Τ��ᡢ�֥��å�����æ�Ф��뤿���֥��å��κƥ������ȤΤ����
-Ǥ�դΥ롼������ʸ��Ȥ����Ȥ��Ǥ��ޤ�(����� C<eval{}>��C<sub{}>��
-����˰���Ū��ǧ���Ȥϰۤʤ� I<�롼�פǤϤʤ�> C<do{}> �֥��å����Ф��Ƥ�
-I<���ǤϤʤ�> �Ȥ������Ȥ����դ��Ƥ�������)��
-C<continue> �֥��å��Ͼ�ά���뤳�Ȥ��Ǥ��ޤ���
+ブロックそれ自身は(ラベルが付いていようがついてなかろうが)一度だけ
+実行されるループと、文法的には等価なものです。
+このため、ブロックから脱出するためやブロックの再スタートのために
+任意のループ制御文を使うことができます(これは C<eval{}>、C<sub{}>、
+さらに一般的な認識とは異なり I<ループではない> C<do{}> ブロックに対しては
+I<真ではない> ということに注意してください)。
+C<continue> ブロックは省略することができます。
 
 =begin original
 
@@ -1035,7 +1035,7 @@ structures.
 
 =end original
 
-�֥��å���¤�� case ��¤��Ԥ��Τ��Թ礬�ɤ��Ǥ���
+ブロック構造は case 構造を行うのに都合が良いです。
 
     SWITCH: {
 	if (/^abc/) { $abc = 1; last SWITCH; }
@@ -1051,8 +1051,8 @@ already several ways to write the equivalent.
 
 =end original
 
-Perl �ˤ������� C<switch> ʸ�Ȥ�����ΤϤ���ޤ��󤬡������
-���Ǥ������ʤ�Τ򵭽Ҥ�����ˡ�����Ĥ����뤫��Ǥ���
+Perl には正式な C<switch> 文というものはありませんが、それは
+すでに等価なものを記述する方法が幾つかあるからです。
 
 =begin original
 
@@ -1061,7 +1061,7 @@ the Switch extension and say:
 
 =end original
 
-��������Perl 5.8 ���顢Switch ��ĥ��Ȥ����Ȥǡ�switch-case ��Ȥ��ޤ�:
+しかし、Perl 5.8 から、Switch 拡張を使うことで、switch-case を使えます:
 
 	use Switch;
 
@@ -1073,10 +1073,10 @@ filters) but it is available, and it's very flexible.
 
 =end original
 
-�Ȥ������ switch �� case ���Ȥ��ޤ���
-�����˸���ΰ����ȸ����櫓�ǤϤʤ�(����ϥ������ե��륿��Ȥä�
-�¸�����Ƥ��ޤ�)�Τǡ�����ۤ��᤯�Ϥʤ��Ǥ������Ȥ⤫����������Ѳ�ǽ�ǡ�
-�ȤƤ����Ǥ���
+とした後で switch と case が使えます。
+本当に言語の一部と言うわけではない(これはソースフィルタを使って
+実現されています)ので、それほど早くはないですが、ともかくこれは利用可能で、
+とても柔軟です。
 
 =begin original
 
@@ -1084,7 +1084,7 @@ In addition to the above BLOCK construct, you could write
 
 =end original
 
-��Υ֥��å���¤����˲ä������Τ褦�˽񤯤��Ȥ�Ǥ��ޤ���
+先のブロック構造の例に加え、次のように書くこともできます。
 
     SWITCH: {
 	$abc = 1, last SWITCH  if /^abc/;
@@ -1101,10 +1101,10 @@ comma operator in scalar context.  See L<perlop/"Comma Operator">.)
 
 =end original
 
-(����ϡ�������ˤ���롼�פ�����Ǥ���ȱ黻�ҡɤΤ褦�˸����ޤ�����
-�ºݤˤϤ���ۤɴ�ۤʤ�ΤǤϤ���ޤ���
-ñ���̾�Υ���ޱ黻�ҤǤ���
-L<perlop/"Comma Operator"> �򻲾Ȥ��Ƥ���������)
+(これは、式の中にあるループを制御できる“演算子”のように見えますが、
+実際にはそれほど奇異なものではありません。
+単に通常のカンマ演算子です。
+L<perlop/"Comma Operator"> を参照してください。)
 
 =begin original
 
@@ -1112,7 +1112,7 @@ or
 
 =end original
 
-���뤤��:
+あるいは:
 
     SWITCH: {
 	/^abc/ && do { $abc = 1; last SWITCH; };
@@ -1127,7 +1127,7 @@ or formatted so it stands out more as a "proper" C<switch> statement:
 
 =end original
 
-���դ����Ƥ���Ŭ�ڤʡ�C<switch> ʸ�Τ褦�ˤ��ޤ�:
+書式付けしてより「適切な」C<switch> 文のようにします:
 
     SWITCH: {
 	/^abc/ 	    && do {
@@ -1153,7 +1153,7 @@ or
 
 =end original
 
-���뤤��:
+あるいは:
 
     SWITCH: {
 	/^abc/ and $abc = 1, last SWITCH;
@@ -1168,7 +1168,7 @@ or even, horrors,
 
 =end original
 
-����ˤϤ������ä������⤢��ޤ���
+さらにはこういった書き方もあります。
 
     if (/^abc/)
 	{ $abc = 1 }
@@ -1186,8 +1186,8 @@ a temporary assignment to C<$_> for convenient matching:
 
 =end original
 
-C<switch> ʸ�Τ���ΰ���Ū�ʥ��ǥ�����Ȥϡ��ޥå��󥰤������� C<$_> �� 
-���Ū�����������뤿��� C<foreach> �Υ����ꥢ������Ȥ��Ȥ�����ΤǤ�:
+C<switch> 文のための一般的なイディオムとは、マッチングに便利な C<$_> に 
+一時的に代入させるために C<foreach> のエイリアス化を使うというものです:
 
     SWITCH: for ($where) {
 		/In Card Names/     && do { push @flags, '-e'; last; };
@@ -1203,8 +1203,8 @@ for a C<do> block to return the proper value:
 
 =end original
 
-switch ʸ�Τ���Τ⤦��Ĥζ�̣�������ץ������ϡ�C<do> �֥��å���
-Ŭ�ڤ��ͤ��֤��褦�˥���󥸤���Ȥ�����ΤǤ���
+switch 文のためのもう一つの興味深いアプローチは、C<do> ブロックを
+適切な値を返すようにアレンジするというものです。
 
     $amode = do {
 	if     ($flag & O_RDONLY) { "r" }	# XXX: isn't this 0?
@@ -1221,7 +1221,7 @@ Or
 
 =end original
 
-�ޤ���:
+または:
 
         print do {
             ($flags & O_WRONLY) ? "write-only"          :
@@ -1237,8 +1237,8 @@ C<HTTP_USER_AGENT> environment variable.
 
 =end original
 
-�ޤ��Ϥ��ʤ������Ƥ� C<&&> �᤬���Ǥ��뤳�Ȥ˳ο�����äƤ���Τʤ顢
-�ʲ��Τ褦�� C<HTTP_USER_AGENT> �Ķ��ѿ����ͤ˱����� "switch" �Ǥ��ޤ���
+またはあなたが全ての C<&&> 節が真であることに確信を持っているのなら、
+以下のように C<HTTP_USER_AGENT> 環境変数の値に応じて "switch" できます。
 
     #!/usr/bin/perl 
     # pick out jargon file page based on browser
@@ -1261,9 +1261,9 @@ will be true.  If you don't, the previous C<?:> example should be used.
 
 =end original
 
-�������ä� switch ʸ�ϡ�C<&&> �᤬���ˤʤ�Ȥ������Ȥ�ʬ���äƤ���Ȥ��ˤΤ�
-���ޤ������ޤ���
-�����Ǥʤ���С�C<?:> ��Ȥ��ޤ��礦��
+こういった switch 文は、C<&&> 節が真になるということを分かっているときにのみ
+うまくいきます。
+そうでなければ、C<?:> を使いましょう。
 
 =begin original
 
@@ -1272,13 +1272,13 @@ instead of synthesizing a C<switch> statement.
 
 =end original
 
-���뤤�� C<switch> ʸ������˥��֥롼����Υ�ե���󥹤Υϥå����
-�񤯤��Ȥ�ͤ��뤫�⤷��ޤ���
+あるいは C<switch> 文の代わりにサブルーチンのリファレンスのハッシュを
+書くことを考えるかもしれません。
 
 =head2 Goto
 X<goto>
 
-(goto ʸ)
+(goto 文)
 
 =begin original
 
@@ -1289,10 +1289,10 @@ a C<goto>; it's just the name of the loop.
 
 =end original
 
-����ʿͤΤ���Ǥʤ��ˤ�ؤ餺��Perl �� C<goto> ʸ�򥵥ݡ��Ȥ��Ƥ��ޤ���
-C<goto>-LABEL��C<goto>-EXPR��C<goto>-&NAME �λ��Ĥη���������ޤ���
-�롼�פΥ�٥�ϼºݤˤ� C<goto> �������ʥ������åȤǤϤʤ���
-�롼�פ�̾���ˤ����ޤ���
+気弱な人のためでないにも関らず、Perl は C<goto> 文をサポートしています。
+C<goto>-LABEL、C<goto>-EXPR、C<goto>-&NAME の三つの形式があります。
+ループのラベルは実際には C<goto> の正当なターゲットではなく、
+ループの名前にすぎません。
 
 =begin original
 
@@ -1307,17 +1307,17 @@ need to use this form of C<goto> (in Perl, that is--C is another matter).
 
 =end original
 
-C<goto>-LABEL ������ LABEL �ǥ�٥��դ����줿ʸ�򸫤Ĥ���������������
-�¹Ԥ�Ƴ����ޤ���
-����ϥ��֥롼����Ǥ���Ȥ� C<foreach> �롼�פΤ褦��
-�������ɬ�פȤ���褦�ʹ�¤�����ӹ��ि��˻Ȥ����ȤϤǤ��ޤ���
-�ޤ�����Ŭ�������̵���ʤäƤ��ޤ��褦�ʹ�¤�����ӹ��ळ�Ȥ�Ǥ��ޤ���
-ưŪ�������פ���ʳ��ΤۤȤ�ɤξ��ؤϡ����֥롼�����
-����ޤ�ư�ư���뤳�Ȥ��Ǥ��ޤ���
-���������̾�� C<last> �� C<die> �Τ褦���̤Τ������Ȥä��ۤ���
-�ɤ��Ǥ��礦��
-Perl �κ�Ԥϡ�̤�����ĤƤ��η����� C<goto> ��Ȥ����Ȥ�
-ɬ�פ��ȴ��������ȤϤ���ޤ���(Perl �ξ��Ǥ���C �ξ��Ϥޤ��̤��äǤ�)��
+C<goto>-LABEL 形式は LABEL でラベル付けされた文を見つけだし、そこから
+実行を再開します。
+これはサブルーチンであるとか C<foreach> ループのような
+初期化を必要とするような構造へ飛び込むために使うことはできません。
+また、最適化されて無くなってしまうような構造へ飛び込むこともできません。
+動的スコープの中以外のほとんどの場所へは、サブルーチンの
+外も含めて移動することができます。
+しかし、通常は C<last> や C<die> のような別のやり方を使ったほうが
+良いでしょう。
+Perl の作者は、未だかつてこの形式の C<goto> を使うことが
+必要だと感じたことはありません(Perl の場合です。C の場合はまた別の話です)。
 
 =begin original
 
@@ -1327,10 +1327,10 @@ necessarily recommended if you're optimizing for maintainability:
 
 =end original
 
-C<goto>-EXPR ������ưŪ�˲�褵��륹�����פ���äƤ����٥�̾��
-���Ԥ��Ƥ��ޤ���
-����ˤ�ä� FORTRAN �η׻��� C<goto> ���¸��Ǥ��ޤ�����
-������ݼ����˽Ť����֤��ΤǤ���лȤ����Ȥϻߤ᤿�����ɤ��Ǥ��礦��
+C<goto>-EXPR 形式は動的に解決されるスコープを持っているラベル名を
+期待しています。
+これによって FORTRAN の計算型 C<goto> が実現できますが、
+これは保守性に重きを置くのであれば使うことは止めた方が良いでしょう。
 
     goto(("FOO", "BAR", "GLARCH")[$i]);
 
@@ -1346,15 +1346,15 @@ will be able to tell that this routine was called first.
 
 =end original
 
-C<goto>-&NAME �Ϲ��٤˥ޥ�����ǡ�̾���դ����֥롼����θƤӽФ���
-�����ȤǼ¹Ԥ���Ƥ��륵�֥롼������֤������ޤ���
-������̤Υ��֥롼���������ɤ��ơ��ǽ�ξ��ǸƤӽФ��줿
-�̤Υ��֥롼������׵᤹�뤳�Ȥ򤷤褦�Ȥ���
-C<AUTOLOAD()> ���֥롼����ǻȤ��Ƥ��Ƥޤ�
-(�����ȤΥ��֥롼����ˤ����� C<@_> ���Ф����ΰʳ����ѹ��ϡ�
-�̤Υ��֥롼��������Ť��ޤ�)��
-C<goto> �θ�ǡ�C<caller()> �Ǥʤ��Ƥ⤳�Υ��֥롼����
-�ǽ�˸ƤФ줿�Τ��Ȥ������Ȥ������뤳�Ȥ���Ǥ���Ǥ��礦��
+C<goto>-&NAME は高度にマジカルで、名前付きサブルーチンの呼び出しを
+カレントで実行されているサブルーチンに置き換えます。
+これは別のサブルーチンをロードして、最初の場所で呼び出された
+別のサブルーチンを要求することをしようとする
+C<AUTOLOAD()> サブルーチンで使われていてます
+(カレントのサブルーチンにおける C<@_> に対するもの以外の変更は、
+別のサブルーチンへ伝播します)。
+C<goto> の後で、C<caller()> でなくてもこのサブルーチンが
+最初に呼ばれたのだということを伝えることすらできるでしょう。
 
 =begin original
 
@@ -1365,17 +1365,17 @@ C<eval{}> and die() for exception processing can also be a prudent approach.
 
 =end original
 
-���Τ褦�ʥ������ΤۤȤ�ɤ��٤Ƥξ�硢C<goto> �����ΤǤϤʤ���
-C<next>��C<last>��C<redo>�Ȥ��ä�����ե���������Ȥ����Ȥ���
-���äȤ��ä��ɤ������ǥ��Ǥ��礦��
-�����Υ��ץꥱ���������Ф��Ƥϡ�C<eval{}> �� die() ��
-catch �� throw �Υڥ��Ȥ����㳰������Ԥ�����θ����ʥ��ץ������Ȥ���
-�Ȥ����Ȥ��Ǥ���Ǥ��礦��
+このようなケースのほとんどすべての場合、C<goto> に頼るのではなくて
+C<next>、C<last>、C<redo>といった制御フロー機構を使うことが、
+ずっとずっと良いアイデアでしょう。
+一部のアプリケーションに対しては、C<eval{}> と die() を
+catch と throw のペアとして例外処理を行うための賢明なアプローチとして
+使うことができるでしょう。
 
 =head2 PODs: Embedded Documentation
 X<POD> X<documentation>
 
-(POD: �Ȥ߹��ߥɥ������)
+(POD: 組み込みドキュメント)
 
 =begin original
 
@@ -1385,10 +1385,10 @@ encounters a line that begins with an equal sign and a word, like this
 
 =end original
 
-Perl �ϡ������������ɤȥɥ�����ȤȤ򺮤��񤭤��뤿��λųݤ���
-���äƤ��ޤ���
-������ʸ�λϤޤ꤬���Ԥ���Ƥ���Ȥ��ˡ�����ѥ����
-�ʲ�����Τ褦�� = ����ǻϤޤäƤ����򸫤Ĥ����:
+Perl は、ソースコードとドキュメントとを混ぜ書きするための仕掛けを
+持っています。
+新しい文の始まりが期待されているときに、コンパイラは
+以下の例のような = 記号で始まっている語を見つけると:
 
     =head1 Here There Be Pods!
 
@@ -1400,8 +1400,8 @@ text is described in L<perlpod>.
 
 =end original
 
-���Υƥ����Ȥȡ�C<=cut> �ǻϤޤ�ԤޤǤ����Ƥ�̵�뤷�ޤ���
-�֤�����ƥ����Ȥν񼰤� L<perlpod> ����������Ƥ��ޤ���
+そのテキストと、C<=cut> で始まる行までの内容を無視します。
+間に入るテキストの書式は L<perlpod> で説明されています。
 
 =begin original
 
@@ -1410,8 +1410,8 @@ and your documentation text freely, as in
 
 =end original
 
-����ˤ�äơ������������ɤȥɥ�����ȤȤ�ʲ��˼�����Τ褦��
-��ͳ�˺����뤳�Ȥ��Ǥ���褦�ˤʤ�ޤ���
+これによって、ソースコードとドキュメントとを以下に示す例のように
+自由に混ぜることができるようになります。
 
     =item snazzle($)
 
@@ -1436,12 +1436,12 @@ ignored by both the compiler and the translators.
 
 =end original
 
-����ѥ���ϥѥ饰��դ������ pod ���������פ����ä��Ȥ��Ƥ⤽���
-ǧ���Ǥ���Τˡ�pod �ȥ�󥹥졼���� pod �ؼ��ҤǻϤޤäƤ���
-�ѥ饰��դΤߤ����ܤ��٤�(����Ϲ�ʸ���Ϥ��ñ�ˤ��뤿��Ǥ�)��
-����Ȥ������Ȥ����դ��Ʋ�������
-�Ĥޤꡢ�ʲ�����ˤ��� "secret stuff" �ϥ���ѥ��餫��⡢
-�ȥ�󥹥졼�������̵�뤵���Ȥ������ȤǤ���
+コンパイラはパラグラフの途中に pod エスケープがあったとしてもそれを
+認識できるのに、pod トランスレータは pod 指示子で始まっている
+パラグラフのみに注目すべき(これは構文解析を簡単にするためです)で
+あるということに注意して下さい。
+つまり、以下の例にある "secret stuff" はコンパイラからも、
+トランスレータからも無視されるということです。
 
     $a=3;
     =secret stuff
@@ -1457,10 +1457,10 @@ the compiler will become pickier.
 
 =end original
 
-������� C<warn()> �Τ褦�ʤ�Τ���������Ϥä�̵�뤵���Ȥ������Ȥ�
-��¸���٤��ǤϤ���ޤ���
-���٤Ƥ� pod �ȥ�󥹥졼�������Τ褦�˿����񤦤櫓�ǤϤ���ޤ��󤷡�
-����ѥ���Ͼ��褳���̵�뤷�ʤ��褦�ˤʤ뤫�⤷��ޤ���
+この例の C<warn()> のようなものが、将来に渡って無視されるということに
+依存すべきではありません。
+すべての pod トランスレータがそのように振る舞うわけではありませんし、
+コンパイラは将来これを無視しないようになるかもしれません。
 
 =begin original
 
@@ -1469,8 +1469,8 @@ of code.
 
 =end original
 
-pod �ؼ��Ҥ򡢥����ɤΰ������ü���᤯�����ȥ����Ȥ��뤿���
-�Ȥ����Ȥ�Ǥ��ޤ���
+pod 指示子を、コードの一部を手っ取り早くコメントアウトするために
+使うこともできます。
 
 =head2 Plain Old Comments (Not!)
 X<comment> X<line> X<#> X<preprocessor> X<eval>
@@ -1485,11 +1485,11 @@ C preprocessors: it matches the regular expression
 
 =end original
 
-C �Υץ�ץ����å���Ʊ���褦�ˡ�Perl �ϹԻؼ��Ҥ�����Ǥ��ޤ���
-�����Ȥ����Ȥˤ�äơ����顼��å�������ٹ��å������ˤ���
-�ե�����̾����ֹ�����椹�뤳�Ȥ��Ǥ��ޤ�
-(�äˡ�C<eval()> �ǽ��������ʸ����Τ����)��
-���λ��Ȥߤι�ʸ�� C �Υץ�ץ����å��ȤۤȤ��Ʊ���ǡ�����ɽ��:
+C のプリプロセッサと同じように、Perl は行指示子を処理できます。
+これを使うことによって、エラーメッセージや警告メッセージにある
+ファイル名や行番号を制御することができます
+(特に、C<eval()> で処理される文字列のために)。
+この仕組みの構文は C のプリプロセッサとほとんど同じで、正規表現:
 
     # example: '# line 42 "new_filename.plx"'
     /^\#   \s*
@@ -1504,8 +1504,8 @@ the optional filename (specified with or without quotes).
 
 =end original
 
-�˥ޥå�������Τ� C<$1> �����ιԤι��ֹ�Ȥʤꡢ��ά���뤳�Ȥ�Ǥ���
-C<$3> ��(�������Ȥ��꤫�ʤ��ǻ��ꤵ�줿)�ե�����̾�Ȥʤ�ޤ���
+にマッチしたものの C<$1> が次の行の行番号となり、省略することもできる
+C<$3> は(クォートありかなしで指定された)ファイル名となります。
 
 =begin original
 
@@ -1516,10 +1516,10 @@ to cause line number collisions in code you'd like to debug later.
 
 =end original
 
-�Իؼ��ҤˤϤ��ʤ����餫�ʵ�������ޤ���
-�ǥХå��ȥץ��ե�����ϡ�Ϳ����줿�ե����������ι��ֹ���Ф��Ƹ��줿
-�ǿ��Υ������ԤΤߤ�ɽ�����ޤ���
-���ȤǥǥХå������������ɤǤϹ��ֹ�ξ��ͤ������ʤ��褦�����դ���٤��Ǥ���
+行指示子にはかなり明らかな技があります。
+デバッガとプロファイラは、与えられたファイルの特定の行番号に対して現れた
+最新のソース行のみを表示します。
+あとでデバッグしたいコードでは行番号の衝突が起きないように注意するべきです。
 
 =begin original
 
@@ -1528,7 +1528,7 @@ shell:
 
 =end original
 
-���ޥ�ɥ�����ǥ����פ��뤳�ȤΤǤ�����򤤤��Ĥ��󤲤ޤ�:
+コマンドシェルでタイプすることのできる例をいくつか挙げます:
 
     % perl
     # line 200 "bzzzt"

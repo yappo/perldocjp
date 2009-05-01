@@ -9,7 +9,7 @@ perldiag - various Perl diagnostics
 
 =end original
 
-perldiag - ���ޤ��ޤ� Perl ���ǥ�å�����
+perldiag - さまざまな Perl 診断メッセージ
 
 =head1 DESCRIPTION
 
@@ -20,8 +20,8 @@ desperation):
 
 =end original
 
-�����Υ�å������ϰʲ��Τ褦��ʬ�व��ޤ� (�����٤��������
-�¤٤Ƥ���ޤ�):
+これらのメッセージは以下のように分類されます (重要度が増す順に
+並べてあります):
 
 =begin original
 
@@ -35,13 +35,13 @@ desperation):
 
 =end original
 
-    (W) �ٹ� (���ץ����)
-    (D) ��侩 (���ץ����)
-    (S) ����ʷٹ� (�ǥե����)
-    (F) ��̿Ū���顼 (�ȥ�åײ�ǽ)
-    (P) ������Ϥ��Τʤ��������顼 (�ȥ�åײ�ǽ)
-    (X) ������̿Ū���顼 (�ȥ�å��Բ�ǽ)
-    (A) �������顼��å����� (Perl �ʳ����������줿���)
+    (W) 警告 (オプション)
+    (D) 非推奨 (オプション)
+    (S) 重大な警告 (デフォルト)
+    (F) 致命的エラー (トラップ可能)
+    (P) 起こるはずのない内部エラー (トラップ可能)
+    (X) 重大致命的エラー (トラップ不可能)
+    (A) 外部エラーメッセージ (Perl 以外で生成されたもの)
 
 =begin original
 
@@ -50,8 +50,8 @@ The majority of messages from the first three classifications above
 
 =end original
 
-�嵭�Τ������ǽ�λ��� (W, D, S) ��ʬ�व����å�����������ʬ��
-C<warings> �ץ饰�ޤ�����Ǥ��ޤ���
+上記のうち、最初の三つ (W, D, S) に分類されるメッセージの大部分は
+C<warings> プラグマで制御できます。
 
 =begin original
 
@@ -61,8 +61,8 @@ below.
 
 =end original
 
-��å������� C<warnings> �ץ饰�ޤ�����Ǥ����硢
-�ٹ𥫥ƥ���ϰʲ���������ʬ��ʸ���ȶ��˵�����Ƥ��ޤ���
+メッセージが C<warnings> プラグマで制御できる場合、
+警告カテゴリは以下の説明で分類文字と共に記されています。
 
 =begin original
 
@@ -73,11 +73,11 @@ of printing it.  See L<perlvar>.
 
 =end original
 
-C<warnings> �ץ饰�ޤ� B<-w> �� B<-W> �Υ��ץ�����Ȥ����ɲäηٹ�
-ͭ���ˤʤ�ޤ���
-�ٹ�ϡ�ɽ�������Ѥ��˷ٹ𤬽Ф뤿�Ӥ˸ƤӽФ���륵�֥롼����ؤ�
-��ե���󥹤� C<$SIG{__WARN__}> �˥��åȤ��뤳�Ȥ���ª�Ǥ��ޤ���
-L<perlvar> �򻲾Ȥ��Ƥ���������
+C<warnings> プラグマか B<-w> と B<-W> のオプションを使うと追加の警告が
+有効になります。
+警告は、表示する変わりに警告が出るたびに呼び出されるサブルーチンへの
+リファレンスを C<$SIG{__WARN__}> にセットすることで捕捉できます。
+L<perlvar> を参照してください。
 
 =begin original
 
@@ -86,8 +86,8 @@ with the C<warnings> pragma or the B<-X> switch.
 
 =end original
 
-�ǥե���ȤǤ� C<warnings> �ץ饰�ޤ� B<-X> ���ץ���������Ū��
-̵���ˤ���ʤ��¤ꡢ�ٹ�Ͼ��ͭ���Ǥ���
+デフォルトでは C<warnings> プラグマか B<-X> オプションで明示的に
+無効にされない限り、警告は常に有効です。
 
 =begin original
 
@@ -98,11 +98,11 @@ See L<warnings>.
 
 =end original
 
-�ȥ�åײ�ǽ�ʥ��顼��ɾ���黻�Ҥ�Ȥäƥȥ�åפǤ��ޤ���
-L<perlfunc/eval> �򻲾Ȥ��Ƥ���������
-�ۤȤ�����Ƥξ�硢�ٹ�� C<warnings> �ץ饰�ޤ�Ȥ����Ȥ�
-����Ū��̵���ˤ�������̿Ū���顼�˾��ʤ�������Ǥ��ޤ���
-L<warnings> �򻲾Ȥ��Ƥ���������
+トラップ可能なエラーは評価演算子を使ってトラップできます。
+L<perlfunc/eval> を参照してください。
+ほとんど全ての場合、警告は C<warnings> プラグマを使うことで
+選択的に無効にしたり致命的エラーに昇格させたりできます。
+L<warnings> を参照してください。
 
 =begin original
 
@@ -115,12 +115,12 @@ letter.
 
 =end original
 
-��å���������ʸ����ʸ����̵�뤷�ƥ���ե��٥åȽ���¤�Ǥ��ޤ���
-��������ˤϰ���Ū�ʤ�Τ⤢��ޤ���
-�Ѳ�������ʬ�� %s �ޤ��Ϥ���¾�� printf ���������ɽ���򤷤Ƥ��ޤ���
-������ɽ���䡢����¾�α�ʸ���ʳ���ʸ�����¤ӽ�˴ؤ��Ƥ�
-̵�뤵��Ƥ��ޤ���
-��å�������õ���ˤϡ���ʸ���ʳ���̵�뤷�Ƥ���������
+メッセージは大文字小文字を無視してアルファベット順に並んでいます。
+これらの中には一般的なものもあります。
+変化する部分は %s またはその他の printf スタイルの表記をしています。
+これらの表記や、その他の英文字以外の文字は並び順に関しては
+無視されています。
+メッセージを探すには、英文字以外は無視してください。
 
 =over 4
 
@@ -134,9 +134,9 @@ L<perlfunc/accept>.
 
 =end original
 
-(W closed) �����������줿�����åȤ� accept ��Ԥʤ����Ȥ��ޤ�����
-socket() �θƤӽФ����ˡ��ֵ��ͤΥ����å���˺�줿�ΤǤϤ���ޤ��󤫡�
-L<perlfunc/accept> �򻲾Ȥ��Ƥ���������
+(W closed) クローズされたソケットに accept を行なおうとしました。
+socket() の呼び出し時に、返却値のチェックを忘れたのではありませんか。
+L<perlfunc/accept> を参照してください。
 
 =item Allocation too large: %lx
 
@@ -146,7 +146,7 @@ L<perlfunc/accept> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(X) MS-DOS �ޥ���Ǥϡ�64K ��ۤ�����ꥢ�������Ȥ򤪤��ʤ��ޤ���
+(X) MS-DOS マシンでは、64K を越えるメモリアロケートをおこなえません。
 
 =item '!' allowed only after types %s
 
@@ -157,9 +157,9 @@ See L<perlfunc/pack>.
 
 =end original
 
-(F) pack() �� unpack() �Ǥ� '!' ������Υ����פθ�ˤΤ�
-�Ĥ��뤳�Ȥ��Ǥ��ޤ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) pack() や unpack() での '!' は特定のタイプの後にのみ
+つけることができます。
+L<perlfunc/pack> を参照してください。
 
 =item Ambiguous call resolved as CORE::%s(), qualify as such or use &
 
@@ -172,10 +172,10 @@ subroutine is not imported.
 
 =end original
 
-(W ambiguous) ����������֥롼�����̾���� Perl �Υ�����ɤ�Ʊ���ǡ�
-�ɤ��餫��ƤӽФ�����˽����ʤ���̾����ȤäƤ��ޤ���
-Perl �ϡ����֥롼���󤬥���ݡ��Ȥ��줿��ΤǤϤʤ��Τǡ�
-�Ȥ߹��ߤΤ�Τ�ƤӽФ����Ȥˤ��ޤ�����
+(W ambiguous) 定義したサブルーチンの名前が Perl のキーワードと同じで、
+どちらかを呼び出すために修飾なしで名前を使っています。
+Perl は、サブルーチンがインポートされたものではないので、
+組み込みのものを呼び出すことにしました。
 
 =begin original
 
@@ -186,11 +186,11 @@ imported with the C<use subs> pragma).
 
 =end original
 
-���֥롼����ƤӽФ��Ȥ��Ʋ�᤹�뤳�Ȥ��������뤿��ˤϡ�
-���֥롼����̾�����˥���ѥ���ɤ�Ĥ��뤫��̾����ѥå�����̾��
-�������Ƥ���������
-¾����ˡ�Ȥ��ơ����֥롼����򥤥�ݡ��Ȥ���(���뤤�� C<use subs>
-�ץ饰�ޤ�Ȥäƥ���ݡ��Ȥ��줿�դ�򤹤�)��ˡ�⤢��ޤ���
+サブルーチン呼び出しとして解釈することを強制させるためには、
+サブルーチン名の前にアンパサンドをつけるか、名前をパッケージ名で
+修飾してください。
+他の方法として、サブルーチンをインポートする(あるいは C<use subs>
+プラグマを使ってインポートされたふりをする)方法もあります。
 
 =begin original
 
@@ -201,10 +201,10 @@ L<attributes>).
 
 =end original
 
-�ٹ�ʤ��� Perl �黻�ҤȤ��Ʋ�ᤵ���뤿��ˤϡ�(C<CORE::log($x)> �Τ褦��)
-�黻�Ҥ� C<CORE::> ��Ƭ����Ĥ��뤫�����֥롼����򥪥֥�������
-�᥽�å�(L<perlsub/"Subroutine Attributes"> �� L<attributes> ��
-���Ȥ��Ƥ�������)�Ȥ���������Ƥ���������
+警告なしに Perl 演算子として解釈させるためには、(C<CORE::log($x)> のように)
+演算子に C<CORE::> 接頭辞をつけるか、サブルーチンをオブジェクト
+メソッド(L<perlsub/"Subroutine Attributes"> や L<attributes> を
+参照してください)として定義してください。
 
 =item Ambiguous use of %s resolved as %s
 
@@ -216,10 +216,10 @@ a missing quote, operator, parenthesis pair or declaration.
 
 =end original
 
-(W ambiguous)(S) ���������ʤ����ͤ��Ƥ���褦�ˤϲ��Ǥ��ʤ���Τ�
-����ޤ�����
-���̤ϡ���­���Ƥ��륯�����ȡ��黻�ҡ����ä���������ɲä��뤳�Ȥ�
-���ʤ��ñ�ˤ����ޤ������äǤ��ޤ���
+(W ambiguous)(S) 何か、あなたが考えているようには解釈できないものが
+ありました。
+普通は、不足しているクォート、演算子、かっこ、宣言を追加することで
+かなり簡単にあいまいさを解消できます。
 
 =item '|' and '<' may not both be specified on command line
 
@@ -231,12 +231,12 @@ redirect STDIN using '<'.  Only one STDIN stream to a customer, please.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�STDIN ���ѥ��פ�
-���뤳�Ȥ�ȯ�����ޤ������������ '<' ��Ȥä� STDIN �������쥯�Ȥ��褦��
-���ޤ�����
-STDIN ���ȥ꡼��ϰ�Ĥ����ˤ��Ƥ���������
-���ꤤ���ޤ���
+(F) VMS 特有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、STDIN がパイプで
+あることを発見しましたが、さらに '<' を使って STDIN をリダイレクトしようと
+しました。
+STDIN ストリームは一つだけにしてください。
+お願いします。
 
 =item '|' and '>' may not both be specified on command line
 
@@ -250,13 +250,13 @@ which 'splits' output into two streams, such as
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�STDOUT ��
-�ե������¾�Υ��ޥ�ɤؤΥѥ��פ�ξ���˥�����쥯�Ȥ��褦�Ȥ��Ƥ����
-Ƚ�Ǥ��ޤ�����
-�ɤ��餫������ɬ�פ�����ޤ������ʲ��Τ褦�˽��Ϥ���ĤΥ��ȥ꡼���
-��ʬ��פ���ץ������� Perl ������ץȤ˥ѥ��פ��뤳�Ȥ�ߤ���Τ�
-���⤢��ޤ���
+(F) VMS 特有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、STDOUT を
+ファイルと他のコマンドへのパイプと両方にリダイレクトしようとしていると
+判断しました。
+どちらかを選ぶ必要がありますが、以下のように出力を二つのストリームに
+「分割」するプログラムや Perl スクリプトにパイプすることを止めるものは
+何もありません。
 
     open(OUT,">$ARGV[0]") or die "Can't write to $ARGV[0]: $!";
     while (<STDIN>) {
@@ -279,13 +279,13 @@ alternatives.
 
 =end original
 
-(W misc) �ѥ�����ޥå� (//), �ִ� (s///), ʸ���ִ�
-(tr///) �黻�Ҥϥ������ͤ��Ф���ư��ޤ���
-�����������ϥå����Ŭ�Ѥ���ȡ������ϥå���򥹥����� --
-�����Ĺ�����ϥå�����礭���ξ��� -- ���Ѵ��������Υ������ͤ��Ф���
-ư��ޤ���
-����Ϥ����餯���������ȤȤϰ㤦�Ǥ��礦��
-���ذƤˤĤ��Ƥ� L<perlfunc/grep> �� L<perlfunc/map> �򻲾Ȥ��Ƥ���������
+(W misc) パターンマッチ (//), 置換 (s///), 文字置換
+(tr///) 演算子はスカラ値に対して動作します。
+これらを配列やハッシュに適用すると、配列やハッシュをスカラ値 --
+配列の長さかハッシュの大きさの情報 -- に変換し、そのスカラ値に対して
+動作します。
+これはおそらくしたいこととは違うでしょう。
+代替案については L<perlfunc/grep> と L<perlfunc/map> を参照してください。
 
 =item Args must match #! line
 
@@ -298,11 +298,11 @@ for example, turn C<-w -U> into C<-wU>.
 
 =end original
 
-(F) setuid ���ߥ�졼���Ǥϡ�Perl ��ư�����Ȥ��ΰ����ȡ�
-#! �ιԤǻ��ꤵ�줿�����ϥޥå����뤳�Ȥ��׵ᤵ��ޤ���
-#! �Ԥ� 1 �������¤����륷���ƥब����Τǡ�
-�Ȥ߹�碌�����å����ƤߤƤ�������;
-�㤨�С�C<-w -U> �� C<-wU> �ˤ��Ƥ���������
+(F) setuid エミュレータでは、Perl を起動したときの引数と、
+#! の行で指定された引数はマッチすることが要求されます。
+#! 行の 1 引数制限があるシステムがあるので、
+組み合わせスイッチを試してみてください;
+例えば、C<-w -U> を C<-wU> にしてください。
 
 =item Arg too short for msgsnd
 
@@ -312,8 +312,8 @@ for example, turn C<-w -U> into C<-wU>.
 
 =end original
 
-(F) msgsnd() ���Ϥ�ʸ����ϡ����ʤ��Ȥ� sizeof(long) ��
-Ĺ����ɬ�פǤ���
+(F) msgsnd() に渡す文字列は、少なくとも sizeof(long) の
+長さが必要です。
 
 =item %s argument is not a HASH or ARRAY element
 
@@ -323,8 +323,8 @@ for example, turn C<-w -U> into C<-wU>.
 
 =end original
 
-(F) exists() �ΰ����ϡ�
-�ʲ��Τ褦�ʥϥå�������ǤǤʤ���Фʤ�ޤ���
+(F) exists() の引数は、
+以下のようなハッシュの要素でなければなりません。
 
     $foo{$bar}
     $ref->{"susie"}[12]
@@ -338,7 +338,7 @@ such as:
 
 =end original
 
-(F) delete() �ΰ����ϰʲ��Τ褦�˥ϥå��夫��������ǤǤ��뤫:
+(F) delete() の引数は以下のようにハッシュか配列の要素であるか:
 
     $foo{$bar}
     $ref->{"susie"}[12]
@@ -349,7 +349,7 @@ or a hash or array slice, such as:
 
 =end original
 
-���뤤�ϰʲ��Τ褦�˥ϥå��夫����Υ��饤���Ǥʤ���Фʤ�ޤ���:
+あるいは以下のようにハッシュか配列のスライスでなければなりません:
 
     @foo[$bar, $baz, $xyzzy]
     @{$ref->[12]}{"susie", "queue"}
@@ -364,9 +364,9 @@ error.
 
 =end original
 
-(F) C<exists &sub> �η��� exists() �ΰ����ϥ��֥롼����ƤӽФ��ǤϤʤ���
-���֥롼����̾�Ǥʤ���Фʤ�ޤ���
-C<exists &sub()> �Ȥ���Ȥ��Υ��顼����������ޤ���
+(F) C<exists &sub> の形の exists() の引数はサブルーチン呼び出しではなく、
+サブルーチン名でなければなりません。
+C<exists &sub()> とするとこのエラーが生成されます。
 
 =item Argument "%s" isn't numeric%s
 
@@ -378,10 +378,10 @@ will identify which operator was so unfortunate.
 
 =end original
 
-(W numeric) �����˼�����ʸ����ϡ����ͤ�ɬ�פʱ黻�Ҥΰ����Ȥ��ơ�
-Ϳ�����ޤ�����
-�����褱��С����Υ�å������ˤ�äơ��ɤα黻�Ҥ�
-����Ȥʤä������狼��ޤ���
+(W numeric) ここに示した文字列は、数値が必要な演算子の引数として、
+与えられました。
+運がよければ、このメッセージによって、どの演算子が
+問題となったかがわかります。
 
 =item Array @%s missing the @ in argument %d of %s()
 
@@ -392,9 +392,9 @@ spots.  This is now heavily deprecated.
 
 =end original
 
-(D deprecated) �����˸Ť� Perl �Ǥϡ����ˤ�äƤϡ�����̾�� @ ��
-��ά�Ǥ��ޤ�����
-���ξ�ά�ϡ��ߤ�Ƥ���������
+(D deprecated) 本当に古い Perl では、場所によっては、配列名の @ を
+省略できました。
+この省略は、止めてください。
 
 =item assertion botched: %s
 
@@ -404,7 +404,7 @@ spots.  This is now heavily deprecated.
 
 =end original
 
-(P) Perl ����°�� malloc �롼�ƥ����������顼�򵯤����ޤ�����
+(P) Perl に付属の malloc ルーティンが内部エラーを起こしました。
 
 =item Assertion failed: file "%s"
 
@@ -414,8 +414,8 @@ spots.  This is now heavily deprecated.
 
 =end original
 
-(P) ����Ū�ʥ���������󤬼��Ԥ��ޤ�����
-����� file ��Ĵ�٤�ɬ�פ�����ޤ���
+(P) 一般的なアサーションが失敗しました。
+問題の file を調べる必要があります。
 
 =item Assignment to both a list and a scalar
 
@@ -427,9 +427,9 @@ know which context to supply to the right side.
 
 =end original
 
-(F) ���黻�Ҥ�������Ԥʤ����ˤϡ�2 �Ĥ�ΰ����ȡ�3 �Ĥ�ΰ����ϡ�
-�Ȥ�˥����餫���Ȥ�˥ꥹ�ȤǤʤ���Фʤ�ޤ���
-�����Ǥʤ��ȡ�Perl �ϱ��դΥ���ƥ����Ȥ���뤳�Ȥ��Ǥ��ޤ���
+(F) 条件演算子へ代入を行なう場合には、2 つめの引数と、3 つめの引数は、
+ともにスカラか、ともにリストでなければなりません。
+そうでないと、Perl は右辺のコンテキストを決めることができません。
 
 =item Negative offset to vec in lvalue context
 
@@ -440,8 +440,8 @@ greater than or equal to zero.
 
 =end original
 
-(F) �����ͥ���ƥ����Ȥ� vec ���ƤӽФ��줿�Ȥ���
-����ܤΰ����� 0 �ʾ�Ǥʤ���Фʤ�ޤ���
+(F) 左辺値コンテキストで vec が呼び出されたとき、
+二つ目の引数は 0 以上でなければなりません。
 
 =item Attempt to free non-arena SV: 0x%lx
 
@@ -453,9 +453,9 @@ outside any of those arenas.
 
 =end original
 
-(P internal) ���٤Ƥ� SV ���֥������Ȥϡ�exit ���˥����٥����쥯�����
-�Ԥʤ��륢�꡼�ʤ˳�����Ƥ�褦�ˤʤäƤ��ޤ���
-���� SV �����������ä����꡼�ʤ����äƤ��ʤ����Ȥ������Ĥ���ޤ�����
+(P internal) すべての SV オブジェクトは、exit 時にガーベジコレクションが
+行なわれるアリーナに割り当てるようになっています。
+ある SV が、そういったアリーナに入っていないことが、見つかりました。
 
 =item Attempt to free nonexistent shared string
 
@@ -468,11 +468,11 @@ of a string that can no longer be found in the table.
 
 =end original
 
-(P internal) Perl �ϥ��ȥ졼������ӥϥå��奭���Ȥ���¾��
-ʸ����ؤΥ����������Ŭ�����뤿��ˡ�ʸ����λ��ȿ��ơ��֥��
-�������Ƥ��ޤ���
-�����ï�����⤦�ơ��֥�ˤʤ�ʸ����λ��ȥ�����Ȥ򸺤餽����
-�������Ȥ򼨤��ޤ���
+(P internal) Perl はストレージおよびハッシュキーとその他の
+文字列へのアクセスを最適化するために、文字列の参照数テーブルを
+管理しています。
+これは誰かがもうテーブルにない文字列の参照カウントを減らそうと
+したことを示します。
 
 =item Attempt to free temp prematurely
 
@@ -486,12 +486,12 @@ try to free it.
 
 =end original
 
-(W debugging) ���Ǥ����ͤϡ�free_tmps() �롼�ƥ���ǲ��������褦��
-�ʤäƤ��ޤ���
-���Υ�å������ϡ�free_tmps() �롼�ƥ�������˲���Τ�����SV ��
-�������褦�Ȥ��Ƥ��뤳�Ȥ򼨤��Ƥ��ơ�����ϡ�free_tmps() ��
-�������褦�Ȥ����Ȥ��ˤϡ��ɤ�����⻲�Ȥ���Ƥ��ʤ��������
-�������뤳�Ȥˤʤ�Ȥ������ȤǤ���
+(W debugging) 消滅する値は、free_tmps() ルーティンで解放されるように
+なっています。
+このメッセージは、free_tmps() ルーティンの前に何ものかが、SV を
+解放しようとしていることを示していて、これは、free_tmps() が
+解放しようとしたときには、どこからも参照されていないスカラを
+解放することになるということです。
 
 =item Attempt to free unreferenced glob pointers
 
@@ -501,8 +501,8 @@ try to free it.
 
 =end original
 
-(P internal) ����ܥ�Υ����ꥢ���ˤĤ��ơ����ȥ�����Ȥ��ͤ���������
-���֤ˤʤ�ޤ�����
+(P internal) シンボルのエイリアスについて、参照カウントの値がおかしな
+状態になりました。
 
 =item Attempt to free unreferenced scalar
 
@@ -518,13 +518,13 @@ corrupted.
 
 =end original
 
-(W) Perl ��������λ��ȥ�����Ȥ�ǥ�����Ȥ��褦�Ȥ��ơ�0 ��
-�ʤ뤫�򸫤��Ȥ��������� 0 �ˤʤäƤ��뤳�Ȥ��狼��ޤ�����
-����ϡ����˲�������Ƥ���٤���ΤǤ��ꡢ�ºݤϡ������餯��
-�������줿��ΤǤ��礦��
-����ϡ�SvREFCNT_dec() ��ɬ�װʾ�˸ƤФ줿����SvREFCNT_inc() ��ɬ�פ�
-�Ȥ��˸ƤФ�ʤ��ä�����SV �����Ǥ��٤���̵���Ȥ��˾��Ǥ��Ƥ��ޤä�����
-����۾�ˤʤä����Ȥ��ͤ����ޤ���
+(W) Perl がスカラの参照カウントをデクリメントしようとして、0 に
+なるかを見たところ、既に 0 になっていることがわかりました。
+これは、既に解放されているべきものであり、実際は、おそらく、
+解放されたものでしょう。
+これは、SvREFCNT_dec() が必要以上に呼ばれたか、SvREFCNT_inc() が必要な
+ときに呼ばれなかったか、SV が消滅すべきで無いときに消滅してしまったか、
+メモリ異常になったことが考えられます。
 
 =item Attempt to join self
 
@@ -536,10 +536,10 @@ to move the join() to some other thread.
 
 =end original
 
-(F) ����åɤ򤽤켫�Ȥ��椫�� join ���褦�Ȥ��ޤ�����
-������Բ�ǽ��ư��Ǥ���
-�ְ�ä�����åɤ� join ���褦�Ȥ��Ƥ��뤫��
-���뤤�� join() ��¾�Υ���åɤ˰�ư������ɬ�פ�����ޤ���
+(F) スレッドをそれ自身の中から join しようとしました。
+これは不可能な動作です。
+間違ったスレッドに join しようとしているか、
+あるいは join() を他のスレッドに移動させる必要があります。
 
 =item Attempt to pack pointer to temporary value
 
@@ -554,11 +554,11 @@ avoid this warning.
 
 =end original
 
-(W pack) (�ؿ��η�̤�׻����줿���Ȥ��ä�)���Ū���ͤ� pack() ��
-"p" �ƥ�ץ졼�Ȥ��Ϥ����Ȥ��ޤ�����
-����ϡ����Ȥ����ߤ�ʸ�ν�λ���Ǥ⡢�������ͤȤʤ����ޤ���
-���ηٹ���򤱤뤿��ˤϡ�pack �ƥ�ץ졼�� "p" �ΰ����Ȥ��ơ�
-��ƥ�뤫�������Х���ͤ�ȤäƤ���������
+(W pack) (関数の結果や計算された式といった)一時的な値を pack() の
+"p" テンプレートに渡そうとしました。
+これは、たとえ現在の文の終了前でも、不正な値となり得ます。
+この警告を避けるためには、pack テンプレート "p" の引数として、
+リテラルかグローバルな値を使ってください。
 
 =item Attempt to use reference as lvalue in substr
 
@@ -570,10 +570,10 @@ dereference it first.  See L<perlfunc/substr>.
 
 =end original
 
-(W substr) �����ͤȤ��ƻȤ��� substr() �� 1 ���ܤΰ����Ȥ��ƥ�ե���󥹤�
-�Ϥ��ޤ���; ����Ϥ���̯�ʤ��ȤǤ���
-�����餯�Ϥޤ��ǥ�ե���󥹤���Τ�˺�줿�ΤǤ��礦��
-L<perlfunc/substr> �򻲾Ȥ��Ƥ���������
+(W substr) 左辺値として使われる substr() の 1 番目の引数としてリファレンスを
+渡しました; これはやや奇妙なことです。
+おそらくはまずデリファレンスするのを忘れたのでしょう。
+L<perlfunc/substr> を参照してください。
 
 =item Bad arg length for %s, is %d, should be %d
 
@@ -586,10 +586,10 @@ S<sizeof(struct shmid_ds *)>.
 
 =end original
 
-(F) msgctl()��semctl()��shmctl() �Τ����줫�ˡ��ְ�ä��������ΥХåե���
-�Ϥ��Ƥ��ޤ��ޤ�����
-C �θ������ǽ񤯤ȡ��������������Ϥ��줾�졢sizeof(struct msqid_ds *)��
-sizeof(struct semid_ds *)��sizeof(struct shmid_ds *) �Ǥ���
+(F) msgctl()、semctl()、shmctl() のいずれかに、間違ったサイズのバッファを
+渡してしまいました。
+C の言い方で書くと、正しいサイズはそれぞれ、sizeof(struct msqid_ds *)、
+sizeof(struct semid_ds *)、sizeof(struct shmid_ds *) です。
 
 =item Bad evalled substitution pattern
 
@@ -601,9 +601,9 @@ most likely an unexpected right brace '}'.
 
 =end original
 
-(F)�ִ��Τ�����֤�����ʸ�����ɾ�����뤿��� C</e> ���ץ�������ꤷ��
-���ޤ�����ɾ�����륳���ɤ�ʸˡ���顼������ޤ���;
-�Ǥ⤢�ꤽ���ʤ��Ȥϡ�ͽ�����ʤ����֤˱��椫�ä� '}' �����ä����ȤǤ���
+(F)置換のための置き換え文字列を評価するために C</e> オプションを指定して
+いますが、評価するコードに文法エラーがありました;
+最もありそうなことは、予期しない位置に右中かっこ '}' があったことです。
 
 =item Bad filehandle: %s
 
@@ -615,9 +615,9 @@ open(), or did it in another package.
 
 =end original
 
-(F) �ե�����ϥ�ɥ뤬ɬ�פʤ�Τˡ�����ܥ���Ϥ��ޤ�������
-���Υ���ܥ�ϡ������ȼ���ե�����ϥ�ɥ뤬����ޤ���
-�����餯��open() ��˺�줿�����̤Υѥå������� open() �������Ǥ��礦��
+(F) ファイルハンドルが必要なものに、シンボルを渡しましたが、
+そのシンボルは、それに伴うファイルハンドルがありません。
+おそらく、open() を忘れたか、別のパッケージで open() したかでしょう。
 
 =item Bad free() ignored
 
@@ -629,9 +629,9 @@ setting environment variable C<PERL_BADFREE> to 0.
 
 =end original
 
-(S malloc) �ޤ���malloc() ����Ƥ��ʤ���Τ��Ф��ơ������롼�ƥ���
-free() ��ƤӤޤ�����
-�����Ǥ������Ķ��ѿ� C<PERL_BADFREE> �� 0 �ˤ��뤳�Ȥ�̵�����Ǥ��ޤ���
+(S malloc) まず、malloc() されていないものに対して、内部ルーティンが
+free() を呼びました。
+強制ですが、環境変数 C<PERL_BADFREE> を 0 にすることで無効化できます。
 
 =begin original
 
@@ -641,10 +641,10 @@ which is left unnoticed if C<DB> uses I<forgiving> system malloc().
 
 =end original
 
-���Υ�å����� �ϡ�C<AIX> �� C<OS/2> �Τ褦�ʡ��֥ϡ��ɡ�ưŪ��󥯤�
-�Ԥ������ƥ�� DB_File ��Ȥ��Ȥ��Ф���ɽ������ޤ���
-����� C<DB> �������ƥ�� malloc() ������Ƥ��뤳�Ȥ˵����դ��ʤ�
-C<Berkeley DB> �ΥХ��Ǥ���
+このメッセージ は、C<AIX> や C<OS/2> のような、「ハード」動的リンクを
+行うシステムで DB_File を使うとしばしば表示されます。
+これは C<DB> がシステムの malloc() を許していることに気が付かない
+C<Berkeley DB> のバグです。
 
 =item Bad hash
 
@@ -654,7 +654,7 @@ C<Berkeley DB> �ΥХ��Ǥ���
 
 =end original
 
-(P) �����ϥå���롼�ƥ���ǡ��̥� HV �ݥ��󥿤��Ϥ��줿��Τ�����ޤ�����
+(P) 内部ハッシュルーティンで、ヌル HV ポインタを渡されたものがありました。
 
 =item Bad index while coercing array into hash
 
@@ -666,10 +666,10 @@ See L<perlref>.
 
 =end original
 
-(F) �����ϥå���� 0 ���ܤ����ǤȤ��Ƹ��Ĥ��ä��ϥå�������
-����ǥå��������������Ǥ���
-����ǥå������ͤ� 1 �ʾ�Ǥʤ���Фʤ�ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) 擬似ハッシュの 0 番目の要素として見つかったハッシュの中の
+インデックス検索は不正です。
+インデックスの値は 1 以上でなければなりません。
+L<perlref> を参照してください。
 
 =item Badly placed ()'s
 
@@ -681,8 +681,8 @@ Perl yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� B<csh> �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく B<csh> で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item Bad name after %s::
 
@@ -694,9 +694,9 @@ of quotes, so
 
 =end original
 
-(F) �ѥå������ץ�ե������ǥ���ܥ�̾��񤭻Ϥ�ޤ�������
-���Υ���ܥ뤬��λ���ޤ���Ǥ�����
-�äˡ��������Ȥγ��ǡ��ѿ�Ÿ���ϤǤ��ޤ��󤫤顢
+(F) パッケージプレフィクスでシンボル名を書き始めましたが、
+そのシンボルが終了しませんでした。
+特に、クォートの外で、変数展開はできませんから、
 
     $var = 'myvar';
     $sym = mypack::$var;
@@ -707,7 +707,7 @@ is not the same as
 
 =end original
 
-�ϡ��ʲ���Ʊ���ǤϤ���ޤ���
+は、以下と同じではありません。
 
     $var = 'myvar';
     $sym = "mypack::$var";
@@ -722,9 +722,9 @@ by setting environment variable C<PERL_BADFREE> to 1.
 
 =end original
 
-(S malloc) �����롼���󤬡��ǽ�� malloc() ����Ƥ��ʤ��������Ф���
-realloc() ��ƤӽФ��ޤ�����
-ɬ�ܤǤ������Ķ��ѿ� C<PERL_BADFREE> �� 1 �򥻥åȤ��뤳�Ȥ�̵�����Ǥ��ޤ���
+(S malloc) 内部ルーチンが、最初に malloc() されていない何かに対して
+realloc() を呼び出しました。
+必須ですが、環境変数 C<PERL_BADFREE> に 1 をセットすることで無効化できます。
 
 =item Bad symbol for array
 
@@ -735,8 +735,8 @@ wasn't a symbol table entry.
 
 =end original
 
-(P) ����ܥ�ơ��֥륨��ȥ�ǤϤʤ���Τˡ����󥨥�ȥ����Ͽ����褦��
-�����׵᤬������ޤ�����
+(P) シンボルテーブルエントリではないものに、配列エントリを登録するような
+内部要求があがりました。
 
 =item Bad symbol for filehandle
 
@@ -747,8 +747,8 @@ that wasn't a symbol table entry.
 
 =end original
 
-(P) ����ܥ�ơ��֥륨��ȥ�ǤϤʤ���Τˡ��ե�����ϥ�ɥ륨��ȥ��
-��Ͽ����褦�������׵᤬������ޤ�����
+(P) シンボルテーブルエントリではないものに、ファイルハンドルエントリを
+登録するような内部要求があがりました。
 
 =item Bad symbol for hash
 
@@ -759,8 +759,8 @@ wasn't a symbol table entry.
 
 =end original
 
-(P) ����ܥ�ơ��֥륨��ȥ�ǤϤʤ���Τˡ��ϥå��奨��ȥ��
-��Ͽ����褦�������׵᤬�����ä���
+(P) シンボルテーブルエントリではないものに、ハッシュエントリを
+登録するような内部要求があがった。
 
 =item Bareword found in conditional
 
@@ -772,9 +772,9 @@ of the last argument of the previous construct, for example:
 
 =end original
 
-(W bareword) ����ѥ��餬����郎���ꤵ�����֤����ñ���ȯ�����ޤ�����
-����Ϥ��Ф��С�|| �� && ��ľ���ι�¤�κǸ�ΰ����ΰ����Ȥ���
-�ѡ������줿���Ȥ��̣���ޤ�; �㤨��:
+(W bareword) コンパイラが、条件が想定される位置に裸の単語を発見しました。
+これはしばしば、|| や && が直前の構造の最後の引数の一部として
+パースされたことを意味します; 例えば:
 
     open FOO || die;
 
@@ -785,8 +785,8 @@ a bareword:
 
 =end original
 
-����Ϥޤ������ñ��Ȥ��Ʋ�ᤵ���褦������򥿥��ץߥ��������Ȥ�
-�����Ƥ�����⤢��ޤ�:
+これはまた、裸の単語として解釈されるような定数をタイプミスしたことを
+示している場合もあります:
 
     use constant TYPO => 1;
     if (TYOP) { print "foo" }
@@ -797,7 +797,7 @@ The C<strict> pragma is useful in avoiding such errors.
 
 =end original
 
-C<strict> �ץ饰�ޤϤ��Τ褦�ʥ��顼���ɤ��Τ������Ǥ���
+C<strict> プラグマはこのようなエラーを防ぐのに便利です。
 
 =item Bareword "%s" not allowed while "strict subs" in use
 
@@ -809,9 +809,9 @@ symbol.  Perhaps you need to predeclare a subroutine?
 
 =end original
 
-"strict subs" ��ͭ���ξ�硢���ñ��ϥ��֥롼����μ��̻ҡ�
-�椫�ä����桢����ܥ� "=>" �κ�¦�ǤΤߵ�����ޤ���
-�����餯���֥롼���������������ɬ�פ�����ΤǤ�?
+"strict subs" が有効の場合、裸の単語はサブルーチンの識別子、
+中かっこの中、シンボル "=>" の左側でのみ許されます。
+おそらくサブルーチンを先行宣言する必要があるのでは?
 
 =item Bareword "%s" refers to nonexistent package
 
@@ -823,10 +823,10 @@ you need to predeclare a package?
 
 =end original
 
-(W bareword) C<Foo::> �η��ǽ������줿���ñ�줬�Ȥ��Ƥ��ޤ�����
-����ѥ���Ϥ��ξ��ʳ��Ǥ���̾�����֤��Ȥ��Ƥ������
-ȯ���Ǥ��ޤ���Ǥ�����
-�����餯�ѥå��������칶�������ɬ�פ�����ΤǤ�?
+(W bareword) C<Foo::> の形で修飾された裸の単語が使われていますが、
+コンパイラはこの場所以外でこの名前空間が使われている場所を
+発見できませんでした。
+おそらくパッケージを専攻宣言する必要があるのでは?
 
 =item BEGIN failed--compilation aborted
 
@@ -838,8 +838,8 @@ exited.
 
 =end original
 
-(F) BEGIN ���֥롼�ƥ���μ¹���˥ȥ�å��Բ�ǽ���㳰��ȯ�����ޤ�����
-����ѥ����¨�¤���ߤ������󥿥ץ꥿����ߤ��ޤ���
+(F) BEGIN サブルーティンの実行中にトラップ不可能な例外が発生しました。
+コンパイルは即座に停止し、インタプリタは中止します。
 
 =item BEGIN not safe after errors--compilation aborted
 
@@ -853,12 +853,12 @@ depends on its correct operation, Perl just gave up.
 
 =end original
 
-(F) Perl �ϴ��˥���ѥ��륨�顼��ȯ��������� C<BEGIN {}> ���֥롼����
-(�ޤ��� C<use> �ؼ���(����� C<BEGIN {}> ��ż����ޤ�))��
-ȯ�����ޤ�����
-C<BEGIN {}> ���տޤ����Ķ���(���顼�Τ����)�ݾڤ��줺��
-����³�������ɤ������������˰�¸���Ƥ���ȹͤ�����Τǡ�
-Perl ��ñ������ޤ�����
+(F) Perl は既にコンパイルエラーが発生した後に C<BEGIN {}> サブルーチン
+(または C<use> 指示子(これは C<BEGIN {}> を暗示します))を
+発見しました。
+C<BEGIN {}> が意図した環境は(エラーのために)保証されず、
+引き続くコードは正しい処理に依存していると考えられるので、
+Perl は単に諦めました。
 
 =item \1 better written as $1
 
@@ -872,10 +872,10 @@ there are more than 9 backreferences.
 
 =end original
 
-(W syntax) �ѥ�����γ��Ǥϡ��������Ȥ��ѿ��η���¸�ߤ��ޤ���
-�������Ȥ����Ѥϡ��ִ��α�¦����ʬ�ǰ����ޤ�������������Ū�ˤϡ�
-¾�� Perl �ץ�����ޤ����Ԥ���9 �İʾ�θ������Ȥ�����Ȥ��ˤ�
-���ޤ�ư��롢�ѿ�������Ȥ������ɤ��Ǥ��礦��
+(W syntax) パターンの外では、後方参照は変数の形で存在します。
+後方参照の利用は、置換の右側の部分で扱われますが、スタイル的には、
+他の Perl プログラマが期待し、9 個以上の後方参照があるときにも
+うまく動作する、変数形式を使う方が良いでしょう。
 
 =item Binary number > 0b11111111111111111111111111111111 non-portable
 
@@ -887,9 +887,9 @@ L<perlport> for more on portability concerns.
 
 =end original
 
-(W portable) ���ꤵ�줿 2 �ʿ��� 2**32-1 (4294967295) ��ۤ���Τǡ�
-�����ƥ�֤Ǥΰܿ���������ޤ���
-�ܿ����˴ؤ��뤵��ʤ�ͻ��ˤĤ��Ƥ� L<perlport> �򻲾Ȥ��Ƥ���������
+(W portable) 指定された 2 進数が 2**32-1 (4294967295) を越えるので、
+システム間での移植性がありません。
+移植性に関するさらなる考察については L<perlport> を参照してください。
 
 =item bind() on closed socket %s
 
@@ -900,9 +900,9 @@ check the return value of your socket() call?  See L<perlfunc/bind>.
 
 =end original
 
-(W closed) �����������줿�����åȤ� bind ��Ԥʤ����Ȥ��ޤ�����
-socket() �θƤӽФ����ˡ��ֵ��ͤΥ����å���˺�줿�ΤǤϤ���ޤ��󤫡�
-L<perlfunc/bind> �򻲾Ȥ��Ƥ���������
+(W closed) クローズされたソケットに bind を行なおうとしました。
+socket() の呼び出し時に、返却値のチェックを忘れたのではありませんか。
+L<perlfunc/bind> を参照してください。
 
 =item Bit vector size > 32 non-portable
 
@@ -912,7 +912,7 @@ L<perlfunc/bind> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(W portable) 32 ��ۤ��륵�����Υӥåȥ٥����ϰܿ���������ޤ���
+(W portable) 32 を越えるサイズのビットベクタは移植性がありません。
 
 =item Bizarre copy of %s in %s
 
@@ -923,7 +923,7 @@ copyable.
 
 =end original
 
-(P) ���ԡ��Ǥ��ʤ��������ͤ򥳥ԡ����褦�Ȥ��ޤ�����
+(P) コピーできない内部の値をコピーしようとしました。
 
 =item B<-P> not allowed for setuid/setgid script
 
@@ -934,9 +934,9 @@ which provides a race condition that breaks security.
 
 =end original
 
-(F) C �ץ�ץ����å���������ץȤ򥪡��ץ󤹤�Ȥ��ˤϡ�
-̾���ǥ����ץ󤷤ʤ���Ф����ޤ��󤬡�����ϡ���������»�ʤ��������
-�⤿�餷�ޤ���
+(F) C プリプロセッサがスクリプトをオープンするときには、
+名前でオープンしなければいけませんが、これは、安全性を損なう競合条件を
+もたらします。
 
 =item Buffer overflow in prime_env_iter: %s
 
@@ -948,9 +948,9 @@ which was too long, so it was truncated to the string shown.
 
 =end original
 
-(W) VMS ��ͭ�ηٹ�Ǥ���
-Perl �� %ENV ��ȿ����������桢Ĺ����������̾������ܥ������
-���������Τǡ�ʸ�����ɽ�������褦���ڤ�ͤ���ޤ�����
+(W) VMS 特有の警告です。
+Perl が %ENV を反復する準備中、長すぎる論理名かシンボル定義に
+遭遇したので、文字列は表示したように切り詰められました。
 
 =item Callback called exit
 
@@ -961,8 +961,8 @@ exited by calling exit.
 
 =end original
 
-(F) �����ѥå��������� call_sv() �ǵ�ư���줿���֥롼�ƥ��� exit ��
-�Ƥ�ǽ�λ���ޤ�����
+(F) 外部パッケージから call_sv() で起動されたサブルーティンが exit を
+呼んで終了しました。
 
 =item %s() called too early to check prototype
 
@@ -979,15 +979,15 @@ the warning.  See L<perlsub>.
 
 =end original
 
-(W prototype) �����˥ѡ���������ޤ����������Ƥ���Τ򸫤���
-�ץ��ȥ������դ��δؿ���ƤӽФ��ޤ�������Perl �ϸƤӽФ����ץ��ȥ����פ�
-���äƤ��뤫�ɤ���������å��Ǥ��ޤ���Ǥ�����
-����ˤʤäƤ��륵�֥롼����Υץ��ȥ����������ǽ�������ɲä��뤫��
-Ŭ�ڤʥץ��ȥ����ץ����å���Ԥ�����˥��֥롼���������ƤӽФ�������
-��ư������ɬ�פ�����ޤ���
-�ޤ��ϡ��ؿ����������ƤӽФ��Ƥ��뤳�Ȥ��Τ��ʾ��ϡ�̾��������
-����ѥ���ɤ��դ��뤳�ȤǷٹ�����Ǥ��ޤ���
-L<perlsub> �򻲾Ȥ��Ƥ���������
+(W prototype) 以前にパーサが宣言または定義されているのを見た、
+プロトタイプ付きの関数を呼び出しましたが、Perl は呼び出しがプロトタイプに
+従っているかどうかをチェックできませんでした。
+問題になっているサブルーチンのプロトタイプ宣言を最初の方に追加するか、
+適切なプロトタイプチェックを行うためにサブルーチン定義を呼び出しの前に
+移動させる必要があります。
+または、関数を正しく呼び出していることが確かな場合は、名前の前に
+アンパサンドを付けることで警告を回避できます。
+L<perlsub> を参照してください。
 
 =item / cannot take a count
 
@@ -999,9 +999,9 @@ L<perlfunc/pack>.
 
 =end original
 
-(F) unpack �Υƥ�ץ졼�ȤȤ��ƥ������Ĺʸ����򼨤��Ƥ��ޤ�����
-ʸ�����Ĺ��������Ū�˻��ꤷ�Ƥ��ޤ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) unpack のテンプレートとしてカウント長文字列を示していますが、
+文字列の長さも明示的に指定しています。
+L<perlfunc/pack> を参照してください。
 
 =item Can't bless non-reference value
 
@@ -1012,9 +1012,9 @@ encapsulation of objects.  See L<perlobj>.
 
 =end original
 
-(F) �ϡ��ɥ�ե���󥹤Τߤ� bless �Ǥ��ޤ���
-����ˤ�äơ�Perl �ϥ��֥������ȤΥ��ץ��벽��ֶ����פ��ޤ���
-L<perlobj> �򻲾Ȥ��Ƥ���������
+(F) ハードリファレンスのみが bless できます。
+これによって、Perl はオブジェクトのカプセル化を「強制」します。
+L<perlobj> を参照してください。
 
 =item Can't call method "%s" in empty package "%s"
 
@@ -1026,10 +1026,10 @@ in it, let alone methods.  See L<perlobj>.
 
 =end original
 
-(F) �������᥽�åɤ�ƤӽФ�������ϡ����饹�Ȥ��Ƶ�ǽ����ѥå�������
-�����������Ƥ��ޤ��������Υѥå������ˤϡ������������Ƥ��餺��
-�᥽�åɤ����ˤʤäƤ��ޤ���
-L<perlobj> �򻲾Ȥ��Ƥ���������
+(F) 正しくメソッドを呼び出し、それは、クラスとして機能するパッケージを
+正しく示していますが、そのパッケージには、何も定義されておらず、
+メソッドだけになっています。
+L<perlobj> を参照してください。
 
 =item Can't call method "%s" on an undefined value
 
@@ -1041,9 +1041,9 @@ like this will reproduce the error:
 
 =end original
 
-(F) �᥽�åɸƤӽФ���ʸˡ���Ȥ��Ƥ��ޤ�����
-���֥������ȥ�ե���󥹤��ѥå�����̾�Ǥ���٤��Ȥ�����̤����ͤǤ���
-�ʲ��Τ褦�˽񤯤ȥ��顼���Ƹ����ޤ�:
+(F) メソッド呼び出しの文法が使われていますが、
+オブジェクトリファレンスかパッケージ名であるべきところが未定義値です。
+以下のように書くとエラーが再現します:
 
     $BADREF = undef;
     process $BADREF 1,2,3;
@@ -1060,12 +1060,12 @@ object reference until it has been blessed.  See L<perlobj>.
 
 =end original
 
-(F) �᥽�åɸƤӽФ��ϡ���ʬ���ƤӽФ��줿�ѥå��������ɤ�Ǥ��뤫��
-�Τ�ɬ�פ�����ޤ��������̤ϡ��Ϥ������֥������ȥ�ե���󥹤���
-���ξ����������ޤ��������ξ��ˤϥ��֥������ȥ�ե���󥹤�
-�Ϥ���ޤ���Ǥ�����
-��ե���󥹤ϡ�bless ����ƻϤ�ơ����֥������ȥ�ե���󥹤Ȥʤ�ޤ���
-L<perlobj> �򻲾Ȥ��Ƥ���������
+(F) メソッド呼び出しは、自分が呼び出されたパッケージがどれであるかを
+知る必要があります。　普通は、渡したオブジェクトリファレンスから
+その情報を受け取りますが、この場合にはオブジェクトリファレンスが
+渡されませんでした。
+リファレンスは、bless されて始めて、オブジェクトリファレンスとなります。
+L<perlobj> を参照してください。
 
 =item Can't call method "%s" without a package or object reference
 
@@ -1078,11 +1078,11 @@ Something like this will reproduce the error:
 
 =end original
 
-(F) �᥽�åɸƤӽФ��ι�ʸ���Ѥ��ޤ����������֥������ȥ�ե���󥹡�
-�⤷���ϥѥå�����̾���񤫤��٤����ˡ����֥������ȥ�ե���󥹤�
-�ѥå�����̾���֤��ʤ�������줿�����񤫤�Ƥ��ޤ���
-(�����餯������񤤤Ƥʤ����⤷��ޤ���)
-�ʲ��Τ褦�ʤ�Τϡ����顼�Ȥʤ�ޤ�:
+(F) メソッド呼び出しの構文を用いましたが、オブジェクトリファレンス、
+もしくはパッケージ名が書かれるべき場所に、オブジェクトリファレンスも
+パッケージ名も返さない定義された式が書かれています。
+(おそらく、何も書いてないかもしれません。)
+以下のようなものは、エラーとなります:
 
     $BADREF = 42;
     process $BADREF 1,2,3;
@@ -1097,9 +1097,9 @@ that you can chdir to, possibly because it doesn't exist.
 
 =end original
 
-(F) C<perl -x/foo/bar> �Τ褦�ˤ��Ƶ�ư�����ޤ�������
-C</foo/bar> ��chdir ���뤳�Ȥ��Ǥ��ޤ���
-�����餯��¸�ߤ��ʤ��ΤǤϤʤ��Ǥ��礦����
+(F) C<perl -x/foo/bar> のようにして起動したましたが、
+C</foo/bar> にchdir することができません。
+おそらく、存在しないのではないでしょうか。
 
 =item Can't check filesystem of script "%s" for nosuid
 
@@ -1110,8 +1110,8 @@ nosuid.
 
 =end original
 
-(P) �ʤ���������ץȤ� nosuid ���ɤ�����ե����륷���ƥफ��
-Ĵ�٤뤳�Ȥ��Ǥ��ޤ���
+(P) なぜかスクリプトが nosuid かどうかをファイルシステムから
+調べることができません。
 
 =item Can't coerce array into hash
 
@@ -1123,9 +1123,9 @@ only with arrays that have a hash reference at index 0.
 
 =end original
 
-(F) �ϥå��夬���ꤵ�����������ȤäƤ��ޤ�����
-��������ˤϥ�������ź�������Ѵ����뤿��ξ��󤬤���ޤ���
-���Τ褦�ʤ��Ȥ�ź���� 0 �˥ϥå����ե���󥹤���������ǤΤ߲�ǽ�Ǥ���
+(F) ハッシュが想定される場所で配列を使っていますが、
+この配列にはキーから添え字に変換するための情報がありません。
+このようなことは添え字 0 にハッシュリファレンスがある配列でのみ可能です。
 
 =item Can't coerce %s to integer in %s
 
@@ -1137,9 +1137,9 @@ say things like:
 
 =end original
 
-(F) ������ SV���ä���ʪ�Υ���ܥ�ơ��֥륨��ȥ� (��������) �ϡ�
-1 �Ĥη���α��Ƥ������Ȥ��Ǥ��ޤ���
-�������äơ��ʲ��Τ褦�ˤ��뤳�ȤϤǤ��ޤ���:
+(F) ある種の SV、特に本物のシンボルテーブルエントリ (型グロブ) は、
+1 つの型に留めておくことができません。
+したがって、以下のようにすることはできません:
 
     *foo += 1;
 
@@ -1149,7 +1149,7 @@ You CAN say
 
 =end original
 
-�ʲ��Τ褦�ˤϤǤ��ޤ���:
+以下のようにはできますが:
 
     $foo = *foo;
     $foo += 1;
@@ -1160,7 +1160,7 @@ but then $foo no longer contains a glob.
 
 =end original
 
-$foo �ˤϤ�Ϥ䥰���֤ϻĤäƤ��ޤ���
+$foo にはもはやグロブは残っていません。
 
 =item Can't coerce %s to number in %s
 
@@ -1171,8 +1171,8 @@ $foo �ˤϤ�Ϥ䥰���֤ϻĤäƤ��ޤ���
 
 =end original
 
-(F) ������ SV���ä���ʪ�Υ���ܥ�ơ��֥륨��ȥ� (��������) �ϡ�
-1 �Ĥη���α��Ƥ������Ȥ��Ǥ��ޤ���
+(F) ある種の SV、特に本物のシンボルテーブルエントリ (型グロブ) は、
+1 つの型に留めておくことができません。
 
 =item Can't coerce %s to string in %s
 
@@ -1183,8 +1183,8 @@ $foo �ˤϤ�Ϥ䥰���֤ϻĤäƤ��ޤ���
 
 =end original
 
-(F) ������ SV���ä���ʪ�Υ���ܥ�ơ��֥륨��ȥ� (��������) �ϡ�
-1 �Ĥη���α��Ƥ������Ȥ��Ǥ��ޤ���
+(F) ある種の SV、特に本物のシンボルテーブルエントリ (型グロブ) は、
+1 つの型に留めておくことができません。
 
 =item Can't create pipe mailbox
 
@@ -1195,8 +1195,8 @@ quotas or other plumbing problems.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-�ץ������ϥ���������Ȥ��ڤä���������¾����������αƶ�������ޤ�����
+(F) VMS 特有のエラーです。
+プロセスはクォータを使い切ったか、その他の設備問題の影響を受けました。
 
 =item Can't declare class for non-scalar %s in "%s"
 
@@ -1208,9 +1208,9 @@ for other types of variables in future.
 
 =end original
 
-(S) ���ߤΤȤ������������ѿ��Τߤ� "my" �� "our" �������������
-���饹�����Ҥȶ�������Ǥ��ޤ���
-����ư��Ͼ���ˤ�¾�μ�����ѿ��˳�ĥ�����Ǥ��礦��
+(S) 現在のところ、スカラ変数のみが "my" や "our" 定義の中で特定の
+クラス修飾子と共に定義できます。
+この動作は将来には他の種類の変数に拡張されるでしょう。
 
 =item Can't declare %s in "%s"
 
@@ -1221,9 +1221,9 @@ for other types of variables in future.
 
 =end original
 
-(F) �������ѿ��������ѿ����ϥå����ѿ���������"my" �� "our" �ѿ��Ȥ���
-����Ǥ��ޤ���
-�����ϡ�̾���Ȥ����̾�μ��̻Ҥ�����ʤ���Фʤ�ޤ���
+(F) スカラ変数、配列変数、ハッシュ変数だけが、"my" や "our" 変数として
+宣言できます。
+これらは、名前として通常の識別子を持たなければなりません。
 
 =item Can't do inplace edit: %s is not a regular file
 
@@ -1234,9 +1234,9 @@ a file in /dev, or a FIFO.  The file was ignored.
 
 =end original
 
-(S inplace) /dev �� FIFO �Τ褦�ʡ��ü�ե�������Ф��ơ�B<-i> �����å���
-�Ȥ����Ȥ��ޤ�����
-���Υե�����ϡ�̵�뤵��ޤ�����
+(S inplace) /dev や FIFO のような、特殊ファイルに対して、B<-i> スイッチを
+使おうとしました。
+そのファイルは、無視されました。
 
 =item Can't do inplace edit on %s: %s
 
@@ -1247,7 +1247,7 @@ reason.
 
 =end original
 
-(S inplace) ɽ�����줿��ͳ�ˤ�ꡢ�������ե�����������˼��Ԥ��ޤ�����
+(S inplace) 表示された理由により、新しいファイルの生成に失敗しました。
 
 =item Can't do inplace edit without backup
 
@@ -1259,9 +1259,9 @@ C<-i.bak>, or some such.
 
 =end original
 
-(F) ������� (�����ޤ������ץ󤵤�Ƥ���) �ե�������ɤ⤦�Ȥ����
-���������ʤ� MS-DOS �Τ褦�ʥ����ƥ�Ǽ¹Ԥ��Ƥ��ޤ���
-C<-i.bak> �Τ褦�˥Хå����åפ���ꤷ�Ƥ���������
+(F) 削除した (が、まだオープンされている) ファイルを読もうとすると
+おかしくなる MS-DOS のようなシステムで実行しています。
+C<-i.bak> のようにバックアップを指定してください。
 
 =item Can't do inplace edit: %s would not be unique
 
@@ -1273,10 +1273,10 @@ inplace editing with the B<-i> switch.  The file was ignored.
 
 =end original
 
-(S inplace) �ե����륷���ƥब 14 ʸ�����Ĺ���ե�����̾���б����Ƥ��餺��
-Perl �� B<-i> ���ץ����ˤ�뤽�ξ��Խ��δ֤Υ�ˡ����ʥե�����̾��
-�������Ǥ��ޤ���Ǥ�����
-���Υե������̵�뤵��ޤ���
+(S inplace) ファイルシステムが 14 文字より長いファイル名に対応しておらず、
+Perl は B<-i> オプションによるその場編集の間のユニークなファイル名の
+作成ができませんでした。
+このファイルは無視されます。
 
 =item Can't do {n,m} with n > m before << HERE in regex m/%s/
 
@@ -1288,11 +1288,11 @@ regular expression about where the problem was discovered. See L<perlre>.
 
 =end original
 
-(F) �Ǿ��ͤϺ����Ͱʲ��Ǥʤ���Фʤ�ޤ���
-�⤷������������ɽ���� 0 �󷫤��֤�����Τ˥ޥå����������ʤ顢ñ��
-{0} �Ȥ��Ƥ���������
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 最小値は最大値以下でなければなりません。
+もし、本当に正規表現が 0 回繰り返したものにマッチさせたいなら、単に
+{0} としてください。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Can't do setegid!
 
@@ -1303,8 +1303,8 @@ suidperl.
 
 =end original
 
-(P) suidperl �� setuid ���ߥ�졼���ǲ��餫����ͳ�ˤ�ꡢ
-setegid() �ƤӽФ������Ԥ��ޤ�����
+(P) suidperl の setuid エミュレータで何らかの理由により、
+setegid() 呼び出しが失敗しました。
 
 =item Can't do seteuid!
 
@@ -1314,7 +1314,7 @@ setegid() �ƤӽФ������Ԥ��ޤ�����
 
 =end original
 
-(P) suidperl �� setuid ���ߥ�졼�������餫����ͳ�ˤ�äƼ��Ԥ��ޤ�����
+(P) suidperl の setuid エミュレータが何らかの理由によって失敗しました。
 
 =item Can't do setuid
 
@@ -1329,14 +1329,14 @@ sysadmin why he and/or she removed it.
 
 =end original
 
-(F) ���Υ��顼�ϡ��̾���̤� perl �� setuid ���ߥ�졼�����Τ����
-suidperl ��¹Ԥ��褦�Ȥ��ޤ��������¹ԤǤ��ʤ��ä����Ȥ��̣���ޤ���
-�ä� UNIX �ޥ���� /usr/local/bin �ʤɤǤϡ�perl �μ¹ԥե����뤬��
-perl5.000 �Ȥ���̾���ΤȤ��ˤϡ�Ʊ���ǥ��쥯�ȥ�� sperl5.000 �Ȥ���������
-̾����õ���ޤ���
-�⤷���ե����뤬¸�ߤ��Ƥ���С��¹ԥѡ��ߥå���������å����Ƥ���������
-���Ĥ���Ƥ��ʤ��褦�Ǥ���С������ƥ�����Ԥ����ˡ��櫓��
-�ҤͤƤߤƤ���������
+(F) このエラーは、通常、普通の perl が setuid エミュレーションのために
+suidperl を実行しようとしましたが、実行できなかったことを意味します。
+特に UNIX マシンの /usr/local/bin などでは、perl の実行ファイルが、
+perl5.000 という名前のときには、同じディレクトリで sperl5.000 という形式の
+名前を探します。
+もし、ファイルが存在していれば、実行パーミッションをチェックしてください。
+許可されていないようであれば、システム管理者の方に、わけを
+尋ねてみてください。
 
 =item Can't do waitpid with flags
 
@@ -1347,8 +1347,8 @@ waitpid() without flags is emulated.
 
 =end original
 
-(F) ���Υޥ���ˤϡ�waitpid() �� wait4() �⤢��ޤ���Τǡ�
-�ե饰��̵�� waitpid() �Τߤ����ߥ�졼�Ȳ�ǽ�Ǥ���
+(F) このマシンには、waitpid() も wait4() もありませんので、
+フラグの無い waitpid() のみがエミュレート可能です。
 
 =item Can't emulate -%s on #! line
 
@@ -1360,8 +1360,8 @@ line.
 
 =end original
 
-(F) #! �Ԥˤ��λ����ǰ�̣��ʤ��ʤ������å������ꤵ��ޤ�����
-���Ȥ��С�#! �Ԥ� B<-x> �򤪤��Ƥ��̣������ޤ���
+(F) #! 行にその時点で意味をなさないスイッチが指定されました。
+たとえば、#! 行に B<-x> をおいても意味がありません。
 
 =item Can't exec "%s": %s
 
@@ -1377,13 +1377,13 @@ can't be run for similar reasons.  (Or maybe your system doesn't support
 
 =end original
 
-(W exec) �󼨤�����ͳ�ˤ�äơ�system() �� exec() ��ѥ��ץ����ץ�
-�ƤӽФ��λ��ꤵ�줿�ץ�����ब�¹ԤǤ��ޤ���Ǥ�����
-�ͤ�������ͳ�ˤ�: �ե�����Υѡ��ߥå���󤬴ְ�äƤ��롢
-�ե����뤬 C<$ENV{PATH}> ����ˤʤ�������μ¹ԥե����뤬
-���Υޥ����ѤǤϤʤ���������ץȤ� #! �Ԥ�Ʊ���褦����ͳ�Ǽ¹ԤǤ��ʤ�
-���󥿥ץ꥿��ؤ��Ƥ��롢�Ȥ����褦�ʤ�Τ�����ޤ���
-(���뤤�ϡ����Υ����ƥ�ǡ�#! �����ݡ��Ȥ���Ƥ��ޤ���)
+(W exec) 提示した理由によって、system() や exec() やパイプオープン
+呼び出しの指定されたプログラムが実行できませんでした。
+考えられる理由には: ファイルのパーミッションが間違っている、
+ファイルが C<$ENV{PATH}> の中にない、問題の実行ファイルが
+このマシン用ではない、スクリプトの #! 行が同じような理由で実行できない
+インタプリタを指している、というようなものがあります。
+(あるいは、このシステムで、#! がサポートされていません。)
 
 =item Can't exec %s
 
@@ -1395,9 +1395,9 @@ need to mention "perl" on the #! line somewhere.
 
 =end original
 
-(F) #! �Ԥ˽񤫤줿���Ƥˤ������äơ�Perl �ϼ����줿�ץ�������
-�¹Ԥ��褦�Ȥ��ޤ�����
-�����������ʤ��ΤǤ���С�#! �ԤΤɤ����ˡ�"perl" �Ƚ񤤤Ƥ����Ƥ���������
+(F) #! 行に書かれた内容にしたがって、Perl は示されたプログラムを
+実行しようとしました。
+そうしたくないのであれば、#! 行のどこかに、"perl" と書いておいてください。
 
 =item Can't execute %s
 
@@ -1408,8 +1408,8 @@ found in the PATH did not have correct permissions.
 
 =end original
 
-(F) B<-S> �����å���Ȥ��ޤ�������PATH �˸��Ĥ��ä��¹Ԥ��륹����ץȤ�
-�������ѡ��ߥå����ǤϤ���ޤ���Ǥ�����
+(F) B<-S> スイッチを使いましたが、PATH に見つかった実行するスクリプトが
+正しいパーミッションではありませんでした。
 
 =item Can't find an opnumber for "%s"
 
@@ -1420,8 +1420,8 @@ is no builtin with the name C<word>.
 
 =end original
 
-(F) C<CORE::word> �η���ʸ���� prototype() ��Ϳ�����ޤ�������
-̾�� C<word> ���Ȥ߹��ߤǤϤ���ޤ���
+(F) C<CORE::word> の形の文字列が prototype() に与えられましたが、
+名前 C<word> は組み込みではありません。
 
 =item Can't find label %s
 
@@ -1432,8 +1432,8 @@ possible for us to go to.  See L<perlfunc/goto>.
 
 =end original
 
-(F) �ɤ��ˤ⸫�Ĥ���ʤ���٥�� goto ��Ԥʤ����Ȥ��ޤ�����
-L<perlfunc/goto> �򻲾Ȥ��Ƥ���������
+(F) どこにも見つからないラベルへ goto を行なおうとしました。
+L<perlfunc/goto> を参照してください。
 
 =item Can't find %s on PATH
 
@@ -1444,8 +1444,8 @@ found in the PATH.
 
 =end original
 
-B<-S> ���ץ�����Ȥ��ޤ��������¹Ԥ��륹����ץȤ� PATH ��
-���Ĥ���ޤ���Ǥ�����
+B<-S> オプションを使いましたが、実行するスクリプトは PATH に
+見つかりませんでした。
 
 =item Can't find %s on PATH, '.' not in PATH
 
@@ -1457,10 +1457,10 @@ script exists in the current directory, but PATH prohibits running it.
 
 =end original
 
-(F) B<-S> ���ץ���󤬻Ȥ��ޤ������� PATH �˼¹Ԥ��륹����ץȤ�
-���Ĥ���ޤ��󡣤��뤤�Ͼ��ʤ��Ȥ�Ŭ�ڤʥѡ��ߥå���󤬤���ޤ���
-������ץȤϥ����ȥǥ��쥯�ȥ�ˤϤ���ޤ�����PATH ��
-�����ȥǥ��쥯�ȥ�ϴޤޤ�Ƥ��ޤ���
+(F) B<-S> オプションが使われましたが、 PATH に実行するスクリプトが
+見つかりません。あるいは少なくとも適切なパーミッションがありません。
+スクリプトはカレントディレクトリにはありますが、PATH に
+カレントディレクトリは含まれていません。
 
 =item Can't find string terminator %s anywhere before EOF
 
@@ -1472,10 +1472,10 @@ nesting levels, the following is missing its final parenthesis:
 
 =end original
 
-(F) Perl ��ʸ����ϡ�ʣ���Ԥ��Ϥ뤳�Ȥ��Ǥ��ޤ������Υ�å������ϡ�
-ʸ����򽪤����ڤ�ʸ�������Ĥ���ʤ��ä����Ȥ��̣���ޤ���
-�����ζ��ڤ�ʸ���Ǥϡ��ͥ��Ȥ������Τǡ��ʲ��Ǥϡ��Ǹ�γ�̤�
-̵���ȸ����ޤ�:
+(F) Perl の文字列は、複数行に渡ることができます。このメッセージは、
+文字列を終わる区切り文字が見つからなかったことを意味します。
+括弧類の区切り文字では、ネストを数えるので、以下では、最後の括弧が
+無いと言われます:
 
     print q(The character '(' starts a side comment.);
 
@@ -1487,10 +1487,10 @@ editor will have a way to help you find these characters.
 
 =end original
 
-���Υ��顼���ҥ��ɥ�����Ȥǵ�������硢�Ĥ��������������
-�����ʤ������ޤ�Ǥ��뤫�⤷��ޤ���
-�褤�ץ�������ѥ��ǥ����ˤϡ����Τ褦��ʸ����õ�������ˤʤ���ˡ��
-����ޤ���
+このエラーがヒアドキュメントで起きた場合、閉じタグの前か後に
+見えない空白を含んでいるかもしれません。
+よいプログラマ用エディタには、このような文字を探す助けになる方法が
+あります。
 
 =item Can't find %s property definition %s 
 
@@ -1503,10 +1503,10 @@ possible C<\E>).
 
 =end original
 
-(F) �㤨�� \p{Lu} ��������ʸ�����Τ褦�ˡ�Unicode �ץ��ѥƥ����̣����
-C<\p> ��Ȥ����Ȥ��ޤ�����
-C<\\p> (ñ�� C<\p>) �ޤ��� C<\Q\p> (C<\E> �ޤǤλĤ��ʸ����) ��Ȥä�
-C<\p> �򥨥������פ��Ƥ���������
+(F) 例えば \p{Lu} が全て大文字、のように、Unicode プロパティを意味する
+C<\p> を使おうとしました。
+C<\\p> (単に C<\p>) または C<\Q\p> (C<\E> までの残りの文字列) を使って
+C<\p> をエスケープしてください。
 
 =item Can't fork
 
@@ -1517,8 +1517,8 @@ pipeline.
 
 =end original
 
-(F) �ѥ��ץ饤��򥪡��ץ󤷤褦�Ȥ��ơ�fork ��Ԥʤ����Ȥ��ơ�
-��̿Ū���顼��ȯ�����ޤ�����
+(F) パイプラインをオープンしようとして、fork を行なおうとして、
+致命的エラーが発生しました。
 
 =item Can't get filespec - stale stat buffer?
 
@@ -1542,22 +1542,22 @@ only if some internal code takes stat buffers lightly.)
 
 =end original
 
-(S) VMS ��ͭ�ηٹ�Ǥ���
-����� VMS �ȡ�Perl �����ꤷ�Ƥ��� Unix ��ǥ�Ǥϡ��������������å��˰㤤��
-���뤳�Ȥˤ�äƵ�����ޤ���
-VMS �Ǥϡ��������������å��� stat �Хåե��ΥӥåȤǤϤʤ��ե�����̾�ˤ�ä�
-�Ԥ���Τǡ�ACL �䤽��¾���ݸ��θ����ޤ���
-��ǰ�ʤ��顢Perl �� stat �Хåե������Ƥ�ɬ�פʾ��󤬴ޤޤ�Ƥ���Ȳ��ꤷ�ơ�
-�������������å��롼����ˤϥե����륹�ڥå��ǤϤʤ�������Ϥ��ޤ���
-stat �Хåե��ˤ���ǥХ���̾�� FID ��Ȥäƥե����륹�ڥå���
-�������褦�Ȥ��ޤ���������ϰ���³���� CRTL stat() �롼�����ƤӽФ��ʤ�
-���ˤΤ�ư��ޤ�; �ʤ��ʤ�ǥХ���̾�ϸƽФ���˾�񤭤���뤫��Ǥ���
-���ηٹ𤬽Ф�ȡ�̾���θ��������Ԥ����������������å��롼���������ơ�
-�����Τ�������� FALSE ���֤��ޤ���
-(����: �������������å��롼����� Perl �� C<stat> �黻�Ҥȥե�����
-�ƥ��ȤˤĤ����ΤäƤ���Τǡ�Perl ���ޥ�ɤη�̤Ȥ��Ƥ��ηٹ�򸫤뤳�Ȥ�
-�ʤ��Ϥ��Ǥ�; ��������������Ȥ� stat �Хåե����Ψ�˰��ä����ˤΤ�
-ȯ�����ޤ���)
+(S) VMS 特有の警告です。
+これは VMS と、Perl が仮定している Unix モデルでは、アクセスチェックに違いが
+あることによって起こります。
+VMS では、アクセスチェックは stat バッファのビットではなくファイル名によって
+行われるので、ACL やその他の保護が考慮されます。
+残念ながら、Perl は stat バッファに全ての必要な情報が含まれていると仮定して、
+アクセスチェックルーチンにはファイルスペックではなくこれを渡します。
+stat バッファにあるデバイス名と FID を使ってファイルスペックを
+取得しようとしますが、これは引き続いて CRTL stat() ルーチンを呼び出さない
+場合にのみ動作します; なぜならデバイス名は呼出し毎に上書きされるからです。
+この警告が出ると、名前の検索が失敗し、アクセスチェックルーチンは諦めて、
+安全のためだけに FALSE を返します。
+(注意: アクセスチェックルーチンは Perl の C<stat> 演算子とファイル
+テストについて知っているので、Perl コマンドの結果としてこの警告を見ることは
+ないはずです; これは内部コートが stat バッファを軽率に扱った場合にのみ
+発生します。)
 
 =item Can't get pipe mailbox device name
 
@@ -1568,9 +1568,9 @@ pipe, Perl can't retrieve its name for later use.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-�ѥ��פȤ���Ư���᡼��ܥå����κ����塢��ǻȤ������̾����
-Perl �������Ǥ��ޤ���Ǥ�����
+(F) VMS 特有のエラーです。
+パイプとして働くメールボックスの作成後、後で使うための名前を
+Perl が取得できませんでした。
 
 =item Can't get SYSGEN parameter value for MAXBUF
 
@@ -1581,9 +1581,9 @@ mailbox buffers to be, and didn't get an answer.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-�᡼��ܥå����Хåե���ɤ줯�餤�Ȥ�٤����� $GETSYI ��
-�䤤��碌�ޤ������������������ޤ���Ǥ�����
+(F) VMS 特有のエラーです。
+メールボックスバッファをどれくらいとるべきかを $GETSYI に
+問い合わせましたが、答えが得られませんでした。
 
 =item Can't "goto" into the middle of a foreach loop
 
@@ -1594,9 +1594,9 @@ loop.  You can't get there from here.  See L<perlfunc/goto>.
 
 =end original
 
-(F) "goto" ʸ�� foreach �롼�פ�������ӹ��⤦�Ȥ��ޤ�����
-�������餽���ؤϹԤ��ޤ���
-L<perlfunc/goto> �򻲾Ȥ��Ƥ���������
+(F) "goto" 文で foreach ループの中に飛び込もうとしました。
+ここからそこへは行けません。
+L<perlfunc/goto> を参照してください。
 
 =item Can't "goto" out of a pseudo block
 
@@ -1609,11 +1609,11 @@ See L<perlfunc/goto>.
 
 =end original
 
-(F) "goto" ʸ�ǥ֥��å��Τ褦�˸����뤱��ɤ⡢Ŭ�ڤ�
-�֥��å��ǤϤʤ��Ȥ����������ӽФ����Ȥ��ޤ�����
-��������� sort() �֥��å��䥵�֥롼���󤫤����ӽФ����Ȥ����Ȥ���
-�����ޤ���������ϤǤ��ޤ���
-L<perlfunc/goto> �򻲾Ȥ��Ƥ���������
+(F) "goto" 文でブロックのように見えるけれども、適切な
+ブロックではないところから飛び出そうとしました。
+これは普通 sort() ブロックやサブルーチンから飛び出そうとしたときに
+起きますが、それはできません。
+L<perlfunc/goto> を参照してください。
 
 =item Can't goto subroutine from an eval-string
 
@@ -1625,9 +1625,9 @@ probably don't want to.)
 
 =end original
 
-(F) "goto subroutine" �ƤӽФ��� eval "string" �������ӽФ����Ȥ�
-�Ǥ��ޤ���
-(eval {BLOCK} �������ӽФ����ȤϤǤ��ޤ�����¿ʬ�����������Ϥʤ��Ǥ��礦��)
+(F) "goto subroutine" 呼び出しは eval "string" から飛び出すことは
+できません。
+(eval {BLOCK} から飛び出すことはできますが、多分そうしたくはないでしょう。)
 
 =item Can't goto subroutine outside a subroutine
 
@@ -1640,12 +1640,12 @@ routine anyway.  See L<perlfunc/goto>.
 
 =end original
 
-(F) �빽�ޥ������ "goto subroutine" �θƤӽФ��ϡ����륵�֥롼�ƥ���
-�ƤӽФ����̤Τ�Τ��֤�����������Ǥ���
-ȿʪ�ξ��֤�����夲�뤳�ȤϤǤ��ޤ���
-���̤ˡ������Ԥʤ��Τϡ�AUTOLOAD �롼�ƥ��󤫤�ȴ���Ф��Ȥ�������
-���Ƥ����٤��Ǥ���
-L<perlfunc/goto> �ι�򻲾Ȥ��Ƥ���������
+(F) 結構マジカルな "goto subroutine" の呼び出しは、あるサブルーティン
+呼び出しを別のもので置き換えるだけです。
+反物の状態から作り上げることはできません。
+一般に、これを行なうのは、AUTOLOAD ルーティンから抜け出すときだけに
+しておくべきです。
+L<perlfunc/goto> の項を参照してください。
 
 =item Can't ignore signal CHLD, forcing to default
 
@@ -1660,12 +1660,12 @@ may be running (e.g. cron) is being very careless.
 
 =end original
 
-(W signal) Perl �ϡ�SIGCHLD (SIGCLD �Ȥ��Ƥ��Τ��ޤ�) �����ʥ뤬
-̵�������줿���֤Ǽ¹Ԥ���Ƥ��뤳�Ȥ򸡽Ф��ޤ�����
-���Υ����ʥ뤬̵���������Ȼҥץ������ν�λ���ơ�������Ŭ�ڤ�
-����Ǥ��ʤ��ʤ�Τǡ�Perl �ϥ����ʥ��ǥե�����ͤ˥ꥻ�åȤ��ޤ�����
-���ξ�����ŵ��Ū�ˤ� Perl ��ư��Ƥ���ƥץ������(cron �ʤ�)��
-�ȤƤ������դǤ��뤳�Ȥ򼨤��Ƥ��ޤ���
+(W signal) Perl は、SIGCHLD (SIGCLD としても知られます) シグナルが
+無効化された状態で実行されていることを検出しました。
+このシグナルが無効化されると子プロセスの終了ステータスを適切に
+決定できなくなるので、Perl はシグナルをデフォルト値にリセットしました。
+この状況は典型的には Perl が動作している親プログラム(cron など)が
+とても不注意であることを示しています。
 
 =item Can't "last" outside a loop block
 
@@ -1681,13 +1681,13 @@ L<perlfunc/last>.
 
 =end original
 
-(F) ���ߤΥ֥��å�����æ�Ф��뤿��ˡ�"last" ʸ��¹Ԥ��ޤ�������
-��ǰ�ʤ��Ȥ˥֥��å�����ǤϤ���ޤ���Ǥ�����
-"if" �� "else" �Υ֥��å��ϡ�sort(), map(), grep() �Υ֥��å����㤦�Τ�
-Ʊ�֥͡롼�����ץ֥��å��ǤϤʤ��Τǡ����դ��Ƥ���������
-�����������̤���Ťˤ���С���¦�����̤���1 �٤����롼�פ���֥��å���
-�ߤʤ���ޤ����顢Ʊ�����̤������ޤ���
-L<perlfunc/last> �򻲾Ȥ��Ƥ���������
+(F) 現在のブロックから脱出するために、"last" 文を実行しましたが、
+残念なことにブロックの中ではありませんでした。
+"if" や "else" のブロックは、sort(), map(), grep() のブロックが違うのと
+同様「ループ風」ブロックではないので、注意してください。
+ただし、中括弧を二重にすれば、内側の中括弧が、1 度だけループするブロックと
+みなされますから、同じ効果が得られます。
+L<perlfunc/last> を参照してください。
 
 =item Can't localize lexical variable %s
 
@@ -1700,11 +1700,11 @@ package name.
 
 =end original
 
-(F) ������ "my" ��Ȥäƥ쥭�������ѿ��Ȥ���������줿�ѿ�̾���Ф���
-local ��Ȥ��ޤ�����
-�����ǧ����Ƥ��ޤ���
-Ʊ��̾���Υѥå������ѿ���������벽���������ϡ�
-�ѥå�����̾�ǽ������Ƥ���������
+(F) 以前に "my" を使ってレキシカル変数として宣言された変数名に対して
+local を使いました。
+これは認められていません。
+同じ名前のパッケージ変数をローカル化したい場合は、
+パッケージ名で修飾してください。
 
 =item Can't localize pseudo-hash element
 
@@ -1717,10 +1717,10 @@ directly -- C<< local $ar->[$ar->[0]{'key'}] >>.
 
 =end original
 
-(F) $ar �������ϥå���ؤΥ�ե���󥹤ΤȤ���C<< local $ar->{'key'} >> ��
-�褦�ʤ��Ȥ򤷤ޤ�����
-����Ϥޤ���������Ƥ��ޤ��󤬡��б������������Ǥ�ľ�ܥ������벽���뤳�Ȥ�
-�����褦�ʸ��̤������ޤ� -- C<< local $ar->[$ar->[0]{'key'}] >>��
+(F) $ar が擬似ハッシュへのリファレンスのとき、C<< local $ar->{'key'} >> の
+ようなことをしました。
+これはまだ実装されていませんが、対応する配列要素を直接ローカル化することで
+似たような効果が得られます -- C<< local $ar->[$ar->[0]{'key'}] >>。
 
 =item Can't localize through a reference
 
@@ -1733,10 +1733,10 @@ that $ref will still be a reference.
 
 =end original
 
-(F) C<local $$ref> �Τ褦�ʤ��Ȥ򤷤ޤ�������Perl �ϸ��ߤΤȤ��������
-�����ޤ���; �ʤ��ʤ顢local() �Υ������פ���λ�����塢$ref ��
-�ؤ��Ƥ����ΤθŤ��ͤ��᤹�Ȥ���$ref ���ޤ���ե���󥹤��ɤ�����
-�狼��ʤ�����Ǥ���
+(F) C<local $$ref> のようなことをしましたが、Perl は現在のところこれを
+扱えません; なぜなら、local() のスコープが終了した後、$ref が
+指しているものの古い値を戻すとき、$ref がまだリファレンスかどうかが
+わからないからです。
 
 =item Can't locate %s
 
@@ -1752,15 +1752,15 @@ L<perlfunc/require> and L<lib>.
 
 =end original
 
-(F) �ե������ C<do> (�ޤ��ϡ�C<require>��C<use>) ����褦��
-�ؼ�����ޤ����������Ĥ���ޤ���Ǥ�����
-Perl �ϡ��ե�ѥ��ǻ��ꤵ��Ƥ��ʤ����ե������ @INC �Ǽ������
-���Ƥξ��򸡺����ޤ���
-�����餯���ɲå饤�֥��ξ��򼨤�����ˡ�
-PERL5LIB �ޤ��� PERL5OPT �δĶ��ѿ�����ꤹ��ɬ�פ����뤫��
-������ץȤ���� @INC �˥饤�֥��̾���ɲä���ɬ�פ�����ޤ���
-�ե�����̾�Υ��ڥ�ߥ��β�ǽ���⤢��ޤ���
-L<perlfunc/require> �� L<lib> �򻲾Ȥ��Ƥ���������
+(F) ファイルを C<do> (または、C<require>、C<use>) するように
+指示されましたが、見つかりませんでした。
+Perl は、フルパスで指定されていない場合ファイルを @INC で示される
+全ての場所を検索します。
+おそらく、追加ライブラリの場所を示すために、
+PERL5LIB または PERL5OPT の環境変数を指定する必要があるか、
+スクリプトの中で @INC にライブラリ名を追加する必要があります。
+ファイル名のスペルミスの可能性もあります。
+L<perlfunc/require> と L<lib> を参照してください。
 
 =item Can't locate auto/%s.al in @INC
 
@@ -1773,10 +1773,10 @@ the file, say, by doing C<make install>.
 
 =end original
 
-(F) �ؿ�(�ޤ��ϥ᥽�å�)�������ȥ����ɤ���Ĥ��Ƥ���ѥå�������
-�ƤӽФ���ޤ������������ȥ����ɤ���ؿ�������ޤ���Ǥ�����
-�Ǥ��ǽ���Τ��븶���ϴؿ�/�᥽�å�̾�θ�������C<make install> ��
-���뤳�Ȥˤ��ե������ C<AutoSplit> �μ��ԤǤ���
+(F) 関数(またはメソッド)がオートロードを許可しているパッケージで
+呼び出されましたが、オートロードする関数がありませんでした。
+最も可能性のある原因は関数/メソッド名の誤記か、C<make install> と
+することによるファイルの C<AutoSplit> の失敗です。
 
 =item Can't locate object method "%s" via package "%s"
 
@@ -1788,10 +1788,10 @@ method, nor does any of its base classes.  See L<perlobj>.
 
 =end original
 
-(F) �������᥽�åɤ�ƤӽФ�������ϡ����饹�Ȥ��Ƶ�ǽ����ѥå�������
-�����������Ƥ��ޤ��������Υѥå������ˤ⡢���쥯�饹�ˤ⡢
-�����Υ᥽�åɤ��������Ƥ��ޤ���
-L<perlobj> �򻲾Ȥ��Ƥ���������
+(F) 正しくメソッドを呼び出し、それは、クラスとして機能するパッケージを
+正しく示していますが、そのパッケージにも、基底クラスにも、
+該当のメソッドが定義されていません。
+L<perlobj> を参照してください。
 
 =item (perhaps you forgot to load "%s"?)
 
@@ -1803,10 +1803,10 @@ that a method requires a package that has not been loaded.
 
 =end original
 
-(F) ����� "Can't locate object method \"%s\" via package \"%s\"" ��
-��å������ȶ��˽Ф붵��Ū�ʿ�¬�Ǥ���
-����Ϥ��Ф��Х᥽�åɤ��ޤ������ɤ���Ƥ��ʤ��ѥå�������
-�׵ᤷ�Ƥ��뤳�Ȥ��̣���ޤ���
+(F) これは "Can't locate object method \"%s\" via package \"%s\"" の
+メッセージと共に出る教育的な推測です。
+これはしばしばメソッドがまだロードされていないパッケージを
+要求していることを意味します。
 
 =item Can't locate package %s for @%s::ISA
 
@@ -1817,8 +1817,8 @@ doesn't seem to exist.
 
 =end original
 
-(W syntax) ���� @ISA ���̤Υѥå�����̾��������Ƥ��ޤ�����
-¸�ߤ��Ƥ��ʤ��褦�Ǥ���
+(W syntax) 配列 @ISA に別のパッケージ名が記されていますが、
+存在していないようです。
 
 =item Can't make list assignment to \%ENV on this system
 
@@ -1829,8 +1829,8 @@ VMS.
 
 =end original
 
-(F) %ENV �ؤΥꥹ�������Ϥ����Ĥ��Υ����ƥࡢ�ä� VMS �Ǥ�
-�б����Ƥ��ޤ���
+(F) %ENV へのリスト代入はいくつかのシステム、特に VMS では
+対応していません。
 
 =item Can't modify %s in %s
 
@@ -1841,7 +1841,7 @@ to change it, such as with an auto-increment.
 
 =end original
 
-(F) ���ꤵ�줿��Τϡ����������󥯥���Ȥʤɡ��ѹ���������Ƥ��ޤ���
+(F) 指定されたものは、代入、インクリメントなど、変更が許されていません。
 
 =item Can't modify nonexistent substring
 
@@ -1852,7 +1852,7 @@ a NULL.
 
 =end original
 
-(P) substr() �ؤ�������Ԥʤ������롼�ƥ���� NULL ���Ϥ���ޤ�����
+(P) substr() への代入を行なう内部ルーティンに NULL が渡されました。
 
 =item Can't modify non-lvalue subroutine call
 
@@ -1863,9 +1863,9 @@ such, see L<perlsub/"Lvalue subroutines">.
 
 =end original
 
-(F) �����ͥ���ƥ����ȤȤ��ƻȤ����֥롼����ϡ����Τ褦��
-������ʤ���Фʤ�ޤ���;
-L<perlsub/"Lvalue subroutines"> �򻲾Ȥ��Ƥ���������
+(F) 左辺値コンテキストとして使うサブルーチンは、そのように
+宣言しなければなりません;
+L<perlsub/"Lvalue subroutines"> を参照してください。
 
 =item Can't msgrcv to read-only var
 
@@ -1876,8 +1876,8 @@ buffer.
 
 =end original
 
-(F) msgrcv �ǻ��Ѥ����ѿ��ϡ������Хåե��Ȥ��ƻ��Ѥ��ޤ��Τǡ�
-�ѹ���ǽ�ʤ�ΤǤʤ���Фʤ�ޤ���
+(F) msgrcv で使用する変数は、受信バッファとして使用しますので、
+変更可能なものでなければなりません。
 
 =item Can't "next" outside a loop block
 
@@ -1892,13 +1892,13 @@ once.  See L<perlfunc/next>.
 
 =end original
 
-(F) ���ߤΥ֥��å��η����֤���ʤ�뤿��ˡ�"next" ʸ��¹Ԥ��ޤ�������
-�֥��å�����ǤϤ���ޤ���Ǥ�����
-"if" �� "else" �Υ֥��å��ϡ�sort(), map(), grep() �Υ֥��å����㤦�Τ�
-Ʊ�֥͡롼�����ץ֥��å��ǤϤʤ��Τǡ����դ��Ƥ���������
-�����������̤���Ťˤ���С���¦�����̤���1 �٤����롼�פ���֥��å���
-�ߤʤ���ޤ����顢Ʊ�����̤������ޤ���
-L<perlfunc/next> �򻲾Ȥ��Ƥ���������
+(F) 現在のブロックの繰り返しを進めるために、"next" 文を実行しましたが、
+ブロックの中ではありませんでした。
+"if" や "else" のブロックは、sort(), map(), grep() のブロックが違うのと
+同様「ループ風」ブロックではないので、注意してください。
+ただし、中括弧を二重にすれば、内側の中括弧が、1 度だけループするブロックと
+みなされますから、同じ効果が得られます。
+L<perlfunc/next> を参照してください。
 
 =item Can't open %s: %s
 
@@ -1912,10 +1912,10 @@ the command line.
 
 =end original
 
-(S inplace) C<< <> >> �ե�����ϥ�ɥ�ˤ�����Ū�ʥե����륪���ץ�ޤ���
-C<-n> �� C<-p> ���ޥ�ɥ饤�󥹥��å��ˤ�����Ū�ʡ����뤤��
-����Ū�ʥե����륪���ץ�ɽ��������ͳ�ˤ�äƼ��Ԥ��ޤ�����
-�̾����ϥ��ޥ�ɥ饤��ǻ��ꤷ���ե�������ɤ߹��߸��¤�̵���Ȥ��˵�����ޤ���
+(S inplace) C<< <> >> ファイルハンドルによる暗黙的なファイルオープンまたは
+C<-n> か C<-p> コマンドラインスイッチによる暗黙的な、あるいは
+明示的なファイルオープンが表示した理由によって失敗しました。
+通常、これはコマンドラインで指定したファイルの読み込み権限が無いときに起こります。
 
 =item Can't open bidirectional pipe
 
@@ -1928,11 +1928,11 @@ as IPC::Open2.  Alternately, direct the pipe's output to a file using
 
 =end original
 
-(W pipe) ���ݡ��Ȥ���Ƥ��ʤ� C<open(CMD, "|cmd|")> ��Ԥʤ����Ȥ��ޤ�����
-�����Ԥʤ�����ˤϡ�Perl �饤�֥��� IPC::Open2 �Τ褦�ʤ����Ĥ���
-�⥸�塼���Ȥ����Ȥ��Ǥ��ޤ���
-�̤���ˡ�Ȥ��ơ��ѥ��פ��줿��Τ� ">" ��ȤäƤ��ä���ե�����˽��Ϥ���
-���Ȥ��̤Υե�����ϥ�ɥ���ɤ߹��ߤ�Ԥʤ����Ȥ�ͤ����ޤ���
+(W pipe) サポートされていない C<open(CMD, "|cmd|")> を行なおうとしました。
+これを行なうためには、Perl ライブラリの IPC::Open2 のようないくつかの
+モジュールを使うことができます。
+別の方法として、パイプされたものを ">" を使っていったんファイルに出力し、
+あとで別のファイルハンドルで読み込みを行なうことも考えられます。
 
 =item Can't open error file %s as stderr
 
@@ -1944,10 +1944,10 @@ the command line for writing.
 
 =end original
 
-(F) VMS�˸�ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
-���ޥ�ɥ饤��ǽ񤭹��ߤΤ���� '2>' �� '2>>' �θ�˻��ꤵ�줿
-�ե�����򳫤��ޤ���Ǥ�����
+(F) VMSに固有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、
+コマンドラインで書き込みのために '2>' や '2>>' の後に指定された
+ファイルを開けませんでした。
 
 =item Can't open input file %s as stdin
 
@@ -1959,10 +1959,10 @@ command line for reading.
 
 =end original
 
-(F) VMS�˸�ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
-���ޥ�ɥ饤����ɤ߹��ߤΤ���� '<' �θ�˻��ꤵ�줿
-�ե�����򳫤��ޤ���Ǥ�����
+(F) VMSに固有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、
+コマンドラインで読み込みのために '<' の後に指定された
+ファイルを開けませんでした。
 
 =item Can't open output file %s as stdout
 
@@ -1974,10 +1974,10 @@ the command line for writing.
 
 =end original
 
-(F) VMS�˸�ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
-���ޥ�ɥ饤��ǽ񤭹��ߤΤ���� '>' �� '>>' �θ�˻��ꤵ�줿
-�ե�����򳫤��ޤ���Ǥ�����
+(F) VMSに固有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、
+コマンドラインで書き込みのために '>' や '>>' の後に指定された
+ファイルを開けませんでした。
 
 =item Can't open output pipe (name: %s)
 
@@ -1989,9 +1989,9 @@ for stdout.
 
 =end original
 
-(P) VMS�˸�ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
-ɸ����ϤȤ��ƥǡ���������ѥ��פ򳫤��ޤ���Ǥ�����
+(P) VMSに固有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、
+標準出力としてデータを送るパイプを開けませんでした。
 
 =item Can't open perl script "%s": %s
 
@@ -2001,7 +2001,7 @@ Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
 
 =end original
 
-(F) ���ꤷ��������ץȤ���ɽ��������ͳ�ˤ�äƥ����ץ�Ǥ��ޤ���Ǥ�����
+(F) 指定したスクリプトが、表示した理由によってオープンできませんでした。
 
 =item Can't read CRTL environ
 
@@ -2015,12 +2015,12 @@ searched.
 
 =end original
 
-(S) VMS�˸�ͭ�ηٹ�Ǥ���
-Perl �� %ENV �����Ǥ� CRTL �������Ķ����󤫤��ɤ߹��⤦�Ȥ��ޤ�������
-���󤬤ʤ����Ȥ�ȯ�����ޤ�����
-CRTL ���Ķ���ɤ��˴ְ㤨���֤�������õ���Ф�����F<PERL_ENV_TABLE> ��
-�������(L<perlvms> �򻲾Ȥ��Ƥ�������)�Ķ��򸡺����ʤ��褦�ˤ���
-ɬ�פ�����ޤ���
+(S) VMSに固有の警告です。
+Perl は %ENV の要素を CRTL の内部環境配列から読み込もうとしましたが、
+配列がないことを発見しました。
+CRTL が環境をどこに間違えて置いたかを探し出すか、F<PERL_ENV_TABLE> を
+定義して(L<perlvms> を参照してください)環境を検索しないようにする
+必要があります。
 
 =item Can't redefine active sort subroutine %s
 
@@ -2033,12 +2033,12 @@ this, you should write C<sort { &func } @x> instead of C<sort func @x>.
 
 =end original
 
-(F) Perl �ϥ����ȥ��֥롼��������������Ŭ�����ơ�
-�����ؤΥݥ��󥿤��ݻ����Ƥ��ޤ���
-���Τ褦�ʥ����ȥ��֥롼����򸽺ߥ����ƥ��֤ʾ��֤λ���
-��������褦�Ȥ��ޤ�����������ϤǤ��ޤ���
-�����ˤ��Τ褦�ʤ��Ȥ����������ϡ�
-C<sort func @x> �ǤϤʤ� C<sort { &func } @x> �Ƚ񤯤٤��Ǥ���
+(F) Perl はソートサブルーチンの内部操作を最適化して、
+そこへのポインタを保持しています。
+そのようなソートサブルーチンを現在アクティブな状態の時に
+再定義しようとしましたが、それはできません。
+本当にそのようなことがしたい場合は、
+C<sort func @x> ではなく C<sort { &func } @x> と書くべきです。
 
 =item Can't "redo" outside a loop block
 
@@ -2053,13 +2053,13 @@ loops once.  See L<perlfunc/redo>.
 
 =end original
 
-(F) ���ߤΥ֥��å��η����֤���⤦���ٹԤʤ�����ˡ�
-"redo" ʸ��¹Ԥ��ޤ��������֥��å�����ǤϤ���ޤ���Ǥ�����
-"if" �� "else" �Υ֥��å��ϡ�sort(), map(), grep() �Υ֥��å����㤦�Τ�
-Ʊ�֥͡롼�����ץ֥��å��ǤϤʤ��Τǡ����դ��Ƥ���������
-�����������̤���Ťˤ���С���¦�����̤���1 �٤����롼�פ���
-�֥��å��Ȥߤʤ���ޤ����顢Ʊ�����̤������ޤ���
-L<perlfunc/redo> �򻲾Ȥ��Ƥ���������
+(F) 現在のブロックの繰り返しをもう一度行なうために、
+"redo" 文を実行しましたが、ブロックの中ではありませんでした。
+"if" や "else" のブロックは、sort(), map(), grep() のブロックが違うのと
+同様「ループ風」ブロックではないので、注意してください。
+ただし、中括弧を二重にすれば、内側の中括弧が、1 度だけループする
+ブロックとみなされますから、同じ効果が得られます。
+L<perlfunc/redo> を参照してください。
 
 =item Can't remove %s: %s, skipping file 
 
@@ -2071,10 +2071,10 @@ the modified file.  The file was left unmodified.
 
 =end original
 
-(S inplace) �Хå����åפ���������ˤ��ξ��Խ����뤳�Ȥ��׵ᤷ�ޤ�����
-Perl ���ѹ������ե�������֤������뤿��˸��Υե�����������뤳�Ȥ�
-�Ǥ��ޤ���Ǥ�����
-�ե�������ѹ����줺�˻Ĥ���ޤ���
+(S inplace) バックアップを作成せずにその場編集することを要求しました。
+Perl は変更したファイルで置き換えるために元のファイルを削除することが
+できませんでした。
+ファイルは変更されずに残されます。
 
 =item Can't rename %s to %s: %s, skipping file
 
@@ -2085,9 +2085,9 @@ probably because you don't have write permission to the directory.
 
 =end original
 
-(S inplace) B<-i> �����å��ǹԤʤ�줿 rename �����餫����ͳ�ˤ�äơ�
-���ޤ��Ԥ��ޤ���Ǥ�����
-�ǥ��쥯�ȥ�˽񤭹��߸����ʤ����Ȥ�ͤ����ޤ���
+(S inplace) B<-i> スイッチで行なわれた rename が何らかの理由によって、
+うまく行きませんでした。
+ディレクトリに書き込み権がないことも考えられます。
 
 =item Can't reopen input pipe (name: %s) in binary mode
 
@@ -2098,10 +2098,10 @@ to reopen it to accept binary data.  Alas, it failed.
 
 =end original
 
-(P) VMS �˸�ͭ�Υ��顼�Ǥ���
-Perl ��ɸ�����Ϥ��ѥ��פǤ���ȹͤ��ơ��Х��ʥ�ǡ������������뤿���
-�ƥ����ץ󤷤褦�Ȥ��ޤ�����
-�ᤷ�����ʡ�����ϼ��Ԥ��ޤ�����
+(P) VMS に固有のエラーです。
+Perl は標準入力がパイプであると考えて、バイナリデータを受け入れるために
+再オープンしようとしました。
+悲しいかな、それは失敗しました。
 
 =item Can't resolve method `%s' overloading `%s' in package `%s'
 
@@ -2113,10 +2113,10 @@ method name is C<???>, this is an internal error.
 
 =end original
 
-(F|P) (���֥롼����Υ�ե���󥹤ǤϤʤ�)�᥽�å�̾�ǻ��ꤵ�줿
-�����С������ɤβ��ǤΥ��顼: ���Τ褦�ʥ᥽�åɤϥѥå�������ͳ��
-�ƤӽФ��ޤ���
-�⤷�᥽�å�̾�� C<???> �ʤ顢�������顼�Ǥ���
+(F|P) (サブルーチンのリファレンスではなく)メソッド名で指定された
+オーバーロードの解決でのエラー: そのようなメソッドはパッケージ経由で
+呼び出せません。
+もしメソッド名が C<???> なら、内部エラーです。
 
 =item Can't reswap uid and euid
 
@@ -2127,8 +2127,8 @@ suidperl.
 
 =end original
 
-(P) suidperl �� setuid ���ߥ�졼���ǲ��餫����ͳ�ˤ�ꡢ
-setreuid() �ƤӽФ������Ԥ��ޤ�����
+(P) suidperl の setuid エミュレータで何らかの理由により、
+setreuid() 呼び出しが失敗しました。
 
 =item Can't return %s from lvalue subroutine
 
@@ -2140,10 +2140,10 @@ is not allowed.
 
 =end original
 
-(F) Perl ���������ͤȤ��ƻȤ��륵�֥롼���󤫤�(���Ū��
-�ɤ߹������ѤΤ褦��)�����ʺ����ͤ��֤���褦�Ȥ��Ƥ���Τ�
-���Ф��ޤ�����
-����ϤǤ��ޤ���
+(F) Perl が、左辺値として使われるサブルーチンから(一時的や
+読み込み専用のような)不正な左辺値が返されようとしているのを
+検出しました。
+これはできません。
 
 =item Can't return %s to lvalue scalar context
 
@@ -2157,11 +2157,11 @@ list context.
 
 =end original
 
-(F) �����ͥ��֥롼���󤫤������ϥå������Τ��֤����Ȥ��ޤ�������
-��Ĥ������ͤ��֤����Ȥ��Ƥ���� Perl ���ͤ���褦����ˡ�ǥ��֥롼�����
-�ƤӽФ��ޤ�����
-�����餯��Perl �ˤ��θƤӽФ����ꥹ�ȥ���ƥ����ȤǤ���������뤿��ˡ�
-���֥롼����ƤӽФ��μ���ˤ��ä���񤤤Ƥ���ΤǤ��礦��
+(F) 左辺値サブルーチンから配列やハッシュ全体を返そうとしましたが、
+一つだけの値を返そうとしていると Perl が考えるような方法でサブルーチンを
+呼び出しました。
+おそらく、Perl にこの呼び出しがリストコンテキストであると伝えるために、
+サブルーチン呼び出しの周りにかっこを書いているのでしょう。
 
 =item Can't return outside a subroutine
 
@@ -2172,9 +2172,9 @@ there was no subroutine call to return out of.  See L<perlsub>.
 
 =end original
 
-(F) return ʸ����return ��ȴ����٤����֥롼�ƥ��󤬤ʤ���
-"main" �����ɤǼ¹Ԥ���ޤ�����
-L<perlsub> �򻲾Ȥ��Ƥ���������
+(F) return 文が、return で抜けるべきサブルーティンがない、
+"main" コードで実行されました。
+L<perlsub> を参照してください。
 
 =item Can't stat script "%s"
 
@@ -2185,8 +2185,8 @@ open already.  Bizarre.
 
 =end original
 
-(P) ���餫����ͳ�ǡ��㤨���˥����ץ󤷤Ƥ����Ȥ��Ƥ⡢fstat() ��
-�Ԥʤ��ޤ��󡣺��ä�������
+(P) 何らかの理由で、例え既にオープンしていたとしても、fstat() が
+行なえません。困ったもんだ。
 
 =item Can't swap uid and euid
 
@@ -2197,8 +2197,8 @@ suidperl.
 
 =end original
 
-(P) suidperl �� setuid ���ߥ�졼���ǲ��餫����ͳ�ˤ�ꡢ
-setreuid() �ƤӽФ������Ԥ��ޤ�����
+(P) suidperl の setuid エミュレータで何らかの理由により、
+setreuid() 呼び出しが失敗しました。
 
 =item Can't take log of %g
 
@@ -2211,9 +2211,9 @@ negative numbers.
 
 =end original
 
-(F) �¿����Ф��Ƥϡ������ 0 ���Ф����п����뤳�ȤϤǤ��ޤ���
-���������⤷������������Ф��Ƥ��Τ褦�ʤ��Ȥ򤷤����Τʤ顢
-Perl ɸ��ˤʤäƤ��� Math::Complex �ѥå�����������ޤ���
+(F) 実数に対しては、負数や 0 に対する対数を取ることはできません。
+しかし、もし本当に負数に対してそのようなことをしたいのなら、
+Perl 標準になっている Math::Complex パッケージがあります。
 
 =item Can't take sqrt of %g
 
@@ -2225,9 +2225,9 @@ with Perl, though, if you really want to do that.
 
 =end original
 
-(F) �̾�μ¿��Ǥϡ������ʿ������Ȥ뤳�ȤϤǤ��ޤ���
-�������������ˤ��η׻���Ԥʤ������ΤǤ���С�Math::Complex �ѥå�������
-Perl ��ɸ����Ѱդ���Ƥ��ޤ���
+(F) 通常の実数では、負数の平方根をとることはできません。
+しかし、本当にその計算を行ないたいのであれば、Math::Complex パッケージが
+Perl に標準で用意されています。
 
 =item Can't undef active subroutine
 
@@ -2239,10 +2239,10 @@ redefined subroutine while the old routine is running.  Go figure.
 
 =end original
 
-(F) �¹���Υ롼�ƥ����̤����ˤ��뤳�ȤϤǤ��ޤ���
-���������¹���˺�������뤳�ȤϤǤ����Ť��롼�ƥ����¹���ˡ�
-������������֥롼�ƥ���� undef ���뤳�Ȥ����Ǥ��ޤ���
-�ä��Ǥ���
+(F) 実行中のルーティンを未定義にすることはできません。
+しかし、実行中に再定義することはでき、古いルーティンを実行中に、
+再定義したサブルーティンを undef することさえできます。
+驚きです。
 
 =item Can't unshift
 
@@ -2253,8 +2253,8 @@ as the main Perl stack.
 
 =end original
 
-(F) Perl �Υᥤ�󥹥��å��Τ褦�ˡ�unshift ���뤳�ȤΤǤ��ʤ�
-�ּºߤ��ʤ���������Ф��ơ�unshift ��Ԥʤ����Ȥ��ޤ�����
+(F) Perl のメインスタックのように、unshift することのできない
+「実在しない」配列に対して、unshift を行なおうとしました。
 
 =item Can't upgrade that kind of scalar
 
@@ -2267,10 +2267,10 @@ indicates that such a conversion was attempted.
 
 =end original
 
-(P) ������ sv_upgrade �롼�ƥ���ϡ�SV �ˡ֥��Сפ�ä��ơ�
-������̤ʼ���� SV �ˤ��ޤ���������������̤Τ����Ĥ��� SV ���ϡ�
-�ü첽����᤮�ơ������Ѵ����뤳�Ȥ��Ǥ��ޤ���
-���Υ�å������ϡ����Τ褦���ѹ���Ԥʤ����Ȥ������Ȥ򼨤��Ƥ��ޤ���
+(P) 内部の sv_upgrade ルーティンは、SV に「メンバ」を加えて、
+より特別な種類の SV にします。　しかし、上位のいくつかの SV 型は、
+特殊化され過ぎて、内部変換することができません。
+このメッセージは、そのような変更を行なおうとしたことを示しています。
 
 =item Can't upgrade to undef
 
@@ -2282,9 +2282,9 @@ calling sv_upgrade.
 
 =end original
 
-(P) ̤��� SV �ϡ�upgrade �λ��Ȥߤˤ����ơ����ع�¤�κǲ��̤�
-���֤����ΤǤ���
-undef �ؤ� upgrade �ϡ�sv_upgrade ��Ƥ֥����ɤΥ��顼�򼨤��ޤ���
+(P) 未定義 SV は、upgrade の仕組みにおいて、階層構造の最下位に
+位置するものです。
+undef への upgrade は、sv_upgrade を呼ぶコードのエラーを示します。
 
 =item Can't use an undefined value as %s reference
 
@@ -2295,9 +2295,9 @@ be a defined value.  This helps to delurk some insidious errors.
 
 =end original
 
-(F) �ϡ��ɥ�ե���󥹤䥷��ܥ�å���ե���󥹤Ȥ��ƻ��Ѥ����ͤϡ�
-����Ѥߤ��ͤǤʤ���Фʤ�ޤ���
-������Υ��顼���������Ф������Ȥʤ�ޤ���
+(F) ハードリファレンスやシンボリックリファレンスとして使用する値は、
+定義済みの値でなければなりません。
+潜伏中のエラーを引きずり出す助けとなります。
 
 =item Can't use bareword ("%s") as %s ref while "strict refs" in use
 
@@ -2308,9 +2308,9 @@ references are disallowed.  See L<perlref>.
 
 =end original
 
-(F) "strict refs" �Ǥϡ��ϡ��ɥ�ե���󥹤�����������ޤ���
-����ܥ�å���ե���󥹤ϡ�������Ƥ��ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) "strict refs" では、ハードリファレンスだけが許されます。
+シンボリックリファレンスは、許されていません。
+L<perlref> を参照してください。
 
 =item Can't use %! because Errno.pm is not available
 
@@ -2322,10 +2322,10 @@ provide symbolic names for C<$!> errno values.
 
 =end original
 
-(F) �ǽ�� %! �ϥå��夬�Ȥ���Ȥ��ˡ�
-perl �ϼ�ưŪ�� Errno.pm �⥸�塼����ɤ߹��ߤޤ���
-Errno �⥸�塼��� C<$!> errno �ͤΥ���ܥ�å�̾���󶡤��뤿���
-%! �ϥå���� tie ����뤳�Ȥˤʤ�ޤ���
+(F) 最初に %! ハッシュが使われるときに、
+perl は自動的に Errno.pm モジュールを読み込みます。
+Errno モジュールは C<$!> errno 値のシンボリック名を提供するために
+%! ハッシュと tie されることになります。
 
 =item Can't use %s for loop variable
 
@@ -2336,8 +2336,8 @@ foreach.
 
 =end original
 
-(F) ñ�㥹�����ѿ���������foreach �Υ롼���ѿ��Ȥ���
-���Ѥ��뤳�Ȥ��Ǥ��ޤ���
+(F) 単純スカラ変数だけが、foreach のループ変数として
+使用することができます。
 
 =item Can't use global %s in "my"
 
@@ -2351,10 +2351,10 @@ weren't.
 
 =end original
 
-(F) �ޥ������ѿ��򡢻��祹�������ѿ��Ȥ���������褦�Ȥ��ޤ�����
-���줬������Ƥ��ʤ��Τϡ��ޥ��å��ѿ��� 1 ��������ˤ������Ȥ��Ǥ���
- (�Ĥޤꥰ�����Х��ѿ�) ����Ǥ��ꡢ�ޥ������ѿ��˸����ʤ��顢
-�����Ǥʤ���Τ��ץ��������˸�����Ⱥ���θ��Ȥʤ뤿��Ǥ���
+(F) マジカル変数を、字句スコープ変数として宣言しようとしました。
+これが許されていないのは、マジック変数は 1 か所だけにおくことができる
+ (つまりグローバル変数) からであり、マジカル変数に見えながら、
+そうでないものがプログラム中に現われると混乱の元となるためです。
 
 =item Can't use "my %s" in sort comparison
 
@@ -2368,11 +2368,11 @@ lexical variable.
 
 =end original
 
-(F) �������Х��ѿ� $a �� $b �ϥ�������ӤΤ����ͽ�󤵤�Ƥ��ޤ���
-$a �� $b �� <=> �� cmp �黻�Ҥ�Ʊ���Ԥ˵��Ҥ��ޤ������������ѿ���
-�������˥쥭�������ѿ��Ȥ����������Ƥ��ޤ���
-�������ѿ���ѥå�����̾�ǽ������뤫���쥭�������ѿ���̾����
-�ѹ����Ƥ���������
+(F) グローバル変数 $a と $b はソート比較のために予約されています。
+$a か $b を <=> か cmp 演算子と同じ行に記述しましたが、その変数は
+その前にレキシカル変数として宣言されています。
+ソート変数をパッケージ名で修飾するか、レキシカル変数の名前を
+変更してください。
 
 =item Can't use %s ref as %s ref
 
@@ -2384,9 +2384,9 @@ test the type of the reference, if need be.
 
 =end original
 
-(F) ��ե���󥹷���Ʊ���Ƥ��ޤ���
-ɬ�פʷ��Υ�ե���󥹤��ﻲ�Ȥ��ʤ���Фʤ�ޤ���
-ɬ�פʤ�С���ե���󥹤η���Ĵ�٤�Τˡ�ref() �ؿ���Ȥ����Ȥ��Ǥ��ޤ���
+(F) リファレンス型を混同しています。
+必要な型のリファレンスを被参照しなければなりません。
+必要ならば、リファレンスの型を調べるのに、ref() 関数を使うことができます。
 
 =item Can't use string ("%s") as %s ref while "strict refs" in use
 
@@ -2397,9 +2397,9 @@ references are disallowed.  See L<perlref>.
 
 =end original
 
-(F) "strict refs" �ˤ�äơ��ϡ��ɥ�ե���󥹤Τߤ����Ĥ���ޤ���
-����ܥ�å���ե���󥹤ϵ��Ĥ���ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) "strict refs" によって、ハードリファレンスのみが許可されます。
+シンボリックリファレンスは許可されません。
+L<perlref> を参照してください。
 
 =item Can't use subscript on %s
 
@@ -2411,9 +2411,9 @@ didn't look like an array reference, or anything else subscriptable.
 
 =end original
 
-(F) ����ѥ��餬�礫�ä��ǰϤ�줿����ź���Ȥ��Ʋ�ᤷ�褦�Ȥ��ޤ�����
-���������礫�ä��κ�¦�ϥϥå��夫����Υ�ե���󥹤䤽��¾��
-ź�����Ǥ����ΤΤ褦�ˤϸ����ʤ����Ǥ���
+(F) コンパイラが大かっこで囲われた式を添字として解釈しようとしました。
+しかし、大かっこの左側はハッシュか配列のリファレンスやその他の
+添字化できるもののようには見えない式です。
 
 =item Can't use \%c to mean $%c in expression
 
@@ -2428,13 +2428,13 @@ instead.
 
 =end original
 
-(W syntax) �̾�μ��Ǥϡ��Хå�����å���ϰ����ؤΥ�ե���󥹤���
-ñ��黻�ҤǤ���
-�ޥå�������ʬʸ����ؤθ������Ȥ򼨤�����ΥХå�����å���λ��Ѥ�
-����ɽ���ѥ�����ΰ����ξ��ˤΤ�ͭ���Ǥ���
-�̾�� Perl �����ɤ���Ǥ���򤷤褦�Ȥ���ȡ�SCALAR(0xdecaf) �Τ褦��
-ɽ��������ͤ��������ޤ���
-����� $1 �η���ȤäƤ���������
+(W syntax) 通常の式では、バックスラッシュは引数へのリファレンスを作る
+単項演算子です。
+マッチした部分文字列への後方参照を示すためのバックスラッシュの使用は
+正規表現パターンの一部の場合にのみ有効です。
+通常の Perl コードの中でこれをしようとすると、SCALAR(0xdecaf) のように
+表示される値を生成します。
+代わりに $1 の形を使ってください。
 
 =item Can't weaken a nonreference
 
@@ -2445,8 +2445,8 @@ references can be weakened.
 
 =end original
 
-(F) ��ե���󥹤ǤϤʤ���������褦�Ȥ��ޤ�����
-��ե���󥹤��������뤳�Ȥ��Ǥ��ޤ���
+(F) リファレンスではない何かを弱めようとしました。
+リファレンスだけが弱めることができます。
 
 =item Can't x= to read-only value
 
@@ -2458,9 +2458,9 @@ Perhaps you need to copy the value to a temporary, and repeat that.
 
 =end original
 
-(F) ����� (̤����ͤǤ��뤳�Ȥ�¿��) �򡢼����񤭴����뤳�Ȥ��̣���롢
-�����黻�ҤǷ����֤���Ԥʤ����Ȥ��ޤ�����
-�ƥ�ݥ���ѿ����ͤ�ܤ��Ƥ��顢�����֤����ɤ��Ǥ��礦��
+(F) 定数値 (未定義値であることが多い) を、自らを書き換えることを意味する、
+代入演算子で繰り返しを行なおうとしました。
+テンポラリ変数に値を移してから、繰り返すと良いでしょう。
 
 =item chmod() mode argument is missing initial 0
 
@@ -2470,7 +2470,7 @@ Perhaps you need to copy the value to a temporary, and repeat that.
 
 =end original
 
-(W chmod) �鿴�Ԥϰʲ��Τ褦�˽񤯤��Ȥ�����ޤ�:
+(W chmod) 初心者は以下のように書くことがあります:
 
     chmod 777, $filename
 
@@ -2482,9 +2482,9 @@ Perl, as in C.
 
 =end original
 
-�Ȥ����դ��ˡ�777 �� 01411 �������� 10 �ʿ��Ǥ��뤳�Ȥ˵��դ��ʤ���
-�Ȥ����Ȥ�����ޤ���
-Perl �Ǥϡ�8 �ʿ�������ϡ�C ��Ʊ���褦�ˡ���Ƭ�� 0 ���դ���ɽ�路�ޤ���
+というふうに、777 が 01411 に等しい 10 進数であることに気付かないで
+使うことがあります。
+Perl では、8 進数の定数は、C と同じように、先頭に 0 を付けて表わします。
 
 =item close() on unopened filehandle %s
 
@@ -2494,7 +2494,7 @@ Perl �Ǥϡ�8 �ʿ�������ϡ�C ��Ʊ���褦�ˡ���Ƭ�� 0 ���դ���ɽ�路�ޤ���
 
 =end original
 
-(W unopened) �����ץ󤵤�Ƥ��ʤ��ե�����ϥ�ɥ�򥯥��������褦�Ȥ��ޤ�����
+(W unopened) オープンされていないファイルハンドルをクローズしようとしました。
 
 =item %s: Command not found
 
@@ -2505,8 +2505,8 @@ Check the #! line, or manually feed your script into Perl yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� B<csh> �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく B<csh> で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item Compilation failed in require
 
@@ -2518,9 +2518,9 @@ encountered were severe enough to halt compilation immediately.
 
 =end original
 
-(F) Perl �� C<require> ʸ�ǻ��ꤵ�줿�ե�����򥳥�ѥ���Ǥ��ޤ���Ǥ�����
-Perl �ϡ�����ѥ����ľ������ߤ�����ۤɸ��������顼���������ʤ��ä�
-�Ȥ��ˡ����ΰ���Ū�ʥ�å�������Ȥ��ޤ���
+(F) Perl は C<require> 文で指定されたファイルをコンパイルできませんでした。
+Perl は、コンパイルを直ちに停止させるほど厳しいエラーに遭遇しなかった
+ときに、この一般的なメッセージを使います。
 
 =item Complex regular subexpression recursion limit (%d) exceeded
 
@@ -2538,18 +2538,18 @@ on I<Mastering Regular Expressions>.)
 
 =end original
 
-(W regexp) ����ɽ�����󥸥�ϥХå��ȥ�å����׵ᤵ���ʣ���ʾ����Ǥ�
-�Ƶ�����Ѥ��ޤ���
-�Ƶ��ο����� 32766���ޤ��ϥ����å���Ǥ�դ����䤻�ʤ��������ƥ�����Ǥ�
-�����餯��äȾ������ͤ����¤���Ƥ��ޤ���
-(��ñ��ʡפޤ��ϡ��椯�餤�Ρ׾����ǤϺƵ��ʤ��ǰ�����Τǡ����¤�
-����ޤ���)
-Ĵ�٤�ʸ�����û�����ƤߤƤ�������; ����ɽ�����󥸥�ǤϤʤ�
-(C<while> �ʤɤ�) Perl �����ɤ�Ȥäƥ롼�פ��뤫��
-���뤤������ɽ������ñ��ˤ����ꡢ�Хå��ȥ�å������ʤ��ʤ�褦��
-�񤭴����Ƥ���������
-(I<Mastering Regular Expressions> �ξ���ˤĤ��Ƥ� L<perlfaq2> ��
-���Ȥ��Ƥ���������)
+(W regexp) 正規表現エンジンはバックトラックが要求される複雑な状況では
+再帰を使用します。
+再帰の深さは 32766、またはスタックを任意に増やせないアーキテクチャでは
+おそらくもっと小さい値に制限されています。
+(「単純な」または「中くらいの」状況では再帰なしで扱われるので、制限は
+ありません。)
+調べる文字列を短くしてみてください; 正規表現エンジンではなく
+(C<while> などの) Perl コードを使ってループするか、
+あるいは正規表現をより単純にしたり、バックトラックが少なくなるように
+書き換えてください。
+(I<Mastering Regular Expressions> の情報については L<perlfaq2> を
+参照してください。)
 
 =item connect() on closed socket %s
 
@@ -2561,9 +2561,9 @@ L<perlfunc/connect>.
 
 =end original
 
-(W closed) �����������줿�����åȤ� connent ��Ԥʤ����Ȥ��ޤ�����
-socket() �θƤӽФ����ˡ��ֵ��ͤΥ����å���˺�줿���ΤǤϤ���ޤ��󤫡�
-L<perlfunc/connect> �򻲾Ȥ��Ƥ���������
+(W closed) クローズされたソケットに connent を行なおうとしました。
+socket() の呼び出し時に、返却値のチェックを忘れたたのではありませんか。
+L<perlfunc/connect> を参照してください。
 
 =item Constant(%s)%s: %s
 
@@ -2577,12 +2577,12 @@ L<overload>.
 
 =end original
 
-(F) �ѡ����ϡ������С������ɤ��줿�����������褦�Ȥ����Ȥ�����
-C<\N{...}> ���������פǻ��ꤵ�줿ʸ��̾��õ�����Ȥ����Ȥ���
-��������ȯ�����ޤ�����
-�����餯�б����� C<overload> �� C<charnames> �Υץ饰�ޤ��ɤ߹��ߤ�
-˺�줿�ΤǤ�?
-L<charnames> �� L<overload> �򻲾Ȥ��Ƥ���������
+(F) パーサは、オーバーロードされた定数を定義しようとしたときか、
+C<\N{...}> エスケープで指定された文字名を探そうとしたときに
+非一貫性を発見しました。
+おそらく対応する C<overload> か C<charnames> のプラグマの読み込みを
+忘れたのでは?
+L<charnames> と L<overload> を参照してください。
 
 =item Constant is not %s reference
 
@@ -2596,11 +2596,11 @@ See L<perlsub/"Constant Functions"> and L<constant>.
 
 =end original
 
-(F) (�����餯 C<use constant> �ץ饰�ޤ�Ȥä��������) ����ͤ�
-�ǥ�ե���󥹤���ޤ��������ְ�ä����Υ�ե���󥹤ˤʤ�ޤ�����
-���Υ�å����������ꤵ�줿��ե���󥹤η��򼨤��Ƥ��ޤ���
-�������������ͤ�ǥ�ե���󥹤���Ȥ���ʸˡ���顼�򼨤��Ƥ��ޤ���
-L<perlsub/"Constant Functions"> �� L<constant> �򻲾Ȥ��Ƥ���������
+(F) (おそらく C<use constant> プラグマを使って宣言した) 定数値が
+デリファレンスされましたが、間違った型のリファレンスになりました。
+このメッセージは想定されたリファレンスの型を示しています。
+これは普通定数値をデリファレンスするときの文法エラーを示しています。
+L<perlsub/"Constant Functions"> と L<constant> を参照してください。
 
 =item Constant subroutine %s redefined
 
@@ -2612,10 +2612,10 @@ commentary and workarounds.
 
 =end original
 
-(S|W redefine) �����˥���饤�󲽤Ǥ�����Ǥ��ä����֥롼�����
-��������ޤ�����
-�����ȤȲ�����ˤĤ��Ƥ� L<perlsub/"Constant Functions"> ��
-���Ȥ��Ƥ���������
+(S|W redefine) 以前にインライン化できる形であったサブルーチンを
+再定義しました。
+コメントと回避策については L<perlsub/"Constant Functions"> を
+参照してください。
 
 =item Constant subroutine %s undefined
 
@@ -2627,10 +2627,10 @@ workarounds.
 
 =end original
 
-(W misc)�����˥���饤�󲽤Ǥ�����Ǥ��ä����֥롼�����
-̤��������ޤ�����
-�����ȤȲ�����ˤĤ��Ƥ� L<perlsub/"Constant Functions"> ��
-���Ȥ��Ƥ���������
+(W misc)以前にインライン化できる形であったサブルーチンを
+未定義化しました。
+コメントと回避策については L<perlsub/"Constant Functions"> を
+参照してください。
 
 =item Copy method did not return a reference
 
@@ -2641,8 +2641,8 @@ L<overload/Copy Constructor>.
 
 =end original
 
-(F) "=" �򥪡��С������ɤ����᥽�åɤϥХ��äƤ��ޤ���
-L<overload/Copy Constructor> �򻲾Ȥ��Ƥ���������
+(F) "=" をオーバーロードしたメソッドはバグっています。
+L<overload/Copy Constructor> を参照してください。
 
 =item CORE::%s is not a keyword
 
@@ -2652,7 +2652,7 @@ L<overload/Copy Constructor> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(F) CORE:: ̾�����֤� Perl ������ɤȤ���ͽ�󤵤�Ƥ��ޤ���
+(F) CORE:: 名前空間は Perl キーワードとして予約されています。
 
 =item corrupted regexp pointers
 
@@ -2663,8 +2663,8 @@ expression compiler gave it.
 
 =end original
 
-(P) ����ɽ������ѥ��餬�Ϥ�����Τǡ�����ɽ�����󥸥�
-�����Ǥ��ʤ��ʤ�ޤ�����
+(P) 正規表現コンパイラが渡したもので、正規表現エンジンが
+処理できなくなりました。
 
 =item corrupted regexp program
 
@@ -2675,8 +2675,8 @@ valid magic number.
 
 =end original
 
-(P) ����ɽ�����󥸥󤬡�ͭ���ʥޥ��å��ʥ�С�������ʤ�
-regexp �ץ��������Ϥ��ޤ�����
+(P) 正規表現エンジンが、有効なマジックナンバーを持たない
+regexp プログラムを渡しました。
 
 =item Corrupt malloc ptr 0x%lx at 0x%lx
 
@@ -2686,7 +2686,7 @@ regexp �ץ��������Ϥ��ޤ�����
 
 =end original
 
-(P) Perl ����°�� malloc �롼�ƥ����������顼�򵯤����ޤ�����
+(P) Perl に付属の malloc ルーティンが内部エラーを起こしました。
 
 =item C<-p> destination: %s
 
@@ -2698,9 +2698,9 @@ redirected it with select().)
 
 =end original
 
-(F) C<-p> ���ޥ�ɥ饤�󥪥ץ����ǵ�ư���줿
-���ۤν�����˥��顼��ȯ�����ޤ�����
-(���ν��Ϥ� select() �ǥ�����쥯�Ȥ��Ƥ��ʤ��¤� STDOUT �˽��Ϥ���ޤ���)
+(F) C<-p> コマンドラインオプションで起動された
+暗黙の出力中にエラーが発生しました。
+(この出力は select() でリダイレクトしていない限り STDOUT に出力されます。)
 
 =item C<-T> and C<-B> not implemented on filehandles
 
@@ -2711,9 +2711,9 @@ know about your kind of stdio.  You'll have to use a filename instead.
 
 =end original
 
-(F) Perl �������Ȥ��� stdio �Τ��Ȥ�褯�Τ�ʤ��Ȥ���
-�ե�����ϥ�ɥ�� stdio �Хåե����������ȤϤǤ��ޤ���
-����˥ե�����̾��Ȥ�ʤ���Фʤ�ޤ���
+(F) Perl が、お使いの stdio のことをよく知らないとき、
+ファイルハンドルの stdio バッファを覗くことはできません。
+代わりにファイル名を使わなければなりません。
 
 =item Deep recursion on subroutine "%s"
 
@@ -2726,11 +2726,11 @@ which case it indicates something else.
 
 =end original
 
-(W recursion) ���Υ��֥롼�ƥ���ϡ�(ľ�ܡ����ܤ�) ��ʬ���ȤθƤӽФ���
-return ��� 100 ��¿���Ԥʤ��ޤ�����
-�Ѥ�ä��٥���ޡ����ץ�������񤤤Ƥ���ΤǤʤ���С�̵�ºƵ���
-��ǽ��������ޤ���
-�٥���ޡ�����񤤤Ƥ�����ˤϡ��̤Τ��Ȥ򼨤��Ƥ��ޤ���
+(W recursion) このサブルーティンは、(直接、間接に) 自分自身の呼び出しを、
+return より 100 回多く行ないました。
+変わったベンチマークプログラムを書いているのでなければ、無限再帰の
+可能性があります。
+ベンチマークを書いている場合には、別のことを示しています。
 
 =item defined(@array) is deprecated
 
@@ -2742,10 +2742,10 @@ array is empty, just use C<if (@array) { # not empty }> for example.
 
 =end original
 
-(D deprecated) defined() ��̤����� I<������> �ͤ�Ĵ�٤�Τǡ������
-�ȤäƤ����̤�̵��̣�Ǥ���
-���󤬶����ɤ�����Ĵ�٤������ϡ��㤨��ñ�� 
-C<if (@array) { # not empty }> �Ȥ��Ƥ���������
+(D deprecated) defined() は未定義の I<スカラ> 値を調べるので、配列に
+使っても普通は無意味です。
+配列が空かどうかを調べたい場合は、例えば単に 
+C<if (@array) { # not empty }> としてください。
 
 =item defined(%hash) is deprecated
 
@@ -2757,10 +2757,10 @@ is empty, just use C<if (%hash) { # not empty }> for example.
 
 =end original
 
-(D deprecated) defined() ��̤����� I<������> �ͤ�Ĵ�٤�Τǡ��ϥå����
-�ȤäƤ����̤�̵��̣�Ǥ���
-�ϥå��夬�����ɤ�����Ĵ�٤������ϡ��㤨��ñ�� 
-C<if (%hash) { # not empty }> �Ȥ��Ƥ���������
+(D deprecated) defined() は未定義の I<スカラ> 値を調べるので、ハッシュに
+使っても普通は無意味です。
+ハッシュが空かどうかを調べたい場合は、例えば単に 
+C<if (%hash) { # not empty }> としてください。
 
 =item Delimiter for here document is too long
 
@@ -2772,9 +2772,9 @@ that triggers this error.
 
 =end original
 
-(F) C<<<FOO> �Τ褦�ʥҥ��ɥ�����ȹ�¤�ǡ���٥� C<FOO> ��
-Perl �������ˤ�Ĺ�����ޤ�����
-���Υ��顼�򵯤����褦�ʥ����ɤ�񤯤ˤ������Ҥͤ���Ƥ���ɬ�פ�����ޤ���
+(F) C<<<FOO> のようなヒアドキュメント構造で、ラベル C<FOO> が
+Perl が扱うには長すぎました。
+このエラーを起こすようなコードを書くには相当ひねくれている必要があります。
 
 =item Did not produce a valid header
 
@@ -2784,7 +2784,7 @@ See Server error.
 
 =end original
 
-"Server error" �򻲾Ȥ��Ƥ���������
+"Server error" を参照してください。
 
 =item %s did not return a true value
 
@@ -2797,11 +2797,11 @@ do.  See L<perlfunc/require>.
 
 =end original
 
-(F) require (�� use) ���줿�ե�����ϡ�����˥���ѥ��뤵�졢
-����������ɤ��������¹Ԥ������Ȥ򼨤�����ˡ������֤��ʤ���Фʤ�ޤ���
-�������ä��ե�����ϡ�"1;" �ǽ����褦�ˤ���Τ������Ǥ�����
-���Ȥʤ��ͤǤ���С����Ǥ⤫�ޤ��ޤ���
-L<perlfunc/require> �򻲾Ȥ��Ƥ���������
+(F) require (や use) されたファイルは、正常にコンパイルされ、
+初期化コードを正しく実行したことを示すために、真を返さなければなりません。
+こういったファイルは、"1;" で終わるようにするのが習慣ですが、
+真となる値であれば、何でもかまいません。
+L<perlfunc/require> を参照してください。
 
 =item (Did you mean &%s instead?)
 
@@ -2812,8 +2812,8 @@ such.
 
 =end original
 
-�����餯 import �������֥롼���� &FOO �� $FOO �Ȥ���
-���Ȥ����褦�ʤ��ȤǤ��礦��
+おそらく import したサブルーチン &FOO を $FOO として
+参照したようなことでしょう。
 
 =item (Did you mean "local" instead of "our"?)
 
@@ -2825,10 +2825,10 @@ seems superfluous.
 
 =end original
 
-(W misc) "our" ������줿�������Х��ѿ��� local �����ʤ����Ȥ�
-˺��ʤ��ǲ�������
-�����⤦����Ʊ���쥭�����륹�����פ�������Ƥ��ޤ�����
-��ɬ�פǤ��礦��
+(W misc) "our" 宣言されたグローバル変数を local 化しないことを
+忘れないで下さい。
+これをもう一度同じレキシカルスコープで宣言していますが、
+不必要でしょう。
 
 =item (Did you mean $ or @ instead of %?)
 
@@ -2840,9 +2840,9 @@ carried away.
 
 =end original
 
-(W) �����餯 $hash{$key} �� @hash{@keys} �Ȥ������Ȥ��� %hash{$key} ��
-�����ΤǤ��礦��
-���뤤�ϡ�ñ�� %hash �Ȥ������Ƥ�ꤹ�����ΤǤ��礦��
+(W) おそらく $hash{$key} か @hash{@keys} としたいときに %hash{$key} と
+したのでしょう。
+あるいは、単に %hash としたくてやりすぎたのでしょう。
 
 =item Died
 
@@ -2853,8 +2853,8 @@ you called it with no args and both C<$@> and C<$_> were empty.
 
 =end original
 
-(F) die() �˶�ʸ������Ϥ���(C<die ""> �������Ǥ�)���������ʤ���
-�ƤӽФ��ơ�C<$@> �� C<$_> �����Ǥ�����
+(F) die() に空文字列を渡した(C<die ""> と等価です)か、引数なしで
+呼び出して、C<$@> と C<$_> が空でした。
 
 =item Document contains no data
 
@@ -2864,7 +2864,7 @@ See Server error.
 
 =end original
 
-"Server error" �򻲾Ȥ��Ƥ���������
+"Server error" を参照してください。
 
 =item Don't know how to handle magic of type '%s'
 
@@ -2874,7 +2874,7 @@ See Server error.
 
 =end original
 
-(P) �ޥ��å��ѿ����������������������ʤäƤ��ޤ���
+(P) マジック変数の内部処理がおかしくなっています。
 
 =item do_study: out of memory
 
@@ -2884,7 +2884,7 @@ See Server error.
 
 =end original
 
-(P) ����ϡ����� safemalloc() �ǰ��óݤ���Ϥ��Τ�ΤǤ���
+(P) これは、本来 safemalloc() で引っ掛かるはずのものです。
 
 =item (Do you need to predeclare %s?)
 
@@ -2901,15 +2901,15 @@ subroutine or package before the current location.  You can use an empty
 
 =end original
 
-(S) ����� "%s found where operator expected" ��å������ȶ���
-ɽ������붵��Ū�ʿ�¬�Ǥ���
-����Ϥ��Ф��Х��֥롼�����⥸�塼��̾���ޤ������������˻��Ȥ���Ƥ���
-���Ȥ��̣���ޤ���
-����ϥե����������Ǥν��֤Τ���Ǥ��ä��ꡢ"sub", "package", "require",
-"use" ʸ���ʤ�����Ǥ��ä��ꤷ�ޤ���
-�⤷�ޤ��������Ƥ��ʤ���Τ򻲾Ȥ�������硢���߰��֤�����˼ºݤ�
-���֥롼�����ѥå��������������ɬ�פϤ���ޤ���
-���� "sub foo;" �� "package FOO;" �������������Ȥ��ƻȤ��ޤ���
+(S) これは "%s found where operator expected" メッセージと共に
+表示される教育的な推測です。
+これはしばしばサブルーチンやモジュール名がまだ宣言される前に参照されている
+ことを意味します。
+これはファイル内部での順番のためであったり、"sub", "package", "require",
+"use" 文がないためであったりします。
+もしまだ定義されていないものを参照したい場合、現在位置より前に実際に
+サブルーチンやパッケージを定義する必要はありません。
+空の "sub foo;" や "package FOO;" を「前方」宣言として使えます。
 
 =item Duplicate free() ignored
 
@@ -2920,8 +2920,8 @@ already been freed.
 
 =end original
 
-(S malloc) ���˲�������Ƥ����Τ��Ф��ơ������롼�ƥ��� free() ��
-�Ԥʤ����Ȥ��ޤ�����
+(S malloc) 既に解放されているものに対して、内部ルーティンが free() を
+行なおうとしました。
 
 =item elseif should be elsif
 
@@ -2934,11 +2934,11 @@ unlikely to be what you want.
 
 =end original
 
-(S) Larry �� "elseif" �Ȥ����ΤϽ����ȹͤ����Τǡ�Perl �ˤϤ��Υ�����ɤ�
-����ޤ���
-���Υ����ɤϰ���³���֥��å��ˤ�ä��֤��줿���饹�� "elseif" �᥽�åɤ�
-�ƤӽФ����Ȥ��Ƥ���Ȳ�ᤵ��ޤ���
-�����˾��Ǥ��뤳�ȤǤϤʤ��Ϥ��Ǥ���
+(S) Larry は "elseif" というのは醜いと考えたので、Perl にはこのキーワードは
+ありません。
+このコードは引き続くブロックによって返されたクラスの "elseif" メソッドを
+呼び出そうとしていると解釈されます。
+これは望んでいることではないはずです。
 
 =item entering effective %s failed
 
@@ -2949,8 +2949,8 @@ effective uids or gids failed.
 
 =end original
 
-(F) C<use filetest> �ץ饰�ޤ�ȤäƤ���֤ˡ�
-�¤ȼ¸��� UID �� GID ���ڤ��ؤ��˼��Ԥ��ޤ�����
+(F) C<use filetest> プラグマを使っている間に、
+実と実効の UID や GID の切り替えに失敗しました。
 
 =item Error converting file specification %s
 
@@ -2964,12 +2964,12 @@ conversion routines don't handle.  Drat.
 
 =end original
 
-(F) VMS �˸�ͭ�Υ��顼�Ǥ���
-Perl �ϥե�������ͤ� VMS ���� Unix �����ɤ��餫�ǰ���ʤ���Фʤ�ʤ��Τǡ�
-ľ�����ʤ���Фʤ�ʤ������Ѵ����ޤ���
-�����ʥե�������ͤ� Perl ���Ϥ��������Ѵ��롼���󤬰����ʤ��ѥ������
-ȯ���������Ǥ���
-�����á�
+(F) VMS に固有のエラーです。
+Perl はファイル仕様を VMS 式か Unix 式かどちらかで扱わなければならないので、
+直接操作しなければならない場合は変換します。
+不正なファイル仕様を Perl に渡したか、変換ルーチンが扱えないパターンを
+発見したかです。
+ちぇっ。
 
 =item %s: Eval-group in insecure regular expression
 
@@ -2981,10 +2981,10 @@ is unsafe.  See L<perlre/(?{ code })>, and L<perlsec>.
 
 =end original
 
-C<(?{ ... })> ������������������ޤ�����ɽ���򥳥�ѥ��뤷�褦��
-�����Ȥ��ˡ�Perl �ϱ������줿�ǡ����򸡽Ф��ޤ���;
-����ϰ����ǤϤ���ޤ���
-L<perlre/(?{ code })> �� L<perlsec> �򻲾Ȥ��Ƥ���������
+C<(?{ ... })> ゼロ幅アサーションを含む正規表現をコンパイルしようと
+したときに、Perl は汚染されたデータを検出しました;
+これは安全ではありません。
+L<perlre/(?{ code })> と L<perlsec> を参照してください。
 
 =item %s: Eval-group not allowed at run time
 
@@ -2999,12 +2999,12 @@ that in an eval().  See L<perlre/(?{ code })>.
 
 =end original
 
-(F) Perl ���¹Ի��ˡ��ѿ�Ÿ�����줿�ͤ�ޤ�Ǥ��ơ�
-C<(?{ ... })> ������������������ޤ�����ɽ���򥳥�ѥ��뤷�褦�Ȥ��ޤ�����
-����ϥ������ƥ���δ���������Τǡ����Ĥ���Ƥ��ޤ���
-�ɤ����Ƥ�¹Ԥ��������ϡ��¹Ի����ѿ�Ÿ�����줿ʸ���󤫤�
-�ѥ������������ơ������ eval() ����ǻȤ����ȤǼ¹ԤǤ��ޤ���
-L<perlre/(?{ code })> �򻲾Ȥ��Ƥ���������
+(F) Perl が実行時に、変数展開された値を含んでいて、
+C<(?{ ... })> ゼロ幅アサーションを含む正規表現をコンパイルしようとしました。
+これはセキュリティ上の危険があるので、許可されていません。
+どうしても実行したい場合は、実行時に変数展開された文字列から
+パターンを作成して、それを eval() の中で使うことで実行できます。
+L<perlre/(?{ code })> を参照してください。
 
 =item %s: Eval-group not allowed, use re 'eval'
 
@@ -3016,9 +3016,9 @@ pragma is in effect.  See L<perlre/(?{ code })>.
 
 =end original
 
-(F) ����ɽ���� C<(?{ ... })> ������������������ޤ�Ǥ��ޤ�����
-���ι�¤�� C<use re 'eval'> �ץ饰�ޤ�ͭ���ξ��ˤΤߵ��Ĥ���ޤ���
-L<perlre/(?{ code })> �򻲾Ȥ��Ƥ���������
+(F) 正規表現に C<(?{ ... })> ゼロ幅アサーションを含んでいますが、
+この構造は C<use re 'eval'> プラグマが有効の場合にのみ許可されます。
+L<perlre/(?{ code })> を参照してください。
 
 =item Excessively long <> operator
 
@@ -3031,9 +3031,9 @@ variable and glob that.
 
 =end original
 
-(F) <> �黻�Ҥ����Ƥ� Perl ���̻Ҥκ��祵������ۤ��뤳�ȤϤǤ��ޤ���
-ñ�˥ե�����̾��Ĺ���ꥹ�Ȥ򥰥��֤��褦�Ȥ��������ʤ顢glob() �黻�Ҥ�
-�Ȥ������ե�����̾���ѿ�������ơ�����򥰥��֤��Ƥ���������
+(F) <> 演算子の内容は Perl 識別子の最大サイズを越えることはできません。
+単にファイル名の長いリストをグロブしようとしただけなら、glob() 演算子を
+使うか、ファイル名を変数に入れて、それをグロブしてください。
 
 =item Execution of %s aborted due to compilation errors
 
@@ -3043,7 +3043,7 @@ variable and glob that.
 
 =end original
 
-(F) Perl �Υ���ѥ��뤬���Ԥ����Ȥ��Ρ��Ǹ�ΤޤȤ��å������Ǥ���
+(F) Perl のコンパイルが失敗したときの、最後のまとめメッセージです。
 
 =item Exiting eval via %s
 
@@ -3054,7 +3054,7 @@ goto, or a loop control statement.
 
 =end original
 
-(W exiting) goto ��롼������ʸ�ʤɡ�����������ˡ�� eval ��ȴ���ޤ�����
+(W exiting) goto やループ制御文など、おかしな方法で eval を抜けました。
 
 =item Exiting format via %s
 
@@ -3065,7 +3065,7 @@ goto, or a loop control statement.
 
 =end original
 
-(W exiting) goto ��롼������ʸ�Ȥ��ä�������ʷ��� eval ��λ���ޤ�����
+(W exiting) goto やループ制御文といった、異例な形で eval を終了しました。
 
 =item Exiting pseudo-block via %s
 
@@ -3077,9 +3077,9 @@ loop control statement.  See L<perlfunc/sort>.
 
 =end original
 
-(W exiting) (�����ȥ֥��å��䥵�֥롼����Τ褦��) ���̤ʥ֥��å���¤��
-goto ��롼������ʸ�Ȥ��ä��������ˡ�ǽ�λ���ޤ�����
-L<perlfunc/sort> �򻲾Ȥ��Ƥ���������
+(W exiting) (ソートブロックやサブルーチンのような) 特別なブロック構造を、
+goto やループ制御文といった異例な方法で終了しました。
+L<perlfunc/sort> を参照してください。
 
 =item Exiting subroutine via %s
 
@@ -3090,8 +3090,8 @@ as a goto, or a loop control statement.
 
 =end original
 
-(W exiting) goto ��롼������ʸ�ʤɡ�����������ˡ�ǥ��֥롼�ƥ����
-ȴ���ޤ�����
+(W exiting) goto やループ制御文など、おかしな方法でサブルーティンを
+抜けました。
 
 =item Exiting substitution via %s
 
@@ -3102,8 +3102,8 @@ as a return, a goto, or a loop control statement.
 
 =end original
 
-(W exit) return �� goto ��롼������ʸ�ʤɡ�����������ˡ���ִ���
-ȴ���ޤ�����
+(W exit) return や goto やループ制御文など、おかしな方法で置換を
+抜けました。
 
 =item Explicit blessing to '' (assuming package main)
 
@@ -3116,11 +3116,11 @@ e.g. bless($ref, $p || 'MyPackage');
 
 =end original
 
-(W misc) ��ե���󥹤�Ĺ��������ʸ����� bless ���ޤ�����
-����ϥ�ե���󥹤�ѥå����� main �� bless ������̤�����ޤ���
-��������̤��ʤ���˾��Ǥ��뤳�ȤǤϤ���ޤ���
-(bless($ref, $p || 'MyPackage'); �Τ褦��) �ǥե���ȥ������å�
-�ѥå��������󶡤��뤳�Ȥ��θ���Ƥ�������;
+(W misc) リファレンスを長さゼロの文字列に bless しました。
+これはリファレンスをパッケージ main に bless する効果があります。
+これは普通あなたが望んでいることではありません。
+(bless($ref, $p || 'MyPackage'); のように) デフォルトターゲット
+パッケージを提供することを考慮してください;
 
 =item %s: Expression syntax
 
@@ -3131,8 +3131,8 @@ Check the #! line, or manually feed your script into Perl yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� B<csh> �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく B<csh> で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item %s failed--call queue aborted
 
@@ -3144,9 +3144,9 @@ routines has been prematurely ended.
 
 =end original
 
-(F) CHECK, INIT, END ���֥롼�����¹���˥ȥ�åפ���Ƥ��ʤ��㳰��
-ȯ�����ޤ�����
-���Τ褦�ʥ롼����Υ��塼�λĤ�ν���������ǽ�λ���ޤ�����
+(F) CHECK, INIT, END サブルーチンを実行中にトラップされていない例外が
+発生しました。
+このようなルーチンのキューの残りの処理は途中で終了しました。
 
 =item false [] range "%s" in regexp
 
@@ -3159,11 +3159,11 @@ quoting the "-",  "\-".  See L<perlre>.
 
 =end original
 
-(W regexp) ʸ�����饹�ϰϤ���Ƭ�Ȥ������ϡ�C<\d> �� C<[:alpha:]> �Τ褦��
-¾��ʸ�����饹�ǤϤʤ�����ƥ��ʸ���Ǥʤ���Фʤ�ޤ���
-�ְ�ä��ϰϤ� "-" �ϥ�ƥ��� "-" �Ȳ�ᤵ��ޤ���
-"-" �� "\-" �ȥ������Ȥ��뤳�Ȥ��θ���Ƥ���������
-L<perlre> �򻲾Ȥ��Ƥ���������
+(W regexp) 文字クラス範囲の先頭とと末尾は、C<\d> や C<[:alpha:]> のような
+他の文字クラスではなく、リテラル文字でなければなりません。
+間違った範囲の "-" はリテラルの "-" と解釈されます。
+"-" を "\-" とクォートすることを考慮してください。
+L<perlre> を参照してください。
 
 =item Fatal VMS error at %s, line %d
 
@@ -3176,11 +3176,11 @@ you which section of the Perl source code is distressed.
 
 =end original
 
-(P) VMS �˸�ͭ�Υ��顼�Ǥ���
-�����Թ�ΰ������Ȥ� VMS �����ƥॵ���ӥ��� RTL �롼����ǵ�����ޤ���;
-Perl �ν�λ�����ɤ˾ܺ٤�������Ƥ��ޤ���
-"at %s" �Υե�����̾�� "line %d" �ι��ֹ�ϡ�����ε����ä�
-Perl �����������ɤΰ��֤򼨤��Ƥ��ޤ���
+(P) VMS に固有のエラーです。
+何か都合の悪いことが VMS システムサービスか RTL ルーチンで起こりました;
+Perl の終了コードに詳細が示されています。
+"at %s" のファイル名と "line %d" の行番号は、問題の起こった
+Perl ソースコードの位置を示しています。
 
 =item fcntl is not implemented
 
@@ -3191,8 +3191,8 @@ PDP-11 or something?
 
 =end original
 
-(F) ���Υޥ���Ǥϡ�fcntl() ����������Ƥ��ʤ��褦�˸����ޤ���
-PDP-11 �������Ǥ��礦����
+(F) このマシンでは、fcntl() が実装されていないように見えます。
+PDP-11 か何かでしょうか。
 
 =item Filehandle %s opened only for input
 
@@ -3205,12 +3205,12 @@ the file, use ">" or ">>".  See L<perlfunc/open>.
 
 =end original
 
-(W io) �꡼�ɥ���꡼�Υե�����ϥ�ɥ���Ф��ơ�����ߤ�Ԥʤ����Ȥ��ޤ�����
-�ɤ߽�ξ�ѥե�����ϥ�ɥ�ˤ������ΤǤ���С�"<" ���դ����ꡢ
-�����դ��ʤ��ä��ꤹ��ΤǤϤʤ���"+<" �� "+>" �� "+>>" ���դ���
-open ����ɬ�פ�����ޤ���
-�饤�ȥ���꡼�Ǥ���С�">" �� ">>" ��ȤäƤ���������
-L<perlfunc/open> �ι�򻲾Ȥ��Ƥ���������
+(W io) リードオンリーのファイルハンドルに対して、書込みを行なおうとしました。
+読み書き両用ファイルハンドルにしたいのであれば、"<" を付けたり、
+何も付けなかったりするのではなく、"+<" や "+>" や "+>>" を付けて
+open する必要があります。
+ライトオンリーであれば、">" や ">>" を使ってください。
+L<perlfunc/open> の項を参照してください。
 
 =item Filehandle %s opened only for output
 
@@ -3223,12 +3223,12 @@ intended only to read from the file, use "<".  See L<perlfunc/open>.
 
 =end original
 
-(W io) �񤭹������ѤΥե�����ϥ�ɥ뤫���ɤ߹��⤦�Ȥ��ޤ�����
-�ɤ߽񤭤Ǥ���ե�����ϥ�ɥ�ˤ��������ϡ�
-�ե�����Υ����ץ���� "<" �䲿��ʤ��ǤϤʤ���
-"+<" �� "+>" �� "+>>" ��Ĥ���ɬ�פ�����ޤ���
-�ɤ߹������Ѥˤ��������ϡ�"<" ��ȤäƤ���������
-L<perlfunc/open> �򻲾Ȥ��Ƥ���������
+(W io) 書き込み専用のファイルハンドルから読み込もうとしました。
+読み書きできるファイルハンドルにしたい場合は、
+ファイルのオープン時に "<" や何もなしではなく、
+"+<" か "+>" か "+>>" をつける必要があります。
+読み込み専用にしたい場合は、"<" を使ってください。
+L<perlfunc/open> を参照してください。
 
 =item Final $ should be \$ or $name
 
@@ -3241,9 +3241,9 @@ name.
 
 =end original
 
-(F) ʸ����κǸ�� $ ������ƥ��Υɥ뵭��ʤΤ����ѿ�̾������褦�Ȥ���
-˺�줿�Τ��򡢤Ϥä��ꤵ���ʤ���Фʤ�ޤ���
-�Хå�����å�����դ��뤫��̾��������Ƥ���������
+(F) 文字列の最後の $ が、リテラルのドル記号なのか、変数名を入れようとして
+忘れたのかを、はっきりさせなければなりません。
+バックスラッシュを付けるか、名前を入れてください。
 
 =item Final @ should be \@ or @name
 
@@ -3256,9 +3256,9 @@ name.
 
 =end original
 
-(F) ʸ����κǸ�� @ ������ƥ��Υ��åȥޡ����ʤΤ����ѿ�̾��
-����褦�Ȥ���˺�줿�Τ��򡢤Ϥä��ꤵ���ʤ���Фʤ�ޤ���
-�Хå�����å�����դ��뤫��̾��������Ƥ���������
+(F) 文字列の最後の @ が、リテラルのアットマークなのか、変数名を
+入れようとして忘れたのかを、はっきりさせなければなりません。
+バックスラッシュを付けるか、名前を入れてください。
 
 =item flock() on closed filehandle %s
 
@@ -3271,11 +3271,11 @@ same name?
 
 =end original
 
-(W closed) flock() ���褦�Ȥ����ե�����ϥ�ɥ�Ϥ������˴���
-�Ĥ����Ƥ��ޤ���
-�����ե���������å����Ƥ���������
-flock() �ϥե�����ϥ�ɥ�����ޤ���
-Ʊ��̾���Υǥ��쥯�ȥ�ϥ�ɥ�� flock() ���褦�Ȥ��Ƥ��ޤ���?
+(W closed) flock() しようとしたファイルハンドルはその前に既に
+閉じられています。
+論理フローをチェックしてください。
+flock() はファイルハンドルを操作します。
+同じ名前のディレクトリハンドルに flock() しようとしていませんか?
 
 =item Quantifier follows nothing before << HERE in regex m/%s/
 
@@ -3287,10 +3287,10 @@ problem was discovered. See L<perlre>.
 
 =end original
 
-(F) ����ɽ�����̻���Ҥǳ��Ϥ��Ƥ��ޤ���
-�⤷������ƥ��˻Ȥ������ʤ顢�Хå�����å���ǥ������Ȥ��Ƥ���������
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 正規表現を量指定子で開始しています。
+もしそれをリテラルに使いたいなら、バックスラッシュでクォートしてください。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Format not terminated
 
@@ -3301,8 +3301,8 @@ to the end of your file without finding such a line.
 
 =end original
 
-(F) �ե����ޥåȤϡ�ñ�ȤΥɥåȤ�������ʤ�Ԥǽ����ʤ���Фʤ�ޤ���
-���Τ褦�ʹԤ����Ĥ���ʤ��ޤޡ�������ץȤκǸ�˹Ԥ������äƤ��ޤ��ޤ�����
+(F) フォーマットは、単独のドットだけからなる行で終わらなければなりません。
+そのような行が見つからないまま、スクリプトの最後に行き当たってしまいました。
 
 =item Format %s redefined
 
@@ -3312,8 +3312,8 @@ to the end of your file without finding such a line.
 
 =end original
 
-(W redefine) �ե����ޥåȤ��������ޤ�����
-���ηٹ��ߤ��ˤϰʲ��Τ褦�ˤ��Ƥ���������
+(W redefine) フォーマットを再定義しました。
+この警告を止めるには以下のようにしてください。
 
     {
 	no warnings;
@@ -3328,7 +3328,7 @@ to the end of your file without finding such a line.
 
 =end original
 
-(W) �ʲ��Τ褦�ˤ��Ƥ��ޤ�:
+(W) 以下のようにしています:
 
     if ($foo = 123)
 
@@ -3338,7 +3338,7 @@ when you meant
 
 =end original
 
-�ʲ��Τ褦�ˤ���٤��Ȥ����Ǥ��礦:
+以下のようにするべきところでしょう:
 
     if ($foo == 123)
 
@@ -3348,7 +3348,7 @@ when you meant
 
 =end original
 
-(���뤤�ϻ����褦�ʤ���)��
+(あるいは似たようなこと)。
 
 =item %s found where operator expected
 
@@ -3361,10 +3361,10 @@ operator or delimiter was omitted, such as a semicolon.
 
 =end original
 
-(S) Perl �λ���������ϡ����˹ब��뤫���黻�Ҥ���뤫���ΤäƤ��ޤ���
-���˱黻�Ҥ����ȻפäƤ���Ȥ��ˡ���Ǥ���Ȥ狼���Τ������ȡ�
-���ηٹ𤬽Ф뤳�Ȥˤʤ�ޤ���
-�̾�黻�Ҥ����ߥ�����Τ褦�ʶ��ڤ�ʸ������ά���줿���Ȥ򤷤ᤷ�ޤ���
+(S) Perl の字句解析部は、次に項が来るか、演算子が来るかを知っています。
+次に演算子が来ると思っているときに、項であるとわかるものが現れると、
+この警告が出ることになります。
+通常、演算子かセミコロンのような区切り文字が省略されたことをしめします。
 
 =item gdbm store returned %d, errno %d, key "%s"
 
@@ -3374,7 +3374,7 @@ operator or delimiter was omitted, such as a semicolon.
 
 =end original
 
-(S) GDBM_File ��ĥ�⥸�塼�뤬���ͤ�����˼��Ԥ����Ȥ����ٹ�Ǥ���
+(S) GDBM_File 拡張モジュールが、値の設定に失敗したという警告です。
 
 =item gethostent not implemented
 
@@ -3386,9 +3386,9 @@ on the Internet.
 
 =end original
 
-(F) C �饤�֥��� gethostent() ����������Ƥ��ʤ��褦�Ǥ���
-�����餯����������� Internet ��Τ��٤ƤΥۥ���̾��
-�֤��ʤ���Ф����ʤ��ȻפäƤ���ΤǤ��礦��
+(F) C ライブラリに gethostent() が実装されていないようです。
+おそらく、実装すると Internet 上のすべてのホスト名を
+返さなければいけないと思っているのでしょう。
 
 =item get%sname() on closed socket %s
 
@@ -3399,9 +3399,9 @@ socket.  Did you forget to check the return value of your socket() call?
 
 =end original
 
-(W closed) �Ĥ��������åȤ��Ф��ƥ����åȤ�ԥ������å�̾��������褦��
-���ޤ�����
-socket() �θƤӽФ����ˡ��ֵ��ͤΥ����å���˺�줿�ΤǤϤ���ޤ���?
+(W closed) 閉じたソケットに対してソケットやピアソケット名を取得しようと
+しました。
+socket() の呼び出し時に、返却値のチェックを忘れたのではありませんか?
 
 =item getpwnam returned invalid UIC %#o for user "%s"
 
@@ -3412,9 +3412,9 @@ C<getpwnam> operator returned an invalid UIC.
 
 =end original
 
-(S) VMS �˸�ͭ�ηٹ�Ǥ���
-C<getpwnam> �黻�Ҥδ��äȤʤ� C<sys$getuai> �ƤӽФ���
-������ UIC ���֤���ޤ�����
+(S) VMS に固有の警告です。
+C<getpwnam> 演算子の基礎となる C<sys$getuai> 呼び出しで
+不正な UIC が返されました。
 
 =item getsockopt() on closed socket %s
 
@@ -3426,9 +3426,9 @@ L<perlfunc/getsockopt>.
 
 =end original
 
-(W clockd) �����������줿�����åȤΥ����åȥ��ץ�����������褦�Ȥ��ޤ�����
-socket() �θƤӽФ����ˡ��ֵ��ͤΥ����å���˺�줿�ΤǤϤ���ޤ��󤫡�
-L<perlfunc/getsockopt> �򻲾Ȥ��Ƥ���������
+(W clockd) クローズされたソケットのソケットオプションを取得しようとしました。
+socket() の呼び出し時に、返却値のチェックを忘れたのではありませんか。
+L<perlfunc/getsockopt> を参照してください。
 
 =item Global symbol "%s" requires explicit package name
 
@@ -3441,10 +3441,10 @@ is in (using "::").
 
 =end original
 
-(F) "use strict vars" �����ꤵ��Ƥ��ޤ��Τǡ����٤Ƥ��ѿ��ϡ�
-("my" ��Ȥä�) ���祹�����פ��ѿ�����"our" ��Ȥäƻ�����������뤫��
-�������Х��ѿ����ɤΥѥå������Τ�Τ��� ("::" ��Ȥä�)������Ū��
-�������ʤ��ƤϤʤ�ޤ���
+(F) "use strict vars" が指定されていますので、すべての変数は、
+("my" を使った) 字句スコープの変数か、"our" を使って事前に宣言するか、
+グローバル変数がどのパッケージのものかを ("::" を使って)、明示的に
+修飾しなくてはなりません。
 
 =item glob failed (%s)
 
@@ -3464,19 +3464,19 @@ C<./Configure -S> and rebuild Perl.
 
 =end original
 
-(W glob) C<glob> �� C<< <*.c> >> �Τ���˻Ȥ��볰���ץ������˲������꤬
-ȯ�����ޤ�����
-�̾����ϳ����ץ�����ब���Ԥ����� 0 �Υ��ơ������ǽ�λ����褦��
-C<glob> �ѥ������Ϥ��줿���Ȥ��̣���ޤ���
-���Υ�å���������������פ�������������۾ｪλ�򼨤��Ƥ����硢
-csh (C ������) ������Ƥ��뤳�Ȥ��̣���Ƥ��뤫�⤷��ޤ���
-�⤷�����ʤ顢config.sh �����Ƥ� csh ��Ϣ���ѿ����ѹ�����٤��Ǥ�:
-�⤷ tcsh ������ʤ顢(C<full_csh='/usr/bin/tcsh'> �Τ褦��) tcsh ��
-���Ȥ���褦���ѿ������ꤷ�ޤ�;
-����ʤ���С���Ϣ�������Ƥ��ѿ�����ˤ���(�㳰�Ȥ��� C<d_csh> ��
-C<'undef'> �����ꤹ��٤��Ǥ�)���Ȥǡ�Perl �� csh ���ʤ���Τȹͤ��ޤ���
-�ɤ���ξ��Ǥ⡢config.sh ���������塢C<./Configure -S> ��¹Ԥ���
-Perl ��ƥӥ�ɤ��Ƥ���������
+(W glob) C<glob> や C<< <*.c> >> のために使われる外部プログラムに何か問題が
+発生しました。
+通常、これは外部プログラムが失敗して非 0 のステータスで終了するような
+C<glob> パターンが渡されたことを意味します。
+このメッセージがコアダンプを引きおこした異常終了を示している場合、
+csh (C シェル) が壊れていることを意味しているかもしれません。
+もしそうなら、config.sh の全ての csh 関連の変数を変更するべきです:
+もし tcsh があるなら、(C<full_csh='/usr/bin/tcsh'> のように) tcsh を
+参照するように変数を設定します;
+さもなければ、関連する全ての変数を空にする(例外として C<d_csh> は
+C<'undef'> に設定するべきです)ことで、Perl は csh がないものと考えます。
+どちらの場合でも、config.sh を修正した後、C<./Configure -S> を実行して
+Perl を再ビルドしてください。
 
 =item Glob not terminated
 
@@ -3489,10 +3489,10 @@ earlier in the line, and you really meant a "less than".
 
 =end original
 
-(F) �बɬ�פȤ����Ȥ����ǡ���������̤����Ĥ������ᡢ
-�б������Ĥ�����̤�õ���ޤ����������Ĥ���ޤ���Ǥ�����
-��ǽ���Ȥ��Ƥϡ�ɬ�פʳ�̤�ʤ��Ƥ��ޤ��������ϡ��־��ʤ국��פ�
-ɽ�������ä���礬�ͤ����ޤ���
+(F) 項が必要とされるところで、開き山括弧が見つけたため、
+対応する閉じ山括弧を探しましたが、見つかりませんでした。
+可能性としては、必要な括弧を省いてしまい、本当は、「小なり記号」を
+表したかった場合が考えられます。
 
 =item Got an error from DosAllocMem
 
@@ -3503,9 +3503,9 @@ version of Perl, and this should not happen anyway.
 
 =end original
 
-(P) OS/2 �˸�ͭ�Υ��顼�Ǥ���
-��äȤ⤢�ꤽ���ʤΤ��ѻߤ��줿�С������� Perl ��ȤäƤ��뤳�Ȥǡ�
-�ɤ���ˤ��Ƥ⤳�Υ��顼�ϵ����ʤ��Ϥ��Ǥ���
+(P) OS/2 に固有のエラーです。
+もっともありそうなのは廃止されたバージョンの Perl を使っていることで、
+どちらにしてもこのエラーは起きないはずです。
 
 =item goto must have label
 
@@ -3516,9 +3516,9 @@ unspecified destination.  See L<perlfunc/goto>.
 
 =end original
 
-(F) "next" �� "last" �Ȥϰ�äơ�goto �ˤ�ɬ�����������
-���ꤷ�ʤ��ƤϤʤ�ޤ���
-L<perlfunc/goto> �򻲾Ȥ��Ƥ���������
+(F) "next" や "last" とは違って、goto には必ず、飛び先を
+指定しなくてはなりません。
+L<perlfunc/goto> を参照してください。
 
 =item %s had compilation errors
 
@@ -3528,7 +3528,7 @@ L<perlfunc/goto> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(F) C<perl -c> �����Ԥ����Ȥ��κǽ��ޤȤ��å������Ǥ���
+(F) C<perl -c> が失敗したときの最終まとめメッセージです。
 
 =item Had to create %s unexpectedly
 
@@ -3540,9 +3540,9 @@ created on an emergency basis to prevent a core dump.
 
 =end original
 
-(S internal) ����롼�ƥ��󤬡�����¸�ߤ��Ƥ���Ϥ��Υ���ܥ��
-����ܥ�ơ��֥��õ���ޤ����������餫����ͳ��¸�ߤ�����
-��������פ��򤱤뤿��ˡ��۵ޤ��������ޤ�����
+(S internal) あるルーティンが、既に存在しているはずのシンボルを、
+シンボルテーブルで探しましたが、何らかの理由で存在せず、
+コアダンプを避けるために、緊急に生成しました。
 
 =item Hash %%s missing the % in argument %d of %s()
 
@@ -3553,9 +3553,9 @@ spots.  This is now heavily deprecated.
 
 =end original
 
-(D deprecated) �����˸Ť� Perl �Ǥϡ��ϥå���̾�� % ���ά�Ǥ����꤬
-����ޤ�����
-��ά�Ϥ��ʤ��褦�ˤ��Ƥ���������
+(D deprecated) 本当に古い Perl では、ハッシュ名の % を省略できる場所が
+ありました。
+省略はしないようにしてください。
 
 =item %s has too many errors
 
@@ -3566,9 +3566,9 @@ Further error messages would likely be uninformative.
 
 =end original
 
-(F) ��ʸ�����������ץ��������� 10 �ĤΥ��顼�򸫤Ĥ������ᡢ
-����ʾ�β��Ϥ�����ޤ�����
-����ʾ�Υ��顼��å������ϡ������餯��̣���ʤ��Ǥ��礦��
+(F) 構文解析部が、プログラム中に 10 個のエラーを見つけたため、
+それ以上の解析を諦めました。
+それ以上のエラーメッセージは、おそらく意味がないでしょう。
 
 =item Hexadecimal number > 0xffffffff non-portable
 
@@ -3580,9 +3580,9 @@ L<perlport> for more on portability concerns.
 
 =end original
 
-(W portable) ���ꤷ�� 16 �ʿ��� 2**32-1 (4294967295) ����礭���Τǡ�
-�����ƥ�֤ǰܿ���������ޤ���
-�ܿ����˴ؤ��뤵��ʤ�ͻ��ˤĤ��Ƥ� L<perlport> �򻲾Ȥ��Ƥ���������
+(W portable) 指定した 16 進数が 2**32-1 (4294967295) より大きいので、
+システム間で移植性がありません。
+移植性に関するさらなる考察については L<perlport> を参照してください。
 
 =item Identifier too long
 
@@ -3595,11 +3595,11 @@ of Perl are likely to eliminate these arbitrary limitations.
 
 =end original
 
-(F) Perl �ϼ��̻�(�ѿ�̾��ؿ�̾�ʤ�)�ˤĤ��ơ�ñ���̾���ˤĤ��Ƥ�
-���褽 250 ʸ���ˡ�(C<$A::B> �Τ褦��)ʣ��̾�ˤĤ��ƤϤ⤦����Ĺ��Ĺ����
-���¤��Ƥ��ޤ���
-���� Perl �����¤�ۤ��ޤ�����
-����ΥС������� Perl �ǤϤ��������Ū�����¤Ϥʤ��ʤ�Ǥ��礦��
+(F) Perl は識別子(変数名や関数名など)について、単純な名前については
+およそ 250 文字に、(C<$A::B> のような)複合名についてはもう少し長い長さに
+制限しています。
+この Perl の制限を越えました。
+将来のバージョンの Perl ではこれらの恣意的な制限はなくなるでしょう。
 
 =item Illegal binary digit %s
 
@@ -3609,7 +3609,7 @@ of Perl are likely to eliminate these arbitrary limitations.
 
 =end original
 
-(F) 2 �ʿ��Ȥ��� 0 �� 1 �ʳ��ο��ͤ�ȤäƤ��ޤ���
+(F) 2 進数として 0 と 1 以外の数値を使っています。
 
 =item Illegal binary digit %s ignored
 
@@ -3621,8 +3621,8 @@ offending digit.
 
 =end original
 
-(W digit) 2 �ʿ��Ȥ��� 0 �� 1 �ʳ��ο��ͤ�Ȥ����Ȥ����ΤǤ��礦��
-2 �ʿ��β�������Τ�����ͤμ�������ߤ��ޤ�����
+(W digit) 2 進数として 0 と 1 以外の数値を使おうとしたのでしょう。
+2 進数の解釈は問題のある数値の手前で停止しました。
 
 =item Illegal character %s (carriage return)
 
@@ -3636,11 +3636,11 @@ to your Perl administrator.
 
 =end original
 
-(F) Perl �����̥ץ������ƥ������������ʸ���򤽤�¾�ζ����Ʊ�ͤ�
-�����ޤ��Τǡ�Perl ��ɸ��Υ��ץ����ǥӥ�ɤ������Ϥ��Υ��顼��
-���뤳�ȤϷ褷�Ƥʤ��Ϥ��Ǥ���
-�ɤ������櫓�������Ȥ��� Perl �Ϥ��ε�ǽ�ʤ��ǥӥ�ɤ���Ƥ���褦�Ǥ���
-Perl �δ����Ԥ��䤤��碌�Ƥ���������
+(F) Perl は普通プログラムテキスト中の復帰文字をその他の空白と同様に
+扱いますので、Perl を標準のオプションでビルドした場合はこのエラーを
+見ることは決してないはずです。
+どういうわけか、お使いの Perl はこの機能なしでビルドされているようです。
+Perl の管理者に問い合わせてください。
 
 =item Illegal division by zero
 
@@ -3652,9 +3652,9 @@ meaningless input.
 
 =end original
 
-(F) �����ǳ�껻�򤷤褦�Ȥ��ޤ�����
-�����å��θ��꤫����̣��̵�����Ϥ��ɤ�����ˡ������դ��뤳�Ȥ�
-ɬ�פ��Τɤ��餫�Ǥ��礦��
+(F) ゼロで割り算をしようとしました。
+ロジックの誤りか、意味の無い入力を防ぐために、条件を付けることが
+必要かのどちらかでしょう。
 
 =item Illegal hexadecimal digit %s ignored
 
@@ -3666,8 +3666,8 @@ number stopped before the illegal character.
 
 =end original
 
-(W digit) 16 �ʿ��Ȥ��� 0 - 9, A - F, a - f �ʳ���ʸ����Ȥ����Ȥ��ޤ�����
-16 �ʿ��β���������ʸ���μ�������ߤ��ޤ�����
+(W digit) 16 進数として 0 - 9, A - F, a - f 以外の文字を使おうとしました。
+16 進数の解釈は不正な文字の手前で停止しました。
 
 =item Illegal modulus zero
 
@@ -3678,8 +3678,8 @@ numbers don't take to this kindly.
 
 =end original
 
-(F) ;������Τˡ������ǳ�껻�򤷤褦�Ȥ��ޤ�����
-����ϡ��ۤȤ�ɤο��ηϤǼ���������ޤ���
+(F) 余りを求めるのに、ゼロで割り算をしようとしました。
+これは、ほとんどの数体系で受け入れられません。
 
 =item Illegal number of bits in vec
 
@@ -3690,8 +3690,8 @@ two from 1 to 32 (or 64, if your platform supports that).
 
 =end original
 
-(F) vec() �Υӥåȿ� (�軰����) �� 1 ���� 32 (�ץ�åȥե����ब
-�б����Ƥ������ 64) �ޤǤΡ�2 �Τ٤���Ǥʤ���Фʤ�ޤ���
+(F) vec() のビット数 (第三引数) は 1 から 32 (プラットフォームが
+対応している場合は 64) までの、2 のべき乗でなければなりません。
 
 =item Illegal octal digit %s
 
@@ -3701,7 +3701,7 @@ two from 1 to 32 (or 64, if your platform supports that).
 
 =end original
 
-(F) 8 �ʿ��� 8 �� 9 ��Ȥ��ޤ�����
+(F) 8 進数で 8 か 9 を使いました。
 
 =item Illegal octal digit %s ignored
 
@@ -3712,8 +3712,8 @@ Interpretation of the octal number stopped before the 8 or 9.
 
 =end original
 
-(W digit) 8 �ʿ��� 8 �� 9 ��Ȥ����Ȥ����ΤǤ��礦��
-8 �ʿ��β��� 8 �� 9 �μ�������ߤ��ޤ�����
+(W digit) 8 進数で 8 か 9 を使おうとしたのでしょう。
+8 進数の解釈は 8 か 9 の手前で停止しました。
 
 =item Illegal switch in PERL5OPT: %s
 
@@ -3724,8 +3724,8 @@ following switches: B<-[DIMUdmw]>.
 
 =end original
 
-(X) PERL5OPT �Ķ��ѿ�������Ǥ���Τ� B<-[DIMUdmw]> ��
-���ץ��������Ǥ���
+(X) PERL5OPT 環境変数で設定できるのは B<-[DIMUdmw]> の
+オプションだけです。
 
 =item Ill-formed CRTL environ value "%s"
 
@@ -3737,10 +3737,10 @@ delimiter used to separate keys from values.  The element is ignored.
 
 =end original
 
-(W internal) VMS ��ͭ�ηٹ�Ǥ���
-Perl �� CRTL �������Ķ�������ɤ߹��⤦�Ȥ��ޤ��������������ͤ�
-ʬΥ���뤿��˻Ȥ��Ƥ��� C<=> �ǥ�ߥ��Τʤ����Ǥ��������ޤ�����
-�������Ǥ�̵�뤷�ޤ�����
+(W internal) VMS 固有の警告です。
+Perl は CRTL の内部環境配列を読み込もうとしましたが、キーを値と
+分離するために使われている C<=> デリミタのない要素に遭遇しました。
+この要素は無視しました。
 
 =item Ill-formed message in prime_env_iter: |%s|
 
@@ -3753,10 +3753,10 @@ ignored.
 
 =end original
 
-(W internal) VMS ��ͭ�ηٹ�Ǥ���
-Perl �� %ENV ��ȿ��������������Ȥ�������̾�� CLI ����ܥ������
-�ɤ߹��⤦�Ȥ��ޤ��������������ͤδ֤Υǥ�ߥ������Ĥ���ʤ��ä��Τǡ�
-���ιԤ�̵�뤷�ޤ�����
+(W internal) VMS 固有の警告です。
+Perl は %ENV を反復する準備したときに論理名や CLI シンボル定義を
+読み込もうとしましたが、キーと値の間のデリミタが見つからなかったので、
+その行は無視しました。
 
 =item (in cleanup) %s
 
@@ -3770,11 +3770,11 @@ would otherwise result in the same message being repeated.
 
 =end original
 
-(W misc) ������Ƭ�������̡�������Ƥ����㳰�� DESTROY() �᥽�åɤ�
-ȯ���������Ȥ򼨤��Ƥ��ޤ���
-�ǥ��ȥ饯�������̼¹����Ǥ�դλ����ǸƤӽФ��졢���Ф������̤�
-�ƤӽФ����Τǡ����ηٹ��Ʊ����å������������֤���ʤ��褦�ˡ�
-�����Ԥ��Ƥ���٤���ȯ�����ޤ���
+(W misc) この接頭辞は普通、示されている例外が DESTROY() メソッドで
+発生したことを示しています。
+デストラクタは普通実行中の任意の時点で呼び出され、しばしば大量に
+呼び出されるので、この警告は同じメッセージが繰り返されないように、
+何回失敗しても一度だけ発生します。
 
 =begin original
 
@@ -3783,9 +3783,9 @@ also result in this warning.  See L<perlcall/G_KEEPERR>.
 
 =end original
 
-C<G_KEEPERR> �ե饰��Ȥäƥǥ����ѥå������桼����������Хå��˼��Ԥ���
-���ˤ⤳�ηٹ𤬽Ф뤳�Ȥ�����ޤ���
-L<perlcall/G_KEEPERR> �򻲾Ȥ��Ƥ���������
+C<G_KEEPERR> フラグを使ってディスパッチしたユーザーコールバックに失敗した
+場合にもこの警告が出ることがあります。
+L<perlcall/G_KEEPERR> を参照してください。
 
 =item Insecure dependency in %s
 
@@ -3801,14 +3801,14 @@ L<perlsec> for more information.
 
 =end original
 
-(F) �������������å��ε�������˾�ޤ����ʤ���Ƚ�Ǥ��뤳�Ȥ�
-�Ԥʤ����Ȥ��ޤ�����
-setuid �� setgid ��¹Ԥ����Ȥ��䡢����Ū�� B<-T> �ǻ��ꤷ���Ȥ��ˡ�
-���������å�������Ư���ޤ���
-���������å������ϡ����꤬�����ʤ��Ȳ��ꤵ���桼����ľ�ܡ����ܤ���鷺��
-���ꤷ���ǡ����˰����դ��ޤ���
-���Τ褦�ʥǡ�����ִ����ʡ������Ѥ���ȡ����Υ��顼��ȯ�����ޤ���
-�ܤ����ϡ�L<perlsec> �򻲾Ȥ��Ƥ���������
+(F) 何か汚染チェックの機構が、望ましくないと判断することを
+行なおうとしました。
+setuid や setgid を実行したときや、明示的に B<-T> で指定したときに、
+汚染チェック機構が働きます。
+汚染チェック機構は、信頼がおけないと仮定されるユーザが直接、間接を問わず、
+指定したデータに印を付けます。
+そのようなデータを「危険な」操作に用いると、このエラーが発生します。
+詳しくは、L<perlsec> を参照してください。
 
 =item Insecure directory in %s
 
@@ -3820,10 +3820,10 @@ the world.  See L<perlsec>.
 
 =end original
 
-(F) C<$ENV{PATH}> ����ˡ�ï�ˤǤ�񤭹��ߤ��Ǥ���ǥ��쥯�ȥ꤬
-�ޤޤ�Ƥ���Ȥ���system()��exec()���ѥ��פΥ����ץ��
-�Ԥʤ����ȤϤǤ��ޤ���
-L<perlsec> �򻲾Ȥ��Ƥ���������
+(F) C<$ENV{PATH}> の中に、誰にでも書き込みができるディレクトリが
+含まれているとき、system()、exec()、パイプのオープンを
+行なうことはできません。
+L<perlsec> を参照してください。
 
 =item Insecure $ENV{%s} while running %s
 
@@ -3838,12 +3838,12 @@ known value, using trustworthy data.  See L<perlsec>.
 =end original
 
 (F) C<$ENV{PATH}>, C<$ENV{IFS}>, C<$ENV{CDPATH}>, C<$ENV{ENV}>,
-C<$ENV{BASH_ENV}> �Τ����줫���桼�����ˤ�ä��󶡤��줿(���뤤��
-�󶡤��줿��ǽ���Τ���)�ǡ����ξ�硢setuid �� setgid ���줿������ץȤǤ�
-system(), exec(), �ѥ��פ���� open ��Ȥ����ȤϤǤ��ޤ���
-������ץȤϥѥ��Ȥ��ơ�������֤���ǡ�����Ȥä������Τ��ͤ�
-���åȤ��ʤ���Фʤ�ޤ���
-L<perlsec> �򻲾Ȥ��Ƥ���������
+C<$ENV{BASH_ENV}> のいずれかがユーザーによって提供された(あるいは
+提供された可能性のある)データの場合、setuid や setgid されたスクリプトでは
+system(), exec(), パイプされる open を使うことはできません。
+スクリプトはパスとして、信頼の置けるデータを使った、既知の値を
+セットしなければなりません。
+L<perlsec> を参照してください。
 
 =item Integer overflow in %s number
 
@@ -3861,14 +3861,14 @@ operations.
 
 =end original
 
-(W overflow) ��ƥ��ޤ��� hex() �� oct() �ΰ����Ȥ��ƻ��ꤵ�줿 16 �ʡ�
-8 �ʡ�2 �ʿ��ϼ¹Ԥ��Ƥ��륢�����ƥ�����ˤ��礭������Τǡ���ư����������
-�Ѵ�����ޤ�����
-32 �ӥåȥ������ƥ�����Ǥϡ������С��ե���������ɽ���Ǥ��� 16 �ʡ�8 ��
-2 �ʿ��Ϥ��줾�� 0xFFFFFFFF, 037777777777, 
-0b11111111111111111111111111111111 �Ǥ���
-Perl �����Ƥο��ͤ������Ǥ���ư������ɽ����Ʃ��Ū���Ѵ����뤳�Ȥ�
-���դ��Ƥ������� -- ����³�����ˤ�ä����٤������뤳�Ȥ�����ޤ���
+(W overflow) リテラルまたは hex() や oct() の引数として指定された 16 進、
+8 進、2 進数は実行しているアーキテクチャには大きすぎるので、浮動小数点数に
+変換されました。
+32 ビットアーキテクチャでは、オーバーフローせずに表現できる 16 進、8 進
+2 進数はそれぞれ 0xFFFFFFFF, 037777777777, 
+0b11111111111111111111111111111111 です。
+Perl は全ての数値を内部では浮動小数点表現に透過的に変換することに
+注意してください -- 引き続く操作によって精度が失われることがあります。
 
 =item Internal disaster before << HERE in regex m/%s/
 
@@ -3880,8 +3880,8 @@ discovered.
 
 =end original
 
-(P) ����ɽ���������˲����������Ȥ�������ޤ�����
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+(P) 正規表現解析部に何か悪いことが起こりました。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item Internal inconsistency in tracking vforks
 
@@ -3896,14 +3896,14 @@ terminate the Perl script and execute the specified command.
 
 =end original
 
-(S) VMS ��ͭ�ηٹ�Ǥ���
-Perl �� C<fork> �� C<exec> ��ƤӽФ������������Ƥ��ޤ�;
-����ϸ��ߤ� C<exec> �ƤӽФ������ߤΥ�����ץȤ����֥ץ��������ɤ����
-�ƶ���Ϳ���뤫����ꤹ�뤿��Ǥ�(L<perlvms/"exec LIST"> ��
-���Ȥ��Ƥ�������)��
-�ɤ������櫓�������Υ�����Ȥ����������ʤä��Τǡ�Perl �Ϥ��� C<exec> ��
-Perl ������ץȤ�λ�����ƻ��ꤵ�줿���ޥ�ɤ�¹Ԥ����׵�Ǥ����
-���ꤷ�ơ����Τ褦�˰����ޤ�����
+(S) VMS 特有の警告です。
+Perl は C<fork> と C<exec> を呼び出した回数を数えています;
+これは現在の C<exec> 呼び出しが現在のスクリプトかサブプロセスかどちらに
+影響を与えるかを決定するためです(L<perlvms/"exec LIST"> を
+参照してください)。
+どういうわけか、このカウントがおかしくなったので、Perl はこの C<exec> が
+Perl スクリプトを終了させて指定されたコマンドを実行する要求であると
+仮定して、そのように扱いました。
 
 =item Internal urp before << HERE in regex m/%s/
 
@@ -3914,8 +3914,8 @@ shows in the regular expression about where the problem was discovered.
 
 =end original
 
-(P) ����ɽ���������˲����ְ�ä����Ȥ�������ޤ�����
-<<<HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+(P) 正規表現解析部に何か間違ったことが起こりました。
+<<<HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item %s (...) interpreted as function
 
@@ -3928,9 +3928,9 @@ L<perlop/Terms and List Operators (Leftward)>.
 
 =end original
 
-(W syntax) �ꥹ�ȱ黻�Ҥ�ľ��˳�̤��֤��ȡ������ˤ���ꥹ�ȱ黻�Ұ�����
-���Ĵؿ��ˤʤ롢�Ȥ�����§��Ŭ�Ѥ���ޤ�����
-L<perlop/Terms and List Operators (Leftward)> �򻲾Ȥ��Ƥ���������
+(W syntax) リスト演算子の直後に括弧を置くと、括弧内にあるリスト演算子引数を
+持つ関数になる、という規則が適用されました。
+L<perlop/Terms and List Operators (Leftward)> を参照してください。
 
 =item Invalid %s attribute: %s
 
@@ -3941,9 +3941,9 @@ by Perl or by a user-supplied handler.  See L<attributes>.
 
 =end original
 
-�����줿���֥롼������ѿ���°����
-Perl ��桼�����󶡤Υϥ�ɥ��ǧ������ޤ���Ǥ�����
-L<attributes> �򻲾Ȥ��Ƥ���������
+示されたサブルーチンや変数の属性は
+Perl やユーザー提供のハンドラで認識されませんでした。
+L<attributes> を参照してください。
 
 =item Invalid %s attributes: %s
 
@@ -3954,9 +3954,9 @@ recognized by Perl or by a user-supplied handler.  See L<attributes>.
 
 =end original
 
-�����줿���֥롼������ѿ���°����
-Perl ��桼�����󶡤Υϥ�ɥ��ǧ������ޤ���Ǥ�����
-L<attributes> �򻲾Ȥ��Ƥ���������
+示されたサブルーチンや変数の属性は
+Perl やユーザー提供のハンドラで認識されませんでした。
+L<attributes> を参照してください。
 
 =item Invalid conversion in %s: "%s"
 
@@ -3967,8 +3967,8 @@ L<perlfunc/sprintf>.
 
 =end original
 
-(W printf) Perl �ϻ��ꤵ�줿�ե����ޥå��Ѵ���ǧ���Ǥ��ޤ���Ǥ�����
-L<perlfunc/sprintf> �򻲾Ȥ��Ƥ���������
+(W printf) Perl は指定されたフォーマット変換が認識できませんでした。
+L<perlfunc/sprintf> を参照してください。
 
 =item invalid [] range "%s" in regexp
 
@@ -3979,8 +3979,8 @@ greater than the maximum character.  See L<perlre>.
 
 =end original
 
-(F) ʸ�����饹�˻��ꤷ���ϰϤκǾ��ͤ��������ͤ����礭���ʤäƤ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 文字クラスに指定した範囲の最小値が、最大値よりも大きくなっています。
+L<perlre> を参照してください。
 
 =item Invalid separator character %s in attribute list
 
@@ -3993,10 +3993,10 @@ See L<attributes>.
 
 =end original
 
-(F) °���ꥹ�Ȥ����Ǥδ֤˥�����ȶ���ʳ��Τ�Τ�����ޤ���
-ľ����°�������ä��դ��Υѥ�᡼���ꥹ�Ȥξ�硢�����餯�ꥹ�Ȥ�
-ͽ�����᤯��ü����Ƥ��ޤ���
-L<attributes> �򻲾Ȥ��Ƥ���������
+(F) 属性リストの要素の間にコロンと空白以外のものがあります。
+直前の属性がかっこ付きのパラメータリストの場合、おそらくリストが
+予定より早く終端されています。
+L<attributes> を参照してください。
 
 =item Invalid type in pack: '%s'
 
@@ -4008,10 +4008,10 @@ silently ignored.
 
 =end original
 
-(F) Ϳ����줿ʸ����ͭ���� pack �η��ǤϤ���ޤ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
-(W pack) Ϳ����줿ʸ����ͭ���� pack �η��ǤϤ���ޤ��󤬡����ۤ�
-̵�뤵��ޤ�����
+(F) 与えられた文字は有効な pack の型ではありません。
+L<perlfunc/pack> を参照してください。
+(W pack) 与えられた文字は有効な pack の型ではありませんが、暗黙に
+無視されました。
 
 =item Invalid type in unpack: '%s'
 
@@ -4024,10 +4024,10 @@ silently ignored.
 
 =end original
 
-(F) Ϳ����줿ʸ����ͭ���� unpack �η��ǤϤ���ޤ���
-L<perlfunc/unpack> �򻲾Ȥ��Ƥ���������
-(W unpack) Ϳ����줿ʸ����ͭ���� unpack �η��ǤϤ���ޤ��󤬡����ۤ�
-̵�뤵��ޤ�����
+(F) 与えられた文字は有効な unpack の型ではありません。
+L<perlfunc/unpack> を参照してください。
+(W unpack) 与えられた文字は有効な unpack の型ではありませんが、暗黙に
+無視されました。
 
 =item ioctl is not implemented
 
@@ -4038,8 +4038,8 @@ strange for a machine that supports C.
 
 =end original
 
-(F) C �򥵥ݡ��Ȥ��Ƥ���ޥ���ǤϤ������ʤ��Ȥ��Ȼפ��ޤ�����
-���Υޥ���Ǥ� ioctl() ����������Ƥ��ʤ��褦�Ǥ���
+(F) C をサポートしているマシンではおかしなことだと思いますが、
+このマシンでは ioctl() が実装されていないようです。
 
 =item `%s' is not a code reference
 
@@ -4051,9 +4051,9 @@ to a subroutine.
 
 =end original
 
-(W) overload::constant �� 2 ���� (4 ���ܡ�6 ����, ...) �ΰ����ϥ�����
-��ե���󥹤Ǥ���ɬ�פ�����ޤ���
-̵̾���֥롼���󤫡����֥롼����ؤΥ�ե���󥹤Ǥ���
+(W) overload::constant の 2 番目 (4 番目、6 番目, ...) の引数はコード
+リファレンスである必要があります。
+無名サブルーチンか、サブルーチンへのリファレンスです。
 
 =item `%s' is not an overloadable type
 
@@ -4063,7 +4063,7 @@ to a subroutine.
 
 =end original
 
-(W) �����С������ɥѥå��������Τ�ʤ�������򥪡��С������ɤ��褦�Ȥ��ޤ�����
+(W) オーバーロードパッケージが知らない定数型をオーバーロードしようとしました。
 
 =item junk on end of regexp
 
@@ -4073,7 +4073,7 @@ to a subroutine.
 
 =end original
 
-(P) ����ɽ���ι�ʸ���Ϥ��Ǥ��ʤ��ʤ�ޤ�����
+(P) 正規表現の構文解析ができなくなりました。
 
 =item Label not found for "last %s"
 
@@ -4085,9 +4085,9 @@ L<perlfunc/last>.
 
 =end original
 
-(F) æ�Ф���롼�פ���ꤷ�ޤ�����������̾���Υ롼�פ���ˤ��ޤ���
-���Ȥ����ƤӽФ��줿��꤬�����Ǥ��äƤ⡢���Ϥ����ǤϤ���ޤ���
-L<perlfunc/last> �򻲾Ȥ��Ƥ���������
+(F) 脱出するループを指定しましたが、その名前のループの中にいません、
+たとえ、呼び出された場所がそうであっても、今はそうではありません。
+L<perlfunc/last> を参照してください。
 
 =item Label not found for "next %s"
 
@@ -4099,10 +4099,10 @@ L<perlfunc/last>.
 
 =end original
 
-(F) ���η����֤���Ԥʤ��롼�פ���ꤷ�ޤ�������
-����̾���Υ롼�פ���ˤ��ޤ���
-���Ȥ����ƤӽФ��줿��꤬�����Ǥ��äƤ⡢���Ϥ����ǤϤ���ޤ���
-L<perlfunc/last> �򻲾Ȥ��Ƥ���������
+(F) 次の繰り返しを行なうループを指定しましたが、
+その名前のループの中にいません。
+たとえ、呼び出された場所がそうであっても、今はそうではありません。
+L<perlfunc/last> を参照してください。
 
 =item Label not found for "redo %s"
 
@@ -4114,10 +4114,10 @@ L<perlfunc/last>.
 
 =end original
 
-(F) �����֤��κƼ¹Ԥ�Ԥʤ��롼�פ���ꤷ�ޤ�������
-����̾���Υ롼�פ���ˤ��ޤ���
-���Ȥ����ƤӽФ��줿��꤬�����Ǥ��äƤ⡢���Ϥ����ǤϤ���ޤ���
-L<perlfunc/last> �򻲾Ȥ��Ƥ���������
+(F) 繰り返しの再実行を行なうループを指定しましたが、
+その名前のループの中にいません。
+たとえ、呼び出された場所がそうであっても、今はそうではありません。
+L<perlfunc/last> を参照してください。
 
 =item leaving effective %s failed
 
@@ -4128,8 +4128,8 @@ effective uids or gids failed.
 
 =end original
 
-(F) C<use filetest> �ץ饰�ޤ�ȤäƤ���֤ˡ�
-�¤ȼ¸��� UID �� GID ���ڤ��ؤ��˼��Ԥ��ޤ�����
+(F) C<use filetest> プラグマを使っている間に、
+実と実効の UID や GID の切り替えに失敗しました。
 
 =item listen() on closed socket %s
 
@@ -4141,9 +4141,9 @@ L<perlfunc/listen>.
 
 =end original
 
-(W closed) �����������줿�����åȤ� listen ��Ԥʤ����Ȥ��ޤ�����
-socket() �θƤӽФ����ˡ��ֵ��ͤΥ����å���˺�줿�ΤǤϤ���ޤ��󤫡�
-L<perlfunc/listen> �򻲾Ȥ��Ƥ���������
+(W closed) クローズされたソケットに listen を行なおうとしました。
+socket() の呼び出し時に、返却値のチェックを忘れたのではありませんか。
+L<perlfunc/listen> を参照してください。
 
 =item Lookbehind longer than %d not implemented at {#} mark in regex %s
 
@@ -4154,7 +4154,7 @@ regular expression construct.
 
 =end original
 
-(?<= ����ɽ����¤�Ǥ��������Ȥο����ˤϾ�¤�����ޤ���
+(?<= 正規表現構造での前方参照の深さには上限があります。
 
 =item Lvalue subs returning %s not implemented yet
 
@@ -4166,9 +4166,9 @@ L<perlsub/"Lvalue subroutines">.
 
 =end original
 
-(F) ���ߤμ��������¤ˤ�ꡢ�����ͥ���ƥ����ȤǻȤ��륵�֥롼�����
-����ȥϥå�����ͤ��֤����Ȥ��Ǥ��ޤ���
-L<perlsub/"Lvalue subroutines"> �򻲾Ȥ��Ƥ���������
+(F) 現在の実装の制限により、左辺値コンテキストで使われるサブルーチンは
+配列とハッシュの値を返すことができません。
+L<perlsub/"Lvalue subroutines"> を参照してください。
 
 =item Lookbehind longer than %d not implemented before << HERE %s
 
@@ -4180,9 +4180,9 @@ the regular expression about where the problem was discovered.
 
 =end original
 
-���ߤΤȤ����������Ȥ�������ʸ�����Ĺ���ˤ����¤�����ޤ���
-�������¤Ͼ���Υ�꡼���Ǥϴ��¤����Ǥ��礦��
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+現在のところ前方参照が扱える文字列の長さには制限があります。
+この制限は将来のリリースでは緩和されるでしょう。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item Malformed PERLLIB_PREFIX
 
@@ -4192,8 +4192,8 @@ the regular expression about where the problem was discovered.
 
 =end original
 
-(F) OS/2 ��ͭ�Υ��顼�Ǥ���
-PERLLIB_PREFIX �ϰʲ��Τ褦�ʷ���:
+(F) OS/2 固有のエラーです。
+PERLLIB_PREFIX は以下のような形か:
 
     prefix1;prefix2
 
@@ -4203,7 +4203,7 @@ or
 
 =end original
 
-���뤤�Ϥ��Τ褦�ʷ���:
+あるいはこのような形で:
 
     prefix1 prefix2
 
@@ -4216,11 +4216,11 @@ appear if components are not found, or are too long.  See
 
 =end original
 
-prefix1 �� prefix2 �����Ǥʤ����Ǥ���ɬ�פ�����ޤ���
-C<prefix1> ���Ȥ߹��ߥ饤�֥�긡���ѥ��Υץ�ե��å����ʤ顢
-prefix2 ���֤��������ޤ���
-���Υ��顼�ϡ�����ݡ��ͥ�Ȥ����Ĥ���ʤ�����Ĺ��������˵�����ޤ���
-L<perlos2> �� "PERLLIB_PREFIX" �򻲾Ȥ��Ƥ���������
+prefix1 と prefix2 が空でない形である必要があります。
+C<prefix1> が組み込みライブラリ検索パスのプレフィックスなら、
+prefix2 は置き換えられます。
+このエラーは、コンポーネントが見つからないか、長すぎる時に起こります。
+L<perlos2> の "PERLLIB_PREFIX" を参照してください。
 
 =item Malformed UTF-8 character (%s)
 
@@ -4230,8 +4230,8 @@ Perl detected something that didn't comply with UTF-8 encoding rules.
 
 =end original
 
-Perl �������� UTF-8 ���󥳡��ǥ��󥰥롼��˽���ʤ���Τ�
-���Ф��ޤ�����
+Perl が、何か UTF-8 エンコーディングルールに従わないものを
+検出しました。
 
 =item Malformed UTF-16 surrogate
 
@@ -4242,8 +4242,8 @@ doing it Perl met a malformed Unicode surrogate.
 
 =end original
 
-Perl �� UTF-16 ���󥳡���ʸ���ǡ������ɤ߹���Ǥ���ȹͤ��ޤ�������
-���δ֤� Perl �������� Unicode ���������Ȥ��������ޤ�����
+Perl は UTF-16 エンコード文字データを読み込んでいると考えましたが、
+その間に Perl が不正な Unicode サロゲートに遭遇しました。
 
 =item %s matches null string many times
 
@@ -4255,9 +4255,9 @@ L<perlre>.
 
 =end original
 
-(W) ���ꤷ���ѥ�����ϡ��⤷������ɽ�����󥸥󤬥����å���
-�ԤʤäƤ��ʤ���С�̵�¥롼�פ˴٤��ΤǤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(W) 指定したパターンは、もし、正規表現エンジンがチェックを
+行なっていなければ、無限ループに陥るものです。
+L<perlre> を参照してください。
 
 =item % may only be used in unpack
 
@@ -4269,9 +4269,9 @@ See L<perlfunc/unpack>.
 
 =end original
 
-(F) �����å��������ꤷ�� pack ��Ԥʤ����ȤϤǤ��ޤ���
-�����å���������Ǥϡ����󤬼���졢�ɤ����褦��ʤ��ʤ뤫��Ǥ���
-L<perlfunc/unpack> �򻲾Ȥ��Ƥ���������
+(F) チェックサムを指定して pack を行なうことはできません。
+チェックサム処理では、情報が失われ、どうしようもなくなるからです。
+L<perlfunc/unpack> を参照してください。
 
 =item Method for operation %s not found in package %s during blessing
 
@@ -4282,9 +4282,9 @@ doesn't resolve to a valid subroutine.  See L<overload>.
 
 =end original
 
-(F) ¿������ơ��֥�ǡ�ͭ���ʥ��֥롼����˲��Ǥ��ʤ�
-����ȥ����ꤷ�褦�Ȥ��ޤ�����
-L<overload> �򻲾Ȥ��Ƥ���������
+(F) 多重定義テーブルで、有効なサブルーチンに解決できない
+エントリを指定しようとしました。
+L<overload> を参照してください。
 
 =item Method %s not permitted
 
@@ -4294,7 +4294,7 @@ See Server error.
 
 =end original
 
-"Server error" �򻲾Ȥ��Ƥ���������
+"Server error" を参照してください。
 
 =item Might be a runaway multi-line %s string starting on line %d
 
@@ -4306,9 +4306,9 @@ ended earlier on the current line.
 
 =end original
 
-(S) �褦�䤯���߹Ԥˤʤäơ�ʸ�����ѥ�����ν���꤬���Ĥ��ä����Ȥ��顢
-��Υ��顼����ʸ�����ѥ�����Υǥ�ߥ��������Ĥ���ʤ��ä����Ȥ�
-���ä����⤷��ʤ����Ȥ���­Ū�˼����Ƥ��ޤ���
+(S) ようやく現在行になって、文字列やパターンの終わりが見つかったことから、
+先のエラーが、文字列やパターンのデリミタが、見つからなかったことで
+起ったかもしれないことを、補足的に示しています。
 
 =item Misplaced _ in number
 
@@ -4318,7 +4318,7 @@ ended earlier on the current line.
 
 =end original
 
-(W syntax) ���ʿ�����ǲ�������3 �头�ȤǤ���ޤ���Ǥ�����
+(W syntax) 十進数定数で下線が、3 桁ごとでありませんでした。
 
 =item Missing %sbrace%s on \N{}
 
@@ -4329,8 +4329,8 @@ double-quotish context.
 
 =end original
 
-(F) ���֥륯�����Ȥ��줿����ƥ����Ȥ���ǡ�ʸ��̾��ƥ�� C<\N{charname}> ��
-ʸˡ���ְ�äƤ��ޤ���
+(F) ダブルクォートされたコンテキストの中で、文字名リテラル C<\N{charname}> の
+文法が間違っています。
 
 =item Missing comma after first argument to %s function
 
@@ -4341,9 +4341,9 @@ double-quotish context.
 
 =end original
 
-(F) �����δؿ��Ǥϡ������ꥹ�Ȥ����ˡ��ե�����ϥ�ɥ��
-�ִ��ܥ��֥������ȡפ򤪤����Ȥ��Ǥ��ޤ��������δؿ��ϡ�
-�������ä���ΤǤϤ���ޤ���
+(F) ある種の関数では、引数リストの前に、ファイルハンドルや
+「間接オブジェクト」をおくことができますが、この関数は、
+そういったものではありません。
 
 =item Missing command in piped open
 
@@ -4355,8 +4355,8 @@ blank.
 
 =end original
 
-(W pipe) C<open(FH, "| command")> �� C<open(FH, "command |")> �ι�ʸ��
-�ȤäƤ��ޤ��������ޥ�ɤ����ꤵ��Ƥ��ʤ�������Ǥ���
+(W pipe) C<open(FH, "| command")> か C<open(FH, "command |")> の構文を
+使っていますが、コマンドが指定されていないか空白です。
 
 =item Missing name in "my sub"
 
@@ -4367,8 +4367,8 @@ they have a name with which they can be found.
 
 =end original
 
-(F) ͽ�󤵤줿ʸˡ�Ǥ��롢�쥭�����륹�����פΥ��֥롼����ˤ�
-õ�����Ȥν����̾����ɬ�פǤ���
+(F) 予約された文法である、レキシカルスコープのサブルーチンには
+探すことの出来る名前が必要です。
 
 =item Missing $ on loop variable
 
@@ -4380,9 +4380,9 @@ can vary from one line to the next.
 
 =end original
 
-(F) B<csh> ��Ȥ��������ɾ�������Ƥ���褦�Ǥ���
-Perl �Ǥϡ��ѿ��Ͼ�� $ ���դ���ɽ�蘆��ޤ���
-���λ��ˤ�äư㤦��������Ȥϰ�äƤ��ޤ���
+(F) B<csh> を使いすぎた症状が現れているようです。
+Perl では、変数は常に $ を付けて表わされます。
+その時によって違う、シェルとは違っています。
 
 =item (Missing operator before %s?)
 
@@ -4393,8 +4393,8 @@ found where operator expected".  Often the missing operator is a comma.
 
 =end original
 
-(S) "%s found where operator expected" �ȶ���ɽ������붵��Ū�ʿ�¬�Ǥ���
-���Ф���ȴ���Ƥ���黻�Ҥϥ���ޤǤ���
+(S) "%s found where operator expected" と共に表示される教育的な推測です。
+しばしば抜けている演算子はカンマです。
 
 =item Missing right curly or square bracket
 
@@ -4406,9 +4406,9 @@ were last editing.
 
 =end original
 
-(F) ��������������Ĥ�����(�ޤ�������)����
-��������(����)��¿��ȯ�����ޤ�����
-����Ū�ʵ�§�Ȥ��ơ��Ǹ�˽����������ζ᤯�˴ְ㤤������Ȥ����ޤ���
+(F) 字句解析部が、閉じ中括弧(または大括弧)よりも
+開き中括弧(大括弧)を多く発見しました。
+一般的な規則として、最後に修正した場所の近くに間違いがあるといえます。
 
 =item (Missing semicolon on previous line?)
 
@@ -4420,10 +4420,10 @@ the previous line just because you saw this message.
 
 =end original
 
-(S) ���Υ�å������ϡ�"%s found where operator expected" �Ȥ���
-��å�������ȼ�äƽФ���붵��Ū�ʿ�¬�ˤ���ΤǤ���
-���Υ�å��������Ф�����Ȥ��äơ�����Ū�����ιԤ�
-���ߥ�������դ��뤳�ȤϤ��ʤ��Ǥ���������
+(S) このメッセージは、"%s found where operator expected" という
+メッセージに伴って出される教育的な推測によるものです。
+このメッセージが出たからといって、機械的に前の行に
+セミコロンを付けることはしないでください。
 
 =item Modification of a read-only value attempted
 
@@ -4435,10 +4435,10 @@ catches that.  But an easy way to do the same thing is:
 
 =end original
 
-(F) ľ�ܡ����ܤ˴ؤ餺������ͤ��ѹ����褦�Ȥ��ޤ�����
-������󡢥���ѥ��餬ȯ���Ǥ��롢"2 = 1" �ʤɤȤ��ä����Ȥ�
-�����櫓�ǤϤ���ޤ���
-��������Ʊ�����Ȥϰʲ��Τ褦�ˤ��Ƥⵯ����ޤ���
+(F) 直接、間接に関らず、定数値を変更しようとしました。
+もちろん、コンパイラが発見できる、"2 = 1" などといったことを
+したわけではありません。
+しかし、同じことは以下のようにしても起こります。
 
     sub mod { $_[0] = 1 }
     mod(2);
@@ -4449,7 +4449,7 @@ Another way is to assign to a substr() that's off the end of the string.
 
 =end original
 
-substr() �ǡ�ʸ����ν�����������������Ԥʤ����ȤǤⵯ����ޤ���
+substr() で、文字列の終わりよりも後ろに代入を行なうことでも起こります。
 
 =begin original
 
@@ -4458,8 +4458,8 @@ is aliased to a constant in the look I<LIST>:
 
 =end original
 
-�⤦��Ĥβ�ǽ���ϡ�C<foreach> �롼�פˤ����ơ�I<VAR> �� I<LIST> �����
-����Υ����ꥢ���Ǥ���Ȥ��ˡ�I<VAR> �������������Ǥ�:
+もう一つの可能性は、C<foreach> ループにおいて、I<VAR> が I<LIST> の中の
+定数のエイリアスであるときに、I<VAR> に代入した時です:
 
         $x = 1;
         foreach my $n ($x, 2) {
@@ -4476,9 +4476,9 @@ backwards.
 
 =end original
 
-(F) �����ͤ�¸�ߤ���褦�ˤ��褦�Ȥ��ޤ������������餯��
-ź��������ǡ�����ν���꤫��դ˿������Ȥ��Ƥ⡢
-�������ʰ��֤�ؤ��Ƥ���褦�Ǥ���
+(F) 配列値を存在するようにしようとしました。　おそらく、
+添字が負数で、配列の終わりから逆に数えたとしても、
+おかしな位置を指しているようです。
 
 =item Modification of non-creatable hash value attempted, %s
 
@@ -4489,8 +4489,8 @@ couldn't be created for some peculiar reason.
 
 =end original
 
-(F) �ϥå����ͤ�¸�ߤ���褦�ˤ��褦�Ȥ��ޤ��������������̤���ͳ�ǡ�
-�Ǥ��ޤ���Ǥ�����
+(F) ハッシュ値を存在するようにしようとしましたが、何か特別な理由で、
+できませんでした。
 
 =item Module name must be constant
 
@@ -4500,8 +4500,8 @@ couldn't be created for some peculiar reason.
 
 =end original
 
-(F) "use" �κǽ�ΰ����Ȥ��ƥ⥸�塼��̾�򼨤��Τ˵�����Ƥ���Τϡ�
-���ñ������Ǥ���
+(F) "use" の最初の引数としてモジュール名を示すのに許されているのは、
+裸の単語だけです。
 
 =item Module name required with -%c option
 
@@ -4513,9 +4513,9 @@ about C<-M> and C<-m>.
 
 =end original
 
-C<-M> �� C<-m> �Υ��ץ����� Perl �˥⥸�塼����ɤ߹��ޤ��뤳�Ȥ�
-�ؼ����ޤ������⥸�塼��̾������ޤ���Ǥ�����
-C<-M> �� C<-m> �˴ؤ��봰���ʾܺ٤ˤĤ��Ƥ� L<perlrun> �򻲾Ȥ��Ƥ���������
+C<-M> と C<-m> のオプションは Perl にモジュールを読み込ませることを
+指示しますが、モジュール名がありませんでした。
+C<-M> と C<-m> に関する完全な詳細については L<perlrun> を参照してください。
 
 =item msg%s not implemented
 
@@ -4525,7 +4525,7 @@ C<-M> �� C<-m> �˴ؤ��봰���ʾܺ٤ˤĤ��Ƥ� L<perlrun> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(F) ���Υ����ƥ�Ǥϡ�System V ��å����� IPC �ϻȤ��ޤ���
+(F) このシステムでは、System V メッセージ IPC は使えません。
 
 =item Multidimensional syntax %s not supported
 
@@ -4536,8 +4536,8 @@ They're written like C<$foo[1][2][3]>, as in C.
 
 =end original
 
-(W syntax) ¿��������ϡ�C<$foo[1,2,3]> �Τ褦�ˤϽ񤱤ޤ���
-����ϡ�C �Τ褦�� C<$foo[1][2][3]> �Τ褦�˽񤭤ޤ���
+(W syntax) 多次元配列は、C<$foo[1,2,3]> のようには書けません。
+これは、C のように C<$foo[1][2][3]> のように書きます。
 
 =item / must be followed by a*, A* or Z*
 
@@ -4549,9 +4549,9 @@ or Z*.  See L<perlfunc/pack>.
 
 =end original
 
-(F) �������Ĺʸ����򼨤� pack �ƥ�ץ졼�Ȥ�����ޤ���
-���ߤΤȤ���Ĺ���򥫥���ȤǤ���Τ� a*, A*, Z* �����Ǥ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) カウント長文字列を示す pack テンプレートがあります。
+現在のところ長さをカウントできるのは a*, A*, Z* だけです。
+L<perlfunc/pack> を参照してください。
 
 =item / must be followed by a, A or Z
 
@@ -4563,10 +4563,10 @@ of string is to be unpacked.  See L<perlfunc/pack>.
 
 =end original
 
-(F) �������Ĺʸ����򼨤� unpack �ƥ�ץ졼�Ȥ�����ޤ�;
-����Ϥɤμ����ʸ����� unpack ���뤫��ؼ����롢ʸ�� a, A, Z ��
-�����줫�θ��³���ʤ���Фʤ�ޤ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) カウント長文字列を示す unpack テンプレートがあります;
+これはどの種類の文字列を unpack するかを指示する、文字 a, A, Z の
+いずれかの後に続かなければなりません。
+L<perlfunc/pack> を参照してください。
 
 =item / must follow a numeric type
 
@@ -4577,9 +4577,9 @@ follow some numeric unpack specification.  See L<perlfunc/pack>.
 
 =end original
 
-(F) '#' ��ޤ� unpack �ƥ�ץ졼�Ȥ�����ޤ��������줬�ʤ�餫��
-���� unpack ����˰���³���Ƥ��ޤ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) '#' を含む unpack テンプレートがありますが、これがなんらかの
+数値 unpack 指定に引き続いていません。
+L<perlfunc/pack> を参照してください。
 
 =item "my sub" not yet implemented
 
@@ -4590,8 +4590,8 @@ that yet.
 
 =end original
 
-(F) �쥭�����륹�����פΥ��֥롼����Ϥޤ���������Ƥ��ޤ���
-�ޤ���ʤ��Ǥ���������
+(F) レキシカルスコープのサブルーチンはまだ実装されていません。
+まだ試さないでください。
 
 =item "my" variable %s can't be in a package
 
@@ -4603,9 +4603,9 @@ local() if you want to localize a package variable.
 
 =end original
 
-(F) ���祹�����פ��ѿ��ϡ��ѥå���������֤���ޤ���Τǡ�
-Ƭ�˥ѥå�����̾���դ���������뤳�Ȥϡ�̵��̣�Ǥ���
-�ѥå������ѿ���������벽���������ˤϡ�local() ��ȤäƤ���������
+(F) 字句スコープの変数は、パッケージ内に置かれませんので、
+頭にパッケージ名を付けて宣言することは、無意味です。
+パッケージ変数をローカル化したい場合には、local() を使ってください。
 
 =item Name "%s::%s" used only once: possible typo
 
@@ -4618,10 +4618,10 @@ provided for this purpose.
 
 =end original
 
-(W once) ���Ф��Х����ץߥ��ˤ�äƥ�ˡ������ѿ�̾�Ȥ���ɽ������ޤ���
-��ˡ�����̾�����Ȥ���ͳ������Τʤ顢�⤦���٤ɤ����ǻ��Ȥ��뤳�Ȥ�
-���Υ�å������������Ǥ��ޤ���
-C<our> �����������Ū�Τ�����󶡤���Ƥ��ޤ���
+(W once) しばしばタイプミスによってユニークな変数名として表示されます。
+ユニークな名前をを使う理由があるのなら、もう一度どこかで参照することで
+このメッセージを抑制できます。
+C<our> 宣言がこの目的のために提供されています。
 
 =item Negative length
 
@@ -4632,9 +4632,9 @@ length that is less than 0.  This is difficult to imagine.
 
 =end original
 
-(F) �������û��Ĺ���ΥХåե��ǡ��ɤ߹��ߡ��񤭹��ߡ�������������
-�Ԥʤ����Ȥ��ޤ�����
-�ɤΤ褦�ʤ��Ȥ��������Τ�Ƚ�ǤǤ��ޤ���
+(F) ゼロより短い長さのバッファで、読み込み、書き込み、送信、受信を
+行なおうとしました。
+どのようなことがしたいのか判断できません。
 
 =item Nested quantifiers before << HERE in regex m/%s/
 
@@ -4646,9 +4646,9 @@ expression about where the problem was discovered.
 
 =end original
 
-(F) ��̤򶴤ޤʤ��ǡ����̻Ҥ���̻Ҥǽ������뤳�ȤϤǤ��ޤ���
-�Ĥޤꡢ** �� +* �� ?* �Ȥ��ä���Τϡ�����������ޤ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+(F) 括弧を挟まないで、数量子を数量子で修飾することはできません。
+つまり、** や +* や ?* といったものは、正しくありません。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =begin original
 
@@ -4657,9 +4657,9 @@ C<??> appear to be nested quantifiers, but aren't.  See L<perlre>.
 
 =end original
 
-����������û���׿��̻Ҥ� C<*?>��C<+?>��C<??> �ϡ��ͥ��Ȥ������̻ҤΤ褦��
-�����ޤ����������ǤϤ���ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+しかし、最短一致数量子の C<*?>、C<+?>、C<??> は、ネストした数量子のように
+見えますが、そうではありません。
+L<perlre> を参照してください。
 
 =item %s never introduced
 
@@ -4670,8 +4670,8 @@ scope before it could possibly have been used.
 
 =end original
 
-(S internal) ����Υ���ܥ�ϡ��������ޤ��������Ȥ������˥������פ���
-����Ƥ��ޤ��ޤ�����
+(S internal) 問題のシンボルは、宣言されましたが、使われる前にスコープから
+外れてしまいました。
 
 =item No %s allowed while running setuid
 
@@ -4684,10 +4684,10 @@ securable.  See L<perlsec>.
 
 =end original
 
-(F) ���������ϡ�setuid �� setgid ������ץȤˤȤäơ�
-��äƤߤ뤳�ȤϤǤ��Ƥ⡢�ȤƤ�����ʤ�ΤȤϹͤ����ʤ���ΤǤ���
-���̤˸��äơ������ǤϤʤ��Ƥ⡢�����ˤ����롢�̤���ˡ������Ϥ��Ǥ���
-L<perlsec> �򻲾Ȥ��Ƥ���������
+(F) ある種の操作は、setuid や setgid スクリプトにとって、
+やってみることはできても、とても安全なものとは考えられないものです。
+一般に言って、安全ではなくても、安全にしうる、別の方法があるはずです。
+L<perlsec> を参照してください。
 
 =item No B<-e> allowed in setuid scripts
 
@@ -4697,7 +4697,7 @@ L<perlsec> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(F) setuid ������ץȤϡ��桼���ˤ�äƻ��ꤹ�뤳�ȤϤǤ��ޤ���
+(F) setuid スクリプトは、ユーザによって指定することはできません。
 
 =item No comma allowed after %s
 
@@ -4709,9 +4709,9 @@ Otherwise it'd be just another one of the arguments.
 
 =end original
 
-(F) �ե�����ϥ�ɥ��ִ��ܥ��֥������ȡפ�ȼ���ꥹ�ȱ黻�ҤǤϡ�
-�����Ȥ���ʹߤΰ����δ֤˥���ޤ�����뤳�ȤϤǤ��ޤ���
-���Τ褦�ˤ������ˤϡ������ΰ�ĤȤʤäƤ��ޤ��ޤ���
+(F) ファイルハンドルや「間接オブジェクト」を伴うリスト演算子では、
+それらとそれ以降の引数の間にコンマを入れることはできません。
+そのようにした場合には、引数の一つとなってしまいます。
 
 =begin original
 
@@ -4729,16 +4729,16 @@ this error was triggered?
 
 =end original
 
-����θ����Ȥ��Ƥ��������Τΰ�Ĥϡ�B<use> �� B<import> ��Ȥä�
-̾�����֤˥���ݡ��Ȥ����Ĥ���������ºݤˤϥ���ݡ��Ȥ���Ƥ��ʤ��ä�
-���Ǥ�;
-�㤨�� OS �������������б����Ƥ��ʤ����ʤɤǤ���
-�Ǥ���Х���ݡ��Ȥ���������Υꥹ�Ȥ�����Ū�˻ȤäƤ�������;
-L<perlfunc/use> �� L<perlfunc/import> �򻲾Ȥ��Ʋ�������
-����Ū�ʥ���ݡ��ȥꥹ�ȤǤ����餯���Υ��顼�����᤯�Τ뤳�Ȥ��Ǥ��ޤ�����
-���⤽�� OS ������������б����Ƥ��ʤ��Ȥ����������Ϥ��ޤ���
-�����餯 B<use> �� B<import> �Υ���ܥ륤��ݡ��ȥꥹ�Ȥ��������
-���顼��������������Ԥ����̾�򥿥��ץߥ������ΤǤ�?
+これの原因としてあり得るものの一つは、B<use> や B<import> を使って
+名前空間にインポートしたつもりの定数が実際にはインポートされていなかった
+場合です;
+例えば OS が特定の定数に対応していない場合などです。
+できればインポートしたい定数のリストを明示的に使ってください;
+L<perlfunc/use> と L<perlfunc/import> を参照して下さい。
+明示的なインポートリストでおそらくこのエラーをより早く知ることができますが、
+そもそも OS がその定数に対応していないという問題を解決はしません。
+おそらく B<use> や B<import> のシンボルインポートリストの定数か、
+エラーを引き起こした行の定数名をタイプミスしたのでは?
 
 =item No command into which to pipe on command line
 
@@ -4750,10 +4750,10 @@ doesn't know where you want to pipe the output from this command.
 
 =end original
 
-(F) VMS�˸�ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
-���ޥ�ɥ饤��κǸ�ˤ� '|' ��ȯ�����ޤ�������
-���Υ��ޥ�ɤ�����Ϥ�ɤ��˥ѥ��פ������Τ����狼��ޤ���Ǥ�����
+(F) VMSに固有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、
+コマンドラインの最後にに '|' を発見しましたが、
+このコマンドから出力をどこにパイプしたいのかがわかりませんでした。
 
 =item No DB::DB routine defined
 
@@ -4767,11 +4767,11 @@ should have blown up the require if it didn't parse right.
 
 =end original
 
-(F) ���߼¹���Υ����ɤϡ�B<-d> �����å����դ��ƥ���ѥ��뤵��ޤ�������
-���餫����ͳ�ˤ�ꡢperl5db.pl (���뤤�ϡ�����ʣ��) ���Ƽ¹�ʸ��Ƭ��
-�ƤӽФ��롼�ƥ����������Ƥ��ޤ���
-���Υե�����ϼ�ưŪ�� require ������ΤǤ��ꡢ���������Ǥ��ʤ���С�
-require �����Ԥ���Ϥ��Ǥ��Τǡ�����ϤȤƤ�ͭ�����ʤ����֤Ǥ���
+(F) 現在実行中のコードは、B<-d> スイッチを付けてコンパイルされましたが、
+何らかの理由により、perl5db.pl (あるいは、その複製) が各実行文の頭で
+呼び出すルーティンを定義していません。
+そのファイルは自動的に require されるものであり、正しく解釈できなければ、
+require が失敗するはずですので、これはとても有り得ない状態です。
 
 =item No dbm on this machine
 
@@ -4782,9 +4782,9 @@ supply dbm nowadays, because Perl comes with SDBM.  See L<SDBM_File>.
 
 =end original
 
-(P) ����ϡ��������顼�Ȥ��ư����ޤ�����Perl �� SDBM ���դ��Ƥ���Τǡ�
-�ɤΥޥ���Ǥ� dbm ���Ȥ���Ϥ�������Ǥ���
-L<SDBM_File> �򻲾Ȥ��Ƥ���������
+(P) これは、内部エラーとして扱われます。　Perl に SDBM が付いてくるので、
+どのマシンでも dbm が使えるはずだからです。
+L<SDBM_File> を参照してください。
 
 =item No DBsub routine
 
@@ -4797,10 +4797,10 @@ ordinary subroutine call.
 
 =end original
 
-(F) ���߼¹���Υ����ɤϡ�-d �����å����դ��ƥ���ѥ��뤵��ޤ�������
-���餫����ͳ�ˤ�ꡢperl5db.pl (���뤤�ϡ�����ʣ��) ��
-�ƥ��֥롼�ƥ���ƤӽФ���Ƭ�ǸƤӽФ�
-DB::sub �롼�ƥ����������Ƥ��ޤ���Ǥ�����
+(F) 現在実行中のコードは、-d スイッチを付けてコンパイルされましたが、
+何らかの理由により、perl5db.pl (あるいは、その複製) が
+各サブルーティン呼び出しの頭で呼び出す
+DB::sub ルーティンを定義していませんでした。
 
 =item No error file after 2> or 2>> on command line
 
@@ -4812,10 +4812,10 @@ find the name of the file to which to write data destined for stderr.
 
 =end original
 
-(F) VMS�˸�ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ�
-���ޥ�ɥ饤��� '2>' �� '2>>' ��ȯ�����ޤ�������
-ɸ�२�顼�Ȥ��ƥǡ�����񤭹���ե�����̾�����Ĥ���ޤ���Ǥ�����
+(F) VMSに固有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、
+コマンドラインに '2>' や '2>>' を発見しましたが、
+標準エラーとしてデータを書き込むファイル名が見つかりませんでした。
 
 =item No input file after < on command line
 
@@ -4827,10 +4827,10 @@ name of the file from which to read data for stdin.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ����ޥ�ɥ饤���
-'<' ��ȯ�����ޤ�������ɸ�����ϤȤ����ɤ߹��ि��Υե�����̾��
-���Ĥ���ޤ���Ǥ�����
+(F) VMS 特有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、コマンドラインに
+'<' を発見しましたが、標準入力として読み込むためのファイル名が
+見つかりませんでした。
 
 =item No #! line
 
@@ -4841,8 +4841,8 @@ even on machines that don't support the #! construct.
 
 =end original
 
-(F) setuid ���ߥ�졼���Ǥϡ����Ȥ��ޥ��󤬥��ݡ��Ȥ��Ƥ��ʤ��Ƥ⡢
-�����ʷ��� #! �Ԥ�������ץȤ˽񤫤�Ƥ��ʤ���Фʤ�ޤ���
+(F) setuid エミュレータでは、たとえマシンがサポートしていなくても、
+完全な形の #! 行がスクリプトに書かれていなければなりません。
 
 =item "no" not allowed in expression
 
@@ -4853,9 +4853,9 @@ returns no useful value.  See L<perlmod>.
 
 =end original
 
-(F) "no" ������ɤϡ�����ѥ������ǧ�����졢�¹Ԥ�����Τǡ�
-��̣�Τ����ͤ��֤��ޤ���
-L<perlmod> �򻲾Ȥ��Ƥ���������
+(F) "no" キーワードは、コンパイル時に認識され、実行されるもので、
+意味のある値を返しません。
+L<perlmod> を参照してください。
 
 =item No output file after > on command line
 
@@ -4867,10 +4867,10 @@ doesn't know where you wanted to redirect stdout.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ����ޥ�ɥ饤���
-�Ǹ��ñ�Ȥ� '>' ��ȯ�������Τǡ�stdout ��ɤ��˥�����쥯�Ȥ������Τ���
-�狼��ޤ���Ǥ�����
+(F) VMS 特有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、コマンドラインの
+最後に単独の '>' を発見したので、stdout をどこにリダイレクトしたいのかが
+わかりませんでした。
 
 =item No output file after > or >> on command line
 
@@ -4882,10 +4882,10 @@ find the name of the file to which to write data destined for stdout.
 
 =end original
 
-(F) VMS ��ͭ�Υ��顼�Ǥ���
-Perl ���ȼ��˥��ޥ�ɥ饤��Υ�����쥯�Ȥ򰷤äƤ��ơ����ޥ�ɥ饤���
-'>' �� '>>' ��ȯ�����ޤ�������stdout ��񤭹��ि��Υե�����̾��
-���Ĥ���ޤ���Ǥ�����
+(F) VMS 特有のエラーです。
+Perl は独自にコマンドラインのリダイレクトを扱っていて、コマンドラインに
+'>' や '>>' を発見しましたが、stdout を書き込むためのファイル名が
+見つかりませんでした。
 
 =item No package name allowed for variable %s in "our"
 
@@ -4897,9 +4897,9 @@ semantics.  Such syntax is reserved for future extensions.
 
 =end original
 
-(F) ���������ѿ�̾�� "our" ����ǤϻȤ��ޤ���;
-�ʤ��ʤ鸽�ߤ�ư��ǤϤۤȤ�ɰ�̣���ʤ�����Ǥ���
-���Τ褦��ʸˡ�Ͼ���γ�ĥ��ͽ�󤵤�Ƥ��ޤ���
+(F) 完全修飾変数名は "our" 宣言では使えません;
+なぜなら現在の動作ではほとんど意味がないからです。
+そのような文法は将来の拡張に予約されています。
 
 =item No Perl script found in input
 
@@ -4910,8 +4910,8 @@ with #! and containing the word "perl".
 
 =end original
 
-(F) C<perl -x> ��ƤӽФ��ޤ����������Υե������ #! �ǻϤޤꡢ
-"perl" �Ȥ������ޤ�Ԥ����Ĥ���ޤ���Ǥ�����
+(F) C<perl -x> を呼び出しましたが、そのファイルに #! で始まり、
+"perl" という語を含む行が見つかりませんでした。
 
 =item No setregid available
 
@@ -4922,8 +4922,8 @@ your system.
 
 =end original
 
-(F) Configure ���������ƥ��� setregid() �Τ褦�ʴؿ���
-���Ĥ����ޤ���Ǥ�����
+(F) Configure が、システム上に setregid() のような関数を
+見つけられませんでした。
 
 =item No setreuid available
 
@@ -4934,8 +4934,8 @@ your system.
 
 =end original
 
-(F) Configure ���������ƥ��� setreuid() �Τ褦�ʴؿ���
-���Ĥ����ޤ���Ǥ�����
+(F) Configure が、システム上に setreuid() のような関数を
+見つけられませんでした。
 
 =item No space allowed after -%c
 
@@ -4946,8 +4946,8 @@ immediately after the switch, without intervening spaces.
 
 =end original
 
-(F) �����줿���ޥ�ɥ饤�󥹥��å��ΰ����ϡ�
-�����å���ľ��˥��ڡ���������ʤ��ǽ�ɬ�פ�����ޤ���
+(F) 示されたコマンドラインスイッチの引数は、
+スイッチの直後にスペースを空けないで書く必要があります。
 
 =item No %s specified for -%c
 
@@ -4958,8 +4958,8 @@ you haven't specified one.
 
 =end original
 
-(F) �ؼ����줿���ޥ�ɥ饤�󥪥ץ����ˤϰ�����ɬ�ܤǤ��������줬
-���ꤵ��ޤ���Ǥ�����
+(F) 指示されたコマンドラインオプションには引数が必須ですが、それが
+指定されませんでした。
 
 =item No such pipe open
 
@@ -4971,10 +4971,10 @@ earlier as an attempt to close an unopened filehandle.
 
 =end original
 
-(P) VMS ��ͭ�Υ��顼�Ǥ���
-�����롼����Ǥ��� my_pclose() ���������Ƥ��ʤ��ѥ��פ��Ĥ��褦�Ȥ��ޤ�����
-����ϳ����Ƥ��ʤ��ե�����ϥ�ɥ���Ĥ��褦�Ȥ����Ȥ��Ƥ�ä��᤯��
-��ª�����٤���ΤǤ���
+(P) VMS 特有のエラーです。
+内部ルーチンである my_pclose() が、開いていないパイプを閉じようとしました。
+これは開いていないファイルハンドルを閉じようとしたとしてもっと早くに
+捕捉されるべきものです。
 
 =item No such pseudo-hash field "%s"
 
@@ -4986,10 +4986,10 @@ array indices for that to work.
 
 =end original
 
-(F) ����˥ϥå���Ȥ��ƥ����������褦�Ȥ��ޤ��������Ȥ�줿�ե������̾��
-̤����Ǥ���
-����ǥå��� 0 �Υϥå�������Ƥ�ͭ���ʥե������̾��ư�������
-����ǥå����˥ޥåԥ󥰤����٤��Ǥ���
+(F) 配列にハッシュとしてアクセスしようとしましたが、使われたフィールド名は
+未定義です。
+インデックス 0 のハッシュは全ての有効なフィールド名が動作する配列
+インデックスにマッピングされるべきです。
 
 =item No such pseudo-hash field "%s" in variable %s of type %s
 
@@ -5002,11 +5002,11 @@ not know about the field name.  The field names are looked up in the
 
 =end original
 
-(F) �����ե������̾�ˤĤ����Τ�ʤ����դ��ѿ��Υե�����ɤ�
-�����������褦�Ȥ��ޤ�����
-�ե������̾�ϥ���ѥ�����˷��ѥå������� %FIELDS �ϥå��夫��
-��������ޤ���
-%FIELDS �ϥå�����̾� 'fields' �ץ饰�ޤ����ꤵ��ޤ���
+(F) 型がフィールド名について知らない型付き変数のフィールドに
+アクセスしようとしました。
+フィールド名はコンパイル時に型パッケージの %FIELDS ハッシュから
+検索されます。
+%FIELDS ハッシュは通常 'fields' プラグマで設定されます。
 
 =item No such signal: SIG%s
 
@@ -5018,9 +5018,9 @@ names on your system.
 
 =end original
 
-(W signal) %SIG ��ź���Ȥ���ǧ���Ǥ��ʤ������ʥ�̾����ꤷ�ޤ�����
-���Ȥ��Υ����ƥ�ǻ��Ѳ�ǽ�ʥ����ʥ�̾��Ĵ�٤�ˤϡ�
-�������� C<kill -l> �ʤɤȤ��Ƥ���������
+(W signal) %SIG の添字として認識できないシグナル名を指定しました。
+お使いのシステムで使用可能なシグナル名を調べるには、
+シェル上で C<kill -l> などとしてください。
 
 =item Not a CODE reference
 
@@ -5033,11 +5033,11 @@ also L<perlref>.
 
 =end original
 
-(F) Perl ���������� (���֥롼�ƥ���) �ؤΥ�ե���󥹤�
-ɾ�����褦�Ȥ��ޤ��������̤Τ�ΤؤΥ�ե���󥹤Ǥ�����
-�ºݤˤɤ�ʼ���Υ�ե���󥹤���Ĵ�٤�ˤϡ�ref() �ؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���
-L<perlref> �⻲�Ȥ��Ƥ���������
+(F) Perl がコード値 (サブルーティン) へのリファレンスを
+評価しようとしましたが、別のものへのリファレンスでした。
+実際にどんな種類のリファレンスかを調べるには、ref() 関数を
+使うことができます。
+L<perlref> も参照してください。
 
 =item Not a format reference
 
@@ -5048,9 +5048,9 @@ format, but this indicates you did, and that it didn't exist.
 
 =end original
 
-(F) �ɤΤ褦��̵̾�Υե����ޥåȤؤΥ�ե���󥹤����������Τ���
-�狼��ޤ��󤬡����Υ�å������ϡ����줬���ꤵ��ơ�
-¸�ߤ��ʤ��ä����Ȥ򼨤��ޤ���
+(F) どのように無名のフォーマットへのリファレンスを生成したのかは
+わかりませんが、このメッセージは、それが指定されて、
+存在しなかったことを示します。
 
 =item Not a GLOB reference
 
@@ -5063,12 +5063,12 @@ kind of ref it really was.  See L<perlref>.
 
 =end original
 
-(F) Perl ���ַ������֡�(����ϡ�C<*foo> �Τ褦��
-����ܥ�ơ��֥륨��ȥ�Ǥ�) �ؤΥ�ե���󥹤�ɾ�����褦�Ȥ��ޤ�������
-�̤Τ�ΤؤΥ�ե���󥹤Ǥ�����
-�ºݤˤɤ�ʼ���Υ�ե���󥹤���Ĵ�٤�ˤϡ�ref() �ؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) Perl が「型グロブ」(これは、C<*foo> のような
+シンボルテーブルエントリです) へのリファレンスを評価しようとしましたが、
+別のものへのリファレンスでした。
+実際にどんな種類のリファレンスかを調べるには、ref() 関数を
+使うことができます。
+L<perlref> を参照してください。
 
 =item Not a HASH reference
 
@@ -5080,11 +5080,11 @@ find out what kind of ref it really was.  See L<perlref>.
 
 =end original
 
-(F) Perl ���ϥå����ͤؤΥ�ե���󥹤�ɾ�����褦�Ȥ��ޤ�������
-�̤Τ�ΤؤΥ�ե���󥹤Ǥ�����
-�ºݤˤɤ�ʼ���Υ�ե���󥹤���Ĵ�٤�ˤϡ�ref() �ؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) Perl がハッシュ値へのリファレンスを評価しようとしましたが、
+別のものへのリファレンスでした。
+実際にどんな種類のリファレンスかを調べるには、ref() 関数を
+使うことができます。
+L<perlref> を参照してください。
 
 =item Not an ARRAY reference
 
@@ -5096,11 +5096,11 @@ to find out what kind of ref it really was.  See L<perlref>.
 
 =end original
 
-(F) Perl �������ͤؤΥ�ե���󥹤�ɾ�����褦�Ȥ��ޤ�������
-�̤Τ�ΤؤΥ�ե���󥹤Ǥ�����
-�ºݤˤɤ�ʼ���Υ�ե���󥹤���Ĵ�٤�ˤϡ�ref() �ؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) Perl が配列値へのリファレンスを評価しようとしましたが、
+別のものへのリファレンスでした。
+実際にどんな種類のリファレンスかを調べるには、ref() 関数を
+使うことができます。
+L<perlref> を参照してください。
 
 =item Not a perl script
 
@@ -5112,9 +5112,9 @@ mention perl.
 
 =end original
 
-(F) setuid ���ߥ�졼���Ǥϡ����Ȥ��ޥ��󤬥��ݡ��Ȥ��Ƥ��ʤ��Ƥ⡢
-�����ʷ��� #! �Ԥ�������ץȤ˽񤫤�Ƥ��ʤ���Фʤ�ޤ���
-���ιԤǻ��ꤵ���Τϡ�perl �Ǥʤ���Фʤ�ޤ���
+(F) setuid エミュレータでは、たとえマシンがサポートしていなくても、
+完全な形の #! 行がスクリプトに書かれていなければなりません。
+この行で指定されるのは、perl でなければなりません。
 
 =item Not a SCALAR reference
 
@@ -5126,11 +5126,11 @@ to find out what kind of ref it really was.  See L<perlref>.
 
 =end original
 
-(F) Perl ���������ͤؤΥ�ե���󥹤�ɾ�����褦�Ȥ��ޤ�������
-�̤Τ�ΤؤΥ�ե���󥹤Ǥ�����
-�ºݤˤɤ�ʼ���Υ�ե���󥹤���Ĵ�٤�ˤϡ�ref() �ؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) Perl がスカラ値へのリファレンスを評価しようとしましたが、
+別のものへのリファレンスでした。
+実際にどんな種類のリファレンスかを調べるには、ref() 関数を
+使うことができます。
+L<perlref> を参照してください。
 
 =item Not a subroutine reference
 
@@ -5143,11 +5143,11 @@ also L<perlref>.
 
 =end original
 
-(F) Perl ���������� (���֥롼�ƥ���) �ؤΥ�ե���󥹤�
-ɾ�����褦�Ȥ��ޤ��������̤Τ�ΤؤΥ�ե���󥹤Ǥ�����
-�ºݤˤɤ�ʼ���Υ�ե���󥹤���Ĵ�٤�ˤϡ�ref() �ؿ���
-�Ȥ����Ȥ��Ǥ��ޤ���
-L<perlref> �⻲�Ȥ��Ƥ���������
+(F) Perl がコード値 (サブルーティン) へのリファレンスを
+評価しようとしましたが、別のものへのリファレンスでした。
+実際にどんな種類のリファレンスかを調べるには、ref() 関数を
+使うことができます。
+L<perlref> も参照してください。
 
 =item Not a subroutine reference in overload table
 
@@ -5158,9 +5158,9 @@ doesn't somehow point to a valid subroutine.  See L<overload>.
 
 =end original
 
-(F) ¿������ơ��֥�ǡ�ͭ���ʥ��֥롼�ƥ����ؤ��Ƥ��ʤ�����ȥ��
-���ꤷ�褦�Ȥ��ޤ�����
-L<overload> �򻲾Ȥ��Ƥ���������
+(F) 多重定義テーブルで、有効なサブルーティンを指していないエントリを
+指定しようとしました。
+L<overload> を参照してください。
 
 =item Not enough arguments for %s
 
@@ -5170,7 +5170,7 @@ L<overload> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(F) ���δؿ��ϡ����ꤷ������¿���ΰ�����ɬ�פȤ��ޤ���
+(F) この関数は、指定したよりも多くの引数を必要とします。
 
 =item Not enough format arguments
 
@@ -5181,9 +5181,9 @@ supplied.  See L<perlform>.
 
 =end original
 
-(W syntax) ���ꤷ���ե����ޥåȤˡ����ιԤǻ��ꤷ�����¿����
-�ԥ�����ե�����ɤ�����ޤ���
-L<perlform> �򻲾Ȥ��Ƥ���������
+(W syntax) 指定したフォーマットに、次の行で指定したより多くの
+ピクチャフィールドがあります。
+L<perlform> を参照してください。
 
 =item %s: not found
 
@@ -5195,8 +5195,8 @@ yourself.
 
 =end original
 
-(A) ������ץȤ� Perl �ǤϤʤ� Bourne shell �Ǽ¹Ԥ��褦�Ȥ��Ƥ��ޤ���
-#! �饤�������å����뤫����ư�ǥ�����ץȤ� Perl ���Ϥ��Ƥ���������
+(A) スクリプトを Perl ではなく Bourne shell で実行しようとしています。
+#! ラインをチェックするか、手動でスクリプトを Perl に渡してください。
 
 =item no UTC offset information; assuming local time is UTC
 
@@ -5210,11 +5210,11 @@ need to be added to UTC to get local time.
 
 =end original
 
-(S) VMS ��ͭ�ηٹ�Ǥ���
-Perl �ϥ������륿���ॾ���󥪥ե��åȤ򸫤Ĥ��뤳�Ȥ��Ǥ��ʤ��ä��Τǡ�
-�������륷���ƥॿ����� UTC �������Ǥ���Ȳ��ꤷ�ޤ���
-�⤷�㤦�ʤ顢����̾ F<SYS$TIMEZONE_DIFFERENTIAL> �ˡ�UTC �����������
-��������뤿��˲ä���ɬ�פ������ÿ���������Ƥ���������
+(S) VMS 固有の警告です。
+Perl はローカルタイムゾーンオフセットを見つけることができなかったので、
+ローカルシステムタイムは UTC と等価であると仮定します。
+もし違うなら、論理名 F<SYS$TIMEZONE_DIFFERENTIAL> に、UTC からローカル
+時刻を得るために加える必要がある秒数を定義してください。
 
 =item Null filename used
 
@@ -5225,9 +5225,9 @@ machines that means the current directory!  See L<perlfunc/require>.
 
 =end original
 
-(F) �äˡ�¿���Υޥ���ǥ����ȥǥ��쥯�ȥ���̣���뤿�ᡢ
-���Υե�����̾�� require �Ǥ��ޤ���!
-L<perlfunc/require> �򻲾Ȥ��Ƥ���������
+(F) 特に、多くのマシンでカレントディレクトリを意味するため、
+空のファイル名は require できません!
+L<perlfunc/require> を参照してください。
 
 =item NULL OP IN RUN
 
@@ -5238,8 +5238,8 @@ pointer.
 
 =end original
 
-(P debugging) �����롼�ƥ���ǡ��̥� opcode �ݥ��󥿤� run() ��
-�Ƥ����Τ�����ޤ���
+(P debugging) 内部ルーティンで、ヌル opcode ポインタで run() を
+呼んだものがあります。
 
 =item Null picture in formline
 
@@ -5251,10 +5251,10 @@ supplied it an uninitialized value.  See L<perlform>.
 
 =end original
 
-(F) formline ���� 1 ������ͭ���ʥե����ޥåȥԥ����㡼����Ǥʤ����
-�ʤ�ޤ���
-���줬���Ǥ���; �����餯��������Ƥ��ʤ��ͤ���ꤷ���ΤǤ��礦��
-L<perlform> �򻲾Ȥ��Ƥ���������
+(F) formline の第 1 引数は有効なフォーマットピクチャー指定でなければ
+なりません。
+これが空でした; おそらく初期化していない値を指定したのでしょう。
+L<perlform> を参照してください。
 
 =item Null realloc
 
@@ -5264,7 +5264,7 @@ L<perlform> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(P) realloc NULL ��Ԥʤ����Ȥ��ޤ�����
+(P) realloc NULL を行なおうとしました。
 
 =item NULL regexp argument
 
@@ -5274,7 +5274,7 @@ L<perlform> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(P) �����ѥ�����ޥå��롼�ƥ��󤬡���������Ǥ���
+(P) 内部パターンマッチルーティンが、大当たりです。
 
 =item NULL regexp parameter
 
@@ -5284,7 +5284,7 @@ L<perlform> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(P) �����ѥ�����ޥå��롼�ƥ��󤬡����äƤ��ޤ���
+(P) 内部パターンマッチルーティンが、狂っています。
 
 =item Number too long
 
@@ -5298,11 +5298,11 @@ the meantime, try using scientific notation (e.g. "1e6" instead of
 
 =end original
 
-Perl �ϥץ��������Ǥν��ʿ���ɽ���򤪤褽 250 ʸ�������¤��Ƥ��ޤ���
-�������¤�ۤ��ޤ�����
-Perl �ξ���ΥС������ǤϤ������Ū�����¤Ͻ�����Ǥ��礦��
-����ޤǤδ֤ϡ��ʳ�Ū�ʵ���ˡ("1_000_000" �ǤϤʤ� "1e6")��
-���Ѥ��Ƥ���������
+Perl はプログラム中での十進数の表現をおよそ 250 文字に制限しています。
+この制限を越えました。
+Perl の将来のバージョンではこの恣意的な制限は除去されるでしょう。
+それまでの間は、科学的な記述法("1_000_000" ではなく "1e6")を
+使用してください。
 
 =item Octal number in vector unsupported
 
@@ -5314,9 +5314,9 @@ future version.
 
 =end original
 
-Ƭ�� C<0> ���դ������ͤϸ��ߤΤȤ����٥����Ȥ��ƤϻȤ��ޤ���
-���Τ褦�ʿ��ͤ� 8 �ʿ��Ȥ��Ʋ�᤹�뵡ǽ�Ͼ���ΥС�������
-�б������Ǥ��礦��
+頭に C<0> の付いた数値は現在のところベクタとしては使えません。
+このような数値を 8 進数として解釈する機能は将来のバージョンで
+対応されるでしょう。
 
 =item Octal number > 037777777777 non-portable
 
@@ -5328,9 +5328,9 @@ L<perlport> for more on portability concerns.
 
 =end original
 
-(W portable) ���ꤷ�� 8 �ʿ��� 2**32-1 (4294967295) ����礭���Τǡ�
-�����ƥ�֤ǰܿ���������ޤ���
-�ܿ����˴ؤ��뤵��ʤ�ͻ��ˤĤ��Ƥ� L<perlport> �򻲾Ȥ��Ƥ���������
+(W portable) 指定した 8 進数が 2**32-1 (4294967295) より大きいので、
+システム間で移植性がありません。
+移植性に関するさらなる考察については L<perlport> を参照してください。
 
 =begin original
 
@@ -5338,7 +5338,7 @@ See also L<perlport> for writing portable code.
 
 =end original
 
-�ܿ����Τ��륳���ɤν����ˤĤ��Ƥ� L<perlport> �򻲾Ȥ��Ƥ���������
+移植性のあるコードの書き方についても L<perlport> を参照してください。
 
 =item Odd number of arguments for overload::constant
 
@@ -5349,8 +5349,8 @@ The arguments should come in pairs.
 
 =end original
 
-(W) ����ο��ΰ����� overload::constant ��ƤӽФ��ޤ�����
-�����ϥڥ��ˤʤäƤ���ɬ�פ�����ޤ���
+(W) 奇数の数の引数で overload::constant を呼び出しました。
+引数はペアになっている必要があります。
 
 =item Odd number of elements in hash assignment
 
@@ -5361,9 +5361,9 @@ which is odd, because hashes come in key/value pairs.
 
 =end original
 
-(W misc) �ϥå���ꥹ�Ȥؤ����Ǥο�������Ǥ�����
-�ϥå���ꥹ�Ȥϡ�key/value �Υڥ���Ϳ�����ޤ����顢
-����ϴ�̯�ʤ��ȤǤ���
+(W misc) ハッシュリストへの要素の数が奇数でした。
+ハッシュリストは、key/value のペアで与えられますから、
+これは奇妙なことです。
 
 =item Offset outside string
 
@@ -5376,11 +5376,11 @@ the buffer and zero pad the new area.
 
 =end original
 
-(F) �Хåե��γ���ؤ����ե��åȤ� read/write/send/recv ����
-���褦�Ȥ��ޤ�����
-������������ˤ������ȤǤ���
-ͣ����㳰�ϡ��Хåե����̤�᤮�� C<sysread()> ����ȥХåե���
-��ĥ���졢���������ꥢ�ˤ� 0 �ǥѥåǥ��󥰤���ޤ���
+(F) バッファの外を指すオフセットで read/write/send/recv 操作を
+しようとしました。
+これは想像しにくいことです。
+唯一の例外は、バッファを通り過ぎて C<sysread()> するとバッファが
+拡張され、新しいエリアには 0 でパッディングされます。
 
 =item -%s on unopened filehandle %s
 
@@ -5391,10 +5391,10 @@ that isn't open.  Check your logic.  See also L<perlfunc/-X>.
 
 =end original
 
-(W unopened) �����Ƥ��ʤ��ե�����ϥ�ɥ���Ф��ƥե�����ƥ��ȱ黻�Ҥ�
-�Ȥ����Ȥ��ޤ�����
-����������å����Ƥ���������
-L<perlfunc/-X> �⻲�Ȥ��Ƥ���������
+(W unopened) 開いていないファイルハンドルに対してファイルテスト演算子を
+使おうとしました。
+論理をチェックしてください。
+L<perlfunc/-X> も参照してください。
 
 =item %s() on unopened %s %s
 
@@ -5406,9 +5406,9 @@ call, or call a constructor from the FileHandle package.
 
 =end original
 
-(W unopened) ��������Ƥ��ʤ��ե�����ϥ�ɥ�� I/O ���򤷤褦�Ȥ��ޤ�����
-open(), sysopen(), socket() ��ƤӽФ�����FileHandle �ѥå�������
-���󥹥ȥ饯����ƤӽФ�ɬ�פ�����ޤ���
+(W unopened) 初期化していないファイルハンドルに I/O 操作をしようとしました。
+open(), sysopen(), socket() を呼び出すか、FileHandle パッケージの
+コンストラクタを呼び出す必要があります。
 
 =item oops: oopsAV
 
@@ -5418,7 +5418,7 @@ open(), sysopen(), socket() ��ƤӽФ�����FileHandle �ѥå�������
 
 =end original
 
-(S internal) ʸˡ�����������ʤä����Ȥ򼨤������ٹ�Ǥ���
+(S internal) 文法がおかしくなったことを示す内部警告です。
 
 =item oops: oopsHV
 
@@ -5428,7 +5428,7 @@ open(), sysopen(), socket() ��ƤӽФ�����FileHandle �ѥå�������
 
 =end original
 
-(S internal) ʸˡ�����������ʤä����Ȥ򼨤������ٹ�Ǥ���
+(S internal) 文法がおかしくなったことを示す内部警告です。
 
 =item Operation `%s': no method found, %s
 
@@ -5441,11 +5441,11 @@ C<fallback> overloading key is specified to be true.  See L<overload>.
 
 =end original
 
-(F) �ϥ�ɥ餬�������Ƥ��ʤ������С����������Ԥ��ޤ�����
-�����Υϥ�ɥ��¾�Υϥ�ɥ餫�鼫ư��������ޤ�����C<fallback>
-�����С������ɥ��������˻��ꤵ��Ƥ��ʤ��¤ꡢ�ɤ�ư��ˤ�
-�ǥե���ȤΥϥ�ɥ�Ϥ���ޤ���
-L<overload> �򻲾Ȥ��Ƥ���������
+(F) ハンドラが定義されていないオーバーロード操作が行われました。
+一部のハンドラは他のハンドラから自動生成されますが、C<fallback>
+オーバーロードキーが真に指定されていない限り、どの動作にも
+デフォルトのハンドラはありません。
+L<overload> を参照してください。
 
 =item Operator or semicolon missing before %s
 
@@ -5459,11 +5459,11 @@ example, if you say "*foo *foo" it will be interpreted as if you said
 
 =end original
 
-(S ambiguous) �ѡ��������黻�Ҥ����֤��Ƥ�������ѿ��䥵�֥롼����
-�ƤӽФ����Ȥ��ޤ�����
-�ѡ������Ϥ��ʤ��������˱黻�Ҥ�Ȥ����Ȥ��Ƥ���Ȳ��ꤷ�ޤ�����
-�������������������ޤ���
-�㤨�С�"*foo *foo" �Ȥ���ȡ�"*foo * 'foo'" �Ȥ����Ȥ��Ʋ�ᤵ��ޤ���
+(S ambiguous) パーサーが演算子を装置している場所で変数やサブルーチン
+呼び出しが使われました。
+パーサーはあなたが本当に演算子を使おうとしていると仮定しますが、
+これは大抵正しくありません。
+例えば、"*foo *foo" とすると、"*foo * 'foo'" としたとして解釈されます。
 
 =item "our" variable %s redeclared
 
@@ -5474,8 +5474,8 @@ in the current lexical scope.
 
 =end original
 
-(W misc) ���ߤΥ쥭�����륹�����פǡ�����Ʊ��̾���Υ������Х��ѿ���
-������Ƥ���褦�Ǥ���
+(W misc) 現在のレキシカルスコープで、既に同じ名前のグローバル変数を
+宣言しているようです。
 
 =item Out of memory!
 
@@ -5487,9 +5487,9 @@ no option but to exit immediately.
 
 =end original
 
-(X) �׵�������������Ρ���ʬ�ʻĥ��� (�ޤ��ϡ����ۥ���) ��
-�����Ǥ��ʤ����Ȥ򼨤���0 �� malloc() �ؿ����֤��ޤ�����
-Perl ��ľ���˽�λ���뤷������ޤ���Ǥ�����
+(X) 要求を満たすだけの、十分な残メモリ (または、仮想メモリ) が
+取得できないことを示す、0 を malloc() 関数が返しました。
+Perl は直ちに終了するしかありませんでした。
 
 =item Out of memory during "large" request for %s
 
@@ -5502,10 +5502,10 @@ possibility to shut down by trapping this error is granted.
 
 =end original
 
-(F) malloc() �ؿ��� 0 ���֤��ޤ���; ������׵������������
-(�ޤ��ϲ��ۥ���)���Խ�ʬ�Ǥ��뤳�Ȥ򼨤��Ƥ��ޤ���
-���������׵᤬��ʬ�礭��(����ѥ�����Υǥե���Ȥ� 64K)�Τǡ�
-���Υ��顼��ȥ�åפ��뤳�Ȥǥ���åȥ�����Ǥ����ǽ��������ޤ���
+(F) malloc() 関数が 0 を返しました; これは要求を満たすメモリ
+(または仮想メモリ)が不十分であることを示しています。
+しかし、要求が十分大きい(コンパイル時のデフォルトは 64K)ので、
+このエラーをトラップすることでシャットダウンできる可能性があります。
 
 =item Out of memory during request for %s
 
@@ -5517,8 +5517,8 @@ request.
 
 =end original
 
-(X|F) malloc() �ؿ��� 0 ���֤��ޤ���; ������׵������������
-(�ޤ��ϲ��ۥ���)���Խ�ʬ�Ǥ��뤳�Ȥ򼨤��Ƥ��ޤ���
+(X|F) malloc() 関数が 0 を返しました; これは要求を満たすメモリ
+(または仮想メモリ)が不十分であることを示しています。
 
 =begin original
 
@@ -5531,13 +5531,13 @@ where the failed request happened.
 
 =end original
 
-�׵�Ͼ�������Τ�Ƚ�ꤵ�줿�Τǡ������ȥ�åפǤ����Ψ�� perl ��
-�ɤΤ褦�˥���ѥ��뤵�줿���˰�¸���ޤ���
-�ǥե���ȤǤϤ���ϥȥ�åפǤ��ޤ���
-���������⤷���Τ���˥���ѥ��뤹��ȡ�Perl �Ϥ��Υ�å������ȶ���
-die() �����������ѥ��ꥢ�Ȥ��� C<$^M> �����Ƥ�Ȥ��ޤ���
-���ξ�票�顼�� I<���٤���> �ȥ�åײ�ǽ�ǡ����顼��å������ϼ��Ԥ���
-�׵᤬�������ե�����ȹ��ֹ��ޤ�Ǥ��ޤ���
+要求は小さいものと判定されたので、これをトラップできる確率は perl が
+どのようにコンパイルされたかに依存します。
+デフォルトではこれはトラップできません。
+しかし、もしこのためにコンパイルすると、Perl はこのメッセージと共に
+die() した後の非常用エリアとして C<$^M> の内容を使います。
+この場合エラーは I<一度だけ> トラップ可能で、エラーメッセージは失敗した
+要求が起きたファイルと行番号を含んでいます。
 
 =item Out of memory during ridiculously large request
 
@@ -5549,9 +5549,9 @@ C<$arr[time]> instead of C<$arr[$time]>.
 
 =end original
 
-(F) 2^31+�־��̡ץХ��Ȱʾ������Ƥ뤳�ȤϤǤ��ޤ���
-���Υ��顼�ϤۤȤ�ɤξ��(C<$arr[$time]> �������
-C<$arr[time]> �Τ褦��) Perl �ץ������Υ����ץߥ��������Ǥ���
+(F) 2^31+「少量」バイト以上割り当てることはできません。
+このエラーはほとんどの場合(C<$arr[$time]> の代わりに
+C<$arr[time]> のような) Perl プログラムのタイプミスが原因です。
 
 =item Out of memory for yacc stack
 
@@ -5563,8 +5563,8 @@ otherwise.
 
 =end original
 
-(F) yacc �ѡ����������Ϥ�³���뤿��ˡ������å��򹭤��褦�Ȥ��ޤ�������
-realloc() �����ۤ䤽��¾�Υ������ݤǤ��ޤ���Ǥ�����
+(F) yacc パーサーが解析を続けるために、スタックを広げようとしましたが、
+realloc() が仮想やその他のメモリを確保できませんでした。
 
 =item @ outside of string
 
@@ -5575,9 +5575,9 @@ the string being unpacked.  See L<perlfunc/pack>.
 
 =end original
 
-(F) unpack �����ʸ����γ������а��ֻ��ꤷ�Ƥ��롢
-pack �ƥ�ץ졼�Ȥ���ꤷ�ޤ�����
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) unpack される文字列の外に絶対位置指定している、
+pack テンプレートを指定しました。
+L<perlfunc/pack> を参照してください。
 
 =item %s package attribute may clash with future reserved word: %s
 
@@ -5590,10 +5590,10 @@ mixed-case attribute name, instead.  See L<attributes>.
 
 =end original
 
-(W reserved) �ѥå�������ͭ�Υϥ�ɥ餬����ʸ����°��̾��ȤäƤ��ޤ���
-����̾���ϡ����Ȥ����ϻȤäƤ��ʤ��Ƥ⡢ Perl ���Ȥ����Ĥ��Ȥ����⤷��ޤ���
-�����餯�������ʸ����ʸ���κ����ä�°��̾��Ȥ��٤��Ǥ��礦��
-L<attributes> �򻲾Ȥ��Ƥ���������
+(W reserved) パッケージ固有のハンドラが、小文字の属性名を使っています。
+この名前は、たとえ今は使っていなくても、 Perl 自身がいつか使うかもしれません。
+おそらく代わりに大文字小文字の混じった属性名を使うべきでしょう。
+L<attributes> を参照してください。
 
 =item page overflow
 
@@ -5604,9 +5604,9 @@ page.  See L<perlform>.
 
 =end original
 
-(W io) write() �� 1 �٤θƤӽФ��ǡ�1 �ڡ����˼��ޤ���
-¿���ιԤ��Ǥ��ޤ�����
-L<perlform> �򻲾Ȥ��Ƥ���������
+(W io) write() の 1 度の呼び出しで、1 ページに収まるより
+多くの行ができました。
+L<perlform> を参照してください。
 
 =item panic: %s
 
@@ -5616,7 +5616,7 @@ L<perlform> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(P) �������顼�Ǥ���
+(P) 内部エラーです。
 
 =item panic: ck_grep
 
@@ -5626,8 +5626,8 @@ L<perlform> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(P) grep �򥳥�ѥ��뤷�褦�Ȥ��ơ������ΰ���������å���
-���óݤ���ޤ�����
+(P) grep をコンパイルしようとして、内部の一貫性チェックに
+引っ掛かりました。
 
 =item panic: ck_split
 
@@ -5637,8 +5637,8 @@ L<perlform> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(P) split �򥳥�ѥ��뤷�褦�Ȥ��ơ������ΰ���������å���
-���óݤ���ޤ�����
+(P) split をコンパイルしようとして、内部の一貫性チェックに
+引っ掛かりました。
 
 =item panic: corrupt saved stack index
 
@@ -5649,8 +5649,8 @@ there are in the savestack.
 
 =end original
 
-(P) �����֥����å��ˤ���ʾ�Υ������벽�����ͤ򸵤��᤹
-�׵᤬����ޤ�����
+(P) セーブスタックにある以上のローカル化した値を元に戻す
+要求がありました。
 
 =item panic: del_backref
 
@@ -5661,8 +5661,8 @@ reference.
 
 =end original
 
-(P) �夤��ե���󥹤�ꥻ�åȤ��褦�Ȥ����Ȥ���������
-����������å��˰��óݤ���ޤ�����
+(P) 弱いリファレンスをリセットしようとしたときに内部の
+一貫性チェックに引っ掛かりました。
 
 =item panic: die %s
 
@@ -5673,8 +5673,8 @@ it wasn't an eval context.
 
 =end original
 
-(P) eval ����ƥ����Ȥإ���ƥ����ȥ����å���ݥåפ������ȡ�
-eval ����ƥ����ȤǤʤ����Ȥ��狼��ޤ�����
+(P) eval コンテキストへコンテキストスタックをポップしたあと、
+eval コンテキストでないことがわかりました。
 
 =item panic: pp_match
 
@@ -5685,8 +5685,8 @@ data.
 
 =end original
 
-(P) ������ pp_match() �롼�ƥ��󤬡�̵���ʾ�ά��ǽ�ǡ�����
-�դ��ƸƤФ�ޤ�����
+(P) 内部の pp_match() ルーティンが、無効な省略可能データを
+付けて呼ばれました。
 
 =item panic: do_subst
 
@@ -5697,8 +5697,8 @@ data.
 
 =end original
 
-(P) ������ pp_subst() �롼�ƥ��󤬡�̵���ʾ�ά��ǽ�ǡ�����
-�դ��ƸƤФ�ޤ�����
+(P) 内部の pp_subst() ルーティンが、無効な省略可能データを
+付けて呼ばれました。
 
 =item panic: do_trans_%s
 
@@ -5709,8 +5709,8 @@ data.
 
 =end original
 
-(P) ������ pp_trans �롼�ƥ��󤬡�̵���ʾ�ά��ǽ�ǡ�����
-�դ��ƸƤФ�ޤ�����
+(P) 内部の pp_trans ルーティンが、無効な省略可能データを
+付けて呼ばれました。
 
 =item panic: frexp
 
@@ -5720,7 +5720,7 @@ data.
 
 =end original
 
-(P) �饤�֥��ؿ� frexp() �����Ԥ����Τǡ�printf("%f") ���Ǥ��ޤ���
+(P) ライブラリ関数 frexp() が失敗したので、printf("%f") ができません。
 
 =item panic: goto
 
@@ -5731,9 +5731,9 @@ and then discovered it wasn't a context we know how to do a goto in.
 
 =end original
 
-(P) ���ꤷ����٥��ȼ������ƥ����Ȥإ���ƥ����ȥ����å���
-�ݥåפ������ȡ��ɤΤ褦�� goto ���뤫���狼�äƤ���
-����ƥ����ȤǤʤ����Ȥ��狼��ޤ�����
+(P) 指定したラベルを伴うコンテキストへコンテキストスタックを
+ポップしたあと、どのように goto するかがわかっている
+コンテキストでないことがわかりました。
 
 =item panic: INTERPCASEMOD
 
@@ -5743,7 +5743,7 @@ and then discovered it wasn't a context we know how to do a goto in.
 
 =end original
 
-(P) ��ʸ����ʸ�������ҤΤȤ����ǡ�������������������ʾ��֤˴٤�ޤ�����
+(P) 大文字小文字修飾子のところで、字句解析部がおかしな状態に陥りました。
 
 =item panic: INTERPCONCAT
 
@@ -5753,7 +5753,7 @@ and then discovered it wasn't a context we know how to do a goto in.
 
 =end original
 
-(P) ���̤�ȼ��ʸ����������ˡ�������������������ʾ��֤˴٤�ޤ�����
+(P) 中括弧を伴う文字列を解析中に、字句解析部がおかしな状態に陥りました。
 
 =item panic: kid popen errno read
 
@@ -5763,7 +5763,7 @@ and then discovered it wasn't a context we know how to do a goto in.
 
 =end original
 
-(F) fork �����ҥץ������� errno �˴ؤ����Դ����ʥ�å��������֤��ޤ�����
+(F) fork した子プロセスが errno に関して不完全なメッセージを返しました。
 
 =item panic: last
 
@@ -5774,8 +5774,8 @@ it wasn't a block context.
 
 =end original
 
-(P) block ����ƥ����Ȥإ���ƥ����ȥ����å���ݥåפ������ȡ�
-block ����ƥ����ȤǤʤ����Ȥ��狼��ޤ�����
+(P) block コンテキストへコンテキストスタックをポップしたあと、
+block コンテキストでないことがわかりました。
 
 =item panic: leave_scope clearsv
 
@@ -5786,8 +5786,8 @@ scope.
 
 =end original
 
-(P) �񤭹��߲�ǽ�ʻ��祹�������ѿ������ɤ������櫓���������������
-�꡼�ɥ���꡼�ˤʤ�ޤ�����
+(P) 書き込み可能な字句スコープ変数が、どういうわけか、スコープ内で
+リードオンリーになりました。
 
 =item panic: leave_scope inconsistency
 
@@ -5798,8 +5798,8 @@ invalid enum on the top of it.
 
 =end original
 
-(P) �����餯�������֥����å���Ʊ�����Ȥ�Ƥ��ޤ���
-���ʤ��Ȥ⡢�ȥåפ������� enum ������ޤ�����
+(P) おそらく、セーブスタックの同期がとれていません。
+少なくとも、トップに不正な enum がありました。
 
 =item panic: magic_killbackrefs
 
@@ -5810,8 +5810,8 @@ references to an object.
 
 =end original
 
-(P) ���륪�֥������Ȥؤ����Ƥμ夤���Ȥ�ꥻ�åȤ��褦�Ȥ�������������
-����������å��˰��óݤ���ޤ�����
+(P) あるオブジェクトへの全ての弱い参照をリセットしようとした時に内部の
+一貫性チェックに引っ掛かりました。
 
 =item panic: malloc
 
@@ -5821,7 +5821,7 @@ references to an object.
 
 =end original
 
-(P) malloc ����ΥХ��ȿ����׵᤬�Ԥʤ��ޤ�����
+(P) malloc に負のバイト数で要求が行なわれました。
 
 =item panic: mapstart
 
@@ -5831,7 +5831,7 @@ references to an object.
 
 =end original
 
-(P) ����ѥ��餬��map() �ؿ��˴ؤ��Ƥ��������ʤ�ޤ�����
+(P) コンパイラが、map() 関数に関しておかしくなりました。
 
 =item panic: null array
 
@@ -5841,7 +5841,7 @@ references to an object.
 
 =end original
 
-(P) ��������롼�ƥ���ǡ��̥� AV �ݥ��󥿤��Ϥ��줿��Τ�����ޤ�����
+(P) 内部配列ルーティンで、ヌル AV ポインタを渡されたものがありました。
 
 =item panic: pad_alloc
 
@@ -5852,8 +5852,8 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) ����ѥ��餬������ΰ���������������ơ��������Ƥ���
-������å��ѥåɤˤĤ��ƺ��𤷤ޤ�����
+(P) コンパイラが、一時領域や字句形式を割り当て、解放している
+スクラッチパッドについて混乱しました。
 
 =item panic: pad_free curpad
 
@@ -5864,8 +5864,8 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) ����ѥ��餬������ΰ���������������ơ��������Ƥ���
-������å��ѥåɤˤĤ��ƺ��𤷤ޤ�����
+(P) コンパイラが、一時領域や字句形式を割り当て、解放している
+スクラッチパッドについて混乱しました。
 
 =item panic: pad_free po
 
@@ -5875,7 +5875,7 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) �����ʥ�����å��ѥåɤΥ��ե��åȤ�������Ū�˸��Ф���ޤ�����
+(P) 不正なスクラッチパッドのオフセットが、内部的に検出されました。
 
 =item panic: pad_reset curpad
 
@@ -5886,8 +5886,8 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) ����ѥ��餬������ΰ���������������ơ��������Ƥ���
-������å��ѥåɤˤĤ��ƺ��𤷤ޤ�����
+(P) コンパイラが、一時領域や字句形式を割り当て、解放している
+スクラッチパッドについて混乱しました。
 
 =item panic: pad_sv po
 
@@ -5897,7 +5897,7 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) �����ʥ�����å��ѥåɤΥ��ե��åȤ�������Ū�˸��Ф���ޤ�����
+(P) 不正なスクラッチパッドのオフセットが、内部的に検出されました。
 
 =item panic: pad_swipe curpad
 
@@ -5908,8 +5908,8 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) ����ѥ��餬������ΰ���������������ơ��������Ƥ���
-������å��ѥåɤˤĤ��ƺ��𤷤ޤ�����
+(P) コンパイラが、一時領域や字句形式を割り当て、解放している
+スクラッチパッドについて混乱しました。
 
 =item panic: pad_swipe po
 
@@ -5919,7 +5919,7 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) �����ʥ�����å��ѥåɤΥ��ե��åȤ�������Ū�˸��Ф���ޤ�����
+(P) 不正なスクラッチパッドのオフセットが、内部的に検出されました。
 
 =item panic: pp_iter
 
@@ -5929,7 +5929,7 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) foreach �η��֤��Ҥ����롼��ʸ̮�ʳ��ΤȤ����ǸƤФ�ޤ�����
+(P) foreach の繰返し子が、ループ文脈以外のところで呼ばれました。
 
 =item panic: pp_split
 
@@ -5939,7 +5939,7 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) split �ν�����˲����ޤ������Ȥ������äƤ��ޤ��ޤ�����
+(P) split の準備中に何かまずいことが起こってしまいました。
 
 =item panic: realloc
 
@@ -5949,7 +5949,7 @@ and freeing temporaries and lexicals from.
 
 =end original
 
-(P) ������realloc ����ΥХ��ȿ����׵ᤷ����Τ�����ޤ���
+(P) 何か、realloc に負のバイト数を要求したものがあります。
 
 =item panic: restartop
 
@@ -5960,8 +5960,8 @@ didn't supply the destination.
 
 =end original
 
-(P) �����롼�ƥ��󤫤� goto (�ޤ��ϡ�Ʊ���褦�ʤ��) ��
-�׵ᤵ��ޤ������������褬Ϳ����Ƥ��ޤ���
+(P) 内部ルーティンから goto (または、同じようなもの) が
+要求されましたが、飛び先が与えれていません。
 
 =item panic: return
 
@@ -5972,9 +5972,9 @@ then discovered it wasn't a subroutine or eval context.
 
 =end original
 
-(P) ���֥롼�ƥ��󥳥�ƥ����Ȥ� eval ����ƥ����Ȥء�
-����ƥ����ȥ����å���ݥåפ������ȡ����֥롼�ƥ��󥳥�ƥ����Ȥ�
-eval ����ƥ����ȤǤʤ����Ȥ��狼��ޤ�����
+(P) サブルーティンコンテキストや eval コンテキストへ、
+コンテキストスタックをポップしたあと、サブルーティンコンテキストや
+eval コンテキストでないことがわかりました。
 
 =item panic: scan_num
 
@@ -5984,7 +5984,7 @@ eval ����ƥ����ȤǤʤ����Ȥ��狼��ޤ�����
 
 =end original
 
-(P) scan_num() �������������Ǥʤ���Τ��Ф��ƸƤФ�ޤ�����
+(P) scan_num() が、何か数字でないものに対して呼ばれました。
 
 =item panic: sv_insert
 
@@ -5995,8 +5995,8 @@ was string.
 
 =end original
 
-(P) sv_insert() �롼�ƥ��󤬡�¸�ߤ���ʾ��ʸ�����������褦��
-�ؼ�����ޤ�����
+(P) sv_insert() ルーティンが、存在する以上の文字列を削除するように
+指示されました。
 
 =item panic: top_env
 
@@ -6006,7 +6006,7 @@ was string.
 
 =end original
 
-(P) ����ѥ��餬��goto �ʤ�̯�ʤ��Ȥ�Ԥʤ����Ȥ��ޤ�����
+(P) コンパイラが、goto など妙なことを行なおうとしました。
 
 =item panic: yylex
 
@@ -6016,7 +6016,7 @@ was string.
 
 =end original
 
-(P) ��ʸ����ʸ�������Ҥ������ˡ�������������������ʾ��֤˴٤�ޤ�����
+(P) 大文字小文字修飾子を処理中に、字句解析部がおかしな状態に陥りました。
 
 =item panic: utf16_to_utf8: odd bytelen
 
@@ -6027,8 +6027,8 @@ to even) byte length.
 
 =end original
 
-(P) ������(�����ǤϤʤ�)����ΥХ���Ĺ�� utf16_to_utf8 ��
-�ƤӽФ����Ȥ��ޤ�����
+(P) 何かが(偶数ではなく)奇数のバイト長で utf16_to_utf8 を
+呼び出そうとしました。
 
 =item Parentheses missing around "%s" list
 
@@ -6038,7 +6038,7 @@ to even) byte length.
 
 =end original
 
-(W parenthesis) �����餯�ʲ��Τ褦�ˤ����ΤǤ��礦:
+(W parenthesis) おそらく以下のようにしたのでしょう:
 
     my $foo, $bar = @_;
 
@@ -6048,7 +6048,7 @@ when you meant
 
 =end original
 
-�ʲ��Τ褦�ˤ��٤��Ǥ�:
+以下のようにすべきです:
 
     my ($foo, $bar) = @_;
 
@@ -6058,7 +6058,7 @@ Remember that "my", "our", and "local" bind tighter than comma.
 
 =end original
 
-"my" �� "local" �ϡ�����ޤ��⶯����礹�뤳�Ȥ�˺��ʤ��Ǥ���������
+"my" や "local" は、コンマよりも強く結合することを忘れないでください。
 
 =item Perl %s required--this is only version %s, stopped
 
@@ -6070,10 +6070,10 @@ you upgraded, anyway?  See L<perlfunc/require>.
 
 =end original
 
-(F) ����Υ⥸�塼��ϡ����߼¹���� Perl ����Ƕ�ΥС�������
-��ǽ��ȤäƤ��ޤ���
-�Ȥ����ǡ����Ĥ��饢�åץ��졼�ɤ��Ƥ��ʤ��ΤǤ���?
-L<perlfunc/require> �򻲾Ȥ��Ƥ���������
+(F) 問題のモジュールは、現在実行中の Perl よりも最近のバージョンの
+機能を使っています。
+ところで、いつからアップグレードしていないのですか?
+L<perlfunc/require> を参照してください。
 
 =item PERL_SH_DIR too long
 
@@ -6084,9 +6084,9 @@ C<sh>-shell in.  See "PERL_SH_DIR" in L<perlos2>.
 
 =end original
 
-(F) OS/2 ��ͭ�Υ��顼�Ǥ���
-PERL_SH_DIR �� C<sh>-shell �򸫤Ĥ��뤿��Υǥ��쥯�ȥ�Ǥ���
-L<perlos2> �� "PERL_SH_DIR" �򻲾Ȥ��Ƥ���������
+(F) OS/2 固有のエラーです。
+PERL_SH_DIR は C<sh>-shell を見つけるためのディレクトリです。
+L<perlos2> の "PERL_SH_DIR" を参照してください。
 
 =item perl: warning: Setting locale failed.
 
@@ -6096,7 +6096,7 @@ L<perlos2> �� "PERL_SH_DIR" �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(S) �ٹ����Τϰʲ��Τ褦�ʷ��ˤʤ�ޤ�:
+(S) 警告全体は以下のような形になります:
 
 	perl: warning: Setting locale failed.
 	perl: warning: Please check that your locale settings:
@@ -6120,17 +6120,17 @@ L<perllocale> section B<LOCALE PROBLEMS>.
 
 =end original
 
-���ΤˤɤΥ����������꤬���Ԥ����Τ����͡��Ǥ���
-�嵭�Ǥ������ LC_ALL �� "En_US" �ǡ�LANG �϶��Ǥ�����
-���Υ��顼�ϡ����ʤ��� OS ����Ԥ䥷���ƥ�����Ԥ��������륷���ƥ�ȸƤФ��
-��Τ򥻥åȥ��åפ��ޤ�������Perl �������������Ȥ��ʤ����Ȥ�
-���Ф������Ȥ��̣���ޤ���
-����Ϲ����ˤ�����̿Ū�ǤϤ���ޤ���; Perl �����ѤǤ��� "C" �ȸƤФ��
-�֥ǥե���ȥ�������פ�¸�ߤ���Τǡ�������ץȤϼ¹Ԥ���ޤ���
-�������������ˤ���������褹��ޤǤϡ�Perl ��¹Ԥ������Ʊ�����顼
-��å�������ɽ������ޤ���
-�����ˤ����������������ˡ�� L<perllocale> �� B<LOCALE PROBLEMS> ��
-�Ϥˤ���ޤ���
+正確にどのロケール設定が失敗したのかは様々です。
+上記では設定は LC_ALL は "En_US" で、LANG は空でした。
+このエラーは、あなたや OS 供給者やシステム管理者がロケールシステムと呼ばれる
+ものをセットアップしましたが、Perl がこれらの設定を使えないことを
+検出したことを意味します。
+これは幸いにして致命的ではありません; Perl が使用できる "C" と呼ばれる
+「デフォルトロケール」が存在するので、スクリプトは実行されます。
+しかし、本当にこの問題を解決するまでは、Perl を実行する毎に同じエラー
+メッセージが表示されます。
+本当にこの問題を修正する方法は L<perllocale> の B<LOCALE PROBLEMS> の
+章にあります。
 
 =item Permission denied
 
@@ -6140,8 +6140,8 @@ L<perllocale> section B<LOCALE PROBLEMS>.
 
 =end original
 
-(F) suidperl �� setuid ���ߥ�졼���ϡ��¹ԼԤ������Ȥ�
-�����ʤ���Ƚ�Ǥ��ޤ�����
+(F) suidperl の setuid エミュレータは、実行者が安全とは
+言えないと判断しました。
 
 =item pid %x not a child
 
@@ -6153,10 +6153,10 @@ fine from VMS' perspective, it's probably not what you intended.
 
 =end original
 
-(W exec) VMS ��ͭ�ηٹ�Ǥ���
-���ߤΥץ������Υ��֥ץ������Ǥʤ��ץ������� Waitpid() ��Ȥ��ޤ�����
-����� VMS �δ�����������ꤢ��ޤ��󤬡������餯���ʤ���˾��Ǥ��뤳�ȤǤ�
-�ʤ��Ǥ��礦��
+(W exec) VMS 固有の警告です。
+現在のプロセスのサブプロセスでないプロセスに Waitpid() を使いました。
+これは VMS の観点からは問題ありませんが、おそらくあなたの望んでいることでは
+ないでしょう。
 
 =item POSIX syntax [%s] belongs inside character classes
 
@@ -6170,11 +6170,11 @@ extensions and will cause fatal errors.
 
 =end original
 
-(W regexp) �㤨�� /[012[:alpha:]345]/ �Τ褦�ˡ�ʸ�����饹��¤ [: :], [= =],
-[. .] ��ʸ�����饹�� I<��¦> �ˤ��ꡢ[] �Ϲ�¤�ΰ����Ǥ���
-[= =] �� [. .] �ϸ��ߤΤȤ�����������Ƥ��ʤ����Ȥ����դ��Ƥ�������;
-������ñ�˾���γ�ĥ�Τ���Υץ졼���ۥ���Ǥ��ꡢ��̿Ū���顼��
-�������ޤ���
+(W regexp) 例えば /[012[:alpha:]345]/ のように、文字クラス構造 [: :], [= =],
+[. .] が文字クラスの I<内側> にあり、[] は構造の一部です。
+[= =] と [. .] は現在のところ実装されていないことに注意してください;
+これらは単に将来の拡張のためのプレースホルダであり、致命的エラーを
+生成します。
 
 =item POSIX  syntax [. .] is reserved for future extensions
 
@@ -6188,11 +6188,11 @@ with the backslash: "\[." and ".\]".
 
 =end original
 
-(F regexp) ����ɽ��ʸ�����饹 ([]) ����Ǥϡ�"[." �ǻϤޤ�ʸˡ�� ".]" ��
-�����ʸˡ�Ͼ���γ�ĥ�Τ����ͽ�󤵤�ޤ���
-����ɽ��ʸ�����饹����Ǥ��Τ褦��ʸ���������󥹤�ɽ������ɬ�פ�����
-���ˤϡ�"\[." �� ".\]" �Τ褦�ˡ��礫�ä���Хå�����å����
-�������Ȥ��Ƥ���������
+(F regexp) 正規表現文字クラス ([]) の中では、"[." で始まる文法と ".]" で
+終わる文法は将来の拡張のために予約されます。
+正規表現文字クラスの中でこのような文字シーケンスを表現する必要がある
+場合には、"\[." と ".\]" のように、大かっこをバックスラッシュで
+クォートしてください。
 
 =item POSIX syntax [= =] is reserved for future extensions
 
@@ -6206,11 +6206,11 @@ with the backslash: "\[=" and "=\]".
 
 =end original
 
-(F) ����ɽ��ʸ�����饹 ([]) ����Ǥϡ�"[=" �ǻϤޤ�ʸˡ�� "=]" ��
-�����ʸˡ�Ͼ���γ�ĥ�Τ����ͽ�󤵤�ޤ���
-����ɽ��ʸ�����饹����Ǥ��Τ褦��ʸ���������󥹤�ɽ������ɬ�פ�����
-���ˤϡ�"\[=" �� "=\]" �Τ褦�ˡ��礫�ä���Хå�����å����
-�������Ȥ��Ƥ���������
+(F) 正規表現文字クラス ([]) の中では、"[=" で始まる文法と "=]" で
+終わる文法は将来の拡張のために予約されます。
+正規表現文字クラスの中でこのような文字シーケンスを表現する必要がある
+場合には、"\[=" と "=\]" のように、大かっこをバックスラッシュで
+クォートしてください。
 
 =item POSIX class [:%s:] unknown
 
@@ -6221,8 +6221,8 @@ L<perlre>.
 
 =end original
 
-(F) ʸ�����饹 [: :] ʸˡ����Υ��饹�������Ǥ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 文字クラス [: :] 文法の中のクラスは不明です。
+L<perlre> を参照してください。
 
 =item POSIX getpgrp can't take an argument
 
@@ -6233,8 +6233,8 @@ the BSD version, which takes a pid.
 
 =end original
 
-(F) ���Ȥ��Υ����ƥ�ϡ������� pid ��Ȥ� BSD �С�������
-getpgrp() �Ȱ�äơ�������Ȥ�ʤ� POSIX �Τ�Τ�ȤäƤ��ޤ���
+(F) お使いのシステムは、引数に pid をとる BSD バージョンの
+getpgrp() と違って、引数をとらない POSIX のものを使っています。
 
 =item Possible attempt to put comments in qw() list
 
@@ -6247,9 +6247,9 @@ parentheses shown here; braces are also frequently used.)
 
 =end original
 
-(W qw) qw() �ꥹ�Ȥ϶����ʬ�䤵�줿�����ƥ��ޤ�Ǥ��ޤ�;
-��ƥ��ʸ����Ǥϡ�������ʸ��̵�뤵�줺����ƥ��ǡ����Ȥ��ư����ޤ���
-(���ä��ʳ��Υǥ�ߥ���Ȥ����Ȥ�Ǥ��ޤ�; �椫�ä���褯�Ȥ��ޤ���)
+(W qw) qw() リストは空白で分割されたアイテムを含んでいます;
+リテラル文字列では、コメント文字無視されず、リテラルデータとして扱われます。
+(かっこ以外のデリミタを使うこともできます; 中かっこもよく使われます。)
 
 =begin original
 
@@ -6257,7 +6257,7 @@ You probably wrote something like this:
 
 =end original
 
-�����餯�ʲ��Τ褦�˽񤤤��ΤǤ��礦:
+おそらく以下のように書いたのでしょう:
 
     @list = qw(
 	a # a comment
@@ -6270,7 +6270,7 @@ when you should have written this:
 
 =end original
 
-�ʲ��Τ褦�˽񤯤٤��Ǥ�:
+以下のように書くべきです:
 
     @list = qw(
 	a
@@ -6284,8 +6284,8 @@ old-fashioned way, with quotes and commas:
 
 =end original
 
-�����˥����Ȥ�Ĥ������Τʤ顢
-�ꥹ�Ȥ��ΤΥ������Ȥȥ���ޤη��ǽ񤤤Ƥ���������
+本当にコメントをつけたいのなら、
+リストを昔のクォートとカンマの形で書いてください。
 
     @list = (
         'a',    # a comment
@@ -6303,10 +6303,10 @@ frequently used.)
 
 =end original
 
-(W qw) qw() �ꥹ�Ȥ˶����ʬ�䤵�줿���ܤ�����ޤ�;
-���Τ��ᡢ����ޤϹ��ܤ�ʬ�䤹��ɬ�פ�����ޤ���
-(�����ǻȤ��Ƥ���ΤȰ㤦�ǥ�ߥ����Ѥ��Ƥ��뤫�⤷��ޤ���;
-���̤�褯�Ȥ��ޤ���)
+(W qw) qw() リストに空白で分割された項目があります;
+そのため、カンマは項目を分割する必要がありません。
+(ここで使われているのと違うデリミタを用いているかもしれません;
+大括弧もよく使われます。)
 
 =begin original
 
@@ -6314,7 +6314,7 @@ You probably wrote something like this:
 
 =end original
 
-�����餯�ʲ��Τ褦�˽񤤤��ΤǤ��礦:
+おそらく以下のように書いたのでしょう:
 
     qw! a, b, c !;
 
@@ -6325,8 +6325,8 @@ commas if you don't want them to appear in your data:
 
 =end original
 
-�ꥹ�����Ǥ���˥�ƥ��Υ���ޤ�񤤤Ƥ��ޤ���
-�ǡ�������˥���ޤ�Ф������ʤ��ʤ顢����ޤʤ��ǽ񤭤ޤ�:
+リスト要素の中にリテラルのカンマを書いています。
+データの中にカンマを出したくないなら、カンマなしで書きます:
 
     qw! a b c !;
 
@@ -6341,11 +6341,11 @@ Perl assumes that memory is now corrupted.  See L<perlfunc/ioctl>.
 
 =end original
 
-(F) ioctl() �� fcntl() ����Perl �����Ƥ����ʾ�Τ�Τ��֤��Ƥ��ޤ�����
-Perl �ϡ�Ŭ�̤ΥХåե����������Ѥ��ޤ�����ǰ�Τ���˥Хåե���
-�Ǹ���ܰ����դ��Ƥ��ޤ���
-�����ܰ��������줿���ᡢPerl �ϥ�����˲��������ä���Ƚ�Ǥ��ޤ�����
-L<perlfunc/ioctl> �򻲾Ȥ��Ƥ���������
+(F) ioctl() や fcntl() が、Perl が求めていた以上のものを返してきました。
+Perl は、適量のバッファサイズを見積もりますが、念のためにバッファの
+最後に目印を付けています。
+この目印が壊されたため、Perl はメモリの破壊が起こったと判断しました。
+L<perlfunc/ioctl> を参照してください。
 
 =item Possible Y2K bug: %s
 
@@ -6356,8 +6356,8 @@ could be a potential Year 2000 problem.
 
 =end original
 
-(W y2k) ���� 19 ��¾�ο��ͤȷ�礷�Ƥ��ޤ�; ���������Ū��
-2000 ǯ���꤫�⤷��ޤ���
+(W y2k) 数値 19 を他の数値と結合しています; これは潜在的な
+2000 年問題かもしれません。
 
 =item pragma "attrs" is deprecated, use "sub NAME : ATTRS" instead
 
@@ -6367,7 +6367,7 @@ could be a potential Year 2000 problem.
 
 =end original
 
-(W deprecated) �����餯�ʲ��Τ褦�˽񤤤��ΤǤ��礦:
+(W deprecated) おそらく以下のように書いたのでしょう:
 
     sub doit
     {
@@ -6380,7 +6380,7 @@ You should use the new declaration syntax instead.
 
 =end original
 
-����˿����������ʸˡ�ǽ񤯤٤��Ǥ�:
+代わりに新しい定義の文法で書くべきです:
 
     sub doit : locked
     {
@@ -6393,9 +6393,9 @@ backward-compatibility. See L<perlsub/"Subroutine Attributes">.
 
 =end original
 
-C<use attrs> �ץ饰�ޤϤ⤦�Ť���Τǡ������ߴ����Τ��������
-�󶡤���Ƥ��ޤ���
-L<perlsub/"Subroutine Attributes"> �򻲾Ȥ��Ƥ���������
+C<use attrs> プラグマはもう古いもので、後方互換性のためだけに
+提供されています。
+L<perlsub/"Subroutine Attributes"> を参照してください。
 
 =item Precedence problem: open %s should be open(%s)
 
@@ -6405,7 +6405,7 @@ L<perlsub/"Subroutine Attributes"> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(S precedence) �Ť���§Ū�ʹ�ʸ
+(S precedence) 古い変則的な構文
 
     open FOO || die;
 
@@ -6415,8 +6415,8 @@ is now misinterpreted as
 
 =end original
 
-�ϸ��ߤϡ�Perl 5 ��ʸˡ�θ������������η�̡�ñ��黻�Ҥ�
-�ꥹ�ȱ黻�ҤȲ�ᤵ��ޤ��Τǡ�
+は現在は、Perl 5 の文法の厳しい正規化の結果、単項演算子か
+リスト演算子と解釈されますので、
 
     open(FOO || die);
 
@@ -6429,10 +6429,10 @@ of "||".
 
 =end original
 
-�Ȥ������˸��ä���᤬�ʤ���ޤ���
-(�Ť� open �ϡ�ñ��黻�Ҥȥꥹ�ȱ黻�Ҥ���֤Τ褦�ʤ�ΤǤ�����)
-�ե�����ϥ�ɥ��������̤ǰϤफ��"||" �黻�Ҥ������
-"or" �黻�Ҥ�Ȥ�ʤ��ƤϤʤ�ޤ���
+という風に誤った解釈がなされます。
+(古い open は、単項演算子とリスト演算子の中間のようなものでした。)
+ファイルハンドルの前後を括弧で囲むか、"||" 演算子の代わりに
+"or" 演算子を使わなくてはなりません。
 
 =item Premature end of script headers
 
@@ -6442,7 +6442,7 @@ See Server error.
 
 =end original
 
-"Server error"�򻲾Ȥ��Ƥ���������
+"Server error"を参照してください。
 
 =item printf() on closed filehandle %s
 
@@ -6453,8 +6453,8 @@ before now.  Check your logic flow.
 
 =end original
 
-(W closed) �񤭹��ߤ�Ԥʤ����Ȥ����ե�����ϥ�ɥ�ϡ����˥�����������Ƥ��ޤ���
-�����ե���������å����Ƥ���������
+(W closed) 書き込みを行なおうとしたファイルハンドルは、既にクローズされています。
+論理フローをチェックしてください。
 
 =item print() on closed filehandle %s
 
@@ -6465,8 +6465,8 @@ before now.  Check your logic flow.
 
 =end original
 
-(W closed) print ��Ԥʤ����Ȥ����ե�����ϥ�ɥ�ϡ����˥�����������Ƥ��ޤ���
-�����ե���������å����Ƥ���������
+(W closed) print を行なおうとしたファイルハンドルは、既にクローズされています。
+論理フローをチェックしてください。
 
 =item Process terminated by SIG%s
 
@@ -6480,12 +6480,12 @@ in L<perlos2>.
 
 =end original
 
-(W) *nix ���ץꥱ�������ϲ�����Ϥ����˽�λ���ޤ�����
-OS/2 ���ץꥱ�������Ϥ����ɸ���å������Ȥ��ƽ��Ϥ��ޤ���
-����� OS/2 �Ǥλ��ͤȤߤʤ���Ƥ��ޤ���
-Ŭ�ڤʥ����ʥ�ϥ�ɥ�ˤ�äƴ�ñ��̵���ˤǤ��ޤ�;
-L<perlipc/"Signals"> �򻲾Ȥ��Ƥ���������
-L<perlos2> �� "Process terminated by SIGTERM/SIGINT" �⻲�Ȥ��Ƥ���������
+(W) *nix アプリケーションは何も出力せずに終了しますが、
+OS/2 アプリケーションはこれを標準メッセージとして出力します。
+これは OS/2 版の仕様とみなされています。
+適切なシグナルハンドラによって簡単に無効にできます;
+L<perlipc/"Signals"> を参照してください。
+L<perlos2> の "Process terminated by SIGTERM/SIGINT" も参照してください。
 
 =item Prototype mismatch: %s vs %s
 
@@ -6496,8 +6496,8 @@ declared or defined with a different function prototype.
 
 =end original
 
-(S unsafe) �����ۤʤ�ؿ��ץ��ȥ����פ�����ޤ���������줿���֥롼����
-����ޤ����������ޤ�����
+(S unsafe) 以前異なる関数プロトタイプで宣言または定義されたサブルーチンが
+宣言または定義されました。
 
 =item Quantifier in {,} bigger than %d before << HERE in regex m/%s/
 
@@ -6509,9 +6509,9 @@ the problem was discovered. See L<perlre>.
 
 =end original
 
-���ߤΤȤ�����{min,max} ��¤�κ����ͤȺǾ��ͤˤ����¤�����ޤ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+現在のところ、{min,max} 構造の最大値と最小値には制限があります。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Quantifier unexpected on zero-length expression before << HERE %s
 
@@ -6525,11 +6525,11 @@ C</abc(?=(?:xyz){3})/>, not C</abc(?=xyz){3}/>.
 
 =end original
 
-(W regexp) ����ɽ���̻���Ҥ򥼥��������������Τ褦�ʰ�̣�Τʤ�����
-Ŭ�Ѥ��ޤ�����
-����˥���������������̻���Ҥ��֤��Ƥ���������
-�㤨�С�"xyz" �� 3 �󷫤��֤������ "abc" �˥ޥå��󥰤�����ˤϡ�
-C</abc(?=xyz){3}/> �ǤϤʤ� C</abc(?=(?:xyz){3})/> �Ȥ��Ƥ���������
+(W regexp) 正規表現量指定子をゼロ幅アサーションのような意味のない場所に
+適用しました。
+代わりにアサーションの中に量指定子を置いてください。
+例えば、"xyz" を 3 回繰り返した後の "abc" にマッチングさせるには、
+C</abc(?=xyz){3}/> ではなく C</abc(?=(?:xyz){3})/> としてください。
 
 =item Range iterator outside integer range
 
@@ -6542,10 +6542,10 @@ by prepending "0" to your numbers.
 
 =end original
 
-(F) �ϰϱ黻�� ".." �ΰ��(�ޤ���ξ��)�ο��Ͱ������������������Ȥ���
-ɽ���Ǥ����ϰϤ�ۤ��Ƥ��ޤ���
-������ˡ�ΤҤȤĤȤ��Ƥϡ����ͤ�Ƭ�� "0" ���դ��뤳�Ȥ� Perl ��
-�ޥ�����ʸ���󥤥󥯥���Ȥλ��Ѥ��������뤳�ȤǤ���
+(F) 範囲演算子 ".." の一つ(または両方)の数値引数が、内部で整数として
+表現できる範囲を越えています。
+回避方法のひとつとしては、数値の頭に "0" を付けることで Perl に
+マジカル文字列インクリメントの使用を強制させることです。
 
 =item readline() on closed filehandle %s
 
@@ -6556,8 +6556,8 @@ before now.  Check your logic flow.
 
 =end original
 
-(W closed) �ɤ߹��ߤ�Ԥʤ����Ȥ����ե�����ϥ�ɥ�ϡ����˥�����������Ƥ��ޤ���
-�����ե���������å����Ƥ���������
+(W closed) 読み込みを行なおうとしたファイルハンドルは、既にクローズされています。
+論理フローをチェックしてください。
 
 =item Reallocation too large: %lx
 
@@ -6567,7 +6567,7 @@ before now.  Check your logic flow.
 
 =end original
 
-(F) MS-DOS �ޥ���Ǥϡ�64K ��ۤ������������Ƥ뤳�ȤϤǤ��ޤ���
+(F) MS-DOS マシンでは、64K を越えるメモリを割り当てることはできません。
 
 =item realloc() of freed memory ignored
 
@@ -6578,8 +6578,8 @@ already been freed.
 
 =end original
 
-�����롼���󤬡��������˲�������Ƥ����Τ��Ф��� realloc() ��
-�ƤӽФ��ޤ�����
+内部ルーチンが、何か既に解放されているものに対して realloc() を
+呼び出しました。
 
 =item Recompile perl with B<-D>DEBUGGING to use B<-D> switch
 
@@ -6591,10 +6591,10 @@ which is why it's currently left out of your copy.
 
 =end original
 
-(F debugging) Perl �Υ���ѥ�����ˡ�Ŭ�ڤʽ��ϥ롼�ƥ���
-�Ȥ߹��ޤ�Ƥ��ʤ���С�B<-D> �����å���Ȥ����ȤϤǤ��ޤ���
-����ϡ�¿���Υ����Хإåɤ��������Τǡ����줬���߻ȤäƤ���
-Perl ���Ȥ߹���Ǥʤ���ͳ�Ǥ��礦��
+(F debugging) Perl のコンパイル時に、適切な出力ルーティンが
+組み込まれていなければ、B<-D> スイッチを使うことはできません。
+これは、多少のオーバヘッドがかかるもので、それが現在使っている
+Perl に組み込んでない理由でしょう。
 
 =item Recursive inheritance detected in package '%s'
 
@@ -6605,9 +6605,9 @@ an unintended loop in your inheritance hierarchy.
 
 =end original
 
-(F) 100 ��٥�ʾ�ηѾ����Ԥʤ��ޤ�����
-�����餯���Ѿ����ؤ���ǡ�ͽ�۳��Υ롼�פˤʤäƤ�����ʬ�������Τ�
-�פ��ޤ���
+(F) 100 レベル以上の継承が行なわれました。
+おそらく、継承階層の中で、予想外のループになっている部分があるものと
+思われます。
 
 =item Recursive inheritance detected while looking for method %s
 
@@ -6619,9 +6619,9 @@ hierarchy.
 
 =end original
 
-(F) �᥽�åɤε�ư��� 100 ��٥�ʾ�ηѾ����Ԥʤ��ޤ�����
-�����餯���Ѿ����ؤ���ǡ�ͽ�۳��Υ롼�פˤʤäƤ�����ʬ�������Τ�
-�פ��ޤ���
+(F) メソッドの起動中に 100 レベル以上の継承が行なわれました。
+おそらく、継承階層の中で、予想外のループになっている部分があるものと
+思われます。
 
 =item Reference found where even-sized list expected
 
@@ -6634,11 +6634,11 @@ parens. In any case, a hash requires key/value B<pairs>.
 
 =end original
 
-(W misc) Perl ��(�ϥå���ؤ������Τ����)�����ο������ǤΥꥹ�Ȥ�
-���ꤷ�Ƥ���Ȥ����� 1 �ĤΥ�ե���󥹤��Ϥ��ޤ�����
-��������̤��ä���Ȥ��٤��Ȥ�����̵̾�ϥå��女�󥹥ȥ饯����Ȥä����Ȥ�
-��̣���ޤ���
-�Ȥˤ������ϥå���ϥ���/�ͤ� B<��> ���׵ᤷ�ޤ���
+(W misc) Perl が(ハッシュへの代入のために)偶数の数の要素のリストを
+想定しているところに 1 つのリファレンスを渡しました。
+これは普通かっこを使うべきところで無名ハッシュコンストラクタを使ったことを
+意味します。
+とにかく、ハッシュはキー/値の B<組> を要求します。
 
     %hash = { one => 1, two => 2, };	# WRONG
     %hash = [ qw/ an anon array / ];	# WRONG
@@ -6654,8 +6654,8 @@ Doing so has no effect.
 
 =end original
 
-(W misc) ���˼夤��ե���󥹤���褦�Ȥ��ޤ�����
-�������Ƥⲿ�θ��̤⤢��ޤ���
+(W misc) 既に弱いリファレンスを弱めようとしました。
+そうしても何の効果もありません。
 
 =item Reference miscount in sv_replace()
 
@@ -6666,8 +6666,8 @@ a reference count of other than 1.
 
 =end original
 
-(W internal) ������ sv_replace() �ؿ��������ȿ��� 1 �Ǥʤ���������
-SV �򰷤��ޤ�����
+(W internal) 内部の sv_replace() 関数が、参照数が 1 でない、新規の
+SV を扱いました。
 
 =item Reference to nonexistent group before << HERE in regex m/%s/
 
@@ -6680,10 +6680,10 @@ prepend a zero to make the number at least two digits: C<\07>
 
 =end original
 
-����ɽ������� C<\7> �Τ褦�ʵ��Ҥ�����ޤ�����
-����ɽ��������ͤ���館���̤� 7 �Ĥ���ޤ���
-����ɽ��������� 7 �����ʸ����������������硢
-������Ĥ��ƺ������ο��ͤˤ���ɬ�פ�����ޤ�: C<\07>
+正規表現の中で C<\7> のような記述がありますが、
+正規表現の中に値を捕らえる括弧が 7 つありません。
+正規表現の中に値 7 を持つ文字を挿入したい場合、
+ゼロをつけて最低二桁の数値にする必要があります: C<\07>
 
 =begin original
 
@@ -6692,7 +6692,7 @@ discovered.
 
 =end original
 
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item regexp memory corruption
 
@@ -6703,8 +6703,8 @@ expression compiler gave it.
 
 =end original
 
-(P) ����ɽ������ѥ��餬�Ϥ�����Τǡ�����ɽ�����󥸥�
-�����Ǥ��ʤ��ʤ�ޤ�����
+(P) 正規表現コンパイラが渡したもので、正規表現エンジンが
+処理できなくなりました。
 
 =item Regexp out of space
 
@@ -6715,7 +6715,7 @@ earlier.
 
 =end original
 
-(P) safemalloc() �����Ĥ���Ϥ��ʤΤǡ��ֵ�����Ϥ��Τʤ����顼�פǤ���
+(P) safemalloc() が見つけるはずなので、「起こるはずのないエラー」です。
 
 =item Repeat count in pack overflows
 
@@ -6726,9 +6726,9 @@ signed integers.  See L<perlfunc/pack>.
 
 =end original
 
-(F) �����֤�����Ȥ�������դ������򥪡��С��ե�������褦��
-�ͤϻ���Ǥ��ޤ���
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) 繰り返し回数として符号付き整数をオーバーフローするような
+値は指定できません。
+L<perlfunc/pack> を参照してください。
 
 =item Repeat count in unpack overflows
 
@@ -6739,9 +6739,9 @@ signed integers.  See L<perlfunc/unpack>.
 
 =end original
 
-(F) �����֤�����Ȥ�������դ������򥪡��С��ե�������褦��
-�ͤϻ���Ǥ��ޤ���
-L<perlfunc/unpack> �򻲾Ȥ��Ƥ���������
+(F) 繰り返し回数として符号付き整数をオーバーフローするような
+値は指定できません。
+L<perlfunc/unpack> を参照してください。
 
 =item Reversed %s= operator
 
@@ -6752,9 +6752,9 @@ always comes last, to avoid ambiguity with subsequent unary operators.
 
 =end original
 
-(W syntax) �����黻�Ҥ�ս�˽񤤤Ƥ��ޤ���
-����θ��ñ��黻�Ҥ�³���Ȥ��ˡ�ۣ��ˤʤ�Τ��򤱤뤿�ᡢ
-�����黻�ҤǤϡ����� = �����Ǹ�ˤ��ʤ��Ȥ����ޤ���
+(W syntax) 代入演算子を逆順に書いています。
+等号の後に単項演算子が続くときに、曖昧になるのを避けるため、
+代入演算子では、等号 = が、最後にこないといけません。
 
 =item Runaway format
 
@@ -6768,13 +6768,13 @@ shifting or popping (for array variables).  See L<perlform>.
 
 =end original
 
-(F) ��������ե����ޥåȤˡ����ˤʤ�ޤǷ����֤� ~~ ��
-�ޤޤ�Ƥ��ޤ����������٤� 200 �԰ʾ�Ȥʤꡢ199 ���ܤ� 200 ���ܤ�
-����Ʊ���ˤʤ�ޤ�����
-(�������ѿ��ˤ�) @ ������� ^ ���Ѥ��뤫��(�����ѿ��ˤ�) shift �� pop ��
-�Ԥʤ������ơ���������ưŪ�ˤʤ��ʤ�褦�ˤʤäƤ��ʤ��Ȥ����ޤ��󤬡�
-�����ʤäƤ��ʤ��褦�Ǥ���
-L<perlform> �򻲾Ȥ��Ƥ���������
+(F) 定義したフォーマットに、空になるまで繰り返す ~~ が
+含まれていましたが、一度に 200 行以上となり、199 行目と 200 行目が
+全く同じになりました。
+(スカラ変数には) @ の代わりに ^ を用いるか、(配列変数には) shift か pop を
+行なうかして、引数が自動的になくなるようになっていないといけませんが、
+そうなっていないようです。
+L<perlform> を参照してください。
 
 =item Scalar value @%s[%s] better written as $%s[%s]
 
@@ -6790,14 +6790,14 @@ if you're expecting only one subscript.
 
 =end original
 
-(W syntax) ����ΰ�Ĥ����Ǥ����֤Τˡ�(@ �Ǽ������) ����
-���饤�����Ѥ��ޤ�����
-���̤ˤϡ�($ �Ǽ������) �������ͤ�Ȥä������ɤ��Ȼפ��ޤ���
-�㤤�ϡ�C<$foo[&bar]> �Ȥ�����硢�������оݤȤ����Ȥ��ˤ⡢
-ź����ɾ������Ȥ��ˤ⡢��˥�����Ȥ��ƿ����񤦤Τ��Ф���
-C<@foo[&bar]> �ξ��ˤϡ��������оݤȤ��Ƥ�ꥹ�ȤȤ��ƿ����񤤡�
-ź���ˤ�ꥹ�ȥ���ƥ����Ȥ�Ϳ���뤳�Ȥˤʤ�ޤ���
-����ϡ�1 �Ĥ�ź����������Ԥ���Ȥ��ˤϡ��������ʤ��ȤȤʤ�Ǥ��礦��
+(W syntax) 配列の一つの要素を選ぶのに、(@ で示される) 配列
+スライスを用いました。
+一般には、($ で示される) スカラ値を使った方が良いと思われます。
+違いは、C<$foo[&bar]> とした場合、代入の対象としたときにも、
+添字を評価するときにも、常にスカラとして振る舞うのに対し、
+C<@foo[&bar]> の場合には、代入の対象としてもリストとして振る舞い、
+添字にもリストコンテキストを与えることになります。
+これは、1 つの添字だけを期待するときには、おかしなこととなるでしょう。
 
 =begin original
 
@@ -6808,10 +6808,10 @@ L<perlref>.
 
 =end original
 
-�������⤷�������������Ǥ�ꥹ�ȤȤ��ư���������硢��ե���󥹤�
-�ɤΤ褦��Ư�����ˤĤ��ƾܤ����Τ�ɬ�פ�����ޤ�; �ʤ��ʤ�
-Perl �ϥ�����ȥꥹ�Ȥ�ưŪ���Ѵ�������Ϥ��ʤ�����Ǥ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+一方、もし本当に配列要素をリストとして扱いたい場合、リファレンスが
+どのように働くかについて詳しく知る必要があります; なぜなら
+Perl はスカラとリストを自動的に変換したりはしないからです。
+L<perlref> を参照してください。
 
 =item Scalar value @%s{%s} better written as $%s{%s}
 
@@ -6827,14 +6827,14 @@ if you're expecting only one subscript.
 
 =end original
 
-(W syntax) �ϥå���ΰ�Ĥ����Ǥ����֤Τˡ�(@ �Ǽ������) �ϥå���
-���饤�����Ѥ��ޤ�����
-���̤ˤϡ�($ �Ǽ������) �������ͤ�Ȥä������ɤ��Ȼפ��ޤ���
-�㤤�ϡ�C<$foo{&bar}> �Ȥ�����硢�������оݤȤ����Ȥ��ˤ⡢
-ź����ɾ������Ȥ��ˤ⡢��˥�����Ȥ��ƿ����񤦤Τ��Ф���
-C<@foo{&bar}> �ξ��ˤϡ��������оݤȤ��Ƥ�ꥹ�ȤȤ��ƿ����񤤡�
-ź���ˤ�ꥹ�ȥ���ƥ����Ȥ�Ϳ���뤳�Ȥˤʤ�ޤ���
-����ϡ�1 �Ĥ�ź����������Ԥ���Ȥ��ˤϡ��������ʤ��ȤȤʤ�Ǥ��礦��
+(W syntax) ハッシュの一つの要素を選ぶのに、(@ で示される) ハッシュ
+スライスを用いました。
+一般には、($ で示される) スカラ値を使った方が良いと思われます。
+違いは、C<$foo{&bar}> とした場合、代入の対象としたときにも、
+添字を評価するときにも、常にスカラとして振る舞うのに対し、
+C<@foo{&bar}> の場合には、代入の対象としてもリストとして振る舞い、
+添字にもリストコンテキストを与えることになります。
+これは、1 つの添字だけを期待するときには、おかしなこととなるでしょう。
 
 =begin original
 
@@ -6845,10 +6845,10 @@ L<perlref>.
 
 =end original
 
-�������⤷�����˥ϥå������Ǥ�ꥹ�ȤȤ��ư���������硢��ե���󥹤�
-�ɤΤ褦��Ư�����ˤĤ��ƾܤ����Τ�ɬ�פ�����ޤ�; �ʤ��ʤ�
-Perl �ϥ�����ȥꥹ�Ȥ�ưŪ���Ѵ�������Ϥ��ʤ�����Ǥ���
-L<perlref> �򻲾Ȥ��Ƥ���������
+一方、もし本当にハッシュ要素をリストとして扱いたい場合、リファレンスが
+どのように働くかについて詳しく知る必要があります; なぜなら
+Perl はスカラとリストを自動的に変換したりはしないからです。
+L<perlref> を参照してください。
 
 =item Scalars leaked: %d
 
@@ -6861,10 +6861,10 @@ especially if the Perl program is intended to be long-running.
 
 =end original
 
-(P) Perl �����Υ���������ǲ��������������ʤ�ޤ���:
-Perl ��λ�������ƤΥ������ѿ�����������ޤ���Ǥ�����
-��������̥���꡼���򼨤��Ƥ��ơ�����Ϥ�����󰭤����ȤǤ�����
-Perl �ץ�����बĹ����ư�����ˤ��äˤ����Ǥ���
+(P) Perl 内部のスカラ管理で何かがおかしくなりました:
+Perl 終了時に全てのスカラ変数が解放されませんでした。
+これは普通メモリリークを示していて、これはもちろん悪いことですが、
+Perl プログラムが長い間動作する場合には特にそうです。
 
 =item Script is not setuid/setgid in suidperl
 
@@ -6875,9 +6875,9 @@ or setgid bit set.  This doesn't make much sense.
 
 =end original
 
-(F) ̯�ʤ��Ȥˡ�setuid �ӥåȡ��⤷���� setgid �ӥåȤ�Ω�äƤ��ʤ�
-������ץȤ��Ф��ơ�suidperl �ץ�����ब��ư����ޤ�����
-����ϰ�̣������ޤ���
+(F) 妙なことに、setuid ビット、もしくは setgid ビットが立っていない
+スクリプトに対して、suidperl プログラムが起動されました。
+これは意味がありません。
 
 =item Search pattern not terminated
 
@@ -6889,9 +6889,9 @@ Missing the leading C<$> from a variable C<$m> may cause this error.
 
 =end original
 
-(F) // �⤷���� m{} ��ʸ�κǸ�ζ��ڤ�ʸ�������Ĥ���ޤ���Ǥ�����
-�����ζ��ڤ�ʸ���Ǥϡ��ͥ��Ȥ�����뤳�Ȥ�˺��ʤ��Ǥ���������
-C<$m> �ѿ������� C<$> ��Ĥ���Τ�˺���Ȥ��Υ��顼���Ф뤳�Ȥ�����ޤ���
+(F) // もしくは m{} 構文の最後の区切り文字が見つかりませんでした。
+括弧類の区切り文字では、ネストを数えることを忘れないでください。
+C<$m> 変数の前に C<$> をつけるのを忘れるとこのエラーが出ることがあります。
 
 =item %sseek() on unopened filehandle
 
@@ -6902,8 +6902,8 @@ filehandle that was either never opened or has since been closed.
 
 =end original
 
-(W unopened) �����ץ󤵤�Ƥ��ʤ��ե�����ϥ�ɥ뤫�����˥����������줿
-�ե�����ϥ�ɥ���Ф��ơ�seek() �ؿ��� sysseek() �ؿ���Ȥ����Ȥ��ޤ�����
+(W unopened) オープンされていないファイルハンドルか、既にクローズされた
+ファイルハンドルに対して、seek() 関数や sysseek() 関数を使おうとしました。
 
 =item select not implemented
 
@@ -6913,7 +6913,7 @@ filehandle that was either never opened or has since been closed.
 
 =end original
 
-(F) ���Υޥ���Ǥϡ�select() �����ƥॳ����ϼ�������Ƥ��ޤ���
+(F) このマシンでは、select() システムコールは実装されていません。
 
 =item Semicolon seems to be missing
 
@@ -6924,8 +6924,8 @@ semicolon, or possibly some other missing operator, such as a comma.
 
 =end original
 
-(W semicolon) �����ն�ι�ʸ���顼�ϡ������餯���ߥ����󤫡�����ޤʤɤ�
-�黻�Ҥ��ʤ��ä�����˵����ä���Τȹͤ����ޤ���
+(W semicolon) この付近の構文エラーは、おそらくセミコロンか、コンマなどの
+演算子がなかったために起こったものと考えられます。
 
 =item semi-panic: attempt to dup freed string
 
@@ -6936,8 +6936,8 @@ scalar that had previously been marked as free.
 
 =end original
 
-(S internal) ���˲����Ȱ����դ����������ʣ�����뤿��ˡ�������
-newSVsv() �롼�ƥ��󤬸ƤФ�ޤ�����
+(S internal) 既に解放と印を付けたスカラを複製するために、内部の
+newSVsv() ルーティンが呼ばれました。
 
 =item sem%s not implemented
 
@@ -6947,7 +6947,7 @@ newSVsv() �롼�ƥ��󤬸ƤФ�ޤ�����
 
 =end original
 
-(F) ���Υ����ƥ�Ǥϡ�System V ���ޥե� IPC �ϻȤ��ޤ���
+(F) このシステムでは、System V セマフォ IPC は使えません。
 
 =item send() on closed socket %s
 
@@ -6958,8 +6958,8 @@ before now.  Check your logic flow.
 
 =end original
 
-(W closed) ������Ԥʤ����Ȥ��������åȤϡ����˥�����������Ƥ��ޤ���
-�����ե���������å����Ƥ���������
+(W closed) 送信を行なおうとしたソケットは、既にクローズされています。
+論理フローをチェックしてください。
 
 =item Sequence (? incomplete before << HERE mark in regex m/%s/
 
@@ -6971,9 +6971,9 @@ L<perlre>.
 
 =end original
 
-(F) ����ɽ�����Դ����ʳ�ĥ (? �ǽ���äƤ��ޤ���
-<<<HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 正規表現が不完全な拡張 (? で終わっています。
+<<<HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Sequence (?{...}) not terminated or not {}-balanced in %s
 
@@ -6984,9 +6984,9 @@ for Perl to properly detect the end of the clause. See L<perlre>.
 
 =end original
 
-(F) (?{...}) ���������̤������硢�б����Ƥ��ʤ���Фʤ�ޤ���
-Perl ����������κǸ�򸡽Ф��뤿��Ǥ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) (?{...}) 節の中に大括弧がある場合、対応していなければなりません。
+Perl が正しく節の最後を検出するためです。
+L<perlre> を参照してください。
 
 =item Sequence (?%s...) not implemented before << HERE mark in %s
 
@@ -6998,10 +6998,10 @@ where the problem was discovered. See L<perlre>.
 
 =end original
 
-(F) �Ȥ����Ȥ�������ɽ���γ�ĥ�ϡ�ͽ�󤵤줿ʸ���Ǥ�����
-�ޤ���������Ƥ��ޤ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 使おうとした正規表現の拡張は、予約された文字ですが、
+まだ実装されていません。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Sequence (?%s...) not recognized before << HERE mark in %s
 
@@ -7014,9 +7014,9 @@ See L<perlre>.
 
 =end original
 
-(F) ���Ȥ��ˤʤä�����ɽ���γ�ĥ�ϡ���̣��ʤ��ޤ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) お使いになった正規表現の拡張は、意味をなしません。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Sequence (?#... not terminated in regex m/%s/
 
@@ -7027,9 +7027,9 @@ parenthesis.  Embedded parentheses aren't allowed.  See L<perlre>.
 
 =end original
 
-(F) ����ɽ�������Ȥϡ��Ĥ���̤ǽ����ʤ���Фʤ�ޤ���
-��̤�ޤ�뤳�Ȥϵ�����ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 正規表現コメントは、閉じ括弧で終わらなければなりません。
+括弧を含めることは許されません。
+L<perlre> を参照してください。
 
 =item 500 Server error
 
@@ -7039,7 +7039,7 @@ See Server error.
 
 =end original
 
-"Server error" �򻲾Ȥ��Ƥ���������
+"Server error" を参照してください。
 
 =item Server error
 
@@ -7054,13 +7054,13 @@ produce a valid header".
 
 =end original
 
-����ϡ�����Ū�ˤ� CGI (SSI ��ޤߤޤ�)�ץ������� WWW �ۤ���
-�¹Ԥ��褦�Ȥ����Ȥ��˥֥饦���Υ�����ɥ���ɽ��������å������Ǥ���
-�ºݤΥ��顼�ƥ����Ȥϥ����С��ˤ�ä��礭���ۤʤ�ޤ���
-��äȤ�褯�������ΤȤ��Ƥϡ�"500 Server error",
+これは、一般的には CGI (SSI を含みます)プログラムを WWW 越しに
+実行しようとしたときにブラウザのウィンドウに表示されるメッセージです。
+実際のエラーテキストはサーバーによって大きく異なります。
+もっともよく見られるものとしては、"500 Server error",
 "Method (something) not permitted", "Document contains no data",
-"Premature end of script headers", "Did not produce a valid header" ��
-����ޤ���
+"Premature end of script headers", "Did not produce a valid header" が
+あります。
 
 =begin original
 
@@ -7068,7 +7068,7 @@ B<This is a CGI error, not a Perl error>.
 
 =end original
 
-B<����� CGI �Υ��顼�Ǥ��ꡢPerl �Υ��顼�ǤϤ���ޤ���>.
+B<これは CGI のエラーであり、Perl のエラーではありません>.
 
 =begin original
 
@@ -7081,11 +7081,11 @@ Please see the following for more information:
 
 =end original
 
-�ޤ��Ϥ��ʤ��Υ�����ץȤ��¹Բ�ǽ����CGI ��¹Ԥ���桼����(����Ϥ����餯
-���ʤ����ƥ��Ȥ����桼�����ǤϤ���ޤ���)���ɤ߹��߲�ǽ�����¹Ԥ��Ƥ���ΤȤ�
-�ۤʤ�桼�����δĶ��ѿ�(PATH �ʤ�)�˰�¸���Ƥ��ʤ�����CGI �����С���
-���Ĥ����ʤ������֤��Ƥ��ʤ������Ȥ��ä����Ȥ��ǧ����ɬ�פ�����Ǥ��礦��
-����ʤ����ˤĤ��Ƥϰʲ��򻲾Ȥ��Ƥ���������
+まずはあなたのスクリプトが実行可能か、CGI を実行するユーザー(これはおそらく
+あなたがテストしたユーザーではありません)で読み込み可能か、実行しているのとは
+異なるユーザーの環境変数(PATH など)に依存していないか、CGI サーバーが
+見つけられない場所に置いていないか、といったことを確認する必要があるでしょう。
+さらなる情報については以下を参照してください。
 
 	http://www.perl.com/CPAN/doc/FAQs/cgi/idiots-guide.html
 	http://www.perl.com/CPAN/doc/FAQs/cgi/perl-cgi-faq.html
@@ -7099,7 +7099,7 @@ You should also look at L<perlfaq9>.
 
 =end original
 
-L<perlfaq9> �⸫��٤��Ǥ��礦��
+L<perlfaq9> も見るべきでしょう。
 
 =item setegid() not implemented
 
@@ -7111,9 +7111,9 @@ didn't think so.
 
 =end original
 
-(F) C<$)> ��������Ԥʤ����Ȥ��ޤ����������� OS �Ǥϡ�setegid()
-�����ƥॳ���� (�ޤ��ϡ�Ʊ���Τ��) �����ݡ��Ȥ���Ƥ��ޤ���
-���ʤ��Ȥ� Configure �Ǥϡ�����Ƚ�Ǥ���ޤ�����
+(F) C<$)> へ代入を行なおうとしましたが、この OS では、setegid()
+システムコール (または、同等のもの) がサポートされていません。
+少なくとも Configure では、そう判断されました。
 
 =item seteuid() not implemented
 
@@ -7125,9 +7125,9 @@ didn't think so.
 
 =end original
 
-(F) C<< $> >> ��������Ԥʤ����Ȥ��ޤ����������� OS �Ǥϡ�seteuid()
-�����ƥॳ���� (�ޤ��ϡ�Ʊ���Τ��) �����ݡ��Ȥ���Ƥ��ޤ���
-���ʤ��Ȥ� Configure �Ǥϡ�����Ƚ�Ǥ���ޤ�����
+(F) C<< $> >> へ代入を行なおうとしましたが、この OS では、seteuid()
+システムコール (または、同等のもの) がサポートされていません。
+少なくとも Configure では、そう判断されました。
 
 =item setpgrp can't take arguments
 
@@ -7139,8 +7139,8 @@ group ID.
 
 =end original
 
-(F) ���Υ����ƥ�� setpgrp() �� BSD 4.2 ͳ��Τ�Τǡ�����������ޤ���
-POSIX setpgid() �ϥץ����� ID �ȥץ��������롼�� ID ������ˤȤ�ޤ���
+(F) このシステムの setpgrp() は BSD 4.2 由来のもので、引数がありません。
+POSIX setpgid() はプロセス ID とプロセスグループ ID を引数にとります。
 
 =item setrgid() not implemented
 
@@ -7152,9 +7152,9 @@ didn't think so.
 
 =end original
 
-(F) C<$(> ��������Ԥʤ����Ȥ��ޤ����������� OS �Ǥϡ�setrgid()
-�����ƥॳ���� (�ޤ��ϡ�Ʊ���Τ��) �����ݡ��Ȥ���Ƥ��ޤ���
-���ʤ��Ȥ� Configure �Ǥϡ�����Ƚ�Ǥ���ޤ�����
+(F) C<$(> へ代入を行なおうとしましたが、この OS では、setrgid()
+システムコール (または、同等のもの) がサポートされていません。
+少なくとも Configure では、そう判断されました。
 
 =item setruid() not implemented
 
@@ -7166,9 +7166,9 @@ didn't think so.
 
 =end original
 
-(F) C<$<> ��������Ԥʤ����Ȥ��ޤ����������� OS �Ǥϡ�setruid()
-�����ƥॳ���� (�ޤ��ϡ�Ʊ���Τ��) �����ݡ��Ȥ���Ƥ��ޤ���
-���ʤ��Ȥ� Configure �Ǥϡ�����Ƚ�Ǥ���ޤ�����
+(F) C<$<> へ代入を行なおうとしましたが、この OS では、setruid()
+システムコール (または、同等のもの) がサポートされていません。
+少なくとも Configure では、そう判断されました。
 
 =item setsockopt() on closed socket %s
 
@@ -7180,9 +7180,9 @@ L<perlfunc/setsockopt>.
 
 =end original
 
-(W closed) �Ĥ��Ƥ��륽���åȤ˥����åȥ��ץ��������ꤷ�褦�Ȥ��ޤ�����
-socket() �ƤӽФ����֤��ͤΥ����å���˺��Ƥ��ޤ���?
-L<perlfunc/setsockopt> �򻲾Ȥ��Ƥ���������
+(W closed) 閉じているソケットにソケットオプションを設定しようとしました。
+socket() 呼び出しの返り値のチェックを忘れていませんか?
+L<perlfunc/setsockopt> を参照してください。
 
 =item Setuid/gid script is writable by world
 
@@ -7193,9 +7193,9 @@ world, because the world might have written on it already.
 
 =end original
 
-(F) setuid ���ߥ�졼���ϡ�ï�⤬�񤭹��ߤ��Ǥ���褦�ˤʤäƤ���
-������ץȤϼ¹Ԥ��ޤ���
-ï�������˽񤭴����������Τ�ʤ�����Ǥ���
+(F) setuid エミュレータは、誰もが書き込みができるようになっている
+スクリプトは実行しません。
+誰かが既に書き換えたかも知れないからです。
 
 =item shm%s not implemented
 
@@ -7205,7 +7205,7 @@ world, because the world might have written on it already.
 
 =end original
 
-(F) ���Υ����ƥ�Ǥϡ�System V ��ͭ���� IPC �ϻȤ��ޤ���
+(F) このシステムでは、System V 共有メモリ IPC は使えません。
 
 =item <> should be quotes
 
@@ -7216,8 +7216,8 @@ C<require 'file'>.
 
 =end original
 
-(F) C<require 'file'> �Ƚ񤯤٤��Ȥ����� C<< require <file> >> ��
-�񤤤Ƥ��ޤ���
+(F) C<require 'file'> と書くべきところで C<< require <file> >> と
+書いています。
 
 =item /%s/ should probably be written as "%s"
 
@@ -7230,10 +7230,10 @@ probably not what you had in mind.
 
 =end original
 
-(W syntax) C<join> �κǽ�ΰ����Ȥ��ơ�Perl ��ʸ��������ꤷ�Ƥ���Ȥ�����
-�ѥ������Ȥ��ޤ�����
-Perl �� $_ ��ѥ�����ޥå��󥰤�����̤ο��������ͤ�ʸ����Ȥ���
-�����ޤ���������Ϥ����餯˾��Ǥ��뤳�ȤǤϤʤ��Ǥ��礦��
+(W syntax) C<join> の最初の引数として、Perl が文字列を想定しているところに
+パターンを使いました。
+Perl は $_ をパターンマッチングした結果の真か偽の値を文字列として
+扱いますが、これはおそらく望んでいることではないでしょう。
 
 =item shutdown() on closed socket %s
 
@@ -7244,8 +7244,8 @@ superfluous.
 
 =end original
 
-(W closed) �����������줿�����åȤ� shutdown ��Ԥʤ����Ȥ��ޤ�����
-¿����̵�̤Τ褦�˻פ��ޤ���
+(W closed) クローズされたソケットに shutdown を行なおうとしました。
+多少、無駄のように思われます。
 
 =item SIG%s handler "%s" not defined
 
@@ -7256,8 +7256,8 @@ Perhaps you put it into the wrong package?
 
 =end original
 
-(W signal) %SIG ��ǻ��ꤷ�������ʥ�ϥ�ɥ餬��¸�ߤ��ޤ���
-�ְ�ä��ѥå������ǡ������ԤʤäƤ���Τ��⤷��ޤ���
+(W signal) %SIG 内で指定したシグナルハンドラが、存在しません。
+間違ったパッケージで、設定を行なっているのかもしれません。
 
 =item sort is now a reserved word
 
@@ -7268,9 +7268,9 @@ But before sort was a keyword, people sometimes used it as a filehandle.
 
 =end original
 
-(F) ��Ϥ䡢ï�⤪�ܤˤ����뤳�ȤΤʤ���������Υ��顼��å������Ǥ���
-������sort ��������ɤȤʤ����ˤϡ������ե�����ϥ�ɥ�Ȥ���
-�Ȥ��������ޤ�����
+(F) もはや、誰もお目にかかることのない、旧世代のエラーメッセージです。
+ただ、sort がキーワードとなる前には、これをファイルハンドルとして
+使う方がいました。
 
 =item Sort subroutine didn't return a numeric value
 
@@ -7282,9 +7282,9 @@ See L<perlfunc/sort>.
 
 =end original
 
-(F) sort ����ӥ롼�ƥ���ϡ�ɬ�����ͤ��֤��ʤ���Фʤ�ޤ���
-C<< <=> >> �� C<cmp> ��Ȥ�ʤ��ä������������Ȥ�ʤ��ä���ΤȻפ��ޤ���
-L<perlfunc/sort> �򻲾Ȥ��Ƥ���������
+(F) sort の比較ルーティンは、必ず数値を返さなければなりません。
+C<< <=> >> や C<cmp> を使わなかったか、正しく使わなかったものと思います。
+L<perlfunc/sort> を参照してください。
 
 =item Sort subroutine didn't return single value
 
@@ -7295,9 +7295,9 @@ or less than one element.  See L<perlfunc/sort>.
 
 =end original
 
-(F) sort ����ӥ��֥롼�ƥ���ϡ����Ǥ� 1 �İʳ��Υꥹ���ͤ�
-�֤����ȤϤǤ��ޤ���
-L<perlfunc/sort>�򻲾Ȥ��Ƥ���������
+(F) sort の比較サブルーティンは、要素が 1 個以外のリスト値を
+返すことはできません。
+L<perlfunc/sort>を参照してください。
 
 =item Split loop
 
@@ -7309,10 +7309,10 @@ happened.) See L<perlfunc/split>.
 
 =end original
 
-(P) split ��̵�¥롼�פ˴٤�ޤ�����
-(���餫�ˡ�split �ϡ�����ʸ�����ʾ�ˤϤǤ��ʤ��Ϥ��Ǥ�����
-�����ʤäƤ��ޤ��ޤ�����)��
-L<perlfunc/split> �򻲾Ȥ��Ƥ���������
+(P) split が無限ループに陥りました。
+(明らかに、split は、入力文字数以上にはできないはずですが、
+そうなってしまいました。)　
+L<perlfunc/split> を参照してください。
 
 =item Statement unlikely to be reached
 
@@ -7326,11 +7326,11 @@ a block by itself.
 
 =end original
 
-(W exec) exec() �θ�ˡ�die() �ʳ��μ¹�ʸ������ޤ���
-���Ԥ����Ȥ��ʳ��ϡ�exec() ������äƤ��뤳�ȤϤ���ޤ��󤫤顢
-�ۤȤ�ɤξ��ˤϸ���Ǥ��礦��
-��äƤ���system() ���֤�������ɬ�פ����뤫�⤷��ޤ���
-���ηٹ��ߤ��ˤϡ��֥��å���� exec() �����򵭽Ҥ��Ƥ���������
+(W exec) exec() の後に、die() 以外の実行文があります。
+失敗したとき以外は、exec() から戻ってくることはありませんから、
+ほとんどの場合には誤りでしょう。
+戻ってくるsystem() に置き換える必要があるかもしれません。
+この警告を止めるには、ブロック内に exec() だけを記述してください。
 
 =item stat() on unopened filehandle %s
 
@@ -7341,8 +7341,8 @@ was either never opened or has since been closed.
 
 =end original
 
-(W unopened) �����ץ󤵤�Ƥ��ʤ��ե�����ϥ�ɥ뤫�����˥����������줿
-�ե�����ϥ�ɥ���Ф��ơ�stat() �ؿ���Ȥ����Ȥ��ޤ�����
+(W unopened) オープンされていないファイルハンドルか、既にクローズされた
+ファイルハンドルに対して、stat() 関数を使おうとしました。
 
 =item Stub found while resolving method `%s' overloading %s
 
@@ -7354,9 +7354,9 @@ C<can> may break this.
 
 =end original
 
-(P) @ISA �ĥ꡼�ǤΥ����С������ɤβ�褬����ݡ��ȤΥ����֤ǲ�����ޤ�����
-�����֤ϰ��ۤ˺���뤳�ȤϤ���ޤ��󤬡�����Ū�� C<can> ��ƤӽФ���
-������˲����뤳�Ȥ�����ޤ���
+(P) @ISA ツリーでのオーバーロードの解決がインポートのスタブで壊されました。
+スタブは暗黙に作られることはありませんが、明示的に C<can> を呼び出すと
+これを破壊することがあります。
 
 =item Subroutine %s redefined
 
@@ -7366,8 +7366,8 @@ C<can> may break this.
 
 =end original
 
-(W redefine) ���֥롼�ƥ�����������ޤ�����
-���ηٹ��ߤ��ˤϡ��ʲ��Τ褦�ˤ��Ƥ�������:
+(W redefine) サブルーティンを再定義しました。
+この警告を止めるには、以下のようにしてください:
 
     {
 	no warnings;
@@ -7385,10 +7385,10 @@ L<perlop/"Quote and Quote-like Operators">.
 
 =end original
 
-(P) �ִ���̵�¥롼�פ˴٤�ޤ�����
-(���餫�ˡ��ִ�������ʸ�����ʾ�ˤϵ�����ʤ��Ϥ��Ǥ�����
-���줬�����äƤ��ޤ��ޤ�����)
-L<perlop/"Quote and Quote-like Operators"> �򻲾Ȥ��Ƥ���������
+(P) 置換が無限ループに陥りました。
+(明らかに、置換は入力文字数以上には起こらないはずですが、
+それが起こってしまいました。)
+L<perlop/"Quote and Quote-like Operators"> を参照してください。
 
 =item Substitution pattern not terminated
 
@@ -7400,9 +7400,9 @@ Missing the leading C<$> from variable C<$s> may cause this error.
 
 =end original
 
-(F) s/// �⤷���� s{}{} ��ʸ�ο�����ζ��ڤ�ʸ�������Ĥ���ޤ���Ǥ�����
-�����ζ��ڤ�ʸ���Ǥϡ��ͥ��Ȥ�����뤳�Ȥ�˺��ʤ��Ǥ���������
-C<$s> �ѿ������� C<$> ��Ĥ���Τ�˺���Ȥ��Υ��顼���Ф뤳�Ȥ�����ޤ���
+(F) s/// もしくは s{}{} 構文の真ん中の区切り文字が見つかりませんでした。
+括弧類の区切り文字では、ネストを数えることを忘れないでください。
+C<$s> 変数の前に C<$> をつけるのを忘れるとこのエラーが出ることがあります。
 
 =item Substitution replacement not terminated
 
@@ -7414,9 +7414,9 @@ Missing the leading C<$> from variable C<$s> may cause this error.
 
 =end original
 
-(F) s/// �⤷���� s{}{} ��ʸ�κǸ�ζ��ڤ�ʸ�������Ĥ���ޤ���Ǥ�����
-�����ζ��ڤ�ʸ���Ǥϡ��ͥ��Ȥ�����뤳�Ȥ�˺��ʤ��Ǥ���������
-C<$s> �ѿ������� C<$> ��Ĥ���Τ�˺���Ȥ��Υ��顼���Ф뤳�Ȥ�����ޤ���
+(F) s/// もしくは s{}{} 構文の最後の区切り文字が見つかりませんでした。
+括弧類の区切り文字では、ネストを数えることを忘れないでください。
+C<$s> 変数の前に C<$> をつけるのを忘れるとこのエラーが出ることがあります。
 
 =item substr outside of string
 
@@ -7430,11 +7430,11 @@ assignment or as a subroutine argument for example).
 
 =end original
 
-(W substr),(F) ʸ����γ���ؤ� substr() �򻲾Ȥ��褦�Ȥ��ޤ�����
-�Ĥޤꡢ���ե��åȤ������ͤ���ʸ�����Ĺ������礭���ʤäƤ��ޤ���
-L<perlfunc/substr> �򻲾Ȥ��Ƥ���������
-���ηٹ�ϡ�substr ��(�����κ�¦�䥵�֥롼����ΰ����Ȥ��ä�)
-�����ͤȤ��ƻȤ�줿������̿Ū�Ȥʤ�ޤ���
+(W substr),(F) 文字列の外を指す substr() を参照しようとしました。
+つまり、オフセットの絶対値が、文字列の長さより大きくなっています。
+L<perlfunc/substr> を参照してください。
+この警告は、substr が(代入の左側やサブルーチンの引数といった)
+左辺値として使われた場合は致命的となります。
 
 =item suidperl is no longer needed since %s
 
@@ -7445,9 +7445,9 @@ a version of the setuid emulator somehow got run anyway.
 
 =end original
 
-(F) ���Ȥ��� Perl �ϡ�-DSETUID_SCRIPTS_ARE_SECURE_NOW ��
-���ꤷ�ƥ���ѥ��뤵��Ƥ��ޤ�����setuid ���ߥ�졼������
-�¹Ԥ���Ƥ��ޤ��ޤ�����
+(F) お使いの Perl は、-DSETUID_SCRIPTS_ARE_SECURE_NOW を
+指定してコンパイルされていますが、setuid エミュレータが、
+実行されてしまいました。
 
 =item Switch (?(condition)... contains too many branches before << HE%s
 
@@ -7460,9 +7460,9 @@ clustering parentheses:
 
 =end original
 
-(F) (?(condition)if-clause|else-clause) ��¤�Ϻ���� 2 �Ĥ�ʬ��
-(if-clause �� else-clause) ����Ĥ��Ȥ��Ǥ��ޤ���
-�������ޤ���ξ����������ޤ᤿���Ȥ��ϡ�����򤫤ä��ǰϤ�Ǥ�������:
+(F) (?(condition)if-clause|else-clause) 構造は最大で 2 つの分岐
+(if-clause と else-clause) を持つことができます。
+片方、または両方に選択肢を含めたいときは、それをかっこで囲んでください:
 
     (?(condition)(?:this|that|other)|else-clause)
 
@@ -7473,8 +7473,8 @@ discovered. See L<perlre>.
 
 =end original
 
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Switch condition not recognized before << HERE in regex m/%s/
 
@@ -7486,9 +7486,9 @@ about where the problem was discovered. See L<perlre>.
 
 =end original
 
-(?(...)if-clause|else-clause) ��¤�ΰ��������ͤʤ顢���ͤ�������ǽ�Ǥ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(?(...)if-clause|else-clause) 構造の引数が数値なら、数値だけが可能です。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item switching effective %s is not implemented
 
@@ -7499,8 +7499,8 @@ and effective uids or gids.
 
 =end original
 
-(F) C<use filetest> �ץ饰�ޤ�ȤäƤ���֤ˡ�
-�¤ȼ¸��� UID �� GID ���ڤ��ؤ��˼��Ԥ��ޤ�����
+(F) C<use filetest> プラグマを使っている間に、
+実と実効の UID や GID の切り替えに失敗しました。
 
 =item syntax error
 
@@ -7510,8 +7510,8 @@ and effective uids or gids.
 
 =end original
 
-(F) �����餯����ʸ���顼�������äƤ��ޤ���
-�褯���븶���Ȥ��Ƥϰʲ��Τ��Ȥ��ͤ����ޤ�:
+(F) おそらく、構文エラーが起こっています。
+よくある原因としては以下のことが考えられます:
 
 =begin original
 
@@ -7524,12 +7524,12 @@ and effective uids or gids.
 
 =end original
 
-    ������ɤΥ��ڥ�ߥ���
-    ���ߥ������˺�줿��
-    ����ޤ�˺�줿��
-    ������̡��Ĥ���̤�˺�줿��
-    �������̡��Ĥ����̤�˺�줿��
-    �������Ȥ��Ĥ�˺�졣
+    キーワードのスペルミス。
+    セミコロンを忘れた。
+    コンマを忘れた。
+    開き括弧、閉じ括弧を忘れた。
+    開き中括弧、閉じ中括弧を忘れた。
+    クォートの閉じ忘れ。
 
 =begin original
 
@@ -7546,16 +7546,16 @@ questions>.
 
 =end original
 
-¿���ξ�硢��ʸ���顼�Ȱ��ˡ��̤Υ��顼��å��������Фơ�
-�����Ϳ���Ƥ���ޤ���(-w ���դ��뤳�Ȥ��������ˤʤ뤳�Ȥ⤢��ޤ���)
-���顼��å��������Ȥˤϡ������ܤޤǹԤäơ����᤿�Τ��Ȥ������Ȥ�
-�ޤޤ�Ƥ��ޤ���
-Perl �ϤǤ��������Ϥ����򤹤�Τ����դʤΤǡ��ºݤΥ��顼�Ϥ⤦��������
-�ߤ뤳�Ȥ⤢��ޤ���
-�Ȥ��ˤϡ����ֹ椬�������Ω���ʤ����Ȥ⤢�ꡢ�ϤޤäƤ��ޤä��ʤ顢
-���顼�Τ��ä����������򸫤Ĥ���ͣ��μ��ʤϡ��ץ����������Ǥ��ơ�
-���顼���ʤ��ʤ�ޤǡ�perl -c �򷫤��֤���������ޤ���
-S<Ƭ������ 20 ��>���ȻפäƤ���������
+多くの場合、構文エラーと一緒に、別のエラーメッセージが出て、
+情報を与えてくれます。(-w を付けることが、助けになることもあります。)
+エラーメッセージ自身には、何行目まで行って、諦めたのかということも
+含まれています。
+Perl はでたらめな入力を理解するのが得意なので、実際のエラーはもう少し前に
+在ることもあります。
+ときには、行番号が全く役に立たないこともあり、はまってしまったなら、
+エラーのきっかけが何かを見つける唯一の手段は、プログラムを寸断して、
+エラーがなくなるまで、perl -c を繰り返すしかありません。
+S<頭の体操 20 問>だと思ってください。
 
 =item syntax error at line %d: `%s' unexpected
 
@@ -7567,8 +7567,8 @@ yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� Bourne shell �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく Bourne shell で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item %s syntax OK
 
@@ -7578,7 +7578,7 @@ yourself.
 
 =end original
 
-(F) C<perl -c> �����������Ȥ��κǽ��ޤȤ��å������Ǥ���
+(F) C<perl -c> が成功したときの最終まとめメッセージです。
 
 =item System V %s is not implemented on this machine
 
@@ -7591,10 +7591,10 @@ unconfigured.  Consult your system support.
 
 =end original
 
-(F) ������̾���� "sem"��"shm"��"msg" �ǻϤޤ�ؿ���¹Ԥ��褦�Ȥ��ޤ�������
-���ʤ��Υޥ���ˤ� System V IPC ����������Ƥ��ޤ���
-��ǽ�Ϥ��äƤ����ꤵ��Ƥ��ʤ����⤢��ޤ���
-�����ƥॵ�ݡ��Ȥ����̤��Ƥ���������
+(F) 何か、名前が "sem"、"shm"、"msg" で始まる関数を実行しようとしましたが、
+あなたのマシンには System V IPC が実装されていません。
+機能はあっても設定されていない場合もあります。
+システムサポートに相談してください。
 
 =item syswrite() on closed filehandle %s
 
@@ -7605,9 +7605,9 @@ before now.  Check your logic flow.
 
 =end original
 
-(W closed) �񤭹��ߤ�Ԥʤ����Ȥ����ե�����ϥ�ɥ�ϡ�
-���˥�����������Ƥ��ޤ���
-�����ե���������å����Ƥ���������
+(W closed) 書き込みを行なおうとしたファイルハンドルは、
+既にクローズされています。
+論理フローをチェックしてください。
 
 =item Target of goto is too deeply nested
 
@@ -7618,8 +7618,8 @@ for Perl to reach.  Perl is doing you a favor by refusing.
 
 =end original
 
-(F) C<goto> �ǡ�Perl ���Ϥ��ʤ��ۤɿ����ͥ��Ȥ�����٥�˰�ư���褦�Ȥ��ޤ�����
-Perl �Ͽ��ڤˤ⤳�����ݤ��ޤ���
+(F) C<goto> で、Perl が届かないほど深くネストしたラベルに移動しようとしました。
+Perl は親切にもこれを拒否します。
 
 =item tell() on unopened filehandle
 
@@ -7630,8 +7630,8 @@ was either never opened or has since been closed.
 
 =end original
 
-(W unopened) �����ץ󤵤�Ƥ��ʤ��ե�����ϥ�ɥ뤫�����˥����������줿
-�ե�����ϥ�ɥ���Ф��ơ�tell() �ؿ���Ȥ����Ȥ��ޤ�����
+(W unopened) オープンされていないファイルハンドルか、既にクローズされた
+ファイルハンドルに対して、tell() 関数を使おうとしました。
 
 =item That use of $[ is unsupported
 
@@ -7642,8 +7642,8 @@ as a compiler directive.  You may say only one of
 
 =end original
 
-(F) ���ߡ�C<$[> �ؤ������ϡ����������¤��졢����ѥ���ؼ��ҤȲ�ᤵ��ޤ���
-�Ȥ���Τϰʲ��η������Ǥ�:
+(F) 現在、C<$[> への代入は、厳しく制限され、コンパイラ指示子と解釈されます。
+使えるのは以下の形だけです:
 
     $[ = 0;
     $[ = 1;
@@ -7659,9 +7659,9 @@ from under another module inadvertently.  See L<perlvar/$[>.
 
 =end original
 
-����ϡ���ĤΥ⥸�塼��ǡ�¾�Υ⥸�塼�뤬�տޤ��ʤ��褦�ʡ�
-����Υ١������ѹ������������򤹤뤿��Τ�ΤǤ���
-L<perlvar/$[> �򻲾Ȥ��Ƥ���������
+これは、一つのモジュールで、他のモジュールが意図しないような、
+配列のベースを変更する問題を回避するためのものです。
+L<perlvar/$[> を参照してください。
 
 =item The crypt() function is unimplemented due to excessive paranoia
 
@@ -7675,11 +7675,11 @@ will deny it.
 
 =end original
 
-(F) Configure �ϡ��ޥ����� crypt() �ؿ��򸫤Ĥ����ޤ���Ǥ�����
-�����餯���٥������ζ��뤬�ʤ��ä�����ǡ������餯���٥����
-����ꥫ���ܤ��������̩���Ȥ��Ƥ���ȻפäƤ��뤫��
-���ʤ��Ȥ�פäƤ���Ȥ����դ�򤷤Ƥ���ΤǤ��礦��
-�������礤�˽Ф����Ȥ����ǡ���������ꤵ��뤳�ȤǤ��礦��
+(F) Configure は、マシン上で crypt() 関数を見つけられませんでした。
+おそらく、ベンダからの供給がなかったからで、おそらく、ベンダは
+アメリカ政府がそれを秘密だとしていると思っているか、
+少なくとも思っているというふりをしているのでしょう。
+私を引き合いに出したところで、それは否定されることでしょう。
 
 =item The %s function is unimplemented
 
@@ -7690,8 +7690,8 @@ to the probings of Configure.
 
 =end original
 
-(F) ���δؿ��ϡ�Configure ��Ĵ���ˤ��ȡ����Υ������ƥ�����Ǥϡ�
-��������Ƥ��ʤ��褦�Ǥ���
+(F) この関数は、Configure の調査によると、このアーキテクチャでは、
+実装されていないようです。
 
 =item The stat preceding C<-l _> wasn't an lstat
 
@@ -7704,10 +7704,10 @@ instead.
 
 =end original
 
-(F) ���� stat ������ܥ�å���󥯤��̤�᤮�����ºݤΥե������
-������äơ�stat �Хåե�������Ƥ���Ȥ��ˡ�����ܥ�å������פ�
-stat �򥫥��� stat �Хåե����Ф��ƹԤʤäƤ��̣������ޤ���
-�ºݤΥե�����̾��ȤäƤ���������
+(F) 過去の stat がシンボリックリンクを通り過ぎた、実際のファイルの
+情報を取って、stat バッファに入れているときに、シンボリックタイプの
+stat をカレント stat バッファに対して行なっても意味がありません。
+実際のファイル名を使ってください。
 
 =item This Perl can't reset CRTL environ elements (%s)
 
@@ -7725,12 +7725,12 @@ target of the change to
 
 =end original
 
-(W internal) VMS ��ͭ�ηٹ�Ǥ���
-CRTL �������Ķ�������ѹ��ޤ��Ϻ�����褦�Ȥ��ޤ����������� Perl ��
-setenv() �ؿ���ޤ�� CRTL �ǥӥ�ɤ���Ƥ��ޤ���
-�����ޤ� CRTL ��Ȥä� Perl ��ƥӥ�ɤ��뤫���Ķ����󤬤��ηٹ��
-���Ϥ��Ƥ��� %ENV ���ѹ����륿�����åȤȤʤ�ʤ��褦�� 
-F<PERL_ENV_TABLES> (L<perlvms> �򻲾Ȥ��Ƥ�������) ���������Ƥ���������
+(W internal) VMS 固有の警告です。
+CRTL の内部環境配列を変更または削除しようとしましたが、この Perl は
+setenv() 関数を含んだ CRTL でビルドされていません。
+これを含む CRTL を使って Perl を再ビルドするか、環境配列がこの警告を
+出力している %ENV を変更するターゲットとならないように 
+F<PERL_ENV_TABLES> (L<perlvms> を参照してください) を再定義してください。
 
 =item times not implemented
 
@@ -7741,8 +7741,8 @@ suspect you're not running on Unix.
 
 =end original
 
-(F) ���Ȥ��� C �饤�֥��Ǥϡ�times() ��Ԥ�ʤ��褦�Ǥ���
-UNIX �ǤϤʤ��Ķ��Ǥ��礦����
+(F) お使いの C ライブラリでは、times() を行わないようです。
+UNIX ではない環境でしょうか。
 
 =item Too few args to syscall
 
@@ -7753,8 +7753,8 @@ system call to call, silly dilly.
 
 =end original
 
-(F) syscall() �ˤϡ�����¤Ǥ�ƤӽФ������ƥॳ����򼨤���
-���������ɬ�פǤ���
+(F) syscall() には、最低限でも呼び出すシステムコールを示す、
+引数が一つ必要です。
 
 =item Too late for "B<-T>" option
 
@@ -7768,12 +7768,12 @@ So Perl gives up.
 
 =end original
 
-(X) Perl ������ץȤ� #! ��(���뤤�ϥ�������������ʤ��)�� B<-T>
-���ץ���󤬴ޤޤ�Ƥ��ޤ�����Perl �ϥ��ޥ�ɥ饤��� B<-T> �դ���
-��ư����Ƥ��ޤ���
-Perl ��������ץȤ���� B<-T> ��ȯ�����������Ǥϡ��Ķ���������Ƥ�
-���������å�����ˤ��٤�����Τǡ�����ϥ��顼�ˤʤ�ޤ���
-����� Perl ������ޤ���
+(X) Perl スクリプトの #! 行(あるいはローカルで等価なもの)に B<-T>
+オプションが含まれていますが、Perl はコマンドラインで B<-T> 付きで
+起動されていません。
+Perl がスクリプトの中で B<-T> を発見した時点では、環境からの全てを
+汚染チェックするには遅すぎるので、これはエラーになります。
+それで Perl は諦めます。
 
 =begin original
 
@@ -7784,9 +7784,9 @@ argument: e.g. change C<perl -n -T> to C<perl -T -n>.
 
 =end original
 
-perl ������ץȤ� #! ����(�ޤ��ϥ�������������ʵ���)��Ȥäƥ��ޥ�ɤȤ���
-�¹Ԥ�����硢���Υ��顼������ B<-T> ���ץ����� Perl �κǽ�ΰ�����
-�ѹ�����(C<perl -n -T> �� C<perl -T -n> ���ѹ�����)���Ȥǽ�������ޤ���
+perl スクリプトが #! 機構(またはローカルな等価な機構)を使ってコマンドとして
+実行される場合、このエラーは普通 B<-T> オプションを Perl の最初の引数に
+変更する(C<perl -n -T> を C<perl -T -n> に変更する)ことで修正されます。
 
 =begin original
 
@@ -7795,8 +7795,8 @@ B<-T> option must appear on the command line: C<perl -T scriptname>.
 
 =end original
 
-Perl ������ץȤ� C<perl scriptname> �Ȥ��Ƶ�ư������硢B<-T> ���ץ�����
-���ޥ�ɥ饤��˽񤫤ʤ���Фʤ�ޤ���: C<perl -T scriptname>
+Perl スクリプトが C<perl scriptname> として起動される場合、B<-T> オプションは
+コマンドラインに書かなければなりません: C<perl -T scriptname>
 
 =item Too late for "-%s" option
 
@@ -7808,11 +7808,11 @@ are not intended for use inside scripts.  Use the C<use> pragma instead.
 
 =end original
 
-(X) Perl ������ץȤ� #! ��(�ޤ��ϥ�������������ʵ���)�� B<-M> �� 
-B<-m> ���ץ���󤬴ޤޤ�Ƥ��ޤ���
-B<-M> �� B<-m> �Υ��ץ����ϡ�������ץ������ǻȤ�����Τ�ΤǤϤʤ��Τǡ�
-����ϥ��顼�ˤʤ�ޤ���
-����� C<use> �ץ饰�ޤ�ȤäƤ���������
+(X) Perl スクリプトの #! 行(またはローカルな等価な機構)に B<-M> や 
+B<-m> オプションが含まれています。
+B<-M> と B<-m> のオプションは、スクリプト内部で使うためのものではないので、
+これはエラーになります。
+代わりに C<use> プラグマを使ってください。
 
 =item Too late to run %s block
 
@@ -7826,12 +7826,12 @@ BEGIN block.
 
 =end original
 
-(W void) CHECK �� INIT �Υ֥��å��������줬�¹Ԥ���뵡�񤬲᤮�Ƥ���
-�¹Ի����������ޤ�����
-�����餯 C<use> ��Ȥ��٤��Ȥ��� C<require> �� C<do> ��Ȥäƥե������
-�ɤ߹���Ǥ��ޤ���
-���뤤�Ϥ����餯 BEGIN �֥��å������ C<require> �� C<do> ��
-�񤤤��ΤǤ��礦��
+(W void) CHECK か INIT のブロックが、それが実行される機会が過ぎてから
+実行時に定義されました。
+おそらく C<use> を使うべきときに C<require> か C<do> を使ってファイルを
+読み込んでいます。
+あるいはおそらく BEGIN ブロックの中に C<require> か C<do> を
+書いたのでしょう。
 
 =item Too many args to syscall
 
@@ -7841,7 +7841,7 @@ BEGIN block.
 
 =end original
 
-(F) Perl �Ǥϡ�syscall() �˺��� 14 �ޤǤ������������Ϥ����Ȥ��Ǥ��ޤ���
+(F) Perl では、syscall() に最大 14 までしか、引数を渡すことができません。
 
 =item Too many arguments for %s
 
@@ -7851,7 +7851,7 @@ BEGIN block.
 
 =end original
 
-(F) �ؿ����׵᤹��ʾ�ΰ�������ꤷ�ޤ�����
+(F) 関数が要求する以上の引数を指定しました。
 
 =item Too many )'s
 
@@ -7862,8 +7862,8 @@ Check the #! line, or manually feed your script into Perl yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� B<csh> �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく B<csh> で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item Too many ('s
 
@@ -7876,9 +7876,9 @@ Backslash it.   See L<perlre>.
 
 =end original
 
-(F) ����ɽ�������Хå�����å�����դ��Ƥ��ʤ��Хå�����å����
-��λ���ޤ������Хå�����å�����դ��Ƥ���������
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 正規表現が、バックスラッシュを付けていないバックスラッシュで
+終了しました。バックスラッシュを付けてください。
+L<perlre> を参照してください。
 
 =item Transliteration pattern not terminated
 
@@ -7890,10 +7890,10 @@ C<$tr> or C<$y> may cause this error.
 
 =end original
 
-(F) tr///, tr[][], y///, y[][]  ��ʸ�ο�����ζ��ڤ�ʸ����
-���Ĥ���ޤ���Ǥ�����
-C<$tr> �ѿ� �� C<$y> �ѿ������� C<$> ��Ĥ���Τ�˺����
-���Υ��顼���Ф뤳�Ȥ�����ޤ���
+(F) tr///, tr[][], y///, y[][]  構文の真ん中の区切り文字が
+見つかりませんでした。
+C<$tr> 変数 や C<$y> 変数の前に C<$> をつけるのを忘れると
+このエラーが出ることがあります。
 
 
 =item Transliteration replacement not terminated
@@ -7905,7 +7905,7 @@ construct.
 
 =end original
 
-(F) tr/// �⤷���� tr[][] ��ʸ�κǸ�ζ��ڤ�ʸ�������Ĥ���ޤ���Ǥ�����
+(F) tr/// もしくは tr[][] 構文の最後の区切り文字が見つかりませんでした。
 
 =item truncate not implemented
 
@@ -7916,8 +7916,8 @@ Configure knows about.
 
 =end original
 
-(F) ���Υޥ���Ǥϡ�Configure ���Τꤦ�롢�ե�������ڤ�ͤ�ε�ǽ��
-��������Ƥ��ޤ���
+(F) このマシンでは、Configure が知りうる、ファイルの切り詰めの機能が
+実装されていません。
 
 =item Type of arg %d to %s must be %s (not %s)
 
@@ -7930,12 +7930,12 @@ certain type.  Arrays must be @NAME or C<@{EXPR}>.  Hashes must be
 
 =end original
 
-(F) ���δؿ��ϡ����ΰ��֤˷�ޤä����ΰ�����ɬ�פȤ��ޤ���
-����ϡ�@NAME �⤷���� C<@{EXPR}> �Ǥʤ��ƤϤʤ餺���ϥå���ϡ�
-%NAME �⤷���� C<%{EXPR}> �Ǥʤ���Фʤ�ޤ���
-���ۤ��ﻲ�Ȥϵ�����ޤ���Τǡ�����Ū���ﻲ�ȤȤ��ơ�
-{EXPR} ������ȤäƤ���������
-L<perlref> �򻲾Ȥ��Ƥ���������
+(F) この関数は、その位置に決まった型の引数を必要とします。
+配列は、@NAME もしくは C<@{EXPR}> でなくてはならず、ハッシュは、
+%NAME もしくは C<%{EXPR}> でなければなりません。
+暗黙の被参照は許されませんので、明示的な被参照として、
+{EXPR} 形式を使ってください。
+L<perlref> を参照してください。
 
 =item umask: argument is missing initial 0
 
@@ -7946,9 +7946,9 @@ literals always start with 0 in Perl, as in C.
 
 =end original
 
-(W umask) umask 222 ������������ޤ���
-Perl �� 8 �ʿ���ƥ��ϡ�C ��Ʊ���褦�� 0 �ǻϤޤ�ޤ����顢
-0222 �Ȥ��٤��Ǥ���
+(W umask) umask 222 は正しくありません。
+Perl の 8 進数リテラルは、C と同じように 0 で始まりますから、
+0222 とすべきです。
 
 =item umask not implemented
 
@@ -7959,8 +7959,8 @@ use it to restrict permissions for yourself (EXPR & 0700).
 
 =end original
 
-(F) umask �ؿ�����������Ƥ��ʤ��ޥ���ǡ���ʬ���Ȥθ��¤����¤���
-(EXPR & 0700) ����ˤ����Ȥ����Ȥ��ޤ�����
+(F) umask 関数が実装されていないマシンで、自分自身の権限を制限する
+(EXPR & 0700) ためにこれを使おうとしました。
 
 =item Unable to create sub named "%s"
 
@@ -7970,7 +7970,7 @@ use it to restrict permissions for yourself (EXPR & 0700).
 
 =end original
 
-(F) ������̾���Υ��֥롼���������ޤ��ϸƤӽФ����褦�Ȥ��ޤ�����
+(F) 不正な名前のサブルーチンを作成または呼び出ししようとしました。
 
 =item Unbalanced context: %d more PUSHes than POPs
 
@@ -7981,8 +7981,8 @@ many execution contexts were entered and left.
 
 =end original
 
-(W internal) �����Ĥμ¹ԥ���ƥ����Ȥ����äơ��Ф����Ȥ������Ȥ�
-����̷�⤬ exit �����ɤ�ȯ������ޤ�����
+(W internal) いくつの実行コンテキストに入って、出たかということの
+内部矛盾が exit コードで発見されました。
 
 =item Unbalanced saves: %d more saves than restores
 
@@ -7993,8 +7993,8 @@ many values were temporarily localized.
 
 =end original
 
-(W internal) �����Ĥ��ͤ������Ū�˥������벽���줿���Ȥ������Ȥ�
-����̷�⤬ exit �����ɤ�ȯ������ޤ�����
+(W internal) いくつの値が、一時的にローカル化されたかということの
+内部矛盾が exit コードで発見されました。
 
 =item Unbalanced scopes: %d more ENTERs than LEAVEs
 
@@ -8005,8 +8005,8 @@ many blocks were entered and left.
 
 =end original
 
-(W internal) �����ĤΥ֥��å������äơ��Ф����Ȥ������Ȥ�
-����̷�⤬ exit �����ɤ�ȯ������ޤ�����
+(W internal) いくつのブロックに入って、出たかということの
+内部矛盾が exit コードで発見されました。
 
 =item Unbalanced tmps: %d more allocs than frees
 
@@ -8017,8 +8017,8 @@ many mortal scalars were allocated and freed.
 
 =end original
 
-(W internal) �����Ĥδ�ȯ��������γ�����Ƥ�Ԥʤ���������������
-�������Ȥ�����̷�⤬ exit �����ɤ�ȯ������ޤ�����
+(W internal) いくつの揮発性スカラの割り当てを行ない、解放したかと
+いうことの内部矛盾が exit コードで発見されました。
 
 =item Undefined format "%s" called
 
@@ -8029,9 +8029,9 @@ another package?  See L<perlform>.
 
 =end original
 
-(F) ���Υե����ޥåȤ�¸�ߤ��ʤ��褦�˸����ޤ���
-�����餯���̤Υѥå�������¸�ߤ���ΤǤϤʤ��Ǥ��礦����
-L<perlform> �򻲾Ȥ��Ƥ���������
+(F) このフォーマットは存在しないように見えます。
+おそらく、別のパッケージに存在するのではないでしょうか。
+L<perlform> を参照してください。
 
 =item Undefined sort subroutine "%s" called
 
@@ -8042,9 +8042,9 @@ Perhaps it's in a different package?  See L<perlfunc/sort>.
 
 =end original
 
-(F) ���ꤵ�줿 sort ����ӥ롼�ƥ����¸�ߤ��Ƥ��ʤ��褦�˻פ��ޤ���
-�����餯���̤Υѥå�������¸�ߤ���ΤǤϤʤ��Ǥ��礦����
-L<perlfunc/sort>�򻲾Ȥ��Ƥ���������
+(F) 指定された sort の比較ルーティンは存在していないように思われます。
+おそらく、別のパッケージに存在するのではないでしょうか。
+L<perlfunc/sort>を参照してください。
 
 =item Undefined subroutine &%s called
 
@@ -8055,8 +8055,8 @@ since been undefined.
 
 =end original
 
-(F) ���ꤵ�줿���֥롼�ƥ����������Ƥ��ޤ���
-�������Ƥ����Ȥ��Ƥ⡢����̤����ˤʤäƤ��ޤ���
+(F) 指定されたサブルーティンが定義されていません。
+定義されていたとしても、既に未定義になっています。
 
 =item Undefined subroutine called
 
@@ -8067,8 +8067,8 @@ or if it was, it has since been undefined.
 
 =end original
 
-(F) �ƤӤ������Ȥ��Ƥ���̵̾�Υ��֥롼�ƥ���ϡ��������Ƥ��ޤ���
-�������Ƥ����Ȥ��Ƥ⡢����̤����ˤʤäƤ��ޤ���
+(F) 呼びだそうとしている無名のサブルーティンは、定義されていません。
+定義されていたとしても、既に未定義になっています。
 
 =item Undefined subroutine in sort
 
@@ -8079,9 +8079,9 @@ to have been defined yet.  See L<perlfunc/sort>.
 
 =end original
 
-(F) ���ꤵ�줿 sort ����ӥ롼�ƥ�����������ޤ�������
-�������Ƥ��ʤ��褦�Ǥ���
-L<perlfunc/sort> �򻲾Ȥ��Ƥ���������
+(F) 指定された sort の比較ルーティンは宣言されましたが、
+定義されていないようです。
+L<perlfunc/sort> を参照してください。
 
 =item Undefined top format "%s" called
 
@@ -8092,9 +8092,9 @@ another package?  See L<perlform>.
 
 =end original
 
-(F) �����줿�ե����ޥåȤ�¸�ߤ��ʤ��褦�Ǥ���
-�����餯������¾�Υѥå������ˤ���ΤǤ�?
-L<perlform> �򻲾Ȥ��Ƥ���������
+(F) 示されたフォーマットが存在しないようです。
+おそらく本当は他のパッケージにあるのでは?
+L<perlform> を参照してください。
 
 =item Undefined value assigned to typeglob
 
@@ -8106,9 +8106,9 @@ C<undef *foo>.
 
 =end original
 
-(W misc) C<*foo = undef> �Τ褦�ˡ�̤����ͤ򷿥����֤��������ޤ�����
-����ϲ��⤷�ޤ���
-������ C<undef *foo> �Ȥ������ä��Τ��⤷��ޤ���
+(W misc) C<*foo = undef> のように、未定義値を型グロブに代入しました。
+これは何もしません。
+本当は C<undef *foo> としたかったのかもしれません。
 
 =item %s: Undefined variable
 
@@ -8119,8 +8119,8 @@ Check the #! line, or manually feed your script into Perl yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� B<csh> �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく B<csh> で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item unexec of %s into %s failed!
 
@@ -8131,8 +8131,8 @@ representative, who probably put it there in the first place.
 
 =end original
 
-(F) unexec() �롼�ƥ��󤬲��餫����ͳ�ˤ�äƼ��Ԥ��ޤ�����
-�ǽ�˥��󥹥ȡ��뤷���Ǥ������������Ȥ� FSF ��ɽ�Ԥˤ����ͤƤߤƤ���������
+(F) unexec() ルーティンが何らかの理由によって失敗しました。
+最初にインストールしたであろう、サイトの FSF 代表者にたずねてみてください。
 
 =item Unknown BYTEORDER
 
@@ -8143,7 +8143,7 @@ order.
 
 =end original
 
-(F) ���ΥХ��Ƚ���������ؤ���ؿ�������ޤ���
+(F) このバイト順序を入れ替える関数がありません。
 
 =item Unknown switch condition (?(%.2s before << HERE in regex m/%s/
 
@@ -8157,11 +8157,11 @@ set of capturing parentheses named by the number is defined).
 
 =end original
 
-(F) (?(condition)if-clause|else-clause) ��ʸ�ξ�郎�����Ǥ���
-���ϻ��� (���Ȥ����ʤ���Ͽ�)��
-(?{...}) ��ʸ (�����ɤ������ͤ�ɾ�������п�)��
-���� (�ֹ��դ����줿����ª���줿���ä��ν��礬�������Ƥ���п�) ��
-�����줫�Ǥ���
+(F) (?(condition)if-clause|else-clause) 構文の条件が不明です。
+条件は参照 (参照が真なら条件は真)、
+(?{...}) 構文 (コードが真の値に評価されれば真)、
+数値 (番号付けされた、捕捉されたかっこの集合が定義されていれば真) の
+いずれかです。
 
 =begin original
 
@@ -8170,8 +8170,8 @@ discovered.  See L<perlre>.
 
 =end original
 
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
+L<perlre> を参照してください。
 
 =item Unknown open() mode '%s'
 
@@ -8183,8 +8183,8 @@ C<< +> >>, C<<< +>> >>>, C<-|>, C<|->.
 
 =end original
 
-(F) 3 ���� open() �� �� 2 �������ʲ���ͭ���ʥ⡼�ɤ�
-�ɤ�Ǥ⤢��ޤ���Ǥ���:
+(F) 3 引数 open() の 第 2 引数が以下の有効なモードの
+どれでもありませんでした:
 C<< < >>, C<< > >>, C<<< >> >>>, C<< +< >>,
 C<< +> >>, C<<< +>> >>>, C<-|>, C<|->.
 
@@ -8199,11 +8199,11 @@ subvert Perl's population of %ENV for nefarious purposes.
 
 =end original
 
-(P) VMS ��ͭ�Υ��顼�Ǥ���
-Perl �� %ENV ��ȿ���������� %ENV �����ͤ��ɤ߹��ߡ�Perl �����ꤷ�Ƥ���
-�ǡ������ȥ꡼������ï������å������򺹤����ߤޤ�����
-ï���ϤȤƤ⺮�𤷤Ƥ��뤫���ٰ�����Ū�Τ���� %ENV �� Perl �ν��Ĥ�
-��˴�����褦�Ȥ��Ƥ��ޤ���
+(P) VMS 固有のエラーです。
+Perl は %ENV を反復する前に %ENV から値を読み込み、Perl が想定している
+データストリームの中に誰かがメッセージを差し込みました。
+誰かはとても混乱しているか、邪悪な目的のために %ENV の Perl の集団を
+滅亡させようとしています。
 
 =item unmatched [ before << HERE mark in regex m/%s/
 
@@ -8216,11 +8216,11 @@ where the escape was discovered.
 
 =end original
 
-(F) ʸ�����饹�μ�����礫�ä������פ��Ƥ��ޤ���
-ʸ�����饹���Ĥ��礫�ä���ޤ᤿�����ϡ��Хå�����å����Ĥ��뤫
-��Ƭ���֤��Ƥ���������
-L<perlre> �򻲾Ȥ��Ƥ���������
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+(F) 文字クラスの周りの大かっこが一致していません。
+文字クラスに閉じ大かっこを含めたい場合は、バックスラッシュをつけるか
+先頭に置いてください。
+L<perlre> を参照してください。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item unmatched ( in regexp before << HERE mark in regex m/%s/
 
@@ -8232,10 +8232,10 @@ matching parenthesis.  See L<perlre>.
 
 =end original
 
-(F) ����ɽ������ǤϥХå�����å���ΤĤ��Ƥ��ʤ����ä��Ͼ��
-�б����Ƥ��ʤ���Фʤ�ޤ���
-vi �桼�����Ǥ���С�% �������б����뤫�ä���ȯ����ͭ�ѤǤ���
-L<perlre> �򻲾Ȥ��Ƥ���������
+(F) 正規表現の中ではバックスラッシュのついていないかっこは常に
+対応していなければなりません。
+vi ユーザーであれば、% キーが対応するかっこの発見に有用です。
+L<perlre> を参照してください。
 
 =item Unmatched right %s bracket
 
@@ -8248,11 +8248,11 @@ you were last editing.
 
 =end original
 
-(F) ������������������̤���¿�����Ĥ����̤ޤ������̤�
-���Ĥ��ޤ�����
-�������̤ޤ������̤Τ��Ȼפ��ޤ���
-����Ū�ʵ�§�Ȥ��ơ��Ǹ�˽������������ն�ˡ�˺�줿����
-�ޤ������� (�Ǥ���Ϥ��Τ��) �����뤳�ȤǤ��礦��
+(F) 字句解析部が開き中括弧よりも多くの閉じ中括弧または大括弧を
+見つけました。
+開き中括弧または大括弧のもれと思われます。
+一般的な規則として、最後に修正した場所の付近に、忘れた中括弧
+または大括弧 (であるはずのもの) があることでしょう。
 
 =item Unquoted string "%s" may clash with future reserved word
 
@@ -8265,10 +8265,10 @@ subroutine.
 
 =end original
 
-(W) ���Ĥ����ˤ���ͽ���Ȥ����礦���⤷��ʤ������ñ�����Ѥ��Ƥ��ޤ���
-���Τ褦��ñ��ϡ��������Ȥ��뤫����ʸ��������뤫����������С� (_) ��
-����뤫���Ƥ���������
-�������ñ��ϡ����֥롼�ƥ���Ȥ���������뤳�Ȥ��ǽ�Ǥ���
+(W) いつの日にか、予約語とかち合うかもしれない、裸の単語を使用しています。
+そのような単語は、クォートするか、大文字を入れるか、アンダーバー (_) を
+いれるかしてください。
+その裸の単語は、サブルーティンとして宣言することも可能です。
 
 =item Unrecognized character %s
 
@@ -8280,10 +8280,10 @@ script, a binary program, or a directory as a Perl program.
 
 =end original
 
-(F) Perl �ѡ������ϡ�Perl ������ץ�(�ޤ��� eval) �ǽФƤ���ʸ�����Ф���
-�ɤ�����Ф褤��ʬ����ޤ���Ǥ�����
-�����餯���̤���������ץȡ��Х��ʥ�ץ�����ࡢ�ǥ��쥯�ȥ�Ȥ��ä���Τ�
-Perl �ץ������Ȥ��Ƽ¹Ԥ��褦�Ȥ����ΤǤ��礦��
+(F) Perl パーサーは、Perl スクリプト(または eval) で出てきた文字に対して
+どうすればよいか分かりませんでした。
+おそらく圧縮したスクリプト、バイナリプログラム、ディレクトリといったものを
+Perl プログラムとして実行しようとしたのでしょう。
 
 =item /%s/: Unrecognized escape \\%c in character class passed through
 
@@ -8295,9 +8295,9 @@ understood literally.
 
 =end original
 
-(W regexp) Perl ����ʸ�����饹��ǧ���Ǥ��ʤ����Хå�����å���-ʸ����
-�Ȥ߹�碌��Ȥ��ޤ�����
-ʸ���ϥ�ƥ������򤵤�ޤ���
+(W regexp) Perl 内部文字クラスで認識できない、バックスラッシュ-文字の
+組み合わせを使いました。
+文字はリテラルに理解されます。
 
 =item Unrecognized escape \\%c passed through before << HERE in m/%s/
 
@@ -8311,12 +8311,12 @@ was discovered.
 
 =end original
 
-(W regexp) Perl ��ǧ���Ǥ��ʤ����Хå�����å���-ʸ�����Ȥ߹�碌��
-�Ȥ��Ƥ��ޤ���
-�����Ȥ߹�碌��Ÿ�����줿�ѿ����椫��C<'>-�ǥ�ߥ�������ɽ����
-�и����ޤ���
-����ʸ���ϥ�ƥ��˽�������ޤ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+(W regexp) Perl が認識できない、バックスラッシュ-文字の組み合わせが
+使われています。
+この組み合わせは展開された変数の中か、C<'>-デリミタの正規表現で
+出現します。
+この文字はリテラルに処理されます。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item Unrecognized escape \\%c passed through
 
@@ -8327,8 +8327,8 @@ recognized by Perl.
 
 =end original
 
-(W misc) Perl ������Ǥ��ʤ��Хå�����å���-ʸ�����Ȥ߹�碌��
-�Ȥ��Ƥ��ޤ���
+(W misc) Perl が理解できないバックスラッシュ-文字の組み合わせが
+使われています。
 
 =item Unrecognized signal name "%s"
 
@@ -8340,9 +8340,9 @@ on your system.
 
 =end original
 
-(F) kill() �ؿ��ˡ�ǧ���Ǥ��ʤ������ʥ�̾����ꤷ�ޤ�����
-���Ȥ��Υ����ƥ�ǻ��Ѳ�ǽ�ʥ����ʥ�̾��Ĵ�٤�ˤϡ�
-�������� C<kill -l> �ʤɤȤ��Ƥ���������
+(F) kill() 関数に、認識できないシグナル名を指定しました。
+お使いのシステムで使用可能なシグナル名を調べるには、
+シェル上で C<kill -l> などとしてください。
 
 =item Unrecognized switch: -%s  (-h will show valid options)
 
@@ -8354,10 +8354,10 @@ bad switch on your behalf.)
 
 =end original
 
-(F) Perl �˴ְ�ä����ץ�������ꤷ�ޤ�����
-�����ԤʤäƤϤ����ޤ���
-(���ꤷ���Ĥ�꤬�ʤ��ΤǤ���С�#! �Ԥ˴ְ�ä����ץ����
-�����å������ꤵ��Ƥ��ʤ���������å����Ƥ���������)
+(F) Perl に間違ったオプションを指定しました。
+これを行なってはいけません。
+(指定したつもりがないのであれば、#! 行に間違ったオプションが
+スイッチが指定されていないかをチェックしてください。)
 
 =item Unsuccessful %s on filename containing newline
 
@@ -8369,11 +8369,11 @@ PROBABLY because you forgot to chomp() it off.  See L<perlfunc/chomp>.
 
 =end original
 
-(W newline) ����ե�����̾���Ф��ơ��ե���������Ԥʤ��ޤ�������
-���Ԥ��ޤ�����
-�֤����餯�ץե�����̾�˲���ʸ�����Ĥ��Ƥ�������ǡ�
-�֤����餯�� chomp() ����Τ�˺�줿�ΤǤ��礦����
-L<perlfunc/chomp> �򻲾Ȥ��Ƥ���������
+(W newline) あるファイル名に対して、ファイル操作を行ないましたが、
+失敗しました。
+「おそらく」ファイル名に改行文字がついていたからで、
+「おそらく」 chomp() するのを忘れたのでしょう。　
+L<perlfunc/chomp> を参照してください。
 
 =item Unsupported directory function "%s" called
 
@@ -8383,7 +8383,7 @@ L<perlfunc/chomp> �򻲾Ȥ��Ƥ���������
 
 =end original
 
-(F) ���Υޥ���Ǥϡ�opendir() �� readdir() �����ݡ��Ȥ���Ƥ��ޤ���
+(F) このマシンでは、opendir() や readdir() がサポートされていません。
 
 =item Unsupported function %s
 
@@ -8394,8 +8394,8 @@ At least, Configure doesn't think so.
 
 =end original
 
-(F) ���Υޥ���Ǥϡ�ɽ�������ؿ��ϼ�������Ƥ��ޤ���
-���ʤ��Ȥ⡢Configure �Ϥ���Ƚ�Ǥ��ޤ�����
+(F) このマシンでは、表示した関数は実装されていません。
+少なくとも、Configure はそう判断しました。
 
 =item Unsupported function fork
 
@@ -8405,7 +8405,7 @@ At least, Configure doesn't think so.
 
 =end original
 
-(F) ���μ¹ԥե������ fork ���б����Ƥ��ޤ���
+(F) この実行ファイルは fork に対応していません。
 
 =begin original
 
@@ -8415,10 +8415,10 @@ changing the name you call Perl by to C<perl_>, C<perl__>, and so on.
 
 =end original
 
-OS/2 �Τ褦�ʥ����ƥ�ˤϡ�Perl �¹ԥե�����ˤ����Ĥ��μ��ब���ꡢ
-fork ���б����Ƥ����ΤȤ��Ƥ��ʤ���Τ�����ޤ���
-Perl ��ƤӽФ�����̾���� C<perl_>, C<perl__> �Τ褦��
-�Ѥ��ƤߤƤ���������
+OS/2 のようなシステムには、Perl 実行ファイルにいくつかの種類があり、
+fork に対応しているものとしていないものがあります。
+Perl を呼び出す時の名前を C<perl_>, C<perl__> のように
+変えてみてください。
 
 =item Unsupported script encoding
 
@@ -8429,8 +8429,8 @@ declares it to be in a Unicode encoding that Perl cannot yet read.
 
 =end original
 
-(F) �ץ������ե����뤬��Perl ���ɤ߹���ʤ� Unicode ���󥳡��ǥ��󥰤�
-������� Unicode Byte Order Mark (BOM) �ǻϤޤäƤ��ޤ���
+(F) プログラムファイルが、Perl が読み込めない Unicode エンコーディングを
+宣言する Unicode Byte Order Mark (BOM) で始まっています。
 
 =item Unsupported socket function "%s" called
 
@@ -8441,8 +8441,8 @@ least that's what Configure thought.
 
 =end original
 
-(F) ���Υޥ���Ǥϡ�Berkeley �����åȵ��������ݡ��Ȥ���Ƥ��ʤ�����
-���ʤ��Ȥ� Configure ������Ƚ�Ǥ��ޤ�����
+(F) このマシンでは、Berkeley ソケット機構がサポートされていないか、
+少なくとも Configure がそう判断しました。
 
 =item Unterminated attribute list
 
@@ -8455,10 +8455,10 @@ attribute too soon.  See L<attributes>.
 
 =end original
 
-(F) ������ϴ郎��°������Ƭ�Ȥ���ñ��ʼ��̻Ҥ䥻�ߥ������֥��å���
-���ϤǤʤ���Τ�ȯ�����ޤ�����
-�����餯������°���Υѥ�᡼���ꥹ�Ȥ��᤯��ü���������ΤǤ��礦��
-L<attributes> �򻲾Ȥ��Ƥ���������
+(F) 字句解析器が、属性の先頭として単純な識別子やセミコロンやブロックの
+開始でないものを発見しました。
+おそらく以前の属性のパラメータリストを早く終端しすぎたのでしょう。
+L<attributes> を参照してください。
 
 =item Unterminated attribute parameter in attribute list
 
@@ -8471,11 +8471,11 @@ character to get your parentheses to balance.  See L<attributes>.
 
 =end original
 
-(F) ������ϴ郎��°���ꥹ�Ȥ�ѡ������Ƥ���Ȥ��˳���(��)���ä���
-ȯ�����ޤ��������б������Ĥ�(��)���ä������Ĥ���ޤ���Ǥ�����
-���ä��ΥХ�󥹤��뤿��ˡ��Хå�����å�����ɲ�(�ޤ��Ϻ��)����
-ɬ�פ�����Ǥ��礦��
-L<attributes> �򻲾Ȥ��Ƥ���������
+(F) 字句解析器が、属性リストをパースしているときに開き(左)かっこを
+発見しましたが、対応する閉じ(右)かっこが見つかりませんでした。
+かっこのバランスを取るために、バックスラッシュを追加(または削除)する
+必要があるでしょう。
+L<attributes> を参照してください。
 
 =item Unterminated compressed integer
 
@@ -8487,9 +8487,9 @@ See L<perlfunc/pack>.
 
 =end original
 
-(F) unpack("w",...) �ΰ����� BER ���������ե����ޥåȤȸߴ������ʤ���
-�������Ѵ��Ǥ��ޤ���Ǥ�����
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) unpack("w",...) の引数が BER 圧縮整数フォーマットと互換性がなく、
+整数に変換できませんでした。
+L<perlfunc/pack> を参照してください。
 
 =item Unterminated <> operator
 
@@ -8502,10 +8502,10 @@ earlier in the line, and you really meant a "less than".
 
 =end original
 
-(F) �बɬ�פȤ����Ȥ����ǡ���������̤����Ĥ������ᡢ
-�б������Ĥ�����̤�õ���ޤ����������Ĥ���ޤ���Ǥ�����
-��ǽ���Ȥ��Ƥϡ�ɬ�פʳ�̤�ʤ��Ƥ��ޤ��������ϡ��־��ʤ국��פ�
-ɽ�������ä���礬�ͤ����ޤ���
+(F) 項が必要とされるところで、開き山括弧が見つけたため、
+対応する閉じ山括弧を探しましたが、見つかりませんでした。
+可能性としては、必要な括弧を省いてしまい、本当は、「小なり記号」を
+表したかった場合が考えられます。
 
 =item untie attempted while %d inner references still exist
 
@@ -8516,8 +8516,8 @@ still valid when C<untie> was called.
 
 =end original
 
-(W untie) C<tie> (�ޤ��� C<tied>) �����֤��줿���֥������Ȥ���
-C<untie> ���ƤӽФ��줿�Ȥ��ˤޤ�ͭ���Ǥ�����
+(W untie) C<tie> (または C<tied>) から返されたオブジェクトが、
+C<untie> が呼び出されたときにまだ有効でした。
 
 =item Useless use of %s in void context
 
@@ -8533,12 +8533,12 @@ said
 
 =end original
 
-(W void) �֥��å����ͤ��֤��ʤ�ʸ�䡢������Υ���ޱ黻�Ҥκ�¦�Τ褦��
-�ֵ��ͤ�̵��ʸ̮�ǡ������ѤΤʤ����Ȥ�Ԥʤ��ޤ�����
-¿���ϡ��ߤʤ���δְ㤤���Ŧ�����ΤǤϤʤ���Perl ���ߤʤ����
-�ո����߼�ä���᤬�Ǥ��ʤ����Ȥǵ�����ޤ���
-���Ȥ��С��ߤʤ��� C ��ͥ���̤� Python ��ͥ���̤Ⱥ�Ʊ����
-�ʲ��Τ褦�ˤ������Ǥ�:
+(W void) ブロックの値を返さない文や、スカラのコンマ演算子の左側のように
+返却値の無い文脈で、副作用のないことを行ないました。
+多くは、みなさんの間違いを指摘するものではなく、Perl がみなさんの
+意向を汲み取った解釈ができないことで起こります。
+たとえば、みなさんが C の優先順位を Python の優先順位と混同して
+以下のようにした場合です:
 
     $one, $two = 1, 2;
 
@@ -8548,7 +8548,7 @@ when you meant to say
 
 =end original
 
-�ʲ��Τ褦�ˤ���٤��Ǥ���
+以下のようにするべきです。
 
     ($one, $two) = (1, 2);
 
@@ -8560,9 +8560,9 @@ example, if you say
 
 =end original
 
-����¾���ɤ����륨�顼�Ȥ��Ƥϡ��ꥹ�Ȥ���Τ����̤�
-���̤�Ȥ��٤��Ȥ��������̤γ�̤�Ȥ����ȤǤ���
-�㤨�С��ʲ��Τ褦�˽񤤤����Ǥ�:
+その他の良くあるエラーとしては、リストを作るのに中括弧や
+大括弧を使うべきところで普通の括弧を使うことです。
+例えば、以下のように書いた場合です:
 
     $array = (1,2);
 
@@ -8572,7 +8572,7 @@ when you should have said
 
 =end original
 
-�ʲ��Τ褦�˽񤯤٤��Ǥ�:
+以下のように書くべきです:
 
     $array = [1,2];
 
@@ -8586,11 +8586,11 @@ L<perlref> for more on this.
 
 =end original
 
-�Ѥ��ä��ϥꥹ���ͤ�����Ū�˥������ͤ��Ѵ����ޤ��������ä����Ѵ����ޤ���
-���Τ��ᡢ���ä��ǳ��줿�ꥹ�Ȥ򥹥��饳��ƥ����Ȥ�ɾ������ȡ�
-����ޤ� C �Υ���ޱ黻�ҤΤ褦�˰���졢��¦�ΰ����ϼΤƤ��ޤ�;
-�����˾��Ǥ��뤳�ȤǤϤʤ��Ǥ��礦��
-����˴ؤ��뤵��ʤ����ˤĤ��Ƥ� L<perlref> �򻲾Ȥ��Ƥ���������
+角かっこはリスト値を明示的にスカラ値に変換しますが、かっこは変換しません。
+そのため、かっこで括られたリストをスカラコンテキストで評価すると、
+カンマは C のカンマ演算子のように扱われ、左側の引数は捨てられます;
+これは望んでいることではないでしょう。
+これに関するさらなる情報については L<perlref> を参照してください。
 
 =item Useless use of "re" pragma
 
@@ -8600,7 +8600,7 @@ L<perlref> for more on this.
 
 =end original
 
-(W) C<use re;> �ץ饰�ޤ�����ʤ��ǻ��ꤷ�ޤ����������̵��̣�Ǥ���
+(W) C<use re;> プラグマを引数なしで指定しました。これは無意味です。
 
 =item "use" not allowed in expression
 
@@ -8611,9 +8611,9 @@ returns no useful value.  See L<perlmod>.
 
 =end original
 
-(F) "use" ������ɤϡ�����ѥ������ǧ�����졢�¹Ԥ�����Τǡ�
-��̣�Τ����ͤ��֤��ޤ���
-L<perlmod> �򻲾Ȥ��Ƥ���������
+(F) "use" キーワードは、コンパイル時に認識され、実行されるもので、
+意味のある値を返しません。
+L<perlmod> を参照してください。
 
 =item Use of bare << to mean <<"" is deprecated
 
@@ -8624,8 +8624,8 @@ if you wish to use an empty line as the terminator of the here-document.
 
 =end original
 
-(D deprecated) �ҥ��ɥ�����Ȥν�ü�ҤȤ��ƶ��Ԥ�Ȥ������Ȥ��ˤϡ�
-����Ū�˥������Ȥ��줿����Ȥ����Ȥ�侩���Ƥ��ޤ���
+(D deprecated) ヒアドキュメントの終端子として空行を使いたいときには、
+明示的にクォートされた形を使うことを推奨しています。
 
 =item Use of implicit split to @_ is deprecated
 
@@ -8637,9 +8637,9 @@ of a split() explicitly to an array (or list).
 
 =end original
 
-(D deprecated) ���֥롼�ƥ���ΰ���������ȥ���ѥ����¿���ϫ�Ϥ�
-�����뤳�Ȥˤʤ�Τǡ�split() �η�̤�����Ū������ (��ꥹ��) ��
-������Ԥʤ��褦�ˤ��Ƥ���������
+(D deprecated) サブルーティンの引数を壊すとコンパイラに多大な労力を
+かけることになるので、split() の結果は明示的に配列 (やリスト) に
+代入を行なうようにしてください。
 
 =item Use of inherited AUTOLOAD for non-method %s() is deprecated
 
@@ -8653,10 +8653,10 @@ $obj->bar() >>).
 
 =end original
 
-(D deprecated) (���إ�)��ȯŪ�ʻ��ͤˤ�äơ�C<AUTOLOAD> ���֥롼����ϡ�
-autoload ����륵�֥롼���󤬥᥽�å� (C<< Foo->bar() >> ��
-C<< $obj->bar() >>) �ǤϤʤ������̤δؿ� (C<Foo::bar()>) �Ȥ���
-�ƤӽФ��줿���ˤ⡢(C<@ISA> ���ؤ�Ȥä�) �᥽�åɤȤ��Ƹ������ޤ���
+(D deprecated) (エヘン)偶発的な仕様によって、C<AUTOLOAD> サブルーチンは、
+autoload されるサブルーチンがメソッド (C<< Foo->bar() >> や
+C<< $obj->bar() >>) ではなく、普通の関数 (C<Foo::bar()>) として
+呼び出された場合にも、(C<@ISA> 階層を使って) メソッドとして検索します。
 
 =begin original
 
@@ -8668,12 +8668,12 @@ C<AUTOLOAD>s.
 
 =end original
 
-���ΥХ��ϡ��᥽�åɤθ�����᥽�åɤ� C<AUTOLOAD> �ΤߤǻȤ����Ȥˤ�ä�
-���轤�������ͽ��Ǥ���
-�����������ߤΥ����ɤ�����ʬ�ϸŤ������񤤤�ȤäƤ��ޤ���
-����ǡ�����Ū�ʥ��ƥåפȤ��ơ�Perl �ϸ��ߤΤȤ����ϡ�
-�᥽�åɰʳ����Ѿ����줿C<AUTOLOAD> ��Ȥ��Ȥ��˥��ץ����ηٹ��
-ȯ�������ޤ���
+このバグは、メソッドの検索をメソッドの C<AUTOLOAD> のみで使うことによって
+将来修正される予定です。
+しかし、現在のコードの大部分は古い振る舞いを使っています。
+それで、暫定的なステップとして、Perl は現在のところは、
+メソッド以外が継承されたC<AUTOLOAD> を使うときにオプションの警告を
+発生させます。
 
 =begin original
 
@@ -8685,10 +8685,10 @@ startup.
 
 =end original
 
-ñ��ʵ�§��: �Ѿ��� autoload ���줿��᥽�åɤˤ�ư��ޤ���
-�Ť������ɤ��������ñ����ˡ��: C<BaseClass> �Ȥ���̾���Υ١������饹����
-��᥽�åɤΤ���ηѾ����� C<AUTOLOAD> �˰�¸���Ƥ���⥸�塼����Ф��ơ�
-���ϻ��� C<*AUTOLOAD = \&BaseClass::AUTOLOAD> ��¹Ԥ��Ƥ���������
+単純な規則は: 継承は autoload された非メソッドには動作しません。
+古いコードを修正する簡単な方法は: C<BaseClass> という名前のベースクラスから
+非メソッドのための継承した C<AUTOLOAD> に依存しているモジュールに対して、
+開始時に C<*AUTOLOAD = \&BaseClass::AUTOLOAD> を実行してください。
 
 =begin original
 
@@ -8698,9 +8698,9 @@ C<use AutoLoader 'AUTOLOAD';>.
 
 =end original
 
-C<use AutoLoader; @ISA = qw(AutoLoader);> �Ȥ��Ƥ��륳���ɤǤϡ�
-@ISA ���� AutoLoader ��������ơ�C<use AutoLoader;> ��
-C<use AutoLoader 'AUTOLOAD';> ���ѹ�����٤��Ǥ���
+C<use AutoLoader; @ISA = qw(AutoLoader);> としているコードでは、
+@ISA から AutoLoader を取り除いて、C<use AutoLoader;> を
+C<use AutoLoader 'AUTOLOAD';> に変更するべきです。
 
 =item Use of %s in printf format not supported
 
@@ -8711,8 +8711,8 @@ only C.  This usually means there's a better way to do it in Perl.
 
 =end original
 
-(F) C �ǤΤߥ���������ǽ�� printf �ε�ǽ��Ȥ����Ȥ��ޤ�����
-��������� Perl �ǹԤ�����ɤ���ˡ������ޤ���
+(F) C でのみアクセス可能な printf の機能を使おうとしました。
+これは普通 Perl で行うより良い方法があります。
 
 =item Use of $* is deprecated
 
@@ -8725,10 +8725,10 @@ that without the dangerous action-at-a-distance effects of C<$*>.
 
 =end original
 
-(D) �����ѿ��ϡ���ʬ�Υ�����ץȤǤ⡢���ޤ��޸Ƥ����Υ��֥롼�ƥ���Ǥ⡢
-ʣ���ԤΥѥ�����ޥå���ͭ���ˤ��Ƥ��ޤ��ޤ���
-C<$*> ��Υ�줿�Ȥ�����Ϳ��������ʱƶ����򤱤Ƥ����Ԥʤ�����ˡ�
-������ C<//m> �����Ҥ� C<//s> �����Ҥ�ȤäƤ���������
+(D) この変数は、自分のスクリプトでも、たまたま呼んだ先のサブルーティンでも、
+複数行のパターンマッチを有効にしてしまいます。
+C<$*> の離れたところに与える危険な影響を避けてこれを行なうために、
+新しい C<//m> 修飾子と C<//s> 修飾子を使ってください。
 
 =item Use of %s is deprecated
 
@@ -8740,9 +8740,9 @@ old way has bad side effects.
 
 =end original
 
-(D deprecated) ��������ʸ�ϡ���Ϥ�Ȥ����Ȥ��侩����ޤ���
-���̤ˤϤ�ä��ɤ���ˡ�����뤫��Ǥ��ꡢ�ޤ��Ť���ˡ�ϡ����������Ѥ�
-���뤫��Ǥ���
+(D deprecated) 示した構文は、もはや使うことが推奨されません。
+一般にはもっと良い方法があるからであり、また古い方法は、悪い副作用が
+あるからです。
 
 =item Use of $# is deprecated
 
@@ -8753,9 +8753,9 @@ defined B<awk> feature.  Use an explicit printf() or sprintf() instead.
 
 =end original
 
-(D deprecated) ����ϡ������ awk �ε�ǽ�򥨥ߥ�졼�Ȥ��褦�Ȥ���
-��ΤǤ�����
-����ˡ�����Ū�� printf() �� sprintf() ��ȤäƤ���������
+(D deprecated) これは、貧相な awk の機能をエミュレートしようとする
+ものでした。
+代わりに、明示的に printf() や sprintf() を使ってください。
 
 =item Use of reserved word "%s" is deprecated
 
@@ -8770,12 +8770,12 @@ a package qualifier, e.g. C<&our()>, or C<Foo::our()>.
 
 =end original
 
-(D deprecated) ������Ƥ������ñ���ͽ���Ǥ���
-����ΥС������� perl �ǤϤ���򥭡���ɤȤ��ƻȤ���ǽ��������Τǡ�
-�ȤäƤ��륳��ƥ����Ȥ�Ŭ��������ñ��򥯥����Ȥ��뤫���㤦̾����
-�ȤäƤ���������
-���ηٹ�ϡ����֥롼����̾������ C<&> ���դ���(C<&our()>)����
-�ѥå����������Ҥ��դ���(C<Foo::our()>)���ȤǾä����Ȥ��Ǥ��ޤ���
+(D deprecated) 示されている裸の単語は予約語です。
+将来のバージョンの perl ではこれをキーワードとして使う可能性があるので、
+使っているコンテキストに適した形で単語をクォートするか、違う名前を
+使ってください。
+この警告は、サブルーチン名の前に C<&> を付ける(C<&our()>)か、
+パッケージ修飾子を付ける(C<Foo::our()>)ことで消すことができます。
 
 =item Use of uninitialized value%s
 
@@ -8787,10 +8787,10 @@ To suppress this warning assign a defined value to your variables.
 
 =end original
 
-(W uninitialized) ̤����ͤ򡢤�����������������Ƥ��뤫�Τ褦��
-���Ѥ��ޤ�����
-����ϡ�"" �� 0 �Ȳ�ᤵ��ޤ������ְ㤤�β�ǽ��������ޤ���
-���ηٹ��ߤ��ˤϡ��ѿ���������줿�ͤ��������Ƥ���������
+(W uninitialized) 未定義値を、あたかも既に定義されているかのように
+使用しました。
+これは、"" か 0 と解釈されますが、間違いの可能性があります。
+この警告を止めるには、変数に定義された値を代入してください。
 
 =begin original
 
@@ -8825,12 +8825,12 @@ C<defined> operator.
 
 =end original
 
-(W misc) ��Ｐ����ǡ�<HANDLE>, <*> (������), C<each()>, C<readdir()> ��
-�����ͤȤ��ƻȤ��ޤ�����
-�����ι�ʸ���� "0" ���֤����Ȥ�����ޤ�; ����Ͼ�Ｐ�Ǥϵ��򼨤��ޤ�����
-����Ϥ����餯˾��Ǥ��뤳�ȤǤϤʤ��Ǥ��礦��
-�����ι�ʸ���Ｐ����ǻȤ��Ȥ��ϡ������ͤ� C<defined> �黻�Ҥ�
-�ƥ��Ȥ��Ƥ���������
+(W misc) 条件式の中で、<HANDLE>, <*> (グロブ), C<each()>, C<readdir()> を
+真偽値として使いました。
+これらの構文は値 "0" を返すことがあります; これは条件式では偽を示しますが、
+これはおそらく望んでいることではないでしょう。
+これらの構文を条件式の中で使うときは、その値を C<defined> 演算子で
+テストしてください。
 
 =item Value of CLI symbol "%s" too long
 
@@ -8843,10 +8843,10 @@ longer than 1024 characters.  The return value has been truncated to
 
 =end original
 
-(W misc) VMS ��ͭ�ηٹ�Ǥ���
-Perl �� CLI ����ܥ�ơ��֥뤫�� %ENV ���Ǥ��ͤ��ɤ߹��⤦�Ȥ��ޤ�������
-��̤�ʸ���� 1024 ʸ����ۤ��ޤ�����
-�֤��ͤ� 1024 ʸ�����ڤ�ͤ���ޤ���
+(W misc) VMS 固有の警告です。
+Perl は CLI シンボルテーブルから %ENV 要素の値を読み込もうとしましたが、
+結果の文字列が 1024 文字を越えました。
+返り値は 1024 文字に切り詰められます。
 
 =item Variable "%s" is not imported%s
 
@@ -8860,11 +8860,11 @@ front of your variable.
 
 =end original
 
-(F) "use strict" ��ͭ���ΤȤ��ˡ������Ȥ���¾�Υ⥸�塼�뤫��
-����ݡ��Ȥ��줿�Ȥ��ʤ����ͤ����������Х��ѿ��򻲾Ȥ��ޤ���;
-�ʤ��ʤ�Ʊ��̾���β���¾�Τ��(�̾�ϥ��֥롼����)�����Υ⥸�塼�뤫��
-�������ݡ��Ȥ���Ƥ��ޤ���
-��������̤��ѿ������˴ְ�ä���������ʸ�����֤������Ȥ��̣���ޤ���
+(F) "use strict" が有効のときに、見たところ他のモジュールから
+インポートされたとあなたが考えたグローバル変数を参照しました;
+なぜなら同じ名前の何か他のもの(通常はサブルーチン)がそのモジュールから
+エクスポートされています。
+これは普通は変数の前に間違ったおかしな文字を置いたことを意味します。
 
 =item "%s" variable %s masks earlier declaration in same %s
 
@@ -8878,11 +8878,11 @@ all closure referents to it are destroyed.
 
 =end original
 
-(W misc) ���ߤΥ������פ�ʸ�� "my" �ѿ��� "our" �ѿ�����������줿�Τǡ�
-�����μ��Τؤ����ƤΥ����������Ǥ��ʤ��ʤ�ޤ�����
-����ϤۤȤ�ɤξ�祿���ץߥ��Ǥ���
-�������ѿ��ϡ��������פ�����뤫������򻲾Ȥ��Ƥ������ƤΥ��������㤬
-�˲������ޤǤ�¸�ߤ�³���뤳�Ȥ����դ��Ƥ���������
+(W misc) 現在のスコープや文で "my" 変数や "our" 変数が再宣言されたので、
+以前の実体への全てのアクセスができなくなりました。
+これはほとんどの場合タイプミスです。
+以前の変数は、スコープが終わるか、それを参照している全てのクロージャが
+破壊されるまでは存在し続けることに注意してください。
 
 =item Variable "%s" may be unavailable
 
@@ -8895,11 +8895,11 @@ defined in the outermost subroutine.  For example:
 
 =end original
 
-(W closure) ������(�ͥ��Ȥ���) I<̵̾> ���֥롼���� I<̾���Ĥ�>
-���֥롼�������¦�ˤ��ꡢ���γ�¦���̤Υ��֥롼����Ǥ�;
-������̵̾��(������¦��)���֥롼���󤬰��ֳ�¦�Υ��֥롼�����
-�������Ƥ���쥭�������ѿ��ǻ��Ȥ���Ƥ��ޤ���
-�㤨��:
+(W closure) 内部の(ネストした) I<無名> サブルーチンが I<名前つき>
+サブルーチンの内側にあり、その外側は別のサブルーチンです;
+そして無名の(一番内側の)サブルーチンが一番外側のサブルーチンで
+定義されているレキシカル変数で参照されています。
+例えば:
 
    sub outermost { my $a; sub middle { sub { $a } } }
 
@@ -8914,12 +8914,12 @@ call to the outermost subroutine, which is probably not what you want.
 
 =end original
 
-̵̾���֥롼���󤬰��ֳ�¦�Υ��֥롼���󤫤�ƤӽФ���뤫(ľ�ܤޤ���
-���ܤ�)��ե���󥹤��줿�Ȥ���ͽ���̤���ѿ��϶�ͭ����ޤ���
-�����������ֳ�¦�Υ��֥롼����ͭ���Ǥʤ�����̵̾���֥롼���󤬸ƤӽФ��줿��
-��ե���󥹤��줿�ꤹ��ȡ���ͭ���줿�ѿ����ͤϰ��ֳ�¦�Υ��֥롼����ؤ�
-�ǽ�θƤӽФ�������ӸƤӽФ���Τ�Τˤʤ�ޤ�;
-����Ϥ����餯˾��Ǥ��뤳�ȤǤϤʤ��Ǥ��礦��
+無名サブルーチンが一番外側のサブルーチンから呼び出されるか(直接または
+間接に)リファレンスされたとき、予想通りに変数は共有されます。
+しかし、一番外側のサブルーチンが有効でない時に無名サブルーチンが呼び出されたり
+リファレンスされたりすると、共有された変数の値は一番外側のサブルーチンへの
+最初の呼び出し前および呼び出し中のものになります;
+これはおそらく望んでいることではないでしょう。
 
 =begin original
 
@@ -8930,10 +8930,10 @@ between interferes with this feature.
 
 =end original
 
-���Τ褦�ʾ����Ǥϡ����̤� C<sub {}> ��ʸ��Ȥäơ����֥롼���� middle ��
-̵̾�ˤ���Τ����ɤǤ���
-Perl �ϥͥ��Ȥ���̵̾���֥롼������ѿ���ͭ���뵡ǽ�򥵥ݡ��Ȥ��Ƥ��ޤ�;
-���ε�ǽ�Υ��󥿡��ե������δ֤�̾���դ����֥롼����Ǥ���
+このような状況では、普通は C<sub {}> 構文を使って、サブルーチン middle を
+無名にするのが最良です。
+Perl はネストした無名サブルーチンで変数を共有する機能をサポートしています;
+この機能のインターフェースの間の名前付きサブルーチンです。
 
 =item Variable syntax
 
@@ -8945,8 +8945,8 @@ Perl yourself.
 
 =end original
 
-(A) ������ץȤ� perl �ǤϤʤ� B<csh> �Ǽ¹Ԥ��褦�Ȥ��ޤ�����
-#! �Ԥ�����å����뤫��������ץȤ�ľ�� Perl �ǵ�ư���Ƥ���������
+(A) スクリプトを perl ではなく B<csh> で実行しようとしました。
+#! 行をチェックするか、スクリプトを直接 Perl で起動してください。
 
 =item Variable "%s" will not stay shared
 
@@ -8957,8 +8957,8 @@ lexical variable defined in an outer subroutine.
 
 =end original
 
-(W closure) ������(�ͥ��Ȥ���) I<̾���դ�> ���֥롼���󤬡�
-��¦�Υ��֥롼�������������쥭�������ѿ��򻲾Ȥ��Ƥ��ޤ���
+(W closure) 内部の(ネストした) I<名前付き> サブルーチンが、
+外側のサブルーチンで定義したレキシカル変数を参照しています。
 
 =begin original
 
@@ -8971,11 +8971,11 @@ variable will no longer be shared.
 
 =end original
 
-��¦�Υ��֥롼���󤬸ƤӽФ��줿���������餯��¦�Υ��֥롼������ͤϡ�
-�ǽ�γ�¦�Υ��֥롼����ؤθƤӽФ�������ӸƤӽФ���Τ�Τˤʤ�ޤ�;
-���ξ�硢��¦�Υ��֥롼����ؤκǽ�θƤӽФ�����λ�����塢��¦��
-��¦�Υ��֥롼������ѿ��˴ؤ���Ʊ���ͤ�ͭ���ʤ��ʤ�ޤ���
-����������ȡ��ѿ��Ϥ�Ϥ䶦ͭ����ޤ���
+内側のサブルーチンが呼び出された時、おそらく外側のサブルーチンの値は、
+最初の外側のサブルーチンへの呼び出し前および呼び出し中のものになります;
+この場合、外側のサブルーチンへの最初の呼び出しが終了した後、内側と
+外側のサブルーチンは変数に関して同じ値を共有しなくなります。
+言い換えると、変数はもはや共有されません。
 
 =begin original
 
@@ -8985,9 +8985,9 @@ will I<never> share the given variable.
 
 =end original
 
-����ˡ���¦�Υ��֥롼����̵̾�ǡ����켫�Ȥγ�¦�Υ쥭�������ѿ���
-���Ȥ��Ƥ����硢��¦����¦�Υ��֥롼�����Ϳ����줿�ѿ���
-��ͭ I<���ޤ���>��
+さらに、外側のサブルーチンが無名で、それ自身の外側のレキシカル変数を
+参照している場合、外側と内側のサブルーチンは与えられた変数は
+共有 I<しません>。
 
 =begin original
 
@@ -8998,11 +8998,11 @@ are automatically rebound to the current values of such variables.
 
 =end original
 
-������������̡�C<sub {}> ��ʸ��Ȥä���¦�Υ��֥롼�����̵̾�ˤ��뤳�Ȥ�
-��褷�ޤ���
-��¦�Υ��֥롼������ѿ��򻲾Ȥ��Ƥ�����¦��̵̾���֥롼����
-�ƤӽФ��줿�껲�Ȥ��줿�Ȥ��������Ϥ��Τ褦���ѿ��θ��ߤ��ͤ�
-��ưŪ�˲������ޤ���
+この問題は普通、C<sub {}> 構文を使って内側のサブルーチンを無名にすることで
+解決します。
+外側のサブルーチンの変数を参照している内側の無名サブルーチンが
+呼び出されたり参照されたとき、これらはそのような変数の現在の値に
+自動的に回復します。
 
 =item Variable length lookbehind not implemented before << HERE in %s
 
@@ -9014,8 +9014,8 @@ the problem was discovered.
 
 =end original
 
-(F) �������Ȥ�Ĺ��������ǡ�����ѥ�����˳��ꤷ�Ƥ����������Ф��ƤΤ߲�ǽ�Ǥ���
-<< HERE ������ɽ���Τɤ������꤬ȯ�����줿���򼨤��Ƥ��ޤ���
+(F) 後方参照は長さが固定で、コンパイル時に確定している副式に対してのみ可能です。
+<< HERE で正規表現のどこに問題が発見されたかを示しています。
 
 =item Version number must be a constant number
 
@@ -9027,8 +9027,8 @@ the version number.
 
 =end original
 
-(P) C<use Module n.n LIST> ʸ�������� C<BEGIN> �֥��å����Ѵ����褦��
-�����Ȥ��ˡ��С�������ֹ�ˤĤ����������������ȯ�����ޤ�����
+(P) C<use Module n.n LIST> 文を等価な C<BEGIN> ブロックに変換しようと
+したときに、バージョン番号について内部の不整合を発見しました。
 
 =item Warning: something's wrong
 
@@ -9039,8 +9039,8 @@ you called it with no args and C<$_> was empty.
 
 =end original
 
-(W) warn() �˶�ʸ������Ϥ��� (C<warn ""> ��Ʃ��Ǥ�) ����
-�����ʤ��ǸƤӽФ��졢C<$_> ����Ǥ�����
+(W) warn() に空文字列を渡した (C<warn ""> と透過です) か、
+引数なしで呼び出され、C<$_> も空でした。
 
 =item Warning: unable to close filehandle %s properly
 
@@ -9052,9 +9052,9 @@ space.
 
 =end original
 
-(S) open() �ˤ�äư��ۤΤ����˹Ԥʤ��� close() ����
-close() �Υ��顼�Ȥʤ�ޤ�����
-�̾�ե����륷���ƥब���äѤ��Ǥ��뤳�Ȥ򼨤��ޤ���
+(S) open() によって暗黙のうちに行なわれる close() が、
+close() のエラーとなりました。
+通常、ファイルシステムがいっぱいであることを示します。
 
 =item Warning: Use of "%s" without parentheses is ambiguous
 
@@ -9067,10 +9067,10 @@ function has a default argument of 1.0, and you write
 
 =end original
 
-(S ambiguous) ñ��黻�Ҥθ�ˡ�������ˤ�ñ��黻�Ҥˤ���Ǥ��롢
-���黻�ҤΤ褦�ʤ�Τ��֤���ޤ�����
-���Ȥ��С�rand �ؿ����ǥե���Ȥΰ����Ȥ��ơ�1.0 ��Ȥ뤳�Ȥ��Τä�
-����С��ʲ��Τ褦�˽񤤤�:
+(S ambiguous) 単項演算子の後に、何か項にも単項演算子にも解釈できる、
+二項演算子のようなものが置かれました。
+たとえば、rand 関数がデフォルトの引数として、1.0 をとることを知って
+いれば、以下のように書いて:
 
     rand + 5;
 
@@ -9080,7 +9080,7 @@ you may THINK you wrote the same thing as
 
 =end original
 
-�ʲ���Ʊ�����ȤȻפ����⤷��ޤ���:
+以下の同じことと思うかもしれませんが:
 
     rand() + 5;
 
@@ -9090,7 +9090,7 @@ but in actual fact, you got
 
 =end original
 
-�ºݤˤϰʲ��Τ褦�ˤʤ�ޤ�:
+実際には以下のようになります:
 
     rand(+5);
 
@@ -9100,7 +9100,7 @@ So put in parentheses to say what you really mean.
 
 =end original
 
-�������äơ��פ��褦�˲�ᤵ����ˤϡ���̤�ɬ�פˤʤ�ޤ���
+したがって、思うように解釈させるには、括弧が必要になります。
 
 =item Wide character in %s
 
@@ -9110,7 +9110,7 @@ So put in parentheses to say what you really mean.
 
 =end original
 
-(F) Perl ��(���ꤷ�Ƥ��ʤ��Ȥ�����)�磻��ʸ��(>255)���������ޤ�����
+(F) Perl が(想定していないところで)ワイド文字(>255)に遭遇しました。
 
 =item write() on closed filehandle %s
 
@@ -9121,8 +9121,8 @@ before now.  Check your logic flow.
 
 =end original
 
-(W) �񤭹��ߤ�Ԥʤ����Ȥ����ե�����ϥ�ɥ�ϡ����˥�����������Ƥ��ޤ���
-�����ե���������å����Ƥ���������
+(W) 書き込みを行なおうとしたファイルハンドルは、既にクローズされています。
+論理フローをチェックしてください。
 
 =item X outside of string
 
@@ -9133,9 +9133,9 @@ the beginning of the string being unpacked.  See L<perlfunc/pack>.
 
 =end original
 
-(F) unpack ���Ƥ���ʸ�������Ƭ����������а��֤򼨤��Ƥ���
-pack �ƥ�ץ졼�Ȥ���ꤷ�ޤ�����
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) unpack している文字列の先頭より前の相対位置を示している
+pack テンプレートを指定しました。
+L<perlfunc/pack> を参照してください。
 
 =item x outside of string
 
@@ -9146,9 +9146,9 @@ the end of the string being unpacked.  See L<perlfunc/pack>.
 
 =end original
 
-(F) unpack ���Ƥ���ʸ����κǸ��������а��֤򼨤��Ƥ���
-pack �ƥ�ץ졼�Ȥ���ꤷ�ޤ�����
-L<perlfunc/pack> �򻲾Ȥ��Ƥ���������
+(F) unpack している文字列の最後より後の相対位置を示している
+pack テンプレートを指定しました。
+L<perlfunc/pack> を参照してください。
 
 =item Xsub "%s" called in sort
 
@@ -9159,8 +9159,8 @@ supported.
 
 =end original
 
-(F) �����Ȥ���ӥ롼�ƥ���Ȥ��ơ��������֥롼�ƥ������Ѥ��뤳�Ȥϡ�
-�ޤ����ݡ��Ȥ���Ƥ��ޤ���
+(F) ソートの比較ルーティンとして、外部サブルーティンを使用することは、
+まだサポートされていません。
 
 =item Xsub called in sort
 
@@ -9171,8 +9171,8 @@ supported.
 
 =end original
 
-(F) �����Ȥ���ӥ롼�ƥ���Ȥ��ơ��������֥롼�ƥ������Ѥ��뤳�Ȥϡ�
-�ޤ����ݡ��Ȥ���Ƥ��ޤ���
+(F) ソートの比較ルーティンとして、外部サブルーティンを使用することは、
+まだサポートされていません。
 
 =item You can't use C<-l> on a filehandle
 
@@ -9184,10 +9184,10 @@ Use a filename instead.
 
 =end original
 
-(F) �ե�����ϥ����ץ󤵤줿�ե������ɽ�魯��ΤǤ��ꡢ
-�ե�����򥪡��ץ󤷤��Ȥ��ˤϡ�õ���Ƥ��륷��ܥ�å���󥯤ϡ�
-�����̤�᤮����Ǥ���
-����˥ե�����̾��ȤäƤ���������
+(F) ファイルはオープンされたファイルを表わすものであり、
+ファイルをオープンしたときには、探しているシンボリックリンクは、
+既に通り過ぎた後です。
+代わりにファイル名を使ってください。
 
 =item YOU HAVEN'T DISABLED SET-ID SCRIPTS IN THE KERNEL YET!
 
@@ -9200,11 +9200,11 @@ eg directory to put a setuid C wrapper around your script.
 
 =end original
 
-(F) (���Υ����ͥ�Ǥϡ�SET-ID ������ץȤ��ػߤ���Ƥ��ޤ���!)
-�����ơ��������뤳�ȤϤǤ��ʤ��Ǥ��礦���������ͥ�Υ������Ϥ������Ǥ�
-�ʤ��Ǥ��礦�����٥�����ߤ�����Τ��󶡤��ƤϤ���ʤ��Ǥ��礦���顣
-��äȤ��ɤ��Τϡ�������ץȤ� setuid C ��åѡ����碌�뤿��ˡ�
-eg �ǥ��쥯�ȥ�� wrapsuid ������ץȤ�ȤäƤߤ뤳�ȤǤ���
+(F) (このカーネルでは、SET-ID スクリプトが禁止されていません!)
+そして、そうすることはできないでしょう。　カーネルのソースはお持ちでは
+ないでしょうし、ベンダも欲しいものを提供してはくれないでしょうから。
+もっとも良いのは、スクリプトに setuid C ラッパーを被せるために、
+eg ディレクトリの wrapsuid スクリプトを使ってみることです。
 
 =item You need to quote "%s"
 
@@ -9218,16 +9218,16 @@ what you want, put an & in front.)
 
 =end original
 
-(W syntax) �����ʥ�ϥ�ɥ�̾�ˡ����ñ����������ޤ�����
-��ǰ�ʤ��顢���Υ��֥롼�ƥ���ϴ����������Ƥ��ơ�Perl 5 �Ǥϡ�
-�����餯���ǤȤϰ�äơ������μ¹Ի��˥��֥롼�ƥ���θƤӽФ���������ޤ���
-(�⤷�������ˤ����������ΤǤ���С����֥롼�ƥ���̾�� & ���դ��Ƥ���������)
+(W syntax) シグナルハンドラ名に、裸の単語を代入しました。
+残念ながら、そのサブルーティンは既に宣言されていて、Perl 5 では、
+おそらく思惑とは違って、代入の実行時にサブルーティンの呼び出しが起こります。
+(もし、本当にそうしたいのであれば、サブルーティン名に & を付けてください。)
 
 =back
 
 =begin meta
 
-Translate: ��¼ ���� <JAE00534@niftyserve.or.jp>
+Translate: 吉村 寿人 <JAE00534@niftyserve.or.jp>
 Update: Kentaro Shirakata <argrath@ub32.org>
 License: GPL or Artistic
 

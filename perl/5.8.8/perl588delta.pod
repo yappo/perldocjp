@@ -1,30 +1,30 @@
 =head1 NAME
-̾��
+名前
 
 perldelta - what is new for perl v5.8.8
 
-perldelta - perl v5.8.8 �ο���ǽ
+perldelta - perl v5.8.8 の新機能
 
 =head1 DESCRIPTION
-����
+説明
 
 This document describes differences between the 5.8.7 release and
 the 5.8.8 release.
 
-���Υɥ�����ȤǤ� 5.8.7 ��꡼���� 5.8.8 ��꡼���ȤǤ��������
-�������ޤ�.
+このドキュメントでは 5.8.7 リリースと 5.8.8 リリースとでの相異点を
+説明します.
 
 =head1 Incompatible Changes
-��ߴ��Ȥʤ뽤��
+非互換となる修正
 
 There are no changes intentionally incompatible with 5.8.7. If any exist,
 they are bugs and reports are welcome.
 
-5.8.7 �Ȱտ�Ū����ߴ��Ϥ���ޤ���. �⤷�ʤˤ���ߴ��Ȼפ�����ब
-����ޤ�����, �����ϥХ��Ǥ��礦. �������򤪴ꤤ���ޤ�.
+5.8.7 と意図的な非互換はありません. もしなにか非互換と思われる事項が
+ありましたら, それらはバグでしょう. ぜひ報告をお願いします.
 
 =head1 Core Enhancements
-�����ε�ǽ��ĥ
+コアの機能拡張
 
 =over
 
@@ -34,15 +34,15 @@ C<chdir>, C<chmod> and C<chown> can now work on filehandles as well as
 filenames, if the system supports respectively C<fchdir>, C<fchmod> and
 C<fchown>, thanks to a patch provided by Gisle Aas.
 
-Gisle Aas ���󶡤����ѥå��Τ�������, 
-C<chdir>, C<chmod> �ڤ� C<chown> ��, �����ƥब���줾�� C<fchdir>,
-C<fchmod> �ڤ� C<fchown> �򥵥ݡ��Ȥ��Ƥ����, �ե�����̾�Ǥ�Ʊ���褦��
-�ե�����ϥ�ɥ���Ф��Ƥ�ư��ޤ�.
+Gisle Aas の提供したパッチのおかげで, 
+C<chdir>, C<chmod> 及び C<chown> は, システムがそれぞれ C<fchdir>,
+C<fchmod> 及び C<fchown> をサポートしていれば, ファイル名でと同じように
+ファイルハンドルに対しても動作します.
 
 =back
 
 =head1 Modules and Pragmata
-�⥸�塼��ȥץ饰��
+モジュールとプラグマ
 
 =over
 
@@ -50,7 +50,7 @@ C<fchmod> �ڤ� C<fchown> �򥵥ݡ��Ȥ��Ƥ����, �ե�����̾�Ǥ�Ʊ���褦��
 
 C<Attribute::Handlers> upgraded to version 0.78_02
 
-C<Attribute::Handlers> �ϥС������ 0.78_02 �˥��åץ��졼�ɤ���ޤ���.
+C<Attribute::Handlers> はバージョン 0.78_02 にアップグレードされました.
 
 =over
 
@@ -58,7 +58,7 @@ C<Attribute::Handlers> �ϥС������ 0.78_02 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fix
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -66,7 +66,7 @@ Documentation typo fix
 
 C<attrs> upgraded to version 1.02
 
-C<attrs> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
+C<attrs> はバージョン 1.02 にアップグレードされました.
 
 =over
 
@@ -74,7 +74,7 @@ C<attrs> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup only
 
-����Ū�ʥ��꡼�󥢥åפ����Ǥ�.
+内部的なクリーンアップだけです.
 
 =back
 
@@ -82,7 +82,7 @@ Internal cleanup only
 
 C<autouse> upgraded to version 1.05
 
-C<autouse> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
+C<autouse> はバージョン 1.05 にアップグレードされました.
 
 =over
 
@@ -90,7 +90,7 @@ C<autouse> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
 
 Simplified implementation
 
-������ñ�㲽.
+実装の単純化.
 
 =back
 
@@ -98,7 +98,7 @@ Simplified implementation
 
 C<B> upgraded to version 1.09_01
 
-C<B> �ϥС������ 1.09_01 �˥��åץ��졼�ɤ���ޤ���.
+C<B> はバージョン 1.09_01 にアップグレードされました.
 
 =over
 
@@ -107,8 +107,8 @@ C<B> �ϥС������ 1.09_01 �˥��åץ��졼�ɤ���ޤ���.
 The inheritance hierarchy of the C<B::> modules has been corrected;
 C<B::NV> now inherits from C<B::SV> (instead of C<B::IV>).
 
-C<B::> �⥸�塼��ηѾ����ؤ���������ޤ���; C<B::NV> �� C<B::SV>
-�����������ޤ�(������ C<B::IV> �Ǥ���).
+C<B::> モジュールの継承階層が訂正されました; C<B::NV> は C<B::SV>
+から派生します(以前は C<B::IV> でした).
 
 =back
 
@@ -116,7 +116,7 @@ C<B::> �⥸�塼��ηѾ����ؤ���������ޤ���; C<B::NV> �� C<B::SV>
 
 C<blib> upgraded to version 1.03
 
-C<blib> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
+C<blib> はバージョン 1.03 にアップグレードされました.
 
 =over
 
@@ -124,7 +124,7 @@ C<blib> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fix
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -132,7 +132,7 @@ Documentation typo fix
 
 C<ByteLoader> upgraded to version 0.06
 
-C<ByteLoader> �ϥС������ 0.06 �˥��åץ��졼�ɤ���ޤ���.
+C<ByteLoader> はバージョン 0.06 にアップグレードされました.
 
 =over
 
@@ -140,7 +140,7 @@ C<ByteLoader> �ϥС������ 0.06 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-����Ū�ʥ��꡼�󥢥å�.
+内部的なクリーンアップ.
 
 =back
 
@@ -148,7 +148,7 @@ Internal cleanup
 
 C<CGI> upgraded to version 3.15
 
-C<CGI> �ϥС������ 3.15 �˥��åץ��졼�ɤ���ޤ���.
+C<CGI> はバージョン 3.15 にアップグレードされました.
 
 =over
 
@@ -156,65 +156,65 @@ C<CGI> �ϥС������ 3.15 �˥��åץ��졼�ɤ���ޤ���.
 
 Extraneous "?" from C<self_url()> removed
 
-C<self_url()> ���鳰¦�� "?" ����������ޤ���.
+C<self_url()> から外側の "?" が取り除かれました.
 
 =item *
 
 C<scrolling_list()> select attribute fixed
 
-C<scrolling_list()> �� select ��°���Ͻ�������ޤ���.
+C<scrolling_list()> の select の属性は修正されました.
 
 =item *
 
 C<virtual_port> now works properly with the https protocol
 
-https �ץ��ȥ���Ǥ⡡C<virtual_port> ����������ǽ����
-�褦�ˤʤ�ޤ���.
+https プロトコルでも　C<virtual_port> が正しく機能する
+ようになりました.
 
 =item *
 
 C<upload_hook()> and C<append()> now works in function-oriented mode
 
-�ؿ��ظ��⡼�ɤǤ� C<upload_hook()> �� C<append()> ����ǽ�����ͤ�
-�ʤ�ޤ���.
+関数指向モードでも C<upload_hook()> と C<append()> が機能する様に
+なりました.
 
 =item *
 
 C<POST_MAX> doesn't cause the client to hang any more
 
-C<POST_MAX> �����饤����Ȥ򤽤�ʾ�˥ϥ󥰤����ʤ��ͤˤʤ�ޤ���.
+C<POST_MAX> がクライアントをそれ以上にハングさせない様になりました.
 
 =item *
 
 Automatic tab indexes are now disabled and new C<-tabindex> pragma has
 been added to turn automatic indexes back on
 
-��ưŪ�ʥ��֥���ǥå�����̵���ˤʤ�ޤ���, �����ƿ����� C<-tabindex> 
-�ץ饰�ޤ��ä����, ����ˤ�äƼ�ư����ǥå�����Ƥ�ͭ���ˤ��뤳�Ȥ�
-�Ǥ��ޤ�.
+自動的なタブインデックスは無効になりました, そして新しい C<-tabindex> 
+プラグマが加えられ, これによって自動インデックスを再び有効にすることが
+できます.
 
 =item *
 
-C<end_form()> �϶���(������ͭ���Ǥʤ�) C<< <div> >> ��ȯ�Ԥ��ʤ��ʤ�ޤ���.
+C<end_form()> は空の(そして有効でない) C<< <div> >> を発行しなくなりました.
 
 =item *
 
 C<CGI::Carp> works better in certain mod_perl configurations
 
-C<CGI::Carp> �Ϥ����Ĥ��� mod_perl ����Ǥ���褯ư���褦��
-�ʤ�ޤ���.
+C<CGI::Carp> はいくつかの mod_perl 設定でもよりよく動作するように
+なりました.
 
 =item *
 
 Setting C<$CGI::TMPDIRECTORY> is now effective
 
-C<$CGI::TMPDIRECTORY> �λ��꤬������Ū�ˤʤ�ޤ���.
+C<$CGI::TMPDIRECTORY> の指定がより効果的になりました.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -222,7 +222,7 @@ Enhanced documentation
 
 C<charnames> upgraded to version 1.05
 
-C<charnames> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
+C<charnames> はバージョン 1.05 にアップグレードされました.
 
 =over
 
@@ -230,8 +230,8 @@ C<charnames> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
 
 C<viacode()> now accept hex strings and has been optimized.
 
-C<viacode()> ��16��ʸ���������դ���褦�ˤʤ�, ����Ŭ��
-����ޤ���.
+C<viacode()> は16進文字列を受け付けるようになり, より最適化
+されました.
 
 =back
 
@@ -239,7 +239,7 @@ C<viacode()> ��16��ʸ���������դ���褦�ˤʤ�, ����Ŭ��
 
 C<CPAN> upgraded to version 1.76_02
 
-C<CPAN> �ϥС������ 1.76_02 �˥��åץ��졼�ɤ���ޤ���.
+C<CPAN> はバージョン 1.76_02 にアップグレードされました.
 
 =over
 
@@ -247,7 +247,7 @@ C<CPAN> �ϥС������ 1.76_02 �˥��åץ��졼�ɤ���ޤ���.
 
 1 minor bug fix for Win32
 
-Win32 �Ǥξ����ʥХ��򣱤Ľ���.
+Win32 での小さなバグを１つ修正.
 
 =back
 
@@ -255,7 +255,7 @@ Win32 �Ǥξ����ʥХ��򣱤Ľ���.
 
 C<Cwd> upgraded to version 3.12
 
-C<Cwd> �ϥС������ 3.12 �˥��åץ��졼�ɤ���ޤ���.
+C<Cwd> はバージョン 3.12 にアップグレードされました.
 
 =over
 
@@ -263,26 +263,26 @@ C<Cwd> �ϥС������ 3.12 �˥��åץ��졼�ɤ���ޤ���.
 
 C<canonpath()> on Win32 now collapses F<foo\..> sections correctly.
 
-Win32 �ˤ����� C<canonpath()> �� F<foo\..> ����ʬ�������
-�����褦�ˤʤ�ޤ���.
+Win32 において C<canonpath()> が F<foo\..> の部分をちゃんと
+壊すようになりました.
 
 =item *
 
 Improved behaviour on Symbian OS.
 
-Symbian OS �Ǥο����񤤤β���.
+Symbian OS での振る舞いの改善.
 
 =item *
 
 Enhanced documentation and typo fixes
 
-�ɥ�����ơ������ζ����ȸ�������.
+ドキュメンテーションの強化と誤字修正.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -290,7 +290,7 @@ Internal cleanup
 
 C<Data::Dumper> upgraded to version 2.121_08
 
-C<Data::Dumper> �ϥС������ 2.121_08 �˥��åץ��졼�ɤ���ޤ���.
+C<Data::Dumper> はバージョン 2.121_08 にアップグレードされました.
 
 =over
 
@@ -299,20 +299,20 @@ C<Data::Dumper> �ϥС������ 2.121_08 �˥��åץ��졼�ɤ���ޤ���.
 A problem where C<Data::Dumper> would sometimes update the iterator state
 of hashes has been fixed
 
-C<Data::Dumper> ���Ȥ��ɤ��ϥå���Υ��ƥ졼�������֤򹹿����Ƥ��ޤ�
-����Ͻ�������ޤ���.
+C<Data::Dumper> がときどきハッシュのイテレーション状態を更新してしまう
+問題は修正されました.
 
 =item *
 
 Numeric labels now work
 
-���ͥ�٥뤬ư����ͤˤʤ�ޤ���.
+数値ラベルが動作する様になりました.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -320,7 +320,7 @@ Internal cleanup
 
 C<DB> upgraded to version 1.01
 
-C<DB> �ϥС������ 1.01 �˥��åץ��졼�ɤ���ޤ���.
+C<DB> はバージョン 1.01 にアップグレードされました.
 
 =over
 
@@ -329,8 +329,8 @@ C<DB> �ϥС������ 1.01 �˥��åץ��졼�ɤ���ޤ���.
 A problem where the state of the regexp engine would sometimes get clobbered when running
 under the debugger has been fixed.
 
-�ǥХå���ư�������Ȥ�������ɽ�����󥸥�ξ��֤��Ȥ��ɤ��˲���������꤬
-��������ޤ���.
+デバッガで動かしたときに正規表現エンジンの状態がときどき破壊される問題が
+修正されました.
 
 =back
 
@@ -338,7 +338,7 @@ under the debugger has been fixed.
 
 C<DB_File> upgraded to version 1.814
 
-C<DB_File> �ϥС������ 1.814 �˥��åץ��졼�ɤ���ޤ���.
+C<DB_File> はバージョン 1.814 にアップグレードされました.
 
 =over
 
@@ -346,7 +346,7 @@ C<DB_File> �ϥС������ 1.814 �˥��åץ��졼�ɤ���ޤ���.
 
 Adds support for Berkeley DB 4.4.
 
-Berkeley DB 4.4 �Υ��ݡ��Ȥ��ɲä���ޤ���.
+Berkeley DB 4.4 のサポートが追加されました.
 
 =back
 
@@ -354,7 +354,7 @@ Berkeley DB 4.4 �Υ��ݡ��Ȥ��ɲä���ޤ���.
 
 C<Devel::DProf> upgraded to version 20050603.00
 
-C<Devel::DProf> �ϥС������ 20050603.00 �˥��åץ��졼�ɤ���ޤ���.
+C<Devel::DProf> はバージョン 20050603.00 にアップグレードされました.
 
 =over
 
@@ -362,7 +362,7 @@ C<Devel::DProf> �ϥС������ 20050603.00 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -370,7 +370,7 @@ Internal cleanup
 
 C<Devel::Peek> upgraded to version 1.03
 
-C<Devel::Peek> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
+C<Devel::Peek> はバージョン 1.03 にアップグレードされました.
 
 =over
 
@@ -378,7 +378,7 @@ C<Devel::Peek> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -386,7 +386,7 @@ Internal cleanup
 
 C<Devel::PPPort> upgraded to version 3.06_01
 
-C<Devel::PPPort> �ϥС������ 3.06_01 �˥��åץ��졼�ɤ���ޤ���.
+C<Devel::PPPort> はバージョン 3.06_01 にアップグレードされました.
 
 =over
 
@@ -394,26 +394,26 @@ C<Devel::PPPort> �ϥС������ 3.06_01 �˥��åץ��졼�ɤ���ޤ���.
 
 C<--compat-version> argument checking has been improved
 
-C<--compat-version> �����Υ����å�����������ޤ���.
+C<--compat-version> 引数のチェックが改善されました.
 
 =item *
 
 Files passed on the command line are filtered by default
 
-���ޥ�ɥ饤�󤫤��Ϥ��줿�ե�����ϥǥե���Ȥǥե��륿�����褦��
-�ʤ�ޤ���.
+コマンドラインから渡されたファイルはデフォルトでフィルタされるように
+なりました.
 
 =item *
 
 C<--nofilter> option to override the filtering has been added
 
-�ե��륿��󥰤��񤭤��� C<--nofilter> ���ץ�����ɲä���ޤ���.
+フィルタリングを上書きする C<--nofilter> オプションが追加されました.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -421,7 +421,7 @@ Enhanced documentation
 
 C<diagnostics> upgraded to version 1.15
 
-C<diagnostics> �ϥС������ 1.15 �˥��åץ��졼�ɤ���ޤ���.
+C<diagnostics> はバージョン 1.15 にアップグレードされました.
 
 =over
 
@@ -429,7 +429,7 @@ C<diagnostics> �ϥС������ 1.15 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fix
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -437,7 +437,7 @@ Documentation typo fix
 
 C<Digest> upgraded to version 1.14
 
-C<Digest> �ϥС������ 1.14 �˥��åץ��졼�ɤ���ޤ���.
+C<Digest> はバージョン 1.14 にアップグレードされました.
 
 =over
 
@@ -445,14 +445,14 @@ C<Digest> �ϥС������ 1.14 �˥��åץ��졼�ɤ���ޤ���.
 
 The constructor now knows which module implements SHA-224
 
-���󥹥ȥ饯���� SHA-224 ��������Ƥ���⥸�塼���
-�Τ�褦�ˤʤ�ޤ���.
+コンストラクタが SHA-224 を実装しているモジュールを
+知るようになりました.
 
 =item *
 
 Documentation tweaks and typo fixes
 
-�ɥ�����Ȥ�Ĵ���ȸ�������.
+ドキュメントの調整と誤字修正.
 
 =back
 
@@ -460,7 +460,7 @@ Documentation tweaks and typo fixes
 
 C<Digest::MD5> upgraded to version 2.36
 
-C<Digest::MD5> �ϥС������ 2.36 �˥��åץ��졼�ɤ���ޤ���.
+C<Digest::MD5> はバージョン 2.36 にアップグレードされました.
 
 =over
 
@@ -468,13 +468,13 @@ C<Digest::MD5> �ϥС������ 2.36 �˥��åץ��졼�ɤ���ޤ���.
 
 C<XSLoader> is now used for faster loading
 
-�����ɤι�®���Τ���� C<XSLoader> ��Ȥ��褦�ˤʤ�ޤ���.
+ロードの高速化のために C<XSLoader> を使うようになりました.
 
 =item *
 
 Enhanced documentation including MD5 weaknesses discovered lately
 
-�Ƕ�ȯ�����줿 MD5 �μ�����ɥ�����Ȥ˲�ɮ.
+最近発見された MD5 の弱点をドキュメントに加筆.
 
 =back
 
@@ -482,7 +482,7 @@ Enhanced documentation including MD5 weaknesses discovered lately
 
 C<Dumpvalue> upgraded to version 1.12
 
-C<Dumpvalue> �ϥС������ 1.12 �˥��åץ��졼�ɤ���ޤ���.
+C<Dumpvalue> はバージョン 1.12 にアップグレードされました.
 
 =over
 
@@ -490,7 +490,7 @@ C<Dumpvalue> �ϥС������ 1.12 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation fix
 
-�ɥ�����Ȥν���.
+ドキュメントの修正.
 
 =back
 
@@ -498,8 +498,8 @@ Documentation fix
 
 C<DynaLoader> upgraded but unfortunately we're not able to increment its version number :-(
 
-C<DynaLoader> �ϥ��åץ��졼�ɤ���ޤ�����, �Թ��ʤ��Ȥ˥С�������ֹ��
-�����뤳�Ȥ��Ǥ��ޤ���Ǥ���.
+C<DynaLoader> はアップグレードされましたが, 不幸なことにバージョン番号を
+あげることができませんでした.
 
 =over
 
@@ -507,21 +507,21 @@ C<DynaLoader> �ϥ��åץ��졼�ɤ���ޤ�����, �Թ��ʤ��Ȥ˥С�������ֹ��
 
 Implements C<dl_unload_file> on Win32
 
-Win32 �Ǥ� C<dl_unload_file> �μ���.
+Win32 での C<dl_unload_file> の実装.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =item *
 
 C<XSLoader> 0.06 incorporated; small optimisation for calling
 C<bootstrap_inherit()> and documentation enhancements.
 
-C<XSLoader> 0.06 �Ϲ�ʻ����ޤ���. C<bootstrap_inherit()> ��
-�ƤӽФ��ξ����ʺ�Ŭ���ȥɥ�����ơ������ζ������Ԥ��ޤ���.
+C<XSLoader> 0.06 は合併されました. C<bootstrap_inherit()> の
+呼び出しの小さな最適化とドキュメンテーションの強化が行われました.
 
 =back
 
@@ -529,7 +529,7 @@ C<XSLoader> 0.06 �Ϲ�ʻ����ޤ���. C<bootstrap_inherit()> ��
 
 C<Encode> upgraded to version 2.12
 
-C<Encode> �ϥС������ 2.12 �˥��åץ��졼�ɤ���ޤ���.
+C<Encode> はバージョン 2.12 にアップグレードされました.
 
 =over
 
@@ -537,32 +537,32 @@ C<Encode> �ϥС������ 2.12 �˥��åץ��졼�ɤ���ޤ���.
 
 A coderef is now acceptable for C<CHECK>!
 
-C<CHECK> �˥����ɥ�ե���󥹤�����դ���褦�ˤʤ�ޤ���!
+C<CHECK> にコードリファレンスを受け付けるようになりました!
 
 =item *
 
 3 new characters added to the ISO-8859-7 encoding
 
-ISO-8859-7 ���󥳡��ǥ��󥰤˿�������ʸ�����ɲä���ޤ���.
+ISO-8859-7 エンコーディングに新しく３文字が追加されました.
 
 =item *
 
 New encoding C<MIME-Header-ISO_2022_JP> added
 
-���������󥳡��ǥ��� C<MIME-Header-ISO_2022_JP> ��
-�ɲä���ޤ���.
+新しいエンコーディング C<MIME-Header-ISO_2022_JP> が
+追加されました.
 
 =item *
 
 Problem with partial characters and C<< encoding(utf-8-strict) >> fixed.
 
-��ʬʸ���� C<encoding(utf-8-strict)> �˴ؤ������꤬��������ޤ���.
+部分文字と C<encoding(utf-8-strict)> に関する問題が修正されました.
 
 =item *
 
 Documentation enhancements and typo fixes
 
-�ɥ�����ơ������ζ����ȸ�������.
+ドキュメンテーションの強化と誤字修正.
 
 =back
 
@@ -570,7 +570,7 @@ Documentation enhancements and typo fixes
 
 C<English> upgraded to version 1.02
 
-C<English> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
+C<English> はバージョン 1.02 にアップグレードされました.
 
 =over
 
@@ -578,7 +578,7 @@ C<English> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
 
 the C<< $COMPILING >> variable has been added
 
-C<$COMPILING> �ѿ����ɲä���ޤ���.
+C<$COMPILING> 変数が追加されました.
 
 =back
 
@@ -586,7 +586,7 @@ C<$COMPILING> �ѿ����ɲä���ޤ���.
 
 C<ExtUtils::Constant> upgraded to version 0.17
 
-C<ExtUtils::Constant> �ϥС������ 0.17 �˥��åץ��졼�ɤ���ޤ���.
+C<ExtUtils::Constant> はバージョン 0.17 にアップグレードされました.
 
 =over
 
@@ -594,7 +594,7 @@ C<ExtUtils::Constant> �ϥС������ 0.17 �˥��åץ��졼�ɤ���ޤ���.
 
 Improved compatibility with older versions of perl
 
-�Ť��С������� perl �Ȥθߴ�������������ޤ���.
+古いバージョンの perl との互換性が改善されました.
 
 =back
 
@@ -602,8 +602,8 @@ Improved compatibility with older versions of perl
 
 C<ExtUtils::MakeMaker> upgraded to version 6.30 (was 6.17)
 
-C<ExtUtils::MakeMaker> �ϥС������ 6.30 �˥��åץ��졼�ɤ���ޤ���
-(���� 6.17 �Ǥ���).
+C<ExtUtils::MakeMaker> はバージョン 6.30 にアップグレードされました
+(前は 6.17 でした).
 
 =over
 
@@ -611,9 +611,9 @@ C<ExtUtils::MakeMaker> �ϥС������ 6.30 �˥��åץ��졼�ɤ���ޤ���
 
 Too much to list here;  see L<http://search.cpan.org/src/MSCHWERN/ExtUtils-MakeMaker-6.30/Changes>
 
-�����˽񤯤ˤϤ���äȤ�������;
+ここに書くにはちょっとおおすぎ;
 L<http://search.cpan.org/src/MSCHWERN/ExtUtils-MakeMaker-6.30/Changes>
-�򻲾Ȥ��Ƥ�������.
+を参照してください.
 
 =back
 
@@ -621,8 +621,8 @@ L<http://search.cpan.org/src/MSCHWERN/ExtUtils-MakeMaker-6.30/Changes>
 
 C<File::Basename> upgraded to version 2.74, with changes contributed by Michael Schwern.
 
-C<File::Basename> �� Michael Schwern �ˤ���Ƥ�ޤ�С������ 2.74 ��
-���åץ��졼�ɤ���ޤ���.
+C<File::Basename> は Michael Schwern による寄稿を含むバージョン 2.74 に
+アップグレードされました.
 
 =over
 
@@ -630,36 +630,36 @@ C<File::Basename> �� Michael Schwern �ˤ���Ƥ�ޤ�С������ 2.74 ��
 
 Documentation clarified and errors corrected.
 
-�ɥ�����Ȥ����Ʋ��ȴְ㤤�ν���.
+ドキュメントの明瞭化と間違いの修正.
 
 =item *
 
 C<basename> now strips trailing path separators before processing the name.
 
-C<basename> ��̾��������������������Υѥ����ڤ�ʸ����������褦��
-�ʤ�ޤ���.
+C<basename> が名前を処理する前に末尾のパス区切り文字を取り除くように
+なりました.
 
 =item *
 
 C<basename> now returns C</> for parameter C</>, to make C<basename>
 consistent with the shell utility of the same name.
 
-C<basename> ��Ʊ��̾���Υ�����桼�ƥ���ƥ��Ȱ��פ���褦��,
-�ѥ�᡼�� C</> ���Ф��� C</> ���֤��褦�ˤʤ�ޤ���.
+C<basename> は同じ名前のシェルユーティリティと一致するように,
+パラメータ C</> に対して C</> を返すようになりました.
 
 =item *
 
 The suffix is no longer stripped if it is identical to the remaining characters
 in the name, again for consistency with the shell utility.
 
-���ե��å����ϻĤ��ʸ����Ʊ��Ǥ��äƤ��������ʤ��ʤ�ޤ���. 
-������桼�ƥ���ƥ��Ȱ��פ����뤿��ˤϤ⤦�������ԤäƤ�������.
+サフィックスは残りの文字が同一であっても取り除かれなくなりました. 
+シェルユーティリティと一致させるためにはもう１処理行ってください.
 
 =item *
 
 Some internal code cleanup.
 
-�����Ĥ������������ɤΥ��꡼�󥢥å�.
+いくつかの内部コードのクリーンアップ.
 
 =back
 
@@ -667,7 +667,7 @@ Some internal code cleanup.
 
 C<File::Copy> upgraded to version 2.09
 
-C<File::Copy> �ϥС������ 2.09 �˥��åץ��졼�ɤ���ޤ���.
+C<File::Copy> はバージョン 2.09 にアップグレードされました.
 
 =over
 
@@ -675,15 +675,15 @@ C<File::Copy> �ϥС������ 2.09 �˥��åץ��졼�ɤ���ޤ���.
 
 Copying a file onto itself used to fail.
 
-��ʬ���ȤؤΥ��ԡ��ϼ��Ԥ��ޤ�.
+自分自身へのコピーは失敗します.
 
 =item *
 
 Moving a file between file systems now preserves the access and
 modification time stamps
 
-�ե����륷���ƥ��ޤ����ե�����ΰ�ư�ϥ��������ڤӹ������֤�
-�ݻ�����褦�ˤʤ�ޤ���.
+ファイルシステムをまたぐファイルの移動はアクセス及び更新時間を
+維持するようになりました.
 
 =back
 
@@ -691,7 +691,7 @@ modification time stamps
 
 C<File::Find> upgraded to version 1.10
 
-File::Find �ϥС������ 1.10 �˥��åץ��졼�ɤ���ޤ���.
+File::Find はバージョン 1.10 にアップグレードされました.
 
 =over
 
@@ -699,13 +699,13 @@ File::Find �ϥС������ 1.10 �˥��åץ��졼�ɤ���ޤ���.
 
 Win32 portability fixes
 
-Win32 �Ǥβ������������ޤ���.
+Win32 での可搬性を修正しました.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -713,7 +713,7 @@ Enhanced documentation
 
 C<File::Glob> upgraded to version 1.05
 
-File::Glob �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
+File::Glob はバージョン 1.05 にアップグレードされました.
 
 =over
 
@@ -721,7 +721,7 @@ File::Glob �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -729,7 +729,7 @@ Internal cleanup
 
 C<File::Path> upgraded to version 1.08
 
-C<File::Path> �ϥС������ 1.08 �˥��åץ��졼�ɤ���ޤ���.
+C<File::Path> はバージョン 1.08 にアップグレードされました.
 
 =over
 
@@ -737,7 +737,7 @@ C<File::Path> �ϥС������ 1.08 �˥��åץ��졼�ɤ���ޤ���.
 
 C<mkpath> now preserves C<errno> when C<mkdir> fails
 
-C<mkpath> �� C<mkdir> �μ��Ի��� C<errno> ��Ĥ��褦�ˤʤ�ޤ���.
+C<mkpath> が C<mkdir> の失敗時に C<errno> を残すようになりました.
 
 =back
 
@@ -745,7 +745,7 @@ C<mkpath> �� C<mkdir> �μ��Ի��� C<errno> ��Ĥ��褦�ˤʤ�ޤ���.
 
 C<File::Spec> upgraded to version 3.12
 
-C<File::Spec> �ϥС������ 3.12 �˥��åץ��졼�ɤ���ޤ���.
+C<File::Spec> はバージョン 3.12 にアップグレードされました.
 
 =over
 
@@ -753,14 +753,14 @@ C<File::Spec> �ϥС������ 3.12 �˥��åץ��졼�ɤ���ޤ���.
 
 C<< File::Spec->rootdir() >> now returns C<\> on Win32, instead of C</>
 
-Win32 �ˤ����� C<< File::Spec->rootdir() >> �� C</> �ǤϤʤ� C<\> ��
-�֤��褦�ˤʤ�ޤ���.
+Win32 において C<< File::Spec->rootdir() >> が C</> ではなく C<\> を
+返すようになりました.
 
 =item *
 
 C<$^O> could sometimes become tainted. This has been fixed.
 
-C<$^O> �ϤȤ��ɤ���������Ƥ��ޤ�. ����Ͻ�������ޤ���.
+C<$^O> はときどき汚染されています. これは修正されました.
 
 =item *
 
@@ -769,22 +769,22 @@ correctly, rather than doing the "misguided" work it was previously doing.
 Note that C<canonpath> on Unix still does B<not> collapse these sections, as
 doing so would be incorrect.
 
-Win32 �ˤ����� C<canonpath> �� C<foo/..> (�⤷���� C<foo\..>) ����ʬ��
-����ޤǹԤäƤ���"���ä�"ư��򵯤����ΤǤϤʤ������Ȳ����褦��
-�ʤ�ޤ���. Unix �Ǥ� C<canonpath> �Ϥ��줬���ä���ΤȤ��Ƥ�
-����³����������ʬ�������B<�ޤ���>.
+Win32 において C<canonpath> が C<foo/..> (もしくは C<foo\..>) の部分を
+これまで行っていた"誤った"動作を起こすのではなくちゃんと壊すように
+なりました. Unix での C<canonpath> はこれが誤ったものとしても
+引き続きこれらの部分を取り壊しB<ません>.
 
 =item *
 
 Some documentation improvements
 
-�����Ĥ��Υɥ�����ơ������β���.
+いくつかのドキュメンテーションの改善.
 
 =item *
 
 Some internal code cleanup
 
-�����Ĥ������������ɤΥ��꡼�󥢥å�.
+いくつかの内部コードのクリーンアップ.
 
 =back
 
@@ -792,7 +792,7 @@ Some internal code cleanup
 
 C<FileCache> upgraded to version 1.06
 
-C<FileCache> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
+C<FileCache> はバージョン 1.06 にアップグレードされました.
 
 =over
 
@@ -800,7 +800,7 @@ C<FileCache> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
 
 POD formatting errors in the documentation fixed
 
-�ɥ�����Ȥ� POD �ե����ޥåȥ��顼�ν���.
+ドキュメントの POD フォーマットエラーの修正.
 
 =back
 
@@ -808,13 +808,13 @@ POD formatting errors in the documentation fixed
 
 C<Filter::Simple> upgraded to version 0.82
 
-C<Filter::Simple> �ϥС������ 0.82 �˥��åץ��졼�ɤ���ޤ���.
+C<Filter::Simple> はバージョン 0.82 にアップグレードされました.
 
 =item *
 
 C<FindBin> upgraded to version 1.47
 
-C<FindBin> �ϥС������ 1.47 �˥��åץ��졼�ɤ���ޤ���.
+C<FindBin> はバージョン 1.47 にアップグレードされました.
 
 =over
 
@@ -823,8 +823,8 @@ C<FindBin> �ϥС������ 1.47 �˥��åץ��졼�ɤ���ޤ���.
 Now works better with directories where access rights are more
 restrictive than usual.
 
-���̤�ꥢ���������¤Τ����äƤ���ǥ��쥯�ȥ�Ǥ�
-���褯ư���褦�ˤʤ�ޤ���.
+普通よりアクセス制限のかかっているディレクトリでも
+よりよく動作するようになりました.
 
 =back
 
@@ -832,7 +832,7 @@ restrictive than usual.
 
 C<GDBM_File> upgraded to version 1.08
 
-C<GDBM_File> �ϥС������ 1.08 �˥��åץ��졼�ɤ���ޤ���.
+C<GDBM_File> はバージョン 1.08 にアップグレードされました.
 
 =over
 
@@ -840,7 +840,7 @@ C<GDBM_File> �ϥС������ 1.08 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -848,7 +848,7 @@ Internal cleanup
 
 C<Getopt::Long> upgraded to version 2.35
 
-C<Getopt::Long> �ϥС������ 2.35 �˥��åץ��졼�ɤ���ޤ���.
+C<Getopt::Long> はバージョン 2.35 にアップグレードされました.
 
 =over
 
@@ -858,23 +858,23 @@ C<prefix_pattern> has now been complemented by a new configuration
 option C<long_prefix_pattern> that allows the user to specify what
 prefix patterns should have long option style semantics applied.
 
-C<prefix_pattern> �ϥ桼���ˤɤΥץ�ե��å����ѥ������
-���󥰥��ץ���󥹥�����Υ��ޥ�ƥ�������Ŭ�Ѥ����뤫��
-���ꤵ���뤿������ꥪ�ץ���� C<long_prefix_pattern> �ˤ�ä�
-�䴰�����褦�ˤʤ�ޤ���.
+C<prefix_pattern> はユーザにどのプレフィックスパターンに
+ロングオプションスタイルのセマンティクスを適用させるかを
+指定させるための設定オプション C<long_prefix_pattern> によって
+補完されるようになりました.
 
 =item *
 
 Options can now take multiple values at once (experimental)
 
-���ץ����ϰ��٤�ʣ�����ͤ�Ȥ��褦�ˤʤ�ޤ���(�¸�Ū;
+オプションは一度に複数の値をとれるようになりました(実験的;
 experimental).
 
 =item *
 
 Various bug fixes
 
-�͡��ʥХ�����.
+様々なバグ修正.
 
 =back
 
@@ -882,7 +882,7 @@ Various bug fixes
 
 C<if> upgraded to version 0.05
 
-C<if> �ϥС������ 0.05 �˥��åץ��졼�ɤ���ޤ���.
+C<if> はバージョン 0.05 にアップグレードされました.
 
 =over
 
@@ -891,14 +891,14 @@ C<if> �ϥС������ 0.05 �˥��åץ��졼�ɤ���ޤ���.
 Give more meaningful error messages from C<if> when invoked with a
 condition in list context.
 
-�ꥹ�ȥ���ƥ����ȤǾ���ȶ������Ф줿�Ȥ���
-����̣�Τ��륨�顼��å������� C<if> ����Ϳ����褦�ˤʤ�ޤ���.
+リストコンテキストで条件句と共に飛ばれたときに
+より意味のあるエラーメッセージを C<if> から与えるようになりました.
 
 =item *
 
 Restore backwards compatibility with earlier versions of perl
 
-�����ΥС������� perl �Ȥθ����ߴ����������ޤ���.
+以前のバージョンの perl との後方互換を復元しました.
 
 =back
 
@@ -906,7 +906,7 @@ Restore backwards compatibility with earlier versions of perl
 
 C<IO> upgraded to version 1.22
 
-C<IO> �ϥС������ 1.22 �˥��åץ��졼�ɤ���ޤ���.
+C<IO> はバージョン 1.22 にアップグレードされました.
 
 =over
 
@@ -914,13 +914,13 @@ C<IO> �ϥС������ 1.22 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -928,7 +928,7 @@ Internal cleanup
 
 C<IPC::Open2> upgraded to version 1.02
 
-C<IPC::Open2> �ϥС������ 1.012 �˥��åץ��졼�ɤ���ޤ���.
+C<IPC::Open2> はバージョン 1.012 にアップグレードされました.
 
 =over
 
@@ -936,7 +936,7 @@ C<IPC::Open2> �ϥС������ 1.012 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -944,7 +944,7 @@ Enhanced documentation
 
 C<IPC::Open3> upgraded to version 1.02
 
-C<IPC::Open3> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
+C<IPC::Open3> はバージョン 1.02 にアップグレードされました.
 
 =over
 
@@ -952,7 +952,7 @@ C<IPC::Open3> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -960,8 +960,8 @@ Enhanced documentation
 
 C<List::Util> upgraded to version 1.18 (was 1.14)
 
-C<List::Util> �ϥС������ 1.18 �˥��åץ��졼�ɤ���ޤ���
-(���� 1.14 �Ǥ���).
+C<List::Util> はバージョン 1.18 にアップグレードされました
+(前は 1.14 でした).
 
 =over
 
@@ -969,26 +969,26 @@ C<List::Util> �ϥС������ 1.18 �˥��åץ��졼�ɤ���ޤ���
 
 Fix pure-perl version of C<refaddr> to avoid blessing an un-blessed reference
 
-C<refaddr> ��pure-perl �Ǥ� bless ����Ƥ��ʤ���ե���󥹤� bless
-���ʤ��褦�˽���.
+C<refaddr> のpure-perl 版で bless されていないリファレンスを bless
+しないように修正.
 
 =item *
 
 Use C<XSLoader> for faster loading
 
-�����ɤι�®���� C<XSLoader> �����.
+ロードの高速化に C<XSLoader> を使用.
 
 =item *
 
 Fixed various memory leaks
 
-�����Ĥ��Υ���꡼������.
+いくつかのメモリリークを修正.
 
 =item *
 
 Internal cleanup and portability fixes
 
-�����Υ��꡼�󥢥åפȲ������ν���.
+内部のクリーンアップと可搬性の修正.
 
 =back
 
@@ -996,7 +996,7 @@ Internal cleanup and portability fixes
 
 C<Math::Complex> upgraded to version 1.35
 
-C<Math::Complex> �ϥС������ 1.35 �˥��åץ��졼�ɤ���ޤ���.
+C<Math::Complex> はバージョン 1.35 にアップグレードされました.
 
 =over
 
@@ -1004,37 +1004,37 @@ C<Math::Complex> �ϥС������ 1.35 �˥��åץ��졼�ɤ���ޤ���.
 
 C<atan2(0, i)> now works, as do all the (computable) complex argument cases
 
-C<atan2(0, i)> �����Ƥ�(�׻���ǽ��)ʣ�ǿ������ξ��ˤ�����ư��ޤ�.
+C<atan2(0, i)> は全ての(計算可能な)複素数引数の場合において動作します.
 
 =item *
 
 Fixes for certain bugs in C<make> and C<emake>
 
-C<make> �ڤ� C<emake> �Τ����Ĥ��ΥХ�����.
+C<make> 及び C<emake> のいくつかのバグを修正.
 
 =item *
 
 Support returning the I<k>th root directly
 
-I<k>�躬��ľ���֤����Ȥ򥵥ݡ���.
+I<k>乗根を直接返すことをサポート.
 
 =item *
 
 Support C<[2,-3pi/8]> in C<emake>
 
-C<emake> �� C<[2,-3pi/8]> �򥵥ݡ���.
+C<emake> で C<[2,-3pi/8]> をサポート.
 
 =item *
 
 Support C<inf> for C<make>/C<emake>
 
-C<make>/C<emake> �� C<inf> �Υ��ݡ���.
+C<make>/C<emake> で C<inf> のサポート.
 
 =item *
 
 Document C<make>/C<emake> more visibly
 
-C<make>/C<emake> �Υɥ�����Ȥ��������.
+C<make>/C<emake> のドキュメントをより明白に.
 
 =back
 
@@ -1042,7 +1042,7 @@ C<make>/C<emake> �Υɥ�����Ȥ��������.
 
 C<Math::Trig> upgraded to version 1.03
 
-C<Math::Trig> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
+C<Math::Trig> はバージョン 1.03 にアップグレードされました.
 
 =over
 
@@ -1051,7 +1051,7 @@ C<Math::Trig> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
 Add more great circle routines: C<great_circle_waypoint> and
 C<great_circle_destination>
 
-��ꤹ�Ф餷�������ؿ����ɲ�: C<great_circle_waypoint> �ڤ�
+よりすばらしい周期関数の追加: C<great_circle_waypoint> 及び
 C<great_circle_destination>
 
 =back
@@ -1060,7 +1060,7 @@ C<great_circle_destination>
 
 C<MIME::Base64> upgraded to version 3.07
 
-C<MIME::Base64> �ϥС������ 3.07 �˥��åץ��졼�ɤ���ޤ���.
+C<MIME::Base64> はバージョン 3.07 にアップグレードされました.
 
 =over
 
@@ -1068,19 +1068,19 @@ C<MIME::Base64> �ϥС������ 3.07 �˥��åץ��졼�ɤ���ޤ���.
 
 Use C<XSLoader> for faster loading
 
-�����ɤι�®���� C<XSLoader> �����.
+ロードの高速化に C<XSLoader> を使用.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1088,7 +1088,7 @@ Internal cleanup
 
 C<NDBM_File> upgraded to version 1.06
 
-C<NDBM_File> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
+C<NDBM_File> はバージョン 1.06 にアップグレードされました.
 
 =over
 
@@ -1096,7 +1096,7 @@ C<NDBM_File> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1104,7 +1104,7 @@ Enhanced documentation
 
 C<ODBM_File> upgraded to version 1.06
 
-C<ODBM_File> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
+C<ODBM_File> はバージョン 1.06 にアップグレードされました.
 
 =over
 
@@ -1112,13 +1112,13 @@ C<ODBM_File> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1126,7 +1126,7 @@ Internal cleanup
 
 C<Opcode> upgraded to version 1.06
 
-C<Opcode> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
+C<Opcode> はバージョン 1.06 にアップグレードされました.
 
 =over
 
@@ -1134,13 +1134,13 @@ C<Opcode> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1148,7 +1148,7 @@ Internal cleanup
 
 C<open> upgraded to version 1.05
 
-C<open> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
+C<open> はバージョン 1.05 にアップグレードされました.
 
 =over
 
@@ -1156,7 +1156,7 @@ C<open> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1164,7 +1164,7 @@ Enhanced documentation
 
 C<overload> upgraded to version 1.04
 
-C<overload> �ϥС������ 1.04 �˥��åץ��졼�ɤ���ޤ���.
+C<overload> はバージョン 1.04 にアップグレードされました.
 
 =over
 
@@ -1172,7 +1172,7 @@ C<overload> �ϥС������ 1.04 �˥��åץ��졼�ɤ���ޤ���.
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1180,7 +1180,7 @@ Enhanced documentation
 
 C<PerlIO> upgraded to version 1.04
 
-C<PerlIO> �ϥС������ 1.04 �˥��åץ��졼�ɤ���ޤ���.
+C<PerlIO> はバージョン 1.04 にアップグレードされました.
 
 =over
 
@@ -1188,31 +1188,31 @@ C<PerlIO> �ϥС������ 1.04 �˥��åץ��졼�ɤ���ޤ���.
 
 C<PerlIO::via> iterate over layers properly now
 
-C<PerlIO::via> �ϥ쥤���Ŭ�ڤ�ȿ��(iterate)����褦�ˤʤ�ޤ���.
+C<PerlIO::via> はレイヤを適切に反復(iterate)するようになりました.
 
 =item *
 
 C<PerlIO::scalar> understands C<< $/ = "" >> now
 
-C<PerlIO::scalar> �� C<< $/ = "" >> �����򤹤�褦�ˤʤ�ޤ���.
+C<PerlIO::scalar> は C<< $/ = "" >> を理解するようになりました.
 
 =item *
 
 C<encoding(utf-8-strict)> with partial characters now works
 
-��ʬŪ��ʸ�����Ф��� C<encoding(utf-8-strict)> ��ư���褦�ˤʤ�ޤ���.
+部分的な文字に対する C<encoding(utf-8-strict)> が動作するようになりました.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1220,7 +1220,7 @@ Internal cleanup
 
 C<Pod::Functions> upgraded to version 1.03
 
-C<Pod::Functions> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
+C<Pod::Functions> はバージョン 1.03 にアップグレードされました.
 
 =over
 
@@ -1228,7 +1228,7 @@ C<Pod::Functions> �ϥС������ 1.03 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1236,7 +1236,7 @@ Documentation typos fixed
 
 C<Pod::Html> upgraded to version 1.0504
 
-C<Pod::Html> �ϥС������ 1.0504 �˥��åץ��졼�ɤ���ޤ���.
+C<Pod::Html> はバージョン 1.0504 にアップグレードされました.
 
 =over
 
@@ -1245,21 +1245,21 @@ C<Pod::Html> �ϥС������ 1.0504 �˥��åץ��졼�ɤ���ޤ���.
 HTML output will now correctly link
 to C<=item>s on the same page, and should be valid XHTML.
 
-HTML ���Ϥˤ�����Ʊ���ڡ������ C<=item> ��������
-��󥯤���褦�ˤʤ�ޤ���. �ޤ�, ������(valid)XHTML��
-�ʤ�ޤ�.
+HTML 出力において同じページ内の C<=item> に正しく
+リンクするようになりました. また, 正しい(valid)XHTMLに
+なります.
 
 =item *
 
 Variable names are recognized as intended
 
-�ѿ�̾�ϰտޤ��줿�褦��ǧ������ޤ�.
+変数名は意図されたように認識されます.
 
 =item *
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1267,7 +1267,7 @@ Documentation typos fixed
 
 C<Pod::Parser> upgraded to version 1.32
 
-C<Pod::Parser> �ϥС������ 1.32 �˥��åץ��졼�ɤ���ޤ���.
+C<Pod::Parser> はバージョン 1.32 にアップグレードされました.
 
 =over
 
@@ -1275,37 +1275,37 @@ C<Pod::Parser> �ϥС������ 1.32 �˥��åץ��졼�ɤ���ޤ���.
 
 Allow files that start with C<=head> on the first line
 
-�Ϥ���ιԤ� C<=head> ����Ϥޤ�ե��������Ĥ��ޤ�.
+はじめの行が C<=head> から始まるファイルを許可します.
 
 =item *
 
 Win32 portability fix
 
-Win32 �Ǥβ������������ޤ���.
+Win32 での可搬性を修正しました.
 
 =item *
 
 Exit status of C<pod2usage> fixed
 
-C<pod2usage> �ν�λ���ơ���������.
+C<pod2usage> の終了ステータスを修正.
 
 =item *
 
 New C<-noperldoc> switch for C<pod2usage>
 
-C<pod2usage> �˿����� C<-noperldoc> �����å����ɲä���ޤ���.
+C<pod2usage> に新しく C<-noperldoc> スイッチが追加されました.
 
 =item *
 
 Arbitrary URL schemes now allowed
 
-Ǥ�դ� URL �������ޤϵ��Ĥ���ޤ�.
+任意の URL スキーマは許可されます.
 
 =item *
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1313,7 +1313,7 @@ Documentation typos fixed
 
 C<POSIX> upgraded to version 1.09
 
-C<POSIX> �ϥС������ 1.09 �˥��åץ��졼�ɤ���ޤ���.
+C<POSIX> はバージョン 1.09 にアップグレードされました.
 
 =over
 
@@ -1321,13 +1321,13 @@ C<POSIX> �ϥС������ 1.09 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1335,7 +1335,7 @@ Internal cleanup
 
 C<re> upgraded to version 0.05
 
-C<re> �ϥС������ 0.05 �˥��åץ��졼�ɤ���ޤ���.
+C<re> はバージョン 0.05 にアップグレードされました.
 
 =over
 
@@ -1343,7 +1343,7 @@ C<re> �ϥС������ 0.05 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1351,7 +1351,7 @@ Documentation typo fixed
 
 C<Safe> upgraded to version 2.12
 
-C<Safe> �ϥС������ 2.12 �˥��åץ��졼�ɤ���ޤ���.
+C<Safe> はバージョン 2.12 にアップグレードされました.
 
 =over
 
@@ -1359,7 +1359,7 @@ C<Safe> �ϥС������ 2.12 �˥��åץ��졼�ɤ���ޤ���.
 
 Minor documentation enhancement
 
-�����ʥɥ�����ơ�����󶯲�.
+小さなドキュメンテーション強化.
 
 =back
 
@@ -1367,7 +1367,7 @@ Minor documentation enhancement
 
 C<SDBM_File> upgraded to version 1.05
 
-C<SDBM_File> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
+C<SDBM_File> はバージョン 1.05 にアップグレードされました.
 
 =over
 
@@ -1375,13 +1375,13 @@ C<SDBM_File> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1389,7 +1389,7 @@ Internal cleanup
 
 C<Socket> upgraded to version 1.78
 
-C<Socket> �ϥС������ 1.78 �˥��åץ��졼�ɤ���ޤ���.
+C<Socket> はバージョン 1.78 にアップグレードされました.
 
 =over
 
@@ -1397,7 +1397,7 @@ C<Socket> �ϥС������ 1.78 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
@@ -1405,7 +1405,7 @@ Internal cleanup
 
 C<Storable> upgraded to version 2.15
 
-C<Storable> �ϥС������ 2.15 �˥��åץ��졼�ɤ���ޤ���.
+C<Storable> はバージョン 2.15 にアップグレードされました.
 
 =over
 
@@ -1415,9 +1415,9 @@ This includes the C<STORABLE_attach> hook functionality added by
 Adam Kennedy, and more frugal memory requirements when storing under C<ithreads>, by
 using the C<ithreads> cloning tracking code.
 
-Adam Kennedy �ˤ�ä��ɲä��줿 C<STORABLE_attach> �եå�
-��ǽ��ޤߤޤ�. �ޤ� C<ithreads> �ˤ����� C<ithreads> �Υ�������
-���ץ����ɤ����Ѥ��뤳�Ȥǥ������󤹤�褦�ˤʤ�ޤ���.
+Adam Kennedy によって追加された C<STORABLE_attach> フック
+機能を含みます. また C<ithreads> において C<ithreads> のクローン
+追跡コードを利用することでメモリを倹約するようになりました.
 
 =back
 
@@ -1425,7 +1425,7 @@ Adam Kennedy �ˤ�ä��ɲä��줿 C<STORABLE_attach> �եå�
 
 C<Switch> upgraded to version 2.10_01
 
-C<Switch> �ϥС������ 2.10_01 �˥��åץ��졼�ɤ���ޤ���.
+C<Switch> はバージョン 2.10_01 にアップグレードされました.
 
 =over
 
@@ -1433,7 +1433,7 @@ C<Switch> �ϥС������ 2.10_01 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1441,7 +1441,7 @@ Documentation typos fixed
 
 C<Sys::Syslog> upgraded to version 0.13
 
-C<Sys::Syslog> �ϥС������ 0.13 �˥��åץ��졼�ɤ���ޤ���.
+C<Sys::Syslog> はバージョン 0.13 にアップグレードされました.
 
 =over
 
@@ -1449,46 +1449,46 @@ C<Sys::Syslog> �ϥС������ 0.13 �˥��åץ��졼�ɤ���ޤ���.
 
 Now provides numeric macros and meaningful C<Exporter> tags.
 
-���ͤΥޥ������̣�Τ��� C<Exporter> �������󶡤���褦�ˤʤ�ޤ���.
+数値のマクロや意味のある C<Exporter> タグを提供するようになりました.
 
 =item *
 
 No longer uses C<Sys::Hostname> as it may provide useless values in
 unconfigured network environments, so instead uses C<INADDR_LOOPBACK> directly.
 
-�ͥåȥ���Ķ������ꤵ��Ƥ��ʤ��Ķ��ǻ��ѤǤ����ͤ��֤��ʤ����Ȥ�
-���뤳�Ȥ��� C<Sys::Hostname> ��Ȥ�ʤ��ʤ�ޤ���. 
-������ C<INADDR_LOOPBACK> ��ľ�ܤĤ����ޤ�.
+ネットワーク環境が設定されていない環境で使用できる値を返さないことが
+あることから C<Sys::Hostname> を使わなくなりました. 
+かわりに C<INADDR_LOOPBACK> を直接つかいます.
 
 =item *
 
 C<syslog()> now uses local timestamp.
 
-C<syslog()> �ϥ������륿���ॹ����פ�Ȥ��褦�ˤʤ�ޤ�.
+C<syslog()> はローカルタイムスタンプを使うようになります.
 
 =item *
 
 C<setlogmask()> now behaves like its C counterpart.
 
-C<setlogmask()> �� C ���б�����ؿ��Τ褦�˿����񤦤褦�ˤʤ�ޤ�.
+C<setlogmask()> は C の対応する関数のように振る舞うようになります.
 
 =item *
 
 C<setlogsock()> will now C<croak()> as documented.
 
-C<setlogsock()> �� C<croak()> �Ȥ��ƽ񤫤�ޤ�.
+C<setlogsock()> は C<croak()> として書かれます.
 
 =item *
 
 Improved error and warnings messages.
 
-���顼��å������ȷٹ��å������β���.
+エラーメッセージと警告メッセージの改善.
 
 =item *
 
 Improved documentation.
 
-�ɥ�����ơ������β���.
+ドキュメンテーションの改善.
 
 =back
 
@@ -1496,7 +1496,7 @@ Improved documentation.
 
 C<Term::ANSIColor> upgraded to version 1.10
 
-C<Term::ANSIColor> �ϥС������ 1.10 �˥��åץ��졼�ɤ���ޤ���.
+C<Term::ANSIColor> はバージョン 1.10 にアップグレードされました.
 
 =over
 
@@ -1505,14 +1505,14 @@ C<Term::ANSIColor> �ϥС������ 1.10 �˥��åץ��졼�ɤ���ޤ���.
 Fixes a bug in C<colored> when C<$EACHLINE> is set that caused it to not color
 lines consisting solely of 0 (literal zero).
 
-C<colored> �ˤ�����, C<$EACHLINE> �����ꤵ��Ƥ���Ȥ���
-ñ�Ȥ�0(��ƥ���0)����ʤ�Ԥ˿����դ���ʤ��Х��ν���.
+C<colored> において, C<$EACHLINE> が設定されているときに
+単独の0(リテラルの0)からなる行に色を付けれないバグの修正.
 
 =item *
 
 Improved tests.
 
-�ƥ��Ȥβ���.
+テストの改善.
 
 =back
 
@@ -1520,7 +1520,7 @@ Improved tests.
 
 C<Term::ReadLine> upgraded to version 1.02
 
-C<Term::ReadLine> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
+C<Term::ReadLine> はバージョン 1.02 にアップグレードされました.
 
 =over
 
@@ -1528,7 +1528,7 @@ C<Term::ReadLine> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation tweaks
 
-�ɥ�����Ȥ�Ĵ��.
+ドキュメントの調整.
 
 =back
 
@@ -1536,8 +1536,8 @@ Documentation tweaks
 
 C<Test::Harness> upgraded to version 2.56 (was 2.48)
 
-C<Test::Harness> �ϥС������ 2.56 �˥��åץ��졼�ɤ���ޤ���
-(���� 2.48 �Ǥ���).
+C<Test::Harness> はバージョン 2.56 にアップグレードされました
+(前は 2.48 でした).
 
 =over
 
@@ -1545,19 +1545,19 @@ C<Test::Harness> �ϥС������ 2.56 �˥��åץ��졼�ɤ���ޤ���
 
 The C<Test::Harness> timer is now off by default.
 
-C<Test::Harness> �����ޡ��ϥǥե���Ȥǥ��դˤʤ�ޤ���.
+C<Test::Harness> タイマーはデフォルトでオフになりました.
 
 =item *
 
 Now shows elapsed time in milliseconds.
 
-�в���֤�ߥ��ä�ɽ������褦�ˤʤ�ޤ���.
+経過時間をミリ秒で表示するようになりました.
 
 =item *
 
 Various bug fixes
 
-�͡��ʥХ�����.
+様々なバグ修正.
 
 =back
 
@@ -1565,8 +1565,8 @@ Various bug fixes
 
 C<Test::Simple> upgraded to version 0.62 (was 0.54)
 
-C<Test::Simple> �ϥС������ 0.62 �˥��åץ��졼�ɤ���ޤ���
-(���� 0.54 �Ǥ���).
+C<Test::Simple> はバージョン 0.62 にアップグレードされました
+(前は 0.54 でした).
 
 =over
 
@@ -1574,19 +1574,19 @@ C<Test::Simple> �ϥС������ 0.62 �˥��åץ��졼�ɤ���ޤ���
 
 C<is_deeply()> no longer fails to work for many cases
 
-C<is_deeply()> ��¿���ξ�缺�Ԥ��ޤ�.
+C<is_deeply()> は多くの場合失敗します.
 
 =item *
 
 Various minor bug fixes
 
-�͡��ʾ����ʥХ��ν���.
+様々な小さなバグの修正.
 
 =item *
 
 Documentation enhancements
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1594,7 +1594,7 @@ Documentation enhancements
 
 C<Text::Tabs> upgraded to version 2005.0824
 
-C<Text::Tabs> �ϥС������ 2005.0824 �˥��åץ��졼�ɤ���ޤ���.
+C<Text::Tabs> はバージョン 2005.0824 にアップグレードされました.
 
 =over
 
@@ -1602,7 +1602,7 @@ C<Text::Tabs> �ϥС������ 2005.0824 �˥��åץ��졼�ɤ���ޤ���.
 
 Provides a faster implementation of C<expand>
 
-C<expand> �ι�®�ʼ�������.
+C<expand> の高速な実装の提供.
 
 =back
 
@@ -1610,7 +1610,7 @@ C<expand> �ι�®�ʼ�������.
 
 C<Text::Wrap> upgraded to version 2005.082401
 
-C<Text::Wrap> �ϥС������ 2005.082401 �˥��åץ��졼�ɤ���ޤ���.
+C<Text::Wrap> はバージョン 2005.082401 にアップグレードされました.
 
 =over
 
@@ -1619,8 +1619,8 @@ C<Text::Wrap> �ϥС������ 2005.082401 �˥��åץ��졼�ɤ���ޤ���.
 Adds C<$Text::Wrap::separator2>, which allows you to preserve existing newlines
 but add line-breaks with some other string.
 
-C<$Text::Wrap::separator2> ���ɲ�. ¾��ʸ����� line-break ��ä��Ƥ�
-��¸�β��Ԥ���¸�Ǥ���褦�ˤʤ�ޤ�.
+C<$Text::Wrap::separator2> の追加. 他の文字列で line-break を加えても
+既存の改行を保存できるようになります.
 
 =back
 
@@ -1628,7 +1628,7 @@ C<$Text::Wrap::separator2> ���ɲ�. ¾��ʸ����� line-break ��ä��Ƥ�
 
 C<threads> upgraded to version 1.07
 
-C<threads> �ϥС������ 1.07 �˥��åץ��졼�ɤ���ޤ���.
+C<threads> はバージョン 1.07 にアップグレードされました.
 
 =over
 
@@ -1636,7 +1636,7 @@ C<threads> �ϥС������ 1.07 �˥��åץ��졼�ɤ���ޤ���.
 
 C<threads> will now honour C<no warnings 'threads'>
 
-C<threads> �� C<no warnings 'threads'> ����褦�ˤʤ�ޤ���.
+C<threads> は C<no warnings 'threads'> を守るようになりました.
 
 =item *
 
@@ -1644,15 +1644,15 @@ A thread's interpreter is now freed after C<< $t->join() >> rather than after
 C<undef $t>, which should fix some C<ithreads> memory leaks. (Fixed by Dave
 Mitchell)
 
-����åɤΥ��󥿥ץ꥿�� C<undef $t> �θ�ǤϤʤ� C<< $t->join() >> �θ��
-���������褦�ˤʤ�ޤ���. ����ˤ�� C<ithreads> �ǤΤ����Ĥ���
-����꡼������������ޤ���(Dave Mitchell�ˤ�äƤʤ���ޤ���).
+スレッドのインタプリタは C<undef $t> の後ではなく C<< $t->join() >> の後に
+解放されるようになりました. これにより C<ithreads> でのいくつかの
+メモリリークが修正されました(Dave Mitchellによってなされました).
 
 =item *
 
 Some documentation typo fixes.
 
-�����Ĥ��Υɥ�����Ȥθ�������.
+いくつかのドキュメントの誤字修正.
 
 =back
 
@@ -1660,7 +1660,7 @@ Some documentation typo fixes.
 
 C<threads::shared> upgraded to version 0.94
 
-C<threads::shared> �ϥС������ 0.94 �˥��åץ��졼�ɤ���ޤ���.
+C<threads::shared> はバージョン 0.94 にアップグレードされました.
 
 =over
 
@@ -1668,15 +1668,15 @@ C<threads::shared> �ϥС������ 0.94 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation changes only
 
-�ɥ�����Ȥ��ɲäΤ�.
+ドキュメントの追加のみ.
 
 =item *
 
 Note: An improved implementation of C<threads::shared> is available on
 CPAN - this will be merged into 5.8.9 if it proves stable.
 
-��­: C<threads::shared> �β������줿������ CPAN �������ǽ�Ǥ� - 
-���ꤷ�Ƥ��뤳�Ȥ���ǧ������ 5.8.9 �Ǽ����ޤ��Ǥ��礦.
+補足: C<threads::shared> の改善された実装は CPAN で入手可能です - 
+安定していることが確認されれば 5.8.9 で取り込まれるでしょう.
 
 =back
 
@@ -1684,7 +1684,7 @@ CPAN - this will be merged into 5.8.9 if it proves stable.
 
 C<Tie::Hash> upgraded to version 1.02
 
-C<Tie::Hash> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
+C<Tie::Hash> はバージョン 1.02 にアップグレードされました.
 
 =over
 
@@ -1692,7 +1692,7 @@ C<Tie::Hash> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1700,8 +1700,8 @@ Documentation typo fixed
 
 C<Time::HiRes> upgraded to version 1.86 (was 1.66)
 
-C<Time::HiRes> �ϥС������ 1.86 �˥��åץ��졼�ɤ���ޤ���
-(���� 1.66 �Ǥ���).
+C<Time::HiRes> はバージョン 1.86 にアップグレードされました
+(前は 1.66 でした).
 
 =over
 
@@ -1709,37 +1709,37 @@ C<Time::HiRes> �ϥС������ 1.86 �˥��åץ��졼�ɤ���ޤ���
 
 C<clock_nanosleep()> and C<clock()> functions added
 
-C<clock_nanosleep()> �� C<clock()> �ε�ǽ���ɲä���ޤ���.
+C<clock_nanosleep()> と C<clock()> の機能が追加されました.
 
 =item *
 
 Support for the POSIX C<clock_gettime()> and C<clock_getres()> has been added
 
-POSIX C<clock_gettime()> �ڤ� C<clock_getres()> ���ɲä���ޤ���.
+POSIX C<clock_gettime()> 及び C<clock_getres()> が追加されました.
 
 =item *
 
 Return C<undef> or an empty list if the C C<gettimeofday()> function fails
 
-C<gettimeofday()> �����Ԥ����Ȥ��� C<undef> �����Υꥹ�Ȥ��֤��褦�ˤʤ�ޤ���.
+C<gettimeofday()> が失敗したときに C<undef> か空のリストを返すようになりました.
 
 =item *
 
 Improved C<nanosleep> detection
 
-C<nanosleep> �θ��Фβ���.
+C<nanosleep> の検出の改善.
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1747,7 +1747,7 @@ Enhanced documentation
 
 C<Unicode::Collate> upgraded to version 0.52
 
-C<Unicode::Collate> �ϥС������ 0.52 �˥��åץ��졼�ɤ���ޤ���.
+C<Unicode::Collate> はバージョン 0.52 にアップグレードされました.
 
 =over
 
@@ -1755,20 +1755,20 @@ C<Unicode::Collate> �ϥС������ 0.52 �˥��åץ��졼�ɤ���ޤ���.
 
 Now implements UCA Revision 14 (based on Unicode 4.1.0).
 
-UCA Revision 14 (Unicode 4.1.0 �١���) �μ���.
+UCA Revision 14 (Unicode 4.1.0 ベース) の実装.
 
 =item *
 
 C<Unicode::Collate->new> method no longer overwrites user's C<$_>
 
-C<Unicode::Collate->new> �᥽�åɤǥ桼���� C<$_> ���񤭤��ʤ�
-�ʤ�ޤ���.
+C<Unicode::Collate->new> メソッドでユーザの C<$_> を上書きしなく
+なりました.
 
 =item *
 
 Enhanced documentation
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1776,7 +1776,7 @@ Enhanced documentation
 
 C<Unicode::UCD> upgraded to version 0.24
 
-C<Unicode::UCD> �ϥС������ 0.24 �˥��åץ��졼�ɤ���ޤ���.
+C<Unicode::UCD> はバージョン 0.24 にアップグレードされました.
 
 =over
 
@@ -1784,7 +1784,7 @@ C<Unicode::UCD> �ϥС������ 0.24 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1792,7 +1792,7 @@ Documentation typos fixed
 
 C<User::grent> upgraded to version 1.01
 
-C<User::grent> �ϥС������ 1.01 �˥��åץ��졼�ɤ���ޤ���.
+C<User::grent> はバージョン 1.01 にアップグレードされました.
 
 =over
 
@@ -1800,7 +1800,7 @@ C<User::grent> �ϥС������ 1.01 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typo fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1808,7 +1808,7 @@ Documentation typo fixed
 
 C<utf8> upgraded to version 1.06
 
-C<utf8> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
+C<utf8> はバージョン 1.06 にアップグレードされました.
 
 =over
 
@@ -1816,7 +1816,7 @@ C<utf8> �ϥС������ 1.06 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1824,7 +1824,7 @@ Documentation typos fixed
 
 C<vmsish> upgraded to version 1.02
 
-C<vmsish> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
+C<vmsish> はバージョン 1.02 にアップグレードされました.
 
 =over
 
@@ -1832,7 +1832,7 @@ C<vmsish> �ϥС������ 1.02 �˥��åץ��졼�ɤ���ޤ���.
 
 Documentation typos fixed
 
-�ɥ�����Ȥθ�������.
+ドキュメントの誤字修正.
 
 =back
 
@@ -1840,7 +1840,7 @@ Documentation typos fixed
 
 C<warnings> upgraded to version 1.05
 
-C<warnings> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
+C<warnings> はバージョン 1.05 にアップグレードされました.
 
 =over
 
@@ -1848,19 +1848,19 @@ C<warnings> �ϥС������ 1.05 �˥��åץ��졼�ɤ���ޤ���.
 
 Gentler messing with C<Carp::> internals
 
-������ C<Carp::> ��Ȥ��褦�ˤʤ�ޤ���. .
+内部で C<Carp::> を使うようになりました. .
 
 =item *
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =item *
 
 Documentation update
 
-�ɥ�����Ȥι���.
+ドキュメントの更新.
 
 =back
 
@@ -1868,7 +1868,7 @@ Documentation update
 
 C<Win32> upgraded to version 0.2601
 
-C<Win32> �ϥС������ 0.2601 �˥��åץ��졼�ɤ���ޤ���.
+C<Win32> はバージョン 0.2601 にアップグレードされました.
 
 =over
 
@@ -1876,13 +1876,13 @@ C<Win32> �ϥС������ 0.2601 �˥��åץ��졼�ɤ���ޤ���.
 
 Provides Windows Vista support to C<Win32::GetOSName>
 
-C<Win32::GetOSName> �Ǥ� Windows Vista ���ݡ��Ȥ���.
+C<Win32::GetOSName> での Windows Vista サポートの提供.
 
 =item *
 
 Documentation enhancements
 
-�ɥ�����ơ������ζ���.
+ドキュメンテーションの強化.
 
 =back
 
@@ -1890,7 +1890,7 @@ Documentation enhancements
 
 C<XS::Typemap> upgraded to version 0.02
 
-C<XS::Typemap> �ϥС������ 0.02 �˥��åץ��졼�ɤ���ޤ���.
+C<XS::Typemap> はバージョン 0.02 にアップグレードされました.
 
 =over
 
@@ -1898,54 +1898,54 @@ C<XS::Typemap> �ϥС������ 0.02 �˥��åץ��졼�ɤ���ޤ���.
 
 Internal cleanup
 
-�����Υ��꡼�󥢥å�.
+内部のクリーンアップ.
 
 =back
 
 =back
 
 =head1 Utility Changes
-�桼�ƥ���ƥ����ѹ���
+ユーティリティの変更点
 
 =head2 C<h2xs> enhancements
-C<h2xs> �ζ���
+C<h2xs> の強化
 
 C<h2xs> implements new option C<--use-xsloader> to force use of
 C<XSLoader> even in backwards compatible modules.
 
-C<h2xs> �ϸ����ߴ��⥸�塼��Ǥ��äƤ� C<XSLoader> �λ��Ѥ�
-�������뿷�������ץ���� C<--use-xsloader> ��������ޤ���.
+C<h2xs> は後方互換モジュールであっても C<XSLoader> の使用を
+強制する新しいオプション C<--use-xsloader> を実装しました.
 
 The handling of authors' names that had apostrophes has been fixed.
 
-���ݥ��ȥ��ե���ޤ��author̾�ν�������������ޤ���.
+アポストロフィを含んだauthor名の処理が修正されました.
 
 Any enums with negative values are now skipped.
 
-����ͤ����enum�ϥ����åפ����褦�ˤʤ�ޤ���.
+負の値を持つenumはスキップされるようになりました.
 
 =head2 C<perlivp> enhancements
-C<perlivp> �ζ���
+C<perlivp> の強化
 
 C<perlivp> implements new option C<-a> and will not check for F<*.ph>
 files by default any more.  Use the C<-a> option to run I<all> tests.
 
-C<perlivp> �Ͽ��������ץ���� C<-a> ��������ޤ���. �����ƥǥե���ȤǤ�
-F<*.ph> �ե�����ϥ����å����ʤ��ʤ�ޤ�. I<���٤Ƥ�>�ƥ��Ȥ����餻��
-����ˤ� C<-a> ���ץ�����Ȥ��褦�ˤ��Ƥ�������.
+C<perlivp> は新しいオプション C<-a> を実装しました. そしてデフォルトでは
+F<*.ph> ファイルはチェックしなくなります. I<すべての>テストを走らせる
+ためには C<-a> オプションを使うようにしてください.
 
 =head1 New Documentation
-�������ɥ������
+新しいドキュメント
 
 The L<perlglossary> manpage is a glossary of terms used in the Perl
 documentation, technical and otherwise, kindly provided by O'Reilly Media,
 inc.
 
-L<perlglossary> �ޥ˥奢��ڡ����� Perl �ǻȤ��뵻��Ū��ñ�줽��¾��
-�Ѹ콸�Ǥ�. ���ڤ� O'Reilly Media, inc. �����󶡤���ޤ���.
+L<perlglossary> マニュアルページは Perl で使われる技術的な単語その他の
+用語集です. 親切な O'Reilly Media, inc. から提供されました.
 
 =head1 Performance Enhancements
-�ѥե����ޥ󥹤ζ���
+パフォーマンスの強化
 
 =over 4
 
@@ -1955,18 +1955,18 @@ Weak reference creation is now I<O(1)> rather than I<O(n)>, courtesy of
 Nicholas Clark. Weak reference deletion remains I<O(n)>, but if deletion only
 happens at program exit, it may be skipped completely.
 
-Nicholas Clark �ι��դˤ��, ��(Weak)��ե���󥹤� I<O(n)> �ǤϤʤ�
-I<O(1)> �������Ǥ���褦�ˤʤ�ޤ���. ���ե���󥹤κ����
-����³�� I<O(n)> �Ǥ���, ����ϥץ������ν�λ���ˤΤߤ�����ΤǤ����
-����ϴ����˥����åפ����Ǥ��礦.
+Nicholas Clark の好意により, 弱(Weak)リファレンスは I<O(n)> ではなく
+I<O(1)> で生成できるようになりました. 弱リファレンスの削除は
+引き続き I<O(n)> ですが, 削除はプログラムの終了時にのみおこるのであれば
+これは完全にスキップされるでしょう.
 
 =item *
 
 Salvador FandiE<ntilde>o provided improvements to reduce the memory usage of C<sort>
 and to speed up some cases.
 
-Salvador FandiE<ntilde>o �� C<sort> �ˤ�����������︺�Ȥ����Ĥ���
-�����ǤΥ��ԡ��ɥ��åפȤθ�����󶡤��Ƥ���ޤ���.
+Salvador FandiE<ntilde>o が C<sort> におけるメモリ消費削減といくつかの
+状況でのスピードアップとの向上を提供してくれました.
 
 =item *
 
@@ -1975,124 +1975,124 @@ the C source files as C<static>, to increase the proportion of the executable
 file that the operating system can share between process, and thus reduce
 real memory usage on multi-user systems.
 
-�¹ԥե��������ǥ��ڥ졼�ƥ��󥰥����ƥब�ץ������֤Ƕ�ͭ�Ǥ���
-�������䤹�����, �����ƥޥ���桼�������ƥ�Ǽ¥���λ����̤�
-���餹����� Jarkko Hietaniemi �� Andy Lester �� C �����������
-��������¿���Υǡ����� C<static> �ȥޡ�������褦��ư���Ƥ���ޤ���.
+実行ファイルの中でオペレーティングシステムがプロセス間で共有できる
+割合を増やすために, そしてマルチユーザシステムで実メモリの使用量を
+減らすために Jarkko Hietaniemi と Andy Lester は C ソースの中で
+出来るだけ多くのデータを C<static> とマークするように動いてくれました.
 
 =back
 
 =head1 Installation and Configuration Improvements
-���󥹥ȡ���ȥ���ե����졼�����β���
+インストールとコンフィグレーションの改善
 
 Parallel makes should work properly now, although there may still be problems
 if C<make test> is instructed to run in parallel.
 
-ʿ��(parallel) make �������ư���褦�ˤʤäƤ���Ǥ��礦. 
-C<make test> ��ʿ�Ԥ˼¹Ԥ�����ˤ����꤬�Ĥ�ޤ���.
+平行(parallel) make は正常に動作するようになっているでしょう. 
+C<make test> を平行に実行する事には問題が残りますが.
 
 Building with Borland's compilers on Win32 should work more smoothly. In
 particular Steve Hay has worked to side step many warnings emitted by their
 compilers and at least one C compiler internal error.
 
-Win32 �ˤ����� Borland �Υ���ѥ���(��)�ǤΥӥ�ɤϤ�ꥹ�ࡼ����
-�ʤ�ޤ���. �ä� Steve Hay �Ϥ����Υ���ѥ��餬ȯ����ٹ�θ���
-��, ���Τ����ξ��ʤ��Ȥ⣱�Ĥ�ȯ�������������顼�ν���˼���Ȥ��
-����ޤ���.
+Win32 において Borland のコンパイラ(群)でのビルドはよりスムーズに
+なりました. 特に Steve Hay はそれらのコンパイラが発する警告の減少
+と, そのうちの少なくとも１つで発生した内部エラーの除去に取り組んで
+くれました.
 
 C<Configure> will now detect C<clearenv> and C<unsetenv>, thanks to a patch
 from Alan Burlison. It will also probe for C<futimes> and whether C<sprintf>
 correctly returns the length of the formatted string, which will both be used
 in perl 5.8.9.
 
-Alan Burlison ����Υѥå��Τ������� C<Configure> �� C<clearenv> ��
-C<unsetenv> �򸡽Ф���褦�ˤʤ�ޤ���. �ޤ�, C<futimes> �θ��Ф�
-C<sprintf> ����������ʸ�����Ĺ�����������֤����ɤ����θ��Ф�Ԥ��ޤ���, 
-����� perl 5.8.9 �ǻȤ��ޤ�.
+Alan Burlison からのパッチのおかげで C<Configure> は C<clearenv> と
+C<unsetenv> を検出するようになりました. また, C<futimes> の検出と
+C<sprintf> が整形した文字列の長さを正しく返すかどうかの検出も行いますが, 
+これは perl 5.8.9 で使われます.
 
 There are improved hints for next-3.0, vmesa, IX, Darwin, Solaris, Linux,
 DEC/OSF, HP-UX and MPE/iX
 
-next-3.0, vmesa, IX, Darwin, Solaris, Linux, DEC/OSF, HP-UX �����
-MPE/iX �ǤΥҥ�Ȥβ���.
+next-3.0, vmesa, IX, Darwin, Solaris, Linux, DEC/OSF, HP-UX および
+MPE/iX でのヒントの改善.
 
 Perl extensions on Windows now can be statically built into the Perl DLL,
 thanks to a work by Vadim Konovalov. (This improvement was actually in 5.8.7,
 but was accidentally omitted from L<perl587delta>).
 
-Vadim Konovalov ��Ư���Τ������� Windows �ˤ����� Perl �������ƥ󥷥���
-Perl DLL �˥����ƥ��å��˥ӥ�ɤǤ���褦�ˤʤ�ޤ���. (�����
-�ºݤˤ� 5.8.7 �ǲ�������Ƥ��ޤ�����㤤�� L<perl587delta> ��
-���ܤ���Ƥ��ޤ���Ǥ���.)
+Vadim Konovalov の働きのおかげで Windows において Perl エクステンションを
+Perl DLL にスタティックにビルドできるようになりました. (これは
+実際には 5.8.7 で改善されていますが手違いで L<perl587delta> に
+記載されていませんでした.)
 
 =head1 Selected Bug Fixes
-�Х������Υԥå����å�
+バグ修正のピックアップ
 
 =head2 no warnings 'category' works correctly with -w
--w ��ȤäƤ��Ƥ� no warnings 'category' ����������ǽ����褦�ˤʤ�ޤ���
+-w を使っていても no warnings 'category' が正しく機能するようになりました
 
 Previously when running with warnings enabled globally via C<-w>, selective
 disabling of specific warning categories would actually turn off all warnings.
 This is now fixed; now C<no warnings 'io';> will only turn off warnings in the
 C<io> class. Previously it would erroneously turn off all warnings.
 
-����ޤ� C<-w> �ǥ������Х�˷ٹ��ͭ���ˤ��Ƽ¹Ԥ��Ƥ����
-����ηٹ𥫥ƥ�������򤷤�̵���ˤ����Ȥ������Ƥηٹ��̵����
-���Ƥ��ޤäƤ��ޤ���. ����Ͻ�������ޤ���; ���ߤǤ� C<no warnings 'io';>
-�� C<io> ���饹�Ǥηٹ�Τߤ�̵���ˤ��ޤ�. ����ޤǤϴְ�ä����Ƥ�
-�ٹ��̵���ˤ��Ƥ��ޤäƤ��ޤ���.
+これまで C<-w> でグローバルに警告を有効にして実行していると
+特定の警告カテゴリを選択して無効にしたときに全ての警告を無効に
+してしまっていました. これは修正されました; 現在では C<no warnings 'io';>
+は C<io> クラスでの警告のみを無効にします. これまでは間違って全ての
+警告を無効にしてしまっていました.
 
 This bug fix may cause some programs to start correctly issuing warnings.
 
-���ν����ˤ�ꤤ���Ĥ��Υץ�����ब�������ٹ��ȯ����褦�ˤʤ�ޤ�.
+この修正によりいくつかのプログラムが正しく警告を発するようになります.
 
 =head2 Remove over-optimisation
-���ʺ�Ŭ���ν���
+過剰な最適化の除去
 
 Perl 5.8.4 introduced a change so that assignments of C<undef> to a
 scalar, or of an empty list to an array or a hash, were optimised away. As
 this could cause problems when C<goto> jumps were involved, this change
 has been backed out.
 
-Perl 5.8.4 �ϥ����顼�ؤ� C<undef> ������, �����ϥå���ؤ�
-���Υꥹ�Ȥ��������Ŭ���ˤ�������ѹ���ܤ��ޤ���. 
-C<goto> �����פ�ȼ���Ȥ��ˤϤ��줬����Ȥʤ뤳�Ȥ����ä�����, 
-���ν����ϼ��ä���ޤ���.
+Perl 5.8.4 はスカラーへの C<undef> の代入, 配列やハッシュへの
+空のリストの代入を最適化により除去する変更を施しました. 
+C<goto> ジャンプを伴うときにはこれが問題となることがあったため, 
+この処理は取り消されました.
 
 =head2 sprintf() fixes
-sprintf() �ν���
+sprintf() の修正
 
 Using the sprintf() function with some formats could lead to a buffer
 overflow in some specific cases. This has been fixed, along with several
 other bugs, notably in bounds checking.
 
-�����Ĥ��Υե����ޥåȤ� sprintf() �ؿ���Ȥ�������ξ�ﲼ��
-�Хåե������С��ե����򵯤������Ȥ�����ޤ�����, ¾�Τ����Ĥ���
-�Х��ȶ���, �ä˶��������å��ȶ��˽�������ޤ���.
+いくつかのフォーマットで sprintf() 関数を使うと特定の条件下で
+バッファオーバーフローを起こすことがありましたが, 他のいくつかの
+バグと共に, 特に境界チェックと共に修正されました.
 
 In related fixes, it was possible for badly written code that did not follow
 the documentation of C<Sys::Syslog> to have formatting vulnerabilities.
 C<Sys::Syslog> has been changed to protect people from poor quality third
 party code.
 
-��Ϣ���뽤���Ȥ���, C<Sys::Syslog> �Υɥ�����Ȥ˽��äƤ��ʤ�
-�ư��ʥ����ɤǥե����ޥå�ʸ������ȼ�������Ĥ��Ȥ�����ޤ���. 
-C<Sys::Syslog> �ϼ����㤤�����ɥѡ��ƥ����Υ����ɤ���͡����ݸ�
-����褦�˽�������ޤ���.
+関連する修正として, C<Sys::Syslog> のドキュメントに従っていない
+粗悪なコードでフォーマット文字列の脆弱性を持つことがありました. 
+C<Sys::Syslog> は質の低いサードパーティ製のコードから人々を保護
+するように修正されました.
 
 =head2 Debugger and Unicode slowdown
-�ǥХå���Unicode�Ǥ�®���㲼
+デバッガとUnicodeでの速度低下
 
 It had been reported that running under perl's debugger when processing
 Unicode data could cause unexpectedly large slowdowns. The most likely cause
 of this was identified and fixed by Nicholas Clark.
 
-Unicode �ǡ����ν����� perl �ΥǥХå���Ǽ¹Ԥ���Ȼפ������ʤ�
-�礭��®���㲼��������Ȥ���𤬤���ޤ���. ������������븶����
-Nicholas Clark �ˤ�äƳ�ǧ�ڤӽ�������ޤ���.
+Unicode データの処理を perl のデバッガ上で実行すると思いがけなく
+大きな速度低下が見られるとの報告がありました. これに相当する原因は
+Nicholas Clark によって確認及び修正されました.
 
 =head2 Smaller fixes
-�����ʽ�������
+小さな修正たち
 
 =over 4
 
@@ -2101,8 +2101,8 @@ Nicholas Clark �ˤ�äƳ�ǧ�ڤӽ�������ޤ���.
 C<FindBin> now works better with directories where access rights are more
 restrictive than usual.
 
-C<FindBin> �����̤�ꥢ���������¤Τ����äƤ���ǥ��쥯�ȥ�Ǥ�
-���褯ư���褦�ˤʤ�ޤ���.
+C<FindBin> は普通よりアクセス制限のかかっているディレクトリでも
+よりよく動作するようになりました.
 
 =item *
 
@@ -2110,15 +2110,15 @@ Several memory leaks in ithreads were closed. An improved implementation of
 C<threads::shared> is available on CPAN - this will be merged into 5.8.9 if
 it proves stable.
 
-ithreads �ˤ����뤤���Ĥ��Υ���꡼������������ޤ���. 
-C<threads::shared> �β������줿������ CPAN �������ǽ�Ǥ� - 
-���ꤷ�Ƥ��뤳�Ȥ���ǧ������ 5.8.9 �Ǽ����ޤ��Ǥ��礦.
+ithreads におけるいくつかのメモリリークが修正されました. 
+C<threads::shared> の改善された実装は CPAN で入手可能です - 
+安定していることが確認されれば 5.8.9 で取り込まれるでしょう.
 
 =item *
 
 Trailing spaces are now trimmed from C<$!> and C<$^E>.
 
-C<$!> �ڤ� C<$^E> ���������ζ��򤬼�������ޤ���.
+C<$!> 及び C<$^E> から末尾の空白が取り除かれました.
 
 =item *
 
@@ -2127,40 +2127,40 @@ of C<$(> and C<$)>, now dynamically allocate memory rather than using a
 fixed sized array. The fixed size array could cause C stack exhaustion on
 systems configured to use large numbers of groups.
 
-perl ���Ф��ƥץ������Υ��롼�פΥꥹ�Ȥ��׵᤹���ͤ����, �㤨��
-C<$(> �� C<$)>, �ϸ��ꥵ����������ǤϤʤ�ưŪ�˳��ݤ��������
-�Ȥ��褦�ˤʤ�ޤ���. ���ꥵ����������Ǥ�¿���Υ��롼�פ�Ȥ��褦��
-���ꤵ��Ƥ��륷���ƥ�� C �����å��θϳ��������������Ȥ�����ޤ���.
+perl に対してプロセスのグループのリストを要求する様な操作, 例えば
+C<$(> と C<$)>, は固定サイズの配列ではなく動的に確保したメモリを
+使うようになりました. 固定サイズの配列では多くのグループを使うように
+設定されているシステムで C スタックの枯渇を引き起こすことがありました.
 
 =item *
 
 C<PerlIO::scalar> now works better with non-default C<$/> settings.
 
-C<PerlIO::scalar> �ϥǥե���ȤǤϤʤ� C<$/> �Ǥ���褯
-ư���褦�ˤʤ�ޤ���.
+C<PerlIO::scalar> はデフォルトではない C<$/> でもよりよく
+動作するようになりました.
 
 =item *
 
 You can now use the C<x> operator to repeat a C<qw//> list. This used
 to raise a syntax error.
 
-C<qw//> �ꥹ�Ȥ򷫤��֤������ C<x> �黻�Ҥ�Ȥ����Ȥ������褦��
-�ʤ�ޤ���. ����ϰ����Ϲ�ʸ���顼������������Ƥ��ޤ���.
+C<qw//> リストを繰り返すために C<x> 演算子を使うことが出来るように
+なりました. これは以前は構文エラーを引き起こしていました.
 
 =item *
 
 The debugger now traces correctly execution in eval("")uated code that
 contains #line directives.
 
-�ǥХå��� #line �ǥ��쥯�ƥ��֤�ޤॳ���ɤ� eval("") ��������
-���פ���褦�ˤʤ�ޤ���.
+デバッガは #line ディレクティブを含むコードの eval("") を正しく
+追跡するようになりました.
 
 =item *
 
 The value of the C<open> pragma is no longer ignored for three-argument
 opens.
 
-C<open> �ץ饰�ޤ��ͤ�3������open��̵�뤵��ʤ��ʤ�ޤ���.
+C<open> プラグマの値は3引数のopenで無視されなくなりました.
 
 =item *
 
@@ -2168,9 +2168,9 @@ The optimisation of C<for (reverse @a)> introduced in perl 5.8.6 could
 misbehave when the array had undefined elements and was used in LVALUE
 context. Dave Mitchell provided a fix.
 
-perl 5.8.6 ��Ƴ�����줿 C<for (reverse @a)> �κ�Ŭ����̤����������
-���� LVALUE ����ƥ����ȤǻȤ�줿���˿����񤤤�����������ޤ���. 
-Dave Mitchell �ˤ�꽤�����󶡤���ޤ���.
+perl 5.8.6 で導入された C<for (reverse @a)> の最適化は未定義の配列で
+かつ LVALUE コンテキストで使われた時に振る舞いを誤る事がありました. 
+Dave Mitchell により修正が提供されました.
 
 =item *
 
@@ -2178,10 +2178,10 @@ Some case insensitive matches between UTF-8 encoded data and 8 bit regexps,
 and vice versa, could give malformed character warnings. These have been
 fixed by Dave Mitchell and Yves Orton.
 
-UTF-8 ���󥳡��ɤ��줿�ǡ����� 8 bit ����ɽ���Ȥ�, �ڤӤ��εդǤ�
-��ʸ����ʸ������̤��ʤ�(case insensitive)�����Ĥ��Υޥå���
-������ʸ��(malformed character)�ٹ�ȯ�����Ƥ��ޤ���. 
-������ Dave Mitchell �� Yves Orton �ˤ�äƽ�������ޤ���.
+UTF-8 エンコードされたデータと 8 bit 正規表現との, 及びその逆での
+大文字小文字を区別しない(case insensitive)いくつかのマッチで
+不正な文字(malformed character)警告が発生していました. 
+これらは Dave Mitchell と Yves Orton によって修正されました.
 
 =item *
 
@@ -2189,9 +2189,9 @@ C<lcfirst> and C<ucfirst> could corrupt the string for certain cases where
 the length UTF-8 encoding of the string in lower case, upper case or title
 case differed. This was fixed by Nicholas Clark.
 
-C<lcfirst> �ڤ� C<ucfirst> ����ʸ��, ��ʸ��, �����ȥ�ʸ��(title case)
-�� UTF-8 ���󥳡��ǥ��󥰻���Ĺ�����Ѥ�뤤���Ĥ��Υ������ˤ�����
-����뺢������ޤ���. ����� Nicholas Clark �ˤ�äƽ�������ޤ���.
+C<lcfirst> 及び C<ucfirst> は大文字, 小文字, タイトル文字(title case)
+で UTF-8 エンコーディング時の長さが変わるいくつかのケースにおいて
+壊れる頃がありました. これは Nicholas Clark によって修正されました.
 
 =item *
 
@@ -2199,22 +2199,22 @@ Perl will now use the C library calls C<unsetenv> and C<clearenv> if present
 to delete keys from C<%ENV> and delete C<%ENV> entirely, thanks to a patch
 from Alan Burlison.
 
-C �饤�֥�ꥳ����� C<unsetenv> �ڤ� C<clearenv> ��
-���줬�󶡤���Ƥ���Ȥ��ˤ� C<%ENV> ����Υ����κ����
-C<%ENV> �δ����ʺ���ǻȤ��褦�ˤʤ�ޤ�. 
-Alan Burlison ����Υѥå��ˤ���ΤǤ�.
+C ライブラリコールの C<unsetenv> 及び C<clearenv> を
+それが提供されているときには C<%ENV> からのキーの削除や
+C<%ENV> の完全な削除で使うようになります. 
+Alan Burlison からのパッチによるものです.
 
 =back
 
 =head1 New or Changed Diagnostics
-�������ɲä��줿�ڤ��ѹ����줿���ǥ�å�����
+新しく追加された及び変更された診断メッセージ
 
 =head2 Attempt to set length of freed array
 
 This is a new warning, produced in situations such as this:
 
-�ز������줿�����Ĺ�������ꤷ�褦�Ȥ��ޤ�����
-����Ͽ������ٹ�Ǥ�. ���Τ褦�ʾ�����ȯ�����ޤ�:
+『解放された配列に長さを設定しようとしました』
+これは新しい警告です. 次のような状況で発生します:
 
     $r = do {my @a; \$#a};
     $$r = 503;
@@ -2224,9 +2224,9 @@ This is a new warning, produced in situations such as this:
 This is a new warning, produced when number has been passed as a argument to
 select(), instead of a bitmask.
 
-��ʸ����Ǥʤ���Τ��ӥåȥޥ����Ȥ����Ϥ���ޤ�����
-����Ͽ������ٹ�Ǥ�. select() �ΰ������Ф��ƥӥåȥޥ����ǤϤʤ�
-���ͤ��Ϥ��줿�Ȥ���ȯ�����ޤ�.
+『文字列でないものがビットマスクとして渡されました』
+これは新しい警告です. select() の引数に対してビットマスクではなく
+数値が渡されたときに発生します.
 
     # Wrong, will now warn
     $rin = fileno(STDIN);
@@ -2243,13 +2243,13 @@ This syntax error indicates that the lexer couldn't find the final
 delimiter of a C<?PATTERN?> construct. Mentioning the ternary operator in
 this error message makes it easier to diagnose syntax errors.
 
-�ظ����ѥ����󤬽�λ���Ƥ��ʤ�������黻�Ҥ������ѥ�����Ȥ���
-���Ф���ޤ����� ���ι�ʸ���顼�� C<?PATTERN?> �������뽪����
-���ڤ��(delimiter)�������ϵ������Ĥ����ʤ��ä����Ȥ��̣���ޤ�. 
-�����ǣ���黻�Ҥ򤢤��뤳�Ȥǹ�ʸ�γ�ǧ��Ԥ��䤹�����Ƥ��ޤ�.
+『検索パターンが終了していないか３項演算子が検索パターンとして
+検出されました』 この構文エラーは C<?PATTERN?> を構成する終わりの
+区切り子(delimiter)を字句解析機が見つけられなかったことを意味します. 
+ここで３項演算子をあげることで構文の確認を行いやすくしています.
 
 =head1 Changed Internals
-�����������ѹ�
+内部処理の変更
 
 There has been a fair amount of refactoring of the C<C> source code, partly to
 make it tidier and more maintainable. The resulting object code and the
@@ -2258,46 +2258,46 @@ contributed by Dave Mitchell which reworked the warnings code to be
 significantly smaller. Apart from being smaller and possibly faster, there
 should be no user-detectable changes.
 
-C<C> �����������ɾ��, ���������ܤΤ���ȥ��ƥʥ����θ����
-����ˤǤ���, ���ʤ���̤Υ�ե�������󥰤��Ԥ��ޤ���. ��̤Ȥ���
-���֥������ȥ����ɤ� C<perl> �Х��ʥ�� 5.8.7 ��꾮�����ʤ�ޤ���. 
-�ä�, Dave Mitchell �ˤ�äƴ�Ƥ��줿 warnings �Υ����ɤ�������
-�������ʤ�ޤ���. �������ʤä����Ȥ�®���ʤä������̤Ȥ���, 
-�桼����ǧ�����٤��ѹ����Ϥ���ޤ���.
+C<C> ソースコード上で, 一部は整頓のためとメンテナンス性の向上の
+ためにですが, かなりの量のリファクタリングが行われました. 結果として
+オブジェクトコードと C<perl> バイナリは 5.8.7 より小さくなりました. 
+特に, Dave Mitchell によって寄稿された warnings のコードが著しく
+小さくなりました. 小さくなったことと速くなった事は別として, 
+ユーザが認識すべき変更点はありません.
 
 Andy Lester supplied many improvements to determine which function
 parameters and local variables could actually be declared C<const> to the C
 compiler. Steve Peters provided new C<*_set> macros and reworked the core to
 use these rather than assigning to macros in LVALUE context.
 
-Andy Lester �� C ����ѥ�����Ф��Ƽ¼� C<const> �Ȥ������
-�����٤��ؿ��ѥ�᡼���ȥ��������ѿ��β�����¿���󶡤��Ƥ���ޤ���. 
-Steve Peters �Ͽ����� C<*_set> �ޥ������󶡤�, LVALUE ����ƥ����Ȥˤ�����
-�ޥ�������������ΤǤʤ������Ȥ��褦�˥����ν񤭴�����Ԥä�
-����ޤ���.
+Andy Lester は C コンパイラに対して実質 C<const> として宣言
+されるべき関数パラメータとローカル変数の改善を多く提供してくれました. 
+Steve Peters は新しい C<*_set> マクロを提供し, LVALUE コンテキストにおいて
+マクロに代入するのでなくこれを使うようにコアの書き換えを行って
+くれました.
 
 Dave Mitchell improved the lexer debugging output under C<-DT>
 
-Dave Mitchell �� C<-DT> �ˤ����������ϵ��ΥǥХå����Ϥ�
-�������Ƥ���ޤ���.
+Dave Mitchell は C<-DT> における字句解析機のデバッグ出力を
+改善してくれました.
 
 Nicholas Clark changed the string buffer allocation so that it is now rounded
 up to the next multiple of 4 (or 8 on platforms with 64 bit pointers). This
 should reduce the number of calls to C<realloc> without actually using any
 extra memory.
 
-Nicholas Clark ��ʸ����Хåե��γ��ݤ򼡤�4���ܿ�(64bit�ݥ��󥿤�
-�ץ�åȥۡ���Ǥ�8���ܿ�)�˴ݤ��褦���ѹ����ޤ���. ����ˤ��
-�¼�;ʬ�ʥ����Ȥ����Ȥʤ� C<realloc> �β����︺�Ǥ��ޤ�.
+Nicholas Clark は文字列バッファの確保を次の4の倍数(64bitポインタの
+プラットホームでは8の倍数)に丸めるように変更しました. これにより
+実質余分なメモリを使うことなく C<realloc> の回数を削減できます.
 
 The C<HV>'s array of C<HE*>s is now allocated at the correct (minimal) size,
 thanks to another change by Nicholas Clark. Compile with
 C<-DPERL_USE_LARGE_HV_ALLOC> to use the old, sloppier, default.
 
-C<HV> �Τ�� C<HE*> �������Ŭ�ڤ�(�Ǿ���)����������ݤ���褦��
-�ʤ�ޤ���. Nicholas Clark �Τޤ��̤ν����ˤ���ΤǤ�. 
-C<-DPERL_USE_LARGE_HV_ALLOC> ��Ĥ��ƥ���ѥ��뤹�뤳�Ȥ�
-����ޤǤΤ���������Ƥʼ�����Ȥ����Ȥ����ޤ�.
+C<HV> のもつ C<HE*> の配列は適切な(最小の)サイズを確保するように
+なりました. Nicholas Clark のまた別の修正によるものです. 
+C<-DPERL_USE_LARGE_HV_ALLOC> をつけてコンパイルすることで
+これまでのずさんで怠惰な実装を使うことも出来ます.
 
 For XS or embedding debugging purposes, if perl is compiled with
 C<-DDEBUG_LEAKING_SCALARS_FORK_DUMP> in addition to
@@ -2309,26 +2309,26 @@ it is impossible to produce any meaningful dump of their contents.  This
 feature was implemented by the indefatigable Nicholas Clark, based on an idea
 by Mike Giroux.
 
-XS �������ߥǥХå��Ѥ�, perl �� C<-DDEBUG_LEAKING_SCALARS> ��
-�ä��� C<-DDEBUG_LEAKING_SCALARS_FORK_DUMP> ��Ĥ��ƥ���ѥ���
-���뤳�Ȥǥ������Х�ǥ��ȥ饯������ľ���˻ҥץ������� C<fork>
-�������������ޤ�. ����ˤ�ꥰ�����Х�ǥ��ȥ饯�����ν�λ����
-ϳ��Ƥ���Ǥ�դΥ����顼���ͤ���Ϥ��뤳�Ȥ��Ǥ��ޤ�. ���줬
-�ʤ����ˤ�, �����顼�ϸ��Ф��������Ǥϴ��˽�ʬ�˲�������Ƥ���, 
-�����Ǥϰ�̣�Τ������פϽ��ϤǤ��ʤ��Ǥ��礦. ���ε�ǽ��
-Mike Giroux �ˤ�륢���ǥ��򺬵��Τ��� Nicholas Clark ������
-������ΤǤ�.
+XS や埋め込みデバッグ用に, perl が C<-DDEBUG_LEAKING_SCALARS> に
+加えて C<-DDEBUG_LEAKING_SCALARS_FORK_DUMP> もつけてコンパイル
+することでグローバルデストラクションの直前に子プロセスを C<fork>
+させる事が出来ます. これによりグローバルデストラクションの終了時に
+漏れていた任意のスカラーの値を出力することができます. これが
+ない場合には, スカラーは検出した地点では既に十分に解放されていて, 
+そこでは意味のあるダンプは出力できないでしょう. この機能は
+Mike Giroux によるアイデアを根気のいい Nicholas Clark が実装
+したものです.
 
 =head1 Platform Specific Problems
-�ץ�åȥۡ����ͭ������
+プラットホーム固有の問題
 
 The optimiser on HP-UX 11.23 (Itanium 2) is currently partly disabled (scaled
 down to +O1) when using HP C-ANSI-C; the cause of problems at higher
 optimisation levels is still unclear.
 
-HP-UX 11.23 (Itanium 2) ��κ�Ŭ���� HP C-ANSI-C ����Ѥ��Ƥ������
-������ʬŪ��̵���ˤ���Ƥ��ޤ�(+O1 �˥������������); �����
-���٥�κ�Ŭ���ˤ������θ������ޤ������Ƥʤ���Ǥ�.
+HP-UX 11.23 (Itanium 2) 上の最適化は HP C-ANSI-C を使用している場合に
+現在部分的に無効にされています(+O1 にスケールダウン); これは
+高レベルの最適化による問題の原因がまだ不明瞭なためです.
 
 There are a handful of remaining test failures on VMS, mostly due to
 test fixes and minor module tweaks with too many dependencies to
@@ -2336,11 +2336,11 @@ integrate into this release from the development stream, where they have
 all been corrected.  The following is a list of expected failures with
 the patch number of the fix where that is known:
 
-VMS �ˤ����Ƽ��Ԥ���ƥ��Ȥ������Ĥ�����ޤ�. 
-����Ϥ��Υ�꡼���ˤ�����, ��ȯ���ȥ꡼�फ�齤�����줿ʬ������Τ����, 
-¿�������¸�ط��ȶ��˥ƥ��Ȥν����侮���ʥ⥸�塼��ν�����
-�Ԥ�줿����Ǥ�. �ʲ��˴��Τμ��Ԥ�, ����˵��դ��ƽ������줿
-�ѥå��ֹ���¤٤Ƥ����ޤ�.
+VMS において失敗するテストがいくつかあります. 
+これはこのリリースにおいて, 開発ストリームから修正された分の統合のために, 
+多すぎる依存関係と共にテストの修正や小さなモジュールの修正が
+行われたためです. 以下に既知の失敗と, それに気付いて修正された
+パッチ番号を並べておきます.
 
     ext/Devel/PPPort/t/ppphtest.t  #26913
     ext/List/Util/t/p_tainted.t    #26912
@@ -2350,17 +2350,17 @@ VMS �ˤ����Ƽ��Ԥ���ƥ��Ȥ������Ĥ�����ޤ�.
     t/op/cmp.t
 
 =head1 Reporting Bugs
-�Х����
+バグ報告
 
 If you find what you think is a bug, you might check the articles
 recently posted to the comp.lang.perl.misc newsgroup and the perl
 bug database at http://bugs.perl.org.  There may also be
 information at http://www.perl.org, the Perl Home Page.
 
-�⤷�Х��Ȼפ����Τ����Ĥ��ä���, comp.lang.perl.misc �˥塼��
-���롼�פ˺Ƕ���Ƥ��줿������ http://bugs.perl.org �ˤ��� perl 
-�Х��ǡ����١������ǧ���Ƥ�������. 
-Perl �ۡ���ڡ���, http://www.perl.org �ˤ����Ϥ���ޤ�.
+もしバグと思われるものが見つかったら, comp.lang.perl.misc ニュース
+グループに最近投稿された記事や http://bugs.perl.org にある perl 
+バグデータベースを確認してください. 
+Perl ホームページ, http://www.perl.org にも情報はあります.
 
 If you believe you have an unreported bug, please run the B<perlbug>
 program included with your release.  Be sure to trim your bug down
@@ -2369,36 +2369,36 @@ output of C<perl -V>, will be sent off to perlbug@perl.org to be
 analysed by the Perl porting team.  You can browse and search
 the Perl 5 bugs at http://bugs.perl.org/
 
-�⤷�ޤ���𤵤�Ƥ��ʤ��Х����ȳο�������, ���Υ�꡼���˴ޤޤ�Ƥ���
-B<perlbug> �ץ��������¹Ԥ��Ƥ�������. �Х��κƸ�������ץȤ�
-��ʬ������, ������ͭ���ʥ����ɤ��ڤ�Ĥ�뤳�Ȥ�ռ����Ƥ�������. 
-�Х���ݡ��Ȥ� C<perl -V> �ν��ϤȰ��� perlbug@perl.org ������� 
-Perl porting ������ˤ�äƲ��Ϥ���ޤ�. Perl 5 �ΥХ��ˤĤ��Ƥ� 
-http://bugs.perl.org/ �Ǳ����ڤӸ������뤳�Ȥ��Ǥ��ޤ�.
+もしまだ報告されていないバグだと確信したら, そのリリースに含まれている
+B<perlbug> プログラムをを実行してください. バグの再現スクリプトを
+十分小さく, しかし有効なコードに切りつめることを意識してください. 
+バグレポートは C<perl -V> の出力と一緒に perlbug@perl.org に送られ 
+Perl porting チームによって解析されます. Perl 5 のバグについては 
+http://bugs.perl.org/ で閲覧及び検索することができます.
 
 =head1 SEE ALSO
-���������?ְ
+髢｢騾｣鬆?岼
 
 The F<Changes> file for exhaustive details on what changed.
 
-F<Changes> �ˤϴ������ѹ��ս꤬����ޤ�.
+F<Changes> には完全な変更箇所があります.
 
 The F<INSTALL> file for how to build Perl.
 
-F<INSTALL> �ˤ� Perl ��ӥ�ɤ�����ˡ������ޤ�.
+F<INSTALL> には Perl をビルドする方法があります.
 
 The F<README> file for general stuff.
 
-F<README> �ˤϰ���Ū�ʻ��ब����ޤ�.
+F<README> には一般的な事項があります.
 
 The F<Artistic> and F<Copying> files for copyright information.
 
-F<Artistic> �ڤ� F<Copying> �ˤ�������󤬤���ޤ�.
+F<Artistic> 及び F<Copying> には著作権情報があります.
 
 =head1 TRANSLATE TO JAPANESE
-����
+和訳
 
 YAMASHINA Hio <hio@hio.jp>
 
-���� ɹ�� (YAMASHINA Hio) <hio@hio.jp>
+山科 氷魚 (YAMASHINA Hio) <hio@hio.jp>
 

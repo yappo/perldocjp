@@ -9,7 +9,7 @@ perllocale - Perl locale handling (internationalization and localization)
 
 =end original
 
-perllocale - Perl �Υ���������� (��ݲ����ϰ貽)
+perllocale - Perl のロケール操作 (国際化と地域化)
 
 =head1 DESCRIPTION
 
@@ -30,19 +30,19 @@ B<localization> (B<l10n>).
 
 =end original
 
-Perl �ϡ֤����ʸ�����ס��֤���ʸ������ʸ���Ϥʤˤ��ס��֤�����ʸ���Τ�����
-�ǽ�ˤ���Τϲ����פΤ褦�ʸ���˸�ͭ�ʥǡ�����
-��ǰ�򥵥ݡ��Ȥ��Ƥ��ޤ���
-�������ä˱Ѹ�ʳ��θ���ǤϽ��פʤ��ȤǤ���
-��������ϱѸ�Ǥ�Ʊ�ͤǡ�C<A-Za-z> �����٤ƤΡ�ʸ���פ�
-������Ƥ���ȹͤ��Ƥ��ޤ��Τ�ñ�㤹����(naE<iuml>ve)�ͤ��Ǥ���
-Perl �Ϥޤ�����.�ɰʳ��δ��Ĥ���ʸ���򾮿����Ȥ��ư������Ȥ�
-����ޤ��������դ�ɽ���ϸ���ˤ�ä��Ѥ�ꤦ���ΤǤ���
-���ץꥱ�������ˤ������ä��桼������������θ�����뤿��Υץ������ϡ�
-��ݲ�(B<internationalization>)�ȸƤФ�ޤ�(����Ϥ��Ф���
-B<i18n> �Ⱦ�ά����ޤ�)��
-���ץꥱ�������������������б������뤳�Ȥ��ϰ貽(B<localization>��
-B<l10n>)�Ȥ����Τ��Ƥ��ޤ���
+Perl は「これは文字か」、「この文字の大文字はなにか」、「これらの文字のうちで
+最初にくるのは何か」のような言語に固有なデータの
+概念をサポートしています。
+これらは特に英語以外の言語では重要なことです。
+が、これは英語でも同様で、C<A-Za-z> がすべての「文字」を
+定義していると考えてしまうのは単純すぎる(naE<iuml>ve)考えです。
+Perl はまた、“.”以外の幾つかの文字を小数点として扱うことも
+ありますし、日付の表現は言語によって変わりうるものです。
+アプリケーションにそういったユーザーの選択を考慮させるためのプロセスは、
+国際化(B<internationalization>)と呼ばれます(これはしばしば
+B<i18n> と省略されます)。
+アプリケーションを特定の選択に対応させることは地域化(B<localization>、
+B<l10n>)として知られています。
 
 =begin original
 
@@ -53,10 +53,10 @@ several environment variables.
 
 =end original
 
-Perl �ϸ����ͭ�ʥǡ����򡢡֥������륷���ƥ�פȸƤФ��ɸ��᥽�å�
-(ISO C, XPG4, POSIX 1.c)���̤������򤹤뤳�Ȥ��Ǥ��ޤ���
-���Υ������륷���ƥ�ϰ�ĤΥץ饰�ޡ���Ĥδؿ��ƤӽФ������Ĥ���
-�Ķ��ѿ���Ȥäơ����ץꥱ�������������椷�ޤ���
+Perl は言語固有なデータを、「ロケールシステム」と呼ばれる標準メソッド
+(ISO C, XPG4, POSIX 1.c)を通して理解することができます。
+このロケールシステムは一つのプラグマ、一つの関数呼び出し、幾つかの
+環境変数を使って、アプリケーション毎に制御します。
 
 =begin original
 
@@ -67,15 +67,15 @@ The one exception is that write() now B<always> uses the current locale
 
 =end original
 
-B<����>: ���ε�ǽ�� Perl 5.004 �ǿ������ɲä��줿��Τǡ����ץꥱ������󤫤�
-����Ū�ˤ��λ��Ѥ��׵ᤵ��ʤ��¤�Ȥ��ޤ��� -- 
-L<Backward compatibility> �򻲾Ȥ��Ƥ���������
-��Ĥ��㳰�� write() �ǡ������ B<���> �����ȤΥ����������Ѥ��ޤ� - 
-L<"NOTES"> �򻲾Ȥ��Ƥ���������
+B<注意>: この機能は Perl 5.004 で新たに追加されたもので、アプリケーションから
+明示的にその使用を要求されない限り使われません -- 
+L<Backward compatibility> を参照してください。
+一つの例外が write() で、これは B<常に> カレントのロケールを使用します - 
+L<"NOTES"> を参照してください。
 
 =head1 PREPARING TO USE LOCALES
 
-(��������λȤ����ν���)
+(ロケールの使う前の準備)
 
 =begin original
 
@@ -85,9 +85,9 @@ must be true:
 
 =end original
 
-Perl ���ץꥱ������󤬡����ʤ��Υǡ����򡢤��ʤ������򤷤����������
-���������ä������󶡤���ΤǤ���С��ʲ��� B<���٤�> ������
-�ʤäƤ��ʤ���Фʤ�ޤ���:
+Perl アプリケーションが、あなたのデータを、あなたの選択したロケールに
+正しく従って理解し提供するのであれば、以下の B<すべて> が真に
+なっていなければなりません:
 
 =over 4
 
@@ -101,10 +101,10 @@ its C library.
 
 =end original
 
-B<���ʤ��λȤäƤ��륪�ڥ졼�ƥ��󥰥����ƥब�������륷���ƥ��
-�б����Ƥ��ʤ���Фʤ�ޤ���>��
-������б����Ƥ���С�setlocale() �Ȥ����ؿ��� C �饤�֥������
-����Ϥ��Ǥ���
+B<あなたの使っているオペレーティングシステムがロケールシステムに
+対応していなければなりません>。
+これに対応していれば、setlocale() という関数が C ライブラリの中に
+あるはずです。
 
 =item *
 
@@ -123,17 +123,17 @@ system.)  Read your system documentation for further illumination.
 
 =end original
 
-B<���ʤ��λȤ������������������󥹥ȡ��뤵��Ƥ��ʤ���Фʤ�ޤ���>��
-���ʤ����⤷���ϴ����ԤϤ������������갷��ͤФʤ�ޤ���
-�Ȥ����ȤΤǤ���������롢����餬�֤���Ƥ����ꡢ���󥹥ȡ��뤵���
-��§�Ȥ��ä���Υ����ƥ�����Ѥ��ޤ���
-�����Υ����ƥ�Ǥϡ�����Τۤ�ξ����Υ�������������󶡤����桼������
-�������ɲä��뤳�Ȥ�����Ƥ��ޤ���
-�̤Υ����ƥ�Ǥϡ������ƥ�Υ��ץ饤�䡼���󶡤����ֽ������줿�ץ��������
-�ɲä��뤳�Ȥ��Ǥ��ޤ�(���ʤ��Υ��ץ饤�䡼�˻ȤäƤ��륪�ڥ졼�ƥ���
-�����ƥ�Ȱ����Ϥ���Ƥ��ʤ��������줿����������󶡤���褦
-���ꤹ��ɬ�פ�����ޤ�)��
-�ܺ٤ϥ����ƥ�Υɥ�����Ȥ��ɤ�Ǥ���������
+B<あなたの使うロケールの定義がインストールされていなければなりません>。
+あなた、もしくは管理者はこれを正しく取り扱わねばなりません。
+使うことのできるロケール、それらが置かれている場所、インストールされる
+規則といったものシステム毎に変わります。
+一部のシステムでは、固定のほんの少しのロケールだけを提供し、ユーザーが
+新たに追加することを許していません。
+別のシステムでは、システムのサプライヤーが提供した「準備された」ロケールを
+追加することができます(あなたのサプライヤーに使っているオペレーティング
+システムと一緒に渡されていない準備されたロケールを提供するよう
+依頼する必要があります)。
+詳細はシステムのドキュメントを読んでください。
 
 =item *
 
@@ -145,10 +145,10 @@ C<define>.
 
 =end original
 
-B<Perl �����������륷���ƥब���ݡ��Ȥ���Ƥ���ȿ����Ƥ��ʤ����
-�ʤ�ޤ���>��
-�⤷�����ʤäƤ���С�C<perl -V:d_setlocale> ��
-C<d_setlocale> ���ͤ��������Ƥ���褦����𤹤�Ǥ��礦��
+B<Perl が、ロケールシステムがサポートされていると信じていなければ
+なりません>。
+もしそうなっていれば、C<perl -V:d_setlocale> は
+C<d_setlocale> の値が定義されているように報告するでしょう。
 
 =back
 
@@ -161,10 +161,10 @@ appropriate, and B<at least one> of the following must be true:
 
 =end original
 
-Perl ���ץꥱ�������򤢤ʤ��λȤ��ǡ���������Υ�������ǽ���������
-����褦�ˤ������ΤǤ���С����Υ��ץꥱ������󥳡��ɤϥץ饰��
-S<C<use locale>> ��Ŭ�ڤʾ��ˡ������ưʲ��˵󤲤���ܤ�
-B<���ʤ��Ȥ���> �����Ǥʤ���Фʤ�ޤ���
+Perl アプリケーションをあなたの使うデータを特定のロケールで処理したり
+するようにしたいのであれば、そのアプリケーションコードはプラグマ
+S<C<use locale>> を適切な場所に、そして以下に挙げる項目の
+B<少なくとも一つ> が真でなければなりません。
 
 =over 4
 
@@ -178,9 +178,9 @@ by yourself or by whoever set up your system account.
 
 =end original
 
-���ʤ����ȤǤ��ˤ��������ʤ��λȤ������ƥ�δ����Ԥ�����ˤ�����
-���ץꥱ�������μ¹Գ��ϻ��ˤ� B<�����������ꤹ��Ķ��ѿ�
-(L<"ENVIRONMENT"> �򻲾�)�����������ꤵ��Ƥ��ʤ���Фʤ�ޤ���>��
+あなた自身でやるにしろ、あなたの使うシステムの管理者がするにしろ、
+アプリケーションの実行開始時には B<ロケールを決定する環境変数
+(L<"ENVIRONMENT"> を参照)が正しく設定されていなければなりません>。
 
 =item *
 
@@ -191,18 +191,18 @@ L<The setlocale function>.
 
 =end original
 
-���ץꥱ�������ϡ�L<The setlocale function> �˵��Ҥ���Ƥ���
-�᥽�åɤ�Ȥ���B<��ʬ�ѤΥ�����������ꤷ�Ƥ����ͤФʤ�ޤ���>��
+アプリケーションは、L<The setlocale function> に記述されている
+メソッドを使う、B<自分用のロケールを設定しておかねばなりません>。
 
 =back
 
 =head1 USING LOCALES
 
-(���������Ȥ�)
+(ロケールを使う)
 
 =head2 The use locale pragma
 
-(use locale �ץ饰��)
+(use locale プラグマ)
 
 =begin original
 
@@ -211,9 +211,9 @@ pragma tells Perl to use the current locale for some operations:
 
 =end original
 
-�ǥե���ȤǤϡ�Perl �ϥ����ȤΥ��������̵�뤷�ޤ���
-S<C<use locale>> �ץ饰�ޤ� Perl �ˡ����Ĥ������ˤ����ƥ����Ȥ�
-���������Ȥ��褦�ؼ����ޤ���
+デフォルトでは、Perl はカレントのロケールを無視します。
+S<C<use locale>> プラグマは Perl に、幾つかの操作においてカレントの
+ロケールを使うよう指示します。
 
 =over 4
 
@@ -228,10 +228,10 @@ explicit comparison function, because it uses C<cmp> by default.
 
 =end original
 
-B<��ӱ黻��> (C<lt>, C<le>, C<cmp>, C<ge>, C<gt>) �ȡ�POSIX ��ʸ�������
-�ؿ� strcoll() ����� strxfrm() �� C<LC_COLLATE> ����Ѥ��ޤ���
-sort() ����Ӵؿ����ۤ˻��ꤵ��ʤ��ä����˱ƶ�������ޤ���
-����ϡ��ǥե���ȤǤ� C<cmp> ��Ȥ�����Ǥ���
+B<比較演算子> (C<lt>, C<le>, C<cmp>, C<ge>, C<gt>) と、POSIX の文字列比較
+関数 strcoll() および strxfrm() は C<LC_COLLATE> を使用します。
+sort() は比較関数が陽に指定されなかった場合に影響を受けます。
+これは、デフォルトでは C<cmp> を使うからです。
 
 =begin original
 
@@ -247,16 +247,16 @@ L<Category LC_COLLATE: Collation>.
 
 =end original
 
-B<����:> C<eq> ����� C<ne> �ϥ�������αƶ�������ޤ���
-�����δؿ��Ͼ��ʸ�������Ӥ򤽤Υ����饪�ڥ��ɤ��Ф��Ƽ¹Ԥ��ޤ���
-����˲ä��ơ�C<cmp>�Ϥ��Υ��ڥ��ɤ������ȤΥ��������
-���ꤵ���ȹ祷�����󥹤���������ΤǤ��ä���硢�����ʸ�����
-�ȹ��Ԥ������ޤ���
-�Ǥ����顢���ڥ��ɤ�������ʸ�������������ˤΤ� C<cmp> �� I<0>(������)��
-�֤��ޤ���
-C<eq> �� C<cmp> ���ۤʤ��Ƚ�ꤹ���ǽ���Τ�����Ĥ�ʸ���󤬥��������
-��θ�����ȹ�����������ɤ������������Τꤿ���Τʤ顢
-L<Category LC_COLLATE: Collation> �ε��Ҥ򻲾Ȥ��Ƥ���������
+B<注意:> C<eq> および C<ne> はロケールの影響を受けません。
+これらの関数は常に文字毎の比較をそのスカラオペランドに対して実行します。
+それに加えて、C<cmp>はそのオペランドがカレントのロケールで
+指定される照合シーケンスで等しいものであった場合、さらに文字毎の
+照合を行おうします。
+ですから、オペランドの全部の文字が等しい場合にのみ C<cmp> は I<0>(等しい)を
+返します。
+C<eq> と C<cmp> が異なると判定する可能性のある二つの文字列がロケールを
+考慮した照合で等しいかどうかを本当に知りたいのなら、
+L<Category LC_COLLATE: Collation> の記述を参照してください。
 
 =item *
 
@@ -267,8 +267,8 @@ ucfirst(), and lcfirst()) use C<LC_CTYPE>
 
 =end original
 
-B<����ɽ�����羮ʸ���Ѵ��ؿ�> (uc(), lc(), ucfirst(), lcfirst()) ��
-C<LC_CTYPE> ����Ѥ��ޤ���
+B<正規表現と大小文字変換関数> (uc(), lc(), ucfirst(), lcfirst()) は
+C<LC_CTYPE> を使用します。
 
 =item *
 
@@ -279,7 +279,7 @@ C<LC_NUMERIC>
 
 =end original
 
-B<�񼰴ؿ�>(printf(), sprintf(), write()) �� C<LC_NUMERIC> ����Ѥ��ޤ���
+B<書式関数>(printf(), sprintf(), write()) は C<LC_NUMERIC> を使用します。
 
 =item *
 
@@ -289,7 +289,7 @@ B<The POSIX date formatting function> (strftime()) uses C<LC_TIME>.
 
 =end original
 
-B<POSIX �����ս񼰴ؿ�> (strfime()) �� C<LC_TIME> ����Ѥ��ޤ���
+B<POSIX の日付書式関数> (strfime()) は C<LC_TIME> を使用します。
 
 =back
 
@@ -300,8 +300,8 @@ L<LOCALE CATEGORIES>.
 
 =end original
 
-C<LC_COLLATE>, C<LC_CTYPE> �ʤɤϡ�L<LOCALE CATEGORIES> �Ǥ����
-��������Ƥ��ޤ���
+C<LC_COLLATE>, C<LC_CTYPE> などは、L<LOCALE CATEGORIES> でさらに
+説明されています。
 
 =begin original
 
@@ -310,8 +310,8 @@ upon reaching the end of block enclosing C<use locale>.
 
 =end original
 
-S<C<no locale>> �˽в񤦤���(S<C<use locale>> ��Ϥ�)�֥��å��ν�ü��
-ã����ȥǥե���Ȥ�ư������ޤ���
+S<C<no locale>> に出会うか、(S<C<use locale>> を囲む)ブロックの終端に
+達するとデフォルトの動作に戻ります。
 
 =begin original
 
@@ -321,13 +321,13 @@ untrustworthy.  See L<"SECURITY">.
 
 =end original
 
-������������ȤäƤ������η�̤Ǥ���ʸ����ϡ��������뤬����Ǥ��ʤ�
-��ǽ�������뤫�Τ褦�ˡ���������Ƥ��뤳�Ȥ����դ��Ƥ���������
-L<"SECURITY"> �򻲾Ȥ��Ƥ���������
+ロケール情報を使っている操作の結果である文字列は、ロケールが信頼できない
+可能性があるかのように、汚染されていることに注意してください。
+L<"SECURITY"> を参照してください。
 
 =head2 The setlocale function
 
-(setlocale �ؿ�)
+(setlocale 関数)
 
 =begin original
 
@@ -336,8 +336,8 @@ POSIX::setlocale() function:
 
 =end original
 
-POSIX::setlocale() �ؿ���Ȥäơ��¹Ի��˹����ʲ���������������
-�ڤ��ؤ��뤳�Ȥ��Ǥ��ޤ���
+POSIX::setlocale() 関数を使って、実行時に好きな回数だけロケールを
+切り替えることができます。
 
         # This functionality not usable prior to Perl 5.004
         require 5.004;
@@ -373,15 +373,15 @@ example.
 
 =end original
 
-setlocale() ���������ˤ� B<���ƥ��꡼> ����������ˤ�
-B<��������> ��Ϳ���ޤ���
-���ƥ��꡼�ϥ���������ͭ�ε�§��Ŭ�Ѥ������ǡ��������ξ�����ؼ����ޤ���
-���ƥ��꡼̾�� L<LOCALE CATEGORIES> �� L<"ENVIRONMENT"> �˵��Ҥ���Ƥ��ޤ���
-��������ϥ������ޥ�����Ԥ�����Ρ�����θ�����Ȥ߹�碌������ϰ衢
-�����ɥ��åȤ˴ؤ������ν����̾���Ǥ���
-�ҥ�ȤȤ��ƥ��������̾���դ������ܤ��Ƥ���������
-���٤ƤΥ����ƥब������Τ褦�˥��������̾�����դ��Ƥ���櫓�Ǥ�
-����ޤ���
+setlocale() の第一引数には B<カテゴリー> を、第二引数には
+B<ロケール> を与えます。
+カテゴリーはロケール特有の規則を適用したいデータ処理の状況を指示します。
+カテゴリー名は L<LOCALE CATEGORIES> と L<"ENVIRONMENT"> に記述されています。
+ロケールはカスタマイズを行うための、特定の言語の組み合わせ、国や地域、
+コードセットに関する情報の集合の名前です。
+ヒントとしてロケールの名前付けに注目してください。
+すべてのシステムがこの例のようにロケールに名前を付けているわけでは
+ありません。
 
 =begin original
 
@@ -392,10 +392,10 @@ subsequent call to setlocale().
 
 =end original
 
-�����������ά����Ƥ��ơ�����˥��ƥ��꡼�� LC_ALL �ʳ��ξ�硢���δؿ���
-���ƥ��꡼���Ф��륫���ȥ��������̾������ʤ�ʸ������֤��ޤ���
-�����ͤ򡢸�ǹԤ� setlocale() �θƤӽФ��Ǥ���������Ȥ���
-�Ȥ����Ȥ�Ǥ��ޤ���
+第二引数が省略されていて、さらにカテゴリーが LC_ALL 以外の場合、この関数は
+カテゴリーに対するカレントロケールの名前からなる文字列を返します。
+この値を、後で行う setlocale() の呼び出しでの第二引数として
+使うこともできます。
 
 =begin original
 
@@ -407,11 +407,11 @@ details.
 
 =end original
 
-���ƥ��꡼�� LC_ALL �ǡ����������Ϳ�����ʤ��ä����ˤ�
-���η�̤Ͻ����Ϥ˰�¸�����ΤȤʤ�ޤ���
-���������̾����Ϣ�뤷����Τ�(���ѥ졼�����Ϥ���ޤ������ϰ�¸�Τ��)��
-ñ��Υ�������̾�Ȥʤ�ޤ���
-�ܤ����� setlocale(3) man �ڡ����򤢤��äƤ���������
+カテゴリーが LC_ALL で、第二引数が与えられなかった場合には
+その結果は処理系に依存するものとなります。
+ロケールの名前を連結したものか(セパレーターはこれまた処理系依存のもの)、
+単一のロケール名となります。
+詳しくは setlocale(3) man ページをあたってください。
 
 =begin original
 
@@ -424,11 +424,11 @@ argument--think of it as an alias for the value you gave.)
 
 =end original
 
-���������Ϳ�����Ƥ��ơ����Ĥ��줬�����ʤ�ΤǤ���С����ƥ����
-�������뤬���ꤵ�졢���δؿ��ϸ��ߤΥ��������ͤ��֤��ޤ���
-�����ͤϼ��� setlocale() �˸ƤӽФ��ǻȤ��ޤ�(�����μ����Ǥϡ�����
-�֤��ͤ����������Ϳ�����Ȥ��Ȱۤʤ��礬����ޤ� -- �����Ϳ����������
-�����ꥢ���ȹͤ����ޤ�)��
+第二引数が与えられていて、かつそれが正当なものであれば、カテゴリの
+ロケールが設定され、この関数は現在のロケール値を返します。
+この値は次の setlocale() に呼び出しで使えます(一部の実装では、この
+返り値は第二引数を与えたときと異なる場合があります -- これは与えた引数の
+エイリアスと考えられます)。
 
 =begin original
 
@@ -441,12 +441,12 @@ be noticed, depending on your system's C library.
 
 =end original
 
-��˼������褦�ˡ������������ʸ����Ǥ��ä����ˤϥ��ƥ��꡼�Ρ�
-�б�����Ķ��ѿ��ˤ��ǥե���Ȼ��ꤵ���������뤬�֤���ޤ���
-����Ū�ˤϤ��η�̤ϡ�Perl ����ư�����Ȥ��˶���Ū�˥ǥե���ȤȤ���
-���ꤵ�줿�ͤǤ���
-���ץꥱ������󤬵�ư������ǤδĶ��ѿ����ѹ���ǧ�������/����ʤ��ϡ�
-���Ѥ��Ƥ��� C �饤�֥��˰�¸���ޤ���
+例に示したように、第二引数が空文字列であった場合にはカテゴリーの、
+対応する環境変数によりデフォルト指定されるロケールが返されます。
+一般的にはこの結果は、Perl が起動したときに強制的にデフォルトとして
+設定された値です。
+アプリケーションが起動した後での環境変数の変更が認識される/されないは、
+使用している C ライブラリに依存します。
 
 =begin original
 
@@ -455,8 +455,8 @@ for the category is not changed, and the function returns I<undef>.
 
 =end original
 
-������������������������ɽ�路�Ƥ��ʤ���硢
-���ƥ��꡼���Ф������������ѹ����줺���ؿ��� I<undef> ���֤��ޤ���
+第二引数が正しいロケールを表わしていない場合、
+カテゴリーに対するロケールは変更されず、関数は I<undef> を返します。
 
 =begin original
 
@@ -464,11 +464,11 @@ For further information about the categories, consult setlocale(3).
 
 =end original
 
-���ƥ��꡼���Ф���ܺ٤ʾ���ϡ�setlocale(3) �򻲾Ȥ��Ƥ���������
+カテゴリーに対する詳細な情報は、setlocale(3) を参照してください。
 
 =head2 Finding locales
 
-(��������򸫤Ĥ���)
+(ロケールを見つける)
 
 =begin original
 
@@ -478,10 +478,10 @@ I<SEE ALSO> section).  If that fails, try the following command lines:
 
 =end original
 
-�������뤬�Ȥ��륷���ƥ�Ǥ���С����Ѳ�ǽ�ʥ������뤬�ɤ����ä���Τ�
-���뤫�ɤ����� setlocale(3) ��Ĵ�٤ƤߤƤ�������
-(I<SEE ALSO> �ξϤ�õ���Ƥ�������)��
-���줬������ä��顢�ʲ��Υ��ޥ�ɤ��ƤߤƤ���������
+ロケールが使えるシステムであれば、使用可能なロケールがどういったもので
+あるかどうかを setlocale(3) で調べてみてください
+(I<SEE ALSO> の章を探してください)。
+それがダメだったら、以下のコマンドを試してみてください。
 
         locale -a
 
@@ -501,8 +501,8 @@ and see whether they list something resembling these
 
 =end original
 
-�����ơ������˰ʲ��˵󤲤���ΤȻ�����Τ����뤫�ɤ�����
-�Τ���Ƥ���������
+そして、そこに以下に挙げたものと似たものがあるかどうかを
+確かめてください。
 
         en_US.ISO8859-1     de_DE.ISO8859-1     ru_RU.ISO8859-5
         en_US.iso88591      de_DE.iso88591      ru_RU.iso88595
@@ -529,20 +529,20 @@ ways to write even the name of that one standard.  Lamentably.
 
 =end original
 
-��ǰ�ʤ��顢setlocale() ��ƤӽФ����󥿡��ե�����������
-ɸ�ಽ����Ƥ���Τˤ�ؤ餺�����������̾���䡢���줬���ꤵ���
-�ǥ��쥯�ȥ�Ϥޤ��ʤΤǤ���
-̾���δ��ܷ����� I<language_territory>B<.>I<codeset> �Ǥ�������������ʬ��
-��ˤ������ǤϤ���ޤ���
-I<language> �� I<country> ���̾�� B<ISO 3166> �� B<ISO 639> �Ȥ���
-ɸ��ˤ�롢���������ʸ����ά������Τˤʤ�ޤ���
-I<codeset> ����ʬ�Ϥ��Ф���ʸ������ B<ISO 8859> ��
-�Хꥨ�������Ȥʤ�ޤ���
-���Ȥ��С�"Western codeset" �ȸƤФ�� C<ISO 8859-1> �������ˤ�����
-���󥳡��ǥ��󥰤Ȥ����Ѥ��뤳�Ȥ��Ǥ��ޤ���
-�����֤��ޤ�������Ĥ�ɸ���̾���Ǥ��äƤ��������Ҥ���ˤ�ʣ������ˡ��
-¸�ߤ���ΤǤ���
-ò���路�����ȤǤ���
+残念ながら、setlocale() を呼び出すインターフェースが既に
+標準化されているのにも関らず、ロケールの名前や、それが設定される
+ディレクトリはまだなのです。
+名前の基本形式は I<language_territory>B<.>I<codeset> ですが、末尾の部分は
+常にある訳ではありません。
+I<language> と I<country> は通常は B<ISO 3166> や B<ISO 639> という
+標準による、言語や国を二文字に略したものになります。
+I<codeset> の部分はしばしば文字集合 B<ISO 8859> の
+バリエーションとなります。
+たとえば、"Western codeset" と呼ばれる C<ISO 8859-1> は西欧における
+エンコーディングとして用いることができます。
+繰り返しますが、一つの標準の名前であってさえ、記述するには複数の方法が
+存在するのです。
+嘆かわしいことです。
 
 =begin original
 
@@ -556,14 +556,14 @@ is (American) English and its character codeset ASCII.
 
 =end original
 
-��C�ɤȡ�POSIX�ɤȤ�����Ĥ��ü�ʥ������뤬����ޤ���
-�������Ǥϡ��������Ĥ�Ʊ����������Ȥʤ�ޤ���
-���ΰ㤤�ϼ�ˡ����Ԥ� C ��ɸ��ˤ�����줿��ΤǤ���Τ��Ф��ơ�
-��Ԥ� POSIX ��ɸ��Ƿ����Ƥ����ΤǤ���Ȥ������ˤ���ޤ���
-�����ε��ʤ����Ƥ��뤳�Ȥϡ��Ķ��ѿ��ˤ������������󤬤ʤ����֤Ǥ�
-�ץ�����൯ư���� B<�ǥե���ȤΥ�������> �Ǥ�
-(I<�ǥե���Ȥ�> �ǥե���ȥ�������Ǥ�)��
-���θ���� (����ꥫ)�Ѹ�Ǥ��ꡢ���Υ���饯�������åȤ� ASCII �Ȥʤ�ޤ���
+“C”と“POSIX”という二つの特殊なロケールがあります。
+現時点では、これら二つは同じロケールとなります。
+その違いは主に、前者が C の標準により決められたものであるのに対して、
+後者が POSIX の標準で決められているものであるという点にあります。
+これらの規格が決めていることは、環境変数にあるロケール情報がない状態での
+プログラム起動時の B<デフォルトのロケール> です
+(I<デフォルトの> デフォルトロケールです)。
+その言語は (アメリカ)英語であり、そのキャラクターセットは ASCII となります。
 
 =begin original
 
@@ -573,14 +573,14 @@ default locale.
 
 =end original
 
-B<����>:���٤ƤΥ����ƥब "POSIX" �����������äƤ���櫓�Ǥ�
-����ޤ���(���٤ƤΥ����ƥब POSIX �˽�򤷤Ƥ���櫓�ǤϤ���ޤ���)�Τǡ�
-����Ū�ˤ��Υǥե���ȥ����������ꤹ��Τ�ɬ�פʤȤ��ˤ�
-"C" ��Ȥ��ޤ���
+B<注意>:すべてのシステムが "POSIX" ロケールを持っているわけでは
+ありません(すべてのシステムが POSIX に準拠しているわけではありません)ので、
+明示的にこのデフォルトロケールを指定するのが必要なときには
+"C" を使います。
 
 =head2 LOCALE PROBLEMS
 
-(�������������)
+(ロケールの問題)
 
 =begin original
 
@@ -588,7 +588,7 @@ You may encounter the following warning message at Perl startup:
 
 =end original
 
-Perl ��¹Ԥ����Ȥ��˰ʲ��Τ褦�ʥ�å������򸫤����Ȥ����뤫�⤷��ޤ���:
+Perl を実行したときに以下のようなメッセージを見たことがあるかもしれません:
 
 	perl: warning: Setting locale failed.
 	perl: warning: Please check that your locale settings:
@@ -610,20 +610,20 @@ fixes to these problems, as well as more thorough and lasting fixes.
 
 =end original
 
-����ϡ����ʤ��Υ�����������꤬��LC_ALL ����En_US�ɤǤ��� LANG ��
-¸�ߤ��Ƥ��뤬�ͤ���äƤ��ʤ��Ȥ������Ȥ��̣���ޤ���
-Perl�Ϥ��ʤ��򿮤��褦�Ȥ����ΤǤ����Ǥ��ʤ��ä��ΤǤ���
-��������ˡ�Perl �ϥ�����������򤢤����ơ��ǥե���ȤǤ���
-"C" �����������ä��ΤǤ���
-������̾�Ϥ��ʤ��Υ����������꤬�ְ�äƤ��뤻���Ǥ��ꡢʹ�������ȤΤʤ�
-��������Ǥ��ä��ꡢ���뤤�Ϥ��ʤ��Υ��󥹥ȡ�������꤬���ä��Τ�����
-(�㤨�С������Υ����ƥ�ե����뤬����Ƥ����Ȥ����ʤ��ä��Ȥ�)��
-�������ȤǤ���
-�ʲ��ǽҤ٤�Τϡ�����������ü���᤯���Ū�˽��������ΤǤ���
+これは、あなたのロケールの設定が、LC_ALL が“En_US”であり LANG が
+存在しているが値を持っていないということを意味します。
+Perlはあなたを信じようとしたのですができなかったのです。
+その代わりに、Perl はロケール設定をあきらめて、デフォルトである
+"C" ロケールに戻ったのです。
+これは通常はあなたのロケール設定が間違っているせいであり、聞いたことのない
+ロケールであったり、あるいはあなたのインストールに問題があったのだろう
+(例えば、一部のシステムファイルが壊れていたとか、なかったとか)と
+いうことです。
+以下で述べるのは、この問題を手っ取り早く一時的に修復するものです。
 
 =head2 Temporarily fixing locale problems
 
-(���Ū�˥�������������������)
+(一時的にロケールの問題を修正する)
 
 =begin original
 
@@ -632,8 +632,8 @@ locale inconsistencies or to run Perl under the default locale "C".
 
 =end original
 
-��Ĥ�(���Ū��)�б����Ȥϡ���������˴ؤ���̷���̵�뤹��褦��
-����Ȥ�����Τȡ�Perl ��ǥե���ȥ������� "C" �Ǽ¹Ԥ���Ȥ�����ΤǤ���
+二つの(一時的な)対応策とは、ロケールに関する矛盾を無視するように
+するというものと、Perl をデフォルトロケール "C" で実行するというものです。
 
 =begin original
 
@@ -645,13 +645,13 @@ be surprised if later something locale-dependent misbehaves.
 
 =end original
 
-Perl ��ư��������ϡ��Ķ��ѿ� PERL_BADLANG �˥��������Ȥ���
-"0" �����ꤹ�뤳�Ȥˤ�äƲ���Ǥ��ޤ���
-������ˡ������򥫡��ڥåȤβ��˲�����������Τ��ȤǤ�:
-�ĤޤꡢPerl �������ְ�ä����Ȥ򸫤Ĥ����Ȥ��Ƥ� Perl ��
-�ۤ餻�Ƥ����Ȥ�����ΤǤ���
-�⤷��ǥ�������˰�¸�����Ѥʿ����񤤤����ä��Ȥ��Ƥ�
-�ä��ʤ��Ǥ���������
+Perl 起動時の問題は、環境変数 PERL_BADLANG にゼロ、たとえば
+"0" を設定することによって回避できます。
+この方法は問題をカーペットの下に押し込むだけのことです:
+つまり、Perl が何か間違ったことを見つけたとしても Perl を
+黙らせておくというものです。
+もし後でロケールに依存した変な振る舞いがあったとしても
+驚かないでください。
 
 =begin original
 
@@ -670,22 +670,22 @@ alphabetically in your system is called).
 
 =end original
 
-�Ķ��ѿ� LC_ALL �� "C" �����ꤹ�뤳�Ȥˤ�ꡢPerl �ϥ������� "C" �β��Ǥ�
-�¹Ԥ��뤳�Ȥ��Ǥ��ޤ���
-���Τ������ PERL_BADLANG ����¿���ޤȤ�ʤ�ΤǤ���������Ǥ�
-LC_ALL (�⤷����¾�Υ��������ѿ�)�����ꤹ��Ȥ������Ȥ� Perl �ʳ���
-�ץ������ˤ�ƶ���ڤܤ��ޤ���
-�äˡ�Perl ����¦�Ǽ¹Ԥ���볰���ץ������Ϥ����ѹ��˱ƶ���
-�����뤳�Ȥˤʤ�ޤ���
-����������򹱵�Ū�ʤ�Τˤ������Ȥ����ΤǤ���С����ʤ����¹Ԥ���
-�ץ���������Ƥ������ѹ��˱ƶ�������뤳�Ȥˤʤ�ޤ���
-�ط�����Ķ��ѿ��δ����ʥꥹ�Ȥ� L<"ENVIRONMENT"> �򻲾Ȥ��Ƥ���������
-�ޤ���Perl �ˤ����뤽���θ��̤ˤĤ��Ƥ� L<USING LOCALES> ��
-���Ȥ��Ƥ���������
-¾�Υץ��������Ф���ƶ��ϴ�ñ���򤱤��ޤ���
-���Ȥ��С��ѿ� LC_COLLATE �Ϥ��ʤ��� B<sort> �ץ������
-(�⤷���ϡ֥쥳���ɡפ򥢥�ե��٥åȽ���¤��ؤ���ץ������)��
-�ƶ���ڤܤ��ޤ���
+環境変数 LC_ALL に "C" を設定することにより、Perl はロケール "C" の下でも
+実行することができます。
+このやり方は PERL_BADLANG よりは多少まともなものですが、それでも
+LC_ALL (もしくは他のロケール変数)を設定するということは Perl 以外の
+プログラムにも影響を及ぼします。
+特に、Perl の内側で実行される外部プログラムはこの変更に影響を
+受けることになります。
+新しい設定を恒久的なものにしたいというのであれば、あなたが実行する
+プログラム全てがこの変更に影響を受けることになります。
+関係する環境変数の完全なリストは L<"ENVIRONMENT"> を参照してください。
+また、Perl におけるそれらの効果については L<USING LOCALES> を
+参照してください。
+他のプログラムに対する影響は簡単に避けられます。
+たとえば、変数 LC_COLLATE はあなたの B<sort> プログラム
+(もしくは「レコード」をアルファベット順に並べ替えるプログラム)に
+影響を及ぼします。
 
 =begin original
 
@@ -696,12 +696,12 @@ Bourne-like shells (B<sh>, B<ksh>, B<bash>, B<zsh>):
 
 =end original
 
-�������ѿ����Ф����ѹ�����Ū�˹Ԥäƥƥ��Ȥ��뤳�Ȥ��Ǥ��ޤ���
-�����ƿ��������꤬�����ˤʤ��ΤǤ���Ф�������򥷥���Υ������ȥ��å�
-�ե�������ɲä���ΤǤ���
-�ܺ٤Ϥ��ʤ��λȤäƤ��륷���ƥ�Υɥ�����Ȥ�Ĵ�٤ƤߤƤ���������
-Bourne ������˻���������(B<sh>, B<ksh>, B<bash>, B<zsh>)�Ǥ����
-�ʲ��Τ褦�ˤʤ�ޤ�:
+これらの変数に対する変更を一時的に行ってテストすることができます。
+そして新しい設定が助けになるものであればその設定をシェルのスタートアップ
+ファイルに追加するのです。
+詳細はあなたの使っているシステムのドキュメントを調べてみてください。
+Bourne シェルに似たシェル(B<sh>, B<ksh>, B<bash>, B<zsh>)であれば
+以下のようになります:
 
 	LC_ALL=en_US.ISO8859-1
 	export LC_ALL
@@ -714,8 +714,8 @@ locale "En_US"--and in Cshish shells (B<csh>, B<tcsh>)
 
 =end original
 
-����ϡ����ޥ�ɤ����Ȥ����������� "en_US.ISO8859-1" �ˤ��Ƥ��ޤ���
-C������饤���ʤ��(B<csh>, B<tcsh>)�ξ��ˤϰʲ��Τ褦�ˤʤ�ޤ�:
+これは、コマンドが参照するロケールを "en_US.ISO8859-1" にしています。
+Cシェルライクなもの(B<csh>, B<tcsh>)の場合には以下のようになります:
 
 	setenv LC_ALL en_US.ISO8859-1
 
@@ -725,8 +725,8 @@ or if you have the "env" application you can do in any shell
 
 =end original
 
-���뤤�ϡ�"env" �ץ�����ब����ʤ顢�ɤΤ褦�ʥ�����Ǥ⡢�ʲ��Τ褦��
-�񤱤ޤ�:
+あるいは、"env" プログラムがあるなら、どのようなシェルでも、以下のように
+書けます:
 
 	env LC_ALL=en_US.ISO8859-1 perl ...
 
@@ -737,12 +737,12 @@ helpdesk or the equivalent.
 
 =end original
 
-���ʤ���������ˤĤ����ɤ��Τ�ʤ��Ȥ����ΤǤ���С�
-���ʤ��Τ����ФΥإ�ץǥ������˿֤ͤƤߤƤ���������
+あなたがシェルについて良く知らないというのであれば、
+あなたのおそばのヘルプデスク等に訊ねてみてください。
 
 =head2 Permanently fixing locale problems
 
-(�������������򹱵�Ū�˽�������)
+(ロケールの問題を恒久的に修正する)
 
 =begin original
 
@@ -753,10 +753,10 @@ the help of your friendly system administrator.
 
 =end original
 
-���֤Ϥ����뤱��ɤ�ͥ�줿������ˡ�ϡ����ʤ��δĶ��δְ�äƤ�����ʬ��
-����������Ȥ�����ΤǤ���
-�����ƥ����ΤǤδְ㤤�Ϥ��ʤ��λȤäƤ��륷���ƥ�Ρ��ե��ɥ꡼��
-�����Ԥν�����ɬ�פȤ���Ǥ��礦��
+時間はかかるけれども優れた修正方法は、あなたの環境の間違っている部分を
+正しくするというものです。
+システム全体での間違いはあなたの使っているシステムの、フレンドリーな
+管理者の助けを必要とするでしょう。
 
 =begin original
 
@@ -770,15 +770,15 @@ error message.  First try fixing locale settings listed first.
 
 =end original
 
-�ޤ��ǽ�ˤ��Υɥ�����Ȥ� L<Finding locales> �򻲾Ȥ��Ƥ���������
-�����ˤϤ��ʤ��λȤ������ƥ�Ǽºݤ˥��ݡ��Ȥ���Ƥ���������롢
-�����Ƥ�äȽ��פʥ��󥹥ȡ��뤵��Ƥ����������򸫤Ĥ�������ˡ��
-���⤵��Ƥ��ޤ���
-�䤿�����Ȥä����顼��å���������Ǥϡ��Ķ��ѿ��Ͻ����٤ι⤤��Τ���
-�㤤��ΤؤȤ�����ˤʤäƤ��ޤ���
-�������äơ�LC_ALL �� "En_US" �����ꤹ�뤳�Ȥ��ɤ��ʤ�����Ǥ��ꡢ
-����ϥ��顼��å������ˤ⸽��Ƥ��ޤ���
-�ޤ��ǽ�˥ꥹ�Ȥκǽ�ˤ��������������������ޤ���
+まず最初にこのドキュメントの L<Finding locales> を参照してください。
+そこにはあなたの使うシステムで実際にサポートされているロケール、
+そしてもっと重要なインストールされているロケールを見つけだす方法が
+解説されています。
+私たちが使ったエラーメッセージの例では、環境変数は重要度の高いものから
+低いものへという順になっています。
+したがって、LC_ALL を "En_US" に設定することは良くない選択であり、
+これはエラーメッセージにも現れています。
+まず最初にリストの最初にあるロケール設定を修正します。
 
 =begin original
 
@@ -790,16 +790,16 @@ In this case, see L<Permanently fixing your system's locale configuration>.
 
 =end original
 
-���ˡ��⤷���ʤ����ꥹ�ȥ��åפΥ��ޥ�ɤ�Ȥä�������Τ�
-B<���Τ�> "En_US" �Τ褦�ʤ��(��Ƭ���ΰ��פϹ�θ�������羮ʸ���ΰ㤤��
-��θ���ޤ�)�Ǥ���С����ʤ����ȤäƤ����������̾���б������Τ�
-�����ƥ�����������󥹥ȡ��뤵��Ƥ���� OK �Ǥ���
-���ξ�硢L<Permanently fixing your system's locale configuration> ��
-���Ȥ��Ƥ���������
+次に、もしあなたがリストアップのコマンドを使って得たものが
+B<正確に> "En_US" のようなもの(接頭辞の一致は考慮せず、大小文字の違いは
+考慮します)であれば、あなたが使っているロケール名に対応するものが
+システムに正しくインストールされていれば OK です。
+この場合、L<Permanently fixing your system's locale configuration> を
+参照してください。
 
 =head2 Permanently fixing your system's locale configuration
 
-(���ʤ��Υ����ƥ�Υ�����������򹱵�Ū�˽�������)
+(あなたのシステムのロケール設定を恒久的に修正する)
 
 =begin original
 
@@ -807,7 +807,7 @@ This is when you see something like:
 
 =end original
 
-����ϰʲ��Τ褦�ʥ�å��������Ф�����ɤ�:
+これは以下のようなメッセージが出たけれども:
 
 	perl: warning: Please check that your locale settings:
 	        LC_ALL = "En_US",
@@ -826,18 +826,18 @@ L<Finding locales> about general rules.
 
 =end original
 
-"En_US" ����˵󤲤����ޥ�ɤˤ�äƥꥹ����ˤʤ��ä����Ǥ���
-"en_US.ISO8859-1" �Τ褦�ʤ�Τ򸫤������Τ�ޤ��󤬡��ޤä���
-Ʊ��Τ�ΤǤϤʤ��ä��ΤǤ��礦��
-���ξ�硢���ޥ�ɤǵ󤲤�줿��ΰ��פ�����������
-�¹Ԥ��ƤߤƤ���������
-��������̾�Υޥå��󥰥롼��Ͼ����Ϥä��ꤷ�ʤ���ΤǤ���
-����ϡ�����ʬ��˴ؤ���ɸ�ब�夤��ΤǤ��뤫��Ǥ���
-����Ū�ʥ롼��ˤĤ��Ƥ� L<Finding locales> ��⤦���ٸ��Ƥ���������
+"En_US" が先に挙げたコマンドによってリスト中になかった場合です。
+"en_US.ISO8859-1" のようなものを見たかも知れませんが、まったく
+同一のものではなかったのでしょう。
+この場合、コマンドで挙げられたもの一致するロケールで
+実行してみてください。
+ロケール名のマッチングルールは少々はっきりしないものです。
+それは、この分野に関する標準が弱いものであるからです。
+一般的なルールについては L<Finding locales> をもう一度見てください。
 
 =head2 Fixing system locale configuration
 
-(�����ƥ�Υ������������������)
+(システムのロケール設定を修正する)
 
 =begin original
 
@@ -850,16 +850,16 @@ because these things are not that standardized.
 
 =end original
 
-�����ƥ�����Ԥ˥��󥿥��Ȥ�Ȥäơ����ʤ����������顼��å��������Τޤޤ�
-��ݡ��Ȥ��ơ��������ޤ��ɤ�Ǥ������Ȥ��������Ƥ���������
-�����ƥ�����Ԥϥ����ƥ�Υ�����������ˤĤ��Ƥɤ����ɤ��ְ�äƤ��뤫��
-����Ǥ���Ϥ��Ǥ���
-ɸ�ಽ���ʤ���Ƥ��ʤ��Τǡ����ޥ��̾�ʤɤ˴ؤ��� L<Finding locales> ��
-�Ϥϻ�ǰ�ʤ��龯������դ�ʤ�ΤˤʤäƤ��ޤ���
+システム管理者にコンタクトをとって、あなたの得たエラーメッセージそのままを
+レポートして、今ここまで読んできたことを説明してください。
+システム管理者はシステムのロケール設定についてどこがどう間違っているかを
+理解できるはずです。
+標準化がなされていないので、コマンド名などに関して L<Finding locales> の
+章は残念ながら少々あやふやなものになっています。
 
 =head2 The localeconv function
 
-(localeconv �ؿ�)
+(localeconv 関数)
 
 =begin original
 
@@ -871,11 +871,11 @@ with a single parameter--see L<The setlocale function>.)
 
 =end original
 
-POSIX::localeconv() �ؿ��ϡ������Ȥ� C<LC_NUMERIC> �� C<LC_MONETARY> ��
-���ꤵ�����������¸�ο��ͽ񼰤ξ������Ф��ޤ�(���������
-���ƥ��꡼�Υ����ȥ���������Τꤿ�������ʤΤʤ顢
-POSIX::setlocale() �������ĤǻȤ��ޤ���
-L<The setlocale function> �򻲾Ȥ��Ƥ�������)��
+POSIX::localeconv() 関数は、カレントの C<LC_NUMERIC> や C<LC_MONETARY> で
+指定されるロケール依存の数値書式の情報を取り出します(ある特定の
+カテゴリーのカレントロケールを知りたいだけなのなら、
+POSIX::setlocale() を引数一つで使います。
+L<The setlocale function> を参照してください)。
 
         use POSIX qw(locale_h);
 
@@ -900,16 +900,16 @@ current locale.
 
 =end original
 
-localeconv() �ϰ������餺������ͤȤ��ƥϥå�����Ф���
-B<��ե����> ���֤��ޤ���
-���Υϥå���Υ����� C<decimal_point> �� C<thousands_sep> �Τ褦��
-�������줿�ѿ�̾�Ǥ��ꡢ��Ǽ����Ƥ����ͤϤ��Υ������б������ͤǤ���
-����������󶡤��Ƥ���Ǥ��������٤ƤΥ��ƥ��꡼��ꥹ�ȥ��åפ��Ƥ���
-Ĺ������ץ�� L<POSIX/localeconv> �򻲾Ȥ��Ƥ���������
-�������ʤ��顢�����Τ�Τ�¿���ä��꾯�ʤ��ä����뤫�⤷��ޤ���
-����������䤤��碌�른��֤δؿ��Τ褦�� C<use locale> ����ɬ�פ�
-�ʤ����Ȥ����դ��Ƥ���������
-localeconv() �Ͼ�˥����ȤΥ��������ƻ뤷�Ƥ��ޤ���
+localeconv() は引数を取らず、戻り値としてハッシュに対する
+B<リファレンス> を返します。
+このハッシュのキーは C<decimal_point> や C<thousands_sep> のように
+整形された変数名であり、格納されている値はそのキーに対応する値です。
+ある実装が提供しているであろうすべてのカテゴリーをリストアップしている
+長いサンプルは L<POSIX/localeconv> を参照してください。
+しかしながら、一部のものが多かったり少なかったするかもしれません。
+ロケールを問い合わせるジョブの関数のように C<use locale> する必要が
+ないことに注意してください。
+localeconv() は常にカレントのロケールを監視しています。
 
 =begin original
 
@@ -918,8 +918,8 @@ parameters as integers correctly formatted in the current locale:
 
 =end original
 
-�ʲ�����ϡ����ޥ�ɥ饤����Ϥ��줿�ѥ�᡼�����򥫥��ȤΥ�������ˤ�����
-�������񼰤˽񤭤ʤ����Ȥ�����ΤǤ���
+以下の例は、コマンドラインで渡されたパラメーターをカレントのロケールにおける
+正しい書式に書きなおすというものです。
 
         # See comments in previous example
         require 5.004;
@@ -953,14 +953,14 @@ parameters as integers correctly formatted in the current locale:
 
 =end original
 
-	# grouping �� mon_grouping �Ͼ������Υѥå��Ѥߥꥹ�Ȥˤʤä�
-	# ���ޤ��������grouping (thousand_seps �� mon_thousand_seps
-	# �ϥ��롼�פ�ʬ�����ΤǤ�)�ο��ȶ����˴ؤ����Τλ����
-	# �ԤäƤ��ޤ������������ΰ�̣�Ϥ����Ǥ�: 255�ϥ��롼�ԥ�
-	# ���ʤ����Ȥ��̣���ޤ���1����254�ϥ����ȤΥ��롼�ԥ󥰤�
-	# ���Ѥ�����ͤ��̣���ޤ������롼�ԥ󥰤ϱ����麸��(���̷夫��
-	# ��̷�)��Ŭ�Ѥ���ޤ���������ǤϺǽ�Υ��롼�ԥ󥰰ʳ���
-	# �Ȥ�ʤ����Ȥˤ�äƤ�����򤱤Ƥ��ޤ���
+	# grouping と mon_grouping は小整数のパック済みリストになって
+	# います。これはgrouping (thousand_seps と mon_thousand_seps
+	# はグループを分けるものです)の数と金銭に関するものの指定を
+	# 行っています。その整数の意味はこうです: 255はグルーピング
+	# しないことを意味します。1から254はカレントのグルーピングで
+	# 使用する数値を意味します。グルーピングは右から左へ(下位桁から
+	# 上位桁)と適用されます。下の例では最初のグルーピング以外は
+	# 使わないことによってこれを避けています。
 	if ($grouping) {
 	    @grouping = unpack("C*", $grouping);
 	} else {
@@ -986,9 +986,9 @@ systems and VMS.
 
 =end original
 
-���������¸�ξ�����䤤��碌�뤽��¾�Υ��󥿡��ե������Ȥ��Ƥ�
-I18N::Langinfo::langinfo() �ؿ������ꡢ���ʤ��Ȥ� UNIX ���Υ����ƥ��
-VMS �����Ѳ�ǽ�Ǥ���
+ロケール依存の情報を問い合わせるその他のインターフェースとしては
+I18N::Langinfo::langinfo() 関数があり、少なくとも UNIX 風のシステムと
+VMS で利用可能です。
 
 =begin original
 
@@ -1000,10 +1000,10 @@ answers for a yes/no question in the current locale.
 
 =end original
 
-�ʲ������ langinfo() �ؿ����Ȥȡ� langinfo() �ΰ����Ȥ��ƻȤ� 3 �Ĥ�
-����򥤥�ݡ��Ȥ��ޤ�: 1 �Ĥϸ��ߤΥ�������Ǥν��κǽ�����ξ�ά��
-(�ֹ��������=1�Ȥ��ƿ����Ƥ��ޤ�)����� 2 �ĤϤϤ�/�������μ����
-�Ф��Ƥι��ꤪ�������򸽺ߤΥ��������ɽ����ΤǤ���
+以下の例は langinfo() 関数自身と、 langinfo() の引数として使う 3 つの
+定数をインポートします: 1 つは現在のロケールでの週の最初の日の省略形
+(番号は日曜日=1として振られています)、後の 2 つははい/いいえの質問に
+対しての肯定および否定を現在のロケールで表すものです。
 
     use I18N::Langinfo qw(langinfo ABDAY_1 YESSTR NOSTR);
 
@@ -1018,8 +1018,8 @@ print something like:
 
 =end original
 
-����������ȡ�"C" (�ޤ��� English) ��������ǤϾ嵭�Τ�ΤϤ����餯
-�ʲ��Τ褦�ʤ�Τ�ɽ������ޤ�:
+言い換えると、"C" (または English) ロケールでは上記のものはおそらく
+以下のようなものが表示されます:
 
     Sun? [yes/no] 
 
@@ -1029,11 +1029,11 @@ See L<I18N::Langinfo> for more information.
 
 =end original
 
-����ʤ����ˤĤ��Ƥ� L<I18N::Langinfo> �򻲾Ȥ��Ƥ���������
+さらなる情報については L<I18N::Langinfo> を参照してください。
 
 =head1 LOCALE CATEGORIES
 
-(�������륫�ƥ��꡼)
+(ロケールカテゴリー)
 
 =begin original
 
@@ -1043,14 +1043,14 @@ basic category at a time.  See L<"ENVIRONMENT"> for a discussion of these.
 
 =end original
 
-�ʲ��Υ��������Ǥϡ�����Ū�ʥ������륫�ƥ��꡼�������򤷤ޤ���
-�����Τ褦�ˡ�ʣ���δ��ܥ��ƥ��꡼�򰷤����Ȥ��Ǥ�����Ĥ���
-�Ȥ߹�碌���ƥ��꡼(combination categories)������ޤ���
-���λ��˴ؤ���ܺ٤ϡ�L<"ENVIRONMENT"> �򻲾Ȥ��Ƥ���������
+以下のセクションでは、基本的なロケールカテゴリーの説明をします。
+先の例のように、複数の基本カテゴリーを扱うことができる幾つかの
+組み合わせカテゴリー(combination categories)があります。
+この事に関する詳細は、L<"ENVIRONMENT"> を参照してください。
 
 =head2 Category LC_COLLATE: Collation
 
-(���ƥ��꡼ LC_COLLATE: �ȹ�)
+(カテゴリー LC_COLLATE: 照合)
 
 =begin original
 
@@ -1062,12 +1062,12 @@ alphabets, but where do 'E<aacute>' and 'E<aring>' belong?  And while
 
 =end original
 
-S<C<use locale>> �Υ������פ���¦�ˤ���Ȥ���Perl �ϥ��ץꥱ��������
-���Ѥ���ʸ���ξȹ�(����)����ꤹ�뤿��˴Ķ��ѿ� C<LC_COLLATE> ��
-���Ȥ��ޤ�(��ƥ󥢥�ե��٥åȤǤ� 'b' �� 'a' ��³����ΤǤ�����
-'E<aacute>' �� 'E<aring>' �Ϥɤ����֤����ΤǤ��礦?)��
-�ޤ����Ѹ�Ǥ� 'color' �� 'chocolate' �����ˤʤ�ޤ��������ڥ����Ǥ�
-�ɤ��Ǥ��礦?
+S<C<use locale>> のスコープの内側にあるとき、Perl はアプリケーションで
+使用する文字の照合(順番)を決定するために環境変数 C<LC_COLLATE> を
+参照します(ラテンアルファベットでは 'b' は 'a' に続くものですが、
+'E<aacute>' や 'E<aring>' はどこに置かれるのでしょう?)。
+また、英語では 'color' は 'chocolate' よりも後になりますが、スペイン語では
+どうでしょう?
 
 =begin original
 
@@ -1076,8 +1076,8 @@ if you "use locale".
 
 =end original
 
-�ʲ��ξȹ�����ư�̣�����ΤǤ��ꡢ"use locale" �򤹤��ľ�̤��뤳�Ȥ�
-����Ǥ��礦��
+以下の照合は全て意味あるものであり、"use locale" をすれば直面することも
+あるでしょう。
 
 	A B C D E a b c d e
 	A a B b C c D d E e
@@ -1091,8 +1091,8 @@ characters are in the current locale, in that locale's order:
 
 =end original
 
-�ʲ��Υ������Ҥϥ����ȤΥ�������ˤ�����ѿ�ʸ���򤽤Υ�������Ǥ�
-����ǽ��Ϥ����ΤǤ���
+以下のコード片はカレントのロケールにおける英数文字をそのロケールでの
+順序で出力するものです。
 
         use locale;
         print +(sort grep /\w/, map { chr } 0..255), "\n";
@@ -1104,8 +1104,8 @@ state explicitly that the locale should be ignored:
 
 =end original
 
-����ȡ��ۤ˥��������̵�뤹��褦�˻ؼ������Ȥ��Υ���饯�����Ȥ�
-��Ӥ��ƤߤƤ���������
+これと、陽にロケールを無視するように指示したときのキャラクターとを
+比較してみてください。
 
         no locale;
         print +(sort grep /\w/, map { chr } 0..255), "\n";
@@ -1119,9 +1119,9 @@ first example is useful for natural text.
 
 =end original
 
-���Ρ��ޥ�������ξȹ�(Ʊ���֥��å������Τۤ��� S<C<use locale>> ��
-���Ƥ��ʤ���)�����ΥХ��ʥ�ǡ����Υ����Ȥ��Ѥ����Τǡ�
-�ǽ����ǻȤä����������¸�ξȹ���̾�Υƥ����Ȥ˻Ȥ��Τ������Ǥ���
+この、マシン本来の照合(同じブロックの前のほうで S<C<use locale>> を
+していない方)は生のバイナリデータのソートに用いるもので、
+最初の例で使ったロケール依存の照合は通常のテキストに使うのに便利です。
 
 =begin original
 
@@ -1132,10 +1132,10 @@ can use POSIX::strcoll() if you don't want this fall-back:
 
 =end original
 
-L<USING LOCALES> �ǽҤ٤��褦�ˡ�C<cmp> �� C<use locale> ��ͭ���ʤȤ��ˤ�
-�����Ȥξȹ��������˽��ä���Ӥ�Ԥ��ޤ�����
-���η�̤��������ȽФ����ˤ�ʸ�������Ӥ˵���ꤷ�ޤ���
-���ε���꤬���ʤ�С�POSIX::strcoll() ��Ȥ����Ȥ��Ǥ��ޤ���
+L<USING LOCALES> で述べたように、C<cmp> は C<use locale> が有効なときには
+カレントの照合ロケールに従って比較を行いますが、
+この結果が等しいと出た場合には文字毎の比較に逆戻りします。
+この逆戻りが嫌ならば、POSIX::strcoll() を使うことができます。
 
         use POSIX qw(strcoll);
         $equal_in_locale =
@@ -1149,9 +1149,9 @@ which folds case.
 
 =end original
 
-$equal_in_locale �Ͼȹ�������뤬���򥭥�饯��������̵�뤷��
-�羮ʸ���ζ��̤�̵�뤹��褦�ʼ���˻�������դ���
-���ꤷ�Ƥ�����ˤϿ��ˤʤ�Ǥ��礦��
+$equal_in_locale は照合ロケールが空白キャラクタを完全に無視し、
+大小文字の区別を無視するような辞書に似た順序付けを
+指定している場合には真になるでしょう。
 
 =begin original
 
@@ -1161,9 +1161,9 @@ efficiency by using POSIX::strxfrm() in conjunction with C<eq>:
 
 =end original
 
-�֥�������ˤ������������פθ�����¾�Τ�Τ��Ф��ƹԤ�����(��Ĥ�)
-ʸ���󤬤���Ȥ��ˤ��ʤ��ϡ�POSIX::strxfrm() �� C<eq> �Ȱ���
-�Ȥ����Ȥˤ�ä�¿���θ�Ψ���åפ��Ǥ���ȹͤ��뤫�⤷��ޤ���
+「ロケールにおける等価性」の検査を他のものに対して行いたい(一つの)
+文字列があるときにあなたは、POSIX::strxfrm() を C<eq> と一緒に
+使うことによって多少の効率アップができると考えるかもしれません。
 
         use POSIX qw(strxfrm);
         $xfrm_string = strxfrm("Mixed-case string");
@@ -1195,26 +1195,26 @@ directly: let Perl do it for you.
 
 =end original
 
-strxfrm() ��ʸ���������ˤȤꡢ�����Ʊ�ͤ��Ѵ���ä���줿ʸ����Ȥ�
-ʸ�������Ӥ˻Ȥ���褦��ʸ������Ѵ����ޤ���
-�֥ա��ɤ���Ǥϡס���������˱ƶ����줿 Perl ����ӱ黻�Ҥ� 
-strxfrm() ��ξ���ڥ��ɤΤ���˸ƤӽФ��ơ����θ��ʸ�������Ӥ�
-�Ѵ����줿ʸ������Ф��ƹԤ��ޤ���
-strxfrm() ���ۤ˸ƤӽФ����Ȥȥ�������˱ƶ�����ʤ���Ӥ�Ԥ����Ȥǡ�
-�嵭������Ѵ��򥻡��֤���褦�ˤʤ�ޤ���
-�ºݤˤϤ���ϲ��⥻���֤��ޤ���
-Perl ����ˡ(L<perlguts/Magic Variables> �򻲾�)�ϡ���Ӥκݤ�ɬ�פǤ����
-�ǽ���Ѵ����줿ʸ����������������줫�餽�줬�Ƥ�ɬ�פˤʤ�ޤ�
-��äƤ����ΤǤ���
-C<cmp> ��Ȥäƽ�ľ��������ץ�ϲ�ǽ�ʸ¤��᤯�¹Ԥ���ޤ���
-�ޤ���ʸ����������ޤ�Ƥ���ʥ륭��饯�����ˤ��н褷�ޤ���
-strxfrm() ��ľ�ܸƤӽФ�����硢�ʥ�Ͻ�ü�ҤȤ��Ƥߤʤ���ޤ���
-�����ơ��Ѵ����ʸ���󤬥����ƥ��ۤ��ƻȤ���褦�ʤ�ΤǤ����
-���Ԥ��ƤϤ����ޤ���
-�ޤ������륪�ڥ졼�ƥ��󥰥����ƥ�ΥС������Ǻ�ä���Τ�����
-�С������Ǥ�Ʊ�ͤǤ���Ȥ������Ȥ���Ԥ��ƤϤ����ޤ���
-����Ǥ����ȡ�strxfrm() ��ľ�ܸƤӽФ��ƤϤ����ʤ����Ȥ������ȤǤ���
-Perl�˸ƤӽФ��򤵤��ޤ��礦��
+strxfrm() は文字列を引数にとり、それを同様の変換を加えられた文字列との
+文字毎の比較に使えるような文字列に変換します。
+「フードの中では」、ロケールに影響された Perl の比較演算子は 
+strxfrm() を両オペランドのために呼び出して、その後で文字毎の比較を、
+変換された文字列に対して行います。
+strxfrm() を陽に呼び出すこととロケールに影響されない比較を行うことで、
+上記の例は変換をセーブするようになります。
+実際にはこれは何もセーブしません。
+Perl の魔法(L<perlguts/Magic Variables> を参照)は、比較の際に必要であれば
+最初に変換された文字列を生成し、それからそれが再び必要になるまで
+取っておくのです。
+C<cmp> を使って書き直したサンプルは可能な限り早く実行されます。
+また、文字列に埋め込まれているナルキャラクターにも対処します。
+strxfrm() を直接呼び出した場合、ナルは終端子としてみなされます。
+そして、変換後の文字列がシステムを越えて使えるようなものであると
+期待してはいけません。
+また、あるオペレーティングシステムのバージョンで作ったものが次の
+バージョンでも同様であるということも期待してはいけません。
+一言でいうと、strxfrm() を直接呼び出してはいけない、ということです。
+Perlに呼び出しをさせましょう。
 
 =begin original
 
@@ -1224,13 +1224,13 @@ results, and so always obey the current C<LC_COLLATE> locale.
 
 =end original
 
-����: ���Ĥ��Υ���ץ�Ǥϡ�ɬ�פ��ʤ��Τ� C<use locale> ������ޤ���
-strcoll() �� strxfm() �ϥ��������¸�η�̤����������ޤ���Τǡ�
-��� C<LC_COLLATE> ��������򻲾Ȥ���ΤǤ���
+注意: 幾つかのサンプルでは、必要がないので C<use locale> がありません。
+strcoll() や strxfm() はロケール依存の結果しか生成しませんので、
+常に C<LC_COLLATE> ロケールを参照するのです。
 
 =head2 Category LC_CTYPE: Character Types
 
-(���ƥ��꡼ LC_CTYPE: ʸ��������)
+(カテゴリー LC_CTYPE: 文字タイプ)
 
 =begin original
 
@@ -1246,14 +1246,14 @@ setting, characters like 'E<aelig>', 'E<eth>', 'E<szlig>', and
 
 =end original
 
-S<C<use locale>> �Υ������פˤ���Ȥ���Perl �� C<LC_CTYPE> ���������
-����˽����ޤ���
-����ϡ����ץꥱ�������αѻ����ɤ����ΰ��������椷�ޤ���
-����ϡ��ѿ��� -- �Ĥޤꡢ�ѻ�������������Ӳ�����ϥ��ե�ȸ��ä����̤�
-ʸ����ޤߤޤ� --�˴ؤ������ɽ���Υ᥿ɽ�� C<\w> �˱ƶ����ޤ���
-(����ɽ���˴ؤ��뤵��ʤ����ˤĤ��Ƥ� L<perlre> �򻲾Ȥ��Ƥ�������)��
-C<LC_CTYPE> �Τ������ǡ�������������˰�¸���� 'E<aelig>', 'E<eth>',
-'E<szlig>', 'E<oslash>' �Τ褦��ʸ���� C<\w> ʸ���Ȥ���ǧ���Ǥ���ΤǤ���
+S<C<use locale>> のスコープにあるとき、Perl は C<LC_CTYPE> ロケールの
+設定に従います。
+これは、アプリケーションの英字かどうかの扱いを制御します。
+これは、英数字 -- つまり、英字、数字、および下線やハイフンと言った特別な
+文字を含みます --に関わる正規表現のメタ表記 C<\w> に影響します。
+(正規表現に関するさらなる情報については L<perlre> を参照してください)。
+C<LC_CTYPE> のおかげで、ロケール設定に依存した 'E<aelig>', 'E<eth>',
+'E<szlig>', 'E<oslash>' のような文字が C<\w> 文字として認識できるのです。
 
 =begin original
 
@@ -1266,13 +1266,13 @@ pattern matching using the C<i> modifier.
 
 =end original
 
-C<LC_CTYPE> ��������Ϥޤ�����ʸ������ʸ���Ȥδ֤�����Ѵ��˻Ȥ���
-�ޥåԥ󥰤��󶡤��ޤ���
-�������ʸ����ʸ���Ѵ��ؿ� lc(), lcfirst, uc(), 
-ucfirst() �ȥ��֥륯�����ȤǰϤޤ줿ʸ�������Ǥ� C<\l>, C<\L>, 
-C<\u>, <\U> �ˤ����ʸ����ʸ���Ѵ��������� C<s///> �ˤ���ִ���
-C<i> �����Ҥ�Ȥä�(�羮ʸ����̵�뤹��)����ɽ���ѥ�����ޥå��󥰤�
-�ƶ���ڤܤ��ޤ���
+C<LC_CTYPE> ロケールはまた、小文字と大文字との間の相互変換に使われる
+マッピングを提供します。
+これは大文字小文字変換関数 lc(), lcfirst, uc(), 
+ucfirst() とダブルクォートで囲まれた文字列の中での C<\l>, C<\L>, 
+C<\u>, <\U> による大文字小文字変換、そして C<s///> による置換、
+C<i> 修飾子を使った(大小文字を無視する)正規表現パターンマッチングに
+影響を及ぼします。
 
 =begin original
 
@@ -1283,11 +1283,11 @@ to your surprise--that "|" moves from the ispunct() class to isalpha().
 
 =end original
 
-����ˡ�C<LC_CTYPE> �� POSIX �Υ���饯�����饹�ƥ��ȴؿ���isalpha(), 
-islower() �ʤɤˤ�ƶ���ڤܤ��ޤ���
-���Ȥ��С���C�ɥ�������� 7 �ӥåȤΥ����󥸥ʥӥ��Τ�Τˤ����Ȥ���ȡ�
-¿ʬ���ʤ��϶ä����Ȥˤʤ�Ǥ��礦����"|"  �� ispunct() ���饹����
-isalpha() ���饹�˰�ư����ΤǤ���
+さらに、C<LC_CTYPE> は POSIX のキャラクタクラステスト関数、isalpha(), 
+islower() などにも影響を及ぼします。
+たとえば、“C”ロケールを 7 ビットのスカンジナビアのものにしたとすると、
+多分あなたは驚くことになるでしょうが、"|"  が ispunct() クラスから
+isalpha() クラスに移動するのです。
 
 =begin original
 
@@ -1299,16 +1299,16 @@ should use C<\w> inside a C<no locale> block.  See L<"SECURITY">.
 
 =end original
 
-B<����:> ���줿�����뤤�ϰ��դΤ��� C<LC_CTYPE> �������������ϡ�
-��Ŭ�ڤʥ���饯������ѿ����Ǥ���Ȥߤʤ��Ƥ��ޤ���ǽ��������ޤ���
-(��������ȵ���Τʤ�)ʸ��������θ�̩�ʥޥå��󥰡��㤨�Х��ޥ��ʸ�����
-��������򵤤ˤ��륢�ץꥱ�������� C<no locale> �֥��å�����¦��
-C<\w> ��Ȥ��٤��Ǥ���
-L<"SECURITY"> �򻲾Ȥ��Ƥ���������
+B<注意:> 壊れた、あるいは悪意のある C<LC_CTYPE> ロケールの定義は、
+不適切なキャラクターを英数字であるとみなしてしまう可能性があります。
+(アクセント記号のない)文字や数字の厳密なマッチング、例えばコマンド文字列の
+ロケールを気にするアプリケーションは C<no locale> ブロックの内側で
+C<\w> を使うべきです。
+L<"SECURITY"> を参照してください。
 
 =head2 Category LC_NUMERIC: Numeric Formatting
 
-(���ƥ��꡼ LC_NUMERIC: ���ͷ���)
+(カテゴリー LC_NUMERIC: 数値形式)
 
 =begin original
 
@@ -1323,15 +1323,15 @@ so on. (See L<The localeconv function> if you care about these things.)
 
 =end original
 
-Ŭ�ڤ� POSIX::setlocale() �ƤӽФ��θ塢Perl �� C<LC_NUMERIC> 
-�����������򻲾Ȥ��ޤ���
-����ϥ��ץꥱ������� printf(), sprintf(), write() �Ȥ��ä��ؿ���
-�Ȥä��Ȥ��˿��ͤ�ɤΤ褦���������뤫�Ȥ������Ȥ����椹���ΤǤ���
-ʸ���󤫤���ͤؤ��Ѵ��ˤϡ��ؿ� POSIX::strtod() ��ƶ���ڤܤ��ޤ���
-����ʬ�μ����Ǥϡ���������ɽ�魯����饯������ '.'  ���� ',' �ؤ�
-�ѹ���������θ��̤�������ޤ���
-�����δؿ��ϻ�����ζ��ڤ�ʤɤˤĤ��ƤϹ�θ���ޤ���(���λ��ˤĤ���
-���ۤ�����Τʤ� L<The localeconv function> �򻲾Ȥ��Ƥ�������)��
+適切な POSIX::setlocale() 呼び出しの後、Perl は C<LC_NUMERIC> 
+ロケール情報を参照します。
+これはアプリケーションが printf(), sprintf(), write() といった関数を
+使ったときに数値をどのように整形するかということを制御するものです。
+文字列から数値への変換には、関数 POSIX::strtod() も影響を及ぼします。
+大部分の実装では、小数点を表わすキャラクターを '.'  から ',' へと
+変更するだけの効果しかありません。
+これらの関数は三桁毎の区切りなどについては考慮しません(この事について
+心配があるのなら L<The localeconv function> を参照してください)。
 
 =begin original
 
@@ -1342,9 +1342,9 @@ string formats:
 
 =end original
 
-print() �ˤ���������줿���Ϥ⥫���ȥ�������αƶ�������ޤ�:
-����� "C" ��������� printf ��Ȥä��Ȥ��η�̤��б����ޤ���
-Perl �Ρ����ͤ�ʸ����Ȥδ֤�����Ū���Ѵ��Ϥ����Ʊ���Ǥ���
+print() により生成された出力もカレントロケールの影響を受けます:
+これは "C" ロケールで printf を使ったときの結果に対応します。
+Perl の、数値と文字列との間の内部的な変換はこれと同じです。
 
         use POSIX qw(strtod setlocale LC_NUMERIC);
 
@@ -1367,11 +1367,11 @@ See also L<I18N::Langinfo> and C<RADIXCHAR>.
 
 =end original
 
-L<I18N::Langinfo> �� C<RADIXCHAR> �⻲�Ȥ��Ƥ���������
+L<I18N::Langinfo> と C<RADIXCHAR> も参照してください。
 
 =head2 Category LC_MONETARY: Formatting of monetary amounts
 
-(���ƥ��꡼ LC_MONETARY: �����ν�)
+(カテゴリー LC_MONETARY: 金銭の書式)
 
 =begin original
 
@@ -1388,18 +1388,18 @@ to crack.
 
 =end original
 
-ɸ�� C �Ǥ� C<LC_MONETARY> ���ƥ��꡼��������Ƥ��ޤ������������Ƥ�
-�ƶ������ؿ��Ϥ���ޤ���
-(���ʰѰ���ηи��ˤ�äơ������ϥ���󥰥��롼�פ����������
-����Ф����Ȥ˷�᤿���Ȥ�ǧ�������ΤǤ��礦��)
-��̤Ȥ��ơ�Perl �Ϥ�������դ�ʧ���ޤ���
-�⤷������ C<LC_MONETARY> ��Ȥ�������С���ʬ�Ǥ������Ƥ�
-�䤤��碌�뤳�Ȥ��Ǥ��ޤ���
-(L<The localeconv function> �򻲾Ȥ��Ƥ�������)��
-�������֤äƤ�������򥢥ץꥱ���������̲��̤������˻Ȥ��ޤ���
-�����������ξ����������뤳�ȤϤǤ���Ǥ��礦�������̤���ʣ���ǡ�
-�׵���Ф��������ˤ��ä���ΤǤϤʤ��Ǥ��礦��
-�����˴ؤ���񼰤ϼ�ˤ����ʤ���ʪ�ʤΤǤ���
+標準 C では C<LC_MONETARY> カテゴリーを定義していますが、その内容に
+影響される関数はありません。
+(規格委員会の経験によって、それらはワーキンググループがこの問題を
+蹴り出すことに決めたことを認識したのでしょう。)
+結果として、Perl はこれに注意を払いません。
+もし本当に C<LC_MONETARY> を使いたければ、自分でその内容を
+問い合わせることができます。
+(L<The localeconv function> を参照してください)。
+そして返ってきた情報をアプリケーションの通貨量の整形に使います。
+しかし、この情報を取得することはできるでしょうが、大量かつ複雑で、
+要求に対して本当にあったものではないでしょう。
+金銭に関する書式は手におえない代物なのです。
 
 =begin original
 
@@ -1407,7 +1407,7 @@ See also L<I18N::Langinfo> and C<CRNCYSTR>.
 
 =end original
 
-L<I18N::Langinfo> �� C<CRNCYSTR> �⻲�Ȥ��Ƥ���������
+L<I18N::Langinfo> と C<CRNCYSTR> も参照してください。
 
 =head2 LC_TIME
 
@@ -1422,12 +1422,12 @@ current locale:
 
 =end original
 
-�ͤ��ɤߤ䤹�����������줿����/����ʸ�������Ф�
-POSIX::strftime() �ˤ�ä��������줿���Ϥϥ����Ȥ� C<LC_TIME> ���������
-�ƶ�������ޤ���
-�������äơ��ե�󥹤Υ�������Ǥϡ�C<%B> �񼰻����(��ά�Τʤ����̾��)��
-��ǯ�κǽ�η���Ф��ƻȤä��Ȥ��η�̤ϡ���janvier�ɤȤʤ�ޤ���
-�ʲ�����ϡ������ȥ�������ˤ�����Ĺ����̾�Υꥹ�Ȥ������ΤǤ���
+人が読みやすい、整形された日付/時刻文字列を作り出す
+POSIX::strftime() によって生成された出力はカレントの C<LC_TIME> ロケールに
+影響を受けます。
+したがって、フランスのロケールでは、C<%B> 書式指定子(省略のない月の名前)を
+一年の最初の月に対して使ったときの結果は、“janvier”となります。
+以下の例は、カレントロケールにおける長い月名のリストを得るものです。
 
         use POSIX qw(strftime);
         for (0..11) {
@@ -1443,9 +1443,9 @@ obeys the current C<LC_TIME> locale.
 
 =end original
 
-����: C<use locale> �Ϥ�����Ǥ�ɬ�פǤϤ���ޤ���
-strftime() �Ͼ�˥����Ȥ� C<LC_TIME> ��������򻲾Ȥ������������¸��
-��̤Τߤ��������ޤ���
+注意: C<use locale> はこの例では必要ではありません。
+strftime() は常にカレントの C<LC_TIME> ロケールを参照し、ロケール依存の
+結果のみを生成します。
 
 =begin original
 
@@ -1454,12 +1454,12 @@ C<ABMON_1>..C<ABMON_12>, and C<ABMON_1>..C<ABMON_12>.
 
 =end original
 
-L<I18N::Langinfo> �� C<ABDAY_1>..C<ABDAY_7>, C<DAY_1>..C<DAY_7> ��
-C<ABMON_1>..C<ABMON_12> �� C<ABMON_1>..C<ABMON_12> �⻲�Ȥ��Ƥ���������
+L<I18N::Langinfo> と C<ABDAY_1>..C<ABDAY_7>, C<DAY_1>..C<DAY_7> と
+C<ABMON_1>..C<ABMON_12> と C<ABMON_1>..C<ABMON_12> も参照してください。
 
 =head2 Other categories
 
-(����¾�Υ��ƥ��꡼)
+(その他のカテゴリー)
 
 =begin original
 
@@ -1474,18 +1474,18 @@ codes, use C<%!>.  See L<Errno>.
 
 =end original
 
-�Ĥä��������륫�ƥ��꡼ C<LC_MESSAGES> (�̤�����μ����ˤ��
-�󶡤���Ƥ��뤳�Ȥ⤢��Ǥ��礦)�ϡ����ߤ� Perl �Ǥϡ�ɸ��� Perl ����
-�ѥå������ˤϤʤ���ĥ�⥸�塼��� OS �䤽�Υ桼�ƥ���ƥ�����ƤФ��
-�饤�֥��ؿ����ȤäƤ����ǽ��������С��ȤäƤ��ޤ���
-C<$!> ��ʸ�����ͤȡ������Υ桼�ƥ���ƥ�����Ϳ����줿���顼��å�������
-C<LC_MESSAGES> ���ѹ�����Ƥ��뤫�⤷��ʤ����Ȥ��ä����դ��Ƥ���������
-�ܿ����Τ��륨�顼�����ɤ��ۤ������ϡ�C<%!> ��ȤäƤ���������
-L<Errno> �򻲾Ȥ��Ƥ���������
+残ったロケールカテゴリー C<LC_MESSAGES> (別の特定の実装により
+提供されていることもあるでしょう)は、現在の Perl では、標準の Perl 配布
+パッケージにはない拡張モジュールや OS やそのユーティリティから呼ばれる
+ライブラリ関数が使っている可能性を除けば、使っていません。
+C<$!> の文字列値と、外部のユーティリティから与えられたエラーメッセージは
+C<LC_MESSAGES> で変更されているかもしれないことに特に注意してください。
+移植性のあるエラーコードがほしい場合は、C<%!> を使ってください。
+L<Errno> を参照してください。
 
 =head1 SECURITY
 
-(�������ƥ�)
+(セキュリティ)
 
 =begin original
 
@@ -1499,14 +1499,14 @@ results.  Here are a few possibilities:
 
 =end original
 
-Perl �Υ������ƥ��˴ؤ������μ�ʵ����� L<perlsec> �ˤ���ޤ�����
-Perl �Υ�������ΰ����˴ؤ�������Ϥ��줬���ʤ��Υ��������¸��
-�������ƥ�������Ф������դ��Ƥ��ʤ�����Դ����Ǥ���
-���������(�ä��ø��Τʤ��桼��������ʬ�Υ���������ۤ���Τ�����褦��
-�����ƥ�Ǥ�)���ѤǤ��ʤ���ΤʤΤǤ���
-���դΤ���(�⤷����ñ�˲��줿)��������ϥ��������Ȥ����ץꥱ��������
-ͽ���Ǥ��ʤ���̤ˤ����ǽ��������ޤ���
-�ʲ��˴��Ĥ��β�ǽ����󤲤ޤ���
+Perl のセキュリティに関する事項の主な議論は L<perlsec> にありますが、
+Perl のロケールの扱いに関する議論はそれがあなたのロケール依存の
+セキュリティ事項に対して注意していなければ不完全です。
+ロケールは(特に特権のないユーザーが自分のロケールを構築するのを許すような
+システムでは)信用できないものなのです。
+悪意のある(もしくは単に壊れた)ロケールはロケールを使うアプリケーションを
+予期できない結果にする可能性があります。
+以下に幾つかの可能性を挙げます。
 
 =over 4
 
@@ -1520,9 +1520,9 @@ characters such as "E<gt>" and "|" are alphanumeric.
 
 =end original
 
-�����ʥե�����̾��ᥤ�륢�ɥ쥹�򸡺����뤿�������ɽ���� C<\w> ��Ȥ��ȡ�
-��E<gt>�ɤ��|�ɤ�ѿ����ȼ�ĥ����褦�� C<LC_CTYPE> ��
-���ޤ���Ƥ��ޤ���ǽ��������ޤ���
+安全なファイル名やメイルアドレスを検索するための正規表現で C<\w> を使うと、
+“E<gt>”や“|”を英数字と主張するような C<LC_CTYPE> に
+だまされてしまう可能性があります。
 
 =item *
 
@@ -1534,9 +1534,9 @@ case-mapping table is in effect.
 
 =end original
 
-C<$dest = "C:\U$name.$ext"> �Τ褦�ʡ���ʸ����ʸ���Ѵ���ȼ�ä�ʸ����β��Ѥϡ�
-������ LC_CTYPE ����ʸ����ʸ���Ѵ��ơ��֥뤬ͭ���Ǥ���Ȥ���
-�����ʷ�̤����������ǽ��������ޤ���
+C<$dest = "C:\U$name.$ext"> のような、大文字小文字変換を伴った文字列の改変は、
+不正な LC_CTYPE の大文字小文字変換テーブルが有効であるときに
+危険な結果を生成する可能性があります。
 
 =item *
 
@@ -1547,8 +1547,8 @@ A sneaky C<LC_COLLATE> locale could result in the names of students with
 
 =end original
 
-������ C<LC_COLLATE>��������� "D" ��������̤�̾����
-"A" �������֤��Ƥ��ޤ���̤ˤ����뤫�⤷��ޤ���
+陰険な C<LC_COLLATE>ロケールは "D" 等級の生徒の名前を
+"A" の前に置いてしまう結果にさせるかもしれません。
 
 =item *
 
@@ -1561,11 +1561,11 @@ dollars instead of Hong Kong dollars.
 
 =end original
 
-��֤��ˤ��ޤ��� C<LC_MONETARY> �ˤ�������Ȥ����ץꥱ�������ϡ�
-�������뤬���������ȡ���Ĥ��¶�Τ褦�˰��ä��ꡢ���εդˤ�����
-���Ƥ��ޤ����⤷��ޤ���
-���뤤�ϡ�����ɥ������� US �ɥ�ǻ�ʧ���򤵤����ꤷ�Ƥ��ޤ�����
-����ޤ���
+手間を惜しまずに C<LC_MONETARY> にある情報を使うアプリケーションは、
+ロケールがおかしいと、負債を預金のように扱ったり、その逆にしたり
+してしまうかもしれません。
+あるいは、香港ドルの代わりに US ドルで支払いをさせたりしてしまうかも
+しれません。
 
 =item *
 
@@ -1578,10 +1578,10 @@ Sunday.")
 
 =end original
 
-strftime() �ˤ���������줿���վ���ϡ�C<LC_DATE> �򤤤���ޤ魯���Ȥ�
-�Ǥ��밭�դ���桼�����ˤ������Ƥ��ޤ���ǽ��������ޤ�
-(�ָ��Ƥ���衢�����Ĳ����������˥ӥ�ǥ��󥰤ˤ��ʤ��ä��ä�
-���äƤ���)��
+strftime() により整形された日付情報は、C<LC_DATE> をいじりまわすことの
+できる悪意あるユーザーにより操作されてしまう可能性があります
+(「見てくれよ、こいつ俺が日曜日にビルディングにいなかったって
+言ってるよ」)。
 
 =back
 
@@ -1595,12 +1595,12 @@ account of their environment exposes you to these issues.
 
 =end original
 
-���Τ褦�ʴ����ϡ��������륷���ƥ����ͭ�Τ�ΤǤϤ���ޤ���
-���Ϥΰ����ѹ����̤���Ʊ���褦�ʹ���������褦�ʥ��ץꥱ�������Ķ���
-������������оݤȤʤ�ޤ���
-Ʊ�ͤˡ������ Perl �˸�ͭ�ʤ�ΤǤ⤢��ޤ���
-�Ķ����θ����褦�ʥץ�������񤯤��ȤΤǤ��뤢����ץ�����ߥ�
-�����Ʊ�ͤδ�����������ΤǤ���
+このような危険は、ロケールシステムに特有のものではありません。
+意地の悪い変更を通して同じような攻撃を受けるようなアプリケーション環境の
+あらゆる状況が対象となります。
+同様に、これは Perl に固有なものでもありません。
+環境を考慮するようなプログラムを書くことのできるあらゆるプログラミング
+言語で同様の危険性があるのです。
 
 =begin original
 
@@ -1614,13 +1614,13 @@ the locale:
 
 =end original
 
-perl���㼨�����褦�ʤ��٤Ƥβ�ǽ�����餢�ʤ����뤳�ȤϤǤ��ޤ���
-���ʤ����Ȥ��ѿ�����������ΤϤʤ��ΤǤ���
-��������C<use locale> ��ͭ���Ǥ���Ȥ���Perl �ϱ��������å�����
-(L<perlsec> �򻲾�)�򡢥�������˰�¸������̤Ǥ��ꡢ
-���ѤǤ��ʤ����⤷��ʤ�ʸ��������դ��뤿��˻��Ѥ��ޤ���
-�ʲ��ϡ���������ˤ��ƶ���������ǽ���Τ���黻�Ҥ�ؿ��α��������
-�����񤤤ΤޤȤ�Ǥ���
+perlは例示したようなすべての可能性からあなたを守ることはできません。
+あなた自身の用心に代り得るものはないのです。
+しかし、C<use locale> が有効であるとき、Perl は汚染チェック機構
+(L<perlsec> を参照)を、ロケールに依存した結果であり、
+信用できないかもしれない文字列に注意するために使用します。
+以下は、ロケールにより影響を受ける可能性のある演算子や関数の汚染される
+振る舞いのまとめです。
 
 =over 4
 
@@ -1632,7 +1632,7 @@ B<Comparison operators> (C<lt>, C<le>, C<ge>, C<gt> and C<cmp>):
 
 =end original
 
-B<��ӱ黻��> (C<lt>, C<le>, C<ge>, C<gt>, C<cmp>):
+B<比較演算子> (C<lt>, C<le>, C<ge>, C<gt>, C<cmp>):
 
 =begin original
 
@@ -1640,8 +1640,8 @@ Scalar true/false (or less/equal/greater) result is never tainted.
 
 =end original
 
-������ο�/��(�⤷����̤��/������/�ۤ��Ƥ���)�η�̤�
-�褷�Ʊ�������ޤ���
+スカラの真/偽(もしくは未満/等しい/越えている)の結果は
+決して汚染されません。
 
 =item  *
 
@@ -1651,7 +1651,7 @@ B<Case-mapping interpolation> (with C<\l>, C<\L>, C<\u> or C<\U>)
 
 =end original
 
-B<��ʸ����ʸ���Ѵ�> (C<\l>, C<\L>, C<\u>, C<\U>)
+B<大文字小文字変換> (C<\l>, C<\L>, C<\u>, C<\U>)
 
 =begin original
 
@@ -1660,8 +1660,8 @@ C<use locale> is in effect.
 
 =end original
 
-Ÿ�����줿��Τ��ޤޤ��ʸ����� C<use locale> ��ͭ����
-���ˤϱ�������ޤ���
+展開されたものが含まれる文字列は C<use locale> が有効な
+場合には汚染されます。
 
 =item  *
 
@@ -1671,7 +1671,7 @@ B<Matching operator> (C<m//>):
 
 =end original
 
-B<�ޥå��󥰱黻��> (C<m//>):
+B<マッチング演算子> (C<m//>):
 
 =begin original
 
@@ -1679,7 +1679,7 @@ Scalar true/false result never tainted.
 
 =end original
 
-������ο�/���η�̤Ϸ褷�Ʊ�������ޤ���
+スカラの真/偽の結果は決して汚染されません。
 
 =begin original
 
@@ -1694,15 +1694,15 @@ C<\W>, C<\s>, or C<\S>.
 
 =end original
 
-���󥳥�ƥ����Ȥη�̤䡢$1 �ʤɤ��������������֥ѥ������
-C<use locale> ��ͭ���Ǥ���Ȥ��ˤϱ�������ޤ���
-�����ơ�C<\w> (�ѿ����˥ޥå�����)��C<\W>
-(�ѿ����ʳ��˥ޥå�����)��C<\s> (���򥭥�饯����)��
-C<\S> (����Ǥʤ�����饯����)��ޤ�����ɽ�����֥ѥ������Ʊ�ͤǤ���
-�ޥå�������̤��ݻ������ѿ���$&��$`(�ޥå�������ʬ�����)��$'(�ޥå�����
-��ʬ����)��$+ (�Ǹ�˥ޥå��������)�������� C<\w>��C<\W>��
-C<\s>��C<\S> ��ޤ�����ɽ���⡢C<use locale> ��ͭ���Ǥ���Ȥ��ˤ�
-��������ޤ���
+配列コンテキストの結果や、$1 などから派生したサブパターンは
+C<use locale> が有効であるときには汚染されます。
+そして、C<\w> (英数字にマッチする)、C<\W>
+(英数字以外にマッチする)、C<\s> (空白キャラクター)、
+C<\S> (空白でないキャラクター)を含む正規表現サブパターンも同様です。
+マッチした結果を保持する変数、$&、$`(マッチした部分より前)、$'(マッチした
+部分より後)、$+ (最後にマッチしたもの)、そして C<\w>、C<\W>、
+C<\s>、C<\S> を含む正規表現も、C<use locale> が有効であるときには
+汚染されます。
 
 =item  *
 
@@ -1712,7 +1712,7 @@ B<Substitution operator> (C<s///>):
 
 =end original
 
-B<�ִ��黻��> (C<s///>):
+B<置換演算子> (C<s///>):
 
 =begin original
 
@@ -1724,11 +1724,11 @@ case-mapping with C<\l>, C<\L>,C<\u> or C<\U>.
 
 =end original
 
-�ޥå��󥰱黻�Ҥ�Ʊ�������񤤤򤷤ޤ���
-�ޤ���C<=~> �κ�¦�Υ��ڥ��ɤϡ�C<use locale> ��ͭ���ΤȤ���
-C<\w>, C<\W>, C<\s>, C<\S> ������ɽ���ޥå��󥰤ˤ���ִ�����
-C<\l>, C<\L>,C<\u>, C<\U> ����ʸ����ʸ���ޥåԥ󥰤ˤ�äơ�
-�ͤ��ѹ����줿��硢��������ޤ���
+マッチング演算子と同じ振る舞いをします。
+また、C<=~> の左側のオペランドは、C<use locale> が有効のとき、
+C<\w>, C<\W>, C<\s>, C<\S> の正規表現マッチングによる置換か、
+C<\l>, C<\L>,C<\u>, C<\U> の大文字小文字マッピングによって、
+値が変更された場合、汚染されます。
 
 =item *
 
@@ -1738,7 +1738,7 @@ B<Output formatting functions> (printf() and write()):
 
 =end original
 
-B<���Ͻ񼰴ؿ�> (printf() �� write()):
+B<出力書式関数> (printf() と write()):
 
 =begin original
 
@@ -1748,9 +1748,9 @@ effect.
 
 =end original
 
-��̤Ϸ褷�Ʊ�������ޤ���; �ʤ��ʤ顢�⤷�����Ǥʤ��ʤ顢
-�㤨�� C<print(1/7)> �Τ褦�ʡ�print ����ν��ϤǤ���
-C<use locale> ��ͭ���ΤȤ��ϱ�������뤳�ȤˤʤäƤ��ޤ��ޤ���
+結果は決して汚染されません; なぜなら、もしそうでないなら、
+例えば C<print(1/7)> のような、print からの出力ですら
+C<use locale> が有効のときは汚染されることになってしまいます。
 
 =item *
 
@@ -1760,7 +1760,7 @@ B<Case-mapping functions> (lc(), lcfirst(), uc(), ucfirst()):
 
 =end original
 
-B<��ʸ����ʸ���Ѵ��ؿ�> (lc(), lcfirst(), uc(), ucfirst()):
+B<大文字小文字変換関数> (lc(), lcfirst(), uc(), ucfirst()):
 
 =begin original
 
@@ -1768,7 +1768,7 @@ Results are tainted if C<use locale> is in effect.
 
 =end original
 
-C<use locale> ��ͭ���ʤȤ��ˡ���̤���������ޤ���
+C<use locale> が有効なときに、結果が汚染されます。
 
 =item *
 
@@ -1779,7 +1779,7 @@ strftime(), strxfrm()):
 
 =end original
 
-B<POSIX ���������¸�ؿ�> (localeconv(), strcoll(),
+B<POSIX ロケール依存関数> (localeconv(), strcoll(),
 strftime(), strxfrm()):
 
 =begin original
@@ -1788,7 +1788,7 @@ Results are never tainted.
 
 =end original
 
-��̤Ϸ褷�Ʊ�������ޤ���
+結果は決して汚染されません。
 
 =item *
 
@@ -1800,7 +1800,7 @@ isxdigit()):
 
 =end original
 
-B<POSIX ʸ�����饹�ƥ���> (isalnum(), isalpha(), isdigit(),
+B<POSIX 文字クラステスト> (isalnum(), isalpha(), isdigit(),
 isgraph(), islower(), isprint(), ispunct(), isspace(), isupper(),
 isxdigit()):
 
@@ -1810,7 +1810,7 @@ True/false results are never tainted.
 
 =end original
 
-��/���η�̤Ϸ褷�Ʊ�������ޤ���
+真/偽の結果は決して汚染されません。
 
 =back
 
@@ -1823,10 +1823,10 @@ when taint checks are enabled.
 
 =end original
 
-���Ĥ����Ȥäơ����������¸�α������������ޤ���
-�ǽ�Υץ������Ϥ��Υ��������̵�뤷�ơ��¹Ԥ���ޤ���
-����������ͭ���Ǥ���Ȥ��ˤϡ����ޥ�ɥ饤�󤫤�ľ�ܤȤä��ͤ�
-���ϥե�����̾�Ȥ��ƻȤ����ȤϤǤ��ޤ���
+三つの例を使って、ロケール依存の汚染を説明します。
+最初のプログラムはそのロケールを無視して、実行されません。
+汚染検査が有効であるときには、コマンドラインから直接とった値を
+出力ファイル名として使うことはできません。
 
         #/usr/local/bin/perl -T
         # Run with taint checking
@@ -1846,10 +1846,10 @@ if it can.
 
 =end original
 
-���Υץ������ϡ��������줿�ͤ�����ɽ�����̤���
-��������(laundering)���뤳�Ȥˤ��¹ԤǤ���褦�ˤǤ��ޤ���
-�ʲ��˵󤲤������ܤ���ϡ�����������������̵�뤷�Ƥ��ޤ���
-�¹Ԥ����ȡ����ޥ�ɥ饤��ˤ���̾���Υե�������ǽ�Ǥ���к������ޤ���
+このプログラムは、汚染された値を正規表現を通して
+「洗浄」(laundering)することにより実行できるようにできます。
+以下に挙げる二番目の例は、これもロケール情報を無視しています。
+実行されると、コマンドラインにある名前のファイルを可能であれば作成します。
 
         #/usr/local/bin/perl -T
 
@@ -1866,8 +1866,8 @@ Compare this with a similar but locale-aware program:
 
 =end original
 
-����������ɤ����ƤϤ��ޤ��������������Ȥä��ץ�������
-��Ӥ��ƤߤƤ���������
+これを、非常に良く似てはいますが、ロケールを使ったプログラムと
+比較してみてください。
 
         #/usr/local/bin/perl -T
 
@@ -1886,13 +1886,13 @@ of a match involving C<\w> while C<use locale> is in effect.
 
 =end original
 
-���λ����ܤΥץ������ϡ�$& ����������Ƥ���ΤǼ¹Ԥ˼��Ԥ��ޤ�;
-����� C<use locale> ��ͭ���Ǥ���Ȥ��� C<\w> ��ޤ���ޥå��󥰤ˤ��
-��̤Ǥ���
+この三番目のプログラムは、$& が汚染されているので実行に失敗します;
+これは C<use locale> が有効であるときの C<\w> を含んだマッチングによる
+結果です。
 
 =head1 ENVIRONMENT
 
-(�Ķ��ѿ�)
+(環境変数)
 
 =over 12
 
@@ -1910,14 +1910,14 @@ failures.
 
 =end original
 
-Perl ����ư���˥������������˼��Ԥ������˷ٹ��Ф��Τ������Ǥ���
-ʸ����Ǥ���
-���ڥ졼�ƥ��󥰥����ƥ�Υ������륵�ݡ��Ȥ��ʤ�餫����ͳ�Ǥʤ��ä��ꡢ
-����Ƥ����ꤹ��Ȥ������뤤�ϴĶ��ѿ������ꤷ�����������̾����
-�ְ㤨�Ƥ�������ȯ�����ޤ���
-�⤷�����ѿ���¸�ߤ��Ƥ��ʤ��Ȥ������뤤�Ϥ����ͤ�ɾ�������0��
-�ʤ�ʤ��褦�ʤ�Ρ��Ĥޤ��0�ɤ�ȡɤǤʤ����ˡ�Perl �ϥ�������������
-���Ԥ���ȥ�å���������Ϥ��ޤ���
+Perl が起動時にロケールの設定に失敗した場合に警告を出すのを抑制できる
+文字列です。
+オペレーティングシステムのロケールサポートがなんらかの理由でなかったり、
+壊れていたりするとき、あるいは環境変数に設定したロケールの名前を
+間違えていた場合に発生します。
+もしこの変数が存在していないとか、あるいはその値が評価すると0に
+ならないようなもの、つまり“0”や“”でない場合に、Perl はロケールの設定に
+失敗するとメッセージを出力します。
 
 =begin original
 
@@ -1927,10 +1927,10 @@ and you should investigate what the problem is.
 
 =end original
 
-B<����>: PERL_BADLANG �Ϸٹ��å�������Ф��ʤ��褦�ˤ�������Ǥ���
-���Υ�å������Ϥ��ʤ��λȤ������ƥ�Υ������륵�ݡ��Ȥˤʤˤ������꤬
-����Ȥ������Ȥ��������ΤǤ����顢���ʤ������꤬���ʤΤ���
-�Τ����٤��Ǥ��礦��
+B<注意>: PERL_BADLANG は警告メッセージを出さないようにするだけです。
+このメッセージはあなたの使うシステムのロケールサポートになにかの問題が
+あるということを伝えるものですから、あなたは問題が何なのかを
+確かめるべきでしょう。
 
 =back
 
@@ -1942,9 +1942,9 @@ for controlling an application's opinion on data.
 
 =end original
 
-�ʲ��δĶ��ѿ��� Perl ����ͭ�Τ�ΤǤϤʤ������ץꥱ�������Υǡ�����
-���������椹�뤿���ɸ��Ū��(ISO C, XPG4, POSIX 1.c) setlocale() �᥽�åɤ�
-����ʬ�Ǥ���
+以下の環境変数は Perl に特有のものではなく、アプリケーションのデータの
+扱いを制御するための標準的な(ISO C, XPG4, POSIX 1.c) setlocale() メソッドの
+一部分です。
 
 =over 12
 
@@ -1957,8 +1957,8 @@ set, it overrides all the rest of the locale environment variables.
 
 =end original
 
-C<LC_ALL> �ϡ����ƾ�񤭡ץ�������Ķ��ѿ��Ǥ���
-�⤷���δĶ��ѿ������ꤵ��Ƥ���ȡ�¾�Τ��٤ƤδĶ��ѿ����񤭤��ޤ���
+C<LC_ALL> は「全て上書き」ロケール環境変数です。
+もしこの環境変数が設定されていると、他のすべての環境変数を上書きします。
 
 =item LANGUAGE
 
@@ -1971,11 +1971,11 @@ using GNU libc and you can ignore C<LANGUAGE>.
 
 =end original
 
-B<����>: C<LANGUAGE> �� GNU �γ�ĥ�ǡ�GNU libc ��ȤäƤ���Ȥ��ˤΤ�
-���̤�����ޤ���
-Linux ��Ȥä��Ȥ��ʤɤ�����˳������ޤ���
-���ʤ����־��ѤΡ�UNIX ��ȤäƤ���ΤǤ���� GNU libc ��
-�Ȥ��Ƥ��ʤ��Ǥ��礦����C<LANGUAGE> ��̵�뤹�뤳�Ȥ��Ǥ��ޤ���
+B<注意>: C<LANGUAGE> は GNU の拡張で、GNU libc を使っているときにのみ
+効果があります。
+Linux を使ったときなどがこれに該当します。
+あなたが「商用の」UNIX を使っているのであれば GNU libc は
+使われていないでしょうし、C<LANGUAGE> は無視することができます。
 
 =begin original
 
@@ -1988,12 +1988,12 @@ See the GNU C<gettext> library documentation for more information.
 
 =end original
 
-C<LANGUAGE> ��Ȥä����ˤϡ����ޥ�ɤ���ξ��󡢷ٹ𡢥��顼�Ȥ��ä�
-��å������θ���˱ƶ���ڤܤ��ޤ�(����������� C<LC_MESSAGES> ��
-���Ƥ��ޤ�)����L<LC_ALL> ����ͥ���̤ϲ��Ǥ���
-����ˡ������ñ����ͤǤϤʤ��Ƹ���(��������ǤϤ���ޤ���)�Ρ�
-��:�ɤ�Ϣ�뤵�줿�֥ѥ��פˤʤäƤ��ޤ���
-���ܤ�������� GNU C<gettext> �饤�֥��Υɥ�����Ȥ򻲾Ȥ��Ƥ���������
+C<LANGUAGE> を使った場合には、コマンドからの情報、警告、エラーといった
+メッセージの言語に影響を及ぼします(言い換えると C<LC_MESSAGES> と
+似ています)が、L<LC_ALL> よりも優先順位は下です。
+さらに、これは単一の値ではなくて言語(ロケールではありません)の、
+“:”で連結された「パス」になっています。
+より詳しい情報は GNU C<gettext> ライブラリのドキュメントを参照してください。
 
 =item LC_CTYPE
 
@@ -2005,9 +2005,9 @@ chooses the character type locale.
 
 =end original
 
-C<LC_ALL> ���ʤ��Ȥ��ˡ�C<LC_CTYPE> ��ʸ�������פΥ�����������򤷤ޤ���
-C<LC_ALL> �� C<LC_CTYPE> ��ξ���Ȥ�ʤ���硢C<LANG> ��ʸ�������פ�
-������������򤷤ޤ���
+C<LC_ALL> がないときに、C<LC_CTYPE> は文字タイプのロケールを選択します。
+C<LC_ALL> と C<LC_CTYPE> の両方ともない場合、C<LANG> が文字タイプの
+ロケールを選択します。
 
 =item LC_COLLATE
 
@@ -2019,9 +2019,9 @@ C<LANG> chooses the collation locale.
 
 =end original
 
-C<LC_ALL> ���ʤ��Ȥ��ˡ�C<LC_COLLATE> �Ͼȹ�(������)������������򤷤ޤ���
-C<LC_ALL> �� C<LC_COLLATE> ��ξ���Ȥ�ʤ���硢C<LANG> ��
-�ȹ������������򤷤ޤ���
+C<LC_ALL> がないときに、C<LC_COLLATE> は照合(ソート)ロケールを選択します。
+C<LC_ALL> と C<LC_COLLATE> の両方ともない場合、C<LANG> が
+照合ロケールを選択します。
 
 =item LC_MONETARY
 
@@ -2033,9 +2033,9 @@ C<LANG> chooses the monetary formatting locale.
 
 =end original
 
-C<LC_ALL> ���ʤ��Ȥ��ˡ�C<LC_MONETARY> ���̲߷���������������򤷤ޤ���
-C<LC_ALL> �� C<LC_MONETARY> ��ξ���Ȥ�ʤ���硢
-C<LANG> ���̲߷���������������򤷤ޤ���
+C<LC_ALL> がないときに、C<LC_MONETARY> は通貨形式ロケールを選択します。
+C<LC_ALL> と C<LC_MONETARY> の両方ともない場合、
+C<LANG> が通貨形式ロケールを選択します。
 
 =item LC_NUMERIC
 
@@ -2047,9 +2047,9 @@ chooses the numeric format.
 
 =end original
 
-C<LC_ALL> ���ʤ��Ȥ��ˡ�C<LC_NUMERIC> �Ͽ���ɽ���Υ�����������򤷤ޤ���
-C<LC_ALL> �� C<LC_NUMERIC> ��ξ���Ȥ�ʤ���硢C<LANG> ������ɽ����
-���򤷤ޤ���
+C<LC_ALL> がないときに、C<LC_NUMERIC> は数値表記のロケールを選択します。
+C<LC_ALL> と C<LC_NUMERIC> の両方ともない場合、C<LANG> が数値表記を
+選択します。
 
 =item LC_TIME
 
@@ -2061,9 +2061,9 @@ C<LANG> chooses the date and time formatting locale.
 
 =end original
 
-C<LC_ALL> ���ʤ��Ȥ��ˡ�C<LC_TIME> �����ա�����ɽ���Υ�����������򤷤ޤ���
-C<LC_ALL> �� C<LC_TIME> ��ξ���Ȥ�ʤ���硢C<LANG> �����ա�����ɽ����
-������������򤷤ޤ���
+C<LC_ALL> がないときに、C<LC_TIME> は日付・時刻表記のロケールを選択します。
+C<LC_ALL> と C<LC_TIME> の両方ともない場合、C<LANG> が日付・時刻表記の
+ロケールを選択します。
 
 =item LANG
 
@@ -2075,15 +2075,15 @@ category-specific C<LC_...>.
 
 =end original
 
-C<LANG> �ϡ����Ū�פʥ�������Ķ��ѿ��Ǥ���
-������ͤ����ꤵ��Ƥ����硢C<LC_ALL> �⡢�ƥ��ƥ��꡼�� C<LC_...> ��
-���ꤵ��Ƥ��ʤ��Ȥ��κǸ�λ��Ⱦ��Ȥ��ƻȤ��ޤ���
+C<LANG> は「包括的」なロケール環境変数です。
+これに値が設定されている場合、C<LC_ALL> も、各カテゴリーの C<LC_...> も
+設定されていないときの最後の参照場所として使われます。
 
 =back
 
 =head2 Examples
 
-(��)
+(例)
 
 =begin original
 
@@ -2091,7 +2091,7 @@ The LC_NUMERIC controls the numeric output:
 
 =end original
 
-LC_NUMERIC �Ͽ��ͽ��Ϥ����椷�ޤ�:
+LC_NUMERIC は数値出力を制御します:
 
         use locale;
         use POSIX qw(locale_h); # Imports setlocale() and the LC_ constants.
@@ -2104,8 +2104,8 @@ and also how strings are parsed by POSIX::strtod() as numbers:
 
 =end original
 
-������ʸ���� POSIX::strtod() �ˤ�äƤɤΤ褦�˿��ͤȤ��ƥѡ�������뤫��
-���椷�ޤ�:
+そして文字列が POSIX::strtod() によってどのように数値としてパースされるかも
+制御します:
 
         use locale;
         use POSIX qw(locale_h strtod);
@@ -2115,11 +2115,11 @@ and also how strings are parsed by POSIX::strtod() as numbers:
 
 =head1 NOTES
 
-(����)
+(注意)
 
 =head2 Backward compatibility
 
-(���ߴ���)
+(過去互換性)
 
 =begin original
 
@@ -2133,14 +2133,14 @@ pragma (see L<The use locale pragma>) to instruct it to do so.
 
 =end original
 
-5.004 ������ΥС������� Perl �Ǥϡ�B<�ۤȤ��> ������������̵�뤷�ơ�
-���Ȥ��ץ������Ķ����̤Τ�Τ�ؼ����Ƥ����Ȥ��Ƥ��� C<"C"> ��������
-(L<The setlocale function> �򻲾�) ����������Ƥ��뤫�Τ褦��
-������äƤ��ޤ�����
-�ǥե���ȤǤϡ�Perl �Ϻ��Ǥ⤳�Τ褦��ư���Τǡ����ߴ���������ޤ���
-Perl ���ץꥱ����������������������ܤ���褦�ˤ������Τʤ顢
-S<C<use locale>> �ץ饰��(L<The use locale pragma> �򻲾�)��
-B<�Ȥ�ʤ���Фʤ�ޤ���>��
+5.004 より前のバージョンの Perl では、B<ほとんど> ロケール情報を無視して、
+たとえプログラム環境が別のものを指示していたとしても常に C<"C"> ロケール
+(L<The setlocale function> を参照) が強制されているかのように
+振る舞っていました。
+デフォルトでは、Perl は今でもこのように動作するので、過去互換性があります。
+Perl アプリケーションをロケール情報に注目するようにしたいのなら、
+S<C<use locale>> プラグマ(L<The use locale pragma> を参照)を
+B<使わなければなりません>。
 
 =begin original
 
@@ -2152,15 +2152,15 @@ if the C library supported locales, Perl used them.
 
 =end original
 
-5.002 ���� 5.003 �� Perl �ϡ����Ѳ�ǽ�Ǥ�����ˤ� C<LC_CTYPE> �ξ����
-�ȤäƤ��ޤ�����
-�ĤޤꡢC<\w> �ϥ�������δĶ��ѿ��˽��ä�ʸ�������򤷤Ƥ����ΤǤ���
-����ϡ�C �饤�֥�꤬��������򥵥ݡ��Ȥ��Ƥ�����ˤ� Perl �������
-�ȤäƤ��ޤ����桼���������ε�ǽ������Ǥ��ʤ��Ȥ������ȤǤ�����
+5.002 から 5.003 の Perl は、使用可能である場合には C<LC_CTYPE> の情報を
+使っていました。
+つまり、C<\w> はロケールの環境変数に従った文字を理解していたのです。
+問題は、C ライブラリがロケールをサポートしている場合には Perl がそれを
+使ってしまい、ユーザーがこの機能を制御できないということでした。
 
 =head2 I18N:Collate obsolete
 
-(I18N:Collate �ϸŤ����)
+(I18N:Collate は古いもの)
 
 =begin original
 
@@ -2174,19 +2174,19 @@ C<I18N::Collate>.
 
 =end original
 
-5.004 ������ΥС������� Perl �Ǥϡ�����������ξȹ�� C<I18N::Collate>
-�饤�֥��⥸�塼���Ȥ����Ȥǲ�ǽ�Ǥ�����
-���Υ⥸�塼��ϸ��ߡ��������٤�ȤʤäƤ��ơ����������ץꥱ�������Ǥ�
-���Ѥ��򤱤�٤���ΤǤ���
-���ߡ�C<LC_COLLATE> ��ǽ�� Perl �Υ�����������礵��ޤ�����
-������ǡ����Υ��������ͭ����Ӥ� C<use locale> ��Ȥ����ȤǴ�����
-�Ԥʤ��ޤ���
-���Τ��ᡢC<I18N::Collate> �Υ������ե���󥹤�ȤäƤ���̤���ɬ�פ�
-��Ϥ�ʤ��ΤǤ���
+5.004 より前のバージョンの Perl では、ロケール毎の照合は C<I18N::Collate>
+ライブラリモジュールを使うことで可能でした。
+このモジュールは現在、やや時代遅れとなっていて、新しいアプリケーションでは
+使用を避けるべきものです。
+現在、C<LC_COLLATE> 機能は Perl のコア言語に統合されました。
+スカラデータのロケール固有の比較は C<use locale> を使うことで完全に
+行なわれます。
+このため、C<I18N::Collate> のスカラリファレンスを使ってお手玉する必要は
+もはやないのです。
 
 =head2 Sort speed and memory use impacts
 
-(�����Ȥ�®�٤ȥ�����Ѥ�Ϳ����ƶ�)
+(ソートの速度とメモリ使用に与える影響)
 
 =begin original
 
@@ -2201,19 +2201,19 @@ system's implementation of the locale system than by Perl.
 
 =end original
 
-��������ˤ����Ӥȥ����Ȥ��̾�ǥե���ȤΥ����Ȥ�������ܤ���
-�����٤��ʤ�ޤ���
-�ޤ�������λ����̤����礷�ޤ���
-Perl �Υ������ѿ�����������ξȹ絬§��Ȥä��ʤ�餫��ʸ������Ӥ�
-�����Ȥ���Ǹ����ȡ�����ˤ�äư�����껰�ܤ��齽���ܤλ��֤�
-�פ���褦�ˤʤ�ޤ�(�ºݤΤȤ����ξ����ʸ��������ơ����ڥ졼�ƥ���
-�����ƥࡢ��������˰�¸���ޤ�)��
-������ǽ������ϡ�Perl �ˤ���Τ��⥪�ڥ졼�ƥ��󥰥����ƥ��
-�������륷���ƥ�μ����ˤ���Τ������˸���ޤ���
+ロケールによる比較とソートは通常、デフォルトのソートに比べ二倍から
+四倍遅くなります。
+また、メモリの使用量も増大します。
+Perl のスカラ変数がロケールの照合規則を使ったなんらかの文字列比較や
+ソートの中で現れると、それによって以前より三倍から十五倍の時間を
+要するようになります(実際のところの乗数は文字列の内容、オペレーティング
+システム、ロケールに依存します)。
+この性能ダウンは、Perl によるものよりもオペレーティングシステムの
+ロケールシステムの実装によるものが顕著に現れます。
 
 =head2 write() and LC_NUMERIC
 
-(write() �� LC_NUMERIC)
+(write() と LC_NUMERIC)
 
 =begin original
 
@@ -2227,18 +2227,18 @@ structure.
 
 =end original
 
-�ե����ޥåȤ� Perl �ǡ��ץ������Υ������뤫���������̵����
-���Ѥ���ͣ�����ʬ�Ǥ���
-�ץ������δĶ��� LC_NUMERIC �������뤬���ꤵ��Ƥ���С��񼰻��ꤵ�줿
-���Ϥˤ��뾮�����Υ���饯�����Ͼ�ˤ����ǻ��ꤵ�줿��Τ��Ȥ��ޤ���
-�񼰻��ꤵ�줿���Ϥ� C<use locale> �ˤ�ä����椹�뤳�ȤϤǤ��ޤ���
-�ʤ��ʤ顢���Υץ饰�ޤϥץ饰�ޤΤ���֥��å���¤�˷���դ����Ƥ��ơ�
-�ޤ������Ū�аޤˤ�äƥե����ޥåȤϥ֥��å���¤�γ�¦��
-¸�ߤ��Ƥ��뤫��ʤΤǤ���
+フォーマットは Perl で、プログラムのロケールから来る情報を無条件に
+使用する唯一の部分です。
+プログラムの環境で LC_NUMERIC ロケールが指定されていれば、書式指定された
+出力にある小数点のキャラクターは常にそこで指定されたものが使われます。
+書式指定された出力は C<use locale> によって制御することはできません。
+なぜなら、このプラグマはプラグマのあるブロック構造に結び付けられていて、
+また、歴史的経緯によってフォーマットはブロック構造の外側に
+存在しているからなのです。
 
 =head2 Freely available locale definitions
 
-(��ͳ�����Ѳ�ǽ�ʥ����������)
+(自由に利用可能なロケール定義)
 
 =begin original
 
@@ -2251,17 +2251,17 @@ your own locales.
 
 =end original
 
-ftp://dkuug.dk/i18n/WG15-collection �˥�������������絬�Ϥʥ��쥯�����
-����ޤ���
-���줬���ݡ���̵���Τ�ΤǤ��ꡢ�ɤ����Ū�ˤ�Ŭ�礹��Ȥ�
-��ĥ���Ƥ��ʤ���ΤǤ��뤳�Ȥ����դ��٤��Ǥ���
-���ʤ��λȤ������ƥब�������뵡ǽ�Υ��󥹥ȡ��������Ƥ���ΤǤ���С�
-���ξ�������������򸫤Ĥ��뤳�Ȥ��Ǥ���Ǥ��礦�������뤤�ϼ�ʬ��
-������������������äȤʤ�褦�ʤ�Τ򸫤Ĥ����뤫�⤷��ޤ���
+ftp://dkuug.dk/i18n/WG15-collection にロケール定義の大規模なコレクションが
+あります。
+これがサポート無しのものであり、どんな目的にも適合するとは
+主張していないものであることに注意すべきです。
+あなたの使うシステムがロケール機能のインストールを許しているのであれば、
+この場所で便利な定義を見つけることができるでしょうし、あるいは自分で
+ロケールを定義する基礎となるようなものを見つけられるかもしれません。
 
 =head2 I18n and l10n
 
-(I18n �� l10n)
+(I18n と l10n)
 
 =begin original
 
@@ -2272,13 +2272,13 @@ the same way, "localization" is often abbreviated to B<l10n>.
 
 =end original
 
-"Internationalization" (��ݲ�)�Ϥ��κǽ�ȺǸ��ʸ���������Ƥ��δ֤ˤ���
-ʸ�������� B<i18n> �Ȥ��Ф���ά����ޤ���
-Ʊ�ͤΤ�����ǡ�"localization" �⤷�Ф��� B<l10n> �Ⱦ�ά����ޤ���
+"Internationalization" (国際化)はその最初と最後の文字、そしてその間にある
+文字数から B<i18n> としばしば略されます。
+同様のやり方で、"localization" もしばしば B<l10n> と省略されます。
 
 =head2 An imperfect standard
 
-(�Դ�����ɸ��)
+(不完全な標準)
 
 =begin original
 
@@ -2293,17 +2293,17 @@ standard we've got.  This may be construed as a bug.
 
 =end original
 
-����б���ɸ�� C ��ɸ�� POSIX ���������Ƥ���褦�ˡ��Դ����ǡ������ˤ�����
-γ�٤��礭������ȹ�ɾ����ޤ�(��������ϡ�ñ��Υ���åɤǤ���Ȥ���
-������ɥ����롼�פȤ��ä���Τ��Ф���Ŭ�Ѥ���Τ������Ǥ���Ȥ��ˤ�
-�ץ��������Τ�Ŭ�Ѥ���ޤ�)��
-�ޤ���ɸ�ಽ���롼�פ˻��ơ���������ʬ�䤷�褦�Ȥ��뷹��������ޤ���
-���������ߤΤȤ��������줬�䤿������ˤ��뤳�Ȥ��Ǥ���ͣ���ɸ��ʤΤǤ���
-����ϥХ��Ȥ��Ʋ��Ǥ��뤫�⤷��ޤ���
+国際対応は標準 C や標準 POSIX に定義されているように、不完全で、扱いにくく、
+粒度が大きすぎると酷評されます(ロケールは、単一のスレッドであるとか、
+ウィンドウグループといったものに対して適用するのが便利であるときにも
+プロセス全体に適用されます)。
+また、標準化グループに似て、世界を国に分割しようとする傾向があります。
+しかし現在のところ、これが私たちが手にすることができる唯一の標準なのです。
+これはバグとして解釈できるかもしれません。
 
 =head1 Unicode and UTF-8
 
-(Unicode �� UTF-8)
+(Unicode と UTF-8)
 
 =begin original
 
@@ -2313,10 +2313,10 @@ L<perlunicode> for more details.
 
 =end original
 
-Unicode �б��� Perl 5.6 ���鳫�Ϥ��졢�С������ 5.8 �Ǥ�괰����
-��������ޤ�����
-����ʤ�ܺ٤ˤĤ��Ƥ� L<perluniintro> �� L<perlunicode> ��
-���Ȥ��Ƥ���������
+Unicode 対応は Perl 5.6 から開始され、バージョン 5.8 でより完全に
+実装されました。
+さらなる詳細については L<perluniintro> と L<perlunicode> を
+参照してください。
 
 =begin original
 
@@ -2325,16 +2325,16 @@ there are exceptions, see L<perlunicode/Locales> for examples.
 
 =end original
 
-�̾�ϥ������������ Unicode �ϸߤ��˱ƶ���Ϳ���ޤ��󤬡��㳰�⤢��ޤ�;
-��ˤĤ��Ƥ� L<perlunicode/Locales> �򻲾Ȥ��Ƥ���������
+通常はロケール設定と Unicode は互いに影響を与えませんが、例外もあります;
+例については L<perlunicode/Locales> を参照してください。
 
 =head1 BUGS
 
-(�Х�)
+(バグ)
 
 =head2 Broken systems
 
-(����Ƥ��륷���ƥ�)
+(壊れているシステム)
 
 =begin original
 
@@ -2349,15 +2349,15 @@ operating system upgrade.
 
 =end original
 
-���Ĥ��Υ��ڥ졼�ƥ��󥰥����ƥ�ˤ�����Ķ��ǤΥ������륵�ݡ��Ȥϡ�
-�������ʤ�Τǡ�Perl ��������н褷����Ȥä���Ǥ��ʤ��褦�ʤ�ΤǤ���
-�������ä��Դ����ʤ�Τϡ�C<use locale> ��ͭ���ˤʤä��Ȥ��� Perl ��
-�ԲĻ׵Ĥʥϥ󥰥��åפ�Ƴ�����ꡢ��������פ򤵤����ꤷ�ޤ���
-���Τ褦�ʥ����ƥ��ľ�̤�����硢�ܤ��������� <F<perlbug@perl.org>> ��
-��ݡ��Ȥ��������ƻ��Ѥ��Ƥ��륷���ƥ�Υ٥�����������������Ƥ���������
-����δ��Ĥ����Ф���Х��ե��å���������Ƥ��뤫�⤷��ޤ���
-�������ä��Х������ϡ����ڥ졼�ƥ��󥰥����ƥ�Υ��åץ��졼�ɤ�
-�ƤФ�뤳�Ȥ�����ޤ���
+幾つかのオペレーティングシステムにおける環境でのロケールサポートは、
+おかしなもので、Perl がそれに対処したり使ったりできないようなものです。
+そういった不完全なものは、C<use locale> が有効になったときに Perl を
+不可思議なハングアップに導いたり、コアダンプをさせたりします。
+このようなシステムに直面した場合、詳しい状況を <F<perlbug@perl.org>> に
+レポートし、そして使用しているシステムのベンダーに不満を伝えてください。
+問題の幾つかに対するバグフィックスがされているかもしれません。
+そういったバグ修正は、オペレーティングシステムのアップグレードと
+呼ばれることがあります。
 
 =head1 SEE ALSO
 
@@ -2379,9 +2379,9 @@ Tom Christiansen.
 
 =end original
 
-Jarkko Hietaniemi �θ�ʸ�� F<perli18n.pod> �� perl5-porters �ν����θ���
-Dominic Dunlop �ˤ�ä��礭���ѹ�����ޤ�����
-ɽ���˴ؤ��Ƥ� Tom Christiansen ��������Ȥ򤷤ޤ�����
+Jarkko Hietaniemi の原文書 F<perli18n.pod> は perl5-porters の助けの元、
+Dominic Dunlop によって大きく変更されました。
+表現に関しては Tom Christiansen が少し作業をしました。
 
 Last update: Thu Jun 11 08:44:13 MDT 1998
 

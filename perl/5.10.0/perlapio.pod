@@ -9,7 +9,7 @@ perlapio - perl's IO abstraction interface.
 
 =end original
 
-perlapio - perl ����������ϥ��󥿡��ե�����
+perlapio - perl の抽象入出力インターフェース
 
 =head1 SYNOPSIS
 
@@ -85,10 +85,10 @@ C<#define> them to the I/O mechanism selected at Configure time.
 
 =end original
 
-Perl �Υ����������ɤȡ�����ΰܿ�������륨�����ƥ󥷥��Ǥϡ�
-ANSI C �� I<stdio.h> �ˤ���ؿ��ǤϤʤ��嵭�δؿ���Ȥ��٤��Ǥ���
-perl �Υإå� (�ä� "perlio.h") �� Configure �μ¹Ի������򤷤�
-I/O ������ C<#define> ���ޤ���
+Perl のソースコードと、最大の移植性を求めるエクステンションでは、
+ANSI C の I<stdio.h> にある関数ではなく上記の関数を使うべきです。
+perl のヘッダ (特に "perlio.h") が Configure の実行時に選択した
+I/O 機構へ C<#define> します。
 
 =begin original
 
@@ -97,8 +97,8 @@ has been "tidied up a little".
 
 =end original
 
-�����δؿ��� I<stdio.h> �ˤ����Τ���ǥ�ˤʤäƤ��ޤ�����
-������Ϥ��ѥ�᡼�����ϡ֤���äȤФ������ܡפ���Ƥ��ޤ���
+これらの関数は I<stdio.h> にあるものがモデルになっていますが、
+それに渡すパラメーターは「ちょっとばかし整頓」されています。
 
 =begin original
 
@@ -108,9 +108,9 @@ something).
 
 =end original
 
-C<PerlIO *> �� FILE * �Τ褦�ʤ�ΤǤ���
-FILE * ��Ʊ�ͤˡ��������Ʃ���ʤ�ΤȤ��ư����ޤ�(����򲿤��ؤ�
-�ݥ��󥿤Ȥ��Ʋ��ꤹ�뤳�ȤϤ����餯�����Ǥ�)��
+C<PerlIO *> は FILE * のようなものです。
+FILE * と同様に、これは不透明なものとして扱われます(これを何かへの
+ポインタとして仮定することはおそらく安全です)。
 
 =begin original
 
@@ -118,7 +118,7 @@ There are currently three implementations:
 
 =end original
 
-���ߤΤȤ��� 3 �Ĥμ���������ޤ�:
+現在のところ 3 つの実装があります:
 
 =over 4
 
@@ -133,10 +133,10 @@ introduced in perl5.003_02.
 
 =end original
 
-�嵭�����Ƥ� stdio �ؿ��ؤ� #define ����stdio ��ƤӽФ�����Τ���դ줿
-��åѴؿ��Ǥ���
-���ξ�� I<�Τ�>��PerlIO * �� FILE * �Ǥ���
-��ݲ���Ƴ�����줿 perl5.003_02 ���衢���줬�ǥե���Ȥμ����Ǥ�����
+上記の全ては stdio 関数への #define か、stdio を呼び出すためのありふれた
+ラッパ関数です。
+この場合 I<のみ>、PerlIO * は FILE * です。
+抽象化が導入された perl5.003_02 以来、これがデフォルトの実装でした。
 
 =item 2. USE_SFIO
 
@@ -149,11 +149,11 @@ functions. PerlIO * is in this case Sfio_t *.
 
 =end original
 
-"sfio" �饤�֥��˴ؤ��ơ��֥쥬�����ʡ׼����Ǥ���
-Unix �ޥ���Ǥ��ü�ʥ��ץꥱ�������ǻȤ��Ƥ��ޤ�
-("sfio" Unix �ʳ��ˤϤ��ޤ�ܿ�����Ƥ��ޤ���)��
-�嵭�ΤۤȤ�ɤ� sfio �ؿ��ؤ� #define �Ǥ���
-���ξ�硢PerlIO * �� Sfio_t * �Ǥ���
+"sfio" ライブラリに関して、「レガシーな」実装です。
+Unix マシンでの特殊なアプリケーションで使われています
+("sfio" Unix 以外にはあまり移植されていません)。
+上記のほとんどは sfio 関数への #define です。
+この場合、PerlIO * は Sfio_t * です。
 
 =item 3. USE_PERLIO
 
@@ -170,14 +170,14 @@ very simple) functions which call the underlying implementation.
 
 =end original
 
-�����perl5.7.0 ��ľ���Ƴ�����졢��Ҥ���ݲ��κƼ����Ǥ�; ����ˤ�ä�
-IO �� OS �� C �饤�֥�꤬ʪ����Ԥ������������ڤ�Υ������ˡ�
-IO ���ɤΤ褦�˹Ԥ��뤫�� perl ���������Ǥ���褦�ˤʤ�ޤ���
-USE_PERLIO �Ǥϡ�PerlIO * �ϴ��ܲ����ɲä��ؤ�����ޤ� - ������������Ǥ���
-����ˤ�ꡢPerlIO * �ϴ��Τ��ͤΤޤޡ����äȤʤ������ I<�¹Ի���>
-�򴹤��뤳�Ȥ��Ǥ��ޤ���
-���ξ���Ҥ����Ƥϴ��äȤʤ������ƤӽФ�������(�������ȤƤ�ñ���)
-�ؿ��Ǥ���
+これはperl5.7.0 の直後に導入され、上述の抽象化の再実装です; これによって
+IO を OS と C ライブラリが物事を行うための選択と切り離すために、
+IO がどのように行われるかを perl がより制御できるようになります。
+USE_PERLIO では、PerlIO * は間接化の追加の層を持ちます - これは点対点です。
+これにより、PerlIO * は既知の値のまま、基礎となる実装を I<実行時に>
+交換することができます。
+この場合上述の全ては基礎となる実装を呼び出す本当の(しかしとても単純な)
+関数です。
 
 =begin original
 
@@ -186,8 +186,8 @@ does anything "interesting".
 
 =end original
 
-����� C<PerlIO_apply_layers()> �������ֶ�̣����פ��Ȥ�Ԥ�ͣ���
-�����Ǥ���
+これは C<PerlIO_apply_layers()> が何か「興味ある」ことを行う唯一の
+実装です。
 
 =begin original
 
@@ -195,7 +195,7 @@ The USE_PERLIO implementation is described in L<perliol>.
 
 =end original
 
-USE_PERLIO �����ˤĤ��Ƥ� L<perliol> �˵��Ҥ���Ƥ��ޤ���
+USE_PERLIO 実装については L<perliol> に記述されています。
 
 =back
 
@@ -207,9 +207,9 @@ Where these variations are understood they are noted below.
 
 =end original
 
-"perlio.h" ��(��Ψ�Τ����)�����ؤˤʤäƤ���Τǡ������δؿ��ΰ�̣��
-���äȤʤ�����˼㴳��¸���Ƥ��ޤ���
-�Ѳ��������ʬ���äƤ���Ȥ����ϰʲ��˸��ڤ��Ƥ��ޤ���
+"perlio.h" は(効率のために)薄い層になっているので、これらの関数の意味は
+基礎となる実装に若干依存しています。
+変化があると分かっているところは以下に言及しています。
 
 =begin original
 
@@ -218,8 +218,8 @@ value (usually C<EOF> which is usually -1) and set C<errno> on error.
 
 =end original
 
-�ä����դ��ʤ���С��ؿ����������� 0 ���֤������顼���ˤ����(���̤�
--1 ���ͤ���� C<EOF>)���֤��� C<errno> �򥻥åȤ��ޤ���
+特に注意がなければ、関数は成功時に 0 を返し、エラー時には負数(普通は
+-1 の値を持つ C<EOF>)を返して C<errno> をセットします。
 
 =over 4
 
@@ -235,12 +235,12 @@ values.
 
 =end original
 
-C<stdin>, C<stdout>, C<stderr> ������˻ȤäƤ���������
-�������ѿ��Ǥʤ��ȴؿ��ƤӽФ��ɤΤ褦�˵��Ҥ���Ƥ��ޤ�����
-����ϻ��Ѥ���ץ�åȥե�����ˤ����ƥ����ɥ⥸�塼����Ф���ǡ�����
-�������ݡ��Ȥ��Ǥ��ʤ��ä��ꡢ���뤤�ϰۤʤ�ȥ���åɡɤ��ۤʤ��ͤ�
-���Ĳ�ǽ��������Ȥ��ä��Ȥ��ˡ������� I<�ؿ��ƤӽФ��ˤ���> �Τ�
-��ñ�ˤʤ뤫��Ǥ���
+C<stdin>, C<stdout>, C<stderr> の代わりに使ってください。
+これらは変数でなく“関数呼び出し”のように記述されていますが、
+これは使用するプラットフォームにおいてロードモジュールに対するデータの
+エクスポートができなかったり、あるいは異なる“スレッド”が異なる値を
+持つ可能性があるといったときに、これらを I<関数呼び出しにする> のが
+簡単になるからです。
 
 =item B<PerlIO_open(path, mode)>, B<PerlIO_fdopen(fd,mode)>
 
@@ -254,11 +254,11 @@ when C<NULL> is returned if this limit is exceeded.
 
 =end original
 
-fopen()/fdopen() ���б�����Ʊ����������ޤ���
-���顼�ξ��� C<NULL> ���֤���C<errno> �򥻥åȤ��ޤ���
-�����ץ󤹤�ϥ�ɥ�ο��ˤϼ��������¤����뤫�⤷�줺������ϥ����ץ󤹤�
-�ե�����ο������¤���㤤���⤷��ޤ��� -
-�������¤�ۤ��� C<NULL> ���֤����ȡ�C<errno> �ϥ��åȤ���ޤ���
+fopen()/fdopen() に対応し、同じ引数を取ります。
+エラーの場合は C<NULL> を返し、C<errno> をセットします。
+オープンするハンドルの数には実装の制限があるかもしれず、これはオープンする
+ファイルの数の制限より低いかもしれません -
+この制限を越えて C<NULL> を返されると、C<errno> はセットされません。
 
 =item B<PerlIO_reopen(path,mode,f)>
 
@@ -269,9 +269,9 @@ does not use it. I<As perl does not use it, it is not well tested.>
 
 =end original
 
-����ϸ��ߤΤȤ��� 3 �����Ƥμ�����¸�ߤ��Ƥ��ޤ�����perl ���ȤϤ����
-�ȤäƤ��ޤ���
-I<perl ���ȤäƤ��ʤ��Τǡ���ʬ�˥ƥ��Ȥ���Ƥ��ޤ���>
+これは現在のところ 3 つ全ての実装に存在していますが、perl 自身はこれを
+使っていません。
+I<perl が使っていないので、十分にテストされていません。>
 
 =begin original
 
@@ -281,9 +281,9 @@ function in the future.
 
 =end original
 
-Perl ��¸�ߤ��� PerlIO �ˤ�äƻȤ��Ƥ��뵭�һҤ��⡢���������٥�
-���һҤ� C<dup> ���뤳�Ȥ򹥤ߤޤ���
-����Ͼ��褳�δؿ��ο����񤤤ˤʤ뤫�⤷��ޤ���
+Perl は存在する PerlIO によって使われている記述子よりも、新しい低レベル
+記述子を C<dup> することを好みます。
+これは将来この関数の振る舞いになるかもしれません。
 
 =item B<PerlIO_printf(f,fmt,...)>, B<PerlIO_vprintf(f,fmt,a)>
 
@@ -293,7 +293,7 @@ These are fprintf()/vfprintf() equivalents.
 
 =end original
 
-fprintf()/vfprintf() �������Ǥ���
+fprintf()/vfprintf() と等価です。
 
 =item B<PerlIO_stdoutf(fmt,...)>
 
@@ -304,10 +304,10 @@ so it is (currently) legal to use C<printf(fmt,...)> in perl sources.
 
 =end original
 
-����� printf() �������Ǥ���
-printf �Ϥ��δؿ����Ф��� #define �ȤʤäƤ��ޤ����顢
-(�������Ǥ�) Perl �Υ�������������� C<printf(fmt,...)> �Ȥ��뤳�Ȥ�
-��ˡ�Ǥ���
+これは printf() と等価です。
+printf はこの関数に対する #define となっていますから、
+(現時点では) Perl のソースコード中で C<printf(fmt,...)> とすることは
+合法です。
 
 =item B<PerlIO_read(f,buf,count)>, B<PerlIO_write(f,buf,count)>
 
@@ -322,12 +322,12 @@ between error and C<EOF>.
 
 =end original
 
-fread() ����� fwrite() ���б����뵡ǽ������ޤ�����������
-�֤��ͤϰۤʤ�ޤ���
-PerlIO_read() �� PerlIO_write() �Υ����ͥ���ϡ�����ˤ��ޤȤ��
-���٥�� read() �� write() �δؿ����ǥ�ˤ��Ƥ��ޤ�: 
-"file" �����Ϻǽ���Ϥ��졢count" �� 1 �Ĥ����ǡ��֤��ͤϥ��顼��
-C<EOF> �ȤǶ��̤Ǥ��ޤ���
+fread() および fwrite() に対応する機能を持ちますが、引数と
+返り値は異なります。
+PerlIO_read() と PerlIO_write() のシグネチャは、代わりによりまともな
+低レベルの read() と write() の関数をモデルにしています: 
+"file" 引数は最初に渡され、count" は 1 つだけで、返り値はエラーと
+C<EOF> とで区別できます。
 
 =begin original
 
@@ -338,10 +338,10 @@ interrupted by a signal.
 
 =end original
 
-�������ˤϥХ��ȥ������(���������ο��Ǥ�)���֤������顼���ˤ���ο���
-�֤��� C<errno> �򥻥åȤ��ޤ���
-�����˰�¸���ơ��⤷�������ʥ�����Ǥ������� C<errno> �� C<EINTR> ��
-�ʤ뤫�⤷��ޤ���
+成功時にはバイトカウント(ゼロか正の数です)を返し、エラー時には負の数を
+返して C<errno> をセットします。
+実装に依存して、もし操作がシグナルで中断した場合は C<errno> は C<EINTR> に
+なるかもしれません。
 
 =item B<PerlIO_close(f)>
 
@@ -352,8 +352,8 @@ interrupted by a signal.
 
 =end original
 
-�����ˤ�äƤϡ��������ʥ�����Ǥ������ C<errno> �� C<EINTR> ��
-�ʤ뤳�Ȥ�����ޤ���
+実装によっては、操作がシグナルで中断した場合 C<errno> は C<EINTR> に
+なることがあります。
 
 =item B<PerlIO_puts(f,s)>, B<PerlIO_putc(f,c)>
 
@@ -364,9 +364,9 @@ Note that arguments have been revised to have "file" first.
 
 =end original
 
-fputs() ����� fputc() ���б����ޤ���
-�ǽ�ΰ����ˡ�file�ɤ����Ȥ������Ȥ�
-���դ��Ƥ���������
+fputs() および fputc() に対応します。
+最初の引数に“file”が来るということに
+注意してください。
 
 =item B<PerlIO_ungetc(f,c)>
 
@@ -382,14 +382,14 @@ it is the last character that was read from the handle.
 
 =end original
 
-ungetc() ���б����ޤ���
-�ǽ�ΰ����� "file" �����Ȥ������Ȥ����դ��Ƥ���������
-�����ɤ߹������ǥХ��� B<c> ���֤��褦�˽������ޤ���
-̾���� "character" ���ż����Ƥ����Τ˴ؤ�餺��0..0xFF ���ϰϤ��ͤΤߤ�
-�������Ƥ��ޤ���
-�����ˤϥХ��� B<c> �������顼���ˤ� -1 (C<EOF>) ���֤���ޤ���
-�ֲ����֤��פ��Ȥ��Ǥ���Х��ȿ��ϰۤʤ�ޤ�; 1 ʸ�������Ȥ����Τϳμ¤ǡ�
-���äƥϥ�ɥ뤫���ɤ߹�����Ǹ��ʸ�������Ȥ������ȤǤ���
+ungetc() に対応します。
+最初の引数に "file" が来るということに注意してください。
+次の読み込み操作でバイト B<c> を返すように準備します。
+名前の "character" が暗示しているものに関わらず、0..0xFF の範囲の値のみが
+定義されています。
+成功にはバイト B<c> が、エラー時には -1 (C<EOF>) が返されます。
+「押し返す」ことができるバイト数は異なります; 1 文字だけというのは確実で、
+従ってハンドルから読み込んだ最後の文字だけということです。
 
 =item B<PerlIO_getc(f)>
 
@@ -401,9 +401,9 @@ Returns the character read or -1 (C<EOF>) on error.
 
 =end original
 
-getc() ���б����ޤ���
-̾���� c ������ޤ������Х��Ȥ��ϰ� 0..0xFF �ˤΤ��б����Ƥ��ޤ���
-�ɤ߹����ʸ���������顼�ξ��� -1 (C<EOF>) ���֤��ޤ���
+getc() に対応します。
+名前に c がありますが、バイトの範囲 0..0xFF にのみ対応しています。
+読み込んだ文字か、エラーの場合は -1 (C<EOF>) を返します。
 
 =item B<PerlIO_eof(f)>
 
@@ -416,11 +416,11 @@ cleared by PerlIO_seek(), or PerlIO_rewind().
 
 =end original
 
-feof() ���б����ޤ���
-�ϥ�ɥ뤬�ե�����κǸ夫�ɤ����򼨤����������֤��ޤ���
-ü���ǥХ����Ǥϡ������˰�¸���ơ������ "sticky" ���⤷��ޤ��󤷡�
-�����ǤϤʤ����⤷��ޤ���
-�ե饰�� PerlIO_seek() �� PerlIO_rewind() �ǲ������ޤ���
+feof() に対応します。
+ハンドルがファイルの最後かどうかを示す真か偽を返します。
+端末デバイスでは、実装に依存して、これは "sticky" かもしれませんし、
+そうではないかもしれません。
+フラグは PerlIO_seek() か PerlIO_rewind() で解除されます。
 
 =item B<PerlIO_error(f)>
 
@@ -431,8 +431,8 @@ whether there has been an IO error on the handle.
 
 =end original
 
-ferror()���б����ޤ���
-�ϥ�ɥ�� IO ���顼�����뤫�ɤ����򿿵��ͤ��֤��ޤ���
+ferror()に対応します。
+ハンドルに IO エラーがあるかどうかを真偽値で返します。
 
 =item B<PerlIO_fileno(f)>
 
@@ -444,9 +444,9 @@ descriptor associated with it.
 
 =end original
 
-fileno() ���б����ޤ���
-�����Υץ�åȥե�����ˤ����Ƥϡ���fileno�ɤ�
-��̣����Ȥ�����UNIX�Ȥϰ㤦�Ȥ������Ȥ����դ��Ƥ���������
+fileno() に対応します。
+一部のプラットフォームにおいては、“fileno”の
+意味するところがUNIXとは違うということに注意してください。
 Returns -1 if the handle has no open
 descriptor associated with it.
 
@@ -459,9 +459,9 @@ This corresponds to clearerr(), i.e., clears 'error' and (usually)
 
 =end original
 
-clearerr() ���б������֥��ȥ꡼��פ� 'error' �� (���̤�) 'eof' �Ȥ��ä�
-�ե饰�򥯥ꥢ���ޤ���
-�ͤ��֤��ޤ���
+clearerr() に対応し、「ストリーム」の 'error' や (普通は) 'eof' といった
+フラグをクリアします。
+値を返しません。
 
 =item B<PerlIO_flush(f)>
 
@@ -479,17 +479,17 @@ seeking the handle to the current logical position.
 
 =end original
 
-fflush() ���б����ޤ���
-�Хåե���󥰤��줿�񤭹��ߥǡ�����ե����������ޤ���
-���� C<NULL> �ǸƤӽФ��ȡ������ץ󤷤Ƥ������ƤΥ��ȥ꡼���
-�ե�å��夷�ޤ�(USE_STDIO �����ˤϥ�������פ����Τ⤢��ޤ�)��
-�ɤ߹������Ѥǥ����ץ󤷤Ƥ��뤫���Ǹ�����ʤ�餫���ɤ߹��ߤǤ���
-�ϥ�ɥ�ǸƤӽФ��ȡ�USE_STDIO �����ˤ�̤����ο����񤤤Ȥʤ��Τ�
-����ޤ���
-USE_PERLIO (��) �����Ϥ��褯�����񤪤��Ȥ��ޤ�: C<NULL> ���Ϥ�����
-�����ץ󤷤Ƥ������ƤΥ��ȥ꡼���ե�å��夷���Хåե����椫�����ߤ�
-�������֤˥ϥ�ɥ�򥷡������뤳�Ȥǡ��ɤ߹��ߥ��ȥ꡼��Υǡ�����
-�ݻ����褦�Ȥ��ޤ���
+fflush() に対応します。
+バッファリングされた書き込みデータをファイルに送ります。
+引数 C<NULL> で呼び出すと、オープンしている全てのストリームを
+フラッシュします(USE_STDIO 実装にはコアダンプするものもあります)。
+読み込み専用でオープンしているか、最後の操作がなんらかの読み込みである
+ハンドルで呼び出すと、USE_STDIO 実装には未定義の振る舞いとなるものが
+あります。
+USE_PERLIO (層) 実装はよりよく振る舞おうとします: C<NULL> が渡されると
+オープンしている全てのストリームをフラッシュし、バッファの中か、現在の
+論理位置にハンドルをシークすることで、読み込みストリームのデータを
+維持しようとします。
 
 =item B<PerlIO_seek(f,offset,whence)>
 
@@ -505,14 +505,14 @@ as stdio's C<off_t>.
 
 =end original
 
-fseek() ���б����ޤ���
-�Хåե���󥰤��줿�񤭹��ߥǡ������б�����ե���������뤫��
-�Хåե���󥰤����ɤ߹��ߥǡ�����ΤƤƤ��顢�ե����뵭�һҤΰ��֤�
-<offset> �� B<whence> �ǻ��ꤵ�줿���ˤ��ޤ�(���������ޤ�)��
-�����Ʊ���ϥ�ɥ���ɤ߹��ߤȽ񤭹��ߤ��ڤ��ؤ���Ȥ��ˤ���٤�
-���������ȤǤ�(��Ҥ� PerlIO_flush() ������򻲾Ȥ��Ƥ�������)��
-offset �� perl �� Configure �ͤǤ��� C<Off_t> ���ǡ�stdio �� C<off_t> �Ȥ�
-�ۤʤ뤫�⤷��ޤ���
+fseek() に対応します。
+バッファリングされた書き込みデータを対応するファイルに送るか、
+バッファリングした読み込みデータを捨ててから、ファイル記述子の位置を
+<offset> と B<whence> で指定された場所にします(シークします)。
+これは同じハンドルの読み込みと書き込みを切り替えるときにするべき
+正しいことです(上述の PerlIO_flush() の問題を参照してください)。
+offset は perl の Configure 値である C<Off_t> 型で、stdio の C<off_t> とは
+異なるかもしれません。
 
 =item B<PerlIO_tell(f)>
 
@@ -527,14 +527,14 @@ Configure value which may not be same as stdio's C<off_t>.
 
 =end original
 
-ftell() ���б����ޤ���
-���ߤΥե�������֤������顼�ξ��� (Off_t) -1 ���֤���ޤ���
-�����ƥॳ����䡢���äȤʤ�ե����뵭�һҤΥ����å��ʤ��ˡ������ƥब
-���ΤäƤ�����ͤ��֤����⤷��ޤ���
-(���äơ���ͭ�ե����뵭�һҤǤλ��Ѥϡ�PerlIO_seek() �ʤ��Ǥ�
-�����ǤϤ���ޤ���)��
-�֤��ͤ� perl �� Configure �ͤǤ��� C<Off_t> ���ǡ�stdio �� C<off_t> �Ȥ�
-�ۤʤ뤫�⤷��ޤ���
+ftell() に対応します。
+現在のファイル位置か、エラーの場合は (Off_t) -1 が返されます。
+システムコールや、基礎となるファイル記述子のチェックなしに、システムが
+「知っている」値を返すかもしれません。
+(従って、共有ファイル記述子での使用は、PerlIO_seek() なしでは
+安全ではありません)。
+返り値は perl の Configure 値である C<Off_t> 型で、stdio の C<off_t> とは
+異なるかもしれません。
 
 =item B<PerlIO_getpos(f,p)>, B<PerlIO_setpos(f,p)>
 
@@ -549,13 +549,13 @@ PerlIO_tell() and PerlIO_seek().
 
 =end original
 
-���줾�� (��ޤ���) ftgetpos() �� fsetpos() ���б����ޤ���
-stdio ��Fpos_t �Ȱ�äơ������ϡ�Perl �������͡פ��Ϥ���뤳�Ȥ�
-���ꤷ�Ƥ��ޤ���
-��������¸������Τ������������ʤ���ΤȤߤʤ줵�ޤ���
-�ǡ����Υ쥤�����Ȥϥϥ�ɥ�ˤ�äƤ��ޤ��ޤǤ���
-stdio ��Ȥ�ʤ����䡢�ץ�åȥե����ब stdio �ƤӽФ�����äƤ��ʤ�
-���ˤϤ����δؿ��� PerlIO_tell()��PerlIO_seek() �ˤ�äƼ�������ޤ���
+それぞれ (大まかに) ftgetpos() と fsetpos() に対応します。
+stdio のFpos_t と違って、これらは「Perl スカラ値」が渡されることを
+想定しています。
+ここで保存されるものは内部が見えないものとみなれさます。
+データのレイアウトはハンドルによってさまざまです。
+stdio を使わない場合や、プラットフォームが stdio 呼び出しを持っていない
+場合にはこれらの関数は PerlIO_tell()、PerlIO_seek() によって実装されます。
 
 =item B<PerlIO_rewind(f)>
 
@@ -565,8 +565,8 @@ This corresponds to rewind(). It is usually defined as being
 
 =end original
 
-rewind() ���б����ޤ���
-��������̰ʲ��Τ褦���������Ƥ��ޤ�:
+rewind() に対応します。
+これは普通以下のように定義されています:
 
     PerlIO_seek(f,(Off_t)0L, SEEK_SET);
     PerlIO_clearerr(f);
@@ -587,15 +587,15 @@ ad. hoc. schemes.
 
 =end original
 
-tmpfile() ���б�����̵̾ PerlIO (���顼���� NULL) ���֤��ޤ���
-�����ƥ�ϥե����뤬�������������ȼ�ưŪ�˥ե�����������褦�Ȥ��ޤ���
-Unix �Ǥϡ��ե���������̺������줿ľ��� C<unlink> �����Τǡ��ɤ���ä�
-������������뤫�ϵ��ˤ���ޤ���
-����¾�Υ����ƥ�Ǥϡ��ե������ PerlIO_close() ���Ĥ����뤫���ץ�����ब
-C<exit> �ǽ�λ���줿�Ȥ��ˤΤߺ������ޤ���
-�����˰�¸���ơ�¾�Υץ����������Υե�����˥��������Ǥ���Ȥ���
-�ֶ�����פ������ꤨ�ޤ���������Ū�ˤϤ��ξ�¤�λ��Ȥߤ�ꤳ�������
-�������Ǥ��礦��
+tmpfile() に対応し、無名 PerlIO (エラー時は NULL) を返します。
+システムはファイルがクローズされると自動的にファイルを削除しようとします。
+Unix では、ファイルは普通作成された直後に C<unlink> されるので、どうやって
+クローズされるかは気にされません。
+その他のシステムでは、ファイルは PerlIO_close() で閉じられるか、プログラムが
+C<exit> で終了されたときにのみ削除されます。
+実装に依存して、他のプロセスがこのファイルにアクセスできるという
+「競合条件」が起こりえますが、一般的にはその場限りの仕組みよりこれの方が
+より安全でしょう。
 
 =item B<PerlIO_setlinebuf(f)>
 
@@ -609,19 +609,19 @@ it has nothing to do with $| auto-flush.)
 
 =end original
 
-����� setlinebuf() ���б����ޤ���
-�ͤ��֤��ޤ���
-�����ֹԡפ������뤫�ϼ�����¸�Ǥ��������̤� "\n" ��񤯤ȥХåե���
-�ե�å��夷�ޤ���
-"this\nthat" �Τ褦�ʤ�Τ��Ф��Ʋ��������뤫�������ΤǤ���
-(Perl core �� "dumping" �� $| �μ�ư�ե�å����
-�ط����Ƥ��ʤ� I<�Ȥ��ˤΤ�> �����Ȥ��ޤ�)��
+これは setlinebuf() に対応します。
+値を返しません。
+何が「行」を構成するかは実装依存ですが、普通は "\n" を書くとバッファを
+フラッシュします。
+"this\nthat" のようなものに対して何が起こるかは不明確です。
+(Perl core は "dumping" が $| の自動フラッシュに
+関係していない I<ときにのみ> これを使います)。
 
 =back
 
 =head2 Co-existence with stdio
 
-(stdio �Ȥζ�¸)
+(stdio との共存)
 
 =begin original
 
@@ -633,10 +633,10 @@ calls.
 
 =end original
 
-PerlIO �� stdio �Ȥζ�¸�򥵥ݡ��Ȥ��뤿��Υ����ȥ饤�󤬤���ޤ���
-PerlIO �� stdio ��ȤäƼ�������Ƥ���ΤǤ���С����餫������Ϥ���ޤ���
-������������¾�ξ��Ǥ� stdio �ƤӽФ���Ȥ����Ȥ���饤�֥�ꥳ���ɤ�
-�Ϥ����Ȥ��Ǥ��� FILE * ��������뵡�����ʤ���Фʤ�ޤ���
+PerlIO と stdio との共存をサポートするためのアウトラインがあります。
+PerlIO が stdio を使って実装されているのであれば、明らかに問題はありません。
+しかし、その他の場合では stdio 呼び出しを使おうとするライブラリコードに
+渡すことができる FILE * を作成する機構がなければなりません。
 
 =begin original
 
@@ -644,7 +644,7 @@ The first step is to add this line:
 
 =end original
 
-�ǽ�Υ��ƥåפϰʲ��ιԤ��ɲä��뤳�ȤǤ�:
+最初のステップは以下の行を追加することです:
 
    #define PERLIO_NOT_STDIO 0
 
@@ -656,10 +656,10 @@ to #define stdio functions onto PerlIO functions.
 
 =end original
 
-������ perl �إå��ե�����򥤥󥯥롼�ɤ��� I<��> �˹Ԥ��ޤ���
-(����Ϥ����餯��������ǥǥե���Ȥˤʤ�ޤ���)
-����ˤ�� "perlio.h" �� stdio �� PerlIO �ؿ��� #define ���褦�Ȥ���Τ�
-˸���ޤ���
+あらゆる perl ヘッダファイルをインクルードする I<前> に行います。
+(これはおそらくある時点でデフォルトになります。)
+これにより "perlio.h" が stdio を PerlIO 関数に #define しようとするのを
+妨げます。
 
 =begin original
 
@@ -669,9 +669,9 @@ changes in this area.
 
 =end original
 
-XS �����ɤϡ��⤷ FILE * ���������ꤷ�Ƥ���ʤ顢�����餯"typemap" ��
-�Ȥä��ۤ����褤�Ǥ��礦��
-ɸ��� typemap �ϡ�����ʬ��ǤΤ������ѹ����İ����뤿���Ĵ������ޤ���
+XS コードは、もし FILE * 引数を想定しているなら、おそらく"typemap" を
+使ったほうがよいでしょう。
+標準の typemap は、この分野でのあらゆる変更を把握するために調整されます。
 
 =over 4
 
@@ -683,7 +683,7 @@ Used to get a PerlIO * from a FILE *.
 
 =end original
 
-FILE * ���� PerlIO * ������Τ˻Ȥ��ޤ���
+FILE * から PerlIO * を得るのに使います。
 
 =begin original
 
@@ -695,10 +695,10 @@ use "r+" to indicate a read/write stream.
 
 =end original
 
-mode ������ fopen/PerlIO_open ���Ϥ����ʸ����Ǥ���٤��Ǥ���
-�⤷���줬 NULL �ʤ� - �쥬�������ݡ��ȤΤ���� - �����ɤ�
-(�ץ�åȥե�����ȼ����˰�¸����) I<f> �������ץ󤵤��⡼�ɤ�и�Ū��
-���ꤷ�褦�Ȥ��뤫���ɤ߽񤭥��ȥ꡼��򼨤������ "r+" ���Ȥ��ޤ���
+mode 引数は fopen/PerlIO_open に渡される文字列であるべきです。
+もしこれが NULL なら - レガシーサポートのために - コードは
+(プラットフォームと実装に依存して) I<f> がオープンされるモードを経験的に
+決定しようとするか、読み書きストリームを示すために "r+" が使われます。
 
 =begin original
 
@@ -707,8 +707,8 @@ C<PerlIO_close()> on the returned PerlIO *.
 
 =end original
 
-���ٸƤӽФ����ȡ����� FILE * ���֤��줿 PerlIO * �� C<PerlIO_close()> ��
-�ƤӽФ����Ȥˤ�ä� I<�Τ�> �������������٤��Ǥ���
+一度呼び出されると、この FILE * は返された PerlIO * で C<PerlIO_close()> を
+呼び出すことによって I<のみ> クローズされるべきです。
 
 =begin original
 
@@ -717,8 +717,8 @@ not the desired mode.
 
 =end original
 
-PerlIO �ϥƥ����ȥ⡼�ɤ˥��åȤ���ޤ���
-���줬��˾���Ƥ���⡼�ɤǤʤ����ϡ�PerlIO_binmode ��Ȥ��ޤ���
+PerlIO はテキストモードにセットされます。
+これが希望しているモードでない場合は、PerlIO_binmode を使います。
 
 =begin original
 
@@ -726,7 +726,7 @@ This is B<not> the reverse of PerlIO_exportFILE().
 
 =end original
 
-����� PerlIO_exportFILE() �ε� B<�ǤϤ���ޤ���> ��
+これは PerlIO_exportFILE() の逆 B<ではありません> 。
 
 =item B<PerlIO_exportFILE(f,mode)>
 
@@ -740,12 +740,12 @@ mode as the PerlIO *.
 
 =end original
 
-PerlIO * ���ꡢANSI C �� I<stdio.h> �ȶ��˥���ѥ��뤵�졢��󥯤����
-���Ȥ����ꤵ��륳���ɤ��Ϥ��Τ�Ŭ�����ƥͥ��ƥ��֡Ǥ� FILE * ��¤�Τ�
-�������ޤ���
-mode ������ fopen/PerlIO_open ���Ϥ����ʸ����Ǥ���
-���줬 NULL �ξ��� - �쥬�����б��Τ���� - FILE * �� PerlIO * ��Ʊ��
-�⡼�ɤǥ����ץ󤷤ޤ���
+PerlIO * を取り、ANSI C の I<stdio.h> と共にコンパイルされ、リンクされる
+ことが想定されるコードに渡すのに適した‘ネイティブ’な FILE * 構造体を
+作成します。
+mode 引数は fopen/PerlIO_open に渡される文字列です。
+これが NULL の場合は - レガシー対応のために - FILE * は PerlIO * と同じ
+モードでオープンします。
 
 =begin original
 
@@ -758,12 +758,12 @@ for doing the disassociation.)
 
 =end original
 
-��export�Ǥ��줿 FILE * ��(�̾�Ͽ����� :stdio ���ءפ� PerlIO * ��
-�ץå��夹�뤳�Ȥ�)��Ͽ���졢����ʸ�Υ��ꥸ�ʥ�� 
-PerlIO * ���Ф��� PerlIO ���˱ƶ���ڤܤ���ǽ��������ޤ���
-PerlIO * �Ȥδ�Ϣ�դ��������뤿��� C<PerlIO_releaseFILE()> ��
-�ƤӽФ����� C<fclose()> ��ƤӽФ��٤��ǤϤ���ޤ���
-(��Ϣ�դ��β���Τ���� PerlIO_importFILE() ��ȤäƤϤ����ޤ���)
+‘export’された FILE * は(通常は新しい :stdio 「層」を PerlIO * に
+プッシュすることで)記録され、それ以後のオリジナルの 
+PerlIO * に対する PerlIO 操作に影響を及ぼす可能性があります。
+PerlIO * との関連付けを解除するために C<PerlIO_releaseFILE()> を
+呼び出さずに C<fclose()> を呼び出すべきではありません。
+(関連付けの解除のために PerlIO_importFILE() を使ってはいけません。)
 
 =begin original
 
@@ -772,8 +772,8 @@ Calling this function repeatedly will create a FILE * on each call
 
 =end original
 
-���δؿ���ʣ����ƤӽФ��ȡ��ƤӽФ���� FILE * ��������ޤ�(������
-��� :stdio �ؤ˥ץå��夷�ޤ�)��
+この関数を複数回呼び出すと、呼び出し毎に FILE * を作成します(そして
+毎回 :stdio 層にプッシュします)。
 
 =item B<PerlIO_releaseFILE(p,f)>
 
@@ -785,10 +785,10 @@ associated PerlIO * should revert to its original behaviour.
 
 =end original
 
-PerlIO_releaseFILE �ϡ�PerlIO �ˤ��٤Ƥ�FILE * �λ��Ѥ���λ�������Ȥ�
-�Τ餻�ޤ���
-��λ������Τϡ�export�Ǥ��줿 FILE * �Υꥹ�Ȥ���������ޤ���
-�����ơ�����˷���դ����Ƥ��� PerlIO * �ϸ����ο����񤤤����ޤ���
+PerlIO_releaseFILE は、PerlIO にすべてのFILE * の使用が完了したことを
+知らせます。
+完了したものは‘export’された FILE * のリストから削除されます。
+そして、それに結び付けられている PerlIO * は元々の振る舞いに戻ります。
 
 =begin original
 
@@ -797,8 +797,8 @@ using PerlIO_exportFILE().
 
 =end original
 
-PerlIO_exportFILE() ��Ȥä� PerlIO * �˷���դ���줿�ե������
-ʬΥ���뤿��ˤ����Ȥ��ޤ���
+PerlIO_exportFILE() を使って PerlIO * に結び付けられたファイルを
+分離するためにこれを使います。
 
 =item B<PerlIO_findFILE(f)>
 
@@ -811,16 +811,16 @@ only be closed by calling C<PerlIO_close()>.
 
 =end original
 
-stdio �ؤǻȤ���ͥ��ƥ��֤� FILE * ���֤��ޤ���
-�⤷���줬�ʤ���С�PerlIO_exportFILE ��Ȥäƺ�������ޤ���
-�ɤ���ξ��Ǥ⡢FILE * �� PerlIO ���֥����ƥ�˽����ȹͤ���졢
-C<PerlIO_close()> ��ƤӽФ����Ȥˤ�äƤΤߥ������������٤��Ǥ���
+stdio 層で使われるネイティブな FILE * を返します。
+もしそれがなければ、PerlIO_exportFILE を使って作成されます。
+どちらの場合でも、FILE * は PerlIO サブシステムに従うと考えられ、
+C<PerlIO_close()> を呼び出すことによってのみクローズされるべきです。
 
 =back
 
 =head2 "Fast gets" Functions
 
-("Fast gets" �ؿ�)
+("Fast gets" 関数)
 
 =begin original
 
@@ -837,16 +837,16 @@ traditional way if a handle does not support them.
 
 =end original
 
-��Ҥ���ɸ������ API �˲ä��ơ�perl �� PerlIO �������ǰ������Ȥ�
-�Ǥ���褦�ˤ���ּ����ץ��󥿡��ե�����������ޤ���
-�ʲ��˵󤲤�ƤӽФ��ϡ����줾�� Configure (���뤤�Ϥ���¾�μ����Ǥ�
-����������ʤ��) ���������� FILE_xxx �ޥ������б����Ƥ��ޤ���
-���Υ��������Ǥϡ�perl-core �ο����񤤤ξܺ١�PerlIO �Υޥåԥ󥰤μ�����
-�ޤ� perl ������Ʊ����ˡ�� IO �����ƥ�ˤ�äƹԤ��Ƥ���
-������ɤ߹��ߡפ�Ȥ���褦�ʥ����ɤ�񤯤��ȤˤĤ��ƤΤ����ܤ��ޤ���
-�����Υ��󥿡��ե�������Ȥ������ɤϡ��⤷�ϥ�ɥ뤬������
-�б����Ƥ��ʤ��ʤ顢����Ū����ˡ�ǽ������Ƥ���ɬ�פ����뤳�Ȥ�
-���դ��Ƥ���������
+上述した標準風の API に加えて、perl が PerlIO の内部で扱うことが
+できるようにする「実装」インターフェースがあります。
+以下に挙げる呼び出しは、それぞれ Configure (あるいはその他の実装では
+これと等価なもの) で定義される FILE_xxx マクロに対応しています。
+このセクションでは、perl-core の振る舞いの詳細、PerlIO のマッピングの実装、
+また perl がする同じ方法で IO システムによって行われている
+「先行読み込み」を使えるようなコードを書くことについてのみ注目します。
+これらのインターフェースを使うコードは、もしハンドルがこれらに
+対応していないなら、伝統的な方法で準備しておく必要があることに
+注意してください。
 
 =over 4
 
@@ -860,9 +860,9 @@ vary from handle to handle.
 
 =end original
 
-�⤷�������̾�� IO ������ֲ���פ��뤿��� perl �� C<sv_gets> ��
-�Ȥ��뤿����׵ᤵ������ƤΥ��󥿡��ե���������äƤ���ʤ鿿���֤��ޤ���
-����ϥϥ�ɥ�ˤ�äưۤʤ��ǽ��������ޤ���
+もし実装が通常の IO 機構を「回避」するために perl の C<sv_gets> が
+使えるために要求される全てのインターフェースを持っているなら真を返します。
+これはハンドルによって異なる可能性があります。
 
   PerlIO_fast_gets(f) = PerlIO_has_cntptr(f) && \
                         PerlIO_canset_cnt(f) && \
@@ -879,9 +879,9 @@ PerlIO_fast_gets.
 
 =end original
 
-�ȥХåե�����Υ����ȥݥ������ؤΥݥ��󥿡��ȥХåե��ˤ���
-�Х��ȿ����֤����ȤΤǤ�������Ǥ���
-�����Ȥ�ʤ��Ǥ������� - PerlIO_fast_gets ��ȤäƤ���������
+“バッファ”中のカレントポジションへのポインターとバッファにある
+バイト数を返すことのできる実装です。
+これを使わないでください - PerlIO_fast_gets を使ってください。
 
 =item B<PerlIO_get_cnt(f)>
 
@@ -892,8 +892,8 @@ means no more bytes available.
 
 =end original
 
-�Хåե�����ɤ߽Ф����ȤΤǤ���Х��ȿ����֤��ޤ���
-0 ��������֤�ȡ��⤦�ɤ߽Ф��ʤ����Ȥ��̣���ޤ���
+バッファ中の読み出すことのできるバイト数を返します。
+0 や負数が返ると、もう読み出せないことを意味します。
 
 =item B<PerlIO_get_ptr(f)>
 
@@ -906,10 +906,10 @@ PerlIO_get_cnt() are allowed.
 
 =end original
 
-�Хåե���ˤ��뼡���ɤ߽Ф���ǽ�Х��ȤؤΥݥ��󥿡����֤��ޤ�;
-�ݥ��󥿷�ͳ�Υ�������(�ǥ�ե����)�ϡ�PerlIO_get_cnt() ��
-���ο����֤������ˤΤ߰����Ǥ���
-PerlIO_get_cnt() ���֤�����Ͱʲ������ο��Υ��ե��åȤΤߤ��Ȥ��ޤ���
+バッファ中にある次の読み出し可能バイトへのポインターを返します;
+ポインタ経由のアクセス(デリファレンス)は、PerlIO_get_cnt() が
+正の数を返した場合にのみ安全です。
+PerlIO_get_cnt() で返される値以下の正の数のオフセットのみが使えます。
 
 =item B<PerlIO_set_ptrcnt(f,p,c)>
 
@@ -923,11 +923,11 @@ use one or the other or may require both).
 
 =end original
 
-�ݥ��󥿡���Хåե��˥��åȤ����Хåե��ˤ���Х��ȿ��Ϥ��ΤޤޤǤ���
-������ C<PerlIO_get_ptr> �� C<PerlIO_get_cnt> �θƤӽФ�����
-��¬������ϰ���Υݥ��󥿡��򥻥åȤ��뤳�ȤΤߤ˻Ȥ��٤��Ǥ��礦��
-2 �Ĥ��ͤϸߤ��� I<��Ӥ��Ƥ��ʤ���Фʤ�ޤ���> 
-(�����Ϥɤ��餫����������Ȥ����⤷��ޤ��󤷡�ξ����ɬ�פ��⤷��ޤ���)��
+ポインターをバッファにセットし、バッファにあるバイト数はそのままです。
+以前の C<PerlIO_get_ptr> と C<PerlIO_get_cnt> の呼び出しから
+推測される範囲内のポインターをセットすることのみに使うべきでしょう。
+2 つの値は互いに I<一貫していなければなりません> 
+(実装はどちらか片方だけを使うかもしれませんし、両方が必要かもしれません)。
 
 =item B<PerlIO_canset_cnt(f)>
 
@@ -938,8 +938,8 @@ Do not use this - use PerlIO_fast_gets.
 
 =end original
 
-�Хåե��ˤ���Х��ȿ���Ĵ�����뤳�ȤΤǤ�������Ǥ���
-����ϻȤ�ʤ��Ǥ������� - PerlIO_fast_gets ��ȤäƤ���������
+バッファにあるバイト数を調整することのできる実装です。
+これは使わないでください - PerlIO_fast_gets を使ってください。
 
 =item B<PerlIO_set_cnt(f,c)>
 
@@ -953,15 +953,15 @@ pointer and a "limit".  Do not use this - use PerlIO_set_ptrcnt().
 
 =end original
 
-������ - �Хåե��ˤ���Х��ȿ��򥻥åȤ��ޤ���
-��侩�Ǥ���
-PerlIO_canset_cnt() �Ͽ����֤����ˤΤ����ѤǤ��ޤ���
-���ߤ���ϡ�doio.c �ǤΤ� -1 ̤���� count �� ����Ū�� -1 �ˤ��뤿���
-�Ȥ��Ƥ��ޤ���
-�����餯 PerlIO_set_empty �䤽����ह���Τ�����٤��Ǥ��礦��
-���θƤӽФ��ϡ���count�ɤ��ݥ��󥿡��ȡ�limit�ɤ���Ƴ���Ф������ˤ�
-�ºݤˤϤʤˤ⤷�ޤ���
-����ϻȤ�ʤ��Ǥ������� - PerlIO_set_ptrcnt() ��ȤäƤ���������
+不明瞭 - バッファにあるバイト数をセットします。
+非推奨です。
+PerlIO_canset_cnt() は真を返す場合にのみ利用できます。
+現在これは、doio.c でのみ -1 未満の count を 強制的に -1 にするために
+使われています。
+おそらく PerlIO_set_empty やそれに類するものがあるべきでしょう。
+この呼び出しは、“count”がポインターと“limit”から導き出される場合には
+実際にはなにもしません。
+これは使わないでください - PerlIO_set_ptrcnt() を使ってください。
 
 =item B<PerlIO_has_base(f)>
 
@@ -973,10 +973,10 @@ Other uses would be very obscure...
 
 =end original
 
-�������Хåե�����äƤ��ơ��Хåե����ΤؤΥݥ��󥿡��䤽���礭����
-�֤����Ȥ��Ǥ���ʤ鿿���֤��ޤ���
-B<-T>/B<-B> �ƥ��ȤΤ���� perl �ˤ�äƻȤ��ޤ���
-���Τۤ��Τ�Τ����ˤϤä��ꤷ�ʤ����ǻȤ��ޤ���
+実装がバッファを持っていて、バッファ全体へのポインターやその大きさを
+返すことができるなら真を返します。
+B<-T>/B<-B> テストのために perl によって使われます。
+そのほかのものは非常にはっきりしない形で使われます…
 
 =item B<PerlIO_get_base(f)>
 
@@ -987,9 +987,9 @@ up to the value returned by PerlIO_get_bufsiz().
 
 =end original
 
-�Хåե��� I<���ϰ���> ���֤��ޤ���
-�Хåե�����ǡ�PerlIO_get_bufsiz() ���֤�����Ͱʲ��������Υ��ե��åȤ�
-�Τߥ��������Ǥ��ޤ���
+バッファの I<開始位置> を返します。
+バッファの中で、PerlIO_get_bufsiz() で返される値以下の正数のオフセットで
+のみアクセスできます。
 
 =item B<PerlIO_get_bufsiz(f)>
 
@@ -1002,16 +1002,16 @@ happened to C<read()> (or whatever) last time IO was requested.
 
 =end original
 
-�Хåե��� I<��ץХ��ȿ�> ���֤��ޤ�;
-������ɤ߹��߲�ǽ�ʿ��䡢�Хåե��˳�����Ƥ�줿�����̤ǤϤ���ޤ���
-�ष�����Ǹ�� I/O ���׵ᤵ�줿�Ȥ��� OS �� ������ C<read()> (���뤤��
-���Τ褦�ʤ��) ��Ԥä���ΤǤ���
+バッファの I<合計バイト数> を返します;
+これは読み込み可能な数や、バッファに割り当てられたメモリ量ではありません。
+むしろ、最後に I/O が要求されたときに OS や 実装が C<read()> (あるいは
+そのようなもの) を行ったものです。
 
 =back
 
 =head2 Other Functions
 
-(����¾�δؿ�)
+(その他の関数)
 
 =over 4
 
@@ -1026,11 +1026,11 @@ PerlIO_binmode() below for the portable case.
 
 =end original
 
-USE_PERLIO �����ؤο��������󥿡��ե������Ǥ���
-":crlf" �� ":raw" ���ؤϤ���¾�μ����Ǥϰ�Ĥ��������Ĥ��졢�����ϰ��ۤ�
-̵�뤵��ޤ���
-(perl5.8 ���顢":raw" ����侩�Ǥ���)
-�ܿ���������ˤʤ���ϸ�Ҥ��� PerlIO_binmode() ��ȤäƤ���������
+USE_PERLIO 実装への新しいインターフェースです。
+":crlf" と ":raw" の層はその他の実装では一つだけが許可され、これらは暗黙に
+無視されます。
+(perl5.8 から、":raw" は非推奨です。)
+移植性が問題になる場合は後述する PerlIO_binmode() を使ってください。
 
 =item PerlIO_binmode(f,ptype,imode,layers)
 
@@ -1041,8 +1041,8 @@ B<ptype> is perl's character for the kind of IO:
 
 =end original
 
-perl �� C<binmode> �黻�ҤǻȤ���եå��Ǥ���
-B<ptype> �������Ϥμ���򼨤� perl ��ʸ���Ǥ�:
+perl の C<binmode> 演算子で使われるフックです。
+B<ptype> は入出力の種類を示す perl の文字です:
 
 =over 8
 
@@ -1060,7 +1060,7 @@ B<imode> is C<O_BINARY> or C<O_TEXT>.
 
 =end original
 
-B<imode> �� C<O_BINARY> �� C<O_TEXT> �Ǥ���
+B<imode> は C<O_BINARY> か C<O_TEXT> です。
 
 =begin original
 
@@ -1070,9 +1070,9 @@ of passing NULL.)
 
 =end original
 
-B<layers> ��Ŭ�Ѥ�����ؤ�ʸ����ǡ�USE_PERLIO �ʳ��ξ��Ǥ� ":crlf" �Τߤ�
-��̣������ޤ���
-(perl5.8 �ʹߡ�":raw" ����侩�ǡ�NULL ���Ϥ����Ȥ����ޤ�ޤ���)
+B<layers> は適用される層の文字列で、USE_PERLIO 以外の場合では ":crlf" のみが
+意味を持ちます。
+(perl5.8 以降、":raw" は非推奨で、NULL を渡すことが好まれます。)
 
 =begin original
 
@@ -1080,7 +1080,7 @@ Portable cases are:
 
 =end original
 
-�ܿ����Τ������:
+移植性のある場合は:
 
     PerlIO_binmode(f,ptype,O_BINARY,Nullch);
 and
@@ -1097,12 +1097,12 @@ buffered as well, or only apply to subsequent data.)
 
 =end original
 
-Unix �ǤϤ����θƤӽФ��Ϥ����餯���θ��̤⤢��ޤ���
-����ʳ��Ǥ� "\n" �� CR,LF ���Ѵ��������̤ʥƥ����ȡ֥ե����뽪ü�׻ؼ��Ҥ�
-�ɤ߽񤭻��˻Ȥ��ޤ���
-�ϥ�ɥ���Ф��� I/O ��Ԥä���˸ƤӽФ������θ��̤ϼ����˰�¸���ޤ���
-(̵�뤵��뤫�⤷��ޤ��󤷡����˥Хåե������äƤ���ǡ����ˤ�
-Ŭ�Ѥ���뤫�⤷��ޤ��󤷡��ʸ�Υǡ����ˤ���Ŭ�Ѥ���뤫�⤷��ޤ���)
+Unix ではこれらの呼び出しはおそらく何の効果もありません。
+それ以外では "\n" を CR,LF に変換し、特別なテキスト「ファイル終端」指示子を
+読み書き時に使います。
+ハンドルに対して I/O を行った後に呼び出した場合の効果は実装に依存します。
+(無視されるかもしれませんし、既にバッファに入っているデータにも
+適用されるかもしれませんし、以後のデータにだけ適用されるかもしれません。)
 
 =item PerlIO_debug(fmt,...)
 
@@ -1115,10 +1115,10 @@ problem.
 
 =end original
 
-PerlIO_debug �ϡ��ǥХå��˻Ȥ��� printf() ���δؿ��Ǥ���
-�֤��ͤϤ���ޤ���
-������Ӥϡ��� printf, warn() �ʤɤ��ȤäƤ��� PerlIO �������ǡ�PerlIO ��
-�Ƶ��ƤӽФ�������ˤʤ�褦�ʤȤ����Ǥ���
+PerlIO_debug は、デバッグに使える printf() 風の関数です。
+返り値はありません。
+主な用途は、実 printf, warn() などが使っている PerlIO の内部で、PerlIO の
+再帰呼び出しが問題になるようなところです。
 
 =begin original
 
@@ -1127,8 +1127,8 @@ use might be
 
 =end original
 
-PerlIO_debug ��$ENV{'PERLIO_DEBUG'} �ǻ��ꤵ�줿�ե�����˽񤭹��ߤޤ���
-ŵ��Ū�ʻȤ�����:
+PerlIO_debug は$ENV{'PERLIO_DEBUG'} で指定されたファイルに書き込みます。
+典型的な使い方は:
 
   Bourne shells (sh, ksh, bash, zsh, ash, ...):
    PERLIO_DEBUG=/dev/tty ./perl somescript some args
@@ -1150,8 +1150,8 @@ If $ENV{'PERLIO_DEBUG'} is not set PerlIO_debug() is a no-op.
 
 =end original
 
-$ENV{'PERLIO_DEBUG'} �����åȤ���Ƥ��ʤ����� PerlIO_debug() ��
-���⤷�ޤ���
+$ENV{'PERLIO_DEBUG'} がセットされていない場合は PerlIO_debug() は
+何もしません。
 
 =back
 

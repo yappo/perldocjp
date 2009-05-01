@@ -6,7 +6,7 @@ perlfaq9 - Networking ($Revision: 8539 $)
 
 =end original
 
-perlfaq9 - �ͥåȥ�� ($Revision: 8539 $)
+perlfaq9 - ネットワーク ($Revision: 8539 $)
 
 =head1 DESCRIPTION
 
@@ -17,12 +17,12 @@ and a few on the web.
 
 =end original
 
-���Υ��������Ǥϡ��ͥåȥ�������󥿡��ͥåȡ�web �˴ؤ���
-����򰷤äƤ��ޤ���
+このセクションでは、ネットワーク、インターネット、web に関する
+質問を扱っています。
 
 =head2 What is the correct form of response from a CGI script?
 
-(CGI ������ץȤ��������������������?)
+(CGI スクリプトからの返答の正しい形は?)
 
 =begin original
 
@@ -30,7 +30,7 @@ and a few on the web.
 
 =end original
 
-(Alan Flavell <flavell+www@a5.ph.gla.ac.uk> �������ޤ�...)
+(Alan Flavell <flavell+www@a5.ph.gla.ac.uk> が答えます...)
 
 =begin original
 
@@ -41,11 +41,11 @@ comp.infosystems.www.authoring.cgi
 
 =end original
 
-The Common Gateway Interface (CGI) �ϥץ������("CGI ������ץ�")��
-web ������ (HTTPD) �δ֤Υ��եȥ��������󥿡��ե����������Ƥ��ޤ���
-����� Perl ��ͭ�Τ�ΤǤϤʤ��Τǡ��ȼ��� FAQ���ȼ��Υ��塼�ȥꥢ�롢
-�������ȼ��� usenet group �Ǥ��� comp.infosystems.www.authoring.cgi ��
-����ޤ���
+The Common Gateway Interface (CGI) はプログラム("CGI スクリプト")と
+web サーバ (HTTPD) の間のソフトウェアインターフェースを定めています。
+これは Perl 固有のものではないので、独自の FAQと独自のチュートリアル、
+そして独自の usenet group である comp.infosystems.www.authoring.cgi が
+あります。
 
 =begin original
 
@@ -54,7 +54,7 @@ http://www.ietf.org/rfc/rfc3875
 
 =end original
 
-CGI ���ͤ� RFC �˳��פ��Ҥ٤��Ƥ��ޤ�:
+CGI 仕様は RFC に概要が述べられています:
 http://www.ietf.org/rfc/rfc3875
 
 =begin original
@@ -63,8 +63,8 @@ Other relevant documentation listed in: http://www.perl.org/CGI_MetaFAQ.html
 
 =end original
 
-����¾�δ�Ϣ����ʸ��Υꥹ�Ȥ� http://www.perl.org/CGI_MetaFAQ.html ��
-����ޤ���
+その他の関連する文書のリストは http://www.perl.org/CGI_MetaFAQ.html に
+あります。
 
 =begin original
 
@@ -74,10 +74,10 @@ of the details for them.
 
 =end original
 
-������ Perl FAQ �Ϥ����Ĥ��� CGI ������ˤĤ��ƤȤƤ�ȴ�褷��
-���С����Ƥ��ޤ���
-�������������ξܺ٤��ѿ����뤿��ˡ�Perl �ץ�����ޤ� CGI �⥸�塼���
-�Ȥ����Ȥ򶯤���𤵤�ޤ���
+これらの Perl FAQ はいくつかの CGI の問題についてとても抜粋して
+カバーしています。
+しかし、これらの詳細に用心するために、Perl プログラマは CGI モジュールを
+使うことを強く忠告されます。
 
 =begin original
 
@@ -87,9 +87,9 @@ specification, RFC2616) is intentional, but can sometimes be confusing.
 
 =end original
 
-(CGI ���ͤ��������Ƥ���) CGI �쥹�ݥ󥹥إå��ȡ�(RFC2616 �� HTTP ���ͤ�
-�������Ƥ���) HTTP �쥹�ݥ󥹥إå���������ϰտ�Ū�ʤ�ΤǤ�����
-�������������������ޤ���
+(CGI 仕様に定義されている) CGI レスポンスヘッダと、(RFC2616 の HTTP 仕様で
+定義されている) HTTP レスポンスヘッダの類似性は意図的なものですが、
+時々混乱を引き起こします。
 
 =begin original
 
@@ -107,18 +107,18 @@ written in binary mode.
 
 =end original
 
-CGI ���ͤ� 2 ����Υ�����ץȤ�������Ƥ��ޤ�:
-"Parsed Header" ������ץȤȡ�"Non Parsed Header" (NPH) ������ץȡ�
-���򥵥ݡ��Ȥ��Ƥ��뤫�ˤĤ��Ƥϥ����С��Υɥ�����Ȥ�����å�����
-����������
-"Parsed Header" ������ץȤϿ�����¦�̤ˤ����Ƥ��ñ��Ǥ���
-CGI ���ͤ� CGI �쥹�ݥ󥹤Ȥ��ư���Ū�ʲ���ɽ���Τɤ��ȤäƤ�褤���Ȥ�
-�ʤäƤ��ޤ�(�����������Τ� HTTP �쥹�ݥ󥹤��������Τϥ����ФλŻ��Ǥ�)��
-���ä� "\n" ��ƥ����ȥ⡼�ɤǽ񤯤Τϵ���Ū�����������侩����Ƥ��ޤ���
-NPH ������ץȤǤϤ����̯�Ǥ�: �����Ǥϴ��������Τ� HTTP �ȥ�󥶥������
-�쥹�ݥ󥹥إå�����Ϥ��ʤ���Фʤ�ޤ���; HTTP ���ͤϥ쥳���ɤ�������
-����(�Ĥޤ�Х��ʥ�⡼�ɤ� ASCII �����ɤ� \015\012 ���񤫤��)��
-��ü����Ƥ��뤳�Ȥ��׵ᤷ�ޤ���
+CGI 仕様は 2 種類のスクリプトを定義しています:
+"Parsed Header" スクリプトと、"Non Parsed Header" (NPH) スクリプト。
+何をサポートしているかについてはサーバーのドキュメントをチェックして
+ください。
+"Parsed Header" スクリプトは色々な側面においてより単純です。
+CGI 仕様は CGI レスポンスとして一般的な改行表現のどれを使ってもよいことに
+なっています(そこから正確な HTTP レスポンスを作成するのはサーバの仕事です)。
+従って "\n" をテキストモードで書くのは技術的に正しく、推奨されています。
+NPH スクリプトではより微妙です: ここでは完全に正確な HTTP トランザクション
+レスポンスヘッダを出力しなければなりません; HTTP 仕様はレコードが復帰と
+改行(つまりバイナリモードで ASCII コードの \015\012 が書かれる)で
+終端されていることを要求します。
 
 =begin original
 
@@ -128,14 +128,14 @@ systems. CGI.pm selects an appropriate newline representation
 
 =end original
 
-CGI.pm ��Ȥ����Ȥǡ�EBCDIC �����ƥ��ޤह�Ф餷���ץ�åȥե�����
-��Ω���������ޤ���
-CGI.pm ��Ŭ�ڤʲ���ɽ��������($CGI::CRLF)��binmode ��Ŭ�ڤ˥��åȤ��ޤ���
+CGI.pm を使うことで、EBCDIC システムを含むすばらしいプラットフォーム
+独立性が得られます。
+CGI.pm は適切な改行表現を選択し($CGI::CRLF)、binmode を適切にセットします。
 
 =head2 My CGI script runs from the command line but not the browser.  (500 Server Error)
 
-(��� CGI ������ץȤϥ��ޥ�ɥ饤��Ǥ�ư���Τ����ɡ��֥饦����Ǥ�ư���ޤ���
-(500 Server Error �ˤʤ�ޤ�))
+(私の CGI スクリプトはコマンドラインでは動くのだけど、ブラウザ上では動きません
+(500 Server Error になります))
 
 =begin original
 
@@ -144,8 +144,8 @@ Perl CGI scripts" guide at
 
 =end original
 
-��ǽ���Ϥ����Ĥ�����ޤ���
-�ʲ��ˤ��� "Troubleshooting Perl CGI scripts" �����ɤ��ɤߤޤ��礦:
+可能性はいくつかあります。
+以下にある "Troubleshooting Perl CGI scripts" ガイドを読みましょう:
 
 	http://www.perl.org/troubleshooting_CGI.html
 
@@ -161,12 +161,12 @@ are not so well received.
 
 =end original
 
-���θ塢FAQ ���ɤ�ǡ����ʤ������꤬��ñ���������ΤǤϤʤ���
-�狼�ä��Τʤ顢(HTTP �� CGI �ץ��ȥ���˴ؤ����Τʤ�)
-comp.infosystems.www.authoring.cgi �˥ݥ��Ȥ����ͭ�Ѥʥ�ץ饤��
-������Ǥ��礦��
-Perl �˴ؤ������Τ褦�˸����Ƥ��Ƥ⡢�¤� CGI �˴ؤ����Τ��Ȥ�����Τ�
-comp.lang.perl.misc ����Ƥ���뤳�Ȥ�����ޤ����������ϤĤ��Ƥ��ޤ���
+その後、FAQ を読んで、あなたの問題が簡単に答られるものではないと
+わかったのなら、(HTTP や CGI プロトコルに関するものなら)
+comp.infosystems.www.authoring.cgi にポストすれば有用なリプライが
+得られるでしょう。
+Perl に関する質問のように見えていても、実は CGI に関するものだというものが
+comp.lang.perl.misc に投稿されることがありますが、回答はついていません。
 
 =begin original
 
@@ -175,14 +175,14 @@ listed in the CGI Meta FAQ:
 
 =end original
 
-������ FAQ����Ϣ����ɥ�����ȡ��ȥ�֥륷�塼�ƥ��󥰥����ɤ�
-CGI Meta FAQ �˵󤲤��Ƥ��ޤ�:
+便利な FAQ、関連するドキュメント、トラブルシューティングガイドは
+CGI Meta FAQ に挙げられています:
 
 	http://www.perl.org/CGI_MetaFAQ.html
 
 =head2 How can I get better error messages from a CGI program?
 
-(CGI �ץ�����फ�顢��äȤޤȤ�ʥ��顼��å�����������ˤ�?)
+(CGI プログラムから、もっとまともなエラーメッセージを得るには?)
 
 =begin original
 
@@ -193,11 +193,11 @@ server error log.
 
 =end original
 
-CGI::Carp �⥸�塼���Ȥ��ޤ��礦��
-���Υ⥸�塼��� C<warn> �� C<die> ���֤�������Ԥ���������̾��
-Carp �⥸�塼��� C<carp>��C<croak>��C<confess> �Ȥ��ä��ؿ����������
-�����ʤ�Τ��֤������ޤ���
-���ν��Ϥϡ������С����̾�Υ��顼�����������ޤ���
+CGI::Carp モジュールを使いましょう。
+このモジュールは C<warn> と C<die> の置き換えを行い、さらに通常の
+Carp モジュールの C<carp>、C<croak>、C<confess> といった関数をより饒舌で
+安全なものに置き換えます。
+その出力は、サーバーの通常のエラーログに送られます。
 
     use CGI::Carp;
     warn "This is a complaint";
@@ -210,9 +210,9 @@ placed in a BEGIN block to catch compile-time warnings as well:
 
 =end original
 
-�ʲ��� CGI::Carp �λ�����Ǥϡ����顼�򤢤ʤ������򤷤��ե������
-������쥯�Ȥ�������ѥ�����ηٹ��Ʊ�ͤ���­���뤿�� BEGIN �֥��å���
-�֤��Ƥ��ޤ�:
+以下の CGI::Carp の使用例では、エラーをあなたの選択したファイルへ
+リダイレクトし、コンパイル時の警告も同様に補足するため BEGIN ブロックに
+置いています:
 
     BEGIN {
         use CGI::Carp qw(carpout);
@@ -228,9 +228,9 @@ which is nice for your own debugging, but might confuse the end user.
 
 =end original
 
-����ʥ��顼�򥯥饤����ȤΥ֥饦�����᤹�褦���ѹ����뤳�Ȥ�Ǥ��ޤ���
-����Ϥ��ʤ����ǥХå�����ˤ��ɤ��Ǥ��礦��������ɥ桼������
-���𤵤��Ƥ��ޤ����⤷��ޤ���
+深刻なエラーをクライアントのブラウザに戻すように変更することもできます。
+これはあなたがデバッグするには良いでしょうが、エンドユーザーを
+混乱させてしまうかもしれません。
 
     use CGI::Carp qw(fatalsToBrowser);
     die "Bad error here";
@@ -245,15 +245,15 @@ stamp prepended.
 
 =end original
 
-���ʤ��� HTTP �إå�����������������˥��顼�������ä��Ȥ��Ƥ⡢
-�⥸�塼��ϥ����С��� 500 ���顼���򤱤뤿��ˤ��Υ��顼���갷������
-����Ǥ��礦��
-�̾�ηٹ�ϥ����С��Υ��顼����(�⤷���Ϥ��ʤ��� C<carpout> �ǻ��ꤷ�����)��
-���ץꥱ��������̾�������դ�ȼ�ä������ޤ���
+あなたが HTTP ヘッダーを受け取るよりも前にエラーが起こったとしても、
+モジュールはサーバーの 500 エラーを避けるためにそのエラーを取り扱おうと
+するでしょう。
+通常の警告はサーバーのエラーログ(もしくはあなたが C<carpout> で指定した場所)に
+アプリケーションの名前と日付を伴って送られます。
 
 =head2 How do I remove HTML from a string?
 
-(����ʸ���󤫤� HTML ��������ˤ�?)
+(ある文字列から HTML を取り除くには?)
 
 =begin original
 
@@ -264,10 +264,10 @@ attempts to do a little simple formatting of the resulting plain text.
 
 =end original
 
-(��®�ǤϤ���ޤ���)�Ǥ���������ˡ�ϡ�CPAN �ˤ��� HTML::Parser ��
-�Ȥ��Ȥ�����ΤǤ���
-�⤦��ĤΤޤ���������ˡ�ϡ�HTML::FormatText ��Ȥä� HTML ��
-�����������Ǥʤ�����̤Υץ졼��ƥ����Ȥ��ñ���������뤳�ȤǤ���
+(最速ではありませんが)最も正しい方法は、CPAN にある HTML::Parser を
+使うというものです。
+もう一つのまず正しい方法は、HTML::FormatText を使って HTML を
+取り除くだけでなく、結果のプレーンテキストを簡単に整形することです。
 
 =begin original
 
@@ -279,13 +279,13 @@ entities--like C<&lt;> for example.
 
 =end original
 
-¿���οͤ���C<< s/<.*?>//g >> �Τ褦��ñ���(simple-minded)����ɽ����
-�Ȥä����ץ�������Ԥ����Ȥ���ΤǤ����������¿���ξ��
-���Ԥ��Ƥ��ޤ��ޤ���
-�ʤ��ʤ顢�����ϹԤ�ޤ����äƷ�³�����ǽ�������ꡢ
-�������Ȥ��줿���󥰥�֥饱�åȤ�ޤ��ǽ�������ꡢ
-HTML �Υ����Ȥ����뤫�⤷��ʤ�����Ǥ���
-����ˡ��͡��� C<&lt;> �Τ褦�ʥ���ƥ��ƥ����Ѵ����뤳�Ȥ�˺��Ƥ��ޤ��ΤǤ���
+多くの人が、C<< s/<.*?>//g >> のような単純な(simple-minded)正規表現を
+使ったアプローチを行おうとするのですが、これは多くの場合
+失敗していまいます。
+なぜなら、タグは行をまたがって継続する可能性があり、
+クォートされたアングルブラケットを含む可能性があり、
+HTML のコメントがあるかもしれないからです。
+さらに、人々は C<&lt;> のようなエンティティを変換することを忘れてしまうのです。
 
 =begin original
 
@@ -293,8 +293,8 @@ Here's one "simple-minded" approach, that works for most files:
 
 =end original
 
-�ʲ������ ��ñ��ʡɥ��ץ������ǡ��ۤȤ�ɤΥե�������Ф��Ƥ�
-���ޤ������ޤ�:
+以下の例は “単純な”アプローチで、ほとんどのファイルに対しては
+うまくいきます:
 
     #!/usr/bin/perl -p0777
     s/<(?:[^>'"]*|(['"]).*?\1)*>//gs
@@ -308,9 +308,9 @@ http://www.cpan.org/authors/Tom_Christiansen/scripts/striphtml.gz
 
 =end original
 
-�⤷����괰���ʲ�������Ƥ���Τʤ顢
+もし、より完璧な解決策を求めているのなら、
 http://www.cpan.org/authors/Tom_Christiansen/scripts/striphtml.gz
-�ˤ��� 3-stage striphtml �ץ������򻲾Ȥ��ƤߤƤ���������
+にある 3-stage striphtml プログラムを参照してみてください。
 
 =begin original
 
@@ -319,8 +319,8 @@ a solution:
 
 =end original
 
-�ʲ��˵󤲤��Τϡ����ʤ�����ʬ�Ǥ�����Ȥ����Ȥ���
-��θ���٤��Ǥ������ȥ�å�������Ǥ�:
+以下に挙げたのは、あなたが自分でやろうとしたときに
+考慮すべきであろうトリッキーな例です:
 
     <IMG SRC = "foo.gif" ALT = "A > B">
 
@@ -342,8 +342,8 @@ on text like this:
 
 =end original
 
-�ʲ��Υƥ����ȤΤ褦�� HTML �Υ����Ȥ�¾�Υ�����ޤ�Ǥ������ˤϡ�
-���ä������б��������ˤ��Ƥ��ޤ����⤷��ޤ���:
+以下のテキストのように HTML のコメントが他のタグを含んでいた場合には、
+せっかくの対応策もダメにしてしまうかもしれません:
 
     <!-- This section commented out.
         <B>You can't see me!</B>
@@ -351,7 +351,7 @@ on text like this:
 
 =head2 How do I extract URLs?
 
-(URL ��Ÿ����Ԥ��ˤ�?)
+(URL の展開を行うには?)
 
 =begin original
 
@@ -365,13 +365,13 @@ suited to your needs.
 
 =end original
 
-���󥫡������᡼�������֥������ȡ��ե졼�ࡢ����Ӥ���¾�� URL ��ޤ�
-¿���Υ����򰷤��� C<HTML::SimpleLinkExtor> ��Ȥäơ�HTML ���餢����
-����� URL ���ñ����ФǤ��ޤ���
-�⤷��ä�ʣ���ʤ�Τ�ɬ�פʤ顢��ʬ���Ȥ� C<HTML::LinkExtor> ��
-C<HTML::Parser> �Υ��֥��饹����ޤ���
-�㤨�С����ʤ������Ӥ��ä�Ŭ�Ѥ���ʤ顢C<HTML::SimpleLinkExtor> ��
-�Ȥ����Ȥ�Ǥ��ޤ���
+アンカー、イメージ、オブジェクト、フレーム、およびその他の URL を含む
+多くのタグを扱える C<HTML::SimpleLinkExtor> を使って、HTML からあらゆる
+種類の URL を簡単に抽出できます。
+もしもっと複雑なものが必要なら、自分自身で C<HTML::LinkExtor> や
+C<HTML::Parser> のサブクラスを作れます。
+例えば、あなたの用途に特に適用するなら、C<HTML::SimpleLinkExtor> を
+使うこともできます。
 
 =begin original
 
@@ -379,7 +379,7 @@ You can use URI::Find to extract URLs from an arbitrary text document.
 
 =end original
 
-Ǥ�դΥƥ�����ʸ�񤫤� URL ����Ф��뤿��ˤϡ�URI::Find ���Ȥ��ޤ���
+任意のテキスト文書から URL を抽出するためには、URI::Find が使えます。
 
 =begin original
 
@@ -391,11 +391,11 @@ attribute is HREF and there are no other attributes.
 
 =end original
 
-�⤷���Ϥ�ñ��Ǥ��뤳�Ȥ�ʬ���äƤ���ʤ顢����ɽ����Ȥä�����Դ�����
-��ˡ�ˤ�ä�¿���ν������֤�����Ǥ��ޤ���
-Tom Christiansen �ˤ���Ĥβ�ˡ�ϡ��⥸�塼���Ȥä���ˡ���� 100 ��
-®���Ǥ������ǽ��°���� HREF �ǡ�����¾��°�����ʤ����󥫡��� URL �Τߤ�
-��Ф��ޤ���
+もし入力が単純であることが分かっているなら、正規表現を使ったより不完全な
+解法によって多くの処理時間を節約できます。
+Tom Christiansen による一つの解法は、モジュールを使った手法よりも 100 倍
+速いですが、最初の属性が HREF で、その他の属性がないアンカーの URL のみを
+抽出します。
 
         #!/usr/bin/perl -n00
         # qxurl - tchrist@perl.com
@@ -407,8 +407,8 @@ Tom Christiansen �ˤ���Ĥβ�ˡ�ϡ��⥸�塼���Ȥä���ˡ���� 100 ��
 
 =head2 How do I download a file from the user's machine?  How do I open a file on another machine?
 
-(�桼�����Υޥ��󤫤�ե���������������ɤ���ˤ�?
-�̤Υޥ���ˤ���ե�����򥪡��ץ󤹤�ˤ�?)
+(ユーザーのマシンからファイルをダウンロードするには?
+別のマシンにあるファイルをオープンするには?)
 
 =begin original
 
@@ -423,15 +423,15 @@ method.
 
 =end original
 
-���ξ�硢����������ɤȤ����Τ� HTML �ե�����Υե����륢�åץ����ɵ�ǽ��
-�Ȥ��Ȥ������Ȥ��̣���ޤ���
-Web �����ե����ˡ�Web �����С�������ե���������Ǥ���褦�ˤ��ޤ���
-���ʤ��ˤȤäƥ���������ɤ˸������Τϡ��桼�����ˤȤäƤϥ��åץ����ɤ�
-�����ޤ���
-���ȸƤ֤��ˤϴؤ�餺��B<multipart/form-data>
-���󥳡��ǥ��󥰤Ȥ����Τ��Ƥ����Τ�Ȥ����Ȥ��Ǥ���Ǥ��礦��
-CGI.pm �⥸�塼��(ɸ��饤�֥��ˤʤäƤ��ޤ�)�Ϥ���� start_multipart_form()
-�Ȥ��� starform() �᥽�åɤȤϰۤʤ�᥽�åɤǥ��ݡ��Ȥ��Ƥ��ޤ���
+この場合、ダウンロードというのは HTML フォームのファイルアップロード機能を
+使うということを意味します。
+Web サーファーに、Web サーバーに送るファイルを指定できるようにします。
+あなたにとってダウンロードに見えるものは、ユーザーにとってはアップロードに
+見えます。
+何と呼ぶかには関わらず、B<multipart/form-data>
+エンコーディングとして知られているものを使うことができるでしょう。
+CGI.pm モジュール(標準ライブラリになっています)はこれを start_multipart_form()
+という starform() メソッドとは異なるメソッドでサポートしています。
 
 =begin original
 
@@ -440,12 +440,12 @@ examples and details.
 
 =end original
 
-�����ɤΥ���ץ�Ⱦܺ٤ˤĤ��Ƥϡ�CGI.pm ��ʸ��Υե����륢�åץ����ɤ�
-�Ϥ򻲾Ȥ��Ƥ���������
+コードのサンプルと詳細については、CGI.pm の文書のファイルアップロードの
+章を参照してください。
 
 =head2 How do I make an HTML pop-up menu with Perl?
 
-(Perl �� HTML �Υݥåץ��åץ�˥塼����ˤ�?)
+(Perl で HTML のポップアップメニューを作るには?)
 
 =begin original
 
@@ -453,7 +453,7 @@ examples and details.
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -463,9 +463,9 @@ examples.
 
 =end original
 
-CGI.pm �⥸�塼��(ɸ�����ۤǤ�)�ˤ� HTML �ե����०�������åȤ��뤿���
-�ؿ�������ޤ���
-���ʤ���ˤĤ��Ƥ� CGI.pm ��ʸ��򻲾Ȥ��Ƥ���������
+CGI.pm モジュール(標準配布です)には HTML フォームウィジェットを作るための
+関数があります。
+更なる例については CGI.pm の文書を参照してください。
 
 	use CGI qw/:standard/;
 	print header,
@@ -484,7 +484,7 @@ CGI.pm �⥸�塼��(ɸ�����ۤǤ�)�ˤ� HTML �ե����०�������åȤ��뤿���
 
 =head2 How do I fetch an HTML file?
 
-(HTML �ե������ե��å�����ˤ�?)
+(HTML ファイルをフェッチするには?)
 
 =begin original
 
@@ -493,8 +493,8 @@ on your system, is this:
 
 =end original
 
-��ĤΤ�����ϡ����ʤ��� lynx �Ȥ����ƥ����ȥ١����� HTML �֥饦����
-���󥹥ȡ��뤷�Ƥ���Ȥ���С����Τ褦�ʤ�ΤǤ�:
+一つのやり方は、あなたが lynx というテキストベースの HTML ブラウザを
+インストールしているとすれば、次のようなものです:
 
     $html_code = `lynx -source $url`;
     $text_data = `lynx -dump $url`;
@@ -507,9 +507,9 @@ through proxies:
 
 =end original
 
-CPAN ������Ǥ��� libwww-perl (LWP) �⥸�塼��Ϥ����Ԥ���
-���ѥ�ե����ˡ���󶡤��ޤ���
-����� lynx ��ɬ�פȤ������ץ������ۤ��Ǥ�Ȥ��ޤ�:
+CPAN で入手できる libwww-perl (LWP) モジュールはこれを行う、
+よりパワフルな方法を提供します。
+これは lynx を必要とせず、プロキシ越しでも使えます:
 
     # simplest version
     use LWP::Simple;
@@ -533,7 +533,7 @@ CPAN ������Ǥ��� libwww-perl (LWP) �⥸�塼��Ϥ����Ԥ���
 
 =head2 How do I automate an HTML form submission?
 
-(HTML �ե�����ν�����ư������ˤ�?)
+(HTML フォームの処理を自動化するには?)
 
 =begin original
 
@@ -543,9 +543,9 @@ documentation for all the details.
 
 =end original
 
-�⤷��ʣ���Υڡ����ȥե������ web �����Ȥ��ư����褦�ʡ�ʣ���ʤ��Ȥ�
-���褦�Ȥ��Ƥ���ʤ顢C<WWW::Mechanize> ���Ȥ��ޤ���
-���Ƥξܺ٤ˤĤ��ƤϤ���Υɥ�����Ȥ򻲾Ȥ��Ƥ���������
+もし、複数のページとフォームや web サイトを移動するような、複雑なことを
+しようとしているなら、C<WWW::Mechanize> が使えます。
+全ての詳細についてはこれのドキュメントを参照してください。
 
 =begin original
 
@@ -554,8 +554,8 @@ the form using the C<query_form> method:
 
 =end original
 
-GET �᥽�åɤ�Ȥä��ͤ�������Ƥ���ΤǤ���С�URL ���äơ�
-����� C<query_form> �᥽�åɤ�Ȥäƥե�����򥨥󥳡��ɤ��ޤ�:
+GET メソッドを使って値を処理しているのであれば、URL を作って、
+さらに C<query_form> メソッドを使ってフォームをエンコードします:
 
     use LWP::Simple;
     use URI::URL;
@@ -571,8 +571,8 @@ the content appropriately.
 
 =end original
 
-POST �᥽�åɤ�ȤäƤ���ΤǤ���С���ʬ�ѤΥ���������Ȥ��������
-����ƥ�Ĥ�Ŭ�ڤ˥��󥳡��ɤ��Ƥ��ޤ���
+POST メソッドを使っているのであれば、自分用のエージェントを作成して
+コンテンツを適切にエンコードしてやります。
 
     use HTTP::Request::Common qw(POST);
     use LWP::UserAgent;
@@ -584,7 +584,7 @@ POST �᥽�åɤ�ȤäƤ���ΤǤ���С���ʬ�ѤΥ���������Ȥ��������
 
 =head2 How do I decode or create those %-encodings on the web?
 
-(web��� %-encodings ��ǥ����ɤ��������������ꤹ��ˤ�?)
+(web上で %-encodings をデコードしたり生成したりするには?)
 
 =begin original
 
@@ -595,10 +595,10 @@ function to handle encoding.
 
 =end original
 
-CGI ������ץȤ�񤤤Ƥ���Τʤ顢perl ����°���Ƥ��� CGI.pm �⥸�塼��
-�ޤ��������ʥ⥸�塼���Ȥ��٤��Ǥ���
-CGI �⥸�塼��ϼ�ưŪ�˥������ǥ����ɤ���escape() �ؿ���
-���󥳡��ɤ�Ǥ��ޤ���
+CGI スクリプトを書いているのなら、perl に付属している CGI.pm モジュール
+または等価なモジュールを使うべきです。
+CGI モジュールは自動的にクエリをデコードし、escape() 関数で
+エンコードもできます。
 
 =begin original
 
@@ -607,8 +607,8 @@ Basically, the following substitutions do it:
 
 =end original
 
-URI ���󥳡��ǥ��󥰤ξܺپ���˴ؤ�����ɤΥ������� RFC 2396 �Ǥ���
-����Ū�ˤϡ��ʲ����ִ����¹Ԥ���ޤ�:
+URI エンコーディングの詳細情報に関する最良のソースは RFC 2396 です。
+基本的には、以下の置換が実行されます:
 
     s/([^\w()'*~!.-])/sprintf '%%%02x', ord $1/eg;   # encode
 
@@ -624,12 +624,12 @@ section 2 of the RFC, it's probably the best explanation there is.
 
 =end original
 
-������������� URI ���ΤǤϤʤ����ġ��� URI ����ݡ��ͥ�Ȥ�
-�Ф���Ŭ�Ѥ���٤��Ǥ���
-����ʤ���С����󤬼���졢�����㤰����ˤʤ�ޤ���
-���줬�����ˤʤäƤ��ʤ��Ƥ⡢���ۤϤ���ޤ���
-RFC ���� 2 �Ϥ��ɤ�Ǥ���������
-�����餯��������˴ؤ�����ɤ������Ǥ���
+しかし、これは URI 全体ではなく、個々の URI コンポーネントに
+対して適用するべきです。
+さもなければ、情報が失われ、ぐちゃぐちゃになります。
+これが説明になっていなくても、心配はいりません。
+RFC の第 2 章を読んでください。
+おそらくこの問題に関する最良の説明です。
 
 =begin original
 
@@ -638,13 +638,13 @@ regexp for breaking any arbitrary URI into components (Appendix B).
 
 =end original
 
-RFC 2396 �ˤϤ���¾��ͭ�Ѥʾ���¿���ޤޤ�Ƥ��ޤ���
-������ˤ�Ǥ�դ� URI �򥳥�ݡ��ͥ�Ȥ�ʬ�䤹�뤿���
-����ɽ�� (Appendix B) ��ޤߤޤ���
+RFC 2396 にはその他の有用な情報が多く含まれています。
+その中には任意の URI をコンポーネントに分割するための
+正規表現 (Appendix B) を含みます。
 
 =head2 How do I redirect to another page?
 
-(�̤Υڡ����˥�����쥯�Ȥ���ˤ�?)
+(別のページにリダイレクトするには?)
 
 =begin original
 
@@ -657,12 +657,12 @@ allow relative URLs in either case.
 
 =end original
 
-(���Ȥ�Ʊ�������ФǤ�)������δ����� URL ����ꤷ�Ƥ���������
-����� Parsed Headers ������ץȤȤ��� CGI ���ͤ�������줿��Ĥΰۤʤä�
-CGI "Location:" �쥹�ݥ󥹤Τ����ΰ�ĤǤ���
-����¾�μ��� (���� URL �ѥ�) �� HTTP ������쥯�Ȥʤ��˥����Фˤ�ä�
-����Ū�˲�褵��ޤ���
-CGI ���ͤǤϤɤ���ξ��Ǥ����� URL ��ǧ����Ƥ��ޤ���
+(たとえ同じサーバでも)宛て先の完全な URL を指定してください。
+これは Parsed Headers スクリプトとして CGI 仕様に定義された二つの異なった
+CGI "Location:" レスポンスのうちの一つです。
+その他の種類 (絶対 URL パス) は HTTP リダイレクトなしにサーバによって
+内部的に解決されます。
+CGI 仕様ではどちらの場合でも相対 URL は認められていません。
 
 =begin original
 
@@ -671,9 +671,9 @@ with a complete URL. This redirection is handled by the web browser.
 
 =end original
 
-CGI.pm ��Ȥ����Ȥ򶯤������ᤷ�ޤ���
-������Ǥϴ����� URL �ؤΥ�����쥯�Ȥ�Ԥ��ޤ���
-���Υ�����쥯�Ȥ� web �֥饦���ˤ�äư����ޤ���
+CGI.pm を使うことを強くお勧めします。
+この例では完全な URL へのリダイレクトを行います。
+このリダイレクトは web ブラウザによって扱われます。
 
       use CGI qw/:standard/;
 
@@ -687,8 +687,8 @@ redirection is handled by the local web server.
 
 =end original
 
-������Ǥ����� URL �ѥ��ؤΥ�����쥯�Ȥ�Ԥ��ޤ���
-���Υ�����쥯�Ȥϥ�������� web �����Фˤ�äƹԤ��ޤ���
+この例では絶対 URL パスへのリダイレクトを行います。
+このリダイレクトはローカルの web サーバによって行われます。
 
       my $url = '/CPAN/index.html';
       print redirect($url);
@@ -701,15 +701,15 @@ an absolute URLpath.
 
 =end original
 
-��������ľ�ܥ����ǥ��󥰤���ʤ顢������ URL ������ URLpath ��Ȥäơ�
-�ʲ��Τ褦�ˤʤ�ޤ�(�Ǹ�� "\n" �����β����뤿���ʬ����ɽ�����Ƥ��ޤ�)��
+しかし、直接コーディングするなら、完全な URL か絶対 URLpath を使って、
+以下のようになります(最後の "\n" は明確化するために分けて表示しています)。
 
       print "Location: $url\n";   # CGI response header
       print "\n";                 # end of headers
 
 =head2 How do I put a password on my web pages?
 
-(��� web �ڡ����ǥѥ���ɤ����Ϥ���ˤ�?)
+(私の web ぺージでパスワードを入力するには?)
 
 =begin original
 
@@ -721,16 +721,16 @@ the details for your particular server.
 
 =end original
 
-���Ѥ��� Web �����С���ǧ�ڤ�ͭ���ˤ���ˤϡ�Web �����С������ꤹ�뤳�Ȥ�
-ɬ�פǤ���
-web �����Фμ���ˤ�ä�����ϰۤʤ�ޤ� -- apache �� iPlanet �Ȥϰۤʤꡢ
-�ޤ� IIS �Ȥ�ۤʤ�ޤ���
-����Υ����С��˴ؤ���ܺ٤ˤĤ��Ƥϡ����Υ����С��Υɥ�����Ȥ�
-�����å����Ƥ���������
+利用する Web サーバーで認証を有効にするには、Web サーバーを設定することが
+必要です。
+web サーバの種類によって設定は異なります -- apache は iPlanet とは異なり、
+また IIS とも異なります。
+特定のサーバーに関する詳細については、そのサーバーのドキュメントを
+チェックしてください。
 
 =head2 How do I edit my .htpasswd and .htgroup files with Perl?
 
-(Perl ��Ȥä� .htpasswd �� .htgroup �Ȥ��ä��ե�������Խ�����ˤ�?)
+(Perl を使って .htpasswd や .htgroup といったファイルを編集するには?)
 
 =begin original
 
@@ -742,14 +742,14 @@ a DBI compatible driver.  HTTPD::UserAdmin supports files used by the
 
 =end original
 
-HTTPD::UserAdmin �⥸�塼��� HTTPD::GroupAdmin �⥸�塼��ϡ�
-�ե����뤬�ɤΤ褦�˳�Ǽ����Ƥ��뤫�˴ط��ʤ������Υե�������Ф���
-������Ӥ������֥������Ȼظ����󥿡��ե��������󶡤��ޤ���
-�ǡ����١����ϥƥ����ȡ�dbm��Berkeley DB�����뤤�� DBI �ߴ��ɥ饤�ФΤ���
-�ɤ�ʥǡ����١����Ǥ⤫�ޤ��ޤ���
-HTTPD::UserAdmin �� "Basic" ����� "Digest" ǧ�ڥ��������
-�Ȥ���ե�����򥵥ݡ��Ȥ��ޤ���
-�ʲ������󤲤ޤ�:
+HTTPD::UserAdmin モジュールと HTTPD::GroupAdmin モジュールは、
+ファイルがどのように格納されているかに関係なくこれらのファイルに対する
+首尾一貫したオブジェクト指向インターフェースを提供します。
+データベースはテキスト、dbm、Berkeley DB、あるいは DBI 互換ドライバのある
+どんなデータベースでもかまいません。
+HTTPD::UserAdmin は "Basic" および "Digest" 認証スキームで
+使われるファイルをサポートします。
+以下に例を挙げます:
 
     use HTTPD::UserAdmin ();
     HTTPD::UserAdmin
@@ -758,7 +758,7 @@ HTTPD::UserAdmin �� "Basic" ����� "Digest" ǧ�ڥ��������
 
 =head2 How do I make sure users can't enter values into a form that cause my CGI script to do bad things?
 
-(��� CGI ������ץȤ˰��ƶ���⤿�餹�褦�ʤ�Τ򡢥桼�������ե���������ϤǤ��ʤ��褦�ˤ���ˤ�?)
+(私の CGI スクリプトに悪影響をもたらすようなものを、ユーザーがフォームに入力できないようにするには?)
 
 =begin original
 
@@ -766,13 +766,13 @@ See the security references listed in the CGI Meta FAQ
 
 =end original
 
-CGI Meta FAQ �˵󤲤��Ƥ��륻�����ƥ��˴ؤ��뻲�ͻ����򻲾Ȥ��Ƥ���������
+CGI Meta FAQ に挙げられているセキュリティに関する参考資料を参照してください。
 
 	http://www.perl.org/CGI_MetaFAQ.html
 
 =head2 How do I parse a mail header?
 
-(�᡼��Υإå�������Ϥ���ˤ�?)
+(メールのヘッダーを解析するには?)
 
 =begin original
 
@@ -781,8 +781,8 @@ from L<perlfunc/split>:
 
 =end original
 
-��®�ʲ����ʤ顢L<perlfunc/split> ������������
-�ʲ��Τ�������ƤߤƤ���������
+拙速な解決策なら、L<perlfunc/split> から派生した
+以下のやり方を試してみてください。
 
     $/ = '';
     $header = <MSG>;
@@ -797,14 +797,14 @@ the Mail::Header module from CPAN (part of the MailTools package).
 
 =end original
 
-���Τ�����ϡ����Ȥ��м��������Ԥ��٤Ƥ��ݼ餷�褦�Ȥ���Ȥ��ˤ�
-���ޤ�����ޤ���
-��괰���ʥ��ץ�������CPAN�ˤ���Mail::Header �⥸�塼���
-�Ȥ��Ȥ�����ΤǤ�(���Υ⥸�塼��� MailTools �ѥå������ΰ����Ǥ�)��
+このやり方は、たとえば受信した行すべてを保守しようとするときには
+うまくありません。
+より完璧なアプローチはCPANにあるMail::Header モジュールを
+使うというものです(このモジュールは MailTools パッケージの一部です)。
 
 =head2 How do I decode a CGI form?
 
-(CGI �ե������ǥ����ɤ���ˤ�?)
+(CGI フォームをデコードするには?)
 
 =begin original
 
@@ -812,7 +812,7 @@ the Mail::Header module from CPAN (part of the MailTools package).
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -825,12 +825,12 @@ you probably don't want to think about.
 
 =end original
 
-Perl ��Ʊ������Ƥ��� CGI.pm �⥸�塼���Ȥ��ޤ��礦��
-������᤯����ñ�ǡ�ʪ�����������Ԥ��뤳�Ȥ�μ¤ˤ��뤿���
-����äȤ�����Ȥ�Ԥ��ޤ���
-GET, POST, HEAD �ꥯ�����ȡ��ޥ���ѡ��ȥե����ࡢʣ���ͥե�����ɡ�
-������ʸ����ȥ�å������ܥǥ����Ȥ߹�碌������Ӥ���¾�Ρ�
-���ʤ����ͤ��褦�Ȥ�פ�ʤ��褦��¿���λ����򰷤��ޤ���
+Perl に同梱されている CGI.pm モジュールを使いましょう。
+これは早く、簡単で、物事が正しく行われることを確実にするための
+ちょっとした作業を行います。
+GET, POST, HEAD リクエスト、マルチパートフォーム、複数値フィールド、
+クエリ文字列とメッセージボディの組み合わせ、およびその他の、
+あなたが考えようとも思わないような多くの事柄を扱えます。
 
 =begin original
 
@@ -840,8 +840,8 @@ C<param()> function.
 
 =end original
 
-����ʾ��ñ�ˤϤʤ�ޤ���: CGI �⥸�塼������Ϥ�ưŪ�˥ѡ������ơ�
-���줾����ͤ� C<param()> �ؿ����̤������Ѳ�ǽ�ˤ��ޤ���
+これ以上簡単にはなりません: CGI モジュールは入力を自動的にパースして、
+それぞれの値を C<param()> 関数を通して利用可能にします。
 
 	use CGI qw(:standard);
 
@@ -855,7 +855,7 @@ If you want an object-oriented approach, CGI.pm can do that too.
 
 =end original
 
-���֥������Ȼظ��ʼ�ˡ���Ȥ������ʤ顢CGI.pm �Ϥ��Τ褦�ˤ�Ǥ��ޤ���
+オブジェクト指向な手法が使いたいなら、CGI.pm はそのようにもできます。
 
 	use CGI;
 
@@ -873,8 +873,8 @@ for you, too.
 
 =end original
 
-Ʊ�����Ȥ򤹤�����Ǥ� CGI::Minimal ���������⤷��ޤ���
-CPAN �ˤ��뤽��¾�� CGI::* �⥸�塼��⤢�ʤ��Τ���ˤ褯Ư���Ǥ��礦��
+同じことをする軽量版の CGI::Minimal も試したいかもしれません。
+CPAN にあるその他の CGI::* モジュールもあなたのためによく働くでしょう。
 
 =begin original
 
@@ -884,14 +884,14 @@ of the task.  It's much easier and less hassle to use CGI.pm.
 
 =end original
 
-¿���ο͡�����ʬ�ѤΥǥ�������񤳤��Ȥ��ޤ� (���뤤��¾�Υץ�����फ��
-���ԡ����褦�Ȥ��ޤ�); �����Ƥ��κ�Ȥ�¿���Ρ֥��ġפΰ�Ĥ˽Ф��魯���Ȥ�
-�ʤ�ޤ���
-CGI.pm ��Ȥ����ȤϤ���ñ�ǡ����ݻ��⾯�ʤ��ʤ�ޤ���
+多くの人々が自分用のデコーダを書こうとします (あるいは他のプログラムから
+コピーしようとします); そしてこの作業の多くの「コツ」の一つに出くわすことに
+なります。
+CGI.pm を使うことはより簡単で、面倒事も少なくなります。
 
 =head2 How do I check a valid mail address?
 
-(�᡼�륢�ɥ쥹���������������å�����ˤ�?)
+(メールアドレスが正しいかチェックするには?)
 
 =begin original
 
@@ -899,7 +899,7 @@ CGI.pm ��Ȥ����ȤϤ���ñ�ǡ����ݻ��⾯�ʤ��ʤ�ޤ���
 
 =end original
 
-(������ Aaron Sherman �ˤ�äƴ�£����ޤ���)
+(一部は Aaron Sherman によって寄贈されました)
 
 =begin original
 
@@ -907,8 +907,8 @@ This isn't as simple a question as it sounds.  There are two parts:
 
 =end original
 
-����ϸ����ܤۤ�ñ��ʼ���ǤϤ���ޤ���
-�������Ĥ���ʬ����ʤ�ޤ�:
+これは見た目ほど単純な質問ではありません。
+これは二つの部分からなります:
 
 =begin original
 
@@ -916,7 +916,7 @@ a) How do I verify that an email address is correctly formatted?
 
 =end original
 
-a) �᡼�륢�ɥ쥹���������������򸡾ڤ���ˤ�?
+a) メールアドレスが正しい形式かを検証するには?
 
 =begin original
 
@@ -924,7 +924,7 @@ b) How do I verify that an email address targets a valid recipient?
 
 =end original
 
-b) �᡼�륢�ɥ쥹�������ʼ����Ԥ��оݤȤ��Ƥ��뤫�򸡾ڤ���ˤ�?
+b) メールアドレスが正当な受信者を対象としているかを検証するには?
 
 =begin original
 
@@ -935,10 +935,10 @@ both part I<a> and part I<b> as far as you can in real-time.
 
 =end original
 
-���Υ��ɥ쥹�˥᡼������äƤ��줬�Ϥ������ɤ������ǧ���ʤ����
-�����˥ѡ��� I<b> ���������ޤ��󤬡�C<Email::Valid> �� 
-C<RFC::RFC822::Address> �Υ⥸�塼��ϡ��ꥢ�륿����ǤǤ���¤��
-���Ȥ��Ф��ƥѡ��� I<a> �ȥѡ��� I<b> ��ξ����Ԥ��ޤ���
+そのアドレスにメールを送ってそれが届いたかどうかを確認しなければ
+完全にパート I<b> に答えられませんが、C<Email::Valid> か 
+C<RFC::RFC822::Address> のモジュールは、リアルタイムでできる限りの
+ことに対してパート I<a> とパート I<b> の両方を行います。
 
 =begin original
 
@@ -953,15 +953,15 @@ This I<just> matches the address itself:
 
 =end original
 
-�⤷���ʤ���ñ�������ɽ���ǥ��ɥ쥹���᡼��إå�ɸ��˽��äƤ��뤫��
-���뤳�Ȥǥѡ��� I<a> ������å��������ʤ顢����������뤳�Ȥˤʤ�ޤ�;
-�ʤ��ʤ顢RFC-2822 (�ǿ��Υ᡼��إå�ɸ��) �˽�򤷤Ƥʤ�����ɤ�
-��ã��ǽ�ʥ��ɥ쥹��¸�ߤ���ɸ��˽�򤷤Ƥ��뤱��ɤ���ã��ǽ�ʥ��ɥ쥹��
-¸�ߤ��뤫��Ǥ���
-�������ʲ��Υ����ɤϡ������ȡ��ޤ���ߤζ��򡢤��뤤�Ϥ���¾�λ����٤��
-�ʤäƤ������ܼ�Ū�Ǥʤ����Ǥ�ޤ�Ǥ��ʤ���ͭ���� RFC-2822 ���ɥ쥹��
-�ޥå��󥰤��ޤ���
-����� I<ñ��> ���ɥ쥹���Ȥ˥ޥå��󥰤��ޤ�:
+もしあなたが単純な正規表現でアドレスがメールヘッダ標準に従っているかを
+見ることでパート I<a> をチェックしたいなら、問題を抱えることになります;
+なぜなら、RFC-2822 (最新のメールヘッダ標準) に準拠してないけれども
+配達可能なアドレスが存在し、標準に準拠しているけれども配達不能なアドレスも
+存在するからです。
+しかし以下のコードは、コメント、折り畳みの空白、あるいはその他の時代遅れに
+なっていたり本質的でない要素を含んでいない、有効な RFC-2822 アドレスに
+マッチングします。
+これは I<単に> アドレス自身にマッチングします:
 
     my $atom       = qr{[a-zA-Z0-9_!#\$\%&'*+/=?\^`{}~|\-]+};
     my $dot_atom   = qr{$atom(?:\.$atom)*};
@@ -981,12 +981,12 @@ you must be very careful about how you use this.
 
 =end original
 
-�⤷���ɥ쥹�� RFC 2822 ���ͤ˽�򤷤Ƥ��뤫�ɤ����򸫤����ʤ顢ñ��
-C</^${addr_spec}$/> �ȥޥå��󥰤����Ƥ���������
-�����������Τ褦�������������Υ��ɥ쥹���ºݤ�����θĿͤ��Ϥ�
-��������ˡ�ʤΤ������뤤�Ϥ��θĿͤ˴�Ϣ�դ���줿�᡼��ܥå�����
-�Ϥ��Τ����������Τˤ��뤳�Ȥ��Բ�ǽ�ʤΤǡ������ɤ��Ȥ����ˤĤ��Ƥ�
-�ȤƤ⿵�Ťˤʤ�ɬ�פ�����ޤ���
+もしアドレスが RFC 2822 仕様に準拠しているかどうかを見たいなら、単に
+C</^${addr_spec}$/> とマッチングさせてください。
+しかし、このような正しい形式のアドレスが実際に特定の個人に届く
+正しい方法なのか、あるいはその個人に関連付けられたメールボックスに
+届くのかさえも明確にすることは不可能なので、これをどう使うかについては
+とても慎重になる必要があります。
 
 =begin original
 
@@ -999,14 +999,14 @@ assured that it's real.
 
 =end original
 
-�䤿�����Ǥ�������Υ��ɥХ����ϡ��ĿͤΥ᡼�륢�ɥ쥹������å�����Τ�
-�ѥ���ɤ��ѹ�����Ȥ���Ʊ���褦�˥桼�����˥��ɥ쥹��
-������Ϥ�����Ȥ�����ΤǤ���
-����ˤ�ä��̾���Ǥ��ְ㤤���ɤ����Ȥ��Ǥ��ޤ���
-�������Ϥ��ޥå������ʤ顢�Ŀ�Ū�����ƤΥ�å�������᡼��Ȥ���
-���Υ��ɥ쥹������ޤ���
-�⤷��å��������֤äƤ��ơ����줬���ʤ��λؼ��˽��äƤ���ʤ顢
-���줬�ºݤΤ�ΤǤ���Ƚ�ʬ�˲���Ǥ��ޤ���
+私たちができる最善のアドバイスは、個人のメールアドレスをチェックするのに
+パスワードを変更するときと同じようにユーザーにアドレスを
+二回入力させるというものです。
+これによって通常は打ち間違いを防ぐことができます。
+二回の入力がマッチしたなら、個人的な内容のメッセージをメールとして
+そのアドレスへ送ります。
+もしメッセージが返ってきて、それがあなたの指示に従っているなら、
+それが実際のものであると十分に仮定できます。
 
 =begin original
 
@@ -1020,22 +1020,22 @@ with the characters reversed, one added or subtracted to each digit, etc.
 
 =end original
 
-��굶¤�Τ��ˤ����̤Τ�����ˡ������å����оݼԤ��Ф��� PIN
-(Personal ID Number) ��Ϳ����Ȥ�����Τ�����ޤ���
-��ν����Τ���˥��ɥ쥹�� PIN (������Ǥ��뤳�Ȥ�˾�ޤ���)��
-��Ͽ���Ƥ����ΤǤ���
-���ʤ����᡼�������Ȥ��ˡ�������ͤ��Ф������νФ���ץ饤��
-PIN ��ޤ��褦�˰��ꤹ��ΤǤ���
-���������줬���Τޤ��֤äƤ����ꡢ���뤤���֤äƤ�����å�������
-"vacation" ������ץȤ��̤��ƤΤ�ΤǤ��äƤ⡢���Τޤ� PIN ��
-�ޤޤ�Ƥ��ޤ��ޤ���
-�Ǥ����顢�����ʤ�����ϥ᡼�������Ȥ����ֻ��ˤ�ʸ����ս�ˤ���Ȥ���
-�Ʒ���Ф���­�������������Ԥ��ʤɤ���
-PIN ���ѷ�������Τ�ޤ���֤��褦�˰��ꤹ��Ȥ�����ˡ�Ǥ���
+より偽造のやりにくい別のやり方に、チェックに対象者に対して PIN
+(Personal ID Number) を与えるというものがあります。
+後の処理のためにアドレスと PIN (ランダムであることが望ましい)を
+記録しておくのです。
+あなたがメールを送るときに、宛て先人に対して彼らの出すリプライに
+PIN を含めるように依頼するのです。
+しかしそれがそのまま返ってきたり、あるいは返ってきたメッセージが
+"vacation" スクリプトを通じてのものであっても、そのまま PIN が
+含まれてしまいます。
+ですから、最善なやり方はメールを送るときに返事には文字を逆順にするとか、
+各桁に対して足し算や引き算を行うなどして
+PIN を変形したものを含めて返すように依頼するという方法です。
 
 =head2 How do I decode a MIME/BASE64 string?
 
-(MIME/BASE64 ʸ����Υǥ����ɤ�Ԥ��ˤ�?)
+(MIME/BASE64 文字列のデコードを行うには?)
 
 =begin original
 
@@ -1044,9 +1044,9 @@ the MIME/QP encoding.  Decoding BASE64 becomes as simple as:
 
 =end original
 
-MIME-Base64 �ѥå�����(CPAN �������ǽ�Ǥ�)�Ϥ�������ȡ�
-MIME/QP ���󥳡��ǥ��󥰤��갷���ޤ���
-BASE64 �Υǥ����ɤϰʲ��Τ褦��ñ��Ǥ�:
+MIME-Base64 パッケージ(CPAN で入手可能です)はこの問題と、
+MIME/QP エンコーディングを取り扱います。
+BASE64 のデコードは以下のように単純です:
 
     use MIME::Base64;
     $decoded = decode_base64($encoded);
@@ -1059,8 +1059,8 @@ messages.
 
 =end original
 
-MIME-Tools �ѥå����� (CPAN �ˤ���ޤ�) �� BASE64 ���󥳡��ɤ��줿
-ź�եե��������ʸ��᡼��Υ�å���������ľ����ФǤ��ޤ���
+MIME-Tools パッケージ (CPAN にあります) は BASE64 エンコードされた
+添付ファイルと本文をメールのメッセージから直接抽出できます。
 
 =begin original
 
@@ -1070,9 +1070,9 @@ format after minor transliterations:
 
 =end original
 
-�⤷�ǥ����ɤ�����ʸ����û��(84 ʸ���ʲ�)�ξ�硢���ľ��Ū�ʤ�����ϡ�
-����äȤ����Ѵ��򤷤���� unpack() �ؿ��� "u" �ե����ޥåȤ�
-�Ȥ��Ȥ�����ΤǤ�:
+もしデコードしたい文字列が短い(84 文字以下)の場合、より直接的なやり方は、
+ちょっとした変換をした後で unpack() 関数の "u" フォーマットを
+使うというものです:
 
     tr#A-Za-z0-9+/##cd;                   # remove non-base64 chars
     tr#A-Za-z0-9+/# -_#;                  # convert to uuencoded format
@@ -1081,7 +1081,7 @@ format after minor transliterations:
 
 =head2 How do I return the user's mail address?
 
-(�桼�����Υ᡼�륢�ɥ쥹���֤��ˤ�?)
+(ユーザーのメールアドレスを返すには?)
 
 =begin original
 
@@ -1091,9 +1091,9 @@ you can probably try using something like this:
 
 =end original
 
-getpwuid �򥵥ݡ��Ȥ��Ƥ��륷���ƥ�Ǥ���С�$< �Ȥ����ѿ���
-Sys::Hostname �⥸�塼��(ɸ��� perl ���ۥ��åȤΰ����Ǥ�)��Ȥä�
-�ʲ��Τ褦�ʤ��Ȥ����Ǥ��礦��
+getpwuid をサポートしているシステムであれば、$< という変数と
+Sys::Hostname モジュール(標準の perl 配布キットの一部です)を使って
+以下のようなことが試せるでしょう。
 
     use Sys::Hostname;
     $address = sprintf('%s@%s', scalar getpwuid($<), hostname);
@@ -1107,11 +1107,11 @@ on which Perl runs are so forthcoming with this information as is Unix.
 
 =end original
 
-��ҤΥ᡼�륢�ɥ쥹�˴ؤ���ݥꥷ���������줬�������륢�ɥ쥹��
-���β�ҤΥ᡼�륷���ƥब�����դ��ʤ���ΤǤ����ǽ��������ޤ���
-�Ǥ����顢�桼�����ˡ����Υ桼�����Υ᡼�륢�ɥ쥹��Ҥͤ�٤��Ǥ��礦��
-����˲ä���Perl ��ư������ƤΥ����ƥ��
-���ξ���(UNIX ��Ʊ���褦��)������櫓�ǤϤ���ޤ���
+会社のメールアドレスに関するポリシーが、これが生成するアドレスは
+その会社のメールシステムが受け付けないものである可能性があります。
+ですから、ユーザーに、そのユーザーのメールアドレスを尋ねるべきでしょう。
+それに加え、Perl が動作する全てのシステムで
+この情報が(UNIX と同じように)得られるわけではありません。
 
 =begin original
 
@@ -1123,16 +1123,16 @@ Again, the best way is often just to ask the user.
 
 =end original
 
-CPAN �ˤ��� Mail::Util �⥸�塼�� (MailTools �ѥå������ΰ����Ǥ�)��
-�᡼�륢�ɥ쥹�����Υ桼�����Τ�ΤǤ��뤫�ɤ�����Τ���褦�Ȥ���
-mailaddress() �Ȥ����ؿ����󶡤��Ƥ��ޤ���
-����Ͼ���㼨������������⸭�����⥸�塼�뤬���󥹥ȡ��뤵�줿�Ȥ���
-�����Ȥ��ޤ���������Ǥ��������ʤ���ǽ��������ޤ���
-�����֤��ޤ�������������ˡ�ϥ桼�����˿Ҥͤ뤳�ȡ��Ȥ����Τ��ۤȤ�ɤǤ���
+CPAN にある Mail::Util モジュール (MailTools パッケージの一部です)は
+メールアドレスがそのユーザーのものであるかどうかを確かめようとする
+mailaddress() という関数を提供しています。
+これは上で例示したやり方よりも賢く、モジュールがインストールされたときの
+情報を使いますが、それでも正しくない可能性があります。
+くり返しますが、最善の方法はユーザーに尋ねること、というのがほとんどです。
 
 =head2 How do I send mail?
 
-(�᡼�������ˤ�?)
+(メールを送るには?)
 
 =begin original
 
@@ -1140,7 +1140,7 @@ Use the C<sendmail> program directly:
 
 =end original
 
-C<sendmail> �ץ�������ľ�ܻȤ��ޤ�:
+C<sendmail> プログラムを直接使います:
 
     open(SENDMAIL, "|/usr/lib/sendmail -oi -t -odq")
                         or die "Can't fork for sendmail: $!\n";
@@ -1165,14 +1165,14 @@ delivery.
 
 =end original
 
-B<-oi> ���ץ����� sendmail ���ɥåȤ����ιԤ�ȥ�å������ν����ɤ�
-�ߤʤ��ʤ��褦�ˤ��뤿��Υ��ץ����Ǥ���
-B<-t>���ץ����ϥ�å�������ï�����뤫����뤫�Τ����
-�إå�����Ȥ����Ȥ�ؼ�����B<-odq> ���ץ�����å�������
-���塼������뤳�Ȥ�ؼ����ޤ���
-�Ǹ�Υ��ץ����ΰ�̣�ϡ����ʤ��Υ�å������������ˤ���������ʤ����Ȥ�
-��̣���ޤ���
-�Ǥ����顢�������������������ΤǤ���Ф��Υ��ץ�����������Ƥ���������
+B<-oi> オプションは sendmail がドットだけの行を“メッセージの終わり”と
+みなさないようにするためのオプションです。
+B<-t>オプションはメッセージを誰に送るかを決めるかのために
+ヘッダーを使うことを指示し、B<-odq> オプションメッセージを
+キューに入れることを指示します。
+最後のオプションの意味は、あなたのメッセージがすぐには配送されないことを
+意味します。
+ですから、すぐに配送させたいのであればこのオプションを取り除いてください。
 
 =begin original
 
@@ -1183,9 +1183,9 @@ probably sendmail.
 
 =end original
 
-���뤤�ϡ�ľ�� mail (mailx �ȸƤФ�뤳�Ȥ⤢��ޤ�)��ƤӤ������ꡢ
-ñ��� 25 �֥ݡ��Ȥ�Ȥäƥ�⡼�Ȥ� SMTP �ǡ����(¿ʬ sendmail �Ǥ��礦)
-�Ȥδ֤Ǿܺ٤��̿���Ԥ��Ȥ��ä����ޤ������Ǥʤ���ˡ�⤢��ޤ���
+あるいは、直接 mail (mailx と呼ばれることもあります)を呼びだしたり、
+単純に 25 番ポートを使ってリモートの SMTP デーモン(多分 sendmail でしょう)
+との間で詳細な通信を行うといったあまり便利でない方法もあります。
 
 =begin original
 
@@ -1193,7 +1193,7 @@ Or you might be able use the CPAN module Mail::Mailer:
 
 =end original
 
-���뤤�� CPAN �ˤ���⥸�塼�� Mail::Mailer ���Ȥ��뤫�⤷��ޤ���:
+あるいは CPAN にあるモジュール Mail::Mailer が使えるかもしれません:
 
     use Mail::Mailer;
 
@@ -1215,16 +1215,16 @@ include queuing, MX records, and security.
 
 =end original
 
-Mail::Internet �⥸�塼��� Mail::Mailer ��� UNIX Ū�ǤϤʤ�
-Net::SMTP ��ȤäƤ��ޤ��������������㤤�Ǥ���
-���� SMTP ���ޥ�ɤ�̵�뤷�ޤ���
-sendmail �Τ褦�� mail transport agent ��Ȥ���ͳ�Ϥ������󤢤�ޤ���
-������ˤϥ��塼���󥰤�ޤޤ�ޤ�����MX �쥳���ɤ䥻�����ƥ���
-���ä���Τ��ޤޤ�ޤ���
+Mail::Internet モジュールは Mail::Mailer より UNIX 的ではない
+Net::SMTP を使っていますが、信頼性も低いです。
+生の SMTP コマンドを無視します。
+sendmail のような mail transport agent を使う理由はたくさんあります。
+その中にはキューイングも含まれますし、MX レコードやセキュリティと
+いったものが含まれます。
 
 =head2 How do I use MIME to make an attachment to a mail message?
 
-(�᡼���å�������ź�դ��뤿��ˤɤ���ä� MIME ��Ȥ��Ф����Ǥ���?)
+(メールメッセージに添付するためにどうやって MIME を使えばいいですか?)
 
 =begin original
 
@@ -1233,8 +1233,8 @@ Create a multipart message (i.e., one with attachments).
 
 =end original
 
-���β����� MIME::Lite �Υɥ�����Ȥ���ľ�ܻ��äƤ�����ΤǤ���
-�ޥ���ѡ��ȥ�å�����(�Ĥޤ� ź�դĤ��Υ�å�����) ����ޤ���
+この回答は MIME::Lite のドキュメントから直接持ってきたものです。
+マルチパートメッセージ(つまり 添付つきのメッセージ) を作ります。
 
     use MIME::Lite;
 
@@ -1264,7 +1264,7 @@ MIME::Lite also includes a method for sending these things.
 
 =end original
 
-MIME::Lite �Ϥޤ������Τ�Τ����뤿��Υ᥽�åɤ�ޤߤޤ���
+MIME::Lite はまたこれらのものを送るためのメソッドを含みます。
 
     $msg->send;
 
@@ -1275,12 +1275,12 @@ SMTP via L<Net::SMTP>.
 
 =end original
 
-����ϥǥե���ȤǤ� L<sendmail> ��Ȥ��ޤ�����
-L<Net::SMTP> ��ͳ�� SMTP ��Ȥ��褦�˥������ޥ����Ǥ��ޤ���
+これはデフォルトでは L<sendmail> を使いますが、
+L<Net::SMTP> 経由で SMTP を使うようにカスタマイズできます。
 
 =head2 How do I read mail?
 
-(�᡼����ɤ߽Ф��ˤ�?)
+(メールを読み出すには?)
 
 =begin original
 
@@ -1291,10 +1291,10 @@ mail sorter.
 
 =end original
 
-CPAN �ˤ��� Mail::Folder �⥸�塼��(MailFolder �ѥå������ΰ����Ǥ�)��
-Mail::Internet �⥸�塼��(����� MailTools �ѥå������ΰ����Ǥ�)��
-�Ȥ��ޤ������⥸�塼���Ȥ��ΤϤ�ꤹ�����⤷��ޤ���
-�ʲ��˥᡼��򥽡��Ȥ�����ˡ�򼨤��ޤ���
+CPAN にある Mail::Folder モジュール(MailFolder パッケージの一部です)や
+Mail::Internet モジュール(これも MailTools パッケージの一部です)が
+使えますが、モジュールを使うのはやりすぎかもしれません。
+以下にメールをソートする方法を示します。
 
     #!/usr/bin/perl
 
@@ -1318,7 +1318,7 @@ Or more succinctly,
 
 =end original
 
-���뤤�Ϥ�äȴʷ��:
+あるいはもっと簡潔に:
 
     #!/usr/bin/perl -n00
     # bysub2 - awkish sort-by-subject
@@ -1331,7 +1331,7 @@ Or more succinctly,
 X<hostname, domainname, IP address, host, domain, hostfqdn, inet_ntoa,
 gethostbyname, Socket, Net::Domain, Sys::Hostname>
 
-(��Υۥ���̾/�ɥᥤ��̾/IP ���ɥ쥹�򸫤Ĥ���ˤ�?)
+(私のホスト名/ドメイン名/IP アドレスを見つけるには?)
 
 =begin original
 
@@ -1339,7 +1339,7 @@ gethostbyname, Socket, Net::Domain, Sys::Hostname>
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1349,8 +1349,8 @@ name, or the domain name.
 
 =end original
 
-perl5.7.3 ����ɸ�����ۤ���Ƥ��� Net::Domain �⥸�塼���Ȥ��ȡ�
-���������ɥᥤ��̾ (FQDN)���ۥ���̾���ɥᥤ��̾�������ޤ���
+perl5.7.3 から標準配布されている Net::Domain モジュールを使うと、
+完全修飾ドメイン名 (FQDN)、ホスト名、ドメイン名が得られます。
 
 	use Net::Domain qw(hostname hostfqdn hostdomain);
 
@@ -1363,8 +1363,8 @@ perl5.6, can also get the hostname.
 
 =end original
 
-perl5.6 ����ɸ�����ۤ���Ƥ��� C<Sys::Hostname> �⥸�塼��Ǥ�
-�ۥ���̾�������ޤ���
+perl5.6 から標準配布されている C<Sys::Hostname> モジュールでも
+ホスト名を得られます。
 
 	use Sys::Hostname;
 
@@ -1379,10 +1379,10 @@ from the <Socket> module, which also comes with perl.
 
 =end original
 
-IP ���ɥ쥹������ˤϡ�̾��������ͤ��Ѵ����뤿��� C<gethostbyname>
-�Ȥ߹��ߴؿ����Ȥ��ޤ���
-���ͤ򡢤ۤȤ�ɤοͤ����ꤷ�Ƥ���ԥꥪ���դ��η� (a.b.c.d) ���Ѵ�����ˤϡ�
-ɸ�����ۤ���Ƥ��� C<Socket> �⥸�塼��� C<inet_ntoa> �ؿ���Ȥ��ޤ���
+IP アドレスを得るには、名前から数値に変換するために C<gethostbyname>
+組み込み関数が使えます。
+数値を、ほとんどの人が想定しているピリオド付きの形 (a.b.c.d) に変換するには、
+標準配布されている C<Socket> モジュールの C<inet_ntoa> 関数を使います。
 
     use Socket;
 
@@ -1392,7 +1392,7 @@ IP ���ɥ쥹������ˤϡ�̾��������ͤ��Ѵ����뤿��� C<gethostbyname>
 
 =head2 How do I fetch a news article or the active newsgroups?
 
-(�˥塼���ε����䥢���ƥ��֤ʥ˥塼�����롼�פ��������ˤ�?)
+(ニュースの記事やアクティブなニュースグループを取得するには?)
 
 =begin original
 
@@ -1401,17 +1401,17 @@ This can make tasks like fetching the newsgroup list as simple as
 
 =end original
 
-Net::NNTP �⥸�塼�뤫 News::NNTPClient �⥸�塼��Τ����줫��Ȥ��ޤ���
-������ξ���Ȥ�CPAN���������ǽ�Ǥ���
-�����ϰʲ��Τ褦�˴�ñ�˥˥塼�����롼�פΥꥹ�Ȥ��������褦��
-��Ȥ��Ǥ��ޤ���
+Net::NNTP モジュールか News::NNTPClient モジュールのいずれかを使います。
+これらは両方ともCPANから入手可能です。
+これらは以下のように簡単にニュースグループのリストを取得するような
+作業ができます。
 
     perl -MNews::NNTPClient
       -e 'print News::NNTPClient->new->list("newsgroups")'
 
 =head2 How do I fetch/put an FTP file?
 
-(FTP �ե����������������/���åץ����ɤ���ˤ�?)
+(FTP ファイルをダウンロード/アップロードするには?)
 
 =begin original
 
@@ -1420,14 +1420,14 @@ available from CPAN) is more complex but can put as well as fetch.
 
 =end original
 
-LWP::Simple (CPAN �������ǽ)�ϥ���������ɤ��Ǥ��ޤ���
-���åץ����ɤϤǤ��ޤ���
-Net::FTP(����� CPAN �������ǽ)�Ϥ������ʣ���Ǥ�����
-����������ɤȥ��åץ����ɤ�ξ�����Ǥ��ޤ���
+LWP::Simple (CPAN で入手可能)はダウンロードができますが
+アップロードはできません。
+Net::FTP(これも CPAN で入手可能)はこれよりも複雑ですが、
+ダウンロードとアップロードの両方ができます。
 
 =head2 How can I do RPC in Perl?
 
-(Perl �� RPC ��Ԥ��ˤ�?)
+(Perl で RPC を行うには?)
 
 =begin original
 
@@ -1435,7 +1435,7 @@ Net::FTP(����� CPAN �������ǽ)�Ϥ������ʣ���Ǥ�����
 
 =end original
 
-(brian d foy �ˤ�äƴ�£����ޤ���)
+(brian d foy によって寄贈されました)
 
 =begin original
 
@@ -1444,8 +1444,8 @@ http://search.cpan.org/search?query=RPC&mode=all ).
 
 =end original
 
-CPAN ( http://search.cpan.org/search?query=RPC&mode=all ) �Ǹ��դ���
-RFC �⥸�塼��ΰ�Ĥ�Ȥ��ޤ��礦��
+CPAN ( http://search.cpan.org/search?query=RPC&mode=all ) で見付かる
+RFC モジュールの一つを使いましょう。
 
 =head1 REVISION
 

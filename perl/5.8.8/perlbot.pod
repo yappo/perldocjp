@@ -24,13 +24,13 @@ be sure to read L<perlboot>, L<perltoot>, and L<perltooc>.
 
 =end original
 
-�����ˤ��륤�󥹥����ѿ��λ��ѤǤ���Ȥ������֥������Ȥ䥯�饹�ط���
-�����Ȥ��ä��ȥ�å���ҥ�ȤΥ��쥯�����ϡ����񿴤�ɷ㤹��褦�ʤ�ΤǤ���
-�ɼԤϡ����֥������Ȼظ����������ˡ���ˤĤ��Ƥε����ˤĤ��Ƥ�
-Ŭ�ڤʶ��ʽ�򻲾Ȥ��뤳�Ȥ������ޤ���
-�Ĥޤꡢ����ϥ��֥������Ȼظ��ץ�����ߥ󥰤Υ��塼�ȥꥢ���
-�ظ�������ΤǤʤ���Perl �Υ��֥������Ȼظ���ǽ�ˤĤ��Ƥ�
-���Ū�ʥ����ɤǤ�ʤ����Ϥ��ޤ��������륬���ɤȤʤ�٤���ΤǤ⤢��ޤ���
+ここにあるインスタンス変数の使用であるとか、オブジェクトやクラス関係の
+機構といったトリックやヒントのコレクションは、好奇心を刺激するようなものです。
+読者は、オブジェクト指向の定義や方法論についての議論については
+適切な教科書を参照することが求められます。
+つまり、これはオブジェクト指向プログラミングのチュートリアルを
+指向したものでなく、Perl のオブジェクト指向機能についての
+包括的なガイドでもなく、はたまたスタイルガイドとなるべきものでもありません。
 
 =begin original
 
@@ -38,7 +38,7 @@ The Perl motto still holds:  There's more than one way to do it.
 
 =end original
 
-Perl�Υ�åȡ��Ϥޤ������Ƥ��ޤ�: ������ϰ��̤ꤸ��ʤ���
+Perlのモットーはまだ生きています: やり方は一通りじゃない。
 
 =head1 OO SCALING TIPS
 
@@ -54,10 +54,10 @@ expect.  See rule 5.
 
 =end original
 
-$self �η���Τ���뤳�ȤϤ��ʤ����ȡ�
-$self �η��������Ǥ��äƤ⤽�Υѥå����������ʤ��δ��Ԥ��Ƥ����Τ�
-�ۤʤäƤ���Ȥ������饹���Ѿ�����Ƥ���Ф������ʷ�̤ȤʤäƤ��ޤ��ޤ���
-��§ 5 �򻲾Ȥ��Ƥ���������
+$self の型を確かめることはしないこと。
+$self の型が正当であってもそのパッケージがあなたの期待しているものと
+異なっているとき、クラスが継承されていればおかしな結果となってしまいます。
+規則 5 を参照してください。
 
 =item 2
 
@@ -71,14 +71,14 @@ them do it.  See rule 1.
 
 =end original
 
-���֥������Ȼظ� (OO) ���뤤�� ���ܥ��֥������� (IO) ��ʸ���Ȥ�줿�ʤ�С�
-���Υ��֥������ȤϤ����餯�����������Ǥ��ꡢ
-����ˤĤ����м�Ū�ˤʤ�ɬ�פϤ���ޤ���
-�ɤ��� Perl ���м�Ū����ǤϤ���ޤ���
-OO ��ʸ�� IO ��ʸ�򤯤Ĥ������͡��������ʤ顢�������ä��͡��Ϥ����餯
-��ʬ�������ԤäƤ��뤳�Ȥ��ΤäƤ���Ǥ��礦����
-���ʤ������ˤ��������Ƥ����٤��ʤΤǤ���
-��§ 1 �򻲾Ȥ��Ƥ���������
+オブジェクト指向 (OO) あるいは 間接オブジェクト (IO) 構文が使われたならば、
+そのオブジェクトはおそらくは正しい型であり、
+それについて偏執的になる必要はありません。
+どうせ Perl は偏執的言語ではありません。
+OO 構文や IO 構文をくつがえす人々がいたなら、そういった人々はおそらく
+自分たちが行っていることを知っているでしょうし、
+あなたは彼らにそうさせておくべきなのです。
+規則 1 を参照してください。
 
 =item 3
 
@@ -89,9 +89,9 @@ See L<INHERITING A CONSTRUCTOR>.
 
 =end original
 
-���� 2 �Ĥ� bless() ��Ȥ��ޤ��礦��
-���󥹥ȥ饯����Ȥäƥ��֥��饹�ˤ��ޤ��礦��
-L<INHERITING A CONSTRUCTOR> �򻲾Ȥ��Ƥ���������
+引数 2 つの bless() を使いましょう。
+コンストラクタを使ってサブクラスにしましょう。
+L<INHERITING A CONSTRUCTOR> を参照してください。
 
 =item 4
 
@@ -102,8 +102,8 @@ superclass is allowed to know nothing about a subclass.
 
 =end original
 
-���֥��饹�ϡ�������Υ����ѡ����饹�����Ǥ��뤫���Τ뤳�Ȥ�������Ƥ��ޤ���
-�����ѡ����饹�ϥ��֥��饹�ˤĤ��Ƥβ������Τ뤳�Ȥ������Ƥ��ޤ���
+サブクラスは、すぐ上のスーパークラスが何であるかを知ることが許されています。
+スーパークラスはサブクラスについての何かを知ることを許されていません。
 
 =item 5
 
@@ -116,12 +116,12 @@ and L<"DELEGATION">.
 
 =end original
 
-�䤿��ȷѾ���Ȥ�ʤ��褦�ˤ��ޤ��礦��
-����("using")�����("containing")����Ǥ("delegation")�Ȥ��ä�
-�ط�(���ʤ��Ȥ⤢���ν���)�ϡ������Ƥ��ξ��Ѿ�����
-Ŭ�ڤʤ�ΤȤʤ�ޤ���
+やたらと継承を使わないようにしましょう。
+実装("using")、包含("containing")、委任("delegation")といった
+関係(少なくともある種の集合)は、たいていの場合継承よりも
+適切なものとなります。
 L<OBJECT RELATIONSHIPS>, L<USING RELATIONSHIP WITH SDBM>,
-L<"DELEGATION"> �򻲾Ȥ��Ƥ���������
+L<"DELEGATION"> を参照してください。
 
 =item 6
 
@@ -133,10 +133,10 @@ See L<CLASS CONTEXT AND THE OBJECT>.
 
 =end original
 
-���֥������ȤȤ�̾�����֤Ǥ���
-���֥������Ȥ��̤��ơ��ѥå����������Ū�˥��������Ǥ���褦�ˤ��ޤ���
-����ϥ���ܥ�Υۡ���ѥå������˴ؤ������ƿ��̤�������Ǥ��礦��
-L<CLASS CONTEXT AND THE OBJECT> �򻲾Ȥ��Ƥ���������
+オブジェクトとは名前空間です。
+オブジェクトを通して、パッケージを大域的にアクセスできるようにします。
+これはシンボルのホームパッケージに関する当て推量を取り除くでしょう。
+L<CLASS CONTEXT AND THE OBJECT> を参照してください。
 
 =item 7
 
@@ -148,10 +148,10 @@ syntax, even if you don't like it.
 
 =end original
 
-IO ��ʸ�Ϥ���ۤɤ�䤳������ΤǤϤ���ޤ���
-����������ȿ�̡����Ĥ���Τ��񤷤��Х�����������������ޤ����ˤʤ�
-����������ޤ���
-���ʤ������ޤʤ��Ȥ��Ƥ⡢�͡��� OO ��ʸ��Ȥ����Ȥ�������Ƥ���ΤǤ���
+IO 構文はそれほどややこしいものではありません。
+しかしその反面、見つけるのが難しいバグを引き起こすあいまいさになる
+傾向があります。
+あなたが好まないとしても、人々は OO 構文を使うことが許されているのです。
 
 =item 8
 
@@ -163,11 +163,11 @@ will be broken.  On top of that you're feeding the paranoia in rule 2.
 
 =end original
 
-�᥽�åɤ�ؿ��ƤӽФ������ǻȤ�ʤ��褦�ˤ��ޤ��礦��
-����ʤ���Ф��ʤ��Ϥ��Ĥ������ˤ��ܤˤ������ȤȤʤ�Ǥ��礦��
-ï�������Τ褦�ʥ᥽�åɤ򥹡��ѡ����饹�˰�ư������Ф��ʤ��Υץ�������
-����Ƥ��ޤ��ΤǤ���
-��§ 2 ���м����ˤʤ뤳�Ȥ˷Ҥ��꤫�ͤޤ���
+メソッドを関数呼び出し形式で使わないようにしましょう。
+さもなければあなたはいつの日か痛い目にあうこととなるでしょう。
+誰かがそのようなメソッドをスーパークラスに移動させればあなたのプログラムは
+壊れてしまうのです。
+規則 2 の偏執狂になることに繋がりかねません。
 
 =item 9
 
@@ -178,16 +178,16 @@ difficult for someone to override that method.  See L<THINKING OF CODE REUSE>.
 
 =end original
 
-��ʬ���᥽�åɤΥۡ���ѥå��������ΤäƤ���Ȳ��ꤷ�ʤ��Ǥ���������
-������äƤ��ޤ��ȡ�¾�οͤ����Υ᥽�åɤ򥪡��С��饤�ɤ���Τ�
-�񤷤��ʤäƤ��ޤ��ޤ���
-L<THINKING OF CODE REUSE> �򻲾Ȥ��Ƥ���������
+自分がメソッドのホームパッケージを知っていると仮定しないでください。
+それをやってしまうと、他の人がそのメソッドをオーバーライドするのが
+難しくなってしまいます。
+L<THINKING OF CODE REUSE> を参照してください。
 
 =back
 
 =head1 INSTANCE VARIABLES
 
-(���󥹥����ѿ�)
+(インスタンス変数)
 
 =begin original
 
@@ -196,8 +196,8 @@ variables.  Named parameters are also demonstrated.
 
 =end original
 
-̵̾�����̵̾�ϥå���ϥ��󥹥����ѿ����ݻ�����Τ˻Ȥ����Ȥ��Ǥ��ޤ���
-̾���դ��Υѥ�᡼���Ȱ��ˤ��������ޤ��礦��
+無名配列や無名ハッシュはインスタンス変数を保持するのに使うことができます。
+名前付きのパラメータと一緒にお見せしましょう。
 
 	package Foo;
 
@@ -234,7 +234,7 @@ variables.  Named parameters are also demonstrated.
 
 =head1 SCALAR INSTANCE VARIABLES
 
-(�����饤�󥹥����ѿ�)
+(スカラインスタンス変数)
 
 =begin original
 
@@ -242,8 +242,8 @@ An anonymous scalar can be used when only one instance variable is needed.
 
 =end original
 
-̵̾�Υ�����ϡ����󥹥����ѿ�����Ĥ���ɬ�פȤ����Ȥ��Τ�
-�Ȥ����Ȥ��Ǥ��ޤ���
+無名のスカラは、インスタンス変数が一つだけ必要とされるときのみ
+使うことができます。
 
 	package Foo;
 
@@ -262,7 +262,7 @@ An anonymous scalar can be used when only one instance variable is needed.
 
 =head1 INSTANCE VARIABLE INHERITANCE
 
-(���󥹥����ѿ��ηѾ�)
+(インスタンス変数の継承)
 
 =begin original
 
@@ -273,10 +273,10 @@ object.
 
 =end original
 
-������ϡ��ɤΤ褦�ˤ��ƿ��������饹�˥����ѡ����饹���饤�󥹥����ѿ���
-�Ѿ�����Τ��Ȥ������Ȥ򼨤���ΤǤ���
-�����Ǥϡ������ѡ����饹�Υ��󥹥ȥ饯����ƤӽФ����Ȥȿ�����
-���֥������Ȥǥ��󥹥����ѿ������ɲä���Ȥ������Ȥ�ԤäƤ��ޤ���
+次の例は、どのようにして新しいクラスにスーパークラスからインスタンス変数を
+継承するのかということを示すものです。
+ここでは、スーパークラスのコンストラクタを呼び出すことと新しい
+オブジェクトでインスタンス変数を一つ追加するということを行っています。
 
 	package Bar;
 
@@ -307,7 +307,7 @@ object.
 
 =head1 OBJECT RELATIONSHIPS
 
-(���֥������Ȥδط�)
+(オブジェクトの関係)
 
 =begin original
 
@@ -316,8 +316,8 @@ relationships between objects.
 
 =end original
 
-�ʲ�����Ǥϡ����("containing")�����("using")�Ȥ��ä����֥������ȴ֤�
-�ط���ɤΤ褦�˼������뤫�Ȥ������Ȥ��������Ƥ��ޤ���
+以下の例では、包含("containing")や実装("using")といったオブジェクト間の
+関係をどのように実装するかということを説明しています。
 
 	package Bar;
 
@@ -348,7 +348,7 @@ relationships between objects.
 
 =head1 OVERRIDING SUPERCLASS METHODS
 
-(�����ѡ����饹�Υ᥽�åɤ򥪡��С��饤�ɤ���)
+(スーパークラスのメソッドをオーバーライドする)
 
 =begin original
 
@@ -359,10 +359,10 @@ where that method is defined.
 
 =end original
 
-�ʲ�����ǤϤɤΤ褦�˥����ѡ����饹�Υ᥽�åɤ򥪡��С��饤�ɤ���Τ���
-�����ƥ����С��饤�ɤ��줿�᥽�åɤ�ɤΤ褦�˸ƤӽФ��Τ��򼨤��ޤ���
-�������饹 B<SUPER> �ϥץ�����ޤ������ѡ����饹�Υ᥽�åɤ�
-���Υ᥽�åɤ��ɤΥ��饹��°���뤫���Τ�ʤ��Ƥ�Ƥ٤�褦�ˤ��ޤ���
+以下の例ではどのようにスーパークラスのメソッドをオーバーライドするのか、
+そしてオーバーライドされたメソッドをどのように呼び出すのかを示します。
+擬似クラス B<SUPER> はプログラマがスーパークラスのメソッドを
+そのメソッドがどのクラスに属するかを知らなくても呼べるようにします。
 
 	package Buz;
 	sub goo { print "here's the goo\n" }
@@ -409,12 +409,12 @@ Note that C<SUPER> refers to the superclasses of the current package
 
 =end original
 
-C<SUPER> �ϥ����ȥѥå������Υ����ѡ����饹(C<Foo>) �򻲾Ȥ���ΤǤ��äơ�
-C<$self> �Υ����ѡ����饹�ǤϤʤ����Ȥ����դ��Ƥ���������
+C<SUPER> はカレントパッケージのスーパークラス(C<Foo>) を参照するのであって、
+C<$self> のスーパークラスではないことに注意してください。
 
 =head1 USING RELATIONSHIP WITH SDBM
 
-(SDBM �Ǥμ����ط�)
+(SDBM での実装関係)
 
 =begin original
 
@@ -423,9 +423,9 @@ This example demonstrates an interface for the SDBM class.  This creates a
 
 =end original
 
-������� SDBM ���饹���Ф��륤�󥿡��ե������򼨤��ޤ���
-������Ǥϡ�SDBM ���饹�ȡ����������饹 Mydbm �Ȥδ֤μ���("using")�ط���
-���Ф��ޤ���
+この例は SDBM クラスに対するインターフェースを示します。
+この例では、SDBM クラスと、新しいクラス Mydbm との間の実装("using")関係を
+作り出します。
 
 	package Mydbm;
 
@@ -466,7 +466,7 @@ This example demonstrates an interface for the SDBM class.  This creates a
 
 =head1 THINKING OF CODE REUSE
 
-(�����ɤκ����Ѥ�ͤ���)
+(コードの再利用を考える)
 
 =begin original
 
@@ -476,10 +476,10 @@ hinder code reuse and then how one can promote code reuse.
 
 =end original
 
-���֥������Ȼظ�����ΰ�Ĥζ��ߤȤϡ��Ť������ɤȿ����������ɤ�
-�����ƻȤ��Τ���ñ���ȸ������ȤǤ���
-�ʲ�����Ǥϡ��ޤ��ǽ�ˤɤΤ褦�˥����ɤκ����Ѥ�˸�����뤫�Ȥ������Ȥ�
-³���ƤɤΤ褦�˥����ɤκ����Ѥ�¥�ʤ��뤫�Ȥ������Ȥ򼨤��ޤ���
+オブジェクト指向言語の一つの強みとは、古いコードと新しいコードを
+混ぜて使うのが簡単だと言うことです。
+以下の例では、まず最初にどのようにコードの再利用を妨害するかということを、
+続いてどのようにコードの再利用を促進するかということを示します。
 
 =begin original
 
@@ -489,10 +489,10 @@ that it is impossible to override the BAZ() method.
 
 =end original
 
-�ǽ����Ǥϡ��֥ץ饤�١��ȡפʥ᥽�å� BAZ() �˥����������뤿���
-���������᥽�åɸƤӽФ���ȤäƤ��륯�饹�򤪸������ޤ���
-�����ܤ���Ǥϥ����С��饤�ɤ��뤳�ȤΤǤ��ʤ� BAZ() �᥽�åɤ�
-���������ޤ���
+最初の例では、「プライベート」なメソッド BAZ() にアクセスするために
+完全修飾メソッド呼び出しを使っているクラスをお見せします。
+二番目の例ではオーバーライドすることのできない BAZ() メソッドを
+お見せします。
 
 	package FOO;
 
@@ -524,9 +524,9 @@ FOO::private::BAZ().
 
 =end original
 
-���٤ϥ᥽�å� BAZ() �򥪡��С��饤�ɤ��Ƥߤޤ��礦��
-FOO::bar() �� GOOP::BAZ() ��ƤӽФ������ΤǤ���������� FOO::bar() ���ۤ�
-FOO::private::BAZ() ��ƤӽФ��Ƥ���ΤǤǤ��ޤ���
+今度はメソッド BAZ() をオーバーライドしてみましょう。
+FOO::bar() で GOOP::BAZ() を呼び出したいのですが、これは FOO::bar() が陽に
+FOO::private::BAZ() を呼び出しているのでできません。
 
 	package FOO;
 
@@ -569,10 +569,10 @@ method GOOP::BAZ() to be used in place of FOO::BAZ().
 
 =end original
 
-�����Ѳ�ǽ�ʥ����ɤ��������ˤϡ����饹 FOO �������ʤ���Фʤ餺��
-���饹 FOO:private ��ʿ��ˤ��ޤ���
-������Ǥϡ�FOO::BAZ() ��ȤäƤ�����ǥ᥽�å� GOOP:BAZ ��
-�֤����ȤΤǤ��륯�饹 FOO �򤪸������ޤ���
+再利用可能なコードを作成するには、クラス FOO を修正しなければならず、
+クラス FOO:private を平らにします。
+次の例では、FOO::BAZ() を使っている場所でメソッド GOOP:BAZ を
+置くことのできるクラス FOO をお見せします。
 
 	package FOO;
 
@@ -607,7 +607,7 @@ method GOOP::BAZ() to be used in place of FOO::BAZ().
 
 =head1 CLASS CONTEXT AND THE OBJECT
 
-(���饹�Υ���ƥ����Ȥȥ��֥�������)
+(クラスのコンテキストとオブジェクト)
 
 =begin original
 
@@ -617,10 +617,10 @@ parameter to the method.
 
 =end original
 
-�ѥå������ȥ��饹����ƥ����Ȥ�������褹�뤿��˥��֥������Ȥ�
-�Ȥ��ޤ��礦��
-�᥽�åɤ�ɬ�פȤ��뤹�٤Ƥϥ��֥������Ȥ��̤��ƻ��Ѳ�ǽ�Ǥ���٤��Ǥ��ꡢ
-�᥽�åɤ��Ф���ѥ�᡼���Ȥ����Ϥ����٤��ʤΤǤ���
+パッケージとクラスコンテキストの問題を解決するためにオブジェクトを
+使いましょう。
+メソッドが必要とするすべてはオブジェクトを通して使用可能であるべきであり、
+メソッドに対するパラメータとして渡されるべきなのです。
 
 =begin original
 
@@ -631,12 +631,12 @@ copy of the data.
 
 =end original
 
-���륯�饹�����Ȥ��Ȥ��ƥ᥽�åɤ���Ȥ�����˥����ƥ��å��ʥǡ�����
-�������Х�ʥǡ�������Ĥ��Ȥ�����Ǥ��礦��
-���֥��饹�Ǥ��Τ褦�ʥǡ����򥪡��С��饤�ɤ��ơ�����򿷤����ǡ�����
-�֤������������Ȥ����뤫�⤷��ޤ���
-���Τ褦�ʻ��֤ˤʤä��Ȥ��������ѡ����饹�Ͽ������ǡ����Υ��ԡ���
-�ɤ���äƸ��Ĥ���Τ����Τ뤳�Ȥ��Ǥ��ޤ���
+あるクラスが、ときとしてメソッドから使うためにスタティックなデータや
+グローバルなデータを持つことがあるでしょう。
+サブクラスでそのようなデータをオーバーライドして、それを新しいデータに
+置き換えたいことがあるかもしれません。
+このような事態になったとき、スーパークラスは新しいデータのコピーを
+どうやって見つけるのかを知ることができません。
 
 =begin original
 
@@ -649,14 +649,14 @@ method where that data is located.
 
 =end original
 
-��������ϡ��᥽�åɤΥ���ƥ����Ȥ�������뤿��Υ��֥������Ȥ�
-�Ȥ����Ȥˤ�äƲ��Ǥ��ޤ���
-���֥���������ˤ���᥽�åɤ˥ǡ����Υ�ե���󥹤򸫤��ޤ��礦��
-�⤦��Ĥμ��ʤϥ᥽�åɤ˥ǡ�����õ���ޤ蘆����
-(�ּ�ʬ�Υ��饹�ˤ����? ����Ȥ⥵�֥��饹? �ɤΥ��֥��饹?��)���ȤǤ�����
-��������ؤǤ������ϥå���Ū�ˤ����ޤ���
-���֥������Ȥˡ��ǡ������ɤ��˰��֤��뤫���Τ餻��᥽�åɤ���Ĥ褦��
-������Τ��ɤ��ΤǤ���
+この問題は、メソッドのコンテキストを定義するためのオブジェクトを
+使うことによって解決できます。
+オブジェクト中にあるメソッドにデータのリファレンスを見せましょう。
+もう一つの手段はメソッドにデータを探しまわさせる
+(「自分のクラスにあるの? それともサブクラス? どのサブクラス?」)ことですが、
+これは不便ですし、ハッカー的にすぎます。
+オブジェクトに、データがどこに位置するかを知らせるメソッドを持つように
+させるのが良いのです。
 
 	package Bar;
 
@@ -682,9 +682,9 @@ method where that data is located.
 
 =end original
 
-		# %Bar::fizzle ��  %Foo::fizzle �Τ������Ȥ��٤�
-		# �ʤΤ����¬���褦�Ȥ��ʤ����ȡ����֥������Ȥϴ�
-		# �������ΤäƤ��ޤ��������顢�����֤ͤ�����Ǥ���
+		# %Bar::fizzle と  %Foo::fizzle のいずれを使うべき
+		# なのかを推測しようとしないこと。オブジェクトは既
+		# に答を知っています。だから、それを訊ねるだけです。
 		#
 		my $fizzle = $self->{'fizzle'};
 
@@ -712,7 +712,7 @@ method where that data is located.
 
 =head1 INHERITING A CONSTRUCTOR
 
-(���󥹥ȥ饯���ηѾ�)
+(コンストラクタの継承)
 
 =begin original
 
@@ -722,11 +722,11 @@ object will be a BAR not a FOO, even though the constructor is in class FOO.
 
 =end original
 
-�Ѿ���ǽ�ʥ��󥹥ȥ饯���ϡ�����Υ��饹��ľ�� bless ���뤳�ȤΤǤ���
-bless() �����������Ȥ��٤��Ǥ���
-�ʲ�����ˤ����ơ����饹 FOO �Υ��󥹥ȥ饯�����̤��ƹ������줿
-���֥������ȤǤ��äƤ⤽��� FOO �ǤϤʤ���BAR �Ȥ���¸�ߤ���褦��
-�ʤ뤳�Ȥ����դ��Ƥ���������
+継承可能なコンストラクタは、特定のクラスに直接 bless することのできる
+bless() の第二形式を使うべきです。
+以下の例において、クラス FOO のコンストラクタを通じて構成された
+オブジェクトであってもそれは FOO ではなく、BAR として存在するように
+なることに注意してください。
 
 	package FOO;
 
@@ -754,7 +754,7 @@ bless() �����������Ȥ��٤��Ǥ���
 
 =head1 DELEGATION
 
-(��Ǥ)
+(委任)
 
 =begin original
 
@@ -765,10 +765,10 @@ by delegation.
 
 =end original
 
-SDBM_File �Τ褦�ʥ��饹�ϳ������֥������Ȥ���������Τǡ���Ψ�ɤ�
-���֥��饹�����뤳�Ȥ��Ǥ��ޤ���
-���Τ褦�ʥ��饹�ϼ���("using")�ط��Τ褦����˸��ڤ�����Τ䡢
-��Ǥ�Τ褦�ʽ����ƥ��˥å����Ѥ��뤳�Ȥǳ�ĥ���뤳�Ȥ��Ǥ��ޤ���
+SDBM_File のようなクラスは外部オブジェクトを生成するので、効率良く
+サブクラス化することができません。
+そのようなクラスは実装("using")関係のような先に言及したものや、
+委任のような集成テクニックを用いることで拡張することができます。
 
 =begin original
 
@@ -779,12 +779,12 @@ behavior by adding custom FETCH() and STORE() methods, if this is desired.
 
 =end original
 
-�ʲ�����Ǥϡ���å������ե���ǥ��󥰤�¸����뤿���
-AUTOLOAD �ؿ���ȤäƤ����Ǥ�򤪸������ޤ���
-����ϡ�Mydbm ���֥������Ȥ� SDBM_File ���֥������Ȥ�����Ʊ���褦��
-�����񤦤褦�ˤ������ΤǤ���
-�������ޥ������� FETCH() �᥽�åɤ� STORE() �᥽�åɤ��ɲä��뤳�Ȥˤ�äơ�
-���� Mydbm ���饹���ĥ���뤳�Ȥ�Ǥ���ΤǤ���
+以下の例では、メッセージフォワーディングを実現するために
+AUTOLOAD 関数を使っている委任をお見せします。
+これは、Mydbm オブジェクトが SDBM_File オブジェクトと全く同じように
+振る舞うようにさせるものです。
+カスタマイズした FETCH() メソッドや STORE() メソッドを追加することによって、
+今や Mydbm クラスを拡張することもできるのです。
 
 	package Mydbm;
 
@@ -808,8 +808,8 @@ AUTOLOAD �ؿ���ȤäƤ����Ǥ�򤪸������ޤ���
 
 =end original
 
-		# Perl ���󥿡��ץ꥿���ϥ�å�������̾����
-		# $AUTOLOAD �ȸƤФ���ѿ����֤��Ƥ��ޤ�
+		# Perl インタープリターはメッセージの名前を
+		# $AUTOLOAD と呼ばれる変数に置いています
 
 =begin original
 
@@ -818,7 +818,7 @@ AUTOLOAD �ؿ���ȤäƤ����Ǥ�򤪸������ޤ���
 
 =end original
 
-		# DESTROY ��å����������Ť�����٤��Ǥʤ�
+		# DESTROY メッセージは伝播させるべきでない
 		return if $AUTOLOAD =~ /::DESTROY$/;
 
 =begin original
@@ -828,7 +828,7 @@ AUTOLOAD �ؿ���ȤäƤ����Ǥ�򤪸������ޤ���
 
 =end original
 
-		# �ѥå�����̾�������
+		# パッケージ名を取り除く
 		$AUTOLOAD =~ s/^Mydbm:://;
 
 =begin original
@@ -839,7 +839,7 @@ AUTOLOAD �ؿ���ȤäƤ����Ǥ�򤪸������ޤ���
 
 =end original
 
-		# delegate �˥�å��������Ϥ�
+		# delegate にメッセージを渡す
 		$self->{'delegate'}->$AUTOLOAD(@_);
 	}
 

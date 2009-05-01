@@ -1,22 +1,22 @@
-=head1 ̾��
+=head1 名前
 
-perluniintro - Perl Unicode �μ����
+perluniintro - Perl Unicode の手引き
 
-=head1 ����
+=head1 説明
 
 This document gives a general idea of Unicode and how to use Unicode
 in Perl.
 
-���Υɥ�����Ȥϡ�Unicode �ΰ���Ū�ʹͤ��ȡ�
-Perl��Unicode��ɤΤ褦�˻Ȥ�����񤤤Ƥ��ޤ���
+このドキュメントは、Unicode の一般的な考えと、
+PerlでUnicodeをどのように使うかを書いています。
 
 =head2 Unicode
 
 Unicode is a character set standard which plans to codify all of the
 writing systems of the world, plus many other symbols.
 
-Unicode �ϡ�����饯�����åȤ�ɸ��Ǥ������������Ƥν��ηϤȡ�����˲ä��ơ�
-¾��¿���Υ���ܥ���ηϲ����뤳�Ȥ�ײ褷�Ƥ��ޤ���
+Unicode は、キャラクタセットの標準です。世界の全ての書記体系と、それに加えて、
+他の多くのシンボルを体系化することを計画しています。
 
 Unicode and ISO/IEC 10646 are coordinated standards that provide code
 points for characters in almost all modern character set standards,
@@ -27,14 +27,14 @@ encoded. The standards will eventually cover almost all characters in
 more than 250 writing systems and thousands of languages.
 Unicode 1.0 was released in October 1991, and 4.0 in April 2003.
 
-Unicode �ȡ�ISO/IEC 10646 �ϡ��褯Ĵ�����줿�������ɥݥ���Ȥ��󶡤���ɸ��Ǥ���
-Unicode �ϡ��ۤȤ�����Ƥθ���Υ���饯�����å�ɸ�ࡢ30�ʾ�ν��ηϤȡ�
-100�ʾ�θ�������夷�ޤ������Ƥξ���Ū�˽��פʸ���θ����ޤߤޤ���
-��äȤ��礭�����졢���ܸ졢�ڹ�졢���줾��μ�������Ƥ�ʸ����ޤ���
-��沽����Ƥ��ޤ�������ɸ��ϡ��ǽ�Ū�ˤϡ�250�ν��ηϤȡ�
-1000�ʾ�θ���ΤۤȤ�ɤ��٤ƤΥ���饯�������夹��ͽ��Ǥ���
-Unicode 1.0 �ϡ�1991ǯ10��˥�꡼�����졢Unicode 4.0 �ϡ�
-2003ǯ4��˥�꡼������ޤ�����
+Unicode と、ISO/IEC 10646 は、よく調整された、コードポイントを提供する標準です。
+Unicode は、ほとんど全ての現代のキャラクタセット標準、30以上の書記体系と、
+100以上の言語を網羅します。全ての商業的に重要な現代の言語を含みます。
+もっとも大きい中国語、日本語、韓国語、それぞれの辞書の全ての文字もまた、
+符号化されています。この標準は、最終的には、250の書記体系と、
+1000以上の言語のほとんどすべてのキャラクタを網羅する予定です。
+Unicode 1.0 は、1991年10月にリリースされ、Unicode 4.0 は、
+2003年4月にリリースされました。
 
 A Unicode I<character> is an abstract entity.  It is not bound to any
 particular integer width, especially not to the C language C<char>.
@@ -43,23 +43,23 @@ language of the text and it does not define fonts or other graphical
 layout details.  Unicode operates on characters and on text built from
 those characters.
 
-Unicode ��I<����饯��>�ϡ����Ū��¸�ߤǤ���Unicode �Υ���饯���ϡ�
-�ɤ��������������ˤ⡢�äˡ�C �����C<char>�ˤ�«������ޤ���
-Unicode �ϡ�language-neutral �ǡ�display-neutral �Ǥ�:
-Unicode �ϡ��ƥ����Ȥθ���򥨥󥳡��ɤ��ޤ��󤷡�
-�ե���Ȥ�¾�Υ���ե�����ʥ쥤�����Ȥξܺ٤�������ޤ���
-Unicode �ϡ�����饯���ȡ������Υ���饯������ʤ�ƥ����Ȥ����ޤ���
+Unicode のI<キャラクタ>は、抽象的な存在です。Unicode のキャラクタは、
+どんな特定の整数幅にも、特に、C 言語のC<char>にも束縛されません。
+Unicode は、language-neutral で、display-neutral です:
+Unicode は、テキストの言語をエンコードしませんし、
+フォントや他のグラフィカルなレイアウトの詳細を定義しません。
+Unicode は、キャラクタと、それらのキャラクタからなるテキストを操作します。
 
 Unicode defines characters like C<LATIN CAPITAL LETTER A> or C<GREEK
 SMALL LETTER ALPHA> and unique numbers for the characters, in this
 case 0x0041 and 0x03B1, respectively.  These unique numbers are called
 I<code points>.
 
-Unicode �ϡ�C<LATIN CAPITAL LETTER A> ��
-C<GREEK SMALL LETTER ALPHA>�Τ褦�ʥ���饯���ȡ�
-���Υ���饯���ˤĤ��Ƹ�ͭ���ֹ��������ޤ���
-���ξ��ϡ����줾�졢0x0041 �ȡ�0x03B1 �ˤʤ�ޤ���
-���Τ褦�ʸ�ͭ���ֹ�ϡ�I<�����ɥݥ����>�ȸƤФ�ޤ���
+Unicode は、C<LATIN CAPITAL LETTER A> や
+C<GREEK SMALL LETTER ALPHA>のようなキャラクタと、
+そのキャラクタについて固有の番号を定義します。
+この場合は、それぞれ、0x0041 と、0x03B1 になります。
+このような固有の番号は、I<コードポイント>と呼ばれます。
 
 The Unicode standard prefers using hexadecimal notation for the code
 points.  If numbers like C<0x0041> are unfamiliar to you, take a peek
@@ -67,11 +67,11 @@ at a later section, L</"Hexadecimal Notation">.  The Unicode standard
 uses the notation C<U+0041 LATIN CAPITAL LETTER A>, to give the
 hexadecimal code point and the normative name of the character.
 
-Unicode ɸ��ϡ������ɥݥ���Ȥ�16��ˡ��Ȥ��Τ򹥤ߤޤ���
-C<0x0041>�Τ褦���ֹ�������ߤ��ʤ���С�
-��Υ��������L</"16��ˡ">�������Ƹ��Ʋ�������
-Unicode ɸ��ϡ�L<U+0041 LATIN CAPITAL LETTER A>�Ȥ���ɽ����Ȥäơ�
-16��ˡ�Υ����ɥݥ���Ȥ�ɸ��Ū�ʥ���饯����̾����񤭤ޤ���
+Unicode 標準は、コードポイントに16進法を使うのを好みます。
+C<0x0041>のような番号に馴染みがなければ、
+後のセクション、L</"16進法">を覗いて見て下さい。
+Unicode 標準は、L<U+0041 LATIN CAPITAL LETTER A>という表記を使って、
+16進法のコードポイントと標準的なキャラクタの名前を書きます。
 
 Unicode also defines various I<properties> for the characters, like
 "uppercase" or "lowercase", "decimal digit", or "punctuation";
@@ -79,11 +79,11 @@ these properties are independent of the names of the characters.
 Furthermore, various operations on the characters like uppercasing,
 lowercasing, and collating (sorting) are defined.
 
-Unicode �Ϥޤ����͡��ʥ���饯����I<����>��������ޤ���
-"��ʸ��"��"��ʸ��"��"10�ʿ���"��"������"�ʤ�;
-�����������ϡ�����饯����̾������Ω�Ǥ���
-���ˡ��͡��ʥ���饯�����Ф�����
-��ʸ�����侮ʸ�������¤��ؤ����������Ƥ��ޤ���
+Unicode はまた、様々なキャラクタのI<性質>を定義します。
+"大文字"、"小文字"、"10進数字"、"句読点"など;
+これらの性質は、キャラクタの名前と独立です。
+更に、様々なキャラクタに対する操作、
+大文字化や小文字化や並び替えが定義されています。
 
 A Unicode character consists either of a single code point, or a
 I<base character> (like C<LATIN CAPITAL LETTER A>), followed by one or
@@ -91,11 +91,11 @@ more I<modifiers> (like C<COMBINING ACUTE ACCENT>).  This sequence of
 base character and modifiers is called a I<combining character
 sequence>.
 
-Unicode ����饯���ϡ�1�ĤΥ����ɥݥ���Ȥ����ޤ��ϡ�
-(C<LATIN CAPITAL LETTER A>�Τ褦��)��I<���ܥ���饯��>��³���ơ�
-1�İʾ��(C<COMBINING ACUTE ACCENT>�Τ褦��)I<�������>�Ρ�
-�ɤ��餫�����������äƤ��ޤ������δ��ܥ���饯���Ƚ������ν��֤ϡ�
-I<combining character sequence> �ȸƤФ�ޤ���
+Unicode キャラクタは、1つのコードポイントか、または、
+(C<LATIN CAPITAL LETTER A>のような)、I<基本キャラクタ>に続いて、
+1つ以上の(C<COMBINING ACUTE ACCENT>のような)I<修飾語句>の、
+どちらか一方から成っています。この基本キャラクタと修飾語句の順番は、
+I<combining character sequence> と呼ばれます。
 
 Whether to call these combining character sequences "characters"
 depends on your point of view. If you are a programmer, you probably
@@ -104,11 +104,11 @@ or "character".  The whole sequence could be seen as one "character",
 however, from the user's point of view, since that's probably what it
 looks like in the context of the user's language.
 
-������ combining character sequence �� "ʣ���Υ���饯��"�ȸƤ֤��ɤ����ϡ�
-�ͤ����ˤ��ޤ����ץ�����ޤʤ�С������餯�����ν��֤Τ��줾������Ǥ�
-1�Ĥ�ñ�̤�"����饯��"�Ȥ��ơ����褦�Ȥ���Ǥ��礦��
-���Ƥν��֤��Ĥ�"����饯��"�Ȥ��Ƹ��뤳�Ȥ��Ǥ��ޤ��� �Ǥ�����
-�桼���ιͤ�������ϡ������餯�桼���θ����ʸ̮�Ǥߤ���褦�ʤ�ΤǤ��礦��
+これらの combining character sequence を "複数のキャラクタ"と呼ぶかどうかは、
+考え方によります。プログラマならば、おそらく、この順番のそれぞれの要素を、
+1つの単位か"キャラクタ"として、見ようとするでしょう。
+全ての順番を一つの"キャラクタ"として見ることができます。 ですが、
+ユーザの考え方からは、おそらくユーザの言語の文脈でみえるようなものでしょう。
 
 With this "whole sequence" view of characters, the total number of
 characters is open-ended. But in the programmer's "one unit is one
@@ -117,13 +117,13 @@ deterministic.  In this document, we take that second  point of view:
 one "character" is one Unicode code point, be it a base character or
 a combining character.
 
-���Ρ�����饯����"���٤Ƥν���"�θ������Ǥϡ�����饯���������ˤϡ�
-���¤�����ޤ���
-�Ǥ������ץ�����ޡ���"��Ĥ�ñ�̤ϰ�ĤΥ���饯��"�Ȥ����ͤ����Ǥϡ�
-"����饯��"�γ�ǰ�ϡ���������Ū�Ǥ���
-���Υɥ�����ȤǤϡ�2���ܤιͤ�������ޤ�:
-1�Ĥ�"����饯��"�ϡ�1�Ĥ� Unicode �Υ����ɥݥ���ȤǤ��ꡢ
-����ϡ����ܥ���饯������ combining character �Ǥ���Ȥ��ޤ���
+この、キャラクタの"すべての順番"の見え方では、キャラクタの総数には、
+制限がありません。
+ですが、プログラマーの"一つの単位は一つのキャラクタ"という考え方では、
+"キャラクタ"の概念は、より決定論的です。
+このドキュメントでは、2番目の考え方を取ります:
+1つの"キャラクタ"は、1つの Unicode のコードポイントであり、
+それは、基本キャラクタか、 combining character であるとします。
 
 For some combinations, there are I<precomposed> characters.
 C<LATIN CAPITAL LETTER A WITH ACUTE>, for example, is defined as
@@ -135,15 +135,15 @@ method is more extensible.  To support conversion between
 different compositions of the characters, various I<normalization
 forms> to standardize representations are also defined.
 
-�����Ĥ����ȹ礻�ˤȤäơ�I<�ޤ���������Ƥ��ʤ�>����饯��������ޤ���
-���Ȥ��С�C<LATIN CAPITAL LETTER A WITH ACUTE>�ϡ�
-ñ��Υ����ɥݥ���ȤȤ����������Ƥ��ޤ���
-�������������Ρ��ޤ���������Ƥ��ʤ�����饯���ϡ�
-�����Ĥ����ȹ礻�ǲ�ǽ�Ǥ�������ޤ��󡣤����ơ������ϡ�
-��ˡ�Unicode �ȡ��쥬����ɸ��(ISO 8859�Τ褦��)�Ȥδ֤�����Ѵ���
-���ݡ��Ȥ��뤳�Ȥ��̣���ޤ�������Ū�ʥ������Ǥϡ�����������ˡ�Ϥ�깭����ޤ���
-��ä������֤��Ѵ��򥵥ݡ��Ȥ��뤿��ˡ�
-ɽ����ɸ�ಽ���롢�͡���I<normalization froms>��ޤ��������Ƥ��ޤ���
+いくつかの組合せにとって、I<まだ構成されていない>キャラクタがあります。
+たとえば、C<LATIN CAPITAL LETTER A WITH ACUTE>は、
+単一のコードポイントとして定義されています。
+しかし、これらの、まだ構成されていないキャラクタは、
+いくつかの組合せで可能でしかありません。そして、それらは、
+主に、Unicode と、レガシー標準(ISO 8859のような)との間の相互変換を
+サポートすることを意味します。一般的なケースでは、構成する方法はより広がります。
+違った構成間の変換をサポートするために、
+表現を標準化する、様々なI<normalization froms>もまた定義されています。
 
 Because of backward compatibility with legacy encodings, the "a unique
 number for every character" idea breaks down a bit: instead, there is
@@ -154,13 +154,13 @@ character.  Firstly, there are unallocated code points within
 otherwise used blocks.  Secondly, there are special Unicode control
 characters that do not represent true characters.
 
-�쥬�������󥳡��ǥ��󥰤Ȥθ����ߴ����Τ���ˡ�
-"���ƤΥ���饯���˸�ͭ���ֹ�"�Ȥ����ͤ��ϡ���������Ƥ��ޤ�:
-��������ˡ�"���ʤ��Ȥ����ƤΥ���饯����1�Ĥ��ֹ�"������ޤ���
-Ʊ������饯�����������Ĥ��Υ쥬�������󥳡��ǥ��󥰤���ǡ��㤦�褦��ɽ������Ƥ��ޤ�����
-�դϿ��Ǥ�ʤ�: �����ɥݥ���Ȥˤϡ�����饯����������Ƥ��Ƥ��ʤ���Τ⤢��ޤ���
-1���ܤˡ��Ȥ��Ƥ���֥��å���ˤ⤫����餺��������Ƥ��Ƥ��ʤ������ɥݥ���Ȥ�����ޤ���
-2���ܤˡ����̤�Unicode �Υ���ȥ����륭��饯�������ꡢ�����ϡ���ʪ�Υ���饯����ɽ�����ޤ���
+レガシーエンコーディングとの後方互換性のために、
+"全てのキャラクタに固有の番号"とうい考えは、少々壊れています:
+その代わりに、"少なくとも全てのキャラクタに1つの番号"があります。
+同じキャラクタが、いくつかのレガシーエンコーディングの中で、違うように表現されていました。
+逆は真でもなく: コードポイントには、キャラクタが割り当てられていないものもあります。
+1番目に、使われているブロック内にもかかわらず、割り当てられていないコードポイントがあります。
+2番目に、特別なUnicode のコントロールキャラクタがあり、それらは、本物のキャラクタを表現しません。
 
 A common myth about Unicode is that it would be "16-bit", that is,
 Unicode is only represented as C<0x10000> (or 65536) characters from
@@ -172,15 +172,15 @@ I<Plane 0>, or the I<Basic Multilingual Plane> (BMP).  With Unicode
 3.1, 17 (yes, seventeen) planes in all were defined--but they are
 nowhere near full of defined characters, yet.
 
-Unicode �ˤĤ��ơ��褯�Τ��Ƥ�����äϡ�Unicode ����"16-�ӥå�"�Ǥ��롢
-�Ȥ�����ΤǤ���Unicode �ϡ�C<0x0000>���顢C<0xFFFF>�ޤǤǡ�
-C<0x10000>(����65536)�Υ���饯����ɽ������������Ȥ�����ΤǤ���B<����Ͽ��¤ǤϤ���ޤ���>��
-Unicode 2.0(1996ǯ7��)���顢Unicode �ϡ�21�ӥå�(C<0x10FFFF>)�ޤǡ�
-�͡����������Ƥ��ޤ���Unicode 3.1(2001ǯ3��)���顢����饯���ϡ�
-C<0xFFFF>��Ķ���ơ��������ޤ������ǽ��C<0x10000>����饯���ϡ�
-I<Plane 0>���ޤ��ϡ�I<Basime Multilingual Plane>(BMP)�ȡ��ȸƤФ�ޤ�����
-Unicode 3.1�ǡ�������17(������17)��Plane���������ޤ��� -- �Ǥ�����
-�ޤ���������줿������饯���Τɤ��ˤ⡢�ޤ��᤯�ˤ���ޤ���
+Unicode について、よく知られている神話は、Unicode が、"16-ビット"である、
+というものです。Unicode は、C<0x0000>から、C<0xFFFF>までで、
+C<0x10000>(か、65536)のキャラクタを表現するだけ、というものです。B<これは真実ではありません>。
+Unicode 2.0(1996年7月)から、Unicode は、21ビット(C<0x10FFFF>)まで、
+様々に定義されています。Unicode 3.1(2001年3月)から、キャラクタは、
+C<0xFFFF>を超えて、定義されました。最初のC<0x10000>キャラクタは、
+I<Plane 0>、または、I<Basime Multilingual Plane>(BMP)と、と呼ばれました。
+Unicode 3.1で、全部で17(そう、17)のPlaneが定義されました -- ですが、
+まだ、定義された全キャラクタのどこにも、まだ近くにありません。
 
 Another myth is that the 256-character blocks have something to
 do with languages--that each block would define the characters used
@@ -192,13 +192,13 @@ which is more useful: there is C<Latin> script, C<Greek> script, and
 so on.  Scripts usually span varied parts of several blocks.
 For further information see L<Unicode::UCD>.
 
-�⤦1�Ĥο��ä�256����饯���֥��å���������������갷�����Ȥ�����--
-���줾��Υ֥��å��ϸ��줫����Υ��åȤǻȤ��Ƥ��륭��饯�����������Ȥ������ȤǤ���
-B<�����ޤ����¤ǤϤ���ޤ���>���֥��å���ʬ�䤵�줿��ΤϤ���ޤ�����
-����ϡ��ۤȤ�ɴ����ˡ�ͽ�۳��Τ�ΤǤ�������ˡ�I<scripts>�ȸƤФ�롢
-���ͭ�פʥ��󥻥ץȤ�����ޤ�: C<Latin> script �ȡ�C<Greek> script �ȡ�
-����¾�Τ�Τ�����ޤ���scripts �ϡ��դĤ��������Ĥ��Υ֥��å����Ѥ���줿��ʬ
-��¬�äƤ��ޤ����ܤ����ϡ�L<Unicode::UCD>�򸫤Ʋ�������
+もう1つの神話は256キャラクタブロックが、何か言語を取り扱うことがある--
+それぞれのブロックは言語か言語のセットで使われているキャラクタを定義するということです。
+B<これもまた真実ではありません>。ブロックに分割されたものはありますが、
+それは、ほとんど完全に、予想外のものです。代わりに、I<scripts>と呼ばれる、
+より有益なコンセプトがあります: C<Latin> script と、C<Greek> script と、
+その他のものがあります。scripts は、ふつう、いくつかのブロックの変えられた部分
+を測っています。詳しくは、L<Unicode::UCD>を見て下さい。
 
 The Unicode code points are just abstract numbers.  To input and
 output these abstract numbers, the numbers must be I<encoded> or
@@ -210,24 +210,24 @@ include UTF-16 and UTF-32 and their big- and little-endian variants
 (UTF-8 is byte-order independent) The ISO/IEC 10646 defines the UCS-2
 and UCS-4 encoding forms.
 
-Unicode �Υ����ɥݥ���Ȥϡ����Ū�ʿ����Ǥ���
-�������Ū�ʿ����������Ϥ��뤿��ˡ������ϡ�I<���󥳡��ɤ����>ɬ�פ����뤫��
-I<���ꥢ�饤�������>�����ɤ��������ʤ���Фʤ�ޤ���
-Unicode �ϡ�ʣ����I<character encoding forms>��������Ƥ��ޤ�����
-������ǡ�I<UTF-8>�ϡ����֤󡢤�äȤ�ͭ̾�Ǥ���
-UTF-8�ϡ�����Ĺ�Υ��󥳡��ǥ��󥰤ǡ�Unicode ����饯����1����6�Х���
-(only 4 with the currently defined characters)��
-¾�Υ��󥳡��ǥ��󥰤ϡ�UTF-16��UTF-32�ȡ�
-�������羮�Υ���ǥ�������ѷ�(UTF-8�ϡ��Х��ȥ�����������Ω�Ǥ�)��ޤߤޤ���
-ISO/IEC 10646 �ϡ�UCS-2 �� UCS-4�� encoding forms ��������Ƥ��ޤ���
+Unicode のコードポイントは、抽象的な数字です。
+この抽象的な数字を入出力するために、数字は、I<エンコードされる>必要があるか、
+I<シリアライズされる>か、どうか、しなければなりません。
+Unicode は、複数のI<character encoding forms>を定義していますが、
+その中で、I<UTF-8>は、たぶん、もっとも有名です。
+UTF-8は、可変長のエンコーディングで、Unicode キャラクタを1から6バイト
+(only 4 with the currently defined characters)。
+他のエンコーディングは、UTF-16とUTF-32と、
+それらの大小のエンディアンの変形(UTF-8は、バイトオーダーと独立です)を含みます。
+ISO/IEC 10646 は、UCS-2 と UCS-4の encoding forms を定義しています。
 
 For more information about encodings--for instance, to learn what
 I<surrogates> and I<byte order marks> (BOMs) are--see L<perlunicode>.
 
-���󥳡��ǥ��󥰤ˤĤ��� -- ���Ȥ��С�I<surrogates>��I<byte order marks>(BOMs) --
-��ä��Τꤿ����� L<perlunicode>�򸫤Ʋ�������
+エンコーディングについて -- たとえば、I<surrogates>とI<byte order marks>(BOMs) --
+もっと知りたければ L<perlunicode>を見て下さい。
 
-=head2 Perl �� Unicode �Υ��ݡ���
+=head2 Perl の Unicode のサポート
 
 Starting from Perl 5.6.0, Perl has had the capacity to handle Unicode
 natively.  Perl 5.8.0, however, is the first recommended release for
@@ -235,10 +235,10 @@ serious Unicode work.  The maintenance release 5.6.1 fixed many of the
 problems of the initial Unicode implementation, but for example
 regular expressions still do not work with Unicode in 5.6.1.
 
-Perl 5.6.0 ���顢Perl�ϡ�Unicode ��ͥ��ƥ��֤˰���ǽ�Ϥ���äƤ��ޤ�����
-��������Perl 5.8.0 �κǽ��RC��꡼���ϡ������ Unicode �λŻ��Ǥ���
-���ƥʥ󥹥�꡼����5.6.1�ϡ��ǽ��Unicode������¿��������������ޤ�����
-�Ǥ��������Ȥ��С�5.6.1�ǡ�Unicode �Ǥ�����ɽ���Ϥޤ�Ư���ޤ���
+Perl 5.6.0 から、Perlは、Unicode をネイティブに扱う能力を持っていました。
+しかし、Perl 5.8.0 の最初のRCリリースは、重大な Unicode の仕事です。
+メンテナンスリリースの5.6.1は、最初のUnicode実装の多くの問題を修正しました。
+ですが、たとえば、5.6.1で、Unicode での正規表現はまだ働きません。
 
 B<Starting from Perl 5.8.0, the use of C<use utf8> is no longer
 necessary.> In earlier releases the C<utf8> pragma was used to declare
@@ -251,18 +251,18 @@ UTF-8 in your identifier names, and in string and regular expression
 literals, by saying C<use utf8>.  This is not the default because
 scripts with legacy 8-bit data in them would break.  See L<utf8>.
 
-B<Perl5.8.0 ���顢C<use utf8>�λ��Ѥϡ���Ϥ�ɬ�פǤϤ���ޤ���>��
-����Υ�꡼���Ǥϡ�C<utf8>�ץ饰�ޤϡ����ߤΥ֥��å���ե����������
-Unicode�Ǥ������������Τ�������뤿��˻Ȥ��ޤ�����
-���Υ�ǥ�ϴְ㤤�����Ĥ����뤫�����ʤ��Ȥ⡢�Գʹ��Ǥ�:
-����ź�դ��뤫���ˡ�"Unicodeness"�ϡ����䡢�ǡ����˻������ޤ�Ƥ��ޤ���
-ͣ��Ĥ���Ƥ��롢����Ū��C<use utf8>�򤹤�ɬ�פ��������:
-Perl ������ץȼ��Ȥ� UTF-8�ǥ��󥳡��ɤ���Ƥ���С�
-���̻Ҥ�̾��������饯������ȡ�����ɽ���Υ�ƥ��ˡ�UTF-8 ��Ȥ����Ȥ��Ǥ��ޤ���
-����ϡ��ǥե���ȤǤϤ���ޤ��󡣤ʤ��ʤ顢�쥬������8-bit�ǡ����Υ�����ץȤ�
-����뤫��Ǥ���L<utf8>�򸫤Ʋ�������
+B<Perl5.8.0 から、C<use utf8>の使用は、もはや必要ではありません>。
+初期のリリースでは、C<utf8>プラグマは、現在のブロックやファイルの操作が、
+Unicodeであると明示するのを宣言するために使われました。
+このモデルは間違いが見つけられるか、少なくとも、不格好です:
+操作に添付するかわりに、"Unicodeness"は、今や、データに持ち込まれています。
+唯一残されている、明示的にC<use utf8>をする必要がある場所は:
+Perl スクリプト自身が UTF-8でエンコードされていれば、
+識別子の名前、キャラクタの中と、正規表現のリテラルに、UTF-8 を使うことができます。
+これは、デフォルトではありません。なぜなら、レガシーの8-bitデータのスクリプトが
+壊れるからです。L<utf8>を見て下さい。
 
-=head2 Perl��Unicode ��ǥ�
+=head2 PerlのUnicode モデル
 
 Perl supports both pre-5.6 strings of eight-bit native bytes, and
 strings of Unicode characters.  The principle is that Perl tries to
@@ -270,11 +270,11 @@ keep its data as eight-bit bytes for as long as possible, but as soon
 as Unicodeness cannot be avoided, the data is transparently upgraded
 to Unicode.
 
-8�ӥåȥͥ��ƥ��֤ΥХ������Perl 5.6̤����ʸ����ȡ�
-Unicode ����饯����ʸ�����ξ���򥵥ݡ��Ȥ��ޤ���
-���ˤϡ�Perl�ϡ���ǽ�ʸ¤�Ĺ����8�ӥåȥХ�����Ȥ��ơ��ǡ������ݤȤ��Ȥ��ޤ���
-�Ǥ�����Unicodeness ���򤱤��ʤ��ʤ�Ȥ����ˡ�
-�ǡ�����Unicode �˥��åץ��졼�ɤ���ޤ���
+8ビットネイティブのバイト列のPerl 5.6未満の文字列と、
+Unicode キャラクタの文字列の両方をサポートします。
+方針は、Perlは、可能な限り長く、8ビットバイト列として、データを保とうとします。
+ですが、Unicodeness が避けられなくなるとすぐに、
+データはUnicode にアップグレードされます。
 
 Internally, Perl currently uses either whatever the native eight-bit
 character set of the platform (for example Latin-1) is, defaulting to
@@ -282,10 +282,10 @@ UTF-8, to encode Unicode strings. Specifically, if all code points in
 the string are C<0xFF> or less, Perl uses the native eight-bit
 character set.  Otherwise, it uses UTF-8.
 
-����Ū�ˤϡ�Perl�ϡ��ץ�åȥե������8�ӥåȥ���饯�����å�(�㤨�С�Latin-1)�ϡ�
-�ǥե���Ȥ�UTF-8�Ǥ�����Unicode ʸ����ˤ˥��󥳡��ɤ��ޤ���
-�äˡ�ʸ������Ρ����ƤΥ����ɥݥ���Ȥϡ�C<0xFF>�ʲ��Ǥ���С�
-Perl�ϡ��ͥ��ƥ��֤�8�ӥåȤΥ���饯�����åȤ�Ȥ��ޤ��������Ǥʤ���С�UTF-8��Ȥ��ޤ���
+内部的には、Perlは、プラットフォームの8ビットキャラクタセット(例えば、Latin-1)は、
+デフォルトはUTF-8ですが、Unicode 文字列ににエンコードします。
+特に、文字列中の、全てのコードポイントは、C<0xFF>以下であれば、
+Perlは、ネイティブの8ビットのキャラクタセットを使います。そうでなければ、UTF-8を使います。
 
 A user of Perl does not normally need to know nor care how Perl
 happens to encode its internal strings, but it becomes relevant when
@@ -295,77 +295,77 @@ the "default" encoding.  In such a case, the raw bytes used internally
 will be used, and a "Wide character" warning will be issued if those
 strings contain a character beyond 0x00FF.
 
-Perl�Υ桼�������̤ϡ�Perl����������ʸ����򤿤ޤ��ޡ��ɤΤ褦�˥��󥳡���
-���뤫���Τ�ɬ�פ⡢���ˤ���ɬ�פ⤢��ޤ���
-�Ǥ�����Unicodeʸ�����PerlIO�쥤�䡼�ʤ��˥��ȥ꡼��˽��Ϥ��褦�Ȥ���ȡ�
-�ط�����褦�ˤʤ�ޤ� -- one with the "default" encoding��
-���Τ褦�ʥ������Ǥϡ�����Ū�˻Ȥ��Ƥ������ΥХ�����
-(���줾���ʸ�����ɬ�פ˱����ơ��ͥ��ƥ��֤Υ���饯�����åȤ���UTF-8)���Ȥ��ޤ���
-������ʸ����ˡ�0x00FF��Ķ���륭��饯��������С�"Wide character" �ηٹ𤬽Ф���ޤ���
+Perlのユーザは普通は、Perlがその内部文字列をたまたま、どのようにエンコード
+するかを、知る必要も、気にする必要もありません。
+ですが、Unicode文字列をPerlIOレイヤーなしにストリームに出力しようとすると、
+関係するようになります -- one with the "default" encoding。
+このようなケースでは、内部的に使われている生のバイト列
+(それぞれの文字列の必要に応じて、ネイティブのキャラクタセットか、UTF-8)が使われます。
+それらの文字列に、0x00FFを超えるキャラクタがあれば、"Wide character" の警告が出されます。
 
 For example,
 
-���Ȥ��С�
+たとえば、
 
       perl -e 'print "\x{DF}\n", "\x{0100}\x{DF}\n"'              
 
 produces a fairly useless mixture of native bytes and UTF-8, as well
 as a warning:
 
-�ͥ��ƥ��֤ΥХ������UTF-8�Ρ��ޤä������Ω���ʤ������ޤ���
-Ʊ�ͤ˷ٹ��Ф��ޤ�:
+ネイティブのバイト列とUTF-8の、まったく役に立たない混合もまた、
+同様に警告を出します:
 
      Wide character in print at ...
 
 To output UTF-8, use the C<:utf8> output layer.  Prepending
 
-UTF-8����Ϥ��뤿��ˡ�use C<:utf8>�����ȥץåȥ쥤�䡼��Ȥ��ޤ��� Prepending
+UTF-8を出力するために、use C<:utf8>アウトプットレイヤーを使います。 Prepending
 
       binmode(STDOUT, ":utf8");
 
 to this sample program ensures that the output is completely UTF-8,
 and removes the program's warning.
 
-���Υ���ץ�ץ�����ब�����Ϥ�������UTF-8�Ǥ��뤳�Ȥ��ݾڤ���
-�ץ������ηٹ�������ޤ���
+このサンプルプログラムが、出力が完全にUTF-8であることを保証し、
+プログラムの警告を削除します。
 
 You can enable automatic UTF-8-ification of your standard file
 handles, default C<open()> layer, and C<@ARGV> by using either
 the C<-C> command line switch or the C<PERL_UNICODE> environment
 variable, see L<perlrun> for the documentation of the C<-C> switch.
 
-C<-C>���ޥ�ɥ饤�󥹥��å�����C<PERL_UNICODE>�Ķ��ѿ��Τɤ��餫������Ȥ����Ȥǡ�
-ɸ��ե�����ϥ�ɥ�ȡ��ǥե���Ȥ�C<open()>�쥤�䡼�ȡ�C<@ARGV>��UTF-8-ification��
-��ưŪ��ͭ���˽���ޤ���L<perlrun>��C<-C>�����å��Υɥ�����Ȥ򸫤Ʋ�������
+C<-C>コマンドラインスイッチか、C<PERL_UNICODE>環境変数のどちらか一方を使うことで、
+標準ファイルハンドルと、デフォルトのC<open()>レイヤーと、C<@ARGV>のUTF-8-ificationを
+自動的に有効に出来ます。L<perlrun>のC<-C>スイッチのドキュメントを見て下さい。
 
 Note that this means that Perl expects other software to work, too:
 if Perl has been led to believe that STDIN should be UTF-8, but then
 STDIN coming in from another command is not UTF-8, Perl will complain
 about the malformed UTF-8.
 
-���Τ��Ȥϡ�Perl��¾�Υ��եȥ�������ư����ͽ¬���뤳�Ȥ��̣����Τ˵���Ĥ��Ʋ�����:
-Perl��STDIN��UTF-8�Ǥ���٤��ȿ�����褦�˼�Ƴ����Ƥ��ơ�
-¾�Υ��ޥ�ɤ��餯��STDIN��UTF-8�Ǥʤ���С�
-Perl�ϡ������UTF-8�Ǥ����ʸ�������ޤ���
+このことは、Perlが他のソフトウェアの動きを予測することを意味するのに気をつけて下さい:
+PerlがSTDINがUTF-8であるべきと信じるように主導されていて、
+他のコマンドからくるSTDINがUTF-8でなければ、
+Perlは、奇形のUTF-8であると文句を言います。
 
 All features that combine Unicode and I/O also require using the new
 PerlIO feature.  Almost all Perl 5.8 platforms do use PerlIO, though:
 you can see whether yours is by running "perl -V" and looking for
 C<useperlio=define>.
 
-Unicode �ȡ�I/O �η�����ħ��ޤ���������PerlIO����ħ��Ȥ����Ȥ�ɬ�פȤ��ޤ���
-�ۤȤ�����Ƥ�Perl5.8�ץ�åȥե�����ϡ�PerlIO��Ȥ��ޤ����Ǥ���:
-"perl -V"��ư�����ơ�C<useperlio=define>�򸫤�С� PerlIO��ȤäƤ��뤫�ɤ�����
-�狼��ޤ���
+Unicode と、I/O の結合の特徴もまた、新しいPerlIOの特徴を使うことを必要とします。
+ほとんど全てのPerl5.8プラットフォームは、PerlIOを使います。ですが:
+"perl -V"を動かして、C<useperlio=define>を見れば、 PerlIOを使っているかどうか、
+わかります。
 
-=head2 Unicode �� EBCDIC
+=head2 Unicode と EBCDIC
 
 Perl 5.8.0 also supports Unicode on EBCDIC platforms.  There,
 Unicode support is somewhat more complex to implement since
 additional conversions are needed at every step.  Some problems
 remain, see L<perlebcdic> for details.
 
-Perl 5.8.0 �ϡ�EBCDIC �ץ�åȥե�����Ǥ�ޤ���Unicode �򥵥ݡ��Ȥ��ޤ���
+Perl 5.8.0 は、EBCDIC プラットフォームでもまた、Unicode をサポートします。
 
 In any case, the Unicode support on EBCDIC platforms is better than
 in the 5.6 series, which didn't work much at all for EBCDIC platform.
@@ -374,36 +374,36 @@ instead of UTF-8.  The difference is that as UTF-8 is "ASCII-safe" in
 that ASCII characters encode to UTF-8 as-is, while UTF-EBCDIC is
 "EBCDIC-safe".
 
-=head2 Unicode �κ���
+=head2 Unicode の作成
 
 To create Unicode characters in literals for code points above C<0xFF>,
 use the C<\x{...}> notation in double-quoted strings:
 
-C<0xFF>��Ķ���륳���ɥݥ���ȤΥ�ƥ���Unicode ����饯�����뤿��ˤϡ�
-C<\x{...}>��ˡ����֥륯�����Ȥ��줿ʸ�������ǻȤ��ޤ���
+C<0xFF>を超えるコードポイントのリテラルでUnicode キャラクタを作るためには、
+C<\x{...}>記法をダブルクォートされた文字列の中で使います。
 
     my $smiley = "\x{263a}";
 
 Similarly, it can be used in regular expression literals
 
-Ʊ�ͤˡ�����ɽ������Ǥ�Ȥ��ޤ���
+同様に、正規表現の中でも使えます。
 
     $smiley =~ /\x{263a}/;
 
 At run-time you can use C<chr()>:
 
-C<chr()>��Ȥäơ��¹Ի���:
+C<chr()>を使って、実行時に:
 
     my $hebrew_alef = chr(0x05d0);
 
 See L</"Further Resources"> for how to find all these numeric codes.
 
-���ƤΤ����ο����Υ����ɤ򸫤Ĥ�����ˡ�ϡ�L</"�ܤ����꥽����">�򸫤Ʋ�������
+全てのこれらの数字のコードを見つける方法は、L</"詳しいリソース">を見て下さい。
 
 Naturally, C<ord()> will do the reverse: it turns a character into
 a code point.
 
-������C<ord()>�ϡ��դ�Ԥ��ޤ�������饯���򥳡��ɥݥ���Ȥ��Ѥ��ޤ�:
+当然、C<ord()>は、逆を行います。キャラクタをコードポイントに変えます:
 
 Note that C<\x..> (no C<{}> and only two hexadecimal digits), C<\x{...}>,
 and C<chr(...)> for arguments less than C<0x100> (decimal 256)
@@ -413,17 +413,17 @@ always produced. If you want to force the production of Unicode
 characters regardless of the numeric value, use C<pack("U", ...)>
 instead of C<\x..>, C<\x{...}>, or C<chr()>.
 
-C<0x100>(10�ʤ�256)̤���ΰ����Ρ�C<\x..> (C<{}>�ǤϤʤ���
-2�Ĥ�16�ʿ��ο����ΤߤǤ�)�ȡ�C<\x{...}>�ȡ�C<chr(...)>�ϡ��Ť�Perl�Ȥθߴ����Τ���ˡ�
-8�ӥåȤ�ʸ������������ޤ���<Cx100>������ʾ�ΰ����Ǥϡ�Unicode ����饯�����������������ޤ���
-�������Ǥ⡢�������ͤ�Unicode ����饯���򡢶���Ū�ˤ�������������С�
-C<\x..>�� C<\x{...}>�� or C<chr()> ������ˡ�C<pack("U", ...)>��ȤäƲ�������
+C<0x100>(10進の256)未満の引数の、C<\x..> (C<{}>ではなく、
+2つの16進数の数字のみです)と、C<\x{...}>と、C<chr(...)>は、古いPerlとの互換性のために、
+8ビットの文字列を生成します。<Cx100>かそれ以上の引数では、Unicode キャラクタが、常に生成されます。
+何が何でも、数字の値のUnicode キャラクタを、強制的にに生成したければ、
+C<\x..>、 C<\x{...}>、 or C<chr()> の代わりに、C<pack("U", ...)>を使って下さい。
 
 You can also use the C<charnames> pragma to invoke characters
 by name in double-quoted strings:
 
-���֥륯�����Ȥ��줿ʸ������ǡ�̾���ǥ���饯����ƤӽФ�����ˡ�
-C<charnames> �ץ饰�ޤ�Ȥ����Ȥ�Ǥ��ޤ���
+ダブルクォートされた文字列内で、名前でキャラクタを呼び出すために、
+C<charnames> プラグマを使うこともできます。
 
     use charnames ':full';
     my $arabic_alef = "\N{ARABIC LETTER ALEF}";
@@ -431,7 +431,7 @@ C<charnames> �ץ饰�ޤ�Ȥ����Ȥ�Ǥ��ޤ���
 And, as mentioned above, you can also C<pack()> numbers into Unicode
 characters:
 
-�����ơ���ҤΤ褦�ˡ�������Unicode����饯���ˡ�C<pack()>�Ǥ��ޤ���
+そして、上述のように、数字をUnicodeキャラクタに、C<pack()>できます。
 
    my $georgian_an  = pack("U", 0x10a0);
 
@@ -439,15 +439,15 @@ Note that both C<\x{...}> and C<\N{...}> are compile-time string
 constants: you cannot use variables in them.  if you want similar
 run-time functionality, use C<chr()> and C<charnames::vianame()>.
 
-C<\x{...}>�ȡ�C<\N{...}>��ξ���ϡ�����ѥ������ʸ��������Ǥ�:
-��������ѿ���Ȥ����ȤϤǤ��ޤ�������Τ��Ȥ�¹Ի��ˤ������ʤ顢
-c<chr()>�ȡ�C<charnames::vianame()>��ȤäƤ���������
+C<\x{...}>と、C<\N{...}>の両方は、コンパイル時の文字列定数です:
+その中に変数を使うことはできません。類似のことを実行時にしたいなら、
+c<chr()>と、C<charnames::vianame()>を使ってください。
 
 Also note that if all the code points for pack "U" are below 0x100,
 bytes will be generated, just like if you were using C<chr()>.
 
-pack "U" �������ƤΥ����ɥݥ���Ȥ���0x100 �ʲ��ʤ顢
-�Х�������������ޤ���...C<chr()>��Ȥ��ʤ��...
+pack "U" する全てのコードポイントが、0x100 以下なら、
+バイト列が生成されます。...C<chr()>を使うならば...
 
    my $bytes = pack("U*", 0x80, 0xFF);
 
@@ -455,29 +455,29 @@ If you want to force the result to Unicode characters, use the special
 C<"U0"> prefix.  It consumes no arguments but forces the result to be
 in Unicode characters, instead of bytes.
 
-��̤�Unicode ����饯���˶����������ʤ顢���̤ʡ�C<"U0">��Ƭ����ȤäƲ�������
-����ϡ���������פ��ޤ��󤬡��Х����������ˡ�Unicode����饯���˷�̤������ޤ���
+結果を、Unicode キャラクタに強制したいなら、特別な、C<"U0">接頭辞を使って下さい。
+これは、引数を消耗しませんが、バイト列の代わりに、Unicodeキャラクタに結果を強制します。
 
    my $chars = pack("U0U*", 0x80, 0xFF);
 
-=head2 Unicode ��Ȥ�
+=head2 Unicode を使う
 
 Handling Unicode is for the most part transparent: just use the
 strings as usual.  Functions like C<index()>, C<length()>, and
 C<substr()> will work on the Unicode characters; regular expressions
 will work on the Unicode characters (see L<perlunicode> and L<perlretut>).
 
-Unicode �򰷤����Ȥϡ�¿������ʬ�ˤȤäơ�Ʃ���Ǥ�:
-ʸ����򤤤Ĥ�Τ褦�˻Ȥ������Ǥ���
-C<index()>��C<length()>��C<substr()>�Τ褦�ʴؿ���
-Unicode ʸ�����ư���ޤ�;
-����ɽ����Unicodeʸ�����ư���ޤ�(L<perlunicode>��L<perlretut>�򸫤Ʋ�����)��
+Unicode を扱うことは、多くの部分にとって、透明です:
+文字列をいつものように使うだけです。
+C<index()>、C<length()>、C<substr()>のような関数は
+Unicode 文字列で動きます;
+正規表現もUnicode文字列で動きます(L<perlunicode>とL<perlretut>を見て下さい)。
 
 Note that Perl considers combining character sequences to be
 characters, so for example
 
-Perl�ϡ� combining character sequences �򥭥�饯���ȹͤ��Ƥ��뤳�Ȥ����դ��Ʋ�������
-�Ǥ��Τǡ��㤨��
+Perlは、 combining character sequences をキャラクタと考えていることに注意して下さい。
+ですので、例えば
 
     use charnames ':full';
     print length("\N{LATIN CAPITAL LETTER A}\N{COMBINING ACUTE ACCENT}"), "\n";
@@ -485,26 +485,26 @@ Perl�ϡ� combining character sequences �򥭥�饯���ȹͤ��Ƥ��뤳�Ȥ����դ��Ʋ��
 will print 2, not 1.  The only exception is that regular expressions
 have C<\X> for matching a combining character sequence.
 
-2��ץ��Ȥ��ޤ���1�ǤϤ���ޤ���ͣ����㳰�ϡ�����ɽ���ˡ�
-combining character sequence �˥ޥå����뤿��ˡ�C<\X>��������Ǥ���
+2をプリントします。1ではありません。唯一の例外は、正規表現に、
+combining character sequence にマッチするために、C<\X>がある場合です。
 
 Life is not quite so transparent, however, when working with legacy
 encodings, I/O, and certain special cases:
 
 
 
-=head2 �쥬�������󥳡��ǥ���
+=head2 レガシーエンコーディング
 
 When you combine legacy data and Unicode the legacy data needs
 to be upgraded to Unicode.  Normally ISO 8859-1 (or EBCDIC, if
 applicable) is assumed.  You can override this assumption by
 using the C<encoding> pragma, for example
 
-�쥬�����ǡ�����Unicode�Ȥ��Ȥ߹�碌����ϡ�
-�쥬�����ǡ�����Unicode �˥��åץ��졼�ɤ��ʤ���Фʤ�ޤ���
-�̾ISO 8859-1 (����ɬ�פʤ�EBCDIC)�����ꤵ��ޤ���
-���������C<encoding>�ץ饰�ޤ�Ȥäƥ����С��饤�ɤǤ��ޤ���
-���Ȥ��С�
+レガシーデータとUnicodeとを組み合わせる時は、
+レガシーデータを、Unicode にアップグレードしなければなりません。
+通常、ISO 8859-1 (か、必要ならEBCDIC)が想定されます。
+この想定を、C<encoding>プラグマを使ってオーバーライドできます。
+たとえば。
 
     use encoding 'latin2'; # ISO 8859-2
 
@@ -514,26 +514,26 @@ characters from ISO 8859-2 code points.  Note that the matching for
 encoding names is forgiving: instead of C<latin2> you could have
 said C<Latin 2>, or C<iso8859-2>, or other variations.  With just
 
-(ʸ��������ɽ����)��ƥ��ξ�硢������ץ����ΤΡ�
-C<chr()>�ȡ�C<ord()>�ϡ�ISO 8859-2�����ɥݥ���Ȥ�
-Unicode ����饯����������������ꤵ��ޤ���
-���󥳡��ǥ���̾�Υޥå��󥰤�������Ƥ���Τ����դ��Ʋ�����:
-C<latin2>������ˡ�C<Latin 2> ����C<iso8859-2>����¾�ΥХꥨ��������Ȥ��ޤ���
-����ñ�ˡ�
+(文字列か正規表現の)リテラルの場合、スクリプト全体の、
+C<chr()>と、C<ord()>は、ISO 8859-2コードポイントの
+Unicode キャラクタを生成すると想定されます。
+エンコーディング名のマッチングが許されているのに注意して下さい:
+C<latin2>の代わりに、C<Latin 2> か、C<iso8859-2>か、他のバリエーションを使えます。
+ただ単に、
 
     use encoding;
 
 the environment variable C<PERL_ENCODING> will be consulted.
 If that variable isn't set, the encoding pragma will fail.
 
-����ȡ��Ķ��ѿ�C<PERL_ENCODING>��Ĵ�٤��ޤ���
-�����ѿ������ꤵ��Ƥ��ʤ���С�encoding �ץ饰�ޤϼ��Ԥ��ޤ���
+すると、環境変数C<PERL_ENCODING>が調べられます。
+この変数が設定されていなければ、encoding プラグマは失敗します。
 
 The C<Encode> module knows about many encodings and has interfaces
 for doing conversions between those encodings:
 
-C<Encode> �⥸�塼��ϡ�¿���Υ��󥳡��ǥ��󥰤��ΤäƤ��ꡢ
-�����Υ��󥳡��ǥ��󥰤δ֤��Ѵ��򤹤륤�󥿡��ե���������äƤ��ޤ���
+C<Encode> モジュールは、多くのエンコーディングを知っており、
+それらのエンコーディングの間の変換をするインターフェースを持っています。
 
     use Encode 'from_to';
     from_to($data, "iso-8859-3", "utf-8"); # from legacy to utf-8
@@ -542,7 +542,7 @@ C<Encode> �⥸�塼��ϡ�¿���Υ��󥳡��ǥ��󥰤��ΤäƤ��ꡢ
 
 Normally, writing out Unicode data
 
-�̾Unicode �ǡ�����񤭽Ф����Ȥϡ�
+通常、Unicode データを書き出すことは、
 
     print FH $some_string_with_unicode, "\n";
 
@@ -554,14 +554,14 @@ a warning.  To ensure that the output is explicitly rendered in the
 encoding you desire--and to avoid the warning--open the stream with
 the desired encoding. Some examples:
 
-Unicode ʸ���������Ū�˥��󥳡��ɤ���Τˤ��ޤ��ޤĤ����Ƥ��롢
-���ΥХ�������������뤳�ȤǤ���Perl���������󥳡��ǥ��󥰤ϡ�
-���ΤȤ��ˡ�ʸ����ˤ��ޤ��ޤ��륭��饯����Ʊ���褦�ˡ�
-�����ƥ��¸�Ǥ����ɤΥ���饯���⡢�����ɥݥ���Ȥ�C<0x100>�ʾ�ʤ顢
-�ٹ𤬤Ǥޤ������Ϥ�����Ū�ˡ�˾��Ǥ��륨�󥳡��ǥ��󥰤˥������
-����Ƥ��뤳�Ȥ��ݾڤ����ٹ��䤱�뤿��ˡ�
-˾��Ǥ��륨�󥳡��ǥ��󥰤ǥ��ȥ꡼��� open ���Ƥ���������
-�����Ĥ��㼨���ޤ�:
+Unicode 文字列を内部的にエンコードするのにたまたまつかわれている、
+生のバイト列を生成することです。Perlの内部エンコーディングは、
+そのときに、文字列にたまたまあるキャラクタと同じように、
+システム依存です。どのキャラクタも、コードポイントがC<0x100>以上なら、
+警告がでます。出力が明示的に、望んでいるエンコーディングにレンダリング
+されていることを保証し、警告を割けるために、
+望んでいるエンコーディングでストリームを open してください。
+いくつか例示します:
 
     open FH, ">:utf8", "file";
 
@@ -571,7 +571,7 @@ Unicode ʸ���������Ū�˥��󥳡��ɤ���Τˤ��ޤ��ޤĤ����Ƥ��롢
 
 and on already open streams, use C<binmode()>:
 
-���Ǥ˳�����Ƥ��륹�ȥ꡼��˴ؤ��Ƥϡ�C<binmode()>��Ȥ��ޤ�:
+すでに開かれているストリームに関しては、C<binmode()>を使います:
 
     binmode(STDOUT, ":utf8");
 
@@ -584,29 +584,29 @@ many encodings have several aliases.  Note that the C<:utf8> layer
 must always be specified exactly like that; it is I<not> subject to
 the loose matching of encoding names.
 
-���󥳡��ǥ���̾�Υޥå��󥰤ϥ롼���Ǥ�: �������Ͻ��פǤϤ���ޤ���
-¿���Υ��󥳡��ǥ��󥰤ϡ������Ĥ��Υ����ꥢ��������ޤ���
-C<:utf8>�쥤�䡼�ϡ���ˡ����ä���Ȥ��Τ褦�˻��ꤵ���ɬ�פ�����ޤ���
-���Τ��Ȥϡ����󥳡��ǥ���̾�Υ롼���ʥޥå��󥰤μ���Ǥ�I<����ޤ���>��
+エンコーディング名のマッチングはルーズです: ケースは重要ではありません。
+多くのエンコーディングは、いくつかのエイリアスがあります。
+C<:utf8>レイヤーは、常に、きっちりとそのように指定される必要があります。
+このことは、エンコーディング名のルーズなマッチングの主題ではI<ありません>。
 
 See L<PerlIO> for the C<:utf8> layer, L<PerlIO::encoding> and
 L<Encode::PerlIO> for the C<:encoding()> layer, and
 L<Encode::Supported> for many encodings supported by the C<Encode>
 module.
 
-C<:utf8>�쥤�䡼�ؤ��Ƥϡ�L<PerlIO>�򸫤Ʋ�������C<:encoding()>�˴ؤ��Ƥϡ�
-L<Encode::PerlIO>�򸫤Ʋ�������
-C<Encode>�⥸�塼��ǥ��ݡ��Ȥ���Ƥ��롢¿���Υ��󥳡��ǥ��󥰤˴ؤ��Ƥϡ�
-L<Encode::Supported>�򸫤Ʋ�������
+C<:utf8>レイヤー関しては、L<PerlIO>を見て下さい。C<:encoding()>に関しては、
+L<Encode::PerlIO>を見て下さい。
+C<Encode>モジュールでサポートされている、多くのエンコーディングに関しては、
+L<Encode::Supported>を見て下さい。
 
 Reading in a file that you know happens to be encoded in one of the
 Unicode or legacy encodings does not magically turn the data into
 Unicode in Perl's eyes.  To do that, specify the appropriate
 layer when opening files
 
-Unicode���쥬�����Υ��󥳡��ǥ��󥰤ɤ��餫�Ǥ��ޤ��ޥ��󥳡��ɤ���Ƥ���
-�ե�������ɤ߹���Ǥ⡢Perl���ܤǡ���ˡ�Ȥ��Τ褦�ˡ��ǡ�����Unicode���Ѥ�ä��ꤷ�ޤ���
-�������뤿��ˤϡ��ե�����򳫤��Ȥ��ˡ�Ŭ�ڤʥ쥤�����ꤷ�ޤ���
+Unicodeかレガシーのエンコーディングどちらかでたまたまエンコードされている
+ファイルの読み込んでも、Perlの目で、魔法使いのように、データがUnicodeに変わったりしません。
+そうするためには、ファイルを開くときに、適切なレイヤを指定します。
 
     open(my $fh,'<:utf8', 'anything');
     my $line_of_unicode = <$fh>;
@@ -617,8 +617,8 @@ Unicode���쥬�����Υ��󥳡��ǥ��󥰤ɤ��餫�Ǥ��ޤ��ޥ��󥳡��ɤ���Ƥ���
 The I/O layers can also be specified more flexibly with
 the C<open> pragma.  See L<open>, or look at the following example.
 
-I/O�쥤��ϡ���äȽ���ˡ�C<open>�ץ饰�ޤǤ⤢�������ꤹ�뤳�Ȥ�����ޤ���
-L<open>�򸫤뤫��������򸫤Ʋ�������
+I/Oレイヤは、もっと柔軟に、C<open>プラグマでもあた、指定することが出来ます。
+L<open>を見るか、次の例を見て下さい。
 
     use open ':utf8'; # input and output default layer will be UTF-8
     open X, ">file";
@@ -630,7 +630,7 @@ L<open>�򸫤뤫��������򸫤Ʋ�������
 
 With the C<open> pragma you can use the C<:locale> layer
 
-C<open>�ץ饰�ޤǡ�C<:local> �쥤���Ȥ��ޤ���
+C<open>プラグマで、C<:local> レイヤも使えます。
 
     BEGIN { $ENV{LC_ALL} = $ENV{LANG} = 'ru_RU.KOI8-R' }
     # the :locale will probe the locale environment variables like LC_ALL
@@ -644,7 +644,7 @@ C<open>�ץ饰�ޤǡ�C<:local> �쥤���Ȥ��ޤ���
 
 or you can also use the C<':encoding(...)'> layer
 
-�ޤ���C<':encoding(...)'>�쥤��Ȥ��ޤ���
+また、C<':encoding(...)'>レイヤ使えます。
 
     open(my $epic,'<:encoding(iso-8859-7)','iliad.greek');
     my $line_of_unicode = <$epic>;
@@ -653,35 +653,35 @@ These methods install a transparent filter on the I/O stream that
 converts data from the specified encoding when it is read in from the
 stream.  The result is always Unicode.
 
-���ȥ꡼�फ��ե����뤬�ɤޤ��Ȥ��ˡ�
-����Υ��󥳡��ǥ��󥰤��顢�ǡ������Ѵ�����I/O���ȥ꡼����
-�ȥ�󥹥ڥ����Ȥʥ쥤��Ǥ���
-���η�̤ϡ���� Unicode �Ǥ���
+ストリームからファイルが読まれるときに、
+特定のエンコーディングから、データを変換するI/Oストリーム上の
+トランスペアレントなレイヤです。
+その結果は、常に Unicode です。
 
 The L<open> pragma affects all the C<open()> calls after the pragma by
 setting default layers.  If you want to affect only certain
 streams, use explicit layers directly in the C<open()> call.
 
-L<open> �ץ饰�ޤϡ��ǥե���ȤΥ쥤������ꤹ�뤳�Ȥǡ�
-�ץ饰�ޤθ�Ρ����Ƥ�C<open()>�ƤӽФ��˱ƶ����ޤ���
-���륹�ȥ꡼������ˡ��ƶ�����ꤷ�����ʤ顢
-C<open()>�ƤӽФ��ǡ�����Ū�ʥ쥤���ȤäƲ�������
+L<open> プラグマは、デフォルトのレイヤを設定することで、
+プラグマの後の、全てのC<open()>呼び出しに影響します。
+あるストリームだけに、影響を限定したいなら、
+C<open()>呼び出しで、明示的なレイヤを使って下さい。
 
 You can switch encodings on an already opened stream by using
 C<binmode()>; see L<perlfunc/binmode>.
 
-C<binmode()>; ��Ȥäơ����Ǥ˳�����Ƥ��륹�ȥ꡼��
-�ǡ����󥳡��ǥ��󥰤��Ѥ��뤳�Ȥ�����ޤ���
-L<perlfunc/binmode> �򸫤Ʋ�������
+C<binmode()>; を使って、すでに開かれているストリーム
+で、エンコーディングを変えることが出来ます。
+L<perlfunc/binmode> を見て下さい。
 
 The C<:locale> does not currently (as of Perl 5.8.0) work with
 C<open()> and C<binmode()>, only with the C<open> pragma.  The
 C<:utf8> and C<:encoding(...)> methods do work with all of C<open()>,
 C<binmode()>, and the C<open> pragma.
 
-C<:;pcate> �ϡ�����(Perl 5.8.0 �λ�����)��C<open()>�ȡ�C<binmode()>�Ǥ�ư���ޤ���
-C<open> �ץ饰�ޤǤΤ�ư���ޤ���C<:utf8>�ȡ�C<:encoding(...)>�᥽�åɤϡ�
-���Ƥ�C<open()>��C<binmode()>��C<open>�ץ饰�ޤ�ư���ޤ���
+C<:;pcate> は、現在(Perl 5.8.0 の時点で)、C<open()>と、C<binmode()>では動きません。
+C<open> プラグマでのみ動きます。C<:utf8>と、C<:encoding(...)>メソッドは、
+全てのC<open()>、C<binmode()>、C<open>プラグマで動きます。
 
 Similarly, you may use these I/O layers on output streams to
 automatically convert Unicode to the specified encoding when it is
@@ -689,12 +689,12 @@ written to the stream. For example, the following snippet copies the
 contents of the file "text.jis" (encoded as ISO-2022-JP, aka JIS) to
 the file "text.utf8", encoded as UTF-8:
 
-�����褦�ʤ�Τˡ����ȥ꡼��˽񤭽Ф��Ȥ��ˡ�
-��ưŪ��Unicode ������Υ��󥳡��ǥ��󥰤��Ѵ����롢
-���ϥ��ȥ꡼���I/O�쥤���Ȥ������Τ�ޤ���
-�㤨�С����Τ褦�ʥ����ɤ����Ҥϡ�
-(ISO-2022-JP, aka JIS�Ȥ��ơ����󥳡��ɤ���Ƥ���)"text.jis"�ե�����
-�����Ƥ�UTF-8�Ȥ��ƥ��󥳡��ɤ����"text.utf8"�ե�����˥��ԡ����ޤ���
+似たようなものに、ストリームに書き出すときに、
+自動的にUnicode を特定のエンコーディングに変換する、
+出力ストリームのI/Oレイヤを使うかも知れません。
+例えば、次のようなコードの断片は、
+(ISO-2022-JP, aka JISとして、エンコードされている)"text.jis"ファイル
+の内容を、UTF-8としてエンコードされる"text.utf8"ファイルにコピーします。
 
 
     open(my $nihongo, '<:encoding(iso-2022-jp)', 'text.jis');
@@ -705,35 +705,35 @@ The naming of encodings, both by the C<open()> and by the C<open>
 pragma, is similar to the C<encoding> pragma in that it allows for
 flexible names: C<koi8-r> and C<KOI8R> will both be understood.
 
-C<open()>�ȡ�C<open>�ץ饰�ޤ�ξ���ǻȤ��Ƥ��롢
-���󥳡��ǥ��󥰤�̾���ϡ�C<encoding>�ץ饰�ޤ�Ʊ�ͤˡ�
-�ե쥭���֥��̾���Ǥ���Ȥ��ޤ�: C<koi8-r>�ȡ�C<KOI8R> �ϡ�
-ξ���Ȥ����򤵤�ޤ���
+C<open()>と、C<open>プラグマの両方で使われている、
+エンコーディングの名前は、C<encoding>プラグマと同様に。
+フレキシブルな名前でかも使えます: C<koi8-r>と、C<KOI8R> は、
+両方とも理解されます。
 
 Common encodings recognized by ISO, MIME, IANA, and various other
 standardisation organisations are recognised; for a more detailed
 list see L<Encode::Supported>.
 
-ISO��MIME��IANA���͡���¾��ɸ�ಽ���ؤϤ�ǧ�����Ƥ��롢
-���̤Υ��󥳡��ǥ��󥰤�ǧ������ޤ�: �ܺ٤ʥꥹ�Ȥϡ�L<Encode::Supported>
-�򸫤Ʋ�������
+ISO、MIME、IANA、様々な他の標準化機関はが認識している、
+共通のエンコーディングが認識されます: 詳細なリストは、L<Encode::Supported>
+を見て下さい。
 
 C<read()> reads characters and returns the number of characters.
 C<seek()> and C<tell()> operate on byte counts, as do C<sysread()>
 and C<sysseek()>.
 
-C<read()>�ϡ�����饯�����ɤߡ�����饯���ο����֤��ޤ���
-C<seek()>�ȡ�C<tell()>�ϡ��Х��ȥ�����Ȥ˴ؤ������ޤ���
-C<sysread>�ȡ�C<sysseek()>��Ʊ�ͤǤ���
+C<read()>は、キャラクタを読み、キャラクタの数を返します。
+C<seek()>と、C<tell()>は、バイトカウントに関して操作します。
+C<sysread>と、C<sysseek()>も同様です。
 
 Notice that because of the default behaviour of not doing any
 conversion upon input if there is no default layer,
 it is easy to mistakenly write code that keeps on expanding a file
 by repeatedly encoding the data:
 
-�ǥե���ȥ쥤�䡼���ʤ���С����Ϥˤʤ���Ѵ��⤷�ʤ��Τ��ǥե���Ȥ�
-����ޤ��ʤΤǡ������֤��ǡ����򥨥󥳡��ǥ��󥰤��뤳�Ȥǡ�
-�ե������Ÿ����³���륳���ɤ�դäƽ񤭤䤹���Ǥ���
+デフォルトレイヤーがなければ、入力になんの変換もしないのがデフォルトの
+振るまいなので、繰り返しデータをエンコーディングすることで、
+ファイルを展開し続けるコードを謝って書きやすいです。
 
     # BAD CODE WARNING
     open F, "file";
@@ -748,19 +748,19 @@ If you run this code twice, the contents of the F<file> will be twice
 UTF-8 encoded.  A C<use open ':utf8'> would have avoided the bug, or
 explicitly opening also the F<file> for input as UTF-8.
 
-���Υ����ɤ�2��¹Ԥ���ȡ�F<file>�����Ƥϡ�UTF-8 �ˡ�2�󥨥󥳡��ɤ���ޤ���
-C<use open 'utf8'> �ϡ��Х����򤱤�Ǥ��礦��
-�⤷���ϡ�UTF-8�Ȥ������Ϥ��뤿��ˡ�F<File>������Ū�˳������ȤǤ���
+このコードを2回実行すると、F<file>の内容は、UTF-8 に、2回エンコードされます。
+C<use open 'utf8'> は、バグを避けるでしょう。
+もしくは、UTF-8として入力するために、F<File>を、明示的に開くことです。
 
 B<NOTE>: the C<:utf8> and C<:encoding> features work only if your
 Perl has been built with the new PerlIO feature (which is the default
 on most systems).
 
-B<����>: C<:utf8>�ȡ�C<:encoding>�ε�ǽ�ϡ�
-Perl����������PerlIO�ε�ǽ�ǡ��ӥ�ɤ���Ƥ�����Τߡ�ư���ޤ���
-(�ۤȤ�ɤΥ����ƥ�ǡ����줬�ǥե���ȤǤ�)
+B<注意>: C<:utf8>と、C<:encoding>の機能は、
+Perlが、新しいPerlIOの機能で、ビルドされている場合のみ、動きます。
+(ほとんどのシステムで、それがデフォルトです)
 
-=head2 �ƥ����ȤȤ��ơ�Unicode ��ɽ������
+=head2 テキストとして、Unicode を表示する
 
 Sometimes you might want to display Perl scalars containing Unicode as
 simple ASCII (or EBCDIC) text.  The following subroutine converts
@@ -768,11 +768,11 @@ its argument so that Unicode characters with code points greater than
 255 are displayed as C<\x{...}>, control characters (like C<\n>) are
 displayed as C<\x..>, and the rest of the characters as themselves:
 
-Unicode��ޤ�Ǥ���Perl�Υ������ñ���ASCII(����EBCDIC)�Υƥ����ȤȤ��ơ�
-ɽ�����������⤷��ޤ��󡣲��Υ��֥롼����ϡ��������Ѵ����ơ�
-255����礭�������ɥݥ���Ȥ�Unicode����饯����C<\x{...}>�Ȥ��ơ�
-ɽ������(C<\n>�Τ褦��)����ȥ����륭��饯���ϡ�C<\x..>�Ȥ��ơ�
-ɽ�����ޤ����Ĥ��ʸ���ϡ����Τޤ�ɽ�����ޤ�:
+Unicodeを含んでいるPerlのスカラを、単純なASCII(か、EBCDIC)のテキストとして、
+表示したいかもしれません。下のサブルーチンは、引数を変換して、
+255より大きいコードポイントのUnicodeキャラクタを、C<\x{...}>として、
+表示し、(C<\n>のような)コントロールキャラクタは、C<\x..>として、
+表示します。残りの文字は、そのまま表示します:
 
    sub nice_string {
        join("",
@@ -786,21 +786,21 @@ Unicode��ޤ�Ǥ���Perl�Υ������ñ���ASCII(����EBCDIC)�Υƥ����ȤȤ��ơ�
 
 For example,
 
-���Ȥ��С�
+たとえば、
 
    nice_string("foo\x{100}bar\n")
 
 returns the string
 
-���Τ褦��ʸ����ˤʤ�ޤ���
+次のような文字列になります。
 
    'foo\x{0100}bar\x0A'
 
 which is ready to be printed.
 
-�ץ��ȤǤ��ޤ���
+プリントできます。
 
-=head2 ���̤ʥ�����
+=head2 特別なケース
 
 =over 4
 
@@ -808,7 +808,7 @@ which is ready to be printed.
 
 Bit Complement Operator ~ And vec()
 
-�黻�� ~ �ȡ�vec() �ˤĤ��ƤΤ���äȤ�����­
+演算子 ~ と、vec() についてのちょっとした補足
 
 The bit complement operator C<~> may produce surprising results if
 used on strings containing characters with ordinal values above
@@ -818,19 +818,19 @@ that. Similarly for C<vec()>: you will be operating on the
 internally-encoded bit patterns of the Unicode characters, not on
 the code point values, which is very probably not what you want.
 
-�黻��C<~>�ϡ�255��Ķ����������ͤΥ���饯����ޤ�Ǥ���ʸ����ǡ�
-�Ȥ���ȡ��ä��٤���̤ˤʤ�Ǥ��礦�����Τ褦�ʥ������Ǥϡ�
-���η�̤ϥ���饯��������Ū�ʥ��󥳡��ǥ��󥰤ǰ����������ޤ���
-��������¾��¿���Ǥϰ㤤�ޤ����Ǥ��Τǡ����Τ褦�ʤ��ȤϤ��ʤ��Ǥ���������
-C<vec()>��Ʊ�ͤǤ�: �����ɥݥ���Ȥ��ͤǤϤʤ�������Ū�˥��󥳡��ɤ��줿��
-Unicode ʸ����Υӥåȥѥ���������Ƥ���Ǥ��礦��
-�����餯������ϡ�˾��Ǥ��ʤ��Ǥ��礦��
+演算子C<~>は、255を超える序数の値のキャラクタを含んでいる文字列で、
+使われると、驚くべき結果になるでしょう。そのようなケースでは、
+その結果はキャラクタの内部的なエンコーディングで一貫性があります。
+しかし、他の多くでは違います。ですので、そのようなことはしないでください。
+C<vec()>も同様です: コードポイントの値ではなく、内部的にエンコードされた、
+Unicode 文字列のビットパターンを操作しているでしょう。
+おそらく、それは、望んでいないでしょう。
 
 =item *
 
 Peeking At Perl's Internal Encoding
 
-Perl ���������󥳡��ǥ��󥰤�Τ������롣
+Perl の内部エンコーディングをのぞき見る。
 
 Normal users of Perl should never care how Perl encodes any particular
 Unicode string (because the normal ways to get at the contents of a
@@ -838,26 +838,26 @@ string with Unicode--via input and output--should always be via
 explicitly-defined I/O layers). But if you must, there are two
 ways of looking behind the scenes.
 
-(Unicode��ʸ��������Ƥ�ã�������̤���ˡ -- ������ -- �ϡ��Ĥͤˡ�
-����Ū��������줿I/O �쥤����ͳ���٤��Ǥ�)
-Perl���ɤΤ褦�ˡ��ɤ�����̤�Unicodeʸ����򥨥󥳡��ɤ��Ƥ��뤫��
-Perl�����̤Υ桼���ϵ��ˤ���٤��ǤϤ���ޤ���
-�Ǥ�����ɬ�פʤ顢����Ƥ���΢¦�򸫤�2�Ĥ���ˡ������ޤ���
+(Unicodeで文字列の内容に達する普通の方法 -- 入出力 -- は、つねに、
+明示的に定義されたI/O レイヤを経由すべきです)
+Perlがどのように、どんな特別なUnicode文字列をエンコードしているかを、
+Perlの普通のユーザは気にするべきではありません。
+ですが、必要なら、隠れている裏側を見る2つの方法があります。
 
 One way of peeking inside the internal encoding of Unicode characters
 is to use C<unpack("C*", ...> to get the bytes or C<unpack("H*", ...)>
 to display the bytes:
 
-Unicode����饯��������Ū�˥��󥳡��ǥ��󥰤��롢
-��¦����������1�Ĥ���ˡ�ϡ�C<unpack("C*", ...> ��Ȥ����Х��Ȥ����뤫��
-C<unpack("H*", ...)>��Ȥ����Х��Ȥ�ɽ�����뤳�Ȥ��Ǥ��ޤ�:
+Unicodeキャラクタを内部的にエンコーディングする、
+内側を覗き見る1つの方法は、C<unpack("C*", ...> を使い、バイトを得るか、
+C<unpack("H*", ...)>を使い、バイトを表示することができます:
 
     # this prints  c4 80  for the UTF-8 bytes 0xc4 0x80
     print join(" ", unpack("H*", pack("U", 0x100))), "\n";
 
 Yet another way would be to use the Devel::Peek module:
 
-�̤���ˡ�ϡ�Dvel::Peek �⥸�塼���Ȥ����ȤǤ�:
+別の方法は、Dvel::Peek モジュールを使うことです:
 
     perl -MDevel::Peek -e 'Dump(chr(0x100))'
 
@@ -865,9 +865,9 @@ That shows the C<UTF8> flag in FLAGS and both the UTF-8 bytes
 and Unicode characters in C<PV>.  See also later in this document
 the discussion about the C<utf8::is_utf8()> function.
 
-����ϡ�FLAGS��C<UTF8>�ե饰�ȡ�UTF-8�Х��Ȥȡ�C<PV>�����
-Unicode����饯����ξ���򸫤��ޤ���
-���Υɥ�����Ȥθ�ˤ��롢C<utf8::is_utf8()>��ǽ�ˤĤ��Ƥε����⸫�Ʋ�������
+これは、FLAGSのC<UTF8>フラグと、UTF-8バイトと、C<PV>の中の
+Unicodeキャラクタの両方を見せます。
+このドキュメントの後にある、C<utf8::is_utf8()>機能についての議論も見て下さい。
 
 =back
 
@@ -879,29 +879,29 @@ Unicode����饯����ξ���򸫤��ޤ���
 
 String Equivalence
 
-ʸ�����������
+文字列の等しさ
 
 The question of string equivalence turns somewhat complicated
 in Unicode: what do you mean by "equal"?
 
-ʸ������������ε���ϡ�Unicode�Ǥ����֤�ʣ���ˤʤ�ޤ���
-"��������"�ǡ������̣���Ƥ��ޤ�����
+文字列の等しさの疑問は、Unicodeでいくぶん複雑になります。
+"イコール"で、何を意味していますか？
 
 (Is C<LATIN CAPITAL LETTER A WITH ACUTE> equal to
 C<LATIN CAPITAL LETTER A>?)
 
-(IS C<LATIN CAPITAL LETTER A WITH ACCUTE>�ϡ�
-C<LATIN CAPITAL LETTER A>�ϡ��������Ǥ��礦����)
+(IS C<LATIN CAPITAL LETTER A WITH ACCUTE>は、
+C<LATIN CAPITAL LETTER A>は、等しいでしょうか？)
 
 The short answer is that by default Perl compares equivalence (C<eq>,
 C<ne>) based only on code points of the characters.  In the above
 case, the answer is no (because 0x00C1 != 0x0041).  But sometimes, any
 CAPITAL LETTER As should be considered equal, or even As of any case.
 
-û��������м��Τ褦�ˤʤ�ޤ����ǥե���ȤǤϡ�Perl��(C<eq>�ȡ�C<ne>��)��������
-��Ӥ��ޤ����������ϡ�����饯���Υ����ɥݥ���ȤǤΤߤ˴�Ť��Ƥ��ޤ���
-��Υ������Ǥϡ������Ϥ������Ǥ�(0x00C1 != 0x0041�Ǥ�����)��
-�Ǥ������ɤ��CAPITAL LETTER A ��ɤ�ʥ�������A���������ȹͤ���٤����⤢��ޤ���
+短く答えれば次のようになります。デフォルトでは、Perlは(C<eq>と、C<ne>で)等しさを
+比較しますが、これらは、キャラクタのコードポイントでのみに基づいています。
+上のケースでは、答えはいいえです(0x00C1 != 0x0041ですから)。
+ですが、どんなCAPITAL LETTER A もどんなケースのAも等しいと考えるべき時もあります。
 
 The long answer is that you need to consider character normalization
 and casing issues: see L<Unicode::Normalize>, Unicode Technical
@@ -909,17 +909,17 @@ Reports #15 and #21, I<Unicode Normalization Forms> and I<Case
 Mappings>, http://www.unicode.org/unicode/reports/tr15/ and 
 http://www.unicode.org/unicode/reports/tr21/ 
 
-Ĺ��������ʤ顢����饯��ɸ�ಽ�ȥ������������ͤ���ɬ�פ�����ޤ�:
-L<Unicode::Normalize>��Unicode �ƥ��˥����ݡ���#15 �� #21�ȡ�
-I<Unicodde Normalization Forms> �ȡ�I<Case Mappings>�򸫤Ʋ�������
-http://www.unicode.org/unicode/reports/tr15/ �ȡ�
+長く答えるなら、キャラクタ標準化とケースの問題を考える必要があります:
+L<Unicode::Normalize>、Unicode テクニカルレポート#15 と #21と、
+I<Unicodde Normalization Forms> と、I<Case Mappings>を見て下さい。
+http://www.unicode.org/unicode/reports/tr15/ と、
 http://www.unicode.org/unicode/reports/tr21/ 
 
 As of Perl 5.8.0, the "Full" case-folding of I<Case
 Mappings/SpecialCasing> is implemented.
 
-Perl 5.8 ���顢I<Case Mappings/SpecialCasing>�Ρ�
-"Full"�������ե�����ǥ��󥰤���������Ƥ��ޤ���
+Perl 5.8 から、I<Case Mappings/SpecialCasing>の、
+"Full"ケースフォールディングが実装されています。
 
 =item *
 
@@ -928,38 +928,38 @@ String Collation
 People like to see their strings nicely sorted--or as Unicode
 parlance goes, collated.  But again, what do you mean by collate?
 
-ʸ���󤬤��ޤ������Ȥ���Ƥ���Τ򹥤ߤޤ�--or as Unicode
-parlance goes, collated�� �Ǥ������Ƥӡ�collate �ǲ����̣���Ƥ��ޤ�����
+文字列がうまくソートされているのを好みます--or as Unicode
+parlance goes, collated。 ですが、再び、collate で何を意味していますか？
 
 (Does C<LATIN CAPITAL LETTER A WITH ACUTE> come before or after
 C<LATIN CAPITAL LETTER A WITH GRAVE>?)
 
-(C<LATIN CAPITAL LETTER A WITH ACUTE> �ϡ�C<LATIN CAPITAL LETTER A WITH GRAVE> ��ꡢ
-���Ǥ��礦����Ǥ��礦����)
+(C<LATIN CAPITAL LETTER A WITH ACUTE> は、C<LATIN CAPITAL LETTER A WITH GRAVE> より、
+前でしょうか後でしょうか？)
 
 The short answer is that by default, Perl compares strings (C<lt>,
 C<le>, C<cmp>, C<ge>, C<gt>) based only on the code points of the
 characters.  In the above case, the answer is "after", since
 C<0x00C1> > C<0x00C0>.
 
-û��������м��Τ褦�ˤʤ�ޤ���Perl�ϡ�ʸ�����
-(C<lt>��C<le>��C<cmp>��C<ge>��C<gt>)����Ӥ��ޤ�����
-�����ϡ�����饯���Υ����ɥݥ���ȤǤΤߤ˴�Ť��Ƥ��ޤ���
-��Υ������Ǥϡ������ϡ�C<0x00C1> > C<0x00C0>�Ǥ��Τǡ�"��"�ˤʤ�ޤ���
+短く答えれば次のようになります。Perlは、文字列を、
+(C<lt>、C<le>、C<cmp>、C<ge>、C<gt>)で比較しますが、
+これらは、キャラクタのコードポイントでのみに基づいています。
+上のケースでは、答えは、C<0x00C1> > C<0x00C0>ですので、"後"になります。
 
 The long answer is that "it depends", and a good answer cannot be
 given without knowing (at the very least) the language context.
 See L<Unicode::Collate>, and I<Unicode Collation Algorithm>
 http://www.unicode.org/unicode/reports/tr10/
 
-Ĺ��������ʤ顢"��¸����"���ޤ����ɤ������ϡ�(�ȤƤ⾯�ʤ��Ȥ�)����Υ���ƥ����Ȥ�
-�Τ餺�ˤϡ�Ϳ�����ޤ���
-L<Unicode::Collate>�ȡ�I<Unicode Collation Algorithm> �򸫤Ʋ�������
+長く答えるなら、"依存して"います。良い答えは、(とても少なくとも)言語のコンテキストを
+知らずには、与えられません。
+L<Unicode::Collate>と、I<Unicode Collation Algorithm> を見て下さい。
 http://www.unicode.org/unicode/reports/tr10/
 
 =back
 
-=head2 ����¾
+=head2 その他
 
 =over 4
 
@@ -973,12 +973,12 @@ Unicode-aware.  What this means that C<[A-Za-z]> will not magically start
 to mean "all alphabetic letters"; not that it does mean that even for
 8-bit characters, you should be using C</[[:alpha:]]/> in that case.
 
-����ɽ���Υ���饯�������饹(C</[a-z]/>)��ȡ�
-C<tf///>(C<y///>�Ȥ��Ƥ��Τ���)�黻����Ǥϡ�
-��ˡ��Ȥä��褦�ˤϡ�Unicode�˵��դ��ʤ���
-���줬��̣���뤳�Ȥϡ�C<[A-Za-z]>�ϡ�"���ƤΥ���ե��٥å�ʸ��"��
-��ˡ��Ȥä��褦�ˤϰ�̣���Ϥ���ޤ���8�ӥåȤΥ���饯���ǰ�̣���ޤ���
-���Υ������Ǥϡ�C</[[:alpha:]]/>��Ȥ��٤��Ǥ���
+正規表現のキャラクタークラス(C</[a-z]/>)内と、
+C<tf///>(C<y///>としても知られる)演算子内では、
+魔法を使ったようには、Unicodeに気付かない。
+これが意味することは、C<[A-Za-z]>は、"全てのアルファベット文字"を
+魔法を使ったようには意味しはじめません。8ビットのキャラクタで意味します。
+このケースでは、C</[[:alpha:]]/>を使うべきです。
 
 For specifying character classes like that in regular expressions,
 you can use the various Unicode properties--C<\pL>, or perhaps
@@ -988,34 +988,34 @@ magic associated with specifying a certain range.  For further
 information--there are dozens of Unicode character classes--see
 L<perlunicode>.
 
-����ɽ����Τ��Τ褦������Υ���饯�����饹�ˡ�
-�͡���Unicode�ץ��ѥƥ�--C<\pL>���ޤ��ϡ��������̤ʥ������Ǥϡ�
-���֤�C<\p{Alphabetic}>��Ȥ����Ȥ��Ǥ��ޤ���
-����饯�����ϰϤν���Υݥ���ȤȤ��ơ�
-Unicode�Υ����ɥݥ���Ȥ�Ȥ����Ȥ�����ޤ���
-�Ǥ����������ϰϤ����ꤹ��Τ˷�ӤĤ��벿����ˡ�⤢��ޤ���
-�ܤ������Ȥ�--����������Unicode����饯�����饹������ޤ�--
-L<perlunicode>�򸫤Ʋ�������
+正規表現内のこのような特定のキャラクタクラスに、
+様々なUnicodeプロパティ--C<\pL>、または、この特別なケースでは、
+たぶん、C<\p{Alphabetic}>を使うことができます。
+キャラクタの範囲の終りのポイントとして、
+Unicodeのコードポイントを使うことが出来ます。
+ですが、ある範囲を特定するのに結びつける何の魔法もありません。
+詳しいことは--数ダースのUnicodeキャラクタクラスがあります--
+L<perlunicode>を見て下さい。
 
 =item *
 
 String-To-Number Conversions
 
-ʸ���󤫤�����ؤ��Ѵ�
+文字列から数字への変換
 
 Unicode does define several other decimal--and numeric--characters
 besides the familiar 0 to 9, such as the Arabic and Indic digits.
 Perl does not support string-to-number conversion for digits other
 than ASCII 0 to 9 (and ASCII a to f for hexadecimal).
 
-Unicode �ϡ��ʤ��ߤΤ��롢����ӥ��䥤��ɤο����Τ褦��0����9�˲ä��ơ�
-ʣ����¾��10�ʿ�--�ȿ�����--����饯����������ޤ���
-Perl�ϡ�ASCII��0����9(�ȡ�16��ˡ��ASCII��a����f)�ʳ��ο����Ρ�
-ʸ���󤫤���ؤ��Ѵ��򥵥ݡ��Ȥ��ޤ���
+Unicode は、なじみのある、アラビアやインドの数字のような0から9に加えて、
+複数の他の10進数--と数字の--キャラクタを、定義します。
+Perlは、ASCIIの0から9(と、16進法のASCIIのaからf)以外の数字の、
+文字列から数への変換をサポートしません。
 
 =back
 
-=head2 ����Ȳ���
+=head2 質問と回答
 
 =over 4
 
@@ -1023,7 +1023,7 @@ Perl�ϡ�ASCII��0����9(�ȡ�16��ˡ��ASCII��a����f)�ʳ��ο����Ρ�
 
 Will My Old Scripts Break?
 
-�Ť�������ץȤϲ����Ǥ��礦����
+古いスクリプトは壊れるでしょうか？
 
 Very probably not.  Unless you are generating Unicode characters
 somehow, old behaviour should be preserved.  About the only behaviour
@@ -1033,45 +1033,45 @@ produced a character modulo 255.  C<chr(300)>, for example, was equal
 to C<chr(45)> or "-" (in ASCII), now it is LATIN CAPITAL LETTER I WITH
 BREVE.
 
-���֤󡢲���ޤ��󡣤ɤ��ˤ����ơ�Unicode����饯�����������Ƥ��ʤ���С�
-�Ť���ư�ϡ��ݸ��ޤ����ѹ�����롢Unicode���������Ϥ��ͣ��ε�ư��
-�Ť�C<chr()>�ε�ư�Ǥ��������Ǥϡ�255��ˡ�Ȥ��ơ�����饯������������
-255����ΰ����򶡵뤷�ޤ���C<chr(300)>�ϡ��㤨�С�C<chr(45)>����
-(ASCII��)"-"��Ʊ���Ǥ��������ߤϡ�����ϡ�LATIN CAPITAL LETTER I WITH BREVE
-�ȡ�Ʊ���Ǥ���
+たぶん、壊れません。どうにかして、Unicodeキャラクタを生成していなければ、
+古い挙動は、保護されます。変更される、Unicodeを生成し始める唯一の挙動は
+古いC<chr()>の挙動です。ここでは、255を法として、キャラクタを生成する
+255より上の引数を供給します。C<chr(300)>は、例えば、C<chr(45)>か、
+(ASCIIの)"-"と同じでした。現在は、それは、LATIN CAPITAL LETTER I WITH BREVE
+と、同じです。
 
 =item *
 
 How Do I Make My Scripts Work With Unicode?
 
-Unicode ������ץȤ�ư�����ˤϤɤ�����Ф����Ǥ�����
+Unicode スクリプトを動かすにはどうすればいいですか？
 
 Very little work should be needed since nothing changes until you
 generate Unicode data.  The most important thing is getting input as
 Unicode; for that, see the earlier I/O discussion.
 
-Unicode�ǡ�������������ޤǡ�����
-�ۤ�Ȥ��˾������Ż���ɬ�פȤ���Ƥޤ���
-��äȤ���פʤ�Τϡ�Unicode�Ȥ��ơ����Ϥ����뤳�ȤǤ�;
-�ʤΤǡ������� I/O �ε����򸫤Ʋ�������
+Unicodeデータを生成するまで、何も
+ほんとうに小さい仕事が必要とされてます。
+もっとも重要なものは、Unicodeとして、入力を得ることです;
+なので、以前の I/O の議論を見て下さい。
 
 =item *
 
 How Do I Know Whether My String Is In Unicode?
 
-Unicode��ʸ���󤫤ɤ������Τ�ˤϤɤ����ޤ�����
+Unicodeの文字列かどうかを知るにはどうしますか？
 
 You shouldn't care.  No, you really shouldn't.  No, really.  If you
 have to care--beyond the cases described above--it means that we
 didn't get the transparency of Unicode quite right.
 
-���ˤ��뤳�ȤϤ���ޤ��������ˡ����ˤ���٤��ǤϤ���ޤ��������ˡ�
-���ˤ���ɬ�פ�����ʤ� -- ���Υ������Ͼ�ǽ񤤤Ƥ��ޤ� --
-��������������Unicode �Υȥ�󥹥ڥ������������ʤ����Ȥ��̣���ޤ���
+気にすることはありません。本当に、気にするべきではありません。本当に。
+気にする必要があるなら -- このケースは上で書いています --
+本当に正しく、Unicode のトランスペアレント性を得ないことを意味します。
 
 Okay, if you insist:
 
-������������ĥ����ʤ�:
+オーケー、主張するなら:
 
     print utf8::is_utf8($string) ? 1 : 0, "\n";
 
@@ -1089,18 +1089,18 @@ are merged (double-quoted interpolation, explicit concatenation, and
 printf/sprintf parameter substitution), the result will be UTF-8 encoded
 as if copies of the byte strings were upgraded to UTF-8: for example,
 
-�Ǥ���������ϡ�ʸ����Υ���饯���Τ��٤Ƥ���UTF-8�ǥ��󥳡��ɤ���Ƥ��뤫��
-����饯���Τ��٤Ƥ���0xFF(255)����0x80(128)����礭�������ɥݥ���Ȥ���
-ʸ����Ϥ��٤ƥ���饯������ɬ�פ�����ޤ���
-C<is_utf8()>�����뤳�Ȥ����Ƥϡ�C<$string>�ˤĤ����Ƥ���������"utf8ness"�ե饰��
-�ͤ��֤����ȤǤ����ե饰��̵���Ǥ���С���������ΥХ�����ϡ�
-���󥰥�Х��ȥ��󥳡��ǥ��󥰤Ȥ��ơ���ᤵ��ޤ���
-�ե饰��ͭ���Ǥ���С���������ΥХ�����ϡ�(�ޥ���Х��ȡ�����Ĵ��) 
-UTF-8 �ǥ��󥳡��ɤ��줿����饯���Υ����ɥݥ���ȤȤ��ơ���ᤵ��ޤ���
-��UTF-8�ȡ�UTF-8�Υ����餬�ޡ������줿(���֥륯�����Ȥ��줿��硢
-����Ū��Ϣ�롢printf/sprintf�ѥ�᥿������)��硢�����η�̤ϡ�
-�Х��ȥ��ȥ�󥰤Υ��ԡ���UTF-8�ǥ��åץ��졼�ɤ����褦�ˡ�
-UTF-8�ǥ��󥳡��ɤ���Ƥ��ޤ���
+ですが、これは、文字列のキャラクタのすべてが、UTF-8でエンコードされているか、
+キャラクタのすべてが、0xFF(255)か、0x80(128)より大きいコードポイントか、
+文字列はすべてキャラクタをもつ必要があります。
+C<is_utf8()>がすることの全ては、C<$string>につけられている内部の"utf8ness"フラグの
+値を返すことです。フラグが無効であれば、スカラ内のバイト列は、
+シングルバイトエンコーディングとして、解釈されます。
+フラグが有効であれば、スカラ内のバイト列は、(マルチバイト、可変調の) 
+UTF-8 でエンコードされたキャラクタのコードポイントとして、解釈されます。
+非UTF-8と、UTF-8のスカラがマージされた(ダブルクオートされた語句、
+明示的な連結、printf/sprintfパラメタの代用)場合、、この結果は、
+バイトストリングのコピーがUTF-8でアップグレードされるように、
+UTF-8でエンコードされています。
 
     $a = "ab\x80c";
     $b = "\x{100}";
@@ -1109,17 +1109,17 @@ UTF-8�ǥ��󥳡��ɤ���Ƥ��ޤ���
 the output string will be UTF-8-encoded C<ab\x80c = \x{100}\n>, but
 C<$a> will stay byte-encoded.
 
-���Ϥ���ʸ�����UTF-8���󥳡��ɤ��줿C<ab\x80c = \x{100}\n>�ˤʤ�ޤ���
-�Ǥ�����C<$a>�ϡ��Х��ȥ��󥳡��ɤ���ޤ�
+出力する文字列はUTF-8エンコードされたC<ab\x80c = \x{100}\n>になります。
+ですが、C<$a>は、バイトエンコードされます
 
 Sometimes you might really need to know the byte length of a string
 instead of the character length. For that use either the
 C<Encode::encode_utf8()> function or the C<bytes> pragma and its only
 defined function C<length()>:
 
-ʸ�����Ĺ���ǤϤʤ���ʸ����ΥХ���Ĺ���Τ�ɬ�פ����뤫�⤷��ޤ���
-���Τ���ˤϡ�C<Encode::encode_utf8()>�ؿ�����C<bytes>�ץ饰�ޤΤɤ��餫��Ȥ���
-������줿C<length()>�ؿ���Ȥ������Ǥ�:
+文字列の長さではなく、文字列のバイト長を知る必要があるかもしれません。
+そのためには、C<Encode::encode_utf8()>関数か、C<bytes>プラグマのどちらかを使い、
+定義されたC<length()>関数を使うだけです:
 
     my $unicode = chr(0x100);
     print length($unicode), "\n"; # will print 1
@@ -1133,13 +1133,13 @@ defined function C<length()>:
 
 How Do I Detect Data That's Not Valid In a Particular Encoding?
 
-���̤ʥ��󥳡��ǥ��󥰤ǡ��ǡ������������Ǥʤ����Ȥ�Ĵ�٤�ˤϤɤ����ޤ�����
+特別なエンコーディングで、データが、妥当でないことを調べるにはどうしますか？
 
 Use the C<Encode> package to try converting it.
 For example,
 
-C<Encode>�ѥå�������Ȥäơ�������Ѵ����ƤߤƤ���������
-�㤨�С�
+C<Encode>パッケージを使って、それを変換してみてください。
+例えば、
 
     use Encode 'encode_utf8';
     if (encode_utf8($string_of_bytes_that_I_think_is_utf8)) {
@@ -1150,7 +1150,7 @@ C<Encode>�ѥå�������Ȥäơ�������Ѵ����ƤߤƤ���������
 
 For UTF-8 only, you can use:
 
-UTF-8�����Ǥ���С����Τ褦�˽���ޤ�:
+UTF-8だけであれば、次のように出来ます:
 
     use warnings;
     @chars = unpack("U0U*", $string_of_bytes_that_I_think_is_utf8);
@@ -1160,22 +1160,22 @@ warning is produced. The "U0" means "expect strictly UTF-8 encoded
 Unicode".  Without that the C<unpack("U*", ...)> would accept also
 data like C<chr(0xFF>), similarly to the C<pack> as we saw earlier.
 
-�����Ǥʤ���С�C<Malformed UTF-8 character (byte 0x## in unpack)>
-�ηٹ𤬽Фޤ���"U0" �ϡ�"��̩��UTF-8�ǥ��󥳡��ɤ��줿Unicode����Ԥ���" 
-���Ȥ��̣���ޤ���C<unpack("U*", ...)>����C<chr(0xFF)>�Τ褦��
-�ǡ������������뤳�Ȥ򤷤ʤ���С���˸���C<pack>��Ʊ�ͤǤ���
+妥当でなければ、C<Malformed UTF-8 character (byte 0x## in unpack)>
+の警告が出ます。"U0" は、"厳密にUTF-8でエンコードされたUnicodeを期待する" 
+ことを意味します。C<unpack("U*", ...)>が、C<chr(0xFF)>のような
+データも受け入れることをしなければ、先に見たC<pack>と同様です。
 
 =item *
 
 How Do I Convert Binary Data Into a Particular Encoding, Or Vice Versa?
 
-�Х��ʥ�ǡ���������Υ��󥳡��ǥ��󥰤��Ѵ�����ˤϡ��ɤ����ޤ�����
-�ޤ����դϤɤ����ޤ�����
+バイナリデータを特定のエンコーディングに変換するには、どうしますか？
+また、逆はどうしますか？
 
 This probably isn't as useful as you might think.
 Normally, you shouldn't need to.
 
-���֤󡢻פ��褦�ˤ�ͭ�פǤϤʤ��Ǥ��礦���դĤ���ɬ�פȤ���٤��ǤϤ���ޤ���
+たぶん、思うようには有益ではないでしょう。ふつう、必要とするべきではありません。
 
 In one sense, what you are asking doesn't make much sense: encodings
 are for characters, and binary data are not "characters", so converting
@@ -1229,20 +1229,20 @@ well-formed Unicode data by C<pack("U*", 0xff, ...)>.
 
 How Do I Display Unicode?  How Do I Input Unicode?
 
-Unicode ��ɽ������ˤϤɤ����ޤ�����
-Unicode �����Ϥ���ˤϤɤ����ޤ�����
+Unicode を表示するにはどうしますか？
+Unicode を入力するにはどうしますか？
 
 See http://www.alanwood.net/unicode/ and
 http://www.cl.cam.ac.uk/~mgk25/unicode.html
 
 http://www.alanwood.net/unicode/ and
-http://www.cl.cam.ac.uk/~mgk25/unicode.html �򸫤Ƥ���������
+http://www.cl.cam.ac.uk/~mgk25/unicode.html を見てください。
 
 =item *
 
 How Does Unicode Work With Traditional Locales?
 
-����ޤǤΥ�������ǡ�Unicode�ϡ��ɤΤ褦�ˤ������ޤ�����
+これまでのロケールで、Unicodeは、どのようにうごきますか？
 
 In Perl, not very well.  Avoid using locales through the C<locale>
 pragma.  Use only one or the other.  But see L<perlrun> for the
@@ -1250,16 +1250,16 @@ description of the C<-C> switch and its environment counterpart,
 C<$ENV{PERL_UNICODE}> to see how to enable various Unicode features,
 for example by using locale settings.
 
-Perl�Ǥϡ����ޤꤦ�ޤ�����ޤ���
-C<locale>�ץ饰�ޤǥ��������Ȥ����Ȥ��򤱤Ʋ�������
-1�ĤΤߤ����̤Τ�Τ�ȤäƤ���������C<-C>�����å��ȡ�
-���δĶ����б�����C<$ENV{PERL_UNICODE}>�������Τ���ˡ�
-L<perlrun>�򸫤Ʋ��������͡���Unicode�ε�ǽ����
-�ɤΤ褦�˲�ǽ�ˤʤäƤ���Τ������Ȥ��С��������������ˤ�äơ������狼��ޤ���
+Perlでは、あまりうまくありません。
+C<locale>プラグマでロケールを使うことを避けて下さい。
+1つのみか、別のものを使ってください。C<-C>スイッチと、
+その環境で対応するC<$ENV{PERL_UNICODE}>の説明のために、
+L<perlrun>を見て下さい。様々なUnicodeの機能が、
+どのように可能になっているのか、たとえば、ロケールの設定によって、が、わかります。
 
 =back
 
-=head2 16��ˡ
+=head2 16進法
 
 The Unicode standard prefers using hexadecimal notation because
 that more clearly shows the division of Unicode into blocks of 256 characters.
@@ -1268,12 +1268,12 @@ notation, too, but learning to use hexadecimal just makes life easier
 with the Unicode standard.  The C<U+HHHH> notation uses hexadecimal,
 for example.
 
-Unicodeɸ��ϡ�16��ˡ��Ȥ��Τ򹥤ߤޤ�������ϡ�
-256�Υ���饯���Υ֥��å���Unicode��ʬ�䤷�Ƥ���Τ���
-¾��ɽ�����狼��䤹������Ǥ���
-10��ˡ��Ȥ����Ȥ����ޤ�����16��ˡ��Ȥ����Ȥ�ؤ٤С�
-Unicodeɸ��Ȥ���餷���ڤˤʤ�ޤ���C<U+HHHH>ɽ���ϡ�16��ˡ��Ȥ��ޤ���
-���Ȥ��С�
+Unicode標準は、16進法を使うのを好みます。それは、
+256のキャラクタのブロックにUnicodeを分割しているのが、
+他の表記よりわかりやすいからです。
+10進法を使うことも出来ますが、16進法を使うことを学べば、
+Unicode標準との暮らしが楽になります。C<U+HHHH>表記は、16進法を使います。
+たとえば、
 
 The C<0x> prefix means a hexadecimal number, the digits are 0-9 I<and>
 a-f (or A-F, case doesn't matter).  Each hexadecimal digit represents
@@ -1282,12 +1282,12 @@ hexadecimal number in decimal, and C<printf "%x\n", $decimal> will
 show a decimal number in hexadecimal.  If you have just the
 "hex digits" of a hexadecimal number, you can use the C<hex()> function.
 
-C<0x>����Ƭ���ϡ�16�ʤο������̣���Ƥ��ޤ��������ϡ�0-9�ȡ�
-a-f(����A-F����ʸ����ʸ�����䤤�ޤ���)�Ǥ������줾��Ρ�16�ʤο����ϡ�
-4�ӥåȡ�1/2�Х��Ȥ�ɽ���ޤ���C<print 0x..., "\n">�ϡ�
-10�ʤǡ�16�ʤο��򸫤��ޤ���C<printf "%x\n", $decimal>�ϡ�
-16�ʤǡ�10�ʤο���ߤ��ޤ���"hex degits"��16�ʤο���������ʤ顢
-C<hex()>�ؿ���Ȥ����Ȥ�����ޤ���
+C<0x>の接頭辞は、16進の数字を意味しています。数字は、0-9と、
+a-f(か、A-F、大文字小文字は問いません)です。それぞれの、16進の数字は、
+4ビット、1/2バイトを表します。C<print 0x..., "\n">は、
+10進で、16進の数を見せます。C<printf "%x\n", $decimal>は、
+16進で、10進の数をみせます。"hex degits"の16進の数字があるなら、
+C<hex()>関数を使うことが出来ます。
 
     print 0x0009, "\n";    # 9
     print 0x000a, "\n";    # 10
@@ -1303,7 +1303,7 @@ C<hex()>�ؿ���Ȥ����Ȥ�����ޤ���
 
     print hex("41"), "\n"; # 65
 
-=head2 �ܤ����꥽����
+=head2 詳しいリソース
 
 =over 4
 
@@ -1355,13 +1355,13 @@ Legacy Character Sets
 The Unicode support files live within the Perl installation in the
 directory
 
-Unicode���ݡ��ȤΥե�����ϡ�Perl�򥤥󥹥ȡ��뤷���ǥ��쥯�ȥ���ˤ���ޤ�
+Unicodeサポートのファイルは、Perlをインストールしたディレクトリ内にあります
 
     $Config{installprivlib}/unicore
 
 in Perl 5.8.0 or newer, and 
 
-Perl 5.8.0 �ʾ�Ǥϡ�
+Perl 5.8.0 以上では、
 
     $Config{installprivlib}/unicode
 
@@ -1370,22 +1370,22 @@ avoid naming conflicts with lib/Unicode in case-insensitive filesystems.)
 The main Unicode data file is F<UnicodeData.txt> (or F<Unicode.301> in
 Perl 5.6.1.)  You can find the C<$Config{installprivlib}> by
 
-Perl 5.6���꡼���Ǥϡ�(���������󥻥󥷥ƥ��֤ʥե����륷���ƥ�ǡ�
-lib/Unicode ̾���ξ��ͤ�䤱�뤿��ˡ�F<lib/unicore>�˥�͡��व��Ƥ��ޤ�)
-�ᥤ���Unicode�ǡ����ե�����ϡ�F<UnicodeData.txt>(����Perl5.6.1��F<Unicode.301>)
-�Ǥ������Τ褦�ˤ��ơ�C<$Config{installprivlib}>�򸫤Ĥ��뤳�Ȥ��Ǥ��ޤ���
+Perl 5.6シリーズでは。(ケースインセンシティブなファイルシステムで、
+lib/Unicode 名前の衝突を割けるために、F<lib/unicore>にリネームされています)
+メインのUnicodeデータファイルは、F<UnicodeData.txt>(か、Perl5.6.1のF<Unicode.301>)
+です。次のようにして、C<$Config{installprivlib}>を見つけることができます。
 
     perl "-V:installprivlib"
 
 You can explore various information from the Unicode data files using
 the C<Unicode::UCD> module.
 
-C<Unicode::UCD>�⥸�塼���Ȥäơ�Unicode �ǡ����ե����뤫�顢
-�͡��ʾ����Ĵ�٤뤳�Ȥ��Ǥ��ޤ���
+C<Unicode::UCD>モジュールを使って、Unicode データファイルから、
+様々な情報を調べることができます。
 
 =back
 
-=head1 �Ť�Perl�Ǥ�UNICODE
+=head1 古いPerlでのUNICODE
 
 If you cannot upgrade your Perl to 5.8.0 or later, you can still
 do some Unicode processing by using the modules C<Unicode::String>,
@@ -1393,15 +1393,15 @@ C<Unicode::Map8>, and C<Unicode::Map>, available from CPAN.
 If you have the GNU recode installed, you can also use the
 Perl front-end C<Convert::Recode> for character conversions.
 
-Perl 5.8.0�ʹߤ˥��åץ��졼�ɽ���ʤ����Ƥ⡢�ޤ���CPAN�������ѤǤ��롢
-C<Unicode::String>��C<Unicode::Mmap8>��C<bUnicode::Map>��Ȥäơ�
-Unicode �����򤹤뤳�ȤȤ��Ǥ��ޤ���
+Perl 5.8.0以降にアップグレード出来ないくても、まだ、CPANから利用できる、
+C<Unicode::String>、C<Unicode::Mmap8>、C<bUnicode::Map>を使って、
+Unicode 処理をすることとができます。
 
 The following are fast conversions from ISO 8859-1 (Latin-1) bytes
 to UTF-8 bytes and back, the code works even with older Perl 5 versions.
 
-�����Τ�Τϡ�ISO 8859-1 (Latin-1) �Х����󤫤顢UTF-8�Х�����ˡ�
-���᤯�Ѵ������ΤǤ������Υ����ɤϡ��Ť�Perl 5 �Ǥ�ư���ޤ���
+下記のものは、ISO 8859-1 (Latin-1) バイト列から、UTF-8バイト列に、
+素早く変換するものです。このコードは、古いPerl 5 でも動きます。
 
     # ISO 8859-1 to UTF-8
     s/([\x80-\xFF])/chr(0xC0|ord($1)>>6).chr(0x80|ord($1)&0x3F)/eg;
@@ -1415,13 +1415,13 @@ L<perlunicode>, L<Encode>, L<encoding>, L<open>, L<utf8>, L<bytes>,
 L<perlretut>, L<perlrun>, L<Unicode::Collate>, L<Unicode::Normalize>,
 L<Unicode::UCD>
 
-=head1 �ռ�
+=head1 謝辞
 
 Thanks to the kind readers of the perl5-porters@perl.org,
 perl-unicode@perl.org, linux-utf8@nl.linux.org, and unicore@unicode.org
 mailing lists for their valuable feedback.
 
-=head1 ���ԡ�������饤����
+=head1 著者、著作権、ライセンス
 
 Copyright 2001-2002 Jarkko Hietaniemi E<lt>jhi@iki.fiE<gt>
 
